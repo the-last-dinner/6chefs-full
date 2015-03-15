@@ -1,15 +1,22 @@
 cocos2d/
 
+
 Debug.win32
+
 
 *.sdf
 
+
 proj.android
+
 
 proj.linux
 
+
 proj.win8.1-universal
+
 
 proj.wp8-xaml
 /
+
 proj.ios_mac/ios
