@@ -145,6 +145,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Common.h" />
     <ClInclude Include="..\Classes\TitleScene.h" />
     <ClInclude Include="..\Classes\view\title\TitleMenu.h" />
     <ClInclude Include="ActionKey.h" />

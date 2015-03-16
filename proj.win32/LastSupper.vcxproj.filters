@@ -53,6 +53,7 @@
     <ClInclude Include="ActionKey.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Common.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
