@@ -3,9 +3,8 @@
 using namespace cocos2d;
 Scene * TitleScene::createScene()
 {
-	log("METHOD createScene CALLED");
 	auto scene = Scene::create();
-	auto actionKeyLayer = ActionKey::getInstance();
+	auto actionKeyLayer = ActionKey::create();
 	auto mainLayer = TitleScene::create();
 	log("actionKeyLayer: %p", actionKeyLayer);
 	scene->addChild(mainLayer);
@@ -19,6 +18,10 @@ bool TitleScene::init()
 	if(!Layer::init()){
 		return false;
 	}
+	Size winSize = Director::getInstance()->getWinSize();
+	auto bgi = Sprite::create("img/title.png");
+	bgi->setPosition(Point(winSize.width / 2.0f, winSize.height / 2.0f));
+	this->addChild(bgi);
 	this->scheduleUpdate();
 	this->actionKey = ActionKey::getInstance();
 	return true;
@@ -26,7 +29,10 @@ bool TitleScene::init()
 
 void TitleScene::update(float delta)
 {	
-	if (this->actionKey->isPressedDOWN()){
+
+	if (this->actionKey->isPressedUP()){
 		log("DOWNKEY PRESSED");
+		log("%f", delta);
 	}
+
 }

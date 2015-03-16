@@ -3,6 +3,7 @@
 using namespace cocos2d;
 
 static ActionKey * _action_key_instance;
+
 ActionKey * ActionKey::getInstance()
 {
 	if (!_action_key_instance){
@@ -10,6 +11,7 @@ ActionKey * ActionKey::getInstance()
 	}
 	return _action_key_instance;
 }
+
 
 bool ActionKey::init()
 {
@@ -29,15 +31,6 @@ void ActionKey::onKeyPressed(EventKeyboard::KeyCode keycode, cocos2d::Event * ev
 {
 	//cocos2d::log("Key with keycode %d pressed", keycode);
 	switch (keycode){
-		case EventKeyboard::KeyCode::KEY_NONE:
-			this->UP = false;
-			this->DOWN = false;
-			this->LEFT = false;
-			this->RIGHT = false;
-			this->MENU = false;
-			this->DASH = false;
-			this->SPACE = false;
-			break;
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
 			this->UP = true;
 			break;

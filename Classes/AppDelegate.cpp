@@ -24,8 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	}
 	director->setDisplayStats(true);
 	director->setAnimationInterval(1.0 / 60);
-	auto scene = TitleScene::createScene();
-	director->runWithScene(scene);
+	director->runWithScene(TitleScene::createScene());
 	return true;
 }
 
