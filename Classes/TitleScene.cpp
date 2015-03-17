@@ -4,7 +4,8 @@ using namespace cocos2d;
 
 TitleScene::TitleScene()
 {
-
+    EventScript es;
+    es.readScript();
 }
 
 TitleScene::~TitleScene()

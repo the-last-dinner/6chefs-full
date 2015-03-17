@@ -7,3 +7,27 @@
 //
 
 #include "EventScript.h"
+
+using namespace std;
+
+// コンストラクタ
+EventScript::EventScript()
+{
+}
+
+// デストラクタ
+EventScript::~EventScript()
+{
+}
+
+//イベントスクリプトファイルの読み込み
+void readScript ()
+{
+    ifstream filein("TestScript.txt");
+    
+    for (string line; getline(filein, line); )
+    {
+        cout << line << endl;
+    }
+    return;
+}
