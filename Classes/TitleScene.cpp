@@ -1,12 +1,10 @@
 #include "TitleScene.h"
-#include "view/title/TitleMenu.h"
 
 using namespace cocos2d;
 
 TitleScene::TitleScene()
 {
-    EventScript es;
-    es.readScript();
+
 }
 
 TitleScene::~TitleScene()
@@ -27,9 +25,10 @@ bool TitleScene::init()
 	if(!Layer::init()){
 		return false;
 	}
+	this->gsManager = GameStatusManager::getInstance();
 	this->actionKey = ActionKey::create();
-	this->addChild(this->actionKey);
 	auto titleMenu = TitleMenu::create();
+	this->addChild(this->actionKey);
 	this->addChild(titleMenu);
 	this->scheduleUpdate();
 	return true;
@@ -37,7 +36,20 @@ bool TitleScene::init()
 
 void TitleScene::update(float delta)
 {	
-	if (this->actionKey->isPressed(Key::UP)){
-		log("KEY STATUS UP");
+	switch (this->gsManager->getCurrentGameState())
+	{
+		case GameState::WAIT:
+		break;
+
+		case GameState::TITLE_MAIN:
+			//ˆ—
+			if (this->actionKey->isPressed(Key::UP, 1)){
+				log("delta : %f", delta);
+			}
+		break;
+		case GameState::TITLE_LOAD:
+			//ˆ—
+		break;
 	}
+	this->actionKey->updateKeyState();
 }

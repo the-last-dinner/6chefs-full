@@ -1,4 +1,4 @@
-//
+﻿//
 //  TitleMenu.cpp
 //  LastSupper
 //
@@ -19,7 +19,7 @@ bool TitleMenu::init()
 	bgi->setPosition(Point(winSize.width / 2.0f, winSize.height / 2.0f));
 	this->addChild(bgi);
 
-	auto menu1 = Label::createWithSystemFont("最初から", "メイリオ", 32);
+	auto menu1 = Label::createWithSystemFont("はじめから", "メイリオ", 32);
 	menu1->setPosition(Point(winSize.width / 2.0f, winSize.height / 2.0f));
 	this->addChild(menu1);
 	return true;
