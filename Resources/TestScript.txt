@@ -1,0 +1,6 @@
+echo "test"
+if 1
+	echo "OK"
+else
+	echo "NG"
+end

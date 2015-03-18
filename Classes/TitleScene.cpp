@@ -2,6 +2,18 @@
 #include "view/title/TitleMenu.h"
 
 using namespace cocos2d;
+
+TitleScene::TitleScene()
+{
+    EventScript es;
+    es.readScript();
+}
+
+TitleScene::~TitleScene()
+{
+
+}
+
 Scene * TitleScene::createScene()
 {
 	auto scene = Scene::create();

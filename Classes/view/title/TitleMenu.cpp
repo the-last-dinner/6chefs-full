@@ -1,3 +1,10 @@
+//
+//  TitleMenu.cpp
+//  LastSupper
+//
+//  Created by çŒªé‡å‡Œä¹Ÿ on 2015/03/15.
+//
+//
 #include "TitleMenu.h"
 
 using namespace cocos2d;
@@ -12,7 +19,7 @@ bool TitleMenu::init()
 	bgi->setPosition(Point(winSize.width / 2.0f, winSize.height / 2.0f));
 	this->addChild(bgi);
 
-	auto menu1 = Label::createWithSystemFont("Å‰‚©‚ç", "ƒƒCƒŠƒI", 32);
+	auto menu1 = Label::createWithSystemFont("æœ€åˆã‹ã‚‰", "ãƒ¡ã‚¤ãƒªã‚ª", 32);
 	menu1->setPosition(Point(winSize.width / 2.0f, winSize.height / 2.0f));
 	this->addChild(menu1);
 	return true;
