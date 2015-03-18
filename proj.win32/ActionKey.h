@@ -8,24 +8,13 @@ class ActionKey : public cocos2d::Layer
 public:
 	bool init();
 	CREATE_FUNC(ActionKey);
-	bool isPressedUP();
-	bool isPressedDOWN();
-	bool isPressedLEFT();
-	bool isPressedRIGHT();
-	bool isPressedMENU();
-	bool isPressedDASH();
-	bool isPressedSPACE();
-	static ActionKey * getInstance();
+	bool isPressed(Key key);
+
 private:
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event * event);
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event * event);
-	bool UP = false;
-	bool DOWN = false;
-	bool LEFT = false;
-	bool RIGHT = false;
-	bool MENU = false;
-	bool DASH = false;
-	bool SPACE = false;
+	void initKeyState();
+	std::map<Key, bool> keyStatus;
 };
 
 #endif // _ACTION_KEY_H_

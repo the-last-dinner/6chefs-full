@@ -2,22 +2,12 @@
 
 using namespace cocos2d;
 
-static ActionKey * _action_key_instance;
-
-ActionKey * ActionKey::getInstance()
-{
-	if (!_action_key_instance){
-		_action_key_instance = ActionKey::create();
-	}
-	return _action_key_instance;
-}
-
-
 bool ActionKey::init()
 {
 	if (!Layer::init()){
 		return false;
 	}
+	initKeyState();
 	auto listener = cocos2d::EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(ActionKey::onKeyPressed, this);
 	listener->onKeyReleased = CC_CALLBACK_2(ActionKey::onKeyReleased, this);
@@ -29,46 +19,33 @@ bool ActionKey::init()
 
 void ActionKey::onKeyPressed(EventKeyboard::KeyCode keycode, cocos2d::Event * event)
 {
-	//cocos2d::log("Key with keycode %d pressed", keycode);
 	switch (keycode){
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-			this->UP = true;
+		case EventKeyboard::KeyCode::KEY_W:
+			this->keyStatus[Key::UP] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-			this->DOWN = true;
+		case EventKeyboard::KeyCode::KEY_S:
+			this->keyStatus[Key::DOWN] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-			this->LEFT = true;
+		case EventKeyboard::KeyCode::KEY_A:
+			this->keyStatus[Key::LEFT] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-			this->RIGHT = true;
-			break;
-		case EventKeyboard::KeyCode::KEY_W:
-			this->UP = true;
-			break;
-		case EventKeyboard::KeyCode::KEY_S:
-			this->DOWN = true;
-			break;
-		case EventKeyboard::KeyCode::KEY_A:
-			this->LEFT = true;
-			break;
 		case EventKeyboard::KeyCode::KEY_D:
-			this->RIGHT = true;
+			this->keyStatus[Key::RIGHT] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_X:
-			this->MENU = true;
-			break;
 		case EventKeyboard::KeyCode::KEY_UNDERSCORE:
-			this->MENU = true;
-			break;
-		case EventKeyboard::KeyCode::KEY_LEFT_SHIFT:
-			this->DASH = true;
+			this->keyStatus[Key::MENU] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_SHIFT:
-			this->DASH = true;
+		case EventKeyboard::KeyCode::KEY_LEFT_SHIFT:
+			this->keyStatus[Key::DASH] = true;
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
-			this->SPACE = true;
+			this->keyStatus[Key::SPACE] = true;
 			break;
 		default:
 			break;
@@ -77,83 +54,51 @@ void ActionKey::onKeyPressed(EventKeyboard::KeyCode keycode, cocos2d::Event * ev
 
 void ActionKey::onKeyReleased(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event * event)
 {
-	//cocos2d::log("Key with keycode %d released", keycode);
 	switch (keycode){
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-			this->UP = false;
+		case EventKeyboard::KeyCode::KEY_W:
+			this->keyStatus[Key::UP] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-			this->DOWN = false;
+		case EventKeyboard::KeyCode::KEY_S:
+			this->keyStatus[Key::DOWN] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-			this->LEFT = false;
+		case EventKeyboard::KeyCode::KEY_A:
+			this->keyStatus[Key::LEFT] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-			this->RIGHT = false;
-			break;
-		case EventKeyboard::KeyCode::KEY_W:
-			this->UP = false;
-			break;
-		case EventKeyboard::KeyCode::KEY_S:
-			this->DOWN = false;
-			break;
-		case EventKeyboard::KeyCode::KEY_A:
-			this->LEFT = false;
-			break;
 		case EventKeyboard::KeyCode::KEY_D:
-			this->RIGHT = false;
+			this->keyStatus[Key::RIGHT] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_X:
-			this->MENU = false;
-			break;
 		case EventKeyboard::KeyCode::KEY_UNDERSCORE:
-			this->MENU = false;
-			break;
-		case EventKeyboard::KeyCode::KEY_LEFT_SHIFT:
-			this->DASH = false;
+			this->keyStatus[Key::MENU] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_SHIFT:
-			this->DASH = false;
+		case EventKeyboard::KeyCode::KEY_LEFT_SHIFT:
+			this->keyStatus[Key::DASH] = false;
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
-			this->SPACE = false;
+			this->keyStatus[Key::SPACE] = false;
 			break;
 		default:
 			break;
 	}
 }
 
-bool ActionKey::isPressedUP()
+void ActionKey::initKeyState()
 {
-	return this->UP;
+	this->keyStatus[Key::UP] = false;
+	this->keyStatus[Key::DOWN] = false;
+	this->keyStatus[Key::LEFT] = false;
+	this->keyStatus[Key::RIGHT] = false;
+	this->keyStatus[Key::MENU] = false;
+	this->keyStatus[Key::DASH] = false;
+	this->keyStatus[Key::SPACE] = false;
 }
 
-bool ActionKey::isPressedDOWN()
+bool ActionKey::isPressed(Key key)
 {
-	return this->DOWN;
-}
-
-bool ActionKey::isPressedLEFT()
-{
-	return this->LEFT;
-}
-
-bool ActionKey::isPressedRIGHT()
-{
-	return this->RIGHT;
-}
-
-bool ActionKey::isPressedDASH()
-{
-	return this->DASH;
-}
-
-bool ActionKey::isPressedMENU()
-{
-	return this->MENU;
-}
-
-bool ActionKey::isPressedSPACE()
-{
-	return this->SPACE;
+	return this->keyStatus.at(key);
 }

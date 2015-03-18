@@ -7,6 +7,7 @@ public:
 	static cocos2d::Scene * createScene();
 	virtual bool init();
 	CREATE_FUNC(TitleScene);
+	GameState gameState;
 private:
 	virtual void update(float delta);
 	ActionKey * actionKey;
