@@ -1,14 +1,23 @@
-//
+﻿//
 //  TitleMenu.h
 //  LastSupper
 //
 //  Created by 猪野凌也 on 2015/03/15.
 //
 //
+#ifndef  _TITLE_MENU_H_
+#define _TITLE_MENU_H_
+#include "cocos2d.h"
+#include "Common.h"
 
-#ifndef __LastSupper__TitleMenu__
-#define __LastSupper__TitleMenu__
+class TitleMenu : public cocos2d::Layer
+{
+public:
+	bool init();
+	CREATE_FUNC(TitleMenu);
 
-#include <stdio.h>
+private:
 
-#endif /* defined(__LastSupper__TitleMenu__) */
+};
+
+#endif // _TITLE_MENU_H_

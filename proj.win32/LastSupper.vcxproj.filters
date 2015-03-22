@@ -34,7 +34,16 @@
       <Filter>src\view\title</Filter>
     </ClCompile>
     <ClCompile Include="ActionKey.cpp">
-      <Filter>src</Filter>
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\model\EventScript.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\model\GameStatusManager.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\model\BaseTitleMenu.cpp">
+      <Filter>src\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +60,22 @@
       <Filter>src\view\title</Filter>
     </ClInclude>
     <ClInclude Include="ActionKey.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\EventScript.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\define.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\GameStatusManager.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\BaseTitleMenu.h">
+      <Filter>src\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
