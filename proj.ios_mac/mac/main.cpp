@@ -24,11 +24,14 @@
 
 #include "AppDelegate.h"
 #include "cocos2d.h"
+#include "model/EventScript.h"
 
 USING_NS_CC;
 
 int main(int argc, char *argv[])
 {
     AppDelegate app;
+    EventScript es;
+    es.readScript();
     return Application::getInstance()->run();
 }

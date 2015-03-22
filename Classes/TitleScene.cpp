@@ -4,13 +4,10 @@ using namespace cocos2d;
 
 TitleScene::TitleScene()
 {
-    EventScript es;
-    es.readScript();
 }
 
 TitleScene::~TitleScene()
 {
-
 }
 
 Scene * TitleScene::createScene()
@@ -18,7 +15,6 @@ Scene * TitleScene::createScene()
 	auto scene = Scene::create();
 	auto layer = ActionKey::create();
 	scene->addChild(layer);
-	
 	return scene;
 }
 

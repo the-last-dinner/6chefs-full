@@ -13,18 +13,22 @@ using namespace std;
 // コンストラクタ
 EventScript::EventScript()
 {
+    cout<<"EventScriptのコンストラクタが呼び出されました。";
 }
 
 // デストラクタ
 EventScript::~EventScript()
 {
+    cout<<"EventScriptのコンストラクタが呼び出されました。";
 }
 
 //イベントスクリプトファイルの読み込み
-void readScript ()
+void EventScript::readScript ()
 {
-    ifstream filein("TestScript.txt");
-    
+    string path = "/Users/Ryoya/Source/Xcode/LastSupper/Resources/TestScript.txt";
+    //string path = "TestScript.txt";
+    ifstream filein(path);
+    cout << "bbb";
     for (string line; getline(filein, line); )
     {
         cout << line << endl;
