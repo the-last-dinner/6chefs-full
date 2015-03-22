@@ -39,11 +39,13 @@ void TitleScene::update(float delta)
 	switch (this->gsManager->getCurrentGameState())
 	{
 		case GameState::WAIT:
-		break;
+			this->gsManager->updateGameState(delta);
+			break;
 
 		case GameState::TITLE_MAIN:
 			//ˆ—
 			if (this->actionKey->isPressed(Key::UP, 1)){
+				this->gsManager->setCurrentGameState(GameState::WAIT, 3.0);
 				log("delta : %f", delta);
 			}
 		break;
