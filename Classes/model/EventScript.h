@@ -20,5 +20,6 @@ public:
     EventScript();
     ~EventScript();
     void readScript();
+    std::string trim();
 };
 #endif /* defined(__LastSupper__EventScript__) */

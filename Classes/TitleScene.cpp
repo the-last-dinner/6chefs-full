@@ -4,12 +4,10 @@ using namespace cocos2d;
 
 TitleScene::TitleScene()
 {
-
 }
 
 TitleScene::~TitleScene()
 {
-
 }
 
 Scene * TitleScene::createScene()
@@ -27,9 +25,9 @@ bool TitleScene::init()
 	}
 	this->gsManager = GameStatusManager::getInstance();
 	this->actionKey = ActionKey::create();
-	auto titleMenu = TitleMenu::create();
+	//auto titleMenu = TitleMenu::create();
 	this->addChild(this->actionKey);
-	this->addChild(titleMenu);
+	//this->addChild(titleMenu);
 	this->scheduleUpdate();
 	return true;
 }
