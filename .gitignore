@@ -17,3 +17,9 @@ proj.win8.1-universal
 
 
 proj.wp8-xaml
+
+
+*.xcodeproj/*
+
+
+!*.xcodeproj/project.pbxproj

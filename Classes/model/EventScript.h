@@ -20,6 +20,8 @@ public:
     EventScript();
     ~EventScript();
     void readScript();
-    std::string trim();
+    std::string trim(const std::string& string, const char* trimCharacterList);
+private:
+    cocos2d::FileUtils * fu;
 };
 #endif /* defined(__LastSupper__EventScript__) */
