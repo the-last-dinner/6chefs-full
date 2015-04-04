@@ -61,8 +61,8 @@
 		26F01BD91ACFC6DD006BB5D9 /* syokudou1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BC21ACFC6DD006BB5D9 /* syokudou1.tmx */; };
 		26F01BDA1ACFC6DD006BB5D9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BC41ACFC6DD006BB5D9 /* .gitkeep */; };
 		26F01BDB1ACFC6DD006BB5D9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BC41ACFC6DD006BB5D9 /* .gitkeep */; };
-		26F01BDC1ACFC6DD006BB5D9 /* TestScript.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BC51ACFC6DD006BB5D9 /* TestScript.txt */; };
-		26F01BDD1ACFC6DD006BB5D9 /* TestScript.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BC51ACFC6DD006BB5D9 /* TestScript.txt */; };
+		26F01BE01ACFD100006BB5D9 /* TestScript.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BDF1ACFD100006BB5D9 /* TestScript.txt */; };
+		26F01BE11ACFD100006BB5D9 /* TestScript.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26F01BDF1ACFD100006BB5D9 /* TestScript.txt */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -170,7 +170,7 @@
 		26F01BC11ACFC6DD006BB5D9 /* ST-MsionR-I01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ST-MsionR-I01.png"; sourceTree = "<group>"; };
 		26F01BC21ACFC6DD006BB5D9 /* syokudou1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = syokudou1.tmx; sourceTree = "<group>"; };
 		26F01BC41ACFC6DD006BB5D9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		26F01BC51ACFC6DD006BB5D9 /* TestScript.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestScript.txt; sourceTree = "<group>"; };
+		26F01BDF1ACFD100006BB5D9 /* TestScript.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestScript.txt; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -338,6 +338,7 @@
 		26F01BB51ACFC6DD006BB5D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26F01BDE1ACFD100006BB5D9 /* event */,
 				26F01BB61ACFC6DD006BB5D9 /* CloseNormal.png */,
 				26F01BB71ACFC6DD006BB5D9 /* CloseSelected.png */,
 				26F01BB81ACFC6DD006BB5D9 /* fonts */,
@@ -345,7 +346,6 @@
 				26F01BBC1ACFC6DD006BB5D9 /* img */,
 				26F01BC01ACFC6DD006BB5D9 /* map */,
 				26F01BC31ACFC6DD006BB5D9 /* res */,
-				26F01BC51ACFC6DD006BB5D9 /* TestScript.txt */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -385,6 +385,14 @@
 				26F01BC41ACFC6DD006BB5D9 /* .gitkeep */,
 			);
 			path = res;
+			sourceTree = "<group>";
+		};
+		26F01BDE1ACFD100006BB5D9 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				26F01BDF1ACFD100006BB5D9 /* TestScript.txt */,
+			);
+			path = event;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -578,7 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F01BDA1ACFC6DD006BB5D9 /* .gitkeep in Resources */,
-				26F01BDC1ACFC6DD006BB5D9 /* TestScript.txt in Resources */,
+				26F01BE01ACFD100006BB5D9 /* TestScript.txt in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				26F01BD21ACFC6DD006BB5D9 /* nadesiko1.gif in Resources */,
 				26F01BD41ACFC6DD006BB5D9 /* title.png in Resources */,
@@ -614,7 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F01BDD1ACFC6DD006BB5D9 /* TestScript.txt in Resources */,
+				26F01BE11ACFD100006BB5D9 /* TestScript.txt in Resources */,
 				26F01BD31ACFC6DD006BB5D9 /* nadesiko1.gif in Resources */,
 				26F01BD91ACFC6DD006BB5D9 /* syokudou1.tmx in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
