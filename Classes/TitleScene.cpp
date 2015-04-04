@@ -25,9 +25,9 @@ bool TitleScene::init()
 	}
 	this->gsManager = GameStatusManager::getInstance();
 	this->actionKey = ActionKey::create();
-	//auto titleMenu = TitleMenu::create();
+	auto titleMenu = TitleMenu::create();
 	this->addChild(this->actionKey);
-	//this->addChild(titleMenu);
+	this->addChild(titleMenu);
 	this->scheduleUpdate();
 	return true;
 }

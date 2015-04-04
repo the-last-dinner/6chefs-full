@@ -18,4 +18,4 @@ class GameStatusManager{
 		float time;
 	};
 
-#endif _GAME_STATE_H_
+#endif //_GAME_STATE_H_

@@ -14,10 +14,11 @@ class TitleMenu : public cocos2d::Layer
 {
 public:
 	bool init();
+    TitleMenu();
 	CREATE_FUNC(TitleMenu);
 
 private:
-
+    cocos2d::FileUtils * fu;
 };
 
 #endif // _TITLE_MENU_H_

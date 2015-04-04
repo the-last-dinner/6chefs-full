@@ -57,5 +57,7 @@ void GameStatusManager::updateGameState(float delta)
 				}
 			}
 			break;
+        default:
+            break;
 	}
 }
