@@ -9,6 +9,7 @@
 #define _TITLE_MENU_H_
 #include "cocos2d.h"
 #include "Common.h"
+#include "model/BaseTitleMenu.h"
 
 class TitleMenu : public cocos2d::Layer
 {
@@ -17,7 +18,7 @@ public:
 	CREATE_FUNC(TitleMenu);
 
 private:
-
+	BaseTitleMenu baseTitleMenu;
 };
 
 #endif // _TITLE_MENU_H_

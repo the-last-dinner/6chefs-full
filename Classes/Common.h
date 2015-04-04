@@ -5,5 +5,8 @@
 #include "define.h"
 #include "model/GameStatusManager.h"
 #include "ActionKey.h"
+#include <iostream>
+
+using namespace std
 
 #endif // _COMMON_H_
