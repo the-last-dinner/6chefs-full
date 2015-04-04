@@ -14,7 +14,7 @@
 class TitleMenu : public cocos2d::Layer
 {
 public:
-	bool init();
+	virtual bool init();
     TitleMenu();
 	CREATE_FUNC(TitleMenu);
 

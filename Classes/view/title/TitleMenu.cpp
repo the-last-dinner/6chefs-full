@@ -5,7 +5,7 @@
 //  Created by 猪野凌也 on 2015/03/15.
 //
 //
-#include "TitleMenu.h"
+#include "view/title/TitleMenu.h"
 
 using namespace cocos2d;
 

@@ -7,6 +7,6 @@
 #include "ActionKey.h"
 #include <iostream>
 
-using namespace std
+using namespace std;
 
 #endif // _COMMON_H_
