@@ -1,25 +1,19 @@
-cocos2d/
-
+.DS_Store
+project.xcworkspace
+xcuserdata
 
 Debug.win32
-
-
 *.sdf
 
-
 proj.android
-
-
 proj.linux
-
-
 proj.win8.1-universal
-
-
 proj.wp8-xaml
 
-
-*.xcodeproj/*
-
-
-!*.xcodeproj/project.pbxproj
+local.properties
+.classpath
+.project
+.cproject
+*.class
+*.apk
+.metadata
