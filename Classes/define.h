@@ -7,6 +7,7 @@
 #include <cocos2d.h>
 #include <iostream>
 #include <fstream>
+#include "rapidjson/document.h"
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800

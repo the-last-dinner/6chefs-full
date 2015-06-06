@@ -143,6 +143,34 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* LastSupper iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastSupper iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		267F5EB41B22ECA000829D97 /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
+		267F5EB51B22ECA000829D97 /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		267F5EB61B22ECA000829D97 /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
+		267F5EB71B22ECA000829D97 /* encodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodings.h; sourceTree = "<group>"; };
+		267F5EB91B22ECA000829D97 /* en.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = en.h; sourceTree = "<group>"; };
+		267F5EBA1B22ECA000829D97 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		267F5EBB1B22ECA000829D97 /* filereadstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filereadstream.h; sourceTree = "<group>"; };
+		267F5EBC1B22ECA000829D97 /* filewritestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filewritestream.h; sourceTree = "<group>"; };
+		267F5EBE1B22ECA000829D97 /* biginteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = biginteger.h; sourceTree = "<group>"; };
+		267F5EBF1B22ECA000829D97 /* diyfp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diyfp.h; sourceTree = "<group>"; };
+		267F5EC01B22ECA000829D97 /* dtoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtoa.h; sourceTree = "<group>"; };
+		267F5EC11B22ECA000829D97 /* ieee754.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ieee754.h; sourceTree = "<group>"; };
+		267F5EC21B22ECA000829D97 /* itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itoa.h; sourceTree = "<group>"; };
+		267F5EC31B22ECA000829D97 /* meta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
+		267F5EC41B22ECA000829D97 /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		267F5EC51B22ECA000829D97 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		267F5EC61B22ECA000829D97 /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		267F5EC71B22ECA000829D97 /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
+		267F5EC81B22ECA000829D97 /* memorybuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorybuffer.h; sourceTree = "<group>"; };
+		267F5EC91B22ECA000829D97 /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
+		267F5ECB1B22ECA000829D97 /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
+		267F5ECC1B22ECA000829D97 /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
+		267F5ECD1B22ECA000829D97 /* pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointer.h; sourceTree = "<group>"; };
+		267F5ECE1B22ECA000829D97 /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		267F5ECF1B22ECA000829D97 /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		267F5ED01B22ECA000829D97 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		267F5ED11B22ECA000829D97 /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		267F5ED21B22ECA000829D97 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		26F01BB61ACFC6DD006BB5D9 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		26F01BB71ACFC6DD006BB5D9 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		26F01BB91ACFC6DD006BB5D9 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
@@ -288,6 +316,66 @@
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		267F5EB31B22ECA000829D97 /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				267F5EB41B22ECA000829D97 /* allocators.h */,
+				267F5EB51B22ECA000829D97 /* document.h */,
+				267F5EB61B22ECA000829D97 /* encodedstream.h */,
+				267F5EB71B22ECA000829D97 /* encodings.h */,
+				267F5EB81B22ECA000829D97 /* error */,
+				267F5EBB1B22ECA000829D97 /* filereadstream.h */,
+				267F5EBC1B22ECA000829D97 /* filewritestream.h */,
+				267F5EBD1B22ECA000829D97 /* internal */,
+				267F5EC81B22ECA000829D97 /* memorybuffer.h */,
+				267F5EC91B22ECA000829D97 /* memorystream.h */,
+				267F5ECA1B22ECA000829D97 /* msinttypes */,
+				267F5ECD1B22ECA000829D97 /* pointer.h */,
+				267F5ECE1B22ECA000829D97 /* prettywriter.h */,
+				267F5ECF1B22ECA000829D97 /* rapidjson.h */,
+				267F5ED01B22ECA000829D97 /* reader.h */,
+				267F5ED11B22ECA000829D97 /* stringbuffer.h */,
+				267F5ED21B22ECA000829D97 /* writer.h */,
+			);
+			name = rapidjson;
+			path = "../../../../Downloads/rapidjson-master/include/rapidjson";
+			sourceTree = "<group>";
+		};
+		267F5EB81B22ECA000829D97 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				267F5EB91B22ECA000829D97 /* en.h */,
+				267F5EBA1B22ECA000829D97 /* error.h */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		267F5EBD1B22ECA000829D97 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				267F5EBE1B22ECA000829D97 /* biginteger.h */,
+				267F5EBF1B22ECA000829D97 /* diyfp.h */,
+				267F5EC01B22ECA000829D97 /* dtoa.h */,
+				267F5EC11B22ECA000829D97 /* ieee754.h */,
+				267F5EC21B22ECA000829D97 /* itoa.h */,
+				267F5EC31B22ECA000829D97 /* meta.h */,
+				267F5EC41B22ECA000829D97 /* pow10.h */,
+				267F5EC51B22ECA000829D97 /* stack.h */,
+				267F5EC61B22ECA000829D97 /* strfunc.h */,
+				267F5EC71B22ECA000829D97 /* strtod.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		267F5ECA1B22ECA000829D97 /* msinttypes */ = {
+			isa = PBXGroup;
+			children = (
+				267F5ECB1B22ECA000829D97 /* inttypes.h */,
+				267F5ECC1B22ECA000829D97 /* stdint.h */,
+			);
+			path = msinttypes;
 			sourceTree = "<group>";
 		};
 		26F01BB51ACFC6DD006BB5D9 /* Resources */ = {
@@ -437,6 +525,7 @@
 		552D83631B20BC1200B681A8 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				267F5EB31B22ECA000829D97 /* rapidjson */,
 				552D83681B20BC6300B681A8 /* AppDelegate.cpp */,
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
 				552D836A1B20BC6300B681A8 /* Common.h */,
