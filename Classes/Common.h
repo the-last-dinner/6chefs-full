@@ -6,5 +6,6 @@
 #include "define.h"
 #include "GameStatusManager.h"
 #include "ActionKeyManager.h"
+#include "EventScript.h"
 
 #endif // __COMMON_H__

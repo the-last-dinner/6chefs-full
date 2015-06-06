@@ -6,6 +6,8 @@
 AppDelegate::AppDelegate()
 {
 	FUNCLOG
+    EventScript es;
+    es.readScript();
 	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
 }

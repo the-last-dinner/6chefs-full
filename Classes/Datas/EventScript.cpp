@@ -14,23 +14,23 @@ using namespace cocos2d;
 // コンストラクタ
 EventScript::EventScript():fu(FileUtils::getInstance())
 {
-    cout<<"EventScriptのコンストラクタが呼び出されました。";
+    FUNCLOG
 }
 
 // デストラクタ
 EventScript::~EventScript()
 {
-    cout<<"EventScriptのコンストラクタが呼び出されました。";
+    FUNCLOG
 }
 
 //イベントスクリプトファイルの読み込み
 void EventScript::readScript ()
 {
+    FUNCLOG
     //string path = "/Users/Ryoya/Source/Xcode/LastSupper/Resources/TestScript.txt";
     string script = "TestScript.txt";
     string path = fu->fullPathForFilename(script);
     ifstream filein(path);
-    cout << "bbb";
     for (string line; getline(filein, line); )
     {
         cout << line << endl;
@@ -41,6 +41,7 @@ void EventScript::readScript ()
 //文字列のトリミング
 string EventScript::trim(const string& string, const char* trimCharacterList = " \t\v\r\n")
 {
+    FUNCLOG
     std::string result;
     // 左側からトリムする文字以外が見つかる位置を検索します。
     string::size_type left = string.find_first_not_of(trimCharacterList);
