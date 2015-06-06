@@ -1,22 +1,32 @@
 #include "AppDelegate.h"
 #include  "TitleScene.h"
 
-using namespace cocos2d;
-
+// コンストタクタ
+// シングルトンクラスのインスタンスを生成しておく
 AppDelegate::AppDelegate()
 {
+	FUNCLOG
+	GameStatusManager::getInstance();
+	ActionKeyManager::getInstance();
 }
 
+// デストラクタ
+// メモリリークを防ぐため、シングルトンクラスのインスタンスを破棄する
 AppDelegate::~AppDelegate() 
 {
+	FUNCLOG
+	GameStatusManager::destroy();
+	ActionKeyManager::destroy();
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching()
+{
+	FUNCLOG
 	auto director = Director::getInstance();
 	auto glView = director->getOpenGLView();
 	if (!glView) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-		glView = GLViewImpl::createWithRect("My Game", Rect(0, 0, WIDTH , HEIGHT ));
+		glView = GLViewImpl::createWithRect("My Game", Rect(0, 0, WINDOW_WIDTH , WINDOW_HEIGHT));
 #else	
 		glView = GLViewImpl::create("My Game");
 #endif
@@ -28,10 +38,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	return true;
 }
 
-void AppDelegate::applicationDidEnterBackground() {
+void AppDelegate::applicationDidEnterBackground()
+{
 	Director::getInstance()->stopAnimation();
 }
 
-void AppDelegate::applicationWillEnterForeground() {
+void AppDelegate::applicationWillEnterForeground()
+{
 	Director::getInstance()->startAnimation();
 }
