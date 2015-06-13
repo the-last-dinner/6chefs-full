@@ -163,8 +163,6 @@
 		267F5EC71B22ECA000829D97 /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
 		267F5EC81B22ECA000829D97 /* memorybuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorybuffer.h; sourceTree = "<group>"; };
 		267F5EC91B22ECA000829D97 /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
-		267F5ECB1B22ECA000829D97 /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
-		267F5ECC1B22ECA000829D97 /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
 		267F5ECD1B22ECA000829D97 /* pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointer.h; sourceTree = "<group>"; };
 		267F5ECE1B22ECA000829D97 /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
 		267F5ECF1B22ECA000829D97 /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
@@ -331,7 +329,6 @@
 				267F5EBD1B22ECA000829D97 /* internal */,
 				267F5EC81B22ECA000829D97 /* memorybuffer.h */,
 				267F5EC91B22ECA000829D97 /* memorystream.h */,
-				267F5ECA1B22ECA000829D97 /* msinttypes */,
 				267F5ECD1B22ECA000829D97 /* pointer.h */,
 				267F5ECE1B22ECA000829D97 /* prettywriter.h */,
 				267F5ECF1B22ECA000829D97 /* rapidjson.h */,
@@ -367,15 +364,6 @@
 				267F5EC71B22ECA000829D97 /* strtod.h */,
 			);
 			path = internal;
-			sourceTree = "<group>";
-		};
-		267F5ECA1B22ECA000829D97 /* msinttypes */ = {
-			isa = PBXGroup;
-			children = (
-				267F5ECB1B22ECA000829D97 /* inttypes.h */,
-				267F5ECC1B22ECA000829D97 /* stdint.h */,
-			);
-			path = msinttypes;
 			sourceTree = "<group>";
 		};
 		26F01BB51ACFC6DD006BB5D9 /* Resources */ = {

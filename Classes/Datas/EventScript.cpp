@@ -27,14 +27,34 @@ EventScript::~EventScript()
 void EventScript::readScript ()
 {
     FUNCLOG
-    //string path = "/Users/Ryoya/Source/Xcode/LastSupper/Resources/TestScript.txt";
-    string script = "TestScript.txt";
-    string path = fu->fullPathForFilename(script);
+    string script = "TestScript.txt"; //イベントスクリプトファイル名
+    string path = fu->fullPathForFilename(script); //絶対パス取得
+    string json = "";
+    //一行ずつスクリプトファイルの読み込み
     ifstream filein(path);
-    for (string line; getline(filein, line); )
+    for (string line; getline(filein, line);)
     {
-        cout << line << endl;
+        //cout << line << endl;
+        json += line;
     }
+    //テスト出力
+    cout << json << endl;
+    //jsonテキストを変換
+    jsonToMap(json);
+    return;
+}
+
+//与えられたjsonテキストを
+using namespace rapidjson;
+void EventScript::jsonToMap(string json){
+    FUNCLOG
+    FILE* fp;
+    char buf[512];
+    fp = fopen("/Users/Ryoya/Source/Xcode/LastSupper/Resources/event/TestScript.txt", "rb");
+    Document doc;
+    FileReadStream rs(fp, buf, sizeof(buf));
+    doc.ParseStream(rs);
+    fclose(fp);
     return;
 }
 

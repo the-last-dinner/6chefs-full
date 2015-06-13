@@ -10,13 +10,32 @@
 #define __LastSupper__EventScript__
 
 #include "Common.h"
+#include "rapidjson/document.h"
+#include "rapidjson/filereadstream.h"
 
 class EventScript
 {
 public:
+    enum struct EventType
+    {
+        PlaySE,
+        Fade,
+        Move,
+        Talk,
+        Control,
+        Message,
+        ChangeMap,
+        Read,
+        Delay,
+        //指示系
+        SameTime,
+        If,
+        Sequence,
+    };
     EventScript();
     ~EventScript();
     void readScript();
+    void jsonToMap(string json);
     std::string trim(const std::string& string, const char* trimCharacterList);
 private:
     cocos2d::FileUtils * fu;
