@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
+#include "rapidjson/error/en.h"
 
 class EventScript
 {

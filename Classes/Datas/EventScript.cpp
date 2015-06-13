@@ -55,6 +55,14 @@ void EventScript::jsonToMap(string json){
     FileReadStream rs(fp, buf, sizeof(buf));
     doc.ParseStream(rs);
     fclose(fp);
+    bool error = doc.HasParseError();
+    if(error){
+        size_t offset = doc.GetErrorOffset();
+        ParseErrorCode code = doc.GetParseError();
+        const char* msg = GetParseError_En(code);
+        
+        printf("%d:%d(%s)\n", offset, code, msg);
+    }
     return;
 }
 
