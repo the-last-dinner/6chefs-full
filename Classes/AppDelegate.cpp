@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include  "TitleScene.h"
+#include  "LoadScene.h"
 
 // コンストタクタ
 // シングルトンクラスのインスタンスを生成しておく
@@ -34,7 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	}
 	director->setDisplayStats(true);
 	director->setAnimationInterval(1.0 / 60);
-	director->runWithScene(TitleScene::createScene());
+	director->runWithScene(LoadScene::createScene(SceneType::TITLE));
 	return true;
 }
 
