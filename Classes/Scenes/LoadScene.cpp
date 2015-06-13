@@ -90,6 +90,7 @@ bool LoadScene::init(const SceneType& sceneType)
 void LoadScene::resourceLoad()
 {
 	FUNCLOG
+	if(nextSceneType != SceneType::TITLE) return;
 	Director::getInstance()->getTextureCache()->addImageAsync(texturePath + textureNames.at(nextSceneType) + ".pvr.ccz",
 	[this](Texture2D* loaded_texture){
 		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(texturePath + textureNames.at(nextSceneType) + ".plist", loaded_texture);

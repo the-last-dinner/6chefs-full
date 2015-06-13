@@ -11,7 +11,7 @@
 
 #include "Common.h"
 #include "baseScene.h"
-#include "Scenes.h"
+#include "TitleScene.h"
 
 class LoadScene : public baseScene
 {
