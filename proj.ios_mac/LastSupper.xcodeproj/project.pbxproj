@@ -71,6 +71,8 @@
 		552D83831B20BCC000B681A8 /* EventScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScript.cpp */; };
 		552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
+		5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */; };
+		5534BBCA1B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */; };
 		55469D801B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
 		55469D811B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
 		55DD60221B24A0AD00F56438 /* event in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601D1B24A0AD00F56438 /* event */; };
@@ -174,6 +176,8 @@
 		552D83801B20BCC000B681A8 /* EventScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScript.h; path = ../Classes/Datas/EventScript.h; sourceTree = "<group>"; };
 		552D83841B20BFD800B681A8 /* baseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseScene.cpp; path = ../Classes/Scenes/baseScene.cpp; sourceTree = "<group>"; };
 		552D83851B20BFD800B681A8 /* baseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseScene.h; path = ../Classes/Scenes/baseScene.h; sourceTree = "<group>"; };
+		5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TiledMapManager.cpp; path = ../Classes/Managers/TiledMapManager.cpp; sourceTree = "<group>"; };
+		5534BBC81B2C7CA4003CB847 /* TiledMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapManager.h; path = ../Classes/Managers/TiledMapManager.h; sourceTree = "<group>"; };
 		55469D7E1B21B3320061F69D /* LoadScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadScene.cpp; path = ../Classes/Scenes/LoadScene.cpp; sourceTree = "<group>"; };
 		55469D7F1B21B3320061F69D /* LoadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadScene.h; path = ../Classes/Scenes/LoadScene.h; sourceTree = "<group>"; };
 		55820F2A1B22D8AC00995DBF /* Scenes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scenes.h; path = ../Classes/Scenes/Scenes.h; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 				552D836F1B20BC7900B681A8 /* ActionKeyManager.h */,
 				552D83701B20BC7900B681A8 /* GameStatusManager.cpp */,
 				552D83711B20BC7900B681A8 /* GameStatusManager.h */,
+				5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */,
+				5534BBC81B2C7CA4003CB847 /* TiledMapManager.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
+				5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
 				552D83821B20BCC000B681A8 /* EventScript.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
@@ -616,6 +623,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				5534BBCA1B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
 				552D83731B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				55469D811B21B3320061F69D /* LoadScene.cpp in Sources */,
 				552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */,
