@@ -35,8 +35,7 @@ using namespace rapidjson;
 enum struct SceneType
 {
 	TITLE,
-	OPENING,
-	MAIN,
+	DUNGEON,
 };
 
 #endif // __DEFINE_H__

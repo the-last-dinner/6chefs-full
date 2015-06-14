@@ -45,21 +45,50 @@ ActionKeyManager::~ActionKeyManager()
 void ActionKeyManager::initKeyStatus()
 {
 	FUNCLOG
-	for(int i = 0; i < static_cast<int>(Key::SIZE) ; this->keyStatus[static_cast<Key>(i)] = 0.f, i++);
+	for(int i = 0; i < static_cast<int>(Key::SIZE); this->keyStatus[static_cast<Key>(i)] = 0.f, i++);
 	return;
 }
 
-// キーを押しているか判別
-bool ActionKeyManager::isPressed(Key key, float second = 0)
+// キーコードを変換。ゲームで使わないキーが与えられた場合はOTHERを返す
+ActionKeyManager::Key ActionKeyManager::convertKeyCode(EventKeyboard::KeyCode keyCode)
 {
 	FUNCLOG
-	return (this->keyStatus.at(key) <= second && this->keyStatus.at(key) != 0);
+	return (keyMap.count(keyCode) == 0)?Key::OTHER:keyMap.at(keyCode);
+}
+
+// 指定のキーを押し状態に。押している状態はvalueを0.1fにする。
+void ActionKeyManager::pressKey(Key key)
+{
+	FUNCLOG
+	this->keyStatus.at(key) = 0.1f;
+	return;
+}
+
+// 指定のキーを離し状態に
+void ActionKeyManager::releaseKey(Key key)
+{
+	FUNCLOG
+	this->keyStatus.at(key) = 0.f;
+	return;
+}
+
+// 指定のキーが押し状態か判別
+bool ActionKeyManager::isPressed(Key key)
+{
+	FUNCLOG
+	return this->keyStatus.at(key) > 0.f;
+}
+
+// 指定のキーが何秒か押されているのか取得
+float ActionKeyManager::getKeyStatus(Key key)
+{
+	FUNCLOG
+	return this->keyStatus.at(key);
 }
 
 // 1ループにかかる時間でキーステータスを更新
 void ActionKeyManager::updateKeyStatus(float delta)
 {
-	FUNCLOG
 	for (auto itr = this->keyStatus.begin(); itr != this->keyStatus.end(); ++itr)
 	{	
 		if (itr->second > 0.f) itr->second += delta;

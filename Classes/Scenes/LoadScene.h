@@ -11,7 +11,8 @@
 
 #include "Common.h"
 #include "baseScene.h"
-#include "Scenes.h"
+#include "TitleScene.h"
+#include "DungeonScene.h"
 
 class LoadScene : public baseScene
 {
@@ -23,13 +24,17 @@ public:
 	// インスタンスメソッド
 private:
 	virtual bool init(const SceneType& sceneType);
+	void resourceLoad();
 	void loadFinished();	// ロードが終了した時の処理
 public:
 	LoadScene();	// コンストラクタ
 	~LoadScene();	// デストラクタ
-	static const vector<Scene*> scenes;
+	
+	// インスタンス変数
 private:
-	mutex mtx;
+	SceneType nextSceneType;
+	static const string texturePath;
+	static const map<SceneType, string> textureNames;
 };
 
 #endif // __LOAD_SCENE_H__

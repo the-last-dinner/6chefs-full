@@ -16,7 +16,8 @@ public:
 		MENU,
 		DASH,
 		SPACE,
-		SIZE
+		OTHER,
+		SIZE,
 	};
 
 	// クラスメソッド
@@ -31,13 +32,17 @@ private:
 	// インスタンスメソッド
 private:
 	ActionKeyManager();													// コンストラクタ
-	ActionKeyManager(const ActionManager& other);						// コピーコンストラクタ
+	ActionKeyManager(const ActionKeyManager& other);					// コピーコンストラクタ
 	ActionKeyManager& operator = (const ActionKeyManager& other);		// 代入演算子
 public:
 	~ActionKeyManager();
-	bool isPressed(Key key, float second);
 	void updateKeyStatus(float delta);
 	void initKeyStatus();
+	void pressKey(Key key);
+	void releaseKey(Key key);
+	bool isPressed(Key key);
+	float getKeyStatus(Key key);
+	Key convertKeyCode(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:

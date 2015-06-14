@@ -7,5 +7,6 @@
 #include "GameStatusManager.h"
 #include "ActionKeyManager.h"
 #include "EventScriptManager.h"
+#include "TiledMapManager.h"
 
 #endif // __COMMON_H__

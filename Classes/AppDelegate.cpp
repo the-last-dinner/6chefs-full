@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include  "TitleScene.h"
+#include  "LoadScene.h"
 
 // コンストタクタ
 // シングルトンクラスのインスタンスを生成しておく
@@ -9,6 +9,8 @@ AppDelegate::AppDelegate()
     EventScriptManager::getInstance();
 	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
+	TiledMapManager::getInstance();
+	this->init();
 }
 
 // デストラクタ
@@ -18,6 +20,13 @@ AppDelegate::~AppDelegate()
 	FUNCLOG
 	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
+}
+
+// 初期化関連
+void AppDelegate::init()
+{
+	TiledMapManager::getInstance()->setBasePath("map/");
+	return;
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -35,7 +44,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	}
 	director->setDisplayStats(true);
 	director->setAnimationInterval(1.0 / 60);
-	director->runWithScene(TitleScene::createScene());
+	director->runWithScene(LoadScene::createScene(SceneType::TITLE));
 	return true;
 }
 
