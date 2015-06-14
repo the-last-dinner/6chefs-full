@@ -25,6 +25,8 @@
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
+		260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -67,8 +69,6 @@
 		552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83701B20BC7900B681A8 /* GameStatusManager.cpp */; };
 		552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
 		552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
-		552D83821B20BCC000B681A8 /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */; };
-		552D83831B20BCC000B681A8 /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */; };
 		552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */; };
@@ -128,6 +128,8 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* LastSupper iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastSupper iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		260CF2621B2D486700BB139B /* EventScriptManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptManager.cpp; path = ../Classes/Managers/EventScriptManager.cpp; sourceTree = "<group>"; };
+		260CF2631B2D486700BB139B /* EventScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptManager.h; path = ../Classes/Managers/EventScriptManager.h; sourceTree = "<group>"; };
 		267F5EB41B22ECA000829D97 /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
 		267F5EB51B22ECA000829D97 /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
 		267F5EB61B22ECA000829D97 /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
@@ -154,18 +156,6 @@
 		267F5ED01B22ECA000829D97 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		267F5ED11B22ECA000829D97 /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		267F5ED21B22ECA000829D97 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
-		26F01BB61ACFC6DD006BB5D9 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		26F01BB71ACFC6DD006BB5D9 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		26F01BB91ACFC6DD006BB5D9 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
-		26F01BBA1ACFC6DD006BB5D9 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
-		26F01BBB1ACFC6DD006BB5D9 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
-		26F01BBD1ACFC6DD006BB5D9 /* magoiti1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = magoiti1.gif; sourceTree = "<group>"; };
-		26F01BBE1ACFC6DD006BB5D9 /* nadesiko1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nadesiko1.gif; sourceTree = "<group>"; };
-		26F01BBF1ACFC6DD006BB5D9 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
-		26F01BC11ACFC6DD006BB5D9 /* ST-MsionR-I01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ST-MsionR-I01.png"; sourceTree = "<group>"; };
-		26F01BC21ACFC6DD006BB5D9 /* syokudou1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = syokudou1.tmx; sourceTree = "<group>"; };
-		26F01BC41ACFC6DD006BB5D9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		26F01BDF1ACFD100006BB5D9 /* TestScript.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestScript.txt; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,8 +202,6 @@
 		552D83711B20BC7900B681A8 /* GameStatusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStatusManager.h; path = ../Classes/Managers/GameStatusManager.h; sourceTree = "<group>"; };
 		552D837B1B20BCA700B681A8 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/Scenes/TitleScene.cpp; sourceTree = "<group>"; };
 		552D837C1B20BCA700B681A8 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/Scenes/TitleScene.h; sourceTree = "<group>"; };
-		552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptManager.cpp; path = ../Classes/Datas/EventScriptManager.cpp; sourceTree = "<group>"; };
-		552D83801B20BCC000B681A8 /* EventScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptManager.h; path = ../Classes/Datas/EventScriptManager.h; sourceTree = "<group>"; };
 		552D83841B20BFD800B681A8 /* baseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseScene.cpp; path = ../Classes/Scenes/baseScene.cpp; sourceTree = "<group>"; };
 		552D83851B20BFD800B681A8 /* baseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseScene.h; path = ../Classes/Scenes/baseScene.h; sourceTree = "<group>"; };
 		5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TiledMapManager.cpp; path = ../Classes/Managers/TiledMapManager.cpp; sourceTree = "<group>"; };
@@ -475,8 +463,6 @@
 		552D83641B20BC1C00B681A8 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */,
-				552D83801B20BCC000B681A8 /* EventScriptManager.h */,
 				552D83811B20BCC000B681A8 /* Scene */,
 			);
 			name = Datas;
@@ -508,6 +494,8 @@
 		552D83671B20BC4100B681A8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				260CF2621B2D486700BB139B /* EventScriptManager.cpp */,
+				260CF2631B2D486700BB139B /* EventScriptManager.h */,
 				552D836E1B20BC7900B681A8 /* ActionKeyManager.cpp */,
 				552D836F1B20BC7900B681A8 /* ActionKeyManager.h */,
 				552D83701B20BC7900B681A8 /* GameStatusManager.cpp */,
@@ -696,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55469D801B21B3320061F69D /* LoadScene.cpp in Sources */,
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
@@ -704,7 +693,6 @@
 				552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
-				552D83821B20BCC000B681A8 /* EventScriptManager.cpp in Sources */,
 				5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
@@ -715,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				5534BBCA1B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
@@ -722,7 +711,6 @@
 				55469D811B21B3320061F69D /* LoadScene.cpp in Sources */,
 				552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
-				552D83831B20BCC000B681A8 /* EventScriptManager.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
