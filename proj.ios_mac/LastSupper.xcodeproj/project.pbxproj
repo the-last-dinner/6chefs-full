@@ -91,8 +91,8 @@
 		552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83701B20BC7900B681A8 /* GameStatusManager.cpp */; };
 		552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
 		552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
-		552D83821B20BCC000B681A8 /* EventScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScript.cpp */; };
-		552D83831B20BCC000B681A8 /* EventScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScript.cpp */; };
+		552D83821B20BCC000B681A8 /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */; };
+		552D83831B20BCC000B681A8 /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */; };
 		552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		55469D801B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
@@ -227,8 +227,8 @@
 		552D83711B20BC7900B681A8 /* GameStatusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStatusManager.h; path = ../Classes/Managers/GameStatusManager.h; sourceTree = "<group>"; };
 		552D837B1B20BCA700B681A8 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/Scenes/TitleScene.cpp; sourceTree = "<group>"; };
 		552D837C1B20BCA700B681A8 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/Scenes/TitleScene.h; sourceTree = "<group>"; };
-		552D837F1B20BCC000B681A8 /* EventScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScript.cpp; path = ../Classes/Datas/EventScript.cpp; sourceTree = "<group>"; };
-		552D83801B20BCC000B681A8 /* EventScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScript.h; path = ../Classes/Datas/EventScript.h; sourceTree = "<group>"; };
+		552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptManager.cpp; path = ../Classes/Datas/EventScriptManager.cpp; sourceTree = "<group>"; };
+		552D83801B20BCC000B681A8 /* EventScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptManager.h; path = ../Classes/Datas/EventScriptManager.h; sourceTree = "<group>"; };
 		552D83841B20BFD800B681A8 /* baseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseScene.cpp; path = ../Classes/Scenes/baseScene.cpp; sourceTree = "<group>"; };
 		552D83851B20BFD800B681A8 /* baseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseScene.h; path = ../Classes/Scenes/baseScene.h; sourceTree = "<group>"; };
 		55469D7E1B21B3320061F69D /* LoadScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadScene.cpp; path = ../Classes/Scenes/LoadScene.cpp; sourceTree = "<group>"; };
@@ -529,8 +529,8 @@
 		552D83641B20BC1C00B681A8 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				552D837F1B20BCC000B681A8 /* EventScript.cpp */,
-				552D83801B20BCC000B681A8 /* EventScript.h */,
+				552D837F1B20BCC000B681A8 /* EventScriptManager.cpp */,
+				552D83801B20BCC000B681A8 /* EventScriptManager.h */,
 				552D83811B20BCC000B681A8 /* Scene */,
 			);
 			name = Datas;
@@ -773,7 +773,7 @@
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
-				552D83821B20BCC000B681A8 /* EventScript.cpp in Sources */,
+				552D83821B20BCC000B681A8 /* EventScriptManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,7 +789,7 @@
 				55469D811B21B3320061F69D /* LoadScene.cpp in Sources */,
 				552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
-				552D83831B20BCC000B681A8 /* EventScript.cpp in Sources */,
+				552D83831B20BCC000B681A8 /* EventScriptManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

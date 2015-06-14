@@ -8,6 +8,10 @@
 #include <iostream>
 #include <fstream>
 #include "rapidjson/document.h"
+#include "rapidjson/filereadstream.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/filewritestream.h"
+#include "rapidjson/error/en.h"
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
@@ -18,6 +22,7 @@
 
 using namespace cocos2d;
 using namespace std;
+using namespace rapidjson;
 
 // メソッドログ
 #ifdef DEBUG

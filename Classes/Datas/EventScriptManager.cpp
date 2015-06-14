@@ -6,25 +6,30 @@
 //
 //
 
-#include "EventScript.h"
+#include "EventScriptManager.h"
 
-using namespace std;
-using namespace cocos2d;
+// 唯一のインスタンスを初期化
+static EventScriptManager* _instance = nullptr;
+
+// インスタンスを生成&取得
+EventScriptManager* EventScriptManager::getInstance(){
+    if(!_instance) _instance = new EventScriptManager();
+    return _instance;
+}
 
 // コンストラクタ
-EventScript::EventScript():fu(FileUtils::getInstance())
+EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
 {
     FUNCLOG
+    
 }
 
 // デストラクタ
-EventScript::~EventScript()
-{
-    FUNCLOG
-}
+EventScriptManager::~EventScriptManager()
+{FUNCLOG}
 
 //イベントスクリプトファイルの読み込み
-void EventScript::readScript ()
+void EventScriptManager::readJsonScript ()
 {
     FUNCLOG
     string script = "TestScript.txt"; //イベントスクリプトファイル名
@@ -38,19 +43,24 @@ void EventScript::readScript ()
         json += line;
     }
     //テスト出力
+#ifdef DEBUG
     cout << json << endl;
+#endif
     //jsonテキストを変換
     jsonToMap(json);
     return;
 }
 
 //与えられたjsonテキストを
-using namespace rapidjson;
-void EventScript::jsonToMap(string json){
+void EventScriptManager::jsonToMap(string json){
     FUNCLOG
     FILE* fp;
     char buf[512];
-    fp = fopen("/Users/Ryoya/Source/Xcode/LastSupper/Resources/event/TestScript.txt", "rb");
+    //"/Users/Ryoya/Source/Xcode/LastSupper/Resources/event/TestScript.txt";
+    string script = "TestScript.txt";
+    string path = fu->fullPathForFilename(script);
+    const char* cstr = path.c_str();
+    fp = fopen(cstr, "rb");
     Document doc;
     FileReadStream rs(fp, buf, sizeof(buf));
     doc.ParseStream(rs);
@@ -60,14 +70,16 @@ void EventScript::jsonToMap(string json){
         size_t offset = doc.GetErrorOffset();
         ParseErrorCode code = doc.GetParseError();
         const char* msg = GetParseError_En(code);
-        
-        printf("%d:%d(%s)\n", offset, code, msg);
+        printf("%d:%d(%s)\n", static_cast<int>(offset), code, msg);
     }
+    const rapidjson::Value& id = doc["1"];
+    const char* v = id["type"].GetString();
+    printf("type = %s\n", v);
     return;
 }
 
 //文字列のトリミング
-string EventScript::trim(const string& string, const char* trimCharacterList = " \t\v\r\n")
+string EventScriptManager::trim(const string& string, const char* trimCharacterList = " \t\v\r\n")
 {
     FUNCLOG
     std::string result;
