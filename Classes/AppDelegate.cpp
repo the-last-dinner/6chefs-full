@@ -8,6 +8,8 @@ AppDelegate::AppDelegate()
 	FUNCLOG
 	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
+	TiledMapManager::getInstance();
+	this->init();
 }
 
 // デストラクタ
@@ -17,6 +19,13 @@ AppDelegate::~AppDelegate()
 	FUNCLOG
 	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
+}
+
+// 初期化関連
+void AppDelegate::init()
+{
+	TiledMapManager::getInstance()->setBasePath("map/");
+	return;
 }
 
 bool AppDelegate::applicationDidFinishLaunching()

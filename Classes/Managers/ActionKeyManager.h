@@ -32,7 +32,7 @@ private:
 	// インスタンスメソッド
 private:
 	ActionKeyManager();													// コンストラクタ
-	ActionKeyManager(const ActionManager& other);						// コピーコンストラクタ
+	ActionKeyManager(const ActionKeyManager& other);					// コピーコンストラクタ
 	ActionKeyManager& operator = (const ActionKeyManager& other);		// 代入演算子
 public:
 	~ActionKeyManager();

@@ -87,32 +87,46 @@ bool LoadScene::init(const SceneType& sceneType)
 	return true;
 }
 
+// リソースを非同期で読み込む
 void LoadScene::resourceLoad()
 {
 	FUNCLOG
-	if(nextSceneType != SceneType::TITLE) return;
-	Director::getInstance()->getTextureCache()->addImageAsync(texturePath + textureNames.at(nextSceneType) + ".pvr.ccz",
-	[this](Texture2D* loaded_texture){
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(texturePath + textureNames.at(nextSceneType) + ".plist", loaded_texture);
-		this->loadFinished();
-	});
+	if(nextSceneType == SceneType::TITLE){
+		Director::getInstance()->getTextureCache()->addImageAsync(texturePath + textureNames.at(nextSceneType) + ".pvr.ccz",
+																  [this](Texture2D* loaded_texture){
+																	  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(texturePath + textureNames.at(nextSceneType) + ".plist", loaded_texture);
+																	  this->loadFinished();
+																  });
+	}
 
-// 別スレッドを生成
-//	thread th = thread([this](){
-//		Director::getInstance()->getScheduler()->performFunctionInCocosThread([this](){this->loadFinished();});
-//	});
-//	
-//	// スレッドの管理を手放す
-//	// スレッドの処理を待つ場合はt.join()かstd::asyncを使う
-//	th.detach();
+	//別スレッドを生成
+	switch(this->nextSceneType){
+		case SceneType::DUNGEON:
+
+			TiledMapManager::getInstance()->setTiledMapWithFileName("syokudou1");
+			this->loadFinished();
+//			thread th = thread([this](){
+//				TiledMapManager::getInstance()->setTiledMapWithFileName("syokudou1");
+//				Director::getInstance()->getScheduler()->performFunctionInCocosThread([this](){this->loadFinished();});
+//			});
+//			// スレッドの管理を手放す
+//			// スレッドの処理を待つ場合はt.join()かstd::asyncを使う
+//			th.detach();
+			break;
+		default:
+			break;
+	}
+
 	return;
 }
 
+// 読み込み完了時の処理
 void LoadScene::loadFinished()
 {
 	FUNCLOG
 	Scene* (* createSceneFuncs[])() = {
 		TitleScene::createScene,
+		DungeonScene::createScene,
 	};
 	Director::getInstance()->replaceScene(createSceneFuncs[static_cast<int>(this->nextSceneType)]());
 	return;

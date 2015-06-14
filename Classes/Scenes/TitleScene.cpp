@@ -21,8 +21,8 @@ TitleScene::~TitleScene()
 Scene* TitleScene::createScene()
 {
 	Scene* scene = Scene::create();
-	Layer* mainLayer = TitleScene::create();
-	scene->addChild(mainLayer);
+	Layer* layer = TitleScene::create();
+	scene->addChild(layer);
 	return scene;
 }
 
@@ -132,7 +132,7 @@ void TitleScene::pressSpaceKey()
 	MenuType type = static_cast<MenuType>(this->menuCounter % static_cast<int>(MenuType::SIZE));
 	switch (type) {
 		case MenuType::BEGINING:
-			Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::OPENING));
+			Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::DUNGEON));
 			break;
 		case MenuType::FINISH:
 			Director::getInstance()->end();

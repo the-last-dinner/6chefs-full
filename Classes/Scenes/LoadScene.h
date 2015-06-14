@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "baseScene.h"
 #include "TitleScene.h"
+#include "DungeonScene.h"
 
 class LoadScene : public baseScene
 {

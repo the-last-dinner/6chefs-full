@@ -28,8 +28,7 @@ using namespace std;
 enum struct SceneType
 {
 	TITLE,
-	OPENING,
-	MAIN,
+	DUNGEON,
 };
 
 #endif // __DEFINE_H__

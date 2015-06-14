@@ -15,7 +15,7 @@ class TiledMapManager
 {
 	// クラスメソッド
 public:
-	TiledMapManager* getinstance();
+	static TiledMapManager* getInstance();
 	
 	// シングルトンであるためにprivateに
 private:
@@ -25,6 +25,14 @@ private:
 	// インスタンスメソッド
 public:
 	~TiledMapManager();
+	void setBasePath(string basePath);
+	void setTiledMapWithFileName(string fileName);
+	TMXTiledMap* getTiledMap();
+	
+	// インスタンス変数
+private:
+	string basePath;
+	TMXTiledMap* tiledMap;
 };
 
 #endif // __TILED_MAP_MANAGER_H__
