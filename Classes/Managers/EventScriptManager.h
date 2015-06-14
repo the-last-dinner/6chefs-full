@@ -36,10 +36,11 @@ public:
     static void destroy();
     ~EventScriptManager();
     //EventScriptManager関数
-    void readJsonScript();
-    void jsonToMap(string json);
+    bool setJsonScript(string script);
     std::string trim(const std::string& string, const char* trimCharacterList);
 private:
+    //インスタンス変数
+    Document json;
     //インスタンス用関数(singleton仕様)
     EventScriptManager();                                               // コンストラクタ
     EventScriptManager(const EventScriptManager& other);                // コピーコンストラクタ

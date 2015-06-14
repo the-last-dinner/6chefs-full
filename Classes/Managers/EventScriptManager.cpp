@@ -17,65 +17,60 @@ EventScriptManager* EventScriptManager::getInstance(){
     return _instance;
 }
 
+// インスタンスの消去
+void EventScriptManager::destroy(){
+    delete _instance;
+    return;
+}
+
 // コンストラクタ
 EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
-{
-    FUNCLOG
-    
-}
+{FUNCLOG}
 
 // デストラクタ
 EventScriptManager::~EventScriptManager()
 {FUNCLOG}
 
 //イベントスクリプトファイルの読み込み
-void EventScriptManager::readJsonScript ()
+bool EventScriptManager::setJsonScript (string script)
 {
-    FUNCLOG
-    string script = "TestScript.txt"; //イベントスクリプトファイル名
-    string path = fu->fullPathForFilename(script); //絶対パス取得
-    string json = "";
-    //一行ずつスクリプトファイルの読み込み
-    ifstream filein(path);
-    for (string line; getline(filein, line);)
-    {
-        //cout << line << endl;
-        json += line;
-    }
-    //テスト出力
-#ifdef DEBUG
-    cout << json << endl;
-#endif
-    //jsonテキストを変換
-    jsonToMap(json);
-    return;
-}
-
-//与えられたjsonテキストを
-void EventScriptManager::jsonToMap(string json){
     FUNCLOG
     FILE* fp;
     char buf[512];
-    //"/Users/Ryoya/Source/Xcode/LastSupper/Resources/event/TestScript.txt";
-    string script = "TestScript.txt";
-    string path = fu->fullPathForFilename(script);
+    //ファイルパス
+    string path = fu->fullPathForFilename("event/" +script + ".json");
     const char* cstr = path.c_str();
+    //JSONファイルを読み込んでインスタンス変数jsonに格納
     fp = fopen(cstr, "rb");
-    Document doc;
     FileReadStream rs(fp, buf, sizeof(buf));
-    doc.ParseStream(rs);
+    json.ParseStream(rs);
     fclose(fp);
-    bool error = doc.HasParseError();
+    //JSONの文法エラーチェック
+    bool error = json.HasParseError();
     if(error){
-        size_t offset = doc.GetErrorOffset();
-        ParseErrorCode code = doc.GetParseError();
+        size_t offset = json.GetErrorOffset();
+        ParseErrorCode code = json.GetParseError();
         const char* msg = GetParseError_En(code);
-        printf("%d:%d(%s)\n", static_cast<int>(offset), code, msg);
+        printf("JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
+        return false;
+    } else {
+        //jsonの値の取得テスト
+        const rapidjson::Value& id = json["1"];
+        const char* v = id["type"].GetString();
+        printf("type = %s\n\n", v);
+#ifdef DEBUG
+        //テスト出力
+        string json = "";
+        ifstream filein(path);
+        for (string line; getline(filein, line);)
+        {
+            //cout << line << endl;
+            json += line;
+        }
+        cout << json << endl;
+#endif
+        return true;
     }
-    const rapidjson::Value& id = doc["1"];
-    const char* v = id["type"].GetString();
-    printf("type = %s\n", v);
-    return;
 }
 
 //文字列のトリミング

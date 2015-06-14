@@ -18,6 +18,7 @@ AppDelegate::AppDelegate()
 AppDelegate::~AppDelegate() 
 {
 	FUNCLOG
+    EventScriptManager::destroy();
 	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
 }
@@ -26,6 +27,7 @@ AppDelegate::~AppDelegate()
 void AppDelegate::init()
 {
 	TiledMapManager::getInstance()->setBasePath("map/");
+    EventScriptManager::getInstance()->setJsonScript("TestScript");
 	return;
 }
 
