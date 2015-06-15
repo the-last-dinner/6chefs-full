@@ -1,45 +1,41 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="retro-city" tilewidth="16" tileheight="16">
-  <image source="retro-city.png" trans="ff00ff" width="480" height="256"/>
+  <image source="retro-city.png" trans="007575" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="busstop" tilewidth="16" tileheight="16">
-  <image source="busstop.png" trans="ff00ff" width="128" height="96"/>
+  <image source="busstop.png" trans="007575" width="128" height="96"/>
  </tileset>
- <tileset firstgid="529" name="retro-city" tilewidth="16" tileheight="16">
-  <image source="../../../../制作ゲーム/マップ素材/retro-city.png" trans="007575" width="480" height="256"/>
- </tileset>
- <layer name="Base" width="50" height="40" opacity="0.9">
+ <layer name="Base" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlz0OwjAMRtvmAhzBJ2HlpLAzIrH1PNyhMFSKLCexUztNQoYnaJO638uf1NVN0/XL6v3G/h9Bq06sfq1cZh4cj8fclscvL868em2teFCU9KCy4KwxD7xP/Mz4fsh7n0uMJLvUY8+NPSinlIfmNXXuUNmPekiuQdGT6+GPhYYHFPLwyd2TELgHgbZcuOeVhgc4GwdrD5xbMz+uZeUBjnaRrD9ufSsPKnsqp3SurD1wdu564vpSfcDII2dv4Oek79DyCOUOeXD7U16Uh2TdazjE1l0Jj+fSB2/XN7cKMtRKzWNjkc3KN7cu5zmtPoO6eHXC2eM4OI9S505L55t21lS93HbLMW1pvlrls/QB9/t3MPhH7q4PNllLppE=
+   eJzt17EJgDAQheHLBk7iJLYu5A4OYGMlWGQed7HQIgSLGNR7d77ia4Loz4MUxiASiYiIPjQmkFosa43oEtotRER/0pzy80nKDIXPPfWOu99bAqHpARqsqd0MZWuUDvQmL1YntHek9/D+c2M03OuwiQ/a/3e15ox2j+fuvNlK91W/douWHZJVG34=
   </data>
  </layer>
- <layer name="MonoShita1" width="50" height="40">
+ <layer name="MonoShita" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2bsNgDAMRdFAajZkLGAQYBBgDz4TICxB4YKOSMTWPdKTX5nEZZoYQitpntkZ7b1kUHM02ifJrOZitG+SXc3DaNfWaLt7kcNbsod3dbxjnad7nMXfp/jOyz6q0sc9AAAAAAAAAKSXw19rip7DX2uKfgHMCf0l
+   eJztz8EJACAQBLFF0J/2X67W4D0ESSqYSQAAAKjqLRntdUXdPA/rgw8AAACAGxs9xQAv
   </data>
  </layer>
- <layer name="MonoShuta2" width="50" height="40">
+ <layer name="MonoChu" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztz8ENgCAQRNGVRG/Yf4G0IYHEEjgYl/eSuc+PAACAPbTj3d9l6XhmQ0/QcZaIq3z9Yl2dDXeCDgAAAIAVA4fDBcA=
+   eJztxtsNQEAARNHV+1IICkEfHqUYiV8FrJyT3MzUrpQ+Dak2/Mc0pbnxv6Q1bY3/I53pavw/9nf/8AEAAAAAAIBvN19kmpM=
   </data>
  </layer>
  <layer name="MonoUe" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztz7kNgEAMRcGVtv8MKAQoBOiDowScuAeMZqQn/9St8SVDb22Mpl5z552jJVqL7rxbtEdH0Z33iu7oKbrzVnf+4AcAAAAAAIA/ewGoKZrd
+   eJzt09kJgEAQRMHZ3NVAdANR8/AIxfHLEGSgCh50Ah0BUMPQIsZsarX3nC1ZL77XbMv24vvMruwuvl9H+/5SfQMAAAAAwB8eqImakw==
   </data>
  </layer>
- <layer name="MonoUe2" width="50" height="40">
+ <objectgroup name="Ugokumono(objedt)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztyc0JgGAMg+HCt/9NHUQdRN3DnxFMDwHx6K34PhCa0AgAf9C1iF4ZWr3tnkbdSZkLbve06K7KVnC7p0P3VK6C2932R6+23z8AAAAAAAAAAPDNDV65gSU=
+   eJztz7ERABAQAMHXf61kZAw9CAx2K7iLAACAv+QUUdLpin11PbQHPvp6GA98AAAAAHC/CWRiBcg=
   </data>
  </layer>
- <objectgroup name="Ugokumono(Object)" visible="0"/>
- <objectgroup name="Chara(Object)"/>
- <layer name="CharaUe" width="50" height="40">
+ <layer name="CharaUe2" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztz7ERABAABMHXf61kxPQgYNit4C4BAIA/1JK0crpiX18P44EPAAAAALjNBGSJA8s=
+   eJzt2QEJgEAQRNG97moQvSBqEDWKG0I4F96DD9NhIuB7c4tYsqnV3lvWs7X4PrIz24vvO3uyq/gGAAAAAICRRv8vfhw/zp/3Cz8QF8g=
   </data>
  </layer>
- <objectgroup name="Friction"/>
 </map>
