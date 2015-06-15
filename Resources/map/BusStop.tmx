@@ -26,6 +26,7 @@
    eJzt09kJgEAQRMHZ3NVAdANR8/AIxfHLEGSgCh50Ah0BUMPQIsZsarX3nC1ZL77XbMv24vvMruwuvl9H+/5SfQMAAAAAwB8eqImakw==
   </data>
  </layer>
+ <objectgroup name="Hit"/>
  <objectgroup name="Ugokumono(objedt)"/>
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe1" width="50" height="40">
