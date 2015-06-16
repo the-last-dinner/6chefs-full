@@ -75,6 +75,8 @@
 		5534BBCA1B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBC71B2C7CA4003CB847 /* TiledMapManager.cpp */; };
 		5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */; };
 		5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */; };
+		5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
+		5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
 		55469D801B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
 		55469D811B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
 		55DD60221B24A0AD00F56438 /* event in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601D1B24A0AD00F56438 /* event */; };
@@ -192,6 +194,7 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5527BFFD1B305A7000612934 /* Objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Objects.h; path = ../Classes/MapObjects/Objects.h; sourceTree = "<group>"; };
 		552D83681B20BC6300B681A8 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		552D83691B20BC6300B681A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		552D836A1B20BC6300B681A8 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../Classes/Common.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 		5534BBC81B2C7CA4003CB847 /* TiledMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapManager.h; path = ../Classes/Managers/TiledMapManager.h; sourceTree = "<group>"; };
 		5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonScene.cpp; path = ../Classes/Scenes/DungeonScene.cpp; sourceTree = "<group>"; };
 		5534BBCC1B2D33D7003CB847 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = ../Classes/Scenes/DungeonScene.h; sourceTree = "<group>"; };
+		5534BBDA1B2DDF52003CB847 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = ../Classes/MapObjects/Character.cpp; sourceTree = "<group>"; };
+		5534BBDB1B2DDF52003CB847 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = ../Classes/MapObjects/Character.h; sourceTree = "<group>"; };
 		55469D7E1B21B3320061F69D /* LoadScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadScene.cpp; path = ../Classes/Scenes/LoadScene.cpp; sourceTree = "<group>"; };
 		55469D7F1B21B3320061F69D /* LoadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadScene.h; path = ../Classes/Scenes/LoadScene.h; sourceTree = "<group>"; };
 		55DD601D1B24A0AD00F56438 /* event */ = {isa = PBXFileReference; lastKnownFileType = folder; path = event; sourceTree = "<group>"; };
@@ -455,6 +460,7 @@
 				552D83671B20BC4100B681A8 /* Managers */,
 				552D83661B20BC3400B681A8 /* Layers */,
 				552D83651B20BC2600B681A8 /* Scenes */,
+				5534BBD91B2DDEB6003CB847 /* MapObjects */,
 				552D83641B20BC1C00B681A8 /* Datas */,
 			);
 			name = Class;
@@ -520,6 +526,16 @@
 			);
 			name = Scene;
 			path = ../Classes/Datas/Scene;
+			sourceTree = "<group>";
+		};
+		5534BBD91B2DDEB6003CB847 /* MapObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5534BBDA1B2DDF52003CB847 /* Character.cpp */,
+				5534BBDB1B2DDF52003CB847 /* Character.h */,
+				5527BFFD1B305A7000612934 /* Objects.h */,
+			);
+			name = MapObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,6 +711,7 @@
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +728,7 @@
 				55469D811B21B3320061F69D /* LoadScene.cpp in Sources */,
 				552D83751B20BC7900B681A8 /* GameStatusManager.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
+				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

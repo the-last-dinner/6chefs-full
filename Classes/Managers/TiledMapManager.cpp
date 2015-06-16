@@ -18,6 +18,13 @@ TiledMapManager* TiledMapManager::getInstance()
 	return _instance;
 }
 
+// インスタンスを破棄
+void TiledMapManager::destory()
+{
+	delete _instance;
+	return;
+}
+
 // コンストラクタ
 TiledMapManager::TiledMapManager():
 basePath(),
@@ -40,13 +47,23 @@ void TiledMapManager::setBasePath(string basePath)
 void TiledMapManager::setTiledMapWithFileName(string fileName)
 {
 	FUNCLOG
-	this->tiledMap = TMXTiledMap::create(this->basePath + fileName + ".tmx");
+	this->tiledMap = experimental::TMXTiledMap::create(this->basePath + fileName + ".tmx");
+	// どこにもaddchildしていない状態なので参照カウンタを+1しておく
+	this->tiledMap->retain();
 	return;
 }
 
 // マップデータを取得
-TMXTiledMap* TiledMapManager::getTiledMap()
+experimental::TMXTiledMap* TiledMapManager::getTiledMap()
 {
 	FUNCLOG
 	return this->tiledMap;
+}
+
+// マップデータを破棄
+void TiledMapManager::removeTiledMap()
+{
+	FUNCLOG
+	this->tiledMap->release();
+	return;
 }

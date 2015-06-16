@@ -24,6 +24,7 @@ public:
 	// インスタンスメソッド
 private:
 	virtual bool init(const SceneType& sceneType);
+	void update(float delta);
 	void resourceLoad();
 	void loadFinished();	// ロードが終了した時の処理
 public:
@@ -33,8 +34,11 @@ public:
 	// インスタンス変数
 private:
 	SceneType nextSceneType;
+	float loadingTime;
 	static const string texturePath;
+	static const string characterPath;
 	static const map<SceneType, string> textureNames;
+	static const float MIN_WAIT_TIME;
 };
 
 #endif // __LOAD_SCENE_H__
