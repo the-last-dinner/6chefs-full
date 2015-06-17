@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1888"/>
+ </tileset>
+ <layer name="Base" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2D4gIWjeBSP4lE8RPAoGN4AAKcLvK0=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztkFEKgEAIRNf7nzNvkO1nBC2Ija3VTx8z8GBZ1Bnt0toW6MW/Lxzz1pcsgEq9nr7jjUCzIzrJ4uu87/Cwh/mR112dyXXf2Jfd0ABofnY/db6or7KnSZ5lBkVRFEX9QTtHy6mT
+  </data>
+ </layer>
+ <layer name="MonoChu" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF9AI7WRgYdrFg8ucx4pcnVz0MnASKnWLB5O9hxC9PrnoYuAkUu8VCPz4MvASKvWKhHx8GfgLFfmERHwWjYBSMglEw8gAA+3EzaA==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2Dog40sDAybWOhv70GgnYcGwN6LQDsvDYC9o2AUjIJRMAqIAwA9xASi
+  </data>
+ </layer>
+ <objectgroup name="Hit"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
+  </data>
+ </layer>
+</map>
