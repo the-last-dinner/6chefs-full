@@ -1,12 +1,12 @@
-#ifndef  _COMMON_H_
-#define  _COMMON_H_
+#ifndef  __COMMON_H__
+#define  __COMMON_H__
+
 #pragma execution_character_set("utf-8")
 
 #include "define.h"
-#include "model/GameStatusManager.h"
-#include "ActionKey.h"
-#include <iostream>
+#include "GameStatusManager.h"
+#include "ActionKeyManager.h"
+#include "EventScriptManager.h"
+#include "TiledMapManager.h"
 
-using namespace std;
-
-#endif // _COMMON_H_
+#endif // __COMMON_H__

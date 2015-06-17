@@ -1,0 +1,49 @@
+{
+"1": {
+"type": "Sequence",
+"action": [
+{
+"type": "PlaySE",
+"option": 1.5
+},
+{
+"type": "Delay",
+"option": 1.0
+},
+{
+"type": "Fade",
+"option": true
+},
+{
+"type":"SameTime",
+"action":[
+{
+"type": "Move",
+"option": [0, 1, 2, 3]
+},
+{
+"type": "PlaySE",
+"option": 3.0
+}
+]
+}
+]
+},
+"2": [
+{
+"type": "Fade",
+"option": "true"
+},
+{
+"type": "If",
+"flag": 1,
+"true": [
+{
+"type":"Message",
+"string": "論理値trueです。"
+}
+],
+"false": null
+}
+]
+}
