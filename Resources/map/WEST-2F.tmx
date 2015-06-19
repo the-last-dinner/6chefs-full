@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="Yatai-option1" tilewidth="16" tileheight="16">
+  <image source="Yatai-option1.png" trans="007575" width="944" height="255"/>
+ </tileset>
+ <tileset firstgid="886" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1888"/>
+ </tileset>
+ <tileset firstgid="2774" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJACAMRNH07l9lkyziOmIREHvJBX/gQ8rXnA8zFy5v/1M4nG+cIWDBiRMnTpz/OuOo2oIT512XHeHEWW3BiRMnzo7OBUd7HL8=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJyrYWZg6B0k+AcnA4MkFyqGgRqgfBUZuBoLhol348DY9CLLcaC5URPNndjsxIe7cNhVzYzfb11QjO72LiiNHp7I7qxF0k8JhtlLiRno4WmJ5M7BBCTwxPtgAhpcuPPRYAIWQ8SdHkB3eaLhUUA7UMWCG4+CUTAKRsEoGAWjYBRQAuSA7Th5NDwYwVBxpx7QXfpoeDCCUXdSF4y6k7oAnzsBfk5edA==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztl70KwjAUhbMFBWcnZx/BR/CNq6m7Wt39W9SncCp4BoVSD/YnsTeW+8FH6F1ySEvbY0wcPAafMzvsPkcVLFOMOcckU/GME2vMAi6ha7GmcGX9c1bd9+S1p48hcrLzLM7W2GMDtzCDuxbX+wA5pyQnm0kzI5nYTJo5ycRmiqL0nwO+V0d4gmd4gVd4++F6J99IRVGU2MjJu4rNpBmRfzg2k4b1jsmf5GTdTpqmvdiVuqT7YhqwF9fJ6dOJu8r57sXlrtvEEL24L8/nE8txfKA=
+  </data>
+ </layer>
+ <layer name="MonoUe" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg6gJGRgYGJcaBdQRjYAN1oi8Wd5UCxCiq4/zATA8MRINZjxI2JAWuAeC0QcwHNygPqyYfq2wSkN+Mxw5IRgmHgM5D9hRFBw8A/oLn/gXgqHkwK6EBi/0HCx4H4BBB3AbEQFPtg0a8HtE+fCUE7QN1qyczAYMVMPXdSGzgMgTQPAtR2pzV1jYMDaruzjLrGwcFIjff/eDALMC+yAjEbGXmymsru3MpIHCbH3FEwCkbBKBgFwwOM1LqcVoDadTkusA2ItwNxBiN+DFKzA5v+IRKeowABfkLp30So/QTFX6GYnsAEmLZaGAhjZHcOZzBY++/ogBJ3AgB3eEvn
+  </data>
+ </layer>
+ <objectgroup name="Hit"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1zEOQEAQRuG1gtPolTiGW9DiGI4rMavSjGzBLMn7ktdtMn+7zuFpozQZ3Bm8HgBc7V7vS5pcDwAAS4VURlYl2hi0UhdZn2biaZYWqc7uC2/WhDuBt/zl/755Pdg6AJCxGVc=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="42" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztz7kNACAQA0Gn139fPB1BBYRcMiOtHDsBAOgxKpm39XF3db8GAIC3A25lGWA=
+  </data>
+ </layer>
+</map>

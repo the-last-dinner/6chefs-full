@@ -45,7 +45,6 @@ bool TitleScene::init()
 		menu->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - (menuSize + 20) * i);
 		menu->setTag(i);
 		menu->setTextColor(Color4B::RED);
-		menu->enableOutline(Color4B::BLACK, 5);
 		menu->setOpacity(0);
 		this->addChild(menu);
 		
@@ -111,9 +110,11 @@ void TitleScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 	{
 		case ActionKeyManager::Key::UP:
 			if(this->menuCounter > 0) menuCounter--;
+			this->moveCursor();
 			break;
 		case ActionKeyManager::Key::DOWN:
 			this->menuCounter++;
+			this->moveCursor();
 			break;
 		case ActionKeyManager::Key::SPACE:
 			this->pressSpaceKey();
@@ -121,7 +122,6 @@ void TitleScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 		default:
 			break;
 	}
-	this->moveCursor();
 	return;
 }
 

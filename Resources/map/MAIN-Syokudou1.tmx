@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1888"/>
+ </tileset>
+ <tileset firstgid="1889" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztk00KAjEMhYswjRfwZ+/cQNdu9GQD3tsUDJSQ1iiFifIKj6QlbV7mY5acEqV1tW2cPdjbwjqk9WT5LedH5a/spzfKjppPtXvJ6qX91bXZkOXRqtHner7c6VGr5++bmSfnfY9a/vZV/55add77nvfF34ZiSvxdOD9TvCj+7pzfKF4UfzPnJ4oXwRd8wRd8wTcGT/AF30gRfMEXfH+T76y+XwSe4Iv/N1IEX/D9N74y/yi+ZV1pnGT+EW+V9QTOCVfm
+  </data>
+ </layer>
+ <layer name="MonoShita" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlUkKwkAQRTtHlHbhVjqKW42KW8dLOVxA4wUczuIPpKAoOphsUlHqwaebbOrRnfw4ZxiGYRjGr3BOnLsgo5o5IqekPb8cs+4N/K7IrUW/F2a9G/g9kGeLfkQPMz3SF0lZBgpe0s8LrzmLpt8QswPzI6fiTrNyP1H0m5Ye5EdOC7ZfKfhRvxR+sxp+Wv1S5eeFn1a/VPkF4afVL9Iv1jUa7983P95/2n78zEKk/7ril7J3jtaunJ/8PjLl8+P9F9i9xrpau/8ycW7ctXg27kD/xf4btC4V+2+NmRtki+yQPXKIrIZhGMZ/8QHGR2uC
+  </data>
+ </layer>
+ <layer name="MonoChu" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlk1OAkEQRjsMCV4Eb6AHQF2wRV1wBMWNiia6gwEShQ2/iT8bUNzrHfQGehFNZMkjwaQTyTC2baZM6iXfZrpT9TIzXWlj/ge5wJgNskm2gu/rYcqYWmp5nTp7GhH7stReXVB/Wf8Cz7bJDtldsN6lZy+GX589g4h9a9Red+j/Ww6peUSOSZmckNM/6ONKBZcqCUmN1EnD0a/C+6/G+FY/oY1Lh3RJj/TJwNGvjVvHs98QlxG5I/dkTB4c/Ya4jTz7+eQRtyfBforii1Y6aYNobhP2K9H/wHJ4Zi68CJ4Nr7i9CfZT/HLBv3kp+Axf4XadoN8evfet/u+cjQ9B5+MMt3PLL+BOlRZ0b1YUJT6fzJaJNV/yAmbz7I7XnHtkmC0r1nwpCvCb3fFuBHgoiqIoyhdT0vos2A==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="40" height="40" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzkENADAIBLD7MQvzL3MfXIyEtAqaAL/ck7yaXgAAAAAA7NeZAQEk
+  </data>
+ </layer>
+ <objectgroup name="Hit"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzLEJAAAIBDEF95/ZJb5QSODaqwIAAAAAAC6azpV8frDDLAC1
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+  </data>
+ </layer>
+</map>

@@ -1,7 +1,7 @@
 #ifndef  __DEFINE_H__
 #define  __DEFINE_H__
 
-// Common.hをインクルードするファイル群はこちらをインクルードする
+// Common.hにインクルードされるファイル群(Manager系)はこちらをインクルードする
 // 最低限のインクルード、変数の初期化を行う
 
 #include <cocos2d.h>
@@ -16,6 +16,9 @@
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
+
+// 1マスの大きさ(px)
+#define GRID 16
 
 // DEBUGモードの時はdefineしておく
 #define DEBUG

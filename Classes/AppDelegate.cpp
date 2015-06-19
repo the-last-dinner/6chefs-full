@@ -21,6 +21,7 @@ AppDelegate::~AppDelegate()
     EventScriptManager::destroy();
 	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
+	TiledMapManager::destory();
 }
 
 // 初期化関連

@@ -8,7 +8,11 @@
 
 #include "LoadScene.h"
 
+const float LoadScene::MIN_WAIT_TIME = 0.5f;
+
 const string LoadScene::texturePath = "img/texture/";
+
+const string LoadScene::characterPath = "character/";
 
 const map<SceneType, string> LoadScene::textureNames =
 {
@@ -17,7 +21,8 @@ const map<SceneType, string> LoadScene::textureNames =
 
 // コンストラクタ
 LoadScene::LoadScene():
-nextSceneType()
+nextSceneType(),
+loadingTime()
 {FUNCLOG}
 
 // デストラクタ
@@ -81,10 +86,18 @@ bool LoadScene::init(const SceneType& sceneType)
 														   nullptr)
 										  )
 					);
+	this->scheduleUpdate();
 	
 	this->resourceLoad();
 
 	return true;
+}
+
+// 毎フレーム呼ばれる処理
+void LoadScene::update(float delta)
+{
+	this->loadingTime += delta;
+	return;
 }
 
 // リソースを非同期で読み込む
@@ -128,6 +141,11 @@ void LoadScene::loadFinished()
 		TitleScene::createScene,
 		DungeonScene::createScene,
 	};
-	Director::getInstance()->replaceScene(createSceneFuncs[static_cast<int>(this->nextSceneType)]());
+	
+	// シーンの切り替えを早くしすぎると、切り替えに失敗するため、(最小待ち時間 - ロードにかかった時間)だけ待ってからシーン移動する。
+	float waitTime = MIN_WAIT_TIME - this->loadingTime;
+	this->runAction(Sequence::create(DelayTime::create((waitTime > 0)?waitTime:0.f), CallFunc::create([=](){
+		Director::getInstance()->replaceScene(createSceneFuncs[static_cast<int>(this->nextSceneType)]());
+}), nullptr));
 	return;
 }

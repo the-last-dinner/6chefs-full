@@ -2,7 +2,7 @@
 //  DungeonScene.h
 //  LastSupper
 //
-//  Created by Kohei on 2015/06/14.
+//  Created by Kohei Asami on 2015/06/14.
 //
 //
 
@@ -11,6 +11,7 @@
 
 #include "Common.h"
 #include "baseScene.h"
+#include "MapObjects/Objects.h"
 
 class DungeonScene : public baseScene
 {
@@ -20,11 +21,17 @@ public:
 	CREATE_FUNC(DungeonScene);
 	
 	// インスタンスメソッド
-private:
-	virtual bool init();
 public:
 	DungeonScene();
 	~DungeonScene();
+private:
+	virtual bool init();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode);
+	void onKeyReleased(EventKeyboard::KeyCode keyCode);
+	
+	// インスタンス変数
+private:
+	EventListenerKeyboard* eventListener;
 };
 
 
