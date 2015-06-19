@@ -8,17 +8,37 @@
 
 #include "EventScriptManager.h"
 
+//EventTypeのmap
+const map<string, int> EventScriptManager::EventType = {
+    //命令タイプ
+    {"sequence", 1},    //順番に処理を実行
+    {"spawn", 2},       //同時に処理を実行
+    {"flag", 3},        //flagによって場合分けして実行
+    //イベントタイプ
+    {"move", 1001},     //オブジェクトの移動
+    {"talk", 1002},     //キャラクターの会話
+    {"message", 1003},  //システムのメッセージ
+    {"changeMap", 1004},//マップ移動
+    {"fade", 1005},     //画面特殊効果
+    {"playSE", 1006},   //効果音再生
+    {"playBGM", 1007},  //BGM再生
+    {"control", 1008},  //操作状態の変更
+    {"read", 1009}      //書物読んでるモード
+};
+
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
 
 // インスタンスを生成&取得
-EventScriptManager* EventScriptManager::getInstance(){
+EventScriptManager* EventScriptManager::getInstance()
+{
     if(!_instance) _instance = new EventScriptManager();
     return _instance;
 }
 
 // インスタンスの消去
-void EventScriptManager::destroy(){
+void EventScriptManager::destroy()
+{
     delete _instance;
     return;
 }
@@ -32,7 +52,7 @@ EventScriptManager::~EventScriptManager()
 {FUNCLOG}
 
 //イベントスクリプトファイルの読み込み
-bool EventScriptManager::setJsonScript (string script)
+bool EventScriptManager::setEventScript (string script)
 {
     FUNCLOG
     FILE* fp;
@@ -48,29 +68,58 @@ bool EventScriptManager::setJsonScript (string script)
     //JSONの文法エラーチェック
     bool error = json.HasParseError();
     if(error){
+        //エラーがあった場合
         size_t offset = json.GetErrorOffset();
         ParseErrorCode code = json.GetParseError();
         const char* msg = GetParseError_En(code);
         printf("JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
         return false;
     } else {
-        //jsonの値の取得テスト
-        const rapidjson::Value& id = json["1"];
-        const char* v = id["type"].GetString();
-        printf("type = %s\n\n", v);
+        //エラーがなかった場合
 #ifdef DEBUG
         //テスト出力
-        string json = "";
         ifstream filein(path);
         for (string line; getline(filein, line);)
         {
-            //cout << line << endl;
-            json += line;
+            cout << line << endl;
         }
-        cout << json << endl;
 #endif
-        return true;
+        //マップ初期化イベント(0番)呼び出し
+        vector<int> spid;
+        vector<Sprite*> sprite;
+        bool success = runEvent(0, spid, sprite);
+        return success;
     }
+}
+
+//イベントIDからイベントを実行
+bool EventScriptManager::runEvent(int id, vector<int> spid, vector<Sprite*> sprite)
+{
+    //idをint型からchar*に変換
+    string sid = to_string(id);
+    const char* csid = sid.c_str();
+    //JsonEventScriptのidから命令
+    const rapidjson::Value& event = json[csid];
+    string type = static_cast<string>(event["type"].GetString());
+    printf("\nevent_id:%d\ntype = %s\n\n", id, type.c_str());
+    //各命令の処理
+    dealScript(event, spid, sprite);
+    return true;
+}
+
+//各イベント命令処理の場合分け
+bool EventScriptManager::dealScript(rapidjson::Value event, vector<int> spid, vector<Sprite*> sprite)
+{
+    string type = static_cast<string>(event["type"].GetString());
+    int etid = EventType.at(type);
+    cout << "type>>" << type << endl;
+    /*switch (etid){
+        case EventType.at("sequence"):
+        break;
+        case EventType.at("spawn"):
+        break;
+        default: ;
+    }*/
 }
 
 //文字列のトリミング

@@ -14,38 +14,25 @@
 class EventScriptManager
 {
 public:
-    //あとで使うかもしれないメモの構造体
-    enum struct EventType
-    {
-        PlaySE,
-        Fade,
-        Move,
-        Talk,
-        Control,
-        Message,
-        ChangeMap,
-        Read,
-        Delay,
-        //指示系
-        SameTime,
-        If,
-        Sequence,
-    };
     //インスタンス用関数(singleton仕様)
     static EventScriptManager* getInstance();
     static void destroy();
     ~EventScriptManager();
     //EventScriptManager関数
-    bool setJsonScript(string script);
+    bool setEventScript(string script);
+    bool runEvent(int id, vector<int> spid, vector<Sprite*> sprite);
     std::string trim(const std::string& string, const char* trimCharacterList);
 private:
+    //クラス変数
+    static const map<string, int> EventType;
     //インスタンス変数
-    Document json;
+    rapidjson::Document json;
+    cocos2d::FileUtils* fu;
     //インスタンス用関数(singleton仕様)
     EventScriptManager();                                               // コンストラクタ
     EventScriptManager(const EventScriptManager& other);                // コピーコンストラクタ
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
-    //cocos2dファイル操作用
-    cocos2d::FileUtils * fu;
+    //EventScriptManager関数
+    bool dealScript(rapidjson::Value event, vector<int> spid, vector<Sprite*> sprite);
 };
 #endif /* defined(__LastSupper__EventScript__) */
