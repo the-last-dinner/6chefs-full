@@ -434,7 +434,10 @@ public:
 
     //! Default constructor creates a null value.
     GenericValue() RAPIDJSON_NOEXCEPT : data_(), flags_(kNullFlag) {}
-
+    
+    //! Copy constructor is permitted. 2015/06/19 Changed by Ryoya.Ino
+    GenericValue(const GenericValue& rhs);
+    
 #if RAPIDJSON_HAS_CXX11_RVALUE_REFS
     //! Move constructor in C++11
     GenericValue(GenericValue&& rhs) RAPIDJSON_NOEXCEPT : data_(rhs.data_), flags_(rhs.flags_) {
@@ -443,8 +446,8 @@ public:
 #endif
 
 private:
-    //! Copy constructor is not permitted.
-    GenericValue(const GenericValue& rhs);
+    //! Copy constructor is not permitted. 2015/06/19 Comment out by Ryoya.Ino
+    // GenericValue(const GenericValue& rhs);
 
 public:
 
