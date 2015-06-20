@@ -17,6 +17,9 @@ const map<EventKeyboard::KeyCode, ActionKeyManager::Key> ActionKeyManager::keyMa
 	{EventKeyboard::KeyCode::KEY_SPACE, ActionKeyManager::Key::SPACE},
 };
 
+// キー入力をチェックするスパン
+const float ActionKeyManager::INPUT_CHECK_SPAN = 0.05f;
+
 // 唯一のインスタンスを初期化
 static ActionKeyManager* _instance = nullptr;
 
@@ -45,7 +48,7 @@ ActionKeyManager::~ActionKeyManager()
 void ActionKeyManager::initKeyStatus()
 {
 	FUNCLOG
-	for(int i = 0; i < static_cast<int>(Key::SIZE); this->keyStatus[static_cast<Key>(i)] = 0.f, i++);
+	for(int i = 0; i < static_cast<int>(Key::SIZE); this->keyStatus[static_cast<Key>(i)] = false, i++);
 	return;
 }
 
@@ -60,7 +63,7 @@ ActionKeyManager::Key ActionKeyManager::convertKeyCode(EventKeyboard::KeyCode ke
 void ActionKeyManager::pressKey(Key key)
 {
 	FUNCLOG
-	this->keyStatus.at(key) = 0.1f;
+	this->keyStatus.at(key) = true;
 	return;
 }
 
@@ -68,7 +71,7 @@ void ActionKeyManager::pressKey(Key key)
 void ActionKeyManager::releaseKey(Key key)
 {
 	FUNCLOG
-	this->keyStatus.at(key) = 0.f;
+	this->keyStatus.at(key) = false;
 	return;
 }
 
@@ -76,22 +79,5 @@ void ActionKeyManager::releaseKey(Key key)
 bool ActionKeyManager::isPressed(Key key)
 {
 	FUNCLOG
-	return this->keyStatus.at(key) > 0.f;
-}
-
-// 指定のキーが何秒か押されているのか取得
-float ActionKeyManager::getKeyStatus(Key key)
-{
-	FUNCLOG
 	return this->keyStatus.at(key);
-}
-
-// 1ループにかかる時間でキーステータスを更新
-void ActionKeyManager::updateKeyStatus(float delta)
-{
-	for (auto itr = this->keyStatus.begin(); itr != this->keyStatus.end(); ++itr)
-	{	
-		if (itr->second > 0.f) itr->second += delta;
-	}
-	return;
 }
