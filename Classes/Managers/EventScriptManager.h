@@ -33,6 +33,6 @@ private:
     EventScriptManager(const EventScriptManager& other);                // コピーコンストラクタ
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
     //EventScriptManager関数
-    bool dealScript(rapidjson::Value event, vector<int> spid, vector<Sprite*> sprite);
+    bool dealScript(rapidjson::Value* event, vector<int> spid, vector<Sprite*> sprite);
 };
 #endif /* defined(__LastSupper__EventScript__) */

@@ -99,20 +99,20 @@ bool EventScriptManager::runEvent(int id, vector<int> spid, vector<Sprite*> spri
     string sid = to_string(id);
     const char* csid = sid.c_str();
     //JsonEventScriptのidから命令
-    const rapidjson::Value& event = json[csid];
+    rapidjson::Value& event = json[csid];
     string type = static_cast<string>(event["type"].GetString());
     printf("\nevent_id:%d\ntype = %s\n\n", id, type.c_str());
     //各命令の処理
-    dealScript(event, spid, sprite);
+    dealScript(&event, spid, sprite);
     return true;
 }
 
 //各イベント命令処理の場合分け
-bool EventScriptManager::dealScript(rapidjson::Value event, vector<int> spid, vector<Sprite*> sprite)
+bool EventScriptManager::dealScript(rapidjson::Value* event, vector<int> spid, vector<Sprite*> sprite)
 {
-    string type = static_cast<string>(event["type"].GetString());
-    int etid = EventType.at(type);
-    cout << "type>>" << type << endl;
+    //string type = static_cast<string>(event["type"].GetString());
+    //int etid = EventType.at(type);
+    //cout << "type>>" << type << endl;
     /*switch (etid){
         case EventType.at("sequence"):
         break;
