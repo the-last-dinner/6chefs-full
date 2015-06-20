@@ -48,6 +48,8 @@ public:
 private:
 	static const vector<vector<string>> characterDatas;
 	static const string basePath;
+public:
+	static const float SECOND_PER_GRID;
 	
 	// インスタンスメソッド
 private:
@@ -55,15 +57,21 @@ private:
 	~Character();
 	virtual bool init(int charaId, CharacterType charaType, Direction direction);
 public:
-	void changeDirection(Direction direction);
+	void setDirection(Direction direction);
+	Direction getDirection();
+	void setMoving(bool _isMoving);
+	bool isMoving();
+	void move(float ratio = 1.0f);
 	
 	// インスタンス変数
 private:
 	Sprite* character;												// キャラクターのSprite部分
 	string texturePrefix;											// キャラプロパティリストファイル名の先頭部分
 	CharacterType charaType;
-	Direction currentDirection;										// 現在向いている方向
-	Animation* pAnimation[static_cast<int>(Direction::SIZE)];		// キャラが動いているときのアニメーション
+	Direction direction;											// 現在向いている方向
+	Animation* pAnimation[static_cast<int>(Direction::SIZE)][2];		// キャラが動いているときのアニメーション
+	bool _isMoving;
+	bool identifier;
 };
 
 #endif // __CHARACTER_H__

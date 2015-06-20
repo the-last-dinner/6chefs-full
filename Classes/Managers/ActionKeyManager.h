@@ -9,10 +9,10 @@ class ActionKeyManager
 public:
 	enum struct Key
 	{
-		UP,
 		DOWN,
-		LEFT,
 		RIGHT,
+		LEFT,
+		UP,
 		MENU,
 		DASH,
 		SPACE,
@@ -28,6 +28,8 @@ public:
 	// クラス変数
 private:
 	static const map<EventKeyboard::KeyCode, Key> keyMap;
+public:
+	static const float INPUT_CHECK_SPAN;
 
 	// インスタンスメソッド
 private:
@@ -36,17 +38,15 @@ private:
 	ActionKeyManager& operator = (const ActionKeyManager& other);		// 代入演算子
 public:
 	~ActionKeyManager();
-	void updateKeyStatus(float delta);
 	void initKeyStatus();
 	void pressKey(Key key);
 	void releaseKey(Key key);
 	bool isPressed(Key key);
-	float getKeyStatus(Key key);
 	Key convertKeyCode(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:
-	map<Key, float> keyStatus;
+	map<Key, bool> keyStatus;
 };
 
 #endif // __ACTION_KEY_MANAGER_H__

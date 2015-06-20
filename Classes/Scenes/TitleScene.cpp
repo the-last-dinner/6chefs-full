@@ -79,7 +79,6 @@ bool TitleScene::init()
 // ゲームループ
 void TitleScene::update(float delta)
 {
-	ActionKeyManager::getInstance()->updateKeyStatus(delta);
 	return;
 }
 

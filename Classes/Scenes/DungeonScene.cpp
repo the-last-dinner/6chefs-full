@@ -8,6 +8,14 @@
 
 #include "DungeonScene.h"
 
+const map<ActionKeyManager::Key, Point> DungeonScene::scrollMap =
+{
+	{ActionKeyManager::Key::DOWN, Point(0, -GRID)},
+	{ActionKeyManager::Key::RIGHT, Point(GRID, 0)},
+	{ActionKeyManager::Key::LEFT, Point(-GRID, 0)},
+	{ActionKeyManager::Key::UP, Point(0, GRID)}
+};
+
 // コンストラクタ
 DungeonScene::DungeonScene():
 eventListener(nullptr)
@@ -31,7 +39,8 @@ bool DungeonScene::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
-	// イベントリスナ生成。無効にしておく。
+	
+	// イベントリスナ生成
 	this->eventListener = EventListenerKeyboard::create();
 	this->eventListener->onKeyPressed = CC_CALLBACK_1(DungeonScene::onKeyPressed, this);
 	this->eventListener->onKeyReleased = CC_CALLBACK_1(DungeonScene::onKeyReleased, this);
@@ -39,14 +48,20 @@ bool DungeonScene::init()
 	// イベントリスナ登録
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
 	
+	// マップ生成
 	experimental::TMXTiledMap* map = TiledMapManager::getInstance()->getTiledMap();
+	map->setName("map");
 	this->addChild(map);
 	
 	// キャラクター生成
 	Character* chara = Character::create(0, Character::CharacterType::MAIN, Character::Direction::FRONT);
 	chara->setName("magoichi");
-	chara->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	this->addChild(chara);
+	chara->setPosition(map->getContentSize() / 2);
+	map->addChild(chara);
+	
+	// ゲームループ開始
+	this->scheduleUpdate();
+	
 	return true;
 }
 
@@ -59,22 +74,54 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 	
 	// 押し状態にする
 	ActionKeyManager::getInstance()->pressKey(key);
+	
+	// MAPのポインタを取得
+	experimental::TMXTiledMap* map = this->getChildByName<experimental::TMXTiledMap*>("map");
+	
 	switch(key)
 	{
-		case ActionKeyManager::Key::UP:
-			this->getChildByName<Character*>("magoichi")->changeDirection(Character::Direction::BACK);
-			break;
-		case ActionKeyManager::Key::DOWN:
-			this->getChildByName<Character*>("magoichi")->changeDirection(Character::Direction::FRONT);
-			break;
-		case ActionKeyManager::Key::LEFT:
-			this->getChildByName<Character*>("magoichi")->changeDirection(Character::Direction::LEFT);
-			break;
-		case ActionKeyManager::Key::RIGHT:
-			this->getChildByName<Character*>("magoichi")->changeDirection(Character::Direction::RIGHT);
-			break;
-		case ActionKeyManager::Key::SPACE:
+		case::ActionKeyManager::Key::DOWN:
+		case::ActionKeyManager::Key::LEFT:
+		case::ActionKeyManager::Key::RIGHT:
+		case::ActionKeyManager::Key::UP:
+		{
+			Character* magoichi = map->getChildByName<Character*>("magoichi");
 			
+			// 主人公が移動中でない時のみ処理
+			if(!magoichi->isMoving()){
+				
+				// 移動キーが押された時は、向きを変える
+				magoichi->setDirection(static_cast<Character::Direction>(key));
+				
+				// スケジュールを開始
+				this->schedule([=](float delta){
+					if(ActionKeyManager::getInstance()->isPressed(key))
+					{
+						// 主人公が動いていなかったら
+						if(!magoichi->isMoving())
+						{
+							// 指定秒後に移動をさせる
+							magoichi->move();
+							magoichi->setMoving(true);
+							this->runAction(Sequence::create(Spawn::create(TargetedAction::create(map, MoveBy::create(0.2f, - scrollMap.at(key))),
+																			TargetedAction::create(magoichi, MoveBy::create(0.2f, scrollMap.at(key))),
+																			nullptr),
+															CallFunc::create([=](){magoichi->setMoving(false);}),
+															nullptr));
+						}
+					}
+					else
+					{
+						// キーを離したらループを解除
+						this->unschedule("PlayerControlCheck");
+					}
+				
+				}, ActionKeyManager::INPUT_CHECK_SPAN, "PlayerControlCheck");
+
+			}
+			break;
+		}
+		case ActionKeyManager::Key::SPACE:
 			break;
 		default:
 			break;
@@ -92,5 +139,11 @@ void DungeonScene::onKeyReleased(EventKeyboard::KeyCode keyCode)
 	// 離し状態にする
 	ActionKeyManager::getInstance()->releaseKey(key);
 
+	return;
+}
+
+// ゲームループ
+void DungeonScene::update(float delta)
+{
 	return;
 }
