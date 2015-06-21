@@ -51,12 +51,13 @@ bool DungeonScene::init()
 	// マップ生成
 	experimental::TMXTiledMap* map = TiledMapManager::getInstance()->getTiledMap();
 	map->setName("map");
+	map->setPositionY(-100);
 	this->addChild(map);
 	
 	// キャラクター生成
 	Character* chara = Character::create(0, Character::CharacterType::MAIN, Character::Direction::FRONT);
 	chara->setName("magoichi");
-	chara->setPosition(map->getContentSize() / 2);
+	chara->setGridPosition(Point(10, 10));
 	map->addChild(chara);
 	
 	// ゲームループ開始
@@ -97,17 +98,14 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 				this->schedule([=](float delta){
 					if(ActionKeyManager::getInstance()->isPressed(key))
 					{
-						// 主人公が動いていなかったら
-						if(!magoichi->isMoving())
+						// 主人公が動いていない、かつその方向に当たり判定がなかったら
+						if(!magoichi->isMoving() && !magoichi->isHit(static_cast<Character::Direction>(key)))
 						{
 							// 指定秒後に移動をさせる
 							magoichi->move();
-							magoichi->setMoving(true);
-							this->runAction(Sequence::create(Spawn::create(TargetedAction::create(map, MoveBy::create(0.2f, - scrollMap.at(key))),
-																			TargetedAction::create(magoichi, MoveBy::create(0.2f, scrollMap.at(key))),
-																			nullptr),
-															CallFunc::create([=](){magoichi->setMoving(false);}),
-															nullptr));
+							this->runAction(Spawn::create(TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - scrollMap.at(key))),
+														  TargetedAction::create(magoichi, MoveBy::create(Character::SECOND_PER_GRID, scrollMap.at(key))),
+														  nullptr));
 						}
 					}
 					else

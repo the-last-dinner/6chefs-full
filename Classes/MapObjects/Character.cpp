@@ -68,6 +68,9 @@ bool Character::init(int charaId, CharacterType charaType, Direction direction)
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
 	this->addChild(this->character);
 	
+	// Spriteの大きさをマップオブジェクトのサイズとしてセット
+	this->setObjectSize(this->character->getContentSize());
+	
 	for(int i = 0; i < static_cast<int>(Direction::SIZE); i++)
 	{
 		// 右足だけ動くタイプと左足だけ動くタイプでアニメーションを分ける
@@ -75,9 +78,8 @@ bool Character::init(int charaId, CharacterType charaType, Direction direction)
 		{
 			this->pAnimation[i][k] = Animation::create();
 			
-			// それぞれの向きのアニメーション用画像を追加していく、足踏みしていない画像を間にはさむ
+			// それぞれの向きのアニメーション用画像を追加していく
 			this->pAnimation[i][k]->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
-			this->pAnimation[i][k]->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_0.png"));
 			
 			// 全フレーム表示し終えた時、１フレーム目に戻る
 			this->pAnimation[i][k]->setRestoreOriginalFrame(true);
@@ -127,13 +129,13 @@ bool Character::isMoving()
 void Character::move(float ratio)
 {
 	FUNCLOG
-	// 動いていなければ
-	if(!this->isMoving()){
-		// 現在の向きのアニメーションを取得
-		Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->identifier)?"0":"1"));
-		this->identifier = (this->identifier)?false:true;
-		anime->setDelayPerUnit(SECOND_PER_GRID * ratio);
-		this->runAction(TargetedAction::create(this->character, Animate::create(anime)));
-	}
+	// 現在の向きのアニメーションを取得
+	Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->identifier)?"0":"1"));
+	this->identifier = (this->identifier)?false:true;
+	anime->setDelayPerUnit(SECOND_PER_GRID * ratio);
+	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
+									TargetedAction::create(this->character, Animate::create(anime)),
+									CallFunc::create([=](){this->setMoving(false);}),
+									nullptr));
 	return;
 }

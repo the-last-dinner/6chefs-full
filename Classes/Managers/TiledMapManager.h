@@ -23,18 +23,27 @@ private:
 	TiledMapManager();												// コンストラクタ
 	TiledMapManager(const TiledMapManager& other);					// デストラクタ
 	TiledMapManager& operator = (const TiledMapManager& other);		// 代入演算子
+	
 	// インスタンスメソッド
+private:
+	void setCollisionMap();
 public:
 	~TiledMapManager();
-	void setBasePath(string basePath);
-	void setTiledMapWithFileName(string fileName);
+	void setBasePath(const string& basePath);
+	void setTiledMapWithFileName(const string& fileName);
 	experimental::TMXTiledMap* getTiledMap();
 	void removeTiledMap();
+	Point toCocosPoint(const Point& mapGridPoint);
+	Point toMapPoint(const Point& cocosPoint);
+	Point toGridPoint(const Point& mapPoint);
+	bool isHit(const Point& mapGridPoint);
 	
 	// インスタンス変数
 private:
 	string basePath;
 	experimental::TMXTiledMap* tiledMap;
+	ValueVector collisionObjs;
+	map<Point, bool> collisionMap;
 };
 
 #endif // __TILED_MAP_MANAGER_H__
