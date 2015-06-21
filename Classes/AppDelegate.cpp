@@ -30,9 +30,7 @@ void AppDelegate::init()
 	TiledMapManager::getInstance()->setBasePath("map/");
     EventScriptManager::getInstance()->setEventScript("TestScript");
     //テストでイベントID:1を呼んでみる
-    vector<int> spid;
-    vector<Sprite*> sprite;
-    EventScriptManager::getInstance()->runEvent(1, spid, sprite);
+    EventScriptManager::getInstance()->runEvent(1);
 	return;
 }
 

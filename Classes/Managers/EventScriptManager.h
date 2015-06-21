@@ -20,19 +20,26 @@ public:
     ~EventScriptManager();
     //EventScriptManager関数
     bool setEventScript(string script);
-    bool runEvent(int id, vector<int> spid, vector<Sprite*> sprite);
-    std::string trim(const std::string& string, const char* trimCharacterList);
+    bool setDungeonScene(Layer* mainLayer);
+    bool runEvent(int id);
 private:
+    //関数ポインタ型を宣言
+    typedef bool (EventScriptManager::*FunctionPointer)(rapidjson::Value& event);
     //クラス変数
-    static const map<string, int> EventType;
+    map<string, FunctionPointer> event_map;
     //インスタンス変数
     rapidjson::Document json;
     cocos2d::FileUtils* fu;
+    cocos2d::Layer* layer;
     //インスタンス用関数(singleton仕様)
     EventScriptManager();                                               // コンストラクタ
     EventScriptManager(const EventScriptManager& other);                // コピーコンストラクタ
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
     //EventScriptManager関数
-    bool dealScript(rapidjson::Value* event, vector<int> spid, vector<Sprite*> sprite);
+    bool dealScript(rapidjson::Value& event);
+    //イベント関数を宣言
+    bool changeMap(rapidjson::Value& event);
+    bool move(rapidjson::Value& event);
+    bool message(rapidjson::Value& event);
 };
 #endif /* defined(__LastSupper__EventScript__) */

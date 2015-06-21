@@ -9,22 +9,22 @@
 #include "EventScriptManager.h"
 
 //EventTypeのmap
-const map<string, int> EventScriptManager::EventType = {
+/*const map<string, EventScriptManager::FunctionPointer> EventScriptManager::event_map = {
     //命令タイプ
-    {"sequence", 1},    //順番に処理を実行
-    {"spawn", 2},       //同時に処理を実行
-    {"flag", 3},        //flagによって場合分けして実行
+    //{"sequence", &},    //順番に処理を実行
+    //{"spawn", 2},       //同時に処理を実行
+    //{"flag", 3},        //flagによって場合分けして実行
     //イベントタイプ
-    {"move", 1001},     //オブジェクトの移動
-    {"talk", 1002},     //キャラクターの会話
-    {"message", 1003},  //システムのメッセージ
-    {"changeMap", 1004},//マップ移動
-    {"fade", 1005},     //画面特殊効果
-    {"playSE", 1006},   //効果音再生
-    {"playBGM", 1007},  //BGM再生
-    {"control", 1008},  //操作状態の変更
-    {"read", 1009}      //書物読んでるモード
-};
+    {"move", &EventScriptManager::move},     //オブジェクトの移動
+    {"message", &EventScriptManager::message}  //システムのメッセージ
+    //{"talk", 1002},     //キャラクターの会話
+    //{"changeMap", 1004},//マップ移動
+    //{"fade", 1005},     //画面特殊効果
+    //{"playSE", 1006},   //効果音再生
+    //{"playBGM", 1007},  //BGM再生
+    //{"control", 1008},  //操作状態の変更
+    //{"read", 1009}      //書物読んでるモード
+};*/
 
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
@@ -45,7 +45,27 @@ void EventScriptManager::destroy()
 
 // コンストラクタ
 EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
-{FUNCLOG}
+{
+    FUNCLOG
+    //event_map["move"] = &EventScriptManager::move;
+    //event_map["message"] = &EventScriptManager::message;
+    event_map = {
+        //命令タイプ
+        //{"sequence", &EventScriptManager::sequence},    //順番に処理を実行
+        //{"spawn", &EventScriptManager::spawn},       //同時に処理を実行
+        //{"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
+        //イベントタイプ
+        {"changeMap", &EventScriptManager::changeMap},//マップ移動
+        {"move", &EventScriptManager::move},     //オブジェクトの移動
+        {"message", &EventScriptManager::message}  //システムのメッセージ
+        //{"talk", &EventScriptManager::talk},     //キャラクターの会話
+        //{"fade", &EventScriptManager::fade},     //画面特殊効果
+        //{"playSE", &EventScriptManager::playSE},   //効果音再生
+        //{"playBGM", &EventScriptManager::playBGM},  //BGM再生
+        //{"control", &EventScriptManager::control},  //操作状態の変更
+        //{"read", &EventScriptManager::read}      //書物読んでるモード
+    };
+}
 
 // デストラクタ
 EventScriptManager::~EventScriptManager()
@@ -84,57 +104,78 @@ bool EventScriptManager::setEventScript (string script)
             cout << line << endl;
         }
 #endif
-        //マップ初期化イベント(0番)呼び出し
-        vector<int> spid;
-        vector<Sprite*> sprite;
-        bool success = runEvent(0, spid, sprite);
-        return success;
+        return true;
     }
 }
 
+//
+bool EventScriptManager::setDungeonScene(Layer* mainLayer)
+{
+    FUNCLOG
+    //レイヤーをインスタンス変数に登録
+    EventScriptManager::layer = mainLayer;
+    //イベントスクリプト初期化イベントのeventID0番を実行
+    bool success = this->runEvent(0);
+    return success;
+}
+
 //イベントIDからイベントを実行
-bool EventScriptManager::runEvent(int id, vector<int> spid, vector<Sprite*> sprite)
+bool EventScriptManager::runEvent(int id)
 {
     //idをint型からchar*に変換
     string sid = to_string(id);
     const char* csid = sid.c_str();
     //JsonEventScriptのidから命令
-    rapidjson::Value& event = json[csid];
-    string type = static_cast<string>(event["type"].GetString());
-    printf("\nevent_id:%d\ntype = %s\n\n", id, type.c_str());
+    cout << "eventID>>" << csid << endl;
+    rapidjson::Value& action = json[csid];//jsonオブジェクト配列
     //各命令の処理
-    dealScript(&event, spid, sprite);
+    this->dealScript(action);
     return true;
 }
 
 //各イベント命令処理の場合分け
-bool EventScriptManager::dealScript(rapidjson::Value* event, vector<int> spid, vector<Sprite*> sprite)
+bool EventScriptManager::dealScript(rapidjson::Value& action)
 {
-    //string type = static_cast<string>(event["type"].GetString());
-    //int etid = EventType.at(type);
-    //cout << "type>>" << type << endl;
-    /*switch (etid){
-        case EventType.at("sequence"):
-        break;
-        case EventType.at("spawn"):
-        break;
-        default: ;
-    }*/
+    SizeType len = action.Size();
+    cout << "   len=" << len << endl;
+    string type;
+    for(int i=0;i<len;i++){
+        rapidjson::Value& event = action[i];
+        type = static_cast<string>(event["type"].GetString());
+        cout << "   type=" << type << endl;
+        if(type == "sequence" || type == "spawn"){
+            rapidjson::Value& subAction = event["action"];
+            this->dealScript(subAction);
+        } else if (type == "move"){
+            FunctionPointer func;
+            func = EventScriptManager::event_map.at(type);
+            if(!func){
+                //default :
+            } else {
+                (this->*func)(event);
+            }
+        }
+    }
+    return true;
 }
 
-//文字列のトリミング
-string EventScriptManager::trim(const string& string, const char* trimCharacterList = " \t\v\r\n")
+/**
+ * イベント関数
+ */
+bool EventScriptManager::changeMap(rapidjson::Value& event)
 {
-    FUNCLOG
-    std::string result;
-    // 左側からトリムする文字以外が見つかる位置を検索します。
-    string::size_type left = string.find_first_not_of(trimCharacterList);
-    if (left != string::npos)
-    {
-        // 左側からトリムする文字以外が見つかった場合は、同じように右側からも検索します。
-        string::size_type right = string.find_last_not_of(trimCharacterList);
-        // 戻り値を決定します。ここでは右側から検索しても、トリムする文字以外が必ず存在するので判定不要です。
-        result = string.substr(left, right - left + 1);
-    }
-    return result;
+    cout << "This is changeMap!" << endl;
+    return true;
+}
+
+bool EventScriptManager::move(rapidjson::Value& event)
+{
+    cout << "This is move!" << endl;
+    return true;
+}
+
+bool EventScriptManager::message(rapidjson::Value& event)
+{
+    cout << "This is message!" << endl;
+    return true;
 }
