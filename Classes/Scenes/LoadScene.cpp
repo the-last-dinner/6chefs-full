@@ -76,7 +76,6 @@ bool LoadScene::init(const SceneType& sceneType)
 										  )
 					);
 	
-	
 	this->runAction(RepeatForever::create(Sequence::create(DelayTime::create(0.5f),
 														   TargetedAction::create(circle2, FadeIn::create(0.1f)),
 														   Spawn::create(TargetedAction::create(circle2, FadeOut::create(2.0f)),
@@ -116,7 +115,7 @@ void LoadScene::resourceLoad()
 	switch(this->nextSceneType){
 		case SceneType::DUNGEON:
 
-			TiledMapManager::getInstance()->setTiledMapWithFileName("syokudou1");
+			TiledMapManager::getInstance()->setTiledMapWithFileName("MAIN-Syokudou1");
 			this->loadFinished();
 //			thread th = thread([this](){
 //				TiledMapManager::getInstance()->setTiledMapWithFileName("syokudou1");

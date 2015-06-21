@@ -10,8 +10,9 @@
 #define __CHARACTER_H__
 
 #include "Common.h"
+#include "MapObject.h"
 
-class Character : public Node
+class Character : public MapObject
 {
 	// 列挙型
 public:
@@ -20,15 +21,6 @@ public:
 		MAIN,
 		MOB,
 		ENEMY,
-		SIZE,
-	};
-	
-	enum struct Direction
-	{
-		FRONT,
-		RIGHT,
-		LEFT,
-		BACK,
 		SIZE,
 	};
 	
