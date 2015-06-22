@@ -26,15 +26,17 @@ private:
 
 public:
 	~SoundManager();
-	void setBasePath(const string& basePath);
-	void preloadSound(const string& fileName);
+	void setBasePath(const string& seBasePath, const string& bgmBasePath);
+	void preloadBGM(const string& fileName);
+	void preloadSE(const string& fileName);
 	void playBGM(const string& fileName, bool loop = false);
 	void playSE(const string& fileName, bool loop = false, float pitch = 1.0f, float pan = 0.0f, float gain = 1.0f);
 	void unloadSounds();
 	
 	// インスタンス変数
 private:
-	string basePath;
+	string seBasePath;
+	string bgmBasePath;
 	vector<string> soundList;
 };
 

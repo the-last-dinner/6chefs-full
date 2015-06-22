@@ -34,19 +34,29 @@ SoundManager::~SoundManager()
 {FUNCLOG}
 
 // サウンドファイルが存在するディレクトリルートを指定
-void SoundManager::setBasePath(const string& basePath)
+void SoundManager::setBasePath(const string& seBasePath, const string& bgmBasePath)
 {
 	FUNCLOG
-	this->basePath = basePath;
+	this->seBasePath = seBasePath;
+	this->bgmBasePath = bgmBasePath;
 	return;
 }
 
-// 音声ファイルをプリロード
-void SoundManager::preloadSound(const string& fileName)
+// BGMファイルをプリロード
+void SoundManager::preloadBGM(const string& fileName)
 {
 	FUNCLOG
 	this->soundList.push_back(fileName);
-	SimpleAudioEngine::getInstance()->preloadEffect(fileName.c_str());
+	SimpleAudioEngine::getInstance()->preloadEffect((this->seBasePath + fileName).c_str());
+	return;
+}
+
+// SEファイルをプリロード
+void SoundManager::preloadSE(const string& fileName)
+{
+	FUNCLOG
+	this->soundList.push_back(fileName);
+	SimpleAudioEngine::getInstance()->preloadEffect((this->bgmBasePath + fileName).c_str());
 	return;
 }
 

@@ -10,6 +10,7 @@ AppDelegate::AppDelegate()
 	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
 	TiledMapManager::getInstance();
+	SoundManager::getInstance();
 	this->init();
 }
 
@@ -22,12 +23,16 @@ AppDelegate::~AppDelegate()
 	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
 	TiledMapManager::destory();
+	SoundManager::destory();
 }
 
 // 初期化関連
 void AppDelegate::init()
 {
 	TiledMapManager::getInstance()->setBasePath("map/");
+	SoundManager::getInstance()->setBasePath("se/", "bgm/");
+	
+	
     EventScriptManager::getInstance()->setEventScript("TestScript");
     //テストでイベントID:1を呼んでみる
     EventScriptManager::getInstance()->runEvent(1);
