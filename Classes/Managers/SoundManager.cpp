@@ -47,7 +47,7 @@ void SoundManager::preloadBGM(const string& fileName)
 {
 	FUNCLOG
 	this->soundList.push_back(fileName);
-	SimpleAudioEngine::getInstance()->preloadEffect((this->seBasePath + fileName).c_str());
+	SimpleAudioEngine::getInstance()->preloadEffect((this->bgmBasePath + fileName).c_str());
 	return;
 }
 
@@ -56,7 +56,7 @@ void SoundManager::preloadSE(const string& fileName)
 {
 	FUNCLOG
 	this->soundList.push_back(fileName);
-	SimpleAudioEngine::getInstance()->preloadEffect((this->bgmBasePath + fileName).c_str());
+	SimpleAudioEngine::getInstance()->preloadEffect((this->seBasePath + fileName).c_str());
 	return;
 }
 
@@ -64,7 +64,7 @@ void SoundManager::preloadSE(const string& fileName)
 void SoundManager::playBGM(const string& fileName, bool loop)
 {
 	FUNCLOG
-	SimpleAudioEngine::getInstance()->playEffect(fileName.c_str(), loop);
+	SimpleAudioEngine::getInstance()->playEffect((this->bgmBasePath + fileName).c_str(), loop);
 	return;
 }
 
@@ -72,7 +72,7 @@ void SoundManager::playBGM(const string& fileName, bool loop)
 void SoundManager::playSE(const string& fileName, bool loop, float pitch, float pan, float gain)
 {
 	FUNCLOG
-	SimpleAudioEngine::getInstance()->playEffect(fileName.c_str(), loop, pitch, pan, gain);
+	SimpleAudioEngine::getInstance()->playEffect((this->seBasePath + fileName).c_str(), loop, pitch, pan, gain);
 	return;
 }
 

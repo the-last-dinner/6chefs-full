@@ -62,7 +62,12 @@ bool DungeonScene::init()
 	
 	// ゲームループ開始
 	this->scheduleUpdate();
-	
+    
+    // EventScriptManagerにlayerを渡す
+    EventScriptManager::getInstance()->setDungeonScene(this);
+    
+    //テストでイベントID:1を呼んでみる
+    EventScriptManager::getInstance()->runEvent(1);
 	return true;
 }
 
@@ -70,6 +75,8 @@ bool DungeonScene::init()
 void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 {
 	FUNCLOG
+    //テストでイベントID:2を呼んでみる
+    EventScriptManager::getInstance()->runEvent(2);
 	// cocos2d上のキーコードからゲーム内でのキーコードに変換
 	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
 	

@@ -27,6 +27,7 @@ private:
 	// インスタンスメソッド
 private:
 	void setCollisionMap();
+	void setEventMap();
 public:
 	~TiledMapManager();
 	void setBasePath(const string& basePath);
@@ -37,13 +38,14 @@ public:
 	Point toMapPoint(const Point& cocosPoint);
 	Point toGridPoint(const Point& mapPoint);
 	bool isHit(const Point& mapGridPoint);
+	int getEventID(const Point& mapGridPoint);
 	
 	// インスタンス変数
 private:
 	string basePath;
 	experimental::TMXTiledMap* tiledMap;
-	ValueVector collisionObjs;
 	map<Point, bool> collisionMap;
+	map<Point, Point> eventMap;
 };
 
 #endif // __TILED_MAP_MANAGER_H__
