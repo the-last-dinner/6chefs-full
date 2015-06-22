@@ -88,7 +88,6 @@
 		55DD60231B24A0AD00F56438 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601E1B24A0AD00F56438 /* fonts */; };
 		55DD60241B24A0AD00F56438 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601F1B24A0AD00F56438 /* img */; };
 		55DD60251B24A0AD00F56438 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 55DD60201B24A0AD00F56438 /* map */; };
-		55DD60261B24A0AD00F56438 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55DD60211B24A0AD00F56438 /* res */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -229,7 +228,6 @@
 		55DD601E1B24A0AD00F56438 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		55DD601F1B24A0AD00F56438 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		55DD60201B24A0AD00F56438 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
-		55DD60211B24A0AD00F56438 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -372,7 +370,6 @@
 				55DD601E1B24A0AD00F56438 /* fonts */,
 				55DD601F1B24A0AD00F56438 /* img */,
 				55DD60201B24A0AD00F56438 /* map */,
-				55DD60211B24A0AD00F56438 /* res */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -689,7 +686,6 @@
 				55DD60231B24A0AD00F56438 /* fonts in Resources */,
 				55DD60241B24A0AD00F56438 /* img in Resources */,
 				55DD60251B24A0AD00F56438 /* map in Resources */,
-				55DD60261B24A0AD00F56438 /* res in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,6 +22,7 @@ public:
     bool setEventScript(string script);
     bool setDungeonScene(Layer* mainLayer);
     bool runEvent(int id);
+    vector<string> getPreLoadList(string kind);
 private:
     //関数ポインタ型を宣言
     typedef bool (EventScriptManager::*FunctionPointer)(rapidjson::Value& event);

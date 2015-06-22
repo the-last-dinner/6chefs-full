@@ -77,19 +77,19 @@ bool EventScriptManager::setEventScript (string script)
     FILE* fp;
     char buf[512];
     //ファイルパス
-    string path = fu->fullPathForFilename("event/" +script + ".json");
+    string path = this->fu->fullPathForFilename("event/" +script + ".json");
     const char* cstr = path.c_str();
     //JSONファイルを読み込んでインスタンス変数jsonに格納
     fp = fopen(cstr, "rb");
     FileReadStream rs(fp, buf, sizeof(buf));
-    json.ParseStream(rs);
+    this->json.ParseStream(rs);
     fclose(fp);
     //JSONの文法エラーチェック
-    bool error = json.HasParseError();
+    bool error = this->json.HasParseError();
     if(error){
         //エラーがあった場合
-        size_t offset = json.GetErrorOffset();
-        ParseErrorCode code = json.GetParseError();
+        size_t offset = this->json.GetErrorOffset();
+        ParseErrorCode code = this->json.GetParseError();
         const char* msg = GetParseError_En(code);
         printf("JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
         return false;
@@ -107,12 +107,23 @@ bool EventScriptManager::setEventScript (string script)
     }
 }
 
+vector<string> EventScriptManager::getPreLoadList(string kind){
+    vector<string> list;
+    const char* kindc = kind.c_str();
+    rapidjson::Value& obj = this->json[kindc];
+    SizeType len = obj.Size();
+    for(int i=0;i<len;i++){
+        list.push_back(obj[i].GetString());
+    }
+    return list;
+}
+
 //
 bool EventScriptManager::setDungeonScene(Layer* mainLayer)
 {
     FUNCLOG
     //レイヤーをインスタンス変数に登録
-    EventScriptManager::layer = mainLayer;
+    this->layer = mainLayer;
     //イベントスクリプト初期化イベントのeventID0番を実行
     bool success = this->runEvent(0);
     return success;
@@ -126,7 +137,7 @@ bool EventScriptManager::runEvent(int id)
     const char* csid = sid.c_str();
     //JsonEventScriptのidから命令
     cout << "eventID>>" << csid << endl;
-    rapidjson::Value& action = json[csid];//jsonオブジェクト配列
+    rapidjson::Value& action = this->json[csid];//jsonオブジェクト配列
     //各命令の処理
     this->dealScript(action);
     return true;

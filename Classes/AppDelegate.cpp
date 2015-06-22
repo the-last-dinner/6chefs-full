@@ -31,6 +31,9 @@ void AppDelegate::init()
     EventScriptManager::getInstance()->setEventScript("TestScript");
     //テストでイベントID:1を呼んでみる
     EventScriptManager::getInstance()->runEvent(1);
+    //bgmをプリロードしてみる
+    vector<string> bgm = EventScriptManager::getInstance()->getPreLoadList("bgm");
+    //cout << "bgm = " << bgm.at(0) << endl;
 	return;
 }
 
