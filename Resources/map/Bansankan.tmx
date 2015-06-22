@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="80" tilewidth="16" tileheight="16" nextobjectid="70">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="80" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="70">
  <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16">
   <image source="castle7.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -91,4 +91,5 @@
    eJzt2cFOAkEMgOGtN8ND7JHwzvgicFUOPob6IFK1sdudzswucBD/L2kkGJjYzrQDDsO350K8XBCnEB8DSjTPbyGW5N5y6+OUrBPX0te/r4y47oNcIxv3R3M+yDT0uZ4cW301tz5KZ8n2jV9HXy+yLmxd+8n5LYs9U/OutWjlN+uTVuMZma+jrx9lXXStiVnP9GdrbX9u1dfWWTN3R8n3FeZK/Vnjkv7cqm/cQ0vm7ii/89f2FvXN+fPr69szA0vnKM21TM+u1VdrtWTujm7+Wq+gvrlYVz8bs4jzd2l/bq3RO3+tV1DfClfXmPusR4qs68/+89fg3sP/tMetGezX5fNRrvTZ13Lf6pFL+3PsEfYeEtbrmcHx7kx9E+FeZf3a9+BaxN68pD/bXXh0+2aUfF/5/eXrS3/OlT7/Dp3nSGtT6s29/bk2b1tzmfr2if35lvfn2CNs5u7Pj59CTf0+ir+P9WX+Vsg89Hzdoj/HsPc4nB8fZX6Hi7+P9fXrUd8yreWjTPuzfT+5pj9vKv05zoGe+3LtftWcCfiq5bYwG3vPb+zNOyn//8jPX3+Ha+2j7H4V+wX1Tbh+aee4936lYTnehJzX1rHouS9n32903ekw6ZnbUF8f+5+Iz1tudxfkuvY9VYZ6XpfecQ7kFAAAAAAAAAAAAAAAAADu0qvU4x79x78ZAAAAbUfuggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPiDPgHU45lY
   </data>
  </layer>
+ <objectgroup name="event"/>
 </map>
