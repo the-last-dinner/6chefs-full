@@ -10,34 +10,60 @@
   <image source="Yatai-option1.png" trans="007575" width="944" height="255"/>
  </tileset>
  <layer name="Base" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztzjERADAIBDBGlOCkRupfREV0+eMyZM901YS7wfz+nICDn18qPz8/P79Mfn5+fn6Z/Hb/HvM84+o=
   </data>
  </layer>
  <layer name="MonoShita" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztlzEOgDAIRVksXgD1/pveQE9nh5JgLQ7WAZP/kreUAj/dykS0BHB25OzwwtRQzyfHVq93V+vs7HpSnB2a0VOKdWahayY7dzR9Peq+L2ZYAQAAAAAAAP9kzZ+OrTIS0fMd6W4k9uD5or8f8vXRyncCCnInfw==
   </data>
  </layer>
  <layer name="MonoChu" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztlzsKgDAQBbcI3ksT7f3ewc9BrK2sPanb2IRV/MWgvoEhmELGRnhE4MuEiihiNWtOnDGbKLd9+qIu+1J+d8bmbMGWJ54rh30AAPBX6oCoYdsHzy7w/dUAgD/RC/8c6c4Xo9Ai3fliEFom9O3mrX32/jXWdjQbxjfu362+K9vXdd+yf+1Ne8Q79u9a3wxc/ji3
   </data>
  </layer>
  <layer name="MonoUe" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBhZII2LgSGdi3j1X7hQ8WxuVAwDlkC510D8BojfAnEpEJdB7dnIycCwCYgNgOoNkfSocDNggIVAPYuAmJmHgYGFB7e7YPL63Kj4GhoGgX9Au0uAZqoB+epArAHEG4D8jUBsA3IzUP4tEGcDxXOAeDMXBMdjcR8M2AHttsfjPpg8Me6zAtplDXVLOZS2gYbdX05UDAIw9yGDZjS3VgLtrkJznw0Xpjwx7hsFo4AQaCChTBkIkIUnrw4GsHSQu+/bII/fUTAKRgEmGOzl8qj7KAOj7qMMDLT7JgHb9JxAN3ABMTcWevcAu+8rF3480tsF6P2uwQpOcGKKsaLF3SsscbmJTvGL7hZcctj8QQ7YyYWKaQ3ygOkkn5t4mlj3AQCaSVFI
   </data>
  </layer>
- <objectgroup name="Hit"/>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
+ <objectgroup name="colision"/>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
  <layer name="CharaUe1" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztxbEJACAMAMHUZhydz73cztrORghyB89HAAAAANQ021k1q5291jNi5P1/sQEjeQgb
   </data>
  </layer>
  <layer name="CharaUe2" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztz7kNACAQA0FH1yNP/3VASgNAMCOtHDsBADi1SvpuXNxZr18DAPCrBa+XC1A=
   </data>

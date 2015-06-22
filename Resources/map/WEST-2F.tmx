@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="30" tilewidth="16" tileheight="16" nextobjectid="20">
  <tileset firstgid="1" name="Yatai-option1" tilewidth="16" tileheight="16">
   <image source="Yatai-option1.png" trans="007575" width="944" height="255"/>
  </tileset>
@@ -10,34 +10,79 @@
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt07EJACAMRNH07l9lkyziOmIREHvJBX/gQ8rXnA8zFy5v/1M4nG+cIWDBiRMnTpz/OuOo2oIT512XHeHEWW3BiRMnzo7OBUd7HL8=
   </data>
  </layer>
  <layer name="MonoShita" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJyrYWZg6B0k+AcnA4MkFyqGgRqgfBUZuBoLhol348DY9CLLcaC5URPNndjsxIe7cNhVzYzfb11QjO72LiiNHp7I7qxF0k8JhtlLiRno4WmJ5M7BBCTwxPtgAhpcuPPRYAIWQ8SdHkB3eaLhUUA7UMWCG4+CUTAKRsEoGAWjYBRQAuSA7Th5NDwYwVBxpx7QXfpoeDCCUXdSF4y6k7oAnzsBfk5edA==
   </data>
  </layer>
  <layer name="MonoChu" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztl70KwjAUhbMFBWcnZx/BR/CNq6m7Wt39W9SncCp4BoVSD/YnsTeW+8FH6F1ySEvbY0wcPAafMzvsPkcVLFOMOcckU/GME2vMAi6ha7GmcGX9c1bd9+S1p48hcrLzLM7W2GMDtzCDuxbX+wA5pyQnm0kzI5nYTJo5ycRmiqL0nwO+V0d4gmd4gVd4++F6J99IRVGU2MjJu4rNpBmRfzg2k4b1jsmf5GTdTpqmvdiVuqT7YhqwF9fJ6dOJu8r57sXlrtvEEL24L8/nE8txfKA=
   </data>
  </layer>
  <layer name="MonoUe" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBg6gJGRgYGJcaBdQRjYAN1oi8Wd5UCxCiq4/zATA8MRINZjxI2JAWuAeC0QcwHNygPqyYfq2wSkN+Mxw5IRgmHgM5D9hRFBw8A/oLn/gXgqHkwK6EBi/0HCx4H4BBB3AbEQFPtg0a8HtE+fCUE7QN1qyczAYMVMPXdSGzgMgTQPAtR2pzV1jYMDaruzjLrGwcFIjff/eDALMC+yAjEbGXmymsru3MpIHCbH3FEwCkbBKBgFwwOM1LqcVoDadTkusA2ItwNxBiN+DFKzA5v+IRKeowABfkLp30So/QTFX6GYnsAEmLZaGAhjZHcOZzBY++/ogBJ3AgB3eEvn
   </data>
  </layer>
- <objectgroup name="Hit"/>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
+ <objectgroup name="collision">
+  <object id="1" x="0" y="48" width="272" height="48"/>
+  <object id="2" x="16" y="176" width="160" height="16"/>
+  <object id="3" x="368" y="64" width="16" height="112"/>
+  <object id="4" x="16" y="160" width="160" height="16"/>
+  <object id="6" x="272" y="48" width="16" height="48"/>
+  <object id="7" x="288" y="48" width="112" height="16"/>
+  <object id="8" x="304" y="48" width="64" height="32"/>
+  <object id="9" x="400" y="48" width="144" height="32"/>
+  <object id="10" x="544" y="0" width="16" height="128"/>
+  <object id="11" x="624" y="0" width="16" height="128"/>
+  <object id="12" x="640" y="0" width="32" height="208"/>
+  <object id="13" x="640" y="272" width="32" height="208"/>
+  <object id="14" x="624" y="352" width="16" height="128"/>
+  <object id="15" x="544" y="352" width="16" height="128"/>
+  <object id="16" x="432" y="448" width="112" height="32"/>
+  <object id="17" x="0" y="416" width="288" height="48"/>
+  <object id="18" x="288" y="320" width="16" height="64"/>
+  <object id="19" x="32" y="368" width="192"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
  <layer name="CharaUe1" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1zEOQEAQRuG1gtPolTiGW9DiGI4rMavSjGzBLMn7ktdtMn+7zuFpozQZ3Bm8HgBc7V7vS5pcDwAAS4VURlYl2hi0UhdZn2biaZYWqc7uC2/WhDuBt/zl/755Pdg6AJCxGVc=
   </data>
  </layer>
  <layer name="CharaUe2" width="42" height="30">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztz7kNACAQA0Gn139fPB1BBYRcMiOtHDsBAOgxKpm39XF3db8GAIC3A25lGWA=
   </data>
