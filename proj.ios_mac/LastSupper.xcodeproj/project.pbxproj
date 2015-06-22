@@ -25,6 +25,9 @@
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		26071B5F1B37E5C400B29763 /* bgm in Resources */ = {isa = PBXBuildFile; fileRef = 26071B5C1B37E5C400B29763 /* bgm */; };
+		26071B601B37E5C400B29763 /* save in Resources */ = {isa = PBXBuildFile; fileRef = 26071B5D1B37E5C400B29763 /* save */; };
+		26071B611B37E5C400B29763 /* se in Resources */ = {isa = PBXBuildFile; fileRef = 26071B5E1B37E5C400B29763 /* se */; };
 		260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
 		260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -132,6 +135,9 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* LastSupper iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastSupper iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		26071B5C1B37E5C400B29763 /* bgm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bgm; sourceTree = "<group>"; };
+		26071B5D1B37E5C400B29763 /* save */ = {isa = PBXFileReference; lastKnownFileType = folder; path = save; sourceTree = "<group>"; };
+		26071B5E1B37E5C400B29763 /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; path = se; sourceTree = "<group>"; };
 		260CF2621B2D486700BB139B /* EventScriptManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptManager.cpp; path = ../Classes/Managers/EventScriptManager.cpp; sourceTree = "<group>"; };
 		260CF2631B2D486700BB139B /* EventScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptManager.h; path = ../Classes/Managers/EventScriptManager.h; sourceTree = "<group>"; };
 		267F5EB41B22ECA000829D97 /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
@@ -359,6 +365,9 @@
 		26F01BB51ACFC6DD006BB5D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26071B5C1B37E5C400B29763 /* bgm */,
+				26071B5D1B37E5C400B29763 /* save */,
+				26071B5E1B37E5C400B29763 /* se */,
 				55DD601D1B24A0AD00F56438 /* event */,
 				55DD601E1B24A0AD00F56438 /* fonts */,
 				55DD601F1B24A0AD00F56438 /* img */,
@@ -673,6 +682,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26071B5F1B37E5C400B29763 /* bgm in Resources */,
+				26071B601B37E5C400B29763 /* save in Resources */,
+				26071B611B37E5C400B29763 /* se in Resources */,
 				55DD60221B24A0AD00F56438 /* event in Resources */,
 				55DD60231B24A0AD00F56438 /* fonts in Resources */,
 				55DD60241B24A0AD00F56438 /* img in Resources */,
