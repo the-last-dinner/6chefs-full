@@ -33,19 +33,19 @@ EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
     //イベント関数の関数ポインタ格納
     event_map = {
         //命令タイプ
-        //{"sequence", &EventScriptManager::sequence},    //順番に処理を実行
-        //{"spawn", &EventScriptManager::spawn},       //同時に処理を実行
-        //{"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
+        {"sequence", &EventScriptManager::sequence},    //順番に処理を実行
+        {"spawn", &EventScriptManager::spawn},       //同時に処理を実行
+        {"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
         //イベントタイプ
         {"changeMap", &EventScriptManager::changeMap},//マップ移動
         {"move", &EventScriptManager::move},     //オブジェクトの移動
-        {"message", &EventScriptManager::message}  //システムのメッセージ
-        //{"talk", &EventScriptManager::talk},     //キャラクターの会話
-        //{"fade", &EventScriptManager::fade},     //画面特殊効果
-        //{"playSE", &EventScriptManager::playSE},   //効果音再生
-        //{"playBGM", &EventScriptManager::playBGM},  //BGM再生
-        //{"control", &EventScriptManager::control},  //操作状態の変更
-        //{"read", &EventScriptManager::read}      //書物読んでるモード
+        {"message", &EventScriptManager::message},  //システムのメッセージ
+        {"talk", &EventScriptManager::talk},     //キャラクターの会話
+        {"fade", &EventScriptManager::fade},     //画面特殊効果
+        {"playSE", &EventScriptManager::playSE},   //効果音再生
+        {"playBGM", &EventScriptManager::playBGM},  //BGM再生
+        {"control", &EventScriptManager::control},  //操作状態の変更
+        {"read", &EventScriptManager::read}      //書物読んでるモード
     };
 }
 
@@ -154,22 +154,72 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
 }
 
 /**
- * イベント関数
+ * 命令関数群
+ */
+Ref* EventScriptManager::sequence(rapidjson::Value& event)
+{
+    FUNCLOG
+    
+}
+
+Ref* EventScriptManager::spawn(rapidjson::Value& event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::flag(rapidjson::Value &event)
+{
+    FUNCLOG
+}
+
+/**
+ * イベント関数群
  */
 Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
-    cout << "This is changeMap!" << endl;
+    FUNCLOG
+    //とりあえずテストでタイトル画面に移動するように設計してある
     return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::TITLE));}));
 }
 
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
+    FUNCLOG
     cout << "This is move!" << endl;
     return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName("map")->getChildByName("magoichi"), MoveBy::create(1.0f, Point(32.f, 32.f))));
 }
 
 Ref* EventScriptManager::message(rapidjson::Value& event)
 {
-    cout << "This is message!" << endl;
-    //return true;
+    FUNCLOG
+}
+
+Ref* EventScriptManager::talk(rapidjson::Value& event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::fade(rapidjson::Value& event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::playSE(rapidjson::Value& event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::playBGM(rapidjson::Value &event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::control(rapidjson::Value &event)
+{
+    FUNCLOG
+}
+
+Ref* EventScriptManager::read(rapidjson::Value &event)
+{
+    FUNCLOG
 }
