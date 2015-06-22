@@ -62,7 +62,12 @@ bool DungeonScene::init()
 	
 	// ゲームループ開始
 	this->scheduleUpdate();
-	
+    
+    // EventScriptManagerにlayerを渡す
+    EventScriptManager::getInstance()->setDungeonScene(this);
+    
+    //テストでイベントID:1を呼んでみる
+    EventScriptManager::getInstance()->runEvent(1);
 	return true;
 }
 

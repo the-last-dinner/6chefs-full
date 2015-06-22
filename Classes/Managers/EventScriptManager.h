@@ -22,10 +22,10 @@ public:
     bool setEventScript(string script);
     bool setDungeonScene(Layer* mainLayer);
     bool runEvent(int id);
-    vector<string> getPreLoadList(string kind);
+    vector<string> getPreLoadList(string type);
 private:
     //関数ポインタ型を宣言
-    typedef bool (EventScriptManager::*FunctionPointer)(rapidjson::Value& event);
+    typedef Ref*(EventScriptManager::*FunctionPointer)(rapidjson::Value& event);
     //クラス変数
     map<string, FunctionPointer> event_map;
     //インスタンス変数
@@ -39,8 +39,8 @@ private:
     //EventScriptManager関数
     bool dealScript(rapidjson::Value& event);
     //イベント関数を宣言
-    bool changeMap(rapidjson::Value& event);
-    bool move(rapidjson::Value& event);
-    bool message(rapidjson::Value& event);
+    Ref* changeMap(rapidjson::Value& event);
+    Ref* move(rapidjson::Value& event);
+    Ref* message(rapidjson::Value& event);
 };
 #endif /* defined(__LastSupper__EventScript__) */

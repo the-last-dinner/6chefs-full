@@ -8,24 +8,6 @@
 
 #include "EventScriptManager.h"
 
-//EventTypeのmap
-/*const map<string, EventScriptManager::FunctionPointer> EventScriptManager::event_map = {
-    //命令タイプ
-    //{"sequence", &},    //順番に処理を実行
-    //{"spawn", 2},       //同時に処理を実行
-    //{"flag", 3},        //flagによって場合分けして実行
-    //イベントタイプ
-    {"move", &EventScriptManager::move},     //オブジェクトの移動
-    {"message", &EventScriptManager::message}  //システムのメッセージ
-    //{"talk", 1002},     //キャラクターの会話
-    //{"changeMap", 1004},//マップ移動
-    //{"fade", 1005},     //画面特殊効果
-    //{"playSE", 1006},   //効果音再生
-    //{"playBGM", 1007},  //BGM再生
-    //{"control", 1008},  //操作状態の変更
-    //{"read", 1009}      //書物読んでるモード
-};*/
-
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
 
@@ -107,10 +89,11 @@ bool EventScriptManager::setEventScript (string script)
     }
 }
 
-vector<string> EventScriptManager::getPreLoadList(string kind){
+//リソースのプリロード関数
+vector<string> EventScriptManager::getPreLoadList(string type){
     vector<string> list;
-    const char* kindc = kind.c_str();
-    rapidjson::Value& obj = this->json[kindc];
+    const char* typec = type.c_str();
+    rapidjson::Value& obj = this->json[typec];
     SizeType len = obj.Size();
     for(int i=0;i<len;i++){
         list.push_back(obj[i].GetString());
@@ -118,7 +101,7 @@ vector<string> EventScriptManager::getPreLoadList(string kind){
     return list;
 }
 
-//
+//マップ初期化処理
 bool EventScriptManager::setDungeonScene(Layer* mainLayer)
 {
     FUNCLOG
@@ -162,7 +145,7 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
             if(!func){
                 //default :
             } else {
-                (this->*func)(event);
+                this->layer->runAction(dynamic_cast<TargetedAction*>((this->*func)(event)));
             }
         }
     }
@@ -172,20 +155,20 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
 /**
  * イベント関数
  */
-bool EventScriptManager::changeMap(rapidjson::Value& event)
+Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
     cout << "This is changeMap!" << endl;
-    return true;
+    //return true;
 }
 
-bool EventScriptManager::move(rapidjson::Value& event)
+Ref* EventScriptManager::move(rapidjson::Value& event)
 {
     cout << "This is move!" << endl;
-    return true;
+    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName("map")->getChildByName("magoichi"), MoveBy::create(1.0f, Point(32.f, 32.f))));
 }
 
-bool EventScriptManager::message(rapidjson::Value& event)
+Ref* EventScriptManager::message(rapidjson::Value& event)
 {
     cout << "This is message!" << endl;
-    return true;
+    //return true;
 }
