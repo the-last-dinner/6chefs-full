@@ -47,8 +47,7 @@ void EventScriptManager::destroy()
 EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
 {
     FUNCLOG
-    //event_map["move"] = &EventScriptManager::move;
-    //event_map["message"] = &EventScriptManager::message;
+    //イベント関数の関数ポインタ格納
     event_map = {
         //命令タイプ
         //{"sequence", &EventScriptManager::sequence},    //順番に処理を実行

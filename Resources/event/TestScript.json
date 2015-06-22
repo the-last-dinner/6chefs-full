@@ -1,4 +1,7 @@
 {
+    "sound":[
+        "hogehoge",
+    ],
     "0": [
           {
           "type": "fade",
