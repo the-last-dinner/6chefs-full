@@ -75,6 +75,8 @@ bool DungeonScene::init()
 void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 {
 	FUNCLOG
+    //テストでイベントID:2を呼んでみる
+    EventScriptManager::getInstance()->runEvent(2);
 	// cocos2d上のキーコードからゲーム内でのキーコードに変換
 	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
 	

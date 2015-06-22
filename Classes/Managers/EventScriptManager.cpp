@@ -7,6 +7,7 @@
 //
 
 #include "EventScriptManager.h"
+#include "LoadScene.h"
 
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
@@ -139,13 +140,13 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
         if(type == "sequence" || type == "spawn"){
             rapidjson::Value& subAction = event["action"];
             this->dealScript(subAction);
-        } else if (type == "move"){
+        } else if (type == "move" || type == "changeMap") {
             FunctionPointer func;
             func = EventScriptManager::event_map.at(type);
             if(!func){
                 //default :
             } else {
-                this->layer->runAction(dynamic_cast<TargetedAction*>((this->*func)(event)));
+                this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
             }
         }
     }
@@ -158,7 +159,7 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
 Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
     cout << "This is changeMap!" << endl;
-    //return true;
+    return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::TITLE));}));
 }
 
 Ref* EventScriptManager::move(rapidjson::Value& event)

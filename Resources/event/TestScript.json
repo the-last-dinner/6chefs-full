@@ -63,6 +63,9 @@
           ],
     "2": [
           {
+            "type":"changeMap"
+          },
+          {
           "type": "fade",
           "option": "true"
           },
