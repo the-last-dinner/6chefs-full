@@ -42,7 +42,8 @@ private:
     //イベント関数を宣言
     Ref* sequence(rapidjson::Value& event);
     Ref* spawn(rapidjson::Value& event);
-    Ref* flag(rapidjson::Value& event);
+    Ref* repeat(rapidjson::Value& event);
+    Ref* flagif(rapidjson::Value& event);
     Ref* changeMap(rapidjson::Value& event);
     Ref* move(rapidjson::Value& event);
     Ref* message(rapidjson::Value& event);

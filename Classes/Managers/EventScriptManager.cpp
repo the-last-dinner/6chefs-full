@@ -35,7 +35,8 @@ EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
         //命令タイプ
         {"sequence", &EventScriptManager::sequence},    //順番に処理を実行
         {"spawn", &EventScriptManager::spawn},       //同時に処理を実行
-        {"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
+        {"repeat", &EventScriptManager::repeat},    //繰り返し実行
+        {"flagif", &EventScriptManager::flagif},        //flagによって場合分けして実行
         //イベントタイプ
         {"changeMap", &EventScriptManager::changeMap},//マップ移動
         {"move", &EventScriptManager::move},     //オブジェクトの移動
@@ -152,27 +153,6 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
     return true;
 }
 
-/**
- * 命令関数群
- */
-Ref* EventScriptManager::sequence(rapidjson::Value& event)
-{
-    FUNCLOG
-    return static_cast<Ref*>(Sequence::create(this->createActionVec(event["action"])));
-}
-
-Ref* EventScriptManager::spawn(rapidjson::Value& event)
-{
-    FUNCLOG
-    return static_cast<Ref*>(Spawn::create(this->createActionVec(event["action"])));
-}
-
-Ref* EventScriptManager::flag(rapidjson::Value &event)
-{
-    FUNCLOG
-    return nullptr;
-}
-
 //event配列actionのVectorを返す配列
 cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson::Value& subAction)
 {
@@ -199,10 +179,70 @@ cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson
     return acts;
 }
 
+// --------------------------------
+//       Instruct functions
+// --------------------------------
 
-//イベント関数群
+/**
+ * run sequence
+ * @param type: string >> sequence
+ * @param action: array JsonObject >> array of instructs
+ */
+Ref* EventScriptManager::sequence(rapidjson::Value& event)
+{
+    FUNCLOG
+    return static_cast<Ref*>(Sequence::create(this->createActionVec(event["action"])));
+}
+
+/**
+ * run spawn
+ * @param type: string >> spawn
+ * @param action: array JsonObject >> array of instructs
+ */
+Ref* EventScriptManager::spawn(rapidjson::Value& event)
+{
+    FUNCLOG
+    return static_cast<Ref*>(Spawn::create(this->createActionVec(event["action"])));
+}
+
+/**
+ * run repeat
+ * @param type: string >> repeat
+ * @param loop: int >> loop count
+ * @param action: array JsonObject >> array of instruts
+ */
+Ref* EventScriptManager::repeat(rapidjson::Value &event)
+{
+    FUNCLOG
+    Vector<FiniteTimeAction*> repeatAct;
+    Vector<FiniteTimeAction*> origin = this->createActionVec(event["action"]);
+    int loop = event["loop"].GetInt();
+    for(int i=0;i<loop; i++){
+        repeatAct.pushBack(origin);
+    }
+    return static_cast<Ref*>(Sequence::create(repeatAct));
+}
+
+/**
+ * flagif
+ * @param type: string >> flagif
+ * @param map: int >> map_id
+ * @param flag: int >> flag_id
+ * @param true: array JsonObject >> array of instructs
+ * @param false: arrya JsonObject >> array of instructs
+ */
+Ref* EventScriptManager::flagif(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+// --------------------------------
+//       Event functions
+// --------------------------------
 /**
  * change map
+ * @param type: string >> changeMap
  * @param ?
  */
 Ref* EventScriptManager::changeMap(rapidjson::Value& event)
@@ -213,10 +253,11 @@ Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 }
 /** 
  * Move object
- * @param string object name of object
- * @param double time   time of move
- * @param int x         move x points
- * @param int y         move y points
+ * @param type: string >> move
+ * @param object: string >> name of object
+ * @param time: string >> time of move
+ * @param x: int >> move x points
+ * @param y: int >> move y points
  */
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
@@ -229,7 +270,8 @@ Ref* EventScriptManager::move(rapidjson::Value& event)
 
 /**
  * play sounud effect
- * @param string file   filename
+ * @param type: string >> playSE
+ * @param file: string >> filename
  */
 Ref* EventScriptManager::playSE(rapidjson::Value& event)
 {
@@ -241,7 +283,8 @@ Ref* EventScriptManager::playSE(rapidjson::Value& event)
 
 /**
  * play back ground music
- * @param string file   filename
+ * @param type: string >> playBGM
+ * @param file: string >> filename
  */
 Ref* EventScriptManager::playBGM(rapidjson::Value &event)
 {

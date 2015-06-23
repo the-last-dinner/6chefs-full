@@ -129,6 +129,7 @@ void TitleScene::pressSpaceKey()
 	MenuType type = static_cast<MenuType>(this->menuCounter % static_cast<int>(MenuType::SIZE));
 	switch (type) {
 		case MenuType::BEGINING:
+            SoundManager::getInstance()->playSE("gameStart.mp3");
 			Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::DUNGEON));
 			break;
 		case MenuType::FINISH:
