@@ -11,6 +11,7 @@
 
 #include "Common.h"
 #include "SceneData.h"
+#include "MapObjects/Objects.h"
 
 class DungeonSceneData : public SceneData
 {

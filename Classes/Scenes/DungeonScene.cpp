@@ -18,12 +18,16 @@ const map<ActionKeyManager::Key, Point> DungeonScene::scrollMap =
 
 // コンストラクタ
 DungeonScene::DungeonScene():
-eventListener(nullptr)
+eventListener(nullptr),
+data(nullptr)
 {FUNCLOG}
 
 // デストラクタ
 DungeonScene::~DungeonScene()
-{FUNCLOG}
+{
+	FUNCLOG
+	delete this->data;
+}
 
 // シーン生成
 Scene* DungeonScene::createScene()
@@ -39,6 +43,9 @@ bool DungeonScene::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
+	
+	// モデルクラスを初期化
+	this->data = new DungeonSceneData();
 	
 	// イベントリスナ生成
 	this->eventListener = EventListenerKeyboard::create();
