@@ -84,6 +84,10 @@
 		55469D811B21B3320061F69D /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55469D7E1B21B3320061F69D /* LoadScene.cpp */; };
 		55619F621B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
 		55619F631B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
+		55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
+		55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
+		55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEF1B39A427000AFC17 /* SceneData.cpp */; };
+		55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEF1B39A427000AFC17 /* SceneData.cpp */; };
 		557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557C03591B37D11E00F3F8A2 /* SoundManager.cpp */; };
 		557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557C03591B37D11E00F3F8A2 /* SoundManager.cpp */; };
 		55DD60221B24A0AD00F56438 /* event in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601D1B24A0AD00F56438 /* event */; };
@@ -226,6 +230,10 @@
 		55469D7F1B21B3320061F69D /* LoadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadScene.h; path = ../Classes/Scenes/LoadScene.h; sourceTree = "<group>"; };
 		55619F601B36970B007EBD6E /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../Classes/MapObjects/MapObject.cpp; sourceTree = "<group>"; };
 		55619F611B36970B007EBD6E /* MapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObject.h; path = ../Classes/MapObjects/MapObject.h; sourceTree = "<group>"; };
+		55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonSceneData.cpp; sourceTree = "<group>"; };
+		55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonSceneData.h; sourceTree = "<group>"; };
+		55655AEF1B39A427000AFC17 /* SceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneData.cpp; sourceTree = "<group>"; };
+		55655AF01B39A427000AFC17 /* SceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneData.h; sourceTree = "<group>"; };
 		557C03591B37D11E00F3F8A2 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/Managers/SoundManager.cpp; sourceTree = "<group>"; };
 		557C035A1B37D11E00F3F8A2 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/Managers/SoundManager.h; sourceTree = "<group>"; };
 		55DD601D1B24A0AD00F56438 /* event */ = {isa = PBXFileReference; lastKnownFileType = folder; path = event; sourceTree = "<group>"; };
@@ -539,6 +547,10 @@
 		552D83811B20BCC000B681A8 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */,
+				55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */,
+				55655AEF1B39A427000AFC17 /* SceneData.cpp */,
+				55655AF01B39A427000AFC17 /* SceneData.h */,
 			);
 			name = Scene;
 			path = ../Classes/Datas/Scene;
@@ -727,11 +739,13 @@
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552D83741B20BC7900B681A8 /* GameStatusManager.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				5534BBC91B2C7CA4003CB847 /* TiledMapManager.cpp in Sources */,
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
+				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
 			);
@@ -742,6 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
@@ -754,6 +769,7 @@
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
+				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
