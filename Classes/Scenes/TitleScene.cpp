@@ -64,7 +64,7 @@ bool TitleScene::init()
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
 	this->runAction(Sequence::create(TargetedAction::create(titleBg, FadeIn::create(2.f)),
-									 CallFunc::create([this](){this->eventListener->setEnabled(true);}),
+									 CallFunc::create([this](){this->eventListener->setEnabled(true);this->moveCursor(false);}),
 									 nullptr));
 	
 	// ループを開始
@@ -80,13 +80,13 @@ void TitleScene::update(float delta)
 }
 
 // カーソルを移動
-void TitleScene::moveCursor()
+void TitleScene::moveCursor(bool sound)
 {
 	FUNCLOG
 	for(int i = 0; i < menuStrings.size(); i++)
 	{
 		Node* menu = this->getChildByTag(i);
-		SoundManager::getInstance()->playSE("cursorMove.mp3");
+		if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
 		this->runAction(Spawn::create(TargetedAction::create(menu, ScaleTo::create(0.2f, (this->menuCounter % static_cast<int>(MenuType::SIZE) == i)?1.1f:1.f)),
 									  TargetedAction::create(menu, TintTo::create(0.5f, 255, 255, 255)),
 									  nullptr));
@@ -107,11 +107,11 @@ void TitleScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 	{
 		case ActionKeyManager::Key::UP:
 			if(this->menuCounter > 0) menuCounter--;
-			this->moveCursor();
+			this->moveCursor(true);
 			break;
 		case ActionKeyManager::Key::DOWN:
 			this->menuCounter++;
-			this->moveCursor();
+			this->moveCursor(true);
 			break;
 		case ActionKeyManager::Key::SPACE:
 			this->pressSpaceKey();
