@@ -8,5 +8,6 @@
 #include "ActionKeyManager.h"
 #include "EventScriptManager.h"
 #include "TiledMapManager.h"
+#include "SoundManager.h"
 
 #endif // __COMMON_H__

@@ -134,8 +134,8 @@ void Character::move(float ratio)
 	this->identifier = (this->identifier)?false:true;
 	anime->setDelayPerUnit(SECOND_PER_GRID * ratio);
 	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
-									TargetedAction::create(this->character, Animate::create(anime)),
-									CallFunc::create([=](){this->setMoving(false);}),
-									nullptr));
+									 TargetedAction::create(this->character, Animate::create(anime)),
+									 CallFunc::create([=](){this->setMoving(false);}),
+									 nullptr));
 	return;
 }

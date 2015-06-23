@@ -103,6 +103,7 @@ vector<string> EventScriptManager::getPreLoadList(string type){
 }
 
 //マップ初期化処理
+//
 bool EventScriptManager::setDungeonScene(Layer* mainLayer)
 {
     FUNCLOG

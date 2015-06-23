@@ -67,9 +67,6 @@ bool TitleScene::init()
 									 CallFunc::create([this](){this->eventListener->setEnabled(true);}),
 									 nullptr));
 	
-	// 選択されているメニューに照準を当てる
-	this->moveCursor();
-	
 	// ループを開始
 	this->scheduleUpdate();
 	
@@ -89,6 +86,7 @@ void TitleScene::moveCursor()
 	for(int i = 0; i < menuStrings.size(); i++)
 	{
 		Node* menu = this->getChildByTag(i);
+		SoundManager::getInstance()->playSE("cursorMove.mp3");
 		this->runAction(Spawn::create(TargetedAction::create(menu, ScaleTo::create(0.2f, (this->menuCounter % static_cast<int>(MenuType::SIZE) == i)?1.1f:1.f)),
 									  TargetedAction::create(menu, TintTo::create(0.5f, 255, 255, 255)),
 									  nullptr));

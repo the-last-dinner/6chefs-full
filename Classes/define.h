@@ -5,6 +5,7 @@
 // 最低限のインクルード、変数の初期化を行う
 
 #include <cocos2d.h>
+#include "SimpleAudioEngine.h"
 #include <iostream>
 #include <fstream>
 #include "rapidjson/document.h"
@@ -24,6 +25,7 @@
 #define DEBUG
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 using namespace std;
 using namespace rapidjson;
 

@@ -104,10 +104,28 @@ void LoadScene::resourceLoad()
 {
 	FUNCLOG
 	if(nextSceneType == SceneType::TITLE){
+		thread th = thread([this](){
+			EventScriptManager* esManager = EventScriptManager::getInstance();
+			vector<string> bgmList = esManager->getPreLoadList("bgm");
+			vector<string> seList = esManager->getPreLoadList("se");
+			for(int i = 0; i < bgmList.size(); i++)
+			{
+				SoundManager::getInstance()->preloadBGM(bgmList.at(i));
+			}
+			for(int i = 0; i < seList.size(); i++)
+			{
+				SoundManager::getInstance()->preloadSE(seList.at(i));
+			}
+			Director::getInstance()->getScheduler()->performFunctionInCocosThread([this](){this->loadFinished();});
+		});
+		// スレッドの管理を手放す
+		// スレッドの処理を待つ場合はt.join()かstd::asyncを使う
+		th.detach();
+		
 		Director::getInstance()->getTextureCache()->addImageAsync(texturePath + textureNames.at(nextSceneType) + ".pvr.ccz",
 																  [this](Texture2D* loaded_texture){
 																	  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(texturePath + textureNames.at(nextSceneType) + ".plist", loaded_texture);
-																	  this->loadFinished();
+																	  //this->loadFinished();
 																  });
 	}
 
