@@ -18,12 +18,16 @@ const map<ActionKeyManager::Key, Point> DungeonScene::scrollMap =
 
 // コンストラクタ
 DungeonScene::DungeonScene():
-eventListener(nullptr)
+eventListener(nullptr),
+data(nullptr)
 {FUNCLOG}
 
 // デストラクタ
 DungeonScene::~DungeonScene()
-{FUNCLOG}
+{
+	FUNCLOG
+	delete this->data;
+}
 
 // シーン生成
 Scene* DungeonScene::createScene()
@@ -39,6 +43,9 @@ bool DungeonScene::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
+	
+	// モデルクラスを初期化
+	this->data = new DungeonSceneData();
 	
 	// イベントリスナ生成
 	this->eventListener = EventListenerKeyboard::create();
@@ -108,15 +115,17 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 						{
 							// 指定秒後に移動をさせる
 							magoichi->move();
-							this->runAction(Spawn::create(TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - scrollMap.at(key))),
-														  TargetedAction::create(magoichi, MoveBy::create(Character::SECOND_PER_GRID, scrollMap.at(key))),
-														  CallFunc::create([=](){
+							this->runAction(Sequence::create(Spawn::create(TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - scrollMap.at(key))),
+																		   TargetedAction::create(magoichi, MoveBy::create(Character::SECOND_PER_GRID, scrollMap.at(key))),
+																		   nullptr),
+															 CallFunc::create([=](){
 								int eventID = TiledMapManager::getInstance()->getEventID(magoichi->getGridPosition());
+								log("POINT >>>>>>>>>>>>>>>>>>>>> (%f, %f)", magoichi->getGridPosition().x, magoichi->getGridPosition().y);
 								log("EVENT ID >>>>>>>>>>>>>>> %d", eventID);
 								if(eventID != -1){
 									EventScriptManager::getInstance()->runEvent(eventID);
 								}}),
-														  nullptr));
+															 nullptr));
 						}
 					}
 					else

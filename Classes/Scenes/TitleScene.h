@@ -31,7 +31,7 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 	void pressSpaceKey();
-	void moveCursor();
+	void moveCursor(bool sound);
 	
 	// インスタンス変数
 private:

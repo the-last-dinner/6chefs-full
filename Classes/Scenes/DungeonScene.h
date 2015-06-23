@@ -11,7 +11,7 @@
 
 #include "Common.h"
 #include "baseScene.h"
-#include "MapObjects/Objects.h"
+#include "Datas/Scene/DungeonSceneData.h"
 
 class DungeonScene : public baseScene
 {
@@ -37,6 +37,7 @@ private:
 	// インスタンス変数
 private:
 	EventListenerKeyboard* eventListener;
+	DungeonSceneData* data;
 };
 
 
