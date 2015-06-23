@@ -67,7 +67,7 @@ bool DungeonScene::init()
     EventScriptManager::getInstance()->setDungeonScene(this);
     
     //テストでイベントID:1を呼んでみる
-    //EventScriptManager::getInstance()->runEvent(1);
+    EventScriptManager::getInstance()->runEvent(1);
 	return true;
 }
 

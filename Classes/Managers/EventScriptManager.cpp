@@ -138,22 +138,15 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
         rapidjson::Value& event = action[i];
         type = static_cast<string>(event["type"].GetString());
         cout << "   type=" << type << endl;
-        /*if(type == "sequence" || type == "spawn"){
-            rapidjson::Value& subAction = event["action"];
-            this->dealScript(subAction);
-        } else {
-            if(!func){
-                //default :
-            } else {
-                this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
-            }
-        }*/
         FunctionPointer func;
         func = EventScriptManager::event_map.at(type);
         if(!func){
             //default :
         } else {
-            this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
+            Ref* targetAct = (this->*func)(event);
+            if(targetAct != nullptr){
+                this->layer->runAction(dynamic_cast<FiniteTimeAction*>(targetAct));
+            }
         }
     }
     return true;
@@ -196,15 +189,21 @@ cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson
         if(!func){
             //default :
         } else {
-            acts.pushBack(dynamic_cast<FiniteTimeAction*>((this->*func)(subAction[i])));
+            Ref* targetAct = (this->*func)(subAction[i]);
+            if(targetAct != nullptr){
+                acts.pushBack(dynamic_cast<FiniteTimeAction*>(targetAct));
+            }
         }
     }
-    acts.pushBack(nullptr);
+    //acts.pushBack(nullptr);
     return acts;
 }
 
+
+//イベント関数群
 /**
- * イベント関数群
+ * change map
+ * @param ?
  */
 Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
@@ -212,11 +211,45 @@ Ref* EventScriptManager::changeMap(rapidjson::Value& event)
     //とりあえずテストでタイトル画面に移動するように設計してある
     return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::TITLE));}));
 }
-
+/** 
+ * Move object
+ * @param string object name of object
+ * @param double time   time of move
+ * @param int x         move x points
+ * @param int y         move y points
+ */
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
     FUNCLOG
-    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName("map")->getChildByName("magoichi"), MoveBy::create(1.0f, Point(32.f, 32.f))));
+    double scale = 32.0;
+    float x = static_cast<float>(event["x"].GetDouble() * scale);
+    float y = static_cast<float>(event["y"].GetDouble() * scale);
+    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName(this->json["name"].GetString())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
+}
+
+/**
+ * play sounud effect
+ * @param string file   filename
+ */
+Ref* EventScriptManager::playSE(rapidjson::Value& event)
+{
+    FUNCLOG
+    string file = event["file"].GetString();
+    cout << "playSE >> " << file << endl;
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+}
+
+/**
+ * play back ground music
+ * @param string file   filename
+ */
+Ref* EventScriptManager::playBGM(rapidjson::Value &event)
+{
+    FUNCLOG
+    string file = event["file"].GetString();
+    cout << "playBGM >> " << file << endl;
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+
 }
 
 Ref* EventScriptManager::message(rapidjson::Value& event)
@@ -232,18 +265,6 @@ Ref* EventScriptManager::talk(rapidjson::Value& event)
 }
 
 Ref* EventScriptManager::fade(rapidjson::Value& event)
-{
-    FUNCLOG
-    return nullptr;
-}
-
-Ref* EventScriptManager::playSE(rapidjson::Value& event)
-{
-    FUNCLOG
-    return nullptr;
-}
-
-Ref* EventScriptManager::playBGM(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;
