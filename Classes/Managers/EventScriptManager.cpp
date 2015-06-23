@@ -137,17 +137,22 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
         rapidjson::Value& event = action[i];
         type = static_cast<string>(event["type"].GetString());
         cout << "   type=" << type << endl;
-        if(type == "sequence" || type == "spawn"){
+        /*if(type == "sequence" || type == "spawn"){
             rapidjson::Value& subAction = event["action"];
             this->dealScript(subAction);
-        } else if (type == "move" || type == "changeMap") {
-            FunctionPointer func;
-            func = EventScriptManager::event_map.at(type);
+        } else {
             if(!func){
                 //default :
             } else {
                 this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
             }
+        }*/
+        FunctionPointer func;
+        func = EventScriptManager::event_map.at(type);
+        if(!func){
+            //default :
+        } else {
+            this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
         }
     }
     return true;
@@ -159,17 +164,42 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
 Ref* EventScriptManager::sequence(rapidjson::Value& event)
 {
     FUNCLOG
-    
+    return static_cast<Ref*>(Sequence::create(this->createActionVec(event["action"])));
 }
 
 Ref* EventScriptManager::spawn(rapidjson::Value& event)
 {
     FUNCLOG
+    return static_cast<Ref*>(Spawn::create(this->createActionVec(event["action"])));
 }
 
 Ref* EventScriptManager::flag(rapidjson::Value &event)
 {
     FUNCLOG
+    return nullptr;
+}
+
+//event配列actionのVectorを返す配列
+cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson::Value& subAction)
+{
+    FUNCLOG
+    SizeType len = subAction.Size();
+    cout << "   len=" << len << endl;
+    string type;
+    Vector<FiniteTimeAction*> acts;
+    for(int i=0;i<len;i++){
+        type = static_cast<string>(subAction[i]["type"].GetString());
+        cout << "   type=" << type << endl;
+        FunctionPointer func;
+        func = this->event_map.at(type);
+        if(!func){
+            //default :
+        } else {
+            acts.pushBack(dynamic_cast<FiniteTimeAction*>((this->*func)(subAction[i])));
+        }
+    }
+    acts.pushBack(nullptr);
+    return acts;
 }
 
 /**
@@ -185,41 +215,47 @@ Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
     FUNCLOG
-    cout << "This is move!" << endl;
     return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName("map")->getChildByName("magoichi"), MoveBy::create(1.0f, Point(32.f, 32.f))));
 }
 
 Ref* EventScriptManager::message(rapidjson::Value& event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::talk(rapidjson::Value& event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::fade(rapidjson::Value& event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::playSE(rapidjson::Value& event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::playBGM(rapidjson::Value &event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::control(rapidjson::Value &event)
 {
     FUNCLOG
+    return nullptr;
 }
 
 Ref* EventScriptManager::read(rapidjson::Value &event)
 {
     FUNCLOG
+    return nullptr;
 }
