@@ -38,9 +38,19 @@ private:
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
     //EventScriptManager関数
     bool dealScript(rapidjson::Value& event);
+    cocos2d::Vector<FiniteTimeAction*> createActionVec(rapidjson::Value& subAction);
     //イベント関数を宣言
+    Ref* sequence(rapidjson::Value& event);
+    Ref* spawn(rapidjson::Value& event);
+    Ref* flag(rapidjson::Value& event);
     Ref* changeMap(rapidjson::Value& event);
     Ref* move(rapidjson::Value& event);
     Ref* message(rapidjson::Value& event);
+    Ref* talk(rapidjson::Value& event);
+    Ref* fade(rapidjson::Value& event);
+    Ref* playSE(rapidjson::Value& event);
+    Ref* playBGM(rapidjson::Value& event);
+    Ref* control(rapidjson::Value& event);
+    Ref* read(rapidjson::Value& event);
 };
 #endif /* defined(__LastSupper__EventScript__) */

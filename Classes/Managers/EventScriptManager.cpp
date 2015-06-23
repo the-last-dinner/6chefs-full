@@ -33,19 +33,19 @@ EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
     //イベント関数の関数ポインタ格納
     event_map = {
         //命令タイプ
-        //{"sequence", &EventScriptManager::sequence},    //順番に処理を実行
-        //{"spawn", &EventScriptManager::spawn},       //同時に処理を実行
-        //{"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
+        {"sequence", &EventScriptManager::sequence},    //順番に処理を実行
+        {"spawn", &EventScriptManager::spawn},       //同時に処理を実行
+        {"flag", &EventScriptManager::flag},        //flagによって場合分けして実行
         //イベントタイプ
         {"changeMap", &EventScriptManager::changeMap},//マップ移動
         {"move", &EventScriptManager::move},     //オブジェクトの移動
-        {"message", &EventScriptManager::message}  //システムのメッセージ
-        //{"talk", &EventScriptManager::talk},     //キャラクターの会話
-        //{"fade", &EventScriptManager::fade},     //画面特殊効果
-        //{"playSE", &EventScriptManager::playSE},   //効果音再生
-        //{"playBGM", &EventScriptManager::playBGM},  //BGM再生
-        //{"control", &EventScriptManager::control},  //操作状態の変更
-        //{"read", &EventScriptManager::read}      //書物読んでるモード
+        {"message", &EventScriptManager::message},  //システムのメッセージ
+        {"talk", &EventScriptManager::talk},     //キャラクターの会話
+        {"fade", &EventScriptManager::fade},     //画面特殊効果
+        {"playSE", &EventScriptManager::playSE},   //効果音再生
+        {"playBGM", &EventScriptManager::playBGM},  //BGM再生
+        {"control", &EventScriptManager::control},  //操作状態の変更
+        {"read", &EventScriptManager::read}      //書物読んでるモード
     };
 }
 
@@ -138,16 +138,14 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
         rapidjson::Value& event = action[i];
         type = static_cast<string>(event["type"].GetString());
         cout << "   type=" << type << endl;
-        if(type == "sequence" || type == "spawn"){
-            rapidjson::Value& subAction = event["action"];
-            this->dealScript(subAction);
-        } else if (type == "move" || type == "changeMap") {
-            FunctionPointer func;
-            func = EventScriptManager::event_map.at(type);
-            if(!func){
-                //default :
-            } else {
-                this->layer->runAction(dynamic_cast<FiniteTimeAction*>((this->*func)(event)));
+        FunctionPointer func;
+        func = EventScriptManager::event_map.at(type);
+        if(!func){
+            //default :
+        } else {
+            Ref* targetAct = (this->*func)(event);
+            if(targetAct != nullptr){
+                this->layer->runAction(dynamic_cast<FiniteTimeAction*>(targetAct));
             }
         }
     }
@@ -155,22 +153,131 @@ bool EventScriptManager::dealScript(rapidjson::Value& action)
 }
 
 /**
- * イベント関数
+ * 命令関数群
+ */
+Ref* EventScriptManager::sequence(rapidjson::Value& event)
+{
+    FUNCLOG
+    return static_cast<Ref*>(Sequence::create(this->createActionVec(event["action"])));
+}
+
+Ref* EventScriptManager::spawn(rapidjson::Value& event)
+{
+    FUNCLOG
+    return static_cast<Ref*>(Spawn::create(this->createActionVec(event["action"])));
+}
+
+Ref* EventScriptManager::flag(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+//event配列actionのVectorを返す配列
+cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson::Value& subAction)
+{
+    FUNCLOG
+    SizeType len = subAction.Size();
+    cout << "   len=" << len << endl;
+    string type;
+    Vector<FiniteTimeAction*> acts;
+    for(int i=0;i<len;i++){
+        type = static_cast<string>(subAction[i]["type"].GetString());
+        cout << "   type=" << type << endl;
+        FunctionPointer func;
+        func = this->event_map.at(type);
+        if(!func){
+            //default :
+        } else {
+            Ref* targetAct = (this->*func)(subAction[i]);
+            if(targetAct != nullptr){
+                acts.pushBack(dynamic_cast<FiniteTimeAction*>(targetAct));
+            }
+        }
+    }
+    //acts.pushBack(nullptr);
+    return acts;
+}
+
+
+//イベント関数群
+/**
+ * change map
+ * @param ?
  */
 Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
-    cout << "This is changeMap!" << endl;
+    FUNCLOG
+    //とりあえずテストでタイトル画面に移動するように設計してある
     return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::TITLE));}));
 }
-
+/** 
+ * Move object
+ * @param string object name of object
+ * @param double time   time of move
+ * @param int x         move x points
+ * @param int y         move y points
+ */
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
-    cout << "This is move!" << endl;
-    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName("map")->getChildByName("magoichi"), MoveBy::create(1.0f, Point(32.f, 32.f))));
+    FUNCLOG
+    double scale = 32.0;
+    float x = static_cast<float>(event["x"].GetDouble() * scale);
+    float y = static_cast<float>(event["y"].GetDouble() * scale);
+    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName(this->json["name"].GetString())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
+}
+
+/**
+ * play sounud effect
+ * @param string file   filename
+ */
+Ref* EventScriptManager::playSE(rapidjson::Value& event)
+{
+    FUNCLOG
+    string file = event["file"].GetString();
+    cout << "playSE >> " << file << endl;
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+}
+
+/**
+ * play back ground music
+ * @param string file   filename
+ */
+Ref* EventScriptManager::playBGM(rapidjson::Value &event)
+{
+    FUNCLOG
+    string file = event["file"].GetString();
+    cout << "playBGM >> " << file << endl;
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+
 }
 
 Ref* EventScriptManager::message(rapidjson::Value& event)
 {
-    cout << "This is message!" << endl;
-    //return true;
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptManager::talk(rapidjson::Value& event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptManager::fade(rapidjson::Value& event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptManager::control(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptManager::read(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
 }
