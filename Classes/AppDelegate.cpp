@@ -31,14 +31,7 @@ void AppDelegate::init()
 {
 	TiledMapManager::getInstance()->setBasePath("map/");
 	SoundManager::getInstance()->setBasePath("se/", "bgm/");
-	
-	
     EventScriptManager::getInstance()->setEventScript("TestScript");
-    //テストでイベントID:1を呼んでみる
-    EventScriptManager::getInstance()->runEvent(1);
-    //bgmをプリロードしてみる
-    vector<string> bgm = EventScriptManager::getInstance()->getPreLoadList("bgm");
-    //cout << "bgm = " << bgm.at(0) << endl;
 	return;
 }
 

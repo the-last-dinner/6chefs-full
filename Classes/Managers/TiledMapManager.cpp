@@ -183,5 +183,5 @@ bool TiledMapManager::isHit(const Point& mapGridPoint)
 int TiledMapManager::getEventID(const Point& mapGridPoint)
 {
 	FUNCLOG
-	return (eventMap.count(mapGridPoint) == 0)?-1:eventMap.at(mapGridPoint).y;
+	return (eventMap.count(mapGridPoint) == 0)?-1:eventMap.at(mapGridPoint).x;
 }
