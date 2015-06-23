@@ -248,7 +248,7 @@ Ref* EventScriptManager::playBGM(rapidjson::Value &event)
     FUNCLOG
     string file = event["file"].GetString();
     cout << "playBGM >> " << file << endl;
-    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playBGM(file);}));
 
 }
 
