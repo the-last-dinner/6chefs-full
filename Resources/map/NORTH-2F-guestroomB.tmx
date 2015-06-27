@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="34" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="1">
+ <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16">
+  <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
+ </tileset>
+ <tileset firstgid="9901" name="ST-Room-I01" tilewidth="16" tileheight="16">
+  <image source="ST-Room-I01.png" trans="ffffff" width="256" height="1120"/>
+ </tileset>
+ <layer name="Base" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJztkUsOQEAQRNvnGhjWHIkTCGscz3frRspCwsRK0i2iK3npySym5qWJ/pceDKByiEomajCiYzr1rrgLwQJmJva3I2Ac+d4GtC/0Rje9qUsUA8NEAjL32hvg3O13zHQ3vR6mT/zT7s0xC+Kf6qu+6qu+6qu+6qu+kr5PcvxfOsf/pWPvTSr23qTy1f1uzWzNyg==
+  </data>
+ </layer>
+ <layer name="MonoShita" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJzt07tOAkEUgOGTQAeJNhAodngAbVVaRO0VvNZqxBfAl1DQVgFvvUqi76EvoaC9ggr+FJuYTZYVmJ3EsCf5mmFz/uyGERnvOQyJHKGEcsjcnmeeeUEDzRG6g+7JhEXmkcVCePiuc48VE1Ex9+dPeeYMFVRH6Dr3FGke9On6NY80n8aoOxUXmY6b7+qeksX9xDFOLPfz+4jIQ0Rft8HOJl7xZrmfT0RFJqP6ulnF/cQilpT7eYHmvsZuhZ1V1HCuvM+dU0vwOy5wiStcJ7y7M3zDWcwh/es7/7XbotHGJ77wjY6Bbi4pkscq1rCOjaT/3WHnnZ0faKGtvM91zXJKZAU55FPe58654U7f4g51dHt3XOP/vl/XbvZs0twy2LWZfl9b8L7+dbfp7GAXewaawQQTzP+cH4Zech4=
+  </data>
+ </layer>
+ <layer name="MonoChu" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJztzbcRgDAUwNA/jpck9pjQEye1NqABV3p3qhUh6StNimipo54GGtP/34lHppkWWmmr8N15HHTSRTc9Fb6SJEmS3hUShAzo
+  </data>
+ </layer>
+ <layer name="MonoUe" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJztzVERABAQBcAX59rQgP4p+FGBGbNbYBP4V6uk1/137HM+eAEAAI4Fk58B/w==
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAADwZg/wAAE=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="30" height="34">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAADwZg/wAAE=
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

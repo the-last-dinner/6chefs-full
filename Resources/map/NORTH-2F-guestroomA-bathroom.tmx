@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="situnai" tilewidth="16" tileheight="16">
+  <image source="situnai.png" trans="007575" width="960" height="511"/>
+ </tileset>
+ <tileset firstgid="2341" name="ST-Bath-I01" tilewidth="16" tileheight="16">
+  <image source="ST-Bath-I01.png" trans="ffffff" width="256" height="838"/>
+ </tileset>
+ <layer name="Base" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYICAo5yY+BgnAxxc5cTE15Dkl3Nix7SW3w7F2MQIYZBaAFvSJks=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAOPnIzMAjxIPjtXAwMHVwIviJQTokHUx8uoAtUq4eE9YHYAEm/LZBth4TtgdgBSd4XyPZDwv5AHIDF/otAd1/iJt5dAK5/CYw=
+  </data>
+ </layer>
+ <layer name="MonoChu" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAO+MyJib9wIuSZubBjfPIsSPLCXJhYBEmeXAAAhxoHNg==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBieIJyJgSGCCbf8ZKDceSAGACN0Aho=
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhawJkJgqkFACsIAIs=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuaGSCYHzytNBLLgAAnG8DEw==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>
