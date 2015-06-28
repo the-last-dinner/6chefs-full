@@ -186,7 +186,7 @@ cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson
 /**
  * run sequence
  * @param type: string >> sequence
- * @param action: array JsonObject >> array of instructs
+ * @param action: array json >> array of instructs
  */
 Ref* EventScriptManager::sequence(rapidjson::Value& event)
 {
@@ -197,7 +197,7 @@ Ref* EventScriptManager::sequence(rapidjson::Value& event)
 /**
  * run spawn
  * @param type: string >> spawn
- * @param action: array JsonObject >> array of instructs
+ * @param action: array json >> array of instructs
  */
 Ref* EventScriptManager::spawn(rapidjson::Value& event)
 {
@@ -209,7 +209,7 @@ Ref* EventScriptManager::spawn(rapidjson::Value& event)
  * run repeat
  * @param type: string >> repeat
  * @param loop: int >> loop count
- * @param action: array JsonObject >> array of instruts
+ * @param action: array json >> array of instruts
  */
 Ref* EventScriptManager::repeat(rapidjson::Value &event)
 {
@@ -228,8 +228,8 @@ Ref* EventScriptManager::repeat(rapidjson::Value &event)
  * @param type: string >> flagif
  * @param map: int >> map_id
  * @param flag: int >> flag_id
- * @param true: array JsonObject >> array of instructs
- * @param false: arrya JsonObject >> array of instructs
+ * @param true: array json >> array of instructs
+ * @param false: array json >> array of instructs
  */
 Ref* EventScriptManager::flagif(rapidjson::Value &event)
 {
@@ -262,7 +262,7 @@ Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 Ref* EventScriptManager::move(rapidjson::Value& event)
 {
     FUNCLOG
-    double scale = 32.0;
+    double scale = 16.0;
     float x = static_cast<float>(event["x"].GetDouble() * scale);
     float y = static_cast<float>(event["y"].GetDouble() * scale);
     return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName(this->json["name"].GetString())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
