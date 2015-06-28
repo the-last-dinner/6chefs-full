@@ -6,6 +6,7 @@
 AppDelegate::AppDelegate()
 {
 	FUNCLOG
+    PlayerDataManager::getInstance();
     EventScriptManager::getInstance();
 	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
@@ -24,6 +25,7 @@ AppDelegate::~AppDelegate()
 	ActionKeyManager::destroy();
 	TiledMapManager::destory();
 	SoundManager::destory();
+    PlayerDataManager::destroy();
 }
 
 // 初期化関連

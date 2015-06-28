@@ -9,5 +9,6 @@
 #include "EventScriptManager.h"
 #include "TiledMapManager.h"
 #include "SoundManager.h"
+#include "PlayerDataManager.h"
 
 #endif // __COMMON_H__

@@ -10,6 +10,7 @@
 #define __LastSupper__EventScriptManager__
 
 #include "define.h"
+#include "Managers/PlayerDataManager.h"
 
 class EventScriptManager
 {
@@ -17,10 +18,10 @@ class EventScriptManager
 public:
     static EventScriptManager* getInstance();
     static void destroy();
-    ~EventScriptManager();
 private:
-    EventScriptManager();                                               // コンストラクタ
-    EventScriptManager(const EventScriptManager& other);                // コピーコンストラクタ
+    EventScriptManager();   // コンストラクタ
+    ~EventScriptManager();  // デストラクタ
+    EventScriptManager(const EventScriptManager& other){};                // コピーコンストラクタ
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
 
 //クラス変数
