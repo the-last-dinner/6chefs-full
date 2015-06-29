@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="5">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -10,37 +10,68 @@
   <image source="ST-Bath-I01.png" trans="ffffff" width="256" height="838"/>
  </tileset>
  <layer name="Base" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYICAo5yY+BgnAxxc5cTE15Dkl3Nix7SW3w7F2MQIYZBaAFvSJks=
   </data>
  </layer>
  <layer name="MonoShita" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYMAOPnIzMAjxIPjtXAwMHVwIviJQTokHUx8uoAFUqwnEWlAahLWR9FsA2ZZAbAWlQdgaSd4DyPYEYi8oDcLeSPIRQHYkEEcBcTQSTQgAAKYhCdw=
   </data>
  </layer>
  <layer name="MonoChu" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKAO+MyJib9wIuSZubBjfPIsSPLCXJhYBEmeXAAAhxoHNg==
   </data>
  </layer>
  <layer name="MonoUe" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBieIJyJgSGCCbf8ZKDceSAGACN0Aho=
   </data>
  </layer>
  <objectgroup name="collision"/>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
  <layer name="CharaUe1" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBhawJkJgqkFACsIAIs=
   </data>
  </layer>
  <layer name="CharaUe2" width="8" height="8">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKAuaGSCYHzytNBLLgAAnG8DEw==
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="1" x="0" y="0" width="32" height="96"/>
+  <object id="2" x="0" y="128" width="128" height="16"/>
+  <object id="3" x="96" y="96" width="32" height="32"/>
+  <object id="4" x="32" y="80" width="96" height="16"/>
+ </objectgroup>
 </map>

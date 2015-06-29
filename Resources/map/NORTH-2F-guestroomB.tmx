@@ -1,43 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="34" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="34" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="14">
  <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16">
   <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
  </tileset>
  <tileset firstgid="9901" name="ST-Room-I01" tilewidth="16" tileheight="16">
   <image source="ST-Room-I01.png" trans="ffffff" width="256" height="1120"/>
  </tileset>
+ <tileset firstgid="11021" name="object_fire06a" tilewidth="16" tileheight="16">
+  <image source="object_fire06a.png" trans="c1a5c8" width="288" height="256"/>
+ </tileset>
  <layer name="Base" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-5"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztkUsOQEAQRNvnGhjWHIkTCGscz3frRspCwsRK0i2iK3npySym5qWJ/pceDKByiEomajCiYzr1rrgLwQJmJva3I2Ac+d4GtC/0Rje9qUsUA8NEAjL32hvg3O13zHQ3vR6mT/zT7s0xC+Kf6qu+6qu+6qu+6qu+kr5PcvxfOsf/pWPvTSr23qTy1f1uzWzNyg==
   </data>
  </layer>
  <layer name="MonoShita" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt07tOAkEUgOGTQAeJNhAodngAbVVaRO0VvNZqxBfAl1DQVgFvvUqi76EvoaC9ggr+FJuYTZYVmJ3EsCf5mmFz/uyGERnvOQyJHKGEcsjcnmeeeUEDzRG6g+7JhEXmkcVCePiuc48VE1Ex9+dPeeYMFVRH6Dr3FGke9On6NY80n8aoOxUXmY6b7+qeksX9xDFOLPfz+4jIQ0Rft8HOJl7xZrmfT0RFJqP6ulnF/cQilpT7eYHmvsZuhZ1V1HCuvM+dU0vwOy5wiStcJ7y7M3zDWcwh/es7/7XbotHGJ77wjY6Bbi4pkscq1rCOjaT/3WHnnZ0faKGtvM91zXJKZAU55FPe58654U7f4g51dHt3XOP/vl/XbvZs0twy2LWZfl9b8L7+dbfp7GAXewaawQQTzP+cH4Zech4=
+   eJztkzluwlAURV9nJAjQYRcGAYGNAOkhbCFA0iUtYdgBQ89QZC9Ako0w9AwVp6BAwsKW9WMi9K90muf/7/my9ER0/mtmhsgcFvBtBOdNh0QykIXHUHDeJq5PaEHbozeRFDGTf/sup7zj/LiB9wfn7w28uZRIPhW8t4Ozq9jbt0UGMLTV9t5jera3/xW2RCLwAFGIQdzy37tktoI1bE7fv8zLcy84alCHBrzC2xWvU+95CuxWEUrwpHDP3HpHzMYwgalCr1vvltkO9nBQ6HXrLbPTFXiGqs/9drqnoldHR0dHR+fecgQk0DUh
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztzbcRgDAUwNA/jpck9pjQEye1NqABV3p3qhUh6StNimipo54GGtP/34lHppkWWmmr8N15HHTSRTc9Fb6SJEmS3hUShAzo
+   eJztzbcRgEAQwMAr55vE5ticx1SKmuAStDOKFSEpW1MiWuqop4HG8v134jHTQitttCd8Dx6VTrropifhK0mSJP3ZCw5ODOg=
   </data>
  </layer>
  <layer name="MonoUe" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztzVERABAQBcAX59rQgP4p+FGBGbNbYBP4V6uk1/137HM+eAEAAI4Fk58B/w==
+   eJztzQENACAMA7DJuRtwAP5VcBWQkNZAE2BUMuv+u/rcD14AAOB/B0PvAf8=
+  </data>
+ </layer>
+ <layer name="MonoUe2" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1UENACAQBLH1cyrAAvjXAiq4kLQG5jkJwJ9GJbPed9dt7oYuAHTyXfjPAXl+A60=
   </data>
  </layer>
  <objectgroup name="collision"/>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
  <layer name="CharaUe1" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAADwZg/wAAE=
+   eJztzskJADAMwLCMke17DtpsESgS+O8IAH4wMmJWq9rVqW52XwEA0OUB60UEWg==
   </data>
  </layer>
  <layer name="CharaUe2" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztwQENAAAAwqD3T20PBxQAAADwZg/wAAE=
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="1" x="32" y="112" width="160" height="16"/>
+  <object id="2" x="192" y="112" width="96" height="32"/>
+  <object id="3" x="288" y="112" width="128" height="16"/>
+  <object id="4" x="416" y="96" width="32" height="48"/>
+  <object id="5" x="448" y="32" width="16" height="416"/>
+  <object id="6" x="256" y="448" width="208" height="32"/>
+  <object id="7" x="16" y="448" width="208" height="80"/>
+  <object id="8" x="16" y="528" width="208" height="16"/>
+  <object id="9" x="256" y="512" width="32" height="32"/>
+  <object id="10" x="16" y="32" width="16" height="416"/>
+  <object id="11" x="32" y="224" width="64" height="64"/>
+  <object id="12" x="384" y="224" width="64" height="64"/>
+  <object id="13" x="192" y="208" width="96" height="32"/>
+ </objectgroup>
 </map>
