@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="20">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="050505" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="961" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1441" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1921" name="object_fire06a" tilewidth="16" tileheight="16">
+  <image source="object_fire06a.png" trans="c1a5c8" width="288" height="256"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBjZgJ+RgUGAkfb26ALt0KOCPd5AM3wYSadH7aGtPbB0RGt7YOlouITbULGHVHvpZQ+17CO2HKTUHmLLwaESbqSCoVbfDDcAAOSPQVM=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQw1MYKONWnRwhgS9pKgdBaNgFIwCWgFKyjxSwGiZN/QAABxmBDk=
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="2" x="32" y="64" width="32" height="64"/>
+  <object id="4" x="32" y="160" width="32" height="96"/>
+  <object id="5" x="64" y="224" width="32" height="96"/>
+  <object id="7" x="96" y="288" width="32" height="32"/>
+  <object id="8" x="160" y="288" width="224" height="32"/>
+  <object id="11" x="352" y="256" width="32" height="32"/>
+  <object id="12" x="352" y="160" width="32" height="64"/>
+  <object id="14" x="288" y="48" width="64" height="144"/>
+  <object id="15" x="224" y="32" width="64" height="32"/>
+  <object id="16" x="64" y="32" width="128" height="32"/>
+  <object id="17" x="80" y="64" width="16" height="32"/>
+  <object id="18" x="256" y="64" width="16" height="32"/>
+  <object id="19" x="336" y="256" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBi5QIIZwRZjxq1usNgDMucnE34MA8hiv5hwm0nIvbTUN5zsQQ9/WtlDCSDVP6SmG3LsIUc9ve0BAVLyE7XikxhzKIkndHMIpd/BmE5x6SfXP6bMxGMzCvLTUKhvhiMAADdCINE=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAa3BXWYGhnvMtLfnN9COP3SwZ6gBAM/YA78=
+  </data>
+ </layer>
+ <layer name="fire" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQw28YqeN2lEwCkbBKBjqYLTMGwW4AAB7pALU
+  </data>
+ </layer>
+ <objectgroup name="event">
+  <properties>
+   <property name="cc_vertexz" value="3"/>
+  </properties>
+ </objectgroup>
+</map>

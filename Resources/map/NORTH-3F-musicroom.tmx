@@ -18,6 +18,9 @@
  <tileset firstgid="23165" name="tidamari" tilewidth="16" tileheight="16">
   <image source="tidamari.png" trans="fefefe" width="96" height="128"/>
  </tileset>
+ <tileset firstgid="23213" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
+ </tileset>
  <layer name="Base" width="30" height="20">
   <properties>
    <property name="cc_vertexz" value="-4"/>
@@ -31,7 +34,7 @@
    <property name="cc_vertexz" value="-3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1DdLxVAYxvHXsloXheSW1V6Hu9zkJAoK1m+hoKv1G9juahcUrKtlV9DV+g2sq3XVvwi6eBJNFB3uAz8COec9D0kgIm/ZVCJb2MaOkvc0JUSaE+KZBtYbffbokuOI5CIP+c7H/UXOW/I5c571hS/0FnBuoeO/T5cuZrs95quSItWoQS3qUI8eZnpD9O4yu+cxP0LHKMYwjgmksM/MQYhewxUxXf36OR0XuMQVrnGDGDNxj7mwSVoiFmwoOHAt/7ki3kVxiPfxV5nk2aYwjRnMYk7zvIbBN0MEUcQQN4L13tJxh3s84BFPmt4+OvoxgEEMYThg73dySMcRjnGCU5wF7G2xRVrRhnZ0oNP+fG+JKVKKMpSjApVmsN5lOlawijWsY0PT+5N5fu1QIhnIRBay1e/3pvM/E+GfHXX113SC5wWTsktl
+   eJxjYBgFo4B2YG0iA8M6IF5PQ7wpEdPevUCxfUB8gYb4EBZ7zwLFzg2QvbS0c9TeUXuHm72PBsjeT1js/QsU+0dF/B8LnykJ095RQFsAAIPwc6I=
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="20">
@@ -39,7 +42,7 @@
    <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRQClYGMXAsCiK/vYuB9q5YgDshYF5I9TuUTAKCAEA1LgF6w==
+   eJzt1DdLxVAYxvHXsloXheSW1V6Hu9zkJAoK1m+hoKv1G9juahcUrKtlV9DV+g2sq3XVvwi6eBJNFB3uAz8COec9D0kgIm/ZVCJb2MaOkvc0JUSaE+KZBtYbffbokuOI5CIP+c7H/UXOW/I5c571hS/0FnBuoeO/T5cuZrs95quSItWoQS3qUI8eZnpD9O4yu+cxP0LHKMYwjgmksM/MQYhewxUxXf36OR0XuMQVrnGDGDNxj7mwSVoiFmwoOHAt/7ki3kVxiPfxV5nk2aYwjRnMYk7zvIbBN0MEUcQQN4L13tJxh3s84BFPmt4+OvoxgEEMYThg73dySMcRjnGCU5wF7G2xRVrRhnZ0oNP+fG+JKVKKMpSjApVmsN5lOlawijWsY0PT+5N5fu1QIhnIRBay1e/3pvM/E+GfHXX113SC5wWTsktl
   </data>
  </layer>
  <layer name="MonoUe" width="30" height="20">
@@ -47,7 +50,7 @@
    <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
+   eJxjYBgFo2AUjIJRQClYGMXAsCiK/vYuB9q5YgDshYF5I9TuUTAKCAEA1LgF6w==
   </data>
  </layer>
  <objectgroup name="collision">

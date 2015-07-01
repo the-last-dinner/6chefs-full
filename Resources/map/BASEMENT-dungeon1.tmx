@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="12">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFrYyUY2LAYkbKMTFAF6hOD4j5gVgAjdbFg6cB8XQgnkGiPaTSW4B4KxBvo4J/8NGXgPgyEF+hsX90keykpX/4ybRn1D/09w8x9lHDPzCx0fihnn/Qw5YcmpzwIsc/pACY/8nBpAB8dQwhTCtASvqiBBCTH+kNADJXPb4=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh4sJuRMnliwU0C5hCSHwWjYBSMglEwCkbB0AQA3RMDLQ==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF1ABxjJRjYkANI+WYGDCLkXI8CkbBKBgFo2AUDBYAAOJ+GOg=
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="2" x="32" y="0" width="32" height="240"/>
+  <object id="3" x="32" y="272" width="32" height="64"/>
+  <object id="4" x="64" y="304" width="176" height="32"/>
+  <object id="6" x="272" y="304" width="32" height="32"/>
+  <object id="7" x="304" y="240" width="32" height="96"/>
+  <object id="9" x="336" y="192" width="32" height="144"/>
+  <object id="10" x="336" y="0" width="32" height="160"/>
+  <object id="11" x="64" y="80" width="272" height="16"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="26" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

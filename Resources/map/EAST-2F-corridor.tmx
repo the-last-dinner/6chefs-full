@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="16" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="17">
+ <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
+ </tileset>
+ <tileset firstgid="1985" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="30" height="16">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFEzkR2AKKSQW49MHMxQboaS+yXdS0F9ksZLsI2RuKJ1wIgVAK7EXWY8FJPCZk5mC3FxbmxGJi/EGsvdTEo/aO2jsc7SUHUMOMgbAXANZntKU=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="30" height="16">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFk9kYGJYA8RY2CL+Fg4GhlYOBaIBLPbq5hOQXAc1YTIK9uNRjs7eTHYGpaS8+c7HJH4FiatuLbC4IzGRHYHzmkGovPnNJMYcW6nGBA0AzDpJgDinqGYHhwEwnzIYU5opAtgqdsNoIttcQyDYaAHsdgWynAbA3EMgOAuJgOuAwJHtHEgAAm2FQOw==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="30" height="16">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztxrEJwDAQA0BV2p9AFjB4gYAXMGQBQ/ZJ587o1euqA4Cb2E53XdTvhbsa9Ufhrof6b+GuSf2vcNeifkREnP0PpBW+
+  </data>
+ </layer>
+ <layer name="MonoUe" width="30" height="16">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAb0BAAeAAAE=
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="0" y="0" width="16" height="112"/>
+  <object id="3" x="16" y="224" width="208" height="32"/>
+  <object id="4" x="256" y="224" width="208" height="32"/>
+  <object id="6" x="128" y="0" width="32" height="112"/>
+  <object id="7" x="320" y="0" width="32" height="112"/>
+  <object id="8" x="160" y="96" width="176" height="16"/>
+  <object id="9" x="112" y="0" width="16" height="80"/>
+  <object id="10" x="64" y="0" width="16" height="80"/>
+  <object id="11" x="16" y="0" width="16" height="80"/>
+  <object id="12" x="352" y="0" width="16" height="80"/>
+  <object id="14" x="400" y="0" width="16" height="80"/>
+  <object id="15" x="448" y="0" width="16" height="80"/>
+  <object id="16" x="464" y="0" width="16" height="256"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="event"/>
+</map>
