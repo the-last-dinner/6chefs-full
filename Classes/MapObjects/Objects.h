@@ -9,6 +9,7 @@
 #ifndef __OBJECTS_H__
 #define __OBJECTS_H__
 
-#include "Character.h"
+#include "MapObjects/Character.h"
+#include "MapObjects/EventObject.h"
 
 #endif // __OBJECTS_H__

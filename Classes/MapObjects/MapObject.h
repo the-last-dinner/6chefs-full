@@ -23,19 +23,32 @@ public:
 		BACK,
 		SIZE,
 	};
+
+	// トリガータイプ
+	enum struct TriggerType
+	{
+		INIT,
+		RIDE,
+		SEARCH,
+	};
 	
 	// インスタンス変数
 private:
 	Size objectSize;
+public:
+	int eventId;
+	TriggerType trigger;
 	
 	// インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
-	Point getGridPosition();
-	void setGridPosition(const Point& mapGridPoint);
+	Point getGridPosition(const Size& mapSize);
+	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
 	bool isHit(const Direction direction);
 	void setObjectSize(const Size& objSize);
+	void setEventId(int eventId);
+	void setTrigger(TriggerType trigger);
 };
 
 #endif // __MAP_OBJECT_H__

@@ -45,19 +45,20 @@
           ],
     "id": 0,
     "name": "map",
-    "bgm": [
-            "Mozart-OboeConcerto-1.mp3",
-            "Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-            "Saint-Saens-AnimalCarnibal-TheSwan.mp3",
-            "106-Bach-Sheep-May-Safely-Graze.mp3",
-            "150-Beethoven-PianoSonata-No8-2nd.mp3"
+    "sound": [
+            "bgm/Mozart-OboeConcerto-1.mp3",
+            "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+            "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
+            "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
+            "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
+			"se/back.mp3",
+			"se/bus-door1.mp3",
+			"se/bus-start1.mp3",
+			"se/cursorMove.mp3",
+			"se/gameStart.mp3",
+			"se/title-enter.mp3"
             ],
-    "se": [
-           "back.mp3",
-           "bus-door1.mp3",
-           "bus-start1.mp3",
-           "cursorMove.mp3",
-           "gameStart.mp3",
-           "title-enter.mp3"
-           ]
+	"texture": [
+			  
+			  ]
 }

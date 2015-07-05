@@ -48,6 +48,7 @@ ActionKeyManager::~ActionKeyManager()
 void ActionKeyManager::initKeyStatus()
 {
 	FUNCLOG
+	this->keyStatus.clear();
 	for(int i = 0; i < static_cast<int>(Key::SIZE); this->keyStatus[static_cast<Key>(i)] = false, i++);
 	return;
 }
@@ -59,7 +60,7 @@ ActionKeyManager::Key ActionKeyManager::convertKeyCode(EventKeyboard::KeyCode ke
 	return (keyMap.count(keyCode) == 0)?Key::OTHER:keyMap.at(keyCode);
 }
 
-// 指定のキーを押し状態に。押している状態はvalueを0.1fにする。
+// 指定のキーを押し状態に。
 void ActionKeyManager::pressKey(Key key)
 {
 	FUNCLOG

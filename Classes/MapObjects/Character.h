@@ -16,14 +16,6 @@ class Character : public MapObject
 {
 	// 列挙型
 public:
-	enum struct CharacterType
-	{
-		MAIN,
-		MOB,
-		ENEMY,
-		SIZE,
-	};
-	
 	enum struct DataType
 	{
 		ID,
@@ -34,7 +26,7 @@ public:
 	
 	// クラスメソッド
 public:
-	static Character* create(int charaId, CharacterType charaType, Direction direction);
+	static Character* create(int charaId, Direction direction);
 	
 	// クラス変数
 private:
@@ -47,7 +39,7 @@ public:
 private:
 	Character();
 	~Character();
-	virtual bool init(int charaId, CharacterType charaType, Direction direction);
+	virtual bool init(int charaId, Direction direction);
 public:
 	void setDirection(Direction direction);
 	Direction getDirection();
@@ -59,7 +51,6 @@ public:
 private:
 	Sprite* character;												// キャラクターのSprite部分
 	string texturePrefix;											// キャラプロパティリストファイル名の先頭部分
-	CharacterType charaType;
 	Direction direction;											// 現在向いている方向
 	Animation* pAnimation[static_cast<int>(Direction::SIZE)][2];		// キャラが動いているときのアニメーション
 	bool _isMoving;

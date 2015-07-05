@@ -6,6 +6,7 @@
 
 #include <cocos2d.h>
 #include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include <iostream>
 #include <fstream>
 #include "rapidjson/document.h"
@@ -28,6 +29,7 @@ using namespace cocos2d;
 using namespace CocosDenshion;
 using namespace std;
 using namespace rapidjson;
+using namespace experimental;
 
 // メソッドログ
 #ifdef DEBUG
@@ -36,11 +38,20 @@ using namespace rapidjson;
 #define FUNCLOG
 #endif
 
+// 画面の中心点
+#define WINDOW_CENTER Point(WINDOW_WIDTH, WINDOW_HEIGHT) / 2
+
 // ゲームシーンタイプ
 enum struct SceneType
 {
 	TITLE,
 	DUNGEON,
+};
+
+// レイヤーのZORDER値
+enum struct Priority
+{
+	SCREEN_EFFECT = 100,
 };
 
 #endif // __DEFINE_H__

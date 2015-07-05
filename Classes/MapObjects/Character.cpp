@@ -18,13 +18,12 @@ const vector<vector<string>> Character::characterDatas =
 const string Character::basePath = "img/texture/character/";
 
 // 1マス進むのにかかる時間(基準値)
-const float Character::SECOND_PER_GRID = 0.2f;
+const float Character::SECOND_PER_GRID = 0.1f;
 
 // コンストラクタ
 Character::Character():
 character(nullptr),
 texturePrefix(""),
-charaType(),
 direction(),
 _isMoving(false),
 pAnimation{nullptr},
@@ -39,10 +38,10 @@ Character::~Character()
 }
 
 // create関数。この関数を用いてキャラクターを初期化
-Character* Character::create(int charaId, CharacterType charaType, Direction direction)
+Character* Character::create(int charaId, Direction direction)
 {
 	Character* pChara = new(nothrow)Character();
-	if (pChara && pChara->init(charaId, charaType, direction))
+	if (pChara && pChara->init(charaId, direction))
 	{
 		// オブジェクトを自動メモリ管理へ登録
 		pChara->autorelease();
@@ -53,11 +52,11 @@ Character* Character::create(int charaId, CharacterType charaType, Direction dir
 }
 
 // 初期化
-bool Character::init(int charaId, CharacterType charaType, Direction direction)
+bool Character::init(int charaId, Direction direction)
 {
 	FUNCLOG
+	if(!Node::init()) return false;
 	// 生成時の情報をセット
-	this->charaType = charaType;
 	this->direction = direction;
 	this->texturePrefix = characterDatas.at(charaId).at(static_cast<int>(DataType::TexturePrefix));
 	

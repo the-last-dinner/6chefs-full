@@ -23,21 +23,16 @@ private:
 	SoundManager();												// コンストラクタ
 	SoundManager(const SoundManager& other);					// デストラクタ
 	SoundManager& operator = (const SoundManager& other);		// 代入演算子
+	~SoundManager();											// デストラクタ
 
 public:
-	~SoundManager();
-	void setBasePath(const string& seBasePath, const string& bgmBasePath);
-	void preloadBGM(const string& fileName);
-	void preloadSE(const string& fileName);
-	void playBGM(const string& fileName, bool loop = false);
-	void playSE(const string& fileName, bool loop = false, float pitch = 1.0f, float pan = 0.0f, float gain = 1.0f);
-	void unloadSounds();
+	void preloadSound(const string& filePath);
+	void playSound(const string& filePath, bool loop = false, float volume = 1.0f);
+	void unloadAllSounds();
 	
 	// インスタンス変数
 private:
-	string seBasePath;
-	string bgmBasePath;
-	vector<string> soundList;
+	map<string, int> soundMap;
 };
 
 #endif // __SOUND_MANAGER_H__

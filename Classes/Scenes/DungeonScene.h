@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "baseScene.h"
 #include "Datas/Scene/DungeonSceneData.h"
+#include "Layers/Dungeon/TiledMapLayer.h"
 
 class DungeonScene : public baseScene
 {
@@ -30,7 +31,7 @@ public:
 	~DungeonScene();
 private:
 	virtual bool init();
-	virtual void update(float delta);
+	void loadFinished();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 	
@@ -38,6 +39,7 @@ private:
 private:
 	EventListenerKeyboard* eventListener;
 	DungeonSceneData* data;
+	Layer* mapLayer;
 };
 
 
