@@ -41,8 +41,17 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
 		director->setOpenGLView(glView);
 	}
+	// Tiledのチラつきを防止
+	director->setProjection(Director::Projection::_2D);
+	director->setDepthTest(false);
+	
+	// デバッグ表示
 	director->setDisplayStats(true);
+	
+	// フレームレート
 	director->setAnimationInterval(1.0 / 60);
+	
+	// シーンを指定してゲーム開始
 	director->runWithScene(TitleScene::createScene());
 	return true;
 }

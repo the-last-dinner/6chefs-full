@@ -30,25 +30,36 @@ public:
 		INIT,
 		RIDE,
 		SEARCH,
+		NONE,
+		SIZE
 	};
+	
+	// クラス変数
+public:
+	static const map<MapObject::Direction, Point> gridMap;
 	
 	// インスタンス変数
 private:
 	Size objectSize;
-public:
 	int eventId;
 	TriggerType trigger;
+	bool _isHit;
 	
 	// インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
-	Point getGridPosition(const Size& mapSize);
 	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
-	bool isHit(const Direction direction);
 	void setObjectSize(const Size& objSize);
 	void setEventId(int eventId);
 	void setTrigger(TriggerType trigger);
+	void setHit(bool _isHit);
+	
+	Point getGridPosition(const Size& mapSize);
+	Size getObjectSize();
+	int getEventId();
+	TriggerType getTrigger();
+	bool isHit();
 };
 
 #endif // __MAP_OBJECT_H__

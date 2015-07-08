@@ -26,16 +26,12 @@ character(nullptr),
 texturePrefix(""),
 direction(),
 _isMoving(false),
-pAnimation{nullptr},
 identifier(false)
 {FUNCLOG}
 
 // デストラクタ
 Character::~Character()
-{
-	FUNCLOG
-	for(int i = 0; i < static_cast<int>(Character::Direction::SIZE); this->pAnimation[i][0]->release(), this->pAnimation[i][1]->release(),i++);
-}
+{FUNCLOG}
 
 // create関数。この関数を用いてキャラクターを初期化
 Character* Character::create(int charaId, Direction direction)
@@ -67,24 +63,18 @@ bool Character::init(int charaId, Direction direction)
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
 	this->addChild(this->character);
 	
-	// Spriteの大きさをマップオブジェクトのサイズとしてセット
-	this->setObjectSize(this->character->getContentSize());
-	
 	for(int i = 0; i < static_cast<int>(Direction::SIZE); i++)
 	{
 		// 右足だけ動くタイプと左足だけ動くタイプでアニメーションを分ける
 		for(int k = 0; k < 2; k++)
 		{
-			this->pAnimation[i][k] = Animation::create();
+			Animation* pAnimation = Animation::create();
 			
 			// それぞれの向きのアニメーション用画像を追加していく
-			this->pAnimation[i][k]->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
-			
-			// 全フレーム表示し終えた時、１フレーム目に戻る
-			this->pAnimation[i][k]->setRestoreOriginalFrame(true);
+			pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
 			
 			// キャッシュに保存
-			AnimationCache::getInstance()->addAnimation(this->pAnimation[i][k], to_string(i) + to_string(k));
+			AnimationCache::getInstance()->addAnimation(pAnimation, to_string(i) + to_string(k));
 		}
 	}
 	return true;
@@ -93,7 +83,6 @@ bool Character::init(int charaId, Direction direction)
 // キャラクターの向きを変える
 void Character::setDirection(Direction direction)
 {
-	FUNCLOG
 	// 画像差し替え
 	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
 	
@@ -104,37 +93,30 @@ void Character::setDirection(Direction direction)
 
 // 現在キャラが向いている方向を取得
 Character::Direction Character::getDirection()
-{
-	FUNCLOG
-	return this->direction;
-}
+{return this->direction;}
 
 // キャラが動いているかをセット
 void Character::setMoving(bool _isMoving)
 {
-	FUNCLOG
 	this->_isMoving = _isMoving;
 	return;
 }
 
 // キャラが移動中かどうか取得
 bool Character::isMoving()
-{
-	FUNCLOG
-	return this->_isMoving;
-}
+{return this->_isMoving;}
 
 // 動いているアニメーションを再生
-void Character::move(float ratio)
+void Character::stamp(float ratio)
 {
-	FUNCLOG
 	// 現在の向きのアニメーションを取得
 	Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->identifier)?"0":"1"));
 	this->identifier = (this->identifier)?false:true;
 	anime->setDelayPerUnit(SECOND_PER_GRID * ratio);
 	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
 									 TargetedAction::create(this->character, Animate::create(anime)),
-									 CallFunc::create([=](){this->setMoving(false);}),
+									 CallFunc::create([=](){this->setMoving(false);
+															this->character->setDisplayFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(static_cast<int>(this->direction)) + "_0.png"));}),
 									 nullptr));
 	return;
 }

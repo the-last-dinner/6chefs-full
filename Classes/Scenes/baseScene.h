@@ -19,6 +19,7 @@ class baseScene : public Layer
 public:
 	baseScene();
 	~baseScene();
+	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 protected:
 	bool init(SceneData* data, const function<void()>& loadFinished);
 };

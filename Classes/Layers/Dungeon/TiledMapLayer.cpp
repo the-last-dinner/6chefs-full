@@ -52,3 +52,57 @@ bool TiledMapLayer::init(const string& mapFileName)
 	
 	return true;
 }
+
+// 主人公の操作
+void TiledMapLayer::controlMainCharacter(ActionKeyManager::Key key)
+{
+	FUNCLOG
+	switch(key)
+	{
+		case::ActionKeyManager::Key::DOWN:
+		case::ActionKeyManager::Key::LEFT:
+		case::ActionKeyManager::Key::RIGHT:
+		case::ActionKeyManager::Key::UP:
+		{
+			experimental::TMXTiledMap* map = this->data->getTiledMap();
+			Character* main = map->getChildByName<Character*>("main");
+			
+				
+			// 移動キーが押された時は、向きを変える
+			Character::Direction direction = static_cast<MapObject::Direction>(key);
+			main->setDirection(direction);
+			
+			// ループを解除
+			this->unschedule("ControlCheck");
+			
+			// ループを開始
+			this->schedule([=](float delta){
+				if(ActionKeyManager::getInstance()->isPressed(key))
+				{
+					// 主人公が動いていない、向きがキーを押した時と同じ、その方向に当たり判定がなかったら
+					if(!main->isMoving() && main->getDirection() == direction && !this->data->isHit(main, direction))
+					{
+						this->runAction(Sequence::create(Spawn::create(CallFunc::create([=](){main->stamp();}),
+																	   TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - MapObject::gridMap.at(direction))),
+																	   TargetedAction::create(main, MoveBy::create(Character::SECOND_PER_GRID, MapObject::gridMap.at(direction))),
+																	   nullptr),
+														 CallFunc::create([=](){}),
+														 nullptr));						}
+					}
+				else
+				{
+					// キーを離したらループを解除
+					this->unschedule("ControlCheck");
+				}
+					
+			}, ActionKeyManager::INPUT_CHECK_SPAN, "ControlCheck");
+			
+			break;
+		}
+		case::ActionKeyManager::Key::SPACE:
+			break;
+		default:
+			break;
+	}
+
+}

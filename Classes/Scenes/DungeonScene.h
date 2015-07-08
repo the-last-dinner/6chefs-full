@@ -21,10 +21,6 @@ public:
 	static Scene* createScene();
 	CREATE_FUNC(DungeonScene);
 	
-	// クラス変数
-private:
-	static const map<ActionKeyManager::Key, Point> scrollMap;
-	
 	// インスタンスメソッド
 public:
 	DungeonScene();
@@ -33,13 +29,12 @@ private:
 	virtual bool init();
 	void loadFinished();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
-	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:
 	EventListenerKeyboard* eventListener;
 	DungeonSceneData* data;
-	Layer* mapLayer;
+	TiledMapLayer* mapLayer;
 };
 
 

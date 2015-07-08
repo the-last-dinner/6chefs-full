@@ -14,8 +14,7 @@ const string TiledMapData::basePath = "map/";
 // コンストラクタ
 TiledMapData::TiledMapData(const string& mapFileName):
 tiledMap(experimental::TMXTiledMap::create(basePath + mapFileName + ".tmx")),
-mapObjs{nullptr},
-collisionObjs{}
+mapObjs{nullptr}
 {
 	FUNCLOG
 	this->setObjects();
@@ -30,8 +29,18 @@ void TiledMapData::setObjects()
 {
 	FUNCLOG
 	
+	// オブジェクトの情報
+	ValueMap objInfo;
+	
+	// オブジェクトの座標(左下)
+	Point objPoint;
+	
+	// オブジェクトの大きさ
+	Size objSize;
+	
 	// 共通部分の関数化
-	function<void()> func = [](){};
+	// ValueMapを取得、座標、大きさを取得の処理
+	function<void(cocos2d::Value)> func = [&](cocos2d::Value obj){objInfo = obj.asValueMap(); objPoint = Point(objInfo.at("x").asInt(), objInfo.at("y").asInt()); objSize = Size(objInfo.at("width").asInt(), objInfo.at("height").asInt());};
 	
 	//　当たり判定オブジェクトを取得
 	ValueVector collisionObjs = this->tiledMap->getObjectGroup("collision")->getObjects();
@@ -39,63 +48,37 @@ void TiledMapData::setObjects()
 	// マップオブジェクトを取得
 	ValueVector mapObjs = this->tiledMap->getObjectGroup("event")->getObjects();
 	
-	this->tiledMap->getObjectGroups();
-	
+	// 当たり判定オブジェクト
 	for(cocos2d::Value obj : collisionObjs)
 	{
-		// オブジェクトの情報を取得
-		ValueMap objInfo = obj.asValueMap();
+		func(obj);
 		
-		// オブジェクトの座標を取得
-		Point gridPoint = MapUtils::convertToMapPoint(this->tiledMap->getContentSize(), Point(objInfo.at("x").asInt(), objInfo.at("y").asInt())) / GRID;
-		
-		// オブジェクトの大きさを取得
-		Size objSize = Size(objInfo.at("width").asInt(), objInfo.at("height").asInt());
-		
-		// 当たり判定オブジェクトの場合はそれぞれを一マスずつ分割して格納
-		if(objInfo.count("EventID") == 0)
-		{
-			Vec2 objGridSize = objSize / GRID;
-			
-			for(int i = 0; i < objGridSize.x; i++)
-			{
-				for(int j = 0; j < objGridSize.y; j++)
-				{
-					this->collisionObjs.insert({Point(gridPoint.x + i, gridPoint.y - j - 1), true});
-				}
-			}
-			continue;
-		}
+		Point objGridPoint = MapUtils::convertToMapPoint(this->tiledMap->getContentSize(), objPoint) / GRID;
+		MapObject* pObj = EventObject::create();
+		pObj->setPosition(objPoint + objSize / 2);
+		pObj->setObjectSize(objSize);
+		pObj->setHit(true);
+		pObj->setName("hit_" + to_string(static_cast<int>(objGridPoint.x)) + to_string(static_cast<int>(objGridPoint.y)));
+		this->tiledMap->addChild(pObj);
+		this->mapObjs.push_back(pObj);
 	}
 	
-	// マップオブジェクトの場合
+	// マップオブジェクト
 	for(cocos2d::Value obj : mapObjs)
 	{
+		func(obj);
+		
 		// 入れ物を用意
 		MapObject* pObj {nullptr};
-
-		// オブジェクトの情報を取得
-		ValueMap objInfo = obj.asValueMap();
-		
-		// オブジェクトの座標を取得
-		Point point = Point(objInfo.at("x").asInt(), objInfo.at("y").asInt());
-		
-		// オブジェクトの大きさを取得
-		Size objSize = Size(objInfo.at("width").asInt(), objInfo.at("height").asInt());
 		
 		// オブジェクトタイプを取得
 		string objType = objInfo.at("type").asString();
 		
-		int eventId;
-		MapObject::TriggerType trigger;
+		// EventID取得
+		int eventId = (objInfo.count("EventID") != 0)?objInfo.at("EventID").asInt():-1;
 		
-		if(objType != "main"){
-			// EventID取得
-			eventId = objInfo.at("EventID").asInt();
-		
-			// trigger取得
-			trigger = static_cast<MapObject::TriggerType>(objInfo.at("trigger").asInt());
-		}
+		// trigger取得
+		MapObject::TriggerType trigger = (objInfo.count("trigger") != 0)?static_cast<MapObject::TriggerType>(objInfo.at("trigger").asInt()):MapObject::TriggerType::NONE;
 		
 		if(objType == "")
 		{
@@ -109,10 +92,11 @@ void TiledMapData::setObjects()
 			
 			pObj = Character::create(id, static_cast<Character::Direction>(objInfo.at("direction").asInt()));
 			pObj->setName(objType + ((objType == "main")? "" : "_" + to_string(id)));
+			pObj->setHit(true);
 		}
 		
 		pObj->setObjectSize(objSize);
-		pObj->setPosition(point + objSize / 2);
+		pObj->setPosition(objPoint + objSize / 2);
 		this->tiledMap->addChild(pObj);
 		this->mapObjs.push_back(pObj);
 	}
@@ -121,7 +105,10 @@ void TiledMapData::setObjects()
 
 // TiledMapを取得
 experimental::TMXTiledMap* TiledMapData::getTiledMap()
-{
-	FUNCLOG
-	return this->tiledMap;
+{return this->tiledMap;}
+
+// 現在座標から、指定の方向に対して当たり判定があるか
+bool TiledMapData::isHit(MapObject* obj, MapObject::Direction direction)
+{	
+	return false;
 }

@@ -8,14 +8,6 @@
 
 #include "DungeonScene.h"
 
-const map<ActionKeyManager::Key, Point> DungeonScene::scrollMap =
-{
-	{ActionKeyManager::Key::DOWN, Point(0, -GRID)},
-	{ActionKeyManager::Key::RIGHT, Point(GRID, 0)},
-	{ActionKeyManager::Key::LEFT, Point(-GRID, 0)},
-	{ActionKeyManager::Key::UP, Point(0, GRID)}
-};
-
 // コンストラクタ
 DungeonScene::DungeonScene():
 eventListener(nullptr),
@@ -64,13 +56,13 @@ void DungeonScene::loadFinished()
 	this->addChild(black);
 	
 	// マップレイヤーを生成
-	this->mapLayer = TiledMapLayer::create("MAIN-Syokudou1");
+	this->mapLayer = dynamic_cast<TiledMapLayer*>(TiledMapLayer::create("MAIN-Syokudou1"));
 	this->addChild(mapLayer);
 	
 	// イベントリスナ生成
 	this->eventListener = EventListenerKeyboard::create();
 	this->eventListener->onKeyPressed = CC_CALLBACK_1(DungeonScene::onKeyPressed, this);
-	this->eventListener->onKeyReleased = CC_CALLBACK_1(DungeonScene::onKeyReleased, this);
+	this->eventListener->onKeyReleased = CC_CALLBACK_1(baseScene::onKeyReleased, this);
 	
 	// イベントリスナ登録
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
@@ -98,65 +90,11 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 		case::ActionKeyManager::Key::LEFT:
 		case::ActionKeyManager::Key::RIGHT:
 		case::ActionKeyManager::Key::UP:
-		{
-//			Character* magoichi = map->getChildByName<Character*>("magoichi");
-//			
-//			// 主人公が移動中でない時のみ処理
-//			if(!magoichi->isMoving()){
-//				
-//				// 移動キーが押された時は、向きを変える
-//				magoichi->setDirection(static_cast<Character::Direction>(key));
-//				
-//				// スケジュールを開始
-//				this->schedule([=](float delta){
-//					if(ActionKeyManager::getInstance()->isPressed(key))
-//					{
-//						// 主人公が動いていない、かつその方向に当たり判定がなかったら
-//						if(!magoichi->isMoving() && !magoichi->isHit(static_cast<Character::Direction>(key)))
-//						{
-//							// 指定秒後に移動をさせる
-//							magoichi->move();
-//							this->runAction(Sequence::create(Spawn::create(TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - scrollMap.at(key))),
-//																		   TargetedAction::create(magoichi, MoveBy::create(Character::SECOND_PER_GRID, scrollMap.at(key))),
-//																		   nullptr),
-//															 CallFunc::create([=](){
-//								int eventID = TiledMapManager::getInstance()->getEventID(magoichi->getGridPosition());
-//								log("POINT >>>>>>>>>>>>>>>>>>>>> (%f, %f)", magoichi->getGridPosition().x, magoichi->getGridPosition().y);
-//								log("EVENT ID >>>>>>>>>>>>>>> %d", eventID);
-//								if(eventID != -1){
-//									EventScriptManager::getInstance()->runEvent(eventID);
-//								}}),
-//															 nullptr));
-//						}
-//					}
-//					else
-//					{
-//						// キーを離したらループを解除
-//						this->unschedule("PlayerControlCheck");
-//					}
-//				
-//				}, ActionKeyManager::INPUT_CHECK_SPAN, "PlayerControlCheck");
-//
-//			}
-			break;
-		}
 		case ActionKeyManager::Key::SPACE:
+			this->mapLayer->controlMainCharacter(key);
 			break;
 		default:
 			break;
 	}
-	return;
-}
-
-// キーを離した時の処理
-void DungeonScene::onKeyReleased(EventKeyboard::KeyCode keyCode)
-{
-	FUNCLOG
-	// cocos2d上のキーコードからゲーム内でのキーコードに変換
-	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
-	
-	// 離し状態にする
-	ActionKeyManager::getInstance()->releaseKey(key);
-
 	return;
 }

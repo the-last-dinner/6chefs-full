@@ -23,6 +23,7 @@ public:
 	TiledMapData(const string& mapFileName);
 	~TiledMapData();
 	experimental::TMXTiledMap* getTiledMap();
+	bool isHit(MapObject* obj, MapObject::Direction direction);
 private:
 	void setObjects();
 	
@@ -31,7 +32,6 @@ public:
 	vector<MapObject*> mapObjs;
 private:
 	experimental::TMXTiledMap* tiledMap;
-	map<Point, bool> collisionObjs;
 };
 
 #endif //__TILED_MAP_DATA_H__

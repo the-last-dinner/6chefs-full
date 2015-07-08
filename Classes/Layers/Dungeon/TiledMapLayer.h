@@ -23,6 +23,8 @@ private:
 	TiledMapLayer();
 	~TiledMapLayer();
 	bool init(const string& mapFileName);
+public:
+	void controlMainCharacter(ActionKeyManager::Key key);
 	
 	// インスタンス変数
 private:

@@ -45,14 +45,13 @@ public:
 	Direction getDirection();
 	void setMoving(bool _isMoving);
 	bool isMoving();
-	void move(float ratio = 1.0f);
+	void stamp(float ratio = 1.0f);
 	
 	// インスタンス変数
 private:
 	Sprite* character;												// キャラクターのSprite部分
 	string texturePrefix;											// キャラプロパティリストファイル名の先頭部分
 	Direction direction;											// 現在向いている方向
-	Animation* pAnimation[static_cast<int>(Direction::SIZE)][2];		// キャラが動いているときのアニメーション
 	bool _isMoving;
 	bool identifier;
 };
