@@ -9,5 +9,6 @@
 #include "Managers/SoundManager.h"
 
 #include "Utils/MapUtils.h"
+#include "PlayerDataManager.h"
 
 #endif // __COMMON_H__

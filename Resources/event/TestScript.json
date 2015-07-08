@@ -12,7 +12,7 @@
                      {
                      "type": "move",
                      "object": "magoichi",
-                     "time": 1.0,
+                     "time": 1,
                      "x": 2,
                      "y": 1
                      },
@@ -23,13 +23,53 @@
                      {
                      "type": "move",
                      "object": "magoichi",
-                     "time": 1.0,
+                     "time": 1,
                      "x": -2,
                      "y": -1
                      },
                      {
                      "type": "playSE",
                      "file": "bus-door1.mp3"
+                     },
+                     {
+                     "type": "repeat",
+                     "loop": 5,
+                     "action": [
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.05,
+                                "x": 3,
+                                "y": 0
+                                },
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.1,
+                                "x": -3,
+                                "y": -1
+                                }
+                                ]
+                     },
+                     {
+                     "type": "repeat",
+                     "loop": 5,
+                     "action": [
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.05,
+                                "x": 3,
+                                "y": 0
+                                },
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.1,
+                                "x": -3,
+                                "y": 1
+                                }
+                                ]
                      }
                      ]
           }
