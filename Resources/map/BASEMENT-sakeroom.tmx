@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="16">
+ <tileset firstgid="1" name="syokkidana" tilewidth="16" tileheight="16">
+  <image source="syokkidana.png" trans="201c30" width="150" height="100"/>
+ </tileset>
+ <tileset firstgid="55" name="barrel-option" tilewidth="16" tileheight="16">
+  <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
+ </tileset>
+ <tileset firstgid="279" name="option16" tilewidth="16" tileheight="16">
+  <image source="option16.png" trans="007575" width="330" height="176"/>
+ </tileset>
+ <tileset firstgid="499" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="979" name="bottles" tilewidth="16" tileheight="16">
+  <image source="bottles.png" trans="007575" width="512" height="512"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEADTAwM/xkRNAyjixNN4wByQHlZJgQti8YnlSbHHnkS2LIE7LEBylkzIWhrJL4tCWwYxgXkmRkYFJipR+MCtkA5O2bq0aP+GVr+obY/cPmH2v4YKfEz6p9R/wyEf4Y6AACRCFN6
+  </data>
+ </layer>
+ <layer name="MonoShita" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzzdOxUAUBVCb1JDjVsi0ZDZA2ABhE9CDBPshtHQg0ZBjQ44N8VB8YaHP4AIXwL/S0bNm5s34RVEhP5FmWmiljXY66KSLUcaYZiZRhxnJU79KNz300kc/AwwyxCRTzLOQqONM5KlZJzdn1snNmXX+2jyF/O8sssQyK4Fz64nvjRT3rgb21gJ7hxxxzEmKdzbZYpsddtljn4NA3y133POQ4p1TzjjngkuuuOYm0FccR1EJpZTF37/zyBPPvPD6vqgvpijQX2+vgUaamLU2F33Uzyl3poJKqqimhlrqUvznb80bS0E3Ug==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALigD4jA4MBEBsCsRESTUgdjE8scAaqdQFiVyB2Q6IJqYPxR8EoGAWjAB0AAI9gBZU=
+  </data>
+ </layer>
+ <layer name="MonoUe" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DwAEkWBgYpFtrbYwm0w4oO9owUMJmNgWEKEE8F4mlstLNnM9DsLUC8FYi30dAeQqAcaHcFDexHT//TgXbMoIE96Ol/O9COHQMYnsSC0fJhFFACAHeRCyg=
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="2" x="128" y="160" width="256" height="32"/>
+  <object id="3" x="64" y="256" width="64" height="64"/>
+  <object id="4" x="128" y="304" width="64" height="16"/>
+  <object id="5" x="256" y="256" width="64" height="64"/>
+  <object id="6" x="320" y="256" width="64" height="64"/>
+  <object id="7" x="352" y="80" width="32" height="80"/>
+  <object id="8" x="64" y="64" width="320" height="16"/>
+  <object id="9" x="384" y="0" width="32" height="320"/>
+  <object id="10" x="64" y="320" width="352" height="32"/>
+  <object id="11" x="32" y="192" width="32" height="160"/>
+  <object id="12" x="32" y="0" width="32" height="160"/>
+  <object id="15" x="352" y="192" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHUgzsjAIAHEskAsh0TDxNFpdPlRMApGwSgY7gAAdpABrQ==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBLBfiA+AMQHiVB7BYivkmD2GSA+C2WfB+ILQHyRFMcNQ1APxA1I9CigLwAAX2AJ8Q==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

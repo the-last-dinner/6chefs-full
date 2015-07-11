@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="11">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
+  <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="cfsm_rq_boy1" tilewidth="16" tileheight="16">
+  <image source="cfsm_rq_boy1.png" trans="674c56" width="288" height="256"/>
+ </tileset>
+ <tileset firstgid="769" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="674c56" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1249" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFfMzUwYSADjN1MCHgxUwdTAhkMVOGs4E4hwh7dFmog0ftGbVn1J6haw+1zCdkH73sGW7xQyqgtnkDbc9gBQD6uUQg
+  </data>
+ </layer>
+ <layer name="MonoChu" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DwA1MmBgYzJtrb4w60w4MO9oyCUTAKRsEooC8AACASAQM=
+  </data>
+ </layer>
+ <layer name="MonoUe" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUUAtcBOJLVKAJgfdA/IEK9CgYBaNgFIwUAACfCh+T
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="64" y="144" width="288" height="16"/>
+  <object id="2" x="352" y="0" width="32" height="224"/>
+  <object id="3" x="352" y="256" width="32" height="64"/>
+  <object id="4" x="256" y="288" width="96" height="32"/>
+  <object id="5" x="64" y="288" width="160" height="32"/>
+  <object id="7" x="32" y="256" width="32" height="48"/>
+  <object id="9" x="32" y="0" width="32" height="224"/>
+  <object id="10" x="64" y="32" width="288" height="16"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAACTYGhh+sDFQBYmy45STwyI3aM2rPqD2E7aGWXYPFP8PFHlOguBkV7TFhg5g53MFPYL3zi0p1DwiA6rGfOMyjV3oDgZ+shDGyv3/gUEMNgOxvQu4ergAAgOoZRg==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFF4H4EhVoQuA9EH+gAk0IjPpn1D/09M8oGAWjYBSMgsEJAPK2fkk=
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

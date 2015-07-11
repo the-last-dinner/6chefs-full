@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="1">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="tidamari" tilewidth="16" tileheight="16">
+  <image source="tidamari.png" trans="007575" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="529" name="Skull" tilewidth="16" tileheight="16">
+  <image source="Skull.png" trans="007575" width="64" height="64"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFvEDMB8T8SGx0mh+PuvsMxAFtINYBYl0kNjqti0edDCNxdrXhMF8bh7gOmhzIHmLsWgLEnkDshUZ74hD3QpOD2UPILl2gvB4j+bQVI6pduIA3UM6HkXxaAM0uWvkH3V+08g8ybUUH/8BoevjHZ9Q/o/4Z9c+of4jwz1AHAB13W7o=
+  </data>
+ </layer>
+ <layer name="blood" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzlVO0KwyAMTHz/V92g3cDuozrLOJoF7RQj+7FAMCq9i+dZot/Gg4mePJ6HHZFz+/yUOM+Kd0Qvl4R3VZi6l5H8uSjxH8Ut9XXn72u9ETc894mNNauQd1/Ctjhv7u4nfud8wN96XvQ1ifRqPhvcE/ryvOcq6l4uqS/qNZO+k0d6DHVI46ISXEunduDY8EImoWMweksln1pwAFtqV/NN69sBNsaa/1UUPbV4I+e7mr1Wb0i9tHZRaKT3LL2R4/6neAHuXHV9
+  </data>
+ </layer>
+ <layer name="MonoShita" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztk8kJwEAMA407yLm5k/6rXHVgGfuRhRXMQ+CXBov0tJRBRUYwgVn9nc2C2xUUsKm/s9lxe4ATXOrvbG7cPuAFn/o7G2v/LFfW/lmurP2zXFn7Z7mK/g/rKPo/rKPo/7COov/DOup+/u2n9VSTkR8V
+  </data>
+ </layer>
+ <layer name="MonoChu" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMEKwzAMQ4P/YO22buvW7v+/srqEgEii2DsVJhBGmFzykFP662y6WEoTPMNXK5ln3kd1w9s7vMAPK5ln3kf1xNsXvMJvK5ln3kf1wdsN3uGvlcwz76Nq8ZkrbFTuqcVnqbBRuacWn7XCRuWeWnz2ChuVPXxGWXh7xX88ysLbK/7jURbeXvEfj7Lw9kr1R92/KB/uj7p/UT7cH3X/ony4P+r+/Xr3zqADTEAbnQ==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlEkOwzAIRS3fIG3jTulw/1OWLpCeCHZM2qW/hDAyHsgLTmloqK4pp3QQO4qd8jpmjvURzZJfxM5il7yOmUN/F1sCZ10l94Z1Nubddfyde4m9A+c8JPeJdTbWGliXzpWOc8jBMuF3mTv3q4kcLJMJd44w8EQOHGttBWPl02JWEzlw7PHQuMVsSy1O7CHWs0ctTuwh1rNHNU6L00P07KWeGj1OuoflQW97KSLv/aq9bf9467z/acsP/aYPnIMTrg==
+  </data>
+ </layer>
+ <layer name="MonoUe2" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlGEKgCAMRseuYFBpZfc/ZQ4bjCESTIXAB2P1Z98GrwAmk7YEBDiwf05MGfeAHOIvN+2Yy1c64VJfDDkn5uI51/suO7Gmvhmz9L4Oy/tzlgU5g55bzKwR1C3Ss5bORXWL9Oyrc9If9qzkmxXpD3vGpf2ywPv2/rZ535H/q0mZB/pJCSg=
+  </data>
+ </layer>
+ <layer name="death" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAAU0YGuoBRe0btGY72DDcw3OJn1J5Re0btGdkAAPhsA80=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>
