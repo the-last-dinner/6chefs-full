@@ -9,7 +9,8 @@
 #include "baseScene.h"
 
 // コンストラクタ
-baseScene::baseScene()
+baseScene::baseScene():
+data(nullptr)
 {FUNCLOG}
 
 // デストラクタ
@@ -17,7 +18,7 @@ baseScene::~baseScene()
 {FUNCLOG}
 
 // シーン共通初期化
-bool baseScene::init(SceneData* data, const function<void()>& loadFinished)
+bool baseScene::init(const function<void()>& loadFinished)
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
@@ -27,7 +28,7 @@ bool baseScene::init(SceneData* data, const function<void()>& loadFinished)
 	this->addChild(loadingLayer);
 	
 	// プリロード開始
-	data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(loadFinished);});
+	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(loadFinished);});
 	return true;
 }
 

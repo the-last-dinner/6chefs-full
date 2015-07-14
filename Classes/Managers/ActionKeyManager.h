@@ -28,6 +28,7 @@ public:
 	// クラス変数
 private:
 	static const map<EventKeyboard::KeyCode, Key> keyMap;
+	static const map<Key, Point> movementMap;
 public:
 	static const float INPUT_CHECK_SPAN;
 
@@ -43,6 +44,7 @@ public:
 	void releaseKey(Key key);
 	bool isPressed(Key key);
 	Key convertKeyCode(EventKeyboard::KeyCode keyCode);
+	Direction getMoveDirection(Direction direction, Key key);
 	
 	// インスタンス変数
 private:

@@ -18,7 +18,7 @@ const vector<vector<string>> Character::characterDatas =
 const string Character::basePath = "img/texture/character/";
 
 // 1マス進むのにかかる時間(基準値)
-const float Character::SECOND_PER_GRID = 0.1f;
+const float Character::SECOND_PER_GRID = 0.05f;
 
 // コンストラクタ
 Character::Character():
@@ -92,7 +92,7 @@ void Character::setDirection(Direction direction)
 }
 
 // 現在キャラが向いている方向を取得
-Character::Direction Character::getDirection()
+Direction Character::getDirection()
 {return this->direction;}
 
 // キャラが動いているかをセット

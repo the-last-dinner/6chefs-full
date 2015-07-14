@@ -21,7 +21,8 @@ public:
 	~baseScene();
 	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 protected:
-	bool init(SceneData* data, const function<void()>& loadFinished);
+	bool init(const function<void()>& loadFinished);
+	SceneData* data;
 };
 
 // セーブデータのロード時に呼び出すcreate関数

@@ -1,6 +1,6 @@
 #include "ActionKeyManager.h"
 
-// キー変換用マップ
+// キー変換用連想配列
 const map<EventKeyboard::KeyCode, ActionKeyManager::Key> ActionKeyManager::keyMap =
 {
 	{EventKeyboard::KeyCode::KEY_UP_ARROW, ActionKeyManager::Key::UP},
@@ -18,7 +18,7 @@ const map<EventKeyboard::KeyCode, ActionKeyManager::Key> ActionKeyManager::keyMa
 };
 
 // キー入力をチェックするスパン
-const float ActionKeyManager::INPUT_CHECK_SPAN = 0.03f;
+const float ActionKeyManager::INPUT_CHECK_SPAN = 0.02f;
 
 // 唯一のインスタンスを初期化
 static ActionKeyManager* _instance = nullptr;
@@ -55,26 +55,29 @@ void ActionKeyManager::initKeyStatus()
 
 // キーコードを変換。ゲームで使わないキーが与えられた場合はOTHERを返す
 ActionKeyManager::Key ActionKeyManager::convertKeyCode(EventKeyboard::KeyCode keyCode)
-{
-	return (keyMap.count(keyCode) == 0)?Key::OTHER:keyMap.at(keyCode);
-}
+{return (keyMap.count(keyCode) == 0)?Key::OTHER:keyMap.at(keyCode);}
 
 // 指定のキーを押し状態に。
 void ActionKeyManager::pressKey(Key key)
-{
-	this->keyStatus.at(key) = true;
-	return;
-}
+{this->keyStatus.at(key) = true;return;}
 
 // 指定のキーを離し状態に
 void ActionKeyManager::releaseKey(Key key)
-{
-	this->keyStatus.at(key) = false;
-	return;
-}
+{this->keyStatus.at(key) = false;return;}
 
 // 指定のキーが押し状態か判別
 bool ActionKeyManager::isPressed(Key key)
+{return this->keyStatus.at(key);}
+
+// // 現在主人公が進んでいる方向と、新たに押されたキーから、移動方向を返す
+Direction ActionKeyManager::getMoveDirection(Direction direction, Key key)
 {
-	return this->keyStatus.at(key);
+	int directionAsInt = static_cast<int>(direction);
+	int keyAsInt = static_cast<int>(key);
+	if(directionAsInt > static_cast<int>(Direction::SIZE) || directionAsInt == keyAsInt || fabs(directionAsInt - keyAsInt) > 2) return static_cast<Direction>(key);
+	
+	// 斜め可能なパターンであるとき
+	int minVal = min(directionAsInt, keyAsInt);
+	if(minVal == 0) return static_cast<Direction>(directionAsInt + keyAsInt + 4);
+	return static_cast<Direction>(max(directionAsInt, keyAsInt) * 2 + minVal);
 }

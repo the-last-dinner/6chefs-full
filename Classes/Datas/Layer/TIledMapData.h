@@ -23,9 +23,12 @@ public:
 	TiledMapData(const string& mapFileName);
 	~TiledMapData();
 	experimental::TMXTiledMap* getTiledMap();
-	bool isHit(MapObject* obj, MapObject::Direction direction);
+	bool isHit(MapObject* obj, Direction movingDirection);
+	int getEventId(Point point);
+	int search(MapObject* obj);
 private:
 	void setObjects();
+	MapObject* getMapObject(Point point);
 	
 	// インスタンス変数
 public:

@@ -26,10 +26,6 @@ public:
 private:
 	virtual bool init();
 	void loadFinished();
-	
-	// インスタンス変数
-private:
-	TitleSceneData* data;
 };
 
 #endif // __TITLE_SCENE_H__

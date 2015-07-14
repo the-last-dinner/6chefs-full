@@ -1,8 +1,7 @@
 #include "TitleScene.h"
 
 // コンストラクタ
-TitleScene::TitleScene():
-data(nullptr)
+TitleScene::TitleScene()
 {FUNCLOG}
 
 // デストラクタ
@@ -24,9 +23,9 @@ bool TitleScene::init()
 	if(!Layer::init()) return false;
 	
 	// データクラス初期化
-	this->data = new TitleSceneData();
+	baseScene::data = new TitleSceneData();
 	
-	return baseScene::init(data, CC_CALLBACK_0(TitleScene::loadFinished, this));
+	return baseScene::init(CC_CALLBACK_0(TitleScene::loadFinished, this));
 }
 
 // リソースロード終了後の処理

@@ -11,7 +11,6 @@
 // コンストラクタ
 DungeonScene::DungeonScene():
 eventListener(nullptr),
-data(nullptr),
 mapLayer(nullptr)
 {FUNCLOG}
 
@@ -38,9 +37,9 @@ bool DungeonScene::init()
 	if(!Layer::init()) return false;
 	
 	// データクラスを初期化
-	this->data = new DungeonSceneData("TestScript");
+	baseScene::data = new DungeonSceneData("TestScript");
 	
-	return baseScene::init(this->data, CC_CALLBACK_0(DungeonScene::loadFinished, this));
+	return baseScene::init(CC_CALLBACK_0(DungeonScene::loadFinished, this));
 }
 
 // リソースプリロード完了時の処理
@@ -55,10 +54,6 @@ void DungeonScene::loadFinished()
 	black->setPosition(WINDOW_CENTER);
 	this->addChild(black);
 	
-	// マップレイヤーを生成
-	this->mapLayer = dynamic_cast<TiledMapLayer*>(TiledMapLayer::create("MAIN-Syokudou1"));
-	this->addChild(mapLayer);
-	
 	// イベントリスナ生成
 	this->eventListener = EventListenerKeyboard::create();
 	this->eventListener->onKeyPressed = CC_CALLBACK_1(DungeonScene::onKeyPressed, this);
@@ -66,6 +61,10 @@ void DungeonScene::loadFinished()
 	
 	// イベントリスナ登録
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
+	
+	// マップレイヤーを生成
+	this->mapLayer = dynamic_cast<TiledMapLayer*>(TiledMapLayer::create("MAIN-Syokudou1", this->eventListener));
+	this->addChild(mapLayer);
 	
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),

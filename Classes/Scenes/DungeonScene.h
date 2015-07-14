@@ -33,7 +33,6 @@ private:
 	// インスタンス変数
 private:
 	EventListenerKeyboard* eventListener;
-	DungeonSceneData* data;
 	TiledMapLayer* mapLayer;
 };
 

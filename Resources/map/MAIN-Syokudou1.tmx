@@ -40,7 +40,6 @@
  </layer>
  <objectgroup name="collision">
   <object id="11" x="0" y="64" width="16" height="560"/>
-  <object id="13" x="16" y="608" width="304" height="16"/>
   <object id="14" x="352" y="624" width="272" height="16"/>
   <object id="15" x="624" y="64" width="16" height="560"/>
   <object id="16" x="592" y="96" width="32" height="32"/>
@@ -75,7 +74,7 @@
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe1" width="40" height="40">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzLEJAAAIBDEF95/ZJb5QSODaqwIAAAAAAC6azpV8frDDLAC1

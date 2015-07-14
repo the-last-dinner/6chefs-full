@@ -14,7 +14,7 @@ const string TiledMapData::basePath = "map/";
 // コンストラクタ
 TiledMapData::TiledMapData(const string& mapFileName):
 tiledMap(experimental::TMXTiledMap::create(basePath + mapFileName + ".tmx")),
-mapObjs{nullptr}
+mapObjs{}
 {
 	FUNCLOG
 	this->setObjects();
@@ -78,7 +78,7 @@ void TiledMapData::setObjects()
 		int eventId = (objInfo.count("EventID") != 0)?objInfo.at("EventID").asInt():-1;
 		
 		// trigger取得
-		MapObject::TriggerType trigger = (objInfo.count("trigger") != 0)?static_cast<MapObject::TriggerType>(objInfo.at("trigger").asInt()):MapObject::TriggerType::NONE;
+		TriggerType trigger = (objInfo.count("trigger") != 0)?static_cast<TriggerType>(objInfo.at("trigger").asInt()):TriggerType::NONE;
 		
 		if(objType == "")
 		{
@@ -90,7 +90,7 @@ void TiledMapData::setObjects()
 			// オブジェクトのID取得
 			int id = objInfo.at("objID").asInt();
 			
-			pObj = Character::create(id, static_cast<Character::Direction>(objInfo.at("direction").asInt()));
+			pObj = Character::create(id, static_cast<Direction>(objInfo.at("direction").asInt()));
 			pObj->setName(objType + ((objType == "main")? "" : "_" + to_string(id)));
 			pObj->setHit(true);
 		}
@@ -107,8 +107,34 @@ void TiledMapData::setObjects()
 experimental::TMXTiledMap* TiledMapData::getTiledMap()
 {return this->tiledMap;}
 
+// 指定座標のマップオブジェクトを取得(ない場合はnullptrを返す)
+MapObject* TiledMapData::getMapObject(Point point)
+{
+	for(MapObject* obj : this->mapObjs)
+	{
+		Size objSize = obj->getObjectSize();
+		Point objPoint = obj->getPosition() - objSize / 2;
+		Rect rect = Rect(objPoint.x, objPoint.y, objSize.width, objSize.height);
+		if(rect.containsPoint(point) && obj->getName() != "main") return obj;
+	}
+	return nullptr;
+}
+
+
 // 現在座標から、指定の方向に対して当たり判定があるか
-bool TiledMapData::isHit(MapObject* obj, MapObject::Direction direction)
-{	
-	return false;
+bool TiledMapData::isHit(MapObject* obj, Direction movingDirection)
+{
+	// 移動先の座標を取得
+	Point point = obj->getPosition() + movementMap.at(movingDirection) * (obj->getObjectSize().width / GRID - 0.5f);
+	MapObject* pObj = this->getMapObject(point);
+	if(!pObj) return false;
+	return pObj->isHit();
+}
+
+// イベントIDを取得
+int TiledMapData::getEventId(Point point)
+{
+	MapObject* pObj = this->getMapObject(point);
+	if(!pObj) return -1;
+	return pObj->getEventId();
 }

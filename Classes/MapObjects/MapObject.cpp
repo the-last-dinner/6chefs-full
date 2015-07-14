@@ -8,20 +8,13 @@
 
 #include "MapObject.h"
 
-const map<MapObject::Direction, Point> MapObject::gridMap =
-{
-	{MapObject::Direction::FRONT, Point(0, -GRID)},
-	{MapObject::Direction::RIGHT, Point(GRID, 0)},
-	{MapObject::Direction::LEFT, Point(-GRID, 0)},
-	{MapObject::Direction::BACK, Point(0, GRID)}
-};
-
 // コンストラクタ
 MapObject::MapObject():
 objectSize(),
 eventId(-1),
 trigger(TriggerType::NONE),
-_isHit(false)
+_isHit(false),
+movingDirection(Direction::NONE)
 {FUNCLOG}
 
 // デストラクタ
@@ -70,26 +63,29 @@ void MapObject::setHit(bool _isHit)
 	return;
 }
 
+// 動いている方向をセット
+void MapObject::setMovingDirection(Direction direction)
+{
+	this->movingDirection = direction;
+	return;
+}
+
 // オブジェクトの大きさを取得
 Size MapObject::getObjectSize()
-{
-	return this->objectSize;
-}
+{return this->objectSize;}
 
 // イベントIDを取得
 int MapObject::getEventId()
-{
-	return this->eventId;
-}
+{return this->eventId;}
 
 // triggerを取得
-MapObject::TriggerType MapObject::getTrigger()
-{
-	return this->trigger;
-}
+TriggerType MapObject::getTrigger()
+{return this->trigger;}
 
 // 当たり判定の有無を取得
 bool MapObject::isHit()
-{
-	return this->_isHit;
-}
+{return this->_isHit;}
+
+// 動いている方向を取得
+Direction MapObject::getMovingDirection()
+{return this->movingDirection;}
