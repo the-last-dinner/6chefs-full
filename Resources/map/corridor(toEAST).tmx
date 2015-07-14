@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="18">
+ <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
+ </tileset>
+ <tileset firstgid="2465" name="syokuzai1" tilewidth="16" tileheight="16">
+  <image source="syokuzai1.png" trans="fefefe" width="128" height="64"/>
+ </tileset>
+ <layer name="Base" width="32" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBh4wMvEwKAOxBp0wlpALMCEsF8WyDYHYgs6YSsgVkCyX3cA7DdAst92AOx3QLLfF8h2B2IPJOxJQ+wFxAFI9scC2ZF0xBFAnIBk/8IBwqP2j9o/av+o/QNt/ygYBQMFACnA6Ro=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="32" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzUENACAMBLB7zCo4AP2ggc9C0hpowqtRyay+f917N/4AAD864GgBxw==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="32" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzTEBADAIBLEf8O+FOgAHVFFR0V8uBiIB+ClDOuH7a+82/rP3Nf4AADyCDASi
+  </data>
+ </layer>
+ <layer name="MonoUe" width="32" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0BPs5oTgwQR+sjAw/GIZaFeMglEwCkbBKBgF9AEAYN0DhA==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="13" x="16" y="0" width="480" height="16"/>
+  <object id="17" x="16" y="272" width="480" height="16"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="event"/>
+</map>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="11">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="c1a5c8" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMENgDAMA5MJ0r3YfxCYACqwFKX0lTofiGRV/fjqYCHyrdkvHQUcU5GmPH/k2PQWKxdywJ/Fga89LDanZzLi3qo5/WRy0ANzYvQ79qyq17iDueod0T/2wu+1JfYaOZ4Xlck18zcdlcn1lsf3e/X3iefs/ez/+j/cOQGJbk4D
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="192" y="64" width="128" height="128"/>
+  <object id="2" x="320" y="64" width="32" height="160"/>
+  <object id="5" x="320" y="256" width="32" height="32"/>
+  <object id="6" x="96" y="288" width="256" height="16"/>
+  <object id="7" x="80" y="64" width="16" height="240"/>
+  <object id="9" x="160" y="32" width="32" height="32"/>
+  <object id="10" x="96" y="32" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZQIwZlR6q9vxgYmD4yYTgg9i/mHCrJxdgc78EDfw0as+oPQNtDwj8ZMKNQfmL1PxMTv4H+Zce9oDAT7RyhFb2kArIDTdS/WMC1GNKIjajUxiMAuoDAHVGFXc=
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>
