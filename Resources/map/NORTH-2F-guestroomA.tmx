@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="34" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="21">
+ <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16">
+  <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
+ </tileset>
+ <tileset firstgid="9901" name="ST-Room-I01" tilewidth="16" tileheight="16">
+  <image source="ST-Room-I01.png" trans="ffffff" width="256" height="1120"/>
+ </tileset>
+ <tileset firstgid="11021" name="situnai" tilewidth="16" tileheight="16">
+  <image source="situnai.png" trans="007575" width="960" height="511"/>
+ </tileset>
+ <layer name="Base" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkUsOQEAQRNvnGhjWHIkTCGscz3frRspCwsRK0i2iK3npySym5qWJ/pceDKByiEomajCiYzr1rrgLwQJmJva3I2Ac+d4GtC/0Rje9qUsUA8NEAjL32hvg3O13zHQ3vR6mT/zT7s0xC+Kf6qu+6qu+6qu+6qu+kr5PcvxfOsf/pWPvTSr23qTy1f1uzWzNyg==
+  </data>
+ </layer>
+ <layer name="MonoShita" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlLlOAlEUho9CB4k2bMUMD6CtS6ugjUui4G6pRn0BfQkFbRWw0w410ffQl1DQxiVRcP0oSAg4zGWZMcb5k685OTlfzs29V+R/Z8clsgsJSLrsm3NDzy3kIN+Ct9E5Q26RYYhA1N28t3qO5hPRfcb9B/QcQgrSTXifNJFnrXbOFs7tOt5WM6GLTOq19Suc1xZ6j3Ge/IK3IyzSGa6t9/hFev3WeZdwLv/gbSQPAZHHQP2eBHcoCXuwrxnXLzwilx4171hQZDxYvyfHzDzcwb1mXO/yinR71bwq+0a4Q1EYgVHduL6Bc1PRq7JviplpyMCRbl5vV/o4w34YgMGKc1b1FtirCG/wDh/wabJrO7yxkEgcZmAW5mA+ZL232bww8xUKUNTN6+3KFH/ENMQgHjavVyfLmz6FMziHr9IbV7z3rSRb4SyxgHPRRm8Zu/ct4+xrnXcFzyqswboNTidOnPzNfAP6dXku
+  </data>
+ </layer>
+ <layer name="MonoChu" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzUENwCAQRcGfgAkOSANb1ElrCxSwmNhtyBsDIwEAANxvVOmp/u+0cwW8RypSLv5vs7MHvK+dX8ALAH+1AWz8Bk4=
+  </data>
+ </layer>
+ <layer name="MonoUe" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzUERABAQAMCrJB296EUE18DH8NktsBHALbVEtPL+7XmOD+/Mc314AQCAsw2xhgVc
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Chara(object)">
+  <properties>
+   <property name="cc_vertexz" value="0"/>
+  </properties>
+ </objectgroup>
+ <layer name="CharaUe1" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzskNACAMwLCO0e05B6VbAJIt5Z8IAHhHy4hejWpWq9p5+woA4D8HhZAEWg==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="30" height="34">
+  <properties>
+   <property name="cc_vertexz" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAADwZg/wAAE=
+  </data>
+ </layer>
+ <objectgroup name="event">
+  <object id="1" x="32" y="128" width="32" height="32"/>
+  <object id="2" x="32" y="240" width="96" height="32"/>
+  <object id="5" x="112" y="160" width="32" height="16"/>
+  <object id="6" x="112" y="192" width="32" height="16"/>
+  <object id="7" x="256" y="176" width="64" height="112"/>
+  <object id="8" x="352" y="176" width="64" height="112"/>
+  <object id="9" x="416" y="160" width="32" height="48"/>
+  <object id="10" x="320" y="96" width="32" height="48"/>
+  <object id="11" x="352" y="112" width="96" height="16"/>
+  <object id="12" x="448" y="32" width="16" height="416"/>
+  <object id="13" x="256" y="448" width="208" height="32"/>
+  <object id="16" x="256" y="512" width="32" height="32"/>
+  <object id="17" x="16" y="448" width="208" height="160"/>
+  <object id="18" x="16" y="32" width="16" height="416"/>
+  <object id="19" x="32" y="96" width="288" height="32"/>
+  <object id="20" x="48" y="304" width="48" height="112"/>
+ </objectgroup>
+</map>
