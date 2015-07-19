@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="40" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="20">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="40" height="42" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="26">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
-  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1888"/>
+  <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
- <tileset firstgid="1889" name="youkan" tilewidth="16" tileheight="16">
+ <tileset firstgid="1985" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
- <layer name="Base" width="40" height="40">
+ <layer name="Base" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="-4"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk00KAjEMhYswjRfwZ+/cQNdu9GQD3tsUDJSQ1iiFifIKj6QlbV7mY5acEqV1tW2cPdjbwjqk9WT5LedH5a/spzfKjppPtXvJ6qX91bXZkOXRqtHner7c6VGr5++bmSfnfY9a/vZV/55add77nvfF34ZiSvxdOD9TvCj+7pzfKF4UfzPnJ4oXwRd8wRd8wTcGT/AF30gRfMEXfH+T76y+XwSe4Iv/N1IEX/D9N74y/yi+ZV1pnGT+EW+V9QTOCVfm
+   eJztk90KwjAMhYuwxhfw5969gV57o0822HubgoES2prNwqKcwCFtSNuTfWyKIVDYVvtKbWZvE+sUtlPJb6qflb+0Hz4oGnqW6vBW6S3tL++NBZU8lnp0Xc8XG2/kavlbM/NgPG9Rzd8xe7+lWp/1vOV+8bcjnxJ/N15fyV8Wf09eP8hfFn8jry/kL4Mv+IIv+IKvD57gC76eMviCL/j+Jt9RfT8PPMEX/6+nDL7g+298Zf5efFPcqZ9k/h53Ib6PF7P7V+Y=
   </data>
  </layer>
- <layer name="MonoShita" width="40" height="40">
+ <layer name="MonoShita" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="-3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlUkKwkAQRTtHlHbhVjqKW42KW8dLOVxA4wUczuIPpKAoOphsUlHqwaebbOrRnfw4ZxiGYRjGr3BOnLsgo5o5IqekPb8cs+4N/K7IrUW/F2a9G/g9kGeLfkQPMz3SF0lZBgpe0s8LrzmLpt8QswPzI6fiTrNyP1H0m5Ye5EdOC7ZfKfhRvxR+sxp+Wv1S5eeFn1a/VPkF4afVL9Iv1jUa7983P95/2n78zEKk/7ril7J3jtaunJ/8PjLl8+P9F9i9xrpau/8ycW7ctXg27kD/xf4btC4V+2+NmRtki+yQPXKIrIZhGMZ/8QHGR2uC
+   eJztlUkKwkAQRTtHlLhwKx3FrUbFreOlHC7gcAGHs/gDaSyKDsZNKsJ/8Okmm3p0Jz/OEUIIIeRfOCbOnZBBzeyRQ9Kc3xWzbj/4nZFLg35PzHr94HdHHg36BTqYmSJdlUykZ+Cl/VLlNRWx9Otjthd+wam407zcjwz9xqVH8AtOM7FfGPiFfin8JjX8rPqlyi9Vflb9UuXnlZ9Vv2i/WNdYvH/f/GT/WfvJM/OR/muLXybeubC25fz095Ebn5/sPy/uNdbV1v2Xq3OTrsWzYQv6L/bfCOvcsP+WmLlC1sgG2SK7yEoIIYSQD28wsGuC
   </data>
  </layer>
- <layer name="MonoChu" width="40" height="40">
+ <layer name="MonoChu" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlk1OAkEQRjsMCV4Eb6AHQF2wRV1wBMWNiia6gwEShQ2/iT8bUNzrHfQGehFNZMkjwaQTyTC2baZM6iXfZrpT9TIzXWlj/ge5wJgNskm2gu/rYcqYWmp5nTp7GhH7stReXVB/Wf8Cz7bJDtldsN6lZy+GX589g4h9a9Red+j/Ww6peUSOSZmckNM/6ONKBZcqCUmN1EnD0a/C+6/G+FY/oY1Lh3RJj/TJwNGvjVvHs98QlxG5I/dkTB4c/Ya4jTz7+eQRtyfBforii1Y6aYNobhP2K9H/wHJ4Zi68CJ4Nr7i9CfZT/HLBv3kp+Axf4XadoN8evfet/u+cjQ9B5+MMt3PLL+BOlRZ0b1YUJT6fzJaJNV/yAmbz7I7XnHtkmC0r1nwpCvCb3fFuBHgoiqIoyhdT0vos2A==
+   eJztlktOAkEQhjsMiV5EbqAHEF24VVx4BJWND0hkxzPxseGZiGxAZQ93gBvoRTTRpR8Ji04gw9i0mTKpL/k3052qLzPTlTbmf7AbGJMme2Q/WFwvJ4ypJFbXqbKnFrJvi9qpJfVX9T/k2RHJkOMl6016tiL4tdnTCdm3Te0dh/7rckHNS3JFrkmO5P+gjytFXEqkTCqkSmqOfkXefynCt/oNdVwapElapE06jn513Bqe/fq4DMgzeSGvZOjo18dt4NnPJyPcxoL9FMUXD8m4DcLpxex3Tv+s5TBhLkwFz4Y33N4F+yl+ueXfvBN8hh9x68bod0rvM6v/B2fjU9D5uMGtYPkF3KmSgu7NiqJE54vZ8m3NlwMBs3l2x7ufe2wwWzat+XIiwG92x3sS4KEoiqIoih9+AORCLNg=
   </data>
  </layer>
- <layer name="MonoUe" width="40" height="40">
+ <layer name="MonoUe" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzkENADAIBLD7MQvzL3MfXIyEtAqaAL/ck7yaXgAAAAAA7NeZAQEk
+   eJztzjEBADAIA7CeeJwS3OOAczyJgiTAL13Jq+sFAAAAAADsBmsQAOU=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -47,6 +47,8 @@
   <object id="16" x="592" y="80" width="32" height="48"/>
   <object id="17" x="16" y="64" width="624" height="32"/>
   <object id="18" x="256" y="192" width="160" height="304"/>
+  <object id="20" x="352" y="624" width="32" height="48"/>
+  <object id="22" x="288" y="624" width="32" height="48"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -58,20 +60,35 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="40" height="40">
+ <layer name="CharaUe1" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzLEJAAAIBDEF95/ZJb5QSODaqwIAAAAAAC6azpV8frDDLAC1
+   eJztzLEJAAAIBDEF95/ZJb4QSeDaqwIAAAAAAC6azpV88t8CpXsAtQ==
   </data>
  </layer>
- <layer name="CharaUe2" width="40" height="40">
+ <layer name="CharaUe2" width="40" height="42">
   <properties>
    <property name="cc_vertexz" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T+1pCaAAAAAAAADgBhpAAAE=
   </data>
  </layer>
+ <objectgroup name="event">
+  <properties>
+   <property name="EventID" value="117"/>
+  </properties>
+  <object id="24" x="320" y="640" width="32" height="32">
+   <properties>
+    <property name="EventID" value="117"/>
+   </properties>
+  </object>
+  <object id="25" x="320" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11111"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="11">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="13">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="c1a5c8" width="480" height="256"/>
  </tileset>
@@ -41,5 +41,16 @@
    eJxjYBhZQIwZlR6q9vxgYmD4yYTgg9i/mHCrJxdgc78EDfw0as+oPQNtDwj8ZMKNQfmL1PxMTv4H+Zce9oDAT7RyhFb2kArIDTdS/WMC1GNKIjajUxiMAuoDAHVGFXc=
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="11" x="128" y="0" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11118"/>
+   </properties>
+  </object>
+  <object id="12" x="352" y="224" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11119"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

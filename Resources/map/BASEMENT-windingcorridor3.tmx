@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhewIcROx41b9S84WweLnXE4lHzBrd5gxUAAHAnLu0=
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg+wJQRt5wxHrlR80bNo9Q8E0bSzAtiJIyDqexffGDUvMFtnhgjZZhWAADbyQoL
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>
