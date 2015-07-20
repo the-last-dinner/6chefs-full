@@ -33,7 +33,7 @@ private:
 private:
     //グローバルセーブデータ
     rapidjson::Document global;
-    //対象ローカルセーブデータ
+    //対象ローカルセーブデータid
     int local_id;
     //ローカルセーブデータ達
     vector<rapidjson::Document> local;
@@ -50,6 +50,15 @@ public:
     vector<SaveIndex> getSaveList();
     //セーブ
     void save(const int& id);
+    /* flag管理系 */
+    void setFriendship(const string& character, const int& level);
+    void setEventFlag(const string& map, const int& event_id);
+    void setItem(const int& item_id);
+    void setItemEquipment(const int& which, const int& item_id);
+    bool checkEventFlag(const string& map, const int& event_id);
+    bool checkItemFlag(const int& item_id);
+    bool checkItemEquipment(const int& item_id);
+    int getFriendship(const string& character);
 private:
     //グローバルデータのセット
     bool setGlobalData();

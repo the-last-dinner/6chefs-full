@@ -6,7 +6,10 @@
     "play_time":0,
     "map":"map",
     "location":[0,0,0],
-    "friendship_level":{},
+    "friendship":{},
     "event":{},
-    "item":{}
+    "item":{
+        "equipment_right":null,
+        "equipment_left":null
+    }
 }
