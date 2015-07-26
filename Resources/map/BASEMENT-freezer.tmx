@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="15">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
+  <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="chip10e_glas" tilewidth="16" tileheight="16">
+  <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="961" name="cyber2" tilewidth="16" tileheight="16">
+  <image source="cyber2.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1441" name="barrel-option" tilewidth="16" tileheight="16">
+  <image source="barrel-option.png" trans="007575" width="256" height="224"/>
+ </tileset>
+ <layer name="Base" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYICA5UC8ggwaFzgKxMfIoOll3mMgfkIGjQsIA7EIiVh01Lxhb95WRgaGbYzUM+8y0KwrVDSP2v4dNQ8CDIHYiERsjMe8wQoApYU/Pw==
+  </data>
+ </layer>
+ <layer name="MonoShita" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzDkVgDAQANFtEkccBjgMcBgIYIDDLjgABUyZFli6nfem/SL/lniRlDPO/XevwCi54lrBazBa7rhX8ALGwCNPkbc7kcM992aMhVfeIu/Eul54lmVZWt1xBgr1
+  </data>
+ </layer>
+ <layer name="MonoChu" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAPRLEwMESzkKkZC3BlZWBwY8Utv44FgokFyUCzUvCYd4YFgokFjUCzmvCYNwqoAyyBYWzFSpgmFoQD1UawEqZHAX3AaPwOLwAAFdISUQ==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBg6GVmIBt0Y9E7at6oefQ0rwdNPyXmrQTqXUVF87CBwWReLlBvHhX9OxTSy1AzDwTymMnDtAYA3T0a3A==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="3" x="256" y="0" width="64" height="160"/>
+  <object id="4" x="256" y="192" width="64" height="96"/>
+  <object id="5" x="0" y="288" width="320" height="32"/>
+  <object id="6" x="0" y="0" width="32" height="288"/>
+  <object id="7" x="64" y="224" width="160" height="32"/>
+  <object id="8" x="64" y="128" width="160" height="32"/>
+  <object id="9" x="160" y="64" width="32" height="32"/>
+  <object id="12" x="32" y="0" width="32" height="64"/>
+  <object id="13" x="64" y="16" width="64" height="64"/>
+  <object id="14" x="128" y="0" width="128" height="64"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B8IM3KwCDDSpgeBUMTjMbvKMAHAJ8dAos=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA9WAPEa6lsFrXMPAXEp5FoSgEu910E4ktkmIfLfe+B+AOZbhwFo2AUjAJqAACUPRCU
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

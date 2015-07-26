@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="8">
+ <tileset firstgid="1" name="meet" tilewidth="16" tileheight="16">
+  <image source="meet.png" trans="040204" width="448" height="288"/>
+ </tileset>
+ <tileset firstgid="505" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="26" height="20">
+  <properties>
+   <property name="cc_vertexz" value="-6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAAXWYGBlYmBGbDQ6OLIethB2JtZgacAGSPMhMCq+Ch0cWQ9agSaQ82veji+NxAjD2OQDVOTBAahp2YMMXRxZBpZyLsWUIljMseL6C4Nx3soZb5yPboYLGL2vZ4MkPCCB3wAcX4qWzXEiz2gPxIzXSAyx5qpzdeZkgYDVS6HrVn8NsDAnzMhDFyPuPFoYYaQBfN3djKl+EOABEbpyQ=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="26" height="20">
+  <properties>
+   <property name="cc_vertexz" value="-5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkwsKwkAMRHsX9RAK/rE3UPB3CgU/l1Bo9byOsIEhmHaDS6ngwIOQDQlkJ1n21y+pE+iCnjPmXJ3GgQmYOmPOWeqDAdgGdmDvjDlnaQlW4BQ4g4uKeS+fajhXJ669qt7W3rhmAXIwBKOKOQUowQM8VT9rb1LD89ZgUzFH+437WfuUmhgfiLTfrN7vtxmYUz7GByLtN8/9eH3A9anvh+ew31Lfj0j7zfqfb+8nVgdwTNjP0g3cG5jTVr0AUSlKNQ==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="352" y="0" width="32" height="128"/>
+  <object id="2" x="352" y="160" width="32" height="144"/>
+  <object id="3" x="256" y="256" width="96" height="48"/>
+  <object id="4" x="64" y="256" width="160" height="64"/>
+  <object id="5" x="32" y="0" width="32" height="96"/>
+  <object id="6" x="32" y="128" width="32" height="192"/>
+  <object id="7" x="64" y="0" width="288" height="64"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <objectgroup name="event"/>
+</map>

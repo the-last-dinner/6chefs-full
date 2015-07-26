@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="2">
+ <tileset firstgid="1" name="BlackMagic01" tilewidth="16" tileheight="16">
+  <image source="BlackMagic01.png" trans="008080" width="192" height="352"/>
+ </tileset>
+ <tileset firstgid="265" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="0000ff" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="745" name="youkan" tilewidth="16" tileheight="16">
+  <image source="youkan.png" trans="0000ff" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0MEJgDAMRuFAMqGLGAexzuN2ErwUSg5ahAjvwX9tv1bk7jCRRWtsNxkKn2uN/dXXtMYy31lk+PDhw4cPHz58+PDhw4cv90Vu77d1568T53him63//3h/++geetYFoIyWRQ==
+  </data>
+ </layer>
+ <layer name="MonoShita" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-10"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJACAQBMELvknbELERsQ0RK9TM0M8eYRcuu2AkIvKWTapBK/b2tfNJQev48OHDhw8fPnz48H3mG+ezgjYdPiK6bU/v/4E=
+  </data>
+ </layer>
+ <layer name="MonoChu" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzDcOgEAQBMH7CTbDZtj/v4sJN7ljCJG6pNYmo00JAPAXlapVo9pQp3pj7+7e/uYMalSTmtUS7mru3V1pn7OpXR3qVFe4t7l3d6U9AAAAgG8eVPYLxg==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0TsOgCAUBVF2Diqd31Z7XKe3tjAvYCSSOcl0r7gE5wAAfzSoaLz1KhhvO9XnDLpZ1Wa8HdVkvJ3VkrUIwBt2ddQe8SCps/aID7T6D62+CwBQ7gLp/g3V
+  </data>
+ </layer>
+ <objectgroup name="collision"/>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe" width="40" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztysEJACAMBMH0oKD9V2o+wY9gCpiB+xwbAUAZufn4V243+m736wEAALgOn1sBAw==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

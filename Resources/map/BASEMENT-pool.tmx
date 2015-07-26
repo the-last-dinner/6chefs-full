@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="37">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
+  <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
+ </tileset>
+ <tileset firstgid="705" name="object_sack01" tilewidth="16" tileheight="16">
+  <image source="object_sack01.png" trans="201c30" width="384" height="256"/>
+ </tileset>
+ <layer name="Base" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1EEOgjAUBNDpASw7PQRlpR4C2ek1PaT9IUQcm0rc9JPMTyZDSwlvA8B7rgE45I6Ye0msNJ/lRLq2dLRn63PA15gnYU6/Sqo0n+UkurYMtDdUPKX3/nJtcf/rGXPf8Nkjyvtb76/bMtEzU8XzbBR55JFHHnnKnkvw5bnn9cORp5VjL55jXp8cebx9X/LII488LT029p9uEa/zAjGADEU=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlEEKwCAMBPP//9g+RP1PIzRgQ7VSaA9hBhYSc9oQVwQAAFbIqqKqZ+37t3UUUqfmzTz6d++/ynivkfbzdD/W58G8r9suN9X+q4Nv6T2Wm97vYTaL+L/Inzkr90P+XH0mIX8M8gcgDgfQ6JAy
+  </data>
+ </layer>
+ <layer name="MonoChu" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztztkJgEAMRdEwPevYgEsDozbg0oBLed4KhHwEEd6B+xceMfuHKpnVlKlJ3++33HTU0xDwj3e/cDPSRHPAP979hZuVNtoD/vHuH9ycdNEd8E/0voiIiIiIiLx7APWBF9U=
+  </data>
+ </layer>
+ <layer name="MonoUe" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKgDAMBdBPO9e76WKvoIteXmezCUKgJCkd/G9PCH9IAhDFmTOwZHv9KrXVUf+1Sa/d0e+Q2jNwnlbROXiNyoGI4lwJuNPoKV5Fdsr0473CPU9EGu8/rbHeAe8/rWm9A73ysOqVB8V4AHyxDXU=
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="4" x="64" y="416" width="32" height="32"/>
+  <object id="6" x="128" y="384" width="32" height="32"/>
+  <object id="7" x="480" y="384" width="32" height="32"/>
+  <object id="10" x="512" y="256" width="32" height="32"/>
+  <object id="13" x="480" y="16" width="64" height="80"/>
+  <object id="14" x="96" y="16" width="64" height="80"/>
+  <object id="15" x="64" y="64" width="32" height="32"/>
+  <object id="16" x="64" y="0" width="480" height="64"/>
+  <object id="18" x="224" y="96" width="32" height="32"/>
+  <object id="19" x="320" y="64" width="32" height="32"/>
+  <object id="21" x="64" y="224" width="32" height="32"/>
+  <object id="23" x="352" y="208" width="64" height="16"/>
+  <object id="25" x="256" y="256" width="32" height="16"/>
+  <object id="26" x="256" y="320" width="32" height="16"/>
+  <object id="27" x="384" y="288" width="32" height="16"/>
+  <object id="28" x="160" y="336" width="64" height="16"/>
+  <object id="29" x="160" y="192" width="32" height="16"/>
+  <object id="30" x="288" y="160" width="32" height="16"/>
+  <object id="32" x="32" y="288" width="32" height="192"/>
+  <object id="33" x="64" y="448" width="432" height="32"/>
+  <object id="34" x="496" y="448" width="80" height="32"/>
+  <object id="35" x="544" y="0" width="48" height="448"/>
+  <object id="36" x="32" y="0" width="32" height="256"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="CharaUe1" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILBCbYC8TYg3k4FNjJ/uABkP1EjjIZz+MDY5IbLSAmf7QTEcNEjJXyIpdH1DPfwIZSPiEk3wzl8KC2Lhnv6ISe9DPf6axSMglFAPgAA5gV9JA==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztz9EJwCAQBNG1iMRCJIUY++8lNuAKRkFkHuznwZwEAHu6gnRPXgzjPenHbctDj0WPR49Hj0ePR493Uk+ut+/klQU/Auj7AJVZDuk=
+  </data>
+ </layer>
+ <layer name="CharaUe3" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1LcNgEAQBdHTQQfQKqYBTAOYcpmEhIgAaU9injTx/mhTkiT9WZVTqnPc/Y7bPQ00UkNt4J6J2zMttAbuuG1s2Omgs4A9kt57/rdopf03SfraBRgrCqE=
+  </data>
+ </layer>
+ <layer name="CharaUe4" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMJwBPzMDgwDzQLsCPzjIxMBwiIk2ZpPj/5tAt9yikXtGwfAAQyFfIQNtoFt1BpF7nYFucaGje0a6/0fBKBgFo2CkAADUswWC
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="10">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="961" name="cyber" tilewidth="16" tileheight="16">
+  <image source="cyber.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1441" name="cyber2" tilewidth="16" tileheight="16">
+  <image source="cyber2.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1921" name="G1" tilewidth="16" tileheight="16">
+  <image source="G1.png" trans="007575" width="192" height="128"/>
+ </tileset>
+ <tileset firstgid="2017" name="G2" tilewidth="16" tileheight="16">
+  <image source="G2.png" trans="007575" width="192" height="128"/>
+ </tileset>
+ <tileset firstgid="2113" name="G3" tilewidth="16" tileheight="16">
+  <image source="G3.png" trans="007575" width="192" height="128"/>
+ </tileset>
+ <tileset firstgid="2209" name="G4" tilewidth="16" tileheight="16">
+  <image source="G4.png" trans="007575" width="192" height="128"/>
+ </tileset>
+ <tileset firstgid="2305" name="G5" tilewidth="16" tileheight="16">
+  <image source="G5.png" trans="007575" width="192" height="128"/>
+ </tileset>
+ <layer name="Base" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzVzcEJACAMQ9F2IcH9l/NaUNqkhxQD/6Q+zcyW31XL3ii8V7s4Z7zKmvQQa8pDrQmPsdQeaym9jqXyulb0tufFv7JQD+0Xrxp7X+1N7gCsfUDt
+  </data>
+ </layer>
+ <layer name="MonoShita" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDGWwgJmBYSEaXsRMvnn7gHr3o+EDFJg3CigD2OIXWzwTqw5b/GKLZ2LVjQLyAQB3rB7F
+  </data>
+ </layer>
+ <layer name="MonoChu" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxLYWZgSMWCTzPhx9j0pAFxExA3Y8GEzMOmB2ReCg73kYNh5mGzixwMM49aYNS8kWFePRA3AHEjhWbD8ttcIJ4HxPOpYB7IfbuBeA8Q76WSedQCw9E85LSAni5g5iHHL6G4xqcWll6Q45dQXONT20LFsBupAAActVDM
+  </data>
+ </layer>
+ <layer name="MonoUe" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAb0BAAeAAAE=
+  </data>
+ </layer>
+ <layer name="G1" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUUAKa2SF4sJo3CkbBKBicAADOrAIp
+  </data>
+ </layer>
+ <layer name="G2" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUkAses0PwE/bBad4oGAWjYPACAG5wBX8=
+  </data>
+ </layer>
+ <layer name="G3" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BkAWcOCKYW8OeA4JFi3igYBaOAOgAAq9YCoQ==
+  </data>
+ </layer>
+ <layer name="G4" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUkAsWc0DwEg7qmLeeA4I3UMm8UTAKRsHgBQD1uAQp
+  </data>
+ </layer>
+ <layer name="G5" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUUAKYOSF4sJo3CkbBKBicAADKvAAx
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="0" y="0" width="16" height="320"/>
+  <object id="2" x="16" y="320" width="128" height="32"/>
+  <object id="3" x="176" y="320" width="128" height="32"/>
+  <object id="4" x="304" y="0" width="16" height="368"/>
+  <object id="5" x="16" y="288" width="128" height="32"/>
+  <object id="6" x="176" y="288" width="128" height="32"/>
+  <object id="7" x="16" y="192" width="96" height="32"/>
+  <object id="8" x="16" y="0" width="288" height="64"/>
+  <object id="9" x="144" y="160" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Ugokumono(object)"/>
+ <objectgroup name="Chara(object)"/>
+ <layer name="smoke" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDARoZB5oF4wCWoB6YLw2MEPiF5lNLpg7mk6GLQAAz9MENw==
+  </data>
+ </layer>
+ <layer name="CharaUe1" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBj84BgLA8NxCvEJFoR5TKwMDMwUYhbWgQuPUQABx3DEL7mAaYjGL7b8QUl4YMsfQyk8hhsYLf+GLwAA7Hgl6w==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIx2sYoPgUfNGwSgYBaOAfgAAk+UFgQ==
+  </data>
+ </layer>
+ <objectgroup name="event"/>
+</map>

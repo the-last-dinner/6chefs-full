@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="35">
  <tileset firstgid="1" name="situnai" tilewidth="16" tileheight="16">
   <image source="situnai.png" trans="007575" width="960" height="511"/>
  </tileset>
@@ -9,28 +9,28 @@
  <tileset firstgid="1951" name="set-mansion-in" tilewidth="16" tileheight="16">
   <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
  </tileset>
- <layer name="Base" width="20" height="24">
+ <layer name="Base" width="20" height="26">
   <properties>
    <property name="cc_vertexz" value="-4"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYGBgEKQShgFfKmFamddJJQwDh6iER80bNW/UvFHzRs2jrnmEAKnqqWkeAEKQDkg=
+   eJxjYGBgEKQShgFfKmFamddJJQwDh6iER80bNW/UvFHzRs2jrnmEAKnq6W3eQAIAMBcOSA==
   </data>
  </layer>
- <layer name="MonoShita" width="20" height="24">
+ <layer name="MonoShita" width="20" height="26">
   <properties>
    <property name="cc_vertexz" value="-3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMArIA7OFGRjmAPFcIJ4nTLl5X4FmfAPi70D8gwrmDWYAABNhBuU=
+   eJztzLkRACAMxMDrweXzdIkh5GowhNoZpZIAAKhpIXU33Iz33/Ij3Xbnww91F2K9BuU=
   </data>
  </layer>
- <layer name="MonoChu" width="20" height="24">
+ <layer name="MonoChu" width="20" height="26">
   <properties>
    <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj8wJWdgcENiN3ZqSPmD2QHAHEglcQigewoII6mkligCANDEBCnIoklA9kp7OSJrQaatUaEYRSQCWKAYRkLxHHs1BFLA7LTgThelIEhQRRVLAM5rQHjLEAEVQybOmLBSqBZq0bTAQZoBoZlCzv1+L1Adh8V+cMdsALzAJso9cxDzleDHQAAqMYqww==
+   eJxjYBj8wJWdgcENiN3ZqSPmD2QHAHEglcQigewoII6mkligCANDEBCnIoklA9kp7OSJrQaatUaEYRSQCWKAYRkLxHHs1BFLA7LTgThelIEhQRRVLAM5rQHjLEAEVQybOmLBSqBZq0bTAQZoBoZlCzv1+L1Adh8V+cMdsALzAJso9cxDzlejgDIAAGQ7KsM=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -69,21 +69,27 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="20" height="24">
+ <layer name="CharaUe1" width="20" height="26">
   <properties>
    <property name="cc_vertexz" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BggQc7A4MnEHuxU0csCMgOBuIQKomNAspAPjAsC9ipx68EsquoyB8Fo2CgAACH9BGf
+   eJxjYBgFo2BggQc7A4MnEHuxU0csCMgOBuIQKomNAspAPjAsC9ipx68EsquoyB8Fo2AUYAcAi/kRnw==
   </data>
  </layer>
- <layer name="CharaUe2" width="20" height="24">
+ <layer name="CharaUe2" width="20" height="26">
   <properties>
    <property name="cc_vertexz" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMFKAozADg5PwQLtiFIAAAAuBAKo=
+   eJxjYBgFo2AUjIJRMFKAozADg5PwQLtiFAwFAAB1wQCq
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="34" x="144" y="384" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1162"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

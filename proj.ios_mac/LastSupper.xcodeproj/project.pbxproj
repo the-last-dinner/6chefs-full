@@ -80,10 +80,12 @@
 		5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
 		555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
-		555B65121B5CF15B00D15530 /* baseSaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B65101B5CF15B00D15530 /* baseSaveDataSelector.cpp */; };
-		555B65131B5CF15B00D15530 /* baseSaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B65101B5CF15B00D15530 /* baseSaveDataSelector.cpp */; };
 		55619F621B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
 		55619F631B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
+		55627AD21B64B2DE00589FEE /* SaveDataLoadLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55627AD01B64B2DE00589FEE /* SaveDataLoadLayer.cpp */; };
+		55627AD31B64B2DE00589FEE /* SaveDataLoadLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55627AD01B64B2DE00589FEE /* SaveDataLoadLayer.cpp */; };
+		55627AD61B64B45F00589FEE /* baseSaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55627AD41B64B45F00589FEE /* baseSaveDataSelector.cpp */; };
+		55627AD71B64B45F00589FEE /* baseSaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55627AD41B64B45F00589FEE /* baseSaveDataSelector.cpp */; };
 		55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
 		55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
 		55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEF1B39A427000AFC17 /* SceneData.cpp */; };
@@ -248,10 +250,12 @@
 		5534BBDB1B2DDF52003CB847 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = ../Classes/MapObjects/Character.h; sourceTree = "<group>"; };
 		555B650C1B5CE94F00D15530 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureManager.cpp; path = ../Classes/Managers/TextureManager.cpp; sourceTree = "<group>"; };
 		555B650D1B5CE94F00D15530 /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureManager.h; path = ../Classes/Managers/TextureManager.h; sourceTree = "<group>"; };
-		555B65101B5CF15B00D15530 /* baseSaveDataSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseSaveDataSelector.cpp; sourceTree = "<group>"; };
-		555B65111B5CF15B00D15530 /* baseSaveDataSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseSaveDataSelector.h; sourceTree = "<group>"; };
 		55619F601B36970B007EBD6E /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../Classes/MapObjects/MapObject.cpp; sourceTree = "<group>"; };
 		55619F611B36970B007EBD6E /* MapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObject.h; path = ../Classes/MapObjects/MapObject.h; sourceTree = "<group>"; };
+		55627AD01B64B2DE00589FEE /* SaveDataLoadLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SaveDataLoadLayer.cpp; path = ../Classes/Layers/SaveDataLoadLayer.cpp; sourceTree = "<group>"; };
+		55627AD11B64B2DE00589FEE /* SaveDataLoadLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveDataLoadLayer.h; path = ../Classes/Layers/SaveDataLoadLayer.h; sourceTree = "<group>"; };
+		55627AD41B64B45F00589FEE /* baseSaveDataSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseSaveDataSelector.cpp; path = ../Classes/Layers/baseSaveDataSelector.cpp; sourceTree = "<group>"; };
+		55627AD51B64B45F00589FEE /* baseSaveDataSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseSaveDataSelector.h; path = ../Classes/Layers/baseSaveDataSelector.h; sourceTree = "<group>"; };
 		55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonSceneData.cpp; sourceTree = "<group>"; };
 		55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonSceneData.h; sourceTree = "<group>"; };
 		55655AEF1B39A427000AFC17 /* SceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneData.cpp; sourceTree = "<group>"; };
@@ -566,8 +570,10 @@
 				557A87D01B48FDBE001993E1 /* baseMenuLayer.h */,
 				55D78B9A1B522548004CE697 /* baseMessageLayer.cpp */,
 				55D78B9B1B522548004CE697 /* baseMessageLayer.h */,
-				555B65101B5CF15B00D15530 /* baseSaveDataSelector.cpp */,
-				555B65111B5CF15B00D15530 /* baseSaveDataSelector.h */,
+				55627AD41B64B45F00589FEE /* baseSaveDataSelector.cpp */,
+				55627AD51B64B45F00589FEE /* baseSaveDataSelector.h */,
+				55627AD01B64B2DE00589FEE /* SaveDataLoadLayer.cpp */,
+				55627AD11B64B2DE00589FEE /* SaveDataLoadLayer.h */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -820,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55627AD61B64B45F00589FEE /* baseSaveDataSelector.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				55D78B9C1B522548004CE697 /* baseMessageLayer.cpp in Sources */,
@@ -829,8 +836,8 @@
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				55D78BA01B52261B004CE697 /* CharacterMessageLayer.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
+				55627AD21B64B2DE00589FEE /* SaveDataLoadLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
-				555B65121B5CF15B00D15530 /* baseSaveDataSelector.cpp in Sources */,
 				557A87D11B48FDBE001993E1 /* baseMenuLayer.cpp in Sources */,
 				556C18E71B3FC45000D2BCA1 /* TIledMapData.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
@@ -856,6 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
+				55627AD71B64B45F00589FEE /* baseSaveDataSelector.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				557A87D71B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
@@ -865,6 +873,7 @@
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
+				55627AD31B64B2DE00589FEE /* SaveDataLoadLayer.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				552D83731B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
@@ -879,7 +888,6 @@
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				55D78B9D1B522548004CE697 /* baseMessageLayer.cpp in Sources */,
-				555B65131B5CF15B00D15530 /* baseSaveDataSelector.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
