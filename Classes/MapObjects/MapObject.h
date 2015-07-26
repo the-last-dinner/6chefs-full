@@ -13,29 +13,31 @@
 
 class MapObject : public Node
 {
-	// 列挙型、構造体
-public:
-	enum struct Direction
-	{
-		FRONT,
-		RIGHT,
-		LEFT,
-		BACK,
-		SIZE,
-	};
-	
 	// インスタンス変数
 private:
 	Size objectSize;
+	int eventId;
+	TriggerType trigger;
+	bool _isHit;
+	Direction movingDirection;
 	
 	// インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
-	Point getGridPosition();
-	void setGridPosition(const Point& mapGridPoint);
-	bool isHit(const Direction direction);
+	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
 	void setObjectSize(const Size& objSize);
+	void setEventId(int eventId);
+	void setTrigger(TriggerType trigger);
+	void setHit(bool _isHit);
+	void setMovingDirection(Direction direction);
+	
+	Point getGridPosition(const Size& mapSize);
+	Size getObjectSize();
+	int getEventId();
+	TriggerType getTrigger();
+	bool isHit();
+	Direction getMovingDirection();
 };
 
 #endif // __MAP_OBJECT_H__

@@ -1,15 +1,16 @@
 #include "AppDelegate.h"
-#include  "LoadScene.h"
+#include  "TitleScene.h"
 
 // コンストタクタ
 // シングルトンクラスのインスタンスを生成しておく
 AppDelegate::AppDelegate()
 {
 	FUNCLOG
+    PlayerDataManager::getInstance();
     EventScriptManager::getInstance();
-	GameStatusManager::getInstance();
 	ActionKeyManager::getInstance();
-	TiledMapManager::getInstance();
+	SoundManager::getInstance();
+	TextureManager::getInstance();
 	this->init();
 }
 
@@ -19,18 +20,15 @@ AppDelegate::~AppDelegate()
 {
 	FUNCLOG
     EventScriptManager::destroy();
-	GameStatusManager::destroy();
 	ActionKeyManager::destroy();
-	TiledMapManager::destory();
+	SoundManager::destory();
+    PlayerDataManager::destroy();
+	TextureManager::destory();
 }
 
 // 初期化関連
 void AppDelegate::init()
 {
-	TiledMapManager::getInstance()->setBasePath("map/");
-    EventScriptManager::getInstance()->setEventScript("TestScript");
-    //テストでイベントID:1を呼んでみる
-    EventScriptManager::getInstance()->runEvent(1);
 	return;
 }
 
@@ -47,9 +45,18 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
 		director->setOpenGLView(glView);
 	}
+	// Tiledのチラつきを防止
+	director->setProjection(Director::Projection::_2D);
+	director->setDepthTest(false);
+	
+	// デバッグ表示
 	director->setDisplayStats(true);
+	
+	// フレームレート
 	director->setAnimationInterval(1.0 / 60);
-	director->runWithScene(LoadScene::createScene(SceneType::TITLE));
+	
+	// シーンを指定してゲーム開始
+	director->runWithScene(TitleScene::createScene());
 	return true;
 }
 

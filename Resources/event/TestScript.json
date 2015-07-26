@@ -1,12 +1,8 @@
 {
     "0": [
           {
-          "type": "fade",
-          "option": 1
-          },
-          {
           "type": "playBGM",
-          "option": 1
+          "file": "Mozart-OboeConcerto-1.mp3"
           }
           ],
     "1": [
@@ -14,32 +10,64 @@
           "type": "sequence",
           "action": [
                      {
+                     "type": "move",
+                     "object": "magoichi",
+                     "time": 1,
+                     "x": 2,
+                     "y": 1
+                     },
+                     {
                      "type": "playSE",
-                     "option": 1.5
+                     "file": "bus-start1.mp3"
                      },
                      {
-                     "type": "delay",
-                     "option": 1
+                     "type": "move",
+                     "object": "magoichi",
+                     "time": 1,
+                     "x": -2,
+                     "y": -1
                      },
                      {
-                     "type": "fade",
-                     "option": true
+                     "type": "playSE",
+                     "file": "bus-door1.mp3"
                      },
                      {
-                     "type": "spawn",
+                     "type": "repeat",
+                     "loop": 5,
                      "action": [
                                 {
                                 "type": "move",
-                                "option": [
-                                           0,
-                                           1,
-                                           2,
-                                           3
-                                           ]
+                                "object": "magoichi",
+                                "time": 0.05,
+                                "x": 3,
+                                "y": 0
                                 },
                                 {
-                                "type": "playSE",
-                                "option": 3
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.1,
+                                "x": -3,
+                                "y": -1
+                                }
+                                ]
+                     },
+                     {
+                     "type": "repeat",
+                     "loop": 5,
+                     "action": [
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.05,
+                                "x": 3,
+                                "y": 0
+                                },
+                                {
+                                "type": "move",
+                                "object": "magoichi",
+                                "time": 0.1,
+                                "x": -3,
+                                "y": 1
                                 }
                                 ]
                      }
@@ -48,19 +76,29 @@
           ],
     "2": [
           {
-          "type": "fade",
-          "option": "true"
+          "type": "changeMap"
           },
           {
-          "type": "if",
-          "flag": 1,
-          "true": [
-                   {
-                   "type": "Message",
-                   "string": "フラグ立ってるよ！"
-                   }
-                   ],
-          "false": null
+          "type": "playSE",
+          "file": "back.mp3"
           }
-          ]
+          ],
+    "id": 0,
+    "name": "map",
+    "sound": [
+            "bgm/Mozart-OboeConcerto-1.mp3",
+            "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+            "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
+            "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
+            "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
+			"se/back.mp3",
+			"se/bus-door1.mp3",
+			"se/bus-start1.mp3",
+			"se/cursorMove.mp3",
+			"se/gameStart.mp3",
+			"se/title-enter.mp3"
+            ],
+	"texture": [
+			  
+			  ]
 }
