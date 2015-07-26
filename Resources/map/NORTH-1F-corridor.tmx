@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="67">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="72">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -23,7 +23,7 @@
    <property name="cc_vertexz" value="-6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt00EOQDAQQFFO67ycyIKFWEgTU63Om+QlNqTmM03GmEyzzoflcl3i6VnEitx11P2R3X0/ZXtu2b3mO7Y+x8h63PF2an2O3o32v+uuO3XonlOP3dEd3dEd3dEd3dEd3dE9K91ziuh+n9bvNKrIPev+H713N9+M7jnnbbMdGjMAaA==
+   eJzt00EOQDAQQFFO67ycyIKFWEiTlo7Om+QlVtLOZ5qMMZlmnQ/L5bnE07toq3TXJQ1qW73R3fdTtucW3XrfK/qZRhNxx9up9zmiG+1/11133qF7ThG7ozu6ozu6ozu6ozu6o3tWuufUovt9et9pVC33rPt/RO9uvhndc05tsx0NNv+H
   </data>
  </layer>
  <layer name="dishroom" width="126" height="24">
@@ -126,5 +126,31 @@
    eJzt1kEKgDAQBMEcfY7/f50HEUQQEU0ys9MFuS/bhKQ1AAA8rMt+kMmpv8ucTtT7q8/nTm239B5HYdcKM6SasXt66xjVgt6ajv49+tDcw5/9ae7nS3/ecn9vGtK7nqem9K7t2pc7nqPn/x+6zt1pX99dZ/pno30u7n42+mejfzbF/htRrA4B
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="67" x="1824" y="0" width="48" height="32">
+   <properties>
+    <property name="EventID" value="1176"/>
+   </properties>
+  </object>
+  <object id="68" x="144" y="0" width="48" height="32">
+   <properties>
+    <property name="EventID" value="1178"/>
+   </properties>
+  </object>
+  <object id="69" x="1408" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1151"/>
+   </properties>
+  </object>
+  <object id="70" x="1008" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1153"/>
+   </properties>
+  </object>
+  <object id="71" x="576" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1155"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
