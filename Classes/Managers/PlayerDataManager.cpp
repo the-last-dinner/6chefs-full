@@ -220,14 +220,6 @@ void PlayerDataManager::setFriendship(const string& character, const int& level)
     return;
 }
 
-//友好度の取得
-int PlayerDataManager::getFriendship(const string& character)
-{
-    FUNCLOG
-    rapidjson::Value& friendship = this->local[this->local_id]["friendship"];
-    return friendship[character.c_str()].GetInt();
-}
-
 //イベントフラグのセット
 void PlayerDataManager::setEventFlag(const string& map, const int& event_id)
 {
@@ -241,14 +233,37 @@ void PlayerDataManager::setItem(const int& item_id)
 {
     FUNCLOG
     rapidjson::Value& item = this->local[this->local_id]["item"];
-    rapidjson::Value::ConstMemberIterator itr = item.FindMember(to_string(item_id).c_str());
+    const char* id = to_string(item_id).c_str();
+    rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
     int count = 0;
     if(itr != item.MemberEnd()){
         count = itr->value.GetInt();
+    } else {
+        item.AddMember(StringRef(id), rapidjson::Value(1), this->local[this->local_id].GetAllocator());
     }
     item.SetInt(count+1);
     return;
 }
+
+//アイテム装備時の処理
+void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
+{
+    FUNCLOG
+    rapidjson::Value& item = this->local[this->local_id]["item"];
+    int eq_id = 0;
+    eq_id = item["equipment_right"].GetInt();
+    return;
+}
+
+//友好度の取得
+int PlayerDataManager::getFriendship(const string& character)
+{
+    FUNCLOG
+    rapidjson::Value& friendship = this->local[this->local_id]["friendship"];
+    return friendship[character.c_str()].GetInt();
+}
+
+
 /* ******************************************************** *
  * ******************** Util functions ******************** *
  * ******************************************************** */
