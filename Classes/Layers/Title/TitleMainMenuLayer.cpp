@@ -88,7 +88,8 @@ void TitleMainMenuLayer::onSpacePressed()
 			Director::getInstance()->replaceScene(DungeonScene::createScene());
 			break;
 		case MenuType::CONTINUE:
-			
+			this->eventListener->setEnabled(false);
+			this->addChild(SaveDataLoadLayer::create());
 			break;
 		case MenuType::FINISH:
 			SoundManager::getInstance()->playSound("se/back.mp3");

@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "Layers/baseMenuLayer.h"
 #include "Scenes/DungeonScene.h"
+#include "Layers/SaveDataLoadLayer.h"
 
 class TitleMainMenuLayer : public baseMenuLayer
 {

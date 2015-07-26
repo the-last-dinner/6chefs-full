@@ -22,17 +22,20 @@ baseSaveDataSelector::~baseSaveDataSelector()
 {FUNCLOG}
 
 // 初期化
-bool baseSaveDataSelector::init(const vector<string> datas)
+bool baseSaveDataSelector::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
 	if(!baseMenuLayer::init(1, 5)) return false;
 	
-	// ベクタから選択肢を生成
+	// セーブデータリストを取得
+	vector<PlayerDataManager::SaveIndex> datas = PlayerDataManager::getInstance()->getSaveList();
+	
 	Point center = WINDOW_CENTER;
 	Rect panelRect = Rect(0, 0, WINDOW_WIDTH - H_MARGIN * 2, (WINDOW_HEIGHT - V_MARGIN * 2 - EACH_V_MARGIN) / MAX_V_CNT);
 	for(int i = 0; i < datas.size();i++)
 	{
+		PlayerDataManager::SaveIndex data = datas.at(i);
 		Sprite* panel = Sprite::create();
 		panel->setTextureRect(panelRect);
 		panel->setColor(Color3B::GRAY);

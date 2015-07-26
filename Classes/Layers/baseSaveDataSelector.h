@@ -16,8 +16,8 @@ class baseSaveDataSelector : public baseMenuLayer
 {
 	// クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(baseSaveDataSelector, vector<string>);
-	virtual bool init(const vector<string> datas);
+	CREATE_FUNC(baseSaveDataSelector);
+	virtual bool init();
 	
 	// クラス変数
 private:
