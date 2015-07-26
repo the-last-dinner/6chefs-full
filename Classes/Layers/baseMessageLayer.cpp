@@ -8,7 +8,11 @@
 
 #include "baseMessageLayer.h"
 
-const float baseMessageLayer::SPAN = 0.05f;
+const map<baseMessageLayer::MessageType, float> baseMessageLayer::span =
+{
+	{baseMessageLayer::MessageType::NORMAL, 0.05f},
+	{baseMessageLayer::MessageType::SLOW, 1.f},
+};
 
 // コンストラクタ
 baseMessageLayer::baseMessageLayer():
@@ -35,11 +39,11 @@ baseMessageLayer::~baseMessageLayer()
 void baseMessageLayer::onSpacePressed()
 {
 	FUNCLOG
-	bool chk {false};
+	bool _isVisible {false};
 	for(int i = 0; i < this->message->getStringLength(); i++)
-	{Sprite* letter = this->message->getLetter(i); if(letter) letter->isVisible();}
+	{Sprite* letter = this->message->getLetter(i); if(letter && letter->isVisible()) _isVisible = true;}
 	
-	if(chk)
+	if(!_isVisible)
 	{
 		for(Action* letterAction : this->letterActions)
 		{this->stopAction(letterAction);}
@@ -50,13 +54,11 @@ void baseMessageLayer::onSpacePressed()
 }
 
 // メッセージを表示
-void baseMessageLayer::displayMessage(const string& str, int fontSize)
+void baseMessageLayer::displayMessage(const string& str, int fontSize, MessageType type)
 {
 	FUNCLOG
 	this->message = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", fontSize);
 	this->message->setPosition(this->base->getContentSize() / 2);
-	CCLOG("NUM OF LINES >>>>>>>>>>> %d", this->message->getStringNumLines());
-	CCLOG("ALIGNMENT VERTICAL >>>>>> %d", this->message->getVerticalAlignment());
 	this->base->addChild(this->message);
 	
 	// アニメーション設定
@@ -67,7 +69,7 @@ void baseMessageLayer::displayMessage(const string& str, int fontSize)
 		if(letter)
 		{
 			letter->setVisible(false);
-			Sequence* letterAction = Sequence::createWithTwoActions(TargetedAction::create(letter, DelayTime::create(SPAN * i)), TargetedAction::create(letter, Show::create()));
+			Sequence* letterAction = Sequence::createWithTwoActions(TargetedAction::create(letter, DelayTime::create(this->span.at(type) * i)), TargetedAction::create(letter, Show::create()));
 			this->letterActions.push_back(letterAction);
 			this->runAction(letterAction);
 		}

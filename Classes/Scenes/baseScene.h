@@ -21,7 +21,8 @@ public:
 	~baseScene();
 	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 protected:
-	bool init(const function<void()>& loadFinished);
+	bool init();
+	virtual void loadFinished() = 0;
 	SceneData* data;
 };
 

@@ -25,7 +25,7 @@ bool TitleScene::init()
 	// データクラス初期化
 	baseScene::data = new TitleSceneData();
 	
-	return baseScene::init(CC_CALLBACK_0(TitleScene::loadFinished, this));
+	return baseScene::init();
 }
 
 // リソースロード終了後の処理
@@ -35,5 +35,6 @@ void TitleScene::loadFinished()
 	// メインメニューのレイヤーを生成
 	TitleMainMenuLayer* mainMenuLayer = TitleMainMenuLayer::create();
 	this->addChild(mainMenuLayer);
+	
 	return;
 }

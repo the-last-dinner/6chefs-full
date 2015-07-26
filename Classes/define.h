@@ -88,12 +88,12 @@ const map<Direction, Point> movementMap =
 	{Direction::BACK_LEFT, Point(-GRID, GRID)},
 };
 
-// stringを用いて初期化、メッセージレイヤー系
-#define CREATE_FUNC_WITH_STR(__TYPE__) \
-static __TYPE__* create(const string& str) \
+// パラメータを一つタイプを指定してcreate
+#define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
+static __TYPE_1__* create(const __TYPE_2__& param) \
 { \
-	__TYPE__ *pRet = new(std::nothrow) __TYPE__(); \
-	if (pRet && pRet->init(str)) \
+	__TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
+	if (pRet && pRet->init(param)) \
 	{ \
 		pRet->autorelease(); \
 		return pRet; \

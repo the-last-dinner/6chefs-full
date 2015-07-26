@@ -18,7 +18,6 @@ public:
 	SceneData();
 	~SceneData();
 	void preloadResources(const function<void(float)>& callback);
-	void unloadAllFiles();
 private:
 	void calcPercentage();
 	void preloadTextureAsync(const function<void()>& callback);

@@ -16,10 +16,7 @@ mapLayer(nullptr)
 
 // デストラクタ
 DungeonScene::~DungeonScene()
-{
-	FUNCLOG
-	delete this->data;
-}
+{FUNCLOG}
 
 // シーン生成
 Scene* DungeonScene::createScene()
@@ -39,7 +36,7 @@ bool DungeonScene::init()
 	// データクラスを初期化
 	baseScene::data = new DungeonSceneData("TestScript");
 	
-	return baseScene::init(CC_CALLBACK_0(DungeonScene::loadFinished, this));
+	return baseScene::init();
 }
 
 // リソースプリロード完了時の処理

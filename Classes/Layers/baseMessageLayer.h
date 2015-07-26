@@ -13,9 +13,15 @@
 
 class baseMessageLayer : public Layer
 {
+public:
+	// 構造体、列挙型
+	enum struct MessageType {
+		NORMAL,
+		SLOW
+	};
 	// クラス変数
 protected:
-	static const float SPAN;
+	static const map<MessageType, float> span;
 	
 	// インスタンスメソッド
 protected:
@@ -23,7 +29,7 @@ protected:
 	~baseMessageLayer();
 	virtual void onSpacePressed();
 public:
-	virtual void displayMessage(const string& str, int fontSize = 24);
+	virtual void displayMessage(const string& str, int fontSize = 24, MessageType type = MessageType::NORMAL);
 	
 	// インスタンス変数
 protected:

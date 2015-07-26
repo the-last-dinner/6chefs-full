@@ -10,6 +10,7 @@ AppDelegate::AppDelegate()
     EventScriptManager::getInstance();
 	ActionKeyManager::getInstance();
 	SoundManager::getInstance();
+	TextureManager::getInstance();
 	this->init();
 }
 
@@ -22,6 +23,7 @@ AppDelegate::~AppDelegate()
 	ActionKeyManager::destroy();
 	SoundManager::destory();
     PlayerDataManager::destroy();
+	TextureManager::destory();
 }
 
 // 初期化関連

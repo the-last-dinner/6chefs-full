@@ -15,9 +15,22 @@
 
 class TitleMainMenuLayer : public baseMenuLayer
 {
+	// 列挙型、構造他
+public:
+	enum struct MenuType
+	{
+		START,
+		CONTINUE,
+		FINISH,
+	};
+	
 	// クラスメソッド
 public:
 	CREATE_FUNC(TitleMainMenuLayer);
+	
+	// クラス変数
+private:
+	static const map<string, MenuType> menu;
 	
 	// インスタンスメソッド
 private:

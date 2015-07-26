@@ -15,18 +15,11 @@ soundFilePaths{},
 percentage(0.f),
 loaded(0),
 resourceSize(0)
-{
-	FUNCLOG
-	// キーステータスを初期化
-	ActionKeyManager::getInstance()->initKeyStatus();
-}
+{FUNCLOG}
 
 // デストラクタ
 SceneData::~SceneData()
-{
-	FUNCLOG
-	this->unloadAllFiles();
-}
+{FUNCLOG}
 
 // リソースのプリロードを実行し、ロード状況をコールバックする
 void SceneData::preloadResources(const function<void(float)>& callback)
@@ -41,8 +34,8 @@ void SceneData::preloadResources(const function<void(float)>& callback)
 		return;
 	}
 	
-	// コールバックの引数にパーセントを渡す関数を生成
-	function<void()> func = [=](){callback(this->percentage);};
+	// コールバック用にパーセントを計算&渡す関数を生成
+	function<void()> func = [=](){this->calcPercentage(); callback(this->percentage);};
 	
 	// 一ファイルのロードが完了するたびに関数を実行
 	this->preloadTextureAsync(func);
@@ -57,13 +50,7 @@ void SceneData::preloadTextureAsync(const function<void()>& callback)
 	FUNCLOG
 	for(string filePath : textureFilePaths)
 	{
-		Director::getInstance()->getTextureCache()->addImageAsync(filePath + ".pvr.ccz",
-																  [=](Texture2D* loaded_texture){
-																	  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(filePath + ".plist", loaded_texture);
-																	  this->textureFilePaths.push_back(filePath);
-																	  this->calcPercentage();
-																	  callback();
-																  });
+		TextureManager::getInstance()->preloadTexture(filePath, callback);
 	}
 	return;
 	
@@ -77,7 +64,6 @@ void SceneData::preloadSoundAsync(const function<void()>& callback)
 		for(string filePath : soundFilePaths)
 		{
 			SoundManager::getInstance()->preloadSound(filePath);
-			this->calcPercentage();
 			callback();
 		}
 	});
@@ -95,18 +81,5 @@ void SceneData::calcPercentage()
 	this->percentage = static_cast<float>(this->loaded) / static_cast<float>(this->resourceSize);
 	CCLOG("NOW %f PERCENT LOADED!!!", this->percentage * 100);
 	mtx.unlock();
-}
-
-// すべてのリソースをアンロード
-void SceneData::unloadAllFiles()
-{
-	FUNCLOG
-	for(string filePath : this->textureFilePaths)
-	{
-		SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(filePath + ".plist");
-		Director::getInstance()->getTextureCache()->removeTextureForKey(filePath + ".pvr.ccz");
-	}
-	this->textureFilePaths.clear();
-	SoundManager::getInstance()->unloadAllSounds();
-	this->soundFilePaths.clear();
+	return;
 }

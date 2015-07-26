@@ -7,6 +7,7 @@
 #include "Managers/ActionKeyManager.h"
 #include "Managers/EventScriptManager.h"
 #include "Managers/SoundManager.h"
+#include "Managers/TextureManager.h"
 
 #include "Utils/MapUtils.h"
 #include "PlayerDataManager.h"

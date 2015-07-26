@@ -11,14 +11,21 @@
 // コンストラクタ
 baseScene::baseScene():
 data(nullptr)
-{FUNCLOG}
+{
+	FUNCLOG
+	// キーステータスを初期化
+	ActionKeyManager::getInstance()->initKeyStatus();
+}
 
 // デストラクタ
 baseScene::~baseScene()
-{FUNCLOG}
+{
+	FUNCLOG
+	delete this->data;
+}
 
 // シーン共通初期化
-bool baseScene::init(const function<void()>& loadFinished)
+bool baseScene::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
@@ -28,7 +35,7 @@ bool baseScene::init(const function<void()>& loadFinished)
 	this->addChild(loadingLayer);
 	
 	// プリロード開始
-	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(loadFinished);});
+	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(CC_CALLBACK_0(baseScene::loadFinished, this));});
 	return true;
 }
 

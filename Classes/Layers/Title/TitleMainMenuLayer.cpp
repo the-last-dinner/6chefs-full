@@ -8,6 +8,12 @@
 
 #include "TitleMainMenuLayer.h"
 
+const map<string, TitleMainMenuLayer::MenuType> TitleMainMenuLayer::menu = {
+	{"はじめから", TitleMainMenuLayer::MenuType::START},
+	{"つづきから", TitleMainMenuLayer::MenuType::CONTINUE},
+	{"終了", TitleMainMenuLayer::MenuType::START}
+};
+
 // コンストラクタ
 TitleMainMenuLayer::TitleMainMenuLayer()
 {FUNCLOG}
@@ -21,16 +27,7 @@ bool TitleMainMenuLayer::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
-	if(!baseMenuLayer::init(CC_CALLBACK_1(TitleMainMenuLayer::moveCursor, this), CC_CALLBACK_0(TitleMainMenuLayer::onSpacePressed, this))) return false;
-	
-	// メニューを生成
-	baseMenuLayer::menuStrings =
-	{
-		"はじめから",
-		"終了",
-	};
-	baseMenuLayer::sizeX = 1;
-	baseMenuLayer::sizeY = baseMenuLayer::menuStrings.size();
+	if(!baseMenuLayer::init(1, menu.size())) return false;
 	
 	//タイトル画像をキャッシュから生成
 	Sprite* titleBg = Sprite::createWithSpriteFrameName("title.png");
@@ -39,23 +36,25 @@ bool TitleMainMenuLayer::init()
 	this->addChild(titleBg);
 	
 	int menuSize = 32;
-	for(int i = 0; i < baseMenuLayer::menuStrings.size(); i++)
+	int i = 0;
+	for(map<string, MenuType>::const_iterator it = menu.begin(); it != menu.end(); it++)
 	{
-		Label* menu = Label::createWithSystemFont(baseMenuLayer::menuStrings.at(i), "Arial", menuSize);
+		Label* menu = Label::createWithSystemFont(it->first, "Arial", menuSize);
 		menu->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - (menuSize + 20) * i);
-		menu->setTag(i);
 		menu->setTextColor(Color4B::RED);
 		menu->setOpacity(0);
 		this->addChild(menu);
+		baseMenuLayer::menuObjects.push_back(menu);
 		
 		menu->runAction(Sequence::create(DelayTime::create(1.f * i),
 										 Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
 										 nullptr));
+		i++;
 	}
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
 	this->runAction(Sequence::create(TargetedAction::create(titleBg, FadeIn::create(2.f)),
-									 CallFunc::create([this](){this->eventListener->setEnabled(true);this->moveCursor(false);}),
+									 CallFunc::create([this](){baseMenuLayer::eventListener->setEnabled(true);this->moveCursor(false);}),
 									 nullptr));
 
 	return true;
@@ -65,11 +64,12 @@ bool TitleMainMenuLayer::init()
 void TitleMainMenuLayer::moveCursor(bool sound)
 {
 	FUNCLOG
-	for(int i = 0; i < menuStrings.size(); i++)
+	int selectedIndex = baseMenuLayer::getSelectedIndex();
+	for(int i = 0; i < baseMenuLayer::menuObjects.size(); i++)
 	{
-		Node* menu = this->getChildByTag(i);
-		this->runAction(Spawn::create(TargetedAction::create(menu, ScaleTo::create(0.2f, (indexY == i)?1.1f:1.f)),
-									  TargetedAction::create(menu, TintTo::create(0.5f, 255, 255, 255)),
+		Node* obj = baseMenuLayer::menuObjects.at(i);
+		this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (selectedIndex == i)?1.2f:1.f)),
+									  TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
 									  nullptr));
 	}
 	if(sound)SoundManager::getInstance()->playSound("se/cursorMove.mp3");
@@ -80,12 +80,17 @@ void TitleMainMenuLayer::moveCursor(bool sound)
 void TitleMainMenuLayer::onSpacePressed()
 {
 	FUNCLOG
-	switch (indexY) {
-		case 0:
+	switch (static_cast<MenuType>(baseMenuLayer::getSelectedIndex())) {
+		case MenuType::START:
 			SoundManager::getInstance()->playSound("se/gameStart.mp3");
+			SoundManager::getInstance()->unloadAllSounds();
+			TextureManager::getInstance()->unloadAllTectures();
 			Director::getInstance()->replaceScene(DungeonScene::createScene());
 			break;
-		case 1:
+		case MenuType::CONTINUE:
+			
+			break;
+		case MenuType::FINISH:
 			SoundManager::getInstance()->playSound("se/back.mp3");
 			Director::getInstance()->end();
 			break;
