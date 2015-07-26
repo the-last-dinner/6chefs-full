@@ -1978,10 +1978,10 @@ private:
     }
 
 private:
-    //! Prohibit copying
-    GenericDocument(const GenericDocument&);
-    //! Prohibit assignment
-    GenericDocument& operator=(const GenericDocument&);
+    //! Prohibit copying. Comment out by Ryoya.Ino 2015/07/12
+    //GenericDocument(const GenericDocument&);
+    //! Prohibit assignment. Comment out by Ryoya.Ino 2015/07/12
+    //GenericDocument& operator=(const GenericDocument&);
 
     void ClearStack() {
         if (Allocator::kNeedFree)

@@ -13,6 +13,7 @@
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/filewritestream.h"
+#include "rapidjson/prettywriter.h"
 #include "rapidjson/error/en.h"
 
 // ゲームウインドウ横幅、縦幅
