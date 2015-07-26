@@ -72,43 +72,6 @@ bool PlayerDataManager::setGlobalData()
 void PlayerDataManager::initializeFiles()
 {
     FUNCLOG
-    /*StringBuffer s;
-#if 1
-    Writer<StringBuffer> writer(s);
-#else
-    PrettyWriter<StringBuffer> writer(s);
-    writer.SetIndent('\t', 1);
-#endif
-    
-    writer.StartObject();
-    
-    writer.Key("id");
-    writer.String("global_id");
-    
-    writer.Key("obj");
-    writer.StartObject();
-    writer.Key("level");
-    writer.Int(82);
-    writer.EndObject();
-    
-    writer.EndObject();
-    
-    const char* result = s.GetString();
-    printf("%s\n", result);
-    */
-    //fileStream代入用
-    //const char* json = R"({"id":"global_id", "level":88})";
-    //rapidjson::Document doc;
-    
-    // 文字列のjsonをrapidjsonのオブジェクトへ変換
-    //StringStream ss(json);
-    //doc.ParseStream(ss);
-
-    /*FILE *fp1;
-    fp1 = fopen("/Users/Ryoya/Source/Xcode/LastSupper/Resources/save/test.dat", "wb");
-    fprintf(fp1, "aiueo");
-    fclose(fp1);*/
-    
     /* global save data */
     cout << "Create global save data." << endl;
     // Get path of global template
@@ -211,6 +174,7 @@ void PlayerDataManager::save(const int& id)
  * ******************** Flag functions ******************** *
  * ******************************************************** */
 
+/* SET */
 //友好度のセット
 void PlayerDataManager::setFriendship(const string& character, const int& level)
 {
@@ -221,11 +185,25 @@ void PlayerDataManager::setFriendship(const string& character, const int& level)
 }
 
 //イベントフラグのセット
-void PlayerDataManager::setEventFlag(const string& map, const int& event_id)
+void PlayerDataManager::setEventFlag(const string& map, const int& event_id, const bool& flag)
 {
     FUNCLOG
-    rapidjson::Value& event = this->local[this->local_id]["event"][map.c_str()];
-    event[to_string(event_id).c_str()].SetBool(true);
+    rapidjson::Value& event = this->local[this->local_id]["event"];
+    rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
+    //mapが存在するかチェック
+    if(itr == event.MemberEnd()){
+        event.AddMember(StringRef(map.c_str()), rapidjson::Value(), this->local[this->local_id].GetAllocator());
+    }
+    event = event[map.c_str()];
+    //event_idが存在するかチェック
+    const char* id = to_string(event_id).c_str();
+    itr = event.FindMember(id);
+    if(itr == event.MemberEnd()){
+        event.AddMember(StringRef(id), rapidjson::Value(flag), this->local[this->local_id].GetAllocator());
+    } else {
+        event[id].SetBool(flag);
+    }
+    return;
 }
 
 //アイテムゲット時の処理
@@ -237,11 +215,13 @@ void PlayerDataManager::setItem(const int& item_id)
     rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
     int count = 0;
     if(itr != item.MemberEnd()){
+        //既にゲットしているアイテムなら個数を+1する
         count = itr->value.GetInt();
+        item[id].SetInt(count+1);
     } else {
+        //初めてゲットしたアイテムならば新しい値をセット
         item.AddMember(StringRef(id), rapidjson::Value(1), this->local[this->local_id].GetAllocator());
     }
-    item.SetInt(count+1);
     return;
 }
 
@@ -249,20 +229,120 @@ void PlayerDataManager::setItem(const int& item_id)
 void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
 {
     FUNCLOG
-    rapidjson::Value& item = this->local[this->local_id]["item"];
-    int eq_id = 0;
-    eq_id = item["equipment_right"].GetInt();
+    rapidjson::Value& root = this->local[this->local_id];
+    if(which == static_cast<int>(Direction::LEFT))
+    {
+        root["equipment_left"].SetInt(item_id);
+    } else {
+        root["equipment_right"].SetInt(item_id);
+    }
     return;
 }
 
+/* GET */
 //友好度の取得
 int PlayerDataManager::getFriendship(const string& character)
 {
     FUNCLOG
-    rapidjson::Value& friendship = this->local[this->local_id]["friendship"];
-    return friendship[character.c_str()].GetInt();
+    return this->local[this->local_id]["friendship"][character.c_str()].GetInt();
 }
 
+//イベントフラグの取得
+bool PlayerDataManager::getEventFlag(const string& map, const int& event_id)
+{
+    FUNCLOG
+    rapidjson::Value& event = this->local[this->local_id]["event"];
+    rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
+    //mapが存在するかチェック
+    if(itr == event.MemberEnd()){
+        return false;
+    }
+    event = event[map.c_str()];
+    //event_idが存在するかチェック
+    const char* id = to_string(event_id).c_str();
+    itr = event.FindMember(id);
+    if(itr == event.MemberEnd()){
+        return false;
+    } else {
+        return event[id].GetBool();
+    }
+}
+
+//所持しているアイテムの取得
+int PlayerDataManager::getItem(const int &item_id)
+{
+    FUNCLOG
+    rapidjson::Value& item = this->local[this->local_id]["item"];
+    const char* id = to_string(item_id).c_str();
+    rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
+    int count = 0;
+    if(itr != item.MemberEnd()){
+        count =  itr->value.GetInt();
+    }
+    return count;
+}
+
+//所持しているアイテムの取得
+map<int, int> PlayerDataManager::getItemAll()
+{
+    FUNCLOG
+    map<int, int> items;
+    rapidjson::Value& item = this->local[this->local_id]["item"];
+    for(rapidjson::Value::ConstMemberIterator itr = item.MemberBegin();itr != item.MemberEnd(); itr++)
+    {
+        int item_id = stoi(itr->name.GetString());
+        int count = itr->value.GetInt();
+        items.insert({item_id, count});
+    }
+    return items;
+}
+
+//装備アイテムIDの取得
+int PlayerDataManager::getItemEquipment(const int& which)
+{
+    FUNCLOG
+    string key;
+    key = (which == static_cast<int>(Direction::LEFT)) ? "equipment_left" : "equipment_right";
+    return this->local[this->local_id][key.c_str()].GetInt();
+}
+
+/* CHECK */
+//アイテムを1つ以上持っているかチェック
+bool PlayerDataManager::checkItem(const int& item_id)
+{
+    FUNCLOG
+    int count = this->getItem(item_id);
+    if (count > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//アイテムを装備しているかチェック
+bool PlayerDataManager::checkItemEquipment(const int& item_id)
+{
+    FUNCLOG
+    int right = this->getItemEquipment(static_cast<int>(Direction::RIGHT));
+    int left = this->getItemEquipment(static_cast<int>(Direction::LEFT));
+    if (item_id == right || item_id == left) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//友好度が指定の値以上あるかどうか
+bool PlayerDataManager::checkFriendship(const string& character, const int& min)
+{
+    FUNCLOG
+    int level = this->getFriendship(character);
+    if(level >= min){
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /* ******************************************************** *
  * ******************** Util functions ******************** *
