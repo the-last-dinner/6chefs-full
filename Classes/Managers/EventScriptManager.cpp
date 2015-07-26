@@ -7,7 +7,7 @@
 //
 
 #include "EventScriptManager.h"
-#include "LoadScene.h"
+#include "TitleScene.h"
 
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
@@ -249,7 +249,7 @@ Ref* EventScriptManager::changeMap(rapidjson::Value& event)
 {
     FUNCLOG
     //とりあえずテストでタイトル画面に移動するように設計してある
-    return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(LoadScene::createScene(SceneType::TITLE));}));
+	return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(TitleScene::createScene());}));
 }
 /** 
  * Move object
@@ -278,7 +278,7 @@ Ref* EventScriptManager::playSE(rapidjson::Value& event)
     FUNCLOG
     string file = event["file"].GetString();
     cout << "playSE >> " << file << endl;
-    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSE(file);}));
+    return static_cast<Ref*>(CallFunc::create([=](){}));
 }
 
 /**
@@ -291,7 +291,7 @@ Ref* EventScriptManager::playBGM(rapidjson::Value &event)
     FUNCLOG
     string file = event["file"].GetString();
     cout << "playBGM >> " << file << endl;
-    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playBGM(file);}));
+    return static_cast<Ref*>(CallFunc::create([=](){}));
 
 }
 

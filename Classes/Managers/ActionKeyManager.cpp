@@ -18,7 +18,7 @@ const map<EventKeyboard::KeyCode, ActionKeyManager::Key> ActionKeyManager::keyMa
 };
 
 // キー入力をチェックするスパン
-const float ActionKeyManager::INPUT_CHECK_SPAN = 0.05f;
+const float ActionKeyManager::INPUT_CHECK_SPAN = 0.03f;
 
 // 唯一のインスタンスを初期化
 static ActionKeyManager* _instance = nullptr;
@@ -48,6 +48,7 @@ ActionKeyManager::~ActionKeyManager()
 void ActionKeyManager::initKeyStatus()
 {
 	FUNCLOG
+	this->keyStatus.clear();
 	for(int i = 0; i < static_cast<int>(Key::SIZE); this->keyStatus[static_cast<Key>(i)] = false, i++);
 	return;
 }
@@ -55,14 +56,12 @@ void ActionKeyManager::initKeyStatus()
 // キーコードを変換。ゲームで使わないキーが与えられた場合はOTHERを返す
 ActionKeyManager::Key ActionKeyManager::convertKeyCode(EventKeyboard::KeyCode keyCode)
 {
-	FUNCLOG
 	return (keyMap.count(keyCode) == 0)?Key::OTHER:keyMap.at(keyCode);
 }
 
-// 指定のキーを押し状態に。押している状態はvalueを0.1fにする。
+// 指定のキーを押し状態に。
 void ActionKeyManager::pressKey(Key key)
 {
-	FUNCLOG
 	this->keyStatus.at(key) = true;
 	return;
 }
@@ -70,7 +69,6 @@ void ActionKeyManager::pressKey(Key key)
 // 指定のキーを離し状態に
 void ActionKeyManager::releaseKey(Key key)
 {
-	FUNCLOG
 	this->keyStatus.at(key) = false;
 	return;
 }
@@ -78,6 +76,5 @@ void ActionKeyManager::releaseKey(Key key)
 // 指定のキーが押し状態か判別
 bool ActionKeyManager::isPressed(Key key)
 {
-	FUNCLOG
 	return this->keyStatus.at(key);
 }

@@ -10,6 +10,8 @@
 #define __BASE_SCENE_H__
 
 #include "Common.h"
+#include "Layers/LoadingLayer.h"
+#include "Datas/Scene/SceneData.h"
 
 class baseScene : public Layer
 {
@@ -17,6 +19,9 @@ class baseScene : public Layer
 public:
 	baseScene();
 	~baseScene();
+	void onKeyReleased(EventKeyboard::KeyCode keyCode);
+protected:
+	bool init(SceneData* data, const function<void()>& loadFinished);
 };
 
 // セーブデータのロード時に呼び出すcreate関数

@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "baseScene.h"
 #include "Datas/Scene/DungeonSceneData.h"
+#include "Layers/Dungeon/TiledMapLayer.h"
 
 class DungeonScene : public baseScene
 {
@@ -20,24 +21,20 @@ public:
 	static Scene* createScene();
 	CREATE_FUNC(DungeonScene);
 	
-	// クラス変数
-private:
-	static const map<ActionKeyManager::Key, Point> scrollMap;
-	
 	// インスタンスメソッド
 public:
 	DungeonScene();
 	~DungeonScene();
 private:
 	virtual bool init();
-	virtual void update(float delta);
+	void loadFinished();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
-	void onKeyReleased(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:
 	EventListenerKeyboard* eventListener;
 	DungeonSceneData* data;
+	TiledMapLayer* mapLayer;
 };
 
 

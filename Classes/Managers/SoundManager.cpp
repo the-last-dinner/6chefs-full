@@ -33,69 +33,38 @@ SoundManager::SoundManager()
 SoundManager::~SoundManager()
 {FUNCLOG}
 
-// サウンドファイルが存在するディレクトリルートを指定
-void SoundManager::setBasePath(const string& seBasePath, const string& bgmBasePath)
+// 音声ファイルをプリロード
+void SoundManager::preloadSound(const string& filePath)
 {
 	FUNCLOG
-	this->seBasePath = seBasePath;
-	this->bgmBasePath = bgmBasePath;
-	return;
-}
-
-// BGMファイルをプリロード
-void SoundManager::preloadBGM(const string& fileName)
-{
-	FUNCLOG
-	this->soundList.push_back(fileName);
-	SimpleAudioEngine::getInstance()->preloadEffect((this->bgmBasePath + fileName).c_str());
-	return;
-}
-
-// SEファイルをプリロード
-void SoundManager::preloadSE(const string& fileName)
-{
-	FUNCLOG
-	this->soundList.push_back(fileName);
-	SimpleAudioEngine::getInstance()->preloadEffect((this->seBasePath + fileName).c_str());
-	return;
-}
-
-// BGMを再生（内部処理はSEと同じだが無駄な引数入力を省略させるため）
-void SoundManager::playBGM(const string& fileName, bool loop)
-{
-	FUNCLOG
-	SimpleAudioEngine::getInstance()->playEffect((this->bgmBasePath + fileName).c_str(), loop);
-	return;
-}
-
-// SEを再生
-void SoundManager::playSE(const string& fileName, bool loop, float pitch, float pan, float gain)
-{
-	FUNCLOG
-	SimpleAudioEngine::getInstance()->playEffect((this->seBasePath + fileName).c_str(), loop, pitch, pan, gain);
-	return;
-}
-
-// 音声ファイルをアンロード
-void SoundManager::unloadSounds()
-{
-	FUNCLOG
-	int count = this->soundList.size();
+	// プリロード関数がないため、音量ゼロで再生する
+	int audioId = AudioEngine::play2d(filePath, false, 0.0f);
+	this->soundMap.insert({filePath, audioId});
 	
-	// リストに何も登録されていなかったらlog出力
-	if(count == 0)
+	// すぐに再生停止
+	AudioEngine::stop(audioId);
+	return;
+}
+
+// 音声を再生
+void SoundManager::playSound(const string& filePath, bool loop, float volume)
+{
+	FUNCLOG
+	AudioEngine::play2d(filePath, loop, volume);
+	return;
+}
+
+// 音声をアンロード
+void SoundManager::unloadAllSounds()
+{
+	FUNCLOG
+	// 音声パスリストを元にアンロードしていく
+	for(auto iterator : this->soundMap)
 	{
-		log("音声ファイルがありません！！");
-		return;
+		AudioEngine::uncache(iterator.first);
 	}
 	
-	// 音声ファイル名リストを元にアンロードしていく
-	for(int i = 0; i < count; i++)
-	{
-		SimpleAudioEngine::getInstance()->unloadEffect(this->soundList.at(i).c_str());
-	}
-	
-	// 音声ファイル名リストを初期化する
-	this->soundList.clear();
+	// 音声パスリストを初期化する
+	this->soundMap.clear();
 	return;
 }
