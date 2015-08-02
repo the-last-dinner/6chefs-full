@@ -1,25 +1,25 @@
 //
-//  CharacterMessageLayer.cpp
+//  StoryMessageLayer.cpp
 //  LastSupper
 //
-//  Created by Kohei on 2015/07/12.
+//  Created by Kohei on 2015/08/02.
 //
 //
 
-#include "CharacterMessageLayer.h"
+#include "StoryMessageLayer.h"
 
 // コンストラクタ
-CharacterMessageLayer::CharacterMessageLayer()
+StoryMessageLayer::StoryMessageLayer()
 {FUNCLOG}
 
 // デストラクタ
-CharacterMessageLayer::~CharacterMessageLayer()
+StoryMessageLayer::~StoryMessageLayer()
 {FUNCLOG}
 
 // create関数
-CharacterMessageLayer* CharacterMessageLayer::createWithPages(const queue<string>& pages)
+StoryMessageLayer* StoryMessageLayer::createWithPages(const queue<string>& pages)
 {
-	CharacterMessageLayer* pRet = new(nothrow)CharacterMessageLayer();
+	StoryMessageLayer* pRet = new(nothrow)StoryMessageLayer();
 	if (pRet && pRet->init(pages))
 	{
 		// オブジェクトを自動メモリ管理へ登録
@@ -31,7 +31,7 @@ CharacterMessageLayer* CharacterMessageLayer::createWithPages(const queue<string
 }
 
 // 初期化
-bool CharacterMessageLayer::init(const queue<string>& pages)
+bool StoryMessageLayer::init(const queue<string>& pages)
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
@@ -41,13 +41,13 @@ bool CharacterMessageLayer::init(const queue<string>& pages)
 	
 	// 枠を生成
 	Sprite* frame = Sprite::create();
-	frame->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
+	frame->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	frame->setColor(Color3B::BLACK);
 	frame->setPosition(WINDOW_CENTER);
 	this->setFrame(frame);
 	this->addChild(frame);
 	
-	// メッセージの表示位置をセット
+	// ラベルの位置をセット
 	this->setMessagePosition(frame->getContentSize() / 2);
 	
 	return true;

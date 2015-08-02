@@ -47,7 +47,8 @@ enum struct Priority
 {
 	SCREEN_EFFECT = 100,
 	CHARACTER_MESSAGE = 50,
-	SYSTEM_MESSAGE = 60,
+	STORY_MESSAGE = 60,
+	SYSTEM_MESSAGE = 70,
 	MAP = 0,
 };
 

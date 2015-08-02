@@ -8,10 +8,10 @@
 
 #include "TitleMainMenuLayer.h"
 
-const map<string, TitleMainMenuLayer::MenuType> TitleMainMenuLayer::menu = {
-	{"はじめから", TitleMainMenuLayer::MenuType::START},
-	{"つづきから", TitleMainMenuLayer::MenuType::CONTINUE},
-	{"終了", TitleMainMenuLayer::MenuType::START}
+const map<TitleMainMenuLayer::MenuType, string> TitleMainMenuLayer::menu = {
+	{TitleMainMenuLayer::MenuType::START, "はじめから"},
+	{TitleMainMenuLayer::MenuType::CONTINUE, "つづきから"},
+	{TitleMainMenuLayer::MenuType::FINISH, "終了"},
 };
 
 // コンストラクタ
@@ -36,10 +36,9 @@ bool TitleMainMenuLayer::init()
 	this->addChild(titleBg);
 	
 	int menuSize = 32;
-	int i = 0;
-	for(map<string, MenuType>::const_iterator it = menu.begin(); it != menu.end(); it++)
+	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
-		Label* menu = Label::createWithSystemFont(it->first, "Arial", menuSize);
+		Label* menu = Label::createWithSystemFont(this->menu.at(static_cast<MenuType>(i)), "fonts/cinecaption2.28.ttf", menuSize);
 		menu->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - (menuSize + 20) * i);
 		menu->setTextColor(Color4B::RED);
 		menu->setOpacity(0);
@@ -49,7 +48,6 @@ bool TitleMainMenuLayer::init()
 		menu->runAction(Sequence::create(DelayTime::create(1.f * i),
 										 Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
 										 nullptr));
-		i++;
 	}
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
@@ -85,6 +83,7 @@ void TitleMainMenuLayer::onSpacePressed()
 			SoundManager::getInstance()->playSound("se/gameStart.mp3");
 			SoundManager::getInstance()->unloadAllSounds();
 			TextureManager::getInstance()->unloadAllTectures();
+            PlayerDataManager::getInstance()->setMainLocalData(0);
 			Director::getInstance()->replaceScene(DungeonScene::createScene());
 			break;
 		case MenuType::CONTINUE:

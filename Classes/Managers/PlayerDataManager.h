@@ -36,14 +36,12 @@ private:
     //対象ローカルセーブデータid
     int local_id;
     //ローカルセーブデータ達
-    vector<rapidjson::Document> local;
+    rapidjson::Document local;
     //FileUtils
     cocos2d::FileUtils* fu;
 
 //通常関数
 public:
-    //全ローカルデータのセット
-    void setLocalDataAll();
     //メインとなるローカルデータのセット
     void setMainLocalData(const int& id);
     //ローカルセーブデータリストの取得
@@ -51,14 +49,22 @@ public:
     //セーブ
     void save(const int& id);
     /* flag管理系 */
+    // SET
     void setFriendship(const string& character, const int& level);
-    void setEventFlag(const string& map, const int& event_id);
+    void setEventFlag(const string& map, const int& event_id, const bool& flag);
     void setItem(const int& item_id);
     void setItemEquipment(const int& which, const int& item_id);
-    bool checkEventFlag(const string& map, const int& event_id);
-    bool checkItemFlag(const int& item_id);
-    bool checkItemEquipment(const int& item_id);
+    // GET
     int getFriendship(const string& character);
+    bool getEventFlag(const string& map, const int& event_id);
+    int getItem(const int& item_id);
+    map<int, int> getItemAll();
+    int getItemEquipment(const int& which);
+    // CHECK
+    bool checkItem(const int& item_id);
+    bool checkItemEquipment(const int& item_id);
+    bool checkFriendship(const string& character, const int& min);
+    
 private:
     //グローバルデータのセット
     bool setGlobalData();

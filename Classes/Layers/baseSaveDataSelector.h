@@ -25,6 +25,8 @@ private:
 	static const int V_MARGIN;
 	static const int MAX_V_CNT;
 	static const int EACH_V_MARGIN;
+	static const float INNER_H_MARGIN_RATIO;
+	static const float INNER_V_MARGIN_RATIO;
 	
 	// インスタンスメソッド
 public:
