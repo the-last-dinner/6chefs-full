@@ -337,7 +337,7 @@ bool PlayerDataManager::checkItemEquipment(const int& item_id)
     int left = this->getItemEquipment(static_cast<int>(Direction::LEFT));
     if (item_id == right || item_id == left) {
         return true;
-    } else {
+    } else{
         return false;
     }
 }

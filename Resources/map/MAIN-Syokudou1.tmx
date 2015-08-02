@@ -62,7 +62,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="40" height="42">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzLEJAAAIBDEF95/ZJb4QSeDaqwIAAAAAAC6azpV88t8CpXsAtQ==
