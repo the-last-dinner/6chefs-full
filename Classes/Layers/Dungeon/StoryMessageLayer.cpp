@@ -49,6 +49,7 @@ bool StoryMessageLayer::init(const queue<string>& pages)
 	
 	// ラベルの位置をセット
 	this->setMessagePosition(frame->getContentSize() / 2);
+	this->setHAlignment(TextHAlignment::CENTER);
 	
 	return true;
 }

@@ -18,7 +18,8 @@ pages{},
 fontPath("fonts/cinecaption2.28.ttf"),
 span(0.05f),
 fontSize(24),
-v_alignment(0),
+v_alignment(TextVAlignment::TOP),
+h_alignment(TextHAlignment::LEFT),
 m_position(Point::ZERO),
 callback([](){}),
 _isAllLetterDisplayed(false),
@@ -71,7 +72,8 @@ void baseMessageLayer::disp()
 	FUNCLOG
 	this->message = Label::createWithTTF(this->pages.front(), this->fontPath, this->fontSize);
 	this->message->setPosition(this->m_position);
-	this->message->setVerticalAlignment(TextVAlignment(this->v_alignment));
+	this->message->setHorizontalAlignment(this->h_alignment);
+	this->message->setVerticalAlignment(this->v_alignment);
 	this->frame->addChild(this->message);
 	
 	int stringLength = this->message->getStringLength();
@@ -135,9 +137,13 @@ void baseMessageLayer::setFontFilePath(const string& fontPath)
 void baseMessageLayer::setFontSize(const int& fontSize)
 {this->fontSize = fontSize;}
 
-// 行間の隙間の大きさをセット
-void baseMessageLayer::setVAlignment(const int& v_alignment)
+// 縦方向の位置をセット
+void baseMessageLayer::setVAlignment(const TextVAlignment& v_alignment)
 {this->v_alignment = v_alignment;}
+
+// 横方向の位置をセット
+void baseMessageLayer::setHAlignment(const TextHAlignment& h_alignment)
+{this->h_alignment = h_alignment;}
 
 // 文字表示の間隔をセット
 void baseMessageLayer::setSpan(const float& span)

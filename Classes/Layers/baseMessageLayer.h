@@ -14,19 +14,19 @@
 class baseMessageLayer : public Layer
 {	
 	// インスタンスメソッド
-protected:
-	baseMessageLayer();
-	~baseMessageLayer();
-	virtual void onSpacePressed();
 public:
 	virtual void start();
 	void addPage(const string& page);
 	void setCallback(const function<void()>& callback);
-protected:
 	void setFontFilePath(const string& fontPath);
 	void setFontSize(const int& fontSize);
 	void setSpan(const float& span);
-	void setVAlignment(const int& v_alignment);
+	void setVAlignment(const TextVAlignment& v_alignment);
+	void setHAlignment(const TextHAlignment& h_alignment);
+protected:
+	baseMessageLayer();
+	~baseMessageLayer();
+	virtual void onSpacePressed();
 	void setPages(const queue<string>& pages);
 	void setFrame(Sprite* frame);
 	void setMessagePosition(const Point& m_position);
@@ -43,7 +43,8 @@ private:
 	string fontPath;
 	int fontSize;
 	float span;
-	int v_alignment;
+	TextVAlignment v_alignment;
+	TextHAlignment h_alignment;
 	Point m_position;
 	Sprite* frame;
 	Label* message;

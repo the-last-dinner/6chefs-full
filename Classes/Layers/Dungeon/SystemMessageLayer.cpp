@@ -49,6 +49,7 @@ bool SystemMessageLayer::init(const queue<string>& pages)
 	
 	// メッセージの表示位置をセット
 	this->setMessagePosition(frame->getContentSize() / 2);
+	this->setHAlignment(TextHAlignment::CENTER);
 	
 	return true;
 }
