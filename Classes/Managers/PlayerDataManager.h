@@ -36,7 +36,7 @@ private:
     //対象ローカルセーブデータid
     int local_id;
     //ローカルセーブデータ達
-    vector<rapidjson::Document> local;
+    rapidjson::Document local;
     //FileUtils
     cocos2d::FileUtils* fu;
 

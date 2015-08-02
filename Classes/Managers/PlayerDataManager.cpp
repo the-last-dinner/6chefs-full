@@ -87,15 +87,18 @@ void PlayerDataManager::initializeFiles()
     cout << "Create local save data." << endl;
     // Create path of local template
     string path3 = this->strReplace("global_template.json", "local_template.json", path1);
-    // read local template data
+    // Read local template data
     rapidjson::Document local_temp = this->readJsonFile(path3);
-    // create local save data
-    string path4;
-    for(int i=1; i<=MAX_SAVE_COUNT; i++)
-    {
-        path4 = this->strReplace("local_template.json", "local"+to_string(i)+".json", path3);
-        this->writeJsonFile(path4, local_temp);
-    }
+    rapidjson::Value& temp = local_temp["0"];
+    // Create empty local save data
+    rapidjson::Document parent;
+    const char* empty = R"({})";
+    parent.Parse(empty);
+    rapidjson::Value& child(parent);
+    // Add local template
+    child.AddMember("0", temp, parent.GetAllocator());
+    // Initialize local save data
+    this->writeJsonFile(this->strReplace("local_template.json", "local.json", path3), parent);
     return;
 }
 
@@ -107,15 +110,15 @@ void PlayerDataManager::initializeFiles()
 void PlayerDataManager::setLocalDataAll()
 {
     FUNCLOG
-    this->local.clear();
-    string temp = "save/local";
-    string path;
-    for(int i=1;i<=MAX_SAVE_COUNT; i++)
+    string path = fu->fullPathForFilename("save/local.json");
+    this->local = readJsonFile(path);
+    /*for(int i=1;i<=MAX_SAVE_COUNT; i++)
     {
-        path = this->fu->fullPathForFilename(temp + to_string(i) + ".json");
-        this->local.push_back(readJsonFile(path));
+        path = this->strReplace("global_template.json", "local" + to_string(i) + ".json", temp);
+        this->local[i] = &this->readJsonFile(path).GetAllocator();
+        cout << "all local_id>>>>>>>>" << to_string(this->local.at(i-1)["local_id"].GetInt()) << endl;
         //this->local.push_back((path == "") ? nullptr : readJsonFile(path));
-    }
+    }*/
     return;
 }
 
@@ -127,20 +130,20 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     SaveIndex save;
     int minute;
     string time;
-    for(int i=0; i<MAX_SAVE_COUNT; i++){
-        // 本当はいちいち初期化したくないけどしゃあなし
-        rapidjson::Document doc(&this->local.at(i).GetAllocator());
-        rapidjson::Value& token = doc["token"];
-        if(token.IsNull())
+    for(int i=1; i<=MAX_SAVE_COUNT; i++){
+        if(!this->local.HasMember(to_string(i).c_str()))
         {
+            cout << "empty >> " << i << endl;
             //空のデータ
-            save = SaveIndex(i+1, "--- NO DATA ---", "--時間--分", "  0", "---------------");
+            save = SaveIndex(i, "--- NO DATA ---", "--時間--分", "  0", "---------------");
         } else {
+            cout << "set >> " << i << endl;
             //プレイ時間を編集
-            minute = doc["play_time"].GetInt();
+            minute = this->local[i]["play_time"].GetInt();
             time = this->getSprintf("%2s", to_string(minute / 60)) + "時間" + this->getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            save = SaveIndex(i+1, this->getSprintf("%15s", doc["name"].GetString()), time, this->getSprintf("%3s", to_string(doc["save_count"].GetInt())), this->getSprintf("%15s", doc["map"].GetString()));
+            save = SaveIndex(i, this->getSprintf("%15s", this
+                                                   ->local[i]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->local[i]["save_count"].GetInt())), this->getSprintf("%15s", this->local[i]["map"].GetString()));
         }
         save_list.push_back(save);
     }
@@ -160,9 +163,8 @@ void PlayerDataManager::save(const int& id)
 {
     FUNCLOG
     // save local
-    string path_l = this->fu->fullPathForFilename(("save/local" + to_string(id)) + ".json");
-    this->writeJsonFile(path_l, this->local.at(this->local_id));
-    this->local[id] = this->readJsonFile(path_l);
+    string path = this->fu->fullPathForFilename("save/local.json");
+    this->writeJsonFile(path, this->local);
     this->local_id = id;
     // save local
     string path_g = this->fu->fullPathForFilename(("save/global.json"));
@@ -192,14 +194,14 @@ void PlayerDataManager::setEventFlag(const string& map, const int& event_id, con
     rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
     //mapが存在するかチェック
     if(itr == event.MemberEnd()){
-        event.AddMember(StringRef(map.c_str()), rapidjson::Value(), this->local[this->local_id].GetAllocator());
+        event.AddMember(StringRef(map.c_str()), rapidjson::Value(), this->local.GetAllocator());
     }
     event = event[map.c_str()];
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();
     itr = event.FindMember(id);
     if(itr == event.MemberEnd()){
-        event.AddMember(StringRef(id), rapidjson::Value(flag), this->local[this->local_id].GetAllocator());
+        event.AddMember(StringRef(id), rapidjson::Value(flag), this->local.GetAllocator());
     } else {
         event[id].SetBool(flag);
     }
@@ -220,7 +222,7 @@ void PlayerDataManager::setItem(const int& item_id)
         item[id].SetInt(count+1);
     } else {
         //初めてゲットしたアイテムならば新しい値をセット
-        item.AddMember(StringRef(id), rapidjson::Value(1), this->local[this->local_id].GetAllocator());
+        item.AddMember(StringRef(id), rapidjson::Value(1), this->local.GetAllocator());
     }
     return;
 }
