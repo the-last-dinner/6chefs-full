@@ -1,0 +1,346 @@
+﻿ー使いそうなスクリプトリストー
+
+
+●キャラメッセージウインドウの表示
+・type名...charaMessge
+・必要なもの...表示するテキスト
+　　　　　　　キャラ画像のファイル名
+　　　　　　　キャラ名
+（例）
+	{
+	"type":"charaMessage",
+	"text":"テキスト(String)",
+	"file":"ファイル名(String)",
+        "chara":"キャラ名(String)"
+	}
+●リアクションキャラメッセージウインドウの表示
+・type名...reactionMessge
+・必要なもの...表示するテキスト
+　　　　　　　 キャラ画像のファイル名
+              キャラ名
+※破るような音と同時に表示するメッセージウインドウ
+　画像も揺らしながら表示
+　驚いたときや、起こったときに使うキャラメッセージウインドウ
+（例）
+	{
+	"type":"reactionMessage",
+	"text":"テキスト(String)",
+	"file":"ファイル名(String)",
+        "chara":"キャラ名(String)"
+	}
+●画像表示
+・type名...imageDisplay
+・必要なもの...表示する画像ファイル名
+　　　　　　　　表示する時間
+
+※画像はフェードインで表示、でフェードアウトしていくように
+（例）
+	{
+	"type":"imageDisplay",
+	"file":"ファイル名(String)",
+	"time":"表示する時間（秒）(double)"
+	}
+
+●マップ移動
+・type名...changeMap
+・必要なもの...移動先のマップ番号
+　　　　　　　　　　移動先のx座標
+　　　　　　　　　　移動先のy座標
+（例）
+	{
+	"type":"changeMap",
+	"nextMap":"移動先のマップ番号(int)",
+	"nextX":"移動先のx座標(int)",
+	"nextY":"移動先のy座標(int)"
+	}
+
+
+●システムメッセージウインドウの表示
+・type名...systemMessge
+・必要なもの...表示するテキスト
+
+（例）
+	{
+	"type":"charaMessage",
+	"text":"テキスト(String)"
+	}
+
+●主人公の向きを変更
+・type名...direction
+・必要なもの...向き(UP,DOWN,RIGHT,LEFT)
+（例）
+	{
+	"type":"directionChange",
+	"direction":"向き"
+	}
+
+●主人公が勝手に歩く
+・type名...heroMove
+・必要なもの...歩く向き
+　　　　　　　　　　歩数
+　　　　　　　　　　歩く速さ
+（例）
+	{
+	"type":"heroMove",
+	"direction":"歩く向き"
+	"steps":"歩数(int)"
+	"speed":"歩く早さ（double）"
+	}
+
+●キャラが勝手に歩く
+・type名...charaMove
+・必要なもの...歩く向き
+　　　　　　　　　　歩数
+　　　　　　　　　　歩く速さ
+　　　　　　　　　　歩くキャラのID
+（例）
+	{
+	"type":"charaMove",
+	"direction":"歩く向き"
+	"steps":"歩数(int)"
+	"speed":"歩く早さ（double）"
+	"charaID":"歩くキャラのID(int)"
+	}
+
+●マップチップを書き換える
+・type名...changeChip
+・必要なもの...書き換えるチップがあるマップのID
+　　　　　　　　　　書き換えるx座標
+　　　　　　　　　　書き換えるy座標
+　　　　　　　　　　新しく表示するマップチップがある画像ファイル名
+　　　　　　　　　　表示するマップチップ番号
+（例）
+	{
+	"type":"changeChip",
+	"x":"書き換えるx座標(int)",
+	"y":"書き換えるy座標(int)",
+	"file":"画像ファイル名(String)",
+	"chipNo":"マップチップ番号(int)"
+	}
+
+
+●リアクションアイコン表示
+・type名...reaction
+・必要なもの...表示する画像
+           表示するときに鳴らす音
+※何か発見した時とかのビックリマークとか(ポケモンのトレーナーに気づかれた時の！のイメージ)
+（例）
+	{
+	"type":"reaction",
+	"file":"表示する画像のファイル名(String)"
+	"file":"鳴らす音のファイル名(String)"
+	}
+
+●鬼を生み出す
+・type名...makeEnemy
+・必要なもの...出現させた鬼の鬼番号
+		   鬼を出現させるx座標
+　　　　　　　　　　出現させるy座標
+　　　　　　　　　　鬼の動きパターン
+（例）
+	{
+	"type":"makeEnemy",
+	"enemyID":"鬼番号（int）",
+	"x":"出現させるx座標(int)",
+	"y":"出現させるy座標(int)",
+	"movePattern":"鬼の動きパターン番号(int)",
+	}
+
+●キャラを消す
+・type名...removeChara
+・必要なもの...消すキャラID
+（例）
+	{
+	"type":"removeChara",
+	"charaID":"ID（int）"
+	}
+
+●鬼を消す
+・type名...removeEnemy
+・必要なもの...消す鬼ID
+（例）
+	{
+	"type":"remove",
+	"enemyID":"ID（int）"
+	}
+
+●ストーリーメッセージウインドウ表示
+・type名...storyMessage
+・必要なもの...表示するテキスト
+           背景のアルファ値
+※冒頭とかは真っ黒いウインドウを表示するけど、日記を表示するのは半透明のウインドウ
+（例）
+	{
+	"type":"storyMessage",
+	"text":"表示するテキスト",
+	"alpha":"アルファ値(double)"
+	}
+
+●上から暗いのを被せる
+・type名...cover
+・必要なもの...被せるマスクの色、アルファ値
+
+（例）
+	{
+	"type":"cover",
+	"color":"R,G,B,α(double)"
+	}
+
+●主人公の周りだけcoverを解除して明かりがつくように見せる
+・type名...lamp
+・必要なもの...被せるマスクの色、アルファ値
+※できれば、要相談
+（例）
+	{
+	"type":"lamp",
+	"color":"R,G,B,α(double)"
+	}
+
+
+●アイテム入手
+・type名...getItem
+・必要なもの...手に入れるアイテムのID
+　　　　　　　　　　手に入れるアイテムの名前
+　　　　　　　　　　　
+（例）
+	{
+	"type":"getItem",
+	"itemID":"アイテムのID(int)",
+	"itemName":"アイテムの名前(String)"
+	}
+
+
+●氷の上を滑る（氷の抜け道、あさせのほらあな最深部のイメージ）
+・type名...slip
+・必要なもの...
+※オブジェクトを踏んだらそのままの向きでぶつかるまで進む（歩行グラフィックは無し）
+（例）
+	{
+	"type":"slip",
+	}
+
+
+●後ずさり
+・type名...back
+・必要なもの...後ずさりするマス数
+　　　　　　　　　　後ずさりする速さ
+
+（例）
+	{
+	"type":"back",
+	"steps":"後ずさりするマス数（int）",
+	"speed":"後ずさりする速さ(double)"
+	}
+
+●スペースキー連打イベント（マッドファーザーのずんちゃずんずんちゃのイメージ）
+・type名...barrage
+・必要なもの...連打する回数
+　　　　　　　　　　制限時間
+※typeというより連打成功したら次のスクリプトに入るかというやつ
+（例）
+	{
+	"type":"barrage",
+	"barrageTimes":"連打する回数(int)",
+	"limit":"制限時間（double）"
+	}
+
+●暗号イベント
+・type名...pasward
+・必要なもの...入力するもの
+　　　　　　　　　　
+（例）
+	{
+	"type":"pasward",
+	"pas":"入力するもの(int)"
+	}
+
+●レイヤーを消す
+・type型...removeLayer
+・必要なもの...消すレイヤー名
+
+（例）
+　　　{
+	"type":"removelayer"
+	"layer":"消すレイヤー名"
+      }
+
+●SE鳴らす
+・type名...playSE
+・必要なもの...ファイル名
+		ループ回数
+　　　　　　　　ボリューム
+　　　　　　　　　　
+（例）
+	{
+	"type":"playSE",
+	"file":"ファイル名",
+	"times":"回数",
+	"bolume":"ボリューム",
+	}
+●カウントダウンをする
+・type名...countDown
+・必要なもの...秒数
+		カウントダウンID
+　　　　　　　　
+　　　　　　　　　　
+（例）
+	{
+	"type":"countDown",
+	"second":"秒数",
+	"ID":"カウントダウンID"
+	}
+●カウントダウンを止める
+・type名...stopCount
+・必要なもの...カウントダウンID
+　　　　　　　　
+　　　　　　　　　　
+（例）
+	{
+	"type":"stopCount",
+	"ID":"カウントダウンID"
+	}
+
+●アイテム入手
+・type名...getItem
+・必要なもの...入手アイテムID
+　　　　　　　　アイテム名
+※システムメッセージと入手SEがデフォルトで鳴るように　　　
+「、、、を手に入れた」
+（例）
+	{
+	"type":"getItem",
+	"ID":"アイテムID"
+　　　　"name":"アイテム名"
+	}
+
+●クエスチョンメッセージウインドウの表示
+・type名...questionMessge
+・必要なもの...表示するテキスト
+
+（例）
+	{
+	"type":"getItem",
+	"text":"テキスト(String)"
+        "選択肢":"選択肢1、選択肢2、、、"
+	}
+
+とりあえず、
+必要に応じて追加
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

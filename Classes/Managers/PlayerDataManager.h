@@ -42,8 +42,6 @@ private:
 
 //通常関数
 public:
-    //全ローカルデータのセット
-    void setLocalDataAll();
     //メインとなるローカルデータのセット
     void setMainLocalData(const int& id);
     //ローカルセーブデータリストの取得

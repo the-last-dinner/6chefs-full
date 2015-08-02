@@ -38,9 +38,6 @@ bool baseSaveDataSelector::init()
 	black->setPosition(WINDOW_CENTER);
 	this->addChild(black);
 	
-	// セーブデータをリソースから読み込み
-	PlayerDataManager::getInstance()->setLocalDataAll();
-	
 	// セーブデータリストを取得
 	vector<PlayerDataManager::SaveIndex> datas = PlayerDataManager::getInstance()->getSaveList();
 	
