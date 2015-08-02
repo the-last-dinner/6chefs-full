@@ -46,8 +46,6 @@ PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
     {
         //セーブデータの初期作成
         this->initializeFiles();
-        //グローバルセーブデータの読み込み
-        this->setGlobalData();
     }
 }
 
@@ -81,6 +79,8 @@ void PlayerDataManager::initializeFiles()
     rapidjson::Document global_temp = this->readJsonFile(path1);
     // create global save data
     this->writeJsonFile(path2, global_temp);
+    // set global save data
+    this->global = readJsonFile(path2);
     
     /* local save data */
     /*cout << "Create local save data." << endl;
