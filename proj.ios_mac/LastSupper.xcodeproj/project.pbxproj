@@ -118,6 +118,8 @@
 		55DD60231B24A0AD00F56438 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601E1B24A0AD00F56438 /* fonts */; };
 		55DD60241B24A0AD00F56438 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 55DD601F1B24A0AD00F56438 /* img */; };
 		55DD60251B24A0AD00F56438 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 55DD60201B24A0AD00F56438 /* map */; };
+		55E396B21B6DE83B006FE1F9 /* StoryMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E396B01B6DE83B006FE1F9 /* StoryMessageLayer.cpp */; };
+		55E396B31B6DE83B006FE1F9 /* StoryMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E396B01B6DE83B006FE1F9 /* StoryMessageLayer.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -288,6 +290,8 @@
 		55DD601E1B24A0AD00F56438 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		55DD601F1B24A0AD00F56438 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		55DD60201B24A0AD00F56438 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
+		55E396B01B6DE83B006FE1F9 /* StoryMessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StoryMessageLayer.cpp; path = ../Classes/Layers/Dungeon/StoryMessageLayer.cpp; sourceTree = "<group>"; };
+		55E396B11B6DE83B006FE1F9 /* StoryMessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryMessageLayer.h; path = ../Classes/Layers/Dungeon/StoryMessageLayer.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -630,6 +634,8 @@
 				556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */,
 				55D78B9E1B52261B004CE697 /* CharacterMessageLayer.cpp */,
 				55D78B9F1B52261B004CE697 /* CharacterMessageLayer.h */,
+				55E396B01B6DE83B006FE1F9 /* StoryMessageLayer.cpp */,
+				55E396B11B6DE83B006FE1F9 /* StoryMessageLayer.h */,
 				55D78BA21B522654004CE697 /* SystemMessageLayer.cpp */,
 				55D78BA31B522654004CE697 /* SystemMessageLayer.h */,
 			);
@@ -827,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55627AD61B64B45F00589FEE /* baseSaveDataSelector.cpp in Sources */,
+				55E396B21B6DE83B006FE1F9 /* StoryMessageLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				55D78B9C1B522548004CE697 /* baseMessageLayer.cpp in Sources */,
@@ -879,6 +886,7 @@
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
+				55E396B31B6DE83B006FE1F9 /* StoryMessageLayer.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55D78BA11B52261B004CE697 /* CharacterMessageLayer.cpp in Sources */,

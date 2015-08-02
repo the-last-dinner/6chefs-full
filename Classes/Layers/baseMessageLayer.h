@@ -12,32 +12,45 @@
 #include "Common.h"
 
 class baseMessageLayer : public Layer
-{
-public:
-	// 構造体、列挙型
-	enum struct MessageType {
-		NORMAL,
-		SLOW
-	};
-	// クラス変数
-protected:
-	static const map<MessageType, float> span;
-	
+{	
 	// インスタンスメソッド
 protected:
 	baseMessageLayer();
 	~baseMessageLayer();
 	virtual void onSpacePressed();
 public:
-	virtual void displayMessage(const string& str, int fontSize = 24, MessageType type = MessageType::NORMAL);
+	virtual void start();
+	void addPage(const string& page);
+	void setCallback(const function<void()>& callback);
+protected:
+	void setFontFilePath(const string& fontPath);
+	void setFontSize(const int& fontSize);
+	void setSpan(const float& span);
+	void setVAlignment(const int& v_alignment);
+	void setPages(const queue<string>& pages);
+	void setFrame(Sprite* frame);
+	void setMessagePosition(const Point& m_position);
+private:
+	virtual void popPage();
+	virtual void disp();
+	virtual void end();
+	virtual void allLetterDisplayed();
 	
 	// インスタンス変数
-protected:
+private:
 	EventListenerKeyboard* eventListener;
-	string str;
-	Sprite* base;
+	queue<string> pages;
+	string fontPath;
+	int fontSize;
+	float span;
+	int v_alignment;
+	Point m_position;
+	Sprite* frame;
 	Label* message;
 	vector<Action*> letterActions;
+	function<void()> callback;
+	bool _isAllLetterDisplayed;
+	bool _isAllPageDisplayed;
 };
 
 #endif // __BASE_MESSAGE_LAYER_H__
