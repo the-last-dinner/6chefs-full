@@ -64,7 +64,6 @@ bool PlayerDataManager::setGlobalData()
     }
     //global.jsonを読み込んでインスタンス変数globalに格納
     this->global = this->readJsonFile(path);
-    //
     return true;
 }
 
@@ -84,7 +83,7 @@ void PlayerDataManager::initializeFiles()
     this->writeJsonFile(path2, global_temp);
     
     /* local save data */
-    cout << "Create local save data." << endl;
+    /*cout << "Create local save data." << endl;
     // Create path of local template
     string path3 = this->strReplace("global_template.json", "local_template.json", path1);
     // Read local template data
@@ -99,28 +98,12 @@ void PlayerDataManager::initializeFiles()
     child.AddMember("0", temp, parent.GetAllocator());
     // Initialize local save data
     this->writeJsonFile(this->strReplace("local_template.json", "local.json", path3), parent);
-    return;
+    */return;
 }
 
 /* ******************************************************** *
  * ******************* Normal functions ******************* *
  * ******************************************************** */
-
-//全ローカルセーブデータの呼び出し
-void PlayerDataManager::setLocalDataAll()
-{
-    FUNCLOG
-    string path = fu->fullPathForFilename("save/local.json");
-    this->local = readJsonFile(path);
-    /*for(int i=1;i<=MAX_SAVE_COUNT; i++)
-    {
-        path = this->strReplace("global_template.json", "local" + to_string(i) + ".json", temp);
-        this->local[i] = &this->readJsonFile(path).GetAllocator();
-        cout << "all local_id>>>>>>>>" << to_string(this->local.at(i-1)["local_id"].GetInt()) << endl;
-        //this->local.push_back((path == "") ? nullptr : readJsonFile(path));
-    }*/
-    return;
-}
 
 //セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
@@ -131,7 +114,8 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     int minute;
     string time;
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
-        if(!this->local.HasMember(to_string(i).c_str()))
+        const char* cha_id = to_string(i).c_str();
+        if(!this->global.HasMember(cha_id))
         {
             cout << "empty >> " << i << endl;
             //空のデータ
@@ -139,11 +123,11 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
         } else {
             cout << "set >> " << i << endl;
             //プレイ時間を編集
-            minute = this->local[i]["play_time"].GetInt();
+            minute = this->global[cha_id]["play_time"].GetInt();
             time = this->getSprintf("%2s", to_string(minute / 60)) + "時間" + this->getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
             save = SaveIndex(i, this->getSprintf("%15s", this
-                                                   ->local[i]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->local[i]["save_count"].GetInt())), this->getSprintf("%15s", this->local[i]["map"].GetString()));
+                                                   ->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", this->global[cha_id]["map"].GetString()));
         }
         save_list.push_back(save);
     }
@@ -155,6 +139,9 @@ void PlayerDataManager::setMainLocalData(const int& id)
 {
     FUNCLOG
     this->local_id = id;
+    string file = (id == 0) ? "save/local_template.json": "save/local" + to_string(id) + ".json";
+    string path = this->fu->fullPathForFilename(file);
+    this->local = this->readJsonFile(path);
     return;
 }
 
@@ -163,11 +150,32 @@ void PlayerDataManager::save(const int& id)
 {
     FUNCLOG
     // save local
-    string path = this->fu->fullPathForFilename("save/local.json");
+    string str_id = to_string(id);
+    string path = this->fu->fullPathForFilename("save/local" + str_id + ".json");
     this->writeJsonFile(path, this->local);
     this->local_id = id;
-    // save local
-    string path_g = this->fu->fullPathForFilename(("save/global.json"));
+    // save global
+    const char* cha_id = str_id.c_str();
+    if(this->global.HasMember(cha_id))
+    {
+        //セーブデータが存在する場合
+        this->global[cha_id]["token"] = this->local["token"];
+        this->global[cha_id]["name"] = this->local["name"];
+        this->global[cha_id]["play_time"] = this->local["play_time"];
+        this->global[cha_id]["save_count"] = this->local["save_count"];
+        this->global[cha_id]["map"] = this->local["map"];
+    } else {
+        //セーブデータが存在しない場合
+        rapidjson::Value empty(kObjectType);
+        this->global.AddMember(StringRef(cha_id), empty, this->global.GetAllocator());
+        this->global[cha_id].AddMember("token", this->local["token"], this->local.GetAllocator());
+        this->global[cha_id].AddMember("name", this->local["name"], this->local.GetAllocator());
+        this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
+        this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
+        this->global[cha_id].AddMember("map", this->local["map"], this->local.GetAllocator());
+        
+    }
+    string path_g = this->fu->fullPathForFilename("save/global.json");
     this->writeJsonFile(path_g, this->global);
     return;
 }
@@ -181,7 +189,7 @@ void PlayerDataManager::save(const int& id)
 void PlayerDataManager::setFriendship(const string& character, const int& level)
 {
     FUNCLOG
-    rapidjson::Value& friendship = this->local[this->local_id]["friendship"];
+    rapidjson::Value& friendship = this->local["friendship"];
     friendship[character.c_str()].SetInt(level);
     return;
 }
@@ -190,7 +198,7 @@ void PlayerDataManager::setFriendship(const string& character, const int& level)
 void PlayerDataManager::setEventFlag(const string& map, const int& event_id, const bool& flag)
 {
     FUNCLOG
-    rapidjson::Value& event = this->local[this->local_id]["event"];
+    rapidjson::Value& event = this->local["event"];
     rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
     //mapが存在するかチェック
     if(itr == event.MemberEnd()){
@@ -212,7 +220,7 @@ void PlayerDataManager::setEventFlag(const string& map, const int& event_id, con
 void PlayerDataManager::setItem(const int& item_id)
 {
     FUNCLOG
-    rapidjson::Value& item = this->local[this->local_id]["item"];
+    rapidjson::Value& item = this->local["item"];
     const char* id = to_string(item_id).c_str();
     rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
     int count = 0;
@@ -231,7 +239,7 @@ void PlayerDataManager::setItem(const int& item_id)
 void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
 {
     FUNCLOG
-    rapidjson::Value& root = this->local[this->local_id];
+    rapidjson::Value& root = this->local;
     if(which == static_cast<int>(Direction::LEFT))
     {
         root["equipment_left"].SetInt(item_id);
@@ -246,14 +254,14 @@ void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
 int PlayerDataManager::getFriendship(const string& character)
 {
     FUNCLOG
-    return this->local[this->local_id]["friendship"][character.c_str()].GetInt();
+    return this->local["friendship"][character.c_str()].GetInt();
 }
 
 //イベントフラグの取得
 bool PlayerDataManager::getEventFlag(const string& map, const int& event_id)
 {
     FUNCLOG
-    rapidjson::Value& event = this->local[this->local_id]["event"];
+    rapidjson::Value& event = this->local["event"];
     rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
     //mapが存在するかチェック
     if(itr == event.MemberEnd()){
@@ -274,7 +282,7 @@ bool PlayerDataManager::getEventFlag(const string& map, const int& event_id)
 int PlayerDataManager::getItem(const int &item_id)
 {
     FUNCLOG
-    rapidjson::Value& item = this->local[this->local_id]["item"];
+    rapidjson::Value& item = this->local["item"];
     const char* id = to_string(item_id).c_str();
     rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
     int count = 0;
@@ -289,7 +297,7 @@ map<int, int> PlayerDataManager::getItemAll()
 {
     FUNCLOG
     map<int, int> items;
-    rapidjson::Value& item = this->local[this->local_id]["item"];
+    rapidjson::Value& item = this->local["item"];
     for(rapidjson::Value::ConstMemberIterator itr = item.MemberBegin();itr != item.MemberEnd(); itr++)
     {
         int item_id = stoi(itr->name.GetString());
@@ -305,7 +313,7 @@ int PlayerDataManager::getItemEquipment(const int& which)
     FUNCLOG
     string key;
     key = (which == static_cast<int>(Direction::LEFT)) ? "equipment_left" : "equipment_right";
-    return this->local[this->local_id][key.c_str()].GetInt();
+    return this->local[key.c_str()].GetInt();
 }
 
 /* CHECK */

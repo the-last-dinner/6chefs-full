@@ -83,6 +83,7 @@ void TitleMainMenuLayer::onSpacePressed()
 			SoundManager::getInstance()->playSound("se/gameStart.mp3");
 			SoundManager::getInstance()->unloadAllSounds();
 			TextureManager::getInstance()->unloadAllTectures();
+            PlayerDataManager::getInstance()->setMainLocalData(0);
 			Director::getInstance()->replaceScene(DungeonScene::createScene());
 			break;
 		case MenuType::CONTINUE:

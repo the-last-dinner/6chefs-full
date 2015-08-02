@@ -30,9 +30,6 @@ bool baseSaveDataSelector::init()
 	if(!Layer::init()) return false;
 	if(!baseMenuLayer::init(1, 5)) return false;
 	
-	// セーブデータをリソースから読み込み
-	PlayerDataManager::getInstance()->setLocalDataAll();
-	
 	// セーブデータリストを取得
 	vector<PlayerDataManager::SaveIndex> datas = PlayerDataManager::getInstance()->getSaveList();
 	
