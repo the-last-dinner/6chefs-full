@@ -26,7 +26,7 @@ public:
         SaveIndex(){};
     };
 //クラス変数
-private:
+public:
     static const int MAX_SAVE_COUNT;
 
 //インスタンス変数

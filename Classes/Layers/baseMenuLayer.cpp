@@ -94,3 +94,11 @@ void baseMenuLayer::onKeyReleased(EventKeyboard::KeyCode keyCode)
 // 現在選ばれているメニューのINDEXを取得(現時点では横優先配置の場合のみ)
 int baseMenuLayer::getSelectedIndex()
 {return sizeX * indexY + indexX;}
+
+// メニューサイズの横方向を取得
+int baseMenuLayer::getMenuSizeX()
+{return this->sizeX;}
+
+// メニューサイズの縦方向を取得
+int baseMenuLayer::getMenuSizeY()
+{return this->sizeY;}

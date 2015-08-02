@@ -34,7 +34,10 @@ public:
 	~baseSaveDataSelector();
 	virtual void moveCursor(bool sound);
 	virtual void onSpacePressed();
-
+	
+// インスタンス変数
+private:
+	Size panelSize;
 };
 
 #endif // __BASE_SAVE_DATA_SELECTOR_H__
