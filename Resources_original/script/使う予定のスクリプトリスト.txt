@@ -10,8 +10,8 @@
 	{
 	"type":"charaMessage",
 	"text":"テキスト(String)",
-	"file":"ファイル名(String)",
-        "chara":"キャラ名(String)"
+	"charaID":"charaID",
+        "imgID":"ID"
 	}
 ●リアクションキャラメッセージウインドウの表示
 ・type名...reactionMessge
@@ -322,6 +322,23 @@
 	"type":"getItem",
 	"text":"テキスト(String)"
         "選択肢":"選択肢1、選択肢2、、、"
+	}
+
+●レイヤーを揺らす
+・type名...swingLayer
+・必要なもの...揺らすレイヤー
+
+※酒影が牢の格子を揺らすときに使う
+　上下に0.2マスずつ揺らす
+　を1秒間に2回位のペースで
+
+  デフォルトは永遠に揺らし続ける
+　数回揺らすだけならオプション
+（例）
+	{
+	"type":"swingLayer",
+	"tlayer":"揺らすレイヤー名"
+　　　　"option":"揺らす回数"
 	}
 
 とりあえず、
