@@ -53,16 +53,19 @@ bool TiledMapLayer::init(const string& mapFileName, EventListenerKeyboard* liste
 	
 	// カメラを主人公中心にセット
 	Point center = Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	map->setPosition(center - map->getChildByName<Character*>("main")->getPosition());
+	//map->setPosition(center - map->getChildByName<Character*>("main")->getPosition());
 	
 	// メッセージウインドウテスト
-	CharacterMessageLayer* cMessageLayer = CharacterMessageLayer::create();
-	cMessageLayer->setZOrder(static_cast<int>(Priority::CHARACTER_MESSAGE));
-	this->addChild(cMessageLayer);
+	queue<string> pages;
+	pages.push("あいうえお\nテステステウテス");
+	pages.push("かきくけこ");
+	StoryMessageLayer* sMessageLayer = StoryMessageLayer::createWithPages(pages);
+	sMessageLayer->setZOrder(static_cast<int>(Priority::STORY_MESSAGE));
+	this->addChild(sMessageLayer);
 	this->parentListener->setEnabled(false);
-	
-	cMessageLayer->displayMessage("表示テストしま----す。\n\n\nあいうえお\nかきくけこさしすせそたちつてと");
-	
+	sMessageLayer->setCallback([=](){this->parentListener->setEnabled(true);});
+	sMessageLayer->start();
+
 	return true;
 }
 

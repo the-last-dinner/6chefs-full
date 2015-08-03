@@ -23,6 +23,7 @@ public:
 		START,
 		CONTINUE,
 		FINISH,
+		SIZE
 	};
 	
 	// クラスメソッド
@@ -31,7 +32,7 @@ public:
 	
 	// クラス変数
 private:
-	static const map<string, MenuType> menu;
+	static const map<MenuType, string> menu;
 	
 	// インスタンスメソッド
 private:

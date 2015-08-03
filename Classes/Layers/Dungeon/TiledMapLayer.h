@@ -12,6 +12,7 @@
 #include "Common.h"
 #include "Datas/Layer/TiledMapData.h"
 #include "Layers/Dungeon/CharacterMessageLayer.h"
+#include "Layers/Dungeon/StoryMessageLayer.h"
 #include "Layers/Dungeon/SystemMessageLayer.h"
 
 class TiledMapLayer : public Layer
