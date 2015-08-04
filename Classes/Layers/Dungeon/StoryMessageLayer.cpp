@@ -19,25 +19,15 @@ StoryMessageLayer::~StoryMessageLayer()
 // create関数
 StoryMessageLayer* StoryMessageLayer::createWithPages(const queue<string>& pages)
 {
-	StoryMessageLayer* pRet = new(nothrow)StoryMessageLayer();
-	if (pRet && pRet->init(pages))
-	{
-		// オブジェクトを自動メモリ管理へ登録
-		pRet->autorelease();
-		return pRet;
-	}
-	CC_SAFE_DELETE(pRet);
-	return nullptr;
+	StoryMessageLayer* pRet = dynamic_cast<StoryMessageLayer*>(baseMessageLayer::create(pages));
+	return pRet;
 }
 
 // 初期化
-bool StoryMessageLayer::init(const queue<string>& pages)
+bool StoryMessageLayer::init()
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
-	
-	// ページをセット
-	this->setPages(pages);
 	
 	// 枠を生成
 	Sprite* frame = Sprite::create();

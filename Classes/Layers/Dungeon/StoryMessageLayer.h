@@ -21,7 +21,7 @@ public:
 private:
 	StoryMessageLayer();
 	~StoryMessageLayer();
-	virtual bool init(const queue<string>& pages);
+	virtual bool init();
 };
 
 #endif // __STORY_MESSAGE_LAYER_H__

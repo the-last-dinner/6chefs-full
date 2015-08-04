@@ -8,12 +8,6 @@
 
 #include "Character.h"
 
-// キャラクターのデータ(ID, プロパティリストのファイル名, 表示名)
-const vector<vector<string>> Character::characterDatas =
-{
-	{"0", "magoichi", "孫一"},
-};
-
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/texture/character/";
 
@@ -54,7 +48,7 @@ bool Character::init(int charaId, Direction direction)
 	if(!Node::init()) return false;
 	// 生成時の情報をセット
 	this->direction = direction;
-	this->texturePrefix = characterDatas.at(charaId).at(static_cast<int>(DataType::TexturePrefix));
+	this->texturePrefix = CharacterData::datas.at(charaId).at(static_cast<int>(CharacterData::DataType::TexturePrefix));
 	
 	// プロパティリスト読み込み
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + this->texturePrefix + ".plist");

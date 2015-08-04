@@ -38,6 +38,22 @@ _isAllPageDisplayed(false)
 baseMessageLayer::~baseMessageLayer()
 {FUNCLOG}
 
+// create関数（子クラスで呼び出す用）
+baseMessageLayer* baseMessageLayer::create(const queue<string>& pages)
+{
+	baseMessageLayer* pRet = new(nothrow)baseMessageLayer();
+	if (pRet && pRet->init())
+	{
+		// オブジェクトを自動メモリ管理へ登録
+		pRet->autorelease();
+		// ページをセット
+		pRet->setPages(pages);
+		return pRet;
+	}
+	CC_SAFE_DELETE(pRet);
+	return nullptr;
+}
+
 // spaceキーを押した時の処理
 void baseMessageLayer::onSpacePressed()
 {
@@ -57,17 +73,22 @@ void baseMessageLayer::onSpacePressed()
 		for(int i = 0; i < this->message->getStringLength(); i++)
 		{Sprite* letter = this->message->getLetter(i); if(letter) letter->setVisible(true);}
 		this->_isAllLetterDisplayed = true;
+		this->allLetterDisplayed();
 		if(this->pages.size() == 1) this->_isAllPageDisplayed = true;
 	}
 	return;
 }
 
-// メッセージ表示を開始する
+// 表示を開始する
 void baseMessageLayer::start()
-{this->disp();}
+{this->display();}
+
+// ページ開始時に呼ばれるメソッド、メッセージの流れ方以外を変えたい場合はこちらをオーバーライドすべし
+void baseMessageLayer::display()
+{this->displayMessage();}
 
 // メッセージを表示
-void baseMessageLayer::disp()
+void baseMessageLayer::displayMessage()
 {
 	FUNCLOG
 	this->message = Label::createWithTTF(this->pages.front(), this->fontPath, this->fontSize);
@@ -96,7 +117,7 @@ void baseMessageLayer::disp()
 		if(letter)
 		{
 			letter->setVisible(false);
-			Sequence* letterAction = Sequence::create(DelayTime::create(this->span * i), TargetedAction::create(letter, Show::create()), CallFunc::create([=](){if(i == lastLetterIndex){this->_isAllLetterDisplayed = true;if(this->pages.size() == 1) this->_isAllPageDisplayed = true;}}), nullptr);
+			Sequence* letterAction = Sequence::create(DelayTime::create(this->span * i), TargetedAction::create(letter, Show::create()), CallFunc::create([=](){if(i == lastLetterIndex){this->_isAllLetterDisplayed = true;this->allLetterDisplayed(); if(this->pages.size() == 1) this->_isAllPageDisplayed = true;}}), nullptr);
 			this->letterActions.push_back(letterAction);
 			this->runAction(letterAction);
 		}
@@ -111,7 +132,7 @@ void baseMessageLayer::popPage()
 	this->pages.pop();
 	this->message->setVisible(false);
 	this->removeChild(this->message);
-	this->disp();
+	this->display();
 	return;
 }
 

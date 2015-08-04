@@ -266,6 +266,7 @@
 		556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapLayer.h; path = ../Classes/Layers/Dungeon/TiledMapLayer.h; sourceTree = "<group>"; };
 		556C18E51B3FC45000D2BCA1 /* TIledMapData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TIledMapData.cpp; path = ../Classes/Datas/Layer/TIledMapData.cpp; sourceTree = "<group>"; };
 		556C18E61B3FC45000D2BCA1 /* TIledMapData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TIledMapData.h; path = ../Classes/Datas/Layer/TIledMapData.h; sourceTree = "<group>"; };
+		556EC5431B6FB6E10080A7D6 /* CharacterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterData.h; path = ../Classes/MapObjects/CharacterData.h; sourceTree = "<group>"; };
 		557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSceneData.cpp; sourceTree = "<group>"; };
 		557A87C31B46EB3E001993E1 /* TitleSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneData.h; sourceTree = "<group>"; };
 		557A87C71B4702BF001993E1 /* MapUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapUtils.cpp; path = ../Classes/Utils/MapUtils.cpp; sourceTree = "<group>"; };
@@ -616,6 +617,7 @@
 		5534BBD91B2DDEB6003CB847 /* MapObjects */ = {
 			isa = PBXGroup;
 			children = (
+				556EC5431B6FB6E10080A7D6 /* CharacterData.h */,
 				5534BBDA1B2DDF52003CB847 /* Character.cpp */,
 				5534BBDB1B2DDF52003CB847 /* Character.h */,
 				5527BFFD1B305A7000612934 /* Objects.h */,

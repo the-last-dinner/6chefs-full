@@ -21,7 +21,7 @@ public:
 private:
 	SystemMessageLayer();
 	~SystemMessageLayer();
-	virtual bool init(const queue<string>& pages);
+	virtual bool init();
 };
 
 #endif // __SYSTEM_MESSAGE_LAYER_H__

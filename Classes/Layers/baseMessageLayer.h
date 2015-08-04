@@ -12,7 +12,11 @@
 #include "Common.h"
 
 class baseMessageLayer : public Layer
-{	
+{
+	// クラスメソッド
+protected:
+	static baseMessageLayer* create(const queue<string>& pages);
+	
 	// インスタンスメソッド
 public:
 	virtual void start();
@@ -30,9 +34,10 @@ protected:
 	void setPages(const queue<string>& pages);
 	void setFrame(Sprite* frame);
 	void setMessagePosition(const Point& m_position);
+	virtual void displayMessage();
 private:
+	virtual void display();
 	virtual void popPage();
-	virtual void disp();
 	virtual void end();
 	virtual void allLetterDisplayed();
 	

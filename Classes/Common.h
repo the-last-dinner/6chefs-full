@@ -12,4 +12,6 @@
 #include "Utils/MapUtils.h"
 #include "PlayerDataManager.h"
 
+#include "MapObjects/CharacterData.h"
+
 #endif // __COMMON_H__

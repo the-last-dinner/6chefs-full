@@ -8,6 +8,9 @@
 
 #include "TextureManager.h"
 
+const string TextureManager::basePath = "img/texture/";
+const string TextureManager::characterPath = basePath + "character/";
+
 // 唯一のインスタンスを初期化
 static TextureManager* _instance = nullptr;
 

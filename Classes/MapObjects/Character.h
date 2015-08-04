@@ -14,23 +14,12 @@
 
 class Character : public MapObject
 {
-	// 列挙型
-public:
-	enum struct DataType
-	{
-		ID,
-		TexturePrefix,
-		Name,
-		SIZE,
-	};
-	
 	// クラスメソッド
 public:
 	static Character* create(int charaId, Direction direction);
 	
 	// クラス変数
 private:
-	static const vector<vector<string>> characterDatas;
 	static const string basePath;
 public:
 	static const float SECOND_PER_GRID;
