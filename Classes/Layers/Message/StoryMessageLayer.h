@@ -9,7 +9,7 @@
 #ifndef __STORY_MESSAGE_LAYER_H__
 #define __STORY_MESSAGE_LAYER_H__
 
-#include "Layers/baseMessageLayer.h"
+#include "Layers/Message/baseMessageLayer.h"
 
 class StoryMessageLayer : public baseMessageLayer
 {

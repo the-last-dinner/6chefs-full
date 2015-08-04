@@ -145,7 +145,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../Resources/img/texture/character/nadeshiko.plist</filename>
+                <filename>../../../Resources/img/character/nadeshiko.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>

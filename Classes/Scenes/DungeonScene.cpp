@@ -60,7 +60,7 @@ void DungeonScene::loadFinished()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
 	
 	// マップレイヤーを生成
-	this->mapLayer = dynamic_cast<TiledMapLayer*>(TiledMapLayer::create("MAIN-Syokudou1", this->eventListener));
+	this->mapLayer = TiledMapLayer::create("MAIN-Syokudou1", this->eventListener);
 	this->addChild(mapLayer);
 	
 	// 黒い幕をフェードアウト

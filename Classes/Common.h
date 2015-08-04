@@ -8,9 +8,9 @@
 #include "Managers/EventScriptManager.h"
 #include "Managers/SoundManager.h"
 #include "Managers/TextureManager.h"
+#include "PlayerDataManager.h"
 
 #include "Utils/MapUtils.h"
-#include "PlayerDataManager.h"
 
 #include "MapObjects/CharacterData.h"
 

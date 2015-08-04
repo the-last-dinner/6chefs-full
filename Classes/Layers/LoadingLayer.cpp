@@ -22,7 +22,7 @@ bool LoadingLayer::init()
 	FUNCLOG
 	if(!Layer::init()) return false;
 	// plistを読み込み
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("img/texture/load_scene.plist");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(TextureManager::basePath + "load_scene.plist");
 	
 	// ローディングイメージを生成
 	for(int i = 0 ; i < 2 ; i++)

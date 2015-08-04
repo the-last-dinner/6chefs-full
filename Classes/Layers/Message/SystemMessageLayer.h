@@ -9,7 +9,7 @@
 #ifndef __SYSTEM_MESSAGE_LAYER_H__
 #define __SYSTEM_MESSAGE_LAYER_H__
 
-#include "Layers/baseMessageLayer.h"
+#include "Layers/Message/baseMessageLayer.h"
 
 class SystemMessageLayer : public baseMessageLayer
 {

@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/img/texture/load_scene.pvr.ccz</filename>
+        <filename>../../Resources/img/load_scene.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -145,7 +145,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Resources/img/texture/load_scene.plist</filename>
+                <filename>../../Resources/img/load_scene.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>

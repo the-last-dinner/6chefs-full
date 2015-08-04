@@ -21,11 +21,11 @@ namespace CharacterData {
 	};
 	
 	// 変数
-	map<int, vector<string>> datas =
+	const map<int, vector<string>> datas =
 	{
 		{0, {"magoichi", "孫一"}},
 		{1, {"nadeshiko", "撫子"}},
 	};
-}
+};
 
 #endif // __CHARACTER_DATA_H__

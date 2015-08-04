@@ -62,8 +62,10 @@ void DungeonSceneData::init()
 	}
 	
 	// プリロード用リストを取得
-	SceneData::soundFilePaths = this->getPreLoadList("sound");
-	SceneData::textureFilePaths = this->getPreLoadList("texture");
+	this->soundFilePaths = this->getPreLoadList("sound");
+	this->textureFilePaths = this->getPreLoadList("texture");
+	
+	this->textureFilePaths.push_back("frame/cm_frame");
 	return;
 }
 

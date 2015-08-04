@@ -4,18 +4,18 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>title.png</key>
+            <key>circle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{800,600}}</string>
+                <string>{{2,2},{110,108}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{800,600}}</string>
+                <string>{{5,6},{110,108}}</string>
                 <key>sourceSize</key>
-                <string>{800,600}</string>
+                <string>{120,120}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -23,13 +23,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>title_scene.pvr.ccz</string>
+            <string>load_scene.pvr.ccz</string>
             <key>size</key>
-            <string>{604,804}</string>
+            <string>{112,114}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:668515785b36d97b77d103a6ff95f598:9d70506d32e93c67eca4795ed5ba6545:d2f2cf5453e5565d8c4e6bb9e952d015$</string>
+            <string>$TexturePacker:SmartUpdate:f0a74d060ea938701c563359bb2a5dd4:8b84a644147a00a130e7744a1247cefc:d1412102668f58be3e52df1069e798f8$</string>
             <key>textureFileName</key>
-            <string>title_scene.pvr.ccz</string>
+            <string>load_scene.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

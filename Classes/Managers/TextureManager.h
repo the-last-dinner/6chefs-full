@@ -18,7 +18,7 @@ public:
 	static void destory();
 
 	// クラス変数
-private:
+public:
 	static const string basePath;
 	static const string characterPath;
 	

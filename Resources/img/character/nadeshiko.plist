@@ -4,88 +4,62 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>magoichi_0_0.png</key>
+            <key>nadeshiko_0_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,36},{26,32}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{26,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_0_1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,70},{26,32}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{26,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_0_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,170},{24,32}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,0},{24,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_1_0.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,372},{22,30}}</string>
+                <string>{{2,202},{22,32}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{6,1},{22,30}}</string>
+                <string>{{6,0},{22,32}}</string>
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>magoichi_1_1.png</key>
+            <key>nadeshiko_0_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,204},{24,32}}</string>
+                <string>{{2,372},{22,30}}</string>
                 <key>offset</key>
-                <string>{-2,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{2,0},{24,32}}</string>
+                <string>{{5,1},{22,30}}</string>
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>magoichi_1_2.png</key>
+            <key>nadeshiko_0_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,306},{24,30}}</string>
+                <string>{{2,138},{24,30}}</string>
                 <key>offset</key>
-                <string>{-1,0}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{3,1},{24,30}}</string>
+                <string>{{5,1},{24,30}}</string>
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>magoichi_2_0.png</key>
+            <key>nadeshiko_1_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,238},{24,32}}</string>
+                <string>{{2,236},{22,32}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,0},{22,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_1_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{24,32}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -95,7 +69,72 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>magoichi_2_1.png</key>
+            <key>nadeshiko_1_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,36},{24,32}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,0},{24,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_2_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,270},{22,32}}</string>
+                <key>offset</key>
+                <string>{1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{6,0},{22,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_2_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,70},{24,32}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{3,0},{24,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_2_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,304},{22,32}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,0},{22,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_3_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,104},{24,32}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{3,0},{24,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>nadeshiko_3_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,338},{22,32}}</string>
@@ -108,55 +147,16 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>magoichi_2_2.png</key>
+            <key>nadeshiko_3_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,272},{24,32}}</string>
+                <string>{{2,170},{24,30}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{4,0},{24,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_3_0.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,104},{26,32}}</string>
-                <key>offset</key>
-                <string>{1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,0},{26,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_3_1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{28,32}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{28,32}}</string>
-                <key>sourceSize</key>
-                <string>{32,32}</string>
-            </dict>
-            <key>magoichi_3_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,138},{26,30}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,0},{26,30}}</string>
+                <string>{{3,1},{24,30}}</string>
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
@@ -166,13 +166,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>magoichi.pvr.ccz</string>
+            <string>nadeshiko.pvr.ccz</string>
             <key>size</key>
-            <string>{32,404}</string>
+            <string>{28,404}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:16b6c9cc86f13a2a41ee92d2236af574:2876f6b542c2674660fbf8d0a4ece416:2c077241c6edd60ceccfc56ef846c567$</string>
+            <string>$TexturePacker:SmartUpdate:9019f94eb079491b5bb033e8ded492d0:2597f7955cb2901ff232d74c3a05f991:3594a8e161047bc8ba4cea209d24417a$</string>
             <key>textureFileName</key>
-            <string>magoichi.pvr.ccz</string>
+            <string>nadeshiko.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

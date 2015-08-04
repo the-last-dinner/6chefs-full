@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.7.1</string>
+        <string>3.9.2</string>
         <key>fileName</key>
-        <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/title_scene.tps</string>
+        <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/frame/cm_frame.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -38,11 +38,13 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/img/title_scene.pvr.ccz</filename>
+        <filename></filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
         <enum type="SettingsBase::PvrCompressionQuality">PVR_QUALITY_NORMAL</enum>
+        <key>atfCompressData</key>
+        <false/>
         <key>mipMapMinSize</key>
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
@@ -145,7 +147,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Resources/img/title_scene.plist</filename>
+                <filename>../../../Resources/img/frame/cm_frame.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -188,7 +190,8 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../img/title.png</filename>
+            <filename>../../img/frame/cm_frame_mini.png</filename>
+            <filename>../../img/frame/cm_frame.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

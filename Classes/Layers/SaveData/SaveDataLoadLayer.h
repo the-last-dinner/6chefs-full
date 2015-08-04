@@ -9,8 +9,7 @@
 #ifndef __SAVE_DATA_LOAD_LAYER_H__
 #define __SAVE_DATA_LOAD_LAYER_H__
 
-#include "Common.h"
-#include "Layers/baseSaveDataSelector.h"
+#include "Layers/SaveData/baseSaveDataSelector.h"
 
 class SaveDataLoadLayer : public baseSaveDataSelector
 {

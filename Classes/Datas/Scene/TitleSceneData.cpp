@@ -25,7 +25,7 @@ void TitleSceneData::init()
 	FUNCLOG
 	SceneData::textureFilePaths =
 	{
-		"img/texture/title_scene"
+		"title_scene"
 	};
 	
 	SceneData::soundFilePaths =

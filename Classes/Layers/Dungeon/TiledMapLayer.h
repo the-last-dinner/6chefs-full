@@ -9,17 +9,16 @@
 #ifndef __TILED_MAP_LAYER_H__
 #define __TILED_MAP_LAYER_H__
 
-#include "Common.h"
 #include "Datas/Layer/TiledMapData.h"
-#include "Layers/Dungeon/CharacterMessageLayer.h"
-#include "Layers/Dungeon/StoryMessageLayer.h"
-#include "Layers/Dungeon/SystemMessageLayer.h"
+#include "Layers/Message/CharacterMessageLayer.h"
+#include "Layers/Message/StoryMessageLayer.h"
+#include "Layers/Message/SystemMessageLayer.h"
 
 class TiledMapLayer : public Layer
 {
 	// クラスメソッド
 public:
-	static Layer* create(const string& mapFileName, EventListenerKeyboard* listener);
+	static TiledMapLayer* create(const string& mapFileName, EventListenerKeyboard* listener);
 	
 	// インスタンスメソッド
 private:

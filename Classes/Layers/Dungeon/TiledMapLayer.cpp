@@ -19,7 +19,7 @@ TiledMapLayer::~TiledMapLayer()
 {FUNCLOG}
 
 // create関数
-Layer* TiledMapLayer::create(const string& mapFileName, EventListenerKeyboard* listener)
+TiledMapLayer* TiledMapLayer::create(const string& mapFileName, EventListenerKeyboard* listener)
 {
 	TiledMapLayer* pRet = new TiledMapLayer();
 	if (pRet && pRet->init(mapFileName, listener)) {
@@ -57,14 +57,13 @@ bool TiledMapLayer::init(const string& mapFileName, EventListenerKeyboard* liste
 	
 	// メッセージウインドウテスト
 	queue<string> pages;
-	pages.push("あいうえお\nテステステウテス");
+	pages.push("あいうえお\nテステステウテス\n会合\n改行");
 	pages.push("かきくけこ");
-	StoryMessageLayer* sMessageLayer = StoryMessageLayer::createWithPages(pages);
-	sMessageLayer->setZOrder(static_cast<int>(Priority::STORY_MESSAGE));
-	this->addChild(sMessageLayer);
+	CharacterMessageLayer* messageLayer = CharacterMessageLayer::createWithName("テスト君", pages);
+	this->addChild(messageLayer);
 	this->parentListener->setEnabled(false);
-	sMessageLayer->setCallback([=](){this->parentListener->setEnabled(true);});
-	sMessageLayer->start();
+	messageLayer->setCallback([=](){this->parentListener->setEnabled(true);});
+	messageLayer->start();
 
 	return true;
 }
