@@ -2,93 +2,74 @@
 
 
 ●キャラメッセージウインドウの表示
-・type名...charaMessge
+・type名...charaMsg
 ・必要なもの...表示するテキスト
 　　　　　　　キャラ画像のファイル名
 　　　　　　　キャラ名
+              nameをつけたら???に 
+              optionでリアクションに
+（ブワってやつ）
 （例）
 	{
-	"type":"charaMessage",
+	"type":"charaMsg",
 	"text":"テキスト(String)",
 	"charaID":"charaID",
-        "imgID":"ID"
+        "imgID":"ID",
+	"name":"???",
+	"option":"reaction"
 	}
-●リアクションキャラメッセージウインドウの表示
-・type名...reactionMessge
-・必要なもの...表示するテキスト
-　　　　　　　 キャラ画像のファイル名
-              キャラ名
-※破るような音と同時に表示するメッセージウインドウ
-　画像も揺らしながら表示
-　驚いたときや、起こったときに使うキャラメッセージウインドウ
-（例）
-	{
-	"type":"reactionMessage",
-	"text":"テキスト(String)",
-	"file":"ファイル名(String)",
-        "chara":"キャラ名(String)"
-	}
+
 ●画像表示
-・type名...imageDisplay
+・type名...displayImg
 ・必要なもの...表示する画像ファイル名
 　　　　　　　　表示する時間
 
 ※画像はフェードインで表示、でフェードアウトしていくように
 （例）
 	{
-	"type":"imageDisplay",
+	"type":"displayImg",
 	"file":"ファイル名(String)",
 	"time":"表示する時間（秒）(double)"
 	}
 
 ●マップ移動
 ・type名...changeMap
-・必要なもの...移動先のマップ番号
+・必要なもの...移動先のマップ名
 　　　　　　　　　　移動先のx座標
 　　　　　　　　　　移動先のy座標
 （例）
 	{
 	"type":"changeMap",
-	"nextMap":"移動先のマップ番号(int)",
+	"nextMap":"移動先のマップ名",
 	"nextX":"移動先のx座標(int)",
 	"nextY":"移動先のy座標(int)"
 	}
 
 
 ●システムメッセージウインドウの表示
-・type名...systemMessge
+・type名...systemMsg
 ・必要なもの...表示するテキスト
 
 （例）
 	{
-	"type":"charaMessage",
+	"type":"syetemMsg",
 	"text":"テキスト(String)"
 	}
 
 ●主人公の向きを変更
-・type名...direction
+・type名...Changedirection
 ・必要なもの...向き(UP,DOWN,RIGHT,LEFT)
+               誰の？
 （例）
 	{
 	"type":"directionChange",
 	"direction":"向き"
+　　　　"objectID":"オブジェクトIDorhero"
 	}
 
-●主人公が勝手に歩く
-・type名...heroMove
-・必要なもの...歩く向き
-　　　　　　　　　　歩数
-　　　　　　　　　　歩く速さ
-（例）
-	{
-	"type":"heroMove",
-	"direction":"歩く向き"
-	"steps":"歩数(int)"
-	"speed":"歩く早さ（double）"
-	}
 
 ●キャラが勝手に歩く
-・type名...charaMove
+・type名...charaWalk
 ・必要なもの...歩く向き
 　　　　　　　　　　歩数
 　　　　　　　　　　歩く速さ
@@ -99,7 +80,19 @@
 	"direction":"歩く向き"
 	"steps":"歩数(int)"
 	"speed":"歩く早さ（double）"
-	"charaID":"歩くキャラのID(int)"
+	"charaID":"歩くキャラのID(int),orhero"
+	}
+●キャラが勝手に歩く（目的地で指定）
+・type名...charaWalkto
+・必要なもの...目的地のx座標
+			y座標
+               歩くキャラのID
+（例）
+	{
+	"type":"charaMoveto",
+	"x":"x座標",
+	"y":"y座標",
+	"objectID":"歩くキャラのID(int),orhero"
 	}
 
 ●マップチップを書き換える
@@ -121,29 +114,46 @@
 
 ●リアクションアイコン表示
 ・type名...reaction
-・必要なもの...表示する画像
-           表示するときに鳴らす音
+・必要なもの...すべてデフォ
 ※何か発見した時とかのビックリマークとか(ポケモンのトレーナーに気づかれた時の！のイメージ)
+
 （例）
 	{
 	"type":"reaction",
-	"file":"表示する画像のファイル名(String)"
-	"file":"鳴らす音のファイル名(String)"
+        "objectID":"出すキャラのオブジェクトID又はhero"
 	}
 
 ●鬼を生み出す
-・type名...makeEnemy
+・type名...createEnemy
 ・必要なもの...出現させた鬼の鬼番号
 		   鬼を出現させるx座標
 　　　　　　　　　　出現させるy座標
 　　　　　　　　　　鬼の動きパターン
+
 （例）
 	{
-	"type":"makeEnemy",
+	"type":"createEnemy",
 	"enemyID":"鬼番号（int）",
 	"x":"出現させるx座標(int)",
 	"y":"出現させるy座標(int)",
 	"movePattern":"鬼の動きパターン番号(int)",
+	}
+
+●キャラを生み出す
+・type名...show
+・必要なもの...出現させるキャラのオブジェクトID
+	　　　 キャラメッセージ画像
+	　　　 話す内容　　　　　　　 
+　　　　　　　 動きパターン
+
+
+
+　　　　　　　　
+（例）
+	{
+	"type":"createChara",
+	"objectID":"出すもののオブジェクトID",
+	"movePattern":"動きパターン番号(int)",
 	}
 
 ●キャラを消す
@@ -165,13 +175,13 @@
 	}
 
 ●ストーリーメッセージウインドウ表示
-・type名...storyMessage
+・type名...storyMsg
 ・必要なもの...表示するテキスト
            背景のアルファ値
 ※冒頭とかは真っ黒いウインドウを表示するけど、日記を表示するのは半透明のウインドウ
 （例）
 	{
-	"type":"storyMessage",
+	"type":"storyMsg",
 	"text":"表示するテキスト",
 	"alpha":"アルファ値(double)"
 	}
@@ -186,7 +196,20 @@
 	"color":"R,G,B,α(double)"
 	}
 
-●主人公の周りだけcoverを解除して明かりがつくように見せる
+●coverを消す
+・type名...removeCover
+
+※オプションでフェードインも出来るように
+
+（例）
+	{
+	"type":"removeCover"
+        "option":"fadeOut"
+	}
+
+
+
+（●主人公の周りだけcoverを解除して明かりがつくように見せる
 ・type名...lamp
 ・必要なもの...被せるマスクの色、アルファ値
 ※できれば、要相談
@@ -195,8 +218,7 @@
 	"type":"lamp",
 	"color":"R,G,B,α(double)"
 	}
-
-
+）
 ●アイテム入手
 ・type名...getItem
 ・必要なもの...手に入れるアイテムのID
@@ -211,7 +233,7 @@
 
 
 ●氷の上を滑る（氷の抜け道、あさせのほらあな最深部のイメージ）
-・type名...slip
+・type名...slipe
 ・必要なもの...
 ※オブジェクトを踏んだらそのままの向きでぶつかるまで進む（歩行グラフィックは無し）
 （例）
@@ -221,18 +243,27 @@
 
 
 ●後ずさり
-・type名...back
+・type名...backWalk
 ・必要なもの...後ずさりするマス数
 　　　　　　　　　　後ずさりする速さ
-
 （例）
 	{
 	"type":"back",
 	"steps":"後ずさりするマス数（int）",
 	"speed":"後ずさりする速さ(double)"
 	}
+●モノを動かす
+・type名...move
+・必要なもの...eagingで加速度指定
+      
 
-●スペースキー連打イベント（マッドファーザーのずんちゃずんずんちゃのイメージ）
+（例）
+	{
+	"type":"move",
+	"eaging":"in（はやくなる）、out(遅くなる)"
+	}
+
+●連打イベント（マッドファーザーのずんちゃずんずんちゃのイメージ）
 ・type名...barrage
 ・必要なもの...連打する回数
 　　　　　　　　　　制限時間
@@ -314,19 +345,21 @@
 	}
 
 ●クエスチョンメッセージウインドウの表示
-・type名...questionMessge
+・type名...questionMsg
 ・必要なもの...表示するテキスト
-
 （例）
 	{
 	"type":"getItem",
 	"text":"テキスト(String)"
-        "選択肢":"選択肢1、選択肢2、、、"
+        "
+選択肢":"選択肢1、選択肢2、、、"
 	}
+
 
 ●レイヤーを揺らす
 ・type名...swingLayer
 ・必要なもの...揺らすレイヤー
+
 
 ※酒影が牢の格子を揺らすときに使う
 　上下に0.2マスずつ揺らす
@@ -334,11 +367,62 @@
 
   デフォルトは永遠に揺らし続ける
 　数回揺らすだけならオプション
+
 （例）
 	{
 	"type":"swingLayer",
-	"tlayer":"揺らすレイヤー名"
+	"layer":"揺らすレイヤー名"
 　　　　"option":"揺らす回数"
+	}
+
+
+●キャラチップ差し替え
+・type名...changeImg
+・必要なもの...オブジェクトID
+　　　　　　　　画像の名前
+
+※キャラを倒れている画像に変える
+とか
+（例）
+	{
+	"type":"changeImage",
+	"objectID":"書き換えるオブジェクトのID"
+　　　　"image":"画像の名前"
+	}
+
+
+●キャラプロファイルに追加
+・type名...addProfile
+・必要なもの...キャラID
+               情報番号
+　　　　　　　　
+
+
+（例）
+	{
+	"type":"addProfile",
+	"charaID":"キャラID"
+　　　　"infoID":"情報番号"
+	}
+
+
+●フェードイン
+・type名...fadein
+・必要なもの...必要ならばフェードインにかかる時間
+		
+（例）
+	{
+	"type":"fadeIn",
+	"time":"時間指定する場合秒数"
+	}
+●フェードアウト
+・type名...fadeout
+・必要なもの...必要ならばフェードアウトにかかる時間
+		
+（例）
+	{
+	"type":"fadeout",
+	"time":"時間指定する場合秒数"
 	}
 
 とりあえず、

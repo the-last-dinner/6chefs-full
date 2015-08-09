@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="18">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="23">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="961" name="map_icon" tilewidth="16" tileheight="16">
+  <image source="map_icon.png" trans="080500" width="513" height="435"/>
  </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
@@ -22,6 +25,11 @@
    eJxjYBgaYDYzdjYyH10NujpksJMZOxuZj64GXR0y4ADKcWKR1wCKaQKxFlRuFzN+9TCgBpRTxyLvBhRzB2IPZuLUw4ALUM4Vjzyl6kfBKKAnIJR/SFVPKP+Qqn6k5DcAiogOIA==
   </data>
  </layer>
+ <layer name="tabacco" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF1ARfWRgYvrFQzzxRVgYGMVbqmTcKRsEoGAXUAgCXYAIp
+  </data>
+ </layer>
  <objectgroup name="collision">
   <object id="1" x="256" y="0" width="32" height="160"/>
   <object id="2" x="256" y="192" width="32" height="128"/>
@@ -35,5 +43,26 @@
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="18" x="288" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11144"/>
+   </properties>
+  </object>
+  <object id="19" x="256" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12106"/>
+   </properties>
+  </object>
+  <object id="21" x="64" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1517"/>
+   </properties>
+  </object>
+  <object id="22" x="224" y="288" width="32" height="32">
+   <properties>
+    <property name="EventID" value="174"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

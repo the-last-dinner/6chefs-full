@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="48" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="89">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="48" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="103">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Base" width="60" height="48">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1LENgCAARUEcyf13cRYLWuk0JM/7yWto4BrGmDuPkd2TjbczXt7SVt5rNOPlLcXLW4qXtxQvbyneud3v+qrVdr+Ll/ct79/+K95OvLyleHlL8fKW4uUtxctbipe3FO88+7rVdt5d3w3xdWu2
@@ -16,7 +16,7 @@
  </layer>
  <layer name="MonoShita" width="60" height="48">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztl10KgzAQhONbj9oj9MJaL1DNYyt16RJ24iZN7EPng0HI3/5IIBPCh3kIYW2gCMYRLWLmckFsc1vNj0KNL01Aeh3Cc451njeno3qXfb0nPtKya3LERXst1eTkqVf6lIudk7UXYe2V/ZNRY2kuiHWvd+ygXJ/1OqtP6ViruHK/S++vR7k+94jniUsIIYS04nr5dQbn0rPe+/DWrL5a6C0j+/Se9Lxabh3rFY+l84xKuhdaqzGWG0/7g96KErf2PempV3tby+ci71vik9M16K0YD+a/fU9KfHSGzFt9LvG42uvmPKDUW+sHW9Vree8aT5fWm85HlU+NH/TWi3qI/q/lpa011ljO/511f1EPv/GTS+H4GfeXEEIIIYQQQgghhBBCCCHkH3kCAkUYcg==
@@ -24,7 +24,7 @@
  </layer>
  <layer name="MonoChu" width="60" height="48">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztmt9u0zAUxqPc1OUFmvACrLwAgjfgMdgy7ulaxC1thyZxRdciJK7oWsSfK7oNDXg5Pmu2dDg7jpOMrPEWSz+50hr7fP6OT5ysUdS2trWtSuvEUaRAQrgfbzuq+lrPaOwa3Zp7d0CvJjVs098HmHsH9CuwQ67ln21vdXLN/Hv/s3+Ys56PTK7dJvL2S4es+W0hb7/0GuBH6299/nYa4MdN+tvLWadtx+2jDn+3nZtVPKjqb2que6WiaA9kAl+Ve+yq7ZuZbyigY3pck7/62reYYwAO2LyZ6X+B3zn9M4yxC/ZABvbB89h/HZ/PouM5UvX5q8cfgwmYEjLTH3r8fYExBuAADMEIvMyJR7eBw18735Gqpz5bvbtm/rmQz/seva8xxhhMwBQcgjcevWOHXjuf1VuXv1Zvpq7m88ij9x3GmIFjMAcL8L6Av658Ht2gvzan6Py+fP6EMZbgBKzAGnwu4O/Ek886PhXLvcvfvqfO8XrFtQ4L5PMPjLEBp+AMnIOfBfyV9PJ8ps9etNe6+8IcKfm7a61ovZob6Hr78rlKs/t3yqD5nDhitqQOvd3432dT3mu9M3BstE6JVs2iBr0zk09zgQXRK8Wc5Oh9Gl8+/yoH1t8lOBHmXoF1DXqXJp9WAmvmrxTzk/hSm9To+5aErZHVuwGn4EzgvAa9G8dcdj7qrxSzrz679q7V27TG81mxmH33X2m/h6Q3YTGX8ZeOE4pe7lNRf7nWkPRW2b+h6uX1qoq/IeUzr1m+95P2u9RbFYheqWb53k9yvaHkM7+XFKnPvfhqXQ4ln6lWGncRf+n9KI3DyGfXebKIv7xehaDXdZ4s6i+vd03WK+3bsufJkPyl+Vv2fU6I/vLn/arnydD00ntL2f0ban3usph99Vn6zUEIeqXzfpnzlVTrmq6Xai1y3pB+P0P52EC9H4TnBZqf1/n9z/cG6v1yjZh8/6f700C9Fznx2r5td6f9BX3d9R8=
@@ -32,7 +32,7 @@
  </layer>
  <layer name="MonoUe" width="60" height="48">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0MsJwkAUheFZzCJ9+GjARwNG+0g6MB3oSnClHZgOdKe7pAOtyLMTVO6sBofx/+AQyIFwT5zDu4F3bqiMlLH/9TUvse6a6FtTZabME9ob666FvlUqS2WV0N7QXZXe1QndG9taWxtj71ndJaP/sdGWrbGnU9dntPegLUdjz13dI6O9J21pM9oDAMA3+8Lur+pvxefTsgv0AAAAAAAAAAAAAID/9ASQgBTR
@@ -75,10 +75,18 @@
  </objectgroup>
  <layer name="CharaUe1" width="60" height="48">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2UEOgjAUhOEJIYSjmngBE84gN9C9bvQGege4gRzEujd9yaO0Iv+XNCxehk5XkFQC8A+GWhrr0i3yeYWzThs6LwAAa7BvpV0bn6dm7Rebz9UZ7/7Mr2FdEj4PkT07Yw6kcmuke5MvV9ojdH46entzAOB1rKS+ypcr7RQ6nx29vTkAAL7h+7tsDgAAbA//V8vmYLPu637VWnsDc70BsDo1xw==
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="60" height="48">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAD4MLQAAAQ==
   </data>
  </layer>
  <objectgroup name="event">
@@ -116,13 +124,60 @@
     <property name="EventID" value="1165"/>
    </properties>
   </object>
+  <object id="89" x="464" y="336" width="32" height="32">
+   <properties>
+    <property name="EventID" value="129"/>
+   </properties>
+  </object>
+  <object id="90" x="432" y="48" width="96" height="32">
+   <properties>
+    <property name="EventID" value="1212"/>
+   </properties>
+  </object>
+  <object id="91" x="896" y="320" width="32" height="48">
+   <properties>
+    <property name="EventID" value="1213"/>
+   </properties>
+  </object>
+  <object id="93" x="432" y="48" width="96" height="32">
+   <properties>
+    <property name="EventID" value="1214"/>
+   </properties>
+  </object>
+  <object id="94" x="464" y="336" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1259"/>
+   </properties>
+  </object>
+  <object id="95" x="464" y="336" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1261"/>
+   </properties>
+  </object>
+  <object id="96" x="48" y="64" width="32" height="48">
+   <properties>
+    <property name="EventID" value="1314"/>
+   </properties>
+  </object>
+  <object id="99" x="144" y="16" width="64" height="80">
+   <properties>
+    <property name="EventID" value="1315"/>
+   </properties>
+  </object>
+  <object id="100" x="752" y="16" width="64" height="80">
+   <properties>
+    <property name="EventID" value="1315"/>
+   </properties>
+  </object>
+  <object id="101" x="880" y="64" width="32" height="48">
+   <properties>
+    <property name="EventID" value="1316"/>
+   </properties>
+  </object>
+  <object id="102" x="432" y="736" width="96" height="32">
+   <properties>
+    <property name="EventID" value="1317"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer name="CharaUe2" width="60" height="48">
-  <properties>
-   <property name="cc_vertexz" value="2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAD4MLQAAAQ==
-  </data>
- </layer>
 </map>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="54" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="60">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="54" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="68">
  <tileset firstgid="1" name="retro-city" tilewidth="16" tileheight="16">
   <image source="retro-city.png" trans="007575" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="busstop" tilewidth="16" tileheight="16">
   <image source="busstop.png" trans="007575" width="128" height="96"/>
  </tileset>
- <layer name="Base" width="54" height="40">
+ <layer name="Base" width="54" height="40" opacity="0.99">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztmMsJgDAQRJMOrMRKvNqQPViAF0+CB+uxFw8qhEWI0ejubHbgnfztywRBnduzeB3QcM9jXuZlXvIxLyxyevUB0rzC2ZChqT0GTcDVcVSvGOaFhXlhYV4yqQ5iXsNNuoRzc9wj9Xk0k9dBSV6tgLnQ+3q6hrHruLy+3hM5vCTuW+59+JfX7HVQSl/c8yB4cb5PrC/+DjT09Xb9pHrl7mtVAg339+9TRgKqF/WI/QfgnveOw5UHkleKB5LXG85sszUbfg==
@@ -16,7 +16,7 @@
  </layer>
  <layer name="MonoShita" width="54" height="40">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztz8EJACAQBLHlQH/af7lahCJIUsFMAgAAAHe0Snq9rjhv7Kf54RcAAAAA7yx/BQAv
@@ -24,7 +24,7 @@
  </layer>
  <layer name="MonoChu" width="54" height="40">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztyMsJgEAQRMGd3NVA1EDUPPyE4oC3xaOXlSpoeHQpjy5K6XNDtN21Mb8pN0fbXVvyW3NbtN21I78zd0Xb/WaP/zQAAAAAAAAA37oBb3makw==
@@ -32,7 +32,7 @@
  </layer>
  <layer name="MonoUe" width="54" height="40">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztyMsJgEAQRMGd3NVA1EDUPPyE4hxl8ehlpQoaHl0KAE9dlNLnhmi7a2N+U26Otru25Lfmtmi7a0d+Z+6KtvvNHv9pAAAAAACAr9y+eJqT
@@ -73,7 +73,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="54" height="40">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztz8ENABAQAMHTf638+BFK8JBILjMV7EYAAAAZ1RLRyu+K9/p5Ggm/5nlaCb8AAAAAgDsbPiEFyA==
@@ -81,7 +81,7 @@
  </layer>
  <layer name="CharaUe2" width="54" height="40">
   <properties>
-   <property name="cc_vertexz" value="2"/>
+   <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2dENQEAQBNDb3lEICkEhKMX6vW/CJe8lk0ymhSkF/qOPUoZMF2332pTbnBmj7V5bc9syS7Tda0duZ2aPtjsAAAAAAMBbvv7j/Hp+vdvXf9zTv94FF5AXyA==
@@ -101,6 +101,18 @@
   <object id="58" x="832" y="480" width="32" height="80">
    <properties>
     <property name="EventID" value="113"/>
+   </properties>
+  </object>
+  <object id="66" x="0" y="0" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="67" x="112" y="256" width="32" height="32">
+   <properties>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

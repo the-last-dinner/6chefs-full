@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="80" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="97">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="80" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="108">
  <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16">
   <image source="castle7.png" trans="007575" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="empire-3" tilewidth="16" tileheight="16">
   <image source="empire-3.png" trans="a6caf0" width="480" height="480"/>
  </tileset>
- <layer name="Base" width="124" height="80">
+ <layer name="Base" width="124" height="80" opacity="0.96">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2s0JwjAcQPEK6tkZ9F5wAwdwBp1DF9E5BF3EbuAiJrQe9BA/WmnJe4XfSSrBxz9WSVHU13KkHJ1D20uwaBT2zpq9Wa6hbWVvDHuz2JvF3iz2ZrE3i71ZYuurvTEq/29BqdzPUdp8f58av76utFuHc/d4L5/XhsveTG26v95r7+Gzt35lbxZ7s/j7m8X5ZrE3i+cVWZxvll1ou7c3xiG0Pdobw/lmsTeLvVnszeLzGss4tJ3YG8PeLLH32N4Yc3ujrOyNsrE3yqJ4Zu+82ZvF3iz2ZrE3i71Z7M1ibxZ7s9ibxd4s9maxN4u9WezNYm8We7PEs6lTe2PExp5H5qDv52VC32uzd/fWCX2v7R/i+dStve09gLXZu3vu5/am9i7tnT3afM/tjertfNvb3vbOlb3tbe982dve9s6Xve1t73zZu75mo8+kPi99LnXu4hvvetl7GOzNY28O55vF3ix99b4DBKO9Nw==
@@ -16,7 +16,7 @@
  </layer>
  <layer name="MonoShita" width="124" height="80">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztW21uEzEQXaPmGgSVn3AE4D834CS9BQV6DQqteoa0Eh+teoY0B2EtMtJkMu7Oerx2Pt6TnrJp4/XWr29mdtbput3DmwMkkEZrbaB3XbTWBnrXRWttoHddtNYGetdFa22gd1201gZ610VrbaB3PbTWBXrXQ2tNoHddtNYEetdFa02gd1201gR610VrTaB3XbTWBHrXRWtNoHd9tNbl6PQOXbfoNnkT8njbj131fNEf33X/GY+fQ2tdWukt15z4lOCt4F2CY+Zdrl8fQx7jdUR9I1fGa2itSyu9lwrj2oewzbiuUvsV4x17tc47xt9niZ/HayG9yeMrNldrDWrxo2HdY1yVjGs/D9uM+kr9+TrzmGqdl+vNPXum+PiMvfLfB+Zrmp/H89Y67JreWjyXcZso9ecxnPtrCFo8z83fN2FT52ON51a9eWylY0vulvGcx/UhyPzhyd+Pit6rZ+bu2Bq9nZhj5xn7WX7+sfF8wd5b8zeP52P8rcXzTyGf3NdWf3/tx3zL5EXwjZ/inBdh4I9W9CbNrfnbU5/TnN76nPvbWp9H/O3HXGXyuudPx/jUOb3XZNGb59Hl+mda7I6e5vo/db54Lv3tyd+yXhuK5xFRr/tMPqy1yR0/xTkfjHpznYla/iZPE+N7bzznObxk/h7qt0Qcq781WvL3PPjjOc8lJfK3tT6P8PrbM76lv+W92Jj87YnnPIdH0n11DnP09nrJM76lv2V/LZW/tftvTzxfstdI+LuOvzVa7r+fujLxnI5L+ttSr8W1Pc/kPvtbi+eW/E19zBL1eTz29td4P9dan+fqvc/+1p6XWPL3PJTrt8RjbzxPPS9J4Vj9rT0vseTvEvU5r9u88Xzf/X3tPGdufZ56/q1p743nPH/X9rdH7yn8/eA8Z259bn3+XSKec709+1v43DXieWl/83heuz4fk79L1ucl97fA32m9c59/l47nuf6m/S0178emyt9T+5s/J+Hx3Jq/PfF8IV5z/U19fKrX6P9uCMfob9nHpvWv0T/n9+Ceeo305nts4G8dcs8g0Zq/S8RzOvb6m/TeV3+36p+Pyd8l6nNiCX/va31ey9+p+tyy/7xEfc77ayX8PWZ/i9XfU3hx1+pzLX9Hyvy9S/3znPpc88m5OD40f7fsn/N+au39LUP+vgqH6e/S/XOLt7R+y674m3v8PGz6nXtpX/1t7Z9r+VuL5xZvaf2Wkv6eqj7fd3+P+f6Ylr+1eG5Za+15aCl/W+/HjrU+l3tTU/l7HrbztxbLLf5+GbrJ8nfkK8M1eO+/4/iS/q5x/y3XnfpeltytxXPrWr8Lm3OX3N8S5/9guAavv6faf841LO1vue609lruphpd9s+l1pa1lnOX8Ld1fvrO1WeH3l+Cb/wU54zj5XcILZqn6nOpN32fKEdrbW6vv63z01p87z97mckfYXj8/cD7nHMOjbforWmeqs8lPVrLuT3+HjM/rcWv/vO/M/knDI+/HHifc86h8Va9+bqn9qdq9GrN537voHf+kjiddd3r2eZx5EnPmWBrkOap+lyyhNaHBq53xMlaa679THymJcZ4DVpv45RpSjxl/qbjkx3xOOAD9zGnjPMyDgCHhwB9AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA0/gEIpb+m
@@ -24,7 +24,7 @@
  </layer>
  <layer name="MonoChu" width="124" height="80">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt211uEzEUhuHJNJGA3rAEVCQglegiKmiIYAlc9CaN0kWwElaCxDXdDFTqCrCVWjpzNDN0sD1je95H+uSkafP35UyjNq6qpnXdzM5ka/LpcfXNzeN1tWWrTm/V5Tfisr36mZTWz4HjrvfW5ELFl+x60/JYfLvuy16c7urZdZ1Cr2P3fTD5YvJSJGTfu8B9y95lt7pvPeOy55Tneoy+5YyH7HvT8Vhi9N11TG87tqe+hu5a9u3OuxkPeTw/j9h31+9q+XrQx+8c5jpm3/L8+zrcfJ/W7b+3Y873XkXe3l58Tw5zPkbfbsZDzfd55L5ll7JPN8PytvRrYuo+U+nbzbgvN9tjznfb+/Nc+p2qbzfjvnbquW9bbQ51+7H4qdEd930t5/UQIF3XexugbwAAAAAAfPxcVtWP5XFF2n4vquq+oDwspn5G02b/Z2M7/5NAVz6xf99+WIT5O3fJbN8uufYuu6bvfrJvm2cmzzPKC9U1ffdb1828MXmbUd7V4T9XWLK1mu/c+r6qm58pDPE5lJLlPt9XzPcgp5n3rY/nzHc/3fcHk48ZheP5MPp4rve4pL7G2AdSMtn1JoH+hq72s0ah94GUTM/21P39T9+h94GUTM52Cv0NXWPsAymZ67trj0vKa6x9ICX71x6XlNdY+0BK5mY7hf58+w61D6RkbrZT6M+371D7QEr2lD0uuazuvToAAAAAAAAAAAAAxLZcHbNaTX1PMIYz+p4N2/PZis7nwvb89eR4WvZtT786me5+IQ7b9zfT66+6mTuTS/ouDn3PC33Pi+37e0ff1/Q9G/Z18Jr36gAAAAAAAAAAAAAAAAAAAMBgfwFqbJJ+
@@ -32,7 +32,7 @@
  </layer>
  <layer name="MonoUe" width="124" height="80">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2klOwzAUgGF3iTgBw4pNxQkYyhYQFwC1O6Y7sCvDEdi25wDKCjgAK4YdcADuwItwRRQcJ3Wc+f+kpxRbNLZfDHYSpQAAAAAAAAAAAAAAAAB/HiQeE+KptNbBN/LdLuS7XT4kPhPiq/BW+bNXdgNQKPLdLuQbAAC/Rh2lxh33etTLRHJ5b8lnUj2AP3Me58o8867yujpHWfI+zfMq+a6NriFXpnWRqYw8N4NpXcRaCQAA4L9rxzoU67nsBiC14L78yLD3iCv3wTZXw88Jvi11cNOX6BnKe7quaMF54/a+wTOEMtoEM9O8jc5RIKoN10hVnn/Psg5mzeyuys+/yWtzjGP+bsSVp+V6jYwt+wJbHdLpKfP6vK/yWwvbroW4/YLS5ZMK5Lut7ztM85bmfkvZ/xN8vt/Cc/DqM73nMKs6zusbafOtxF3ObV/x/P3hPVqWPmSZ53Wc1y/S5leJN4n3HNp/KN+5LbEjsStxlMM5svQhOs9ta9Im3LtdkFiUWJJY1mVbno6BoYzRscSJxKnEeWjMfJ3H1AdXtj1uE95pWpNYl9iQ2NRlA/W7nhqEfnY5Tl3IOF1KXEXGy/R70fOmaYepD4i3L3GgPwfje6Y/Zz0m8XmecB8AAAAAAAAAAAAAAAAAAAAAAACAKvgBceV3Sg==
@@ -81,6 +81,13 @@
   <object id="87" x="0" y="832" width="32" height="352"/>
   <object id="95" x="1760" y="256" width="64" height="16"/>
   <object id="96" x="1664" y="256" width="64" height="16"/>
+  <object id="99" x="1920" y="784" width="80" height="544"/>
+  <object id="100" x="1920" y="1280" height="16"/>
+  <object id="102" x="32" y="1280" width="576" height="16"/>
+  <object id="103" x="608" y="1280" width="448" height="16"/>
+  <object id="104" x="1120" y="1280" width="464"/>
+  <object id="105" x="1072" y="1296" width="880"/>
+  <object id="106" x="1072" y="1280" width="944"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -91,10 +98,18 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="107" x="960" y="912" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1"/>
+    <property name="charaID" value="10"/>
+    <property name="direction" value="RIGHT"/>
+    <property name="objID" value="101"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="CharaUe1" width="124" height="80">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2k1Kw1AUhuE0TurPwF1Y68/YBQhW2m1Uqytxs+oWPMFeCOgdlVA493ngJZBRDt+gk3YdAAAAABzmuv/tNvqIHk6O/UVMyd5tsXdb7N2W8d7D1vbOzd5tsXdbyt47v98AAAAAAAAAHOBz1nVf0XeljGq3Dl32x/66aZ3HffPoolJGp/3/nUX3SW8uhv+WPEZXlTKq3bpoZO9ldFMpo7f+b+voroG9n+K+VfQcvexbjd5lVNt7aJP05mK733i8d+k16e3ltvGz7P6e9GYAAAAAAAAAAAAAAAAAAAAAAAAAgCn8AOUOK3o=
@@ -102,7 +117,7 @@
  </layer>
  <layer name="CharaUe2" width="124" height="80">
   <properties>
-   <property name="cc_vertexz" value="2"/>
+   <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2U1u8kAMgOG4u4pDZIm4M70IbFsWHKPtQYqlWnWcmcxPEJXI+0hWUStl+OwZe+Abhqn3RHysiEuI7wEpmufPEC25t9z6uFSuG9fW5311RnwfL9KTjeenOR9kGvq7mhxbvTW3PmrOlu0rv64+T6Qv7H3YT853WuypmnetRSm/uT5qNS+S+br6vFH6ous9bFDsqf6s9fbz1nrbuj1ze5T8vsNcqp9rrOnnrfWOe6xlbo/yN79t71HvPH++fb1rZmbqXFXnWqZn2+qttWuZ26Ob39ZbqHderLOfpbmI83ttPy+tWTu/rbdQ7wWuzjH3uR4qcp9+7j//De6Z/qe9Ls1w/z74PJaX+uxtuS/10LX9PPYUe6aE9WtmeLybU++McE+z/u579lLEXr6mn9tde3T7apT8vvP7z9ebfp6X+vw9VJ4rrU2ql/f286V5XZrr1LtO7OePvJ/HnmIz+3h7/RZq7PdZ/HusN/N7gcxDz9sj+nkMe+bp9vos8zti/Hust1+feqdpbV9l2s/t+9Sefr5r6OdxjtTcx5fua80zZYO0tvvELK0937GXH6Tu/8f8/PZ3xNI+y93XYn+h3hmun9o5r72vaViOdyHnLeta1NzHc9+3dN0ZN8j31H2ot4/jb8TfW24Pd8z10vdoOdT3vvSOdCKnAAAAAAAAAAAAAAAAAAAUXWU5ntEW/80AAAD4f2fumgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA24gdDGplY
@@ -127,6 +142,11 @@
   <object id="94" x="1728" y="240" width="32" height="32">
    <properties>
     <property name="EventID" value="11110"/>
+   </properties>
+  </object>
+  <object id="98" x="992" y="912" width="80" height="32">
+   <properties>
+    <property name="EventID" value="2"/>
    </properties>
   </object>
  </objectgroup>

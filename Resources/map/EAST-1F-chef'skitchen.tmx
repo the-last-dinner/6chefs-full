@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="22">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="050505" width="480" height="256"/>
  </tileset>
@@ -53,8 +53,8 @@
   <object id="7" x="16" y="16" width="128" height="48"/>
   <object id="8" x="176" y="16" width="128" height="48"/>
   <object id="9" x="144" y="32" width="32" height="32"/>
-  <object id="10" x="16" y="208" width="96" height="48"/>
   <object id="11" x="16" y="96" width="32" height="32"/>
+  <object id="19" x="16" y="208" width="96" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
@@ -74,10 +74,40 @@
    eJxjYBgFo2AUDGXwkoWB4RUQvwbiN0D8FojfsVBubiPQjCYqmAMDE4FmTaKieaNg4AEAGoIH1A==
   </data>
  </layer>
+ <layer name="hide" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALs4A8Ldc2ipnmjYOABAMp/AwE=
+  </data>
+ </layer>
  <objectgroup name="event">
   <object id="12" x="144" y="32" width="32" height="32">
    <properties>
     <property name="EventID" value="1194"/>
+   </properties>
+  </object>
+  <object id="14" x="16" y="96" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1245"/>
+   </properties>
+  </object>
+  <object id="16" x="288" y="112" width="16" height="64">
+   <properties>
+    <property name="EventID" value="1246"/>
+   </properties>
+  </object>
+  <object id="17" x="288" y="112" width="16" height="64">
+   <properties>
+    <property name="EventID" value="1247"/>
+   </properties>
+  </object>
+  <object id="20" x="16" y="224" width="96" height="16">
+   <properties>
+    <property name="EventID" value="1248"/>
+   </properties>
+  </object>
+  <object id="21" x="304" y="288" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1249"/>
    </properties>
   </object>
  </objectgroup>

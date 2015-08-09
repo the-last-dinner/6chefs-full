@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="26">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="44">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -68,7 +68,6 @@
   <object id="7" x="272" y="304" width="32" height="48"/>
   <object id="9" x="240" y="320" width="32" height="32"/>
   <object id="11" x="256" y="144" width="48" height="128"/>
-  <object id="12" x="48" y="176" width="32" height="16"/>
   <object id="13" x="16" y="112" width="32" height="48"/>
   <object id="14" x="80" y="96" width="96" height="48"/>
   <object id="15" x="272" y="80" width="32" height="32"/>
@@ -101,6 +100,76 @@
   <object id="23" x="144" y="384" width="32" height="32">
    <properties>
     <property name="EventID" value="1152"/>
+   </properties>
+  </object>
+  <object id="26" x="272" y="80" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1225"/>
+   </properties>
+  </object>
+  <object id="28" x="272" y="80" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1226"/>
+   </properties>
+  </object>
+  <object id="29" x="32" y="304" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1383"/>
+   </properties>
+  </object>
+  <object id="31" x="48" y="176" width="32" height="16">
+   <properties>
+    <property name="EventID" value="1384"/>
+   </properties>
+  </object>
+  <object id="32" x="80" y="96" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1385"/>
+   </properties>
+  </object>
+  <object id="33" x="16" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1386"/>
+   </properties>
+  </object>
+  <object id="34" x="16" y="240" width="16" height="32">
+   <properties>
+    <property name="EventID" value="1387"/>
+   </properties>
+  </object>
+  <object id="35" x="176" y="64" width="64" height="32">
+   <properties>
+    <property name="EventID" value="1388"/>
+   </properties>
+  </object>
+  <object id="36" x="256" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1389"/>
+   </properties>
+  </object>
+  <object id="37" x="240" y="48" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1390"/>
+   </properties>
+  </object>
+  <object id="38" x="240" y="320" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1391"/>
+   </properties>
+  </object>
+  <object id="40" x="16" y="80" width="16" height="32">
+   <properties>
+    <property name="EventID" value="1392"/>
+   </properties>
+  </object>
+  <object id="41" x="272" y="304" width="32" height="48">
+   <properties>
+    <property name="EventID" value="1393"/>
+   </properties>
+  </object>
+  <object id="42" x="192" y="256" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1394"/>
    </properties>
   </object>
  </objectgroup>

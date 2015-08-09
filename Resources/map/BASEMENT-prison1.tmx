@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="9">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -43,6 +43,11 @@
   <object id="2" x="0" y="144" width="32" height="32">
    <properties>
     <property name="EventID" value="11128"/>
+   </properties>
+  </object>
+  <object id="8" x="32" y="144" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1298"/>
    </properties>
   </object>
  </objectgroup>

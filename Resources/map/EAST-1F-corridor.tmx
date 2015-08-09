@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="28">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="33">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
  </tileset>
@@ -87,6 +87,21 @@
   <object id="27" x="224" y="80" width="32" height="32">
    <properties>
     <property name="EventID" value="1195"/>
+   </properties>
+  </object>
+  <object id="28" x="160" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12140"/>
+   </properties>
+  </object>
+  <object id="31" x="16" y="128" width="144" height="32">
+   <properties>
+    <property name="EventID" value="12141"/>
+   </properties>
+  </object>
+  <object id="32" x="416" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12142"/>
    </properties>
   </object>
  </objectgroup>
