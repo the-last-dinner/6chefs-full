@@ -12,7 +12,7 @@
 （例）
 	{
 	"type":"charaMsg",
-	"text":"テキスト(String)",
+	"text":["テキスト(String)"],
 	"charaID":"charaID",
         "imgID":"ID",
 	"name":"???",
@@ -40,7 +40,7 @@
 （例）
 	{
 	"type":"changeMap",
-	"nextMap":"移動先のマップ名",
+	"nextMap":"移動先のマップ番号",
 	"nextX":"移動先のx座標(int)",
 	"nextY":"移動先のy座標(int)"
 	}
@@ -56,15 +56,15 @@
 	"text":"テキスト(String)"
 	}
 
-●主人公の向きを変更
-・type名...Changedirection
+●キャラの向きを変更
+・type名...directionChange
 ・必要なもの...向き(UP,DOWN,RIGHT,LEFT)
                誰の？
 （例）
 	{
 	"type":"directionChange",
 	"direction":"向き"
-　　　　"objectID":"オブジェクトIDorhero"
+　　　　"objID":"オブジェクトIDorhero"
 	}
 
 
@@ -80,7 +80,7 @@
 	"direction":"歩く向き"
 	"steps":"歩数(int)"
 	"speed":"歩く早さ（double）"
-	"charaID":"歩くキャラのID(int),orhero"
+	"objID":"歩くキャラのID(int),orhero"
 	}
 ●キャラが勝手に歩く（目的地で指定）
 ・type名...charaWalkto
@@ -140,7 +140,7 @@
 	}
 
 ●キャラを生み出す
-・type名...show
+・type名...createChara
 ・必要なもの...出現させるキャラのオブジェクトID
 	　　　 キャラメッセージ画像
 	　　　 話す内容　　　　　　　 
@@ -152,7 +152,7 @@
 （例）
 	{
 	"type":"createChara",
-	"objectID":"出すもののオブジェクトID",
+	"objID":"出すもののオブジェクトID",
 	"movePattern":"動きパターン番号(int)",
 	}
 
@@ -162,7 +162,7 @@
 （例）
 	{
 	"type":"removeChara",
-	"charaID":"ID（int）"
+	"objID":"ID（int）"
 	}
 
 ●鬼を消す
@@ -170,7 +170,7 @@
 ・必要なもの...消す鬼ID
 （例）
 	{
-	"type":"remove",
+	"type":"removeEnemy",
 	"enemyID":"ID（int）"
 	}
 
@@ -424,6 +424,47 @@
 	"type":"fadeout",
 	"time":"時間指定する場合秒数"
 	}
+
+●イベントを見たことにする
+・type?名...already
+・必要なもの...マップ番号
+　　　　　　　　イベントID
+
+例）
+	{
+	"type":"already"
+	}
+
+●待機
+・type?名...wait
+・必要なもの...時間
+　　　　　　　
+
+例）
+	{
+	"type":"wait",
+	"time":"待機する時間(double)"
+	}
+
+●カメラ
+・type名、、、camera
+・必要なもの、、、マップ番号
+　　　　　　　　　当てるマスの左下の座標
+　　　　　　　　　ゴール地点の座標（動かす場合）
+　　　　　　　　　何秒かけて動かすか（動かす場合）
+		　主人公に戻すコマンド
+（例）
+	{
+	"type" 　　:"camera"
+	"mapID"　　:"マップ番号",
+	"x"　　　　:"x座標",
+	"y"　　　　:"y座標",
+	"nextX"　　:"カメラが向かうx座標"
+	"nextY"　　:"カメラが向かうy座標"
+	"time"　　 :"かかる秒数"
+	"return"   :"hero"←主人公に戻る
+	}
+
 
 とりあえず、
 必要に応じて追加
