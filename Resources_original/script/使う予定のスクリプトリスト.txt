@@ -40,10 +40,10 @@
 （例）
 	{
 	"type":"changeMap",
-	"nextMap":"移動先のマップ番号",
-	"nextX":"移動先のx座標(int)",
-	"nextY":"移動先のy座標(int)"
-	}
+	"mapID":"移動先のマップ番号",
+	"x":"移動先のx座標(int)",
+	"y":"移動先のy座標(int)"
+	}choi
 
 
 ●システムメッセージウインドウの表示
@@ -76,7 +76,7 @@
 　　　　　　　　　　歩くキャラのID
 （例）
 	{
-	"type":"charaMove",
+	"type":"charaWalk",
 	"direction":"歩く向き"
 	"steps":"歩数(int)"
 	"speed":"歩く早さ（double）"
@@ -89,10 +89,25 @@
                歩くキャラのID
 （例）
 	{
-	"type":"charaMoveto",
+	"type":"charaWalkto",
 	"x":"x座標",
 	"y":"y座標",
-	"objectID":"歩くキャラのID(int),orhero"
+	"objID":"歩くキャラのID(int),orhero"
+	}
+
+●キャラがワープする）
+・type名...charaWarp
+・必要なもの...目的地のx座標
+			y座標
+               キャラのID
+               出現する向き
+（例）
+	{
+	"type":"charaWarp",
+	"x":"x座標",
+	"y":"y座標",
+	"objID":"歩くキャラのID(int),orhero",
+	"direction":"出現する向き"
 	}
 
 ●マップチップを書き換える
@@ -120,7 +135,7 @@
 （例）
 	{
 	"type":"reaction",
-        "objectID":"出すキャラのオブジェクトID又はhero"
+        "objID":"出すキャラのオブジェクトID又はhero"
 	}
 
 ●鬼を生み出す
@@ -152,8 +167,7 @@
 （例）
 	{
 	"type":"createChara",
-	"objID":"出すもののオブジェクトID",
-	"movePattern":"動きパターン番号(int)",
+	"objID":"出すもののオブジェクトID"
 	}
 
 ●オブジェクトを消す
@@ -359,6 +373,8 @@
 	"answer":"正解の選択肢名",
 	"action":[{},,,,,,]
 	}
+
+
 例）答えが二つ以上の場合（最大4つ）
 	{
 	"type":"getItem",
@@ -481,7 +497,28 @@
 	"return"   :"hero"←主人公に戻る
 	}
 
+●キャラが主人公（別キャラ）についてくるように
+・type名、、、chase
+・必要なもの、、、追いかける奴のオブジェクトID
+                  追いかけられる奴のオブジェクトID（主人公ならhero）
 
+（例）
+	{
+	"type":"chase",
+        "chaser":"追いかける奴のobjID",
+	"target":"追いかけられるやつのobjID or hero"
+	
+	}
+●ついてくるの解除
+・type名、、、releaseChase
+・必要なもの、、、解除する追いかける奴オブジェクトID
+                  
+
+（例）
+	{
+	"type":"releaseChase",
+        "chaser":"追いかける奴のobjID"
+	}
 
 とりあえず、
 必要に応じて追加
