@@ -1,123 +1,137 @@
 {
-	"1":[
-		{
-			"type":"changeMap",
-			"nextMap":"4",
-			"x":27,
-			"y":4
-		}
-	],
-	"2":[
-		{
-			"type":"changeMap",
-			"nextMap":"4",
-			"x":29,
-			"y":4
-		}
-	],
-	"3":[
-		{
-			"type":"changeMap",
-			"nextMap":"4",
-			"x":31,
-			"y":4
-		}
-	],
-	"4":[
-		{
-			"type":"changeMap",
-			"nextMap":"10",
-			"x":61,
-			"y":23
-		}
-	],
-	"5":[
-		{
-			"type":"changeMap",
-			"nextMap":"10",
-			"x":63,
-			"y":23
-		}
-	],
-	"6":[
-		{
-			"type":"changeMap",
-			"nextMap":"10",
-			"x":65,
-			"y":23
-		}
-	],
-	"7":[
-		{
-			"type":"reaction",
-			"objID":"hero"
-		}
-	],
-	"8":[
-		{
-			"type":"span",
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["首には食いちぎられた跡があり、\n眼球はえぐり取られている"]
-				},
-				{
-					"type":"playSE",
-					"file":"despair.mp3"
-				}
-			]
-		}
-	],
-	"9":[
-		{
-			"type":"systemMsg",
-			"text":["鳥かごだ。中には何もいない"]
-		}
-	],
-	"10":[
-		{
-			"type":"sequence",
-			"action":[
-				{
-					"type":"charaMsg",
-					"text":["何かに首を食いちぎられてる・・・\n何かいんのか？中に・・・\nおい佐々木！お前は出口を探せ"],
-					"charaID":"2",
-					"imgID":"2"
-				},
-				{
-					"type":"charaMsg",
-					"text":["え？加藤さんは・・・？"],
-					"charaID":"0",
-					"imgID":"2",
-					"option":"reaction"
-				},
-				{
-					"type":"charaMsg",
-					"text":["この爺さん殺したヤツを捕まえる\nとりあえずアブねぇからお前らは\nほかの出口見つけて外に出てろ"],
-					"charaID":"2",
-					"imgID":"2"
-				},
-				{
-					"type":"charaWalk",
-					"direction":"UP",
-					"steps":9,
-					"speed":3,
-					"objID":"1014"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1014"
-				},
-				{
-					"type":"charaMsg",
-					"text":["出口を探せって・・・\nここ何かいるんだよな・・・\n気をつけなきゃ"],
-					"charaID":"0",
-					"imgID":"1"
-				},
-				{
-					"type":"already"
-				}
-			]
-		}
-	]
+  "1": [
+    {
+      "type": "changeMap",
+      "nextMap": "4",
+      "x": 27,
+      "y": 4
+    }
+  ],
+  "2": [
+    {
+      "type": "changeMap",
+      "nextMap": "4",
+      "x": 29,
+      "y": 4
+    }
+  ],
+  "3": [
+    {
+      "type": "changeMap",
+      "nextMap": "4",
+      "x": 31,
+      "y": 4
+    }
+  ],
+  "4": [
+    {
+      "type": "changeMap",
+      "nextMap": "10",
+      "x": 61,
+      "y": 23
+    }
+  ],
+  "5": [
+    {
+      "type": "changeMap",
+      "nextMap": "10",
+      "x": 63,
+      "y": 23
+    }
+  ],
+  "6": [
+    {
+      "type": "changeMap",
+      "nextMap": "10",
+      "x": 65,
+      "y": 23
+    }
+  ],
+  "7": [
+    {
+      "type": "reaction",
+      "objID": "hero"
+    }
+  ],
+  "8": [
+    {
+      "type": "spawn",
+      "action": [
+        {
+          "type": "systemMsg",
+          "text": [
+            "首には食いちぎられた跡があり、\n眼球はえぐり取られている"
+          ]
+        },
+        {
+          "type": "playSE",
+          "file": "despair.mp3"
+        }
+      ]
+    }
+  ],
+  "9": [
+    {
+      "type": "systemMsg",
+      "text": [
+        "鳥かごだ。中には何もいない"
+      ]
+    }
+  ],
+  "10": [
+    {
+      "type": "sequence",
+      "action": [
+        {
+          "type": "charaMsg",
+          "talk": [
+            {
+              "text": [
+                "何かに首を食いちぎられてる・・・\n何かいんのか？中に・・・\nおい佐々木！お前は出口を探せ"
+              ],
+              "charaID": "2",
+              "imgID": "2"
+            },
+            {
+              "text": [
+                "え？加藤さんは・・・？"
+              ],
+              "charaID": "0",
+              "imgID": "2",
+              "option": "reaction"
+            },
+            {
+              "text": [
+                "この爺さん殺したヤツを捕まえる\nとりあえずアブねぇからお前らは\nほかの出口見つけて外に出てろ"
+              ],
+              "charaID": "2",
+              "imgID": "2"
+            }
+          ]
+        },
+        {
+          "type": "charaWalk",
+          "direction": "UP",
+          "steps": 9,
+          "speed": 3,
+          "objID": "1014"
+        },
+        {
+          "type": "removeChara",
+          "objID": "1014"
+        },
+        {
+          "type": "charaMsg",
+          "text": [
+            "出口を探せって・・・\nここ何かいるんだよな・・・\n気をつけなきゃ"
+          ],
+          "charaID": "0",
+          "imgID": "1"
+        },
+        {
+          "type": "already"
+        }
+      ]
+    }
+  ]
 }

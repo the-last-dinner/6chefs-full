@@ -1,4 +1,4 @@
-﻿ー使いそうなスクリプトリストー
+ー使いそうなスクリプトリストー
 
 
 ●キャラメッセージウインドウの表示
@@ -9,14 +9,34 @@
               nameをつけたら???に 
               optionでリアクションに（ブワってやつ）
 （例）
-	{
-	"type":"charaMsg",
-	"text":["テキスト(String)"],
-	"charaID":"charaID",
-        "imgID":"ID",
-	"name":"???",
-	"option":"reaction"
-	}
+{
+  "type": "charaMsg",
+  "talk": [
+    {
+      "text": [],
+      "charaID": "",
+      "imgID": "",
+      "name": "",
+      "option": “reaction”
+    },
+    {
+      "text": [],
+      "charaID": "",
+      "imgID": "",
+      "name": "",
+      "option": “reaction”
+    }
+  ]
+}
+
+発言が一人によるものであれば
+        {
+	  "type": "charaMsg",
+          "text": [],
+          "charaID": "",
+          "imgID": ""
+        }
+でOK
 
 ●画像表示
 ・type名...displayImg
@@ -375,22 +395,18 @@
 （例）答えが一つの場合
 	{
 	"type":"questionMsg",
-	"text":"テキスト(String)"
-        "choices":"選択肢1、選択肢2、、、"
-	"answer":"正解の選択肢名",
-	"action":[{},,,,,,]
-	}
-
-
-例）答えが二つ以上の場合（最大4つ）
-	{
-	"type":"questionMsg",
-	"text":"テキスト(String)"
-        "choices":"選択肢1、選択肢2、、、"
-	"answer1":"正解の選択肢名",
-	"action":[{},,,,,,]
-	"answer2":"正解の選択肢名",
-	"action":[{},,,,,,]
+	"text":"テキスト(String)”,
+        "choices”:[“選択肢1”, ”選択肢2”, …],
+	"answers”:[
+		{
+			“answer”:”choices上でのindex(0始まり)”,
+			“action”:[]
+		},
+		{
+			“answer”:”choices上でのindex(0始まり)”,
+			“action”:[]
+		}…
+	]
 	}
 
 
