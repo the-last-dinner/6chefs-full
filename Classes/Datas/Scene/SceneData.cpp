@@ -6,20 +6,13 @@
 //
 //
 
-#include "SceneData.h"
+#include "Datas/Scene/SceneData.h"
 
 // コンストラクタ
-SceneData::SceneData():
-textureFilePaths{},
-soundFilePaths{},
-percentage(0.f),
-loaded(0),
-resourceSize(0)
-{FUNCLOG}
+SceneData::SceneData(){FUNCLOG}
 
 // デストラクタ
-SceneData::~SceneData()
-{FUNCLOG}
+SceneData::~SceneData(){FUNCLOG}
 
 // リソースのプリロードを実行し、ロード状況をコールバックする
 void SceneData::preloadResources(const function<void(float)>& callback)

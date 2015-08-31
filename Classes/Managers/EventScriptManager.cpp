@@ -6,7 +6,7 @@
 //
 //
 
-#include "EventScriptManager.h"
+#include "Managers/EventScriptManager.h"
 #include "TitleScene.h"
 
 // 唯一のインスタンスを初期化

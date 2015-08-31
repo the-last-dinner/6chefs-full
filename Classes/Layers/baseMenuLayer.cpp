@@ -6,21 +6,22 @@
 //
 //
 
-#include "baseMenuLayer.h"
+#include "Layers/baseMenuLayer.h"
 
 // コンストラクタ
-baseMenuLayer::baseMenuLayer():
-indexX(0),
-indexY(0),
-sizeX(0),
-sizeY(0),
-menuObjects{},
-eventListener(nullptr)
-{FUNCLOG}
+baseMenuLayer::baseMenuLayer(){FUNCLOG}
 
 // デストラクタ
-baseMenuLayer::~baseMenuLayer()
-{FUNCLOG}
+baseMenuLayer::~baseMenuLayer(){FUNCLOG}
+
+// 初期化
+bool baseMenuLayer::init(const Point& index, const Size& size)
+{
+	this->indexX = index.x;
+	this->indexY = index.y;
+	
+	return this->init(size.width, size.height);
+}
 
 // 初期化
 bool baseMenuLayer::init(int sizeX, int sizeY)
@@ -47,7 +48,6 @@ bool baseMenuLayer::init(int sizeX, int sizeY)
 // キーを押した時
 void baseMenuLayer::onKeyPressed(EventKeyboard::KeyCode keyCode)
 {
-	FUNCLOG
 	// cocos2d上のキーコードからゲーム内でのキーコードに変換
 	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
 	
@@ -57,19 +57,19 @@ void baseMenuLayer::onKeyPressed(EventKeyboard::KeyCode keyCode)
 	{
 		case ActionKeyManager::Key::UP:
 			this->indexY = (indexY == 0)? indexY = sizeY - 1 : (indexY - 1) % sizeY;
-			if(sizeY >= 2)this->moveCursor(true);
+			if(sizeY >= 2)this->onIndexChanged(true);
 			break;
 		case ActionKeyManager::Key::DOWN:
 			this->indexY = (indexY + 1) % sizeY;
-			if(sizeY >= 2)this->moveCursor(true);
+			if(sizeY >= 2)this->onIndexChanged(true);
 			break;
 		case ActionKeyManager::Key::LEFT:
 			this->indexX = (indexX == 0)? indexX = sizeX - 1 : (indexX - 1) % sizeX;
-			if(sizeX >= 2)this->moveCursor(true);
+			if(sizeX >= 2)this->onIndexChanged(true);
 			break;
 		case ActionKeyManager::Key::RIGHT:
 			this->indexX = (indexX + 1) % sizeX;
-			if(sizeX >= 2)this->moveCursor(true);
+			if(sizeX >= 2)this->onIndexChanged(true);
 			break;
 		case ActionKeyManager::Key::SPACE:
 			this->onSpacePressed();
@@ -92,13 +92,13 @@ void baseMenuLayer::onKeyReleased(EventKeyboard::KeyCode keyCode)
 }
 
 // 現在選ばれているメニューのINDEXを取得(現時点では横優先配置の場合のみ)
-int baseMenuLayer::getSelectedIndex()
+int baseMenuLayer::getSelectedIndex() const
 {return sizeX * indexY + indexX;}
 
 // メニューサイズの横方向を取得
-int baseMenuLayer::getMenuSizeX()
+int baseMenuLayer::getMenuSizeX() const
 {return this->sizeX;}
 
 // メニューサイズの縦方向を取得
-int baseMenuLayer::getMenuSizeY()
+int baseMenuLayer::getMenuSizeY() const
 {return this->sizeY;}

@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/frame/cm_frame.tps</string>
+        <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/frame.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -147,7 +147,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../Resources/img/frame/cm_frame.plist</filename>
+                <filename>../../Resources/img/frame.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -190,8 +190,9 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../img/frame/cm_frame_mini.png</filename>
-            <filename>../../img/frame/cm_frame.png</filename>
+            <filename>../img/frame/cm_frame_s.png</filename>
+            <filename>../img/frame/cm_frame.png</filename>
+            <filename>../img/frame/save_frame.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

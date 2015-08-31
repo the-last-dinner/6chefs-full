@@ -6,7 +6,7 @@
 //
 //
 
-#include "MapObject.h"
+#include "MapObjects/MapObject.h"
 
 // コンストラクタ
 MapObject::MapObject():

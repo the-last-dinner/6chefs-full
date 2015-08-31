@@ -6,7 +6,7 @@
 //
 //
 
-#include "Character.h"
+#include "MapObjects/Character.h"
 
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/texture/character/";

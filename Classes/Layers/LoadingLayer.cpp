@@ -6,15 +6,13 @@
 //
 //
 
-#include "LoadingLayer.h"
+#include "Layers/LoadingLayer.h"
 
 // コンストラクタ
-LoadingLayer::LoadingLayer()
-{FUNCLOG}
+LoadingLayer::LoadingLayer(){FUNCLOG}
 
 // デストラクタ
-LoadingLayer::~LoadingLayer()
-{FUNCLOG}
+LoadingLayer::~LoadingLayer(){FUNCLOG}
 
 // 初期化
 bool LoadingLayer::init()

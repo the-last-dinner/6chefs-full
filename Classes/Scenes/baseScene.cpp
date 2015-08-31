@@ -6,36 +6,42 @@
 //
 //
 
-#include "baseScene.h"
+#include "Scenes/baseScene.h"
+
+#include "Layers/LoadingLayer.h"
+
+#include "Datas/Scene/SceneData.h"
 
 // コンストラクタ
-baseScene::baseScene():
-data(nullptr)
-{
-	FUNCLOG
-	// キーステータスを初期化
-	ActionKeyManager::getInstance()->initKeyStatus();
-}
+baseScene::baseScene(){FUNCLOG}
 
 // デストラクタ
 baseScene::~baseScene()
 {
 	FUNCLOG
-	delete this->data;
+	CC_SAFE_RELEASE(this->data);
 }
 
 // シーン共通初期化
-bool baseScene::init()
+bool baseScene::init(SceneData* data)
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
+	
+	// データクラスをセットしretain
+	this->data = data;
+	CC_SAFE_RETAIN(this->data);
+	
+	// キーステータスを初期化
+	ActionKeyManager::getInstance()->initKeyStatus();
+	
 	// ロード画面レイヤー
 	LoadingLayer* loadingLayer = LoadingLayer::create();
 	loadingLayer->setZOrder(100);
 	this->addChild(loadingLayer);
 	
 	// プリロード開始
-	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(CC_CALLBACK_0(baseScene::loadFinished, this));});
+	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(CC_CALLBACK_0(baseScene::onPreloadFinished, this));});
 	return true;
 }
 

@@ -11,13 +11,14 @@
 
 #include "Common.h"
 
-class SceneData
+class SceneData : public Ref
 {
 	// インスタンスメソッド
 public:
+	void preloadResources(const function<void(float)>& callback);
+protected:
 	SceneData();
 	~SceneData();
-	void preloadResources(const function<void(float)>& callback);
 private:
 	void calcPercentage();
 	void preloadTextureAsync(const function<void()>& callback);
@@ -25,12 +26,12 @@ private:
 	
 	// インスタンス変数
 protected:
-	vector<string> textureFilePaths;
-	vector<string> soundFilePaths;
+	vector<string> textureFilePaths {};
+	vector<string> soundFilePaths {};
 private:
-	float percentage;	// リソースのロード状況（1.0fで100%）
-	int loaded;
-	int resourceSize;
+	float percentage {0};	// リソースのロード状況（1.0fで100%）
+	int loaded {0};
+	int resourceSize {0};
 };
 
 #endif // __SCENE_DATA_H__

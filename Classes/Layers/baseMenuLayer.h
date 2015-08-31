@@ -15,16 +15,18 @@ class baseMenuLayer : public Layer
 {
 	// インスタンスメソッド
 public:
-	void setCallback(const function<void()> callback);
+	virtual void show() = 0;
+	virtual void hide() = 0;
 protected:
 	baseMenuLayer();
 	~baseMenuLayer();
+	virtual bool init(const Point& index, const Size& size);
 	virtual bool init(int sizeX, int sizeY);
-	virtual void moveCursor(bool sound) = 0;
+	virtual void onIndexChanged(bool sound) = 0;
 	virtual void onSpacePressed() = 0;
-	virtual int getSelectedIndex();
-	int getMenuSizeX();
-	int getMenuSizeY();
+	virtual int getSelectedIndex() const;
+	int getMenuSizeX() const;
+	int getMenuSizeY() const;
 	
 private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
@@ -32,14 +34,13 @@ private:
 	
 	// インスタンス変数
 protected:
-	vector<Node*> menuObjects;
-	EventListenerKeyboard* eventListener;
+	vector<Node*> menuObjects {};
+	EventListenerKeyboard* eventListener { nullptr };
 private:
-	int indexX;
-	int indexY;
-	int sizeX;
-	int sizeY;
-	function<void()> callback;
+	int indexX { 0 };
+	int indexY { 0 };
+	int sizeX { 0 };
+	int sizeY { 0 };
 };
 
 #endif // __BASE_MENU_LAYER_H__

@@ -6,7 +6,7 @@
 //
 //
 
-#include "SystemMessageLayer.h"
+#include "Layers/Message/SystemMessageLayer.h"
 
 // コンストラクタ
 SystemMessageLayer::SystemMessageLayer()
@@ -21,6 +21,7 @@ bool SystemMessageLayer::init(const queue<string>& pages)
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
+	if(!baseMessageLayer::init()) return false;
 	
 	// ページをセット
 	this->setPages(pages);

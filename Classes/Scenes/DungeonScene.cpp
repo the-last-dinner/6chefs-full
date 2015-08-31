@@ -6,17 +6,17 @@
 //
 //
 
-#include "DungeonScene.h"
+#include "Scenes/DungeonScene.h"
+
+#include "Datas/Scene/DungeonSceneData.h"
+
+#include "Layers/Dungeon/TiledMapLayer.h"
 
 // コンストラクタ
-DungeonScene::DungeonScene():
-eventListener(nullptr),
-mapLayer(nullptr)
-{FUNCLOG}
+DungeonScene::DungeonScene(){FUNCLOG}
 
 // デストラクタ
-DungeonScene::~DungeonScene()
-{FUNCLOG}
+DungeonScene::~DungeonScene(){FUNCLOG}
 
 // シーン生成
 Scene* DungeonScene::createScene()
@@ -31,16 +31,12 @@ Scene* DungeonScene::createScene()
 bool DungeonScene::init()
 {
 	FUNCLOG
-	if(!Layer::init()) return false;
-	
-	// データクラスを初期化
-	baseScene::data = new DungeonSceneData("TestScript");
-	
-	return baseScene::init();
+
+	return baseScene::init(DungeonSceneData::create("TestScript"));
 }
 
 // リソースプリロード完了時の処理
-void DungeonScene::loadFinished()
+void DungeonScene::onPreloadFinished()
 {
 	FUNCLOG
 	// 黒い幕を張っておく

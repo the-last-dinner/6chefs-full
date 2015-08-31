@@ -7,7 +7,7 @@
             <key>cm_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,2},{774,190}}</string>
+                <string>{{2,2},{774,190}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
@@ -17,18 +17,31 @@
                 <key>sourceSize</key>
                 <string>{782,198}</string>
             </dict>
-            <key>cm_frame_mini.png</key>
+            <key>cm_frame_s.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{252,64}}</string>
+                <string>{{778,124},{252,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{4,2},{252,64}}</string>
                 <key>sourceSize</key>
                 <string>{260,68}</string>
+            </dict>
+            <key>save_frame.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{778,2},{400,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{400,120}}</string>
+                <key>sourceSize</key>
+                <string>{400,120}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -36,13 +49,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>cm_frame.pvr.ccz</string>
+            <string>frame.pvr.ccz</string>
             <key>size</key>
-            <string>{844,256}</string>
+            <string>{1180,194}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:22ade5dd18b85cd189905efa5681bb6d:f5dec2b14ea6daafa49b4a20922a575a:0e03fd9436c3493efdf1c84c9a5797bd$</string>
+            <string>$TexturePacker:SmartUpdate:f26fa286a29f7f55faec13c4490e3e26:623c573340e83bf3f6b70878d039f563:f7e3c0178d45797be29be97b0f28a86f$</string>
             <key>textureFileName</key>
-            <string>cm_frame.pvr.ccz</string>
+            <string>frame.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

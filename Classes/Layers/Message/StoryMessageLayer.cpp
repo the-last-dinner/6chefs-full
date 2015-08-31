@@ -6,7 +6,7 @@
 //
 //
 
-#include "StoryMessageLayer.h"
+#include "Layers/Message/StoryMessageLayer.h"
 
 // コンストラクタ
 StoryMessageLayer::StoryMessageLayer()
@@ -21,6 +21,7 @@ bool StoryMessageLayer::init(const queue<string> pages)
 {
 	FUNCLOG
 	if(!Layer::init()) return false;
+	if(!baseMessageLayer::init()) return false;
 	
 	// ページをセット
 	this->setPages(pages);

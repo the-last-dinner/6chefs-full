@@ -26,6 +26,7 @@ public:
 protected:
 	baseMessageLayer();
 	~baseMessageLayer();
+	virtual bool init();
 	void onSpacePressed();
 	void setPages(const queue<string>& pages);
 	void setFrame(Sprite* frame);
@@ -38,20 +39,20 @@ private:
 	
 	// インスタンス変数
 private:
-	EventListenerKeyboard* eventListener;
-	float span;
-	vector<Action*> letterActions;
-	function<void()> callback;
-	bool _isAllLetterDisplayed;
-	bool _isAllPageDisplayed;
+	EventListenerKeyboard* eventListener { nullptr };
+	float span { 0.05f };
+	vector<Action*> letterActions {};
+	function<void()> callback { nullptr };
+	bool _isAllLetterDisplayed { false };
+	bool _isAllPageDisplayed { false };
 protected:
-	Sprite* frame;
-	Label* message;
-	queue<string> pages;
-	string fontPath;
-	int fontSize;
-	TextVAlignment v_alignment;
-	TextHAlignment h_alignment;
+	Sprite* frame { nullptr };
+	Label* message { nullptr };
+	queue<string> pages {};
+	string fontPath {"fonts/cinecaption2.28.ttf"};
+	int fontSize { 24 };
+	TextVAlignment v_alignment { TextVAlignment::TOP };
+	TextHAlignment h_alignment { TextHAlignment::LEFT };
 };
 
 #endif // __BASE_MESSAGE_LAYER_H__

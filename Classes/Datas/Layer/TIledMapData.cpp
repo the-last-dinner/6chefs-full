@@ -6,7 +6,7 @@
 //
 //
 
-#include "TIledMapData.h"
+#include "Datas/Layer/TiledMapData.h"
 
 // tmxファイルのディレクトリ
 const string TiledMapData::basePath = "map/";

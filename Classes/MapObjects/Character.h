@@ -9,8 +9,7 @@
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
 
-#include "Common.h"
-#include "MapObject.h"
+#include "MapObjects/MapObject.h"
 
 class Character : public MapObject
 {

@@ -6,7 +6,7 @@
 //
 //
 
-#include "TiledMapLayer.h"
+#include "Layers/Dungeon/TiledMapLayer.h"
 
 // コンストラクタ
 TiledMapLayer::TiledMapLayer():
@@ -59,7 +59,7 @@ bool TiledMapLayer::init(const string& mapFileName, EventListenerKeyboard* liste
 	queue<string> pages;
 	pages.push("あいうえお\nテステステウテス\n会合\n改行");
 	pages.push("かきくけこ");
-	CharacterMessageLayer* messageLayer = CharacterMessageLayer::createWithName("テスト君", pages);
+	CharacterMessageLayer* messageLayer = CharacterMessageLayer::createWithName("みこめ　としろう", pages);
 	this->addChild(messageLayer);
 	this->parentListener->setEnabled(false);
 	messageLayer->setCallback([=](){this->parentListener->setEnabled(true);});

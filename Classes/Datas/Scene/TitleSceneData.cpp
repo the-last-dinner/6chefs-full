@@ -20,20 +20,21 @@ TitleSceneData::~TitleSceneData()
 {FUNCLOG}
 
 // 初期化
-void TitleSceneData::init()
+bool TitleSceneData::init()
 {
 	FUNCLOG
-	SceneData::textureFilePaths =
+	this->textureFilePaths =
 	{
-		"title_scene"
+		"title_scene",
+		"frame"
 	};
 	
-	SceneData::soundFilePaths =
+	this->soundFilePaths =
 	{
 		"se/cursorMove.mp3",
 		"se/back.mp3",
 		"se/gameStart.mp3",
 		"se/title-enter.mp3"
 	};
-	return;
+	return true;
 }

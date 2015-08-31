@@ -6,23 +6,16 @@
 //
 //
 
-#include "baseMessageLayer.h"
+#include "Layers/Message/baseMessageLayer.h"
 
 // コンストラクタ
-baseMessageLayer::baseMessageLayer():
-eventListener(nullptr),
-frame(nullptr),
-message(nullptr),
-letterActions{},
-pages{},
-fontPath("fonts/cinecaption2.28.ttf"),
-span(0.05f),
-fontSize(24),
-v_alignment(TextVAlignment::TOP),
-h_alignment(TextHAlignment::LEFT),
-callback([](){}),
-_isAllLetterDisplayed(false),
-_isAllPageDisplayed(false)
+baseMessageLayer::baseMessageLayer(){FUNCLOG}
+
+// デストラクタ
+baseMessageLayer::~baseMessageLayer(){FUNCLOG}
+
+// 初期化
+bool baseMessageLayer::init()
 {
 	FUNCLOG
 	// イベントリスナ生成
@@ -31,11 +24,9 @@ _isAllPageDisplayed(false)
 	
 	// イベントリスナ登録
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
+	
+	return true;
 }
-
-// デストラクタ
-baseMessageLayer::~baseMessageLayer()
-{FUNCLOG}
 
 // spaceキーを押した時の処理
 void baseMessageLayer::onSpacePressed()

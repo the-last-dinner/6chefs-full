@@ -9,10 +9,7 @@
 #ifndef __TITLE_MAIN_MENU_LAYER_H__
 #define __TITLE_MAIN_MENU_LAYER_H__
 
-#include "Common.h"
 #include "Layers/baseMenuLayer.h"
-#include "Scenes/DungeonScene.h"
-#include "Layers/SaveData/SaveDataLoadLayer.h"
 
 class TitleMainMenuLayer : public baseMenuLayer
 {
@@ -22,7 +19,8 @@ public:
 	{
 		START,
 		CONTINUE,
-		FINISH,
+		EXIT,
+		
 		SIZE
 	};
 	
@@ -39,8 +37,17 @@ private:
 	TitleMainMenuLayer();
 	~TitleMainMenuLayer();
 	virtual bool init();
-	void moveCursor(bool sound);
+	void onIndexChanged(bool sound);
 	void onSpacePressed();
+public:
+	void show();
+	void hide();
+	
+	// インスタンス変数
+public:
+	function<void()> onStartSelected { nullptr };
+	function<void()> onContinueSelected { nullptr};
+	function<void()> onExitSelected { nullptr };
 };
 
 #endif // __TITLE_MAIN_MENU_LAYER_H__

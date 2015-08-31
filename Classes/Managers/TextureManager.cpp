@@ -6,7 +6,7 @@
 //
 //
 
-#include "TextureManager.h"
+#include "Managers/TextureManager.h"
 
 const string TextureManager::basePath = "img/";
 const string TextureManager::characterPath = basePath + "character/";

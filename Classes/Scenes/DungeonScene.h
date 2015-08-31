@@ -9,10 +9,9 @@
 #ifndef __DUNGEON_SCENE_H__
 #define __DUNGEON_SCENE_H__
 
-#include "Common.h"
-#include "baseScene.h"
-#include "Datas/Scene/DungeonSceneData.h"
-#include "Layers/Dungeon/TiledMapLayer.h"
+#include "Scenes/baseScene.h"
+
+class TiledMapLayer;
 
 class DungeonScene : public baseScene
 {
@@ -22,18 +21,17 @@ public:
 	CREATE_FUNC(DungeonScene);
 	
 	// インスタンスメソッド
-public:
+private:
 	DungeonScene();
 	~DungeonScene();
-private:
 	virtual bool init();
-	void loadFinished();
+	void onPreloadFinished();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:
-	EventListenerKeyboard* eventListener;
-	TiledMapLayer* mapLayer;
+	EventListenerKeyboard* eventListener { nullptr };
+	TiledMapLayer* mapLayer { nullptr };
 };
 
 

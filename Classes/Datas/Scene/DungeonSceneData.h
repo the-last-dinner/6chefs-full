@@ -9,25 +9,26 @@
 #ifndef __DUNGEON_SCENE_DATA_H__
 #define __DUNGEON_SCENE_DATA_H__
 
-#include "Common.h"
 #include "SceneData.h"
-#include "MapObjects/Objects.h"
 
 class DungeonSceneData : public SceneData
 {
-	// インスタンスメソッド
+	// クラスメソッド
 public:
-	DungeonSceneData(string mapName);
-	~DungeonSceneData();
+	CREATE_FUNC_WITH_PARAM(DungeonSceneData, string)
+	
+	// インスタンスメソッド
 private:
-	void init();
-	vector<string> getPreLoadList(string type);
+	DungeonSceneData();
+	~DungeonSceneData();
+	bool init(const string&);
+	vector<string> getPreLoadList(const string& type);
 	
 	// インスタンス変数
 private:
-	string mapName;
-	FileUtils* fu;
-	rapidjson::Document json;
+	string mapName {""};
+	FileUtils* fu { nullptr };
+	rapidjson::Document json {};
 	
 };
 

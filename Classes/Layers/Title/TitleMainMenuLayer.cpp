@@ -6,21 +6,23 @@
 //
 //
 
-#include "TitleMainMenuLayer.h"
+#include "Layers/Title/TitleMainMenuLayer.h"
+
+#include "Scenes/DungeonScene.h"
+
+#include "Layers/SaveData/SaveDataSelector.h"
 
 const map<TitleMainMenuLayer::MenuType, string> TitleMainMenuLayer::menu = {
 	{TitleMainMenuLayer::MenuType::START, "はじめから"},
 	{TitleMainMenuLayer::MenuType::CONTINUE, "つづきから"},
-	{TitleMainMenuLayer::MenuType::FINISH, "終了"},
+	{TitleMainMenuLayer::MenuType::EXIT, "終了"},
 };
 
 // コンストラクタ
-TitleMainMenuLayer::TitleMainMenuLayer()
-{FUNCLOG}
+TitleMainMenuLayer::TitleMainMenuLayer(){FUNCLOG}
 
 // デストラクタ
-TitleMainMenuLayer::~TitleMainMenuLayer()
-{FUNCLOG}
+TitleMainMenuLayer::~TitleMainMenuLayer(){FUNCLOG}
 
 // 初期化
 bool TitleMainMenuLayer::init()
@@ -52,16 +54,27 @@ bool TitleMainMenuLayer::init()
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
 	this->runAction(Sequence::create(TargetedAction::create(titleBg, FadeIn::create(2.f)),
-									 CallFunc::create([this](){baseMenuLayer::eventListener->setEnabled(true);this->moveCursor(false);}),
+									 CallFunc::create([this](){baseMenuLayer::eventListener->setEnabled(true);this->onIndexChanged(false);}),
 									 nullptr));
 
 	return true;
 }
 
-// カーソルを移動
-void TitleMainMenuLayer::moveCursor(bool sound)
+// 表示
+void TitleMainMenuLayer::show()
 {
-	FUNCLOG
+	this->eventListener->setEnabled(true);
+}
+
+// 非表示
+void TitleMainMenuLayer::hide()
+{
+	this->eventListener->setEnabled(false);
+}
+
+// 選択しているindexが変わった時
+void TitleMainMenuLayer::onIndexChanged(bool sound)
+{
 	int selectedIndex = baseMenuLayer::getSelectedIndex();
 	for(int i = 0; i < baseMenuLayer::menuObjects.size(); i++)
 	{
@@ -77,25 +90,29 @@ void TitleMainMenuLayer::moveCursor(bool sound)
 // 決定キーを押した時
 void TitleMainMenuLayer::onSpacePressed()
 {
-	FUNCLOG
 	switch (static_cast<MenuType>(baseMenuLayer::getSelectedIndex())) {
 		case MenuType::START:
-			SoundManager::getInstance()->playSound("se/gameStart.mp3");
-			SoundManager::getInstance()->unloadAllSounds();
-			TextureManager::getInstance()->unloadAllTectures();
-            PlayerDataManager::getInstance()->setMainLocalData(0);
-			Director::getInstance()->replaceScene(DungeonScene::createScene());
+			if(this->onStartSelected)
+			{
+				this->onStartSelected();
+			}
 			break;
+			
 		case MenuType::CONTINUE:
-			this->eventListener->setEnabled(false);
-			this->addChild(SaveDataLoadLayer::create());
+			if(this->onContinueSelected)
+			{
+				this->onContinueSelected();
+			}
 			break;
-		case MenuType::FINISH:
-			SoundManager::getInstance()->playSound("se/back.mp3");
-			Director::getInstance()->end();
+			
+		case MenuType::EXIT:
+			if(this->onExitSelected)
+			{
+				this->onExitSelected();
+			}
 			break;
+			
 		default:
 			break;
 	}
-	return;
 }

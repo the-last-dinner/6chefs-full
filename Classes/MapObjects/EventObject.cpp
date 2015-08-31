@@ -6,7 +6,7 @@
 //
 //
 
-#include "EventObject.h"
+#include "MapObjects/EventObject.h"
 
 // コンストラクタ
 EventObject::EventObject()
