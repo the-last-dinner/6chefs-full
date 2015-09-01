@@ -153,7 +153,7 @@
 				"type":"charaMsg",
 				"text":["あ、さ、佐々木孫一です！"],
 				"charaID":"0",
-				"imgID":"1",
+				"imgID":"1"
 			},
 			{
 			"type":"wait",
@@ -194,15 +194,13 @@
 			}
 			]
 		}
-			]
-		}
-		],
-		{
-			"type":"charaMsg",
-			"text":["ん？早く行こーや"],
-			"charaID":"2",
-			"imgID":"1"
-		}
+		]
+	},
+	{
+		"type":"charaMsg",
+		"text":["ん？早く行こーや"],
+		"charaID":"2",
+		"imgID":"1"
 	}
 	],
 	"6":[
@@ -366,7 +364,7 @@
 		"type":"charaMsg",
 		"text":["何なのよ…お茶も不味いし！"],
 		"charaID":"3",
-		"imgID":"1",
+		"imgID":"1"
 	}
 	],
 	"8":[
@@ -409,7 +407,7 @@
 			"type":"charaMsg",
 			"text":["やはり晩餐会。皆ピリピリしておりますな"],
 			"charaID":"4",
-			"imgID":"1",
+			"imgID":"1"
 		},
 		{
 			"type":"charaMsg",
@@ -421,7 +419,7 @@
 			"type":"charaMsg",
 			"text":["当たり前ですぞ。平常心以外有り得ませんな。\n今日は頑張りましょうぞ。"],
 			"charaID":"4",
-			"imgID":"1",
+			"imgID":"1"
 		},
 		{
 			"type":"already"
@@ -531,7 +529,7 @@
 		{
 			"event":["1261"],
 			"status":["{2,2}"]
-		},
+		}
 		],
 		"action":[
 		{
