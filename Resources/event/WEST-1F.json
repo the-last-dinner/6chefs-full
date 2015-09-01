@@ -20,7 +20,7 @@
 					"time":3.0
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"camera",
@@ -37,7 +37,7 @@
 					]
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"camera",
@@ -58,7 +58,7 @@
 					"time":3.0
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"camera",
@@ -75,7 +75,7 @@
 					]
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"camera",
@@ -96,7 +96,7 @@
 					"time":3.0
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"camera",
@@ -123,7 +123,7 @@
 					"imgID":"1"
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"removeChara",

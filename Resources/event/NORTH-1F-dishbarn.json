@@ -12,7 +12,7 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"charaMsg",
@@ -45,7 +45,7 @@
 	],
 	"3":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"getItem",

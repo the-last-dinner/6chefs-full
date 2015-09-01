@@ -17,7 +17,7 @@
 	],
 	"3":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -59,7 +59,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"systemMsg",
@@ -94,7 +94,7 @@
 	],
 	"5":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -143,7 +143,7 @@
 					"imgID":"2"
 				},
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"playSE",
@@ -209,7 +209,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{},{}"]
+					"event":["{22,3}","{22,5}"]
 				}
 			],
 			"action":[
@@ -254,7 +254,7 @@
 	],
 	"11":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"getItem",

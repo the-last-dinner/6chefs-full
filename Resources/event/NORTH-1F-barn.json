@@ -76,7 +76,7 @@
 							],
 							"true":[
 								{
-									"type":"span",
+									"type":"spawn",
 									"action":[
 										{
 											"type":"getItem",

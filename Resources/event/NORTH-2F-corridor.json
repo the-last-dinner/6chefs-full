@@ -25,7 +25,7 @@
 	],
 	"4":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -43,7 +43,7 @@
 							"layer":"doorA2"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeLayer",
@@ -64,7 +64,7 @@
 	],
 	"5":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -82,7 +82,7 @@
 							"layer":"doorB2"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeLayer",
@@ -103,7 +103,7 @@
 	],
 	"6":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -121,7 +121,7 @@
 							"layer":"doorC2"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeLayer",
@@ -177,7 +177,7 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"createEnemy",
@@ -222,7 +222,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"createChara",

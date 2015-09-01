@@ -9,7 +9,7 @@
 	],
 	"2":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -51,7 +51,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"playSE",
@@ -87,7 +87,7 @@
 	],
 	"6":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"getItem",

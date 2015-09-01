@@ -112,7 +112,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"createChara",

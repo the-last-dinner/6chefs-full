@@ -17,7 +17,7 @@
 	],
 	"3":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -35,7 +35,7 @@
 							"layer":"doorB2"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeLayer",
@@ -56,7 +56,7 @@
 	],
 	"4":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"playSE",
@@ -74,7 +74,7 @@
 							"layer":"doorC2"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeLayer",
@@ -103,7 +103,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"systemMsg",
@@ -237,7 +237,7 @@
 			],
 			"action":[
 				{
-					"type":"span",
+					"type":"spawn",
 					"action":[
 						{
 							"type":"systemMsg",
