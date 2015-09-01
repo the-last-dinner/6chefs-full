@@ -180,5 +180,31 @@
 			"charaID":"5",
 			"imgID":"1"
 		}
+	],
+	"28":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["{4,10}"],
+					"Nevent":["{23,9}"]
+				}
+			],
+			"action":[
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"createChara",
+							"objID":"107"
+						},
+						{
+							"type":"createChara",
+							"objID":"108"
+						}
+					]
+				}
+			]
+		}
 	]
 }

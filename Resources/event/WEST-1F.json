@@ -277,7 +277,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["4,10"]
+					"event":["{4,10}"],
+					"Nevent":["{23,9}"]
 				}
 			],
 			"action":[
