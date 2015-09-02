@@ -1,105 +1,132 @@
-﻿ー使いそうなスクリプトリストー
+ー使いそうなスクリプトリストー
 
 
 ●キャラメッセージウインドウの表示
-・type名...charaMessge
+・type名...charaMsg
 ・必要なもの...表示するテキスト
 　　　　　　　キャラ画像のファイル名
 　　　　　　　キャラ名
+              nameをつけたら???に 
+              optionでリアクションに（ブワってやつ）
 （例）
-	{
-	"type":"charaMessage",
-	"text":"テキスト(String)",
-	"charaID":"charaID",
-        "imgID":"ID"
-	}
-●リアクションキャラメッセージウインドウの表示
-・type名...reactionMessge
-・必要なもの...表示するテキスト
-　　　　　　　 キャラ画像のファイル名
-              キャラ名
-※破るような音と同時に表示するメッセージウインドウ
-　画像も揺らしながら表示
-　驚いたときや、起こったときに使うキャラメッセージウインドウ
-（例）
-	{
-	"type":"reactionMessage",
-	"text":"テキスト(String)",
-	"file":"ファイル名(String)",
-        "chara":"キャラ名(String)"
-	}
+{
+  "type": "charaMsg",
+  "talk": [
+    {
+      "text": [],
+      "charaID": "",
+      "imgID": "",
+      "name": "",
+      "option": “reaction”
+    },
+    {
+      "text": [],
+      "charaID": "",
+      "imgID": "",
+      "name": "",
+      "option": “reaction”
+    }
+  ]
+}
+
+発言が一人によるものであれば
+        {
+	  "type": "charaMsg",
+          "text": [],
+          "charaID": "",
+          "imgID": ""
+        }
+でOK
+
 ●画像表示
-・type名...imageDisplay
+・type名...displayImg
 ・必要なもの...表示する画像ファイル名
 　　　　　　　　表示する時間
 
 ※画像はフェードインで表示、でフェードアウトしていくように
 （例）
 	{
-	"type":"imageDisplay",
+	"type":"displayImg",
 	"file":"ファイル名(String)",
 	"time":"表示する時間（秒）(double)"
 	}
 
 ●マップ移動
 ・type名...changeMap
-・必要なもの...移動先のマップ番号
+・必要なもの...移動先のマップ名
 　　　　　　　　　　移動先のx座標
 　　　　　　　　　　移動先のy座標
 （例）
 	{
 	"type":"changeMap",
-	"nextMap":"移動先のマップ番号(int)",
-	"nextX":"移動先のx座標(int)",
-	"nextY":"移動先のy座標(int)"
-	}
+	"mapID":"移動先のマップ番号",
+	"x":"移動先のx座標(int)",
+	"y":"移動先のy座標(int)"
+	}choi
 
 
 ●システムメッセージウインドウの表示
-・type名...systemMessge
+・type名...systemMsg
 ・必要なもの...表示するテキスト
 
 （例）
 	{
-	"type":"charaMessage",
+	"type":"syetemMsg",
 	"text":"テキスト(String)"
 	}
 
-●主人公の向きを変更
-・type名...direction
+●キャラの向きを変更
+・type名...directionChange
 ・必要なもの...向き(UP,DOWN,RIGHT,LEFT)
+               誰の？
 （例）
 	{
 	"type":"directionChange",
 	"direction":"向き"
+　　　　"objID":"オブジェクトIDorhero"
 	}
 
-●主人公が勝手に歩く
-・type名...heroMove
-・必要なもの...歩く向き
-　　　　　　　　　　歩数
-　　　　　　　　　　歩く速さ
-（例）
-	{
-	"type":"heroMove",
-	"direction":"歩く向き"
-	"steps":"歩数(int)"
-	"speed":"歩く早さ（double）"
-	}
 
 ●キャラが勝手に歩く
-・type名...charaMove
+・type名...charaWalk
 ・必要なもの...歩く向き
 　　　　　　　　　　歩数
 　　　　　　　　　　歩く速さ
 　　　　　　　　　　歩くキャラのID
 （例）
 	{
-	"type":"charaMove",
+	"type":"charaWalk",
 	"direction":"歩く向き"
 	"steps":"歩数(int)"
 	"speed":"歩く早さ（double）"
-	"charaID":"歩くキャラのID(int)"
+	"objID":"歩くキャラのID(int),orhero"
+	}
+●キャラが勝手に歩く（目的地で指定）
+・type名...charaWalkto
+・必要なもの...目的地のx座標
+			y座標
+               歩くキャラのID
+（例）
+	{
+	"type":"charaWalkto",
+	"x":"x座標",
+	"y":"y座標",
+	"objID":"歩くキャラのID(int),orhero"
+	}
+
+●キャラがワープする）
+・type名...charaWarp
+・必要なもの...目的地のx座標
+			y座標
+               キャラのID
+               出現する向き
+（例）
+	{
+	"type":"charaWarp",
+	"x":"x座標",
+	"y":"y座標",
+	"objID":"歩くキャラのID(int),orhero",
+	"direction":"出現する向き"
 	}
 
 ●マップチップを書き換える
@@ -121,38 +148,58 @@
 
 ●リアクションアイコン表示
 ・type名...reaction
-・必要なもの...表示する画像
-           表示するときに鳴らす音
+・必要なもの...すべてデフォ
 ※何か発見した時とかのビックリマークとか(ポケモンのトレーナーに気づかれた時の！のイメージ)
+
 （例）
 	{
 	"type":"reaction",
-	"file":"表示する画像のファイル名(String)"
-	"file":"鳴らす音のファイル名(String)"
+        "objID":"出すキャラのオブジェクトID又はhero"
 	}
 
 ●鬼を生み出す
-・type名...makeEnemy
+・type名...createEnemy
 ・必要なもの...出現させた鬼の鬼番号
 		   鬼を出現させるx座標
 　　　　　　　　　　出現させるy座標
 　　　　　　　　　　鬼の動きパターン
+		消えるまでに必要なマップ移動の回数
+
 （例）
 	{
-	"type":"makeEnemy",
+	"type":"createEnemy",
 	"enemyID":"鬼番号（int）",
 	"x":"出現させるx座標(int)",
 	"y":"出現させるy座標(int)",
 	"movePattern":"鬼の動きパターン番号(int)",
+	"times":"消えるまでに必要なマップ移動の回数"
+	"speed":"鬼の速さ"
+
 	}
 
-●キャラを消す
+●キャラを生み出す
+・type名...createChara
+・必要なもの...出現させるキャラのオブジェクトID
+	　　　 キャラメッセージ画像
+	　　　 話す内容　　　　　　　 
+　　　　　　　 動きパターン
+
+
+
+　　　　　　　　
+（例）
+	{
+	"type":"createChara",
+	"objID":"出すもののオブジェクトID"
+	}
+
+●オブジェクトを消す
 ・type名...removeChara
-・必要なもの...消すキャラID
+・必要なもの...消すオブジェクトID
 （例）
 	{
 	"type":"removeChara",
-	"charaID":"ID（int）"
+	"objID":"ID（int）"
 	}
 
 ●鬼を消す
@@ -160,18 +207,18 @@
 ・必要なもの...消す鬼ID
 （例）
 	{
-	"type":"remove",
+	"type":"removeEnemy",
 	"enemyID":"ID（int）"
 	}
 
 ●ストーリーメッセージウインドウ表示
-・type名...storyMessage
+・type名...storyMsg
 ・必要なもの...表示するテキスト
            背景のアルファ値
 ※冒頭とかは真っ黒いウインドウを表示するけど、日記を表示するのは半透明のウインドウ
 （例）
 	{
-	"type":"storyMessage",
+	"type":"storyMsg",
 	"text":"表示するテキスト",
 	"alpha":"アルファ値(double)"
 	}
@@ -186,7 +233,20 @@
 	"color":"R,G,B,α(double)"
 	}
 
-●主人公の周りだけcoverを解除して明かりがつくように見せる
+●coverを消す
+・type名...removeCover
+
+※オプションでフェードインも出来るように
+
+（例）
+	{
+	"type":"removeCover"
+        "option":"fadeOut"
+	}
+
+
+
+（●主人公の周りだけcoverを解除して明かりがつくように見せる
 ・type名...lamp
 ・必要なもの...被せるマスクの色、アルファ値
 ※できれば、要相談
@@ -195,8 +255,7 @@
 	"type":"lamp",
 	"color":"R,G,B,α(double)"
 	}
-
-
+）
 ●アイテム入手
 ・type名...getItem
 ・必要なもの...手に入れるアイテムのID
@@ -211,7 +270,7 @@
 
 
 ●氷の上を滑る（氷の抜け道、あさせのほらあな最深部のイメージ）
-・type名...slip
+・type名...slipe
 ・必要なもの...
 ※オブジェクトを踏んだらそのままの向きでぶつかるまで進む（歩行グラフィックは無し）
 （例）
@@ -221,18 +280,27 @@
 
 
 ●後ずさり
-・type名...back
+・type名...backWalk
 ・必要なもの...後ずさりするマス数
 　　　　　　　　　　後ずさりする速さ
-
 （例）
 	{
 	"type":"back",
 	"steps":"後ずさりするマス数（int）",
 	"speed":"後ずさりする速さ(double)"
 	}
+●モノを動かす
+・type名...move
+・必要なもの...eagingで加速度指定
+      
 
-●スペースキー連打イベント（マッドファーザーのずんちゃずんずんちゃのイメージ）
+（例）
+	{
+	"type":"move",
+	"eaging":"in（はやくなる）、out(遅くなる)"
+	}
+
+●連打イベント（マッドファーザーのずんちゃずんずんちゃのイメージ）
 ・type名...barrage
 ・必要なもの...連打する回数
 　　　　　　　　　　制限時間
@@ -241,17 +309,22 @@
 	{
 	"type":"barrage",
 	"barrageTimes":"連打する回数(int)",
-	"limit":"制限時間（double）"
+	"limit":"制限時間（double）",
+	"false":[失敗した時のaction],
+	"true":[成功した時のaction],
 	}
 
 ●暗号イベント
 ・type名...pasward
 ・必要なもの...入力するもの
-　　　　　　　　　　
+　　　		失敗した時のアクション
+　　　　　　　正解したときのアクション　　　　　　　
 （例）
 	{
 	"type":"pasward",
 	"pas":"入力するもの(int)"
+	"false":[]	ミスった時のアクション
+	"true":[]	正解の時のアクション
 	}
 
 ●レイヤーを消す
@@ -288,6 +361,7 @@
 	"type":"countDown",
 	"second":"秒数",
 	"ID":"カウントダウンID"
+	"action":[カウントが0になった時のアクション]
 	}
 ●カウントダウンを止める
 ・type名...stopCount
@@ -309,24 +383,41 @@
 （例）
 	{
 	"type":"getItem",
-	"ID":"アイテムID"
+	"itemID":"アイテムID"
 　　　　"name":"アイテム名"
 	}
 
 ●クエスチョンメッセージウインドウの表示
-・type名...questionMessge
+(外した場合はイベント強制終了)
+・type名...questionMsg
 ・必要なもの...表示するテキスト
-
-（例）
+               選択肢
+　　　　　　　　正解の選択肢
+　　　　　　　　正解した場合のaction
+（例）答えが一つの場合
 	{
-	"type":"getItem",
-	"text":"テキスト(String)"
-        "選択肢":"選択肢1、選択肢2、、、"
+	"type":"questionMsg",
+	"text":"テキスト(String)”,
+	“choices”:[
+		{
+			“choice”:”選択肢１”,
+			“action”:[],
+			“eventID”:ID
+		},
+		{
+			“choice”:”選択肢２”,
+			“action”:[],
+			“eventID”:ID
+		}…
+	]
 	}
+
+
 
 ●レイヤーを揺らす
 ・type名...swingLayer
 ・必要なもの...揺らすレイヤー
+
 
 ※酒影が牢の格子を揺らすときに使う
 　上下に0.2マスずつ揺らす
@@ -334,12 +425,167 @@
 
   デフォルトは永遠に揺らし続ける
 　数回揺らすだけならオプション
+
 （例）
 	{
 	"type":"swingLayer",
-	"tlayer":"揺らすレイヤー名"
+	"layer":"揺らすレイヤー名"
 　　　　"option":"揺らす回数"
 	}
+
+
+●キャラチップ差し替え
+・type名...changeImg
+・必要なもの...オブジェクトID
+　　　　　　　　画像の名前
+
+※キャラを倒れている画像に変える
+とか
+（例）
+	{
+	"type":"changeImage",
+	"objectID":"書き換えるオブジェクトのID"
+　　　　"image":"画像の名前"
+	}
+
+
+●キャラプロファイルに追加
+・type名...addProfile
+・必要なもの...キャラID
+               情報番号
+　　　　　　　　
+
+
+（例）
+	{
+	"type":"addProfile",
+	"charaID":"キャラID"
+　　　　"infoID":"情報番号"
+	}
+
+
+●フェードイン
+・type名...fadein
+・必要なもの...必要ならばフェードインにかかる時間
+		
+（例）
+	{
+	"type":"fadeIn",
+	"time":"時間指定する場合秒数"
+	}
+●フェードアウト
+・type名...fadeout
+・必要なもの...必要ならばフェードアウトにかかる時間
+		
+（例）
+	{
+	"type":"fadeout",
+	"time":"時間指定する場合秒数"
+	}
+
+●イベントを見たことにする
+・type?名...already
+・必要なもの...マップ番号
+　　　　　　　　イベントID
+
+例）
+	{
+	"type":"already"
+	}
+
+●待機
+・type?名...wait
+・必要なもの...時間
+　　　　　　　
+
+例）
+	{
+	"type":"wait",
+	"time":"待機する時間(double)"
+	}
+
+●カメラ
+・type名、、、camera
+・必要なもの、、、マップ番号
+　　　　　　　　　当てるマスの左下の座標
+　　　　　　　　　ゴール地点の座標（動かす場合）
+　　　　　　　　　何秒かけて動かすか（動かす場合）
+		　主人公に戻すコマンド
+		別のキャラを追いかける場合は追いかけるやつのobjID
+（例）
+	{
+	"type" 　　:"camera",
+	"mapID"　　:"マップ番号",
+	"x"　　　　:"x座標",
+	"y"　　　　:"y座標",
+	"nextX"　　:"カメラが向かうx座標"
+	"nextY"　　:"カメラが向かうy座標"
+	"time"　　 :"かかる秒数"
+	"return"   :"hero"←主人公に戻る
+	"objID"    :"追いかけるキャラのオブジェクトID"
+	
+	}
+
+●キャラが主人公（別キャラ）についてくるように
+・type名、、、chase
+・必要なもの、、、追いかける奴のオブジェクトID
+                  追いかけられる奴のオブジェクトID（主人公ならhero）
+
+（例）
+	{
+	"type":"chase",
+        "chaser":"追いかける奴のobjID",
+	"target":"追いかけられるやつのobjID or hero"
+	
+	}
+●ついてくるの解除
+・type名、、、releaseChase
+・必要なもの、、、解除する追いかける奴オブジェクトID
+                  
+
+（例）
+	{
+	"type":"releaseChase",
+        "chaser":"追いかける奴のobjID"
+	}
+
+●チャプターチェンジ画像を表示、チャプターを変える
+
+・type名、、、chapterChange
+・必要なもの、、、チャプター番号
+
+
+(例)
+　　{
+	"type":"chapterChange",
+	"chapterID":"チャプターID"
+    }　　
+
+●キャラを見えなくする
+・type名、、、hideChara
+・必要なもの、、、消すキャラのID
+
+(例)
+　　{
+	"type":"hideChara",
+	"objID":"消すキャラのオブジェクトID又はhero"
+    }　　
+
+●キャラを見えるように戻す
+・type名、、、showChara
+・必要なもの、、、キャラのobjID
+
+(例)
+　　{
+	"type":"showChara",
+	"objID":"キャラのオブジェクトID又はhero"
+    }　　
+●ゲームオーバー
+・type名,,,gameOver
+(例)
+　　{
+	"type":"gameOver"
+    }　　
 
 とりあえず、
 必要に応じて追加

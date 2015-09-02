@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="6">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="9">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -24,7 +24,7 @@
    <property name="cc_vertexz" value="-3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFlILDULwMipcjsUG4kpGBoYoRwj6EJgdTvwLJPHR5ZHWH0cw7jAWjm5cCxO4U4gOj5o0Y89xGzRs1b9Q8nOZRahYI32MYBSMBAACKaXr0
+   eJxjYBgFlILDULwMipcjsUG4kpGBoYoRwj6EJgdTvwLJPHR5ZHWH0cw7jAWjm5cCxO4U4gNI5lFq1qh5g9s8t1HzRs0bNQ+neZSaBcL3GEbBSAAAMjV6Rg==
   </data>
  </layer>
  <layer name="MonoUe" width="20" height="30">
@@ -41,6 +41,7 @@
   <object id="3" x="0" y="0" width="16" height="416"/>
   <object id="4" x="304" y="0" width="16" height="416"/>
   <object id="5" x="16" y="0" width="288" height="64"/>
+  <object id="8" x="16" y="352" width="288" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
@@ -52,5 +53,16 @@
    eJxjYBjcwJSRemYZM46aN2reqHmj5o2aN2reqHnEmAcCYoy4sTiSfaJ41IkR6S5k9xtTwS8DbR4ABEIMnw==
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="6" x="144" y="448" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11130"/>
+   </properties>
+  </object>
+  <object id="7" x="144" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11131"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

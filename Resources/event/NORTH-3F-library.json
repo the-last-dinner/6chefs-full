@@ -1,0 +1,18 @@
+{
+	"1":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["{4,14}"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1026"
+				}
+			]
+		}
+	]
+}

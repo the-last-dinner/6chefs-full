@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="35">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="41">
  <tileset firstgid="1" name="situnai" tilewidth="16" tileheight="16">
   <image source="situnai.png" trans="007575" width="960" height="511"/>
  </tileset>
@@ -86,9 +86,23 @@
   </data>
  </layer>
  <objectgroup name="event">
+  <properties>
+   <property name="EventID" value="1234"/>
+  </properties>
   <object id="34" x="144" y="384" width="32" height="32">
    <properties>
     <property name="EventID" value="1162"/>
+   </properties>
+  </object>
+  <object id="37" x="16" y="160" width="32" height="16">
+   <properties>
+    <property name="EventID" value="1233"/>
+   </properties>
+  </object>
+  <object id="38" x="16" y="160" width="32" height="16"/>
+  <object id="40" x="272" y="48" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1235"/>
    </properties>
   </object>
  </objectgroup>

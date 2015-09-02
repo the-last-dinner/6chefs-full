@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="38">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="42">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -18,6 +18,9 @@
  <tileset firstgid="3973" name="option-set" tilewidth="16" tileheight="16">
   <image source="option-set.png" trans="c1a5c8" width="281" height="1018"/>
  </tileset>
+ <tileset firstgid="5044" name="map_icon" tilewidth="16" tileheight="16">
+  <image source="map_icon.png" trans="080500" width="513" height="435"/>
+ </tileset>
  <layer name="Base" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-4"/>
@@ -31,7 +34,12 @@
    <property name="cc_vertexz" value="-3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlrtOwzAUhrNly8oTcWnLCjQRa8Vl4yboCAIVGEGlwMblBbhIdKVlhTeAZ+FEddSTUzu227gJ6PzSJwvbdVN/Pg6e53mLvhpZdOMc96n5Q2ShHuN5qwK8RiioIKqKNUM0n1NMahpH2GECnV8Tf4eESONdNo7PIZMfsn02dZRA51PveO5nkOYrGJybSPGd+Hm4za/N2meVowpxqvMeatbEZ2ML2AZ2gF0/ff9wm1+btc8qR9hjctdT7xGZp6v3ZI074Ai4BB59rndX7SFwIfb52NfXO/WISdL1h7wRZGvi+TLvZaiP/9ZS732gJ9A56op5fYFJvoM0P0F63HW943cUJbm76Hzcr6Lo+p203m0czQQD8gz13puAPnImGxt3TVU/rgUXZP0eW7K8F5HY+z3wILxz3MTVPs/CPTAHzAMLGVQEVXFvPMEzPAMvwKs/us48MzHxXtN9xs5MvSXOcJagr2VIE4jEGu/oTvsATqD/AFhjcuM8GN3nOA0xbuptU+K9gcZXgDoQGninYe9uvMtCveu8ybzvWZwb9l5O7zqyvC+jc8Pei6du6N3EG9f738HUuwm6em8F/H4vCzb1rvOmq/d4rXVgg70Xjk2967zpvO8Ld032XgpMveu8mbzfT4Ez9l4KbN7vWd5c/l/Xhv4r4MaSzhifyZsOouhnwdxaeM/CpXfO9JKH96ROVcQ1cG1wBjnTS1vhRuWNnXF+AbRI7jk=
+   eJztlslOwzAQhnvLLW8FpS1XoIm4Viw3NgFHEKjAEVQK3FhegEWiV1qu8AbwLEyEo06mXtu4CWh+6ZOF7bqpP49DpVKpzAdqZDGNc/ynEQyRhXpM5i0L8BqRoIaoK9aM0HxOMWkYHGGHKXR+Q/wdEWKDd9k4PodMfsj22dZRCp1PveO5H2GWz/D33MSK78TPw21+rW6fVY5qxKnJe2RYE5+NDWAT2AK2g+z9w21+rW6fVY6wx/Sup95jMs9U7+kat8AhcAE8BFzvvtoD4Fzs81FgrnfqEZOmFwx5JcjWxPNl3stQH/+tpd4HQF9gctQT8wYCm3yFWb7D7LjvesfvKEp6d9H5uF9F0fU7ab27OPIR6r0/AQPkTDY27pqqflwLPtD9Hld03otI4v0OuBfeOX7ia59n4G6YBarAnIaaoC7ukkd4hifgGXgJRtepMhOT7DXdZ+zM1lvqDGcB+tqW7AOxWOMN3WnvwDH07wErTG6chaP7nKQlxm29rUu8t9D4EtAEIgvvNOzdj3dZqHeTN5n3HYdzw97L6d2EzvsiOjfsvXialt5tvHG9/x1svdtgqvd2yO/3suBS7yZvpnpP1loF1th74bjUu8mbyfuucLfP3kuBrXeTN5v3+wlwyt5Lgcv7XefN5/91Hei/BK4d6Y7xmbzpIop+FsyNg3cdPr1zppc8vKd1qiKpgSuLM8iZXjoKNypv7IzzA5Op7e8=
+  </data>
+ </layer>
+ <layer name="key" width="126" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt0TENACAQBMET8f5dgROoQQUUP6Ngk00AAAAAAAAAAAAA+hqVzPpdwWvrPt++QzsHSA0D5w==
   </data>
  </layer>
  <layer name="MonoChu" width="126" height="24">
@@ -121,6 +129,26 @@
   <object id="37" x="1408" y="112" width="32" height="32">
    <properties>
     <property name="EventID" value="1163"/>
+   </properties>
+  </object>
+  <object id="38" x="1328" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1236"/>
+   </properties>
+  </object>
+  <object id="39" x="1296" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1238"/>
+   </properties>
+  </object>
+  <object id="40" x="1968" y="320" width="32" height="32">
+   <properties>
+    <property name="EventID" value="152"/>
+   </properties>
+  </object>
+  <object id="41" x="1696" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="172"/>
    </properties>
   </object>
  </objectgroup>

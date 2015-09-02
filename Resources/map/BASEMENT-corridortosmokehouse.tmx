@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="4">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="34" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="14">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
- <layer name="Base" width="20" height="30">
+ <tileset firstgid="481" name="chip10e_glas" tilewidth="16" tileheight="16">
+  <image source="chip10e_glas.png" trans="0000ff" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="20" height="34">
   <properties>
    <property name="cc_vertexz" value="-6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBhawJSRgWENkdiYcdS8UfNGzRs1b9S8UfNGzRsJ5g02AADHVbp5
+   eJxjYMAEvEDMh0QTEicEtIFYB4kmJE6seSCsC8RrGCFYhwEVEws8gdgLir2RzPNiQMXEAFNGhH5C2Jhx1LxR80bNGzVv1LxR80bNGwnmYQMw/dQC1DZvIAEA+c7FWQ==
+  </data>
+ </layer>
+ <layer name="MonoShita" width="20" height="34">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAM2pkgmFpgKRMED1bzDjNB8CgYBaNgFIyCUTAKRsEooD8AAA/MBTk=
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="1" x="240" y="32" width="32" height="416"/>
-  <object id="3" x="48" y="32" width="32" height="416"/>
+  <object id="1" x="240" y="64" width="32" height="416"/>
+  <object id="3" x="48" y="64" width="32" height="416"/>
+  <object id="4" x="176" y="16" width="96" height="48"/>
+  <object id="5" x="48" y="16" width="96" height="48"/>
+  <object id="6" x="176" y="480" width="96" height="64"/>
+  <object id="7" x="48" y="480" width="96" height="64"/>
+  <object id="8" x="48" y="0" width="96" height="16"/>
+  <object id="9" x="176" y="0" width="96" height="16"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="10" x="144" y="512" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11134"/>
+   </properties>
+  </object>
+  <object id="11" x="144" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11135"/>
+   </properties>
+  </object>
+  <object id="13" x="80" y="384" width="160" height="32">
+   <properties>
+    <property name="EventID" value="12102"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="72">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="76">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -18,9 +18,15 @@
  <tileset firstgid="3973" name="set-mansion-clear-in" tilewidth="16" tileheight="16">
   <image source="set-mansion-clear-in.png" trans="c1a5c8" width="1440" height="1760"/>
  </tileset>
+ <tileset firstgid="13873" name="cyber2" tilewidth="16" tileheight="16">
+  <image source="cyber2.png" trans="0000ff" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="14353" name="cyber2" tilewidth="16" tileheight="16">
+  <image source="cyber2.png" trans="007575" width="480" height="256"/>
+ </tileset>
  <layer name="Base" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-6"/>
+   <property name="cc_vertexz" value="-17"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt00EOQDAQQFFO67ycyIKFWEiTlo7Om+QlVtLOZ5qMMZlmnQ/L5bnE07toq3TXJQ1qW73R3fdTtucW3XrfK/qZRhNxx9up9zmiG+1/11133qF7ThG7ozu6ozu6ozu6ozu6o3tWuufUovt9et9pVC33rPt/RO9uvhndc05tsx0NNv+H
@@ -28,23 +34,31 @@
  </layer>
  <layer name="dishroom" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-5"/>
+   <property name="cc_vertexz" value="-16"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0TENAAAIBDH8C0MXCxJYyLfJKbgqAAC41xtZfM/keybfAQAAAAAAAPhoAOHfBjE=
   </data>
  </layer>
- <layer name="foodroomdoor" width="126" height="24">
+ <layer name="breakdoor" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0QENgCAARcHfAQJgP6kJtTSEgzHvErztJQAA8L27JL3srmC18T6fvv9Oq8lVd1ewmu8AAAAAAAAAnOgBVBoDhQ==
+   eJztw0EJAAAIBLCrZS77gw8T+BQ2WAIAAABw07UBAAAAAAAA4JMBwQUBWQ==
+  </data>
+ </layer>
+ <layer name="foodroomdoor" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-14"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0TENADAMBLGwCooiKf+9Qyh0id6WDsFVAQDAf6cnsvieyfdMtycAAAAAAAAA2OQBOi0EXQ==
   </data>
  </layer>
  <layer name="MonoShita" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztlktO3EAQhr0zG2YLFyJkPGx5zCRbFGDHS4EliAjIMhEBsuNxAR4LtswgwRG4QbgBWaYsVWmKotvdpm3akeqXPrXUbddY/XXZkyRJMpUO+SS4H02SB8bT6MvrNXHSSYf8ASd/BdwR8RnhNdpIxsYMvT8i5L2bDtHESQf3v2fxzh1mwqusQXUyHHvo/QmR3nsG7/wcKtVh2mfyaPNO6+RSOuvgetdwzT2rRd7b7Lqic6hjdWPZfu8y77KeyTudE+79QXjn52MZWAFWgbX05TnUsbqxaJ9D+p3mOeT90dDvVO8E2AZ+AudpeL9TYvdX08Yt4Afu847Y52dLv9vqUW5SO7n3kdaQ3DtfN3kPOdeU2P3VtFF6HwB9JEU33Lv02Md7BmyPQ1J3v9M3xwT9T+X3t8W8jdj9G9rvPGPgfFxQd6T3fgD8LJrW3lrTNk+9FPLMrt+mMxhaq8h7jOTeT4Ez9K6pJ3Xt8wS8Gz4Ak8DHAtpIhu+SC3iGS+AKuE5f15lUgsn3Wu4zd+brjZzxTMPcriebQA9r3LJ32h3wDeY3gC9KZXxvvd7nPPO47uttyeB9nq3PAnNA18O7jHqvx7sp0rvLm8n7eolzo96b6d1FkfcZdm7Ue3zmPL37eNN+/3/w9e6Dq993W/p9bwpl+t3lzdXvea0FYFG9R6dMv7u8ubx/RXeb6r0R+Hp3efP5vu8B++q9EZT5vhd5q/N/3QHM/wKOS3L4hnuq5pAR+1k4v0t4L6JO75r3SxXeqU9t5D1w5HEGNe+XA4sbmzd1pvkHk7/9wQ==
@@ -52,7 +66,7 @@
  </layer>
  <layer name="MonoChu" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt07EJgEAMQNGrBAstBfffSXABwQUEO+s7xC5cwPe6QEjzSSnfzqmej+l9j34iGumen+7/FNFo1z29tvvm338hotHd3Lh0Tyei0TjX8zC/79FPRKO1ubHono5GAAAAAAAAANDHA/DSF/k=
@@ -60,7 +74,7 @@
  </layer>
  <layer name="MonoUe" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0bENgDAMAEE30EEq6GD/MfEKLhwU6W6BLz4CAADWto2IfazfoObIH2fzkxkNaq78cTc/mdGg5skfb/OTGQ0AAAAAAAAA/vcBiT4CCQ==
@@ -110,22 +124,6 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2cEJACEMAEGflnP9Vyf+rOAEdwbyDyx5ZQwA4JZv3t6AP+zO5/A2nVv0btG7Re8WvVv0btG7Re8evVvceIveLXq36N2id4dfaIfWALxiAT0SCFE=
-  </data>
- </layer>
- <layer name="CharaUe2" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1kEKgDAQBMEcfY7/f50HEUQQEU0ys9MFuS/bhKQ1AAA8rMt+kMmpv8ucTtT7q8/nTm239B5HYdcKM6SasXt66xjVgt6ajv49+tDcw5/9ae7nS3/ecn9vGtK7nqem9K7t2pc7nqPn/x+6zt1pX99dZ/pno30u7n42+mejfzbF/htRrA4B
-  </data>
- </layer>
  <objectgroup name="event">
   <object id="67" x="1824" y="0" width="48" height="32">
    <properties>
@@ -150,6 +148,21 @@
   <object id="71" x="576" y="112" width="32" height="32">
    <properties>
     <property name="EventID" value="1155"/>
+   </properties>
+  </object>
+  <object id="72" x="576" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1229"/>
+   </properties>
+  </object>
+  <object id="73" x="576" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1230"/>
+   </properties>
+  </object>
+  <object id="75" x="736" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1231"/>
    </properties>
   </object>
  </objectgroup>

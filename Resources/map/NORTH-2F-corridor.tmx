@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="75">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="76">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -17,7 +17,7 @@
  </tileset>
  <layer name="Base" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2TEKgDAQBdF4Ws/rjSxs48JiwM3OfHiVIsTByjGcc6Rdx+MMrs1Ez9Ja0bvOdpjdY/d63vZXd9Vgdw6/d6bV3dWf3ZnszmR3Jrsz2Z3J7kx2Z7I7k92Z7M5kdya7M63onvkPpBrv2e77qN59h3U4i93z63CWr81uYivohw==
@@ -25,7 +25,7 @@
  </layer>
  <layer name="MonoShita" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztl7tOwzAUhrOZhaw8EZQEVqBFrBWXjZugIwjEZQSV28blBbgMrLRIdIEVFph5BEaOha2cGMd22qQJ6PzSJ0uJ7ab+fOLW8zxvnEWoeRr0vA7ic9Dcn9KfjLEIXVRvvN+MAM9RE+jGvwmk95qhP6U/kc6mDd6xN94/AELFe5jg8VW4/tR4130m3odEdujWWfWoesfedPsEe3/240jvX8h7IMYneZfzU5tda1pn1dmL/+P9C3nLwrscz1kEloBlYIXF9yG12bWmdU7y3nHwLveVa72HYsw5sAkcAleM6j2vdgM4EOu8xdzq/c3i/Z5F6LwP+BHcO+6v816G+vhvreq9DbQESd5xvbbEmDbyjvPux/nw9f1k8q73gMX/P2BCFp1PuD++nkTR9dtrvbs4G/LjZBnVe6sH2siZ7l63c5o+K+jxmbv9PmkxeS8i3PsFcCm8U/JJXus8DO+BEaACjBoIBKF4b1zDM9wAt8Ad+z1PhegZvtbqOmNnrt6kM5wJuLbjSAOYFnM8oHfaI7AN19eBWSIz9v3f68xTF/ddvS1ovNfR/SmgCtQcvKsh7/l410X1bvOm876aYt+Q93J6t2HyPon2DXkvnqqjdxdvVO9/B1fvLtjqfcen870spKl3mzdbvfO55oB58l44aerd5s3mfU24a5D3UuDq3ebN5XzfBfbIeylIc76bvOX5u64J14+A05QcdzEma44RRT8L5iyFdxN5eqf0L1l4l3WaBK+BE4c9SOlfmglukryRM8o3kI8JSw==
@@ -33,7 +33,7 @@
  </layer>
  <layer name="MonoChu" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0zEKg0AQhlGrgMVaCt7/TkIuELBKJ6RL7RQ7WyhuyHvdD8s2HzMMR1up71fY3C9r1NJM99+j+386o/uz1Lfu/Ynd12S3/OHe+3fGvb/Dm0/Yu+7dyRq1NBun+n6Ezf2yRi3Nlqm+Z927kzXSDAAAAAAAAACu8QVrTiPb
@@ -41,7 +41,7 @@
  </layer>
  <layer name="MonoUe" width="126" height="24">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0LENgEAQA8FLIIOPIIP+y+SLQEaHZhqwvFUAAPC+ZVSt4z9byT+dbbPRHuqU2Er+6eyYjc5Qp8RW8k9n12x0hzoltpJ/AAAAAAAAAPjOA1bEAw0=
@@ -87,22 +87,6 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2cEJACEMAEGflnP9Vyf+rOAEdwbyDyx5ZQwA4JZv3t6AP+zO5/A2nVv0btG7Re8WvVv0btG7Re8evVvceIveLXq36N2id4dfaIfWALxiAT0SCFE=
-  </data>
- </layer>
- <layer name="CharaUe2" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1kEKgDAQBMEcfY7/f50HEUQQEU0ys9MFuS/bhKQ1AAA8rMt+kMmpv8ucTtT7q8/nTm239B5HYdcKM6SasXt66xjVgt6ajv49+tDcw5/9ae7nS3/ecn9vGtK7nqem9K7t2pc7nqPn/x+6zt1pX99dZ/pno30u7n42+mejfzbF/htRrA4B
-  </data>
- </layer>
  <objectgroup name="event">
   <object id="62" x="976" y="384" width="32" height="32">
    <properties>
@@ -152,6 +136,11 @@
   <object id="73" x="144" y="0" width="48" height="32">
    <properties>
     <property name="EventID" value="11"/>
+   </properties>
+  </object>
+  <object id="75" x="976" y="352" width="96" height="32">
+   <properties>
+    <property name="EventID" value="1217"/>
    </properties>
   </object>
  </objectgroup>

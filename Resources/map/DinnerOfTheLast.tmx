@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="17">
  <tileset firstgid="1" name="BlackMagic01" tilewidth="16" tileheight="16">
   <image source="BlackMagic01.png" trans="008080" width="192" height="352"/>
  </tileset>
@@ -41,7 +41,18 @@
    eJzt0TsOgCAUBVF2Diqd31Z7XKe3tjAvYCSSOcl0r7gE5wAAfzSoaLz1KhhvO9XnDLpZ1Wa8HdVkvJ3VkrUIwBt2ddQe8SCps/aID7T6D62+CwBQ7gLp/g3V
   </data>
  </layer>
- <objectgroup name="collision"/>
+ <objectgroup name="collision">
+  <object id="3" x="336" y="416" width="240" height="32"/>
+  <object id="4" x="576" y="416" width="32" height="32"/>
+  <object id="5" x="592" y="0" width="32" height="416"/>
+  <object id="6" x="48" y="416" width="256" height="32"/>
+  <object id="7" x="16" y="0" width="32" height="448"/>
+  <object id="8" x="48" y="0" width="464" height="64"/>
+  <object id="9" x="512" y="0" width="80" height="64"/>
+  <object id="11" x="432" y="144" width="128" height="48"/>
+  <object id="14" x="272" y="144" width="96" height="48"/>
+  <object id="15" x="80" y="144" width="128" height="48"/>
+ </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe" width="40" height="30">
@@ -52,5 +63,16 @@
    eJztysEJACAMBMH0oKD9V2o+wY9gCpiB+xwbAUAZufn4V243+m736wEAALgOn1sBAw==
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="2" x="304" y="448" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11162"/>
+   </properties>
+  </object>
+  <object id="16" x="304" y="416" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12145"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

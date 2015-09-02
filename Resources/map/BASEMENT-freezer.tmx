@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="15">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="21">
  <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
@@ -53,8 +53,24 @@
  </layer>
  <layer name="CharaUe2" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYKA9WAPEa6lsFrXMPAXEp5FoSgEu910E4ktkmIfLfe+B+AOZbhwFo2AUjAJqAACUPRCU
+   eJxjYICAZEYIRgduQDF3Rtx8XADZvDVAvBYqngIUS2VEmAPjEwtgZsHoJqDeZiRzYHxiwSkgPo1EwwCp5uByHwxcBOJLpBuH033vgfgDGeZRG7gyEoeHi3kjDQz2+BiN34EFAAstKa8=
   </data>
  </layer>
- <objectgroup name="event"/>
+ <objectgroup name="event">
+  <object id="15" x="288" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11158"/>
+   </properties>
+  </object>
+  <object id="16" x="256" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12133"/>
+   </properties>
+  </object>
+  <object id="20" x="224" y="160" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12134"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

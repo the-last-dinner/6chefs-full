@@ -1,0 +1,32 @@
+{
+	"1":[
+		{
+			"type":"changeMap",
+			"nextMap":"4",
+			"x":2,
+			"y":22
+		}
+	],
+	"2":[
+		{
+			"type":"changeMap",
+			"nextMap":"6",
+			"x":40,
+			"y":14
+		}
+	],
+	"3":[
+		{
+			"type":"changeMap",
+			"nextMap":"6",
+			"x":40,
+			"y":16
+		}
+	],
+	"4":[
+		{
+			"type":"systemMsg",
+			"text":["今にも動き出しそうな甲冑だ"]
+		}
+	]
+}
