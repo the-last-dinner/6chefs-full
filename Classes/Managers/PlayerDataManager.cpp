@@ -185,6 +185,23 @@ void PlayerDataManager::save(const int& id)
  * ******************************************************** */
 
 /* SET */
+//主人公の座標のセット
+void PlayerDataManager::setLocation(const int& x, const int& y, const int& direction)
+{
+    FUNCLOG
+    // 配列を削除
+    this->local["location"].Clear();
+    // 配列をセット
+    this->local["location"].SetArray();
+    // x座標
+    this->local["location"].PushBack(x, this->local.GetAllocator());
+    // y座標
+    this->local["location"].PushBack(y, this->local.GetAllocator());
+    // 方向
+    this->local["location"].PushBack(direction, this->local.GetAllocator());
+    return;
+}
+
 //友好度のセット
 void PlayerDataManager::setFriendship(const string& character, const int& level)
 {
@@ -250,6 +267,21 @@ void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
 }
 
 /* GET */
+//主人公の位置をゲット
+// return vector(x, y, direction)
+vector<int> PlayerDataManager::getLocation()
+{
+    FUNCLOG
+    rapidjson::Value& location = this->local["location"];
+    SizeType len = location.Size();
+    vector<int> loc;
+    for(SizeType i=0; i<len; i++)
+    {
+        loc.push_back(location[i].GetInt());
+    }
+    return loc;
+}
+
 //友好度の取得
 int PlayerDataManager::getFriendship(const string& character)
 {

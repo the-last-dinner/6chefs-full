@@ -35,7 +35,7 @@ private:
     rapidjson::Document global;
     //対象ローカルセーブデータid
     int local_id;
-    //ローカルセーブデータ達
+    //ローカルセーブデータ
     rapidjson::Document local;
     //FileUtils
     cocos2d::FileUtils* fu;
@@ -50,11 +50,13 @@ public:
     void save(const int& id);
     /* flag管理系 */
     // SET
+    void setLocation(const int& x, const int& y, const int& direction);
     void setFriendship(const string& character, const int& level);
     void setEventFlag(const string& map, const int& event_id, const bool& flag);
     void setItem(const int& item_id);
     void setItemEquipment(const int& which, const int& item_id);
     // GET
+    vector<int> getLocation();
     int getFriendship(const string& character);
     bool getEventFlag(const string& map, const int& event_id);
     int getItem(const int& item_id);
