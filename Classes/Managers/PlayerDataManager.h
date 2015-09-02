@@ -61,13 +61,13 @@ public:
     // SET
     void setLocation(const Location& location);
     void setFriendship(const string& character, const int& level);
-    void setEventFlag(const string& map, const int& event_id, const bool& flag);
+    void setEventFlag(const int& map_id, const int& event_id, const bool& flag);
     void setItem(const int& item_id);
     void setItemEquipment(const int& which, const int& item_id);
     // GET
     Location getLocation();
     int getFriendship(const string& character);
-    bool getEventFlag(const string& map, const int& event_id);
+    bool getEventFlag(const int& map_id, const int& event_id);
     int getItem(const int& item_id);
     map<int, int> getItemAll();
     int getItemEquipment(const int& which);

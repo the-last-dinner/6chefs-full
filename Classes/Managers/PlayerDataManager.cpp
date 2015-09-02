@@ -170,7 +170,7 @@ void PlayerDataManager::save(const int& id)
         this->global[cha_id]["name"] = this->local["name"];
         this->global[cha_id]["play_time"] = this->local["play_time"];
         this->global[cha_id]["save_count"] = this->local["save_count"];
-        this->global[cha_id]["map"] = this->local["map"];
+        this->global[cha_id]["location"] = this->local["location"];
     } else {
         //セーブデータが存在しない場合
         rapidjson::Value empty(kObjectType);
@@ -179,8 +179,7 @@ void PlayerDataManager::save(const int& id)
         this->global[cha_id].AddMember("name", this->local["name"], this->local.GetAllocator());
         this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
         this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
-        this->global[cha_id].AddMember("map", this->local["map"], this->local.GetAllocator());
-        
+        this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
     }
     string path_g = this->fu->fullPathForFilename("save/global.json");
     this->writeJsonFile(path_g, this->global);
@@ -217,16 +216,17 @@ void PlayerDataManager::setFriendship(const string& character, const int& level)
 }
 
 //イベントフラグのセット
-void PlayerDataManager::setEventFlag(const string& map, const int& event_id, const bool& flag)
+void PlayerDataManager::setEventFlag(const int& map_id, const int& event_id, const bool& flag)
 {
     FUNCLOG
+    const char* mid = to_string(map_id).c_str();
     rapidjson::Value& event = this->local["event"];
-    rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
+    rapidjson::Value::ConstMemberIterator itr = event.FindMember(mid);
     //mapが存在するかチェック
     if(itr == event.MemberEnd()){
-        event.AddMember(StringRef(map.c_str()), rapidjson::Value(), this->local.GetAllocator());
+        event.AddMember(StringRef(mid), rapidjson::Value(), this->local.GetAllocator());
     }
-    event = event[map.c_str()];
+    event = event[mid];
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();
     itr = event.FindMember(id);
@@ -277,7 +277,7 @@ PlayerDataManager::Location PlayerDataManager::getLocation()
 {
     FUNCLOG
     rapidjson::Value& loc = this->local["location"];
-    PlayerDataManager::Location location(loc["map_id"].GetInt(), loc["x"].GetInt(), loc["y"].GetInt(), loc["direction"].GetInt());
+    PlayerDataManager::Location location(loc[0].GetInt(), loc[1].GetInt(), loc[2].GetInt(), loc[3].GetInt());
     return location;
 }
 
@@ -289,16 +289,17 @@ int PlayerDataManager::getFriendship(const string& character)
 }
 
 //イベントフラグの取得
-bool PlayerDataManager::getEventFlag(const string& map, const int& event_id)
+bool PlayerDataManager::getEventFlag(const int& map_id, const int& event_id)
 {
     FUNCLOG
+    const char* mid = to_string(map_id).c_str();
     rapidjson::Value& event = this->local["event"];
-    rapidjson::Value::ConstMemberIterator itr = event.FindMember(map.c_str());
+    rapidjson::Value::ConstMemberIterator itr = event.FindMember(mid);
     //mapが存在するかチェック
     if(itr == event.MemberEnd()){
         return false;
     }
-    event = event[map.c_str()];
+    event = event[mid];
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();
     itr = event.FindMember(id);
