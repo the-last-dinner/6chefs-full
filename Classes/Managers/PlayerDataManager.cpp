@@ -18,6 +18,9 @@ static PlayerDataManager* _instance = nullptr;
 //セーブデータの個数
 const int PlayerDataManager::MAX_SAVE_COUNT = 10;
 
+//セーブインデックスの0回の表示
+const string PlayerDataManager::DEFAULT_COUNT = "  0";
+
 // インスタンスを生成&取得
 PlayerDataManager* PlayerDataManager::getInstance()
 {
@@ -123,7 +126,7 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
         {
             cout << "empty >> " << i << endl;
             //空のデータ
-            save = SaveIndex(i, "--- NO DATA ---", "--時間--分", "  0", "---------------");
+            save = SaveIndex(i, "--- NO DATA ---", "--時間--分", DEFAULT_COUNT, "---------------");
         } else {
             cout << "set >> " << i << endl;
             //プレイ時間を編集

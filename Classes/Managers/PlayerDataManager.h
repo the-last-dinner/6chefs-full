@@ -17,27 +17,27 @@ class PlayerDataManager
 public:
     struct SaveIndex
     {
-        int data_id;
-        string name;
-        string play_time;
-        string save_count;
-        string map_name;
+        int data_id {0};
+        string name {""};
+        string play_time {""};
+        string save_count {""};
+        string map_name {""};
         SaveIndex(int i, const string& n, const string& pt, const string& sc, const string& mn):data_id(i), name(n), play_time(pt), save_count(sc), map_name(mn){};
         SaveIndex(){};
     };
     struct Location
     {
-        int map_id;
-        int x;
-        int y;
-        Direction direction;
+        int map_id{0};
+        int x {0};
+        int y {0};
+        Direction direction {Direction::SIZE};
         Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
         Location(){};
     };
 //クラス変数
 public:
     static const int MAX_SAVE_COUNT;
-
+    static const string DEFAULT_COUNT;
 //インスタンス変数
 private:
     //グローバルセーブデータ
