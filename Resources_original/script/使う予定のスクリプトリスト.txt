@@ -1,4 +1,4 @@
-﻿ー使いそうなスクリプトリストー
+ー使いそうなスクリプトリストー
 
 
 ●キャラメッセージウインドウの表示
@@ -398,15 +398,16 @@
 	{
 	"type":"questionMsg",
 	"text":"テキスト(String)”,
-        "choices”:[“選択肢1”, ”選択肢2”, …],
-	"answers”:[
+	“choices”:[
 		{
-			“answer”:”choices上でのindex(0始まり)”,
-			“action”:[]
+			“choice”:”選択肢１”,
+			“action”:[],
+			“eventID”:ID
 		},
 		{
-			“answer”:”choices上でのindex(0始まり)”,
-			“action”:[]
+			“choice”:”選択肢２”,
+			“action”:[],
+			“eventID”:ID
 		}…
 	]
 	}
