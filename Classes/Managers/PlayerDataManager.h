@@ -25,6 +25,15 @@ public:
         SaveIndex(int i, const string& n, const string& pt, const string& sc, const string& mn):data_id(i), name(n), play_time(pt), save_count(sc), map_name(mn){};
         SaveIndex(){};
     };
+    struct Location
+    {
+        int map_id;
+        int x;
+        int y;
+        Direction direction;
+        Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
+        Location(){};
+    };
 //クラス変数
 public:
     static const int MAX_SAVE_COUNT;
@@ -50,13 +59,13 @@ public:
     void save(const int& id);
     /* flag管理系 */
     // SET
-    void setLocation(const int& x, const int& y, const int& direction);
+    void setLocation(const Location& location);
     void setFriendship(const string& character, const int& level);
     void setEventFlag(const string& map, const int& event_id, const bool& flag);
     void setItem(const int& item_id);
     void setItemEquipment(const int& which, const int& item_id);
     // GET
-    vector<int> getLocation();
+    Location getLocation();
     int getFriendship(const string& character);
     bool getEventFlag(const string& map, const int& event_id);
     int getItem(const int& item_id);

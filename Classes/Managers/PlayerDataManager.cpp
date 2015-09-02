@@ -3,8 +3,12 @@
 //  LastSupper
 //
 //  Created by 猪野凌也 on 2015/06/28.
-//
-//
+/*
+ [memo]
+ ・オブジェクト生成時にコンストラクタでグローバルセーブデータの読込(初回時は作成)
+ ・セーブデータ選択が開かれる時にgetSaveIndexからセーブデータ表示用構造体を取得
+ ・セーブデータが選択されたらsetMainLocalData(int local_id)でlocalデータのセット
+*/
 
 #include "Managers/PlayerDataManager.h"
 
@@ -186,19 +190,17 @@ void PlayerDataManager::save(const int& id)
 
 /* SET */
 //主人公の座標のセット
-void PlayerDataManager::setLocation(const int& x, const int& y, const int& direction)
+void PlayerDataManager::setLocation(const Location& location)
 {
     FUNCLOG
     // 配列を削除
     this->local["location"].Clear();
     // 配列をセット
     this->local["location"].SetArray();
-    // x座標
-    this->local["location"].PushBack(x, this->local.GetAllocator());
-    // y座標
-    this->local["location"].PushBack(y, this->local.GetAllocator());
-    // 方向
-    this->local["location"].PushBack(direction, this->local.GetAllocator());
+    this->local["location"].PushBack(location.map_id, this->local.GetAllocator());
+    this->local["location"].PushBack(location.x, this->local.GetAllocator());
+    this->local["location"].PushBack(location.y, this->local.GetAllocator());
+    this->local["location"].PushBack(static_cast<int>(location.direction), this->local.GetAllocator());
     return;
 }
 
@@ -268,18 +270,12 @@ void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
 
 /* GET */
 //主人公の位置をゲット
-// return vector(x, y, direction)
-vector<int> PlayerDataManager::getLocation()
+PlayerDataManager::Location PlayerDataManager::getLocation()
 {
     FUNCLOG
-    rapidjson::Value& location = this->local["location"];
-    SizeType len = location.Size();
-    vector<int> loc;
-    for(SizeType i=0; i<len; i++)
-    {
-        loc.push_back(location[i].GetInt());
-    }
-    return loc;
+    rapidjson::Value& loc = this->local["location"];
+    PlayerDataManager::Location location(loc["map_id"].GetInt(), loc["x"].GetInt(), loc["y"].GetInt(), loc["direction"].GetInt());
+    return location;
 }
 
 //友好度の取得
