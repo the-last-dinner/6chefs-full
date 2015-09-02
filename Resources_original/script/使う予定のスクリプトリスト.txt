@@ -1,4 +1,4 @@
-ー使いそうなスクリプトリストー
+﻿ー使いそうなスクリプトリストー
 
 
 ●キャラメッセージウインドウの表示
@@ -309,7 +309,9 @@
 	{
 	"type":"barrage",
 	"barrageTimes":"連打する回数(int)",
-	"limit":"制限時間（double）"
+	"limit":"制限時間（double）",
+	"false":[失敗した時のaction],
+	"true":[成功した時のaction],
 	}
 
 ●暗号イベント
@@ -576,6 +578,12 @@
 　　{
 	"type":"showChara",
 	"objID":"キャラのオブジェクトID又はhero"
+    }　　
+●ゲームオーバー
+・type名,,,gameOver
+(例)
+　　{
+	"type":"gameOver"
     }　　
 
 とりあえず、
