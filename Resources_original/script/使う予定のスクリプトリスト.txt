@@ -527,6 +527,17 @@
 	  "type":"gameOver"
     }　　
 
+●フラグを変えるヤツ
+・type名、、、changeFlag
+・必要なもの、、、変えるフラグ
+
+
+(例)
+　　{
+	  "type":"changeFlag",
+	  "flg":1
+    }　
+
 とりあえず、
 必要に応じて追加
 
