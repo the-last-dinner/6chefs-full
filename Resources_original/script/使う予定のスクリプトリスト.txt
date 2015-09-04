@@ -375,7 +375,7 @@
 	{
 	"type":"swingLayer",
 	"layer":"揺らすレイヤー名",
-　"option":"揺らす回数"
+　"option":"揺らす回数"#←なければ永遠に
 	}
 
 
@@ -534,8 +534,20 @@
 
 (例)
 　　{
-	  "type":"changeFlag",
+	  "type":"changeFlg",
 	  "flg":1
+    }　
+
+●強制的にアイテムを捨てる
+・type名、、、removeItem,
+・必要なもの、、、手持ちから消すアイテムID
+
+※装備しているアイテムの場合は、装備を解除しつつアイテムを手持ちから消す
+
+(例)
+　　{
+	  "type":"removeItem",
+	  "itemID":"消すアイテムID"
     }　
 
 とりあえず、
