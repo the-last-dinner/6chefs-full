@@ -168,9 +168,9 @@
 	{
 	"type":"createChara",
 	"objID":"出すもののオブジェクトID",
-  "charaID":"キャラチップID(int)",
-  "text":["", "", ...],#
-  "movePattern":"ID"#
+  	"charaID":"キャラチップID(int)",
+  	"text":["", "", ...],#
+  	"movePattern":"ID"#
 	}
 
 
@@ -309,7 +309,20 @@
 	"type":"countDown",
 	"second":"秒数",
 	"ID":"カウントダウンID",
-	"action":[カウントが0になった時のアクション]#
+	"condition":[
+		{		
+			"event":["{マップ番号、イベントID}"],
+			"item":["アイテムID,アイテムID,,,,"],
+			"flg":"固有のフラグ",
+			"equip":["アイテムID,アイテムID,,,,"],
+			"status":["{キャラID,好感度}"],
+			"Nevent":[],
+			"Nitem":[],
+			・・・	
+		}
+	],
+	"true":[クリアした時のアクション(String)]またはイベントID(int): "7"
+	"false":[カウントが0になった時のアクション]#,
 	}
 
   
@@ -576,7 +589,24 @@
 		"event":["{マップ番号,イベントID}"]
 	}
 
+●アニメーション
+・type,,,animation
+・必要なもの、、、かかる時間
+		　画像配列
+		 必要ならば、座標(デフォルトは真ん中)
 
+（例）
+{
+	"type":"animation",
+	"time":0.5,
+	"imgs":[
+		"1.png",
+		"2.png",
+		...
+	],
+	"x":,#
+	"y":#
+}
 
 
 TODO >>>>>>>>>>>>>>>>>>
