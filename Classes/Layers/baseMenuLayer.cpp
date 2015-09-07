@@ -59,21 +59,30 @@ void baseMenuLayer::onKeyPressed(EventKeyboard::KeyCode keyCode)
 			this->indexY = (indexY == 0)? indexY = sizeY - 1 : (indexY - 1) % sizeY;
 			if(sizeY >= 2)this->onIndexChanged(true);
 			break;
+			
 		case ActionKeyManager::Key::DOWN:
 			this->indexY = (indexY + 1) % sizeY;
 			if(sizeY >= 2)this->onIndexChanged(true);
 			break;
+			
 		case ActionKeyManager::Key::LEFT:
 			this->indexX = (indexX == 0)? indexX = sizeX - 1 : (indexX - 1) % sizeX;
 			if(sizeX >= 2)this->onIndexChanged(true);
 			break;
+			
 		case ActionKeyManager::Key::RIGHT:
 			this->indexX = (indexX + 1) % sizeX;
 			if(sizeX >= 2)this->onIndexChanged(true);
 			break;
+			
 		case ActionKeyManager::Key::SPACE:
 			this->onSpacePressed();
 			break;
+			
+		case ActionKeyManager::Key::MENU:
+			this->onMenuKeyPressed();
+			break;
+			
 		default:
 			break;
 	}
@@ -88,6 +97,7 @@ void baseMenuLayer::onKeyReleased(EventKeyboard::KeyCode keyCode)
 	
 	// 離し状態にする
 	ActionKeyManager::getInstance()->releaseKey(key);
+	
 	return;
 }
 

@@ -40,7 +40,7 @@ void DungeonScene::onPreloadFinished()
 {
 	FUNCLOG
 	// 黒い幕を張っておく
-	Sprite* black = Sprite::create();
+	Sprite* black { Sprite::create()};
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	black->setColor(Color3B::BLACK);
 	black->setZOrder(static_cast<int>(Priority::SCREEN_EFFECT));
@@ -61,7 +61,7 @@ void DungeonScene::onPreloadFinished()
 	
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
-									 CallFunc::create([=](){black->removeFromParent();}),
+									 TargetedAction::create(black, RemoveSelf::create()),
 									 nullptr));
 	return;
 }
@@ -71,7 +71,7 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 {
 	FUNCLOG
 	// cocos2d上のキーコードからゲーム内でのキーコードに変換
-	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
+	ActionKeyManager::Key key { ActionKeyManager::getInstance()->convertKeyCode(keyCode) };
 	
 	// 押し状態にする
 	ActionKeyManager::getInstance()->pressKey(key);
@@ -82,9 +82,13 @@ void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
 		case::ActionKeyManager::Key::LEFT:
 		case::ActionKeyManager::Key::RIGHT:
 		case::ActionKeyManager::Key::UP:
-		case ActionKeyManager::Key::SPACE:
+		case::ActionKeyManager::Key::SPACE:
 			this->mapLayer->controlMainCharacter(key);
 			break;
+			
+		case::ActionKeyManager::Key::MENU:
+			break;
+			
 		default:
 			break;
 	}

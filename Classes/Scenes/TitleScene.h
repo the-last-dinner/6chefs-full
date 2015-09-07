@@ -35,7 +35,8 @@ private:
 	void onStartSelected();
 	void onContinueSelected();
 	void onExitSelected();
-	void onSaveDataSelected(PlayerDataManager::SaveIndex saveIdx);
+	void onSaveDataSelected(int dataId);
+	void onSaveDataSelectCancelled();
 public:
 	TitleScene();
 	~TitleScene();

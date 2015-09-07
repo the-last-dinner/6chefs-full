@@ -37,11 +37,12 @@ private:
 	TitleMainMenuLayer();
 	~TitleMainMenuLayer();
 	virtual bool init();
-	void onIndexChanged(bool sound);
-	void onSpacePressed();
+	virtual void onIndexChanged(bool sound);
+	virtual void onSpacePressed();
+	virtual void onMenuKeyPressed(){};
 public:
-	void show();
-	void hide();
+	virtual void show() override;
+	virtual void hide() override;
 	
 	// インスタンス変数
 public:

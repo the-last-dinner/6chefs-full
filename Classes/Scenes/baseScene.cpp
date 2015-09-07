@@ -37,7 +37,7 @@ bool baseScene::init(SceneData* data)
 	
 	// ロード画面レイヤー
 	LoadingLayer* loadingLayer = LoadingLayer::create();
-	loadingLayer->setZOrder(100);
+	loadingLayer->setZOrder(static_cast<int>(Priority::SCREEN_EFFECT));
 	this->addChild(loadingLayer);
 	
 	// プリロード開始

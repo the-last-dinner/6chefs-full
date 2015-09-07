@@ -59,9 +59,10 @@ bool SaveDataSelector::init()
 		
 		// 不透明度を半分にしておく
 		panel->setCascadeOpacityEnabled(true);
-		panel->setOpacity(50);
+		panel->setOpacity(100);
 	}
 	
+	this->setCascadeOpacityEnabled(true);
 	this->onIndexChanged(false);
 	
 	return true;
@@ -93,7 +94,7 @@ void SaveDataSelector::onIndexChanged(bool sound)
 		}
 		else
 		{
-			obj->runAction(FadeTo::create(0.2f, 50));
+			obj->runAction(FadeTo::create(0.2f, 100));
 		}
 	}
 }
@@ -101,8 +102,23 @@ void SaveDataSelector::onIndexChanged(bool sound)
 // 決定キーを押した時
 void SaveDataSelector::onSpacePressed()
 {
+	// 指定セーブデータがプレイヤーによってセーブされたものであるか判別
+	if(this->saveDatas.at(this->getSelectedIndex()).save_count == PlayerDataManager::DEFAULT_COUNT)
+	{
+		SoundManager::getInstance()->playSound("se/back.mp3");
+		return;
+	}
 	if(this->onSaveDataSalected)
 	{
-		this->onSaveDataSalected(this->saveDatas.at(this->getSelectedIndex()));
+		this->onSaveDataSalected(this->saveDatas.at(this->getSelectedIndex()).data_id);
+	}
+}
+
+// メニューキーを押した時
+void SaveDataSelector::onMenuKeyPressed()
+{
+	if(this->onSaveDataSelectCancelled)
+	{
+		this->onSaveDataSelectCancelled();
 	}
 }

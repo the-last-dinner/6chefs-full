@@ -61,6 +61,8 @@ bool DungeonSceneData::init(const string& mapName)
 	this->soundFilePaths = this->getPreLoadList("sound");
 	this->textureFilePaths = this->getPreLoadList("texture");
 	
+	this->textureFilePaths.push_back("frame");
+	
 	return true;
 }
 

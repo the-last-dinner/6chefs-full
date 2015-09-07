@@ -65,12 +65,16 @@ bool CharacterMessageLayer::init(const queue<string>& pages)
 	Size mFrameSize = mainFrame->getContentSize();
 	mainFrame->setPosition(Point(WINDOW_WIDTH / 2, mFrameSize.height / 2 + 10)); // 30は縦方向の調整用
 	mainFrame->setZOrder(0);
+	mainFrame->setCascadeOpacityEnabled(true);
 	this->setFrame(mainFrame);
 	this->addChild(frame);
 	
 	// キャラクター名用枠を生成
 	this->nameFrame = ui::Scale9Sprite::createWithSpriteFrameName("cm_frame_s.png", Rect(20, 0, 220, 68));
+	this->nameFrame->setCascadeOpacityEnabled(true);
 	this->addChild(this->nameFrame);
+	
+	this->setCascadeOpacityEnabled(true);
 	
 	return true;
 }

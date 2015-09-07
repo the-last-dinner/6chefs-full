@@ -57,6 +57,7 @@ void TitleScene::onPreloadFinished()
 	
 	// セーブデータ選択レイヤーのイベントをリッスン
 	saveDataSelector->onSaveDataSalected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
+	saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
 	
 	saveDataSelector->hide();
 	this->saveDataSelector = saveDataSelector;
@@ -92,7 +93,18 @@ void TitleScene::onExitSelected()
 }
 
 // セーブデータが選ばれた時
-void TitleScene::onSaveDataSelected(PlayerDataManager::SaveIndex saveIdx)
+void TitleScene::onSaveDataSelected(int dataId)
 {
 	FUNCLOG
+	PlayerDataManager::getInstance()->setMainLocalData(dataId);
+	Director::getInstance()->replaceScene(DungeonScene::createScene());
+}
+
+// セーブデータ選択をキャンセルした時
+void TitleScene::onSaveDataSelectCancelled()
+{
+	FUNCLOG
+	SoundManager::getInstance()->playSound("se/back.mp3");
+	this->saveDataSelector->hide();
+	this->mainMenu->show();
 }

@@ -25,20 +25,22 @@ private:
 	
 	// インスタンスメソッド
 private:
-	void onIndexChanged(bool sound);
-	void onSpacePressed();
+	virtual void onIndexChanged(bool sound);
+	virtual void onSpacePressed();
+	virtual void onMenuKeyPressed();
 protected:
 	SaveDataSelector();
 	~SaveDataSelector();
 public:
-	void show();
-	void hide();
+	virtual void show() override;
+	virtual void hide() override;
 	
 	// インスタンス変数
 private:
 	vector<PlayerDataManager::SaveIndex> saveDatas {};
 public:
-	function<void(PlayerDataManager::SaveIndex)> onSaveDataSalected { nullptr };
+	function<void(int)> onSaveDataSalected { nullptr };
+	function<void()> onSaveDataSelectCancelled { nullptr };
 };
 
 #endif // __SAVE_DATA_SELECTOR_H__
