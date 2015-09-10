@@ -607,7 +607,17 @@
 	"x":,#
 	"y":#
 }
+●好感度を変える
+・type,,,changeStatus
+・必要なもの、、、キャラID
+		　好感度
 
+（例）
+{
+	"type":"changeStatus",
+	"charaID":"キャラID",
+	"favorite":"好感度"
+}
 
 TODO >>>>>>>>>>>>>>>>>>
 
