@@ -1,56 +1,50 @@
 {
   "1": [
     {
-      "type": "charaMsg",
-      "text": [
-        "・・・"
-      ],
-      "charaID": "1",
-      "imgID": "1"
+      "type":"charaMsg",
+      "text":["・・・"],
+      "charaID":"1",
+      "imgID":"1"
     }
   ],
   "2": [
     {
-      "type": "charaMsg",
-      "text": [
-        "もう・・・何なの・・・"
-      ],
-      "charaID": "3",
-      "imgID": "2"
+      "type":"charaMsg",
+      "text":["もう・・・何なの・・・"],
+      "charaID":"3",
+      "imgID":"2"
     }
   ],
   "3": [
     {
-      "type": "charaMsg",
-      "text": [
-        "もう・・・何なの・・・"
-      ],
+      "type":"charaMsg",
+      "text":["行くぞ・・・"],
       "charaID": "5",
       "imgID": "2"
     }
   ],
   "4": [
     {
-      "type": "changeMap",
-      "mapID": "3",
-      "x": 20,
-      "y": 39
+      "type":"changeMap",
+      "mapID":"3",
+      "x":20,
+      "y":39
     }
   ],
   "5": [
     {
-      "type": "changeMap",
-      "mapID": "5",
-      "x": 30,
-      "y": 11
+      "type":"changeMap",
+      "mapID":"5",
+      "x":30,
+      "y":11
     }
   ],
   "6": [
     {
-      "type": "changeMap",
-      "mapID": "9",
-      "x": 4,
-      "y": 31
+      "type":"changeMap",
+      "mapID":"9",
+      "x":4,
+      "y":31
     }
   ],
   "7": [
@@ -112,9 +106,7 @@
       "type": "if",
       "condition": [
         {
-          "Nevent": [
-            "{4,20}"
-          ]
+          "Nevent": ["4","20"]
         }
       ],
       "action": [
@@ -123,16 +115,14 @@
           "action": [
             {
               "type": "charaMsg",
-              "text": [
-                "こっちには入るなって言われたな・・・"
-              ],
+              "text": ["こっちには入るなって言われたな・・・"],
               "charaID": "0",
               "imgID": "1"
             },
             {
               "type": "charaWalk",
               "direction": "DOWN",
-              "steps": 1,
+              "steps": 1.0,
               "objID": "hero"
             }
           ]
@@ -145,9 +135,7 @@
       "type": "if",
       "condition": [
         {
-          "Nevent": [
-            "{4,13}"
-          ]
+          "Nevent": ["4","13"]
         }
       ],
       "action": [
@@ -156,16 +144,14 @@
           "action": [
             {
               "type": "charaMsg",
-              "text": [
-                "こっちには入るなって言われたな・・・"
-              ],
+              "text": ["こっちには入るなって言われたな・・・"],
               "charaID": "0",
               "imgID": "1"
             },
             {
               "type": "charaWalk",
               "direction": "DOWN",
-              "steps": 1,
+              "steps": 1.0,
               "objID": "hero"
             }
           ]
@@ -175,38 +161,47 @@
   ],
   "13": [
     {
-      "type": "sequence",
-      "action": [
-        {
-          "type": "fadeout"
-        },
-        {
-          "type": "displayImg",
-          "file": "",
-          "time": 2
-        },
-        {
-          "type": "fadein"
-        },
-        {
-          "type": "questionMsg",
-          "text": [
-            "入りますか？"
-          ],
-          "choices": [
-            "はい",
-            "いいえ"
-          ],
-          "answer": [
-            "はい"
-          ],
-          "action": [
-            {
-              "type": "already"
+      "type":"if",
+      "condition":[
+          {
+              "event":["4","20"]
+          }
+      ],
+      "action":[
+           {
+                "type": "sequence",
+                "action": [
+                  {
+                    "type": "fadeout"
+                  },
+                  {
+                    "type": "displayImg",
+                    "file": "",
+                    "time": 2.0
+                  },
+                  {
+                    "type": "fadein"
+                  },
+                  {
+                    "type": "questionMsg",
+                    "text": ["入りますか？"],
+                    "choices":[
+                      {
+                        "choice":"はい",
+                        "action":[
+                          {
+                            "type":"already"
+                          }
+                        ]
+                      },
+                      {
+                        "choice":"いいえ"
+                      }
+                    ]
+                  }
+                ]
             }
-          ]
-        }
-      ]
+      ] 
     }
   ],
   "14": [
@@ -214,9 +209,7 @@
       "type": "if",
       "condition": [
         {
-          "event": [
-            "1240"
-          ]
+          "event": ["3","33"]
         }
       ],
       "action": [
@@ -241,9 +234,7 @@
       "type": "if",
       "condition": [
         {
-          "event": [
-            "{3,30}"
-          ]
+          "event": ["3","30"]
         }
       ],
       "action": [
@@ -299,9 +290,7 @@
             },
             {
               "type": "charaMsg",
-              "text": [
-                "荒間田！佐々木！\n加藤に加勢すんぞ！"
-              ],
+              "text": ["荒間田！佐々木！\n加藤に加勢すんぞ！"],
               "charaID": "5",
               "imgID": "1"
             },
@@ -322,16 +311,12 @@
               "type": "charaMsg",
               "talk": [
                 {
-                  "text": [
-                    "加藤もいる。\n全員で行きゃあ何とかなんだろ"
-                  ],
+                  "text": ["加藤もいる。\n全員で行きゃあ何とかなんだろ"],
                   "charaID": "5",
                   "imgID": "1"
                 },
                 {
-                  "text": [
-                    "・・・ですな"
-                  ],
+                  "text": ["・・・ですな"],
                   "charaID": "4",
                   "imgID": "1"
                 }
@@ -363,25 +348,19 @@
   "16": [
     {
       "type": "systemMsg",
-      "text": [
-        "花は所々茶色がかっている"
-      ]
+      "text": ["花は所々茶色がかっている"]
     }
   ],
   "17": [
     {
       "type": "systemMsg",
-      "text": [
-        "青い服の女の人と、、、\n化物？が描いてある"
-      ]
+      "text": ["青い服の女の人と、、、\n化物？が描いてある"]
     }
   ],
   "18": [
     {
       "type": "systemMsg",
-      "text": [
-        "真っ白な花が沢山刺さっている"
-      ]
+      "text": ["真っ白な花が沢山刺さっている"]
     }
   ],
   "19": [
@@ -394,9 +373,7 @@
         },
         {
           "type": "systemMsg",
-          "text": [
-            "開かない・・・"
-          ]
+          "text": ["開かない・・・"]
         }
       ]
     }
@@ -409,33 +386,23 @@
           "type": "charaMsg",
           "talk": [
             {
-              "text": [
-                "どうしたんですか？"
-              ],
+              "text": ["どうしたんですか？"],
               "charaID": "0",
               "imgID": "1"
             },
             {
-              "text": [
-                "いや、猪でも獲ってこようかと思ったんだけどよ、\n扉が開かねえんだわ"
-              ],
+              "text": ["いや、猪でも獲ってこようかと思ったんだけどよ、\n扉が開かねえんだわ"],
               "charaID": "2",
               "imgID": "1"
             },
             {
-              "text": [
-                "？"
-              ],
+              "text": ["？"],
               "charaID": "0",
-              "imgID": "1"
+              "imgID": "2"
             },
             {
-              "text": [
-                "な、おじょ、がああああああああああああ"
-              ],
-              "name": [
-                "？？？"
-              ],
+              "text": ["な、おじょ、がああああああああああああ"],
+              "name": "？？？",
               "option": "reaction"
             }
           ]
@@ -456,36 +423,36 @@
         {
           "type": "charaWalk",
           "direction": "UP",
-          "steps": 6,
-          "speed": 3,
+          "steps": 6.0,
+          "speed": 3.0,
           "objID": "1012"
         },
         {
           "type": "charaWalk",
           "direction": "RIGHT",
-          "steps": 7,
-          "speed": 3,
+          "steps": 7.0,
+          "speed": 3.0,
           "objID": "1012"
         },
         {
           "type": "charaWalk",
           "direction": "UP",
-          "steps": 13,
-          "speed": 3,
+          "steps": 13.0,
+          "speed": 3.0,
           "objID": "1012"
         },
         {
           "type": "charaWalk",
           "direction": "LEFT",
-          "steps": 7,
-          "speed": 3,
+          "steps": 7.0,
+          "speed": 3.0,
           "objID": "1012"
         },
         {
           "type": "charaWalk",
           "direction": "UP",
-          "steps": 2,
-          "speed": 3,
+          "steps": 2.0,
+          "speed": 3.0,
           "objID": "1012"
         },
         {
@@ -494,11 +461,9 @@
         },
         {
           "type": "charaMsg",
-          "text": [
-            "行っちゃった・・・\n今の声は・・・？"
-          ],
+          "text": ["行っちゃった・・・\n今の声は・・・？"],
           "charaID": "0",
-          "imgID": "0"
+          "imgID": "1"
         },
         {
           "type": "already"

@@ -39,6 +39,10 @@
 							"layer":"doorA"
 						},
 						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
 							"type":"removeLayer",
 							"layer":"doorA2"
 						},
@@ -76,6 +80,10 @@
 						{
 							"type":"removeLayer",
 							"layer":"doorB"
+						},
+						{
+							"type":"wait",
+							"time":0.5
 						},
 						{
 							"type":"removeLayer",
@@ -184,12 +192,12 @@
 							"enemyID":"141",
 							"x":7,
 							"y":17,
-							"times":1
+							"times":1.0
 						},
 						{
 							"type":"charaMsg",
 							"text":["があああああああああああ"],
-							"name":["？？？"],
+							"name":"？？？",
 							"option":"reaction"
 						}
 					]
@@ -217,7 +225,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{3,21}"]
+					"event":["3","21"]
 				}
 			],
 			"action":[
@@ -233,6 +241,22 @@
 							"objID":"1037"
 						}
 					]
+				}
+			]
+		}
+	],
+	"14":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["52","3"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1060"
 				}
 			]
 		}

@@ -18,8 +18,8 @@
 					"imgID":"1"
 				},
 				{
-					"type":"pasward",
-					"pas":"",
+					"type":"passward",
+					"pass":"",
 					"false":[
 						{
 							"type":"charaMsg",
@@ -39,7 +39,7 @@
 								},
 								{
 									"type":"already",
-									"event":["{18,3}"]
+									"event":["18","3"]
 								}
 							]
 						}
@@ -56,7 +56,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{18,2}"]
+					"event":["18","2"]
 				}
 			],
 			"action":[
@@ -64,8 +64,8 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"pasward",
-							"pas":"",
+							"type":"passward",
+							"pass":"",
 							"false":[
 								{
 									"type":"systemMsg",
@@ -140,7 +140,7 @@
 	"11":[
 		{
 			"type":"systemMsg",
-			"text":["タンスは開かない"],
+			"text":["タンスは開かない"]
 		}
 	],
 	"12":[

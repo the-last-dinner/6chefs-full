@@ -31,6 +31,10 @@
 							"layer":"doorA"
 						},
 						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
 							"type":"removeLayer",
 							"layer":"doorA2"
 						},
@@ -108,6 +112,10 @@
 							"layer":"doorB"
 						},
 						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
 							"type":"removeLayer",
 							"layer":"doorB2"
 						},
@@ -157,6 +165,10 @@
 									"layer":"doorB"
 								},
 								{
+									"type":"wait",
+									"time":0.5
+								},
+								{
 									"type":"removeLayer",
 									"layer":"doorB2"
 								},
@@ -193,7 +205,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["{21,6}"]
+					"Nevent":["21","6"]
 				}
 			],
 			"action":[
@@ -209,7 +221,10 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{22,3}","{22,5}"]
+					"event":[
+						["22","3"],
+						["22","5"]
+					]
 				}
 			],
 			"action":[
@@ -225,7 +240,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{21,6}"]
+					"event":["21","6"]
 				}
 			],
 			"action":[
@@ -241,7 +256,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{21,4}"]
+					"event":["21","4"]
 				}
 			],
 			"action":[
@@ -266,7 +281,7 @@
 					"layer":"key"
 				},
 				{
-					"already"
+					"type":"already"
 				}
 			]
 		}
@@ -276,7 +291,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{21,11}"]
+					"event":["21","11"]
 				}
 			],
 			"action":[

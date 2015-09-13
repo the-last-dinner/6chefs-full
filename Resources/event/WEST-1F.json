@@ -159,7 +159,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{3,21}"]
+					"event":["3","21"]
 				}
 			],
 			"action":[
@@ -261,14 +261,168 @@
 	],
 	"17":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":"1"
-				}
-			],
+			"type":"sequence",
 			"action":[
-
+				{
+					"type":"charaMsg",
+					"text":["あ、あの・・・"],
+					"charaID":"1",
+					"imgID":"1"
+				},
+				{
+					"type":"changeFlg",
+					"flg":"1"
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"1"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"2"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"3"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"3"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"4"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"4"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"5"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"5"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"6"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":"6"
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":[""],
+									"charaID":"1",
+									"imgID":"1"
+								},
+								{
+									"type":"changeFlg",
+									"flg":"1"
+								}
+							]
+						}
+					]
+				}
 			]
 		}
 	],
@@ -277,8 +431,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{4,10}"],
-					"Nevent":["{23,9}"]
+					"event":["4","10"],
+					"Nevent":["23","9"]
 				}
 			],
 			"action":[
