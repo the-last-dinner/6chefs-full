@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="66">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="70">
  <tileset firstgid="1" name="kitchen-option1" tilewidth="16" tileheight="16">
   <image source="kitchen-option1.png" trans="007575" width="288" height="192"/>
  </tileset>
@@ -69,6 +69,14 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="67" x="224" y="336" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="1"/>
+    <property name="EventID" value="17"/>
+    <property name="objID" value="109"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="CharaUe1" width="40" height="32">
   <properties>
@@ -84,103 +92,134 @@
   </properties>
   <object id="40" x="64" y="208" width="32" height="32">
    <properties>
-    <property name="EventID" value="1210"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="41" x="560" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="1117"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="42" x="592" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="1118"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="44" x="256" y="96" width="32" height="32">
    <properties>
-    <property name="EventID" value="1266"/>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="45" x="0" y="208" width="96" height="32">
    <properties>
-    <property name="EventID" value="1338"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="46" x="96" y="160" width="16" height="64">
    <properties>
-    <property name="EventID" value="1338"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="48" x="0" y="80" width="32" height="48">
    <properties>
-    <property name="EventID" value="1339"/>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="49" x="32" y="80" width="32" height="48">
    <properties>
-    <property name="EventID" value="1340"/>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="50" x="128" y="80" width="32" height="48">
    <properties>
-    <property name="EventID" value="1340"/>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="51" x="192" y="80" width="32" height="48"/>
+  <object id="51" x="192" y="80" width="32" height="48">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
   <object id="52" x="64" y="80" width="32" height="48">
    <properties>
-    <property name="EventID" value="1341"/>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="53" x="160" y="80" width="32" height="48">
    <properties>
-    <property name="EventID" value="1341"/>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="56" x="384" y="64" width="32" height="32">
    <properties>
-    <property name="EventID" value="1342"/>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="57" x="416" y="96" width="128" height="32">
    <properties>
-    <property name="EventID" value="1343"/>
+    <property name="EventID" value="10"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="58" x="416" y="480" width="128" height="32">
    <properties>
-    <property name="EventID" value="1344"/>
+    <property name="EventID" value="11"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="59" x="288" y="432" width="32" height="32">
    <properties>
-    <property name="EventID" value="1345"/>
+    <property name="EventID" value="12"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="61" x="0" y="464" width="272" height="48">
    <properties>
-    <property name="EventID" value="1346"/>
+    <property name="EventID" value="13"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="62" x="64" y="304" width="192" height="32">
    <properties>
-    <property name="EventID" value="1347"/>
+    <property name="EventID" value="14"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="63" x="256" y="336" width="16" height="64">
    <properties>
-    <property name="EventID" value="1347"/>
+    <property name="EventID" value="14"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="64" x="224" y="192" width="32" height="32">
    <properties>
-    <property name="EventID" value="1348"/>
+    <property name="EventID" value="15"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="65" x="160" y="192" width="64" height="32">
    <properties>
-    <property name="EventID" value="1349"/>
+    <property name="EventID" value="16"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="69" x="0" y="0" width="32" height="32">
+   <properties>
+    <property name="EventID" value="18"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>

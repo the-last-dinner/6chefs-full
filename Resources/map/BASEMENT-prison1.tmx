@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="9">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="9">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKAt4AViPiDmh7JhfF40Pj8aGxfQBmIdINaFsmF8bTS+LhqbkHnYaHQzkdm4gCcQe+GgkbEXGhsXWMNIHh7p5pFrDr3MG+zhN2reyDCPUgAA9q2Qrw==
@@ -16,7 +16,7 @@
  </layer>
  <layer name="MonoShita" width="20" height="20">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBjZYDcjeRgXuMlIHh4Fo2AUjIKhBgCijhY1
@@ -42,12 +42,14 @@
  <objectgroup name="event">
   <object id="2" x="0" y="144" width="32" height="32">
    <properties>
-    <property name="EventID" value="11128"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="8" x="32" y="144" width="32" height="32">
    <properties>
-    <property name="EventID" value="1298"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
  </objectgroup>

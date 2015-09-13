@@ -13,7 +13,7 @@
  </tileset>
  <layer name="Base" width="10" height="10">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYGBgSAfiDDwYBlqBuA0PRlfXigUjq1sMxEugNDpegqTuIiN+PJzUAQBYOTgT
@@ -21,7 +21,7 @@
  </layer>
  <layer name="MonoChu" width="10" height="10">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBh5IJMTFXdyMDB0IWFc6mYC5WYhYVqoAwBMixD9
@@ -29,7 +29,7 @@
  </layer>
  <layer name="MonoUe" width="10" height="10">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBh5oJoDwa7gwOTDQDcSu4MDk08LdQDH7gjZ
@@ -46,6 +46,9 @@
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe" width="10" height="10">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBg+IJsDwc7gwOQPBQAARGcBxw==
   </data>
@@ -53,12 +56,14 @@
  <objectgroup name="event">
   <object id="9" x="96" y="128" width="32" height="32">
    <properties>
-    <property name="EventID" value="1198"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="10" x="32" y="128" width="32" height="32">
    <properties>
-    <property name="EventID" value="1199"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="34" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="34" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="34">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -11,7 +11,7 @@
  </tileset>
  <layer name="Base" width="34" height="22">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBhcgJeJgUEdiDXohLWAWIAJ0x2yQDFzILagE7YCYgUs7tAdAHcYYHGH7QC4wwGLO3yBYu5A7IGEPWmIvYA4AIs7YoFikXTEEUCcgMUdCwcIj7pj1B2j7hh1x3BzxygYBYMZAACPweka
@@ -19,7 +19,7 @@
  </layer>
  <layer name="MonoShita" width="34" height="22">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzkERACAIAMF7UBUbaH7ogDP6uE2woJsyYMXrBew+nA8ekiRJminuNwHH
@@ -27,7 +27,7 @@
  </layer>
  <layer name="MonoChu" width="34" height="22">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzjEBACAMwLAe8+8FHIADpoipgB2NgoCk7kbAjN8LWHXYDR6nDtngIUnSCxeZzgSi
@@ -35,7 +35,7 @@
  </layer>
  <layer name="MonoUe" width="34" height="22">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDHawmxOCBzP4ycLA8ItloF0xCkbBKBgFo2AUDD8AAPVgA4Q=
@@ -44,6 +44,8 @@
  <objectgroup name="collision">
   <object id="20" x="32" y="0" width="480" height="16"/>
   <object id="21" x="32" y="272" width="480" height="16"/>
+  <object id="32" x="32" y="96" width="480" height="16"/>
+  <object id="33" x="480" y="96" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -61,42 +63,50 @@
   </properties>
   <object id="22" x="0" y="16" width="32" height="272">
    <properties>
-    <property name="EventID" value="1166"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="24" x="512" y="128" width="32" height="32">
    <properties>
-    <property name="EventID" value="1167"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="25" x="512" y="160" width="32" height="32">
    <properties>
-    <property name="EventID" value="1168"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="26" x="512" y="192" width="32" height="32">
    <properties>
-    <property name="EventID" value="1169"/>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="27" x="512" y="224" width="32" height="48">
    <properties>
-    <property name="EventID" value="1170"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="28" x="480" y="96" width="32" height="32">
    <properties>
-    <property name="EventID" value="158"/>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="29" x="288" y="272" width="32" height="32">
    <properties>
-    <property name="EventID" value="1242"/>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="30" x="320" y="272" width="32" height="32">
+  <object id="31" x="256" y="48" width="32" height="64">
    <properties>
-    <property name="EventID" value="173"/>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

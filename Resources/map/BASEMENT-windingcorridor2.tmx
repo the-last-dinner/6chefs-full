@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="17">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="18">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Base" width="40" height="40">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztj0EKgDAMBAue60eqD2n9mo82l0IIkRRXtIcdWLK0qYwpkTfJknVwZnDfS0SRbIOzgPteInb1jd49D2/vzif6F90jDkmVNNWrOrN3tuvpxe400yPO5d/Qj35P3n0F/TDoh0E/DPph0A+Dfhj0w6AfBv0w6IdBPwz6Yczu15nVqzO7HxnjAld6tp0=
@@ -30,7 +30,7 @@
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe" width="40" height="40">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1zEKgDAQBdHFHMF4/1NGW0mnjRhHYoR5sP3wu43QW5b0dcE1+xj7GPuYP/eVKWLtcE/75gG2tY+xj7GPsY+xj7GPsY+xj7GPsY+xj7GPqz/8dvjjy42/vqeczjvW3fIg26ndDqklIsI=
@@ -39,17 +39,20 @@
  <objectgroup name="event">
   <object id="12" x="576" y="96" width="32" height="64">
    <properties>
-    <property name="EventID" value="11138"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="15" x="96" y="608" width="32" height="32">
    <properties>
-    <property name="EventID" value="11139"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="16" x="64" y="544" width="96" height="32">
+  <object id="17" x="160" y="464" width="32" height="32">
    <properties>
-    <property name="EventID" value="12107"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
  </objectgroup>
