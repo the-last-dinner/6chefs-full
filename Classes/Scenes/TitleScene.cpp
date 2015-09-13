@@ -56,7 +56,7 @@ void TitleScene::onPreloadFinished()
 	this->addChild(saveDataSelector);
 	
 	// セーブデータ選択レイヤーのイベントをリッスン
-	saveDataSelector->onSaveDataSalected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
+	saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
 	saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
 	
 	saveDataSelector->hide();

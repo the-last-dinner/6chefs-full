@@ -8,18 +8,13 @@
 
 #include "MapObjects/MapObject.h"
 
+#include "Effects/Light.h"
+
 // コンストラクタ
-MapObject::MapObject():
-objectSize(),
-eventId(-1),
-trigger(TriggerType::NONE),
-_isHit(false),
-movingDirection(Direction::NONE)
-{FUNCLOG}
+MapObject::MapObject(){FUNCLOG}
 
 // デストラクタ
-MapObject::~MapObject()
-{FUNCLOG}
+MapObject::~MapObject(){FUNCLOG}
 
 // マップ上のマス座標を取得(一番左下のマス座標を返す)
 Point MapObject::getGridPosition(const Size& mapSize)
@@ -68,6 +63,22 @@ void MapObject::setMovingDirection(Direction direction)
 {
 	this->movingDirection = direction;
 	return;
+}
+
+// ライトをセット
+void MapObject::setLight(Light* light)
+{
+	this->light = light;
+	this->addChild(light);
+	light->setPosition(this->getObjectSize() / 2);
+	light->setOpacity(0);
+	this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
+}
+
+// ライトを消す
+void MapObject::removeLight()
+{
+	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->light, FadeOut::create(0.5f)), TargetedAction::create(this->light, RemoveSelf::create())));
 }
 
 // オブジェクトの大きさを取得

@@ -37,11 +37,11 @@ public:
 	
 	// インスタンス変数
 private:
-	Sprite* character;												// キャラクターのSprite部分
-	string texturePrefix;											// キャラプロパティリストファイル名の先頭部分
-	Direction direction;											// 現在向いている方向
-	bool _isMoving;
-	bool identifier;
+	Sprite* character { nullptr };												// キャラクターのSprite部分
+	string texturePrefix {""};											// キャラプロパティリストファイル名の先頭部分
+	Direction direction {Direction::SIZE};											// 現在向いている方向
+	bool _isMoving { false };
+	bool identifier { false };
 };
 
 #endif // __CHARACTER_H__

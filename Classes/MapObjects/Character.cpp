@@ -9,23 +9,16 @@
 #include "MapObjects/Character.h"
 
 // キャラのプロパティリストのディレクトリ
-const string Character::basePath = "img/texture/character/";
+const string Character::basePath = "img/character/";
 
 // 1マス進むのにかかる時間(基準値)
 const float Character::SECOND_PER_GRID = 0.05f;
 
 // コンストラクタ
-Character::Character():
-character(nullptr),
-texturePrefix(""),
-direction(),
-_isMoving(false),
-identifier(false)
-{FUNCLOG}
+Character::Character(){FUNCLOG}
 
 // デストラクタ
-Character::~Character()
-{FUNCLOG}
+Character::~Character(){FUNCLOG}
 
 // create関数。この関数を用いてキャラクターを初期化
 Character* Character::create(int charaId, Direction direction)

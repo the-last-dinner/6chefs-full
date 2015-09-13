@@ -67,7 +67,6 @@ void SceneData::preloadSoundAsync(const function<void()>& callback)
 // パーセントを計算し格納
 void SceneData::calcPercentage()
 {
-	FUNCLOG
 	mutex mtx;
 	mtx.lock();
 	this->loaded++;

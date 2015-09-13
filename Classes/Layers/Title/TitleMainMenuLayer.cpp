@@ -40,7 +40,7 @@ bool TitleMainMenuLayer::init()
 	int menuSize = 32;
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
-		Label* menu = Label::createWithSystemFont(this->menu.at(static_cast<MenuType>(i)), "fonts/cinecaption2.28.ttf", menuSize);
+		Label* menu = Label::createWithTTF(this->menu.at(static_cast<MenuType>(i)), "fonts/cinecaption2.28.ttf", menuSize);
 		menu->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - (menuSize + 20) * i);
 		menu->setTextColor(Color4B::RED);
 		menu->setOpacity(0);
@@ -54,7 +54,7 @@ bool TitleMainMenuLayer::init()
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
 	this->runAction(Sequence::create(TargetedAction::create(titleBg, FadeIn::create(2.f)),
-									 CallFunc::create([this](){baseMenuLayer::eventListener->setEnabled(true);this->onIndexChanged(false);}),
+									 CallFunc::create([this](){baseMenuLayer::eventListener->setEnabled(true);this->onIndexChanged(this->getSelectedIndex(), false);}),
 									 nullptr));
 
 	return true;
@@ -73,13 +73,12 @@ void TitleMainMenuLayer::hide()
 }
 
 // 選択しているindexが変わった時
-void TitleMainMenuLayer::onIndexChanged(bool sound)
+void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
-	int selectedIndex = baseMenuLayer::getSelectedIndex();
 	for(int i = 0; i < baseMenuLayer::menuObjects.size(); i++)
 	{
 		Node* obj = baseMenuLayer::menuObjects.at(i);
-		this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (selectedIndex == i)?1.2f:1.f)),
+		this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (newIdx == i)?1.2f:1.f)),
 									  TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
 									  nullptr));
 	}
@@ -88,31 +87,16 @@ void TitleMainMenuLayer::onIndexChanged(bool sound)
 }
 
 // 決定キーを押した時
-void TitleMainMenuLayer::onSpacePressed()
+void TitleMainMenuLayer::onSpacePressed(int idx)
 {
-	switch (static_cast<MenuType>(baseMenuLayer::getSelectedIndex())) {
-		case MenuType::START:
-			if(this->onStartSelected)
-			{
-				this->onStartSelected();
-			}
-			break;
-			
-		case MenuType::CONTINUE:
-			if(this->onContinueSelected)
-			{
-				this->onContinueSelected();
-			}
-			break;
-			
-		case MenuType::EXIT:
-			if(this->onExitSelected)
-			{
-				this->onExitSelected();
-			}
-			break;
-			
-		default:
-			break;
-	}
+	map<MenuType, function<void()>> typeMap
+	{
+		{MenuType::START, this->onStartSelected},
+		{MenuType::CONTINUE, this->onContinueSelected},
+		{MenuType::EXIT, this->onExitSelected},
+	};
+	
+	if(!typeMap.count(static_cast<MenuType>(idx))) return;
+	
+	if(function<void()> callback {typeMap.at(static_cast<MenuType>(idx))}) callback();
 }

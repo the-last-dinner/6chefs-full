@@ -22,8 +22,8 @@ protected:
 	~baseMenuLayer();
 	virtual bool init(const Point& index, const Size& size);
 	virtual bool init(int sizeX, int sizeY);
-	virtual void onIndexChanged(bool sound) = 0;
-	virtual void onSpacePressed() = 0;
+	virtual void onIndexChanged(int newIdx, bool sound = true) = 0;
+	virtual void onSpacePressed(int idx) = 0;
 	virtual void onMenuKeyPressed() = 0;
 	virtual int getSelectedIndex() const;
 	int getMenuSizeX() const;

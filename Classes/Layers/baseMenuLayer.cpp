@@ -53,30 +53,31 @@ void baseMenuLayer::onKeyPressed(EventKeyboard::KeyCode keyCode)
 	
 	// 押し状態にする
 	ActionKeyManager::getInstance()->pressKey(key);
+	
 	switch(key)
 	{
 		case ActionKeyManager::Key::UP:
-			this->indexY = (indexY == 0)? indexY = sizeY - 1 : (indexY - 1) % sizeY;
-			if(sizeY >= 2)this->onIndexChanged(true);
+			if(sizeY >= 2) this->indexY = (indexY == 0)? indexY = sizeY - 1 : (indexY - 1) % sizeY;
+			this->onIndexChanged(this->getSelectedIndex());
 			break;
 			
 		case ActionKeyManager::Key::DOWN:
-			this->indexY = (indexY + 1) % sizeY;
-			if(sizeY >= 2)this->onIndexChanged(true);
+			if(sizeY >= 2) this->indexY = (indexY + 1) % sizeY;
+			this->onIndexChanged(this->getSelectedIndex());
 			break;
 			
 		case ActionKeyManager::Key::LEFT:
-			this->indexX = (indexX == 0)? indexX = sizeX - 1 : (indexX - 1) % sizeX;
-			if(sizeX >= 2)this->onIndexChanged(true);
+			if(sizeX >= 2) this->indexX = (indexX == 0)? indexX = sizeX - 1 : (indexX - 1) % sizeX;
+			this->onIndexChanged(this->getSelectedIndex());
 			break;
 			
 		case ActionKeyManager::Key::RIGHT:
-			this->indexX = (indexX + 1) % sizeX;
-			if(sizeX >= 2)this->onIndexChanged(true);
+			if(sizeX >= 2) this->indexX = (indexX + 1) % sizeX;
+			this->onIndexChanged(this->getSelectedIndex());
 			break;
 			
 		case ActionKeyManager::Key::SPACE:
-			this->onSpacePressed();
+			this->onSpacePressed(this->getSelectedIndex());
 			break;
 			
 		case ActionKeyManager::Key::MENU:

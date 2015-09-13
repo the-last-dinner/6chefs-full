@@ -25,8 +25,8 @@ private:
 	
 	// インスタンスメソッド
 private:
-	virtual void onIndexChanged(bool sound);
-	virtual void onSpacePressed();
+	virtual void onIndexChanged(int newIdx, bool sound);
+	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed();
 protected:
 	SaveDataSelector();
@@ -39,7 +39,7 @@ public:
 private:
 	vector<PlayerDataManager::SaveIndex> saveDatas {};
 public:
-	function<void(int)> onSaveDataSalected { nullptr };
+	function<void(int)> onSaveDataSelected { nullptr };
 	function<void()> onSaveDataSelectCancelled { nullptr };
 };
 

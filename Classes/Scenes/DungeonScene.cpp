@@ -12,11 +12,19 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 
+#include "Tasks/EventScriptTask.h"
+
+#include "Effects/ShadowLayer.h"
+
 // コンストラクタ
 DungeonScene::DungeonScene(){FUNCLOG}
 
 // デストラクタ
-DungeonScene::~DungeonScene(){FUNCLOG}
+DungeonScene::~DungeonScene()
+{
+	FUNCLOG
+	CC_SAFE_RELEASE_NULL(this->eventScriptTask);
+}
 
 // シーン生成
 Scene* DungeonScene::createScene()
@@ -31,66 +39,39 @@ Scene* DungeonScene::createScene()
 bool DungeonScene::init()
 {
 	FUNCLOG
+	
+	EventScriptManager::getInstance()->setEventScript("TestScript");
 
-	return baseScene::init(DungeonSceneData::create("TestScript"));
+	return baseScene::init(DungeonSceneData::create());
 }
 
 // リソースプリロード完了時の処理
 void DungeonScene::onPreloadFinished()
 {
 	FUNCLOG
+	
 	// 黒い幕を張っておく
 	Sprite* black { Sprite::create()};
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	black->setColor(Color3B::BLACK);
-	black->setZOrder(static_cast<int>(Priority::SCREEN_EFFECT));
+	black->setGlobalZOrder(static_cast<int>(Priority::SCREEN_COVER));
 	black->setPosition(WINDOW_CENTER);
 	this->addChild(black);
 	
-	// イベントリスナ生成
-	this->eventListener = EventListenerKeyboard::create();
-	this->eventListener->onKeyPressed = CC_CALLBACK_1(DungeonScene::onKeyPressed, this);
-	this->eventListener->onKeyReleased = CC_CALLBACK_1(baseScene::onKeyReleased, this);
-	
-	// イベントリスナ登録
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
-	
 	// マップレイヤーを生成
-	this->mapLayer = TiledMapLayer::create("MAIN-Syokudou1", this->eventListener);
+	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
+	mapLayer->setLocalZOrder(static_cast<int>(Priority::MAP));
 	this->addChild(mapLayer);
+	this->mapLayer = mapLayer;
+	
+	// イベントスクリプト処理クラスを生成
+	EventScriptTask* eventScriptTask {EventScriptTask::create(this)};
+	CC_SAFE_RETAIN(eventScriptTask);
+	this->eventScriptTask = eventScriptTask;
 	
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
 									 TargetedAction::create(black, RemoveSelf::create()),
 									 nullptr));
-	return;
-}
-
-// キーを押した時の処理
-void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
-{
-	FUNCLOG
-	// cocos2d上のキーコードからゲーム内でのキーコードに変換
-	ActionKeyManager::Key key { ActionKeyManager::getInstance()->convertKeyCode(keyCode) };
-	
-	// 押し状態にする
-	ActionKeyManager::getInstance()->pressKey(key);
-	
-	switch(key)
-	{
-		case::ActionKeyManager::Key::DOWN:
-		case::ActionKeyManager::Key::LEFT:
-		case::ActionKeyManager::Key::RIGHT:
-		case::ActionKeyManager::Key::UP:
-		case::ActionKeyManager::Key::SPACE:
-			this->mapLayer->controlMainCharacter(key);
-			break;
-			
-		case::ActionKeyManager::Key::MENU:
-			break;
-			
-		default:
-			break;
-	}
 	return;
 }

@@ -69,8 +69,7 @@ bool EventScriptManager::setEventScript (string script)
     this->json.ParseStream(rs);
     fclose(fp);
     //JSONの文法エラーチェック
-    bool error = this->json.HasParseError();
-    if(error){
+    if(this->json.HasParseError()){
         //エラーがあった場合
         size_t offset = this->json.GetErrorOffset();
         ParseErrorCode code = this->json.GetParseError();
@@ -103,16 +102,16 @@ vector<string> EventScriptManager::getPreLoadList(string type){
     return list;
 }
 
-//マップ初期化処理
-//
-bool EventScriptManager::setDungeonScene(Layer* mainLayer)
+// 該当idのスクリプトを取得
+const rapidjson::Value& EventScriptManager::getScript(int eventId)
 {
-    FUNCLOG
-    //レイヤーをインスタンス変数に登録
-    this->layer = mainLayer;
-    //イベントスクリプト初期化イベントのeventID0番を実行
-    bool success = this->runEvent(0);
-    return success;
+	rapidjson::Value::ConstMemberIterator itr {this->json.FindMember(to_string(eventId).c_str())};
+	if(itr == this->json.MemberEnd())
+	{
+		static rapidjson::Value nullValue;
+		return nullValue;
+	}
+	return itr->value;
 }
 
 //イベントIDからイベントを実行
@@ -175,7 +174,6 @@ cocos2d::Vector<FiniteTimeAction*> EventScriptManager::createActionVec(rapidjson
             }
         }
     }
-    //acts.pushBack(nullptr);
     return acts;
 }
 

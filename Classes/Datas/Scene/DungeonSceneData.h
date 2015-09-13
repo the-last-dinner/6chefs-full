@@ -15,21 +15,13 @@ class DungeonSceneData : public SceneData
 {
 	// クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(DungeonSceneData, string)
+	CREATE_FUNC(DungeonSceneData)
 	
 	// インスタンスメソッド
 private:
 	DungeonSceneData();
 	~DungeonSceneData();
-	bool init(const string&);
-	vector<string> getPreLoadList(const string& type);
-	
-	// インスタンス変数
-private:
-	string mapName {""};
-	FileUtils* fu { nullptr };
-	rapidjson::Document json {};
-	
+	bool init();
 };
 
 #endif // __DUNGEON_SCENE_DATA_H__

@@ -63,7 +63,7 @@ bool SaveDataSelector::init()
 	}
 	
 	this->setCascadeOpacityEnabled(true);
-	this->onIndexChanged(false);
+	this->onIndexChanged(this->getSelectedIndex(), false);
 	
 	return true;
 }
@@ -83,12 +83,11 @@ void SaveDataSelector::hide()
 }
 
 // 選択しているindexが変わった時
-void SaveDataSelector::onIndexChanged(bool sound)
+void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 {
-	int index {this->getSelectedIndex()};
 	for(Node* obj : this->menuObjects)
 	{
-		if(obj->getTag() == index)
+		if(obj->getTag() == newIdx)
 		{
 			obj->runAction(FadeTo::create(0.2f, 255));
 		}
@@ -100,17 +99,17 @@ void SaveDataSelector::onIndexChanged(bool sound)
 }
 
 // 決定キーを押した時
-void SaveDataSelector::onSpacePressed()
+void SaveDataSelector::onSpacePressed(int idx)
 {
 	// 指定セーブデータがプレイヤーによってセーブされたものであるか判別
-	if(this->saveDatas.at(this->getSelectedIndex()).save_count == PlayerDataManager::DEFAULT_COUNT)
+	if(this->saveDatas.at(idx).save_count == PlayerDataManager::DEFAULT_COUNT)
 	{
 		SoundManager::getInstance()->playSound("se/back.mp3");
 		return;
 	}
-	if(this->onSaveDataSalected)
+	if(this->onSaveDataSelected)
 	{
-		this->onSaveDataSalected(this->saveDatas.at(this->getSelectedIndex()).data_id);
+		this->onSaveDataSelected(this->saveDatas.at(idx).data_id);
 	}
 }
 

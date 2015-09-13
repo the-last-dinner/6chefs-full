@@ -41,12 +41,11 @@ private:
 public:
     //イベントスクリプトセット
     bool setEventScript(string script);
-    //マップ初期化処理
-    bool setDungeonScene(Layer* mainLayer);
     //idのイベントを実行
     bool runEvent(int id);
     //音楽などのリソースのプリロード
     vector<string> getPreLoadList(string type);
+	const rapidjson::Value& getScript(int eventId);
 private:
     //スクリプト処理関数
     bool dealScript(rapidjson::Value& event);

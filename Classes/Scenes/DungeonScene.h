@@ -12,6 +12,7 @@
 #include "Scenes/baseScene.h"
 
 class TiledMapLayer;
+class EventScriptTask;
 
 class DungeonScene : public baseScene
 {
@@ -26,12 +27,13 @@ private:
 	~DungeonScene();
 	virtual bool init();
 	void onPreloadFinished();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode);
 	
 	// インスタンス変数
 private:
-	EventListenerKeyboard* eventListener { nullptr };
 	TiledMapLayer* mapLayer { nullptr };
+	EventScriptTask* eventScriptTask { nullptr };
+	
+	friend class EventScriptTask;
 };
 
 

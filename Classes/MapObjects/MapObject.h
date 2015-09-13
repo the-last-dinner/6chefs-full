@@ -11,15 +11,22 @@
 
 #include "Common.h"
 
+class Light;
+
 class MapObject : public Node
 {
+	// 定数
+public:
+	static const Color3B TORCH_COLOR;
+
 	// インスタンス変数
 private:
-	Size objectSize;
-	int eventId;
-	TriggerType trigger;
-	bool _isHit;
-	Direction movingDirection;
+	Size objectSize { Size::ZERO };
+	int eventId { -1 };
+	TriggerType trigger {TriggerType::SIZE};
+	bool _isHit { false };
+	Direction movingDirection {Direction::SIZE};
+	Light* light { nullptr };
 	
 	// インスタンスメソッド
 public:
@@ -31,6 +38,8 @@ public:
 	void setTrigger(TriggerType trigger);
 	void setHit(bool _isHit);
 	void setMovingDirection(Direction direction);
+	void setLight(Light* light);
+	void removeLight();
 	
 	Point getGridPosition(const Size& mapSize);
 	Size getObjectSize();

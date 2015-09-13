@@ -45,10 +45,12 @@ using namespace experimental;
 // レイヤーのZORDER値
 enum struct Priority
 {
-	SCREEN_EFFECT = 100,
+	SCREEN_COVER = 100,
 	CHARACTER_MESSAGE = 50,
 	STORY_MESSAGE = 60,
 	SYSTEM_MESSAGE = 70,
+	LIGHT = 60,
+	SHADOW = 50,
 	MAP = 0,
 };
 
@@ -92,7 +94,7 @@ const map<Direction, Point> movementMap =
 
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
-static __TYPE_1__* create(const __TYPE_2__& param) \
+static __TYPE_1__* create(__TYPE_2__ param) \
 { \
 	__TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
 	if (pRet && pRet->init(param)) \

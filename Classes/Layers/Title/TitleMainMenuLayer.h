@@ -37,8 +37,8 @@ private:
 	TitleMainMenuLayer();
 	~TitleMainMenuLayer();
 	virtual bool init();
-	virtual void onIndexChanged(bool sound);
-	virtual void onSpacePressed();
+	virtual void onIndexChanged(int newIdx, bool sound = false);
+	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed(){};
 public:
 	virtual void show() override;
@@ -47,7 +47,7 @@ public:
 	// インスタンス変数
 public:
 	function<void()> onStartSelected { nullptr };
-	function<void()> onContinueSelected { nullptr};
+	function<void()> onContinueSelected { nullptr };
 	function<void()> onExitSelected { nullptr };
 };
 

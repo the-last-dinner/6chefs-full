@@ -8,7 +8,6 @@ AppDelegate::AppDelegate()
 	FUNCLOG
     CsvDataManager::getInstance();
     PlayerDataManager::getInstance();
-    EventScriptManager::getInstance();
 	ActionKeyManager::getInstance();
 	SoundManager::getInstance();
 	TextureManager::getInstance();

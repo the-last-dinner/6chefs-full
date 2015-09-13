@@ -36,7 +36,6 @@ SoundManager::~SoundManager()
 // 音声ファイルをプリロード
 void SoundManager::preloadSound(const string& filePath)
 {
-	FUNCLOG
 	// プリロード関数がないため、音量ゼロで再生する
 	int audioId = AudioEngine::play2d(filePath, false, 0.0f);
 	this->soundMap.insert({filePath, audioId});
