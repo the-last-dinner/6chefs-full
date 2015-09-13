@@ -32,6 +32,8 @@
 		260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
 		2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
+		26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */; };
+		26F989D71BA578B2009EB4B5 /* csv in Resources */ = {isa = PBXBuildFile; fileRef = 26F989D61BA578B2009EB4B5 /* csv */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -197,6 +199,9 @@
 		26D72CB21B96D420005F598D /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		26D72CB31B96D420005F598D /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		26D72CB41B96D420005F598D /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CsvDataManager.h; path = ../Classes/Managers/CsvDataManager.h; sourceTree = "<group>"; };
+		26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CsvDataManager.cpp; path = ../Classes/Managers/CsvDataManager.cpp; sourceTree = "<group>"; };
+		26F989D61BA578B2009EB4B5 /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -424,6 +429,7 @@
 		26F01BB51ACFC6DD006BB5D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26F989D61BA578B2009EB4B5 /* csv */,
 				26071B5C1B37E5C400B29763 /* bgm */,
 				26071B5D1B37E5C400B29763 /* save */,
 				26071B5E1B37E5C400B29763 /* se */,
@@ -588,6 +594,8 @@
 				2621C4261B3FC30500112CB9 /* PlayerDataManager.h */,
 				555B650C1B5CE94F00D15530 /* TextureManager.cpp */,
 				555B650D1B5CE94F00D15530 /* TextureManager.h */,
+				26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */,
+				26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -810,6 +818,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F989D71BA578B2009EB4B5 /* csv in Resources */,
 				26071B5F1B37E5C400B29763 /* bgm in Resources */,
 				26071B601B37E5C400B29763 /* save in Resources */,
 				26071B611B37E5C400B29763 /* se in Resources */,
@@ -887,6 +896,7 @@
 				557A87D71B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				556C18E81B3FC45000D2BCA1 /* TIledMapData.cpp in Sources */,
+				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,

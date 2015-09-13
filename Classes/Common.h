@@ -9,6 +9,7 @@
 #include "Managers/SoundManager.h"
 #include "Managers/TextureManager.h"
 #include "Managers/PlayerDataManager.h"
+#include "Managers/CsvDataManager.h"
 
 #include "Utils/MapUtils.h"
 
