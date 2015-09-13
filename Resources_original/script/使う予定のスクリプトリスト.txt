@@ -168,9 +168,9 @@
 	{
 	"type":"createChara",
 	"objID":"出すもののオブジェクトID",
-  "charaID":"キャラチップID(int)",
-  "text":["", "", ...],#
-  "movePattern":"ID"#
+  	"charaID":"キャラチップID(int)",
+  	"text":["", "", ...],#
+  	"movePattern":"ID"#
 	}
 
 
@@ -309,7 +309,20 @@
 	"type":"countDown",
 	"second":"秒数",
 	"ID":"カウントダウンID",
-	"action":[カウントが0になった時のアクション]#
+	"condition":[
+		{		
+			"event":["{マップ番号、イベントID}"],
+			"item":["アイテムID,アイテムID,,,,"],
+			"flg":"固有のフラグ",
+			"equip":["アイテムID,アイテムID,,,,"],
+			"status":["{キャラID,好感度}"],
+			"Nevent":[],
+			"Nitem":[],
+			・・・	
+		}
+	],
+	"true":[クリアした時のアクション(String)]またはイベントID(int): "7"
+	"false":[カウントが0になった時のアクション]#,
 	}
 
   
@@ -375,7 +388,7 @@
 	{
 	"type":"swingLayer",
 	"layer":"揺らすレイヤー名",
-　"option":"揺らす回数"
+　"option":"揺らす回数"#←なければ永遠に
 	}
 
 
@@ -534,12 +547,77 @@
 
 (例)
 　　{
-	  "type":"changeFlag",
+	  "type":"changeFlg",
 	  "flg":1
+    }　
+
+●強制的にアイテムを捨てる
+・type名、、、removeItem,
+・必要なもの、、、手持ちから消すアイテムID
+
+※装備しているアイテムの場合は、装備を解除しつつアイテムを手持ちから消す
+
+(例)
+　　{
+	  "type":"removeItem",
+	  "itemID":"消すアイテムID"
     }　
 
 とりあえず、
 必要に応じて追加
+
+●if文
+
+(例)
+	{
+		"type":"if",
+		"condition":[
+			{
+				"event":["{マップ番号、イベントID}"],
+				"item":["アイテムID,アイテムID,,,,"],
+				"flg":"固有のフラグ",
+				"equip":["アイテムID,アイテムID,,,,"],
+				"status":["{キャラID,好感度}"],
+				"Nevent":[],
+				"Nitem":[],
+				・・・
+			}
+		],
+		"action":[
+
+		]または
+		"eventID":"イベントID"
+	}
+
+●アニメーション
+・type,,,animation
+・必要なもの、、、かかる時間
+		　画像配列
+		 必要ならば、座標(デフォルトは真ん中)
+
+（例）
+{
+	"type":"animation",
+	"time":0.5,
+	"imgs":[
+		"1.png",
+		"2.png",
+		...
+	],
+	"x":,#
+	"y":#
+}
+●好感度を変える
+・type,,,changeStatus
+・必要なもの、、、キャラID
+		　好感度
+
+（例）
+{
+	"type":"changeStatus",
+	"charaID":"キャラID",
+	"favorite":"好感度"
+}
 
 TODO >>>>>>>>>>>>>>>>>>
 

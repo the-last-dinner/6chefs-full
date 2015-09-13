@@ -35,7 +35,23 @@
 				{
 					"type":"countDown",
 					"second":3.0,
-					"ID":"162"
+					"ID":"162",
+					"condition":[
+						{
+							"equip":["157"]
+						}
+					],
+					"true":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"playBGM",
+									"file":""
+								}
+							]
+						}
+					]
 				},
 				{
 					"type":"already"
@@ -67,7 +83,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{20,3}"]
+					"event":["20","3"]
 				}
 			],
 			"action":[

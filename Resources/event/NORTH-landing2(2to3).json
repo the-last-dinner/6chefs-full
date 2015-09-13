@@ -1,0 +1,18 @@
+{
+	"1":[
+		{
+			"type":"changeMap",
+			"nextMap":"21",
+			"x":9,
+			"y":4
+		}
+	],
+	"2":[
+		{
+			"type":"changeMap",
+			"nextMap":"10",
+			"x":9,
+			"y":3
+		}
+	]
+}

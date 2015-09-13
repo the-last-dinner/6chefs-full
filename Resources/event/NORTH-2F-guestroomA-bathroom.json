@@ -30,7 +30,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,2}"]
+					"event":["12","2"]
 				}
 			],
 			"action":[
@@ -46,7 +46,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,2}"]
+					"event":["12","2"]
 				}
 			],
 			"action":[
@@ -74,7 +74,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,4}"]
+					"event":["12","4"]
 				}
 			],
 			"action":[
@@ -109,7 +109,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,6}"]
+					"event":["12","6"]
 				}
 			],
 			"action":[
@@ -131,7 +131,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,6}"]
+					"event":["12","6"]
 				}
 			],
 			"action":[
@@ -147,7 +147,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{12,2}"]
+					"event":["12","2"]
 				}
 			],
 			"action":[

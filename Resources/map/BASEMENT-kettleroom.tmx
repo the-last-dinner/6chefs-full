@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="28">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="29">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -14,7 +14,7 @@
  </tileset>
  <layer name="Base" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-5"/>
+   <property name="cc_vertexz" value="-20"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztkksKgDAMRJsD+DuHVs+hrfe/jrOMG5PF1IVm4MEEAoXXpHRPB3owELqercxgAZnQ9WxlBwcohK5nK5PACxiF261s2MlgFW63cmKngCrcHp7/6VnvsD0/va/32Z49/xz3/M17Ds9299DCs4cWnj14Pb+VC1IwVIU=
@@ -22,40 +22,55 @@
  </layer>
  <layer name="MonoShita" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-19"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYMAEj1ixCNIByLINjL2jYBSMglEwCkbBKBgFo4B8AACcywEL
   </data>
  </layer>
  <layer name="kettle" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-18"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1LkNACAMQ9EUrMyxBMcSHGPiJgOASIP8JJe/tQjR/7wTCVjEkrPvVEZTsIq1g/62Ux3NwCa2Dvrbjoje4V/ZdmRjAzEHG3k=
   </data>
  </layer>
  <layer name="hide1" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-17"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2D4A11GCNYDYn1G+toLs5Oe9noD7fIBYl8oHgWjYBSMglEwCmgJAFIaAq4=
   </data>
  </layer>
  <layer name="hide2" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-16"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AU4AK6jBCsB8T6jPS1F2YnPe31BtrlA8S+UDwKRsEoGAWjYBQQAwC8MwKu
   </data>
  </layer>
  <layer name="hide3" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-15"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwWABuowQrAfE+oz0tRdmJz3t9Qba5QPEvlA8CoYmAADGZwKu
   </data>
  </layer>
  <layer name="hide4" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-14"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwVAHuowQrAfE+oz0tRdmJz3t9Qba5QPEvlA8CgYWAAAwjwKu
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztlLkNgDAMRS0lg4VjASQKxuAagmsIrkH5kUiJZAip4ie9zs9pIhMJsWE0UQJTmMFch+0c1ct5385SKKIafQNb2MGeue+pKxWvHzA/wgnOcGG++7VzrJjf4A4PeDL7r50ghMTc/zCGe2X5+15xkXsl+HIB2lwolw==
@@ -63,7 +78,7 @@
  </layer>
  <layer name="blood" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALaAx5OBgZeIOYDYk0g1uKkj70qQHtUgVgNiB2B2AmItYFYBwvWBWIXIHalgttsgWbYQXEkEEcBsTPUfHRMDftgIBRoVhgUFwJxEdTsGCAdS8MwzwWanQfFMFAMZJcAcSmd4noUjIJRMHAAAL8mDUA=
@@ -71,7 +86,7 @@
  </layer>
  <layer name="MonoUe" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjILhDcI4GBjCOehvbx7QzvwBsHcUjIJRMAroDQCXSAGr
@@ -102,7 +117,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="1"/>
+   <property name="cc_vertexz" value="-1"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFIxE4sjAwOAGxMxC7sNBeHwxEAvVEAXE0EMeQoJ9cfaNgFIyCoQ9Gy6tRMAoGPwAAyScKUQ==
@@ -114,48 +129,50 @@
   </properties>
   <object id="17" x="0" y="160" width="32" height="32">
    <properties>
-    <property name="EventID" value="11114"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="18" x="448" y="160" width="32" height="32">
    <properties>
-    <property name="EventID" value="11115"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="20" x="64" y="0" width="32" height="48">
    <properties>
-    <property name="EventID" value="1270"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="21" x="96" y="96" width="64" height="32"/>
+  <object id="21" x="96" y="96" width="64" height="32">
+   <properties>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
   <object id="22" x="320" y="256" width="64" height="32">
    <properties>
-    <property name="EventID" value="1272"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="23" x="320" y="96" width="64" height="32">
    <properties>
-    <property name="EventID" value="1273"/>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="24" x="96" y="256" width="64" height="32">
    <properties>
-    <property name="EventID" value="1274"/>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="25" x="320" y="256" width="64" height="32">
+  <object id="28" x="224" y="160" width="32" height="32">
    <properties>
-    <property name="EventID" value="1275"/>
-   </properties>
-  </object>
-  <object id="26" x="320" y="96" width="64" height="32">
-   <properties>
-    <property name="EventID" value="1276"/>
-   </properties>
-  </object>
-  <object id="27" x="96" y="256" width="64" height="32">
-   <properties>
-    <property name="EventID" value="1277"/>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

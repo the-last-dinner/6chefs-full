@@ -45,14 +45,14 @@
 				},
 				{
 					"type":"countDown",
-					"second":"5.0",
+					"second":5.0,
 					"ID":"161",
 					"action":[
 						{
 							"type":"spawn",
 							"action":[
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"hero"
 								},
@@ -61,7 +61,7 @@
 									"enemyID":"142",
 									"x":14,
 									"y":33,
-									"speed":10
+									"speed":10.0
 								}
 							]
 						}
@@ -75,7 +75,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["15,3"]
+					"event":["15","3"]
 				}
 			],
 			"action":[
@@ -114,12 +114,12 @@
 						{
 							"type":"charaWalk",
 							"direction":"UP",
-							"steps":9,
-							"speed":3,
+							"steps":9.0,
+							"speed":3.0,
 							"objID":"1015"
 						},
 						{
-							"type":"directionChange",
+							"type":"changeDirection",
 							"direction":"LEFT",
 							"objID":"1015"
 						},
@@ -128,7 +128,7 @@
 							"time":1.0
 						},
 						{
-							"type":"directionChange",
+							"type":"changeDirection",
 							"direction":"RIGHT",
 							"objID":"1015"
 						},
@@ -137,7 +137,7 @@
 							"time":1.0
 						},
 						{
-							"type":"directionChange",
+							"type":"changeDirection",
 							"direction":"LEFT",
 							"objID":"1015"
 						},
@@ -148,14 +148,14 @@
 						{
 							"type":"charaWalk",
 							"direction":"DOWN",
-							"steps":9,
-							"speed":3,
+							"steps":9.0,
+							"speed":3.0,
 							"objID":"1015"
 						},
 						{
 							"type":"playSE",
 							"file":"2doko.wav"
-						}
+						},
 						{
 							"type":"removeChara",
 							"objID":"1015"
@@ -173,7 +173,7 @@
 						},
 						{
 							"type":"stopBGM"
-						}
+						},
 						{
 							"type":"fadein"
 						},

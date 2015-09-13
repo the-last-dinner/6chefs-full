@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="49">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="51">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Base" width="32" height="18">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzksKACAIBNC23qiLeLBu3CZJiErD6IMDs3SeIbRJUBtLtend0e4oJ3xuWvp8i1tSH9ltBFkpaOCnBZ9+mO1pfQRZd/jWdd999+/xV2K59aL/QzIxhbrl
@@ -16,7 +16,7 @@
  </layer>
  <layer name="MonoShita" width="32" height="18">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYMAEk9kYGJYA8RY2CL+Fg4GhlQOLQhwAl3p0c3EBdHWLgGYtJsF+XOrx2d/JjsDUtB+fufjsPwLF1LYf2VxkMJMdgfGZR6r9+MwlFhwAmnWQBPtJVQ8CjED3MQExMw0xCxCzAjEblrAQBIoJAbEwDbEIEIsCsRgW+xWBYip0wmqj9mMAQ6CY0QDa7wgUcxpA+wOBYkFAHEwHHIbF/lEwMgEA4xlQbg==
@@ -24,7 +24,7 @@
  </layer>
  <layer name="MonoChu" width="32" height="18">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztxrEJgFAQRMGLXv8INiDYgPAbEGxAsB8DOTNZNjLZiabqMVOvr7sm9NuKvmtBvw30XRv67UDftaPfLvRdJ/oRERF/uAHdohW+
@@ -32,7 +32,7 @@
  </layer>
  <layer name="MonoUe" width="32" height="18">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztwQEBAAAAgiD/r25IQAEAfBkJAAAB
@@ -63,51 +63,74 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="49" x="96" y="192" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="5"/>
+    <property name="EventID" value="10"/>
+    <property name="objID" value="1061"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="event">
   <object id="35" x="0" y="96" width="32" height="32">
    <properties>
-    <property name="EventID" value="1171"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="36" x="0" y="128" width="32" height="32">
    <properties>
-    <property name="EventID" value="1172"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="37" x="0" y="160" width="32" height="32">
    <properties>
-    <property name="EventID" value="1173"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="38" x="0" y="192" width="32" height="32">
    <properties>
-    <property name="EventID" value="1174"/>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="40" x="384" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="1183"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="41" x="48" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="1185"/>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="46" x="240" y="256" width="32" height="32">
    <properties>
-    <property name="EventID" value="1191"/>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="47" x="432" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="1197"/>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="48" x="96" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="11101"/>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="50" x="384" y="224" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>
