@@ -15,39 +15,47 @@ class DungeonScene;
 
 class EventScriptTask : public Ref
 {
-	// クラスメソッド
+//クラス変数
+private:
+    //関数ポインタ型を宣言
+    typedef Ref*(EventScriptTask::*FunctionPointer)(rapidjson::Value& event);
+    //関数ポインタリンクマップ
+    const static map<string, FunctionPointer> EVENT_MAP;
+    
+    //インスタンス変数
+private:
+    DungeonScene* dungeonScene {nullptr};
+    cocos2d::Layer* layer;
+// クラスメソッド
 public:
 	CREATE_FUNC_WITH_PARAM(EventScriptTask, DungeonScene*)
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
 	EventScriptTask();
 	~EventScriptTask();
 	virtual bool init(DungeonScene* dungeonScene);
-	FiniteTimeAction* createAction(const rapidjson::Value& json);
+    //スクリプト処理関数
+    void dealScript(rapidjson::Value& action);
+    cocos2d::Vector<FiniteTimeAction*> createActionVec(rapidjson::Value& sub_act);
 public:
 	void runEventScript(int eventId);
 	
-	// インスタンス変数
+//イベント関数
 private:
-	DungeonScene* dungeonScene {nullptr};
-	
-	
-	//イベント関数
-private:
-	Ref* sequence(const rapidjson::Value& event);
-	Ref* spawn(const rapidjson::Value& event);
-	Ref* repeat(const rapidjson::Value& event);
-	Ref* flagif(const rapidjson::Value& event);
-	Ref* changeMap(const rapidjson::Value& event);
-	Ref* move(const rapidjson::Value& event);
-	Ref* message(const rapidjson::Value& event);
-	Ref* talk(const rapidjson::Value& event);
-	Ref* fade(const rapidjson::Value& event);
-	Ref* playSE(const rapidjson::Value& event);
-	Ref* playBGM(const rapidjson::Value& event);
-	Ref* control(const rapidjson::Value& event);
-	Ref* read(const rapidjson::Value& event);
+	Ref* sequence(rapidjson::Value& event);
+	Ref* spawn(rapidjson::Value& event);
+	Ref* repeat(rapidjson::Value& event);
+	Ref* flagif(rapidjson::Value& event);
+	Ref* changeMap(rapidjson::Value& event);
+	Ref* move(rapidjson::Value& event);
+	Ref* message(rapidjson::Value& event);
+	Ref* talk(rapidjson::Value& event);
+	Ref* fade(rapidjson::Value& event);
+	Ref* playSE(rapidjson::Value& event);
+	Ref* playBGM(rapidjson::Value& event);
+	Ref* control(rapidjson::Value& event);
+	Ref* read(rapidjson::Value& event);
 };
 
 #endif /* defined(__LastSupper__EventScriptTask__) */

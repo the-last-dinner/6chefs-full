@@ -24,45 +24,20 @@ private:
     EventScriptManager(const EventScriptManager& other){};                // コピーコンストラクタ
     EventScriptManager& operator = (const EventScriptManager& other);   // 代入演算子
 
-//クラス変数
-private:
-    //関数ポインタ型を宣言
-    typedef Ref*(EventScriptManager::*FunctionPointer)(rapidjson::Value& event);
-    //関数ポインタリンクマップ
-    map<string, FunctionPointer> event_map;
-
 //インスタンス変数
 private:
     rapidjson::Document json;
     cocos2d::FileUtils* fu;
-    cocos2d::Layer* layer;
-
+    string map_id;
 //通常関数
 public:
     //イベントスクリプトセット
     bool setEventScript(string script);
-    //idのイベントを実行
-    bool runEvent(int id);
     //音楽などのリソースのプリロード
     vector<string> getPreLoadList(string type);
-	const rapidjson::Value& getScript(int eventId);
-private:
-    //スクリプト処理関数
-    bool dealScript(rapidjson::Value& event);
-    cocos2d::Vector<FiniteTimeAction*> createActionVec(rapidjson::Value& subAction);
-    //イベント関数
-    Ref* sequence(rapidjson::Value& event);
-    Ref* spawn(rapidjson::Value& event);
-    Ref* repeat(rapidjson::Value& event);
-    Ref* flagif(rapidjson::Value& event);
-    Ref* changeMap(rapidjson::Value& event);
-    Ref* move(rapidjson::Value& event);
-    Ref* message(rapidjson::Value& event);
-    Ref* talk(rapidjson::Value& event);
-    Ref* fade(rapidjson::Value& event);
-    Ref* playSE(rapidjson::Value& event);
-    Ref* playBGM(rapidjson::Value& event);
-    Ref* control(rapidjson::Value& event);
-    Ref* read(rapidjson::Value& event);
+    //該当IDスクリプトの取得
+	rapidjson::Value& getScript(int eventId);
+    //map_idの取得
+    string getMapId();
 };
 #endif /* defined(__LastSupper__EventScript__) */
