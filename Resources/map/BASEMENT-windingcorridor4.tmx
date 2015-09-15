@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Base" width="46" height="30">
   <properties>
-   <property name="cc_vertexz" value="-6"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztl90OgjAMhbsHEK/0JcQr9CHQK/U1eUhnRpOlWbdSfmRJm5yUnIzxpSTjALBu3R3AwfcGQkc1kPfpmq3rx33xvYXQUS3kfbqGq5sLzxhGdS54S3Hj8ykv16Xcb7//J+J+ueAtwd1D0GNUL+jU4/YeGHUz2XN7T5FxG3dt3Cevs1B74p571hr3tL3xGyHRnrgxexwhfR17e+Lmskoqs2hngp3mOK7Hs5Jwl6SZSSrrcHOi3lXArc1VmneZ82L+Encp32rnncpmJS/Ofc8MN72Xy4eaPLgXpc4H416Xm35ba+BO/X/VwI0y7m2EWb02bi7zSv87/iUrK019AcptphI=
@@ -29,22 +29,26 @@
  <objectgroup name="event">
   <object id="13" x="64" y="0" width="32" height="32">
    <properties>
-    <property name="EventID" value="11150"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="14" x="672" y="64" width="32" height="64">
    <properties>
-    <property name="EventID" value="11151"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="15" x="704" y="352" width="32" height="32">
    <properties>
-    <property name="EventID" value="11153"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="16" x="64" y="32" width="32" height="32">
    <properties>
-    <property name="EventID" value="12129"/>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
  </objectgroup>

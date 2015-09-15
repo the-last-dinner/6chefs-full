@@ -31,6 +31,10 @@
 							"layer":"doorB"
 						},
 						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
 							"type":"removeLayer",
 							"layer":"doorB2"
 						},
@@ -68,6 +72,10 @@
 						{
 							"type":"removeLayer",
 							"layer":"doorC"
+						},
+						{
+							"type":"wait",
+							"time":0.5
 						},
 						{
 							"type":"removeLayer",
@@ -172,7 +180,7 @@
 						{
 							"type":"playSE",
 							"file":"hit.mp3",
-							"times":3
+							"times":3.0
 						},
 						{
 							"type":"playSE",
@@ -216,7 +224,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["17,7"]
+					"event":["17","7"]
 				}
 			],
 			"action":[

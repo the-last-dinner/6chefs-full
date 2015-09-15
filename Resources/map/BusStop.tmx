@@ -90,17 +90,20 @@
  <objectgroup name="event">
   <object id="56" x="832" y="304" width="32" height="80">
    <properties>
-    <property name="EventID" value="111"/>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="57" x="832" y="384" width="32" height="96">
    <properties>
-    <property name="EventID" value="112"/>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="58" x="832" y="480" width="32" height="80">
    <properties>
-    <property name="EventID" value="113"/>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="66" x="0" y="0" width="32" height="32">

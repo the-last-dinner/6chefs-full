@@ -10,16 +10,25 @@
   <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="36" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0rENgDAMRFF7YbYLewDZA0bABSkioVOuuO6eZLmKEn0lYtYyYk/dZl11pqdus9wHO2pO4WbdNY9ws9wHcx/Mff5t36j7jHtW36Pus/qewf8Hcx/MfTD3McYLz1XIaA==
   </data>
  </layer>
  <layer name="MonoShita" width="36" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-12"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYECAXBYGmoNsEuwYdQ9+MOoe/GDUPfjBqHvwg1H34AZdQHXddHBPJwvErlFAGfADhqE/HcLRlwViFyGQwzK40jMIjLoHPxh1D34w6h7CwICFtnioAQDtKBiR
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4D2gJ2JgYGDiXbqSQXiQLMlSDCfVPXUArQOB1IBrcOBVv4l11xa+Xeg0hMuMNLSGSEwUsNjpPobBka6/2kNRsMXFYyGx8gGAC/kAwM=
   </data>
@@ -48,498 +57,112 @@
  <objectgroup name="event">
   <object id="18" x="480" y="192" width="32" height="32">
    <properties>
-    <property name="EventID" value="11156"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="19" x="0" y="192" width="32" height="32">
    <properties>
-    <property name="EventID" value="11157"/>
-   </properties>
-  </object>
-  <object id="21" x="64" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="22" x="64" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="23" x="96" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="24" x="128" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="25" x="96" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="26" x="128" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="30" x="160" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="31" x="192" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="32" x="192" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="33" x="224" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="34" x="256" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="35" x="288" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="36" x="320" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="37" x="384" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="38" x="416" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="39" x="416" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="40" x="384" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="42" x="352" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="43" x="320" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="45" x="288" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="46" x="224" y="96" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="47" x="96" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="49" x="128" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="50" x="160" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="51" x="192" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="52" x="224" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="53" x="256" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="54" x="288" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="55" x="320" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="56" x="352" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="57" x="384" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="58" x="384" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="59" x="416" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="60" x="416" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="61" x="384" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="62" x="384" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="63" x="384" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="64" x="416" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="65" x="416" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="66" x="416" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="67" x="384" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="68" x="384" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="69" x="352" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="70" x="352" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="71" x="352" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="72" x="352" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="73" x="320" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="74" x="288" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="75" x="320" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="76" x="320" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="77" x="320" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="78" x="320" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="79" x="288" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="80" x="288" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="81" x="288" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="82" x="288" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="83" x="256" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="84" x="256" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="85" x="64" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="86" x="96" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="87" x="128" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="88" x="160" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="89" x="192" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="90" x="224" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="91" x="224" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="92" x="224" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="93" x="256" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="94" x="256" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="95" x="256" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="96" x="224" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="97" x="224" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="99" x="192" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="100" x="192" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="102" x="192" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="103" x="160" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="104" x="128" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="105" x="96" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="106" x="64" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="107" x="64" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="109" x="96" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="110" x="128" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="111" x="160" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="112" x="160" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="113" x="224" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="114" x="288" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="115" x="96" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="116" x="128" y="256" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="117" x="160" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="118" x="192" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="119" x="160" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="120" x="128" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="121" x="128" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="122" x="96" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="123" x="96" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="124" x="64" y="224" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="125" x="64" y="192" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
-  <object id="126" x="352" y="160" width="32" height="32">
-   <properties>
-    <property name="EventID" value="12132"/>
-   </properties>
-  </object>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="21" type="slip" x="64" y="64" width="32" height="32"/>
+  <object id="22" type="slip" x="64" y="96" width="32" height="32"/>
+  <object id="23" type="slip" x="96" y="64" width="32" height="32"/>
+  <object id="24" type="slip" x="128" y="64" width="32" height="32"/>
+  <object id="25" type="slip" x="96" y="96" width="32" height="32"/>
+  <object id="26" type="slip" x="128" y="96" width="32" height="32"/>
+  <object id="30" type="slip" x="160" y="96" width="32" height="32"/>
+  <object id="31" type="slip" x="192" y="64" width="32" height="32"/>
+  <object id="32" type="slip" x="192" y="96" width="32" height="32"/>
+  <object id="33" type="slip" x="224" y="64" width="32" height="32"/>
+  <object id="34" type="slip" x="256" y="64" width="32" height="32"/>
+  <object id="35" type="slip" x="288" y="64" width="32" height="32"/>
+  <object id="36" type="slip" x="320" y="64" width="32" height="32"/>
+  <object id="37" type="slip" x="384" y="64" width="32" height="32"/>
+  <object id="38" type="slip" x="416" y="64" width="32" height="32"/>
+  <object id="39" type="slip" x="416" y="96" width="32" height="32"/>
+  <object id="40" type="slip" x="384" y="96" width="32" height="32"/>
+  <object id="42" type="slip" x="352" y="96" width="32" height="32"/>
+  <object id="43" type="slip" x="320" y="96" width="32" height="32"/>
+  <object id="45" type="slip" x="288" y="96" width="32" height="32"/>
+  <object id="46" type="slip" x="224" y="96" width="32" height="32"/>
+  <object id="47" type="slip" x="96" y="128" width="32" height="32"/>
+  <object id="49" type="slip" x="128" y="128" width="32" height="32"/>
+  <object id="50" type="slip" x="160" y="128" width="32" height="32"/>
+  <object id="51" type="slip" x="192" y="128" width="32" height="32"/>
+  <object id="52" type="slip" x="224" y="128" width="32" height="32"/>
+  <object id="53" type="slip" x="256" y="128" width="32" height="32"/>
+  <object id="54" type="slip" x="288" y="128" width="32" height="32"/>
+  <object id="55" type="slip" x="320" y="128" width="32" height="32"/>
+  <object id="56" type="slip" x="352" y="128" width="32" height="32"/>
+  <object id="57" type="slip" x="384" y="128" width="32" height="32"/>
+  <object id="58" type="slip" x="384" y="160" width="32" height="32"/>
+  <object id="59" type="slip" x="416" y="192" width="32" height="32"/>
+  <object id="60" type="slip" x="416" y="224" width="32" height="32"/>
+  <object id="61" type="slip" x="384" y="192" width="32" height="32"/>
+  <object id="62" type="slip" x="384" y="224" width="32" height="32"/>
+  <object id="63" type="slip" x="384" y="256" width="32" height="32"/>
+  <object id="64" type="slip" x="416" y="256" width="32" height="32"/>
+  <object id="65" type="slip" x="416" y="288" width="32" height="32"/>
+  <object id="66" type="slip" x="416" y="320" width="32" height="32"/>
+  <object id="67" type="slip" x="384" y="288" width="32" height="32"/>
+  <object id="68" type="slip" x="384" y="320" width="32" height="32"/>
+  <object id="69" type="slip" x="352" y="224" width="32" height="32"/>
+  <object id="70" type="slip" x="352" y="256" width="32" height="32"/>
+  <object id="71" type="slip" x="352" y="288" width="32" height="32"/>
+  <object id="72" type="slip" x="352" y="320" width="32" height="32"/>
+  <object id="73" type="slip" x="320" y="320" width="32" height="32"/>
+  <object id="74" type="slip" x="288" y="288" width="32" height="32"/>
+  <object id="75" type="slip" x="320" y="256" width="32" height="32"/>
+  <object id="76" type="slip" x="320" y="160" width="32" height="32"/>
+  <object id="77" type="slip" x="320" y="192" width="32" height="32"/>
+  <object id="78" type="slip" x="320" y="224" width="32" height="32"/>
+  <object id="79" type="slip" x="288" y="160" width="32" height="32"/>
+  <object id="80" type="slip" x="288" y="192" width="32" height="32"/>
+  <object id="81" type="slip" x="288" y="224" width="32" height="32"/>
+  <object id="82" type="slip" x="288" y="256" width="32" height="32"/>
+  <object id="83" type="slip" x="256" y="160" width="32" height="32"/>
+  <object id="84" type="slip" x="256" y="192" width="32" height="32"/>
+  <object id="85" type="slip" x="64" y="160" width="32" height="32"/>
+  <object id="86" type="slip" x="96" y="160" width="32" height="32"/>
+  <object id="87" type="slip" x="128" y="160" width="32" height="32"/>
+  <object id="88" type="slip" x="160" y="160" width="32" height="32"/>
+  <object id="89" type="slip" x="192" y="160" width="32" height="32"/>
+  <object id="90" type="slip" x="224" y="160" width="32" height="32"/>
+  <object id="91" type="slip" x="224" y="192" width="32" height="32"/>
+  <object id="92" type="slip" x="224" y="224" width="32" height="32"/>
+  <object id="93" type="slip" x="256" y="224" width="32" height="32"/>
+  <object id="94" type="slip" x="256" y="256" width="32" height="32"/>
+  <object id="95" type="slip" x="256" y="288" width="32" height="32"/>
+  <object id="96" type="slip" x="224" y="256" width="32" height="32"/>
+  <object id="97" type="slip" x="224" y="288" width="32" height="32"/>
+  <object id="99" type="slip" x="192" y="256" width="32" height="32"/>
+  <object id="100" type="slip" x="192" y="288" width="32" height="32"/>
+  <object id="102" type="slip" x="192" y="320" width="32" height="32"/>
+  <object id="103" type="slip" x="160" y="320" width="32" height="32"/>
+  <object id="104" type="slip" x="128" y="320" width="32" height="32"/>
+  <object id="105" type="slip" x="96" y="320" width="32" height="32"/>
+  <object id="106" type="slip" x="64" y="320" width="32" height="32"/>
+  <object id="107" type="slip" x="64" y="288" width="32" height="32"/>
+  <object id="109" type="slip" x="96" y="288" width="32" height="32"/>
+  <object id="110" type="slip" x="128" y="288" width="32" height="32"/>
+  <object id="111" type="slip" x="160" y="288" width="32" height="32"/>
+  <object id="112" type="slip" x="160" y="256" width="32" height="32"/>
+  <object id="113" type="slip" x="224" y="320" width="32" height="32"/>
+  <object id="114" type="slip" x="288" y="320" width="32" height="32"/>
+  <object id="115" type="slip" x="96" y="256" width="32" height="32"/>
+  <object id="116" type="slip" x="128" y="256" width="32" height="32"/>
+  <object id="117" type="slip" x="160" y="224" width="32" height="32"/>
+  <object id="118" type="slip" x="192" y="192" width="32" height="32"/>
+  <object id="119" type="slip" x="160" y="192" width="32" height="32"/>
+  <object id="120" type="slip" x="128" y="224" width="32" height="32"/>
+  <object id="121" type="slip" x="128" y="192" width="32" height="32"/>
+  <object id="122" type="slip" x="96" y="192" width="32" height="32"/>
+  <object id="123" type="slip" x="96" y="224" width="32" height="32"/>
+  <object id="124" type="slip" x="64" y="224" width="32" height="32"/>
+  <object id="125" type="slip" x="64" y="192" width="32" height="32"/>
+  <object id="126" type="slip" x="352" y="160" width="32" height="32"/>
  </objectgroup>
 </map>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="9">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="11">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="20" height="30">
   <properties>
-   <property name="cc_vertexz" value="-5"/>
+   <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBj8YCmVMAy0UgG3IZnXRgAPtLo1jNTBo+aNmjdq3qh5o+aNLPMIAVLVEwKnGCF4OAAArAMb/Q==
@@ -13,26 +13,26 @@
  </layer>
  <layer name="MonoShita" width="20" height="30">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
   </data>
  </layer>
- <layer name="MonoChu" width="20" height="30">
+ <layer name="lake" width="20" height="30">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFlILDULwMipcjsUG4kpGBoYoRwj6EJgdTvwLJPHR5ZHWH0cw7jAWjm5cCxO4U4gNI5lFq1qh5g9s8t1HzRs0bNQ+neZSaBcL3GEbBSAAAMjV6Rg==
+   eJxjYBgFlILDULwMipcjsUG4kpGBoYoRwj6EJgdTvwLJPHR5ZHWH0cw7jAWjm5cCxO4U4gNI5lFq1qh5g9s8t1HzRs0bNQ+neZSaBcL3kMwTY6QOHgWDDwAA/Q175A==
   </data>
  </layer>
  <layer name="MonoUe" width="20" height="30">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj8QJSRgUGMQizOiDDPmBG3XcQC01HzRs0bNW/UvFHzRpx5gUB2EIU4mApuGgWDHwAA5b8PvQ==
+   eJxjYBj8QJSRgUGMQizOiDDPmBG3XcQC01HzRs0bNW/UvFHzRs2j0LxRMHwBANbyClE=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -41,7 +41,11 @@
   <object id="3" x="0" y="0" width="16" height="416"/>
   <object id="4" x="304" y="0" width="16" height="416"/>
   <object id="5" x="16" y="0" width="288" height="64"/>
-  <object id="8" x="16" y="352" width="288" height="32"/>
+  <object id="8" x="16" y="352" width="288" height="32">
+   <properties>
+    <property name="objID" value="1810"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
@@ -56,12 +60,26 @@
  <objectgroup name="event">
   <object id="6" x="144" y="448" width="32" height="32">
    <properties>
-    <property name="EventID" value="11130"/>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="7" x="144" y="64" width="32" height="32">
    <properties>
-    <property name="EventID" value="11131"/>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="9" x="16" y="352" width="288" height="32">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="10" x="272" y="432" width="32" height="32">
+   <properties>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>

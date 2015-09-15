@@ -1,825 +1,705 @@
 {
 	"1":[
-	{
-	"type":"changeMap",
-	"nextMap":"4",
-	"x":29,
-	"y":22
-	}
+		{
+			"type":"changeMap",
+			"nextMap":"4",
+			"x":29,
+			"y":22
+		}
 	],
 	"2":[
-	{
-	"type":"changeMap",
-	"nextMap":"41",
-	"x":8,
-	"y":19
-	}
+		{
+			"type":"changeMap",
+			"nextMap":"41",
+			"x":8,
+			"y":19
+		}
 	],
 	"3":[
-	{
-	"type":"if",
-	"condition":[
-	{
-	"Nevent":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-	}
+		{
+			"type":"if",
+			"condition":[
+				{
+				"Nstatus":[
+						["1","0"],
+						["2","0"],
+						["3","0"],
+						["4","0"],
+						["5","0"]
+					]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["皆に黙って出るのは・・・"],
+							"caharaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"UP",
+							"steps":1.0
+						}
+					]		
+				}
+			]
+		}
 	],
-	"action":[
-	{
-		"type":"CharaMsg",
-		"text":["皆に黙って出るのは・・・"],
-		"caharaID":"0",
-		"imgID":"0"
-	}
-	]
-
-	}
-	],
-
 	"4":[
-	{
-	"type":"if",
-	"condition":[
-	{
-		"Nevent":["3,4"]
-	}
-	],
-	"action":[
-	{
-		"type":"sequence",
-		"action":[
 		{
-			"type":"charaMsg",
-			"text":["あの・・・"],
-			"charaID":"0",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["は・・・　"],
-			"charaID":"1",
-			"imgID":"1",
-			"name":["？？？"],
-			"option":"reaction"
-		},
-		{
-			"type":"charaMsg",
-			"text":["あ、すみません・・・\n僕、佐々木孫一ていいます。\nよろしくお願いします・・・"],
-			"charaID":"0",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["あ・・・な、中山撫子(なかやま　なでしこ)・・・"],
-			"charaID":"1",
-			"imgID":"1",
-			"name":["？？？"]
-		},
-		{
-			"type":"wait",
-			"time":0.5
-		},
-		{
-			"type":"displayImg",
-			"file":"",
-			"time":2
-		},
-		{
-			"type":"addProfile",
-			"charaID":"1",
-			"infoID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["皆さんなんだか怖い人ばっかりですね・・・"],
-			"charaID":"0",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["・・・"],
-			"charaID":"1",
-			"imgID":"1"
-		},
-		{
-			"type":"already"
+			"type":"if",
+			"condition":[
+				{
+					"Nflg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["あの・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["は・・・　"],
+									"charaID":"1",
+									"imgID":"1",
+									"name":"？？？",
+									"option":"reaction"
+								},
+								{
+									"text":["あ、すみません・・・\n僕、佐々木孫一ていいます。\nよろしくお願いします・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["あ・・・な、中山撫子(ナカヤマ　ナデシコ)・・・"],
+									"charaID":"1",
+									"imgID":"1",
+									"name":"？？？"
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"displayImg",
+							"file":"",
+							"time":2.0
+						},
+						{
+							"type":"addProfile",
+							"charaID":"1",
+							"infoID":"1"
+						},
+						{
+							"type":"changeStatus",
+							"charaID":"1",
+							"favorite":"0"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["皆さんなんだか怖い人ばっかりですね・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["・・・"],
+									"charaID":"1",
+									"imgID":"1"
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":[
+										["1","0"],
+										["2","0"],
+										["3","0"],
+										["4","0"],
+										["5","0"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そろそろ行こう"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"type":"if",
 			"condition":[
-			{
-				"event":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-			}
+				{
+					"flg":"1"
+				}
 			],
 			"action":[
-			{
-				"type":"charaMsg",
-				"text":["そろそろ行こう"],
-				"charaID":"0",
-				"imgID":"1"
-			}
-			]
+				{
+					"type":"charaMsg",
+					"text":["あの・・・よろしくお願いします・・・"],
+					"charaID":"1",
+					"imgID":"1"
+				}
+			]	
 		}
-		]
-	}
-	]
-	},
-	{
-	"type":"charaMsg",
-	"text":["あの・・・よろしくお願いします・・・"],
-	"charaID":"1",
-	"imgID":"1"
-	}
 	],
 	"5":[
-	{
-		"type":"if",
-		"condition":[
 		{
-			"Nevent":["3,5"]
-		}
-		],
-		"action":[
-		{
-			"type":"sequence",
-			"action":[
-			{
-				"type":"charaMsg",
-				"text":["おう！加藤蘭丸(かとう　らんまる)だ！\nよろしくな！"],
-				"charaID":"2",
-				"imgID":"1",
-				"name":["？？？"]
-			},
-			{
-				"type":"charaMsg",
-				"text":["あ、さ、佐々木孫一です！"],
-				"charaID":"0",
-				"imgID":"1"
-			},
-			{
-			"type":"wait",
-			"time":0.5
-			},
-			{
-			"type":"displayImg",
-			"file":"",
-			"time":2
-			},
-			{
-			"type":"addProfile",
-			"charaID":"2",
-			"infoID":"1"
-			},
-			{
-				"type":"charaMsg",
-				"text":["さっきのじいさん、やけに疲れてたな。\nなんかあったのか？"],
-				"charaID":"2",
-				"imgID":"1"
-			},
-			{
-				"type":"already"
-			},
-			{
 			"type":"if",
 			"condition":[
-			{
-				"event":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-			}
+				{
+					"Nflg":"1"
+				}
 			],
 			"action":[
-			{
-				"type":"charaMsg",
-				"text":["そろそろ行こう"],
-				"charaID":"0",
-				"imgID":"1"
-			}
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["おう！加藤蘭丸(カトウ　ランマル)だ！\nよろしくな！"],
+									"charaID":"2",
+									"imgID":"1",
+									"name":"？？？"
+								},
+								{
+									"text":["あ、さ、佐々木孫一です！"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"displayImg",
+							"file":"",
+							"time":2.0
+						},
+						{
+							"type":"addProfile",
+							"charaID":"2",
+							"infoID":"1"
+						},
+						{
+							"type":"changeStatus",
+							"charaID":"2",
+							"favorite":"0"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						},
+						{
+							"type":"charaMsg",
+							"text":["さっきのじいさん、やけに疲れてたな。\nなんかあったのか？"],
+							"charaID":"2",
+							"imgID":"1"
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":[
+										["1","0"],
+										["2","0"],
+										["3","0"],
+										["4","0"],
+										["5","0"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そろそろ行こう"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						}
+					]
+				}
 			]
-		}
-		]
-	},
-	{
-		"type":"charaMsg",
-		"text":["ん？早く行こーや"],
-		"charaID":"2",
-		"imgID":"1"
-	}
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["ん？早く行こーや"],
+					"charaID":"2",
+					"imgID":"1"
+				}
+			]
+		}	
 	],
 	"6":[
-	{
-		"type":"if",
-		"condition":[
 		{
-			"Nevent":["3,6"]
-		}
-		],
-		"action":[
-		{
-			"type":"sequence",
-			"action":[
-			{
-				"type":"charaMsg",
-				"text":["なんか用か？"],
-				"charaID":"5",
-				"imgID":"1",
-				"name":["？？？"]
-			},
-			{
-				"type":"charaMsg",
-				"text":["いえ、あ、佐々木孫一です。\nよろしくお願いします。"],
-				"charaID":"0",
-				"imgID":"1"
-			},
-			{
-				"type":"wait",
-				"time":0.5
-			},
-			{
-				"type":"displayImg",
-				"file":"",
-				"time":2
-			},
-			{
-			"type":"addProfile",
-			"charaID":"5",
-			"infoID":"1"
-			},
-			{
-				"type":"charaMsg",
-				"text":["ダイゴローって呼ぶなよ"],
-				"charaID":"5",
-				"imgID":"1"
-			},
-			{
-				"type":"charaMsg",
-				"text":["え？は、はい・・・"],
-				"charaID":"0",
-				"imgID":"1"
-			},
-			{
-				"type":"already"
-			},
-			{
 			"type":"if",
 			"condition":[
-			{
-				"event":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-			}
+				{
+					"Nflg":"1"
+				}
 			],
 			"action":[
-			{
-				"type":"charaMsg",
-				"text":["そろそろ行こう"],
-				"charaID":"0",
-				"imgID":"1"
-			}
-			]
-		}
-			]
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["なんか用か？"],
+									"charaID":"5",
+									"imgID":"1",
+									"name":"？？？"
+								},
+								{
+									"text":["いえ、あ、佐々木孫一です。\nよろしくお願いします。"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["？、ああ、名前か\n俺は大善吾郎（ダイゼン　ゴロウ）だ"],
+									"charaID":"5",
+									"imgID":"1",
+									"name":"？？？"
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"displayImg",
+							"file":"",
+							"time":2.0
+						},
+						{
+							"type":"addProfile",
+							"charaID":"5",
+							"infoID":"1"
+						},
+						{
+							"type":"changeStatus",
+							"charaID":"5",
+							"favorite":"0"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["ダイゴローって呼ぶなよ"],
+									"charaID":"5",
+									"imgID":"1"
+								},
+								{
+									"type":"charaMsg",
+									"text":["え？は、はい・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"status":[
+										["1","0"],
+										["2","0"],
+										["3","0"],
+										["4","0"],
+										["5","0"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そろそろ行こう"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						}
+					]
 
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["ん？なんだよ"],
+					"charaID":"5",
+					"imgID":"1"
+				}
+			]
 		}
-		]
-	},
-	{
-		"type":"charaMsg",
-		"text":["ん？なんだよ"],
-		"charaID":"5",
-		"imgID":"1"
-	}
 	],
 	"7":[
-	{
-		"type":"if",
-		"condition":[
 		{
-			"Nevent":["3,7"]
-		}
-		],
-		"action":[
-		{
-			"type":"sequence",
-			"action":[
-			{
-				"type":"charaMsg",
-				"text":["あの、佐々木孫一といいます。\n今日はよろしくお願いします"],
-				"charaID":"0",
-				"imgID":"1"
-			},
-			{
-				"type":"charaMsg",
-				"text":["ん？ああ、一色真夏(いっしき　まなつ)よ"],
-				"charaID":"3",
-				"imgID":"1",
-				"name":["？？？"]
-			},
-			{
-				"type":"wait",
-				"time":0.5
-			},
-			{
-				"type":"displayImg",
-				"file":"",
-				"time":2
-			},
-			{
-			"type":"addProfile",
-			"charaID":"3",
-			"infoID":"1"
-			},
-			{
-				"type":"charaMsg",
-				"text":["あの執事、散々人待たせといて\n詫びの一言も無いのかしら"],
-				"charaID":"3",
-				"imgID":"1",
-				"option":"reaction"
-			},
-			{
-				"type":"charaMsg",
-				"text":["あはは・・・"],
-				"charaID":"0",
-				"imgID":"1"
-			},
-			{
-				"type":"already"
-			},
-			{
 			"type":"if",
 			"condition":[
-			{
-				"event":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-			}
+				{
+					"Nflg":"1"
+				}
 			],
 			"action":[
-			{
-				"type":"charaMsg",
-				"text":["そろそろ行こう"],
-				"charaID":"0",
-				"imgID":"1"
-			}
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["あの、佐々木孫一といいます。\n今日はよろしくお願いします"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["ん？ああ、一色真夏(イッシキ　マナカ)よ"],
+									"charaID":"3",
+									"imgID":"1",
+									"name":"？？？"
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"displayImg",
+							"file":"",
+							"time":2
+						},
+						{
+							"type":"addProfile",
+							"charaID":"3",
+							"infoID":"1"
+						},
+						{
+							"type":"changeStatus",
+							"charaID":"5",
+							"favorite":"0"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["あの執事、散々人待たせといて\n詫びの一言も無いのかしら"],
+									"charaID":"3",
+									"imgID":"1",
+									"option":"reaction"
+								},
+								{
+									"text":["あはは・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":[
+										["1","0"],
+										["2","0"],
+										["3","0"],
+										["4","0"],
+										["5","0"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そろそろ行こう"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["何なのよ…お茶も不味いし！"],
+					"charaID":"3",
+					"imgID":"1",
+					"option":"reaction"
+				}
 			]
 		}
-			]
-		}
-		]
-	},
-	{
-		"type":"charaMsg",
-		"text":["何なのよ…お茶も不味いし！"],
-		"charaID":"3",
-		"imgID":"1"
-	}
 	],
 	"8":[
-	{
-		"type":"if",
-		"condition":[
 		{
-			"Nevent":["3,8"]
-		}
-		],
-		"action":[
-		{
-			"type":"charaMsg",
-			"text":["あの、佐々木孫一といいます。\n今日はよろしくお願いします。"],
-			"charaID":"0",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["ウム、我は荒間田暖暖（あらまだ　だんだん）。　よろしくお願いしますぞ。"],
-			"charaID":"4",
-			"imgID":"1",
-			"name":["？？？"]
-		},
-		{
-			"type":"wait",
-			"time":0.5
-		},
-		{
-			"type":"displayImg",
-			"file":"",
-			"time":2
-		},
-		{
-			"type":"addProfile",
-			"charaID":"4",
-			"infoID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["やはり晩餐会。皆ピリピリしておりますな"],
-			"charaID":"4",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["荒間田さんは落ち着いていますね。"],
-			"charaID":"0",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["当たり前ですぞ。平常心以外有り得ませんな。\n今日は頑張りましょうぞ。"],
-			"charaID":"4",
-			"imgID":"1"
-		},
-		{
-			"type":"already"
+			"type":"if",
+			"condition":[
+				{
+					"Nflg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["あの、佐々木孫一といいます。\n今日はよろしくお願いします。"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["ウム、我は荒間田暖暖（アラマダ　ダンダン）。　よろしくお願いしますぞ。"],
+									"charaID":"4",
+									"imgID":"1",
+									"name":"？？？"
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"displayImg",
+							"file":"",
+							"time":2
+						},
+						{
+							"type":"addProfile",
+							"charaID":"4",
+							"infoID":"1"
+						},
+						{
+							"type":"changeStatus",
+							"charaID":"5",
+							"favorite":"0"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["やはり晩餐会。皆ピリピリしておりますな"],
+									"charaID":"4",
+									"imgID":"1"
+								},
+								{
+									"text":["荒間田さんは落ち着いていますね。"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["当たり前ですぞ。平常心以外有り得ませんな。\n今日は頑張りましょうぞ。"],
+									"charaID":"4",
+									"imgID":"1"
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":[
+										["1","0"],
+										["2","0"],
+										["3","0"],
+										["4","0"],
+										["5","0"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そろそろ行こう"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							]
+						}
+					]
+				}	
+			]
 		},
 		{
 			"type":"if",
 			"condition":[
-			{
-				"event":["{3,4},{3,5},{3,6},{3,7},{3,8}"]
-			}
+				{
+					"flg":"1"
+				}
 			],
 			"action":[
-			{
-				"type":"charaMsg",
-				"text":["そろそろ行こう"],
-				"charaID":"0",
-				"imgID":"1"
-			}
+				{
+					"type":"charaMsg",
+					"text":["よろしくお願いしますぞ"],
+					"charaID":"4",
+					"imgID":"1"
+				}
 			]
 		}
-		]
-	},
-	{
-		"type":"charaMsg",
-		"text":["よろしくお願いしますぞ"],
-		"charaID":"4",
-		"imgID":"1"
-
-	}
 	],
 	"9":[
-	{
-		"type":"systemMsg",
-		"text":["火がパチパチ燃えている"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["火がパチパチ燃えている"]
+		}
 	],
 	"10":[
-	{
-		"type":"systemMsg",
-		"text":["馬が走っている\n躍動感のある絵だ。"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["馬が走っている\n躍動感のある絵だ。"]
+		}
 	],
 	"11":[
-	{
-		"type":"systemMsg",
-		"text":["白い鳩は平和の象徴、、、"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["白い鳩は平和の象徴、、、"]
+		}
 	],
 	"12":[
-	{
-		"type":"systemMsg",
-		"text":["これは・・・何の絵？？"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["これは・・・何の絵？？"]
+		}
 	],
 	"13":[
-	{
-		"type":"systemMsg",
-		"text":["競馬はよく分からないな・・・"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["競馬はよく分からないな・・・"]
+		}
 	],
 	"14":[
-	{
-		"type":"systemMsg",
-		"text":["豪華な花だな"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["豪華な花だな"]
+		}
 	],
 	"15":[
-	{
-		"type":"systemMsg",
-		"text":["アルコール度数高そうなお酒だ"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["アルコール度数高そうなお酒だ"]
+		}
 	],
 	"16":[
-	{
-		"type":"systemMsg",
-		"text":["真っ赤なワインだ"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["真っ赤なワインだ"]
+		}
 	],
 	"17":[
-	{
-		"type":"systemMsg",
-		"text":["ラベルにアルファベットが沢山書いてある"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["ラベルにアルファベットが沢山書いてある"]
+		}
 	],
 	"18":[
-	{
-		"type":"systemMsg",
-		"text":["グラスの淵に少し口紅がついている"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["グラスの淵に少し口紅がついている"]
+		}
 	],
 	"19":[
-	{
-		"type":"systemMsg",
-		"text":["お茶はもう冷め切っている"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["お茶はもう冷め切っている"]
+		}
 	],
 	"20":[
-	{
-		"type":"systemMsg",
-		"text":["カップに茶渋が・・・"]
-	}
+		{
+			"type":"systemMsg",
+			"text":["カップに茶渋が・・・"]
+		}
 	],
 	"21":[
 	{
 		"type":"if",
 		"condition":[
-		{
-			"event":["1261"],
-			"status":["{2,2}"]
-		}
-		],
-		"action":[
-		{
-		"type":"sequence",
-		"action":[
-		{
-			"type":"span",
-			"action":[
 			{
-				"type":"removeChara",
-				"objID":"1031"
-			},
-			{
-				"type":"removeChara",
-				"objID":"1032"
+				"event":["4","15"],
+				"status":["2","2"]
 			}
-			]
-		},
-		{
-			"type":"charaMsg",
-			"text":["加藤さん！"],
-			"charaID":"0",
-			"imgID":"2",
-			"option":"reaction"
-		},
-		{
-			"type":"charaWalk",
-			"direction":"UP",
-			"steps":3,
-			"objID":"hero"
-		},
-		{
-			"type":"span",
-			"action":[
-			{
-				"type":"sequence",
-				"action":[
-				{
-					"type":"charaWalk",
-					"direction":"LEFT",
-					"steps":1,
-					"objID":"1033"
-				},
-				{
-					"type":"charaWalk",
-					"direction":"UP",
-					"steps":1,
-					"objID":"1033"
-				}
-				]
-			},
-			{
-				"type":"sequence",
-				"action":[
-				{
-					"type":"charaWalk",
-					"direction":"RIGHT",
-					"steps":1,
-					"objID":"1034"
-				},
-				{
-					"type":"charaWalk",
-					"direction":"UP",
-					"steps":2,
-					"objID":"1033"
-				}
-				]
-			}
-			]
-		},
-		{
-			"type":"charaMsg",
-			"text":["ぐっ、、、"],
-			"charaID":"2",
-			"imgID":"3",
-			"option":"reaction"
-		},
-		{
-			"type":"charaMsg",
-			"text":["ヤツは！？"],
-			"charaID":"5",
-			"imgID":"1",
-			"option":"reaction"
-		},
-		{
-			"type":"charaMsg",
-			"text":["すまねえ\n気づいたときにはもう・・・"],
-			"charaID":"2",
-			"imgID":"3"
-		},
-		{
-			"type":"directionChange",
-			"direction":"DOWN",
-			"objID":"1034"
-		},
-		{
-			"type":"wait",
-			"time":2.0
-		},
-		{
-			"type":"charaMsg",
-			"text":["この部屋の出口はあそこしかないハズですぞ・・・"],
-			"charaID":"4",
-			"imgID":"1"
-		},
-		{
-			"type":"span",
-			"action":[
-			{
-				"type":"createChara",
-				"objID":"1036"
-			},
-			{
-				"type":"createChara",
-				"objID":"1037"
-			}
-			]
-		},
-		{
-			"type":"charaMsg",
-			"text":["きゃっ"],
-			"charaID":"1",
-			"imgID":"2",
-			"option":"reaction"
-		},
-		{
-			"type":"directionChange",
-			"direction":"DOWN",
-			"objID":"1036"
-		},
-		{
-			"type":"removeChara",
-			"objID":"1036"
-		},
-		{
-			"type":"charaMsg",
-			"text":["ちょっと・・・何よコレ・・・"],
-			"charaID":"3",
-			"imgID":"2"
-		},
-		{
-			"type":"charaWalk",
-			"direction":"DOWN",
-			"steps":1,
-			"objID":"1037"
-		},
-		{
-			"type":"removeChara",
-			"objID":"1037"
-		},
-		{
-			"type":"directionChange",
-			"direction":"DOWN",
-			"objID":"1033"
-		},
-		{
-			"type":"charaMsg",
-			"text":["おい！"],
-			"charaID":"5",
-			"imgID":"1",
-			"option":"reaction"
-		},
-		{
-			"type":"directionChange",
-			"direction":"RIGHT",
-			"objID":"1033"
-		},
-		{
-			"type":"charaMsg",
-			"text":["チィッ！アイツ等追いかけるぞ！！"],
-			"charaID":"5",
-			"imgID":"1",
-			"option":"reaction"
-		},
-		{
-			"type":"span",
-			"action":[
-				{
-					"type":"directionChange",
-					"direction":"LEFT",
-					"objID":"hero"
-				},
-				{
-					"type":"directionChange",
-					"direction":"LEFT",
-					"objID":"1034"
-				}
-			]
-		},
-		{
-			"type":"charaMsg",
-			"text":["ここは危険ですぞ！\n手分けしてなるべく早く見つけたほうがいいですぞ！"],
-			"charaID":"4",
-			"imgID":"1",
-			"option":"reaction"
-		},
-		{
-			"type":"charaMsg",
-			"text":["ああ、佐々木！お前は西棟を頼む！\n加藤はそこでおとなしくしとけ"],
-			"charaID":"5",
-			"imgID":"1"
-		},
-		{
-			"type":"fadeout"
-		},
-		{
-			"type":"already"
-		},
-		{
-			"type":"camera",
-			"mapID":"40",
-			"x":12,
-			"y":12
-		},
-		{
-			"type":"createChara",
-			"objID":"1058"
-		},
-		{
-			"type":"createChara",
-			"objID":"1059"
-		},
-		{
-			"type":"fadein"
-		},
-		{
-			"type":"charaMsg",
-			"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
-			"charaID":"6",
-			"imgID":"1",
-			"name":["？？？"]
-		},
-		{
-			"type":"charaMsg",
-			"text":["貴方は・・・？"],
-			"charaID":"1",
-			"imgID":"1"
-		},
-		{
-			"type":"charaMsg",
-			"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
-			"charaID":"6",
-			"imgID":"1",
-			"name":["？？？"]
-		},
-		{
-			"type":"fadeout"
-		},
-		{
-			"type":"span",
-			"action":[
-				{
-					"type":"removeChara",
-					"objID":"1058"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1059"
-				}
-			]
-		},
-		{
-			"type":"camera",
-			"return":"hero"
-		},
-		{
-			"type":"chapterChange",
-			"chapterID":""
-		},
-		{
-			"type":"fadein"
-		}
-		]
-		}
-		]
-	},
-	{
-		"type":"if",
-		"condition":[
-		{
-			"event":["1261"],
-			"Nstatus":["2,2"]
-		}
 		],
 		"action":[
 			{
 				"type":"sequence",
 				"action":[
 					{
-						"type":"span",
+						"type":"spawn",
 						"action":[
 							{
 								"type":"removeChara",
@@ -832,10 +712,6 @@
 						]
 					},
 					{
-						"type":"playSE",
-						"file":"despair.mp3"
-					},
-					{
 						"type":"charaMsg",
 						"text":["加藤さん！"],
 						"charaID":"0",
@@ -843,113 +719,45 @@
 						"option":"reaction"
 					},
 					{
-						"type":"span",
-						"action":[
-							{
-								"type":"charaWalk",
-								"direction":"UP",
-								"steps":3,
-								"objID":"hero"
-							},
-							{
-								"type":"sequence",
-								"action":[
-									{
-										"type":"charaWalk",
-										"direction":"LEFT",
-										"steps":1,
-										"objID":"1033"
-									},
-									{
-										"type":"charaWalk",
-										"direction":"UP",
-										"steps":1,
-										"objID":"1033"	
-									}
-								]
-							},
-							{
-								"type":"sequence",
-								"action":[
-									{
-										"type":"charaWalk",
-										"direction":"RIGHT",
-										"steps":1,
-										"objID":"1034"
-									},
-									{
-										"type":"charaWalk",
-										"direction":"UP",
-										"steps":2,
-										"objID":"1034"
-									}								]
-							}
-						]
+						"type":"charaWalk",
+						"direction":"UP",
+						"steps":3.0,
+						"objID":"hero"
 					},
 					{
-						"type":"charaMsg",
-						"text":["ウソだろ!!"],
-						"charaID":"5",
-						"imgID":"2",
-						"option":"reaction"
-					},
-					{
-						"type":"charaMsg",
-						"text":["そんな!"],
-						"charaID":"0",
-						"imgID":"3",
-						"option":"reaction"
-					},
-					{
-						"type":"span",
+						"type":"spawn",
 						"action":[
 							{
 								"type":"sequence",
 								"action":[
 									{
-										"type":"directionChange",
+										"type":"charaWalk",
 										"direction":"LEFT",
+										"steps":1.0,
 										"objID":"1033"
 									},
 									{
-										"type":"directionChange",
-										"direction":"RIGHT",
-										"objID":"1033"
-									},
-									{
-										"type":"directionChange",
-										"direction":"LEFT",
-										"objID":"1033"
-									},
-									{
-										"type":"directionChange",
-										"direction":"RIGHT",
+										"type":"charaWalk",
+										"direction":"UP",
+										"steps":1.0,
 										"objID":"1033"
 									}
 								]
-							},
+							},		
 							{
 								"type":"sequence",
 								"action":[
 									{
-										"type":"directionChange",
+										"type":"charaWalk",
 										"direction":"RIGHT",
+										"steps":1.0,
 										"objID":"1034"
 									},
 									{
-										"type":"directionChange",
-										"direction":"LEFT",
-										"objID":"1034"
-									},
-									{
-										"type":"directionChange",
-										"direction":"RIGHT",
-										"objID":"1034"
-									},
-									{
-										"type":"directionChange",
-										"direction":"LEFT",
-										"objID":"1034"
+										"type":"charaWalk",
+										"direction":"UP",
+										"steps":2.0,
+										"objID":"1033"
 									}
 								]
 							}
@@ -957,15 +765,34 @@
 					},
 					{
 						"type":"charaMsg",
-						"text":["ヤツは！？"],
-						"charaID":"5",
-						"imgID":"1",
-						"option":"reaction"
+						"talk":[
+							{
+									"text":["ぐっ、、、"],
+									"charaID":"2",
+									"imgID":"3",
+									"option":"reaction"
+							},
+							{
+								"text":["ヤツは！？"],
+								"charaID":"5",
+								"imgID":"1",
+								"option":"reaction"
+							},
+							{
+								"text":["すまねえ\n気づいたときにはもう・・・"],
+								"charaID":"2",
+								"imgID":"3"
+							}
+						]
 					},
 					{
-						"type":"directionChange",
+						"type":"changeDirection",
 						"direction":"DOWN",
 						"objID":"1034"
+					},
+					{
+						"type":"wait",
+						"time":2.0
 					},
 					{
 						"type":"charaMsg",
@@ -974,27 +801,27 @@
 						"imgID":"1"
 					},
 					{
-						"type":"span",
+						"type":"spawn",
 						"action":[
-							{
-								"type":"createChara",
-								"objID":"1036"
-							},
-							{
-								"type":"createChara",
-								"objID":"1037"
-							}
+						{
+							"type":"createChara",
+							"objID":"1036"
+						},
+						{
+							"type":"createChara",
+							"objID":"1037"
+						}
 						]
 					},
 					{
 						"type":"charaMsg",
-						"text":["いやあああああああああああ！！！"],
+						"text":["きゃっ"],
 						"charaID":"1",
 						"imgID":"2",
 						"option":"reaction"
 					},
 					{
-						"type":"directionChange",
+						"type":"changeDirection",
 						"direction":"DOWN",
 						"objID":"1036"
 					},
@@ -1004,14 +831,14 @@
 					},
 					{
 						"type":"charaMsg",
-						"text":["あは、アハハハハははは・・・"],
+						"text":["ちょっと・・・何よコレ・・・"],
 						"charaID":"3",
-						"imgID":"3"
+						"imgID":"2"
 					},
 					{
 						"type":"charaWalk",
 						"direction":"DOWN",
-						"steps":1,
+						"steps":1.0,
 						"objID":"1037"
 					},
 					{
@@ -1019,7 +846,7 @@
 						"objID":"1037"
 					},
 					{
-						"type":"directionChange",
+						"type":"changeDirection",
 						"direction":"DOWN",
 						"objID":"1033"
 					},
@@ -1031,7 +858,7 @@
 						"option":"reaction"
 					},
 					{
-						"type":"directionChange",
+						"type":"changeDirection",
 						"direction":"RIGHT",
 						"objID":"1033"
 					},
@@ -1043,15 +870,15 @@
 						"option":"reaction"
 					},
 					{
-						"type":"span",
+						"type":"spawn",
 						"action":[
 							{
-								"type":"directionChange",
+								"type":"changeDirection",
 								"direction":"LEFT",
 								"objID":"hero"
 							},
 							{
-								"type":"directionChange",
+								"type":"changeDirection",
 								"direction":"LEFT",
 								"objID":"1034"
 							}
@@ -1059,16 +886,19 @@
 					},
 					{
 						"type":"charaMsg",
-						"text":["ここは危険ですぞ！\n手分けしてなるべく早く見つけたほうがいいですぞ！"],
-						"charaID":"4",
-						"imgID":"1",
-						"option":"reaction"
-					},
-					{
-						"type":"charaMsg",
-						"text":["ああ、佐々木！お前は西棟を頼む！\n加藤はそこでおとなしくしとけ"],
-						"charaID":"5",
-						"imgID":"1"
+						"talk":[
+							{
+								"text":["ここは危険ですぞ！\n手分けしてなるべく早く見つけたほうがいいですぞ！"],
+								"charaID":"4",
+								"imgID":"1",
+								"option":"reaction"
+							},
+							{
+								"text":["ああ、佐々木！お前は西棟を頼む！\n加藤はそこでおとなしくしとけ"],
+								"charaID":"5",
+								"imgID":"1"
+							}
+						]
 					},
 					{
 						"type":"fadeout"
@@ -1095,29 +925,377 @@
 					},
 					{
 						"type":"charaMsg",
-						"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
-						"charaID":"6",
-						"imgID":"1",
-						"name":["？？？"]
-					},
-					{
-						"type":"charaMsg",
-						"text":["貴方は・・・？"],
-						"charaID":"1",
-						"imgID":"1"
-					},
-					{
-						"type":"charaMsg",
-						"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
-						"charaID":"6",
-						"imgID":"1",
-						"name":["？？？"]
+						"talk":[
+							{
+								"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
+								"charaID":"6",
+								"imgID":"1",
+								"name":"？？？"
+							},
+							{
+								"text":["貴方は・・・？"],
+								"charaID":"1",
+								"imgID":"1"
+							},
+							{
+								"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
+								"charaID":"6",
+								"imgID":"1",
+								"name":"？？？"
+							}
+						]
 					},
 					{
 						"type":"fadeout"
 					},
 					{
-						"type":"span",
+						"type":"spawn",
+						"action":[
+							{
+								"type":"removeChara",
+								"objID":"1058"
+							},
+							{
+								"type":"removeChara",
+								"objID":"1059"
+							}
+						]
+					},
+					{
+						"type":"camera",
+						"return":"hero"
+					},
+					{
+						"type":"chapterChange",
+						"chapterID":""
+					},
+					{
+						"type":"fadein"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type":"if",
+		"condition":[
+		{
+			"event":["4","15"],
+			"Nstatus":["2","2"]
+		}
+		],
+		"action":[
+			{
+				"type":"sequence",
+				"action":[
+					{
+						"type":"spawn",
+						"action":[
+							{
+								"type":"removeChara",
+								"objID":"1031"
+							},
+							{
+								"type":"removeChara",
+								"objID":"1032"
+							}
+						]
+					},
+					{
+						"type":"playSE",
+						"file":"despair.mp3"
+					},
+					{
+						"type":"charaMsg",
+						"text":["加藤さん！"],
+						"charaID":"0",
+						"imgID":"2",
+						"option":"reaction"
+					},
+					{
+						"type":"spawn",
+						"action":[
+							{
+								"type":"charaWalk",
+								"direction":"UP",
+								"steps":3.0,
+								"objID":"hero"
+							},
+							{
+								"type":"sequence",
+								"action":[
+									{
+										"type":"charaWalk",
+										"direction":"LEFT",
+										"steps":1.0,
+										"objID":"1033"
+									},
+									{
+										"type":"charaWalk",
+										"direction":"UP",
+										"steps":1.0,
+										"objID":"1033"	
+									}
+								]
+							},
+							{
+								"type":"sequence",
+								"action":[
+									{
+										"type":"charaWalk",
+										"direction":"RIGHT",
+										"steps":1.0,
+										"objID":"1034"
+									},
+									{
+										"type":"charaWalk",
+										"direction":"UP",
+										"steps":2.0,
+										"objID":"1034"
+									}								]
+							}
+						]
+					},
+					{
+						"type":"charaMsg",
+						"talk":[
+							{
+								"text":["ウソだろ!!"],
+								"charaID":"5",
+								"imgID":"2",
+								"option":"reaction"
+							},
+							{
+								"text":["そんな!"],
+								"charaID":"0",
+								"imgID":"3",
+								"option":"reaction"
+							}
+						]
+					},
+					{
+						"type":"spawn",
+						"action":[
+							{
+								"type":"sequence",
+								"action":[
+									{
+										"type":"changeDirection",
+										"direction":"LEFT",
+										"objID":"1033"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"RIGHT",
+										"objID":"1033"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"LEFT",
+										"objID":"1033"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"RIGHT",
+										"objID":"1033"
+									}
+								]
+							},
+							{
+								"type":"sequence",
+								"action":[
+									{
+										"type":"changeDirection",
+										"direction":"RIGHT",
+										"objID":"1034"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"LEFT",
+										"objID":"1034"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"RIGHT",
+										"objID":"1034"
+									},
+									{
+										"type":"changeDirection",
+										"direction":"LEFT",
+										"objID":"1034"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type":"charaMsg",
+						"text":["ヤツは！？"],
+						"charaID":"5",
+						"imgID":"1",
+						"option":"reaction"
+					},
+					{
+						"type":"changeDirection",
+						"direction":"DOWN",
+						"objID":"1034"
+					},
+					{
+						"type":"charaMsg",
+						"text":["この部屋の出口はあそこしかないハズですぞ・・・"],
+						"charaID":"4",
+						"imgID":"1"
+					},
+					{
+						"type":"spawn",
+						"action":[
+							{
+								"type":"createChara",
+								"objID":"1036"
+							},
+							{
+								"type":"createChara",
+								"objID":"1037"
+							}
+						]
+					},
+					{
+						"type":"charaMsg",
+						"text":["いやあああああああああああ！！！"],
+						"charaID":"1",
+						"imgID":"2",
+						"option":"reaction"
+					},
+					{
+						"type":"changeDirection",
+						"direction":"DOWN",
+						"objID":"1036"
+					},
+					{
+						"type":"removeChara",
+						"objID":"1036"
+					},
+					{
+						"type":"charaMsg",
+						"text":["あは、ははは・・・"],
+						"charaID":"3",
+						"imgID":"3"
+					},
+					{
+						"type":"charaWalk",
+						"direction":"DOWN",
+						"steps":1.0,
+						"objID":"1037"
+					},
+					{
+						"type":"removeChara",
+						"objID":"1037"
+					},
+					{
+						"type":"changeDirection",
+						"direction":"DOWN",
+						"objID":"1033"
+					},
+					{
+						"type":"charaMsg",
+						"text":["おい！"],
+						"charaID":"5",
+						"imgID":"1",
+						"option":"reaction"
+					},
+					{
+						"type":"changeDirection",
+						"direction":"RIGHT",
+						"objID":"1033"
+					},
+					{
+						"type":"charaMsg",
+						"text":["チィッ！アイツ等追いかけるぞ！！"],
+						"charaID":"5",
+						"imgID":"1",
+						"option":"reaction"
+					},
+					{
+						"type":"spawn",
+						"action":[
+							{
+								"type":"changeDirection",
+								"direction":"LEFT",
+								"objID":"hero"
+							},
+							{
+								"type":"changeDirection",
+								"direction":"LEFT",
+								"objID":"1034"
+							}
+						]
+					},
+					{
+						"type":"charaMsg",
+						"talk":[
+							{
+								"text":["ここは危険ですぞ！\n手分けしてなるべく早く見つけたほうがいいですぞ！"],
+								"charaID":"4",
+								"imgID":"1",
+								"option":"reaction"
+							},
+							{
+								"text":["ああ、佐々木！お前は西棟を頼む！\n加藤はそこでおとなしくしとけ"],
+								"charaID":"5",
+								"imgID":"1"
+							}
+						]
+					},
+					{
+						"type":"fadeout"
+					},
+					{
+						"type":"already"
+					},
+					{
+						"type":"camera",
+						"mapID":"40",
+						"x":12,
+						"y":12
+					},
+					{
+						"type":"createChara",
+						"objID":"1058"
+					},
+					{
+						"type":"createChara",
+						"objID":"1059"
+					},
+					{
+						"type":"fadein"
+					},
+					{
+						"type":"charaMsg",
+						"talk":[
+							{
+								"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
+								"charaID":"6",
+								"imgID":"1",
+								"name":"？？？"
+							},
+							{
+								"text":["貴方は・・・？"],
+								"charaID":"1",
+								"imgID":"2"
+							},
+							{
+								"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
+								"charaID":"6",
+								"imgID":"1",
+								"name":"？？？"
+							}
+						]
+					},
+					{
+						"type":"fadeout"
+					},
+					{
+						"type":"spawn",
 						"action":[
 							{
 								"type":"removeChara",
@@ -1150,8 +1328,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{4,15}"],
-					"status":["{2,2}"]
+					"event":["4","15"],
+					"status":["2","2"]
 				}
 			],
 			"action":[
@@ -1165,8 +1343,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{4,15}"],
-					"Nstatus":["2,2"]
+					"event":["4","15"],
+					"Nstatus":["2","2"]
 				},
 				{
 					"type":"already"
@@ -1193,7 +1371,7 @@
 	],
 	"24":[
 		{
-			"type":"span",
+			"type":"spawn",
 			"action":[
 				{
 					"type":"systemMsg",
@@ -1211,7 +1389,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{3,21}"],
+					"event":["3","21"],
 					"Nequip":["1515"]
 				}
 			],
@@ -1230,7 +1408,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{3,27}"]
+					"event":["3","27"]
 				}
 			],
 			"action":[
@@ -1250,7 +1428,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{3,21}"],
+					"event":["3","21"],
 					"equip":["1515"]
 				}
 			],
@@ -1267,42 +1445,48 @@
 						{
 							"type":"questionMsg",
 							"text":["暖炉に水をかけますか？"],
-							"choices":["はい,いいえ"],
-							"answer":["はい"],
-							"action":[
+							"choices":[
 								{
-									"type":"fadeout"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"water.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"fire_vanish.mp3"
-								},
-								{
-									"type":"span",
+									"choice":"はい",
 									"action":[
 										{
-											"type":"removelayer",
-											"layer":"MonoUe"
+											"type":"fadeout"
 										},
 										{
-											"type":"removeChara",
-											"objID":"181"
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"water.mp3"
+										},
+										{
+											"type":"playSE",
+											"file":"fire_vanish.mp3"
+										},
+										{
+											"type":"spawn",
+											"action":[
+												{
+													"type":"removelayer",
+													"layer":"MonoUe"
+												},
+												{
+													"type":"removeChara",
+													"objID":"181"
+												}
+											]
+										},
+										{
+											"type":"already"
+										},
+										{
+											"type":"fadein"
 										}
 									]
 								},
 								{
-									"type":"already"
-								},
-								{
-									"type":"fadein"
+									"choice":"いいえ"
 								}
 							]
 						}
@@ -1332,7 +1516,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["1257"]
+					"event":["40","5"]
 				}
 			],
 			"action":[
@@ -1343,10 +1527,11 @@
 							"type":"fadeout"
 						},
 						{
-							ダイゴローが付いてくるの解除
+							"type":"releaseChase",
+							"objID":"1021"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"removeChara",
@@ -1379,35 +1564,35 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["で？出口は見つかったの？"],
-							"charaID":"3",
-							"imgID":"1"
-						},
-						{
-							"type":"charaMsg",
-							"text":["いやあ・・・"],
-							"charaID":"0",
-							"imgID":"1"	
-						},
-						{
-							"type":"charaMsg",
-							"text":["ホンット使えないわね！！"],
-							"charaID":"3",
-							"imgID":"1",
-							"option":"reaction"
-						},
-						{
-							"type":"charaMsg",
-							"text":["テメエ・・・"],
-							"charaID":"4",
-							"imgID":"1",
-							"option":"reaction"
-						},
-						{
-							"type":"charaMsg",
-							"text":["まあ、、我らもこのままでは・・・"],
-							"charaID":"4",
-							"imgID":"1"
+							"talk":[
+								{
+									"text":["で？出口は見つかったの？"],
+									"charaID":"3",
+									"imgID":"1"
+								},
+								{
+									"text":["いやあ・・・"],
+									"charaID":"0",
+									"imgID":"1"	
+								},
+								{
+									"text":["ホンット使えないわね！！"],
+									"charaID":"3",
+									"imgID":"1",
+									"option":"reaction"
+								},
+								{
+									"text":["テメエ・・・"],
+									"charaID":"4",
+									"imgID":"1",
+									"option":"reaction"
+								},
+								{
+									"text":["まあ、、我らもこのままでは・・・"],
+									"charaID":"4",
+									"imgID":"1"
+								}
+							]
 						},
 						{
 							"type":"playSE",
@@ -1418,7 +1603,7 @@
 							"objID":"1030"
 						},
 						{
-							"type":"span",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"reaction",
@@ -1441,27 +1626,27 @@
 									"objID":"1022"
 								},
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"1027"
 								},
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"1028"
 								},
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"1029"
 								},
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"1019"
 								},
 								{
-									"type":"directionChange",
+									"type":"changeDirection",
 									"direction":"DOWN",
 									"objID":"1022"
 								}
@@ -1489,24 +1674,26 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["ぬう・・・"],
-							"charaID":"2",
-							"imgID":"2",
-							"option":"reaction"
-						},
-						{
-							"type":"charaMsg",
-							"text":["加藤氏！！"],
-							"charaID":"4",
-							"imgID":"1",
-							"option":"reaction"
-						},
-						{
-							"type":"charaMsg",
-							"text":["お前ら！早くこの部屋から出ろ！"],
-							"charaID":"2",
-							"imgID":"2",
-							"option":"reaction"
+							"talk":[
+								{
+									"text":["ぬう・・・"],
+									"charaID":"2",
+									"imgID":"2",
+									"option":"reaction"
+								},
+								{
+									"text":["加藤氏！！"],
+									"charaID":"4",
+									"imgID":"1",
+									"option":"reaction"
+								},
+								{
+									"text":["お前ら！早くこの部屋から出ろ！"],
+									"charaID":"2",
+									"imgID":"2",
+									"option":"reaction"
+								}
+							]
 						},
 						{
 							"type":"already"
@@ -1522,8 +1709,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{4,15}"],
-					"status":["{2,2}"]
+					"event":["4","15"],
+					"status":["2","2"]
 				}
 			],
 			"action":[
@@ -1539,7 +1726,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{23,9}"]
+					"event":["23","9"]
 				}
 			],
 			"action":[
@@ -1587,6 +1774,58 @@
 					"target":"hero"
 				}
 			]
+		}
+	],
+	"34":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["4","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"createChara",
+							"objID":"102"
+						},
+						{
+							"type":"createChara",
+							"objID":"103"
+						},
+						{
+							"type":"createChara",
+							"objID":"104"
+						},
+						{
+							"type":"createChara",
+							"objID":"105"
+						},
+						{
+							"type":"createChara",
+							"objID":"106"
+						}
+					]
+				}
+			]
+		}
+	],
+	"35":[
+		{
+			"type":"charaMsg",
+			"text":["何かございましたらお声をおかけ下さい"],
+			"charaID":"9"
+		}
+	],
+	"36":[
+		{
+			"type":"charaMsg",
+			"text":["イミワカンナイイミワカンナイ・・・"],
+			"charaID":"3",
+			"imgID":"2"
 		}
 	]
 }
