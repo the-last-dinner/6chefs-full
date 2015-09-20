@@ -74,7 +74,7 @@ public:
     // CHECK
     bool checkItem(const int& item_id);
     bool checkItemEquipment(const int& item_id);
-    bool checkFriendship(const string& character, const int& min);
+    bool checkFriendship(const string& character, const int& val);
     
 private:
     //グローバルデータのセット

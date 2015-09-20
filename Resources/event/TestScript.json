@@ -82,7 +82,17 @@
           "type": "playSE",
           "file": "back.mp3"
           }
-          ],
+    ],
+    "3": [
+          {
+            "type":"if",
+            "condition":[
+                         {
+                         "Nevent":["0", "1"]}
+            ],
+            "eventID":0
+          }
+    ],
     "id": 0,
     "map_id": "map",
     "sound": [

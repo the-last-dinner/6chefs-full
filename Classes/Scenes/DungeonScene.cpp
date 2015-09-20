@@ -41,7 +41,7 @@ bool DungeonScene::init()
 	FUNCLOG
 	
 	EventScriptManager::getInstance()->setEventScript("TestScript");
-
+    
 	return baseScene::init(DungeonSceneData::create());
 }
 
@@ -68,7 +68,8 @@ void DungeonScene::onPreloadFinished()
 	EventScriptTask* eventScriptTask {EventScriptTask::create(this)};
 	CC_SAFE_RETAIN(eventScriptTask);
 	this->eventScriptTask = eventScriptTask;
-	
+    eventScriptTask->runEventScript(3);
+    
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
 									 TargetedAction::create(black, RemoveSelf::create()),

@@ -19,13 +19,15 @@ class EventScriptTask : public Ref
 private:
     //関数ポインタ型を宣言
     typedef Ref*(EventScriptTask::*FunctionPointer)(rapidjson::Value& event);
+    typedef bool(EventScriptTask::*FunctionPointerC)(rapidjson::Value& condition, bool reverse);
     //関数ポインタリンクマップ
     const static map<string, FunctionPointer> EVENT_MAP;
+    const static map<string, FunctionPointerC> CONDITION_MAP;
     
     //インスタンス変数
 private:
     DungeonScene* dungeonScene {nullptr};
-    cocos2d::Layer* layer;
+    int event_status;
 // クラスメソッド
 public:
 	CREATE_FUNC_WITH_PARAM(EventScriptTask, DungeonScene*)
@@ -46,7 +48,7 @@ private:
 	Ref* sequence(rapidjson::Value& event);
 	Ref* spawn(rapidjson::Value& event);
 	Ref* repeat(rapidjson::Value& event);
-	Ref* flagif(rapidjson::Value& event);
+	Ref* ifelse(rapidjson::Value& event);
 	Ref* changeMap(rapidjson::Value& event);
 	Ref* move(rapidjson::Value& event);
 	Ref* message(rapidjson::Value& event);
@@ -56,6 +58,16 @@ private:
 	Ref* playBGM(rapidjson::Value& event);
 	Ref* control(rapidjson::Value& event);
 	Ref* read(rapidjson::Value& event);
+    Ref* changeFlg(rapidjson::Value& event);
+    //if
+    bool judgeCondition(rapidjson::Value& cond);
+    bool eventIf(rapidjson::Value& cond, bool reverse);
+    bool itemIf(rapidjson::Value& cond, bool reverse);
+    bool flagIf(rapidjson::Value& cond, bool reverse);
+    bool equipIf(rapidjson::Value& cond, bool reverse);
+    bool statusIf(rapidjson::Value& cond, bool reverse);
+    //util
+    string strReplace(const string& pattern, const string& replacement, string target);
 };
 
 #endif /* defined(__LastSupper__EventScriptTask__) */

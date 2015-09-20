@@ -374,12 +374,12 @@ bool PlayerDataManager::checkItemEquipment(const int& item_id)
     }
 }
 
-//友好度が指定の値以上あるかどうか
-bool PlayerDataManager::checkFriendship(const string& character, const int& min)
+//友好度が指定の値と一致するか
+bool PlayerDataManager::checkFriendship(const string& character, const int& val)
 {
     FUNCLOG
     int level = this->getFriendship(character);
-    if(level >= min){
+    if(level == val){
         return true;
     } else {
         return false;
@@ -393,7 +393,7 @@ bool PlayerDataManager::checkFriendship(const string& character, const int& min)
 // 文字列を置換する
 string PlayerDataManager::strReplace(const string& pattern, const string& replacement, string target)
 {
-    std::string::size_type  Pos(target.find(pattern));
+    std::string::size_type Pos(target.find(pattern));
     while( Pos != std::string::npos )
     {
         target.replace( Pos, pattern.length(), replacement);

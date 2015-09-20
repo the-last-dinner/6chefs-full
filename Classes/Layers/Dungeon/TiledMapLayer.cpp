@@ -34,8 +34,8 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
 	
-	ShadowLayer* shadow {ShadowLayer::create(Color4B(0,0,0,200))};
-	shadow->setGlobalZOrder(static_cast<int>(Priority::SHADOW));
+	ShadowLayer* shadow {ShadowLayer::create(Color4B(0,0,0,230))};
+	shadow->setLocalZOrder(-1);
 	this->addChild(shadow);
 	
 	// 主人公を配置

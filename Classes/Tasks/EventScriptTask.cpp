@@ -11,13 +11,16 @@
 #include "Scenes/DungeonScene.h"
 #include "Scenes/TitleScene.h"
 
+#include "Layers/Dungeon/TiledMapLayer.h"
+
 //イベント関数の関数ポインタ格納
-const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP = {
+const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
+{
     //命令タイプ
     {"sequence", &EventScriptTask::sequence},    //順番に処理を実行
     {"spawn", &EventScriptTask::spawn},       //同時に処理を実行
     {"repeat", &EventScriptTask::repeat},    //繰り返し実行
-    {"flagif", &EventScriptTask::flagif},        //flagによって場合分けして実行
+    {"if", &EventScriptTask::ifelse},    //flagによって場合分けして実行
     //イベントタイプ
     {"changeMap", &EventScriptTask::changeMap},//マップ移動
     {"move", &EventScriptTask::move},     //オブジェクトの移動
@@ -27,13 +30,21 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"playSE", &EventScriptTask::playSE},   //効果音再生
     {"playBGM", &EventScriptTask::playBGM}, //BGM再生
     {"control", &EventScriptTask::control}, //操作状態の変更
-    {"read", &EventScriptTask::read}      //書物読んでるモード
+    {"read", &EventScriptTask::read},      //書物読んでるモード
+    {"changeFlg", &EventScriptTask::changeFlg}
+};
+const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
+{
+    //if分の種類
+    {"event", &EventScriptTask::eventIf},
+    {"item", &EventScriptTask::itemIf},
+    {"flag", &EventScriptTask::flagIf},
+    {"equip", &EventScriptTask::equipIf},
+    {"status", &EventScriptTask::statusIf}
 };
 
 // コンストラクタ
-EventScriptTask::EventScriptTask(){
-    FUNCLOG
-    }
+EventScriptTask::EventScriptTask(){FUNCLOG}
 
 // デストラクタ
 EventScriptTask::~EventScriptTask(){FUNCLOG}
@@ -43,17 +54,18 @@ bool EventScriptTask::init(DungeonScene* dungeonScene)
 {
 	FUNCLOG
 	if(!dungeonScene) return false;
-	
 	this->dungeonScene = dungeonScene;
-	
 	return true;
 }
 
 // イベントスクリプトを実行
 void EventScriptTask::runEventScript(int eventId)
 {
+    FUNCLOG
 	CCLOG("EVENT ID >> %d", eventId);
 	rapidjson::Value& action { EventScriptManager::getInstance()->getScript(eventId) };
+    //イベントステータスの初期化
+    this->event_status = 0;
 	//各命令の処理
     if(!action.IsNull()) this->dealScript(action);
 }
@@ -61,6 +73,7 @@ void EventScriptTask::runEventScript(int eventId)
 //各イベント命令処理の場合分け
 void EventScriptTask::dealScript(rapidjson::Value &action)
 {
+    FUNCLOG
     SizeType len = action.Size();
     cout << "   len=" << len << endl;
     string type;
@@ -75,7 +88,7 @@ void EventScriptTask::dealScript(rapidjson::Value &action)
         } else {
             Ref* target_act = (this->*func)(event);
             if(target_act != nullptr){
-                this->layer->runAction(dynamic_cast<FiniteTimeAction*>(target_act));
+                this->dungeonScene->runAction(dynamic_cast<FiniteTimeAction*>(target_act));
             }
         }
     }
@@ -142,27 +155,161 @@ Ref* EventScriptTask::spawn(rapidjson::Value& event)
 Ref* EventScriptTask::repeat(rapidjson::Value &event)
 {
     FUNCLOG
-    Vector<FiniteTimeAction*> repeatAct;
+    Vector<FiniteTimeAction*> repeat_act;
     Vector<FiniteTimeAction*> origin = this->createActionVec(event["action"]);
     int loop = event["loop"].GetInt();
     for(int i=0;i<loop; i++){
-        repeatAct.pushBack(origin);
+        repeat_act.pushBack(origin);
     }
-    return static_cast<Ref*>(Sequence::create(repeatAct));
+    return static_cast<Ref*>(Sequence::create(repeat_act));
 }
 
 /**
- * flagif
- * @param type: string >> flagif
+ * ifelse
+ * @param type: string >> ifelse
  * @param map: int >> map_id
  * @param flag: int >> flag_id
  * @param true: array json >> array of instructs
  * @param false: array json >> array of instructs
  */
-Ref* EventScriptTask::flagif(rapidjson::Value &event)
+Ref* EventScriptTask::ifelse(rapidjson::Value &event)
 {
     FUNCLOG
+    if(this->judgeCondition(event["condition"]))
+    {
+        if(event.HasMember("action"))
+        {
+            return static_cast<Ref*>(Spawn::create(this->createActionVec(event["action"])));
+        }
+        if(event.HasMember("eventID"))
+        {
+            int eventId {0};
+            if(event["eventID"].IsInt())
+            {
+                eventId = event["eventID"].GetInt();
+            } else
+            {
+                eventId = stoi(event["eventID"].GetString());
+            }
+            return static_cast<Ref*>(CallFunc::create([=](){this->runEventScript(eventId);}));
+        }
+    }
     return nullptr;
+}
+
+// if分のconditionのboolを判定
+bool EventScriptTask::judgeCondition(rapidjson::Value& cond)
+{
+    FUNCLOG
+    EventScriptTask::FunctionPointerC func_c;
+    SizeType len = cond.Size();
+    bool judge {false};
+    bool reverse {false};
+    for(int i=0; i<len; i++)
+    {
+        for(rapidjson::Value::MemberIterator itr = cond[i].MemberBegin(); itr != cond[i].MemberEnd(); itr++)
+        {
+            string key {itr->name.GetString()};
+            if(key.find("N") == 0)
+            {
+                key = this->strReplace("N", "", key);
+                reverse = true;
+            }
+            func_c = EventScriptTask::CONDITION_MAP.at(key);
+            // N判定
+            judge = (this->*func_c)(itr->value, reverse);
+            //ANDなのでfalseがあったらbreak;
+            if(!judge) break;
+        }
+        //ORなのでtrueがあったらbreak;してreturn;
+        if(judge) break;
+    }
+    return judge;
+}
+
+//イベントフラグチェック
+bool EventScriptTask::eventIf(rapidjson::Value& cond, bool reverse)
+{
+    FUNCLOG
+    bool judge;
+    if(cond[0].IsArray())
+    {
+        //複数のイベント
+        SizeType size = cond.Size();
+        for(int i=0; i<size; i++)
+        {
+            judge = PlayerDataManager::getInstance()->getEventFlag(stoi(cond[i][0].GetString()), stoi(cond[i][1].GetString()));
+            if(reverse) judge = !judge;
+            if(!judge) return false;
+        }
+    } else {
+        //一つのイベント
+        judge = PlayerDataManager::getInstance()->getEventFlag(stoi(cond[0].GetString()), stoi(cond[1].GetString()));
+        if(reverse) judge = !judge;
+    }
+    return judge;
+}
+
+// アイテム所持チェック
+bool EventScriptTask::itemIf(rapidjson::Value& cond, bool reverse)
+{
+    FUNCLOG
+    SizeType size = cond.Size();
+    bool judge;
+    for(int i=0; i<size; i++)
+    {
+        judge = PlayerDataManager::getInstance()->checkItem(stoi(cond[i].GetString()));
+        if(reverse) judge = !judge;
+        if(!judge) break;
+    }
+    return judge;
+}
+
+//　イベント固有フラグチェック
+bool EventScriptTask::flagIf(rapidjson::Value& cond, bool reverse)
+{
+    FUNCLOG
+    bool judge {this->event_status == stoi(cond.GetString())};
+    if(reverse) judge = !judge;
+    return judge;
+}
+
+//アイテム装備チェック
+bool EventScriptTask::equipIf(rapidjson::Value& cond, bool reverse)
+{
+    FUNCLOG
+    bool judge;
+    SizeType size = cond.Size();
+    for(int i=0; i<size; i++)
+    {
+        judge = PlayerDataManager::getInstance()->checkItemEquipment(stoi(cond[i].GetString()));
+        if(reverse) judge = !judge;
+        if(!judge) break;
+    }
+    return judge;
+}
+
+//キャラクターの好感度チェック
+bool EventScriptTask::statusIf(rapidjson::Value& cond, bool reverse)
+{
+    FUNCLOG
+    bool judge;
+    if(cond[0].IsArray())
+    {
+        //複数の好感度
+        SizeType size = cond.Size();
+        for(int i=0; i<size; i++)
+        {
+            judge = PlayerDataManager::getInstance()->checkFriendship(cond[i][0].GetString(), stoi(cond[i][1].GetString()));
+            if(reverse) judge = !judge;
+            if(!judge) break;
+        }
+    } else {
+        //一つのイベント
+        judge = PlayerDataManager::getInstance()->checkFriendship(cond[0].GetString(), stoi(cond[1].GetString()));
+        if(reverse) judge = !judge;
+    }
+    return judge;
 }
 
 // --------------------------------
@@ -193,7 +340,7 @@ Ref* EventScriptTask::move(rapidjson::Value& event)
     double scale = 16.0;
     float x = static_cast<float>(event["x"].GetDouble() * scale);
     float y = static_cast<float>(event["y"].GetDouble() * scale);
-    return static_cast<Ref*>(TargetedAction::create(this->layer->getChildByName(EventScriptManager::getInstance()->getMapId())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
+    return static_cast<Ref*>(TargetedAction::create(this->dungeonScene->mapLayer->getChildByName(EventScriptManager::getInstance()->getMapId())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
 }
 
 /**
@@ -206,7 +353,7 @@ Ref* EventScriptTask::playSE(rapidjson::Value& event)
     FUNCLOG
     string file = event["file"].GetString();
     cout << "playSE >> " << file << endl;
-    return static_cast<Ref*>(CallFunc::create([=](){}));
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSound("se/" + file);}));
 }
 
 /**
@@ -219,7 +366,7 @@ Ref* EventScriptTask::playBGM(rapidjson::Value &event)
     FUNCLOG
     string file = event["file"].GetString();
     cout << "playBGM >> " << file << endl;
-    return static_cast<Ref*>(CallFunc::create([=](){}));
+    return static_cast<Ref*>(CallFunc::create([=](){SoundManager::getInstance()->playSound("bgm/" + file);}));
     
 }
 
@@ -251,4 +398,24 @@ Ref* EventScriptTask::read(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;
+}
+
+// change flag
+Ref* EventScriptTask::changeFlg(rapidjson::Value &event)
+{
+    FUNCLOG
+    this->event_status = stoi(event["flg"].GetString());
+    return nullptr;
+}
+
+// 文字列を置換する
+string EventScriptTask::strReplace(const string& pattern, const string& replacement, string target)
+{
+    std::string::size_type Pos(target.find(pattern));
+    while( Pos != std::string::npos )
+    {
+        target.replace( Pos, pattern.length(), replacement);
+        Pos = target.find( pattern, Pos + replacement.length() );
+    }
+    return target;
 }
