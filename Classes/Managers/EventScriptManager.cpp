@@ -55,7 +55,7 @@ bool EventScriptManager::setEventScript(string script)
         return false;
     } else {
         //エラーがなかった場合
-        this->map_id = this->json["map_id"].GetString();
+        //this->map_id = this->json["map_id"].GetString();
 #ifdef DEBUG
         //テスト出力
         ifstream filein(path);
@@ -70,8 +70,9 @@ bool EventScriptManager::setEventScript(string script)
 
 //リソースのプリロード関数
 vector<string> EventScriptManager::getPreLoadList(string type){
-    vector<string> list;
+    vector<string> list {};
     const char* typec = type.c_str();
+    if (!this->json.HasMember(typec)) return list;
     rapidjson::Value& obj = this->json[typec];
     SizeType len = obj.Size();
     for(int i=0;i<len;i++){

@@ -85,12 +85,26 @@
     ],
     "3": [
           {
-            "type":"if",
-            "condition":[
-                         {
-                         "Nevent":["0", "1"]}
-            ],
-            "eventID":0
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 75
+          }
+          ],
+    "4": [
+          {
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 77
+          }
+          ],
+    "5": [
+          {
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 79
           }
     ],
     "id": 0,

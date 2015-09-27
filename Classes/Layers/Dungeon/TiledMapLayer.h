@@ -35,7 +35,7 @@ public:
 	int getEventId(Point point);
 	int search(MapObject* obj);
     void walking(const Key& key);
-	
+    Character* getHeroObject();
 	// インスタンス変数
 private:
 	experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
@@ -43,6 +43,8 @@ private:
     EventListenerKeyboardLayer* eventListener { nullptr };// イベントリスナ
 	vector<MapObject*> mapObjs {};                      // マップオブジェクトのベクタ
     Character* hero { nullptr };
+public:
+    function<void(int)> onRunEvent;                        // スクリプト実行時
 	
 };
 

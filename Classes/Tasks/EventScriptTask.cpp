@@ -10,6 +10,7 @@
 
 #include "Scenes/DungeonScene.h"
 #include "Scenes/TitleScene.h"
+#include "MapObjects/Objects.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 
@@ -50,11 +51,11 @@ EventScriptTask::EventScriptTask(){FUNCLOG}
 EventScriptTask::~EventScriptTask(){FUNCLOG}
 
 // 初期化
-bool EventScriptTask::init(DungeonScene* dungeonScene)
+bool EventScriptTask::init(DungeonScene* scene)
 {
 	FUNCLOG
-	if(!dungeonScene) return false;
-	this->dungeonScene = dungeonScene;
+	if(!scene) return false;
+	this->scene = scene;
 	return true;
 }
 
@@ -88,7 +89,7 @@ void EventScriptTask::dealScript(rapidjson::Value &action)
         } else {
             Ref* target_act = (this->*func)(event);
             if(target_act != nullptr){
-                this->dungeonScene->runAction(dynamic_cast<FiniteTimeAction*>(target_act));
+                this->scene->runAction(dynamic_cast<FiniteTimeAction*>(target_act));
             }
         }
     }
@@ -318,14 +319,27 @@ bool EventScriptTask::statusIf(rapidjson::Value& cond, bool reverse)
 /**
  * change map
  * @param type: string >> changeMap
- * @param ?
+ * @param map_id: string
+ * @param x: int
+ * @param y: int
+ * @param direction: int (default: null)
  */
 Ref* EventScriptTask::changeMap(rapidjson::Value& event)
 {
     FUNCLOG
-    //とりあえずテストでタイトル画面に移動するように設計してある
-    return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(TitleScene::createScene());}));
+    if (event.HasMember("direction"))
+    {
+        //directionが指定されている場合
+        PlayerDataManager::getInstance()->setLocation(PlayerDataManager::Location(stoi(event["mapID"].GetString()), event["x"].GetInt(), event["y"].GetInt(), event["direction"].GetInt()));
+    }  else
+    {
+        //directionが指定されていない場合は移動直前の方向を取得
+        Character* hero {this->scene->mapLayer->getHeroObject()};
+        PlayerDataManager::getInstance()->setLocation(PlayerDataManager::Location(stoi(event["mapID"].GetString()), event["x"].GetInt(), event["y"].GetInt(), hero->getDirection()));
+    }
+    return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(DungeonScene::createScene());}));
 }
+
 /**
  * Move object
  * @param type: string >> move
@@ -340,7 +354,7 @@ Ref* EventScriptTask::move(rapidjson::Value& event)
     double scale = 16.0;
     float x = static_cast<float>(event["x"].GetDouble() * scale);
     float y = static_cast<float>(event["y"].GetDouble() * scale);
-    return static_cast<Ref*>(TargetedAction::create(this->dungeonScene->mapLayer->getChildByName(EventScriptManager::getInstance()->getMapId())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
+    return static_cast<Ref*>(TargetedAction::create(this->scene->mapLayer->getChildByName(EventScriptManager::getInstance()->getMapId())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
 }
 
 /**

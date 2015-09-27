@@ -22,6 +22,9 @@ public:
 	CREATE_FUNC(DungeonScene);
 	
 	// インスタンスメソッド
+public:
+    void runEvent(int event_id);
+    
 private:
 	DungeonScene();
 	~DungeonScene();

@@ -32,6 +32,7 @@ public:
         int y {0};
         Direction direction {Direction::SIZE};
         Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
+        Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
         Location(){};
     };
 //クラス変数

@@ -26,7 +26,7 @@ private:
     
     //インスタンス変数
 private:
-    DungeonScene* dungeonScene {nullptr};
+    DungeonScene* scene {nullptr};
     int event_status;
 // クラスメソッド
 public:

@@ -34,7 +34,7 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
     this->eventListener = eventListener;
 	
 	// TiledのマップをaddChild
-    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, location.map_id)) };
+    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, location.map_id) + ".tmx") };
     tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
@@ -170,7 +170,7 @@ bool TiledMapLayer::isHit(MapObject* obj, const Direction& direction)
 int TiledMapLayer::getEventId(Point point)
 {
 	MapObject* pObj = this->getMapObject(point);
-	if(!pObj) return -1;
+    if(!pObj) return MapObject::EventID::UNDIFINED;
 	return pObj->getEventId();
 }
 
@@ -192,7 +192,15 @@ void TiledMapLayer::walking(const Key& key)
                                                        TargetedAction::create(this->tiledMap, MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
                                                        TargetedAction::create(this->hero, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
                                                        nullptr),
-                                         CallFunc::create([=](){this->hero->setMovingDirection(Direction::NONE);}),
+                                         CallFunc::create([=](){this->hero->setMovingDirection(Direction::NONE);
+            if(this->onRunEvent) this->onRunEvent(this->getEventId(this->hero->getPosition()));
+        }),
                                          nullptr));
     }
+}
+
+//主人公のオブジェクトを取得
+Character* TiledMapLayer::getHeroObject()
+{
+    return this->hero;
 }

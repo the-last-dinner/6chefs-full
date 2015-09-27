@@ -15,6 +15,8 @@
 
 #include "Tasks/EventScriptTask.h"
 
+#include "MapObjects/MapObject.h"
+
 // コンストラクタ
 DungeonScene::DungeonScene(){FUNCLOG}
 
@@ -39,8 +41,8 @@ bool DungeonScene::init()
 {
 	FUNCLOG
 	
-	EventScriptManager::getInstance()->setEventScript("TestScript");
-    
+    EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
+    //EventScriptManager::getInstance()->setEventScript("TestScript");
 	return baseScene::init(DungeonSceneData::create());
 }
 
@@ -60,6 +62,7 @@ void DungeonScene::onPreloadFinished()
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
 	mapLayer->setLocalZOrder(static_cast<int>(Priority::MAP));
+    mapLayer->onRunEvent = CC_CALLBACK_1(DungeonScene::runEvent, this);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
 	
@@ -67,7 +70,7 @@ void DungeonScene::onPreloadFinished()
 	EventScriptTask* eventScriptTask {EventScriptTask::create(this)};
 	CC_SAFE_RETAIN(eventScriptTask);
 	this->eventScriptTask = eventScriptTask;
-    eventScriptTask->runEventScript(3);
+    eventScriptTask->runEventScript(0);
     
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
@@ -93,3 +96,14 @@ void DungeonScene::onPreloadFinished()
     
 	return;
 }
+
+//EventScriptTaskのrunEventScriptを実行
+void DungeonScene::runEvent(int event_id)
+{
+    FUNCLOG
+    if(event_id == MapObject::EventID::UNDIFINED) return;
+    this->eventScriptTask->runEventScript(event_id);
+    return;
+}
+
+
