@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"28",
+			"mapID":"28",
 			"x":3,
 			"y":15
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"29",
+			"mapID":"29",
 			"x":11,
 			"y":15
 		}
@@ -44,7 +44,7 @@
 						},
 						{
 							"type":"changeMap",
-							"nextMap":"22",
+							"mapID":"22",
 							"x":9,
 							"y":23
 						}
@@ -125,7 +125,7 @@
 						},
 						{
 							"type":"changeMap",
-							"nextMap":"23",
+							"mapID":"23",
 							"x":24,
 							"y":19
 						}
@@ -306,6 +306,23 @@
 		{
 			"type":"charaMsg",
 			"text":["ここの図書室・・・\n食人文化についての\n書物ばっかりだな"]
+		}
+	],
+	"14":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","12"],
+					"Nevent":["3","30"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1025"
+				}
+			]
 		}
 	]
 }

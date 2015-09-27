@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"6",
+			"mapID":"6",
 			"x":35,
 			"y":3
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"6",
+			"mapID":"6",
 			"x":37,
 			"y":3
 		}
@@ -118,12 +118,23 @@
 						{
 							"type":"createChara",
 							"objID":"1010"
-						},
-						{
-							"type":"createChara",
-							"objID":"1011"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","10"],
+					"Nevent":["7","1"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1011"
 				}
 			]
 		}

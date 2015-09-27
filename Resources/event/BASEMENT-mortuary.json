@@ -37,7 +37,7 @@
 											"true":[
 												{
 													"type":"changeMap",
-													"nextMap":"47",
+													"mapID":"47",
 													"x":20,
 													"y":17
 												}

@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"55",
+			"mapID":"55",
 			"x":2,
 			"y":11
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"59",
+			"mapID":"59",
 			"x":10,
 			"y":3
 		}
@@ -18,7 +18,7 @@
 	"3":[
 		{
 			"type":"changeMap",
-			"nextMap":"62",
+			"mapID":"62",
 			"x":28,
 			"y":13
 		}
@@ -28,7 +28,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{}"]
+					"Nevent":["58","5"]
 				}
 			],
 			"action":[
@@ -300,6 +300,9 @@
 								{
 									"type":"charaMsg",
 									"text":["ダメだ・・・\n正気を失ってる\nドコ行ったんだろう・・・"]
+								},
+								{
+									"type":"already"
 								}
 							]
 						}

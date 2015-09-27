@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"17",
+			"mapID":"17",
 			"x":36,
 			"y":10
 		}
@@ -46,10 +46,39 @@
 							"type":"spawn",
 							"action":[
 								{
+									"type":"fadeout"	
+								},
+								{
 									"type":"playBGM",
-									"file":""
+									"file":"kodou.wav"
+								},
+								{
+									"type":"wait",
+									"time":5.0
+								},
+								{
+									"type":"stopBGM"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"text":["もう・・・行ったかな？"],
+									"charaID":"0",
+									"imgID":"1"
 								}
 							]
+						}
+					],
+					"false":[
+						{
+							"type":"createEnemy",
+							"x":9,
+							"y":25,
+							"enemyID":"143",
+							"charaID":"8",
+							"speed":10
 						}
 					]
 				},

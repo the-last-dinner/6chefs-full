@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"15",
+			"mapID":"15",
 			"x":16,
 			"y":31
 		}

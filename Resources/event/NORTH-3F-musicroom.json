@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"21",
+			"mapID":"21",
 			"x":88,
 			"y":10
 		}
@@ -63,9 +63,6 @@
 		{
 			"type":"sequence",
 			"action":[
-				{
-					"type":"already"
-				},
 				{
 					"type":"charaMsg",
 					"talk":[
@@ -257,7 +254,7 @@
 							"action":[
 								{
 									"type":"changeMap",
-									"nextMap":"3",
+									"mapID":"3",
 									"x":14,
 									"y":14
 								},
@@ -316,6 +313,9 @@
 								{
 									"type":"chapterChange",
 									"chapterID":""
+								},
+								{
+									"type":"already"
 								}
 							]
 						}

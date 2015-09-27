@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"30",
+			"mapID":"30",
 			"x":6,
 			"y":9
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"31",
+			"mapID":"31",
 			"x":6,
 			"y":9
 		}
@@ -18,7 +18,7 @@
 	"3":[
 		{
 			"type":"changeMap",
-			"nextMap":"34",
+			"mapID":"34",
 			"x":9,
 			"y":5
 		}
@@ -52,7 +52,7 @@
 						},
 						{
 							"type":"changeMap",
-							"nextMap":"35",
+							"mapID":"35",
 							"x":13,
 							"y":21
 						}
@@ -79,8 +79,8 @@
 							"objID":"1072"
 						},
 						{
-							"type":"removeLayer",
-							"layer":"hide"
+							"type":"createChara",
+							"objID":"1079"
 						}
 					]
 				}
@@ -457,7 +457,7 @@
 			"action":[
 				{
 					"type":"createChara",
-					"objID":"1073"
+					"objID":"1078"
 				}
 			]
 		}
@@ -523,6 +523,16 @@
 					]
 				}
 			]
+		}
+	],
+	"10":[
+		{
+			"type":"systemMsg",
+			"text":["所々に何かをねじ込んだような\n穴があいている"]
+		},
+		{
+			"type":"playSE",
+			"file":"horror_notice.mp3"
 		}
 	]
 }

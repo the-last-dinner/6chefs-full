@@ -31,7 +31,7 @@
 				},
 				{
 					"type":"changeMap",
-					"nextMap":"38",
+					"mapID":"38",
 					"x":14,
 					"y":15
 				}
@@ -41,7 +41,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"2",
+			"mapID":"2",
 			"x":108,
 			"y":18
 		}

@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"9",
+			"mapID":"9",
 			"x":2,
 			"y":3
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"9",
+			"mapID":"9",
 			"x":6,
 			"y":3
 		}
@@ -18,7 +18,7 @@
 	"3":[
 		{
 			"type":"changeMap",
-			"nextMap":"9",
+			"mapID":"9",
 			"x":14,
 			"y":3
 		}
@@ -55,7 +55,7 @@
 								},
 								{
 									"type":"changeMap",
-									"nextMap":"11",
+									"mapID":"11",
 									"x":14,
 									"y":33
 								}
@@ -98,7 +98,7 @@
 								},
 								{
 									"type":"changeMap",
-									"nextMap":"13",
+									"mapID":"13",
 									"x":14,
 									"y":33
 								}
@@ -137,7 +137,7 @@
 								},
 								{
 									"type":"changeMap",
-									"nextMap":"15",
+									"mapID":"15",
 									"x":14,
 									"y":33
 								}
@@ -151,7 +151,7 @@
 	"7":[
 		{
 			"type":"changeMap",
-			"nextMap":"26",
+			"mapID":"26",
 			"x":3,
 			"y":15
 		}
@@ -159,7 +159,7 @@
 	"8":[
 		{
 			"type":"changeMap",
-			"nextMap":"27",
+			"mapID":"27",
 			"x":3,
 			"y":15
 		}
@@ -167,7 +167,7 @@
 	"9":[
 		{
 			"type":"changeMap",
-			"nextMap":"28",
+			"mapID":"28",
 			"x":11,
 			"y":15
 		}
@@ -175,7 +175,7 @@
 	"10":[
 		{
 			"type":"changeMap",
-			"nextMap":"29",
+			"mapID":"29",
 			"x":3,
 			"y":15
 		}
@@ -225,31 +225,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["3","21"]
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"createChara",
-							"objID":"1036"
-						},
-						{
-							"type":"createChara",
-							"objID":"1037"
-						}
-					]
-				}
-			]
-		}
-	],
-	"14":[
-		{
-			"type":"if",
-			"condition":[
-				{
+					"event":["3","21"],
 					"Nevent":["52","3"]
 				}
 			],
@@ -257,7 +233,7 @@
 				{
 					"type":"createChara",
 					"objID":"1060"
-				}
+				}			
 			]
 		}
 	]

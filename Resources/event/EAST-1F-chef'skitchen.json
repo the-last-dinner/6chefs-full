@@ -31,7 +31,7 @@
 				},
 				{
 					"type":"changeMap",
-					"nextMap":32,
+					"mapID":32,
 					"x":14,
 					"y":15
 				}
