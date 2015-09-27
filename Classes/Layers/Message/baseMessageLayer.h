@@ -33,7 +33,6 @@ protected:
 	void setPages(const queue<string>& pages);
 	void setFrame(Sprite* frame);
 	virtual void displayMessage();
-private:
 	virtual void createMessage();
 	virtual void nextPage();                  // 改ページ
     virtual void onAllLetterDisplayed(){};    // ページ内のすべての文字を表示し終えた時

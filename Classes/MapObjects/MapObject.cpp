@@ -28,35 +28,36 @@ void MapObject::setGridPosition(const Size& mapSize, const Point& mapGridPoint)
 {
 	Point cocosPoint = MapUtils::convertToCCPoint(mapSize, mapGridPoint);
 	this->setPosition(cocosPoint.x + this->getContentSize().width / 2, cocosPoint.y);
-	return;
 }
 
 // イベントIDをセット
 void MapObject::setEventId(int eventId)
 {
 	this->eventId = eventId;
-	return;
 }
 
 // イベントのtriggerをセット
 void MapObject::setTrigger(Trigger trigger)
 {
 	this->trigger = trigger;
-	return;
 }
 
 // 当たり判定の有無をセット
 void MapObject::setHit(bool _isHit)
 {
 	this->_isHit = _isHit;
-	return;
 }
 
 // 動いている方向をセット
 void MapObject::setMovingDirection(Direction direction)
 {
 	this->movingDirection = direction;
-	return;
+}
+
+// 衝突判定用Rectをセット
+void MapObject::setCollisionRect(const Rect& rect)
+{
+    this->collisionRect = rect;
 }
 
 // ライトをセット
@@ -64,7 +65,6 @@ void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
 {
 	this->light = light;
 	this->addChild(light);
-	//light->setPosition(this->getContentSize() / 2);
 	light->setOpacity(0);
 	this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
     
@@ -93,6 +93,12 @@ bool MapObject::isHit()
 // 動いている方向を取得
 Direction MapObject::getMovingDirection()
 {return this->movingDirection;}
+
+// 衝突判定用Rectを取得
+Rect MapObject::getCollisionRect()
+{
+    return this->collisionRect;
+}
 
 // デバッッグ用に枠を描画
 void MapObject::drawDebugMask()

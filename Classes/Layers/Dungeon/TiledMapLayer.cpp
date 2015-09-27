@@ -188,7 +188,7 @@ void TiledMapLayer::walking(const Key& key)
     {
         Direction moveDirection = this->eventListener->getMoveDirection(this->hero->getMovingDirection(), key);
         Point movement = MapUtils::getGridVector(moveDirection) * 2;
-        this->runAction(Sequence::create(Spawn::create(CallFunc::create([=](){this->hero->stamp();this->hero->setMovingDirection(moveDirection);}),
+        this->runAction(Sequence::create(Spawn::create(CallFunc::create([this, moveDirection, movement](){this->hero->stamp();this->hero->setMovingDirection(moveDirection);}),
                                                        TargetedAction::create(this->tiledMap, MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
                                                        TargetedAction::create(this->hero, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
                                                        nullptr),

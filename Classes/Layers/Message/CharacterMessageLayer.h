@@ -41,30 +41,21 @@ private:
     static constexpr float H_MARGIN_S {30};
     
 // クラスメソッド
-private:
-	CREATE_FUNC_WITH_PARAM(CharacterMessageLayer, queue<string>);
 public:
-	static CharacterMessageLayer* createWithCharaId(const int& charaId, const int& imgDiffId, const queue<string>& pages);
-	static CharacterMessageLayer* createWithName(const int& charaId, const int& imgDiffId, const string& name, const queue<string>& pages);
-	static CharacterMessageLayer* createWithName(const string& name, const queue<string>& pages);
+    CREATE_FUNC_WITH_PARAM(CharacterMessageLayer, const queue<Information>&);
 	
 // インスタンス変数
 private:
-    int charaId { -1 };
-    int imgDiffId { 0 };
-    string charaName { "" };
+    queue<Information> infos {};
     ui::Scale9Sprite* nameFrame { nullptr };
 
 // インスタンスメソッド
 private:
 	CharacterMessageLayer();
 	~CharacterMessageLayer();
-	virtual bool init(const queue<string>& pages);
-	virtual void createMessage();
-public:
-	void setCharacterId(const int& charaId);
-	void setImgDiffId(const int& imgDiffId);
-	void setCharacterName(const string& name);
+    virtual bool init(const queue<Information>& infos);
+	virtual void createMessage() override;
+    virtual void onAllPageDisplayed() override;
 };
 
 #endif // __CHARACTER_MESSAGE_LAYER_H__

@@ -109,8 +109,7 @@ void baseMessageLayer::nextPage()
 	this->pages.pop();
 	this->message->setVisible(false);
 	this->removeChild(this->message);
-	this->createMessage();
-	this->displayMessage();
+    this->start();
 	return;
 }
 
@@ -127,7 +126,7 @@ void baseMessageLayer::close()
 	this->setCascadeOpacityEnabled(true);
 	this->listenerKeyboard->setEnabled(false);
 	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this, FadeOut::create(0.2f)), CallFunc::create([=](){this->setVisible(false); this->removeFromParent();})));
-	this->callback();
+	if (this->callback) this->callback();
 }
 
 // 使用するフォントファイルのパスをセット

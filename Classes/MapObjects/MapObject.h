@@ -29,6 +29,7 @@ private:
 	bool _isHit { false };
 	Direction movingDirection {Direction::SIZE};
 	Light* light { nullptr };
+    Rect collisionRect {Rect::ZERO};
 	
 // インスタンスメソッド
 public:
@@ -39,6 +40,8 @@ public:
 	void setTrigger(Trigger trigger);
 	void setHit(bool _isHit);
 	void setMovingDirection(Direction direction);
+    void setCollisionRect(const Rect& rect);
+    
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
 	
@@ -47,6 +50,7 @@ public:
 	Trigger getTrigger();
 	bool isHit();
 	Direction getMovingDirection();
+    Rect getCollisionRect();
     
     void drawDebugMask();
 };

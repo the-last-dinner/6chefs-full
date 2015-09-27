@@ -50,7 +50,9 @@ bool Character::init(int charaId, Direction direction)
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
 	this->addChild(this->character);
     
+    // サイズ、衝突判定範囲をセット
     this->setContentSize(this->character->getContentSize());
+    this->setCollisionRect(Rect(0, 0, this->getContentSize().width, this->getContentSize().height / 2));
 	
 	for(int i = 0; i < static_cast<int>(Direction::SIZE); i++)
 	{
