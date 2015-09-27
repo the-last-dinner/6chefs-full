@@ -28,7 +28,7 @@ public:
     struct Information
     {
         int charaId {-1};
-        int imgId {0};
+        int imgId {-1};
         string charaName { "" };
         queue<string> pages {};
         Option option {Option::SIZE};

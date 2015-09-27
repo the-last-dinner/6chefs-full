@@ -41,8 +41,8 @@ bool DungeonScene::init()
 {
 	FUNCLOG
 	
-    EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
-    //EventScriptManager::getInstance()->setEventScript("TestScript");
+    //EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
+    EventScriptManager::getInstance()->setEventScript("TestScript");
 	return baseScene::init(DungeonSceneData::create());
 }
 
@@ -76,25 +76,7 @@ void DungeonScene::onPreloadFinished()
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
 									 TargetedAction::create(black, RemoveSelf::create()),
 									 nullptr));
-    
-    CharacterMessageLayer::Information info1;
-    info1.charaName = "いのす";
-    info1.pages.push("あいうえを");
-    info1.pages.push("かきくけこ");
-    
-    CharacterMessageLayer::Information info2;
-    info2.charaName = "おぐら";
-    info2.pages.push("まんこまんこ");
-    
-    queue<CharacterMessageLayer::Information> infos {};
-    infos.push(info1);
-    infos.push(info2);
-    
-    CharacterMessageLayer* message {CharacterMessageLayer::create(infos)};
-    this->addChild(message);
-    message->start();
-    
-	return;
+    return;
 }
 
 //EventScriptTaskのrunEventScriptを実行
