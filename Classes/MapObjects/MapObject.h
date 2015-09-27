@@ -12,41 +12,43 @@
 #include "Common.h"
 
 class Light;
+class AmbientLightLayer;
 
 class MapObject : public Node
 {
-	// 定数
+// 定数
 public:
-	static const Color3B TORCH_COLOR;
-
-	// インスタンス変数
+    enum EventID
+    {
+        UNDIFINED = -1,
+    };
+// インスタンス変数
 private:
-	Size objectSize { Size::ZERO };
-	int eventId { -1 };
-	TriggerType trigger {TriggerType::SIZE};
+    int eventId { EventID::UNDIFINED };
+	Trigger trigger {Trigger::SIZE};
 	bool _isHit { false };
 	Direction movingDirection {Direction::SIZE};
 	Light* light { nullptr };
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
 	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
-	void setObjectSize(const Size& objSize);
 	void setEventId(int eventId);
-	void setTrigger(TriggerType trigger);
+	void setTrigger(Trigger trigger);
 	void setHit(bool _isHit);
 	void setMovingDirection(Direction direction);
-	void setLight(Light* light);
+	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
 	
 	Point getGridPosition(const Size& mapSize);
-	Size getObjectSize();
 	int getEventId();
-	TriggerType getTrigger();
+	Trigger getTrigger();
 	bool isHit();
 	Direction getMovingDirection();
+    
+    void drawDebugMask();
 };
 
 #endif // __MAP_OBJECT_H__

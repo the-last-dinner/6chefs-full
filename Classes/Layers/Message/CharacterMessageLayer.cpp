@@ -49,7 +49,6 @@ CharacterMessageLayer* CharacterMessageLayer::createWithName(const string& name,
 	return pRet;
 }
 
-
 // 初期化
 bool CharacterMessageLayer::init(const queue<string>& pages)
 {
@@ -64,7 +63,7 @@ bool CharacterMessageLayer::init(const queue<string>& pages)
 	Sprite* mainFrame {Sprite::createWithSpriteFrameName("cm_frame.png")};
 	Size mFrameSize = mainFrame->getContentSize();
 	mainFrame->setPosition(Point(WINDOW_WIDTH / 2, mFrameSize.height / 2 + 10)); // 30は縦方向の調整用
-	mainFrame->setZOrder(0);
+	mainFrame->setLocalZOrder(0);
 	mainFrame->setCascadeOpacityEnabled(true);
 	this->setFrame(mainFrame);
 	this->addChild(frame);
@@ -83,16 +82,16 @@ bool CharacterMessageLayer::init(const queue<string>& pages)
 void CharacterMessageLayer::createMessage()
 {
 	if(this->charaId != -1){
-	// キャラクター画像
-		Sprite* img { Sprite::createWithSpriteFrameName(CharacterData::datas.at(this->charaId).at(static_cast<int>(CharacterData::DataType::TexturePrefix)) + "_s_" + to_string(this->imgDiffId) + ".png")};
+	// キャラクター画像;
+		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, this->charaId) + "_s_" + to_string(this->imgDiffId) + ".png")};
 		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
 		img->setPosition(Point(WINDOW_WIDTH / 4, img->getContentSize().height / 2));
-		img->setZOrder(-1);
+		img->setLocalZOrder(-1);
 		this->addChild(img);
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF((this->charaId == -1 && this->charaName != "")?this->charaName:CharacterData::datas.at(this->charaId).at(static_cast<int>(CharacterData::DataType::Name)), this->fontPath, 26.f)};
+	Label* name { Label::createWithTTF((this->charaId == -1 && this->charaName != "")?this->charaName:CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, this->charaId), this->fontPath, 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える

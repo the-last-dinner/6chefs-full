@@ -64,10 +64,10 @@
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		550708D11BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550708CF1BAE7AAB00E75FE9 /* ShaderLayer.cpp */; };
+		550708D21BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550708CF1BAE7AAB00E75FE9 /* ShaderLayer.cpp */; };
 		551406871BA55DBC008DFAED /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551406851BA55DBC008DFAED /* Light.cpp */; };
 		551406881BA55DBC008DFAED /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551406851BA55DBC008DFAED /* Light.cpp */; };
-		5514068B1BA56A8A008DFAED /* ShadowLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551406891BA56A8A008DFAED /* ShadowLayer.cpp */; };
-		5514068C1BA56A8A008DFAED /* ShadowLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551406891BA56A8A008DFAED /* ShadowLayer.cpp */; };
 		5514069F1BA5828A008DFAED /* BGM in Resources */ = {isa = PBXBuildFile; fileRef = 551406951BA5828A008DFAED /* BGM */; };
 		551406A01BA5828A008DFAED /* csv in Resources */ = {isa = PBXBuildFile; fileRef = 551406961BA5828A008DFAED /* csv */; };
 		551406A11BA5828A008DFAED /* event in Resources */ = {isa = PBXBuildFile; fileRef = 551406971BA5828A008DFAED /* event */; };
@@ -80,8 +80,6 @@
 		551406A81BA5828A008DFAED /* story in Resources */ = {isa = PBXBuildFile; fileRef = 5514069E1BA5828A008DFAED /* story */; };
 		552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83681B20BC6300B681A8 /* AppDelegate.cpp */; };
 		552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83681B20BC6300B681A8 /* AppDelegate.cpp */; };
-		552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D836E1B20BC7900B681A8 /* ActionKeyManager.cpp */; };
-		552D83731B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D836E1B20BC7900B681A8 /* ActionKeyManager.cpp */; };
 		552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
 		552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
 		552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
@@ -94,8 +92,6 @@
 		552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC31B710D2900E4CEB6 /* StoryMessageLayer.cpp */; };
 		552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC51B710D2900E4CEB6 /* SystemMessageLayer.cpp */; };
 		552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC51B710D2900E4CEB6 /* SystemMessageLayer.cpp */; };
-		552F5DD31B710D5000E4CEB6 /* SaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DCF1B710D5000E4CEB6 /* SaveDataSelector.cpp */; };
-		552F5DD41B710D5000E4CEB6 /* SaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DCF1B710D5000E4CEB6 /* SaveDataSelector.cpp */; };
 		5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */; };
 		5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */; };
 		5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
@@ -116,18 +112,24 @@
 		557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C71B4702BF001993E1 /* MapUtils.cpp */; };
 		557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87CB1B47A22B001993E1 /* LoadingLayer.cpp */; };
 		557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87CB1B47A22B001993E1 /* LoadingLayer.cpp */; };
-		557A87D11B48FDBE001993E1 /* baseMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87CF1B48FDBE001993E1 /* baseMenuLayer.cpp */; };
-		557A87D21B48FDBE001993E1 /* baseMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87CF1B48FDBE001993E1 /* baseMenuLayer.cpp */; };
-		557A87D61B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87D41B490A0B001993E1 /* TitleMainMenuLayer.cpp */; };
-		557A87D71B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87D41B490A0B001993E1 /* TitleMainMenuLayer.cpp */; };
 		557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87D81B49215F001993E1 /* EventObject.cpp */; };
 		557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87D81B49215F001993E1 /* EventObject.cpp */; };
 		557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557C03591B37D11E00F3F8A2 /* SoundManager.cpp */; };
 		557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557C03591B37D11E00F3F8A2 /* SoundManager.cpp */; };
 		5583CE3E1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CE3C1B9A163C00F9ACB7 /* EventScriptTask.cpp */; };
 		5583CE3F1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CE3C1B9A163C00F9ACB7 /* EventScriptTask.cpp */; };
-		5583CE421B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CE401B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp */; };
-		5583CE431B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CE401B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp */; };
+		55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */; };
+		55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */; };
+		55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */; };
+		55D8A6E21BB43772005F9717 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */; };
+		55D8A6E31BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6DD1BB43772005F9717 /* TitleMainMenuLayer.cpp */; };
+		55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6DD1BB43772005F9717 /* TitleMainMenuLayer.cpp */; };
+		55D8A6E71BB4429A005F9717 /* SaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6E51BB4429A005F9717 /* SaveDataSelector.cpp */; };
+		55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6E51BB4429A005F9717 /* SaveDataSelector.cpp */; };
+		55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E0FB611BB234D2005BC929 /* EventListenerKeyboardLayer.cpp */; };
+		55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E0FB611BB234D2005BC929 /* EventListenerKeyboardLayer.cpp */; };
+		55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */; };
+		55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -242,11 +244,11 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		550708CF1BAE7AAB00E75FE9 /* ShaderLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderLayer.cpp; path = ../Classes/Layers/Shader/ShaderLayer.cpp; sourceTree = "<group>"; };
+		550708D01BAE7AAB00E75FE9 /* ShaderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderLayer.h; path = ../Classes/Layers/Shader/ShaderLayer.h; sourceTree = "<group>"; };
 		5514067E1BA46C8C008DFAED /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../Resources/img; sourceTree = "<group>"; };
 		551406851BA55DBC008DFAED /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Light.cpp; path = ../Classes/Effects/Light.cpp; sourceTree = "<group>"; };
 		551406861BA55DBC008DFAED /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Light.h; path = ../Classes/Effects/Light.h; sourceTree = "<group>"; };
-		551406891BA56A8A008DFAED /* ShadowLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShadowLayer.cpp; path = ../Classes/Effects/ShadowLayer.cpp; sourceTree = "<group>"; };
-		5514068A1BA56A8A008DFAED /* ShadowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowLayer.h; path = ../Classes/Effects/ShadowLayer.h; sourceTree = "<group>"; };
 		551406951BA5828A008DFAED /* BGM */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BGM; path = ../Resources/BGM; sourceTree = "<group>"; };
 		551406961BA5828A008DFAED /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; name = csv; path = ../Resources/csv; sourceTree = "<group>"; };
 		551406971BA5828A008DFAED /* event */ = {isa = PBXFileReference; lastKnownFileType = folder; name = event; path = ../Resources/event; sourceTree = "<group>"; };
@@ -262,8 +264,6 @@
 		552D83691B20BC6300B681A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		552D836A1B20BC6300B681A8 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../Classes/Common.h; sourceTree = "<group>"; };
 		552D836B1B20BC6300B681A8 /* define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = define.h; path = ../Classes/define.h; sourceTree = "<group>"; };
-		552D836E1B20BC7900B681A8 /* ActionKeyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActionKeyManager.cpp; path = ../Classes/Managers/ActionKeyManager.cpp; sourceTree = "<group>"; };
-		552D836F1B20BC7900B681A8 /* ActionKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionKeyManager.h; path = ../Classes/Managers/ActionKeyManager.h; sourceTree = "<group>"; };
 		552D837B1B20BCA700B681A8 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/Scenes/TitleScene.cpp; sourceTree = "<group>"; };
 		552D837C1B20BCA700B681A8 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/Scenes/TitleScene.h; sourceTree = "<group>"; };
 		552D83841B20BFD800B681A8 /* baseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseScene.cpp; path = ../Classes/Scenes/baseScene.cpp; sourceTree = "<group>"; };
@@ -276,8 +276,6 @@
 		552F5DC41B710D2900E4CEB6 /* StoryMessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryMessageLayer.h; path = ../Classes/Layers/Message/StoryMessageLayer.h; sourceTree = "<group>"; };
 		552F5DC51B710D2900E4CEB6 /* SystemMessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemMessageLayer.cpp; path = ../Classes/Layers/Message/SystemMessageLayer.cpp; sourceTree = "<group>"; };
 		552F5DC61B710D2900E4CEB6 /* SystemMessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemMessageLayer.h; path = ../Classes/Layers/Message/SystemMessageLayer.h; sourceTree = "<group>"; };
-		552F5DCF1B710D5000E4CEB6 /* SaveDataSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SaveDataSelector.cpp; path = ../Classes/Layers/SaveData/SaveDataSelector.cpp; sourceTree = "<group>"; };
-		552F5DD01B710D5000E4CEB6 /* SaveDataSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveDataSelector.h; path = ../Classes/Layers/SaveData/SaveDataSelector.h; sourceTree = "<group>"; };
 		5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonScene.cpp; path = ../Classes/Scenes/DungeonScene.cpp; sourceTree = "<group>"; };
 		5534BBCC1B2D33D7003CB847 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = ../Classes/Scenes/DungeonScene.h; sourceTree = "<group>"; };
 		5534BBDA1B2DDF52003CB847 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = ../Classes/MapObjects/Character.cpp; sourceTree = "<group>"; };
@@ -292,25 +290,30 @@
 		55655AF01B39A427000AFC17 /* SceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneData.h; sourceTree = "<group>"; };
 		556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TiledMapLayer.cpp; path = ../Classes/Layers/Dungeon/TiledMapLayer.cpp; sourceTree = "<group>"; };
 		556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapLayer.h; path = ../Classes/Layers/Dungeon/TiledMapLayer.h; sourceTree = "<group>"; };
-		556EC5431B6FB6E10080A7D6 /* CharacterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterData.h; path = ../Classes/MapObjects/CharacterData.h; sourceTree = "<group>"; };
 		557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSceneData.cpp; sourceTree = "<group>"; };
 		557A87C31B46EB3E001993E1 /* TitleSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneData.h; sourceTree = "<group>"; };
 		557A87C71B4702BF001993E1 /* MapUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapUtils.cpp; path = ../Classes/Utils/MapUtils.cpp; sourceTree = "<group>"; };
 		557A87C81B4702BF001993E1 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapUtils.h; path = ../Classes/Utils/MapUtils.h; sourceTree = "<group>"; };
 		557A87CB1B47A22B001993E1 /* LoadingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingLayer.cpp; path = ../Classes/Layers/LoadingLayer.cpp; sourceTree = "<group>"; };
 		557A87CC1B47A22B001993E1 /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingLayer.h; path = ../Classes/Layers/LoadingLayer.h; sourceTree = "<group>"; };
-		557A87CF1B48FDBE001993E1 /* baseMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseMenuLayer.cpp; path = ../Classes/Layers/baseMenuLayer.cpp; sourceTree = "<group>"; };
-		557A87D01B48FDBE001993E1 /* baseMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseMenuLayer.h; path = ../Classes/Layers/baseMenuLayer.h; sourceTree = "<group>"; };
-		557A87D41B490A0B001993E1 /* TitleMainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleMainMenuLayer.cpp; path = ../Classes/Layers/Title/TitleMainMenuLayer.cpp; sourceTree = "<group>"; };
-		557A87D51B490A0B001993E1 /* TitleMainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMainMenuLayer.h; path = ../Classes/Layers/Title/TitleMainMenuLayer.h; sourceTree = "<group>"; };
 		557A87D81B49215F001993E1 /* EventObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventObject.cpp; path = ../Classes/MapObjects/EventObject.cpp; sourceTree = "<group>"; };
 		557A87D91B49215F001993E1 /* EventObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventObject.h; path = ../Classes/MapObjects/EventObject.h; sourceTree = "<group>"; };
 		557C03591B37D11E00F3F8A2 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/Managers/SoundManager.cpp; sourceTree = "<group>"; };
 		557C035A1B37D11E00F3F8A2 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/Managers/SoundManager.h; sourceTree = "<group>"; };
 		5583CE3C1B9A163C00F9ACB7 /* EventScriptTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptTask.cpp; path = ../Classes/Tasks/EventScriptTask.cpp; sourceTree = "<group>"; };
 		5583CE3D1B9A163C00F9ACB7 /* EventScriptTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptTask.h; path = ../Classes/Tasks/EventScriptTask.h; sourceTree = "<group>"; };
-		5583CE401B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMainMenuLayer.cpp; path = ../Classes/Layers/Dungeon/DungeonMainMenuLayer.cpp; sourceTree = "<group>"; };
-		5583CE411B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMainMenuLayer.h; path = ../Classes/Layers/Dungeon/DungeonMainMenuLayer.h; sourceTree = "<group>"; };
+		55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMainMenuLayer.cpp; path = ../Classes/Layers/Menu/DungeonMainMenuLayer.cpp; sourceTree = "<group>"; };
+		55D8A6DA1BB43772005F9717 /* DungeonMainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMainMenuLayer.h; path = ../Classes/Layers/Menu/DungeonMainMenuLayer.h; sourceTree = "<group>"; };
+		55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuLayer.cpp; path = ../Classes/Layers/Menu/MenuLayer.cpp; sourceTree = "<group>"; };
+		55D8A6DC1BB43772005F9717 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuLayer.h; path = ../Classes/Layers/Menu/MenuLayer.h; sourceTree = "<group>"; };
+		55D8A6DD1BB43772005F9717 /* TitleMainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleMainMenuLayer.cpp; path = ../Classes/Layers/Menu/TitleMainMenuLayer.cpp; sourceTree = "<group>"; };
+		55D8A6DE1BB43772005F9717 /* TitleMainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMainMenuLayer.h; path = ../Classes/Layers/Menu/TitleMainMenuLayer.h; sourceTree = "<group>"; };
+		55D8A6E51BB4429A005F9717 /* SaveDataSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SaveDataSelector.cpp; path = ../Classes/Layers/Menu/SaveDataSelector.cpp; sourceTree = "<group>"; };
+		55D8A6E61BB4429A005F9717 /* SaveDataSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveDataSelector.h; path = ../Classes/Layers/Menu/SaveDataSelector.h; sourceTree = "<group>"; };
+		55E0FB611BB234D2005BC929 /* EventListenerKeyboardLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventListenerKeyboardLayer.cpp; path = ../Classes/Layers/EventListener/EventListenerKeyboardLayer.cpp; sourceTree = "<group>"; };
+		55E0FB621BB234D2005BC929 /* EventListenerKeyboardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListenerKeyboardLayer.h; path = ../Classes/Layers/EventListener/EventListenerKeyboardLayer.h; sourceTree = "<group>"; };
+		55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AmbientLightLayer.cpp; path = ../Classes/Effects/AmbientLightLayer.cpp; sourceTree = "<group>"; };
+		55E542A61BAE59850003A230 /* AmbientLightLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmbientLightLayer.h; path = ../Classes/Effects/AmbientLightLayer.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -527,11 +530,20 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		550708CE1BAE7A0C00E75FE9 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				550708CF1BAE7AAB00E75FE9 /* ShaderLayer.cpp */,
+				550708D01BAE7AAB00E75FE9 /* ShaderLayer.h */,
+			);
+			name = Shader;
+			sourceTree = "<group>";
+		};
 		551406801BA55916008DFAED /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				551406891BA56A8A008DFAED /* ShadowLayer.cpp */,
-				5514068A1BA56A8A008DFAED /* ShadowLayer.h */,
+				55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */,
+				55E542A61BAE59850003A230 /* AmbientLightLayer.h */,
 				551406851BA55DBC008DFAED /* Light.cpp */,
 				551406861BA55DBC008DFAED /* Light.h */,
 			);
@@ -600,14 +612,14 @@
 		552D83661B20BC3400B681A8 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				557A87D31B49098B001993E1 /* Title */,
 				556C18DF1B3FA69500D2BCA1 /* Dungeon */,
+				55E0FB601BB23484005BC929 /* EventListener */,
+				55D8A6D81BB434AE005F9717 /* Menu */,
 				552F5DBE1B710CF900E4CEB6 /* Message */,
-				552F5DBD1B710CED00E4CEB6 /* SaveData */,
+				550708CE1BAE7A0C00E75FE9 /* Shader */,
+				557A87D31B49098B001993E1 /* Title */,
 				557A87CB1B47A22B001993E1 /* LoadingLayer.cpp */,
 				557A87CC1B47A22B001993E1 /* LoadingLayer.h */,
-				557A87CF1B48FDBE001993E1 /* baseMenuLayer.cpp */,
-				557A87D01B48FDBE001993E1 /* baseMenuLayer.h */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -617,8 +629,6 @@
 			children = (
 				260CF2621B2D486700BB139B /* EventScriptManager.cpp */,
 				260CF2631B2D486700BB139B /* EventScriptManager.h */,
-				552D836E1B20BC7900B681A8 /* ActionKeyManager.cpp */,
-				552D836F1B20BC7900B681A8 /* ActionKeyManager.h */,
 				557C03591B37D11E00F3F8A2 /* SoundManager.cpp */,
 				557C035A1B37D11E00F3F8A2 /* SoundManager.h */,
 				2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */,
@@ -645,15 +655,6 @@
 			path = ../Classes/Datas/Scene;
 			sourceTree = "<group>";
 		};
-		552F5DBD1B710CED00E4CEB6 /* SaveData */ = {
-			isa = PBXGroup;
-			children = (
-				552F5DCF1B710D5000E4CEB6 /* SaveDataSelector.cpp */,
-				552F5DD01B710D5000E4CEB6 /* SaveDataSelector.h */,
-			);
-			name = SaveData;
-			sourceTree = "<group>";
-		};
 		552F5DBE1B710CF900E4CEB6 /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,7 +673,6 @@
 		5534BBD91B2DDEB6003CB847 /* MapObjects */ = {
 			isa = PBXGroup;
 			children = (
-				556EC5431B6FB6E10080A7D6 /* CharacterData.h */,
 				5534BBDA1B2DDF52003CB847 /* Character.cpp */,
 				5534BBDB1B2DDF52003CB847 /* Character.h */,
 				5527BFFD1B305A7000612934 /* Objects.h */,
@@ -689,8 +689,6 @@
 			children = (
 				556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */,
 				556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */,
-				5583CE401B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp */,
-				5583CE411B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.h */,
 			);
 			name = Dungeon;
 			sourceTree = "<group>";
@@ -707,8 +705,6 @@
 		557A87D31B49098B001993E1 /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				557A87D41B490A0B001993E1 /* TitleMainMenuLayer.cpp */,
-				557A87D51B490A0B001993E1 /* TitleMainMenuLayer.h */,
 			);
 			name = Title;
 			sourceTree = "<group>";
@@ -720,6 +716,30 @@
 				5583CE3D1B9A163C00F9ACB7 /* EventScriptTask.h */,
 			);
 			name = Tasks;
+			sourceTree = "<group>";
+		};
+		55D8A6D81BB434AE005F9717 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				55D8A6E51BB4429A005F9717 /* SaveDataSelector.cpp */,
+				55D8A6E61BB4429A005F9717 /* SaveDataSelector.h */,
+				55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */,
+				55D8A6DC1BB43772005F9717 /* MenuLayer.h */,
+				55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */,
+				55D8A6DA1BB43772005F9717 /* DungeonMainMenuLayer.h */,
+				55D8A6DD1BB43772005F9717 /* TitleMainMenuLayer.cpp */,
+				55D8A6DE1BB43772005F9717 /* TitleMainMenuLayer.h */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		55E0FB601BB23484005BC929 /* EventListener */ = {
+			isa = PBXGroup;
+			children = (
+				55E0FB611BB234D2005BC929 /* EventListenerKeyboardLayer.cpp */,
+				55E0FB621BB234D2005BC929 /* EventListenerKeyboardLayer.h */,
+			);
+			name = EventListener;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -888,35 +908,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				552F5DD31B710D5000E4CEB6 /* SaveDataSelector.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				550708D11BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
 				5583CE3E1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
-				5514068B1BA56A8A008DFAED /* ShadowLayer.cpp in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */,
 				557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				552F5DC71B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
-				5583CE421B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp in Sources */,
-				557A87D11B48FDBE001993E1 /* baseMenuLayer.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
-				552D83721B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
+				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
-				557A87D61B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
+				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
 				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
+				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
+				55D8A6E71BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
+				55D8A6E31BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
 				557A87C91B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
@@ -930,32 +951,33 @@
 				551406881BA55DBC008DFAED /* Light.cpp in Sources */,
 				5583CE3F1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
-				552F5DD41B710D5000E4CEB6 /* SaveDataSelector.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC81B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
-				557A87D71B490A0B001993E1 /* TitleMainMenuLayer.cpp in Sources */,
+				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
-				5583CE431B9C2D6C00F9ACB7 /* DungeonMainMenuLayer.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
-				5514068C1BA56A8A008DFAED /* ShadowLayer.cpp in Sources */,
+				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
-				552D83731B20BC7900B681A8 /* ActionKeyManager.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
+				550708D21BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
+				55D8A6E21BB43772005F9717 /* MenuLayer.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
+				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
-				557A87D21B48FDBE001993E1 /* baseMenuLayer.cpp in Sources */,
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
+				55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 			);

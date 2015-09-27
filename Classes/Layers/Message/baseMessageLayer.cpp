@@ -2,7 +2,7 @@
 //  baseMessageLayer.cpp
 //  LastSupper
 //
-//  Created by Kohei on 2015/07/12.
+//  Created by Kohei Asami on 2015/07/12.
 //
 //
 
@@ -18,12 +18,13 @@ baseMessageLayer::~baseMessageLayer(){FUNCLOG}
 bool baseMessageLayer::init()
 {
 	FUNCLOG
+    if(!Layer::init()) return false;
+    
 	// イベントリスナ生成
-	this->eventListener = EventListenerKeyboard::create();
-	this->eventListener->onKeyPressed = [this](EventKeyboard::KeyCode keyCode, Event* event){if(keyCode == EventKeyboard::KeyCode::KEY_SPACE) this->onSpacePressed();};
-	
-	// イベントリスナ登録
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
+    EventListenerKeyboardLayer* listenerKeyboard {EventListenerKeyboardLayer::create()};
+    listenerKeyboard->onSpaceKeyPressed = CC_CALLBACK_0(baseMessageLayer::onSpacePressed, this);
+    this->addChild(listenerKeyboard);
+    this->listenerKeyboard = listenerKeyboard;
 	
 	return true;
 }
@@ -33,7 +34,7 @@ void baseMessageLayer::onSpacePressed()
 {
 	// すべてのページを表示し終えていた場合
 	if(this->_isAllPageDisplayed){
-		this->end();
+		this->onAllPageDisplayed();
 		return;
 	}
 	// ページ内ですべての文字を表示し終えていたら、次ページへ
@@ -47,7 +48,7 @@ void baseMessageLayer::onSpacePressed()
 		for(int i = 0; i < this->message->getStringLength(); i++)
 		{Sprite* letter = this->message->getLetter(i); if(letter) letter->setVisible(true);}
 		this->_isAllLetterDisplayed = true;
-		this->allLetterDisplayed();
+		this->onAllLetterDisplayed();
 		if(this->pages.size() == 1) this->_isAllPageDisplayed = true;
 	}
 	return;
@@ -75,6 +76,7 @@ void baseMessageLayer::displayMessage()
 	
 	int stringLength = this->message->getStringLength();
 	int lastLetterIndex = 0;
+    
 	// 改行文字をカウントしない最後の文字のインデックスを取得する
 	for(int i = stringLength - 1; i >= 0; i--)
 	{
@@ -93,7 +95,7 @@ void baseMessageLayer::displayMessage()
 		if(letter)
 		{
 			letter->setVisible(false);
-			Sequence* letterAction = Sequence::create(DelayTime::create(this->span * i), TargetedAction::create(letter, Show::create()), CallFunc::create([=](){if(i == lastLetterIndex){this->_isAllLetterDisplayed = true;this->allLetterDisplayed(); if(this->pages.size() == 1) this->_isAllPageDisplayed = true;}}), nullptr);
+			Sequence* letterAction = Sequence::create(DelayTime::create(this->span * i), TargetedAction::create(letter, Show::create()), CallFunc::create([=](){if(i == lastLetterIndex){this->_isAllLetterDisplayed = true;this->onAllLetterDisplayed(); if(this->pages.size() == 1) this->_isAllPageDisplayed = true;}}), nullptr);
 			this->letterActions.push_back(letterAction);
 			this->runAction(letterAction);
 		}
@@ -112,19 +114,21 @@ void baseMessageLayer::nextPage()
 	return;
 }
 
-// メッセージを終了する
-void baseMessageLayer::end()
+// すべてのページを表示し終えた時
+void baseMessageLayer::onAllPageDisplayed()
+{
+    this->close();
+}
+
+// メッセージウインドウを閉じる
+void baseMessageLayer::close()
 {
 	FUNCLOG
 	this->setCascadeOpacityEnabled(true);
-	this->eventListener->setEnabled(false);
+	this->listenerKeyboard->setEnabled(false);
 	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this, FadeOut::create(0.2f)), CallFunc::create([=](){this->setVisible(false); this->removeFromParent();})));
 	this->callback();
 }
-
-// そのページでの文字がすべて表示された時に実行される
-void baseMessageLayer::allLetterDisplayed()
-{}
 
 // 使用するフォントファイルのパスをセット
 void baseMessageLayer::setFontFilePath(const string& fontPath)

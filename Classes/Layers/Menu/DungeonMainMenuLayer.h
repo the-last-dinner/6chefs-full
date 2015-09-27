@@ -9,9 +9,9 @@
 #ifndef __LastSupper__DungeonMainMenuLayer__
 #define __LastSupper__DungeonMainMenuLayer__
 
-#include "Layers/baseMenuLayer.h"
+#include "Layers/Menu/MenuLayer.h"
 
-class DungeonMainMenuLayer : public baseMenuLayer
+class DungeonMainMenuLayer : public MenuLayer
 {
 	// 列挙型
 public:

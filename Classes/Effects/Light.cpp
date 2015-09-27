@@ -19,47 +19,32 @@ Light::Light()
 Light::~Light()
 { FUNCLOG }
 
-// create関数
-Light* Light::create(const cocos2d::Color3B& color, float radius)
-{
-	Light* p = new(nothrow)Light();
-	if (p && p->init(color, radius))
-	{
-		// オブジェクトを自動メモリ管理へ登録
-		p->autorelease();
-		return p;
-	}
-	CC_SAFE_DELETE(p);
-	return nullptr;
-}
-
 // 初期化
-bool Light::init(const Color3B& color, float radius)
+bool Light::init(const Information& info)
 {
 	if(!Node::init()) return false;
+    
+    this->info = info;
 	
-	Sprite* light {Sprite::createWithSpriteFrameName("light.png")};
-	light->setOpacity(50);
-	light->setColor(color);
-	float scale {(radius * 2) / light->getContentSize().width};
+	Sprite* light {Sprite::createWithSpriteFrameName("light_white.png")};
+	light->setColor(info.color);
+    light->setOpacity(120);
+	float scale {(info.radius * 2) / light->getContentSize().width};
 	light->setScale(scale);
 	this->setContentSize(light->getContentSize() * scale);
-	
-	BlendFunc blend;
-	blend.src = GL_SRC_ALPHA;
-	blend.dst = GL_ONE;
-	
-	light->setBlendFunc(blend);
-	
 	this->addChild(light);
+    
 	this->setCascadeOpacityEnabled(true);
-	this->setGlobalZOrder(static_cast<int>(Priority::LIGHT));
+    this->setCascadeColorEnabled(true);
+    
+    light->setBlendFunc(BlendFunc{GL_SRC_ALPHA, GL_ONE});
+    
+    if(info.type == Light::Type::TORCH) this->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(0.5f, 220), FadeTo::create(0.5f, 255), nullptr), -1), nullptr));
 	
 	return true;
 }
 
-// 初期化
-bool Light::init(float radius)
+Light::Information Light::getInformation()
 {
-	return this->init(TORCH_COLOR, radius);
+    return this->info;
 }

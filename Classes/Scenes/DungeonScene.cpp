@@ -14,8 +14,6 @@
 
 #include "Tasks/EventScriptTask.h"
 
-#include "Effects/ShadowLayer.h"
-
 // コンストラクタ
 DungeonScene::DungeonScene(){FUNCLOG}
 
@@ -54,7 +52,7 @@ void DungeonScene::onPreloadFinished()
 	Sprite* black { Sprite::create()};
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	black->setColor(Color3B::BLACK);
-	black->setGlobalZOrder(static_cast<int>(Priority::SCREEN_COVER));
+	black->setLocalZOrder(static_cast<int>(Priority::SCREEN_COVER));
 	black->setPosition(WINDOW_CENTER);
 	this->addChild(black);
 	

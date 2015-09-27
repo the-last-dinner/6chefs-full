@@ -9,9 +9,9 @@
 #ifndef __TITLE_MAIN_MENU_LAYER_H__
 #define __TITLE_MAIN_MENU_LAYER_H__
 
-#include "Layers/baseMenuLayer.h"
+#include "Layers/Menu/MenuLayer.h"
 
-class TitleMainMenuLayer : public baseMenuLayer
+class TitleMainMenuLayer : public MenuLayer
 {
 	// 列挙型、構造他
 public:

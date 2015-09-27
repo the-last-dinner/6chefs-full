@@ -8,7 +8,6 @@ AppDelegate::AppDelegate()
 	FUNCLOG
     CsvDataManager::getInstance();
     PlayerDataManager::getInstance();
-	ActionKeyManager::getInstance();
 	SoundManager::getInstance();
 	TextureManager::getInstance();
 	this->init();
@@ -21,7 +20,6 @@ AppDelegate::~AppDelegate()
 	FUNCLOG
     CsvDataManager::destroy();
     EventScriptManager::destroy();
-	ActionKeyManager::destroy();
 	SoundManager::destory();
     PlayerDataManager::destroy();
 	TextureManager::destory();

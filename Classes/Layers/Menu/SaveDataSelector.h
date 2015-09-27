@@ -9,9 +9,9 @@
 #ifndef __SAVE_DATA_SELECTOR_H__
 #define __SAVE_DATA_SELECTOR_H__
 
-#include "Layers/baseMenuLayer.h"
+#include "Layers/Menu/MenuLayer.h"
 
-class SaveDataSelector : public baseMenuLayer
+class SaveDataSelector : public MenuLayer
 {
 	// クラスメソッド
 public:

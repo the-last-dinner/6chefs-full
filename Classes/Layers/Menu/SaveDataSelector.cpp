@@ -6,7 +6,9 @@
 //
 //
 
-#include "Layers/SaveData/SaveDataSelector.h"
+#include "Layers/Menu/SaveDataSelector.h"
+
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 // コンストラクタ
 SaveDataSelector::SaveDataSelector(){FUNCLOG}
@@ -18,7 +20,7 @@ SaveDataSelector::~SaveDataSelector(){FUNCLOG}
 bool SaveDataSelector::init()
 {
 	FUNCLOG
-	if(!baseMenuLayer::init(2, PlayerDataManager::MAX_SAVE_COUNT / 2)) return false;
+	if(!MenuLayer::init(2, PlayerDataManager::MAX_SAVE_COUNT / 2)) return false;
 	
 	// 黒い背景を生成
 	Sprite* black = Sprite::create();
@@ -72,13 +74,13 @@ bool SaveDataSelector::init()
 void SaveDataSelector::show()
 {
 	this->setVisible(true);
-	this->eventListener->setEnabled(true);
+	this->listenerKeyboard->setEnabled(true);
 }
 
 // 非表示
 void SaveDataSelector::hide()
 {
-	this->eventListener->setEnabled(false);
+	this->listenerKeyboard->setEnabled(false);
 	this->setVisible(false);
 }
 

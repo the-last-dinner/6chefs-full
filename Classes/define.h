@@ -54,6 +54,20 @@ enum struct Priority
 	MAP = 0,
 };
 
+// ゲームで使うキーの種類
+enum struct Key
+{
+    DOWN,
+    RIGHT,
+    LEFT,
+    UP,
+    MENU,
+    DASH,
+    SPACE,
+    
+    SIZE,
+};
+
 // 向き
 enum struct Direction
 {
@@ -70,26 +84,13 @@ enum struct Direction
 };
 
 // トリガータイプ
-enum struct TriggerType
+enum struct Trigger
 {
 	INIT,
 	RIDE,
 	SEARCH,
 	SIZE,
 	NONE,
-};
-
-// 向きと移動量を結びつける連想配列
-const map<Direction, Point> movementMap =
-{
-	{Direction::FRONT, Point(0, -GRID)},
-	{Direction::RIGHT, Point(GRID, 0)},
-	{Direction::LEFT, Point(-GRID, 0)},
-	{Direction::BACK, Point(0, GRID)},
-	{Direction::FRONT_RIGHT, Point(GRID, -GRID)},
-	{Direction::FRONT_LEFT, Point(-GRID, -GRID)},
-	{Direction::BACK_RIGHT, Point(GRID, GRID)},
-	{Direction::BACK_LEFT, Point(-GRID, GRID)},
 };
 
 // パラメータを一つタイプを指定してcreate

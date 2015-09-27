@@ -2,7 +2,7 @@
 //  baseMessageLayer.h
 //  LastSupper
 //
-//  Created by Kohei on 2015/07/12.
+//  Created by Kohei Asami on 2015/07/12.
 //
 //
 
@@ -10,6 +10,8 @@
 #define __BASE_MESSAGE_LAYER_H__
 
 #include "Common.h"
+
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 class baseMessageLayer : public Layer
 {	
@@ -33,13 +35,14 @@ protected:
 	virtual void displayMessage();
 private:
 	virtual void createMessage();
-	virtual void nextPage();
-	virtual void end();
-	virtual void allLetterDisplayed();
+	virtual void nextPage();                  // 改ページ
+    virtual void onAllLetterDisplayed(){};    // ページ内のすべての文字を表示し終えた時
+    virtual void onAllPageDisplayed();        // すべてのページを表示し終えた時
+    virtual void close();                     // メッセージウインドウを閉じる
 	
 	// インスタンス変数
 private:
-	EventListenerKeyboard* eventListener { nullptr };
+    EventListenerKeyboardLayer* listenerKeyboard { nullptr };
 	float span { 0.05f };
 	vector<Action*> letterActions {};
 	function<void()> callback { nullptr };

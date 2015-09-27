@@ -7,7 +7,33 @@
             <key>light.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{382,382}}</string>
+                <string>{{2,2},{400,400}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{400,400}}</string>
+                <key>sourceSize</key>
+                <string>{400,400}</string>
+            </dict>
+            <key>light_black.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{404,2},{398,398}}</string>
+                <key>offset</key>
+                <string>{1,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{2,0},{398,398}}</string>
+                <key>sourceSize</key>
+                <string>{400,400}</string>
+            </dict>
+            <key>light_white.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{804,2},{382,382}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -25,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>ui.pvr.ccz</string>
             <key>size</key>
-            <string>{386,386}</string>
+            <string>{1188,404}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:594e7e133a29e54386ec1fc74b9954e1:9a3778720a2d7a9b5ccd71e53491a644:ce842559b5d294d5ed4628903bfc52df$</string>
+            <string>$TexturePacker:SmartUpdate:b942bd88bc8cc6c6a90abd7036acb5e2:37af99989eb53d077845d3cf41b3fa2b:ce842559b5d294d5ed4628903bfc52df$</string>
             <key>textureFileName</key>
             <string>ui.pvr.ccz</string>
         </dict>

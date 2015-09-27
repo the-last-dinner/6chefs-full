@@ -15,6 +15,8 @@ namespace MapUtils
 {
 	Point convertToMapPoint(const Size& mapSize, Point ccPoint);
 	Point convertToCCPoint(const Size& mapSize, Point gridPoint);
+    Point getGridVector(const Direction& direction);
+    Direction keyToDirection(const Key& key);
 }
 
 #endif // __MAP_UTILS_H__

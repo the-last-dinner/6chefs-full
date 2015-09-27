@@ -8,13 +8,11 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 
+#include "Effects/AmbientLightLayer.h"
+
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
+
 #include "MapObjects/Objects.h"
-
-#include "Effects/Light.h"
-#include "Effects/ShadowLayer.h"
-
-// クラス変数初期化
-const string TiledMapLayer::HERO_OBJECT_NAME = "hero";
 
 // コンストラクタ
 TiledMapLayer::TiledMapLayer(){FUNCLOG}
@@ -26,32 +24,36 @@ TiledMapLayer::~TiledMapLayer(){FUNCLOG}
 bool TiledMapLayer::init(const PlayerDataManager::Location& location)
 {
 	FUNCLOG
-	if(!Layer::init()) return false;
+    if(!Layer::init()) return false;
+    
+    // イベントリスナを生成
+    EventListenerKeyboardLayer* eventListener {EventListenerKeyboardLayer::create()};
+    eventListener->onCursorKeyPressed = CC_CALLBACK_1(TiledMapLayer::onCursorKeyPressed, this);
+    eventListener->pressingKey = CC_CALLBACK_1(TiledMapLayer::walking, this);
+    this->addChild(eventListener);
+    this->eventListener = eventListener;
 	
 	// TiledのマップをaddChild
-	experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/MAIN-Syokudou1.tmx") };
-	tiledMap->setZOrder(static_cast<int>(Priority::MAP));
+    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, location.map_id)) };
+    tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
-	
-	ShadowLayer* shadow {ShadowLayer::create(Color4B(0,0,0,230))};
-	shadow->setLocalZOrder(-1);
-	this->addChild(shadow);
-	
+    
 	// 主人公を配置
-	Character* hero { Character::create(0, Direction::FRONT) };
+	Character* hero { Character::create(0, location.direction) };
 	hero->setGridPosition(tiledMap->getContentSize(), Point(location.x, location.y));
-	hero->setName(HERO_OBJECT_NAME);
 	tiledMap->addChild(hero);
-	
-	this->runAction(Sequence::createWithTwoActions(DelayTime::create(3), CallFunc::create([hero](){hero->setLight(Light::create(200));})));
+    this->hero = hero;
 	
 	// マップオブジェクトを配置
 	this->setMapObjects();
-	
-	// カメラを主人公中心にセット
-	Point center = Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	//map->setPosition(center - map->getChildByName<Character*>("main")->getPosition());
+    
+    // 環境光レイヤー生成
+    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
+    this->addChild(ambientLightLayer);
+    this->ambientLightLayer = ambientLightLayer;
+    
+    hero->setLight(Light::create(Light::Information(20.f)), ambientLightLayer);
 
 	return true;
 }
@@ -93,12 +95,13 @@ void TiledMapLayer::setMapObjects()
 		
 		Point objGridPoint = MapUtils::convertToMapPoint(this->tiledMap->getContentSize(), objPoint) / GRID;
 		MapObject* pObj = EventObject::create();
-		pObj->setPosition(objPoint + objSize / 2);
-		pObj->setObjectSize(objSize);
+		pObj->setPosition(objPoint);
+		pObj->setContentSize(objSize);
 		pObj->setHit(true);
 		pObj->setName("hit_" + to_string(static_cast<int>(objGridPoint.x)) + to_string(static_cast<int>(objGridPoint.y)));
 		this->tiledMap->addChild(pObj);
 		this->mapObjs.push_back(pObj);
+        pObj->drawDebugMask();
 	}
 	
 	// マップオブジェクト
@@ -116,7 +119,7 @@ void TiledMapLayer::setMapObjects()
 		int eventId = (objInfo.count("EventID") != 0)?objInfo.at("EventID").asInt():-1;
 		
 		// trigger取得
-		TriggerType trigger = (objInfo.count("trigger") != 0)?static_cast<TriggerType>(objInfo.at("trigger").asInt()):TriggerType::NONE;
+		Trigger trigger = (objInfo.count("trigger") != 0)?static_cast<Trigger>(objInfo.at("trigger").asInt()):Trigger::SIZE;
 		
 		if(objType == "")
 		{
@@ -133,10 +136,11 @@ void TiledMapLayer::setMapObjects()
 			pObj->setHit(true);
 		}
 		
-		pObj->setObjectSize(objSize);
-		pObj->setPosition(objPoint + objSize / 2);
+		pObj->setContentSize(objSize);
+		pObj->setPosition(objPoint);
 		this->tiledMap->addChild(pObj);
 		this->mapObjs.push_back(pObj);
+        pObj->drawDebugMask();
 	}
 }
 
@@ -146,7 +150,7 @@ MapObject* TiledMapLayer::getMapObject(const Point& point)
 	for(MapObject* obj : this->mapObjs)
 	{
 		Rect rect {obj->getBoundingBox() };
-		if(rect.containsPoint(point) && obj->getName() != "hero") return obj;
+		if(rect.containsPoint(point)) return obj;
 	}
 	return nullptr;
 }
@@ -155,7 +159,7 @@ MapObject* TiledMapLayer::getMapObject(const Point& point)
 bool TiledMapLayer::isHit(MapObject* obj, const Direction& direction)
 {
 	// 移動先の座標を取得
-	Point point = obj->getPosition() + movementMap.at(direction) * (obj->getObjectSize().width / GRID - 0.5f);
+	Point point = obj->getPosition() + MapUtils::getGridVector(direction) * (obj->getContentSize().width / GRID - 0.5f);
 	MapObject* pObj = this->getMapObject(point);
 	if(!pObj) return false;
 	return pObj->isHit();
@@ -170,68 +174,25 @@ int TiledMapLayer::getEventId(Point point)
 	return pObj->getEventId();
 }
 
-// マップファイル名を取得
-string TiledMapLayer::getFileName()
+// 方向キーが押された時
+void TiledMapLayer::onCursorKeyPressed(const Key& key)
 {
-	return this->fileName;
+    this->hero->setDirection(MapUtils::keyToDirection(key));
 }
 
-// 主人公の操作
-void TiledMapLayer::controlMainCharacter(ActionKeyManager::Key key)
+void TiledMapLayer::walking(const Key& key)
 {
-	FUNCLOG
-	switch(key)
-	{
-		case::ActionKeyManager::Key::DOWN:
-		case::ActionKeyManager::Key::LEFT:
-		case::ActionKeyManager::Key::RIGHT:
-		case::ActionKeyManager::Key::UP:
-		{
-			ActionKeyManager* manager = ActionKeyManager::getInstance();
-			experimental::TMXTiledMap* map = this->tiledMap;
-			Character* main = map->getChildByName<Character*>(HERO_OBJECT_NAME);
-			
-				
-			// 移動キーが押された時は、向きを変える
-			Direction direction = static_cast<Direction>(key);
-			main->setDirection(direction);
-			
-			// 動いてる向きを取得
-			Direction movingDirection = main->getMovingDirection();
-			// ループを解除
-			this->unschedule("ControlCheck");
-			
-			// ループを開始
-			this->schedule([=](float delta){
-				if(ActionKeyManager::getInstance()->isPressed(key))
-				{
-					// 主人公が動いていない、向きがキーを押した時と同じ、その方向に当たり判定がなかったら
-					if(!main->isMoving() && main->getDirection() == direction && !this->isHit(main, direction))
-					{
-						Direction moveDirection = manager->getMoveDirection(movingDirection, key);
-						Point movement = movementMap.at(moveDirection);
-						this->runAction(Sequence::create(Spawn::create(CallFunc::create([=](){main->stamp();main->setMovingDirection(moveDirection);}),
-																	   TargetedAction::create(map, MoveBy::create(Character::SECOND_PER_GRID, - movement)),
-																	   TargetedAction::create(main, MoveBy::create(Character::SECOND_PER_GRID, movement)),
-																	   nullptr),
-														 CallFunc::create([=](){main->setMovingDirection(Direction::NONE);}),
-														 nullptr));
-					}
-				}
-				else
-				{
-					// キーを離したらループを解除
-					this->unschedule("ControlCheck");
-				}
-					
-			}, ActionKeyManager::INPUT_CHECK_SPAN, "ControlCheck");
-			
-			break;
-		}
-		case::ActionKeyManager::Key::SPACE:
-			break;
-		default:
-			break;
-	}
-
+    Direction direction {MapUtils::keyToDirection(key)};
+    // 主人公が動いていない、向きがキーを押した時と同じ、その方向に当たり判定がなかったら
+    if(!this->hero->isMoving() && this->hero->getDirection() == direction && !this->isHit(this->hero, direction))
+    {
+        Direction moveDirection = this->eventListener->getMoveDirection(this->hero->getMovingDirection(), key);
+        Point movement = MapUtils::getGridVector(moveDirection) * 2;
+        this->runAction(Sequence::create(Spawn::create(CallFunc::create([=](){this->hero->stamp();this->hero->setMovingDirection(moveDirection);}),
+                                                       TargetedAction::create(this->tiledMap, MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
+                                                       TargetedAction::create(this->hero, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
+                                                       nullptr),
+                                         CallFunc::create([=](){this->hero->setMovingDirection(Direction::NONE);}),
+                                         nullptr));
+    }
 }

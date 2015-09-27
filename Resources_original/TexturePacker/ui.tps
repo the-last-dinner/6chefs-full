@@ -191,6 +191,8 @@
         <key>fileList</key>
         <array>
             <filename>../img/ui/light.png</filename>
+            <filename>../img/ui/light_black.png</filename>
+            <filename>../img/ui/light_white.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -2,7 +2,7 @@
 //  Character.h
 //  LastSupper
 //
-//  Created by Kohei on 2015/06/15.
+//  Created by Kohei Asami on 2015/06/15.
 //
 //
 
@@ -21,7 +21,7 @@ public:
 private:
 	static const string basePath;
 public:
-	static const float SECOND_PER_GRID;
+	static const float DURATION_FOR_ONE_STEP;
 	
 	// インスタンスメソッド
 private:

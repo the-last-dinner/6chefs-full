@@ -2,7 +2,7 @@
 //  Character.cpp
 //  LastSupper
 //
-//  Created by Kohei on 2015/06/15.
+//  Created by Kohei Asami on 2015/06/15.
 //
 //
 
@@ -11,8 +11,8 @@
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
-// 1マス進むのにかかる時間(基準値)
-const float Character::SECOND_PER_GRID = 0.05f;
+// 一歩進むのにかかる時間(基準値)
+const float Character::DURATION_FOR_ONE_STEP = 0.1f;
 
 // コンストラクタ
 Character::Character(){FUNCLOG}
@@ -41,7 +41,7 @@ bool Character::init(int charaId, Direction direction)
 	if(!Node::init()) return false;
 	// 生成時の情報をセット
 	this->direction = direction;
-	this->texturePrefix = CharacterData::datas.at(charaId).at(static_cast<int>(CharacterData::DataType::TexturePrefix));
+    this->texturePrefix = CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, charaId);
 	
 	// プロパティリスト読み込み
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + this->texturePrefix + ".plist");
@@ -49,6 +49,8 @@ bool Character::init(int charaId, Direction direction)
 	// Spriteを生成
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
 	this->addChild(this->character);
+    
+    this->setContentSize(this->character->getContentSize());
 	
 	for(int i = 0; i < static_cast<int>(Direction::SIZE); i++)
 	{
@@ -99,7 +101,7 @@ void Character::stamp(float ratio)
 	// 現在の向きのアニメーションを取得
 	Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->identifier)?"0":"1"));
 	this->identifier = (this->identifier)?false:true;
-	anime->setDelayPerUnit(SECOND_PER_GRID * ratio);
+	anime->setDelayPerUnit(DURATION_FOR_ONE_STEP * ratio);
 	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
 									 TargetedAction::create(this->character, Animate::create(anime)),
 									 CallFunc::create([=](){this->setMoving(false);

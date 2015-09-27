@@ -6,7 +6,7 @@
 //
 //
 
-#include "Layers/Dungeon/DungeonMainMenuLayer.h"
+#include "Layers/Menu/DungeonMainMenuLayer.h"
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -18,7 +18,7 @@ DungeonMainMenuLayer::~DungeonMainMenuLayer(){FUNCLOG}
 bool DungeonMainMenuLayer::init()
 {
 	FUNCLOG
-	if(!baseMenuLayer::init(static_cast<int>(Type::SIZE), 1)) return false;
+	if(!MenuLayer::init(static_cast<int>(Type::SIZE), 1)) return false;
 	
 	// 半透明の黒幕を生成
 	Sprite* cover { Sprite::create() };
