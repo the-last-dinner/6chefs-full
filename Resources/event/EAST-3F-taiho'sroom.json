@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"38",
+			"mapID":"38",
 			"x":14,
 			"y":8
 		}
@@ -191,10 +191,43 @@
 	],
 	"5":[
 		{
+			"type":"sequence",
+			"action":[
+				{
+					"type":"storyMsg",
+					"text":["-◎月×日-\n\n\n今日は二人、\n一人は燻製にした。もう一人はそのまま"]
+				},
+				{
+					"type":"charaMsg",
+					"talk":[
+						{
+							"text":["・・・"],
+							"charaID":"0",
+							"imgID":"2"
+						},
+						{
+							"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
+							"charaID":"5",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						}
+					]
+				},
+				{
+					"type":"already"
+				}
+			]
+		}
+	],
+	"6":[
+		{
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"event":["40","5"]
 				}
 			],
 			"action":[
@@ -203,47 +236,9 @@
 					"text":["-◎月×日-\n\n\n今日は二人、\n一人は燻製にした。もう一人はそのまま"]
 				}
 			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nflg":"1"
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
-					"action":[
-						{
-							"type":"storyMsg",
-							"text":["-◎月×日-\n\n\n今日は二人、\n一人は燻製にした。もう一人はそのまま"]
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["・・・"],
-									"charaID":"0",
-									"imgID":"2"
-								},
-								{
-									"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
-									"charaID":"5",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":"1"
-								}
-							]
-						}
-					]
-				}
-			]
 		}
 	],
-	"6":[
+	"7":[
 		{
 			"type":"systemMsg",
 			"text":["何かの骨が吊るされている・・・"]

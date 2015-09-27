@@ -73,32 +73,7 @@
   ],
   "10": [
     {
-      "type": "spawn",
-      "action": [
-        {
-          "type": "removeChara",
-          "objID": "102"
-        },
-        {
-          "type": "removeChara",
-          "objID": "103"
-        },
-        {
-          "type": "removeChara",
-          "objID": "104"
-        },
-        {
-          "type": "removeChara",
-          "objID": "105"
-        },
-        {
-          "type": "removeChara",
-          "objID": "106"
-        },
-        {
-          "type": "already"
-        }
-      ]
+        "type": "already"
     }
   ],
   "11": [
@@ -135,7 +110,7 @@
       "type": "if",
       "condition": [
         {
-          "Nevent": ["4","13"]
+          "Nevent": ["3","33"]
         }
       ],
       "action": [
@@ -150,11 +125,24 @@
             },
             {
               "type": "charaWalk",
-              "direction": "DOWN",
+              "direction": "LEFT",
               "steps": 1.0,
               "objID": "hero"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["3","33"]
+        }
+      ],
+      "action":[
+        {
+          "type":"already"
         }
       ]
     }
@@ -205,29 +193,6 @@
     }
   ],
   "14": [
-    {
-      "type": "if",
-      "condition": [
-        {
-          "event": ["3","33"]
-        }
-      ],
-      "action": [
-        {
-          "type": "spawn",
-          "action": [
-            {
-              "type": "removeChara",
-              "objID": "1020"
-            },
-            {
-              "type": "removeChara",
-              "objID": "1023"
-            }
-          ]
-        }
-      ]
-    }
   ],
   "15": [
     {
@@ -365,15 +330,70 @@
   ],
   "19": [
     {
-      "type": "sequence",
-      "action": [
+      "type":"if",
+      "condition":[
         {
-          "type": "playSE",
-          "file": "door_unopen.mp3"
-        },
+          "Nevent":["65","5"]
+        }
+      ],
+      "action":[
         {
-          "type": "systemMsg",
-          "text": ["開かない・・・"]
+          "type": "sequence",
+          "action": [
+            {
+              "type": "playSE",
+              "file": "door_unopen.mp3"
+            },
+            {
+              "type": "systemMsg",
+              "text": ["開かない・・・"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["65","5"]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"fadeout",
+              "time":3.0
+            },
+            {
+              "type":"createChara",
+              "objID":"1080"
+            },
+            {
+              "type":"createChara",
+              "objID":"1081"
+            },
+            {
+              "type":"createChara",
+              "objID":"1082"
+            },
+            {
+              "type":"createChara",
+              "objID":"1083"
+            },
+            {
+              "type":"charaMsg",
+              "text":["そこまでですぞ！！"],
+              "charaID":"4",
+              "imgID":"2",
+              "option":"reaction"
+            },
+            {
+              "type":"fadein"
+            }
+          ]
         }
       ]
     }
@@ -469,6 +489,96 @@
           "type": "already"
         }
       ]
+    }
+  ],
+  "21":[
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["7","1"],
+          "Nevent":["4","20"]
+        }
+      ],
+      "action":[
+        {
+          "type":"createChara",
+          "objID":"1012"
+        }
+      ]
+    }
+  ],
+  "22":[
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["4","15"],
+          "Nevent":["3","21"]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"charaMsg",
+              "text":["おい！早く行くぞ！"],
+              "charaID":"5",
+              "imgID":"1",
+              "option":"reaction"
+            },
+            {
+              "type":"charaWalk",
+              "objID":"hero",
+              "direction":"DOWN",
+              "steps":1.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "23":[
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["3","30"],
+          "Nevent":["3","21"]
+        }
+      ],
+      "action":[
+        {
+          "type":"createChara",
+          "objID":"1031"
+        },
+        {
+          "type":"createChara",
+          "objID":"1032"
+        },
+        {
+          "type":"createChara",
+          "objID":"1033"
+        },
+        {
+          "type":"createChara",
+          "objID":"1034"
+        }
+      ]
+    }
+  ],
+  "24":[
+    {
+      "type":"charaMsg",
+      "text":["心してかかりますぞ！！"],
+      "charaID":"4",
+      "imgID":"1"
+    }
+  ],
+  "25":[
+    {
+
     }
   ]
 }

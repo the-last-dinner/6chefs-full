@@ -2,17 +2,84 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"35",
+			"mapID":"35",
 			"x":18,
 			"y":16
 		}
 	],
 	"2":[
 		{
-			"type":"changeMap",
-			"nextMap":"65",
-			"x":19,
-			"y":27
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["65","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"changeMap",
+					"mapID":"65",
+					"x":19,
+					"y":27
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["65","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["早く出よう！"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"DOWN",
+							"steps":1.0
+						}
+					]
+				}
+			]
+		}
+	],
+	"3":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["65","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"createEnemy",
+							"objID":"1422",
+							"charaID":"7",
+							"x":"4",
+							"y":"3",
+							"movePattern":"4",
+						},
+						{
+							"type":"charaMsg",
+							"text":["逃が・・・・さない・・・"],
+							"name":"希崎夫人"
+						}
+					]
+				}
+			]
 		}
 	]
 }

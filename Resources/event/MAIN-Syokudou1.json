@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"4",
+			"mapID":"4",
 			"x":29,
 			"y":22
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"41",
+			"mapID":"41",
 			"x":8,
 			"y":19
 		}
@@ -1726,17 +1726,14 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["23","9"]
+					"event":["23","9"],
+					"Nevent":["4","12"]
 				}
 			],
 			"action":[
 				{
 					"type":"spawn",
 					"action":[
-						{
-							"type":"createChara",
-							"objID":"1019"
-						},
 						{
 							"type":"createChara",
 							"objID":"1020"
@@ -1747,13 +1744,28 @@
 						},
 						{
 							"type":"createChara",
-							"objID":"1022"
-						},
-						{
-							"type":"createChara",
 							"objID":"1023"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["23","9"],
+					"Nevent":["40","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1019"
+				},
+				{
+					"type":"createChara",
+					"objID":"1022"
 				}
 			]
 		}
@@ -1772,6 +1784,9 @@
 					"type":"chase",
 					"chaser":"1021",
 					"target":"hero"
+				},
+				{
+					"type":"already"
 				}
 			]
 		}
@@ -1826,6 +1841,14 @@
 			"text":["イミワカンナイイミワカンナイ・・・"],
 			"charaID":"3",
 			"imgID":"2"
+		}
+	],
+	"37":[
+		{
+			"type":"charaMsg",
+			"text":["ど・・・どうなっているんですか・・・"],
+			"charaID":"1",
+			"imgID":"1"
 		}
 	]
 }

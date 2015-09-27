@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"10",
+			"mapID":"10",
 			"x":88,
 			"y":10
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"16",
+			"mapID":"16",
 			"x":2,
 			"y":7	
 		}

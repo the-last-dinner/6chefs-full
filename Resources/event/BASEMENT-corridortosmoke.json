@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"51",
+			"mapID":"51",
 			"x":12,
 			"y":3
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"53",
+			"mapID":"53",
 			"x":9,
 			"y":21
 		}
@@ -333,6 +333,31 @@
 				},
 				{
 					"type":"already"
+				}
+			]
+		}
+	],
+	"4":[
+		{
+			"type":"charaMsg",
+			"text":["少し・・・気分が悪いですぞ・・・\n佐々木氏・・・後は任せてよろしいですかな"],
+			"charaID":"4",
+			"imgID":"1"
+		}　
+	],
+	"5":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["53","6"],
+					"status":["1","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1063"
 				}
 			]
 		}

@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"26",
+			"mapID":"26",
 			"x":11,
 			"y":15
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"27",
+			"mapID":"27",
 			"x":11,
 			"y":15
 		}
@@ -47,7 +47,7 @@
 								},
 								{
 									"type":"changeMap",
-									"nextMap":"18",
+									"mapID":"18",
 									"x":9,
 									"y":23
 								}
@@ -90,7 +90,7 @@
 								},
 								{
 									"type":"changeMap",
-									"nextMap":"19",
+									"mapID":"19",
 									"x":9,
 									"y":23
 								}
@@ -147,7 +147,7 @@
 	"6":[
 		{
 			"type":"changeMap",
-			"nextMap":"20",
+			"mapID":"20",
 			"x":9,
 			"y":5
 		}

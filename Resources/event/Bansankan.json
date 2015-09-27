@@ -44,7 +44,7 @@
         },
         {
           "type": "changeMap",
-          "nextMap": "3",
+          "mapID": "3",
           "x": 26,
           "y": 14
         },
@@ -155,7 +155,7 @@
   "3": [
     {
       "type": "changeMap",
-      "nextMap": "1",
+      "mapID": "1",
       "x": 50,
       "y": 22
     }
@@ -163,7 +163,7 @@
   "4": [
     {
       "type": "changeMap",
-      "nextMap": "1",
+      "mapID": "1",
       "x": 50,
       "y": 27
     }
@@ -171,7 +171,7 @@
   "5": [
     {
       "type": "changeMap",
-      "nextMap": "1",
+      "mapID": "1",
       "x": 50,
       "y": 33
     }
@@ -179,7 +179,7 @@
   "6": [
     {
       "type": "changeMap",
-      "nextMap": "40",
+      "mapID": "40",
       "x": 14,
       "y": 23
     }

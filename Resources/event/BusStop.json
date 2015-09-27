@@ -44,7 +44,7 @@
   "3": [
     {
       "type": "changeMap",
-      "nextMap": "2",
+      "mapID": "2",
       "x": 2,
       "y": 75
     }
@@ -52,7 +52,7 @@
   "4": [
     {
       "type": "changeMap",
-      "nextMap": "2",
+      "mapID": "2",
       "x": 2,
       "y": 77
     }
@@ -60,7 +60,7 @@
   "5": [
     {
       "type": "changeMap",
-      "nextMap": "2",
+      "mapID": "2",
       "x": 2,
       "y": 79
     }

@@ -2,7 +2,7 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"24",
+			"mapID":"24",
 			"x":30,
 			"y":9
 		}
@@ -10,7 +10,7 @@
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"24",
+			"mapID":"24",
 			"x":30,
 			"y":11
 		}
@@ -18,7 +18,7 @@
 	"3":[
 		{
 			"type":"changeMap",
-			"nextMap":"24",
+			"mapID":"24",
 			"x":30,
 			"y":13	
 		}
@@ -26,7 +26,7 @@
 	"4":[
 		{
 			"type":"changeMap",
-			"nextMap":"24",
+			"mapID":"24",
 			"x":30,
 			"y":15	
 		}
@@ -34,7 +34,7 @@
 	"5":[
 		{
 			"type":"changeMap",
-			"nextMap":"30",
+			"mapID":"30",
 			"x":2,
 			"y":9		
 		}
@@ -42,7 +42,7 @@
 	"6":[
 		{
 			"type":"changeMap",
-			"nextMap":"31",
+			"mapID":"31",
 			"x":2,
 			"y":9		
 		}
@@ -50,7 +50,7 @@
 	"7":[
 		{
 			"type":"changeMap",
-			"nextMap":"33",
+			"mapID":"33",
 			"x":13,
 			"y":5		
 		}
@@ -58,7 +58,7 @@
 	"8":[
 		{
 			"type":"changeMap",
-			"nextMap":"36",
+			"mapID":"36",
 			"x":6,
 			"y":9	
 		}
@@ -66,7 +66,7 @@
 	"9":[
 		{
 			"type":"changeMap",
-			"nextMap":"37",
+			"mapID":"37",
 			"x":6,
 			"y":9		
 		}
@@ -92,7 +92,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nvent":["58","7"]
+					"event":["58","7"],
+					"Nstatus":["3","1"]
 				}
 			],
 			"action":[
@@ -110,7 +111,12 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["",""]
+					"event":["3","21"],
+					"Nevent":["58","7"]
+				},
+				{
+					"event":["58","7"],
+					"Nstatus":["3","1"]
 				}
 			],
 			"action":[
