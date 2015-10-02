@@ -11,6 +11,7 @@
 
 #include "Scenes/baseScene.h"
 
+class AmbientLightLayer;
 class TiledMapLayer;
 class EventScriptTask;
 class ControlMainCharacterTask;
@@ -25,6 +26,7 @@ public:
 // インスタンス変数
 private:
     TiledMapLayer* mapLayer { nullptr };
+    AmbientLightLayer* ambientLightLayer {nullptr};
     EventScriptTask* eventScriptTask { nullptr };
     ControlMainCharacterTask* controlMainCharacterTask {nullptr};
     

@@ -12,9 +12,9 @@
 #include "Layers/Shader/SpotLightShaderLayer.h"
 
 class MapObject;
-class AmbientLightLayer;
 class EventListenerKeyboardLayer;
 class Character;
+class MapObjectList;
 
 class TiledMapLayer : public Layer
 {
@@ -27,24 +27,18 @@ private:
 	TiledMapLayer();
 	~TiledMapLayer();
 	bool init(const PlayerDataManager::Location&);
-	void setMapObjects();
+	
 public:
-	MapObject* getMapObject(const Point& point);
-    MapObject* getMapObject(const Rect& rect);
-    bool isHit(MapObject* obj, const Direction& direction);
-	bool isHit(MapObject* obj, const Direction (&directions)[2]);
-	int getEventId(Point point);
-	int search(MapObject* obj);
-    void walking(const Key& key);
     Character* getMainCharacter();
     experimental::TMXTiledMap* getTiledMap();
+    MapObjectList* getMapObjectList() const;
+    
     
 	// インスタンス変数
 private:
 	experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
-    AmbientLightLayer* ambientLightLayer { nullptr };   // 環境光レイヤー
-	vector<MapObject*> mapObjs {};                      // マップオブジェクトのベクタ
     Character* mainCharacter { nullptr };                        // 主人公
+    MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
 };
 
 #endif // __TILED_MAP_LAYER_H__

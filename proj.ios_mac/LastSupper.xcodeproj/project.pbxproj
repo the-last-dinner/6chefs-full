@@ -132,6 +132,10 @@
 		55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E0FB611BB234D2005BC929 /* EventListenerKeyboardLayer.cpp */; };
 		55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */; };
 		55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */; };
+		55F1B6191BBEBECB00AA64EE /* MapObjectList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F1B6171BBEBECB00AA64EE /* MapObjectList.cpp */; };
+		55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F1B6171BBEBECB00AA64EE /* MapObjectList.cpp */; };
+		55F1B6211BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F1B61F1BBEC44900AA64EE /* MapObjectFactory.cpp */; };
+		55F1B6221BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F1B61F1BBEC44900AA64EE /* MapObjectFactory.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -318,6 +322,10 @@
 		55E0FB621BB234D2005BC929 /* EventListenerKeyboardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListenerKeyboardLayer.h; path = ../Classes/Layers/EventListener/EventListenerKeyboardLayer.h; sourceTree = "<group>"; };
 		55E542A51BAE59850003A230 /* AmbientLightLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AmbientLightLayer.cpp; path = ../Classes/Effects/AmbientLightLayer.cpp; sourceTree = "<group>"; };
 		55E542A61BAE59850003A230 /* AmbientLightLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmbientLightLayer.h; path = ../Classes/Effects/AmbientLightLayer.h; sourceTree = "<group>"; };
+		55F1B6171BBEBECB00AA64EE /* MapObjectList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObjectList.cpp; path = ../Classes/MapObjects/MapObjectList.cpp; sourceTree = "<group>"; };
+		55F1B6181BBEBECB00AA64EE /* MapObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObjectList.h; path = ../Classes/MapObjects/MapObjectList.h; sourceTree = "<group>"; };
+		55F1B61F1BBEC44900AA64EE /* MapObjectFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObjectFactory.cpp; path = ../Classes/MapObjects/MapObjectFactory.cpp; sourceTree = "<group>"; };
+		55F1B6201BBEC44900AA64EE /* MapObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObjectFactory.h; path = ../Classes/MapObjects/MapObjectFactory.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -684,6 +692,10 @@
 				55619F611B36970B007EBD6E /* MapObject.h */,
 				557A87D81B49215F001993E1 /* EventObject.cpp */,
 				557A87D91B49215F001993E1 /* EventObject.h */,
+				55F1B6171BBEBECB00AA64EE /* MapObjectList.cpp */,
+				55F1B6181BBEBECB00AA64EE /* MapObjectList.h */,
+				55F1B61F1BBEC44900AA64EE /* MapObjectFactory.cpp */,
+				55F1B6201BBEC44900AA64EE /* MapObjectFactory.h */,
 			);
 			name = MapObjects;
 			sourceTree = "<group>";
@@ -916,6 +928,7 @@
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				550708D11BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
+				55F1B6211BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
 				5583CE3E1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
@@ -939,6 +952,7 @@
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
+				55F1B6191BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
 				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
@@ -960,9 +974,11 @@
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC81B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
+				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
+				55F1B6221BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
 				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,

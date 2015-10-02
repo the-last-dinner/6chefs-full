@@ -50,8 +50,7 @@ enum Priority
 	SYSTEM_MESSAGE = 101,
     CHARACTER_MESSAGE = 100,
     DEBUG_MASK = 70,
-	LIGHT = 60,
-	SHADOW = 50,
+    AMBIENT_LIGHT = 50,
 	MAP = 0,
 };
 
