@@ -13,6 +13,7 @@
 
 class Light;
 class AmbientLightLayer;
+class MapObjectList;
 
 class MapObject : public Node
 {
@@ -28,8 +29,9 @@ private:
 	Trigger trigger {Trigger::SIZE};
 	bool _isHit { false };
 	Direction movingDirection {Direction::SIZE};
-	Light* light { nullptr };
     Rect collisionRect {Rect::ZERO};
+	Light* light { nullptr };
+    MapObjectList* objectList { nullptr };
 	
 // インスタンスメソッド
 public:
@@ -41,6 +43,7 @@ public:
 	void setHit(bool _isHit);
 	void setMovingDirection(Direction direction);
     void setCollisionRect(const Rect& rect);
+    void setMapObjectList(MapObjectList* objectList);
     
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
@@ -50,14 +53,15 @@ public:
 	Point getGridPosition(const Size& mapSize) const;
 	int getEventId();
 	Trigger getTrigger();
-	bool isHit();
+	bool isHit() const;
+    bool isHit(const Direction& direction) const;
+    bool isHit(const Direction (&directions)[2]) const;
 	Direction getMovingDirection();
-    Rect getCollisionRect();
-    Point getAdjacentPosition(const Direction& direction);
-    Point getAdjacentPosition(const Direction (&directions)[2]);
+    Rect getCollisionRect() const;
+    Point getAdjacentPosition(const Direction& direction) const;
+    Point getAdjacentPosition(const Direction (&directions)[2]) const;
 
-    
-    void drawDebugMask();
+    void drawDebugMask(); // デバッグ用マスク
 };
 
 #endif // __MAP_OBJECT_H__

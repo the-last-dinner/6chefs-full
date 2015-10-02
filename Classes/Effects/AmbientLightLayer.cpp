@@ -67,7 +67,7 @@ void AmbientLightLayer::addLightSource(MapObject* object, const Light::Informati
     float radius {info.radius * 7.0f};
     
     Light* light {Light::create(Light::Information(color, radius, info.type))};
-    light->setPosition(MapUtils::convertToDispPosition(object->getParent()->getPosition(), object->getPosition()));
+    light->setPosition(MapUtils::convertToDispPosition(object->getParent()->getParent()->getPosition(), object->getPosition()));
     light->setOpacity(0);
     this->addChild(light);
     
@@ -98,7 +98,7 @@ void AmbientLightLayer::update()
             this->removeLightSource(obj);
             continue;
         }
-        light->setPosition(MapUtils::convertToDispPosition(obj->getParent()->getPosition(), obj->getPosition()));
+        light->setPosition(MapUtils::convertToDispPosition(obj->getParent()->getParent()->getPosition(), obj->getPosition()));
     }
 }
 

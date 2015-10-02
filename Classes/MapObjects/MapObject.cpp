@@ -8,6 +8,8 @@
 
 #include "MapObjects/MapObject.h"
 
+#include "MapObjects/MapObjectList.h"
+
 #include "Effects/AmbientLightLayer.h"
 #include "Effects/Light.h"
 
@@ -66,6 +68,12 @@ void MapObject::setCollisionRect(const Rect& rect)
     this->collisionRect = rect;
 }
 
+// マップオブジェクトのリストをセット
+void MapObject::setMapObjectList(MapObjectList* objectList)
+{
+    this->objectList = objectList;
+}
+
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
 {
@@ -103,7 +111,7 @@ Trigger MapObject::getTrigger()
 {return this->trigger;}
 
 // 当たり判定の有無を取得
-bool MapObject::isHit()
+bool MapObject::isHit() const
 {return this->_isHit;}
 
 // 動いている方向を取得
@@ -111,13 +119,13 @@ Direction MapObject::getMovingDirection()
 {return this->movingDirection;}
 
 // 衝突判定用Rectを取得
-Rect MapObject::getCollisionRect()
+Rect MapObject::getCollisionRect() const
 {
     return Rect(this->getPosition().x + this->collisionRect.getMinX() - this->getContentSize().width / 2, this->getPosition().y + this->collisionRect.getMinY() - getContentSize().height / 2, this->collisionRect.size.width, this->collisionRect.size.height);
 }
 
 // 隣接するマスの中心座標を取得
-Point MapObject::getAdjacentPosition(const Direction& direction)
+Point MapObject::getAdjacentPosition(const Direction& direction) const
 {
     Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
     float length {(direction == Direction::FRONT || direction == Direction::BACK)? this->getCollisionRect().size.height : this->getCollisionRect().size.width};
@@ -127,7 +135,7 @@ Point MapObject::getAdjacentPosition(const Direction& direction)
 }
 
 // 隣接するマスの中心座標を取得
-Point MapObject::getAdjacentPosition(const Direction (&directions)[2])
+Point MapObject::getAdjacentPosition(const Direction (&directions)[2]) const
 {
     Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
     int time {directions[0] == directions[1]?1:2};
@@ -141,7 +149,31 @@ Point MapObject::getAdjacentPosition(const Direction (&directions)[2])
     return position;
 }
 
-// デバッッグ用に枠を描画
+// 指定の方向に対して当たり判定があるか
+bool MapObject::isHit(const Direction& direction) const
+{
+    if(!this->objectList) return false;
+        
+    // 移動先の座標を取得
+    Point point { this->getAdjacentPosition(direction)};
+    MapObject* pObj {this->objectList->getMapObject(point)};
+    if(!pObj) return false;
+    return pObj->isHit();
+}
+
+// 座標から指定の方向に対して当たり判定があるか
+bool MapObject::isHit(const Direction (&directions)[2]) const
+{
+    if(!this->objectList) return false;
+    
+    // 移動先の座標を取得
+    Point point { this->getAdjacentPosition(directions)};
+    MapObject* pObj {this->objectList->getMapObject(point)};
+    if(!pObj) return false;
+    return pObj->isHit();
+}
+
+// デバッグ用に枠を描画
 void MapObject::drawDebugMask()
 {
     Point vertices[]

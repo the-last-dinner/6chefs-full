@@ -14,6 +14,8 @@
 
 #include "MapObjects/Character.h"
 
+#include "MapObjects/MapObjectList.h"
+
 // コンストラクタ
 ControlMainCharacterTask::ControlMainCharacterTask(){FUNCLOG}
 
@@ -36,9 +38,10 @@ void ControlMainCharacterTask::turn(const Direction& direction)
 // 目の前を調べる
 void ControlMainCharacterTask::search()
 {
-    TiledMapLayer* mapLayer {this->scene->mapLayer};
-    Character* mainCharacter {mapLayer->getMainCharacter()};
-    MapObject* obj { mapLayer->getMapObject(mainCharacter->getAdjacentPosition({mainCharacter->getDirection(), Direction::SIZE}))};
+    MapObjectList* objectList {this->scene->mapLayer->getMapObjectList()};
+    Character* mainCharacter {objectList->getMainCharacter()};
+    
+    MapObject* obj { objectList->getMapObject(mainCharacter->getAdjacentPosition({mainCharacter->getDirection(), Direction::SIZE}))};
     if(obj && obj->getTrigger() == Trigger::SEARCH) this->scene->runEvent(obj->getEventId());
 }
 
@@ -50,14 +53,19 @@ void ControlMainCharacterTask::walking(stack<Direction> directions)
     
     mainCharacter->setDirection(directions.top());
     
+    Direction dirs[2] {};
+    
     Point movement {Point::ZERO};
     
     for(int i {0}; i < 2; i++)
     {
         if(directions.size() < 1) break;
-        if (!mapLayer->isHit(mainCharacter, directions.top())) movement += MapUtils::getGridVector(directions.top());
+        if (!mainCharacter->isHit(directions.top())) movement += MapUtils::getGridVector(directions.top());
+        dirs[i] = directions.top();
         directions.pop();
     }
+    
+    if(mainCharacter->isHit(dirs)) return;
     
     this->scene->runAction(Sequence::create(Spawn::create(CallFunc::create([this, mapLayer, mainCharacter, movement](){mainCharacter->stamp();}),
                                                     TargetedAction::create(mapLayer->getTiledMap(), MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
@@ -65,7 +73,7 @@ void ControlMainCharacterTask::walking(stack<Direction> directions)
                                                     nullptr),
                                       CallFunc::create([=]()
                                                        {
-                                                           MapObject* obj { mapLayer->getMapObject(mainCharacter->getPosition())};
+                                                           MapObject* obj { mapLayer->getMapObjectList()->getMapObject(mainCharacter->getPosition())};
                                                            if(obj && obj->getTrigger() == Trigger::RIDE) this->scene->runEvent(obj->getEventId());
                                                        }),
                                       nullptr));
