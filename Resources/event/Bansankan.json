@@ -36,6 +36,7 @@
         },
         {
           "type": "charaMsg",
+          "charaID":"9",
           "text": ["皆様既にお揃いですので、\nお料理のしやすい格好にお着替えになって食堂でお待ちください。"],
           "name": "執事服の老人"
         },
@@ -68,7 +69,7 @@
               "text": ["おいおい、5分や10分くらい大人しく待てねーのか\nオメーは"],
               "charaID": "2",
               "imgID": "1",
-              "name": ["？？？"]
+              "name": "？？？"
             },
             {
               "text": ["１５分よ！"],
@@ -110,6 +111,36 @@
           "type": "spawn",
           "action": [
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"DOWN"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"102",
+              "direction":"DOWN"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"103",
+              "direction":"DOWN"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"104",
+              "direction":"DOWN"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"105",
+              "direction":"DOWN"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"106",
+              "direction":"DOWN"
+            },
+            {
               "type": "reaction",
               "objectID": "hero"
             },
@@ -143,6 +174,7 @@
         },
         {
           "type": "charaMsg",
+          "charaID":"9",
           "text": ["皆様、お待たせいたしました。\n　皆様には只今より西棟に移動して頂き、お料理をして頂きます。\n道具や食材は西棟にあるもの、何でも使ってもらって　構いません。\n使って頂くキッチンは、西棟１階入って右手が佐々木様、左手が中山様\n２階入って右手が荒間田様、左手が大善様\n３階入って右手が一色様、左手が加藤様\nでございます。\n最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。\n私は大広間にいますので分からないことや足りないものがあれば、お申し付けください。\nそれでは皆さん、移動を開始してください。"],
           "name": "執事服の老人"
         },
