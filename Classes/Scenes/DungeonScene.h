@@ -39,6 +39,7 @@ private:
 	virtual void onPreloadFinished() override;
     virtual void onCursorKeyPressed(const Key& key) override;
     virtual void onSpaceKeyPressed() override;
+    virtual void onMenuKeyPressed() override;
     virtual void intervalInputCheck(const vector<Key>& keys);
 	
 	friend class EventScriptTask;

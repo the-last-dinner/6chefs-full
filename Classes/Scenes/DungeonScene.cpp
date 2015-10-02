@@ -12,6 +12,7 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/Message/CharacterMessageLayer.h"
+#include "Layers/Menu/DungeonMainMenuLayer.h"
 
 #include "Tasks/EventScriptTask.h"
 #include "Tasks/ControlMainCharacterTask.h"
@@ -136,4 +137,13 @@ void DungeonScene::onSpaceKeyPressed()
 void DungeonScene::intervalInputCheck(const vector<Key>& keys)
 {
     this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
+}
+
+// メニューキー押したとき
+void DungeonScene::onMenuKeyPressed()
+{
+    this->listener->setEnabled(false);
+    DungeonMainMenuLayer* menu = DungeonMainMenuLayer::create();
+    this->addChild(menu);
+    menu->show();
 }
