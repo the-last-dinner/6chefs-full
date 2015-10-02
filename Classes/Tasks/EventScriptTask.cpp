@@ -44,7 +44,8 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"fadeout", &EventScriptTask::fadeout},
     {"changeDirection", &EventScriptTask::changeDirection},
     {"charaWalkTo", &EventScriptTask::charaWalkTo},
-    {"createChara", &EventScriptTask::createChara}
+    {"createChara", &EventScriptTask::createChara},
+    {"already", &EventScriptTask::already}
     
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
@@ -531,6 +532,12 @@ Ref* EventScriptTask::charaWalkTo(rapidjson::Value &event)
 }
 
 Ref* EventScriptTask::createChara(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::already(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;

@@ -67,6 +67,7 @@ private:
     Ref* changeDirection(rapidjson::Value& event);
     Ref* charaWalkTo(rapidjson::Value& event);
     Ref* createChara(rapidjson::Value& event);
+    Ref* already(rapidjson::Value& event);
     //if
     bool judgeCondition(rapidjson::Value& cond);
     bool eventIf(rapidjson::Value& cond, bool reverse);
