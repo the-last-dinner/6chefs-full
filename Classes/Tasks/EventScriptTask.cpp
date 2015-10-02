@@ -13,6 +13,8 @@
 #include "MapObjects/Objects.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
+#include "Layers/Message/CharacterMessageLayer.h"
+#include "Layers/Message/SystemMessageLayer.h"
 
 //イベント関数の関数ポインタ格納
 const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
@@ -25,14 +27,23 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     //イベントタイプ
     {"changeMap", &EventScriptTask::changeMap},//マップ移動
     {"move", &EventScriptTask::move},     //オブジェクトの移動
-    {"message", &EventScriptTask::message},  //システムのメッセージ
-    {"talk", &EventScriptTask::talk},     //キャラクターの会話
+    {"storyMsg", &EventScriptTask::storyMsg},   //ストーリーメッセージ
+    {"charaMsg", &EventScriptTask::charaMsg},       //キャラメッセージ
+    {"questionMsg", &EventScriptTask::questionMsg},     //はいいいえ選択肢
+    {"systemMsg", &EventScriptTask::systemMsg},    //システムのメッセージ
+    {"reaction", &EventScriptTask::reaction},     //リアクション
     {"fade", &EventScriptTask::fade},     //画面特殊効果
     {"playSE", &EventScriptTask::playSE},   //効果音再生
     {"playBGM", &EventScriptTask::playBGM}, //BGM再生
     {"control", &EventScriptTask::control}, //操作状態の変更
     {"read", &EventScriptTask::read},      //書物読んでるモード
-    {"changeFlg", &EventScriptTask::changeFlg}
+    {"changeFlg", &EventScriptTask::changeFlg},
+    {"fadein", &EventScriptTask::fadein},
+    {"fadeout", &EventScriptTask::fadeout},
+    {"changeDirection", &EventScriptTask::changeDirection},
+    {"charaWalkTo", &EventScriptTask::charaWalkTo},
+    {"createChara", &EventScriptTask::createChara}
+    
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
 {
@@ -384,15 +395,86 @@ Ref* EventScriptTask::playBGM(rapidjson::Value &event)
     
 }
 
-Ref* EventScriptTask::message(rapidjson::Value& event)
+Ref* EventScriptTask::storyMsg(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;
 }
 
-Ref* EventScriptTask::talk(rapidjson::Value& event)
+Ref* EventScriptTask::charaMsg(rapidjson::Value& event)
 {
     FUNCLOG
+    queue<CharacterMessageLayer::Information> infos {};
+    if(event.HasMember("talk"))
+    {
+        //複数人での会話時
+        SizeType len {event["talk"].Size()}; //会話人数の取得
+        for(SizeType i {0}; i<len; i++)
+        {
+            rapidjson::Value& chara = event["talk"][i];
+            CharacterMessageLayer::Information info;
+            info.charaId = stoi(chara["charaID"].GetString());
+            info.charaName = (chara.HasMember("name")) ? chara["name"].GetString() : CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId);
+            if(chara.HasMember("imgID")) info.imgId = stoi(chara["imgID"].GetString());
+            //ページ数を取得してページごとにプッシュ
+            SizeType text_len {chara["text"].Size()};
+            for(SizeType j {0}; j<text_len; j++)
+            {
+                info.pages.push(chara["text"][j].GetString());
+            }
+            infos.push(info);
+        }
+    } else
+    {
+        //一人で話すとき
+        CharacterMessageLayer::Information info;
+        info.charaId = stoi(event["charaID"].GetString());
+        if(event.HasMember("imgID")) info.imgId = stoi(event["imgID"].GetString());
+        info.charaName = (event.HasMember("name")) ? event["name"].GetString() : CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId);
+        //ページ数を取得してページごとにプッシュ
+        SizeType text_len {event["text"].Size()};
+        for(SizeType j {0}; j<text_len; j++)
+        {
+            info.pages.push(event["text"][j].GetString());
+        }
+        infos.push(info);
+    }
+    //メッセージウインドウをスタートする関数をリターン
+    return static_cast<Ref*>(CallFunc::create([=]()
+    {
+        CharacterMessageLayer* message {CharacterMessageLayer::create(infos)};
+        
+        this->scene->addChild(message);
+        message->start();
+    }));
+}
+
+Ref* EventScriptTask::questionMsg(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::systemMsg(rapidjson::Value &event)
+{
+    FUNCLOG
+    queue<string> pages;
+    SizeType len {event["text"].Size()};
+    for (SizeType i {0}; i<len; i++) {
+        pages.push(event["text"][i].GetString());
+    }
+    return static_cast<Ref*>(CallFunc::create([=]()
+    {
+        SystemMessageLayer* message {SystemMessageLayer::create(pages)};
+        this->scene->addChild(message);
+        message->start();
+    }));
+}
+
+Ref* EventScriptTask::reaction(rapidjson::Value& event)
+{
+    FUNCLOG
+    event["objectID"].GetString();
     return nullptr;
 }
 
@@ -419,6 +501,36 @@ Ref* EventScriptTask::changeFlg(rapidjson::Value &event)
 {
     FUNCLOG
     this->event_status = stoi(event["flg"].GetString());
+    return nullptr;
+}
+
+Ref* EventScriptTask::fadein(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::fadeout(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::changeDirection(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::charaWalkTo(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::createChara(rapidjson::Value &event)
+{
+    FUNCLOG
     return nullptr;
 }
 

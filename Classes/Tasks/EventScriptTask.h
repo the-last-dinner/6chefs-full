@@ -51,14 +51,22 @@ private:
 	Ref* ifelse(rapidjson::Value& event);
 	Ref* changeMap(rapidjson::Value& event);
 	Ref* move(rapidjson::Value& event);
-	Ref* message(rapidjson::Value& event);
-	Ref* talk(rapidjson::Value& event);
+    Ref* storyMsg(rapidjson::Value& event);
+    Ref* charaMsg(rapidjson::Value& event);
+    Ref* questionMsg(rapidjson::Value& event);
+	Ref* systemMsg(rapidjson::Value& event);
+	Ref* reaction(rapidjson::Value& event);
 	Ref* fade(rapidjson::Value& event);
 	Ref* playSE(rapidjson::Value& event);
 	Ref* playBGM(rapidjson::Value& event);
 	Ref* control(rapidjson::Value& event);
 	Ref* read(rapidjson::Value& event);
     Ref* changeFlg(rapidjson::Value& event);
+    Ref* fadein(rapidjson::Value& event);
+    Ref* fadeout(rapidjson::Value& event);
+    Ref* changeDirection(rapidjson::Value& event);
+    Ref* charaWalkTo(rapidjson::Value& event);
+    Ref* createChara(rapidjson::Value& event);
     //if
     bool judgeCondition(rapidjson::Value& cond);
     bool eventIf(rapidjson::Value& cond, bool reverse);

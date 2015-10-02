@@ -42,12 +42,12 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
 	this->setMapObjects();
     
     //環境光レイヤー生成
-    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
+    /*AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
     
     mainCharacter->setLight(Light::create(Light::Information(20.f)), ambientLightLayer);
-    
+    */
     tiledMap->setPosition(-mainCharacter->getPosition() + Director::getInstance()->getWinSize() / 2);
 
 	return true;
