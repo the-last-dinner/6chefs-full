@@ -17,8 +17,14 @@ MapObject::MapObject(){FUNCLOG}
 // デストラクタ
 MapObject::~MapObject(){FUNCLOG}
 
+// マス数サイズを取得
+Size MapObject::getGridSize() const
+{
+    return Size(floor(this->getContentSize().width / GRID),floor(this->getContentSize().height / GRID));
+}
+
 // マップ上のマス座標を取得(一番左下のマス座標を返す)
-Point MapObject::getGridPosition(const Size& mapSize)
+Point MapObject::getGridPosition(const Size& mapSize) const
 {
 	return MapUtils::convertToMapPoint(mapSize, Point(this->getPositionX() - this->getContentSize().width / 2, this->getPositionY())) / GRID;
 }
@@ -78,6 +84,16 @@ void MapObject::removeLight()
 	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->light, FadeOut::create(0.5f)), TargetedAction::create(this->light, RemoveSelf::create())));
 }
 
+// リアクションアイコンを表示
+void MapObject::reaction()
+{
+    Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
+    icon->setPosition(Point(0, this->getContentSize().height));
+    icon->setScaleY(0.1f);
+    icon->runAction(EaseElasticInOut::create(ScaleTo::create(0.6f, 1.f, 1.f)));
+    this->addChild(icon);
+}
+
 // イベントIDを取得
 int MapObject::getEventId()
 {return this->eventId;}
@@ -97,7 +113,32 @@ Direction MapObject::getMovingDirection()
 // 衝突判定用Rectを取得
 Rect MapObject::getCollisionRect()
 {
-    return this->collisionRect;
+    return Rect(this->getPosition().x + this->collisionRect.getMinX() - this->getContentSize().width / 2, this->getPosition().y + this->collisionRect.getMinY() - getContentSize().height / 2, this->collisionRect.size.width, this->collisionRect.size.height);
+}
+
+// 隣接するマスの中心座標を取得
+Point MapObject::getAdjacentPosition(const Direction& direction)
+{
+    Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
+    float length {(direction == Direction::FRONT || direction == Direction::BACK)? this->getCollisionRect().size.height : this->getCollisionRect().size.width};
+    position += (1 + MapUtils::getGridNum(length)) * MapUtils::getGridVector(direction) / 2;
+    
+    return position;
+}
+
+// 隣接するマスの中心座標を取得
+Point MapObject::getAdjacentPosition(const Direction (&directions)[2])
+{
+    Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
+    int time {directions[0] == directions[1]?1:2};
+    for(int i {0}; i < time; i++)
+    {
+        if(directions[i] == Direction::SIZE) continue;
+        float length {(directions[i] == Direction::FRONT || directions[i] == Direction::BACK)? this->getCollisionRect().size.height : this->getCollisionRect().size.width};
+        position += (1 + MapUtils::getGridNum(length)) * MapUtils::getGridVector(directions[i]) / 2;
+    }
+    
+    return position;
 }
 
 // デバッッグ用に枠を描画
@@ -108,11 +149,12 @@ void MapObject::drawDebugMask()
         Point::ZERO,
         Point(0, this->getContentSize().height),
         this->getContentSize(),
-        Point(this->getContentSize().width, 0),
-        Point::ZERO
+        Point(this->getContentSize().width, 0)
     };
-    Color4F lineColor = Color4F::WHITE;
+    Color4F lineColor = Color4F::BLUE;
     DrawNode* draw {DrawNode::create()};
     draw->drawPolygon(vertices, 5, Color4F(0,0,0,0), 1, lineColor);
+    draw->setPosition(this->getContentSize() / -2);
+    draw->setGlobalZOrder(Priority::DEBUG_MASK);
     this->addChild(draw);
 }

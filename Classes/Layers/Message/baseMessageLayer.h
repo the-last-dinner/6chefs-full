@@ -45,8 +45,6 @@ private:
 	float span { 0.05f };
 	vector<Action*> letterActions {};
 	function<void()> callback { nullptr };
-	bool _isAllLetterDisplayed { false };
-	bool _isAllPageDisplayed { false };
 protected:
 	Sprite* frame { nullptr };
 	Label* message { nullptr };
@@ -55,6 +53,8 @@ protected:
 	int fontSize { 24 };
 	TextVAlignment v_alignment { TextVAlignment::TOP };
 	TextHAlignment h_alignment { TextHAlignment::LEFT };
+    bool _isAllLetterDisplayed { false };
+    bool _isAllPageDisplayed { false };
 };
 
 #endif // __BASE_MESSAGE_LAYER_H__

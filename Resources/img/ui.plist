@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>icon_sign.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{804,386},{6,14}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,1},{6,14}}</string>
+                <key>sourceSize</key>
+                <string>{16,16}</string>
+            </dict>
             <key>light.png</key>
             <dict>
                 <key>frame</key>
@@ -53,7 +66,7 @@
             <key>size</key>
             <string>{1188,404}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b942bd88bc8cc6c6a90abd7036acb5e2:37af99989eb53d077845d3cf41b3fa2b:ce842559b5d294d5ed4628903bfc52df$</string>
+            <string>$TexturePacker:SmartUpdate:568e25637c506ceddbcfec4deda2cfe3:f7183b624501db24979316d8dde859c9:ce842559b5d294d5ed4628903bfc52df$</string>
             <key>textureFileName</key>
             <string>ui.pvr.ccz</string>
         </dict>

@@ -43,12 +43,13 @@ using namespace experimental;
 #define WINDOW_CENTER Point(WINDOW_WIDTH, WINDOW_HEIGHT) / 2
 
 // レイヤーのZORDER値
-enum struct Priority
+enum Priority
 {
-	SCREEN_COVER = 100,
-	CHARACTER_MESSAGE = 50,
-	STORY_MESSAGE = 60,
-	SYSTEM_MESSAGE = 70,
+	SCREEN_COVER = 999,
+	STORY_MESSAGE = 102,
+	SYSTEM_MESSAGE = 101,
+    CHARACTER_MESSAGE = 100,
+    DEBUG_MASK = 70,
 	LIGHT = 60,
 	SHADOW = 50,
 	MAP = 0,
@@ -76,11 +77,6 @@ enum struct Direction
 	LEFT,
 	BACK,
 	SIZE,
-	FRONT_RIGHT,
-	FRONT_LEFT,
-	BACK_RIGHT,
-	BACK_LEFT,
-	NONE,
 };
 
 // トリガータイプ

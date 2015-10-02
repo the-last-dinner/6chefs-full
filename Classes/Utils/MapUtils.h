@@ -13,10 +13,13 @@
 
 namespace MapUtils
 {
-	Point convertToMapPoint(const Size& mapSize, Point ccPoint);
-	Point convertToCCPoint(const Size& mapSize, Point gridPoint);
+	Point convertToMapPoint(const Size& mapSize, const Point& ccPoint);
+	Point convertToCCPoint(const Size& mapSize, const Point& gridPoint);
+    Point convertToDispPosition(const Point& mapPosition, const Point& objectPosition);
     Point getGridVector(const Direction& direction);
+    float   getGridNum(float length);
     Direction keyToDirection(const Key& key);
+    stack<Direction> keyToDirection(const vector<Key>& keys);
 }
 
 #endif // __MAP_UTILS_H__

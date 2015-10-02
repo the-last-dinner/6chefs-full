@@ -334,7 +334,7 @@ Ref* EventScriptTask::changeMap(rapidjson::Value& event)
     }  else
     {
         //directionが指定されていない場合は移動直前の方向を取得
-        Character* hero {this->scene->mapLayer->getHeroObject()};
+        Character* hero {this->scene->mapLayer->getMainCharacter()};
         PlayerDataManager::getInstance()->setLocation(PlayerDataManager::Location(stoi(event["mapID"].GetString()), event["x"].GetInt(), event["y"].GetInt(), hero->getDirection()));
     }
     return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(DungeonScene::createScene());}));

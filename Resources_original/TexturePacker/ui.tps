@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.9.2</string>
+        <string>3.9.4</string>
         <key>fileName</key>
         <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/ui.tps</string>
         <key>autoSDSettings</key>
@@ -193,6 +193,7 @@
             <filename>../img/ui/light.png</filename>
             <filename>../img/ui/light_black.png</filename>
             <filename>../img/ui/light_white.png</filename>
+            <filename>../img/ui/icon_sign.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

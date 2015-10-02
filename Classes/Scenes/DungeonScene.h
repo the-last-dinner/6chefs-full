@@ -13,30 +13,36 @@
 
 class TiledMapLayer;
 class EventScriptTask;
+class ControlMainCharacterTask;
 
 class DungeonScene : public baseScene
 {
-	// クラスメソッド
+// クラスメソッド
 public:
 	static Scene* createScene();
 	CREATE_FUNC(DungeonScene);
 	
-	// インスタンスメソッド
+// インスタンス変数
+private:
+    TiledMapLayer* mapLayer { nullptr };
+    EventScriptTask* eventScriptTask { nullptr };
+    ControlMainCharacterTask* controlMainCharacterTask {nullptr};
+    
+// インスタンスメソッド
 public:
     void runEvent(int event_id);
     
 private:
 	DungeonScene();
 	~DungeonScene();
-	virtual bool init();
-	void onPreloadFinished();
-	
-	// インスタンス変数
-private:
-	TiledMapLayer* mapLayer { nullptr };
-	EventScriptTask* eventScriptTask { nullptr };
+	virtual bool init() override;
+	virtual void onPreloadFinished() override;
+    virtual void onCursorKeyPressed(const Key& key) override;
+    virtual void onSpaceKeyPressed() override;
+    virtual void intervalInputCheck(const vector<Key>& keys);
 	
 	friend class EventScriptTask;
+    friend class ControlMainCharacterTask;
 };
 
 

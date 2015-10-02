@@ -44,13 +44,18 @@ public:
     
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
+    void reaction();
 	
-	Point getGridPosition(const Size& mapSize);
+    Size  getGridSize() const;
+	Point getGridPosition(const Size& mapSize) const;
 	int getEventId();
 	Trigger getTrigger();
 	bool isHit();
 	Direction getMovingDirection();
     Rect getCollisionRect();
+    Point getAdjacentPosition(const Direction& direction);
+    Point getAdjacentPosition(const Direction (&directions)[2]);
+
     
     void drawDebugMask();
 };

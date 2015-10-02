@@ -40,16 +40,23 @@ void baseMessageLayer::onSpacePressed()
 	// ページ内ですべての文字を表示し終えていたら、次ページへ
 	if(this->_isAllLetterDisplayed){
 		this->nextPage();
-	}else
+	}
+    else
 	{
 		// 表示できていなければ、全表示
 		for(Action* letterAction : this->letterActions)
 		{this->stopAction(letterAction);}
+        
 		for(int i = 0; i < this->message->getStringLength(); i++)
 		{Sprite* letter = this->message->getLetter(i); if(letter) letter->setVisible(true);}
-		this->_isAllLetterDisplayed = true;
-		this->onAllLetterDisplayed();
-		if(this->pages.size() == 1) this->_isAllPageDisplayed = true;
+        
+        this->_isAllLetterDisplayed = true;
+        
+        if(this->pages.size() == 1)
+        {
+            this->_isAllPageDisplayed = true;
+            this->onAllPageDisplayed();
+        }
 	}
 	return;
 }
@@ -109,6 +116,9 @@ void baseMessageLayer::nextPage()
 	this->pages.pop();
 	this->message->setVisible(false);
 	this->removeChild(this->message);
+    this->letterActions.clear();
+    this->_isAllLetterDisplayed = false;
+    this->_isAllPageDisplayed = false;
     this->start();
 	return;
 }

@@ -14,8 +14,9 @@
 #include "Layers/Message/CharacterMessageLayer.h"
 
 #include "Tasks/EventScriptTask.h"
+#include "Tasks/ControlMainCharacterTask.h"
 
-#include "MapObjects/MapObject.h"
+#include "MapObjects/Objects.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene(){FUNCLOG}
@@ -24,7 +25,9 @@ DungeonScene::DungeonScene(){FUNCLOG}
 DungeonScene::~DungeonScene()
 {
 	FUNCLOG
+    
 	CC_SAFE_RELEASE_NULL(this->eventScriptTask);
+    CC_SAFE_RELEASE_NULL(this->controlMainCharacterTask);
 }
 
 // シーン生成
@@ -40,10 +43,17 @@ Scene* DungeonScene::createScene()
 bool DungeonScene::init()
 {
 	FUNCLOG
-	
     EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
+    
+    if(!baseScene::init(DungeonSceneData::create())) return false;
     //EventScriptManager::getInstance()->setEventScript("TestScript");
-	return baseScene::init(DungeonSceneData::create());
+    
+    // リスナにコールバックを設定
+    this->listener->intervalInputCheck = CC_CALLBACK_1(DungeonScene::intervalInputCheck, this);
+    this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
+    this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
+    
+    return true;
 }
 
 // リソースプリロード完了時の処理
@@ -55,14 +65,13 @@ void DungeonScene::onPreloadFinished()
 	Sprite* black { Sprite::create()};
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	black->setColor(Color3B::BLACK);
-	black->setLocalZOrder(static_cast<int>(Priority::SCREEN_COVER));
+	black->setGlobalZOrder(Priority::SCREEN_COVER);
 	black->setPosition(WINDOW_CENTER);
 	this->addChild(black);
 	
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
-	mapLayer->setLocalZOrder(static_cast<int>(Priority::MAP));
-    mapLayer->onRunEvent = CC_CALLBACK_1(DungeonScene::runEvent, this);
+	mapLayer->setGlobalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
 	
@@ -72,6 +81,11 @@ void DungeonScene::onPreloadFinished()
 	this->eventScriptTask = eventScriptTask;
     eventScriptTask->runEventScript(0);
     
+    // 主人公操作処理クラスを生成
+    ControlMainCharacterTask* controlMainCharacterTask {ControlMainCharacterTask::create(this)};
+    CC_SAFE_RETAIN(controlMainCharacterTask);
+    this->controlMainCharacterTask = controlMainCharacterTask;
+    
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
 									 TargetedAction::create(black, RemoveSelf::create()),
@@ -80,7 +94,7 @@ void DungeonScene::onPreloadFinished()
     CharacterMessageLayer::Information info1;
     info1.charaName = "いのす";
     info1.pages.push("あいうえを");
-    info1.pages.push("かきくけこ");
+    info1.pages.push("かきくけこ\nあsdlj；は；dshfl；あsd；lfはldshf；ぁへf\nあslhfhじゃdbfヵbdf");
     
     CharacterMessageLayer::Information info2;
     info2.charaName = "おぐら";
@@ -91,6 +105,7 @@ void DungeonScene::onPreloadFinished()
     infos.push(info2);
     
     CharacterMessageLayer* message {CharacterMessageLayer::create(infos)};
+    message->setGlobalZOrder(Priority::CHARACTER_MESSAGE);
     this->addChild(message);
     message->start();
     
@@ -100,10 +115,25 @@ void DungeonScene::onPreloadFinished()
 //EventScriptTaskのrunEventScriptを実行
 void DungeonScene::runEvent(int event_id)
 {
-    FUNCLOG
     if(event_id == MapObject::EventID::UNDIFINED) return;
     this->eventScriptTask->runEventScript(event_id);
     return;
 }
 
+// 方向キーを押した時
+void DungeonScene::onCursorKeyPressed(const Key& key)
+{
+    this->controlMainCharacterTask->turn(MapUtils::keyToDirection(key));
+}
 
+// スペースキーを押した時
+void DungeonScene::onSpaceKeyPressed()
+{
+    this->controlMainCharacterTask->search();
+}
+
+// キーを押し続けている時
+void DungeonScene::intervalInputCheck(const vector<Key>& keys)
+{
+    this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
+}

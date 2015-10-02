@@ -86,6 +86,8 @@ void CharacterMessageLayer::onAllPageDisplayed()
         this->pages = this->infos.front().pages;
         this->message->setVisible(false);
         this->removeChild(this->message);
+        this->_isAllLetterDisplayed = false;
+        this->_isAllPageDisplayed = false;
         this->start();
     }
 }

@@ -31,7 +31,7 @@ protected:
 	// インスタンス変数
 protected:
 	SceneData* data { nullptr };
-    EventListenerKeyboardLayer* listenerKeyboard { nullptr };
+    EventListenerKeyboardLayer* listener { nullptr };
 };
 
 #endif // __BASE_SCENE_H__

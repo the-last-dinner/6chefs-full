@@ -27,16 +27,16 @@ const map<EventKeyboard::KeyCode, Key> EventListenerKeyboardLayer::keyMap =
 };
 
 // コンストラクタ
-EventListenerKeyboardLayer::EventListenerKeyboardLayer()
-{ FUNCLOG }
+EventListenerKeyboardLayer::EventListenerKeyboardLayer(){ FUNCLOG }
 
 // デストラクタ
-EventListenerKeyboardLayer::~EventListenerKeyboardLayer()
-{ FUNCLOG }
+EventListenerKeyboardLayer::~EventListenerKeyboardLayer(){ FUNCLOG }
 
 // 初期化
 bool EventListenerKeyboardLayer::init()
 {
+    FUNCLOG
+    
     if(!Layer::init()) return false;
     
     EventListenerKeyboard* listenerKeyboard { EventListenerKeyboard::create() };
@@ -54,6 +54,18 @@ void EventListenerKeyboardLayer::setEnabled(bool enabled)
     this->listenerKeyboard->setEnabled(enabled);
 }
 
+// キーを押した瞬間から初回キー入力確認までの時間を設定
+void EventListenerKeyboardLayer::setInputCheckDelay(float delay)
+{
+    this->delay = delay;
+}
+
+// キー入力の確認間隔を設定
+void EventListenerKeyboardLayer::setInputCheckInterval(float interval)
+{
+    this->interval = interval;
+}
+
 // キーを押した時
 void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyCode)
 {
@@ -68,8 +80,8 @@ void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyC
             if(this->onCursorKeyPressed) this->onCursorKeyPressed(key);
             this->pressingKeys.push_back(key);
             // 方向キーを押した時は、入力チェック用にスケジューリング
-            if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::updatePressingKey))) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::updatePressingKey));
-            this->schedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::updatePressingKey), this->interval, CC_REPEAT_FOREVER, this->delay);
+            if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck))) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck));
+            this->schedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck), this->interval, CC_REPEAT_FOREVER, this->delay);
             break;
             
         case Key::SPACE:
@@ -96,13 +108,13 @@ void EventListenerKeyboardLayer::onKeyReleased(const EventKeyboard::KeyCode& key
     if(key == Key::SIZE) return;
     this->keyStatus[key] = false;
     if(find(this->pressingKeys.begin(), this->pressingKeys.end(), key) != this->pressingKeys.end()) this->pressingKeys.erase(remove(this->pressingKeys.begin(), this->pressingKeys.end(), key));
-    if(this->pressingKeys.empty()) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::updatePressingKey));
+    if(this->pressingKeys.empty()) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck));
 }
 
 // キーを押し続けている時
-void EventListenerKeyboardLayer::updatePressingKey(float duration)
+void EventListenerKeyboardLayer::inputCheck(float duration)
 {
-    if(this->pressingKey) this->pressingKey(this->pressingKeys.back());
+    if(this->intervalInputCheck) this->intervalInputCheck(this->pressingKeys);
 }
 
 // キーコードを変換。ゲームで使わないキーが与えられた場合はSIZEを返す
@@ -114,11 +126,5 @@ bool EventListenerKeyboardLayer::isPressed(const Key& key)
 {
     if(this->keyStatus.count(key) == 0) return false;
     return this->keyStatus[key];
-}
-
-// 現在主人公が進んでいる方向と、新たに押されたキーから、移動方向を返す
-Direction EventListenerKeyboardLayer::getMoveDirection(const Direction& direction, const Key& key)
-{
-    return static_cast<Direction>(key);
 }
 

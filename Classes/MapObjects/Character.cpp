@@ -12,7 +12,7 @@
 const string Character::basePath = "img/character/";
 
 // 一歩進むのにかかる時間(基準値)
-const float Character::DURATION_FOR_ONE_STEP = 0.1f;
+const float Character::DURATION_FOR_ONE_STEP = 0.05f;
 
 // コンストラクタ
 Character::Character(){FUNCLOG}
@@ -105,9 +105,8 @@ void Character::stamp(float ratio)
 	this->identifier = (this->identifier)?false:true;
 	anime->setDelayPerUnit(DURATION_FOR_ONE_STEP * ratio);
 	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
-									 TargetedAction::create(this->character, Animate::create(anime)),
-									 CallFunc::create([=](){this->setMoving(false);
-															this->character->setDisplayFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(static_cast<int>(this->direction)) + "_0.png"));}),
+                                     DelayTime::create(DURATION_FOR_ONE_STEP * ratio),//TargetedAction::create(this->character, Animate::create(anime)),
+									 CallFunc::create([=](){this->setMoving(false);}),
 									 nullptr));
 	return;
 }

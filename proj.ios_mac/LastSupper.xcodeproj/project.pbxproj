@@ -96,6 +96,8 @@
 		5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */; };
 		5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
 		5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534BBDA1B2DDF52003CB847 /* Character.cpp */; };
+		5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */; };
+		5557AA7A1BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */; };
 		555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		55619F621B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
@@ -280,6 +282,8 @@
 		5534BBCC1B2D33D7003CB847 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = ../Classes/Scenes/DungeonScene.h; sourceTree = "<group>"; };
 		5534BBDA1B2DDF52003CB847 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = ../Classes/MapObjects/Character.cpp; sourceTree = "<group>"; };
 		5534BBDB1B2DDF52003CB847 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = ../Classes/MapObjects/Character.h; sourceTree = "<group>"; };
+		5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ControlMainCharacterTask.cpp; path = ../Classes/Tasks/ControlMainCharacterTask.cpp; sourceTree = "<group>"; };
+		5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlMainCharacterTask.h; path = ../Classes/Tasks/ControlMainCharacterTask.h; sourceTree = "<group>"; };
 		555B650C1B5CE94F00D15530 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureManager.cpp; path = ../Classes/Managers/TextureManager.cpp; sourceTree = "<group>"; };
 		555B650D1B5CE94F00D15530 /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureManager.h; path = ../Classes/Managers/TextureManager.h; sourceTree = "<group>"; };
 		55619F601B36970B007EBD6E /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../Classes/MapObjects/MapObject.cpp; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 			children = (
 				5583CE3C1B9A163C00F9ACB7 /* EventScriptTask.cpp */,
 				5583CE3D1B9A163C00F9ACB7 /* EventScriptTask.h */,
+				5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */,
+				5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -925,6 +931,7 @@
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
+				5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
@@ -974,6 +981,7 @@
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
+				5557AA7A1BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,

@@ -34,20 +34,21 @@ bool baseScene::init(SceneData* data)
 	CC_SAFE_RETAIN(this->data);
 	
 	// イベントリスナ生成
-    EventListenerKeyboardLayer* listenerKeyboard {EventListenerKeyboardLayer::create()};
-    listenerKeyboard->onCursorKeyPressed = CC_CALLBACK_1(baseScene::onCursorKeyPressed, this);
-    listenerKeyboard->onSpaceKeyPressed = CC_CALLBACK_0(baseScene::onSpaceKeyPressed, this);
-    listenerKeyboard->onMenuKeyPressed = CC_CALLBACK_0(baseScene::onMenuKeyPressed, this);
-    listenerKeyboard->onDashKeyPressed = CC_CALLBACK_0(baseScene::onDashKeyPressed, this);
-    this->addChild(listenerKeyboard);
-    this->listenerKeyboard = listenerKeyboard;
+    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
+    listener->onCursorKeyPressed = CC_CALLBACK_1(baseScene::onCursorKeyPressed, this);
+    listener->onSpaceKeyPressed = CC_CALLBACK_0(baseScene::onSpaceKeyPressed, this);
+    listener->onMenuKeyPressed = CC_CALLBACK_0(baseScene::onMenuKeyPressed, this);
+    listener->onDashKeyPressed = CC_CALLBACK_0(baseScene::onDashKeyPressed, this);
+    this->addChild(listener);
+    this->listener = listener;
 	
 	// ロード画面レイヤー
 	LoadingLayer* loadingLayer = LoadingLayer::create();
-	loadingLayer->setLocalZOrder(static_cast<int>(Priority::SCREEN_COVER));
+	loadingLayer->setGlobalZOrder(Priority::SCREEN_COVER);
 	this->addChild(loadingLayer);
 	
 	// プリロード開始
 	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(CC_CALLBACK_0(baseScene::onPreloadFinished, this));});
+    
 	return true;
 }
