@@ -46,7 +46,7 @@ bool CharacterMessageLayer::init(const queue<Information>& infos)
 void CharacterMessageLayer::createMessage()
 {
     Information info {this->infos.front()};
-	if(info.charaId != -1){
+	if(info.charaId != -1 && info.imgId != -1){
 	// キャラクター画像;
 		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
 		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
@@ -56,7 +56,7 @@ void CharacterMessageLayer::createMessage()
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF((info.charaId == -1 && info.charaName != "")?info.charaName:CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId), this->fontPath, 26.f)};
+	Label* name { Label::createWithTTF((info.charaId == -1 || info.charaName != "")?info.charaName:CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId), this->fontPath, 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える

@@ -3,6 +3,30 @@
           {
           "type": "playBGM",
           "file": "Mozart-OboeConcerto-1.mp3"
+          },
+          {
+          "type": "sequence",
+          "action": [
+                     {
+                     "type": "charaMsg",
+                     "talk": [
+                              {
+                              "charaID": "0",
+                              "imgID": "0",
+                              "text": ["おぐらー！！！！！！！"]
+                              },
+                              {
+                              "charaID": "1",
+                              "name": "おぐら",
+                              "text": ["まんこまんこ"]
+                              }
+                              ]
+                     },
+                     {
+                     "type": "systemMsg",
+                     "text": ["孫市がおぐらを呼んでいるようだ。"]
+                     }
+          ]
           }
           ],
     "1": [

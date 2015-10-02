@@ -11,6 +11,8 @@
 #include "Scenes/DungeonScene.h"
 #include "Scenes/TitleScene.h"
 #include "MapObjects/Objects.h"
+#include "Layers/Message/CharacterMessageLayer.h"
+#include "Layers/Message/SystemMessageLayer.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/Message/CharacterMessageLayer.h"
