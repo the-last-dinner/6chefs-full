@@ -93,10 +93,10 @@ void DungeonScene::onPreloadFinished()
 	this->mapLayer = mapLayer;
     
     // 環境光レイヤー生成
-    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
-    ambientLightLayer->setGlobalZOrder(Priority::AMBIENT_LIGHT);
-    this->addChild(ambientLightLayer);
-    this->ambientLightLayer = ambientLightLayer;
+//    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
+//    ambientLightLayer->setGlobalZOrder(Priority::AMBIENT_LIGHT);
+//    this->addChild(ambientLightLayer);
+//    this->ambientLightLayer = ambientLightLayer;
     
 	// 黒い幕をフェードアウト
 	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
@@ -105,7 +105,7 @@ void DungeonScene::onPreloadFinished()
     
     this->listener->setEnabled(true);
     
-    mapLayer->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    //mapLayer->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     
 	return;
 }

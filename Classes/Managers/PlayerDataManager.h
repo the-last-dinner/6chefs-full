@@ -53,29 +53,29 @@ private:
 //通常関数
 public:
     //メインとなるローカルデータのセット
-    void setMainLocalData(const int& id);
+    void setMainLocalData(const int id);
     //ローカルセーブデータリストの取得
     vector<SaveIndex> getSaveList();
     //セーブ
-    void save(const int& id);
+    void save(const int id);
     /* flag管理系 */
     // SET
     void setLocation(const Location& location);
-    void setFriendship(const string& character, const int& level);
-    void setEventFlag(const int& map_id, const int& event_id, const bool& flag);
-    void setItem(const int& item_id);
-    void setItemEquipment(const int& which, const int& item_id);
+    void setFriendship(const string& character, const int level);
+    void setEventFlag(const int map_id, const int event_id, const bool& flag);
+    void setItem(const int item_id);
+    void setItemEquipment(const Direction direction, const int item_id);
     // GET
     Location getLocation();
     int getFriendship(const string& character);
-    bool getEventFlag(const int& map_id, const int& event_id);
-    int getItem(const int& item_id);
+    bool getEventFlag(const int map_id, const int event_id);
+    int getItem(const int item_id);
     map<int, int> getItemAll();
-    int getItemEquipment(const int& which);
+    int getItemEquipment(Direction direction);
     // CHECK
-    bool checkItem(const int& item_id);
-    bool checkItemEquipment(const int& item_id);
-    bool checkFriendship(const string& character, const int& val);
+    bool checkItem(const int item_id);
+    bool checkItemEquipment(const int item_id);
+    bool checkFriendship(const string& character, const int val);
     
 private:
     //グローバルデータのセット

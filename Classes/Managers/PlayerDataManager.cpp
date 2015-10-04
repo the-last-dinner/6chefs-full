@@ -142,7 +142,7 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
 }
 
 //メインとなるローカルデータのidのセット
-void PlayerDataManager::setMainLocalData(const int& id)
+void PlayerDataManager::setMainLocalData(const int id)
 {
     FUNCLOG
     this->local_id = id;
@@ -153,7 +153,7 @@ void PlayerDataManager::setMainLocalData(const int& id)
 }
 
 //セーブ
-void PlayerDataManager::save(const int& id)
+void PlayerDataManager::save(const int id)
 {
     FUNCLOG
     // save local
@@ -207,7 +207,7 @@ void PlayerDataManager::setLocation(const Location& location)
 }
 
 //友好度のセット
-void PlayerDataManager::setFriendship(const string& character, const int& level)
+void PlayerDataManager::setFriendship(const string& character, const int level)
 {
     FUNCLOG
     rapidjson::Value& friendship = this->local["friendship"];
@@ -216,7 +216,7 @@ void PlayerDataManager::setFriendship(const string& character, const int& level)
 }
 
 //イベントフラグのセット
-void PlayerDataManager::setEventFlag(const int& map_id, const int& event_id, const bool& flag)
+void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const bool& flag)
 {
     FUNCLOG
     const char* mid = to_string(map_id).c_str();
@@ -239,7 +239,7 @@ void PlayerDataManager::setEventFlag(const int& map_id, const int& event_id, con
 }
 
 //アイテムゲット時の処理
-void PlayerDataManager::setItem(const int& item_id)
+void PlayerDataManager::setItem(const int item_id)
 {
     FUNCLOG
     rapidjson::Value& item = this->local["item"];
@@ -258,11 +258,11 @@ void PlayerDataManager::setItem(const int& item_id)
 }
 
 //アイテム装備時の処理
-void PlayerDataManager::setItemEquipment(const int& which, const int& item_id)
+void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
 {
     FUNCLOG
     rapidjson::Value& root = this->local;
-    if(which == static_cast<int>(Direction::LEFT))
+    if(direction == Direction::LEFT)
     {
         root["equipment_left"].SetInt(item_id);
     } else {
@@ -289,7 +289,7 @@ int PlayerDataManager::getFriendship(const string& character)
 }
 
 //イベントフラグの取得
-bool PlayerDataManager::getEventFlag(const int& map_id, const int& event_id)
+bool PlayerDataManager::getEventFlag(const int map_id, const int event_id)
 {
     FUNCLOG
     const char* mid = to_string(map_id).c_str();
@@ -311,7 +311,7 @@ bool PlayerDataManager::getEventFlag(const int& map_id, const int& event_id)
 }
 
 //所持しているアイテムの取得
-int PlayerDataManager::getItem(const int &item_id)
+int PlayerDataManager::getItem(const int item_id)
 {
     FUNCLOG
     rapidjson::Value& item = this->local["item"];
@@ -340,17 +340,17 @@ map<int, int> PlayerDataManager::getItemAll()
 }
 
 //装備アイテムIDの取得
-int PlayerDataManager::getItemEquipment(const int& which)
+int PlayerDataManager::getItemEquipment(Direction direction)
 {
     FUNCLOG
     string key;
-    key = (which == static_cast<int>(Direction::LEFT)) ? "equipment_left" : "equipment_right";
+    key = (direction == Direction::LEFT) ? "equipment_left" : "equipment_right";
     return this->local[key.c_str()].GetInt();
 }
 
 /* CHECK */
 //アイテムを1つ以上持っているかチェック
-bool PlayerDataManager::checkItem(const int& item_id)
+bool PlayerDataManager::checkItem(const int item_id)
 {
     FUNCLOG
     int count = this->getItem(item_id);
@@ -362,11 +362,11 @@ bool PlayerDataManager::checkItem(const int& item_id)
 }
 
 //アイテムを装備しているかチェック
-bool PlayerDataManager::checkItemEquipment(const int& item_id)
+bool PlayerDataManager::checkItemEquipment(const int item_id)
 {
     FUNCLOG
-    int right = this->getItemEquipment(static_cast<int>(Direction::RIGHT));
-    int left = this->getItemEquipment(static_cast<int>(Direction::LEFT));
+    int right = this->getItemEquipment(Direction::RIGHT);
+    int left = this->getItemEquipment(Direction::LEFT);
     if (item_id == right || item_id == left) {
         return true;
     } else{
@@ -375,7 +375,7 @@ bool PlayerDataManager::checkItemEquipment(const int& item_id)
 }
 
 //友好度が指定の値と一致するか
-bool PlayerDataManager::checkFriendship(const string& character, const int& val)
+bool PlayerDataManager::checkFriendship(const string& character, const int val)
 {
     FUNCLOG
     int level = this->getFriendship(character);
