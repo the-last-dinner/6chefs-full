@@ -9,6 +9,7 @@
 #include "Layers/Menu/DungeonMainMenuLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Scenes/TitleScene.h"
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -22,13 +23,13 @@ bool DungeonMainMenuLayer::init()
 	FUNCLOG
 	if(!MenuLayer::init(static_cast<int>(Type::SIZE), 1)) return false;
 	
-	// 半透明の黒幕を生成
-//	Sprite* cover { Sprite::create() };
-//	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
-//	cover->setColor(Color3B::BLACK);
-//	cover->setPosition(WINDOW_CENTER);
-//	cover->setOpacity(100);
-//	this->addChild(cover);
+    //半透明の黒幕を生成
+	Sprite* cover { Sprite::create() };
+	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+	cover->setColor(Color3B::BLACK);
+	cover->setPosition(WINDOW_CENTER);
+	cover->setOpacity(100);
+	this->addChild(cover);
 	
 	// 上のメニューを生成
 	Sprite* hBg { Sprite::create() };
@@ -77,6 +78,7 @@ bool DungeonMainMenuLayer::init()
 void DungeonMainMenuLayer::show()
 {
 	FUNCLOG
+    this->onIndexChanged(0);
     this->setVisible(true);
     this->listenerKeyboard->setEnabled(true);
 }
@@ -92,13 +94,40 @@ void DungeonMainMenuLayer::hide()
 // カーソル移動時
 void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
-
+    for(int i = 0; i < MenuLayer::menuObjects.size(); i++)
+    {
+        Node* obj {this->menuObjects.at(i)};
+        this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (newIdx == i)?1.2f:1.f)),
+                                      TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
+                                      nullptr));
+    }
+    if(sound)SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    return;
 }
 
 // 決定キー入力時
 void DungeonMainMenuLayer::onSpacePressed(int idx)
 {
-    
+    SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    switch (static_cast<Type>(idx)) {
+        case Type::ITEM:
+            SoundManager::getInstance()->playSound("se/failure.mp3");
+            break;
+        case Type::SAVE:
+            SoundManager::getInstance()->playSound("se/failure.mp3");
+            break;
+        case Type::CHARA:
+            SoundManager::getInstance()->playSound("se/failure.mp3");
+            break;
+        case Type::TITLE:
+            SoundManager::getInstance()->playSound("se/back.mp3");
+            Director::getInstance()->replaceScene(TitleScene::createScene());
+            break;
+        case Type::CLOSE:
+        default:
+            this->onMenuKeyPressed();
+            break;
+    }
 }
 
 //　メニューキー入力時
