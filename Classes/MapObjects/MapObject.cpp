@@ -93,13 +93,13 @@ void MapObject::removeLight()
 }
 
 // リアクションアイコンを表示
-void MapObject::reaction()
+ActionInterval* MapObject::createReaction()
 {
     Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
     icon->setPosition(Point(0, this->getContentSize().height));
     icon->setScaleY(0.1f);
-    icon->runAction(EaseElasticInOut::create(ScaleTo::create(0.6f, 1.f, 1.f)));
     this->addChild(icon);
+    return TargetedAction::create(icon, EaseElasticInOut::create(ScaleTo::create(0.6f, 1.f, 1.f)));
 }
 
 // イベントIDを取得

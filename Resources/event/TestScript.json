@@ -8,6 +8,10 @@
           "type": "sequence",
           "action": [
                      {
+                     "type": "reaction",
+                     "objID": "hero"
+                     },
+                     {
                      "type": "charaMsg",
                      "talk": [
                               {
@@ -134,19 +138,17 @@
     "id": 0,
     "map_id": "map",
     "sound": [
-            "bgm/Mozart-OboeConcerto-1.mp3",
-            "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-            "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
-            "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
-            "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
-			"se/back.mp3",
-			"se/bus-door1.mp3",
-			"se/bus-start1.mp3",
-			"se/cursorMove.mp3",
-			"se/gameStart.mp3",
-			"se/title-enter.mp3"
-            ],
-	"texture": [
-			  
-			  ]
+              "bgm/Mozart-OboeConcerto-1.mp3",
+              "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+              "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
+              "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
+              "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
+              "se/back.mp3",
+              "se/bus-door1.mp3",
+              "se/bus-start1.mp3",
+              "se/cursorMove.mp3",
+              "se/gameStart.mp3",
+              "se/title-enter.mp3"
+              ],
+    "texture": []
 }

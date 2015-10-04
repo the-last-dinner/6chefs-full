@@ -66,6 +66,7 @@ private:
     Ref* fadeout(rapidjson::Value& event);
     Ref* changeDirection(rapidjson::Value& event);
     Ref* charaWalkTo(rapidjson::Value& event);
+    Ref* charaWalk(rapidjson::Value& event);
     Ref* createChara(rapidjson::Value& event);
     Ref* already(rapidjson::Value& event);
     Ref* wait(rapidjson::Value& event);

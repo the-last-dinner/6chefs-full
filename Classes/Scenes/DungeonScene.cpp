@@ -50,12 +50,13 @@ bool DungeonScene::init()
     EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
     
     if(!baseScene::init(DungeonSceneData::create())) return false;
-    //EventScriptManager::getInstance()->setEventScript("TestScript");  
+    //EventScriptManager::getInstance()->setEventScript("TestScript");
     
     // イベントスクリプト処理クラスを生成
     EventScriptTask* eventScriptTask {EventScriptTask::create(this)};
     CC_SAFE_RETAIN(eventScriptTask);
     this->eventScriptTask = eventScriptTask;
+    eventScriptTask->runEventScript(0);
     
     // 主人公操作処理クラスを生成
     ControlMainCharacterTask* controlMainCharacterTask {ControlMainCharacterTask::create(this)};

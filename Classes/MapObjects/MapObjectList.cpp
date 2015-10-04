@@ -41,6 +41,20 @@ MapObject* MapObjectList::getMapObject(const Point& position) const
     
     // 該当がなければnullptrを返す
     return nullptr;
+    
+}
+
+// 指定IDのマップオブジェクトを取得
+MapObject* MapObjectList::getMapObject(int objId) const
+{
+    for(MapObject* obj : this->mapObjects)
+    {
+        if(objId == obj->getTag())
+        {
+            return obj;
+        }
+    }
+    return nullptr;
 }
 
 // マップオブジェクトのベクタを取得

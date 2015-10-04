@@ -34,6 +34,7 @@ private:
     bool init(const vector<MapObject*>&);
 public:
     MapObject* getMapObject(const Point& position) const;
+    MapObject* getMapObject(int objId) const;
     const vector<MapObject*>& getMapObjects() const;
     void add(MapObject* mapObject);
     

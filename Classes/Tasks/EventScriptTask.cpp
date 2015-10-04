@@ -11,6 +11,7 @@
 #include "Scenes/DungeonScene.h"
 #include "Scenes/TitleScene.h"
 #include "MapObjects/Objects.h"
+#include "MapObjects/MapObjectList.h"
 #include "Layers/Message/CharacterMessageLayer.h"
 #include "Layers/Message/SystemMessageLayer.h"
 
@@ -44,11 +45,11 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"fadeout", &EventScriptTask::fadeout},
     {"changeDirection", &EventScriptTask::changeDirection},
     {"charaWalkTo", &EventScriptTask::charaWalkTo},
+    {"charaWalk", &EventScriptTask::charaWalk},
     {"createChara", &EventScriptTask::createChara},
     {"already", &EventScriptTask::already},
     {"wait", &EventScriptTask::wait},
     {"removeLayer", &EventScriptTask::removeLayer}
-    
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
 {
@@ -479,8 +480,20 @@ Ref* EventScriptTask::systemMsg(rapidjson::Value &event)
 Ref* EventScriptTask::reaction(rapidjson::Value& event)
 {
     FUNCLOG
-    event["objID"].GetString();
-    return nullptr;
+    string objid = event["objID"].GetString();
+    if (objid == "hero")
+    {
+        return this->scene->mapLayer->getMapObjectList()->getMainCharacter()->createReaction();
+    } else {
+        MapObject* obj = this->scene->mapLayer->getMapObjectList()->getMapObject(stoi(objid));
+        if(obj)
+        {
+            return obj->createReaction();
+        } else
+        {
+            return nullptr;
+        }
+    }
 }
 
 Ref* EventScriptTask::fade(rapidjson::Value& event)
@@ -528,6 +541,12 @@ Ref* EventScriptTask::changeDirection(rapidjson::Value &event)
 }
 
 Ref* EventScriptTask::charaWalkTo(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::charaWalk(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;
