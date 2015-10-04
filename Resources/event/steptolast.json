@@ -68,8 +68,8 @@
 							"type":"createEnemy",
 							"enemyID":"1422",
 							"charaID":"7",
-							"x":"4",
-							"y":"3",
+							"x":4,
+							"y":3,
 							"movePattern":"4",
 						},
 						{

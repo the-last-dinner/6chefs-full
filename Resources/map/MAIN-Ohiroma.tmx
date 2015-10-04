@@ -180,7 +180,7 @@
    eJzt2UEOgjAUhOEJIYSjmngBE84gN9C9bvQGege4gRzEujd9yaO0Iv+XNCxehk5XkFQC8A+GWhrr0i3yeYWzThs6LwAAa7BvpV0bn6dm7Rebz9UZ7/7Mr2FdEj4PkT07Yw6kcmuke5MvV9ojdH46entzAOB1rKS+ypcr7RQ6nx29vTkAAL7h+7tsDgAAbA//V8vmYLPu637VWnsDc70BsDo1xw==
   </data>
  </layer>
- <objectgroup name="event" visible="0">
+ <objectgroup name="event">
   <properties>
    <property name="EventID" value="118"/>
   </properties>
