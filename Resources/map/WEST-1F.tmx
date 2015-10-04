@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="70">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="72">
  <tileset firstgid="1" name="kitchen-option1" tilewidth="16" tileheight="16">
   <image source="kitchen-option1.png" trans="007575" width="288" height="192"/>
  </tileset>
@@ -41,7 +41,7 @@
    eJztlztrAkEURsU6miaVhY9/El+ljeZRmSqKXYKFirVPYp0XKEmnaRRt/XEeQWEYdnc2sDuz6h443J3hsveDZRkmEgk5Z8pYMR3CgWesCespziz6rPZb2P7HrLqDTjSF5yWuLHqs9kc4dpmto1DFDX672I9K65KmfH7jVb4rjHme7vJomA6gQM53/O5xvMYqPukOJdCV1klMYRoz+IKvGnLs5+axgEWhTqS+iaQu5LkmMoSEnAp2/7Nd1c0d3uMDPrqoQSfo56B8zgSNN9MBFAQ9X4g3/OCv6RAOrHHjw3t72McBDnGOC6Hu75J/h95bH+areMcP/MQvm54tZjF3WCek6oZzvf/uAHIBQlk=
   </data>
  </layer>
- <objectgroup name="collison">
+ <objectgroup name="collision">
   <object id="23" x="0" y="80" width="272" height="48"/>
   <object id="24" x="272" y="80" width="16" height="48"/>
   <object id="25" x="288" y="64" width="256" height="32"/>
@@ -59,6 +59,8 @@
   <object id="37" x="288" y="432" width="32" height="32"/>
   <object id="38" x="416" y="480" width="128" height="32"/>
   <object id="39" x="0" y="208" width="96" height="16"/>
+  <object id="70" x="0" y="272" width="464" height="16"/>
+  <object id="71" x="-32" y="32" width="32" height="480"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
