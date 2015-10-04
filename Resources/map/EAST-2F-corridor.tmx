@@ -109,13 +109,13 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="47" x="432" y="0" width="32" height="32">
+  <object id="47" x="432" y="0" width="32" height="16">
    <properties>
     <property name="EventID" value="8"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="48" x="96" y="0" width="32" height="32">
+  <object id="48" x="96" y="0" width="32" height="16">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="1"/>

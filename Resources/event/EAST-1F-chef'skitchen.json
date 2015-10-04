@@ -31,7 +31,7 @@
 				},
 				{
 					"type":"changeMap",
-					"mapID":32,
+					"mapID":"32",
 					"x":14,
 					"y":15
 				}
@@ -238,7 +238,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":"1532",
+					"item":["1532"],
 					"Nflg":"1"
 				}
 			],
