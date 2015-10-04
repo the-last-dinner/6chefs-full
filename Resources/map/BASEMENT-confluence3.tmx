@@ -83,6 +83,8 @@
    <properties>
     <property name="CharaID" value="6"/>
     <property name="EventID" value="12"/>
+    <property name="direction" value="LEFT"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1057"/>
     <property name="trigger" value="2"/>
    </properties>

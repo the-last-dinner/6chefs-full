@@ -384,6 +384,14 @@
               "objID":"1083"
             },
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
+              "type":"createChara",
+              "objID":"1084"
+            },
+            {
               "type":"charaMsg",
               "text":["そこまでですぞ！！"],
               "charaID":"4",
@@ -391,7 +399,12 @@
               "option":"reaction"
             },
             {
-              "type":"fadein"
+              "type":"fadein",
+              "time":3.0
+            },
+            {
+              "type":"charaMsg",
+              "text":[""]
             }
           ]
         }
