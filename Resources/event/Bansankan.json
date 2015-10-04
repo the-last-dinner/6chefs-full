@@ -13,7 +13,7 @@
       "action": [
         {
           "type": "reaction",
-          "objectID": "101"
+          "objID": "101"
         },
         {
           "type": "charaMsg",
@@ -23,7 +23,7 @@
         },
         {
           "type": "reaction",
-          "objectID": "hero"
+          "objID": "hero"
         },
         {
           "type": "changeDirection",
@@ -34,7 +34,7 @@
           "type": "charaWalkTo",
           "x": 62,
           "y": 58,
-          "objectID": "hero"
+          "objID": "hero"
         },
         {
           "type": "charaMsg",
@@ -206,7 +206,7 @@
             },
             {
               "type": "reaction",
-              "objectID": "102"
+              "objID": "102"
             },
             {
               "type": "reaction",

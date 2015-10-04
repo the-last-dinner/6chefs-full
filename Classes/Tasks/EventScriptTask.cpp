@@ -45,7 +45,9 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"changeDirection", &EventScriptTask::changeDirection},
     {"charaWalkTo", &EventScriptTask::charaWalkTo},
     {"createChara", &EventScriptTask::createChara},
-    {"already", &EventScriptTask::already}
+    {"already", &EventScriptTask::already},
+    {"wait", &EventScriptTask::wait},
+    {"removeLayer", &EventScriptTask::removeLayer}
     
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
@@ -477,7 +479,7 @@ Ref* EventScriptTask::systemMsg(rapidjson::Value &event)
 Ref* EventScriptTask::reaction(rapidjson::Value& event)
 {
     FUNCLOG
-    event["objectID"].GetString();
+    event["objID"].GetString();
     return nullptr;
 }
 
@@ -538,6 +540,18 @@ Ref* EventScriptTask::createChara(rapidjson::Value &event)
 }
 
 Ref* EventScriptTask::already(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::wait(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::removeLayer(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;

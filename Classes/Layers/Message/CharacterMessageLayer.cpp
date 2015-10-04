@@ -48,11 +48,11 @@ void CharacterMessageLayer::createMessage()
     Information info {this->infos.front()};
 	if(info.charaId != -1 && info.imgId != -1){
 	// キャラクター画像;
-		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
-		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
-		img->setPosition(Point(WINDOW_WIDTH / 4, img->getContentSize().height / 2));
-		img->setLocalZOrder(-1);
-		this->addChild(img);
+//		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
+//		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
+//		img->setPosition(Point(WINDOW_WIDTH / 4, img->getContentSize().height / 2));
+//		img->setLocalZOrder(-1);
+//		this->addChild(img);
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();

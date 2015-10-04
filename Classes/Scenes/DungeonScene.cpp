@@ -140,15 +140,10 @@ void DungeonScene::intervalInputCheck(const vector<Key>& keys)
 void DungeonScene::onMenuKeyPressed()
 {
     // スクショ撮る
-    //cocos2d::Texture2D *texture {nullptr};
-    //Grabber* grabber = new Grabber();
-    //grabber->grab(texture);
-    Size size = Director::getInstance()->getWinSize();
-    RenderTexture* texture = RenderTexture::create((int)size.width, (int)size.height);
-    texture->setPosition(Point(size.width/2, size.height/2));
+    RenderTexture* texture = RenderTexture::create(WINDOW_WIDTH, WINDOW_HEIGHT);
+    texture->setPosition(WINDOW_CENTER);
     texture->begin();
     this->visit();
-    this->mapLayer->visit();
     texture->end();
     // スクショをとって、ダンジョンメニューシーンをプッシュ
     /*utils::captureScreen([=](bool success, string filename){
@@ -164,6 +159,5 @@ void DungeonScene::onMenuKeyPressed()
 // メニューが削除されたとき
 void DungeonScene::onMenuHidden()
 {
-    cout << "ON!!!!" << endl;
     this->runAction(Sequence::createWithTwoActions(CallFunc::create([=](){this->removeChild(this->mainMenu);}), CallFunc::create([=](){this->listener->setEnabled(true);})));
 }
