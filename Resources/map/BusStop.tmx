@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="54" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="68">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="54" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="69">
  <tileset firstgid="1" name="retro-city" tilewidth="16" tileheight="16">
   <image source="retro-city.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -59,9 +59,8 @@
   <object id="43" x="816" y="144" width="16" height="32"/>
   <object id="44" x="112" y="256" width="32" height="32"/>
   <object id="45" x="32" y="608" width="800" height="48"/>
-  <object id="46" x="832" y="80" width="32" height="208"/>
+  <object id="46" x="832" y="80" width="32" height="224"/>
   <object id="47" x="832" y="560" width="32" height="112"/>
-  <object id="48" x="832" y="288" width="32" height="16"/>
   <object id="51" x="0" y="0" width="32" height="592"/>
   <object id="52" x="0" y="592" width="32" height="80"/>
  </objectgroup>

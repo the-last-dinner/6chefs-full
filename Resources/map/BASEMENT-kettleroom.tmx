@@ -12,12 +12,15 @@
  <tileset firstgid="2134" name="death" tilewidth="16" tileheight="16">
   <image source="death.png" trans="007575" width="384" height="256"/>
  </tileset>
+ <tileset firstgid="2518" name="BlackMagic02" tilewidth="16" tileheight="16">
+  <image source="BlackMagic02.png" trans="000000" width="192" height="352"/>
+ </tileset>
  <layer name="Base" width="30" height="22">
   <properties>
    <property name="cc_vertexz" value="-20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkksKgDAMRJsD+DuHVs+hrfe/jrOMG5PF1IVm4MEEAoXXpHRPB3owELqercxgAZnQ9WxlBwcohK5nK5PACxiF261s2MlgFW63cmKngCrcHp7/6VnvsD0/va/32Z49/xz3/M17Ds9299DCs4cWnj14Pb+VC1IwVIU=
+   eJztlF0OgjAQhLcHAORNvAKgb8gVEHlT7n8Up+HBzQZsk+4aY5jky06bppMMP0Rv9Y4ow8xBQemerztHm/K5NWYDWkr3fB3KHTBvYKR0z9eh3BIU4KDsQ7kX0IKzsg/lTmAEd2W/9/y9nq8r2U/szYY9P9ySIcXPaPfM75bi57V75ndLVdg7GfZ8dEuGlH/m//o+f8rd/xu/13MMFj3HYNFzDDE9e/lv2wKpF2qlYGE=
   </data>
  </layer>
  <layer name="MonoShita" width="30" height="22">
@@ -25,7 +28,7 @@
    <property name="cc_vertexz" value="-19"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAEj1ixCNIByLINjL2jYBSMglEwCkbBKBgFo4B8AACcywEL
+   eJxjYEAF87gYGOZzMdAdrALauXoA7B0Fo2AUjIJRMApGwSgYBZQBAE+NArs=
   </data>
  </layer>
  <layer name="kettle" width="30" height="22">
@@ -33,7 +36,7 @@
    <property name="cc_vertexz" value="-18"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1LkNACAMQ9EUrMyxBMcSHGPiJgOASIP8JJe/tQjR/7wTCVjEkrPvVEZTsIq1g/62Ux3NwCa2Dvrbjoje4V/ZdmRjAzEHG3k=
+   eJxjYBgFo2D4g0IWBoYyIC4H4hIW2uuDgU6gnj4g7gfiHhL0k6sPBhYC9TxjZmB4DsRLSNBPrr5RMApGAfXAaHlFW32jgDYAAGE5HRE=
   </data>
  </layer>
  <layer name="hide1" width="30" height="22">
@@ -176,4 +179,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="neck" width="30" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAOA3ClAAAQ==
+  </data>
+ </layer>
 </map>
