@@ -7,6 +7,7 @@
 //
 
 #include "Scenes/DungeonScene.h"
+#include "Scenes/DungeonMenuScene.h"
 
 #include "Datas/Scene/DungeonSceneData.h"
 
@@ -131,14 +132,38 @@ void DungeonScene::onSpaceKeyPressed()
 // キーを押し続けている時
 void DungeonScene::intervalInputCheck(const vector<Key>& keys)
 {
+    
     this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
 }
 
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
-    this->listener->setEnabled(false);
-    DungeonMainMenuLayer* menu = DungeonMainMenuLayer::create();
-    this->addChild(menu);
-    menu->show();
+    // スクショ撮る
+    //cocos2d::Texture2D *texture {nullptr};
+    //Grabber* grabber = new Grabber();
+    //grabber->grab(texture);
+    Size size = Director::getInstance()->getWinSize();
+    RenderTexture* texture = RenderTexture::create((int)size.width, (int)size.height);
+    texture->setPosition(Point(size.width/2, size.height/2));
+    texture->begin();
+    this->visit();
+    this->mapLayer->visit();
+    texture->end();
+    // スクショをとって、ダンジョンメニューシーンをプッシュ
+    /*utils::captureScreen([=](bool success, string filename){
+        if(success)
+        {
+            Sprite* screen = Sprite::create(filename);
+     
+        }
+    }, "0.png");*/
+    Director::getInstance()->pushScene(DungeonMenuScene::createScene(texture->getSprite()->getTexture()));
+}
+
+// メニューが削除されたとき
+void DungeonScene::onMenuHidden()
+{
+    cout << "ON!!!!" << endl;
+    this->runAction(Sequence::createWithTwoActions(CallFunc::create([=](){this->removeChild(this->mainMenu);}), CallFunc::create([=](){this->listener->setEnabled(true);})));
 }

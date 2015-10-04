@@ -23,12 +23,12 @@ bool DungeonMainMenuLayer::init()
 	if(!MenuLayer::init(static_cast<int>(Type::SIZE), 1)) return false;
 	
 	// 半透明の黒幕を生成
-	Sprite* cover { Sprite::create() };
-	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
-	cover->setColor(Color3B::BLACK);
-	cover->setPosition(WINDOW_CENTER);
-	cover->setOpacity(100);
-	this->addChild(cover);
+//	Sprite* cover { Sprite::create() };
+//	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+//	cover->setColor(Color3B::BLACK);
+//	cover->setPosition(WINDOW_CENTER);
+//	cover->setOpacity(100);
+//	this->addChild(cover);
 	
 	// 上のメニューを生成
 	Sprite* hBg { Sprite::create() };
@@ -105,4 +105,8 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
 void DungeonMainMenuLayer::onMenuKeyPressed()
 {
     this->hide();
+    if(this->onMenuHidden)
+    {
+        this->onMenuHidden();
+    }
 }

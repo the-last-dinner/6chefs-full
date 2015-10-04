@@ -15,6 +15,7 @@ class AmbientLightLayer;
 class TiledMapLayer;
 class EventScriptTask;
 class ControlMainCharacterTask;
+class DungeonMainMenuLayer;
 
 class DungeonScene : public baseScene
 {
@@ -29,10 +30,12 @@ private:
     AmbientLightLayer* ambientLightLayer {nullptr};
     EventScriptTask* eventScriptTask { nullptr };
     ControlMainCharacterTask* controlMainCharacterTask {nullptr};
+    DungeonMainMenuLayer* mainMenu { nullptr };
     
 // インスタンスメソッド
 public:
     void runEvent(int event_id);
+    void onMenuHidden();
     
 private:
 	DungeonScene();

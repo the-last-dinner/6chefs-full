@@ -28,9 +28,11 @@ public:
 	// クラスメソッド
 public:
 	CREATE_FUNC(DungeonMainMenuLayer)
-    virtual void show();
-    void show2();
-    virtual void hide();
+
+    //インスタンス変数
+public:
+     function<void()> onMenuHidden { nullptr };
+    
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();
@@ -40,6 +42,9 @@ private:
 	virtual void onIndexChanged(int newIdx, bool sound = true);
 	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed();
+public:
+    virtual void show();
+    virtual void hide();
 };
 
 #endif /* defined(__LastSupper__DungeonMainMenuLayer__) */
