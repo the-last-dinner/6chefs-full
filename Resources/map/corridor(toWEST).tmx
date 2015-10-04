@@ -64,22 +64,6 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="34" height="20">
-  <properties>
-   <property name="cc_vertexz" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
-  </data>
- </layer>
- <layer name="CharaUe2" width="34" height="20">
-  <properties>
-   <property name="cc_vertexz" value="2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
-  </data>
- </layer>
  <objectgroup name="event">
   <properties>
    <property name="EventID" value="1318"/>
