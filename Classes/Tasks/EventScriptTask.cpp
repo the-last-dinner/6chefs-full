@@ -54,7 +54,7 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"removeChara", &EventScriptTask::removeChara},
     {"createEnemy", &EventScriptTask::createEnemy},
     {"removeEnemy", &EventScriptTask::removeEnemy},
-    {"barrge", &EventScriptTask::barrage}
+    {"barrage", &EventScriptTask::barrage}
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
 {
