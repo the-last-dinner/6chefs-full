@@ -30,14 +30,6 @@
    eJztxrEJgFAQRMGLXv8INiDYgPAbEGxAsB8DOTNZNjLZiabqMVOvr7sm9NuKvmtBvw30XRv67UDftaPfLvRdJ/oRERF/uAHdohW+
   </data>
  </layer>
- <layer name="MonoUe" width="32" height="18">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAfBkJAAAB
-  </data>
- </layer>
  <objectgroup name="collision">
   <object id="19" x="32" y="224" width="208" height="32"/>
   <object id="20" x="272" y="224" width="208" height="32"/>

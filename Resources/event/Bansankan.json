@@ -108,6 +108,10 @@
           ]
         },
         {
+          "type":"charaWalkTo",
+          "objID":"hero"
+        },
+        {
           "type": "changeMap",
           "mapID": "3",
           "x": 26,
