@@ -27,6 +27,7 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"spawn", &EventScriptTask::spawn},       //同時に処理を実行
     {"repeat", &EventScriptTask::repeat},    //繰り返し実行
     {"if", &EventScriptTask::ifelse},    //flagによって場合分けして実行
+    {"countDown", &EventScriptTask::countDown},
     //イベントタイプ
     {"changeMap", &EventScriptTask::changeMap},//マップ移動
     {"move", &EventScriptTask::move},     //オブジェクトの移動
@@ -49,7 +50,11 @@ const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
     {"createChara", &EventScriptTask::createChara},
     {"already", &EventScriptTask::already},
     {"wait", &EventScriptTask::wait},
-    {"removeLayer", &EventScriptTask::removeLayer}
+    {"removeLayer", &EventScriptTask::removeLayer},
+    {"removeChara", &EventScriptTask::removeChara},
+    {"createEnemy", &EventScriptTask::createEnemy},
+    {"removeEnemy", &EventScriptTask::removeEnemy},
+    {"barrge", &EventScriptTask::barrage}
 };
 const map<string, EventScriptTask::FunctionPointerC> EventScriptTask::CONDITION_MAP =
 {
@@ -330,6 +335,12 @@ bool EventScriptTask::statusIf(rapidjson::Value& cond, bool reverse)
     return judge;
 }
 
+Ref* EventScriptTask::countDown(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
 // --------------------------------
 //       Event functions
 // --------------------------------
@@ -571,6 +582,30 @@ Ref* EventScriptTask::wait(rapidjson::Value &event)
 }
 
 Ref* EventScriptTask::removeLayer(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::removeChara(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::createEnemy(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::removeEnemy(rapidjson::Value &event)
+{
+    FUNCLOG
+    return nullptr;
+}
+
+Ref* EventScriptTask::barrage(rapidjson::Value &event)
 {
     FUNCLOG
     return nullptr;

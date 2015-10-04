@@ -71,6 +71,11 @@ private:
     Ref* already(rapidjson::Value& event);
     Ref* wait(rapidjson::Value& event);
     Ref* removeLayer(rapidjson::Value& event);
+    Ref* removeChara(rapidjson::Value& event);
+    Ref* createEnemy(rapidjson::Value& event);
+    Ref* removeEnemy(rapidjson::Value& event);
+    Ref* countDown(rapidjson::Value& event);
+    Ref* barrage(rapidjson::Value& event);
     //if
     bool judgeCondition(rapidjson::Value& cond);
     bool eventIf(rapidjson::Value& cond, bool reverse);
