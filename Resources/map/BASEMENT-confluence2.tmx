@@ -8,7 +8,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzNkGEKgCAMRtcBrINYPzqGdv/7tMgPlpiNlNYHDzdlD5WonpGZGJdA0ONcm5lZGJ9A0ONcG0/X2XU4CVxHsZ/HFTjeEgSx4MNau4d8B+af+MIn/77Vh3/YsvqtTztn5Wv1/s2nTW+f1mvtu/P3Sm+fVXa2mibs
+   eJzN0FEKgCAQBND1ANoJOoH10XcnqO5/ntrQIVlSthJsYFCTfWBE5ezcjmtjEZxdvNemN0Qjrz4WwXmgcP/ES2cnE7rwfk2+y9ibuuids5iXHlYZL4p3zOYyStV6Givnwajh4T9sYv/W08618r66f/O0qe1p3dZezq+V2l6rHDPSJ6E=
   </data>
  </layer>
  <layer name="MonoChu" width="20" height="20">
@@ -16,7 +16,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj64DqZcqNgFIyCUTAKyAcAJYsBrw==
+   eJxjYKA/qCFTDhe4TqbcKBgFo2AUjALyAQC15gKn
   </data>
  </layer>
  <objectgroup name="collision">
