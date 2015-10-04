@@ -80,6 +80,8 @@
    <properties>
     <property name="CharaID" value="2"/>
     <property name="EventID" value="9"/>
+    <property name="direction" value="RIGHT"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1017"/>
     <property name="trigger" value="2"/>
    </properties>
@@ -87,6 +89,8 @@
   <object id="38" x="384" y="288" width="32" height="32">
    <properties>
     <property name="CharaID" value="8"/>
+    <property name="direction" value="UP"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1018"/>
    </properties>
   </object>

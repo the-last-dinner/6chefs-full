@@ -28,7 +28,7 @@
         {
           "type": "changeDirection",
           "direction": "LEFT",
-          "objectID": "hero"
+          "objID": "hero"
         },
         {
           "type": "charaWalkTo",
@@ -43,17 +43,75 @@
           "name": "執事服の老人"
         },
         {
-          "type": "fadeout"
+          "type":"already"
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": "changeMap",
+      "mapID": "1",
+      "x": 50,
+      "y": 22
+    }
+  ],
+  "4": [
+    {
+      "type": "changeMap",
+      "mapID": "1",
+      "x": 50,
+      "y": 27
+    }
+  ],
+  "5": [
+    {
+      "type": "changeMap",
+      "mapID": "1",
+      "x": 50,
+      "y": 33
+    }
+  ],
+  "6": [
+    {
+      "type": "changeMap",
+      "mapID": "40",
+      "x": 14,
+      "y": 23
+    }
+  ],
+  "7":[
+    {
+      "type":"createChara",
+      "objID":"101"
+    }
+  ],
+  "8":[
+    {
+      "type":"sequence",
+      "action":[
+        {
+          "type":"spawn",
+          "action":[
+            {
+              "type":"wait",
+              "time":1.0
+            },
+            {
+              "type":"removeLayer",
+              "layer":"door"
+            },
+            {
+              "type":"playSE",
+              "file":"door2.mp3"
+            }
+          ]
         },
         {
           "type": "changeMap",
           "mapID": "3",
           "x": 26,
           "y": 14
-        },
-        {
-          "type": "fadein",
-          "time": 0.5
         },
         {
           "type": "charaMsg",
@@ -144,7 +202,7 @@
             },
             {
               "type": "reaction",
-              "objectID": "hero"
+              "objID": "hero"
             },
             {
               "type": "reaction",
@@ -152,19 +210,19 @@
             },
             {
               "type": "reaction",
-              "objectID": "103"
+              "objID": "103"
             },
             {
               "type": "reaction",
-              "objectID": "104"
+              "objID": "104"
             },
             {
               "type": "reaction",
-              "objectID": "105"
+              "objID": "105"
             },
             {
               "type": "reaction",
-              "objectID": "106"
+              "objID": "106"
             }
           ]
         },
@@ -172,56 +230,17 @@
           "type": "charaWalkTo",
           "x": 20,
           "y": 39,
-          "objectID": "1013"
+          "objID": "1013"
         },
         {
           "type": "charaMsg",
           "charaID":"9",
-          "text": ["皆様、お待たせいたしました。\n　皆様には只今より西棟に移動して頂き、お料理をして頂きます。\n道具や食材は西棟にあるもの、何でも使ってもらって　構いません。\n使って頂くキッチンは、西棟１階入って右手が佐々木様、左手が中山様\n２階入って右手が荒間田様、左手が大善様\n３階入って右手が一色様、左手が加藤様\nでございます。\n最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。\n私は大広間にいますので分からないことや足りないものがあれば、お申し付けください。\nそれでは皆さん、移動を開始してください。"],
-          "name": "執事服の老人"
+          "text": ["皆様、お待たせいたしました。\n　皆様には只今より西棟に移動して頂き、お料理をして頂きます。\n道具や食材は西棟にあるもの、何でも使ってもらって　構いません。\n使って頂くキッチンは、西棟１階入って右手が佐々木様、左手が中山様\n２階入って右手が荒間田様、左手が大善様\n３階入って右手が一色様、左手が加藤様\nでございます。\n最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。\n私は大広間にいますので分からないことや足りないものがあれば、お申し付けください。\nそれでは皆さん、移動を開始してください。"]
         },
         {
           "type": "already"
         }
       ]
-    }
-  ],
-  "3": [
-    {
-      "type": "changeMap",
-      "mapID": "1",
-      "x": 50,
-      "y": 22
-    }
-  ],
-  "4": [
-    {
-      "type": "changeMap",
-      "mapID": "1",
-      "x": 50,
-      "y": 27
-    }
-  ],
-  "5": [
-    {
-      "type": "changeMap",
-      "mapID": "1",
-      "x": 50,
-      "y": 33
-    }
-  ],
-  "6": [
-    {
-      "type": "changeMap",
-      "mapID": "40",
-      "x": 14,
-      "y": 23
-    }
-  ],
-  "7":[
-    {
-      "type":"createChara",
-      "objID":"101"
     }
   ]
 }

@@ -118,12 +118,16 @@
   <object id="72" x="256" y="384" width="32" height="32">
    <properties>
     <property name="CharaID" value="12"/>
+    <property name="direction" value="LEFT"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1066"/>
    </properties>
   </object>
   <object id="74" x="256" y="384" width="32" height="32">
    <properties>
     <property name="CharaID" value="3"/>
+    <property name="direction" value="LEFT"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1067"/>
    </properties>
   </object>

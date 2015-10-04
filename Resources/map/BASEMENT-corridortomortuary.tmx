@@ -61,6 +61,7 @@
    <properties>
     <property name="CharaID" value="1"/>
     <property name="direction" value="RIGHT"/>
+    <property name="movePattern" value="1"/>
     <property name="objID" value="1040"/>
    </properties>
   </object>
