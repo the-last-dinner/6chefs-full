@@ -78,7 +78,7 @@ bool DungeonMainMenuLayer::init()
 void DungeonMainMenuLayer::show()
 {
 	FUNCLOG
-    this->onIndexChanged(0);
+    this->onIndexChanged(this->menuIndex);
     this->setVisible(true);
     this->listenerKeyboard->setEnabled(true);
 }
@@ -94,6 +94,7 @@ void DungeonMainMenuLayer::hide()
 // カーソル移動時
 void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
+    this->menuIndex = newIdx;
     for(int i = 0; i < MenuLayer::menuObjects.size(); i++)
     {
         Node* obj {this->menuObjects.at(i)};
@@ -114,7 +115,7 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             SoundManager::getInstance()->playSound("se/failure.mp3");
             break;
         case Type::SAVE:
-            SoundManager::getInstance()->playSound("se/failure.mp3");
+            this->onSaveMenuSelected();
             break;
         case Type::CHARA:
             SoundManager::getInstance()->playSound("se/failure.mp3");
@@ -138,4 +139,9 @@ void DungeonMainMenuLayer::onMenuKeyPressed()
     {
         this->onMenuHidden();
     }
+}
+
+// 選択されているメニュー番号を取得
+int DungeonMainMenuLayer::getMenuIndex(){
+    return this->getMenuIndex();
 }

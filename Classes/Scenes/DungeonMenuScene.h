@@ -12,6 +12,7 @@
 #include "Scenes/baseScene.h"
 
 class DungeonMainMenuLayer;
+class SaveDataSelector;
 
 class DungeonMenuScene : public baseScene
 {
@@ -22,6 +23,8 @@ public:
 // インスタンス変数
 private:
     DungeonMainMenuLayer* mainMenu {nullptr};
+    SaveDataSelector* saveDataSelector {nullptr};
+    int menuIndex {0};
     function<void()> onPopMenuScene;
     
 // インスタンスメソッド
@@ -36,6 +39,9 @@ private:
     virtual void onSpaceKeyPressed() override;
     virtual void onMenuKeyPressed() override;
     virtual void intervalInputCheck(const vector<Key>& keys);
+    void onSaveMenuSelected();
+    void onSaveDataSelected(int dataId);
+    void onSaveDataSelectCancelled();
 };
 
 #endif /* defined(__LastSupper__DungeonMenuScene__) */

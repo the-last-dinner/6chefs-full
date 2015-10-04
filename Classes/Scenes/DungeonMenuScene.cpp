@@ -8,6 +8,7 @@
 
 #include "Scenes/DungeonMenuScene.h"
 #include "Layers/Menu/DungeonMainMenuLayer.h"
+#include "Layers/Menu/SaveDataSelector.h"
 
 // コンストラクタ
 DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
@@ -38,10 +39,22 @@ bool DungeonMenuScene::init(Texture2D* screen)
     
     // メインメニューレイヤーを生成
     DungeonMainMenuLayer* menu = DungeonMainMenuLayer::create();
+    menu->onSaveMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onSaveMenuSelected, this);
     menu->onMenuHidden = CC_CALLBACK_0(DungeonMenuScene::onMenuHidden, this);
     this->addChild(menu);
     this->mainMenu = menu;
     this->mainMenu->show();
+    
+    // セーブデータ選択レイヤーを生成
+    SaveDataSelector* saveDataSelector { SaveDataSelector::create() };
+    this->addChild(saveDataSelector);
+    
+    // セーブデータ選択レイヤーのイベントをリッスン
+    saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(DungeonMenuScene::onSaveDataSelected, this);
+    saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(DungeonMenuScene::onSaveDataSelectCancelled, this);
+    
+    saveDataSelector->hide();
+    this->saveDataSelector = saveDataSelector;
     return true;
 }
 
@@ -59,6 +72,8 @@ void DungeonMenuScene::onCursorKeyPressed(const Key& key)
 void DungeonMenuScene::onSpaceKeyPressed()
 {
 }
+
+
 
 // キーを押し続けている時
 void DungeonMenuScene::intervalInputCheck(const vector<Key>& keys)
@@ -81,3 +96,25 @@ void DungeonMenuScene::onMenuHidden()
     Director::getInstance()->popScene();
 }
 
+void DungeonMenuScene::onSaveMenuSelected()
+{
+    FUNCLOG
+    this->mainMenu->hide();
+    this->saveDataSelector->show();
+}
+
+// セーブデータが選ばれた時
+void DungeonMenuScene::onSaveDataSelected(int dataId)
+{
+    FUNCLOG
+    PlayerDataManager::getInstance()->setMainLocalData(dataId);
+    SoundManager::getInstance()->playSound("se/failure.mp3");
+}
+
+// セーブデータ選択をキャンセルした時
+void DungeonMenuScene::onSaveDataSelectCancelled()
+{
+    FUNCLOG
+    SoundManager::getInstance()->playSound("se/back.mp3");
+    runAction(Sequence::create(CallFunc::create([=](){this->saveDataSelector->hide();}), CallFunc::create([=](){this->mainMenu->show();}), nullptr));
+}

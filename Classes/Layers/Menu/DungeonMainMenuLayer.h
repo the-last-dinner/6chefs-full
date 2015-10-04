@@ -31,8 +31,10 @@ public:
 
     //インスタンス変数
 public:
-     function<void()> onMenuHidden { nullptr };
-    
+    function<void()> onMenuHidden { nullptr };
+    function<void()> onSaveMenuSelected {nullptr};
+private:
+    int menuIndex {0};
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();
@@ -43,6 +45,7 @@ private:
 	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed();
 public:
+    int getMenuIndex();
     virtual void show();
     virtual void hide();
 };
