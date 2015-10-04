@@ -653,8 +653,8 @@
 				2621C4261B3FC30500112CB9 /* PlayerDataManager.h */,
 				555B650C1B5CE94F00D15530 /* TextureManager.cpp */,
 				555B650D1B5CE94F00D15530 /* TextureManager.h */,
-				26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */,
 				26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */,
+				26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";

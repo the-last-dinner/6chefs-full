@@ -140,25 +140,15 @@ void DungeonScene::intervalInputCheck(const vector<Key>& keys)
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
+    FUNCLOG
+    // キーをリリース
+    this->listener->releaseKeyAll();
     // スクショ撮る
     RenderTexture* texture = RenderTexture::create(WINDOW_WIDTH, WINDOW_HEIGHT);
     texture->setPosition(WINDOW_CENTER);
     texture->begin();
     this->visit();
     texture->end();
-    // スクショをとって、ダンジョンメニューシーンをプッシュ
-    /*utils::captureScreen([=](bool success, string filename){
-        if(success)
-        {
-            Sprite* screen = Sprite::create(filename);
-     
-        }
-    }, "0.png");*/
+    // ダンジョンメニューシーンをスクショを引数にしてプッシュ
     Director::getInstance()->pushScene(DungeonMenuScene::createScene(texture->getSprite()->getTexture()));
-}
-
-// メニューが削除されたとき
-void DungeonScene::onMenuHidden()
-{
-    this->runAction(Sequence::createWithTwoActions(CallFunc::create([=](){this->removeChild(this->mainMenu);}), CallFunc::create([=](){this->listener->setEnabled(true);})));
 }

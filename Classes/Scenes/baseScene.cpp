@@ -34,13 +34,7 @@ bool baseScene::init(SceneData* data)
 	CC_SAFE_RETAIN(this->data);
 	
 	// イベントリスナ生成
-    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
-    listener->onCursorKeyPressed = CC_CALLBACK_1(baseScene::onCursorKeyPressed, this);
-    listener->onSpaceKeyPressed = CC_CALLBACK_0(baseScene::onSpaceKeyPressed, this);
-    listener->onMenuKeyPressed = CC_CALLBACK_0(baseScene::onMenuKeyPressed, this);
-    listener->onDashKeyPressed = CC_CALLBACK_0(baseScene::onDashKeyPressed, this);
-    this->addChild(listener);
-    this->listener = listener;
+    this->listener = createDungeonSceneListener();
 	
 	// ロード画面レイヤー
 	LoadingLayer* loadingLayer = LoadingLayer::create();
@@ -51,4 +45,17 @@ bool baseScene::init(SceneData* data)
 	this->data->preloadResources([=](float percentage){if(percentage == 1.f) loadingLayer->loadFinished(CC_CALLBACK_0(baseScene::onPreloadFinished, this));});
     
 	return true;
+}
+
+//イベントリスナー生成
+EventListenerKeyboardLayer* baseScene::createDungeonSceneListener()
+{
+    FUNCLOG
+    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
+    listener->onCursorKeyPressed = CC_CALLBACK_1(baseScene::onCursorKeyPressed, this);
+    listener->onSpaceKeyPressed = CC_CALLBACK_0(baseScene::onSpaceKeyPressed, this);
+    listener->onMenuKeyPressed = CC_CALLBACK_0(baseScene::onMenuKeyPressed, this);
+    listener->onDashKeyPressed = CC_CALLBACK_0(baseScene::onDashKeyPressed, this);
+    this->addChild(listener);
+    return listener;
 }

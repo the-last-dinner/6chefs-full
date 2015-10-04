@@ -46,6 +46,8 @@ public:
     void setInputCheckInterval(float interval);         // キー入力の確認間隔を設定
     void onKeyPressed(const EventKeyboard::KeyCode& keyCode);      // キーを押した時
     void onKeyReleased(const EventKeyboard::KeyCode& keyCode);     // キーを離した時
+    void releaseKey(const Key key);  // キーを離すとき
+    void releaseKeyAll();  // 全てのキーをリリース状態にリセット
     void inputCheck(float duration);                        // キーを押し続けている時
     bool isPressed(const Key& key);                                // 指定キーが押し状態か判別
     Key convertKeyCode(const EventKeyboard::KeyCode& keyCode);     // cococs上でのキーコードをゲーム内キーに変換

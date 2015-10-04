@@ -105,10 +105,26 @@ void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyC
 void EventListenerKeyboardLayer::onKeyReleased(const EventKeyboard::KeyCode& keyCode)
 {
     Key key {this->convertKeyCode(keyCode)};
+    this->releaseKey(key);
+}
+
+//　キーを離すとき
+void EventListenerKeyboardLayer::releaseKey(const Key key)
+{
     if(key == Key::SIZE) return;
     this->keyStatus[key] = false;
     if(find(this->pressingKeys.begin(), this->pressingKeys.end(), key) != this->pressingKeys.end()) this->pressingKeys.erase(remove(this->pressingKeys.begin(), this->pressingKeys.end(), key));
     if(this->pressingKeys.empty()) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck));
+}
+
+// 全てのキーを強制リリースする
+void EventListenerKeyboardLayer::releaseKeyAll()
+{
+    FUNCLOG
+    for(int key = 0; key < static_cast<int>(Key::SIZE); key++)
+    {
+        this->releaseKey(static_cast<Key>(key));
+    }
 }
 
 // キーを押し続けている時

@@ -35,7 +35,6 @@ private:
 // インスタンスメソッド
 public:
     void runEvent(int event_id);
-    void onMenuHidden();
     
 private:
 	DungeonScene();

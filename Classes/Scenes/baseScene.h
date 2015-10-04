@@ -29,6 +29,8 @@ protected:
 	bool init(SceneData* data);
 	
 	// インスタンス変数
+public:
+    EventListenerKeyboardLayer* createDungeonSceneListener();
 protected:
 	SceneData* data { nullptr };
     EventListenerKeyboardLayer* listener { nullptr };
