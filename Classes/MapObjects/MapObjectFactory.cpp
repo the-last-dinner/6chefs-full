@@ -31,7 +31,7 @@ MapObject* MapObjectFactory::createMapObject(const Group& group, const ValueMap&
     {
         {Group::COLLISION, CC_CALLBACK_1(MapObjectFactory::createObjectOnCollision, this)},
         {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, this)},
-        {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, this)},
+//        {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, this)},
     };
     
     return typeToFunc.at(group)(info);
@@ -121,18 +121,12 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
     // オブジェクトの種類を取得
     string type { this->getObjectType(info) };
     
-    // EventID取得
-    int eventId {this->getObjectId(info)};
-    
-    // trigger取得
-    Trigger trigger {this->getTrigger(info)};
-    
     // 種類が空の場合は単なるイベントのトリガーとして処理
     if(type == "")
     {
         pObj = EventObject::create();
-        pObj->setEventId(eventId);
-        pObj->setTrigger(trigger);
+        pObj->setEventId(this->getEventId(info));
+        pObj->setTrigger(this->getTrigger(info));
     }
     
     pObj->setContentSize(rect.size);

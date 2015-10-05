@@ -21,7 +21,7 @@ public:
     {
         COLLISION,
         EVENT,
-        CHARACTER,
+        //CHARACTER,
         
         SIZE,
     };
