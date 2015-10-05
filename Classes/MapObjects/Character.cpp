@@ -54,19 +54,21 @@ bool Character::init(int charaId, Direction direction)
     this->setContentSize(this->character->getContentSize());
     this->setCollisionRect(Rect(0, 0, this->getContentSize().width, this->getContentSize().height / 2));
 	
-	for(int i = 0; i < static_cast<int>(Direction::SIZE); i++)
+    for(int i {0}; i < static_cast<int>(Direction::SIZE); i++)
 	{
-		// 右足だけ動くタイプと左足だけ動くタイプでアニメーションを分ける
-		for(int k = 0; k < 2; k++)
-		{
-			Animation* pAnimation = Animation::create();
-			
-			// それぞれの向きのアニメーション用画像を追加していく
-			pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
-			
-			// キャッシュに保存
-			AnimationCache::getInstance()->addAnimation(pAnimation, to_string(i) + to_string(k));
-		}
+        Animation* pAnimation = Animation::create();
+        
+        // それぞれの向きのアニメーション用画像を追加していく
+        for(int k {0}; k < 3; k++)
+        {
+            pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k) + ".png"));
+        }
+        
+        // アニメーションを終了させた時点で最初のフレームヘ移動させる
+        pAnimation->setRestoreOriginalFrame(true);
+        
+        // キャッシュに保存
+        AnimationCache::getInstance()->addAnimation(pAnimation, this->texturePrefix + to_string(i));
 	}
 	return true;
 }
@@ -79,7 +81,6 @@ void Character::setDirection(Direction direction)
 	
 	// 向いている方向を更新
 	this->direction = direction;
-	return;
 }
 
 // 現在キャラが向いている方向を取得
@@ -88,25 +89,41 @@ Direction Character::getDirection()
 
 // キャラが動いているかをセット
 void Character::setMoving(bool _isMoving)
-{
-	this->_isMoving = _isMoving;
-	return;
-}
+{this->_isMoving = _isMoving;}
 
 // キャラが移動中かどうか取得
 bool Character::isMoving()
 {return this->_isMoving;}
 
-// 動いているアニメーションを再生
-void Character::stamp(float ratio)
+// 足踏みアニメーションを生成
+ActionInterval* Character::createStampingAction(const Direction& direction, float ratio)
 {
+    if(this->isMoving()) return nullptr;
+    
+    this->setMoving(true);
+    
 	// 現在の向きのアニメーションを取得
-	Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->identifier)?"0":"1"));
-	this->identifier = (this->identifier)?false:true;
-	anime->setDelayPerUnit(DURATION_FOR_ONE_STEP * ratio);
-	this->runAction(Sequence::create(CallFunc::create([=](){this->setMoving(true);}),
-                                     DelayTime::create(DURATION_FOR_ONE_STEP * ratio),//TargetedAction::create(this->character, Animate::create(anime)),
-									 CallFunc::create([=](){this->setMoving(false);}),
-									 nullptr));
-	return;
+	Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(direction)));
+	anime->setDelayPerUnit(DURATION_FOR_ONE_STEP * ratio * 3);
+    ActionInterval* stamping {TargetedAction::create(this->character, Animate::create(anime))};
+    stamping->setTag(1);
+    
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(anime->getDuration()), CallFunc::create([this](){this->setMoving(false);})));
+    
+    this->character->runAction(stamping);
+    
+    return stamping;
+}
+
+// 足踏みを止める
+void Character::stopStamping()
+{
+    dynamic_cast<Animate*>(this->getActionByTag(1))->stop();
+    
+}
+
+// 歩行アクションを生成
+ActionInterval* Character::createWalkAction(const Direction& direction, float ratio)
+{
+    return nullptr;
 }

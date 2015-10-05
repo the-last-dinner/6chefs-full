@@ -13,17 +13,17 @@
 
 class Character : public MapObject
 {
-	// クラスメソッド
+// クラスメソッド
 public:
 	static Character* create(int charaId, Direction direction);
 	
-	// クラス変数
+// クラス変数
 private:
 	static const string basePath;
 public:
 	static const float DURATION_FOR_ONE_STEP;
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
 	Character();
 	~Character();
@@ -33,15 +33,16 @@ public:
 	Direction getDirection();
 	void setMoving(bool _isMoving);
 	bool isMoving();
-	void stamp(float ratio = 1.0f);
+	ActionInterval* createStampingAction(const Direction& direction, float ratio = 1.0f);
+    void stopStamping();
+    ActionInterval* createWalkAction(const Direction& direction, float ratio = 1.0f);
 	
-	// インスタンス変数
+// インスタンス変数
 private:
 	Sprite* character { nullptr };												// キャラクターのSprite部分
 	string texturePrefix {""};											// キャラプロパティリストファイル名の先頭部分
 	Direction direction {Direction::SIZE};											// 現在向いている方向
 	bool _isMoving { false };
-	bool identifier { false };
 };
 
 #endif // __CHARACTER_H__

@@ -56,14 +56,14 @@ Direction MapUtils::keyToDirection(const Key& key)
 }
 
 // 方向キーベクタを向きへ変換しスタックに詰めて返す
-stack<Direction> MapUtils::keyToDirection(const vector<Key>& keys)
+vector<Direction> MapUtils::keyToDirection(const vector<Key>& keys)
 {
-    stack<Direction> directions {};
+    vector<Direction> directions {};
     if(keys.empty()) return directions;
     for(Key key : keys)
     {
         Direction direction {MapUtils::keyToDirection(key)};
-        if(direction != Direction::SIZE) directions.push(direction);
+        if(direction != Direction::SIZE) directions.push_back(direction);
     }
     return directions;
 }

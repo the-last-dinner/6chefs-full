@@ -26,13 +26,14 @@ ControlMainCharacterTask::~ControlMainCharacterTask(){FUNCLOG}
 bool ControlMainCharacterTask::init(DungeonScene* dungeonScene)
 {
     this->scene = dungeonScene;
+    
     return true;
 }
 
 // 向きを変える
 void ControlMainCharacterTask::turn(const Direction& direction)
 {
-    this->scene->mapLayer->getMainCharacter()->setDirection(direction);
+    this->scene->mapLayer->getMapObjectList()->getMainCharacter()->setDirection(direction);
 }
 
 // 目の前を調べる
@@ -46,32 +47,32 @@ void ControlMainCharacterTask::search()
 }
 
 // 歩行中、あたり判定を行い次に向かう位置を決定する
-void ControlMainCharacterTask::walking(stack<Direction> directions)
+void ControlMainCharacterTask::walking(vector<Direction> directions)
 {
     TiledMapLayer* mapLayer {this->scene->mapLayer};
-    Character* mainCharacter {mapLayer->getMainCharacter()};
+    Character* mainCharacter {mapLayer->getMapObjectList()->getMainCharacter()};
     
-    mainCharacter->setDirection(directions.top());
+    mainCharacter->setDirection(directions.back());
     
-    Direction dirs[2] {};
+    int directionCount {(directions.size() >= 2 && directions.back() != directions.at(directions.size() - 2))?static_cast<int>(directions.size()):1};
+    
+    bool isHit {(directionCount > 1)?mainCharacter->isHit({directions.back(), directions.at(directionCount - 2)}):false};
     
     Point movement {Point::ZERO};
     
-    for(int i {0}; i < 2; i++)
+    for(int i {directionCount - 1}; i >= 0; i--)
     {
-        if(directions.size() < 1) break;
-        if (!mainCharacter->isHit(directions.top())) movement += MapUtils::getGridVector(directions.top());
-        dirs[i] = directions.top();
-        directions.pop();
+        if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && movement == Point::ZERO))
+        {
+            movement += MapUtils::getGridVector(directions.at(i));
+        }
     }
     
-    if(mainCharacter->isHit(dirs)) return;
-    
-    this->scene->runAction(Sequence::create(Spawn::create(CallFunc::create([this, mapLayer, mainCharacter, movement](){mainCharacter->stamp();}),
-                                                    TargetedAction::create(mapLayer->getTiledMap(), MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
-                                                    TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
-                                                    nullptr),
-                                      CallFunc::create([=]()
+    this->scene->runAction(Sequence::create(Spawn::create(
+                                                          TargetedAction::create(mapLayer, MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
+                                                          TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
+                                                          nullptr),
+                                      CallFunc::create([mapLayer, mainCharacter, this]()
                                                        {
                                                            MapObject* obj { mapLayer->getMapObjectList()->getMapObject(mainCharacter->getPosition())};
                                                            if(obj && obj->getTrigger() == Trigger::RIDE) this->scene->runEvent(obj->getEventId());

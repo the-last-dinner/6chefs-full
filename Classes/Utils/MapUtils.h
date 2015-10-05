@@ -19,7 +19,7 @@ namespace MapUtils
     Point getGridVector(const Direction& direction);
     float   getGridNum(float length);
     Direction keyToDirection(const Key& key);
-    stack<Direction> keyToDirection(const vector<Key>& keys);
+    vector<Direction> keyToDirection(const vector<Key>& keys);
 }
 
 #endif // __MAP_UTILS_H__

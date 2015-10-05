@@ -88,6 +88,46 @@ enum struct Trigger
 	NONE,
 };
 
+// オブジェクトID
+enum struct ObjectID
+{
+    UNDIFINED = -1,
+};
+
+// イベントID
+enum struct EventID
+{
+    UNDIFINED = -1,
+};
+
+// キャラクターID
+enum struct CharacterID
+{
+    UNDIFINED = -1,
+};
+
+// 味方キャラクタの動き方
+enum struct CharacterMovePattern
+{
+    NONE = 1,
+    RANDOM = 2,
+    
+    SIZE,
+};
+
+// 敵キャラクタの動き方
+enum struct EnemyMovePattern
+{
+    CHASE,
+    RANDOM,
+    SPEED_UP,
+    PERFECT_RANDOM,
+    SERCH,
+    PERFECT_CHASE,
+    
+    SIZE,
+};
+
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
 static __TYPE_1__* create(__TYPE_2__ param) \

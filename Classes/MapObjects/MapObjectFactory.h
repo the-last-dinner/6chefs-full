@@ -21,6 +21,7 @@ public:
     {
         COLLISION,
         EVENT,
+        //CHARACTER,
         
         SIZE,
     };
@@ -36,9 +37,18 @@ private:
     MapObjectFactory();
     ~MapObjectFactory();
     bool init();
-    Rect getRect(const ValueMap& info);
+    Rect getRect(const ValueMap& info) const;
+    int getObjectId(const ValueMap& info) const;
+    int getEventId(const ValueMap& info) const;
+    string getObjectType(const ValueMap& info) const;
+    Trigger getTrigger(const ValueMap& info) const;
+    int getCharacterId(const ValueMap& info) const;
+    CharacterMovePattern getCharacterMovePattern(const ValueMap& info) const;
+    Direction getDirection(const ValueMap& info) const;
+    
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);
+    MapObject* createObjectOnCharacter(const ValueMap& info);
     
 public:
     MapObject* createMapObject(const Group& group, const ValueMap& info);
