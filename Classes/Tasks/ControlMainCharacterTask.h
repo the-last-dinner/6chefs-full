@@ -31,7 +31,7 @@ private:
 public:
     void turn(const Direction& direction);      // 向きを変える
     void search();                              // 目の前を調べる
-    void walking(stack<Direction> directions); // 歩行中
+    void walking(vector<Direction> directions); // 歩行中
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

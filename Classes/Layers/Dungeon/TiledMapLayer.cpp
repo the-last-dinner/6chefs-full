@@ -54,6 +54,7 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
     {
         {MapObjectFactory::Group::COLLISION, "collision"},
         {MapObjectFactory::Group::EVENT, "event"},
+        {MapObjectFactory::Group::CHARACTER, "Chara(object)"},
     };
     
     // 生成して配置

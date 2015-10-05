@@ -17,15 +17,9 @@ class MapObjectList;
 
 class MapObject : public Node
 {
-// 定数
-public:
-    enum EventID
-    {
-        UNDIFINED = -1,
-    };
 // インスタンス変数
 private:
-    int eventId { EventID::UNDIFINED };
+    int eventId { static_cast<int>(EventID::UNDIFINED) };
 	Trigger trigger {Trigger::SIZE};
 	bool _isHit { false };
 	Direction movingDirection {Direction::SIZE};
