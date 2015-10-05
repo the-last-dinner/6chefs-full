@@ -17,11 +17,13 @@ SaveDataSelector::SaveDataSelector(){FUNCLOG}
 SaveDataSelector::~SaveDataSelector(){FUNCLOG}
 
 // 初期化
-bool SaveDataSelector::init()
+bool SaveDataSelector::init(bool write = false)
 {
 	FUNCLOG
 	if(!MenuLayer::init(2, PlayerDataManager::MAX_SAVE_COUNT / 2)) return false;
 	
+    // 書き込みフラグをセット
+    this->write_flag = write;
 	// 黒い背景を生成
 	Sprite* black = Sprite::create();
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -103,8 +105,21 @@ void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 // 決定キーを押した時
 void SaveDataSelector::onSpacePressed(int idx)
 {
+    if (this->write_flag)
+    {
+        // セーブ時
+        SoundManager::getInstance()->playSound("se/back.mp3");
+        cout << "SAVE!" << endl;
+        return;
+    } else
+    {
+        // ロード時
+        SoundManager::getInstance()->playSound("se/back.mp3");
+        cout << "LOAD!" << endl;
+        return;
+    }
 	// 指定セーブデータがプレイヤーによってセーブされたものであるか判別
-	if(this->saveDatas.at(idx).save_count == PlayerDataManager::DEFAULT_COUNT)
+	/*if(this->saveDatas.at(idx).save_count == PlayerDataManager::DEFAULT_COUNT)
 	{
 		SoundManager::getInstance()->playSound("se/back.mp3");
 		return;
@@ -112,7 +127,7 @@ void SaveDataSelector::onSpacePressed(int idx)
 	if(this->onSaveDataSelected)
 	{
 		this->onSaveDataSelected(this->saveDatas.at(idx).data_id);
-	}
+	}*/
 }
 
 // メニューキーを押した時

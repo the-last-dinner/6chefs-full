@@ -52,7 +52,7 @@ void TitleScene::onPreloadFinished()
 	this->mainMenu = mainMenu;
 	
 	// セーブデータ選択レイヤーを生成
-	SaveDataSelector* saveDataSelector { SaveDataSelector::create() };
+	SaveDataSelector* saveDataSelector { SaveDataSelector::create(false) };
 	this->addChild(saveDataSelector);
 	
 	// セーブデータ選択レイヤーのイベントをリッスン
