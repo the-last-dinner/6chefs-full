@@ -110,6 +110,8 @@
 		55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEF1B39A427000AFC17 /* SceneData.cpp */; };
 		556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */; };
 		556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */; };
+		556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71591BC2C8D100835D15 /* CameraTask.cpp */; };
+		556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71591BC2C8D100835D15 /* CameraTask.cpp */; };
 		557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C91B4702BF001993E1 /* MapUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C71B4702BF001993E1 /* MapUtils.cpp */; };
@@ -302,6 +304,8 @@
 		55655AF01B39A427000AFC17 /* SceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneData.h; sourceTree = "<group>"; };
 		556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TiledMapLayer.cpp; path = ../Classes/Layers/Dungeon/TiledMapLayer.cpp; sourceTree = "<group>"; };
 		556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapLayer.h; path = ../Classes/Layers/Dungeon/TiledMapLayer.h; sourceTree = "<group>"; };
+		556C71591BC2C8D100835D15 /* CameraTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CameraTask.cpp; path = ../Classes/Tasks/CameraTask.cpp; sourceTree = "<group>"; };
+		556C715A1BC2C8D100835D15 /* CameraTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraTask.h; path = ../Classes/Tasks/CameraTask.h; sourceTree = "<group>"; };
 		557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSceneData.cpp; sourceTree = "<group>"; };
 		557A87C31B46EB3E001993E1 /* TitleSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneData.h; sourceTree = "<group>"; };
 		557A87C71B4702BF001993E1 /* MapUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapUtils.cpp; path = ../Classes/Utils/MapUtils.cpp; sourceTree = "<group>"; };
@@ -738,6 +742,8 @@
 				5583CE3D1B9A163C00F9ACB7 /* EventScriptTask.h */,
 				5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */,
 				5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */,
+				556C71591BC2C8D100835D15 /* CameraTask.cpp */,
+				556C715A1BC2C8D100835D15 /* CameraTask.h */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -951,6 +957,7 @@
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
+				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
@@ -1009,6 +1016,7 @@
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
+				556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
