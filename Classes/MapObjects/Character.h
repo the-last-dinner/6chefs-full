@@ -35,7 +35,7 @@ public:
 	bool isMoving();
 	ActionInterval* createStampingAction(const Direction& direction, float ratio = 1.0f);
     void stopStamping();
-    ActionInterval* createWalkAction(const Direction& direction, float ratio = 1.0f);
+    ActionInterval* createWalkByAction(const Point& vector, float ratio = 1.0f);
 	
 // インスタンス変数
 private:

@@ -32,7 +32,7 @@ public:
     Character* getMainCharacter();
     experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
-    
+    Size getMapSize() const;
     
 	// インスタンス変数
 private:

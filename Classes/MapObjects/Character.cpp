@@ -123,7 +123,8 @@ void Character::stopStamping()
 }
 
 // 歩行アクションを生成
-ActionInterval* Character::createWalkAction(const Direction& direction, float ratio)
+ActionInterval* Character::createWalkByAction(const Point& vector , float ratio)
 {
+    int gridNum {};
     return nullptr;
 }

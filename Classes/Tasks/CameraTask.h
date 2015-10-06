@@ -13,6 +13,7 @@
 
 class DungeonScene;
 class MapObject;
+class FollowType;
 
 class CameraTask : public Node
 {
@@ -21,8 +22,10 @@ public:
     CREATE_FUNC_WITH_PARAM(CameraTask, DungeonScene*)
 
 // インスタンス変数
+private:
     DungeonScene* scene {nullptr};
     MapObject* target { nullptr };
+    FollowType* follow { nullptr };
     
 // インスタンスメソッド
 private:

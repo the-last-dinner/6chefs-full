@@ -66,11 +66,6 @@ bool DungeonScene::init()
     CC_SAFE_RETAIN(controlMainCharacterTask);
     this->controlMainCharacterTask = controlMainCharacterTask;
     
-    // カメラ処理クラスを生成
-    CameraTask* cameraTask {CameraTask::create(this)};
-    CC_SAFE_RETAIN(cameraTask);
-    this->cameraTask = cameraTask;
-    
     // リスナにコールバックを設定
     this->listener->intervalInputCheck = CC_CALLBACK_1(DungeonScene::intervalInputCheck, this);
     this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
@@ -86,30 +81,22 @@ void DungeonScene::onPreloadFinished()
 {
 	FUNCLOG
 	
-	// 黒い幕を張っておく
-	Sprite* black { Sprite::create()};
-	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
-	black->setColor(Color3B::BLACK);
-	black->setGlobalZOrder(Priority::SCREEN_COVER);
-	black->setPosition(WINDOW_CENTER);
-	this->addChild(black);
-	
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
 	mapLayer->setGlobalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
+    // カメラ処理クラスを生成
+    CameraTask* cameraTask {CameraTask::create(this)};
+    CC_SAFE_RETAIN(cameraTask);
+    this->cameraTask = cameraTask;
+    
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
     ambientLightLayer->setGlobalZOrder(Priority::AMBIENT_LIGHT);
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
-
-	// 黒い幕をフェードアウト
-	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
-									 TargetedAction::create(black, RemoveSelf::create()),
-									 nullptr));
     
     this->listener->setEnabled(true);
     

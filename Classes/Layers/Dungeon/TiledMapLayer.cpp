@@ -95,3 +95,9 @@ MapObjectList* TiledMapLayer::getMapObjectList() const
 {
     return this->objectList;
 }
+
+// マップのサイズを取得
+Size TiledMapLayer::getMapSize() const
+{
+    return this->tiledMap->getContentSize();
+}

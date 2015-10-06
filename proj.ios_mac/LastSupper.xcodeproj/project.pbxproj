@@ -112,6 +112,16 @@
 		556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */; };
 		556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71591BC2C8D100835D15 /* CameraTask.cpp */; };
 		556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71591BC2C8D100835D15 /* CameraTask.cpp */; };
+		556C71661BC3DA9E00835D15 /* FollowType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71641BC3DA9E00835D15 /* FollowType.cpp */; };
+		556C71671BC3DA9E00835D15 /* FollowType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71641BC3DA9E00835D15 /* FollowType.cpp */; };
+		556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71681BC3DCA000835D15 /* NeverFollow.cpp */; };
+		556C716B1BC3DCA000835D15 /* NeverFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71681BC3DCA000835D15 /* NeverFollow.cpp */; };
+		556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C716C1BC3F66200835D15 /* HorizontalFollow.cpp */; };
+		556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C716C1BC3F66200835D15 /* HorizontalFollow.cpp */; };
+		556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71701BC3FBDE00835D15 /* VerticalFollow.cpp */; };
+		556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71701BC3FBDE00835D15 /* VerticalFollow.cpp */; };
+		556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71741BC3FD9A00835D15 /* BothFollow.cpp */; };
+		556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71741BC3FD9A00835D15 /* BothFollow.cpp */; };
 		557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C91B4702BF001993E1 /* MapUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C71B4702BF001993E1 /* MapUtils.cpp */; };
@@ -306,6 +316,16 @@
 		556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiledMapLayer.h; path = ../Classes/Layers/Dungeon/TiledMapLayer.h; sourceTree = "<group>"; };
 		556C71591BC2C8D100835D15 /* CameraTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CameraTask.cpp; path = ../Classes/Tasks/CameraTask.cpp; sourceTree = "<group>"; };
 		556C715A1BC2C8D100835D15 /* CameraTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraTask.h; path = ../Classes/Tasks/CameraTask.h; sourceTree = "<group>"; };
+		556C71641BC3DA9E00835D15 /* FollowType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FollowType.cpp; path = ../Classes/Tasks/FollowType/FollowType.cpp; sourceTree = "<group>"; };
+		556C71651BC3DA9E00835D15 /* FollowType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FollowType.h; path = ../Classes/Tasks/FollowType/FollowType.h; sourceTree = "<group>"; };
+		556C71681BC3DCA000835D15 /* NeverFollow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NeverFollow.cpp; path = ../Classes/Tasks/FollowType/NeverFollow.cpp; sourceTree = "<group>"; };
+		556C71691BC3DCA000835D15 /* NeverFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NeverFollow.h; path = ../Classes/Tasks/FollowType/NeverFollow.h; sourceTree = "<group>"; };
+		556C716C1BC3F66200835D15 /* HorizontalFollow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HorizontalFollow.cpp; path = ../Classes/Tasks/FollowType/HorizontalFollow.cpp; sourceTree = "<group>"; };
+		556C716D1BC3F66200835D15 /* HorizontalFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalFollow.h; path = ../Classes/Tasks/FollowType/HorizontalFollow.h; sourceTree = "<group>"; };
+		556C71701BC3FBDE00835D15 /* VerticalFollow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VerticalFollow.cpp; path = ../Classes/Tasks/FollowType/VerticalFollow.cpp; sourceTree = "<group>"; };
+		556C71711BC3FBDE00835D15 /* VerticalFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerticalFollow.h; path = ../Classes/Tasks/FollowType/VerticalFollow.h; sourceTree = "<group>"; };
+		556C71741BC3FD9A00835D15 /* BothFollow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BothFollow.cpp; path = ../Classes/Tasks/FollowType/BothFollow.cpp; sourceTree = "<group>"; };
+		556C71751BC3FD9A00835D15 /* BothFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BothFollow.h; path = ../Classes/Tasks/FollowType/BothFollow.h; sourceTree = "<group>"; };
 		557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSceneData.cpp; sourceTree = "<group>"; };
 		557A87C31B46EB3E001993E1 /* TitleSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneData.h; sourceTree = "<group>"; };
 		557A87C71B4702BF001993E1 /* MapUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapUtils.cpp; path = ../Classes/Utils/MapUtils.cpp; sourceTree = "<group>"; };
@@ -719,6 +739,23 @@
 			name = Dungeon;
 			sourceTree = "<group>";
 		};
+		556C715F1BC3D8C800835D15 /* FollowType */ = {
+			isa = PBXGroup;
+			children = (
+				556C71641BC3DA9E00835D15 /* FollowType.cpp */,
+				556C71651BC3DA9E00835D15 /* FollowType.h */,
+				556C71681BC3DCA000835D15 /* NeverFollow.cpp */,
+				556C71691BC3DCA000835D15 /* NeverFollow.h */,
+				556C716C1BC3F66200835D15 /* HorizontalFollow.cpp */,
+				556C716D1BC3F66200835D15 /* HorizontalFollow.h */,
+				556C71701BC3FBDE00835D15 /* VerticalFollow.cpp */,
+				556C71711BC3FBDE00835D15 /* VerticalFollow.h */,
+				556C71741BC3FD9A00835D15 /* BothFollow.cpp */,
+				556C71751BC3FD9A00835D15 /* BothFollow.h */,
+			);
+			name = FollowType;
+			sourceTree = "<group>";
+		};
 		557A87C61B470279001993E1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,6 +781,7 @@
 				5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */,
 				556C71591BC2C8D100835D15 /* CameraTask.cpp */,
 				556C715A1BC2C8D100835D15 /* CameraTask.h */,
+				556C715F1BC3D8C800835D15 /* FollowType */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -944,11 +982,13 @@
 				5583CE3E1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
+				556C71661BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */,
 				557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
+				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				552F5DC71B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
@@ -956,12 +996,14 @@
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
+				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
+				556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
@@ -976,6 +1018,7 @@
 				557A87C91B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
+				556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,11 +1039,14 @@
 				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
+				556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
+				556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
@@ -1017,7 +1063,9 @@
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
+				556C71671BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
+				556C716B1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 			);
