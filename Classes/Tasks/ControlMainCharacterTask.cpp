@@ -68,9 +68,7 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
         }
     }
     
-    this->scene->runAction(Sequence::create(Spawn::create(
-                                                          TargetedAction::create(mapLayer, MoveBy::create(Character::DURATION_FOR_ONE_STEP, - movement)),
-                                                          TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
+    this->scene->runAction(Sequence::create(Spawn::create(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
                                                           nullptr),
                                       CallFunc::create([mapLayer, mainCharacter, this]()
                                                        {

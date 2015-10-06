@@ -28,12 +28,12 @@ public:
 private:
     CameraTask();
     ~CameraTask();
-    virtual bool init(DungeonScene* scene) override;
-    void update(float delta);
+    bool init(DungeonScene* scene);
 public:
     void setTarget(MapObject* target);
     void stopFollowing();
     void resumeFollowing();
+    void update(float delta);
 };
 
 #endif /* defined(__LastSupper__CameraTask__) */

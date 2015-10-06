@@ -72,8 +72,6 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
             objectList->add(obj);
         }
     }
-    
-    this->setPosition(-mainCharacter->getPosition() + Director::getInstance()->getWinSize() / 2);
 
     CC_SAFE_RELEASE(factory);
     

@@ -27,7 +27,7 @@ bool CameraTask::init(DungeonScene* scene)
     
     this->scene = scene;
     
-    this->scheduleUpdate();
+        this->resumeFollowing();
     
     return true;
 }
@@ -41,19 +41,19 @@ void CameraTask::setTarget(MapObject* target)
 // 自動追尾を停止
 void CameraTask::stopFollowing()
 {
-    this->unscheduleUpdate();
+    Director::getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
 // 自動追尾を再開
 void CameraTask::resumeFollowing()
 {
-    this->scheduleUpdate();
+    Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 }
 
 // updateメソッド
 void CameraTask::update(float delta)
 {
-    if(!this->target) return;
+    if(!this->target || this->target->getReferenceCount() == 0) return;
     
     this->scene->mapLayer->setPosition(-this->target->getPosition() + Director::getInstance()->getWinSize() / 2);
 }

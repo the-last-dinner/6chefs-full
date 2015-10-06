@@ -30,8 +30,11 @@ DungeonScene::~DungeonScene()
 {
 	FUNCLOG
     
+    this->cameraTask->stopFollowing();
+    
 	CC_SAFE_RELEASE_NULL(this->eventScriptTask);
     CC_SAFE_RELEASE_NULL(this->controlMainCharacterTask);
+    CC_SAFE_RELEASE_NULL(this->cameraTask);
 }
 
 // シーン生成
@@ -62,6 +65,11 @@ bool DungeonScene::init()
     ControlMainCharacterTask* controlMainCharacterTask {ControlMainCharacterTask::create(this)};
     CC_SAFE_RETAIN(controlMainCharacterTask);
     this->controlMainCharacterTask = controlMainCharacterTask;
+    
+    // カメラ処理クラスを生成
+    CameraTask* cameraTask {CameraTask::create(this)};
+    CC_SAFE_RETAIN(cameraTask);
+    this->cameraTask = cameraTask;
     
     // リスナにコールバックを設定
     this->listener->intervalInputCheck = CC_CALLBACK_1(DungeonScene::intervalInputCheck, this);
@@ -106,6 +114,8 @@ void DungeonScene::onPreloadFinished()
     this->listener->setEnabled(true);
     
     mapLayer->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    
+    this->cameraTask->setTarget(mapLayer->getMainCharacter());
     
 	return;
 }

@@ -30,6 +30,7 @@ private:
     AmbientLightLayer* ambientLightLayer {nullptr};
     EventScriptTask* eventScriptTask { nullptr };
     ControlMainCharacterTask* controlMainCharacterTask {nullptr};
+    CameraTask* cameraTask { nullptr };
     
 // インスタンスメソッド
 public:
