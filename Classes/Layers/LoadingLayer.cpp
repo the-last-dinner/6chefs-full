@@ -37,7 +37,7 @@ bool LoadingLayer::init()
 		ActionInterval* loadingAnimation = Sequence::create(DelayTime::create(0.5f * i),
 													TargetedAction::create(circle, FadeIn::create(0.1f)),
 													Spawn::create(TargetedAction::create(circle, FadeOut::create(1.f + i)),
-																  TargetedAction::create(circle, ScaleTo::create(1.f + i, 0.5f)),
+                                                                  TargetedAction::create(circle, EaseCubicActionOut::create(ScaleTo::create(1.f + i, 0.5f))),
 																  nullptr),
 													TargetedAction::create(circle, ScaleTo::create(0.1f, 0.1f)),
 													nullptr);
@@ -52,11 +52,11 @@ void LoadingLayer::loadFinished(const function<void()>& callback)
 {
 	FUNCLOG
 	this->setCascadeOpacityEnabled(true);
-	this->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create([=](){
+	this->runAction(Sequence::create(FadeOut::create(0.8f), CallFunc::create([=]()
+    {
 		this->setVisible(false);
 		this->removeAllChildren();
 		callback();
 		this->removeFromParent();
-		}), nullptr));
-	return;
+    }), nullptr));
 }
