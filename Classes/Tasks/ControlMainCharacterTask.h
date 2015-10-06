@@ -22,6 +22,7 @@ public:
 // インスタンス変数
 private:
     DungeonScene* scene {nullptr};
+    int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
     
 // インスタンスメソッド
 private:
@@ -32,6 +33,7 @@ public:
     void turn(const Direction& direction);      // 向きを変える
     void search();                              // 目の前を調べる
     void walking(vector<Direction> directions); // 歩行中
+    void onCharacterWalkedOneGrid();            // 一マス分移動し終えた時
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

@@ -68,13 +68,29 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
         }
     }
     
-    this->scene->runAction(Sequence::create(Spawn::create(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)),
-                                                          nullptr),
-                                      CallFunc::create([mapLayer, mainCharacter, this]()
-                                                       {
-                                                           MapObject* obj { mapLayer->getMapObjectList()->getMapObject(mainCharacter->getPosition())};
-                                                           if(obj && obj->getTrigger() == Trigger::RIDE) this->scene->runEvent(obj->getEventId());
-                                                       }),
-                                      nullptr));
+    this->scene->runAction(Sequence::createWithTwoActions(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
 }
 
+// 一マス分移動し終えた時
+void ControlMainCharacterTask::onCharacterWalkedOneGrid()
+{
+    TiledMapLayer* mapLayer {this->scene->mapLayer};
+
+    // 衝突判定用Rectの中心座標にあるイベントを呼ぶ
+    Rect collisionRect {mapLayer->getMapObjectList()->getMainCharacter()->getCollisionRect()};
+    Point checkPosition {Point(collisionRect.getMidX(), collisionRect.getMidY())};
+    MapObject* obj { mapLayer->getMapObjectList()->getMapObject(checkPosition)};
+    
+    if(!obj)
+    {
+        this->riddenEventID = static_cast<int>(EventID::UNDIFINED);
+        return;
+    }
+    
+    // 現在乗っているマスのイベントを発動しないようにして、イベントを呼ぶ
+    if(obj && obj->getTrigger() == Trigger::RIDE && obj->getEventId() != this->riddenEventID)
+    {
+        this->riddenEventID = obj->getEventId();
+        this->scene->runEvent(obj->getEventId());
+    }
+}
