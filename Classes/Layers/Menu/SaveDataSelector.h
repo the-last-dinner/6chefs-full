@@ -15,8 +15,8 @@ class SaveDataSelector : public MenuLayer
 {
 	// クラスメソッド
 public:
-	CREATE_FUNC(SaveDataSelector);
-	virtual bool init();
+	CREATE_FUNC_WITH_PARAM(SaveDataSelector, bool);
+	virtual bool init(bool write);
 	
 	// クラス変数
 private:
@@ -38,6 +38,7 @@ public:
 	// インスタンス変数
 private:
 	vector<PlayerDataManager::SaveIndex> saveDatas {};
+    bool write_flag;
 public:
 	function<void(int)> onSaveDataSelected { nullptr };
 	function<void()> onSaveDataSelectCancelled { nullptr };

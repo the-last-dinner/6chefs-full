@@ -46,7 +46,7 @@ bool DungeonMenuScene::init(Texture2D* screen)
     this->mainMenu->show();
     
     // セーブデータ選択レイヤーを生成
-    SaveDataSelector* saveDataSelector { SaveDataSelector::create() };
+    SaveDataSelector* saveDataSelector { SaveDataSelector::create(true) };
     this->addChild(saveDataSelector);
     
     // セーブデータ選択レイヤーのイベントをリッスン
