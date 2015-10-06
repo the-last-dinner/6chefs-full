@@ -15,10 +15,10 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/Message/CharacterMessageLayer.h"
-#include "Layers/Menu/DungeonMainMenuLayer.h"
 
 #include "Tasks/EventScriptTask.h"
 #include "Tasks/ControlMainCharacterTask.h"
+#include "Tasks/CameraTask.h"
 
 #include "MapObjects/Objects.h"
 

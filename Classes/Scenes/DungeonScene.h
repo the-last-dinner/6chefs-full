@@ -15,7 +15,7 @@ class AmbientLightLayer;
 class TiledMapLayer;
 class EventScriptTask;
 class ControlMainCharacterTask;
-class DungeonMainMenuLayer;
+class CameraTask;
 
 class DungeonScene : public baseScene
 {
@@ -30,7 +30,6 @@ private:
     AmbientLightLayer* ambientLightLayer {nullptr};
     EventScriptTask* eventScriptTask { nullptr };
     ControlMainCharacterTask* controlMainCharacterTask {nullptr};
-    DungeonMainMenuLayer* mainMenu { nullptr };
     
 // インスタンスメソッド
 public:
@@ -48,6 +47,7 @@ private:
 	
 	friend class EventScriptTask;
     friend class ControlMainCharacterTask;
+    friend class CameraTask;
 };
 
 

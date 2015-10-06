@@ -12,8 +12,9 @@
 #include "Common.h"
 
 class DungeonScene;
+class MapObject;
 
-class CameraTask : public Ref
+class CameraTask : public Node
 {
 // クラスメソッド
 public:
@@ -21,12 +22,18 @@ public:
 
 // インスタンス変数
     DungeonScene* scene {nullptr};
+    MapObject* target { nullptr };
     
 // インスタンスメソッド
 private:
     CameraTask();
     ~CameraTask();
-    bool init(DungeonScene* scene);
+    virtual bool init(DungeonScene* scene) override;
+    void update(float delta);
+public:
+    void setTarget(MapObject* target);
+    void stopFollowing();
+    void resumeFollowing();
 };
 
 #endif /* defined(__LastSupper__CameraTask__) */
