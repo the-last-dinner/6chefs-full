@@ -54,6 +54,9 @@ bool AmbientLightLayer::init(const Color3B& color)
     
     renderTexSprite->setBlendFunc(BlendFunc{GL_ZERO, GL_SRC_COLOR});
     
+    // update開始
+    this->scheduleUpdate();
+    
     return true;
 }
 
@@ -81,13 +84,14 @@ void AmbientLightLayer::addLightSource(MapObject* object, const Light::Informati
 void AmbientLightLayer::removeLightSource(MapObject* object)
 {
     if(!object) return;
+    
     if(this->objectMap.count(object) == 0) return;
     Light* light {this->objectMap.at(object)};
     light->runAction(Sequence::create(FadeOut::create(0.5f), RemoveSelf::create(), CallFunc::create([this, object](){this->objectMap.erase(object); CC_SAFE_RELEASE(object);}), nullptr));
 }
 
 // 光の位置、状態をアップデート
-void AmbientLightLayer::update()
+void AmbientLightLayer::update(float delta)
 {
     for(pair<MapObject*, Light*> element : this->objectMap)
     {
