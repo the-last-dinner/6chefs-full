@@ -109,7 +109,7 @@ void EventListenerKeyboardLayer::onKeyReleased(const EventKeyboard::KeyCode& key
 }
 
 //　キーを離すとき
-void EventListenerKeyboardLayer::releaseKey(const Key key)
+void EventListenerKeyboardLayer::releaseKey(const Key& key)
 {
     if(key == Key::SIZE) return;
     this->keyStatus[key] = false;
