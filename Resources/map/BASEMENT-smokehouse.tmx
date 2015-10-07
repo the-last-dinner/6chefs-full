@@ -54,14 +54,6 @@
    eJxLYWZgSMWCTzPhx9j0pAFxExA3Y8GEzMOmB2ReCg73kYNh5mGzixwMM49aYNS8UfNINa+JBu7bDTVzL4VmD4XwG2nmNUHjdw8zJH6R2cQAZLUtVHTbSAUAOKM/CA==
   </data>
  </layer>
- <layer name="MonoUe" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-16"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGAb0BAAeAAAE=
-  </data>
- </layer>
  <objectgroup name="collision">
   <object id="1" x="0" y="0" width="16" height="320"/>
   <object id="2" x="16" y="320" width="128" height="32"/>

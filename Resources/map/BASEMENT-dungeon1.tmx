@@ -19,14 +19,6 @@
    eJxjYBh4sJuRMnliwU0C5hCSHwWjYBSMglEwCkbB0AQA3RMDLQ==
   </data>
  </layer>
- <layer name="MonoChu" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
-  </data>
- </layer>
  <objectgroup name="collision">
   <object id="2" x="32" y="0" width="32" height="240"/>
   <object id="3" x="32" y="272" width="32" height="64"/>

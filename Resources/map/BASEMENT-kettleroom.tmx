@@ -120,10 +120,18 @@
  </objectgroup>
  <layer name="CharaUe1" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-1"/>
+   <property name="cc_vertexz" value="-2"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFIxE4sjAwOAGxMxC7sNBeHwxEAvVEAXE0EMeQoJ9cfaNgFIyCoQ9Gy6tRMAoGPwAAyScKUQ==
+  </data>
+ </layer>
+ <layer name="neck" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGATVBDhcDQy7XQLtiFIwC+gEAxGIA7g==
   </data>
  </layer>
  <objectgroup name="event">
@@ -179,9 +187,4 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="neck" width="30" height="22">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGATVBDhcDQy7XQLtiFIwC+gEAxGIA7g==
-  </data>
- </layer>
 </map>
