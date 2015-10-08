@@ -63,14 +63,6 @@
    eJxjYBgFo4C6QJqJgUGGifb2yAPtUKCDPSAwVPwkSafwwAdk0dwgAeSLUNFdwnjMkqCCPTAzxOkQlqB0hewf9HRGrTQHSlfI/kFPZ8SmOSkc6nCJD2YAyisgd9M6b4PygxwTfcurUYAdAABNJQQf
   </data>
  </layer>
- <layer name="death" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-12"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
-  </data>
- </layer>
  <layer name="key" width="26" height="22">
   <properties>
    <property name="cc_vertexz" value="-11"/>
@@ -114,14 +106,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYEAAU0YGuoBRe0btGQWDHwy39DZqz6g9o/aMbAAAVVADYQ==
-  </data>
- </layer>
- <layer name="CharaUe2" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
   </data>
  </layer>
  <objectgroup name="event">

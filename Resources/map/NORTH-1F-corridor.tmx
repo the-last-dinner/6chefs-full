@@ -183,13 +183,13 @@
   </properties>
  </objectgroup>
  <objectgroup name="event">
-  <object id="67" x="1824" y="0" width="48" height="32">
+  <object id="67" x="1822" y="0" width="48" height="16">
    <properties>
     <property name="EventID" value="1"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="68" x="144" y="0" width="48" height="32">
+  <object id="68" x="144" y="0" width="48" height="16">
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="1"/>

@@ -11,14 +11,6 @@
    eJxjYBj8YCmVMAy0UgG3IZnXRgAPtLo1jNTBo+aNmjdq3qh5o+aNLPMIAVLVEwKnGCF4OAAArAMb/Q==
   </data>
  </layer>
- <layer name="MonoShita" width="20" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-13"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
-  </data>
- </layer>
  <layer name="lake" width="20" height="30">
   <properties>
    <property name="cc_vertexz" value="-12"/>

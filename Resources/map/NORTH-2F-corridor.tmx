@@ -210,13 +210,13 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="71" x="1888" y="0" width="48" height="32">
+  <object id="71" x="1888" y="0" width="48" height="16">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="73" x="144" y="0" width="48" height="32">
+  <object id="73" x="144" y="0" width="48" height="16">
    <properties>
     <property name="EventID" value="10"/>
     <property name="trigger" value="1"/>
