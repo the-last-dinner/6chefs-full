@@ -1,7 +1,8 @@
 .DS_Store
 project.xcworkspace
 xcuserdata
-Debug.win32
+Debug.win32/
+Release.win32/
 *.sdf
 
 proj.android

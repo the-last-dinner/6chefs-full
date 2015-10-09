@@ -9,7 +9,7 @@
 #include "Layers/Message/baseMessageLayer.h"
 
 // コンストラクタ
-baseMessageLayer::baseMessageLayer(){FUNCLOG}
+baseMessageLayer::baseMessageLayer() :fontPath("fonts/cinecaption2.28.ttf"){ FUNCLOG }
 
 // デストラクタ
 baseMessageLayer::~baseMessageLayer(){FUNCLOG}

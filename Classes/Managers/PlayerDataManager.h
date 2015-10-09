@@ -18,10 +18,10 @@ public:
     struct SaveIndex
     {
         int data_id {0};
-        string name {""};
-        string play_time {""};
-        string save_count {""};
-        string map_name {""};
+        string name {};
+	string play_time{};
+        string save_count {};
+        string map_name {};
         SaveIndex(int i, const string& n, const string& pt, const string& sc, const string& mn):data_id(i), name(n), play_time(pt), save_count(sc), map_name(mn){};
         SaveIndex(){};
     };

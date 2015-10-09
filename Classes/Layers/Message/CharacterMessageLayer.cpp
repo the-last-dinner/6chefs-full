@@ -8,6 +8,11 @@
 
 #include "Layers/Message/CharacterMessageLayer.h"
 
+// 定数
+const float CharacterMessageLayer::TOP_MARGIN { 50 };
+const float CharacterMessageLayer::LEFT_MARGIN {60};
+const float CharacterMessageLayer::H_MARGIN_S {30};
+
 // コンストラクタ
 CharacterMessageLayer::CharacterMessageLayer(){FUNCLOG}
 

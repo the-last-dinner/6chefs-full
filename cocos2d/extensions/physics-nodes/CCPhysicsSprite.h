@@ -24,8 +24,8 @@
 #define __PHYSICSNODES_CCPHYSICSSPRITE_H__
 
 #include "2d/CCSprite.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 
 #if (CC_ENABLE_CHIPMUNK_INTEGRATION || CC_ENABLE_BOX2D_INTEGRATION)
 

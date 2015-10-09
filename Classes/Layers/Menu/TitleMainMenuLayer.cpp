@@ -11,9 +11,9 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 const map<TitleMainMenuLayer::MenuType, string> TitleMainMenuLayer::menu = {
-	{TitleMainMenuLayer::MenuType::START, "はじめから"},
-	{TitleMainMenuLayer::MenuType::CONTINUE, "つづきから"},
-	{TitleMainMenuLayer::MenuType::EXIT, "終了"},
+	{TitleMainMenuLayer::MenuType::START, string("はじめから")},
+	{TitleMainMenuLayer::MenuType::CONTINUE, string("つづきから")},
+	{TitleMainMenuLayer::MenuType::EXIT, string("終了")},
 };
 
 // コンストラクタ

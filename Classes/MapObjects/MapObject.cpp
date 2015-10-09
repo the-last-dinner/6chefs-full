@@ -181,7 +181,8 @@ void MapObject::drawDebugMask()
         Point::ZERO,
         Point(0, this->getContentSize().height),
         this->getContentSize(),
-        Point(this->getContentSize().width, 0)
+        Point(this->getContentSize().width, 0),
+	Point::ZERO,
     };
     Color4F lineColor = Color4F::BLUE;
     DrawNode* draw {DrawNode::create()};

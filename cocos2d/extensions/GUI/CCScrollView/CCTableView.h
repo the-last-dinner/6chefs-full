@@ -28,7 +28,7 @@
 
 #include "CCScrollView.h"
 #include "CCTableViewCell.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionExport.h"
 
 #include <set>
 #include <vector>
