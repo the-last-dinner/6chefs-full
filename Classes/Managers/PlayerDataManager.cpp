@@ -133,8 +133,7 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             minute = this->global[cha_id]["play_time"].GetInt();
             time = this->getSprintf("%2s", to_string(minute / 60)) + "時間" + this->getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            save = SaveIndex(i, this->getSprintf("%15s", this
-                                                   ->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", this->global[cha_id]["map"].GetString()));
+            save = SaveIndex(i, this->getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", this->global[cha_id]["map"].GetString()));
         }
         save_list.push_back(save);
     }
@@ -158,7 +157,17 @@ void PlayerDataManager::save(const int id)
     FUNCLOG
     // save local
     string str_id = to_string(id);
-    string path = this->fu->fullPathForFilename("save/local" + str_id + ".json");
+    //string path = this->fu->fullPathForFilename("save/local" + str_id + ".json");
+    this->local["token"].SetString(this->local["token"].GetString(), 20);
+    this->local["name"].SetString(this->local["name"].GetString(), 20);
+    this->local["play_time"].SetInt(this->local["play_time"].GetInt());
+    this->local["save_count"].SetInt(this->local["save_count"].GetInt());
+    PlayerDataManager::Location loc = this->getLocation();
+    this->local["location"][0].SetInt(loc.map_id);
+    this->local["location"][1].SetInt(loc.x);
+    this->local["location"][2].SetInt(loc.y);
+    this->local["location"][3].SetInt(static_cast<int>(loc.direction));
+    string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
     // save global
@@ -166,11 +175,15 @@ void PlayerDataManager::save(const int id)
     if(this->global.HasMember(cha_id))
     {
         //セーブデータが存在する場合
-        this->global[cha_id]["token"] = this->local["token"];
-        this->global[cha_id]["name"] = this->local["name"];
-        this->global[cha_id]["play_time"] = this->local["play_time"];
-        this->global[cha_id]["save_count"] = this->local["save_count"];
-        this->global[cha_id]["location"] = this->local["location"];
+        this->global[cha_id]["token"].SetString(this->local["token"].GetString(), 20);
+        this->global[cha_id]["name"].SetString(this->local["name"].GetString(), 20);
+        this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
+        this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
+        this->global[cha_id]["location"].SetArray();
+        this->global[cha_id]["location"][0].SetInt(loc.map_id);
+        this->global[cha_id]["location"][1].SetInt(loc.x);
+        this->global[cha_id]["location"][2].SetInt(loc.y);
+        this->global[cha_id]["location"][3].SetInt(static_cast<int>(loc.direction));
     } else {
         //セーブデータが存在しない場合
         rapidjson::Value empty(kObjectType);
@@ -181,7 +194,8 @@ void PlayerDataManager::save(const int id)
         this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
         this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
     }
-    string path_g = this->fu->fullPathForFilename("save/global.json");
+    //string path_g = this->fu->fullPathForFilename("save/global.json");
+    string path_g = "save/global.json";
     this->writeJsonFile(path_g, this->global);
     return;
 }
