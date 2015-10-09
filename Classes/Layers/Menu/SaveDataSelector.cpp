@@ -7,8 +7,8 @@
 //
 
 #include "Layers/Menu/SaveDataSelector.h"
-
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Scenes/DungeonScene.h"
 
 // コンストラクタ
 SaveDataSelector::SaveDataSelector(){FUNCLOG}
@@ -105,16 +105,22 @@ void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 // 決定キーを押した時
 void SaveDataSelector::onSpacePressed(int idx)
 {
+    // インクリメント
+    idx++;
+    // 処理分け
     if (this->write_flag)
     {
         // セーブ時
         SoundManager::getInstance()->playSound("se/back.mp3");
+        PlayerDataManager::getInstance()->save(idx);
         cout << "SAVE!" << endl;
         return;
     } else
     {
         // ロード時
         SoundManager::getInstance()->playSound("se/back.mp3");
+        PlayerDataManager::getInstance()->setMainLocalData(idx);
+        Director::getInstance()->replaceScene(DungeonScene::createScene());
         cout << "LOAD!" << endl;
         return;
     }
