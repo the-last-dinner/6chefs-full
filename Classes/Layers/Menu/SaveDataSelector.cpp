@@ -10,6 +10,10 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
+// 定数
+const float SaveDataSelector::INNER_H_MARGIN_RATIO = 0.05f;
+const float SaveDataSelector::INNER_V_MARGIN_RATIO = 0.05f;
+
 // コンストラクタ
 SaveDataSelector::SaveDataSelector(){FUNCLOG}
 

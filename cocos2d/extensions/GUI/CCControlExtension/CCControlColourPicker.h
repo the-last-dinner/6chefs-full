@@ -37,7 +37,7 @@
 #include "CCControlUtils.h"
 #include "CCControlHuePicker.h"
 #include "CCControlSaturationBrightnessPicker.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionExport.h"
 
 NS_CC_EXT_BEGIN
 

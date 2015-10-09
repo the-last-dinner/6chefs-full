@@ -29,16 +29,16 @@ public:
     {
         int charaId {-1};
         int imgId {-1};
-        string charaName { "" };
+        string charaName {};
         queue<string> pages {};
         Option option {Option::SIZE};
     };
     
 // 定数
 private:
-    static constexpr float TOP_MARGIN {50};
-    static constexpr float LEFT_MARGIN {60};
-    static constexpr float H_MARGIN_S {30};
+    static const float TOP_MARGIN;
+    static const float LEFT_MARGIN;
+    static const float H_MARGIN_S;
     
 // クラスメソッド
 public:

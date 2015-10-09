@@ -49,7 +49,7 @@ protected:
 	Sprite* frame { nullptr };
 	Label* message { nullptr };
 	queue<string> pages {};
-	string fontPath {"fonts/cinecaption2.28.ttf"};
+	string fontPath {};
 	int fontSize { 24 };
 	TextVAlignment v_alignment { TextVAlignment::TOP };
 	TextHAlignment h_alignment { TextHAlignment::LEFT };

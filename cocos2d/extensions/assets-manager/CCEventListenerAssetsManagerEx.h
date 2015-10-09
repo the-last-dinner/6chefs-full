@@ -27,8 +27,8 @@
 
 #include "base/CCEventListener.h"
 #include "base/CCEventListenerCustom.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 
 NS_CC_EXT_BEGIN
 
