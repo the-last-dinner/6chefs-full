@@ -75,6 +75,7 @@ enum struct Direction
 	RIGHT,
 	LEFT,
 	BACK,
+    
 	SIZE,
 };
 

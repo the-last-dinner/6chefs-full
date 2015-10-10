@@ -47,13 +47,13 @@ public:
 	Point getGridPosition(const Size& mapSize) const;
 	int getEventId();
 	Trigger getTrigger();
-	bool isHit() const;
-    bool isHit(const Direction& direction) const;
-    bool isHit(const Direction (&directions)[2]) const;
+	const bool isHit() const;
+    const bool isHit(const Direction& direction) const;
+    const bool isHit(const Direction (&directions)[2]) const;
 	Direction getMovingDirection();
     Rect getCollisionRect() const;
-    Point getAdjacentPosition(const Direction& direction) const;
-    Point getAdjacentPosition(const Direction (&directions)[2]) const;
+    Rect getCollisionRect(const Direction& direction) const;
+    Rect getCollisionRect(const Direction (&directions)[2]) const;
 
     void drawDebugMask(); // デバッグ用マスク
 };
