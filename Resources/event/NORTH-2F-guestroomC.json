@@ -30,7 +30,10 @@
 					"imgID":"2"
 				},
 				{
-					"type":"playSE",
+					"type":"stopBGM"
+				},
+				{
+					"type":"playBGM",
 					"file":"7haizuri.wav"
 				},
 				{

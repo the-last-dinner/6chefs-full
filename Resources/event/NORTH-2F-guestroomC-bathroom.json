@@ -9,13 +9,13 @@
 	],
 	"2":[
 		{
-			"type":"systamMsg",
-			"text":["大きな蟲がカーテンを這っている"]
+			"type":"systemMsg",
+			"text":["大きな虫がカーテンを這っている"]
 		}
 	],
 	"3":[
 		{
-			"type":"systamMsg",
+			"type":"systemMsg",
 			"text":["水は茶色く濁っている"]
 		}
 	]
