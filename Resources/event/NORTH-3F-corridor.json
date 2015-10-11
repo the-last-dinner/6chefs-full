@@ -2,16 +2,16 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"mapID":"28",
+			"mapID":"29",
 			"x":3,
-			"y":15
+			"y":14
 		}
 	],
 	"2":[
 		{
 			"type":"changeMap",
-			"mapID":"29",
-			"x":11,
+			"mapID":"28",
+			"x":3,
 			"y":15
 		}
 	],

@@ -162,7 +162,7 @@
   </object>
   <object id="125" x="464" y="544" width="32" height="32">
    <properties>
-    <property name="charaID" value="18"/>
+    <property name="charaID" value="21"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1084"/>
@@ -232,7 +232,7 @@
     <property name="trigger" value="3"/>
    </properties>
   </object>
-  <object id="90" x="432" y="48" width="96" height="32">
+  <object id="90" x="432" y="48" width="96" height="16">
    <properties>
     <property name="EventID" value="11"/>
     <property name="trigger" value="1"/>
@@ -244,7 +244,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="93" x="432" y="48" width="96" height="32">
+  <object id="93" x="432" y="48" width="96" height="16">
    <properties>
     <property name="EventID" value="13"/>
     <property name="trigger" value="1"/>
