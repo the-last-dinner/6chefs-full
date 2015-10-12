@@ -58,6 +58,10 @@ public:
     vector<SaveIndex> getSaveList();
     //セーブ
     void save(const int id);
+    // セーブデータが存在するかチェック
+    bool checkSaveDataExists(const int id);
+    // セーブデータIDの取得
+    int getSaveDataId();
     /* flag管理系 */
     // SET
     void setLocation(const Location& location);

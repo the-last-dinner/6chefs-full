@@ -119,7 +119,8 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             cout << LastSupper::StringUtils::getSprintf("%2s", to_string(minute) + "分") << endl;
             time = LastSupper::StringUtils::getSprintf("%2s", to_string(minute / 60)) + "時間" + LastSupper::StringUtils::getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            save = SaveIndex(i, LastSupper::StringUtils::getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, LastSupper::StringUtils::getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
+            cout << "Fjkdsla;fjldsjaf;akjf>>>>" << LastSupper::StringUtils::getSprintf("%10s",this->global[cha_id]["name"].GetString()) << endl;
+            save = SaveIndex(i, LastSupper::StringUtils::getSprintf("%10s", this->global[cha_id]["name"].GetString()), time, LastSupper::StringUtils::getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
         }
         save_list.push_back(save);
     }
@@ -135,6 +136,13 @@ void PlayerDataManager::setMainLocalData(const int id)
     string path = this->fu->fullPathForFilename(file);
     this->local = this->readJsonFile(path);
     return;
+}
+
+// メインとなるローカルデータのidを取得
+int PlayerDataManager::getSaveDataId()
+{
+    FUNCLOG
+    return this->local_id;
 }
 
 //セーブ
@@ -180,10 +188,24 @@ void PlayerDataManager::save(const int id)
         this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
         this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
     }
-    //string path_g = this->fu->fullPathForFilename("save/global.json");
+    string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
+    utils::captureScreen([=](bool success, string filename){
+        if(success)
+        {
+            // cache削除
+            Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
+        }
+    }, path_s);
     string path_g = "save/global.json";
     this->writeJsonFile(path_g, this->global);
     return;
+}
+
+// セーブデータの存在をチェック
+bool PlayerDataManager::checkSaveDataExists(const int id)
+{
+    FUNCLOG
+    return (this->global.HasMember(to_string(id).c_str())) ? true : false;
 }
 
 /* ******************************************************** *
