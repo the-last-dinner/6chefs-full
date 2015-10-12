@@ -48,6 +48,7 @@ bool SaveDataSelector::init(bool write = false)
 		
 		// 表示ラベルを生成
 		// データ名
+        cout << "name>>>>>>>>>>" << data.name << endl;
 		Label* name = Label::createWithTTF(data.name, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
 		name->setPosition(Point(name->getContentSize().width / 2 + panelSize.width * INNER_H_MARGIN_RATIO, panel->getContentSize().height / 2));
 		panel->addChild(name);
@@ -66,9 +67,11 @@ bool SaveDataSelector::init(bool write = false)
 		panel->setCascadeOpacityEnabled(true);
 		panel->setOpacity(100);
 	}
-	
+    
+    // デフォルトセレクト
 	this->setCascadeOpacityEnabled(true);
-	this->onIndexChanged(this->getSelectedIndex(), false);
+    int id = PlayerDataManager::getInstance()->getSaveDataId();
+	this->onIndexChanged((id < 1) ? 0 : id - 1, false);
 	
 	return true;
 }
@@ -133,22 +136,19 @@ void SaveDataSelector::onSpacePressed(int idx)
     } else
     {
         // ロード時
-        SoundManager::getInstance()->playSound("se/back.mp3");
-        PlayerDataManager::getInstance()->setMainLocalData(idx);
-        Director::getInstance()->replaceScene(DungeonScene::createScene());
+        if(PlayerDataManager::getInstance()->checkSaveDataExists(idx))
+        {
+            // ロード
+            PlayerDataManager::getInstance()->setMainLocalData(idx);
+            Director::getInstance()->replaceScene(DungeonScene::createScene());
+        } else
+        {
+            // セーブデータが存在しない
+            SoundManager::getInstance()->playSound("se/back.mp3");
+        }
     }
     this->comfirm_flag = true;
     return;
-	// 指定セーブデータがプレイヤーによってセーブされたものであるか判別
-	/*if(this->saveDatas.at(idx).save_count == PlayerDataManager::DEFAULT_COUNT)
-	{
-		SoundManager::getInstance()->playSound("se/back.mp3");
-		return;
-	}
-	if(this->onSaveDataSelected)
-	{
-		this->onSaveDataSelected(this->saveDatas.at(idx).data_id);
-	}*/
 }
 
 // メニューキーを押した時
