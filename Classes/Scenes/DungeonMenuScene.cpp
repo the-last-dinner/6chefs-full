@@ -17,25 +17,24 @@ DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
 DungeonMenuScene::~DungeonMenuScene(){FUNCLOG}
 
 // シーン生成
-Scene* DungeonMenuScene::createScene(Texture2D* screen)
+Scene* DungeonMenuScene::createScene(Texture2D* screen, function<void()> onPopMenuScene)
 {
     Scene* scene = Scene::create();
-    DungeonMenuScene* layer = DungeonMenuScene::create(screen);
+    DungeonMenuScene* layer = DungeonMenuScene::create(screen, onPopMenuScene);
     scene->addChild(layer);
     return scene;
 }
 
 // 初期化
-bool DungeonMenuScene::init(Texture2D* screen)
+bool DungeonMenuScene::init(Texture2D* screen, function<void()> onPopMenuScene)
 {
     FUNCLOG
-    
-    //スクショを生成
+    // メニューシーンをポップする際の処理
+    this->onPopMenuScene = onPopMenuScene;
+    // スクショを生成
     Sprite* screenSprite = Sprite::createWithTexture(screen);
-    //screenSprite->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     screenSprite->setScale(Director::getInstance()->getWinSize().width / screenSprite->getContentSize().width);
     screenSprite->setPosition(WINDOW_CENTER);
-    //screenSprite->setFlippedY(true);
     this->addChild(screenSprite);
     
     // メインメニューレイヤーを生成

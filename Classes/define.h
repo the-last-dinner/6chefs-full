@@ -146,4 +146,20 @@ static __TYPE_1__* create(__TYPE_2__ param) \
 	} \
 }
 
+#define CREATE_FUNC_WITH_TWO_PARAM(__TYPE_1__, __TYPE_2__, __TYPE_3__) \
+static __TYPE_1__* create(__TYPE_2__ param1, __TYPE_3__ param2) \
+{ \
+    __TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
+    if (pRet && pRet->init(param1, param2)) \
+    { \
+        pRet->autorelease(); \
+        return pRet; \
+    } \
+    else \
+    { \
+        delete pRet; \
+        pRet = NULL; \
+        return NULL; \
+    } \
+}
 #endif // __DEFINE_H__

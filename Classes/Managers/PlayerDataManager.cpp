@@ -90,24 +90,7 @@ void PlayerDataManager::initializeFiles()
     this->writeJsonFile(path2, global_temp);
     // set global save data
     this->global = readJsonFile(path2);
-    
-    /* local save data */
-    /*cout << "Create local save data." << endl;
-    // Create path of local template
-    string path3 = this->strReplace("global_template.json", "local_template.json", path1);
-    // Read local template data
-    rapidjson::Document local_temp = this->readJsonFile(path3);
-    rapidjson::Value& temp = local_temp["0"];
-    // Create empty local save data
-    rapidjson::Document parent;
-    const char* empty = R"({})";
-    parent.Parse(empty);
-    rapidjson::Value& child(parent);
-    // Add local template
-    child.AddMember("0", temp, parent.GetAllocator());
-    // Initialize local save data
-    this->writeJsonFile(this->strReplace("local_template.json", "local.json", path3), parent);
-    */return;
+    return;
 }
 
 /* ******************************************************** *
