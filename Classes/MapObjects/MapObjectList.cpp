@@ -14,16 +14,15 @@
 MapObjectList::MapObjectList() {FUNCLOG};
 
 // デストラクタ
-MapObjectList::~MapObjectList() {FUNCLOG};
-
-// 初期化
-bool MapObjectList::init()
+MapObjectList::~MapObjectList()
 {
-    return true;
-}
+    FUNCLOG
+
+    this->mapObjects.clear();
+};
 
 // 初期化
-bool MapObjectList::init(const vector<MapObject*>& mapObjects)
+bool MapObjectList::init(const Vector<MapObject*>& mapObjects)
 {
     this->mapObjects = mapObjects;
     
@@ -58,18 +57,18 @@ MapObject* MapObjectList::getMapObject(int objId) const
 }
 
 // マップオブジェクトのベクタを取得
-const vector<MapObject*>& MapObjectList::getMapObjects() const
+const Vector<MapObject*>& MapObjectList::getMapObjects() const
 {
     return this->mapObjects;
 }
 
 // 指定範囲内にあるマップオブジェクトのベクタを取得
-vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
+Vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
 {
-    vector<MapObject*> mapObjects {};
+    Vector<MapObject*> mapObjects {};
     for(MapObject* obj : this->mapObjects)
     {
-        if(rect.intersectsRect(obj->getCollisionRect())) mapObjects.push_back(obj);
+        if(rect.intersectsRect(obj->getCollisionRect())) mapObjects.pushBack(obj);
     }
     
     return mapObjects;
@@ -89,7 +88,7 @@ const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {
-    this->mapObjects.push_back(mapObject);
+    this->mapObjects.pushBack(mapObject);
 }
 
 // 主人公を設定

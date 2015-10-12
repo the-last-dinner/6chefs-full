@@ -8,6 +8,8 @@
 
 #include "MapObjects/MapObjectFactory.h"
 
+#include "MapObjects/MapObjectList.h"
+
 #include "Objects.h"
 
 // コンストラクタ
@@ -16,25 +18,45 @@ MapObjectFactory::MapObjectFactory() {FUNCLOG};
 // デストラクタ
 MapObjectFactory::~MapObjectFactory() {FUNCLOG};
 
-// 初期化
-bool MapObjectFactory::init()
+// MapObjectListを生成して返す
+MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* tiledMap)
 {
-    return true;
-}
-
-// 外部から呼び出してMapObjectを返すfactoryメソッド
-MapObject* MapObjectFactory::createMapObject(const Group& group, const ValueMap& info)
-{
-    if(group == Group::SIZE) return nullptr;
+    if(!tiledMap) return nullptr;
     
-    map<Group, function<MapObject*(const ValueMap&)>> typeToFunc
+    // 自身を生成
+    MapObjectFactory* p {new(nothrow) MapObjectFactory()};
+    
+    // レイヤ別に処理が分かれるので用意
+    map<MapObjectFactory::Group, string> typeToString
     {
-        {Group::COLLISION, CC_CALLBACK_1(MapObjectFactory::createObjectOnCollision, this)},
-        {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, this)},
-//        {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, this)},
+        {MapObjectFactory::Group::COLLISION, "collision"},
+        {MapObjectFactory::Group::EVENT, "event"},
+        //{MapObjectFactory::Group::CHARACTER, "Chara(object)"},
     };
     
-    return typeToFunc.at(group)(info);
+    // グループごとに生成メソッドを用意
+    map<Group, function<MapObject*(const ValueMap&)>> typeToFunc
+    {
+        {Group::COLLISION, CC_CALLBACK_1(MapObjectFactory::createObjectOnCollision, p)},
+        {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, p)},
+        //{Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, p)},
+    };
+    
+    // ベクタを用意
+    Vector<MapObject*> mapObjects {};
+    
+    for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
+    {
+        MapObjectFactory::Group group {static_cast<MapObjectFactory::Group>(i)};
+        ValueVector infos {tiledMap->getObjectGroup(typeToString.at(group))->getObjects()};
+        for(cocos2d::Value info : infos)
+        {
+            mapObjects.pushBack(typeToFunc[group](info.asValueMap()));
+        }
+    }
+    
+    // MapObjectListを生成して返す
+    return MapObjectList::create(mapObjects);
 }
 
 // オブジェクトの位置、大きさを取得

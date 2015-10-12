@@ -43,7 +43,7 @@ void ControlMainCharacterTask::search()
     MapObjectList* objectList {this->scene->mapLayer->getMapObjectList()};
     Character* mainCharacter {objectList->getMainCharacter()};
     
-    vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
+    Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
     
     // 現状イベントスクリプトに実行待ちを実装していないため現状はこんな感じで
     for(MapObject* obj : objs)

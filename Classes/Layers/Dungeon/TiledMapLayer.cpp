@@ -2,7 +2,7 @@
 //  TiledMapLayer.cpp
 //  LastSupper
 //
-//  Created by Kohei on 2015/06/28.
+//  Created by Kohei Asami on 2015/06/28.
 //
 //
 
@@ -18,7 +18,12 @@
 TiledMapLayer::TiledMapLayer(){FUNCLOG}
 
 // デストラクタ
-TiledMapLayer::~TiledMapLayer(){FUNCLOG}
+TiledMapLayer::~TiledMapLayer()
+{
+    FUNCLOG
+    
+    CC_SAFE_RELEASE_NULL(this->objectList);
+}
 
 // 初期化
 bool TiledMapLayer::init(const PlayerDataManager::Location& location)
@@ -32,14 +37,18 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
     
-    // ファクトリを生成
-    MapObjectFactory* factory {MapObjectFactory::create()};
-    CC_SAFE_RETAIN(factory);
-    
-    // 共通リスト生成
-    MapObjectList* objectList {MapObjectList::create()};
+    // オブジェクトリスト生成
+    MapObjectList* objectList {MapObjectFactory::createMapObjectList(tiledMap)};
     CC_SAFE_RETAIN(objectList);
     this->objectList = objectList;
+    
+    // オブジェクトリストを元にマップ上に配置
+    for(MapObject* obj : objectList->getMapObjects())
+    {
+        obj->drawDebugMask();
+        obj->setMapObjectList(objectList);
+        tiledMap->addChild(obj);
+    }
     
 	// 主人公を配置
 	Character* mainCharacter { Character::create(0, location.direction) };
@@ -48,32 +57,6 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
     this->mainCharacter = mainCharacter;
     objectList->setMainCharacter(mainCharacter);
     mainCharacter->setMapObjectList(objectList);
-    
-    // レイヤ別に処理が分かれるので用意
-    map<MapObjectFactory::Group, string> typeToString
-    {
-        {MapObjectFactory::Group::COLLISION, "collision"},
-        {MapObjectFactory::Group::EVENT, "event"},
-        //{MapObjectFactory::Group::CHARACTER, "Chara(object)"},
-    };
-    
-    // 生成して配置
-    for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
-    {
-        MapObjectFactory::Group group {static_cast<MapObjectFactory::Group>(i)};
-        ValueVector infos {this->tiledMap->getObjectGroup(typeToString.at(group))->getObjects()};
-        
-        for(cocos2d::Value info : infos)
-        {
-            MapObject* obj {factory->createMapObject(group, info.asValueMap())};
-            this->tiledMap->addChild(obj);
-            obj->setMapObjectList(objectList);
-            obj->drawDebugMask();
-            objectList->add(obj);
-        }
-    }
-
-    CC_SAFE_RELEASE(factory);
     
 	return true;
 }
