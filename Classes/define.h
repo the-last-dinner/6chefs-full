@@ -20,7 +20,6 @@
 using namespace rapidjson;
 typedef GenericDocument< UTF8<> > Document;
 typedef GenericValue< UTF8<> > Value;
-
 typedef GenericStringStream< UTF8<> > StringStream;
 typedef GenericStringBuffer< UTF8<> > StringBuffer;
 
