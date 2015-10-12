@@ -12,5 +12,6 @@
 #include "Managers/CsvDataManager.h"
 
 #include "Utils/MapUtils.h"
+#include "Utils/StringUtils.h"
 
 #endif // __COMMON_H__

@@ -22,7 +22,7 @@
 #include "MapObjects/Character.h"
 
 // コンストラクタ
-DungeonScene::DungeonScene(){FUNCLOG}
+DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
 // デストラクタ
 DungeonScene::~DungeonScene()
@@ -96,12 +96,15 @@ void DungeonScene::onMenuKeyPressed()
     FUNCLOG
     // キーをリリース
     this->listener->releaseKeyAll();
-    // スクショ撮る
-    RenderTexture* texture = RenderTexture::create(WINDOW_WIDTH, WINDOW_HEIGHT);
-    texture->setPosition(WINDOW_CENTER);
-    texture->begin();
-    this->visit();
-    texture->end();
-    // ダンジョンメニューシーンをスクショを引数にしてプッシュ
-    Director::getInstance()->pushScene(DungeonMenuScene::createScene(texture->getSprite()->getTexture()));
+    // スクショをとって、ダンジョンメニューシーンをプッシュ
+    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", fu->FileUtils::fullPathForFilename("save/global.json"));
+    cout << "path>>" << path << endl;
+    utils::captureScreen([=](bool success, string filename){
+     if(success)
+     {
+         Sprite* screen = Sprite::create(filename);
+         Director::getInstance()->pushScene(DungeonMenuScene::createScene(screen->getTexture()));
+         Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
+     }
+    }, path);
 }

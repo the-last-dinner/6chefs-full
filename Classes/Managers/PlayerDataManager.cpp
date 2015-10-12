@@ -12,6 +12,7 @@
 
 #include "Managers/PlayerDataManager.h"
 #include "Managers/CsvDataManager.h"
+#include "Utils/StringUtils.h"
 
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
@@ -82,7 +83,7 @@ void PlayerDataManager::initializeFiles()
     // Get path of global template
     string path1 = fu->fullPathForFilename("save/global_template.json");
     // Create path of global save data
-    string path2 = this->strReplace("global_template.json", "global.json", path1);
+    string path2 = LastSupper::StringUtils::strReplace("global_template.json", "global.json", path1);
     // read global template data
     rapidjson::Document global_temp = this->readJsonFile(path1);
     // create global save data
@@ -132,10 +133,10 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             cout << "set >> " << i << endl;
             //プレイ時間を編集
             minute = this->global[cha_id]["play_time"].GetInt();
-            cout << this->getSprintf("%2s", to_string(minute) + "分") << endl;
-            time = this->getSprintf("%2s", to_string(minute / 60)) + "時間" + this->getSprintf("%2s", to_string(minute % 60)) + "分";
+            cout << LastSupper::StringUtils::getSprintf("%2s", to_string(minute) + "分") << endl;
+            time = LastSupper::StringUtils::getSprintf("%2s", to_string(minute / 60)) + "時間" + LastSupper::StringUtils::getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            save = SaveIndex(i, this->getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
+            save = SaveIndex(i, LastSupper::StringUtils::getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, LastSupper::StringUtils::getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
         }
         save_list.push_back(save);
     }
@@ -405,25 +406,6 @@ bool PlayerDataManager::checkFriendship(const string& character, const int val)
 /* ******************************************************** *
  * ******************** Util functions ******************** *
  * ******************************************************** */
-
-// 文字列を置換する
-string PlayerDataManager::strReplace(const string& pattern, const string& replacement, string target)
-{
-    std::string::size_type Pos(target.find(pattern));
-    while( Pos != std::string::npos )
-    {
-        target.replace( Pos, pattern.length(), replacement);
-        Pos = target.find( pattern, Pos + replacement.length() );
-    }
-    return target;
-}
-
-//sprinfでformatした文字列を取得
-string PlayerDataManager::getSprintf(const string& format, const string& str){
-    char c[100];
-    sprintf(c, format.c_str(), str.c_str());
-    return string(c);
-}
 
 // 絶対パスからjsonファイルの取得
 rapidjson::Document PlayerDataManager::readJsonFile(const string& path)

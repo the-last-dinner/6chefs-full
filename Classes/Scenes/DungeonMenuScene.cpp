@@ -33,8 +33,9 @@ bool DungeonMenuScene::init(Texture2D* screen)
     //スクショを生成
     Sprite* screenSprite = Sprite::createWithTexture(screen);
     //screenSprite->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+    screenSprite->setScale(Director::getInstance()->getWinSize().width / screenSprite->getContentSize().width);
     screenSprite->setPosition(WINDOW_CENTER);
-    screenSprite->setFlippedY(true);
+    //screenSprite->setFlippedY(true);
     this->addChild(screenSprite);
     
     // メインメニューレイヤーを生成
