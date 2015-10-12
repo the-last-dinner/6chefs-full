@@ -18,26 +18,24 @@ class MapObjectList : public Ref
 {
 // クラスメソッド
 public:
-    CREATE_FUNC(MapObjectList)
-    CREATE_FUNC_WITH_PARAM(MapObjectList, const vector<MapObject*>&)
+    CREATE_FUNC_WITH_PARAM(MapObjectList, const Vector<MapObject*>&)
     
 // インスタンス変数
 private:
-    vector<MapObject*> mapObjects {};
+    Vector<MapObject*> mapObjects {};
     Character* mainCharacter { nullptr };
     
 // インスタンスメソッド
 private:
     MapObjectList();
     ~MapObjectList();
-    bool init();
-    bool init(const vector<MapObject*>&);
+    bool init(const Vector<MapObject*>&);
 public:
     MapObject* getMapObject(const Point& position) const;
     MapObject* getMapObject(int objId) const;
-    const vector<MapObject*>& getMapObjects() const;
+    const Vector<MapObject*>& getMapObjects() const;
     const bool containsCollisionObject(const Rect& rect) const;
-    vector<MapObject*> getMapObjects(const Rect& rect) const;
+    Vector<MapObject*> getMapObjects(const Rect& rect) const;
     void add(MapObject* mapObject);
     
     void setMainCharacter(Character* mainChara);
