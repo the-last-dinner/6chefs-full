@@ -8,6 +8,25 @@
 
 #include "Layers/Message/StoryMessageLayer.h"
 
+#include "Datas/Message/StoryMessageData.h"
+
+// create関数
+StoryMessageLayer* StoryMessageLayer::create(const string& title, const queue<StoryMessageData*>& datas)
+{
+    StoryMessageLayer* p {new(nothrow) StoryMessageLayer()};
+    if(p && p->init(title, datas))
+    {
+        p->autorelease();
+        return p;
+    }
+    else
+    {
+        delete p;
+        p = nullptr;
+        return nullptr;
+    }
+}
+
 // コンストラクタ
 StoryMessageLayer::StoryMessageLayer()
 {FUNCLOG}
@@ -17,25 +36,47 @@ StoryMessageLayer::~StoryMessageLayer()
 {FUNCLOG}
 
 // 初期化
-bool StoryMessageLayer::init(const queue<string> pages)
+bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>& datas)
 {
 	FUNCLOG
-	if(!Layer::init()) return false;
-	if(!baseMessageLayer::init()) return false;
-	
-	// ページをセット
-	this->setPages(pages);
+    
+    this->datas = datas;
+    
+    Size winSize {Director::getInstance()->getWinSize()};
 	
 	// 枠を生成
 	Sprite* frame = Sprite::create();
-	frame->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+	frame->setTextureRect(Rect(0, 0, winSize.width, winSize.height));
 	frame->setColor(Color3B::BLACK);
-	frame->setPosition(WINDOW_CENTER);
-	this->setFrame(frame);
+	frame->setPosition(winSize / 2);
 	this->addChild(frame);
+    this->frame = frame;
+    
+    // タイトルを生成
+    Label* titleLabel {Label::createWithTTF(title, "fonts/cinecaption2.28.ttf", 36.f)};
+    titleLabel->setPosition(titleLabel->getContentSize().width, winSize.height - titleLabel->getContentSize().height / 2);
+    frame->addChild(titleLabel);
 	
-	// ラベルの位置をセット
-	this->setHAlignment(TextHAlignment::CENTER);
-	
-	return true;
+	return MessageLayer::init();
+}
+
+// メッセージを生成
+Label* StoryMessageLayer::createMessage()
+{
+    Label* message { Label::createWithTTF(this->datas.front()->getMessage(), "fonts/cinecaption2.28.ttf", 24.f) };
+    message->setHorizontalAlignment(TextHAlignment::CENTER);
+    message->setVerticalAlignment(TextVAlignment::CENTER);
+    message->setPosition(this->frame->getContentSize() / 2);
+    this->frame->addChild(message);
+    
+    CC_SAFE_RELEASE(this->datas.front());
+    this->datas.pop();
+    
+    return message;
+}
+
+// 次のページがあるか
+bool StoryMessageLayer::hasNextPage()
+{
+    return !this->datas.empty() & this->datas.front()->hasNextPage();
 }

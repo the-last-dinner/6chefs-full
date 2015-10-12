@@ -19,6 +19,10 @@
 #include "Layers/Message/CharacterMessageLayer.h"
 #include "Layers/Message/SystemMessageLayer.h"
 
+#include "Datas/Message/CharacterMessageData.h"
+#include "Datas/Message/StoryMessageData.h"
+#include "Datas/Message/SystemMessageData.h"
+
 //イベント関数の関数ポインタ格納
 const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
 {
@@ -421,48 +425,83 @@ Ref* EventScriptTask::storyMsg(rapidjson::Value &event)
 Ref* EventScriptTask::charaMsg(rapidjson::Value& event)
 {
     FUNCLOG
-    queue<CharacterMessageLayer::Information> infos {};
+    queue<CharacterMessageData*> datas {};
     if(event.HasMember("talk"))
     {
         //複数人での会話時
         SizeType len {event["talk"].Size()}; //会話人数の取得
         for(SizeType i {0}; i<len; i++)
         {
-            rapidjson::Value& chara = event["talk"][i];
-            CharacterMessageLayer::Information info;
-            info.charaId = stoi(chara["charaID"].GetString());
-            info.charaName = (chara.HasMember("name")) ? chara["name"].GetString() : CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId);
-            if(chara.HasMember("imgID")) info.imgId = stoi(chara["imgID"].GetString());
+            rapidjson::Value& chara { event["talk"][i] };
+            
             //ページ数を取得してページごとにプッシュ
             SizeType text_len {chara["text"].Size()};
+            
+            queue<string> pages {};
             for(SizeType j {0}; j<text_len; j++)
             {
-                info.pages.push(chara["text"][j].GetString());
+                pages.push(chara["text"][j].GetString());
             }
-            infos.push(info);
+            CharacterMessageData* data {CharacterMessageData::create(pages)};
+            CC_SAFE_RETAIN(data);
+            
+            // キャラID
+            data->setCharaId(stoi(chara["charaID"].GetString()));
+            
+            // キャラ名
+            string charaName {};
+            if(chara.HasMember("name"))
+            {
+                charaName = chara["name"].GetString();
+            }
+            else
+            {
+                charaName = CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId());
+            }
+            
+            // 画像ID
+            if(chara.HasMember("imgID")) data->setImgId(stoi(chara["imgID"].GetString()));
+            
+            datas.push(data);
         }
     } else
     {
         //一人で話すとき
-        CharacterMessageLayer::Information info;
-        info.charaId = stoi(event["charaID"].GetString());
-        if(event.HasMember("imgID")) info.imgId = stoi(event["imgID"].GetString());
-        info.charaName = (event.HasMember("name")) ? event["name"].GetString() : CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId);
         //ページ数を取得してページごとにプッシュ
         SizeType text_len {event["text"].Size()};
+        queue<string> pages {};
         for(SizeType j {0}; j<text_len; j++)
         {
-            info.pages.push(event["text"][j].GetString());
+            pages.push(event["text"][j].GetString());
         }
-        infos.push(info);
+        CharacterMessageData* data {CharacterMessageData::create(pages)};
+        CC_SAFE_RETAIN(data);
+        
+        // キャラID
+        data->setCharaId(stoi(event["charaID"].GetString()));
+
+        // キャラ名
+        string charaName {};
+        if(event.HasMember("name"))
+        {
+            charaName = event["name"].GetString();
+        }
+        else
+        {
+            charaName = CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId());
+        }
+        
+        // 画像ID
+        if(event.HasMember("imgID")) data->setImgId(stoi(event["imgID"].GetString()));
+        
+        datas.push(data);
     }
     //メッセージウインドウをスタートする関数をリターン
     return static_cast<Ref*>(CallFunc::create([=]()
     {
-        CharacterMessageLayer* message {CharacterMessageLayer::create(infos)};
+        CharacterMessageLayer* message {CharacterMessageLayer::create(datas)};
         
         this->scene->addChild(message);
-        message->start();
     }));
 }
 
@@ -475,16 +514,17 @@ Ref* EventScriptTask::questionMsg(rapidjson::Value &event)
 Ref* EventScriptTask::systemMsg(rapidjson::Value &event)
 {
     FUNCLOG
-    queue<string> pages;
+    queue<SystemMessageData*> datas;
     SizeType len {event["text"].Size()};
     for (SizeType i {0}; i<len; i++) {
-        pages.push(event["text"][i].GetString());
+        SystemMessageData* data {SystemMessageData::create(event["text"][i].GetString())};
+        CC_SAFE_RETAIN(data);
+        datas.push(data);
     }
     return static_cast<Ref*>(CallFunc::create([=]()
     {
-        SystemMessageLayer* message {SystemMessageLayer::create(pages)};
+        SystemMessageLayer* message {SystemMessageLayer::create(datas)};
         this->scene->addChild(message);
-        message->start();
     }));
 }
 
