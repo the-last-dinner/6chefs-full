@@ -26,6 +26,7 @@ public:
 	
 // インスタンス変数
 private:
+    cocos2d::FileUtils* fu;
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
     EventScriptTask* eventScriptTask { nullptr };

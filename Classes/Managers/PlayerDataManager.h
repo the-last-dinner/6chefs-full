@@ -82,9 +82,6 @@ private:
     bool setGlobalData();
     //セーブデータを全初期化
     void initializeFiles();
-    //文字列置換(後でUtilsに行くかも)
-    string strReplace(const string& pattern, const string& replacement, string target);
-    string getSprintf(const string& format, const string& str);
     //JSONファイル読み込み
     rapidjson::Document readJsonFile(const string& path);
     //JSONファイル書き出し

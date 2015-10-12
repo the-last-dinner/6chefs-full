@@ -31,6 +31,8 @@
 		2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
+		26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
+		26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -202,6 +204,8 @@
 		2621C4261B3FC30500112CB9 /* PlayerDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerDataManager.h; path = ../Classes/Managers/PlayerDataManager.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
 		266E76531BC1160B005BC878 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = ../Classes/Scenes/DungeonMenuScene.h; sourceTree = "<group>"; };
+		26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringUtils.cpp; path = ../Classes/Utils/StringUtils.cpp; sourceTree = "<group>"; };
+		26BA61F01BCB59EA00CE63C7 /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtils.h; path = ../Classes/Utils/StringUtils.h; sourceTree = "<group>"; };
 		26D72C991B96D420005F598D /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
 		26D72C9A1B96D420005F598D /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
 		26D72C9B1B96D420005F598D /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
@@ -761,6 +765,8 @@
 			children = (
 				557A87C71B4702BF001993E1 /* MapUtils.cpp */,
 				557A87C81B4702BF001993E1 /* MapUtils.h */,
+				26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */,
+				26BA61F01BCB59EA00CE63C7 /* StringUtils.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1008,6 +1014,7 @@
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				55F1B6191BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
+				26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
 				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
@@ -1047,6 +1054,7 @@
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
+				26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
