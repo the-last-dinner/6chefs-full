@@ -86,8 +86,6 @@
 		552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
 		552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
 		552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83841B20BFD800B681A8 /* baseScene.cpp */; };
-		552F5DC71B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DBF1B710D2900E4CEB6 /* baseMessageLayer.cpp */; };
-		552F5DC81B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DBF1B710D2900E4CEB6 /* baseMessageLayer.cpp */; };
 		552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC11B710D2900E4CEB6 /* CharacterMessageLayer.cpp */; };
 		552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC11B710D2900E4CEB6 /* CharacterMessageLayer.cpp */; };
 		552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552F5DC31B710D2900E4CEB6 /* StoryMessageLayer.cpp */; };
@@ -104,6 +102,16 @@
 		555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		55619F621B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
 		55619F631B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
+		5564CCE41BCB515300A4C6D2 /* MessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCE21BCB515300A4C6D2 /* MessageLayer.cpp */; };
+		5564CCE51BCB515300A4C6D2 /* MessageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCE21BCB515300A4C6D2 /* MessageLayer.cpp */; };
+		5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCE71BCB89E700A4C6D2 /* MessageData.cpp */; };
+		5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCE71BCB89E700A4C6D2 /* MessageData.cpp */; };
+		5564CCED1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCEB1BCB915D00A4C6D2 /* SystemMessageData.cpp */; };
+		5564CCEE1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCEB1BCB915D00A4C6D2 /* SystemMessageData.cpp */; };
+		5564CCF11BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCEF1BCB928800A4C6D2 /* StoryMessageData.cpp */; };
+		5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCEF1BCB928800A4C6D2 /* StoryMessageData.cpp */; };
+		5564CCF51BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCF31BCB932000A4C6D2 /* CharacterMessageData.cpp */; };
+		5564CCF61BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5564CCF31BCB932000A4C6D2 /* CharacterMessageData.cpp */; };
 		55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
 		55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */; };
 		55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55655AEF1B39A427000AFC17 /* SceneData.cpp */; };
@@ -290,8 +298,6 @@
 		552D837C1B20BCA700B681A8 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/Scenes/TitleScene.h; sourceTree = "<group>"; };
 		552D83841B20BFD800B681A8 /* baseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseScene.cpp; path = ../Classes/Scenes/baseScene.cpp; sourceTree = "<group>"; };
 		552D83851B20BFD800B681A8 /* baseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseScene.h; path = ../Classes/Scenes/baseScene.h; sourceTree = "<group>"; };
-		552F5DBF1B710D2900E4CEB6 /* baseMessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = baseMessageLayer.cpp; path = ../Classes/Layers/Message/baseMessageLayer.cpp; sourceTree = "<group>"; };
-		552F5DC01B710D2900E4CEB6 /* baseMessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseMessageLayer.h; path = ../Classes/Layers/Message/baseMessageLayer.h; sourceTree = "<group>"; };
 		552F5DC11B710D2900E4CEB6 /* CharacterMessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterMessageLayer.cpp; path = ../Classes/Layers/Message/CharacterMessageLayer.cpp; sourceTree = "<group>"; };
 		552F5DC21B710D2900E4CEB6 /* CharacterMessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterMessageLayer.h; path = ../Classes/Layers/Message/CharacterMessageLayer.h; sourceTree = "<group>"; };
 		552F5DC31B710D2900E4CEB6 /* StoryMessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StoryMessageLayer.cpp; path = ../Classes/Layers/Message/StoryMessageLayer.cpp; sourceTree = "<group>"; };
@@ -308,6 +314,16 @@
 		555B650D1B5CE94F00D15530 /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureManager.h; path = ../Classes/Managers/TextureManager.h; sourceTree = "<group>"; };
 		55619F601B36970B007EBD6E /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../Classes/MapObjects/MapObject.cpp; sourceTree = "<group>"; };
 		55619F611B36970B007EBD6E /* MapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObject.h; path = ../Classes/MapObjects/MapObject.h; sourceTree = "<group>"; };
+		5564CCE21BCB515300A4C6D2 /* MessageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageLayer.cpp; path = ../Classes/Layers/Message/MessageLayer.cpp; sourceTree = "<group>"; };
+		5564CCE31BCB515300A4C6D2 /* MessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageLayer.h; path = ../Classes/Layers/Message/MessageLayer.h; sourceTree = "<group>"; };
+		5564CCE71BCB89E700A4C6D2 /* MessageData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageData.cpp; path = ../Classes/Datas/Message/MessageData.cpp; sourceTree = "<group>"; };
+		5564CCE81BCB89E700A4C6D2 /* MessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageData.h; path = ../Classes/Datas/Message/MessageData.h; sourceTree = "<group>"; };
+		5564CCEB1BCB915D00A4C6D2 /* SystemMessageData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemMessageData.cpp; path = ../Classes/Datas/Message/SystemMessageData.cpp; sourceTree = "<group>"; };
+		5564CCEC1BCB915D00A4C6D2 /* SystemMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemMessageData.h; path = ../Classes/Datas/Message/SystemMessageData.h; sourceTree = "<group>"; };
+		5564CCEF1BCB928800A4C6D2 /* StoryMessageData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StoryMessageData.cpp; path = ../Classes/Datas/Message/StoryMessageData.cpp; sourceTree = "<group>"; };
+		5564CCF01BCB928800A4C6D2 /* StoryMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryMessageData.h; path = ../Classes/Datas/Message/StoryMessageData.h; sourceTree = "<group>"; };
+		5564CCF31BCB932000A4C6D2 /* CharacterMessageData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterMessageData.cpp; path = ../Classes/Datas/Message/CharacterMessageData.cpp; sourceTree = "<group>"; };
+		5564CCF41BCB932000A4C6D2 /* CharacterMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterMessageData.h; path = ../Classes/Datas/Message/CharacterMessageData.h; sourceTree = "<group>"; };
 		55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonSceneData.cpp; sourceTree = "<group>"; };
 		55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonSceneData.h; sourceTree = "<group>"; };
 		55655AEF1B39A427000AFC17 /* SceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneData.cpp; sourceTree = "<group>"; };
@@ -631,6 +647,7 @@
 		552D83641B20BC1C00B681A8 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
+				5564CCE61BCB89BF00A4C6D2 /* Message */,
 				552D83811B20BCC000B681A8 /* Scene */,
 			);
 			name = Datas;
@@ -700,14 +717,14 @@
 		552F5DBE1B710CF900E4CEB6 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				552F5DBF1B710D2900E4CEB6 /* baseMessageLayer.cpp */,
-				552F5DC01B710D2900E4CEB6 /* baseMessageLayer.h */,
 				552F5DC11B710D2900E4CEB6 /* CharacterMessageLayer.cpp */,
 				552F5DC21B710D2900E4CEB6 /* CharacterMessageLayer.h */,
 				552F5DC31B710D2900E4CEB6 /* StoryMessageLayer.cpp */,
 				552F5DC41B710D2900E4CEB6 /* StoryMessageLayer.h */,
 				552F5DC51B710D2900E4CEB6 /* SystemMessageLayer.cpp */,
 				552F5DC61B710D2900E4CEB6 /* SystemMessageLayer.h */,
+				5564CCE21BCB515300A4C6D2 /* MessageLayer.cpp */,
+				5564CCE31BCB515300A4C6D2 /* MessageLayer.h */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -728,6 +745,21 @@
 				55F1B6201BBEC44900AA64EE /* MapObjectFactory.h */,
 			);
 			name = MapObjects;
+			sourceTree = "<group>";
+		};
+		5564CCE61BCB89BF00A4C6D2 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				5564CCE71BCB89E700A4C6D2 /* MessageData.cpp */,
+				5564CCE81BCB89E700A4C6D2 /* MessageData.h */,
+				5564CCEB1BCB915D00A4C6D2 /* SystemMessageData.cpp */,
+				5564CCEC1BCB915D00A4C6D2 /* SystemMessageData.h */,
+				5564CCEF1BCB928800A4C6D2 /* StoryMessageData.cpp */,
+				5564CCF01BCB928800A4C6D2 /* StoryMessageData.h */,
+				5564CCF31BCB932000A4C6D2 /* CharacterMessageData.cpp */,
+				5564CCF41BCB932000A4C6D2 /* CharacterMessageData.h */,
+			);
+			name = Message;
 			sourceTree = "<group>";
 		};
 		556C18DF1B3FA69500D2BCA1 /* Dungeon */ = {
@@ -981,7 +1013,9 @@
 				55F1B6211BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
 				5583CE3E1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
+				5564CCF51BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
 				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
+				5564CCF11BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
 				556C71661BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */,
@@ -989,7 +1023,6 @@
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
-				552F5DC71B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
@@ -998,6 +1031,7 @@
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
+				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
@@ -1011,6 +1045,8 @@
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
 				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
+				5564CCED1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */,
+				5564CCE41BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
 				266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				55D8A6E71BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
@@ -1030,7 +1066,6 @@
 				5583CE3F1B9A163C00F9ACB7 /* EventScriptTask.cpp in Sources */,
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
-				552F5DC81B710D2900E4CEB6 /* baseMessageLayer.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
@@ -1041,18 +1076,22 @@
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */,
+				5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				552D83871B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				5564CCF61BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
 				556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
+				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				550708D21BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
 				55D8A6E21BB43772005F9717 /* MenuLayer.cpp in Sources */,
+				5564CCE51BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
@@ -1061,6 +1100,7 @@
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
+				5564CCEE1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */,
 				266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				556C71671BC3DA9E00835D15 /* FollowType.cpp in Sources */,
