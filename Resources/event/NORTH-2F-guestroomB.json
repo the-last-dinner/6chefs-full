@@ -5,6 +5,10 @@
 			"mapID":"10",
 			"x":63,
 			"y":10
+		},
+		{
+			"type":"playSE",
+			"file":"door1.mp3"
 		}
 	],
 	"2":[

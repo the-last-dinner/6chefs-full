@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="27">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="32">
  <tileset firstgid="1" name="BlackMagic01" tilewidth="16" tileheight="16">
   <image source="BlackMagic01.png" trans="008080" width="192" height="352"/>
  </tileset>
@@ -63,28 +63,34 @@
     <property name="objID" value="1074"/>
    </properties>
   </object>
-  <object id="22" x="272" y="320" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="18"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1077"/>
-   </properties>
-  </object>
   <object id="23" x="304" y="112" width="32" height="32">
    <properties>
     <property name="CharaID" value="8"/>
+    <property name="EventID" value="9"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1073"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="26" x="256" y="352" width="32" height="32">
+  <object id="26" x="208" y="304" width="32" height="32">
    <properties>
     <property name="CharaID" value="19"/>
-    <property name="direction" value="UP"/>
+    <property name="EventID" value="7"/>
+    <property name="direction" value="RIGHT"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1075"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="27" x="48" y="320" width="32" height="32">
+   <properties>
+    <property name="EventID" value="8"/>
+    <property name="charaID" value="18"/>
+    <property name="direction" value="RIGHT"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="1086"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -103,7 +109,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="16" x="304" y="416" width="32" height="32">
+  <object id="16" x="192" y="416" width="32" height="32">
    <properties>
     <property name="EventID" value="5"/>
     <property name="trigger" value="3"/>
@@ -131,6 +137,12 @@
    <properties>
     <property name="EventID" value="6"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="29" x="304" y="416" width="32" height="32">
+   <properties>
+    <property name="EentID" value="10"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
  </objectgroup>

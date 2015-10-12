@@ -26,6 +26,10 @@
           "objID": "hero"
         },
         {
+          "type":"wait",
+          "time":1.0
+        },
+        {
           "type": "changeDirection",
           "direction": "LEFT",
           "objID": "hero"
@@ -35,6 +39,10 @@
           "x": 62,
           "y": 58,
           "objID": "hero"
+        },
+        {
+          "type":"wait",
+          "time":0.5
         },
         {
           "type": "charaMsg",
@@ -116,6 +124,10 @@
           "mapID": "3",
           "x": 26,
           "y": 14
+        },
+        {
+          "type":"playBGM",
+          "file":"Mozart-OboeConcerto-1.mp3"
         },
         {
           "type": "charaMsg",

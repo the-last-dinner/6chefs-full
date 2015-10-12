@@ -11,7 +11,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlMENgDAMA5MJ0r3YfxCYACqwFKX0lTofiGRV/fjqYCHyrdkvHQUcU5GmPH/k2PQWKxdywJ/Fga89LDanZzLi3qo5/WRy0ANzYvQ79qyq17iDueod0T/2wu+1JfYaOZ4Xlck18zcdlcn1lsf3e/X3iefs/ez/+j/cOQGJbk4D
+   eJztklEOwjAIhuEA2r64S6w+GQ+hvf9B9AS22cgIBdcyHyX5AyULX/8OgDbuCHCGRRSn9Rw6656onLnkxHozbD1eW+dRzqvozeZcBU/jJGXmHieUOhY9Sv1UfCVomSMc8pFxkfQl7+/lkA+aT5n70uaPvhvNDWtt+bHyKCfixuJ+Muj/inpHOXLvrJ0Y5dT8zU8CfR96ObQHgSli64fP5j2PH23fMqu1fzbqh+9dPRPTuofXj+RF8Y4ykzcvh/OkNF+9HGt+wFaaryN++H5b+VK+mRwcma37U751Migm9Okfv40P3ZZsAw==
   </data>
  </layer>
  <objectgroup name="collision">
@@ -45,7 +45,7 @@
   <object id="11" x="128" y="0" width="32" height="32">
    <properties>
     <property name="EventID" value="1"/>
-    <property name="trigger" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="12" x="352" y="224" width="32" height="32">
