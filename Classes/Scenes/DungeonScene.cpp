@@ -20,6 +20,7 @@
 
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
+#include "MapObjects/Objects.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
@@ -94,17 +95,25 @@ void DungeonScene::onPreloadFinished()
 void DungeonScene::onMenuKeyPressed()
 {
     FUNCLOG
-    // キーをリリース
-    this->listener->releaseKeyAll();
+    this->listener->setEnabled(false);
+    // 主人公の位置をセット
+    Character* chara = this->mapLayer->getMapObjectList()->getMainCharacter();
+    Point point = chara->getGridPosition(this->mapLayer->getTiledMap()->getContentSize());
+    Direction dir = chara->getDirection();
+    PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
+    PlayerDataManager::getInstance()->setLocation(location);
     // スクショをとって、ダンジョンメニューシーンをプッシュ
     string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", fu->FileUtils::fullPathForFilename("save/global.json"));
-    cout << "path>>" << path << endl;
     utils::captureScreen([=](bool success, string filename){
      if(success)
      {
          Sprite* screen = Sprite::create(filename);
-         Director::getInstance()->pushScene(DungeonMenuScene::createScene(screen->getTexture()));
+         Scene* menu = DungeonMenuScene::createScene(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         // メニューシーンをプッシュ
+         Director::getInstance()->pushScene(menu);
+         // cache削除
          Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
      }
     }, path);
 }
+

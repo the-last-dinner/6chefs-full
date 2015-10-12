@@ -51,6 +51,7 @@ bool EventListenerKeyboardLayer::init()
 // リスナを有効/無効化
 void EventListenerKeyboardLayer::setEnabled(bool enabled)
 {
+    this->releaseKeyAll();
     this->listenerKeyboard->setEnabled(enabled);
 }
 
