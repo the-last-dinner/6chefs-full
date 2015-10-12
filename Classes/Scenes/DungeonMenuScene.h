@@ -42,6 +42,9 @@ private:
     void onSaveMenuSelected();
     void onSaveDataSelected(int dataId);
     void onSaveDataSelectCancelled();
+    void createMainMenu();
+    void createSaveMenu();
+    void createItemMenu();
 };
 
 #endif /* defined(__LastSupper__DungeonMenuScene__) */

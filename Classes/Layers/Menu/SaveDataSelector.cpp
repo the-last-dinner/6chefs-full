@@ -22,8 +22,9 @@ bool SaveDataSelector::init(bool write = false)
 	FUNCLOG
 	if(!MenuLayer::init(2, PlayerDataManager::MAX_SAVE_COUNT / 2)) return false;
 	
-    // 書き込みフラグをセット
+    // フラグをセット
     this->write_flag = write;
+    this->comfirm_flag = false;
 	// 黒い背景を生成
 	Sprite* black = Sprite::create();
 	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -107,23 +108,37 @@ void SaveDataSelector::onSpacePressed(int idx)
 {
     // インクリメント
     idx++;
-    // 処理分け
+    // 確認時
+    if (this->comfirm_flag)
+    {
+        if(this->onSaveDataSelectCancelled)
+        {
+            this->onSaveDataSelectCancelled();
+        }
+    }
+    // セーブorロード
     if (this->write_flag)
     {
         // セーブ時
         SoundManager::getInstance()->playSound("se/back.mp3");
         PlayerDataManager::getInstance()->save(idx);
-        cout << "SAVE!" << endl;
-        return;
+        Sprite* back = Sprite::create();
+        back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
+        back->setColor(Color3B::BLACK);
+        back->setPosition(WINDOW_CENTER);
+        this->addChild(back);
+        Label* message = Label::createWithTTF("セーブが完了しました", "fonts/cinecaption2.28.ttf", back->getContentSize().height / 5);
+        message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
+        back->addChild(message);
     } else
     {
         // ロード時
         SoundManager::getInstance()->playSound("se/back.mp3");
         PlayerDataManager::getInstance()->setMainLocalData(idx);
         Director::getInstance()->replaceScene(DungeonScene::createScene());
-        cout << "LOAD!" << endl;
-        return;
     }
+    this->comfirm_flag = true;
+    return;
 	// 指定セーブデータがプレイヤーによってセーブされたものであるか判別
 	/*if(this->saveDatas.at(idx).save_count == PlayerDataManager::DEFAULT_COUNT)
 	{

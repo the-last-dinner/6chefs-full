@@ -11,6 +11,7 @@
 */
 
 #include "Managers/PlayerDataManager.h"
+#include "Managers/CsvDataManager.h"
 
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
@@ -131,9 +132,10 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             cout << "set >> " << i << endl;
             //プレイ時間を編集
             minute = this->global[cha_id]["play_time"].GetInt();
+            cout << this->getSprintf("%2s", to_string(minute) + "分") << endl;
             time = this->getSprintf("%2s", to_string(minute / 60)) + "時間" + this->getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            save = SaveIndex(i, this->getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", this->global[cha_id]["map"].GetString()));
+            save = SaveIndex(i, this->getSprintf("%15s", this->global[cha_id]["name"].GetString()), time, this->getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), this->getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
         }
         save_list.push_back(save);
     }
@@ -179,7 +181,7 @@ void PlayerDataManager::save(const int id)
         this->global[cha_id]["name"].SetString(this->local["name"].GetString(), 20);
         this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
         this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
-        this->global[cha_id]["location"].SetArray();
+        //this->global[cha_id]["location"].SetArray();
         this->global[cha_id]["location"][0].SetInt(loc.map_id);
         this->global[cha_id]["location"][1].SetInt(loc.x);
         this->global[cha_id]["location"][2].SetInt(loc.y);
@@ -418,7 +420,7 @@ string PlayerDataManager::strReplace(const string& pattern, const string& replac
 
 //sprinfでformatした文字列を取得
 string PlayerDataManager::getSprintf(const string& format, const string& str){
-    char* c;
+    char c[100];
     sprintf(c, format.c_str(), str.c_str());
     return string(c);
 }

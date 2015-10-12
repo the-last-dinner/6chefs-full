@@ -39,6 +39,7 @@ public:
 private:
 	vector<PlayerDataManager::SaveIndex> saveDatas {};
     bool write_flag;
+    bool comfirm_flag;
 public:
 	function<void(int)> onSaveDataSelected { nullptr };
 	function<void()> onSaveDataSelectCancelled { nullptr };
