@@ -33,7 +33,8 @@ bool ControlMainCharacterTask::init(DungeonScene* dungeonScene)
 // 向きを変える
 void ControlMainCharacterTask::turn(const Direction& direction)
 {
-    this->scene->mapLayer->getMapObjectList()->getMainCharacter()->setDirection(direction);
+    Character* mainCharacter {this->scene->mapLayer->getMapObjectList()->getMainCharacter()};
+    if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
 }
 
 // 目の前を調べる
@@ -42,8 +43,17 @@ void ControlMainCharacterTask::search()
     MapObjectList* objectList {this->scene->mapLayer->getMapObjectList()};
     Character* mainCharacter {objectList->getMainCharacter()};
     
-    MapObject* obj { objectList->getMapObject(mainCharacter->getAdjacentPosition({mainCharacter->getDirection(), Direction::SIZE}))};
-    if(obj && obj->getTrigger() == Trigger::SEARCH) this->scene->runEvent(obj->getEventId());
+    Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
+    
+    // 現状イベントスクリプトに実行待ちを実装していないため現状はこんな感じで
+    for(MapObject* obj : objs)
+    {
+        if(obj && obj->getTrigger() == Trigger::SEARCH)
+        {
+            this->scene->runEvent(obj->getEventId());
+            return;
+        }
+    }
 }
 
 // 歩行中、あたり判定を行い次に向かう位置を決定する
@@ -54,13 +64,13 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
     
     mainCharacter->setDirection(directions.back());
     
-    int directionCount {(directions.size() >= 2 && directions.back() != directions.at(directions.size() - 2))?static_cast<int>(directions.size()):1};
+    int directionCount {(directions.size() >= 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
     
     bool isHit {(directionCount > 1)?mainCharacter->isHit({directions.back(), directions.at(directionCount - 2)}):false};
     
     Point movement {Point::ZERO};
     
-    for(int i {directionCount - 1}; i >= 0; i--)
+    for(int i {static_cast<int>(directions.size()) - 1}; i >= static_cast<int>(directions.size()) - directionCount; i--)
     {
         if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && movement == Point::ZERO))
         {
@@ -68,7 +78,10 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
         }
     }
     
+    if(movement == Point::ZERO) return;
+    mainCharacter->setMoving(true);
     this->scene->runAction(Sequence::createWithTwoActions(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
+    this->scene->runAction(Sequence::createWithTwoActions(DelayTime::create(Character::DURATION_FOR_ONE_STEP), CallFunc::create([mainCharacter](){mainCharacter->setMoving(false);})));
 }
 
 // 一マス分移動し終えた時

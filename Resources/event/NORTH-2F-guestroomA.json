@@ -5,14 +5,18 @@
 			"mapID":"10",
 			"x":36,
 			"y":10
+		},
+		{
+			"type":"playSE",
+			"file":"door1.mp3"
 		}
 	],
 	"2":[
 		{
 			"type":"changeMap",
 			"mapID":"12",
-			"x":11,
-			"y":23	
+			"x":2,
+			"y":7	
 		}
 	],
 	"3":[

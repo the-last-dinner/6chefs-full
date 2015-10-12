@@ -12,6 +12,7 @@
 #include "Common.h"
 
 class MapObject;
+class MapObjectList;
 
 class MapObjectFactory : public Ref
 {
@@ -28,15 +29,12 @@ public:
     
 // クラスメソッド
 public:
-    CREATE_FUNC(MapObjectFactory)
-    
-// インスタンス変数
-    
+    static MapObjectList* createMapObjectList(experimental::TMXTiledMap* tiledMap);
+      
 // インスタンスメソッド
 private:
     MapObjectFactory();
     ~MapObjectFactory();
-    bool init();
     Rect getRect(const ValueMap& info) const;
     int getObjectId(const ValueMap& info) const;
     int getEventId(const ValueMap& info) const;
@@ -49,9 +47,6 @@ private:
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);
     MapObject* createObjectOnCharacter(const ValueMap& info);
-    
-public:
-    MapObject* createMapObject(const Group& group, const ValueMap& info);
 };
 
 #endif /* defined(__LastSupper__MapObjectFactory__) */

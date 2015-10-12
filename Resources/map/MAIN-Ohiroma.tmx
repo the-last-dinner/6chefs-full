@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="48" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="128">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="48" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="131">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -68,6 +68,11 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="130" x="464" y="544" width="32" height="32">
+   <properties>
+    <property name="charaID" value="21"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Chara(object)">
   <properties>
@@ -157,20 +162,21 @@
   </object>
   <object id="125" x="464" y="544" width="32" height="32">
    <properties>
-    <property name="charaID" value="7"/>
+    <property name="charaID" value="21"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1084"/>
    </properties>
   </object>
-  <object id="126" x="464" y="512" width="32" height="32">
+  <object id="128" x="688" y="96" width="32" height="32">
    <properties>
-    <property name="charaID" value="2"/>
+    <property name="charaID" value="19"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1085"/>
    </properties>
   </object>
+  <object id="129" x="464" y="544" width="32" height="32"/>
  </objectgroup>
  <layer name="CharaUe1" width="60" height="48">
   <properties>
@@ -226,19 +232,19 @@
     <property name="trigger" value="3"/>
    </properties>
   </object>
-  <object id="90" x="432" y="48" width="96" height="32">
+  <object id="90" x="432" y="48" width="96" height="16">
    <properties>
     <property name="EventID" value="11"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="91" x="896" y="320" width="32" height="48">
+  <object id="91" x="912" y="320" width="16" height="48">
    <properties>
     <property name="EventID" value="12"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="93" x="432" y="48" width="96" height="32">
+  <object id="93" x="432" y="48" width="96" height="16">
    <properties>
     <property name="EventID" value="13"/>
     <property name="trigger" value="1"/>

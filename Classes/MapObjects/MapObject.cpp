@@ -111,7 +111,7 @@ Trigger MapObject::getTrigger()
 {return this->trigger;}
 
 // 当たり判定の有無を取得
-bool MapObject::isHit() const
+const bool MapObject::isHit() const
 {return this->_isHit;}
 
 // 動いている方向を取得
@@ -124,53 +124,48 @@ Rect MapObject::getCollisionRect() const
     return Rect(this->getPosition().x + this->collisionRect.getMinX() - this->getContentSize().width / 2, this->getPosition().y + this->collisionRect.getMinY() - getContentSize().height / 2, this->collisionRect.size.width, this->collisionRect.size.height);
 }
 
-// 隣接するマスの中心座標を取得
-Point MapObject::getAdjacentPosition(const Direction& direction) const
+// 指定方向に移動した場合の衝突判定用Rectを取得
+Rect MapObject::getCollisionRect(const Direction& direction) const
 {
-    Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
-    float length {(direction == Direction::FRONT || direction == Direction::BACK)? this->getCollisionRect().size.height : this->getCollisionRect().size.width};
-    position += (1 + MapUtils::getGridNum(length)) * MapUtils::getGridVector(direction) / 2;
+    Rect rect {this->getCollisionRect()};
     
-    return position;
+    Point movementVec {MapUtils::getGridVector(direction)};
+    
+    // あたり判定用Rectを縦横-2ピクセルした後に、x,y方向に1ピクセル足すことによって、関係ない範囲を巻き込まないようにしている（線分上、頂点上であっても判定がきいてしまうため）
+    return Rect(rect.origin.x + 1 + movementVec.x, rect.origin.y + 1 + movementVec.y, rect.size.width - 2, rect.size.height - 2);
 }
 
-// 隣接するマスの中心座標を取得
-Point MapObject::getAdjacentPosition(const Direction (&directions)[2]) const
+// 指定2方向に移動した場合の衝突判定用Rectを取得
+Rect MapObject::getCollisionRect(const Direction (&directions)[2]) const
 {
-    Point position { Point(this->getCollisionRect().getMidX(), this->getCollisionRect().getMidY())};
-    int time {directions[0] == directions[1]?1:2};
-    for(int i {0}; i < time; i++)
+    Rect rect {this->getCollisionRect()};
+    
+    Point movementVec {Point::ZERO};
+    
+    // 二方向分の移動ベクトルを生成する
+    for(int i{0};i < 2;i++)
     {
-        if(directions[i] == Direction::SIZE) continue;
-        float length {(directions[i] == Direction::FRONT || directions[i] == Direction::BACK)? this->getCollisionRect().size.height : this->getCollisionRect().size.width};
-        position += (1 + MapUtils::getGridNum(length)) * MapUtils::getGridVector(directions[i]) / 2;
+        movementVec += MapUtils::getGridVector(directions[i]);
     }
     
-    return position;
+    // あたり判定用Rectを縦横-2ピクセルした後に、x,y方向に1ピクセル足すことによって、関係ない範囲を巻き込まないようにしている（線分上、頂点上であっても判定がきいてしまうため）
+    return Rect(rect.origin.x + 1 + movementVec.x, rect.origin.y + 1 + movementVec.y, rect.size.width - 2, rect.size.height - 2);
 }
 
 // 指定の方向に対して当たり判定があるか
-bool MapObject::isHit(const Direction& direction) const
-{
-    if(!this->objectList) return false;
-        
-    // 移動先の座標を取得
-    Point point { this->getAdjacentPosition(direction)};
-    MapObject* pObj {this->objectList->getMapObject(point)};
-    if(!pObj) return false;
-    return pObj->isHit();
-}
-
-// 座標から指定の方向に対して当たり判定があるか
-bool MapObject::isHit(const Direction (&directions)[2]) const
+const bool MapObject::isHit(const Direction& direction) const
 {
     if(!this->objectList) return false;
     
-    // 移動先の座標を取得
-    Point point { this->getAdjacentPosition(directions)};
-    MapObject* pObj {this->objectList->getMapObject(point)};
-    if(!pObj) return false;
-    return pObj->isHit();
+    return this->objectList->containsCollisionObject(this->getCollisionRect(direction));
+}
+
+// 指定の２方向に対して当たり判定があるか
+const bool MapObject::isHit(const Direction (&directions)[2]) const
+{
+    if(!this->objectList) return false;
+    
+    return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
 }
 
 // デバッグ用に枠を描画
@@ -181,7 +176,8 @@ void MapObject::drawDebugMask()
         Point::ZERO,
         Point(0, this->getContentSize().height),
         this->getContentSize(),
-        Point(this->getContentSize().width, 0)
+        Point(this->getContentSize().width, 0),
+	Point::ZERO,
     };
     Color4F lineColor = Color4F::BLUE;
     DrawNode* draw {DrawNode::create()};

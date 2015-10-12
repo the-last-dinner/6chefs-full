@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="20">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="21">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -20,7 +20,7 @@
    <property name="cc_vertexz" value="-17"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYEAFvEDMB8T8SGx0mh+PuvsMxAFtINYBYl0kNjqti0edDCNxdrXhMF8bh7gOmhzIHmLsWgLEnkDshUZ74hD3QpOD2UPILl2gvB4j+bQVI6pduIA3UM6HkXxaAM0uWvkH3V+08g8ybUUH/8BoevjHZ9Q/o/4Z9c+of4jwz1AHAB13W7o=
+   eJxjYEAFvEDMB8T8SGx0mh+PuvsMxAFtINYBYl0kNjqti0edDCNxdrXhMF8bh7gOmhzIHmLsWgLEnkDshUZ74hD3QpOD2UPILl2gvB4j+bQVI6pdxozY7fEGivswkk8LoNmFyx5K/YPuL1r5B5m2ooN/YDQ9/OMz6p9R/4z6Z9Q/RPhHjJG6mN4AANfOYMY=
   </data>
  </layer>
  <layer name="blood" width="26" height="22" opacity="0.5">
@@ -36,7 +36,7 @@
    <property name="cc_vertexz" value="-16"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlDkKwDAMBIV+kNO5k/+/0tsE3OmwihgysIXAajSsiX5apmOiHhmQkeXZy4TdGUnIwvKsZcXbDdmRg+2zlhNvL+RGHrbPWqT7R7mS7h/lSrp/lCvp/lGurH3xOrL2xeuotj9aR7X90Tr6up9yX4PXhxWvj3L/xfLftUYGdc4csg==
+   eJztkzkOgDAMBC3/gPsO+f8r2QYJKh9xAYiRprCUNB6Z6OfNVExUwwa2LM9eOvzt4QBHlmctE97OcIEr22ctG94muMPM9lmLtP+oVtL+o1pJ+49qJe0/qpX1XryNrPfibVR6P9pGpfejbfT0Ptf/Grw9rHh7nGS++1UOtIoc+Q==
   </data>
  </layer>
  <layer name="MonoChu" width="26" height="22">
@@ -61,14 +61,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4C6QJqJgUGGifb2yAPtUKCDPSAwVPwkSafwwAdk0dwgAeSLUNFdwnjMkqCCPTAzxOkQlqB0hewf9HRGrTQHSlfI/kFPZ8SmOSkc6nCJD2YAyisgd9M6b4PygxwTfcurUYAdAABNJQQf
-  </data>
- </layer>
- <layer name="death" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-12"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
   </data>
  </layer>
  <layer name="key" width="26" height="22">
@@ -116,14 +108,6 @@
    eJxjYEAAU0YGuoBRe0btGQWDHwy39DZqz6g9o/aMbAAAVVADYQ==
   </data>
  </layer>
- <layer name="CharaUe2" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgY3gAACPAAAQ==
-  </data>
- </layer>
  <objectgroup name="event">
   <properties>
    <property name="cc_vertexz" value="-11"/>
@@ -150,6 +134,12 @@
    <properties>
     <property name="EventID" value="1"/>
     <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="20" x="64" y="64" width="320" height="256">
+   <properties>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
  </objectgroup>

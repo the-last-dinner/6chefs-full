@@ -26,8 +26,8 @@
 #define __Downloader__
 
 #include "platform/CCFileUtils.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 
 #include <unordered_map>
 #include <string>

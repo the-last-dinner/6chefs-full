@@ -33,7 +33,7 @@
 				},
 				{
 					"type":"storyMsg",
-					"title":["操作説明「潜水」"],
+					"title":"操作説明「潜水」",
 					"text":["潜水の操作説明"]
 				}
 			]
@@ -332,7 +332,7 @@
 						},
 						{
 							"type":"displayImg",
-							"file":真夏の首
+							"file":"真夏の首"
 						},
 						{
 							"type":"charaMsg",

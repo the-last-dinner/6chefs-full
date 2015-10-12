@@ -123,13 +123,7 @@
 					"imgID":"1"
 				},
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"createChara",
-							"objID":"1012"
-						}
-					]
+					"type":"stopBGM"
 				}
 			]
 		}

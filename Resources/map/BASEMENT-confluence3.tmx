@@ -19,7 +19,7 @@
    eJztkAEKgCAUQ+0A1UGyg+hZO2RBfhjy/WKCFWwwBhv/ITqna05eINdsl07bS9qSPeSe7dJpu8X1Sh7TbezxDTWFy1FJ4WIfYK9J7ls9mvuUR67N7eWN5v7tf8kll1xyySW3hWup5/YN7hd0Aj5XPGY=
   </data>
  </layer>
- <layer name="MonoShita" width="22" height="36">
+ <layer name="blood" width="22" height="36">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -27,7 +27,7 @@
    eJzt0McNAjEQRmFrXQGpCHINpGoIXUALBImlBIIEWwKiCk5ADWTeCh98ZnxC80vfcZ9Ha4xOp9PpdDp/3ciYHvoYRGGaYzoTTDHESNj1ezOsMUcs7C75fuV6GxywxU7Y3Xv3LQL903RH777ESZcI37jy/Q13PPAMdHPGGpNFDnkUcKJ9xkXwRpFOCWVUULXfm194C7oNOk200EbHtWuo29+7uv/eB2ENIwo=
   </data>
  </layer>
- <layer name="MonoChu" width="22" height="36">
+ <layer name="moryually" width="22" height="36">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>

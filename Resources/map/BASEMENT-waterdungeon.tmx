@@ -9,15 +9,12 @@
  <tileset firstgid="769" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="674c56" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1249" name="lower" tilewidth="16" tileheight="16">
-  <image source="lower.png" trans="201c30" width="480" height="256"/>
- </tileset>
  <layer name="Base" width="26" height="22">
   <properties>
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYEAFh5ipgwmB4WaPOzN18Kg9o/YMJnt0WaiDR+2hrj3UMp+QffSyZ7jFD6mA2uYNtD2DFQAARYlr1w==
+   eJxjYEAAUxYGhkPM1MHGLAw4wXC0x52ZOnjUnlF7BpM9ulTCA22PCQv17THBYlcQUCyYivYEskDMRAfUMh8dD5Q9YkAxcSqaL8oCMXOg0gGyvwhhZH+L4lBDKUD3NyF3D1cAADahdxc=
   </data>
  </layer>
  <layer name="hide" width="26" height="22">
@@ -64,14 +61,6 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYEAACTYGhh+sDFQBYmy45STwyI3aM2rPqD2E7aGWXYPFP8PFHlOguBkV7TFhg5g53MFPYL3zi0p1DwiA6rGfOMyjV3oDgZ+shDGyv3/gUEMNgOxvQu4ergAAgOoZRg==
-  </data>
- </layer>
  <layer name="CharaUe2" width="26" height="22">
   <properties>
    <property name="cc_vertexz" value="-1"/>

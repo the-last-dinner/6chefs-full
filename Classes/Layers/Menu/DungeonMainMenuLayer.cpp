@@ -53,11 +53,12 @@ bool DungeonMainMenuLayer::init()
 	map<Type, string> menuStrings
 	{
 		{Type::ITEM, "アイテム"},
-		{Type::SAVE, "セーブ"},
-		{Type::CHARA, "キャラ"},
-		{Type::TITLE, "タイトル"},
-		{Type::CLOSE, "閉じる"},
+		{ Type::SAVE, "セーブ" },
+		{ Type::CHARA, "キャラ" },
+		{ Type::TITLE, "タイトル" },
+		{ Type::CLOSE, "閉じる" },
 	};
+	
 	for(int i {0}; i < static_cast<int>(Type::SIZE); i++)
 	{
 		Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);

@@ -119,19 +119,21 @@ void DungeonScene::runEvent(int event_id)
 // 方向キーを押した時
 void DungeonScene::onCursorKeyPressed(const Key& key)
 {
+    // 主人公操作クラスへ移譲
     this->controlMainCharacterTask->turn(MapUtils::keyToDirection(key));
 }
 
 // スペースキーを押した時
 void DungeonScene::onSpaceKeyPressed()
 {
+    // 主人公操作クラスへ移譲
     this->controlMainCharacterTask->search();
 }
 
 // キーを押し続けている時
 void DungeonScene::intervalInputCheck(const vector<Key>& keys)
 {
-    
+    // 主人公操作クラスへ移譲
     this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
 }
 

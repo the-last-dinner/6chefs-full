@@ -9,6 +9,9 @@
  <tileset firstgid="705" name="chip10e_glas" tilewidth="16" tileheight="16">
   <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
  </tileset>
+ <tileset firstgid="1185" name="lower" tilewidth="16" tileheight="16">
+  <image source="lower.png" trans="000000" width="480" height="256"/>
+ </tileset>
  <layer name="Base" width="36" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
@@ -17,12 +20,12 @@
    eJzt0rENgDAMRFF7YbYLewDZA0bABSkioVOuuO6eZLmKEn0lYtYyYk/dZl11pqdus9wHO2pO4WbdNY9ws9wHcx/Mff5t36j7jHtW36Pus/qewf8Hcx/MfTD3McYLz1XIaA==
   </data>
  </layer>
- <layer name="MonoShita" width="36" height="24">
+ <layer name="wall" width="36" height="24">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYECAXBYGmoNsEuwYdQ9+MOoe/GDUPfjBqHvwg1H34AZdQHXddHBPJwvErlFAGfADhqE/HcLRlwViFyGQwzK40jMIjLoHPxh1D34w6h7CwICFtnioAQDtKBiR
+   eJzt00EKgDAMRNFs5v7XsR7EehB1bUMX7kZFGiLMg+4K+YTW7LLChltezFAPpx5OPZx6uEw9FXE99cGcvd05Ano29FnyTWk7nAP2OKHPupPtPbtM/92ph1MPl63HFYw9f3MCDQw7EQ==
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="24">

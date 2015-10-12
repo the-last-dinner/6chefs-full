@@ -2,17 +2,17 @@
 	"1":[
 		{
 			"type":"changeMap",
-			"nextMap":"21",
-			"x":9,
+			"mapID":"21",
+			"x":115,
 			"y":4
 		}
 	],
 	"2":[
 		{
 			"type":"changeMap",
-			"nextMap":"10",
-			"x":9,
-			"y":3
+			"mapID":"10",
+			"x":119,
+			"y":2
 		}
 	]
 }

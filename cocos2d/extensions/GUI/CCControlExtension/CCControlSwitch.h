@@ -29,7 +29,7 @@
 #define __CCCONTROLSWITCH_H__
 
 #include "CCControl.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionExport.h"
 
 namespace cocos2d { class Sprite; }
 namespace cocos2d { class Label; }
