@@ -240,15 +240,20 @@
 					]
 				},
 				{
-					"type":"fadeout",
-					"option":"white"
-				},
-				{
-					"type":"charaMsg",
-					"text":["希崎さん！！"],
-					"charaID":"0",
-					"imgID":"2",
-					"option":"reaction"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"whiteout",
+							"time":3.0
+						},
+						{
+							"type":"charaMsg",
+							"text":["希崎さん！！"],
+							"charaID":"0",
+							"imgID":"2",
+							"option":"reaction"
+						},
+					]
 				},
 				{
 					"type":"fadeout"
@@ -330,6 +335,9 @@
 							"type":"charaMsg",
 							"charaID":"7",
 							"text":["ゆ・・・き・・・"]
+						},
+						{
+							"type":"fadein"
 						},
 						{
 							"type":"already"

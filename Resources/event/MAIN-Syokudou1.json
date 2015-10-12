@@ -613,12 +613,6 @@
 			]
 		}
 	],
-	"9":[
-		{
-			"type":"systemMsg",
-			"text":["火がパチパチ燃えている"]
-		}
-	],
 	"10":[
 		{
 			"type":"systemMsg",
@@ -1386,19 +1380,28 @@
 	],
 	"25":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["3","21"],
-					"Nequip":["1515"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"charaMsg",
-					"text":["部屋の出口・・・"],
-					"charaID":"0",
-					"imgID":"1"
+					"type":"systemMsg",
+					"text":["火がパチパチ燃えている"]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["3","21"],
+							"Nequip":["1515"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["部屋の出口・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						}
+					]
 				}
 			]
 		}
