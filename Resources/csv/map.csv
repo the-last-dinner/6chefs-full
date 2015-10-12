@@ -1,4 +1,4 @@
-//map_id,map_name,file_name
+マップID,マップ名,ファイル名
 1,バス停,BusStop
 2,晩餐館前,Bansankan
 3,本棟-食堂,MAIN-Syokudou1
@@ -24,10 +24,10 @@
 23,北棟3F-音楽室,NORTH-3F-musicroom
 24,東棟への廊下,corridor(toEAST)
 25,東棟2F-廊下,EAST-2F-corridor
-26,北棟-2F-1F東踊り場,NORTH-landing1(2to1)
-27,北棟-2F-1F西踊り場,NORTH-landing2(2to1)
-28,北棟-2F-3F東踊り場,NORTH-landing1(2to3)
-29,北棟-2F-3F西踊り場,NORTH-landing2(2to3)
+26,北棟-2F-1F西踊り場,NORTH-landing1(2to1)
+27,北棟-2F-1F東踊り場,NORTH-landing2(2to1)
+28,北棟-2F-3F西踊り場,NORTH-landing1(2to3)
+29,北棟-2F-3F東踊り場,NORTH-landing2(2to3)
 30,東棟-2F-1F東踊り場,EAST-landing1(2to1)
 31,東棟-2F-1F西踊り場,EAST-landing2(2to1)
 32,東棟1F-廊下,EAST-1F-corridor
