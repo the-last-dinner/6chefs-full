@@ -9,12 +9,19 @@
 #include "AudioEngine.h"
 #include <iostream>
 #include <fstream>
+
+// rapidjson
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/filewritestream.h"
 #include "rapidjson/prettywriter.h"
 #include "rapidjson/error/en.h"
+using namespace rapidjson;
+typedef GenericDocument< UTF8<> > Document_UTF8;
+typedef GenericValue< UTF8<> > Value_UTF8;
+typedef GenericStringStream< UTF8<> > StringStream_UTF8;
+typedef GenericStringBuffer< UTF8<> > StringBuffer_UTF8;
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
@@ -29,7 +36,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 using namespace std;
-using namespace rapidjson;
 using namespace experimental;
 
 // メソッドログ
