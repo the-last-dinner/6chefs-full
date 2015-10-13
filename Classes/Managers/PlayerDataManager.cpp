@@ -119,7 +119,6 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             cout << LastSupper::StringUtils::getSprintf("%2s", to_string(minute) + "分") << endl;
             time = LastSupper::StringUtils::getSprintf("%2s", to_string(minute / 60)) + "時間" + LastSupper::StringUtils::getSprintf("%2s", to_string(minute % 60)) + "分";
             //リスト生成
-            cout << "Fjkdsla;fjldsjaf;akjf>>>>" << LastSupper::StringUtils::getSprintf("%10s",this->global[cha_id]["name"].GetString()) << endl;
             save = SaveIndex(i, LastSupper::StringUtils::getSprintf("%10s", this->global[cha_id]["name"].GetString()), time, LastSupper::StringUtils::getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
         }
         save_list.push_back(save);

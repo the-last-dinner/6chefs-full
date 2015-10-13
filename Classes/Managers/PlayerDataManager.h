@@ -44,7 +44,7 @@ private:
     //グローバルセーブデータ
     rapidjson::Document global;
     //対象ローカルセーブデータid
-    int local_id;
+    int local_id {0};
     //ローカルセーブデータ
     rapidjson::Document local;
     //FileUtils

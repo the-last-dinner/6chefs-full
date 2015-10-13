@@ -18,10 +18,11 @@
 #include "rapidjson/prettywriter.h"
 #include "rapidjson/error/en.h"
 using namespace rapidjson;
-typedef GenericDocument< UTF8<> > Document_UTF8;
-typedef GenericValue< UTF8<> > Value_UTF8;
-typedef GenericStringStream< UTF8<> > StringStream_UTF8;
-typedef GenericStringBuffer< UTF8<> > StringBuffer_UTF8;
+typedef GenericDocument< UTF8<> > Document;
+typedef GenericValue< UTF8<> > Value;
+
+typedef GenericStringStream< UTF8<> > StringStream;
+typedef GenericStringBuffer< UTF8<> > StringBuffer;
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800

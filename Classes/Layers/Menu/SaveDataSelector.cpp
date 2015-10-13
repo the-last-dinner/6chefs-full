@@ -75,6 +75,7 @@ bool SaveDataSelector::init(bool write = false)
     // デフォルトセレクト
 	this->setCascadeOpacityEnabled(true);
     int id = PlayerDataManager::getInstance()->getSaveDataId();
+    cout << "iddddddddddddd" << id << endl;
 	this->onIndexChanged((id < 1) ? 0 : id - 1, false);
 	
 	return true;
@@ -97,6 +98,10 @@ void SaveDataSelector::hide()
 // 選択しているindexが変わった時
 void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 {
+    if (sound)
+    {
+        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    }
 	for(Node* obj : this->menuObjects)
 	{
 		if(obj->getTag() == newIdx)
@@ -122,12 +127,14 @@ void SaveDataSelector::onSpacePressed(int idx)
         {
             this->onSaveDataSelectCancelled();
         }
+        this->comfirm_flag = false;
+        return;
     }
     // セーブorロード
     if (this->write_flag)
     {
         // セーブ時
-        SoundManager::getInstance()->playSound("se/back.mp3");
+        SoundManager::getInstance()->playSound("se/save.mp3");
         PlayerDataManager::getInstance()->save(idx);
         Sprite* back = Sprite::create();
         back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
@@ -137,21 +144,22 @@ void SaveDataSelector::onSpacePressed(int idx)
         Label* message = Label::createWithTTF("セーブが完了しました", "fonts/cinecaption2.28.ttf", back->getContentSize().height / 5);
         message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
         back->addChild(message);
+        this->comfirm_flag = true;
     } else
     {
         // ロード時
         if(PlayerDataManager::getInstance()->checkSaveDataExists(idx))
         {
             // ロード
+            SoundManager::getInstance()->playSound("se/load.mp3");
             PlayerDataManager::getInstance()->setMainLocalData(idx);
             Director::getInstance()->replaceScene(DungeonScene::createScene());
         } else
         {
             // セーブデータが存在しない
-            SoundManager::getInstance()->playSound("se/back.mp3");
+            SoundManager::getInstance()->playSound("se/failure.mp3");
         }
     }
-    this->comfirm_flag = true;
     return;
 }
 
