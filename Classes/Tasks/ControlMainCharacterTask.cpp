@@ -11,6 +11,7 @@
 #include "Scenes/DungeonScene.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "MapObjects/Character.h"
 
@@ -62,14 +63,23 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
     TiledMapLayer* mapLayer {this->scene->mapLayer};
     Character* mainCharacter {mapLayer->getMapObjectList()->getMainCharacter()};
     
+    // 一番最近押したキーの方向に主人公を向ける
     mainCharacter->setDirection(directions.back());
     
-    int directionCount {(directions.size() >= 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
+    // ダッシュキーが押されていたら、速度の倍率をあげる
+    float ratio {this->scene->listener->isPressed(Key::DASH)? 2.f : 1.f};
     
+    // 入力確認の頻度を変更
+    this->scene->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP / ratio);
+    
+    // 入力から、使う方向の個数を決める
+    int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
+    
+    // 入力が２以上の時、斜め方向に当たり判定があるか確認
     bool isHit {(directionCount > 1)?mainCharacter->isHit({directions.back(), directions.at(directionCount - 2)}):false};
     
+    // 方向から当たり判定を一方向づつ確認し、移動ベクトルを生成する
     Point movement {Point::ZERO};
-    
     for(int i {static_cast<int>(directions.size()) - 1}; i >= static_cast<int>(directions.size()) - directionCount; i--)
     {
         if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && movement == Point::ZERO))
@@ -77,11 +87,10 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
             movement += MapUtils::getGridVector(directions.at(i));
         }
     }
-    
+    // 移動ベクトルがゼロの時リターン
     if(movement == Point::ZERO) return;
-    mainCharacter->setMoving(true);
-    this->scene->runAction(Sequence::createWithTwoActions(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
-    this->scene->runAction(Sequence::createWithTwoActions(DelayTime::create(Character::DURATION_FOR_ONE_STEP), CallFunc::create([mainCharacter](){mainCharacter->setMoving(false);})));
+    
+    this->scene->runAction(Sequence::createWithTwoActions(mainCharacter->createWalkByAction(movement, ratio), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
 }
 
 // 一マス分移動し終えた時

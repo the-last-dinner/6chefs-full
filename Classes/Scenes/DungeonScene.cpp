@@ -14,7 +14,7 @@
 #include "Effects/AmbientLightLayer.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
-#include "Layers/Message/CharacterMessageLayer.h"
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "Tasks/EventScriptTask.h"
 #include "Tasks/ControlMainCharacterTask.h"

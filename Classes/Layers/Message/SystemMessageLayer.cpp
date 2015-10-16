@@ -8,6 +8,8 @@
 
 #include "Layers/Message/SystemMessageLayer.h"
 
+#include "Datas/Message/SystemMessageData.h"
+
 // コンストラクタ
 SystemMessageLayer::SystemMessageLayer()
 {FUNCLOG}
@@ -17,25 +19,42 @@ SystemMessageLayer::~SystemMessageLayer()
 {FUNCLOG}
 
 // 初期化
-bool SystemMessageLayer::init(const queue<string>& pages)
+bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas)
 {
 	FUNCLOG
-	if(!Layer::init()) return false;
-	if(!baseMessageLayer::init()) return false;
-	
-	// ページをセット
-	this->setPages(pages);
+    
+    this->datas = datas;
+    
+    Size winSize {Director::getInstance()->getWinSize()};
 	
 	// 枠を生成
-	Sprite* frame = Sprite::create();
-	frame->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
+    Sprite* frame { Sprite::create() };
+	frame->setTextureRect(Rect(0, 0, winSize.width, winSize.height / 5));
 	frame->setColor(Color3B::BLACK);
-	frame->setPosition(WINDOW_CENTER);
-	this->setFrame(frame);
+	frame->setPosition(Point(winSize.width / 2, frame->getContentSize().height / 2));
 	this->addChild(frame);
+    this->frame = frame;
 	
-	// メッセージの表示位置をセット
-	this->setHAlignment(TextHAlignment::CENTER);
-	
-	return true;
+    return MessageLayer::init();
+}
+
+// メッセージを生成
+Label* SystemMessageLayer::createMessage()
+{
+    Label* message { Label::createWithTTF(this->datas.front()->getMessage(), "fonts/cinecaption2.28.ttf", 24.f) };
+    message->setHorizontalAlignment(TextHAlignment::CENTER);
+    message->setVerticalAlignment(TextVAlignment::CENTER);
+    message->setPosition(this->frame->getContentSize() / 2);
+    this->frame->addChild(message);
+    
+    CC_SAFE_RELEASE(this->datas.front());
+    this->datas.pop();
+    
+    return message;
+}
+
+// 次のページがあるか
+bool SystemMessageLayer::hasNextPage()
+{
+    return !this->datas.empty();
 }

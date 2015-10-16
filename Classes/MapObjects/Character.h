@@ -13,36 +13,38 @@
 
 class Character : public MapObject
 {
+// 定数
+private:
+    static const string basePath;
+public:
+    static const float DURATION_FOR_ONE_STEP;
+
 // クラスメソッド
 public:
-	static Character* create(int charaId, Direction direction);
-	
-// クラス変数
+	static Character* create(int charaId, const Direction direction);
+    
+// インスタンス変数
 private:
-	static const string basePath;
-public:
-	static const float DURATION_FOR_ONE_STEP;
+    Sprite* character { nullptr };												// キャラクターのSprite部分
+    string texturePrefix {};											// キャラプロパティリストファイル名の先頭部分
+    Direction direction {Direction::SIZE};											// 現在向いている方向
+    bool _isMoving { false };
+    bool stampingRightFoot { false };
 	
 // インスタンスメソッド
 private:
 	Character();
 	~Character();
-	virtual bool init(int charaId, Direction direction);
+	virtual bool init(int charaId, const Direction direction);
 public:
 	void setDirection(Direction direction);
 	Direction getDirection();
 	void setMoving(bool _isMoving);
 	bool isMoving();
-	ActionInterval* createStampingAction(const Direction& direction, float ratio = 1.0f);
-    void stopStamping();
+    void stamp(const Direction direction, float ratio = 1.0f);
     ActionInterval* createWalkByAction(const Point& vector, float ratio = 1.0f);
-	
-// インスタンス変数
-private:
-	Sprite* character { nullptr };												// キャラクターのSprite部分
-	string texturePrefix {};											// キャラプロパティリストファイル名の先頭部分
-	Direction direction {Direction::SIZE};											// 現在向いている方向
-	bool _isMoving { false };
+    ActionInterval* createWalkByAction(const Direction direction, float ratio = 1.0f);
+    ActionInterval* createWalkByAction(const Direction direction[2], float ratio = 1.0f);
 };
 
 #endif // __CHARACTER_H__

@@ -64,7 +64,16 @@ void EventListenerKeyboardLayer::setInputCheckDelay(float delay)
 // キー入力の確認間隔を設定
 void EventListenerKeyboardLayer::setInputCheckInterval(float interval)
 {
+    if(this->interval == interval) return;
+    
     this->interval = interval;
+    
+    // すでにスケジュールされていたら、一旦スケジュール停止して新たなインターバルで再開する
+    if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck)))
+    {
+        this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck));
+        this->schedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck), interval);
+    }
 }
 
 // キーを押した時

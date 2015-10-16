@@ -8,6 +8,8 @@
 
 #include "Layers/Message/CharacterMessageLayer.h"
 
+#include "Datas/Message/CharacterMessageData.h"
+
 // 定数
 const float CharacterMessageLayer::TOP_MARGIN { 50 };
 const float CharacterMessageLayer::LEFT_MARGIN {60};
@@ -20,13 +22,11 @@ CharacterMessageLayer::CharacterMessageLayer(){FUNCLOG}
 CharacterMessageLayer::~CharacterMessageLayer(){FUNCLOG}
 
 // 初期化
-bool CharacterMessageLayer::init(const queue<Information>& infos)
+bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas)
 {
     FUNCLOG
-    if(!baseMessageLayer::init()) return false;
     
-    this->infos = infos;
-    this->pages = infos.front().pages;
+    this->datas = datas;
     
     // メッセージ用枠を生成
     Sprite* mainFrame {Sprite::createWithSpriteFrameName("cm_frame.png")};
@@ -34,8 +34,8 @@ bool CharacterMessageLayer::init(const queue<Information>& infos)
     mainFrame->setPosition(Point(WINDOW_WIDTH / 2, mFrameSize.height / 2 + 10)); // 30は縦方向の調整用
     mainFrame->setLocalZOrder(0);
     mainFrame->setCascadeOpacityEnabled(true);
-    this->setFrame(mainFrame);
-    this->addChild(frame);
+    this->addChild(mainFrame);
+    this->frame = mainFrame;
     
     // キャラクター名用枠を生成
     this->nameFrame = ui::Scale9Sprite::createWithSpriteFrameName("cm_frame_s.png", Rect(20, 0, 220, 68));
@@ -44,14 +44,14 @@ bool CharacterMessageLayer::init(const queue<Information>& infos)
     
     this->setCascadeOpacityEnabled(true);
     
-    return true;
+    return MessageLayer::init();
 }
 
-// 文字の表示位置、キャラクター画像の関係でオーバーライド
-void CharacterMessageLayer::createMessage()
+// メッセージを生成
+Label* CharacterMessageLayer::createMessage()
 {
-    Information info {this->infos.front()};
-	if(info.charaId != -1 && info.imgId != -1){
+    CharacterMessageData* data {this->datas.front()};
+	if(data->getCharaId() != -1 && data->getImgId() != -1){
 	// キャラクター画像;
 //		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
 //		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
@@ -61,7 +61,7 @@ void CharacterMessageLayer::createMessage()
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF((info.charaId == -1 || info.charaName != "")?info.charaName:CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, info.charaId), this->fontPath, 26.f)};
+	Label* name { Label::createWithTTF((data->getCharaId() == -1 || data->getCharaName() != "")?data->getCharaName():CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId()), "fonts/cinecaption2.28.ttf", 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える
@@ -71,28 +71,23 @@ void CharacterMessageLayer::createMessage()
 	name->setPosition(this->nameFrame->getContentSize() / 2);
 	
 	// メッセージ本文
-	this->message = Label::createWithTTF(this->pages.front(), this->fontPath, this->fontSize);
-	this->message->setHorizontalAlignment(this->h_alignment);
-	this->message->setVerticalAlignment(this->v_alignment);
-	this->message->setPosition(Point(this->message->getContentSize().width / 2 + LEFT_MARGIN, this->frame->getContentSize().height - this->message->getContentSize().height / 2 - TOP_MARGIN));
-	this->frame->addChild(this->message);
+	Label* message = Label::createWithTTF(data->getMessage(), "fonts/cinecaption2.28.ttf", 24.f);
+    message->setHorizontalAlignment(TextHAlignment::LEFT);
+    message->setVerticalAlignment(TextVAlignment::TOP);
+	message->setPosition(Point(message->getContentSize().width / 2 + LEFT_MARGIN, this->frame->getContentSize().height - message->getContentSize().height / 2 - TOP_MARGIN));
+	this->frame->addChild(message);
+    
+    if(!this->datas.front()->hasNextPage())
+    {
+        CC_SAFE_RELEASE(this->datas.front());
+        this->datas.pop();
+    }
+
+    return message;
 }
 
-// すべてのページを表示し終えた時
-void CharacterMessageLayer::onAllPageDisplayed()
+// 次のページがあるか
+bool CharacterMessageLayer::hasNextPage()
 {
-    if(this->infos.size() == 1)
-    {
-        this->close();
-    }
-    else
-    {
-        this->infos.pop();
-        this->pages = this->infos.front().pages;
-        this->message->setVisible(false);
-        this->removeChild(this->message);
-        this->_isAllLetterDisplayed = false;
-        this->_isAllPageDisplayed = false;
-        this->start();
-    }
+    return !this->datas.empty();
 }

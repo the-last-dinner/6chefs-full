@@ -9,19 +9,27 @@
 #ifndef __SYSTEM_MESSAGE_LAYER_H__
 #define __SYSTEM_MESSAGE_LAYER_H__
 
-#include "Layers/Message/baseMessageLayer.h"
+#include "Layers/Message/MessageLayer.h"
 
-class SystemMessageLayer : public baseMessageLayer
+class SystemMessageData;
+
+class SystemMessageLayer : public MessageLayer
 {
-	// クラスメソッド
+// クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(SystemMessageLayer, queue<string>);
-	
-	// インスタンスメソッド
+	CREATE_FUNC_WITH_PARAM(SystemMessageLayer, const queue<SystemMessageData*>&);
+
+// インスタンス変数
+private:
+    queue<SystemMessageData*> datas {};
+    
+// インスタンスメソッド
 private:
 	SystemMessageLayer();
 	~SystemMessageLayer();
-	virtual bool init(const queue<string>& pages);
+	virtual bool init(const queue<SystemMessageData*>& datas);
+    virtual Label* createMessage();
+    virtual bool hasNextPage();
 };
 
 #endif // __SYSTEM_MESSAGE_LAYER_H__

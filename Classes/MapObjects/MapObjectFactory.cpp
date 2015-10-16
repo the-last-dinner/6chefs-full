@@ -55,6 +55,9 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         }
     }
     
+    // delete
+    delete p;
+    
     // MapObjectListを生成して返す
     return MapObjectList::create(mapObjects);
 }

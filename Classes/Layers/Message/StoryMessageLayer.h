@@ -9,19 +9,27 @@
 #ifndef __STORY_MESSAGE_LAYER_H__
 #define __STORY_MESSAGE_LAYER_H__
 
-#include "Layers/Message/baseMessageLayer.h"
+#include "Layers/Message/MessageLayer.h"
 
-class StoryMessageLayer : public baseMessageLayer
+class StoryMessageData;
+
+class StoryMessageLayer : public MessageLayer
 {
-	// クラスメソッド
+// クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(StoryMessageLayer, queue<string>);
-	
-	// インスタンスメソッド
+    static StoryMessageLayer* create(const string& title, const queue<StoryMessageData*>& datas);
+
+// インスタンス変数
+private:
+    queue<StoryMessageData*> datas {};
+    
+// インスタンスメソッド
 private:
 	StoryMessageLayer();
 	~StoryMessageLayer();
-	virtual bool init(const queue<string> pages);
+	virtual bool init(const string& title, const queue<StoryMessageData*>& datas);
+    virtual Label* createMessage();
+    virtual bool hasNextPage();
 };
 
 #endif // __STORY_MESSAGE_LAYER_H__

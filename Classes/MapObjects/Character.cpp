@@ -12,7 +12,7 @@
 const string Character::basePath = "img/character/";
 
 // 一歩進むのにかかる時間(基準値)
-const float Character::DURATION_FOR_ONE_STEP = 0.05f;
+const float Character::DURATION_FOR_ONE_STEP = 0.1f;
 
 // コンストラクタ
 Character::Character(){FUNCLOG}
@@ -35,7 +35,7 @@ Character* Character::create(int charaId, Direction direction)
 }
 
 // 初期化
-bool Character::init(int charaId, Direction direction)
+bool Character::init(int charaId, const Direction direction)
 {
 	FUNCLOG
 	if(!Node::init()) return false;
@@ -56,19 +56,17 @@ bool Character::init(int charaId, Direction direction)
 	
     for(int i {0}; i < static_cast<int>(Direction::SIZE); i++)
 	{
-        Animation* pAnimation = Animation::create();
-        
-        // それぞれの向きのアニメーション用画像を追加していく
-        for(int k {0}; k < 3; k++)
+        // 右足だけ動くタイプと左足だけ動くタイプでアニメーションを分ける
+        for(int k = 0; k < 2; k++)
         {
-            pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k) + ".png"));
+            Animation* pAnimation = Animation::create();
+            
+            // それぞれの向きのアニメーション用画像を追加していく
+            pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
+            
+            // キャッシュに保存
+            AnimationCache::getInstance()->addAnimation(pAnimation, to_string(i) + to_string(k));
         }
-        
-        // アニメーションを終了させた時点で最初のフレームヘ移動させる
-        pAnimation->setRestoreOriginalFrame(true);
-        
-        // キャッシュに保存
-        AnimationCache::getInstance()->addAnimation(pAnimation, this->texturePrefix + to_string(i));
 	}
 	return true;
 }
@@ -95,36 +93,42 @@ void Character::setMoving(bool _isMoving)
 bool Character::isMoving()
 {return this->_isMoving;}
 
-// 足踏みアニメーションを生成
-ActionInterval* Character::createStampingAction(const Direction& direction, float ratio)
+// 足踏み
+void Character::stamp(const Direction direction, float ratio)
 {
-    if(this->isMoving()) return nullptr;
+    this->stopAllActions();
     
-    this->setMoving(true);
+    // 現在の向きのアニメーションを取得
+    Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->stampingRightFoot)?"1":"0"));
+    this->stampingRightFoot = !this->stampingRightFoot;
+    anime->setDelayPerUnit(DURATION_FOR_ONE_STEP / ratio);
     
-	// 現在の向きのアニメーションを取得
-	Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(direction)));
-	anime->setDelayPerUnit(DURATION_FOR_ONE_STEP * ratio * 3);
-    ActionInterval* stamping {TargetedAction::create(this->character, Animate::create(anime))};
-    stamping->setTag(1);
-    
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(anime->getDuration()), CallFunc::create([this](){this->setMoving(false);})));
-    
-    this->character->runAction(stamping);
-    
-    return stamping;
+    this->character->runAction(Animate::create(anime));
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP), CallFunc::create([this, direction](){this->setDirection(direction);})));
 }
 
-// 足踏みを止める
-void Character::stopStamping()
-{
-    dynamic_cast<Animate*>(this->getActionByTag(1))->stop();
-    
-}
-
-// 歩行アクションを生成
+// 移動ベクトルから歩行アクションを生成
 ActionInterval* Character::createWalkByAction(const Point& vector , float ratio)
 {
-    int gridNum {};
-    return nullptr;
+    if(vector == Point::ZERO) return nullptr;
+    
+    return TargetedAction::create(this, Spawn::create(CallFunc::create([this](){this->setMoving(true); this->stamp(this->direction);}), MoveBy::create(DURATION_FOR_ONE_STEP / ratio, vector), Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP / ratio - 4 / 60), CallFunc::create([this](){this->setMoving(false);})), nullptr));
+}
+
+// 一方向から歩行アクション生成
+ActionInterval* Character::createWalkByAction(const Direction direction, float ratio)
+{
+    return this->createWalkByAction(MapUtils::getGridVector(direction), ratio);
+}
+
+// 二方向から歩行アクション生成
+ActionInterval* Character::createWalkByAction(const Direction directions[2], float ratio)
+{
+    Point movementVector {Point::ZERO};
+    for(int i {0};i < 2; i++)
+    {
+        movementVector += MapUtils::getGridVector(directions[i]);
+    }
+    
+    return this->createWalkByAction(movementVector);
 }
