@@ -82,7 +82,7 @@ Label* CharacterMessageLayer::createMessage()
         CC_SAFE_RELEASE(this->datas.front());
         this->datas.pop();
     }
-    
+
     return message;
 }
 

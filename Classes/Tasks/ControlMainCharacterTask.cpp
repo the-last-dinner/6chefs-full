@@ -80,7 +80,7 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
     
     if(movement == Point::ZERO) return;
     mainCharacter->setMoving(true);
-    this->scene->runAction(Sequence::createWithTwoActions(TargetedAction::create(mainCharacter, MoveBy::create(Character::DURATION_FOR_ONE_STEP, movement)), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
+    this->scene->runAction(Sequence::createWithTwoActions(mainCharacter->createWalkByAction(movement), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
     this->scene->runAction(Sequence::createWithTwoActions(DelayTime::create(Character::DURATION_FOR_ONE_STEP), CallFunc::create([mainCharacter](){mainCharacter->setMoving(false);})));
 }
 
