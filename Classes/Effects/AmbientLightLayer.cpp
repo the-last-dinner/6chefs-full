@@ -54,9 +54,6 @@ bool AmbientLightLayer::init(const Color3B& color)
     
     renderTexSprite->setBlendFunc(BlendFunc{GL_ZERO, GL_SRC_COLOR});
     
-    // update開始
-    this->scheduleUpdate();
-    
     return true;
 }
 
@@ -90,9 +87,9 @@ void AmbientLightLayer::removeLightSource(MapObject* object)
     light->runAction(Sequence::create(FadeOut::create(0.5f), RemoveSelf::create(), CallFunc::create([this, object](){this->objectMap.erase(object); CC_SAFE_RELEASE(object);}), nullptr));
 }
 
-// 光の位置、状態をアップデート
-void AmbientLightLayer::update(float delta)
+void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
+    // 光の状態、位置を更新
     for(pair<MapObject*, Light*> element : this->objectMap)
     {
         MapObject* obj {element.first};
@@ -104,10 +101,7 @@ void AmbientLightLayer::update(float delta)
         }
         light->setPosition(MapUtils::convertToDispPosition(obj->getParent()->getParent()->getPosition(), obj->getPosition()));
     }
-}
-
-void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
-{
+    
     this->renderTexture->beginWithClear(0, 0, 0, 0);
     for (auto child : this->getChildren())
     {

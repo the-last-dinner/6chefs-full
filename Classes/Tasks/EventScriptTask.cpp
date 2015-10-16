@@ -15,13 +15,14 @@
 #include "Layers/Message/CharacterMessageLayer.h"
 #include "Layers/Message/SystemMessageLayer.h"
 
-#include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/Message/CharacterMessageLayer.h"
 #include "Layers/Message/SystemMessageLayer.h"
 
 #include "Datas/Message/CharacterMessageData.h"
 #include "Datas/Message/StoryMessageData.h"
 #include "Datas/Message/SystemMessageData.h"
+
+#include "Tasks/TaskMediator.h"
 
 //イベント関数の関数ポインタ格納
 const map<string, EventScriptTask::FunctionPointer> EventScriptTask::EVENT_MAP =
@@ -77,11 +78,12 @@ EventScriptTask::EventScriptTask(){FUNCLOG}
 EventScriptTask::~EventScriptTask(){FUNCLOG}
 
 // 初期化
-bool EventScriptTask::init(DungeonScene* scene)
+bool EventScriptTask::init(TaskMediator* mediator)
 {
 	FUNCLOG
-	if(!scene) return false;
-	this->scene = scene;
+    
+    if(!GameTask::init(mediator)) return false;
+
 	return true;
 }
 
@@ -115,7 +117,7 @@ void EventScriptTask::dealScript(rapidjson::Value &action)
         } else {
             Ref* target_act = (this->*func)(event);
             if(target_act != nullptr){
-                this->scene->runAction(dynamic_cast<FiniteTimeAction*>(target_act));
+                this->mediator->runOnScene(dynamic_cast<FiniteTimeAction*>(target_act));
             }
         }
     }
@@ -366,7 +368,7 @@ Ref* EventScriptTask::changeMap(rapidjson::Value& event)
     }  else
     {
         //directionが指定されていない場合は移動直前の方向を取得
-        Character* hero {this->scene->mapLayer->getMainCharacter()};
+        Character* hero {this->mediator->getMapObjectList()->getMainCharacter()};
         PlayerDataManager::getInstance()->setLocation(PlayerDataManager::Location(stoi(event["mapID"].GetString()), event["x"].GetInt(), event["y"].GetInt(), hero->getDirection()));
     }
     return static_cast<Ref*>(CallFunc::create([=](){Director::getInstance()->replaceScene(DungeonScene::createScene());}));
@@ -386,7 +388,7 @@ Ref* EventScriptTask::move(rapidjson::Value& event)
     double scale = 16.0;
     float x = static_cast<float>(event["x"].GetDouble() * scale);
     float y = static_cast<float>(event["y"].GetDouble() * scale);
-    return static_cast<Ref*>(TargetedAction::create(this->scene->mapLayer->getChildByName(EventScriptManager::getInstance()->getMapId())->getChildByName(event["object"].GetString()), MoveBy::create(static_cast<float>(event["time"].GetDouble()), Point(x, y))));
+    return nullptr;
 }
 
 /**
@@ -501,7 +503,7 @@ Ref* EventScriptTask::charaMsg(rapidjson::Value& event)
     {
         CharacterMessageLayer* message {CharacterMessageLayer::create(datas)};
         
-        this->scene->addChild(message);
+        this->mediator->addChildToScene(message);
     }));
 }
 
@@ -524,7 +526,7 @@ Ref* EventScriptTask::systemMsg(rapidjson::Value &event)
     return static_cast<Ref*>(CallFunc::create([=]()
     {
         SystemMessageLayer* message {SystemMessageLayer::create(datas)};
-        this->scene->addChild(message);
+        this->mediator->addChildToScene(message);
     }));
 }
 
@@ -534,9 +536,9 @@ Ref* EventScriptTask::reaction(rapidjson::Value& event)
     string objid = event["objID"].GetString();
     if (objid == "hero")
     {
-        return this->scene->mapLayer->getMapObjectList()->getMainCharacter()->createReaction();
+        return this->mediator->getMapObjectList()->getMainCharacter()->createReaction();
     } else {
-        MapObject* obj = this->scene->mapLayer->getMapObjectList()->getMapObject(stoi(objid));
+        MapObject* obj = this->mediator->getMapObjectList()->getMapObject(stoi(objid));
         if(obj)
         {
             return obj->createReaction();

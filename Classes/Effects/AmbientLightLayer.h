@@ -36,7 +36,6 @@ private:
 public:
     void addLightSource(MapObject* object, const Light::Information& info);
     void removeLightSource(MapObject* object);
-    void update(float delta);
     virtual void visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags);
 private:
     AmbientLightLayer();   // コンストラクタ
