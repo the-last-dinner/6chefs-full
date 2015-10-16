@@ -8,14 +8,13 @@
 
 #include "Tasks/ControlMainCharacterTask.h"
 
-#include "Scenes/DungeonScene.h"
-
-#include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "MapObjects/Character.h"
 
 #include "MapObjects/MapObjectList.h"
+
+#include "Tasks/TaskMediator.h"
 
 // コンストラクタ
 ControlMainCharacterTask::ControlMainCharacterTask(){FUNCLOG}
@@ -24,9 +23,9 @@ ControlMainCharacterTask::ControlMainCharacterTask(){FUNCLOG}
 ControlMainCharacterTask::~ControlMainCharacterTask(){FUNCLOG}
 
 // 初期化
-bool ControlMainCharacterTask::init(DungeonScene* dungeonScene)
+bool ControlMainCharacterTask::init(TaskMediator* mediator)
 {
-    this->scene = dungeonScene;
+    if(!GameTask::init(mediator)) return false;
     
     return true;
 }
@@ -34,14 +33,14 @@ bool ControlMainCharacterTask::init(DungeonScene* dungeonScene)
 // 向きを変える
 void ControlMainCharacterTask::turn(const Direction& direction)
 {
-    Character* mainCharacter {this->scene->mapLayer->getMapObjectList()->getMainCharacter()};
+    Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
     if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
 }
 
 // 目の前を調べる
 void ControlMainCharacterTask::search()
 {
-    MapObjectList* objectList {this->scene->mapLayer->getMapObjectList()};
+    MapObjectList* objectList {this->mediator->getMapObjectList()};
     Character* mainCharacter {objectList->getMainCharacter()};
     
     Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
@@ -51,7 +50,7 @@ void ControlMainCharacterTask::search()
     {
         if(obj && obj->getTrigger() == Trigger::SEARCH)
         {
-            this->scene->runEvent(obj->getEventId());
+            this->mediator->runEventScript(obj->getEventId());
             return;
         }
     }
@@ -60,17 +59,16 @@ void ControlMainCharacterTask::search()
 // 歩行中、あたり判定を行い次に向かう位置を決定する
 void ControlMainCharacterTask::walking(vector<Direction> directions)
 {
-    TiledMapLayer* mapLayer {this->scene->mapLayer};
-    Character* mainCharacter {mapLayer->getMapObjectList()->getMainCharacter()};
+    Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
     
     // 一番最近押したキーの方向に主人公を向ける
     mainCharacter->setDirection(directions.back());
     
     // ダッシュキーが押されていたら、速度の倍率をあげる
-    float ratio {this->scene->listener->isPressed(Key::DASH)? 2.f : 1.f};
+    float ratio {this->mediator->getEventListener()->isPressed(Key::DASH)? 2.f : 1.f};
     
     // 入力確認の頻度を変更
-    this->scene->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP / ratio);
+    this->mediator->getEventListener()->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP / ratio);
     
     // 入力から、使う方向の個数を決める
     int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
@@ -90,18 +88,18 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
     // 移動ベクトルがゼロの時リターン
     if(movement == Point::ZERO) return;
     
-    this->scene->runAction(Sequence::createWithTwoActions(mainCharacter->createWalkByAction(movement, ratio), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
+    this->mediator->runOnScene(Sequence::createWithTwoActions(mainCharacter->createWalkByAction(movement, ratio), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
 }
 
 // 一マス分移動し終えた時
 void ControlMainCharacterTask::onCharacterWalkedOneGrid()
 {
-    TiledMapLayer* mapLayer {this->scene->mapLayer};
-
+    MapObjectList* objectList {this->mediator->getMapObjectList()};
+    
     // 衝突判定用Rectの中心座標にあるイベントを呼ぶ
-    Rect collisionRect {mapLayer->getMapObjectList()->getMainCharacter()->getCollisionRect()};
+    Rect collisionRect {objectList->getMainCharacter()->getCollisionRect()};
     Point checkPosition {Point(collisionRect.getMidX(), collisionRect.getMidY())};
-    MapObject* obj { mapLayer->getMapObjectList()->getMapObject(checkPosition)};
+    MapObject* obj { objectList->getMapObject(checkPosition)};
     
     if(!obj)
     {
@@ -113,6 +111,6 @@ void ControlMainCharacterTask::onCharacterWalkedOneGrid()
     if(obj && obj->getTrigger() == Trigger::RIDE && obj->getEventId() != this->riddenEventID)
     {
         this->riddenEventID = obj->getEventId();
-        this->scene->runEvent(obj->getEventId());
+        this->mediator->runEventScript(obj->getEventId());
     }
 }

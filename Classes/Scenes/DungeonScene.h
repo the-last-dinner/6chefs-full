@@ -13,9 +13,8 @@
 
 class AmbientLightLayer;
 class TiledMapLayer;
-class EventScriptTask;
-class ControlMainCharacterTask;
-class CameraTask;
+class MapObjectList;
+class TaskMediator;
 
 class DungeonScene : public baseScene
 {
@@ -28,9 +27,8 @@ public:
 private:
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
-    EventScriptTask* eventScriptTask { nullptr };
-    ControlMainCharacterTask* controlMainCharacterTask {nullptr};
-    CameraTask* cameraTask { nullptr };
+    MapObjectList* objectList { nullptr };
+    TaskMediator* mediator { nullptr };
     
 // インスタンスメソッド
 public:
@@ -41,14 +39,9 @@ private:
 	~DungeonScene();
 	virtual bool init() override;
 	virtual void onPreloadFinished() override;
-    virtual void onCursorKeyPressed(const Key& key) override;
-    virtual void onSpaceKeyPressed() override;
     virtual void onMenuKeyPressed() override;
-    virtual void intervalInputCheck(const vector<Key>& keys);
-	
-	friend class EventScriptTask;
-    friend class ControlMainCharacterTask;
-    friend class CameraTask;
+    
+    friend class TaskMediator;
 };
 
 
