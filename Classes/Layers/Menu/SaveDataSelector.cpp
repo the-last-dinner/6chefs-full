@@ -75,6 +75,7 @@ bool SaveDataSelector::init(bool write = false)
     // デフォルトセレクト
 	this->setCascadeOpacityEnabled(true);
     int id = PlayerDataManager::getInstance()->getSaveDataId();
+    cout << "iddddddddddddd>>>" << id << endl;
     int index = (id <= 0) ? 0 : id - 1;
     this->setSelectedIndex(index);
 	this->onIndexChanged(index, false);
