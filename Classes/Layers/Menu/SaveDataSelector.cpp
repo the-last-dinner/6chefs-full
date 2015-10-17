@@ -52,7 +52,6 @@ bool SaveDataSelector::init(bool write = false)
 		
 		// 表示ラベルを生成
 		// データ名
-        cout << "name>>>>>>>>>>" << data.name << endl;
 		Label* name = Label::createWithTTF(data.name, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
 		name->setPosition(Point(name->getContentSize().width / 2 + panelSize.width * INNER_H_MARGIN_RATIO, panel->getContentSize().height / 2));
 		panel->addChild(name);
@@ -75,7 +74,6 @@ bool SaveDataSelector::init(bool write = false)
     // デフォルトセレクト
 	this->setCascadeOpacityEnabled(true);
     int id = PlayerDataManager::getInstance()->getSaveDataId();
-    cout << "iddddddddddddd>>>" << id << endl;
     int index = (id <= 0) ? 0 : id - 1;
     this->setSelectedIndex(index);
 	this->onIndexChanged(index, false);
