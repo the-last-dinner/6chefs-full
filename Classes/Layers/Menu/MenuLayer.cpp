@@ -93,3 +93,10 @@ int MenuLayer::getMenuSizeX() const
 // メニューサイズの縦方向を取得
 int MenuLayer::getMenuSizeY() const
 {return this->sizeY;}
+
+// メニューのインデックスをデフォルトセット
+void MenuLayer::setSelectedIndex(const int index)
+{
+    this->indexX = index % this->sizeX;
+    this->indexY = (index / this->sizeX) % this->sizeY;
+}

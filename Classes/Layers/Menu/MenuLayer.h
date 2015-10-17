@@ -41,6 +41,7 @@ protected:
 	virtual void onSpacePressed(int idx) = 0;
 	virtual void onMenuKeyPressed() = 0;
 	virtual int getSelectedIndex() const;
+    virtual void setSelectedIndex(const int index);
 	int getMenuSizeX() const;
 	int getMenuSizeY() const;
 };
