@@ -16,12 +16,11 @@
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
-#include "Tasks/EventScriptTask.h"
-#include "Tasks/ControlMainCharacterTask.h"
-#include "Tasks/CameraTask.h"
+#include "Tasks/TaskMediator.h"
 
 #include "MapObjects/Objects.h"
 #include "MapObjects/MapObjectList.h"
+#include "MapObjects/Character.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
@@ -31,11 +30,8 @@ DungeonScene::~DungeonScene()
 {
 	FUNCLOG
     
-    this->cameraTask->stopFollowing();
-    
-	CC_SAFE_RELEASE_NULL(this->eventScriptTask);
-    CC_SAFE_RELEASE_NULL(this->controlMainCharacterTask);
-    CC_SAFE_RELEASE_NULL(this->cameraTask);
+	CC_SAFE_RELEASE_NULL(this->mediator);
+    CC_SAFE_RELEASE_NULL(this->objectList);
 }
 
 // シーン生成
@@ -51,30 +47,10 @@ Scene* DungeonScene::createScene()
 bool DungeonScene::init()
 {
 	FUNCLOG
+    
     EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
     
-    if(!baseScene::init(DungeonSceneData::create())) return false;
-    //EventScriptManager::getInstance()->setEventScript("TestScript");
-    
-    // イベントスクリプト処理クラスを生成
-    EventScriptTask* eventScriptTask {EventScriptTask::create(this)};
-    CC_SAFE_RETAIN(eventScriptTask);
-    this->eventScriptTask = eventScriptTask;
-    eventScriptTask->runEventScript(0);
-    
-    // 主人公操作処理クラスを生成
-    ControlMainCharacterTask* controlMainCharacterTask {ControlMainCharacterTask::create(this)};
-    CC_SAFE_RETAIN(controlMainCharacterTask);
-    this->controlMainCharacterTask = controlMainCharacterTask;
-    
-    // リスナにコールバックを設定
-    this->listener->intervalInputCheck = CC_CALLBACK_1(DungeonScene::intervalInputCheck, this);
-    this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
-    this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
-    
-    this->listener->setEnabled(false);
-    
-    return true;
+    return baseScene::init(DungeonSceneData::create());
 }
 
 // リソースプリロード完了時の処理
@@ -88,10 +64,9 @@ void DungeonScene::onPreloadFinished()
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
-    // カメラ処理クラスを生成
-    CameraTask* cameraTask {CameraTask::create(this)};
-    CC_SAFE_RETAIN(cameraTask);
-    this->cameraTask = cameraTask;
+    // マップレイヤからオブジェクトリストを取り出す
+    this->objectList = mapLayer->getMapObjectList();
+    CC_SAFE_RETAIN(this->objectList);
     
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
@@ -103,38 +78,17 @@ void DungeonScene::onPreloadFinished()
     
     mapLayer->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     
-    this->cameraTask->setTarget(mapLayer->getMainCharacter());
+    // タスククラスを生成
+    TaskMediator* mediator {TaskMediator::create(this)};
+    CC_SAFE_RETAIN(mediator);
+    this->mediator = mediator;
     
-	return;
-}
-
-//EventScriptTaskのrunEventScriptを実行
-void DungeonScene::runEvent(int event_id)
-{
-    if(event_id == static_cast<int>(EventID::UNDIFINED)) return;
-    this->eventScriptTask->runEventScript(event_id);
-    return;
-}
-
-// 方向キーを押した時
-void DungeonScene::onCursorKeyPressed(const Key& key)
-{
-    // 主人公操作クラスへ移譲
-    this->controlMainCharacterTask->turn(MapUtils::keyToDirection(key));
-}
-
-// スペースキーを押した時
-void DungeonScene::onSpaceKeyPressed()
-{
-    // 主人公操作クラスへ移譲
-    this->controlMainCharacterTask->search();
-}
-
-// キーを押し続けている時
-void DungeonScene::intervalInputCheck(const vector<Key>& keys)
-{
-    // 主人公操作クラスへ移譲
-    this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
+    // リスナにコールバックを設定
+    this->listener->onCursorKeyPressed = CC_CALLBACK_1(TaskMediator::onCursorKeyPressed, this->mediator);
+    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(TaskMediator::onSpaceKeyPressed, this->mediator);
+    this->listener->intervalInputCheck = CC_CALLBACK_1(TaskMediator::intervalInputCheck, this->mediator);
+    this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
+    this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
 }
 
 // メニューキー押したとき

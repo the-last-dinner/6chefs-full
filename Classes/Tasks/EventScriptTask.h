@@ -9,11 +9,11 @@
 #ifndef __LastSupper__EventScriptTask__
 #define __LastSupper__EventScriptTask__
 
-#include "Common.h"
+#include "Tasks/GameTask.h"
 
-class DungeonScene;
+class TaskMediator;
 
-class EventScriptTask : public Ref
+class EventScriptTask : public GameTask
 {
 //クラス変数
 private:
@@ -24,19 +24,18 @@ private:
     const static map<string, FunctionPointer> EVENT_MAP;
     const static map<string, FunctionPointerC> CONDITION_MAP;
     
-    //インスタンス変数
+//インスタンス変数
 private:
-    DungeonScene* scene {nullptr};
     int event_status;
 // クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(EventScriptTask, DungeonScene*)
+    CREATE_FUNC_WITH_PARAM(EventScriptTask, TaskMediator*)
 	
 // インスタンスメソッド
 private:
 	EventScriptTask();
 	~EventScriptTask();
-	virtual bool init(DungeonScene* dungeonScene);
+    virtual bool init(TaskMediator* mediator);
     //スクリプト処理関数
     void dealScript(rapidjson::Value& action);
     cocos2d::Vector<FiniteTimeAction*> createActionVec(rapidjson::Value& sub_act);

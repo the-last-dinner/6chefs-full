@@ -9,21 +9,20 @@
 #ifndef __LastSupper__CameraTask__
 #define __LastSupper__CameraTask__
 
-#include "Common.h"
+#include "Tasks/GameTask.h"
 
-class DungeonScene;
 class MapObject;
 class FollowType;
+class TaskMediator;
 
-class CameraTask : public Node
+class CameraTask : public GameTask
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(CameraTask, DungeonScene*)
+    CREATE_FUNC_WITH_PARAM(CameraTask, TaskMediator*)
 
 // インスタンス変数
 private:
-    DungeonScene* scene {nullptr};
     MapObject* target { nullptr };
     FollowType* follow { nullptr };
     
@@ -31,7 +30,7 @@ private:
 private:
     CameraTask();
     ~CameraTask();
-    bool init(DungeonScene* scene);
+    bool init(TaskMediator* mediator);
 public:
     void setTarget(MapObject* target);
     void stopFollowing();
