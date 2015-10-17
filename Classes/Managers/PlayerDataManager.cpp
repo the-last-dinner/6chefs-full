@@ -151,8 +151,8 @@ void PlayerDataManager::save(const int id)
     // save local
     string str_id = to_string(id);
     //string path = this->fu->fullPathForFilename("save/local" + str_id + ".json");
-    this->local["token"].SetString(this->local["token"].GetString(), 20);
-    this->local["name"].SetString(this->local["name"].GetString(), 20);
+    //this->local["token"].SetString(this->local["token"].GetString(), 20);
+    //this->local["name"].SetString(this->local["name"].GetString(), 20);
     this->local["play_time"].SetInt(this->local["play_time"].GetInt());
     this->local["save_count"].SetInt(this->local["save_count"].GetInt());
     PlayerDataManager::Location loc = this->getLocation();
@@ -168,8 +168,8 @@ void PlayerDataManager::save(const int id)
     if(this->global.HasMember(cha_id))
     {
         //セーブデータが存在する場合
-        this->global[cha_id]["token"].SetString(this->local["token"].GetString(), 20);
-        this->global[cha_id]["name"].SetString(this->local["name"].GetString(), 20);
+        //this->global[cha_id]["token"].SetString(this->local["token"].GetString(), 20);
+        //this->global[cha_id]["name"].SetString(this->local["name"].GetString(), 20);
         this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
         this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
         //this->global[cha_id]["location"].SetArray();
@@ -181,8 +181,8 @@ void PlayerDataManager::save(const int id)
         //セーブデータが存在しない場合
         rapidjson::Value empty(kObjectType);
         this->global.AddMember(StringRef(cha_id), empty, this->global.GetAllocator());
-        this->global[cha_id].AddMember("token", this->local["token"], this->local.GetAllocator());
-        this->global[cha_id].AddMember("name", this->local["name"], this->local.GetAllocator());
+        //this->global[cha_id].AddMember("token", this->local["token"], this->local.GetAllocator());
+        //this->global[cha_id].AddMember("name", this->local["name"], this->local.GetAllocator());
         this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
         this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
         this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
