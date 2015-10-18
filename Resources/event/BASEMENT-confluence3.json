@@ -71,26 +71,36 @@
 	],
 	"6":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"event":["54","3"]
+				}
+			],
 			"action":[
 				{
-					"type":"createEnemy",
-					"enemyID":"1417",
-					"charaID":"14",
-					"x":4,
-					"y":31,
-					"speed":1.3
-				},
-				{
-					"type":"createEnemy",
-					"enemyID":"1418",
-					"charaID":"16",
-					"x":18,
-					"y":23,
-					"speed":1.3
-				},
-				{
-					"type":"already"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"createEnemy",
+							"enemyID":"1417",
+							"charaID":"14",
+							"x":4,
+							"y":31,
+							"speed":1.3
+						},
+						{
+							"type":"createEnemy",
+							"enemyID":"1418",
+							"charaID":"16",
+							"x":18,
+							"y":23,
+							"speed":1.3
+						},
+						{
+							"type":"already"
+						}
+					]
 				}
 			]
 		}

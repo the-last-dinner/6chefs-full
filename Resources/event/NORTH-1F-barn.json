@@ -19,7 +19,7 @@
 				},
 				{
 					"type":"passward",
-					"pass":"",
+					"pass":"1013",
 					"false":[
 						{
 							"type":"charaMsg",
@@ -65,7 +65,7 @@
 					"action":[
 						{
 							"type":"passward",
-							"pass":"",
+							"pass":"1013",
 							"false":[
 								{
 									"type":"systemMsg",

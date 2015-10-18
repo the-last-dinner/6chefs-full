@@ -54,69 +54,73 @@
 				},
 				{
 					"type":"fadeout",
-					"time":3.0				},
+					"time":3.0	
+				},
 				{
 					"type":"camera",
 					"mapID":"40",
-					"x":12,
-					"y":12
-				},
-				{
-					"type":"createChara",
-					"objID":"1058"
-				},
-				{
-					"type":"createChara",
-					"objID":"1059"
-				},
-				{
-					"type":"playBGM",
-					"file":"回想BGM"
-				},
-				{
-					"type":"fadein"
-				},
-				{
-					"type":"charaMsg",
-					"talk":[
+					"action":[
 						{
-							"text":["俺は戸塚大宝（トツカ　タイホウ）\n前回選ばれたモンだ\nお前は何で晩餐会に来たんだ？"],
-							"charaID":"6",
-							"imgID":"1",
-							"name":"？？？"
-						},
-						{
-							"text":["・・・私は・・・家族のために・・・\n家のお店を有名にして・・・"],
-							"charaID":"1",
-							"imgID":"0"
-						},
-						{
-							"text":["ほう・・・なるほどな・・・\nフッ\nじゃあよ、ここで勝つノウハウを教えてやるよ\nこの晩餐会はよ、\n希咲夫人の娘さんの口に合う料理を作ったヤツが\n勝てるんだよ。\nでもその肝心な娘さんはヒドイ偏食症でよ\n娘さんが唯一食べられるものは・・・"],
-							"charaID":"6",
-							"imgID":"1"
+							"type":"sequence",
+							"action":[
+								{
+									"type":"camera",
+									"x":12,
+									"y":12
+								},
+								{
+									"type":"createChara",
+									"objID":"1058"
+								},
+								{
+									"type":"createChara",
+									"objID":"1059"
+								},
+								{
+									"type":"playBGM",
+									"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["俺は戸塚大宝（トツカ　タイホウ）\n前回選ばれたモンだ\nお前は何で晩餐会に来たんだ？"],
+											"charaID":"6",
+											"imgID":"1",
+											"name":"？？？"
+										},
+										{
+											"text":["・・・私は・・・家族のために・・・\n家のお店を有名にして・・・"],
+											"charaID":"1",
+											"imgID":"0"
+										},
+										{
+											"text":["ほう・・・なるほどな・・・\nフッ\nじゃあよ、ここで勝つノウハウを教えてやるよ\nこの晩餐会はよ、\n希咲夫人の娘さんの口に合う料理を作ったヤツが\n勝てるんだよ。\nでもその肝心な娘さんはヒドイ偏食症でよ\n娘さんが唯一食べられるものは・・・"],
+											"charaID":"6",
+											"imgID":"1"
+										}
+									]
+								},
+								{
+									"type":"wait",
+									"time":2.0
+								},
+								{
+									"type":"charaMsg",
+									"text":["人肉だ。\n俺は去年人肉料理で勝った。\n特に料理人の肉はウメェらしいからよ\n今日来てる他の料理人なんか使えば\n確実に勝てるぜ"],
+									"charaID":"6",
+									"imgID":"1"
+								},
+								{
+									"type":"fadeout",
+									"time":3.0
+								}
+							]
 						}
-					]
-				},
-				{
-					"type":"wait",
-					"time":2.0
-				},
-				{
-					"type":"charaMsg",
-					"text":["人肉だ。\n俺は去年人肉料理で勝った。\n特に料理人の肉はウメェらしいからよ\n今日来てる他の料理人なんか使えば\n確実に勝てるぜ"],
-					"charaID":"6",
-					"imgID":"1"
-				},
-				{
-					"type":"fadeout",
-					"time":3.0
-				},
-				{
-					"type":"camera",
-					"return":"hero"
-				},
-				{
-					"type":"fadein"
+					]		
 				},
 				{
 					"type":"charaMsg",
@@ -220,6 +224,10 @@
 						},
 						{
 							"type":"fadeout"
+						},
+						{
+							"type":"chapterChange",
+							"chapterID":"5"
 						},
 						{
 							"type":"removeChara",

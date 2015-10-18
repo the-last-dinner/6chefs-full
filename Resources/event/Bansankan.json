@@ -12,6 +12,9 @@
       "type": "sequence",
       "action": [
         {
+          "type":"already"
+        },
+        {
           "type": "reaction",
           "objID": "101"
         },
@@ -48,9 +51,6 @@
           "charaID":"9",
           "text": ["皆様既にお揃いですので、\nお料理のしやすい格好にお着替えになって食堂でお待ちください。"],
           "name": "執事服の老人"
-        },
-        {
-          "type":"already"
         }
       ]
     }

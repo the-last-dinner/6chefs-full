@@ -35,81 +35,97 @@
  <objectgroup name="Ugokumono(object)">
   <object id="14" x="80" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1041"/>
    </properties>
   </object>
   <object id="15" x="144" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1042"/>
    </properties>
   </object>
   <object id="16" x="192" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1043"/>
    </properties>
   </object>
   <object id="17" x="112" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1044"/>
    </properties>
   </object>
   <object id="18" x="96" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1045"/>
    </properties>
   </object>
   <object id="19" x="176" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1046"/>
    </properties>
   </object>
   <object id="20" x="224" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1047"/>
    </properties>
   </object>
   <object id="21" x="208" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1048"/>
    </properties>
   </object>
   <object id="22" x="128" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1049"/>
    </properties>
   </object>
   <object id="23" x="160" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1051"/>
    </properties>
   </object>
   <object id="24" x="96" y="448" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1050"/>
    </properties>
   </object>
   <object id="25" x="192" y="448" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1052"/>
    </properties>
   </object>
   <object id="26" x="144" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1053"/>
    </properties>
   </object>
   <object id="27" x="128" y="448" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1054"/>
    </properties>
   </object>
   <object id="28" x="176" y="464" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1055"/>
    </properties>
   </object>
   <object id="29" x="160" y="448" width="16" height="16">
    <properties>
+    <property name="img" value="G.png"/>
     <property name="objID" value="1056"/>
    </properties>
   </object>

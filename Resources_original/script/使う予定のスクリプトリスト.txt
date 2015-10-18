@@ -635,6 +635,31 @@
 	"objID":"歩くオブジェクトのID(int), or hero"
 	}
 
+●ホワイトアウト
+・type名・・・whiteout
+・必要なもの・・・時間
+※時間が経ったら解除する
+
+(例)
+{
+	"type":"whiteout
+	"time":秒数
+}
+
+●charaMove
+・type名・・・charaMove
+・必要なもの,,,オブジェクトID
+		向き
+		歩数
+		速さ（主人公の走る速さの何倍か）
+		hit:false
+
+※hitで当たり判定無効にしたいときに書く
+
+(例)
+MAIN-Ohiromaの19
+
+
 
 TODO >>>>>>>>>>>>>>>>>>
 

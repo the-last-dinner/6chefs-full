@@ -20,7 +20,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"equip":["{1514}"]
+					"equip":["1514"]
 				}
 			],
 			"action":[
@@ -39,6 +39,10 @@
 						"wheat9.png"
 					]
 				},
+				{
+					"type":"playSE",
+					"file":"explosion.mp3"
+				}
 				{
 					"type":"gameOver"
 				}

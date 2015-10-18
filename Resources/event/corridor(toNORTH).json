@@ -125,6 +125,10 @@
           "imgID": "2"
         },
         {
+          "type":"chapterChange",
+          "chapterID":"1"
+        },
+        {
           "type": "already"
         }
       ]

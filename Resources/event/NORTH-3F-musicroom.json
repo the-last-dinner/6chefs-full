@@ -250,6 +250,10 @@
 							"time":3.0
 						},
 						{
+							"type":"chapterChange",
+							"chapterID":"2"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
@@ -309,10 +313,6 @@
 									"charaID":"5",
 									"imgID":"1",
 									"option":"reaction"
-								},
-								{
-									"type":"chapterChange",
-									"chapterID":""
 								},
 								{
 									"type":"already"

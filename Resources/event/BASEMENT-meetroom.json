@@ -257,7 +257,7 @@
 							"type":"if",
 							"condition":[
 								{
-									"status":["3","1"]
+									"status":["3","0"]
 								}
 							],
 							"action":[

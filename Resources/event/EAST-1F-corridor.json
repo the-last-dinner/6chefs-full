@@ -67,7 +67,7 @@
 			"condition":[
 				{
 					"event":["58","7"],
-					"status":["3","1"]
+					"status":["3","0"]
 				}
 			],
 			"action":[
@@ -93,7 +93,7 @@
 			"condition":[
 				{
 					"event":["58","7"],
-					"status":["3","1"]
+					"status":["3","0"]
 				}
 			],
 			"action":[
@@ -177,9 +177,23 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"displayImg",
-											"file":"",
-											"time":2.0
+											"type":"fadeout"
+										},
+										{
+											"type":"spawn",
+											"action":[
+												{
+													"type":"displayImg",
+													"file":"manaka_juiced.png"
+												},
+												{
+													"type":"playSE",
+													"file":"splash1.mp3"
+												}
+											]
+										},
+										{
+											"type":"fadein"
 										},
 										{
 											"type":"gameOver"
@@ -276,7 +290,7 @@
 			"condition":[
 				{
 					"event":["58","7"],
-					"status":["3","1"]
+					"status":["3","0"]
 				}
 			],
 			"action":[
@@ -353,9 +367,23 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"displayImg",
-											"file":"",
-											"time":2.0
+											"type":"fadeout"
+										},
+										{
+											"type":"spawn",
+											"action":[
+												{
+													"type":"displayImg",
+													"file":"manaka_juiced.png"
+												},
+												{
+													"type":"playSE",
+													"file":"splash1.mp3"
+												}
+											]
+										},
+										{
+											"type":"fadein"
 										},
 										{
 											"type":"gameOver"
