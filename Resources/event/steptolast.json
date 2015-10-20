@@ -75,10 +75,7 @@
 						{
 							"type":"charaMsg",
 							"text":["逃が・・・・さない・・・"],
-							"name":"希崎夫人"
-						},
-						{
-							"type":"playBGM"
+							"charaID":"7"
 						}
 					]
 				}
