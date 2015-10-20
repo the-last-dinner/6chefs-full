@@ -14,7 +14,8 @@ static CsvDataManager* _instance = nullptr;
 const map<CsvDataManager::DataType, string> CsvDataManager::file_type = {
     {CsvDataManager::DataType::MAP, "map"},
     {CsvDataManager::DataType::ITEM, "item"},
-    {CsvDataManager::DataType::CHARACTER, "character"}
+    {CsvDataManager::DataType::CHARACTER, "character"},
+    {CsvDataManager::DataType::CHAPTER, "chapter"}
 };
 
 // インスタンスの生成&取得

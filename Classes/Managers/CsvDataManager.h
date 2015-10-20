@@ -18,7 +18,8 @@ public:
     {
         MAP,
         ITEM,
-        CHARACTER
+        CHARACTER,
+        CHAPTER
     };
 private:
     static const map<DataType, string> file_type;
