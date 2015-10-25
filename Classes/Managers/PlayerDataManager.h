@@ -18,11 +18,11 @@ public:
     struct SaveIndex
     {
         int data_id {0};
-        string name {};
-	string play_time{};
-        string save_count {};
+        string chapter {};
         string map_name {};
-        SaveIndex(int i, const string& n, const string& pt, const string& sc, const string& mn):data_id(i), name(n), play_time(pt), save_count(sc), map_name(mn){};
+        string play_time {};
+        string save_count {};
+        SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc){};
         SaveIndex(){};
     };
     struct Location
@@ -35,20 +35,23 @@ public:
         Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
         Location(){};
     };
+
 //クラス変数
 public:
     static const int MAX_SAVE_COUNT;
     static const string DEFAULT_COUNT;
 //インスタンス変数
 private:
-    //グローバルセーブデータ
+    // グローバルセーブデータ
     rapidjson::Document global;
-    //対象ローカルセーブデータid
-    int local_id {0};
-    //ローカルセーブデータ
+    // ローカルセーブデータ
     rapidjson::Document local;
-    //FileUtils
+    // 対象ローカルセーブデータid
+    int local_id {0};
+    // FileUtils
     cocos2d::FileUtils* fu;
+    // 時間計測開始時間(単位:ms)
+    double start_time_ms {0};
 
 //通常関数
 public:
@@ -62,6 +65,10 @@ public:
     bool checkSaveDataExists(const int id);
     // セーブデータIDの取得
     int getSaveDataId();
+    // プレイ時間のセット
+    void setPlayTimeSeconds();
+    // 時間取得
+    double getSec();
     /* flag管理系 */
     // SET
     void setLocation(const Location& location);
@@ -69,6 +76,7 @@ public:
     void setEventFlag(const int map_id, const int event_id, const bool& flag);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
+    void setChapterId(const int chapter_id);
     // GET
     Location getLocation();
     int getFriendship(const string& character);
@@ -76,11 +84,12 @@ public:
     int getItem(const int item_id);
     map<int, int> getItemAll();
     int getItemEquipment(Direction direction);
+    int getChapterId();
     // CHECK
     bool checkItem(const int item_id);
     bool checkItemEquipment(const int item_id);
     bool checkFriendship(const string& character, const int val);
-    
+    bool checkChapterId(const int chapter_id);
 private:
     //グローバルデータのセット
     bool setGlobalData();

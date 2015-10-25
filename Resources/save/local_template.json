@@ -1,8 +1,8 @@
 {
-    "token":"",
-    "name":"DATA0",
+    "datetime":"",
     "save_count":0,
     "play_time":0,
+    "chapter":0,
     "equipment_right":0,
     "equipment_left":0,
     "location":[1,9,17,0],

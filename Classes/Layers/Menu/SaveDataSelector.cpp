@@ -52,7 +52,7 @@ bool SaveDataSelector::init(bool write = false)
 		
 		// 表示ラベルを生成
 		// データ名
-		Label* name = Label::createWithTTF(data.name, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
+		Label* name = Label::createWithTTF(data.chapter, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
 		name->setPosition(Point(name->getContentSize().width / 2 + panelSize.width * INNER_H_MARGIN_RATIO, panel->getContentSize().height / 2));
 		panel->addChild(name);
 		

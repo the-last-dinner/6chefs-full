@@ -23,6 +23,8 @@ const int PlayerDataManager::MAX_SAVE_COUNT = 10;
 //セーブインデックスの0回の表示
 const string PlayerDataManager::DEFAULT_COUNT = "  0";
 
+//
+
 // インスタンスを生成&取得
 PlayerDataManager* PlayerDataManager::getInstance()
 {
@@ -38,8 +40,7 @@ void PlayerDataManager::destroy()
 }
 
 //デストラクタ
-PlayerDataManager::~PlayerDataManager()
-{FUNCLOG}
+PlayerDataManager::~PlayerDataManager(){FUNCLOG}
 
 
 /* ******************************************************** *
@@ -103,24 +104,30 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     FUNCLOG
     vector<PlayerDataManager::SaveIndex> save_list;
     SaveIndex save;
-    int minute;
+    int sec, min;
     string time;
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
-        const char* cha_id = to_string(i).c_str();
-        if(!this->global.HasMember(cha_id))
+        string file = "save/local" + to_string(i) + ".json";
+        if(this->fu->isFileExist(file))
         {
+            cout << "set >> " << i << endl;
+            rapidjson::Document local = this->readJsonFile(file.c_str());
+            // プレイ時間
+            sec = local["play_time"].GetInt();
+            min = sec / 60;
+            time = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+            // リスト生成
+            save = SaveIndex(
+                             i,
+                             CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHAPTER, local["chapter"].GetInt()),
+                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, local["location"][0].GetInt())),
+                             time,
+                             LastSupper::StringUtils::getSprintf("%3s", to_string(local["save_count"].GetInt()))
+                             );
+        } else {
             cout << "empty >> " << i << endl;
             //空のデータ
-            save = SaveIndex(i, "--- NO DATA ---", "--時間--分", DEFAULT_COUNT, "---------------");
-        } else {
-            cout << "set >> " << i << endl;
-            //プレイ時間を編集
-            minute = this->global[cha_id]["play_time"].GetInt();
-            cout << LastSupper::StringUtils::getSprintf("%2s", to_string(minute) + "分") << endl;
-            time = LastSupper::StringUtils::getSprintf("%2s", to_string(minute / 60)) + "時間" + LastSupper::StringUtils::getSprintf("%2s", to_string(minute % 60)) + "分";
-            //リスト生成
-            //LastSupper::StringUtils::getSprintf("%10s", this->global[cha_id]["name"].GetString())
-            save = SaveIndex(i, "--- SAVE " + LastSupper::StringUtils::getSprintf("%02s", to_string(i)) + " ---", time, LastSupper::StringUtils::getSprintf("%3s", to_string(this->global[cha_id]["save_count"].GetInt())), LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, this->global[cha_id]["location"][0].GetInt())));
+            save = SaveIndex(i, "--- NO DATA ---", "---------------", DEFAULT_COUNT, "00h00m00s");
         }
         save_list.push_back(save);
     }
@@ -135,6 +142,9 @@ void PlayerDataManager::setMainLocalData(const int id)
     string file = (id == 0) ? "save/local_template.json": "save/local" + to_string(id) + ".json";
     string path = this->fu->fullPathForFilename(file);
     this->local = this->readJsonFile(path);
+    // プレイ時間計測スタート
+    //this->start_time_ms = clock();
+    this->start_time_ms = this->getSec();
     return;
 }
 
@@ -145,17 +155,38 @@ int PlayerDataManager::getSaveDataId()
     return this->local_id;
 }
 
+// 時間取得
+double PlayerDataManager::getSec(){
+    timeval tv;
+    gettimeofday(&tv, nullptr);
+    return (tv.tv_sec) + (tv.tv_usec) * 1e-6;
+}
+
+// プレイ時間を秒で取得し、スタート時間のリセット
+void PlayerDataManager::setPlayTimeSeconds()
+{
+    // 計測時間の管理
+    double start = this->start_time_ms;
+    double stop = this->getSec();
+    // 計測処理
+    int interval_time = (int)(stop - start);
+    //cout << "interval_time>>>>>>>>>>>>>" << interval_time << endl;
+    // 開始時間を再設定
+    this->start_time_ms = this->getSec();
+    // プレイ時間を格納
+    this->local["play_time"].SetInt(this->local["play_time"].GetInt() + interval_time);
+    //cout << "play_time>>>>>>>>>>>>>>>" << this->local["play_time"].GetInt() << endl;
+}
+
 //セーブ
 void PlayerDataManager::save(const int id)
 {
     FUNCLOG
     // save local
     string str_id = to_string(id);
-    //string path = this->fu->fullPathForFilename("save/local" + str_id + ".json");
-    //this->local["token"].SetString(this->local["token"].GetString(), 20);
-    //this->local["name"].SetString(this->local["name"].GetString(), 20);
-    this->local["play_time"].SetInt(this->local["play_time"].GetInt());
-    this->local["save_count"].SetInt(this->local["save_count"].GetInt());
+    this->setPlayTimeSeconds(); // プレイ時間の算出
+    this->local["datetime"].SetInt(clock());
+    this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
     PlayerDataManager::Location loc = this->getLocation();
     this->local["location"][0].SetInt(loc.map_id);
     this->local["location"][1].SetInt(loc.x);
@@ -165,29 +196,25 @@ void PlayerDataManager::save(const int id)
     this->writeJsonFile(path, this->local);
     this->local_id = id;
     // save global
-    const char* cha_id = str_id.c_str();
-    if(this->global.HasMember(cha_id))
-    {
-        //セーブデータが存在する場合
-        //this->global[cha_id]["token"].SetString(this->local["token"].GetString(), 20);
-        //this->global[cha_id]["name"].SetString(this->local["name"].GetString(), 20);
-        this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
-        this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
-        //this->global[cha_id]["location"].SetArray();
-        this->global[cha_id]["location"][0].SetInt(loc.map_id);
-        this->global[cha_id]["location"][1].SetInt(loc.x);
-        this->global[cha_id]["location"][2].SetInt(loc.y);
-        this->global[cha_id]["location"][3].SetInt(static_cast<int>(loc.direction));
-    } else {
-        //セーブデータが存在しない場合
-        rapidjson::Value empty(kObjectType);
-        this->global.AddMember(StringRef(cha_id), empty, this->global.GetAllocator());
-        //this->global[cha_id].AddMember("token", this->local["token"], this->local.GetAllocator());
-        //this->global[cha_id].AddMember("name", this->local["name"], this->local.GetAllocator());
-        this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
-        this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
-        this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
-    }
+//    const char* cha_id = str_id.c_str();
+//    if(this->global.HasMember(cha_id))
+//    {
+//        //セーブデータが存在する場合
+//        this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
+//        this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
+//        //this->global[cha_id]["location"].SetArray();
+//        this->global[cha_id]["location"][0].SetInt(loc.map_id);
+//        this->global[cha_id]["location"][1].SetInt(loc.x);
+//        this->global[cha_id]["location"][2].SetInt(loc.y);
+//        this->global[cha_id]["location"][3].SetInt(static_cast<int>(loc.direction));
+//    } else {
+//        //セーブデータが存在しない場合
+//        rapidjson::Value empty(kObjectType);
+//        this->global.AddMember(StringRef(cha_id), empty, this->global.GetAllocator());
+//        this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
+//        this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
+//        this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
+//    }
     string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
     utils::captureScreen([=](bool success, string filename){
         if(success)
@@ -196,8 +223,8 @@ void PlayerDataManager::save(const int id)
             Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
         }
     }, path_s);
-    string path_g = "save/global.json";
-    this->writeJsonFile(path_g, this->global);
+    //string path_g = "save/global.json";
+    //this->writeJsonFile(path_g, this->global);
     return;
 }
 
@@ -205,7 +232,7 @@ void PlayerDataManager::save(const int id)
 bool PlayerDataManager::checkSaveDataExists(const int id)
 {
     FUNCLOG
-    return (this->global.HasMember(to_string(id).c_str())) ? true : false;
+    return (this->fu->isFileExist("save/local" + to_string(id) + ".json")) ? true : false;
 }
 
 /* ******************************************************** *
@@ -293,6 +320,14 @@ void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
     return;
 }
 
+// chapterを切り替え
+void PlayerDataManager::setChapterId(const int chapter_id)
+{
+    FUNCLOG
+    this->local["chapter"].SetInt(chapter_id);
+    return;
+}
+
 /* GET */
 //主人公の位置をゲット
 PlayerDataManager::Location PlayerDataManager::getLocation()
@@ -370,6 +405,13 @@ int PlayerDataManager::getItemEquipment(Direction direction)
     return this->local[key.c_str()].GetInt();
 }
 
+// 現在のチャプターIDの取得
+int PlayerDataManager::getChapterId()
+{
+    FUNCLOG
+    return this->local["chapter"].GetInt();
+}
+
 /* CHECK */
 //アイテムを1つ以上持っているかチェック
 bool PlayerDataManager::checkItem(const int item_id)
@@ -402,6 +444,18 @@ bool PlayerDataManager::checkFriendship(const string& character, const int val)
     FUNCLOG
     int level = this->getFriendship(character);
     if(level == val){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//チャプターIDが指定のIDと一致するか
+bool PlayerDataManager::checkChapterId(const int chapter_id)
+{
+    FUNCLOG
+    if(chapter_id == this->getChapterId())
+    {
         return true;
     } else {
         return false;
