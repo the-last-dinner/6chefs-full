@@ -109,17 +109,7 @@ Direction MapObjectFactory::getDirection(const ValueMap& info) const
 {
     if(info.count("direction") != 0) return Direction::SIZE;
     
-    map<string, Direction> stringToDirection
-    {
-        {string("RIGHT"), Direction::RIGHT},
-        {string("LEFT"), Direction::LEFT},
-        {string("UP"), Direction::BACK},
-        {string("DOWN"), Direction::FRONT},
-    };
-    
-    if(stringToDirection.count(info.at("direction").asString()) == 0) return Direction::SIZE;
-    
-    return stringToDirection.at(info.at("direction").asString());
+    return MapUtils::toEnumDirection(info.at("direction").asString());
 }
 
 // 当たり判定レイヤにあるオブジェクトを生成

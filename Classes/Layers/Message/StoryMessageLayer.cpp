@@ -11,10 +11,10 @@
 #include "Datas/Message/StoryMessageData.h"
 
 // create関数
-StoryMessageLayer* StoryMessageLayer::create(const string& title, const queue<StoryMessageData*>& datas)
+StoryMessageLayer* StoryMessageLayer::create(const string& title, const queue<StoryMessageData*>& datas, function<void()> onCloseCallback)
 {
     StoryMessageLayer* p {new(nothrow) StoryMessageLayer()};
-    if(p && p->init(title, datas))
+    if(p && p->init(title, datas, onCloseCallback))
     {
         p->autorelease();
         return p;
@@ -36,7 +36,7 @@ StoryMessageLayer::~StoryMessageLayer()
 {FUNCLOG}
 
 // 初期化
-bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>& datas)
+bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>& datas, function<void()> onCloseCallback)
 {
 	FUNCLOG
     
@@ -57,7 +57,7 @@ bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>
     titleLabel->setPosition(titleLabel->getContentSize().width, winSize.height - titleLabel->getContentSize().height / 2);
     frame->addChild(titleLabel);
 	
-	return MessageLayer::init();
+	return MessageLayer::init(onCloseCallback);
 }
 
 // メッセージを生成

@@ -17,7 +17,7 @@ class StoryMessageLayer : public MessageLayer
 {
 // クラスメソッド
 public:
-    static StoryMessageLayer* create(const string& title, const queue<StoryMessageData*>& datas);
+    static StoryMessageLayer* create(const string& title, const queue<StoryMessageData*>& datas, function<void()> onCloseCallback);
 
 // インスタンス変数
 private:
@@ -27,7 +27,7 @@ private:
 private:
 	StoryMessageLayer();
 	~StoryMessageLayer();
-	virtual bool init(const string& title, const queue<StoryMessageData*>& datas);
+	virtual bool init(const string& title, const queue<StoryMessageData*>& datas, function<void()> onCloseCallback);
     virtual Label* createMessage();
     virtual bool hasNextPage();
 };

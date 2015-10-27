@@ -8,6 +8,9 @@
 
 #include "Managers/EventScriptManager.h"
 
+#include "Event/EventFactory.h"
+#include "Event/EventScriptValidator.h"
+
 // 唯一のインスタンスを初期化
 static EventScriptManager* _instance = nullptr;
 
@@ -26,10 +29,21 @@ void EventScriptManager::destroy()
 }
 
 // コンストラクタ
-EventScriptManager::EventScriptManager():fu(FileUtils::getInstance()){FUNCLOG}
+EventScriptManager::EventScriptManager():fu(FileUtils::getInstance())
+{
+    FUNCLOG
+    this->factory = EventFactory::create();
+    CC_SAFE_RETAIN(this->factory);
+}
 
 // デストラクタ
-EventScriptManager::~EventScriptManager(){FUNCLOG}
+EventScriptManager::~EventScriptManager()
+{
+    FUNCLOG
+    
+    CC_SAFE_RELEASE_NULL(this->factory);
+    CC_SAFE_RELEASE_NULL(this->validator);
+}
 
 //イベントスクリプトファイルの読み込み
 bool EventScriptManager::setEventScript(string script)
@@ -93,8 +107,22 @@ rapidjson::Value& EventScriptManager::getScript(int eventId)
 	return itr->value;
 }
 
-// 現在のmap_idの取得
-string EventScriptManager::getMapId()
+// バリデータをセット
+void EventScriptManager::setValidator(EventScriptValidator* validator)
 {
-    return this->map_id;
+    CC_SAFE_RELEASE(this->validator);
+    CC_SAFE_RETAIN(validator);
+    this->validator = validator;
+}
+
+// ファクトリを取得
+EventFactory* EventScriptManager::getFactory() const
+{
+    return this->factory;
+}
+
+// バリデータを取得
+EventScriptValidator* EventScriptManager::getValidator() const
+{
+    return this->validator;
 }

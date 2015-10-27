@@ -20,6 +20,7 @@ namespace MapUtils
     float   getGridNum(float length);
     Direction keyToDirection(const Key& key);
     vector<Direction> keyToDirection(const vector<Key>& keys);
+    Direction toEnumDirection(const string& sDirection);
 }
 
 #endif // __MAP_UTILS_H__

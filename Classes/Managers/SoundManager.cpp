@@ -8,6 +8,10 @@
 
 #include "Managers/SoundManager.h"
 
+// 定数
+const string SoundManager::bgmPath = "bgm/";
+const string SoundManager::sePath = "se/";
+
 // 唯一のインスタンスを初期化
 static SoundManager* _instance = nullptr;
 

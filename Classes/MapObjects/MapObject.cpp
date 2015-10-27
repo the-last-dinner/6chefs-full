@@ -92,16 +92,6 @@ void MapObject::removeLight()
 	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->light, FadeOut::create(0.5f)), TargetedAction::create(this->light, RemoveSelf::create())));
 }
 
-// リアクションアイコンを表示
-ActionInterval* MapObject::createReaction()
-{
-    Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
-    icon->setPosition(Point(0, this->getContentSize().height));
-    icon->setScaleY(0.1f);
-    this->addChild(icon);
-    return TargetedAction::create(icon, Sequence::create(EaseElasticInOut::create(ScaleTo::create(0.6f, 1.f, 1.f)), DelayTime::create(1.f),RemoveSelf::create() ,nullptr));
-}
-
 // イベントIDを取得
 int MapObject::getEventId()
 {return this->eventId;}

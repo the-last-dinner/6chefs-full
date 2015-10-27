@@ -117,3 +117,14 @@ void DungeonScene::onMenuKeyPressed()
     }, path);
 }
 
+// マップレイヤを取得
+TiledMapLayer* DungeonScene::getMapLayer() const
+{
+    return this->mapLayer;
+}
+
+// イベントリスナを取得
+EventListenerKeyboardLayer* DungeonScene::getListener() const
+{
+    return this->listener;
+}

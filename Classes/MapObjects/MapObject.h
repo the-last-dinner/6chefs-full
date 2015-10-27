@@ -41,7 +41,6 @@ public:
     
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
-    ActionInterval* createReaction();
 	
     Size  getGridSize() const;
 	Point getGridPosition(const Size& mapSize) const;

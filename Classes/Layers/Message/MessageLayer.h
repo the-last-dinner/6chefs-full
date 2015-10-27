@@ -32,7 +32,7 @@ public:
 protected:
     MessageLayer();
     ~MessageLayer();
-    virtual bool init();
+    virtual bool init(function<void()> onCloseCallback);
 private:
     virtual Label* createMessage() = 0;
     virtual bool hasNextPage() = 0;
