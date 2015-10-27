@@ -25,7 +25,7 @@ bool TitleSceneData::init()
 	FUNCLOG
 	this->textureFilePaths =
 	{
-		"title_scene",
+		"title",
 		"frame"
 	};
 	

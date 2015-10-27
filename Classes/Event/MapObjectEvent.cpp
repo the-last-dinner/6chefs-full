@@ -12,18 +12,32 @@
 
 #include "MapObjects/MapObject.h"
 
-#pragma mark Reaction
 
-bool Reaction::init(rapidjson::Value& json)
+#pragma mark MapObjectEvent
+
+bool MapObjectEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
-    this->target = this->validator->getMapObjectById(json);
+    MapObject* target {this->validator->getMapObjectById(json)};
+    
+    // nullptrならイベントを生成させない
+    if(!target) return false;
     
     return true;
 }
 
-void Reaction::run()
+#pragma mark -
+#pragma mark ReactionEvent
+
+bool ReactionEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    return true;
+}
+
+void ReactionEvent::run()
 {
     if(!this->target)
     {
@@ -38,5 +52,3 @@ void Reaction::run()
     
     icon->runAction(Sequence::create(EaseElasticOut::create(ScaleTo::create(0.6f, 1.f), 0.5f), DelayTime::create(1.f), RemoveSelf::create(), CallFunc::create([this](){this->setDone();}), nullptr));
 }
-
-

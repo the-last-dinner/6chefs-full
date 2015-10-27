@@ -84,9 +84,9 @@ void DungeonScene::onPreloadFinished()
     this->mediator = mediator;
     
     // リスナにコールバックを設定
-    this->listener->onCursorKeyPressed = CC_CALLBACK_1(TaskMediator::onCursorKeyPressed, this->mediator);
-    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(TaskMediator::onSpaceKeyPressed, this->mediator);
-    this->listener->intervalInputCheck = CC_CALLBACK_1(TaskMediator::intervalInputCheck, this->mediator);
+    this->listener->onCursorKeyPressed = CC_CALLBACK_1(TaskMediator::onCursorKeyPressed, mediator);
+    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(TaskMediator::onSpaceKeyPressed, mediator);
+    this->listener->intervalInputCheck = CC_CALLBACK_1(TaskMediator::intervalInputCheck, mediator);
     this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
     this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
 }
@@ -98,7 +98,7 @@ void DungeonScene::onMenuKeyPressed()
     this->listener->setEnabled(false);
     // 主人公の位置をセット
     Character* chara = this->mapLayer->getMapObjectList()->getMainCharacter();
-    Point point = chara->getGridPosition(this->mapLayer->getTiledMap()->getContentSize());
+    Point point = chara->getGridPosition(this->mapLayer->getMapSize());
     Direction dir = chara->getDirection();
     PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);
@@ -115,12 +115,6 @@ void DungeonScene::onMenuKeyPressed()
          Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
      }
     }, path);
-}
-
-// マップレイヤを取得
-TiledMapLayer* DungeonScene::getMapLayer() const
-{
-    return this->mapLayer;
 }
 
 // イベントリスナを取得

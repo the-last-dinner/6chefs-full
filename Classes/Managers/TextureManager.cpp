@@ -40,7 +40,7 @@ TextureManager::~TextureManager()
 void TextureManager::preloadTexture(const string& filePath, const function<void()> callback)
 {
 	FUNCLOG
-	Director::getInstance()->getTextureCache()->addImageAsync(basePath + filePath + ".pvr.ccz",
+	Director::getInstance()->getTextureCache()->addImageAsync(basePath + filePath + ".png",
 															  [=](Texture2D* loaded_texture){
 																  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + filePath + ".plist", loaded_texture);
 																  this->texturePaths.push_back(filePath);

@@ -76,6 +76,12 @@ DungeonScene* TaskMediator::getScene() const
     return this->scene;
 }
 
+// マップレイヤを取得
+TiledMapLayer* TaskMediator::getMapLayer() const
+{
+    return this->scene->mapLayer;
+}
+
 // オブジェクトリストを取得
 MapObjectList* TaskMediator::getMapObjectList() const
 {

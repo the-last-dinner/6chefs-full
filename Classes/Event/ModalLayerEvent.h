@@ -19,8 +19,8 @@ class ModalLayerEvent : public GameEvent
 {
 // インスタンスメソッド
 protected:
-    ModalLayerEvent() {FUNCLOG};
-    ~ModalLayerEvent() {FUNCLOG};
+    ModalLayerEvent() {};
+    ~ModalLayerEvent() {};
     virtual bool init() override;
     void onOpenModalLayer();
 public:

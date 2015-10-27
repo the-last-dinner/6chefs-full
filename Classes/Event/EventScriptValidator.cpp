@@ -190,14 +190,42 @@ MapObject* EventScriptValidator::getMapObjectById(rapidjson::Value& json)
     return nullptr;
 }
 
+// x,yの組を取得
+Point EventScriptValidator::getPoint(rapidjson::Value& json)
+{
+    if(!this->hasMember(json, member::X) || !this->hasMember(json, member::Y)) return Point::ZERO;
+    
+    return Point(json[member::X].GetInt(), json[member::Y].GetInt());
+}
+
+// 方向を取得
+Direction EventScriptValidator::getDirection(rapidjson::Value& json)
+{
+    if(!this->hasMember(json, member::DIRECTION)) return Direction::SIZE;
+    
+    return MapUtils::toEnumDirection(json[member::DIRECTION].GetString());
+}
+
 // シーンを取得
 DungeonScene* EventScriptValidator::getScene() const
 {
     return this->mediator->getScene();
 }
 
+// マップレイヤを取得
+TiledMapLayer* EventScriptValidator::getMapLayer() const
+{
+    return this->mediator->getMapLayer();
+}
+
 // オブジェクトリストを取得
 MapObjectList* EventScriptValidator::getMapObjectList() const
 {
     return this->mediator->getMapObjectList();
+}
+
+// 現在のマップの大きさを取得
+Size EventScriptValidator::getMapSize() const
+{
+    return this->mediator->getMapSize();
 }

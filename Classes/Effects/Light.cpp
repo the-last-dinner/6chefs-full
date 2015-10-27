@@ -28,7 +28,7 @@ bool Light::init(const Information& info)
 	
 	Sprite* light {Sprite::createWithSpriteFrameName("light_white.png")};
 	light->setColor(info.color);
-    light->setOpacity(120);
+    light->setOpacity(150);
 	float scale {(info.radius * 2) / light->getContentSize().width};
 	light->setScale(scale);
 	this->setContentSize(light->getContentSize() * scale);
@@ -39,7 +39,7 @@ bool Light::init(const Information& info)
     
     light->setBlendFunc(BlendFunc{GL_SRC_ALPHA, GL_ONE});
     
-    if(info.type == Light::Type::TORCH) this->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(0.5f, 220), FadeTo::create(0.5f, 255), nullptr), -1), nullptr));
+    if(info.type == Light::Type::TORCH) this->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(0.5f, 230), FadeTo::create(0.5f, 255), nullptr), -1), nullptr));
 	
 	return true;
 }
