@@ -78,5 +78,5 @@ Label* StoryMessageLayer::createMessage()
 // 次のページがあるか
 bool StoryMessageLayer::hasNextPage()
 {
-    return !this->datas.empty() & this->datas.front()->hasNextPage();
+    return !this->datas.empty();
 }

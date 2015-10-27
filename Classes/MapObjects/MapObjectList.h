@@ -31,11 +31,11 @@ private:
     ~MapObjectList();
     bool init(const Vector<MapObject*>&);
 public:
-    MapObject* getMapObject(const Point& position) const;
     MapObject* getMapObject(int objId) const;
     const Vector<MapObject*>& getMapObjects() const;
     const bool containsCollisionObject(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Rect& rect) const;
+    Vector<MapObject*> getMapObjects(const Point& position) const;
     void add(MapObject* mapObject);
     
     void setMainCharacter(Character* mainChara);

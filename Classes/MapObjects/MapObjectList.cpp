@@ -29,20 +29,6 @@ bool MapObjectList::init(const Vector<MapObject*>& mapObjects)
     return true;
 }
 
-// 指定座標のマップオブジェクトを取得
-MapObject* MapObjectList::getMapObject(const Point& position) const
-{
-    for(MapObject* obj : this->mapObjects)
-    {
-        Rect rect {obj->getCollisionRect()};
-        if(rect.containsPoint(position)) return obj;
-    }
-    
-    // 該当がなければnullptrを返す
-    return nullptr;
-    
-}
-
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const
 {
@@ -69,6 +55,18 @@ Vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
     for(MapObject* obj : this->mapObjects)
     {
         if(rect.intersectsRect(obj->getCollisionRect())) mapObjects.pushBack(obj);
+    }
+    
+    return mapObjects;
+}
+
+// 指定座標を含むマップオブジェクトのベクタを取得
+Vector<MapObject*> MapObjectList::getMapObjects(const Point& position) const
+{
+    Vector<MapObject*> mapObjects {};
+    for(MapObject* obj : this->mapObjects)
+    {
+        if(obj->getCollisionRect().containsPoint(position)) mapObjects.pushBack(obj);
     }
     
     return mapObjects;

@@ -59,6 +59,9 @@ void EventScriptTask::runEventScript(int eventId)
     
     this->eventQueue.push(event);
     
+    // 実行
+    this->run();
+    
     // update開始
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 }
