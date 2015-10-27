@@ -45,13 +45,14 @@ void ControlMainCharacterTask::search()
     
     Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
     
-    // 現状イベントスクリプトに実行待ちを実装していないため現状はこんな感じで
+    // 同座標にあるイベントを全て発動
+    Point objPosition {Point::ZERO};
     for(MapObject* obj : objs)
     {
-        if(obj && obj->getTrigger() == Trigger::SEARCH)
+        if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition))
         {
+            objPosition = obj->getPosition();
             this->mediator->runEventScript(obj->getEventId());
-            return;
         }
     }
 }
@@ -96,21 +97,24 @@ void ControlMainCharacterTask::onCharacterWalkedOneGrid()
 {
     MapObjectList* objectList {this->mediator->getMapObjectList()};
     
-    // 衝突判定用Rectの中心座標にあるイベントを呼ぶ
+    // 衝突判定用Rectの中心点を含むイベントを呼ぶ
     Rect collisionRect {objectList->getMainCharacter()->getCollisionRect()};
-    Point checkPosition {Point(collisionRect.getMidX(), collisionRect.getMidY())};
-    MapObject* obj { objectList->getMapObject(checkPosition)};
     
-    if(!obj)
+    Vector<MapObject*> objs {objectList->getMapObjects(Point(collisionRect.getMidX(), collisionRect.getMidY()))};
+    
+    if(objs.empty())
     {
         this->riddenEventID = static_cast<int>(EventID::UNDIFINED);
         return;
     }
     
-    // 現在乗っているマスのイベントを発動しないようにして、イベントを呼ぶ
-    if(obj && obj->getTrigger() == Trigger::RIDE && obj->getEventId() != this->riddenEventID)
+    for(MapObject* obj : objs)
     {
-        this->riddenEventID = obj->getEventId();
-        this->mediator->runEventScript(obj->getEventId());
+        // 現在乗っているマスのイベントを発動しないようにして、イベントを呼ぶ
+        if(obj && obj->getTrigger() == Trigger::RIDE && obj->getEventId() != this->riddenEventID)
+        {
+            this->riddenEventID = obj->getEventId();
+            this->mediator->runEventScript(obj->getEventId());
+        }
     }
 }
