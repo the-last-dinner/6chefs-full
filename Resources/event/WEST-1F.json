@@ -182,6 +182,10 @@
 							"name":"水"
 						},
 						{
+							"type":"removeLayer",
+							"layer":"item"
+						},
+						{
 							"type":"already"
 						}
 					]
@@ -1119,4 +1123,34 @@
 			]
 		}
 	],
+	"21":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["3","21"],
+					"item":"1515"
+				},
+				{
+					"event":["3","27"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		}
+	],
+	"22":[
+		{
+			"type":"getItem",
+			"itemID":"1522",
+			"name":"猪肉"
+		},
+		{
+			"type":"already"
+		}
+	]
 }

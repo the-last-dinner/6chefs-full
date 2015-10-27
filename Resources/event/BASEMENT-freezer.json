@@ -226,8 +226,23 @@
 							"type":"fadeout"
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"5"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"5"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter5.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter5.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"removeChara",

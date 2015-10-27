@@ -91,6 +91,20 @@
     {
       "type":"createChara",
       "objID":"101"
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["2","9"]
+        }
+      ],
+      "action":[
+        {
+          "type":"removeLayer",
+          "layer":"item"
+        }
+      ]
     }
   ],
   "8":[
@@ -256,6 +270,20 @@
           "type": "already"
         }
       ]
+    }
+  ],
+  "9":[
+    {
+      "type":"getItem",
+      "itemID":"1523",
+      "name":"麻の髪紐"
+    },
+    {
+      "type":"removeLayer",
+      "layer":"item"
+    },
+    {
+      "type":"already"
     }
   ]
 }

@@ -24,6 +24,21 @@
           "time":1.0
         },
         {
+          "type":"spawn",
+          "action":[
+            {
+              "type":"playSE",
+              "file":"prologue.mp3",
+              "time":6.0
+            },
+            {
+              "type":"displayImg",
+              "file":"prologue.png",
+              "time":5.0
+            }
+          ]
+        },
+        {
           "type": "stopBGM"
         },
         {

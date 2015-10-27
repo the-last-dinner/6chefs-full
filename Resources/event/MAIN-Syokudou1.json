@@ -972,8 +972,23 @@
 							]
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"3"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"3"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter3.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter3.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"fadein"
@@ -1324,8 +1339,23 @@
 							"return":"hero"
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"3"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"3"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter3.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter3.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"fadein"
@@ -1495,6 +1525,10 @@
 												{
 													"type":"removeChara",
 													"objID":"181"
+												},
+												{
+													"type":"removeItem",
+													"itemID":"1515"
 												}
 											]
 										},

@@ -134,17 +134,22 @@
 						},
 						{
 							"type":"charaMsg",
-							"talk":[
+							"text":["一色さん・・・何・・・\nしてるの・・・？"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"spawn",
+							"action":[
 								{
-									"text":["一色さん・・・何・・・\nしてるの・・・？"],
-									"charaID":"0",
-									"imgID":"3"
+									"type":"displayImg",
+									"file":"manaka_juiced.png"
 								},
 								{
-									"text":["あは！！佐々木じゃない！\nアンタもアタシのジュースになってくれんの？？"],
-									"charaID":"3",
-									"imgID":"3",
-									"option":"reaction"
+									"type":"charaMsg",
+									"text":["アハ、佐々木ぃ・・・\nアンタもアタシのジュースになってくれんの？？"],
+									"charaID":"7",
+									"name":"一色　真夏(イッシキ　マナカ)"
 								}
 							]
 						},
@@ -170,7 +175,7 @@
 						},
 						{
 							"type":"barrage",
-							"barrageTimes":20,
+							"times":20,
 							"limit":5.0,
 							"false":[
 								{
@@ -179,18 +184,10 @@
 										{
 											"type":"fadeout"
 										},
+
 										{
-											"type":"spawn",
-											"action":[
-												{
-													"type":"displayImg",
-													"file":"manaka_juiced.png"
-												},
-												{
-													"type":"playSE",
-													"file":"splash1.mp3"
-												}
-											]
+											"type":"playSE",
+											"file":"splash1.mp3"
 										},
 										{
 											"type":"fadein"
@@ -254,7 +251,7 @@
 												{
 													"type":"charaMsg",
 													"text":["コポポポポポポポ・・・"],
-													"charaID":"3",
+													"charaID":"",
 													"imgID":"3"
 												},
 												{
@@ -360,7 +357,7 @@
 						},
 						{
 							"type":"barrage",
-							"barrageTimes":20,
+							"times":20,
 							"limit":5.0,
 							"false":[
 								{

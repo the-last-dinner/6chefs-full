@@ -250,8 +250,23 @@
 							"time":3.0
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"2"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"2"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter2.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter2.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"spawn",
@@ -271,7 +286,7 @@
 						},
 						{
 							"type":"fadein",
-							"time":3.0
+							"time":1.0
 						},
 						{
 							"type":"charaMsg",

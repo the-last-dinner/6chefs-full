@@ -46,11 +46,13 @@
 ※画像はフェードインで表示、でフェードアウトしていくように
 ※フェードインに0.5秒かける、フェードアウトにも0.5秒かける
 ※表示する時間に、フェードイン、アウトの時間は含まない
+※
 （例）
 	{
-  "type":"displayImg",
+  	"type":"displayImg",
 	"file":"ファイル名",
-	"time":"表示する時間（秒)"#
+	"time":"表示する時間（秒)"#,
+	"option":
 	}
 
 ●マップ移動
@@ -209,7 +211,7 @@
 （例）
 	{
 	"type":"storyMsg",
- 	 "title":["", "", ...],#
+ 	 "title":""#
 	"text":["表示するテキスト", "", ...],
 	"alpha":"不透明度(0 ~ 255 0で見えなくなる)"#
 	}
@@ -234,7 +236,7 @@
 （例）
 	{
 	"type":"removeCover",
-  "option":"fadeOut"#
+  	"option":"fadeOut"#
 	}
 
 
@@ -266,13 +268,11 @@
 （例）
 	{
 	"type":"barrage",
-	"barrageTimes":"連打する回数(int)",
+	"times":"連打する回数(int)",
 	"limit":"制限時間（double）",
 	"false":[失敗した時のaction] or "EventID",
 	"true":[成功した時のaction] or "EventID"
 	}
-  
-
 ●暗号イベント
 ・type名...passward
 ・必要なもの...入力するもの, 失敗した時のアクション, 正解したときのアクション　　　　　　　
@@ -303,7 +303,7 @@
 	"type":"playSE",
 	"file":"ファイル名",
 	"times":"回数",#
-	"bolume":"ボリューム",#
+	"volume":"ボリューム",#
 	}
 
 
@@ -512,11 +512,11 @@
 
 ●チャプターチェンジ画像を表示、チャプターを変える
 
-・type名、、、chapterChange
+・type名、、、changeChapter
 ・必要なもの、、、チャプター番号
 (例)
 　　{
-    "type":"chapterChange",
+    "type":"changeChapter",
     "chapterID":"チャプターID"
     }　　
 
@@ -663,6 +663,22 @@
 
 (例)
 MAIN-Ohiromaの19
+
+
+
+
+●SEを鳴らす
+・type名、、、playSE
+・必要なもの,,,SEのファイル名
+　　　　　　　　鳴らす時間#
+
+(例)
+{
+	"type":"playSE",
+	"file":"ファイル名"
+	"time":鳴らす時間(float)
+}
+
 
 
 

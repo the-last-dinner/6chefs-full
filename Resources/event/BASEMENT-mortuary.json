@@ -24,7 +24,7 @@
 										},
 										{
 											"type":"barrage",
-											"barrageTimes":24,
+											"times":24,
 											"limit":5.0,
 											"false":[
 												{
@@ -50,7 +50,12 @@
 						{
 							"choice":"いいえ",
 							"action":[
-
+								{
+									"type":"charaWalk",
+									"direction":"RIGHT",
+									"objID":"hero",
+									"steps":1.0
+								}
 							]
 						}
 					]
@@ -63,7 +68,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{43,6}"]
+					"event":["43","6"]
 				}
 			],
 			"action":[
@@ -117,7 +122,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["{48,3}"]
+					"event":["48","3"]
 				}
 			],
 			"action":[

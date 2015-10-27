@@ -268,8 +268,23 @@
 							]
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"4"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"4"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter4.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter4.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"already"
@@ -311,8 +326,23 @@
 							"imgID":"3"
 						},
 						{
-							"type":"chapterChange",
-							"chapterID":"4"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"changeChapter",
+									"chapterID":"4"
+								},
+								{
+									"type":"playSE",
+									"file":"chapter4.wav",
+									"time":6.0
+								},
+								{
+									"type":"displayImg",
+									"file":"chapter4.png",
+									"time":5.0
+								}
+							]
 						},
 						{
 							"type":"already"

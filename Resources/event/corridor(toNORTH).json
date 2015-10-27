@@ -125,8 +125,22 @@
           "imgID": "2"
         },
         {
-          "type":"chapterChange",
-          "chapterID":"1"
+          "type":"spawn",
+          "action":[
+            {
+              "type":"changeChapter",
+              "chapterID":"1"
+            },
+            {
+              "type":"playSE",
+              "file":"chapter1.mp3"
+            },
+            {
+              "type":"displayImg",
+              "file":"chapter1.png",
+              "time":9
+            }
+          ]
         },
         {
           "type": "already"
