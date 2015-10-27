@@ -18,10 +18,12 @@ MessageLayer::MessageLayer() {FUNCLOG};
 MessageLayer::~MessageLayer() {FUNCLOG};
 
 // 初期化
-bool MessageLayer::init()
+bool MessageLayer::init(function<void()> onCloseCallback)
 {
     FUNCLOG
     if(!Layer::init()) return false;
+    
+    this->onClose = onCloseCallback;
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
@@ -133,6 +135,6 @@ void MessageLayer::close()
     this->message->setCascadeOpacityEnabled(true);
     this->frame->setCascadeOpacityEnabled(true);
     this->listener->setEnabled(false);
-    this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this, FadeOut::create(0.2f)), CallFunc::create([=](){this->setVisible(false); this->removeFromParent();})));
-    if (this->onClose) this->onClose();
+    this->runAction(FadeOut::create(0.2f));
+    if (this->onClose) this->runAction(Sequence::createWithTwoActions(DelayTime::create(0.2f), CallFunc::create([this](){this->onClose(); this->removeFromParent();})));
 }

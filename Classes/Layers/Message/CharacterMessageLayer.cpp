@@ -22,7 +22,7 @@ CharacterMessageLayer::CharacterMessageLayer(){FUNCLOG}
 CharacterMessageLayer::~CharacterMessageLayer(){FUNCLOG}
 
 // 初期化
-bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas)
+bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas, function<void()> onCloseCallback)
 {
     FUNCLOG
     
@@ -44,7 +44,7 @@ bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas)
     
     this->setCascadeOpacityEnabled(true);
     
-    return MessageLayer::init();
+    return MessageLayer::init(onCloseCallback);
 }
 
 // メッセージを生成

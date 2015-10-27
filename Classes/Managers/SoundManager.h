@@ -13,12 +13,17 @@
 
 class SoundManager
 {
-	// クラスメソッド
+// 定数
+public:
+    static const string bgmPath;
+    static const string sePath;
+
+// クラスメソッド
 public:
 	static SoundManager* getInstance();
 	static void destory();
 	
-	// シングルトンであるためにprivateに
+// シングルトンであるためにprivateに
 private:
 	SoundManager();												// コンストラクタ
 	SoundManager(const SoundManager& other);					// デストラクタ

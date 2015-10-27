@@ -70,12 +70,19 @@ void TaskMediator::addChildToScene(Node* child)
     this->scene->addChild(child);
 }
 
+// シーンを取得
+DungeonScene* TaskMediator::getScene() const
+{
+    return this->scene;
+}
+
 // オブジェクトリストを取得
 MapObjectList* TaskMediator::getMapObjectList() const
 {
     return this->scene->objectList;
 }
 
+#pragma mark -
 #pragma mark CameraTask
 
 // マップサイズを取得

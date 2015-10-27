@@ -33,7 +33,8 @@ private:
     
 // インスタンスメソッド
 public:
-    void runEvent(int event_id);
+    TiledMapLayer* getMapLayer() const;
+    EventListenerKeyboardLayer* getListener() const;
     
 private:
 	DungeonScene();

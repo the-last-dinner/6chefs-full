@@ -10,7 +10,9 @@
 #define __LastSupper__EventScriptManager__
 
 #include "define.h"
-#include "Managers/PlayerDataManager.h"
+
+class EventScriptValidator;
+class EventFactory;
 
 class EventScriptManager
 {
@@ -26,9 +28,12 @@ private:
 
 //インスタンス変数
 private:
+    EventFactory* factory { nullptr };
+    EventScriptValidator* validator { nullptr };
     rapidjson::Document json;
     cocos2d::FileUtils* fu;
     string map_id;
+    
 //通常関数
 public:
     //イベントスクリプトセット
@@ -37,7 +42,10 @@ public:
     vector<string> getPreLoadList(string type);
     //該当IDスクリプトの取得
 	rapidjson::Value& getScript(int eventId);
-    //map_idの取得
-    string getMapId();
+    
+    void setValidator(EventScriptValidator* validator);
+    
+    EventFactory* getFactory() const;
+    EventScriptValidator* getValidator() const;
 };
 #endif /* defined(__LastSupper__EventScript__) */

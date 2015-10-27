@@ -25,7 +25,7 @@ private:
     
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(CharacterMessageLayer, const queue<CharacterMessageData*>&);
+    CREATE_FUNC_WITH_TWO_PARAM(CharacterMessageLayer, const queue<CharacterMessageData*>&, function<void()>)
 	
 // インスタンス変数
 private:
@@ -36,7 +36,7 @@ private:
 private:
 	CharacterMessageLayer();
 	~CharacterMessageLayer();
-    virtual bool init(const queue<CharacterMessageData*>& datas);
+    virtual bool init(const queue<CharacterMessageData*>& datas, function<void()> onCloseCallback);
 	virtual Label* createMessage() override;
     virtual bool hasNextPage() override;
 };

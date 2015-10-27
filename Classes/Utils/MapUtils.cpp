@@ -67,3 +67,19 @@ vector<Direction> MapUtils::keyToDirection(const vector<Key>& keys)
     }
     return directions;
 }
+
+// 文字列の方向から、enumへ変換
+Direction MapUtils::toEnumDirection(const string& sDirection)
+{
+    map<string, Direction> stringToDirection
+    {
+        {string("RIGHT"), Direction::RIGHT},
+        {string("LEFT"), Direction::LEFT},
+        {string("UP"), Direction::BACK},
+        {string("DOWN"), Direction::FRONT},
+    };
+    
+    if(stringToDirection.count(sDirection) == 0) return Direction::SIZE;
+    
+    return stringToDirection.at(sDirection);
+}

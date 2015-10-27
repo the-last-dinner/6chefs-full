@@ -36,6 +36,7 @@ private:
     
 // インスタンスメソッド
 public:
+    DungeonScene* getScene() const;
     MapObjectList* getMapObjectList() const;
     void runOnScene(Action* action);
     void addChildToScene(Node* child);

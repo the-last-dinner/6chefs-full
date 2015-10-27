@@ -19,7 +19,7 @@ SystemMessageLayer::~SystemMessageLayer()
 {FUNCLOG}
 
 // 初期化
-bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas)
+bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas, function<void()> onCloseCallback)
 {
 	FUNCLOG
     
@@ -35,7 +35,7 @@ bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas)
 	this->addChild(frame);
     this->frame = frame;
 	
-    return MessageLayer::init();
+    return MessageLayer::init(onCloseCallback);
 }
 
 // メッセージを生成
