@@ -12,13 +12,15 @@
 #include "Event/GameEvent.h"
 
 // マップ移動イベント
-class ChangeMap : public GameEvent
+class ChangeMapEvent : public GameEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(ChangeMap, rapidjson::Value&)
+    CREATE_FUNC_WITH_PARAM(ChangeMapEvent, rapidjson::Value&)
 private:
     PlayerDataManager::Location location {};
 private:
+    ChangeMapEvent() {FUNCLOG};
+    ~ChangeMapEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run();
 };
@@ -29,8 +31,24 @@ class CameraEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(CameraEvent, rapidjson::Value&)
 private:
+    CameraEvent() {FUNCLOG};
+    ~CameraEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run();
+};
+
+// waitイベント
+class WaitEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(WaitEvent, rapidjson::Value&)
+private:
+    float duration {0.f};
+private:
+    WaitEvent() {FUNCLOG};
+    ~WaitEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
 };
 
 #endif /* defined(__LastSupper__SceneEvent__) */

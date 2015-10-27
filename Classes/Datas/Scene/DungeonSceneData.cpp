@@ -25,6 +25,7 @@ bool DungeonSceneData::init()
 	
 	this->textureFilePaths.push_back("frame");
 	this->textureFilePaths.push_back("ui");
+    this->textureFilePaths.push_back("obj");
 	
 	return true;
 }

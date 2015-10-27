@@ -12,6 +12,7 @@
 #include "Common.h"
 
 class DungeonScene;
+class TiledMapLayer;
 class EventListenerKeyboardLayer;
 
 class CameraTask;
@@ -37,6 +38,7 @@ private:
 // インスタンスメソッド
 public:
     DungeonScene* getScene() const;
+    TiledMapLayer* getMapLayer() const;
     MapObjectList* getMapObjectList() const;
     void runOnScene(Action* action);
     void addChildToScene(Node* child);

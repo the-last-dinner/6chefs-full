@@ -16,6 +16,7 @@ class GameEvent;
 class MapObjectList;
 class TaskMediator;
 class MapObject;
+class TiledMapLayer;
 
 // イベントスクリプトの値チェック、変換を担うクラス
 class EventScriptValidator : public Ref
@@ -46,8 +47,15 @@ public:
     bool detectCondition(rapidjson::Value& json);
     
     MapObject* getMapObjectById(rapidjson::Value& json);
+    template<typename T>
+    inline T getMapObjectById(rapidjson::Value& json) { return dynamic_cast<T>(this->getMapObjectById(json)); };
+    
+    Point getPoint(rapidjson::Value& json);
+    Direction getDirection(rapidjson::Value& json);
     
     DungeonScene* getScene() const;
+    TiledMapLayer* getMapLayer() const;
     MapObjectList* getMapObjectList() const;
+    Size getMapSize() const;
 };
 #endif /* defined(__LastSupper__EventScriptValidator__) */

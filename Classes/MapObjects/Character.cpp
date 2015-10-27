@@ -96,7 +96,7 @@ bool Character::isMoving()
 // 足踏み
 void Character::stamp(const Direction direction, float ratio)
 {
-    this->stopAllActions();
+    this->character->stopAllActions();
     
     // 現在の向きのアニメーションを取得
     Animation* anime = AnimationCache::getInstance()->getAnimation(to_string(static_cast<int>(this->direction)) + ((this->stampingRightFoot)?"1":"0"));
@@ -104,7 +104,7 @@ void Character::stamp(const Direction direction, float ratio)
     anime->setDelayPerUnit(DURATION_FOR_ONE_STEP / ratio);
     
     this->character->runAction(Animate::create(anime));
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP), CallFunc::create([this, direction](){this->setDirection(direction);})));
+    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP), CallFunc::create([this, direction](){this->setDirection(direction);})));
 }
 
 // 移動ベクトルから歩行アクションを生成
@@ -112,7 +112,7 @@ ActionInterval* Character::createWalkByAction(const Point& vector , float ratio)
 {
     if(vector == Point::ZERO) return nullptr;
     
-    return TargetedAction::create(this, Spawn::create(CallFunc::create([this](){this->setMoving(true); this->stamp(this->direction);}), MoveBy::create(DURATION_FOR_ONE_STEP / ratio, vector), Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP / ratio - 4 / 60), CallFunc::create([this](){this->setMoving(false);})), nullptr));
+    return TargetedAction::create(this, Spawn::create(CallFunc::create([this](){this->setMoving(true); this->stamp(this->direction);}), MoveBy::create(DURATION_FOR_ONE_STEP / ratio, vector), Sequence::createWithTwoActions(DelayTime::create(DURATION_FOR_ONE_STEP / ratio), CallFunc::create([this](){this->setMoving(false);})), nullptr));
 }
 
 // 一方向から歩行アクション生成

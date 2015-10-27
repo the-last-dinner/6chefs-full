@@ -33,7 +33,6 @@ private:
     
 // インスタンスメソッド
 public:
-    TiledMapLayer* getMapLayer() const;
     EventListenerKeyboardLayer* getListener() const;
     
 private:

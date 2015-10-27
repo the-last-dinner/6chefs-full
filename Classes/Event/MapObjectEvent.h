@@ -20,14 +20,22 @@ class MapObjectEvent : public GameEvent
 // インスタンス変数
 protected:
     MapObject* target { nullptr };
+    
+// インスタンスメソッド
+protected:
+    MapObjectEvent() {};
+    ~MapObjectEvent() {};
+    virtual bool init(rapidjson::Value& json);
 };
 
 // リアクション
-class Reaction : public MapObjectEvent
+class ReactionEvent : public MapObjectEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(Reaction, rapidjson::Value&)
+    CREATE_FUNC_WITH_PARAM(ReactionEvent, rapidjson::Value&)
 private:
+    ReactionEvent() {FUNCLOG};
+    ~ReactionEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

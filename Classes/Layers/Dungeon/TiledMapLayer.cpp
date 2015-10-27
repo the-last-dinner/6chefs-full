@@ -84,3 +84,9 @@ Size TiledMapLayer::getMapSize() const
 {
     return this->tiledMap->getContentSize();
 }
+
+// マップの指定レイヤを隠す
+void TiledMapLayer::hideLayer(const string& layerName)
+{
+    this->tiledMap->getLayer(layerName)->setVisible(false);
+}

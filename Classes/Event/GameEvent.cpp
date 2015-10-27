@@ -15,13 +15,11 @@
 #pragma mark GameEvent
 
 //コンストラクタ
-GameEvent::GameEvent() {FUNCLOG};
+GameEvent::GameEvent() {};
 
 // デストラクタ
 GameEvent::~GameEvent()
 {
-    FUNCLOG
-    
     this->unscheduleUpdate();
     
     CC_SAFE_RELEASE_NULL(this->factory);

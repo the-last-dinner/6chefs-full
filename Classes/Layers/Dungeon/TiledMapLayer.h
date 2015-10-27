@@ -18,11 +18,17 @@ class MapObjectList;
 
 class TiledMapLayer : public Layer
 {
-	// クラスメソッド
+// クラスメソッド
 public:
 	CREATE_FUNC_WITH_PARAM(TiledMapLayer, const PlayerDataManager::Location&)
-	
-	// インスタンスメソッド
+
+// インスタンス変数
+private:
+    experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
+    Character* mainCharacter { nullptr };               // 主人公
+    MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
+    
+// インスタンスメソッド
 private:
 	TiledMapLayer();
 	~TiledMapLayer();
@@ -33,12 +39,7 @@ public:
     experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
-    
-	// インスタンス変数
-private:
-	experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
-    Character* mainCharacter { nullptr };                        // 主人公
-    MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
+    void hideLayer(const string& layerName);
 };
 
 #endif // __TILED_MAP_LAYER_H__

@@ -8,7 +8,10 @@
 
 #include "Event/EventFactory.h"
 
+#include "Event/CharacterEvent.h"
+#include "Event/FlagEvent.h"
 #include "Event/GameEvent.h"
+#include "Event/MapEvent.h"
 #include "Event/MapObjectEvent.h"
 #include "Event/ModalLayerEvent.h"
 #include "Event/SoundEvent.h"
@@ -36,7 +39,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         // 制御系
         {"sequence", EventSequence::create},    //順番に処理を実行
         {"spawn", EventSpawn::create},          //同時に処理を実行
-        {"if", EventIf::create},                     // 場合分け処理
+        {"if", EventIf::create},                // 場合分け処理
         
         // 音系
         {"playSE", PlaySE::create},             //効果音再生
@@ -47,12 +50,21 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"storyMsg", StoryMessage::create},             //ストーリーメッセージ
         {"systemMsg", SystemMessage::create},           //システムのメッセージ
         
-        // 画面遷移系
-        {"changeMap", ChangeMap::create},               //マップ移動
+        // シーン系
+        {"changeMap", ChangeMapEvent::create},          //マップ移動
         {"camera", CameraEvent::create},                // カメラ
+        {"wait", WaitEvent::create},                    // 時間待機
+        
+        // マップ系
+        {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
         
         // マップオブジェクト系
-        {"reaction", Reaction::create},                 // リアクション
+        {"reaction", ReactionEvent::create},                // リアクション
+        
+        // キャラクター系
+        {"changeDirection", ChangeDirectionEvent::create},  // 方向転換
+        {"charaWalkTo", WalkToEvent::create},               // 指定座標へ歩行
+        {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
     };
     
     // イベントタイプがなければ同時実行を生成して返す
