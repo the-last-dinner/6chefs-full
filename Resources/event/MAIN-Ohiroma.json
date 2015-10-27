@@ -164,7 +164,7 @@
                   },
                   {
                     "type": "displayImg",
-                    "file": "",
+                    "file": "shituji_img.png",
                     "time": 2.0
                   },
                   {
@@ -199,8 +199,6 @@
             }
       ] 
     }
-  ],
-  "14": [
   ],
   "15": [
     {
@@ -355,6 +353,413 @@
             {
               "type": "systemMsg",
               "text": ["開かない・・・"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["65","5"],
+          "status":[
+            ["1","2"],
+            ["3","0"]
+          ]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"fadeout",
+              "time":3.0
+            },
+            {
+              "type":"createChara",
+              "objID":"1080"
+            },
+            {
+              "type":"createChara",
+              "objID":"1083"
+            },
+            {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
+              "type":"createChara",
+              "objID":"1084"
+            },
+            {
+              "type":"stopBGM"
+            },
+            {
+              "type":"charaMsg",
+              "text":["そこまでですぞ！！"],
+              "charaID":"4",
+              "imgID":"2",
+              "option":"reaction"
+            },
+            {
+              "type":"fadein",
+              "time":3.0
+            },
+            {
+              "type":"playBGM",
+              "file":"DanDan.mp3"
+            },
+            {
+              "type":"charaMsg",
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう"],
+              "charaID":"4",
+              "imgID":"2"
+            },
+            {
+              "type":"playSE",
+              "file":"hit_dry.mp3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1080",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"charaMsg",
+              "text":["・・・！？"],
+              "charaID":"4",
+              "imgID":"1"
+            },
+            {
+              "type":"createChara",
+              "objID":"1085"
+            },
+            {
+              "type":"charaWalkTo",
+              "objID":"1085",
+              "x":29,
+              "y":33
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1085",
+              "direction":"DOWN"
+            },
+            {
+              "type":"charaMsg",
+              "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
+              "charaID":"2",
+              "imgID":"3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"UP"
+            },
+            {
+              "type":"charaMsg",
+              "text":["アナタ達・・・"],
+              "charaID":"7"
+            },
+            {
+              "type":"playSE",
+              "file":"hit.mp3"
+            },
+            {
+              "type":"wait",
+              "time":0.8
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"wait",
+              "time":0.8
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"LEFT"
+            },
+            {
+              "type":"reaction",
+              "objID":"hero"
+            },
+            {
+              "type":"reaction",
+              "objID":"1080"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1080",
+              "direction":"UP"
+            },
+            {
+              "type":"reaction",
+              "objID":"1083"
+            },
+            {
+              "type":"charaMsg",
+              "talk":[
+                {
+                  "text":["！？"],
+                  "charaID":"0",
+                  "imgID":"2"
+                },
+                {
+                  "text":["！？"],
+                  "charaID":"1",
+                  "imgID":"2"
+                },
+                {
+                  "text":["！？"],
+                  "charaID":"4",
+                  "imgID":"2"
+                },
+                {
+                  "text":["気絶させただけだ"],
+                  "charaID":"2",
+                  "imgID":"3"
+                }
+              ]
+            },
+            {
+              "type":"wait",
+              "time":2.0
+            },
+            {
+              "type":"charaMsg",
+              "text":["帰るか"],
+              "charaID":"2",
+              "imgID":"3"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["65","5"],
+          "status":[
+            ["1","2"],
+            ["3","1"]
+          ]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"fadeout",
+              "time":3.0
+            },
+            {
+              "type":"createChara",
+              "objID":"1080"
+            },
+            {
+              "type":"createChara",
+              "objID":"1081"
+            },
+            {
+              "type":"createChara",
+              "objID":"1083"
+            },
+            {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
+              "type":"createChara",
+              "objID":"1084"
+            },
+            {
+              "type":"stopBGM"
+            },
+            {
+              "type":"charaMsg",
+              "text":["そこまでですぞ！！"],
+              "charaID":"4",
+              "imgID":"2",
+              "option":"reaction"
+            },
+            {
+              "type":"fadein",
+              "time":3.0
+            },
+            {
+              "type":"playBGM",
+              "file":"DanDan.mp3"
+            },
+            {
+              "type":"charaMsg",
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
+              "charaID":"4",
+              "imgID":"2"
+            },
+            {
+              "type":"charaWalk",
+              "objID":"1081",
+              "direction":"LEFT",
+              "steps":1.0
+            },
+            {
+              "type":"playSE",
+              "file":"hit_dry.mp3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1080",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"charaMsg",
+              "talk":[
+                {
+                  "text":["・・・！？"],
+                  "charaID":"4",
+                  "imgID":"1"
+                },
+                {
+                  "text":["うるせぇ"],
+                  "charaID":"5",
+                  "imgID":"1"
+                }
+              ]
+            },
+            {
+              "type":"createChara",
+              "objID":"1085"
+            },
+            {
+              "type":"charaWalkTo",
+              "objID":"1085",
+              "x":29,
+              "y":33
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1085",
+              "direction":"DOWN"
+            },
+            {
+              "type":"charaMsg",
+              "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
+              "charaID":"2",
+              "imgID":"3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"UP"
+            },
+            {
+              "type":"charaMsg",
+              "text":["アナタ達・・・"],
+              "charaID":"7"
+            },
+            {
+              "type":"playSE",
+              "file":"hit.mp3"
+            },
+            {
+              "type":"wait",
+              "time":0.8
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"wait",
+              "time":0.8
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"LEFT"
+            },
+            {
+              "type":"reaction",
+              "objID":"hero"
+            },
+            {
+              "type":"reaction",
+              "objID":"1080"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1080",
+              "direction":"UP"
+            },
+            {
+              "type":"reaction",
+              "objID":"1081"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1081",
+              "direction":"UP"
+            },
+            {
+              "type":"reaction",
+              "objID":"1083"
+            },
+            {
+              "type":"charaMsg",
+              "talk":[
+                {
+                  "text":["！？"],
+                  "charaID":"0",
+                  "imgID":"2"
+                },
+                {
+                  "text":["！？"],
+                  "charaID":"1",
+                  "imgID":"2"
+                },
+                {
+                  "text":["！？"],
+                  "charaID":"4",
+                  "imgID":"2"
+                },
+                {
+                  "text":["！？"],
+                  "charaID":"5",
+                  "imgID":"2"
+                },
+                {
+                  "text":["気絶させただけだ"],
+                  "charaID":"2",
+                  "imgID":"3"
+                }
+              ]
+            },
+            {
+              "type":"wait",
+              "time":2.0
+            },
+            {
+              "type":"charaMsg",
+              "text":["帰るか"],
+              "charaID":"2",
+              "imgID":"3"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             }
           ]
         }
@@ -584,477 +989,6 @@
               "text":["帰るか"],
               "charaID":"2",
               "imgID":"3"
-            },
-            {
-              "type":"fadeout",
-              "time":"3.0"
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type":"if",
-      "condition":[
-        {
-          "event":["65","5"],
-          "status":[
-            ["1","2"],
-            ["3","0"]
-          ]
-        }
-      ],
-      "action":[
-        {
-          "type":"sequence",
-          "action":[
-            {
-              "type":"fadeout",
-              "time":3.0
-            },
-            {
-              "type":"createChara",
-              "objID":"1080"
-            },
-            {
-              "type":"createChara",
-              "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
-              "type":"createChara",
-              "objID":"1084"
-            },
-            {
-              "type":"stopBGM"
-            },
-            {
-              "type":"charaMsg",
-              "text":["そこまでですぞ！！"],
-              "charaID":"4",
-              "imgID":"2",
-              "option":"reaction"
-            },
-            {
-              "type":"fadein",
-              "time":3.0
-            },
-            {
-              "type":"playBGM",
-              "file":"DanDan.mp3"
-            },
-            {
-              "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう"],
-              "charaID":"4",
-              "imgID":"2"
-            },
-            {
-              "type":"playSE",
-              "file":"hit_dry.mp3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"RIGHT"
-            },
-            {
-              "type":"charaMsg",
-              "text":["・・・！？"],
-              "charaID":"4",
-              "imgID":"1"
-            },
-            {
-              "type":"createChara",
-              "objID":"1085"
-            },
-            {
-              "type":"charaWalkTo",
-              "objID":"1085",
-              "x":29,
-              "y":33
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1085",
-              "direction":"DOWN"
-            },
-            {
-              "type":"charaMsg",
-              "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
-              "charaID":"2",
-              "imgID":"3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"UP"
-            },
-            {
-              "type":"charaMsg",
-              "text":["アナタ達・・・"],
-              "charaID":"7"
-            },
-            {
-              "type":"playSE",
-              "file":"hit.mp3"
-            },
-            {
-              "type":"wait",
-              "time":0.8
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"RIGHT"
-            },
-            {
-              "type":"wait",
-              "time":0.8
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"LEFT"
-            },
-            {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1080"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
-            },
-            {
-              "type":"charaMsg",
-              "talk":[
-                {
-                  "text":["！？"],
-                  "charaID":"0",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"1",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"4",
-                  "imgID":"2"
-                },
-                {
-                  "text":["気絶させただけだ"],
-                  "charaID":"2",
-                  "imgID":"3"
-                }
-              ]
-            },
-            {
-              "type":"wait",
-              "time":2.0
-            },
-            {
-              "type":"charaMsg",
-              "text":["帰るか"],
-              "charaID":"2",
-              "imgID":"3"
-            },
-            {
-              "type":"fadeout",
-              "time":"3.0"
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type":"if",
-      "condition":[
-        {
-          "event":["65","5"],
-          "status":[
-            ["1","2"],
-            ["3","1"]
-          ]
-        }
-      ],
-      "action":[
-        {
-          "type":"sequence",
-          "action":[
-            {
-              "type":"fadeout",
-              "time":3.0
-            },
-            {
-              "type":"createChara",
-              "objID":"1080"
-            },
-            {
-              "type":"createChara",
-              "objID":"1081"
-            },
-            {
-              "type":"createChara",
-              "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
-              "type":"createChara",
-              "objID":"1084"
-            },
-            {
-              "type":"stopBGM"
-            },
-            {
-              "type":"charaMsg",
-              "text":["そこまでですぞ！！"],
-              "charaID":"4",
-              "imgID":"2",
-              "option":"reaction"
-            },
-            {
-              "type":"fadein",
-              "time":3.0
-            },
-            {
-              "type":"playBGM",
-              "file":"DanDan.mp3"
-            },
-            {
-              "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
-              "charaID":"4",
-              "imgID":"2"
-            },
-            {
-              "type":"charaWalk",
-              "objID":"1081",
-              "direction":"LEFT",
-              "steps":1.0
-            },
-            {
-              "type":"playSE",
-              "file":"hit_dry.mp3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"RIGHT"
-            },
-            {
-              "type":"charaMsg",
-              "talk":[
-                {
-                  "text":["・・・！？"],
-                  "charaID":"4",
-                  "imgID":"1"
-                },
-                {
-                  "text":["うるせぇ"],
-                  "charaID":"5",
-                  "imgID":"1"
-                }
-              ]
-            },
-            {
-              "type":"createChara",
-              "objID":"1085"
-            },
-            {
-              "type":"charaWalkTo",
-              "objID":"1085",
-              "x":29,
-              "y":33
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1085",
-              "direction":"DOWN"
-            },
-            {
-              "type":"charaMsg",
-              "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
-              "charaID":"2",
-              "imgID":"3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"UP"
-            },
-            {
-              "type":"charaMsg",
-              "text":["アナタ達・・・"],
-              "charaID":"7"
-            },
-            {
-              "type":"playSE",
-              "file":"hit.mp3"
-            },
-            {
-              "type":"wait",
-              "time":0.8
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"RIGHT"
-            },
-            {
-              "type":"wait",
-              "time":0.8
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"LEFT"
-            },
-            {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1080"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
-            },
-            {
-              "type":"charaMsg",
-              "talk":[
-                {
-                  "text":["！？"],
-                  "charaID":"0",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"1",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"4",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"5",
-                  "imgID":"2"
-                },
-                {
-                  "text":["気絶させただけだ"],
-                  "charaID":"2",
-                  "imgID":"3"
-                }
-              ]
-            },
-            {
-              "type":"wait",
-              "time":2.0
-            },
-            {
-              "type":"charaMsg",
-              "text":["帰るか"],
-              "charaID":"2",
-              "imgID":"3"
-            },
-            {
-              "type":"fadeout",
-              "time":"3.0"
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
             }
           ]
         }
@@ -1079,7 +1013,7 @@
             },
             {
               "type":"createChara",
-              "objID":"1081"
+              "objID":"1089"
             },
             {
               "type":"createChara",
@@ -1101,22 +1035,30 @@
               "type":"stopBGM"
             },
             {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"charaMsg",
+              "text":["オラァ！"],
+              "charaID":"5",
+              "imgID":"1",
+              "option":"reaction"
+            },
+            {
+              "type":"playSE",
+              "file":"hit.mp3"
+            },
+            {
               "type":"fadein",
               "time":3.0
             },
             {
               "type":"charaMsg",
-              "talk":[
-                {
-                  "text":["希崎・・・\nもうやめろや・・・",""],
-                  "charaID":"5",
-                  "imgID":"2"
-                },
-                {
-                  "text":["アナタ達・・・"],
-                  "charaID":"7"
-                }
-              ]
+              "text":["ぐっっ、大善吾郎・・・"],
+              "charaID":"7",
+              "option":"reaction"
             },
             {
               "type":"createChara",
@@ -1127,9 +1069,10 @@
               "action":[
                 {
                   "type":"charaMsg",
-                  "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
+                  "text":["佐々木ぃ！"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"3",
+                  "option":"reaction"
                 },
                 {
                   "type":"charaWalkTo",
@@ -1150,17 +1093,48 @@
               ]
             },
             {
-              "type":"playSE",
-              "file":"hit.mp3"
-            },
-            {
-              "type":"wait",
-              "time":0.8
-            },
-            {
               "type":"changeDirection",
               "objID":"1084",
-              "direction":"RIGHT"
+              "direction":"UP"
+            },
+            {
+              "type":"charaMsg",
+              "talk":[
+                {
+                  "text":["加藤蘭丸・・・"],
+                  "charaID":"7"
+                },
+                {
+                  "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
+                  "charaID":"2",
+                  "imgID":"3",
+                  "option":"reaction"
+                },
+                {
+                  "text":["それは・・・"],
+                  "charaID":"7"
+                }
+              ]
+            },
+            {
+              "type":"playSE",
+              "file":"syuba.mp3"
+            },
+            {
+              "type":"createChara",
+              "objID":"1088"
+            },
+            {
+              "type":"charaMove",
+              "objID":"1088",
+              "direction":"LEFT",
+              "steps":13,
+              "speed":4.0,
+              "hit":"false"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1088"
             },
             {
               "type":"wait",
@@ -1172,17 +1146,16 @@
               "direction":"LEFT"
             },
             {
+              "type":"playSE",
+              "file":"cloth.mp3"
+            },
+            {
               "type":"reaction",
               "objID":"hero"
             },
             {
               "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
+              "objID":"1089"
             },
             {
               "type":"reaction",
@@ -1207,18 +1180,14 @@
                 },
                 {
                   "text":["！？"],
-                  "charaID":"3",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
                   "charaID":"5",
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["おい！"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"3",
+                  "option":"reaction"
                 }
               ]
             },
@@ -1228,13 +1197,13 @@
             },
             {
               "type":"charaMsg",
-              "text":["帰るか"],
+              "text":["死んでる・・・"],
               "charaID":"2",
               "imgID":"3"
             },
             {
               "type":"fadeout",
-              "time":"3.0"
+              "time":3.0
             }
           ]
         }
@@ -1259,7 +1228,7 @@
             },
             {
               "type":"createChara",
-              "objID":"1081"
+              "objID":"1089"
             },
             {
               "type":"createChara",
@@ -1278,10 +1247,19 @@
             },
             {
               "type":"charaMsg",
-              "text":["おい佐々木！\nちと下がってろ！"],
+              "text":["オラァ！"],
               "charaID":"5",
               "imgID":"1",
               "option":"reaction"
+            },
+            {
+              "type":"playSE",
+              "file":"hit.mp3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"RIGHT"
             },
             {
               "type":"fadein",
@@ -1289,9 +1267,8 @@
             },
             {
               "type":"charaMsg",
-              "text":["希崎・・・\nもうやめろや・・・"],
-              "charaID":"5",
-              "imgID":"3"
+              "text":["ぐっっ、大善吾郎・・・"],
+              "charaID":"7"
             },
             {
               "type":"createChara",
@@ -1310,9 +1287,10 @@
             },
             {
               "type":"charaMsg",
-              "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
+              "text":["希崎ぃ！"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"3",
+              "option":"reaction"
             },
             {
               "type":"changeDirection",
@@ -1321,21 +1299,41 @@
             },
             {
               "type":"charaMsg",
-              "text":["アナタ達・・・"],
-              "charaID":"7"
+              "talk":[
+                {
+                  "text":["アナタ達・・・"],
+                  "charaID":"7"
+                },
+                {
+                  "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
+                  "charaID":"2",
+                  "imgID":"3"
+                },
+                {
+                  "text":["それは・・・"],
+                  "charaID":"7"
+                }
+              ]
             },
             {
               "type":"playSE",
-              "file":"hit.mp3"
+              "file":"syuba.mp3"
             },
             {
-              "type":"wait",
-              "time":0.8
+              "type":"createChara",
+              "objID":"1088"
             },
             {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"RIGHT"
+              "type":"charaMove",
+              "objID":"1088",
+              "direction":"LEFT",
+              "steps":13,
+              "speed":4.0,
+              "hit":"false"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1088"
             },
             {
               "type":"wait",
@@ -1352,12 +1350,7 @@
             },
             {
               "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
+              "objID":"1089"
             },
             {
               "type":"reaction",
@@ -1382,7 +1375,7 @@
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["おい！"],
                   "charaID":"2",
                   "imgID":"3"
                 }
@@ -1394,33 +1387,13 @@
             },
             {
               "type":"charaMsg",
-              "text":["帰るか"],
+              "text":["死んでる"],
               "charaID":"2",
               "imgID":"3"
             },
             {
               "type":"fadeout",
-              "time":"3.0"
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
+              "time":3.0
             }
           ]
         }
@@ -1445,7 +1418,7 @@
             },
             {
               "type":"createChara",
-              "objID":"1081"
+              "objID":"1089"
             },
             {
               "type":"createChara",
@@ -1468,10 +1441,14 @@
             },
             {
               "type":"charaMsg",
-              "text":["佐々木！\nちと下がってろ！"],
+              "text":["オラァ！"],
               "charaID":"5",
               "imgID":"2",
               "option":"reaction"
+            },
+            {
+              "type":"playSE",
+              "file":"hit.mp3"
             },
             {
               "type":"fadein",
@@ -1479,9 +1456,18 @@
             },
             {
               "type":"charaMsg",
-              "text":["希崎・・・\nもうやめろや・・・"],
-              "charaID":"5",
-              "imgID":"2"
+              "talk":[
+                {
+                  "text":["ぐっっ、大善吾郎・・・"],
+                  "charaID":"7"
+                },
+                {
+                  "text":["希崎ぃ！"],
+                  "charaID":"2",
+                  "imgID":"3",
+                  "option"
+                }
+              ]
             },
             {
               "type":"createChara",
@@ -1500,32 +1486,41 @@
             },
             {
               "type":"charaMsg",
-              "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
-              "charaID":"2",
-              "imgID":"3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"UP"
-            },
-            {
-              "type":"charaMsg",
-              "text":["アナタ達・・・"],
-              "charaID":"7"
+              "talk":[
+                {
+                  "text":["アナタ達・・・"],
+                  "charaID":"7"
+                },
+                {
+                  "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
+                  "charaID":"2",
+                  "imgID":"3"
+                },
+                {
+                  "text":["それは・・・"],
+                  "charaID":"7"
+                }
+              ]
             },
             {
               "type":"playSE",
-              "file":"hit.mp3"
+              "file":"syuba.mp3"
             },
             {
-              "type":"wait",
-              "time":0.8
+              "type":"createChara",
+              "objID":"1088"
             },
             {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"RIGHT"
+              "type":"charaMove",
+              "objID":"1088",
+              "direction":"LEFT",
+              "steps":13,
+              "speed":4.0,
+              "hit":"false"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1088"
             },
             {
               "type":"wait",
@@ -1542,16 +1537,7 @@
             },
             {
               "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1082"
+              "objID":"1089"
             },
             {
               "type":"reaction",
@@ -1581,7 +1567,7 @@
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["おい！"],
                   "charaID":"2",
                   "imgID":"3"
                 }
@@ -1593,33 +1579,13 @@
             },
             {
               "type":"charaMsg",
-              "text":["帰るか"],
+              "text":["死んでる・・・"],
               "charaID":"2",
               "imgID":"3"
             },
             {
               "type":"fadeout",
-              "time":"3.0"
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
-            },
-            {
-              "type":"displayImg",
-              "file":""
+              "time":3.0
             }
           ]
         }

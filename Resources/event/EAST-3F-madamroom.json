@@ -125,7 +125,7 @@
 				},
 				{
 					"type":"barrage",
-					"barrageTimes":20,
+					"times":20,
 					"limit":6.0,
 					"true":[
 						{

@@ -147,7 +147,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":""
+													"file":"explosion.mp3"
 												}
 											]
 										},
@@ -250,7 +250,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":""
+													"file":"explosion.mp3"
 												}
 											]
 										},
@@ -356,7 +356,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":""
+													"file":"explosion.mp3"
 												}
 											]
 										},

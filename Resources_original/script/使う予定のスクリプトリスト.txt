@@ -44,11 +44,15 @@
 　　　　　　　　表示する時間
 
 ※画像はフェードインで表示、でフェードアウトしていくように
+※フェードインに0.5秒かける、フェードアウトにも0.5秒かける
+※表示する時間に、フェードイン、アウトの時間は含まない
+※
 （例）
 	{
-  "type":"displayImg",
+  	"type":"displayImg",
 	"file":"ファイル名",
-	"time":"表示する時間（秒)"#
+	"time":"表示する時間（秒)"#,
+	"option":
 	}
 
 ●マップ移動
@@ -207,7 +211,11 @@
 （例）
 	{
 	"type":"storyMsg",
+<<<<<<< HEAD
  	 "title”:””,#
+=======
+ 	 "title":""#
+>>>>>>> uehara
 	"text":["表示するテキスト", "", ...],
 	"alpha":"不透明度(0 ~ 255 0で見えなくなる)"#
 	}
@@ -232,7 +240,7 @@
 （例）
 	{
 	"type":"removeCover",
-  "option":"fadeOut"#
+  	"option":"fadeOut"#
 	}
 
 
@@ -264,13 +272,11 @@
 （例）
 	{
 	"type":"barrage",
-	"barrageTimes":"連打する回数(int)",
+	"times":"連打する回数(int)",
 	"limit":"制限時間（double）",
 	"false":[失敗した時のaction] or "EventID",
 	"true":[成功した時のaction] or "EventID"
 	}
-  
-
 ●暗号イベント
 ・type名...passward
 ・必要なもの...入力するもの, 失敗した時のアクション, 正解したときのアクション　　　　　　　
@@ -301,7 +307,7 @@
 	"type":"playSE",
 	"file":"ファイル名",
 	"times":"回数",#
-	"bolume":"ボリューム",#
+	"volume":"ボリューム",#
 	}
 
 
@@ -433,7 +439,10 @@
   
 ●フェードアウト
 ・type名...fadeOut
-・必要なもの...必要ならばフェードアウトにかかる時間	
+・必要なもの...必要ならばフェードアウトにかかる時間
+
+※スクリプト「フェードイン」が発動しない限り何があっても真っ暗なまま
+	
 （例）
 	{
 	"type":"fadeout",
@@ -507,11 +516,11 @@
 
 ●チャプターチェンジ画像を表示、チャプターを変える
 
-・type名、、、chapterChange
+・type名、、、changeChapter
 ・必要なもの、、、チャプター番号
 (例)
 　　{
-    "type":"chapterChange",
+    "type":"changeChapter",
     "chapterID":"チャプターID"
     }　　
 
@@ -634,6 +643,47 @@
 	"y":"y座標",
 	"objID":"歩くオブジェクトのID(int), or hero"
 	}
+
+●ホワイトアウト
+・type名・・・whiteout
+・必要なもの・・・時間
+※時間が経ったら解除する
+
+(例)
+{
+	"type":"whiteout
+	"time":秒数
+}
+
+●charaMove
+・type名・・・charaMove
+・必要なもの,,,オブジェクトID
+		向き
+		歩数
+		速さ（主人公の走る速さの何倍か）
+		hit:false
+
+※hitで当たり判定無効にしたいときに書く
+
+(例)
+MAIN-Ohiromaの19
+
+
+
+
+●SEを鳴らす
+・type名、、、playSE
+・必要なもの,,,SEのファイル名
+　　　　　　　　鳴らす時間#
+
+(例)
+{
+	"type":"playSE",
+	"file":"ファイル名"
+	"time":鳴らす時間(float)
+}
+
+
 
 
 TODO >>>>>>>>>>>>>>>>>>

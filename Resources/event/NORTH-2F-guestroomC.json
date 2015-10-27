@@ -215,5 +215,49 @@
 			"type":"systemMsg",
 			"text":["もう眠ってしまいたい"]
 		}
+	],
+	"8":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["窓の外にあるのは・・・"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"fadeout"
+				},
+				{
+					"type":"getItem",
+					"itemID":"1520",
+					"name":"林檎"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"apple"
+				},
+				{
+					"type":"already"
+				}
+			]
+		}
+	],
+	"9":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["15","8"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"apple"
+				}
+			]
+		}
 	]
 }
