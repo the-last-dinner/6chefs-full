@@ -145,7 +145,8 @@ void SaveDataSelector::onSpacePressed(int idx)
         message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
         back->addChild(message);
         this->comfirm_flag = true;
-    } else
+    }
+    else
     {
         // ロード時
         if(PlayerDataManager::getInstance()->checkSaveDataExists(idx))
