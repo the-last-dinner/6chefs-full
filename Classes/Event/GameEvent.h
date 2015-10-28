@@ -25,14 +25,12 @@ private:
 public:
     bool isDone() const;
     virtual void run() {CCLOG("runメソッドをoverrideしてね");};     // イベント開始
-    virtual void update(float delta) {};                            // 毎フレーム呼び出されるメソッド
+    virtual void update(float delta) {};                         // タスクによって毎フレーム呼び出されるメソッド
 protected:
     GameEvent();
     ~GameEvent();
     virtual bool init();
     void setDone();
-    void scheduleUpdate();                                          // update開始
-    void unscheduleUpdate();                                        // update終了
     GameEvent* createSpawnFromIdOrAction(rapidjson::Value& json);   // イベントIDもしくはaction配列からspawnを生成
 };
 

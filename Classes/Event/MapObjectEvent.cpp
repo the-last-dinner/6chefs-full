@@ -24,6 +24,8 @@ bool MapObjectEvent::init(rapidjson::Value& json)
     // nullptrならイベントを生成させない
     if(!target) return false;
     
+    this->target = target;
+    
     return true;
 }
 
@@ -39,12 +41,6 @@ bool ReactionEvent::init(rapidjson::Value& json)
 
 void ReactionEvent::run()
 {
-    if(!this->target)
-    {
-        setDone();
-        return;
-    }
-    
     Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
     icon->setPosition(Point(0, this->target->getContentSize().height));
     icon->setScaleY(0.01f);

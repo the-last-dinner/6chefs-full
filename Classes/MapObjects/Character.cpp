@@ -43,9 +43,14 @@ bool Character::init(int charaId, const Direction direction)
 	this->direction = direction;
     this->texturePrefix = CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, charaId);
 	
+    // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
+    string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };
+    
+    if(fullPath.size() == 0) return false;
+    
 	// プロパティリスト読み込み
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + this->texturePrefix + ".plist");
-	
+    
 	// Spriteを生成
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
 	this->addChild(this->character);

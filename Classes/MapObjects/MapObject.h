@@ -19,6 +19,7 @@ class MapObject : public Node
 {
 // インスタンス変数
 private:
+    int objectId { static_cast<int>(ObjectID::UNDIFINED)};
     int eventId { static_cast<int>(EventID::UNDIFINED) };
 	Trigger trigger {Trigger::SIZE};
 	bool _isHit { false };
@@ -32,6 +33,7 @@ public:
 	MapObject();
 	~MapObject();
 	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
+    void setObjectId(int objectId);
 	void setEventId(int eventId);
 	void setTrigger(Trigger trigger);
 	void setHit(bool _isHit);
@@ -44,8 +46,9 @@ public:
 	
     Size  getGridSize() const;
 	Point getGridPosition(const Size& mapSize) const;
-	int getEventId();
-	Trigger getTrigger();
+    int getObjectId() const;
+	int getEventId() const;
+	Trigger getTrigger() const;
 	const bool isHit() const;
     const bool isHit(const Direction& direction) const;
     const bool isHit(const Direction (&directions)[2]) const;

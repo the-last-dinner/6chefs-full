@@ -47,6 +47,7 @@ bool EventScriptValidator::detectCondition(rapidjson::Value& json)
         {"equip", &EventScriptValidator::detectEquipFlg},
         {"event", &EventScriptValidator::detectEventFlg},
         {"flag", &EventScriptValidator::detectFlg},
+        {"flg", &EventScriptValidator::detectFlg},
         {"item", &EventScriptValidator::detectItemFlg},
         {"status", &EventScriptValidator::detectStatusFlg},
     };

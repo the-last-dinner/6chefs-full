@@ -20,8 +20,6 @@ GameEvent::GameEvent() {};
 // デストラクタ
 GameEvent::~GameEvent()
 {
-    this->unscheduleUpdate();
-    
     CC_SAFE_RELEASE_NULL(this->factory);
     CC_SAFE_RELEASE_NULL(this->validator);
 };
@@ -52,21 +50,7 @@ bool GameEvent::isDone() const
 // イベントを終了状態にする
 void GameEvent::setDone()
 {
-    this->unscheduleUpdate();
-    
     this->_isDone = true;
-}
-
-// updateを発動
-void GameEvent::scheduleUpdate()
-{
-    Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
-}
-
-// updateを停止
-void GameEvent::unscheduleUpdate()
-{
-    Director::getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
 // EventIDもしくはaction配列からイベントを生成
@@ -103,13 +87,12 @@ void EventSequence::run()
     
     // 最初のイベントを開始
     this->events.front()->run();
-    
-    // update開始
-    this->scheduleUpdate();
 }
 
 void EventSequence::update(float delta)
 {
+    this->events.front()->update(delta);
+    
     if(this->events.front()->isDone())
     {
         CC_SAFE_RELEASE(this->events.front());
@@ -149,15 +132,15 @@ void EventSpawn::run()
     {
         event->run();
     }
-    
-    this->scheduleUpdate();
 }
 
 void EventSpawn::update(float delta)
 {
-    // 終了したイベントを削除していく
+    // 持っているイベントを更新し、終了したイベントを削除していく
     for (GameEvent* event : this->events)
     {
+        event->update(delta);
+        
         if (event->isDone())
         {
             this->events.eraseObject(event);
@@ -196,15 +179,21 @@ bool EventIf::init(rapidjson::Value& json)
 
 void EventIf::run()
 {
-    if(this->event)
+    if(!this->event)
     {
-        this->event->run();
-        this->scheduleUpdate();
+        this->setDone();
+        return;
     }
+    
+    this->event->run();
 }
 
 void EventIf::update(float delta)
 {
+    if(!this->event) return;
+    
+    this->event->update(delta);
+    
     if(this->event->isDone())
     {
         this->setDone();

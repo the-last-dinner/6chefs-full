@@ -34,11 +34,12 @@ MapObject* MapObjectList::getMapObject(int objId) const
 {
     for(MapObject* obj : this->mapObjects)
     {
-        if(objId == obj->getTag())
+        if(objId == obj->getObjectId())
         {
             return obj;
         }
     }
+    
     return nullptr;
 }
 
