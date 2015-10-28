@@ -259,8 +259,7 @@ void PlayerDataManager::setLocation(const Location& location)
 void PlayerDataManager::setFriendship(const string& character, const int level)
 {
     FUNCLOG
-    rapidjson::Value& friendship = this->local["friendship"];
-    friendship[character.c_str()].SetInt(level);
+    this->local["friendship"][character.c_str()].SetInt(level);
     return;
 }
 
@@ -269,20 +268,18 @@ void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const
 {
     FUNCLOG
     const char* mid = to_string(map_id).c_str();
-    rapidjson::Value& event = this->local["event"];
-    rapidjson::Value::ConstMemberIterator itr = event.FindMember(mid);
+    rapidjson::Value::ConstMemberIterator itr = this->local["event"].FindMember(mid);
     //mapが存在するかチェック
-    if(itr == event.MemberEnd()){
-        event.AddMember(StringRef(mid), rapidjson::Value(), this->local.GetAllocator());
+    if(itr == this->local["event"].MemberEnd()){
+        this->local["event"].AddMember(StringRef(mid), rapidjson::Value(), this->local.GetAllocator());
     }
-    event = event[mid];
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();
-    itr = event.FindMember(id);
-    if(itr == event.MemberEnd()){
-        event.AddMember(StringRef(id), rapidjson::Value(flag), this->local.GetAllocator());
+    itr = this->local["event"][mid].FindMember(id);
+    if(itr == this->local["event"][mid].MemberEnd()){
+        this->local["event"][mid].AddMember(StringRef(id), rapidjson::Value(flag), this->local.GetAllocator());
     } else {
-        event[id].SetBool(flag);
+        this->local["event"][mid][id].SetBool(flag);
     }
     return;
 }
@@ -291,17 +288,16 @@ void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const
 void PlayerDataManager::setItem(const int item_id)
 {
     FUNCLOG
-    rapidjson::Value& item = this->local["item"];
     const char* id = to_string(item_id).c_str();
-    rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
+    rapidjson::Value::ConstMemberIterator itr = this->local["item"].FindMember(id);
     int count = 0;
-    if(itr != item.MemberEnd()){
+    if(itr != this->local["item"].MemberEnd()){
         //既にゲットしているアイテムなら個数を+1する
         count = itr->value.GetInt();
-        item[id].SetInt(count+1);
+        this->local["item"][id].SetInt(count+1);
     } else {
         //初めてゲットしたアイテムならば新しい値をセット
-        item.AddMember(StringRef(id), rapidjson::Value(1), this->local.GetAllocator());
+        this->local["item"].AddMember(StringRef(id), rapidjson::Value(1), this->local.GetAllocator());
     }
     return;
 }
@@ -310,12 +306,11 @@ void PlayerDataManager::setItem(const int item_id)
 void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
 {
     FUNCLOG
-    rapidjson::Value& root = this->local;
     if(direction == Direction::LEFT)
     {
-        root["equipment_left"].SetInt(item_id);
+        this->local["equipment_left"].SetInt(item_id);
     } else {
-        root["equipment_right"].SetInt(item_id);
+        this->local["equipment_right"].SetInt(item_id);
     }
     return;
 }
