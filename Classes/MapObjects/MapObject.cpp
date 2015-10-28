@@ -38,6 +38,12 @@ void MapObject::setGridPosition(const Size& mapSize, const Point& mapGridPoint)
 	this->setPosition(cocosPoint.x + this->getContentSize().width / 2, cocosPoint.y);
 }
 
+// オブジェクトIDをセット
+void MapObject::setObjectId(int objectId)
+{
+    this->objectId = objectId;
+}
+
 // イベントIDをセット
 void MapObject::setEventId(int eventId)
 {
@@ -92,12 +98,16 @@ void MapObject::removeLight()
 	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->light, FadeOut::create(0.5f)), TargetedAction::create(this->light, RemoveSelf::create())));
 }
 
+// オブジェクトIDを取得
+int MapObject::getObjectId() const
+{return this->objectId;}
+
 // イベントIDを取得
-int MapObject::getEventId()
+int MapObject::getEventId() const
 {return this->eventId;}
 
 // triggerを取得
-Trigger MapObject::getTrigger()
+Trigger MapObject::getTrigger() const
 {return this->trigger;}
 
 // 当たり判定の有無を取得

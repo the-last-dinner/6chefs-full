@@ -31,7 +31,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     {
         {MapObjectFactory::Group::COLLISION, "collision"},
         {MapObjectFactory::Group::EVENT, "event"},
-        //{MapObjectFactory::Group::CHARACTER, "Chara(object)"},
+        {MapObjectFactory::Group::CHARACTER, "Chara(object)"},
     };
     
     // グループごとに生成メソッドを用意
@@ -39,7 +39,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     {
         {Group::COLLISION, CC_CALLBACK_1(MapObjectFactory::createObjectOnCollision, p)},
         {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, p)},
-        //{Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, p)},
+        {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, p)},
     };
     
     // ベクタを用意
@@ -51,7 +51,8 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         ValueVector infos {tiledMap->getObjectGroup(typeToString.at(group))->getObjects()};
         for(cocos2d::Value info : infos)
         {
-            mapObjects.pushBack(typeToFunc[group](info.asValueMap()));
+            MapObject* obj {typeToFunc[group](info.asValueMap())};
+            if(obj) mapObjects.pushBack(obj);
         }
     }
     
@@ -95,7 +96,16 @@ Trigger MapObjectFactory::getTrigger(const ValueMap& info) const
 // キャラクターIDを取得
 int MapObjectFactory::getCharacterId(const ValueMap& info) const
 {
-    return (info.count("CharaID") != 0)?info.at("CharaID").asInt():static_cast<int>(CharacterID::UNDIFINED);
+    if(info.count("charaID") != 0)
+    {
+        return info.at("charaID").asInt();
+    }
+    else if(info.count("CharaID") != 0)
+    {
+        return info.at("CharaID").asInt();
+    }
+    
+    return static_cast<int>(CharacterID::UNDIFINED);
 }
 
 // キャラクターの動き方を取得
@@ -107,7 +117,7 @@ CharacterMovePattern MapObjectFactory::getCharacterMovePattern(const ValueMap& i
 // 向きを取得
 Direction MapObjectFactory::getDirection(const ValueMap& info) const
 {
-    if(info.count("direction") != 0) return Direction::SIZE;
+    if(info.count("direction") == 0) return Direction::SIZE;
     
     return MapUtils::toEnumDirection(info.at("direction").asString());
 }
@@ -156,10 +166,16 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
     Character* chara {Character::create(this->getCharacterId(info), this->getDirection(info))};
+    
+    if(!chara) return nullptr;
+    
+    chara->setObjectId(this->getObjectId(info));
+    chara->setTrigger(this->getTrigger(info));
+    chara->setEventId(this->getEventId(info));
     chara->setHit(true);
     chara->setContentSize(rect.size);
     chara->setPosition(rect.origin + rect.size / 2);
-    chara->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    chara->setCollisionRect(Rect(0, 0, rect.size.width, GRID));
     
     return chara;
 }
