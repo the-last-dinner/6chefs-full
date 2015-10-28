@@ -24,7 +24,7 @@ SaveDataSelector::~SaveDataSelector(){FUNCLOG}
 bool SaveDataSelector::init(bool write = false)
 {
 	FUNCLOG
-	if(!MenuLayer::init(2, PlayerDataManager::MAX_SAVE_COUNT / 2)) return false;
+	if(!MenuLayer::init(2, MAX_SAVE_COUNT / 2)) return false;
 	
     // フラグをセット
     this->write_flag = write;

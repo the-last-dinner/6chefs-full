@@ -17,14 +17,6 @@
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
 
-//セーブデータの個数
-const int PlayerDataManager::MAX_SAVE_COUNT = 10;
-
-//セーブインデックスの0回の表示
-const string PlayerDataManager::DEFAULT_COUNT = "  0";
-
-//
-
 // インスタンスを生成&取得
 PlayerDataManager* PlayerDataManager::getInstance()
 {
@@ -82,15 +74,26 @@ void PlayerDataManager::initializeFiles()
     /* global save data */
     cout << "Create global save data." << endl;
     // Get path of global template
-    string path1 = fu->fullPathForFilename("save/global_template.json");
+    string global_temp_path = fu->fullPathForFilename("save/global_template.json");
     // Create path of global save data
-    string path2 = LastSupper::StringUtils::strReplace("global_template.json", "global.json", path1);
+    string global_path = LastSupper::StringUtils::strReplace("global_template.json", "global.json", global_temp_path);
     // read global template data
-    rapidjson::Document global_temp = this->readJsonFile(path1);
+    rapidjson::Document global_temp = this->readJsonFile(global_temp_path);
     // create global save data
-    this->writeJsonFile(path2, global_temp);
+    this->writeJsonFile(global_path, global_temp);
     // set global save data
-    this->global = readJsonFile(path2);
+    this->global = readJsonFile(global_path);
+    
+    /* local save data */
+    rapidjson::Document local_init;
+    local_init.SetObject();
+    rapidjson::Value& status = local_init;
+    // status:0(=空)のファイルを生成
+    status.AddMember(StringRef("status"), rapidjson::Value(0), local_init.GetAllocator());
+    string local_path = LastSupper::StringUtils::strReplace("global_template.json", "", global_temp_path);
+    for(int i = 1; i <= MAX_SAVE_COUNT; i++){
+        this->writeJsonFile(local_path + "local" +  to_string(i) + ".json", local_init);
+    }
     return;
 }
 
@@ -106,28 +109,39 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     SaveIndex save;
     int sec, min;
     string time;
+    // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
         string file = "save/local" + to_string(i) + ".json";
-        if(this->fu->isFileExist(file))
+        rapidjson::Document local = this->readJsonFile(file.c_str());
+        // status: 0>>セーブデータが存在しない, 1>>セーブデータが存在する
+        if(local["status"].GetInt() == 0)
         {
+            // セーブデータが存在しない
+            cout << "empty >> " << i << endl;
+            this->local_exist[i-1] = false;
+            
+            // 空のデータを生成
+            save = SaveIndex(i, "--- NO DATA ---", "---------------", "  0", "00h00m00s");
+            
+        } else {
+            // セーブデータが存在する
             cout << "set >> " << i << endl;
-            rapidjson::Document local = this->readJsonFile(file.c_str());
+            this->local_exist[i-1] = true;
+            
             // プレイ時間
             sec = local["play_time"].GetInt();
             min = sec / 60;
             time = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+            
             // リスト生成
             save = SaveIndex(
                              i,
                              CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHAPTER, local["chapter"].GetInt()),
                              LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, local["location"][0].GetInt())),
                              time,
-                             LastSupper::StringUtils::getSprintf("%3s", to_string(local["save_count"].GetInt()))
+                             LastSupper
+                             ::StringUtils::getSprintf("%3s", to_string(local["save_count"].GetInt()))
                              );
-        } else {
-            cout << "empty >> " << i << endl;
-            //空のデータ
-            save = SaveIndex(i, "--- NO DATA ---", "---------------", DEFAULT_COUNT, "00h00m00s");
         }
         save_list.push_back(save);
     }
@@ -143,7 +157,6 @@ void PlayerDataManager::setMainLocalData(const int id)
     string path = this->fu->fullPathForFilename(file);
     this->local = this->readJsonFile(path);
     // プレイ時間計測スタート
-    //this->start_time_ms = clock();
     this->start_time_ms = this->getSec();
     return;
 }
@@ -163,19 +176,17 @@ double PlayerDataManager::getSec(){
 }
 
 // プレイ時間を秒で取得し、スタート時間のリセット
-void PlayerDataManager::setPlayTimeSeconds()
+int PlayerDataManager::getPlayTimeSeconds()
 {
     // 計測時間の管理
     double start = this->start_time_ms;
     double stop = this->getSec();
     // 計測処理
     int interval_time = (int)(stop - start);
-    //cout << "interval_time>>>>>>>>>>>>>" << interval_time << endl;
     // 開始時間を再設定
     this->start_time_ms = this->getSec();
     // プレイ時間を格納
-    this->local["play_time"].SetInt(this->local["play_time"].GetInt() + interval_time);
-    //cout << "play_time>>>>>>>>>>>>>>>" << this->local["play_time"].GetInt() << endl;
+    return (this->local["play_time"].GetInt() + interval_time);
 }
 
 //セーブ
@@ -184,8 +195,8 @@ void PlayerDataManager::save(const int id)
     FUNCLOG
     // save local
     string str_id = to_string(id);
-    this->setPlayTimeSeconds(); // プレイ時間の算出
-    this->local["datetime"].SetInt(clock());
+    this->local["play_time"].SetInt(this->getPlayTimeSeconds());
+    this->local["datetime"].SetInt(this->getSec());
     this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
     PlayerDataManager::Location loc = this->getLocation();
     this->local["location"][0].SetInt(loc.map_id);
@@ -195,26 +206,7 @@ void PlayerDataManager::save(const int id)
     string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
-    // save global
-//    const char* cha_id = str_id.c_str();
-//    if(this->global.HasMember(cha_id))
-//    {
-//        //セーブデータが存在する場合
-//        this->global[cha_id]["play_time"].SetInt(this->local["play_time"].GetInt());
-//        this->global[cha_id]["save_count"].SetInt(this->local["save_count"].GetInt());
-//        //this->global[cha_id]["location"].SetArray();
-//        this->global[cha_id]["location"][0].SetInt(loc.map_id);
-//        this->global[cha_id]["location"][1].SetInt(loc.x);
-//        this->global[cha_id]["location"][2].SetInt(loc.y);
-//        this->global[cha_id]["location"][3].SetInt(static_cast<int>(loc.direction));
-//    } else {
-//        //セーブデータが存在しない場合
-//        rapidjson::Value empty(kObjectType);
-//        this->global.AddMember(StringRef(cha_id), empty, this->global.GetAllocator());
-//        this->global[cha_id].AddMember("play_time", this->local["play_time"], this->local.GetAllocator());
-//        this->global[cha_id].AddMember("save_count", this->local["save_count"], this->local.GetAllocator());
-//        this->global[cha_id].AddMember("location", this->local["location"], this->local.GetAllocator());
-//    }
+    // キャプチャースクリーンの保存
     string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
     utils::captureScreen([=](bool success, string filename){
         if(success)
@@ -223,8 +215,6 @@ void PlayerDataManager::save(const int id)
             Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
         }
     }, path_s);
-    //string path_g = "save/global.json";
-    //this->writeJsonFile(path_g, this->global);
     return;
 }
 
@@ -232,7 +222,8 @@ void PlayerDataManager::save(const int id)
 bool PlayerDataManager::checkSaveDataExists(const int id)
 {
     FUNCLOG
-    return (this->fu->isFileExist("save/local" + to_string(id) + ".json")) ? true : false;
+    //return (this->fu->isFileExist("save/local" + to_string(id) + ".json")) ? true : false;
+    return this->local_exist[id - 1];
 }
 
 /* ******************************************************** *

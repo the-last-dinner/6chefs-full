@@ -48,6 +48,9 @@ using namespace experimental;
 // 画面の中心点
 #define WINDOW_CENTER Point(WINDOW_WIDTH, WINDOW_HEIGHT) / 2
 
+// セーブデータの個数
+#define MAX_SAVE_COUNT 10
+
 // レイヤーのZORDER値
 enum Priority
 {

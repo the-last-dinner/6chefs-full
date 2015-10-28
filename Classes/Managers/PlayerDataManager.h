@@ -36,10 +36,6 @@ public:
         Location(){};
     };
 
-//クラス変数
-public:
-    static const int MAX_SAVE_COUNT;
-    static const string DEFAULT_COUNT;
 //インスタンス変数
 private:
     // グローバルセーブデータ
@@ -52,6 +48,8 @@ private:
     cocos2d::FileUtils* fu;
     // 時間計測開始時間(単位:ms)
     double start_time_ms {0};
+    // ローカルセーブデータの存在の有無
+    bool local_exist[MAX_SAVE_COUNT];
 
 //通常関数
 public:
@@ -65,8 +63,8 @@ public:
     bool checkSaveDataExists(const int id);
     // セーブデータIDの取得
     int getSaveDataId();
-    // プレイ時間のセット
-    void setPlayTimeSeconds();
+    // プレイ時間の取得
+    int getPlayTimeSeconds();
     // 時間取得
     double getSec();
     /* flag管理系 */
