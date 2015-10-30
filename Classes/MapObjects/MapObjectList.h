@@ -36,6 +36,7 @@ public:
     const bool containsCollisionObject(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Point& position) const;
+    Vector<MapObject*> getMapObjects(const Trigger trigger) const;
     void add(MapObject* mapObject);
     
     void setMainCharacter(Character* mainChara);
