@@ -112,8 +112,8 @@
 		5544708A1BDF89990048CD0B /* FlagEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554470871BDF89990048CD0B /* FlagEvent.cpp */; };
 		5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5544708B1BDFA0F10048CD0B /* MapEvent.cpp */; };
 		5544708E1BDFA0F10048CD0B /* MapEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5544708B1BDFA0F10048CD0B /* MapEvent.cpp */; };
-		5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */; };
-		5557AA7A1BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */; };
+		5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */; };
+		5557AA7A1BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */; };
 		555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
 		55619F621B36970B007EBD6E /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619F601B36970B007EBD6E /* MapObject.cpp */; };
@@ -355,8 +355,8 @@
 		554470881BDF89990048CD0B /* FlagEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlagEvent.h; path = ../Classes/Event/FlagEvent.h; sourceTree = "<group>"; };
 		5544708B1BDFA0F10048CD0B /* MapEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapEvent.cpp; path = ../Classes/Event/MapEvent.cpp; sourceTree = "<group>"; };
 		5544708C1BDFA0F10048CD0B /* MapEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapEvent.h; path = ../Classes/Event/MapEvent.h; sourceTree = "<group>"; };
-		5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ControlMainCharacterTask.cpp; path = ../Classes/Tasks/ControlMainCharacterTask.cpp; sourceTree = "<group>"; };
-		5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlMainCharacterTask.h; path = ../Classes/Tasks/ControlMainCharacterTask.h; sourceTree = "<group>"; };
+		5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerControlTask.cpp; path = ../Classes/Tasks/PlayerControlTask.cpp; sourceTree = "<group>"; };
+		5557AA781BBB069F008ECA5D /* PlayerControlTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlTask.h; path = ../Classes/Tasks/PlayerControlTask.h; sourceTree = "<group>"; };
 		555B650C1B5CE94F00D15530 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureManager.cpp; path = ../Classes/Managers/TextureManager.cpp; sourceTree = "<group>"; };
 		555B650D1B5CE94F00D15530 /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureManager.h; path = ../Classes/Managers/TextureManager.h; sourceTree = "<group>"; };
 		55619F601B36970B007EBD6E /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../Classes/MapObjects/MapObject.cpp; sourceTree = "<group>"; };
@@ -875,8 +875,8 @@
 				556C715F1BC3D8C800835D15 /* FollowType */,
 				5583CE3C1B9A163C00F9ACB7 /* EventScriptTask.cpp */,
 				5583CE3D1B9A163C00F9ACB7 /* EventScriptTask.h */,
-				5557AA771BBB069F008ECA5D /* ControlMainCharacterTask.cpp */,
-				5557AA781BBB069F008ECA5D /* ControlMainCharacterTask.h */,
+				5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */,
+				5557AA781BBB069F008ECA5D /* PlayerControlTask.h */,
 				556C71591BC2C8D100835D15 /* CameraTask.cpp */,
 				556C715A1BC2C8D100835D15 /* CameraTask.h */,
 				55C3C1EC1BD143B700ECDB50 /* GameTask.cpp */,
@@ -1143,7 +1143,7 @@
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				55C3C1DE1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
-				5557AA791BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
+				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
@@ -1230,7 +1230,7 @@
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
-				5557AA7A1BBB069F008ECA5D /* ControlMainCharacterTask.cpp in Sources */,
+				5557AA7A1BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
