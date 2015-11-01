@@ -149,9 +149,6 @@
   </properties>
  </objectgroup>
  <layer name="CharaUe1" width="28" height="24">
-  <properties>
-   <property name="EventID" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJztzTkKgEAAQ9GUw9z/Ci7g2ugIrkfzgxewGW3y4bWJ5Jxz72qi1KJDjwFjzPe3sr1hx4ETV8Y/939FkEpUqEP+v4mPGQnLB3/OuacbQH0Orw==
   </data>

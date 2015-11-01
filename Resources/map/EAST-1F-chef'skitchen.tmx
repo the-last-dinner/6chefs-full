@@ -74,25 +74,16 @@
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
  <layer name="CharaUe1" width="20" height="20">
-  <properties>
-   <property name="cc_vertexz" value="-3"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxbzshANbAUaNbyUfNGzRs1b9S8UfOoYh4IdDBSB9MCAACQySEf
   </data>
  </layer>
  <layer name="CharaUe2" width="20" height="20">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDGXwkoWB4RUQvwbiN0D8FojfsVBubiPQjCYqmAMDE4FmTaKieaNg4AEAGoIH1A==
   </data>
  </layer>
  <layer name="hide" width="20" height="20">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALs4A8Ldc2ipnmjYOABAMp/AwE=
   </data>

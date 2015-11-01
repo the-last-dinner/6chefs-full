@@ -62,25 +62,16 @@
   </properties>
  </objectgroup>
  <layer name="CharaUe1" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-3"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBi5QIIZwRZjxq1usNgDMucnE34MA8hiv5hwm0nIvbTUN5zsQQ9/WtlDCSDVP6SmG3LsIUc9ve0BAVLyE7XikxhzKIkndHMIpd/BmE5x6SfXP6bMxGMzCvLTUKhvhiMAADdCINE=
   </data>
  </layer>
  <layer name="CharaUe2" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGAa3BXWYGhnvMtLfnN9COP3SwZ6gBAM/YA78=
   </data>
  </layer>
  <layer name="fire" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFQw28YqeN2lEwCkbBKBjqYLTMGwW4AAB7pALU
   </data>

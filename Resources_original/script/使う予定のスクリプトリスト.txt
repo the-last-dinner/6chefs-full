@@ -141,9 +141,11 @@
 
 （例）
 	{
-	"type":"reaction",
-  "objID":"出すキャラのオブジェクトID or hero"
+		"type":"reaction",
+ 		"objID":"出すキャラのオブジェクトID or hero"
 	}
+
+
   
 
 ●鬼を生み出す
@@ -392,23 +394,9 @@
 　数回揺らすだけならオプション
 （例）
 	{
-	"type":"swingLayer",
-	"layer":"揺らすレイヤー名",
-　"option":"揺らす回数"#←なければ永遠に
-	}
-
-
-●キャラチップ差し替え
-・type名...changeImg
-・必要なもの...オブジェクトID
-　　　　　　　　画像の名前
-※キャラを倒れている画像に変える
-とか
-（例）
-	{
-	"type":"changeImage",
-	"objectID":"書き換えるオブジェクトのID",
-　"image":"画像の名前"
+		"type":"swingLayer",
+		"layer":"揺らすレイヤー名",
+　		"option":"揺らす回数"#←なければ永遠に
 	}
 
 
@@ -418,9 +406,9 @@
                情報番号
 （例）
 	{
-	"type":"addProfile",
-	"charaID":"キャラID",
-　"infoID":"情報番号"#
+		"type":"addProfile",
+		"charaID":"キャラID",
+　		"infoID":"情報番号"#
 	}
 
 
@@ -443,6 +431,7 @@
 	{
 	"type":"fadeout",
 	"time":"時間指定する場合秒数"
+	"color":["r","g","b"]
 	}
 
 
@@ -453,7 +442,7 @@
 例）
 	{
 	"type":"already"
-	"event":["{}"]ほかのイベントを見たことにする場合
+	"event":["",""]ほかのイベントを見たことにする場合#
 	}
 
 
@@ -510,35 +499,16 @@
 	}
 
 
-●チャプターチェンジ画像を表示、チャプターを変える
+●チャプターを変える
 
 ・type名、、、changeChapter
 ・必要なもの、、、チャプター番号
 (例)
 　　{
-    "type":"changeChapter",
-    "chapterID":"チャプターID"
+	    "type":"changeChapter",
+    	    "chapterID":"チャプターID"
     }　　
 
-
-●キャラを見えなくする
-・type名、、、hideChara
-・必要なもの、、、消すキャラのID
-(例)
-　　{
-	  "type":"hideChara",
-	  "objID":"消すキャラのオブジェクトID or hero"
-    }　　
-
-
-●キャラを見えるように戻す
-・type名、、、showChara
-・必要なもの、、、キャラのobjID
-(例)
-　　{
-	  "type":"showChara",
-	  "objID":"キャラのオブジェクトID又はhero"
-    }
     
     　　
 ●ゲームオーバー
@@ -546,7 +516,8 @@
 (例)
 　　{
 	  "type":"gameOver"
-    }　　
+    }
+
 
 ●フラグを変えるヤツ
 ・type名、、、changeFlg
@@ -616,6 +587,7 @@
 	"x":,#
 	"y":#
 }
+
 ●好感度を変える
 ・type,,,changeStatus
 ・必要なもの、、、キャラID
@@ -628,10 +600,10 @@
 	"favorite":"好感度"
 }
 
-
 ●キャラが勝手に歩く（目的地で指定）
 ・type名...charaMoveTo
 ・必要なもの...目的地のx座標, y座標, 歩くキャラのID
+
 （例）
 	{
 	"type":"charaMoveTo",
@@ -640,16 +612,6 @@
 	"objID":"歩くオブジェクトのID(int), or hero"
 	}
 
-●ホワイトアウト
-・type名・・・whiteout
-・必要なもの・・・時間
-※時間が経ったら解除する
-
-(例)
-{
-	"type":"whiteout
-	"time":秒数
-}
 
 ●charaMove
 ・type名・・・charaMove
@@ -679,8 +641,15 @@ MAIN-Ohiromaの19
 	"time":鳴らす時間(float)
 }
 
+●環境光
+・type名...ambient
+・必要なもの　　　時間帯
 
-
+(例)
+{
+	"type":"ambient",
+	"pattern":"時間名"
+}
 
 TODO >>>>>>>>>>>>>>>>>>
 

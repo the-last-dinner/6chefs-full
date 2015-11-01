@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="82" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="118">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="82" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="120">
  <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16">
   <image source="castle7.png" trans="007575" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="empire-3" tilewidth="16" tileheight="16">
   <image source="empire-3.png" trans="a6caf0" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="1381" name="map_icon" tilewidth="16" tileheight="16">
+  <image source="map_icon.png" trans="000000" width="513" height="435"/>
  </tileset>
  <layer name="Base" width="124" height="82" opacity="0.96">
   <properties>
@@ -46,7 +49,15 @@
    eJzt0cEJgDAURMGf4tRCNIWYNO4W4FkRZ2DvC68KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAO0urWrOtvf2EJ+zpfGRd718403lkU28AAAAAAAAAAAAAAAAA4GMuFEIDjg==
   </data>
  </layer>
+ <layer name="item" width="124" height="82">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENACAQBLF9nXRwAjZBBDk+rYJJJgEAAAAAAAAAgB6jklm/K+iy7uvtNwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwFMHxjsCcw==
+  </data>
+ </layer>
  <objectgroup name="collision">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <object id="43" x="64" y="352" width="400" height="352"/>
   <object id="44" x="64" y="704" width="400" height="80"/>
   <object id="45" x="80" y="768" width="368" height="48"/>
@@ -114,17 +125,11 @@
   </object>
  </objectgroup>
  <layer name="CharaUe1" width="124" height="82">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt2ktKA1EQhtFOO/E1yC40Gh27ACGRuA3jYyXZbHQLVmMuNOgdSAiBuufAR0OPuvgHmaTrAAAAAGA/s/6nebSJHk6O/UUckr3bYu+22Lst472Hre2dm73bYu+2lL3f/H4DAAAAAAAAsIftpOs+o69KGdVuHZr2x/66w7qI+06jy0oZnfV/dx7dJ725GP5b8hhdVcqodut1I3vfRLeVMnrvf7eK7hrYexH3LaOnaL1rOXqXUW3voeekNxcvu43He5dek95ebhs/y+4fSW8GAAAAAAAAAAAAAAAAAAAAAAAAAAD4j29ntSt6
   </data>
  </layer>
  <layer name="CharaUe2" width="124" height="82">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt2V1uwjAMwPF6bxOH6CPizuwi8LrxwDG2HWRYmjXXTZqPTkyj/59kgUBqujixUzYMU6+JeFsRlxCfA1J0nt9DtMy9za2PS+W4cWy93kdnxPt4kp7ZeHw654NMQz+rmWPLt86tj5q9ZevKj6vXE+kLuw97ZX+nxZqq8665KM1vro5azotkPq5eb5S+6LqHDYo11e+13nremm8bt6dvj5Jfd5hL1XONNfW8Nd9xjbX07VF++retPfKd5/e3z3dNz0ztq+q5lunetnxr7lr69uj6t9UW8p0X8+x7aS5i/15bz0tj1vZvqy3ke4HLc5z7XA0V+Z167p//BndN/2rvSz3c3wfPY3mpZ2+b+1INXVvPY02xa0oYv6aHx7M5+c4I5zSr775mL0Ws5WvquZ21R7euRsmvO7/+fL6p53mp5++hcl9pblK1vLeeL/XrUl8n33ViPb/n+TzWFOvZx9v7l5Bjv87i9zHf9O8FMg/db/eo5zHsmqfb+7PMz4jx+5hvPz75TtPcPsu0ntvvqT31fNdQz2MfqTmPL53XmnvKBmlu94leWru/Yy0/SN3/x3z/9mfE0jrLnddifSHfGa6e2j6vPa9p2Bzvwpy3jGtRcx7P/d7SdWbcIF9T9yHfPo7fET+3uT0w1w9Fz0gn8ggAAAAAAAAAAAAAAAAAQNFVluMRbfFvBgAAwN87c9YEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/3Bcav5h1
   </data>
@@ -170,6 +175,12 @@
    <properties>
     <property name="EventID" value="8"/>
     <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="119" x="1776" y="272" width="32" height="32">
+   <properties>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>
