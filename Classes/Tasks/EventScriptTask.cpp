@@ -93,6 +93,7 @@ bool EventScriptTask::isEventRunning()
 // update
 void EventScriptTask::update(float delta)
 {
+    // キューの先頭イベントを更新
     this->eventQueue.front()->update(delta);
     
     // キューの先頭イベントが終了していたらポップ

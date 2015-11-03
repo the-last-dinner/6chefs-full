@@ -114,7 +114,7 @@ void TaskMediator::runEventScript(const int eventId)
 }
 
 #pragma mark -
-#pragma mark ControlMainCharacterTask
+#pragma mark PlayerControlTask
 
 // 方向キーを押した時
 void TaskMediator::onCursorKeyPressed(const Key key)

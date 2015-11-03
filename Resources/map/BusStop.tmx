@@ -79,9 +79,6 @@
   </data>
  </layer>
  <layer name="CharaUe2" width="54" height="40">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt2dENQEAQBNDb3lEICkEhKMX6vW/CJe8lk0ymhSkF/qOPUoZMF2332pTbnBmj7V5bc9syS7Tda0duZ2aPtjsAAAAAAMBbvv7j/Hp+vdvXf9zTv94FF5AXyA==
   </data>
