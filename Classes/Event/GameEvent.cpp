@@ -167,14 +167,14 @@ bool EventIf::init(rapidjson::Value& json)
     {
         this->event = this->createSpawnFromIdOrAction(json);
         CC_SAFE_RETAIN(this->event);
+        
+        return true;
     }
     // falseの場合はその場で終了
     else
     {
-        this->setDone();
+        return false;
     }
-    
-    return true;
 }
 
 void EventIf::run()
