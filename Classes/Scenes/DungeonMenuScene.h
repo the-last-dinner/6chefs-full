@@ -13,6 +13,7 @@
 
 class DungeonMainMenuLayer;
 class SaveDataSelector;
+class ItemMenuLayer;
 
 class DungeonMenuScene : public baseScene
 {
@@ -27,6 +28,7 @@ public:
 private:
     DungeonMainMenuLayer* mainMenu {nullptr};
     SaveDataSelector* saveDataSelector {nullptr};
+    ItemMenuLayer* itemMenu {nullptr};
     int menuIndex {0};
     
 // インスタンスメソッド
@@ -41,12 +43,17 @@ private:
     virtual void onSpaceKeyPressed() override;
     virtual void onMenuKeyPressed() override;
     virtual void intervalInputCheck(const vector<Key>& keys);
-    void onSaveMenuSelected();
-    void onSaveDataSelected(int dataId);
-    void onSaveDataSelectCancelled();
     void createMainMenu();
     void createSaveMenu();
     void createItemMenu();
+    // メインメニュー
+    void onSaveMenuSelected();
+    void onItemMenuSelected();
+    // セーブデータセレクター
+    void onSaveDataSelected(int dataId);
+    void onSaveDataSelectCancelled();
+    // アイテムメニュー
+    void onItemMenuCanceled();
 };
 
 #endif /* defined(__LastSupper__DungeonMenuScene__) */
