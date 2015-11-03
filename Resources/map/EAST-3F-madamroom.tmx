@@ -101,17 +101,11 @@
   </properties>
  </objectgroup>
  <layer name="CharaUe1" width="30" height="26">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0skNgEAMBEEDXv6cecCSEGf+IdBJABaaluo9fthMKaXiNCWzGRlL+vqaOBVuVqKCI6H253cbNlp06DFgfGFX/buVH9qw48CJS3+lVNhu9g0EBg==
   </data>
  </layer>
  <layer name="CharaUe2" width="30" height="26">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYGBg8BdhYAigEw4EYhjIRWLTGuSP2jtq76i9o/aO2jtq76i9o/aO2jvs7O0GsntIwOiAFL29dPTjYAIAXqkwSQ==
   </data>

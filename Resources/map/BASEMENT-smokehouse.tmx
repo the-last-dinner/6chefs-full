@@ -77,65 +77,41 @@
   </object>
  </objectgroup>
  <layer name="smoke" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-3"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUEAMaOBkY6oC4npNys6qAZlQDcRcQd1PBPBigtnmDHeRTya81nIg4AbELsJibDxUvBOIiqHwJGg0DHUB+GxC3c0LYNVjMg9lVi5SuGpBodPfVopmJDmDinUjpqgeJRndfJ1QMm32jgD4AAOjqG1U=
   </data>
  </layer>
  <layer name="CharaUe1" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBj84BgLA8NxCvEJFoR5TKwMDMwUYhbWgQuPUQABx3DEL7mAaYjGL7b8QUl4YMsfQyk8hhsYLf+GLwAA7Hgl6w==
   </data>
  </layer>
  <layer name="CharaUe2" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFIx2sYoPgUfNGwSgYBaOAfgAAk+UFgQ==
   </data>
  </layer>
  <layer name="G1" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-5"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUUAKa2SF4sJo3CkbBKBicAADOrAIp
   </data>
  </layer>
  <layer name="G2" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-4"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUkAses0PwE/bBad4oGAWjYPACAG5wBX8=
   </data>
  </layer>
  <layer name="G3" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-3"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2BkAWcOCKYW8OeA4JFi3igYBaOAOgAAq9YCoQ==
   </data>
  </layer>
  <layer name="G4" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUkAsWc0DwEg7qmLeeA4I3UMm8UTAKRsHgBQD1uAQp
   </data>
  </layer>
  <layer name="G5" width="20" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUUAKYOSF4sJo3CkbBKBicAADKvAAx
   </data>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="75">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="83">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
-  <image source="lower.png" trans="201c30" width="480" height="256"/>
+  <image source="../../マップバックアップ/lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
-  <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
+  <image source="../../マップバックアップ/barrel-option.png" trans="201c30" width="256" height="224"/>
  </tileset>
  <tileset firstgid="705" name="object_sack01" tilewidth="16" tileheight="16">
-  <image source="object_sack01.png" trans="201c30" width="384" height="256"/>
+  <image source="../../マップバックアップ/object_sack01.png" trans="201c30" width="384" height="256"/>
  </tileset>
  <tileset firstgid="1089" name="meet" tilewidth="16" tileheight="16">
-  <image source="meet.png" trans="0000ff" width="448" height="288"/>
+  <image source="../../マップバックアップ/meet.png" trans="0000ff" width="448" height="288"/>
  </tileset>
  <layer name="poolbottom" width="36" height="30">
   <properties>
@@ -133,41 +133,26 @@
   </object>
  </objectgroup>
  <layer name="CharaUe1" width="36" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-5"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJztlUEKACAIBD34/5+UX6xjRGV56ODuQChUhwbZRAghhNxQVKT2Zbruo/tZGN9kQz9XzxOCn9nVyQPi/Hh1dRbJz23mIOfPa84g+YnMz+5eFqL/l5dFhJD/NMccemg=
   </data>
  </layer>
  <layer name="CharaUe2" width="36" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-4"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJztz9EJwCAQBNG1iMRCJIUY++8lNuAKRkFkHuznwZwEAHu6gnRPXgzjPenHbctDj0WPR49Hj0ePR493Uk+ut+/klQU/Auj7AJVZDuk=
   </data>
  </layer>
  <layer name="CharaUe3" width="36" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-3"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1LcNgEAQBdHTQQfQKqYBTAOYcpmEhIgAaU9injTx/mhTkiT9WZVTqnPc/Y7bPQ00UkNt4J6J2zMttAbuuG1s2Omgs4A9kt57/rdopf03SfraBRgrCqE=
   </data>
  </layer>
  <layer name="CharaUe4" width="36" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-2"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0gENACAMA8EmEwA+wAX418RMwID9KfgmlQAAPysmVYuuiJN9P/Z47VfNW/tFvcNb5sGe7PsBIIsFU/MCRA==
   </data>
  </layer>
  <layer name="manaka" width="36" height="30">
-  <properties>
-   <property name="cc_vertexz" value="-1"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJztzrEVABAQBbD/bv+l2IJp6JRKimSCJADwVquk1+vFMfZlfvQBAOBuAZGgAz8=
   </data>
@@ -293,5 +278,11 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
+  <object id="75" type="water" x="96" y="128" width="32" height="256"/>
+  <object id="76" type="water" x="128" y="96" width="96" height="32"/>
+  <object id="77" type="water" x="256" y="96" width="224" height="32"/>
+  <object id="80" type="water" x="160" y="384" width="96" height="32"/>
+  <object id="81" type="water" x="288" y="384" width="192" height="32"/>
+  <object id="82" type="water" x="480" y="128" width="32" height="256"/>
  </objectgroup>
 </map>
