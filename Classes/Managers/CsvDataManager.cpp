@@ -50,7 +50,6 @@ CsvDataManager::CsvDataManager():fu(FileUtils::getInstance())
 //CSV読み取り
 map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
 {
-    FUNCLOG
     //ファイル読み込み
     ifstream file(this->fu->fullPathForFilename("csv/" + file_name + ".csv"));
     map<int, vector<string>> values;
@@ -93,31 +92,69 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
         {
             line += str + ",";
         }
-        CCLOG(line.c_str());
+        //CCLOG(line.c_str());
     }
 #endif
     return values;
 }
 
-//idから表示名を取得
-string CsvDataManager::getDisplayName(const CsvDataManager::DataType& data_type, int data_id)
+// マップ名を取得
+string CsvDataManager::getMapName(const int map_id)
 {
-    FUNCLOG
-    return this->csv_data[data_type][data_id][1];
+    return this->csv_data[DataType::MAP][map_id][1];
 }
 
-//idからファイル名を取得
-string CsvDataManager::getFileName(const CsvDataManager::DataType& data_type, int data_id)
+// マップのファイル名を取得
+string CsvDataManager::getMapFileName(const int map_id)
 {
-    FUNCLOG
-    return this->csv_data[data_type][data_id][2];
+    return this->csv_data[DataType::MAP][map_id][2];
 }
 
-//表情の個数を取得
-int CsvDataManager::existsFaceDiff(const CsvDataManager::DataType& data_type, int data_id)
+// アイテム名を取得
+string CsvDataManager::getItemName(const int item_id)
 {
-    FUNCLOG
-    return stoi(this->csv_data[data_type][data_id][3]);
+    return this->csv_data[DataType::ITEM][item_id][1];
 }
 
+// アイテムの説明を取得
+string CsvDataManager::getItemDiscription(const int item_id)
+{
+    return this->csv_data[DataType::ITEM][item_id][3];
+}
 
+// チャプター名を取得
+string CsvDataManager::getChapterName(const int chapter_id)
+{
+    return this->csv_data[DataType::CHAPTER][chapter_id][1];
+}
+
+// チャプターのタイトルを取得
+string CsvDataManager::getChapterTitle(const int chapter_id)
+{
+    return this->csv_data[DataType::CHAPTER][chapter_id][2];
+}
+
+// キャラクター名の取得
+string CsvDataManager::getCharaName(const int chara_id)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][1];
+}
+
+// キャラクターのファイル名を取得
+string CsvDataManager::getCharaFileName(const int chara_id)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][2];
+}
+
+// キャラクターの表情差分IDを取得
+int CsvDataManager::getCharaFaceDiff(const int chara_id)
+{
+    return stoi(this->csv_data[DataType::CHARACTER][chara_id][3]);
+}
+
+// キャラクターの説明をレベルごとに取得
+// @param int level 0 ~ 2
+string CsvDataManager::getCharaDiscription(const int chara_id, const int level)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][level];
+}

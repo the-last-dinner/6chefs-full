@@ -32,7 +32,7 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
     if(!Layer::init()) return false;
     
 	// Tiledのマップを生成
-    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, location.map_id) + ".tmx") };
+    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapFileName(location.map_id) + ".tmx") };
     tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;

@@ -41,7 +41,7 @@ bool Character::init(int charaId, const Direction direction)
 	if(!Node::init()) return false;
 	// 生成時の情報をセット
 	this->direction = direction;
-    this->texturePrefix = CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, charaId);
+    this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
     string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };

@@ -90,7 +90,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
             }
             else
             {
-                charaName = CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId());
+                charaName = CsvDataManager::getInstance()->getCharaName(data->getCharaId());
             }
             
             // 画像ID
@@ -126,7 +126,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
         }
         else
         {
-            charaName = CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId());
+            charaName = CsvDataManager::getInstance()->getCharaName(data->getCharaId());
         }
         
         // 画像ID
