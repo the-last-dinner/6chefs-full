@@ -136,8 +136,8 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             // リスト生成
             save = SaveIndex(
                              i,
-                             CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHAPTER, local["chapter"].GetInt()),
-                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, local["location"][0].GetInt())),
+                             CsvDataManager::getInstance()->getChapterName(local["chapter"].GetInt()),
+                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local["location"][0].GetInt())),
                              time,
                              LastSupper
                              ::StringUtils::getSprintf("%3s", to_string(local["save_count"].GetInt()))

@@ -48,7 +48,7 @@ bool DungeonScene::init()
 {
 	FUNCLOG
     
-    EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id));
+    EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getMapFileName(PlayerDataManager::getInstance()->getLocation().map_id));
     
     return baseScene::init(DungeonSceneData::create());
 }

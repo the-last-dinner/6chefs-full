@@ -68,15 +68,15 @@ bool DungeonMainMenuLayer::init()
 	}
 	
 	// マップ名表示
-    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::MAP, PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
+    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
 	mapName->setPosition(mapName->getContentSize().width / 2, hBg->getContentSize().height - mapName->getContentSize().height / 2);
 	hBg->addChild(mapName);
     
     // 装備品表示
     int right_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT);
     int left_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT);
-    string right = (right_id != 0) ? CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::ITEM, right_id) : "なし";
-    string left = (left_id != 0) ? CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::ITEM, left_id) : "なし";
+    string right = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
+    string left = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
     Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, "fonts/cinecaption2.28.ttf", 26);
     equipment->setPosition(equipment->getContentSize().width / 2, fBg->getContentSize().height - equipment->getContentSize().height / 2);
     fBg->addChild(equipment);

@@ -53,7 +53,7 @@ Label* CharacterMessageLayer::createMessage()
     CharacterMessageData* data {this->datas.front()};
 	if(data->getCharaId() != -1 && data->getImgId() != -1){
 	// キャラクター画像;
-//		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getFileName(CsvDataManager::DataType::CHARACTER, info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
+//		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getCharaFileName(info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
 //		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
 //		img->setPosition(Point(WINDOW_WIDTH / 4, img->getContentSize().height / 2));
 //		img->setLocalZOrder(-1);
@@ -61,7 +61,7 @@ Label* CharacterMessageLayer::createMessage()
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF((data->getCharaId() == -1 || data->getCharaName() != "")?data->getCharaName():CsvDataManager::getInstance()->getDisplayName(CsvDataManager::DataType::CHARACTER, data->getCharaId()), "fonts/cinecaption2.28.ttf", 26.f)};
+	Label* name { Label::createWithTTF((data->getCharaId() == -1 || data->getCharaName() != "")?data->getCharaName():CsvDataManager::getInstance()->getCharaName(data->getCharaId()), "fonts/cinecaption2.28.ttf", 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える

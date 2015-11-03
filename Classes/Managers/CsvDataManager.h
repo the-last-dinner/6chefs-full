@@ -43,9 +43,19 @@ private:
 private:
     map<int, vector<string>> readCsvFile(string file_name);
 public:
-    string getDisplayName(const DataType& data_type, int data_id);
-    string getFileName(const DataType& data_type, int data_id);
-    int existsFaceDiff(const DataType& data_type, int data_id);
+    // map
+    string getMapName(const int map_id);
+    string getMapFileName(const int map_id);
+    // item
+    string getItemName(const int item_id);
+    string getItemDiscription(const int item_id);
+    // chapter
+    string getChapterName(const int chapter_id);
+    string getChapterTitle(const int chapter_id);
+    // character
+    string getCharaName(const int chara_id);
+    string getCharaFileName(const int chara_id);
+    int getCharaFaceDiff(const int chara_id);
+    string getCharaDiscription(const int chara_id, const int level);
 };
-
 #endif
