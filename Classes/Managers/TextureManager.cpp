@@ -56,7 +56,7 @@ void TextureManager::unloadAllTectures()
 	for(string filePath : this->texturePaths)
 	{
 		SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(basePath + filePath + ".plist");
-		Director::getInstance()->getTextureCache()->removeTextureForKey(basePath + filePath + ".pvr.ccz");
+		Director::getInstance()->getTextureCache()->removeTextureForKey(basePath + filePath + ".png");
 	}
 	this->texturePaths.clear();
 }

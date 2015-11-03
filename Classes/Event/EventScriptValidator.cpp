@@ -46,7 +46,6 @@ bool EventScriptValidator::detectCondition(rapidjson::Value& json)
     {
         {"equip", &EventScriptValidator::detectEquipFlg},
         {"event", &EventScriptValidator::detectEventFlg},
-        {"flag", &EventScriptValidator::detectFlg},
         {"flg", &EventScriptValidator::detectFlg},
         {"item", &EventScriptValidator::detectItemFlg},
         {"status", &EventScriptValidator::detectStatusFlg},
@@ -185,10 +184,8 @@ MapObject* EventScriptValidator::getMapObjectById(rapidjson::Value& json)
     {
         MapObject* obj { this->mediator->getMapObjectList()->getMapObject(stoi(sObjid)) };
         
-        if(obj) return obj;
+        return obj;
     }
-    
-    return nullptr;
 }
 
 // x,yの組を取得

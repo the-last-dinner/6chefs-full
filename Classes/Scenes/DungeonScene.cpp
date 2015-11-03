@@ -56,8 +56,6 @@ bool DungeonScene::init()
 // リソースプリロード完了時の処理
 void DungeonScene::onPreloadFinished()
 {
-	FUNCLOG
-	
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
 	mapLayer->setGlobalZOrder(Priority::MAP);

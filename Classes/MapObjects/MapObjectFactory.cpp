@@ -172,7 +172,7 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
     chara->setObjectId(this->getObjectId(info));
     chara->setTrigger(this->getTrigger(info));
     chara->setEventId(this->getEventId(info));
-    chara->setHit(true);
+    //chara->setHit(true);
     chara->setContentSize(rect.size);
     chara->setPosition(rect.origin + rect.size / 2);
     chara->setCollisionRect(Rect(0, 0, rect.size.width, GRID));

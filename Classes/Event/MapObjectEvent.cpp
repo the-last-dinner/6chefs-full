@@ -43,7 +43,9 @@ void ReactionEvent::run()
 {
     Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
     icon->setPosition(Point(0, this->target->getContentSize().height));
+    icon->setGlobalZOrder(Priority::CHARACTER_MESSAGE);
     icon->setScaleY(0.01f);
+    icon->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
     this->target->addChild(icon);
     
     icon->runAction(Sequence::create(EaseElasticOut::create(ScaleTo::create(0.6f, 1.f), 0.5f), DelayTime::create(1.f), RemoveSelf::create(), CallFunc::create([this](){this->setDone();}), nullptr));

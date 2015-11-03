@@ -12,7 +12,7 @@
 #include "Layers/Dungeon/TiledMapLayer.h"
 
 #include "Tasks/EventScriptTask.h"
-#include "Tasks/ControlMainCharacterTask.h"
+#include "Tasks/PlayerControlTask.h"
 #include "Tasks/CameraTask.h"
 
 #include "MapObjects/MapObjectList.h"
@@ -28,7 +28,7 @@ TaskMediator::~TaskMediator()
 
     CC_SAFE_RELEASE_NULL(this->cameraTask);
     CC_SAFE_RELEASE_NULL(this->eventScriptTask);
-    CC_SAFE_RELEASE_NULL(this->controlMainCharacterTask);
+    CC_SAFE_RELEASE_NULL(this->playerControlTask);
 };
 
 // 初期化
@@ -51,9 +51,9 @@ bool TaskMediator::init(DungeonScene* scene)
     this->eventScriptTask = eventScriptTask;
     
     // 主人公操作処理クラスを生成
-    ControlMainCharacterTask* controlMainCharacterTask {ControlMainCharacterTask::create(this)};
-    CC_SAFE_RETAIN(controlMainCharacterTask);
-    this->controlMainCharacterTask = controlMainCharacterTask;
+    PlayerControlTask* playerControlTask {PlayerControlTask::create(this)};
+    CC_SAFE_RETAIN(playerControlTask);
+    this->playerControlTask = playerControlTask;
     
     return true;
 }
@@ -114,24 +114,24 @@ void TaskMediator::runEventScript(const int eventId)
 }
 
 #pragma mark -
-#pragma mark ControlMainCharacterTask
+#pragma mark PlayerControlTask
 
 // 方向キーを押した時
 void TaskMediator::onCursorKeyPressed(const Key key)
 {
-    this->controlMainCharacterTask->turn(MapUtils::keyToDirection(key));
+    this->playerControlTask->turn(MapUtils::keyToDirection(key));
 }
 
 // スペースキーを押した時
 void TaskMediator::onSpaceKeyPressed()
 {
-    this->controlMainCharacterTask->search();
+    this->playerControlTask->search();
 }
 
 // キーを押し続けている時
 void TaskMediator::intervalInputCheck(const vector<Key>& keys)
 {
-    this->controlMainCharacterTask->walking(MapUtils::keyToDirection(keys));
+    this->playerControlTask->walking(MapUtils::keyToDirection(keys));
 }
 
 // イベントリスナを取得

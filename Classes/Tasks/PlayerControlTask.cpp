@@ -1,12 +1,12 @@
 //
-//  ControlMainCharacterTask.cpp
+//  PlayerControlTask.cpp
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/09/30.
 //
 //
 
-#include "Tasks/ControlMainCharacterTask.h"
+#include "Tasks/PlayerControlTask.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
@@ -17,13 +17,13 @@
 #include "Tasks/TaskMediator.h"
 
 // コンストラクタ
-ControlMainCharacterTask::ControlMainCharacterTask(){FUNCLOG}
+PlayerControlTask::PlayerControlTask(){FUNCLOG}
 
 // デストラクタ
-ControlMainCharacterTask::~ControlMainCharacterTask(){FUNCLOG}
+PlayerControlTask::~PlayerControlTask(){FUNCLOG}
 
 // 初期化
-bool ControlMainCharacterTask::init(TaskMediator* mediator)
+bool PlayerControlTask::init(TaskMediator* mediator)
 {
     if(!GameTask::init(mediator)) return false;
     
@@ -31,14 +31,14 @@ bool ControlMainCharacterTask::init(TaskMediator* mediator)
 }
 
 // 向きを変える
-void ControlMainCharacterTask::turn(const Direction& direction)
+void PlayerControlTask::turn(const Direction& direction)
 {
     Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
     if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
 }
 
 // 目の前を調べる
-void ControlMainCharacterTask::search()
+void PlayerControlTask::search()
 {
     MapObjectList* objectList {this->mediator->getMapObjectList()};
     Character* mainCharacter {objectList->getMainCharacter()};
@@ -58,7 +58,7 @@ void ControlMainCharacterTask::search()
 }
 
 // 歩行中、あたり判定を行い次に向かう位置を決定する
-void ControlMainCharacterTask::walking(vector<Direction> directions)
+void PlayerControlTask::walking(vector<Direction> directions)
 {
     Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
     
@@ -93,7 +93,7 @@ void ControlMainCharacterTask::walking(vector<Direction> directions)
 }
 
 // 一マス分移動し終えた時
-void ControlMainCharacterTask::onCharacterWalkedOneGrid()
+void PlayerControlTask::onCharacterWalkedOneGrid()
 {
     MapObjectList* objectList {this->mediator->getMapObjectList()};
     

@@ -73,6 +73,19 @@ Vector<MapObject*> MapObjectList::getMapObjects(const Point& position) const
     return mapObjects;
 }
 
+// 指定トリガーのマップオブジェクトのベクタを取得
+Vector<MapObject*> MapObjectList::getMapObjects(const Trigger trigger) const
+{
+    Vector<MapObject*> mapObjects {};
+    
+    for(MapObject* obj : this->mapObjects)
+    {
+        if(obj->getTrigger() == trigger) mapObjects.pushBack(obj);
+    }
+    
+    return mapObjects;
+}
+
 // 指定範囲内にあたり判定を持つマップオブジェクトが存在するか
 const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 {

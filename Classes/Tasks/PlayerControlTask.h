@@ -1,5 +1,5 @@
 //
-//  ControlMainCharacterTask.h
+//  PlayerControlTask.h
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/09/30.
@@ -13,11 +13,11 @@
 
 class TaskMediator;
 
-class ControlMainCharacterTask : public GameTask
+class PlayerControlTask : public GameTask
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(ControlMainCharacterTask, TaskMediator*)
+    CREATE_FUNC_WITH_PARAM(PlayerControlTask, TaskMediator*)
 
 // インスタンス変数
 private:
@@ -25,8 +25,8 @@ private:
     
 // インスタンスメソッド
 private:
-    ControlMainCharacterTask();
-    ~ControlMainCharacterTask();
+    PlayerControlTask();
+    ~PlayerControlTask();
     bool init(TaskMediator* mediator);
 public:
     void turn(const Direction& direction);      // 向きを変える

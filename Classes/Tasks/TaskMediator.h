@@ -17,7 +17,7 @@ class EventListenerKeyboardLayer;
 
 class CameraTask;
 class EventScriptTask;
-class ControlMainCharacterTask;
+class PlayerControlTask;
 
 class MapObjectList;
 
@@ -33,7 +33,7 @@ private:
     DungeonScene* scene { nullptr };
     CameraTask* cameraTask { nullptr };
     EventScriptTask* eventScriptTask { nullptr };
-    ControlMainCharacterTask* controlMainCharacterTask { nullptr };
+    PlayerControlTask* playerControlTask { nullptr };
     
 // インスタンスメソッド
 public:
