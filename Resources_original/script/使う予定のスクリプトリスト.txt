@@ -51,7 +51,7 @@
 	{
   	"type":"displayImg",
 	"file":"ファイル名",
-	"time":"表示する時間（秒)"#,
+	"time":表示する時間（秒)#,
 	"option":
 	}
 
@@ -64,8 +64,8 @@
 	{
 	"type":"changeMap",
 	"mapID":"移動先のマップ番号",
-	"x":"移動先のx座標(int)",
-	"y":"移動先のy座標(int)"
+	"x":移動先のx座標(int),
+	"y":移動先のy座標(int)
 	}
 
 
@@ -103,8 +103,8 @@
 	"type":"charaWalk",
 	"direction":"歩く向き",
   "objID":"歩くキャラのID or hero",
-	"steps":"歩数(int)",#
-	"speed":"歩く早さ(float)"#
+	"steps":歩数(int),#
+	"speed":歩く早さ(float)#
   "option":"back"#
 	}
 
@@ -115,9 +115,9 @@
 （例）
 	{
 	"type":"charaWalkTo",
-	"x":"x座標",
-	"y":"y座標",
-	"objID":"歩くキャラのID(int), or hero"
+	"x":x座標,
+	"y":y座標,
+	"objID":"歩くキャラのID, or hero"
 	}
   
 
@@ -127,8 +127,8 @@
 （例）
 	{
 	"type":"charaWarp",
-	"x":"x座標",
-	"y":"y座標",
+	"x":x座標,
+	"y":y座標,
 	"objID":"歩くキャラのID(int) or hero",
 	"direction":"出現する向き"#
 	}
@@ -143,10 +143,7 @@
 	{
 	"type":"reaction",
   "objID":"出すキャラのオブジェクトID or hero"
-	}
-
-"event":["45","2","0"]
-  
+	}  
 
 ●鬼を生み出す
 ・type名...createEnemy
@@ -155,13 +152,13 @@
 （例）
 	{
 	"type":"createEnemy",
-	"enemyID":"ID（int）",
+	"enemyID":"ID",
   "charaID":"キャラチップID(int)",
-	"x":"出現させるx座標(int)",
-	"y":"出現させるy座標(int)",
+	"x":出現させるx座標(int),
+	"y":出現させるy座標(int),
 	"movePattern":"鬼の動きパターン番号(int)",#
-	"times":"消えるまでに必要なマップ移動の回数"#
-	"speed":"鬼の速さ"#
+	"times":消えるまでに必要なマップ移動の回数#
+	"speed":鬼の速さ#
 	}
 
 ●キャラを生み出す
@@ -186,7 +183,7 @@
 （例）
 	{
 	"type":"removeChara",
-	"objID":"ID（int）"
+	"objID":"ID"
 	}
 
 
@@ -196,7 +193,7 @@
 （例）
 	{
 	"type":"removeEnemy",
-	"enemyID":"ID（int）"
+	"enemyID":"ID"
 	}
 
 
@@ -215,31 +212,9 @@
 	"type":"storyMsg",
  	 "title":""#
 	"text":["表示するテキスト", "", ...],
-	"alpha":"不透明度(0 ~ 255 0で見えなくなる)"#
+	"alpha":不透明度(0 ~ 255 0で見えなくなる)#
 	}
 
-
-●上から暗いのを被せる
-・type名...cover
-・必要なもの...被せるマスクの色、アルファ値
-
-（例）
-	{
-	"type":"cover",
-	"color":[R,G,B,α(double)]
-	}
-
-
-●coverを消す
-・type名...removeCover
-
-※オプションでフェードインも出来るように
-
-（例）
-	{
-	"type":"removeCover",
-  	"option":"fadeOut"#
-	}
 
 
 ●主人公の周りだけcoverを解除して明かりがつくように見せる
@@ -248,7 +223,7 @@
 （例）
 	{
 	"type":"lamp",
-	"color":"R,G,B,α(double)"
+	"color":R,G,B,α(double)
 	}
 
 
@@ -270,8 +245,8 @@
 （例）
 	{
 	"type":"barrage",
-	"times":"連打する回数(int)",
-	"limit":"制限時間（double）",
+	"times":連打する回数(int),
+	"limit":制限時間（double）,
 	"false":[失敗した時のaction] or "EventID",
 	"true":[成功した時のaction] or "EventID"
 	}
@@ -304,7 +279,7 @@
 	{
 	"type":"playSE",
 	"file":"ファイル名",
-	"times":"回数",#
+	"times":回数,#
 	"volume":"ボリューム",#
 	}
 
@@ -315,7 +290,7 @@
 （例）
 	{
 	"type":"countDown",
-	"second":"秒数",
+	"second":秒数,
 	"ID":"カウントダウンID",
 	"condition":[
 		{		
@@ -351,9 +326,9 @@
 「、、、を手に入れた」
 （例）
 	{
-	"type":"getItem",
-	"itemID":"アイテムID"
-	"name":"アイテム名"
+		"type":"getItem",
+		"itemID":"アイテムID"
+		"name":"アイテム名"
 	}
 
 ●クエスチョンメッセージウインドウの表示
@@ -396,7 +371,7 @@
 	{
 	"type":"swingLayer",
 	"layer":"揺らすレイヤー名",
-　"option":"揺らす回数"#←なければ永遠に
+	"option":"揺らす回数"#←なければ永遠に
 	}
 
 
@@ -410,19 +385,7 @@
 	{
 	"type":"changeImage",
 	"objectID":"書き換えるオブジェクトのID",
-　"image":"画像の名前"
-	}
-
-
-●キャラプロファイルに追加
-・type名...addProfile
-・必要なもの...キャラID
-               情報番号
-（例）
-	{
-	"type":"addProfile",
-	"charaID":"キャラID",
-　"infoID":"情報番号"#
+	"image":"画像の名前"
 	}
 
 
@@ -432,7 +395,7 @@
 （例）
 	{
 	"type":"fadeIn",
-	"time":"時間指定する場合秒数"
+	"time":時間指定する場合秒数
 	}
   
 ●フェードアウト
@@ -444,7 +407,7 @@
 （例）
 	{
 	"type":"fadeout",
-	"time":"時間指定する場合秒数"
+	"time":時間指定する場合秒数
 	}
 
 
@@ -465,7 +428,7 @@
 例）
 	{
 	"type":"wait",
-	"time":"待機する時間(float)"
+	"time":待機する時間(float)
 	}
 
 
@@ -481,10 +444,10 @@
 	{
 	"type" 　　:"camera",
 	"mapID"　　:"マップ番号",
-	"x"　　　　:"x座標",#
-	"y"　　　　:"y座標",#
-	"nextX"　　:"カメラが向かうx座標",#
-	"nextY"　　:"カメラが向かうy座標",#
+	"x"　　　　:x座標,#
+	"y"　　　　:y座標,#
+	"nextX"　　:カメラが向かうx座標,#
+	"nextY"　　:カメラが向かうy座標,#
 	"time"　　 :"かかる秒数",#
 	"return"   :"hero"←主人公に戻る,#
 	"objID"    :"追いかけるキャラのオブジェクトID"#
@@ -497,7 +460,7 @@
 （例）
 	{
 	"type":"chase",
-  "chaser":"追いかける奴のobjID",
+	"chaser":"追いかける奴のobjID",
 	"target":"追いかけられるやつのobjID or hero"
 	}
 
@@ -637,8 +600,8 @@
 （例）
 	{
 	"type":"charaMoveTo",
-	"x":"x座標",
-	"y":"y座標",
+	"x":x座標,
+	"y":y座標,
 	"objID":"歩くオブジェクトのID(int), or hero"
 	}
 
@@ -690,6 +653,19 @@ MAIN-Ohiromaの19
 	"type":"addChara",
 	"charaID":"キャラID"
 }
+
+●キャラプロファイルに追加
+・type名...addProfile
+・必要なもの...キャラID
+               情報番号
+
+（例）
+	{
+		"type":"addProfile",
+		"charaID":"キャラID",
+		"infoID":"情報番号"#
+	}
+
 
 TODO >>>>>>>>>>>>>>>>>>
 
