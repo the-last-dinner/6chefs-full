@@ -132,11 +132,21 @@ bool EventScriptValidator::detectItemFlg(rapidjson::Value& json, bool negative)
 {
     bool detection { false };
     
-    for(int i { 0 }; i < json.Size(); i++)
+    // 複数の場合
+    if(json.IsArray())
     {
-        detection = PlayerDataManager::getInstance()->checkItem(stoi(json[i].GetString()));
+        for(int i { 0 }; i < json.Size(); i++)
+        {
+            detection = PlayerDataManager::getInstance()->checkItem(stoi(json[i].GetString()));
+            if(negative) detection = !detection;
+            if(!detection) break;
+        }
+    }
+    // 一つの場合
+    else
+    {
+        detection = PlayerDataManager::getInstance()->checkItem(stoi(json.GetString()));
         if(negative) detection = !detection;
-        if(!detection) break;
     }
     
     return detection;
@@ -157,7 +167,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
             if(!detection) break;
         }
     }
-    //一つのイベント
+    // 一つの時
     else
     {
         detection = PlayerDataManager::getInstance()->checkFriendship(json[0].GetString(), stoi(json[1].GetString()));
