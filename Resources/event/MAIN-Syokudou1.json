@@ -71,7 +71,7 @@
 									"imgID":"1"
 								},
 								{
-									"text":["は・・・！　"],
+									"text":["は・・・！"],
 									"charaID":"1",
 									"imgID":"1",
 									"name":"？？？",
@@ -100,9 +100,13 @@
 							"time":2.0
 						},
 						{
+							"type":"addChara",
+							"charaID":"1"
+						},
+						{
 							"type":"addProfile",
 							"charaID":"1",
-							"infoID":"1"
+							"infoID":"0"
 						},
 						{
 							"type":"changeStatus",
@@ -209,9 +213,13 @@
 							"time":2.0
 						},
 						{
+							"type":"addChara",
+							"charaID":"2"
+						},
+						{
 							"type":"addProfile",
 							"charaID":"2",
-							"infoID":"1"
+							"infoID":"0"
 						},
 						{
 							"type":"changeStatus",
@@ -315,9 +323,13 @@
 							"time":2.0
 						},
 						{
+							"type":"addChara",
+							"charaID":"5"
+						},
+						{
 							"type":"addProfile",
 							"charaID":"5",
-							"infoID":"1"
+							"infoID":"0"
 						},
 						{
 							"type":"changeStatus",
@@ -426,13 +438,17 @@
 							"time":2
 						},
 						{
+							"type":"addChara",
+							"charaID":"3"
+						},
+						{
 							"type":"addProfile",
 							"charaID":"3",
-							"infoID":"1"
+							"infoID":"0"
 						},
 						{
 							"type":"changeStatus",
-							"charaID":"5",
+							"charaID":"3",
 							"favorite":"0"
 						},
 						{
@@ -537,13 +553,17 @@
 							"time":2
 						},
 						{
+							"type":"addChara",
+							"charaID":"4"
+						},
+						{
 							"type":"addProfile",
 							"charaID":"4",
-							"infoID":"1"
+							"infoID":"0"
 						},
 						{
 							"type":"changeStatus",
-							"charaID":"5",
+							"charaID":"4",
 							"favorite":"0"
 						},
 						{

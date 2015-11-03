@@ -24,6 +24,10 @@
           "text": ["佐々木様！お待ちしておりました。"]
         },
         {
+          "type":"addChara",
+          "charaID":"9"
+        },
+        {
           "type": "reaction",
           "objID": "hero"
         },

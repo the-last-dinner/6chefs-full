@@ -7,6 +7,29 @@
           "type": "fadeout"
         },
         {
+          "type":"addChara",
+          "charaID":"0"
+        },
+        {
+          "type":"addProfile",
+          "charaID":"0",
+          "infoID":"0"
+        },
+        {
+          "type":"addProfile",
+          "charaID":"0",
+          "infoID":"1"
+        },
+        {
+          "type":"addChara",
+          "charaID":"7"
+        },
+        {
+          "type":"addProfile",
+          "charaID":"7",
+          "infoID":"0"
+        },
+        {
           "type": "playBGM",
           "file": "car-idling1.mp3"
         },

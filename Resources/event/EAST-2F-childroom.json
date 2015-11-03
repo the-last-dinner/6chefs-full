@@ -138,14 +138,65 @@
 	],
 	"7":[
 		{
-			"type":"systemMsg",
-			"text":["所々血のついた玩具が入っている"]
+			"type":"if",
+			"condition":[
+				{
+					"Nitem":"1533"
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"1533",
+					"name":"三角巾"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":"1533"
+				},
+				{
+					"Nstatus":["1","0"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["所々血のついた玩具が入っている"]
+				}
+			]
 		}
 	],
 	"8":[
 		{
 			"type":"systemMsg",
 			"text":["人形が落ちている"]
+		}
+	],
+	"9":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":"1533"
+				},
+				{
+					"Nstatus":["1","0"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
 		}
 	]
 }

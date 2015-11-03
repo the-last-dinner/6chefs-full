@@ -243,5 +243,35 @@
 			"type":"systemMsg",
 			"text":["何かの骨が吊るされている・・・"]
 		}
+	],
+	"8":[
+		{
+			"type":"getItem",
+			"itemID":"1528",
+			"name":"曇り止めスプレー（レンズ用）"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"item"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"9":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["40","8"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		}
 	]
 }

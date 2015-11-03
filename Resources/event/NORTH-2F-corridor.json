@@ -188,6 +188,15 @@
 					"type":"spawn",
 					"action":[
 						{
+							"type":"addChara",
+							"charaID":"8"
+						},
+						{
+							"type":"addProfile",
+							"cgaraID":"8",
+							"infoID":"0"
+						},
+						{
 							"type":"createEnemy",
 							"enemyID":"141",
 							"x":7,
@@ -513,5 +522,5 @@
 				}
 			]
 		}
-	],
+	]
 }

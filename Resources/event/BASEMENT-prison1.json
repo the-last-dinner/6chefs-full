@@ -23,6 +23,15 @@
 							"type":"spawn",
 							"action":[
 								{
+									"type":"addChara",
+									"charaID":"13"
+								},
+								{
+									"type":"addProfile",
+									"charaID":"13",
+									"infoID":"0"
+								},
+								{
 									"type":"removeEnemy",
 									"objID":"146"
 								},

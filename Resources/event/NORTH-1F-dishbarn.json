@@ -187,5 +187,65 @@
 			"type":"systemMsg",
 			"text":["中はカラッポだ・・・"]
 		}
+	],
+	"12":[
+		{
+			"type":"getItem",
+			"itemID":"1529",
+			"name":"目玉焼きリング"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"ring"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"13":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["20","12"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"ring"
+				}
+			]
+		}
+	],
+	"14":[
+		{
+			"type":"getItem",
+			"itemID":"1531",
+			"name":"蒸しせいろ"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"seiro"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"15":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["18","14"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"seiro"
+				}
+			]
+		}
 	]
 }

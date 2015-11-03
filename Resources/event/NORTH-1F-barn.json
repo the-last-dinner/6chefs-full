@@ -166,5 +166,35 @@
 			"type":"systemMsg",
 			"text":["何かが床にこびりついている"]
 		}
+	],
+	"16":[
+		{
+			"type":"getItem",
+			"itemID":"1527",
+			"name":"焔の裃"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"item"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"17":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["18","16"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		}
 	]
 }

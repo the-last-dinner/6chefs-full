@@ -154,5 +154,35 @@
 			"type":"systemMsg",
 			"text":["大きなベッドだ"]
 		}
+	],
+	"7":[
+		{
+			"type":"getItem",
+			"itemID":"1525",
+			"name":"お祭りはっぴ"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"item"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"8":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["39","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		}
 	]
 }
