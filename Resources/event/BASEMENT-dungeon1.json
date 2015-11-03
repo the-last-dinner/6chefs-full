@@ -65,6 +65,15 @@
 					"type":"charaMsg",
 					"text":["酒・・・酒・・・"],
 					"name":"吹き出物だらけの男"
+				},
+				{
+					"type":"addChara",
+					"charaID":"10"
+				},
+				{
+					"type":"addProfile",
+					"charaID":"10",
+					"infoID":"0"
 				}
 			]
 		},
@@ -75,7 +84,7 @@
 					"equip":["1516"]
 				}
 			],
-			"eventID":"{43,6}"
+			"eventID":["43","6"]
 		},
 		{
 			"type":"if",

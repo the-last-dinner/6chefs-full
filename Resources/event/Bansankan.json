@@ -29,6 +29,10 @@
           "name": "執事服の男"
         },
         {
+          "type":"addChara",
+          "charaID":"9"
+        },
+        {
           "type": "reaction",
           "objID": "hero"
         },

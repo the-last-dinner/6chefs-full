@@ -14,5 +14,34 @@
 			"x":26,
 			"y":11
 		}
+	],
+	"3":[
+		{
+			"type":"getItem",
+			"itemID":"1524"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"item"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"4":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["30","3"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
+		}
 	]
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="58">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="62">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
@@ -20,6 +20,9 @@
  </tileset>
  <tileset firstgid="5289" name="SC-DoorI01" tilewidth="16" tileheight="16">
   <image source="SC-DoorI01.png" trans="050505" width="128" height="256"/>
+ </tileset>
+ <tileset firstgid="5417" name="map_icon" tilewidth="16" tileheight="16">
+  <image source="map_icon.png" trans="000000" width="513" height="435"/>
  </tileset>
  <layer name="Base" width="30" height="26">
   <properties>
@@ -42,7 +45,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0rlPwmAYgPFaWpjl2oG2iy4thUUXWmAvLSy6eGy6cOiiC4cuunj8wT4kJX4xpQOFkhDf5BeGwvu0/ZCk/c+FLEmXcvrdO5r3kJGBAhXZHd/LE/ufkUcBRZRQ3nH3jf3vqKIGDTqMFN69ScNCHTYaaO7hzJPMCfd7KpxXWnNG61w4r03nKMd/HRmBAhXZ3Prfrc5r0zlmdx4FQREllGO6SafC7qrQXjY16DAiui1Vkhy4aKvJu7Wwt2ouP5sRXY9WDz6CBF2T3RbqsEONmO4VrWvc4HZL3b/tqO6Q1ghjTGK6FYX3iBo06DCU3+stdjtwQ+1QB92I7pTWDHMsYromDQt12GigKXQ9dvfgh4JQH4OI7getT3zhO6bbouHARRsddJX139/WeDR68BGgj0EK3X3NkGcbYYwJHvCYwvNOacwwxwIveD3g9/w/hzc/bfkqxg==
+   eJzt1LlPwmAYgPHPHjLoIoeLLpwLLFxddKEce8ux6OKx6cKhiy5cLrp4/Lc6+DQpyRetHagFQ3yTX0hIeB/KRz4h1j8nihCnyvf331UhPtTwulc0r6FAhQYdO5oQu1p43Tsa94gihjgSOKB5GGL3kcYTUkgjgyzyNAshdp0p0imhjAqqMDzO/C9Pnu9bkM5rVXNE61g6r2VnK8J/HapEg47tyM+fW5zXsrPH7ihikjgS2PfpBp0ku1NS22lmkEXOo1vThTBRR0MP3k27vUXTeTU8uhYtG210AnSL7C6hjIqr6tM9o3WOC1z+Uvdr26vbpzXAECOfbpI7KYU0MsgiJ91TNXabqLsariZaHt0xrQmmmPl0izRKKKOCKgypa7HbRtvVcXXR8+g+03rBK958ujUaJupooIlWyPeyMxYNG2100EVvBd11TZ9nG2CIEW5wu4LnHdOYYIoZ5njY4N/5fzZvPgE9QS04
   </data>
  </layer>
  <layer name="MonoUe" width="30" height="26">
@@ -89,6 +92,7 @@
   <object id="51" x="272" y="384" width="208" height="32"/>
   <object id="52" x="464" y="368" width="16" height="16"/>
   <object id="56" x="368" y="160" width="64" height="96"/>
+  <object id="59" x="144" y="48" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -147,5 +151,22 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
+  <object id="60" x="144" y="48" width="32" height="32">
+   <properties>
+    <property name="eventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="61" x="464" y="336" width="16" height="16">
+   <properties>
+    <property name="eventID" value="8"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
+ <layer name="item" width="30" height="26">
+  <data encoding="base64" compression="zlib">
+   eJztzTEBACAMA7CqmChwAv5/UAE7EgNJ6GJUMuv9u+65P7wAAPR3AEUuAcM=
+  </data>
+ </layer>
 </map>

@@ -212,7 +212,7 @@
 					"type":"charaMsg",
 					"text":["俺の食材はこーゆーのじゃないんだけどな・・・\n獲りに行くか"],
 					"charaID":"2",
-					"imgID":"1",
+					"imgID":"1"
 				},
 				{
 					"type":"if",
@@ -737,6 +737,36 @@
 				},
 				{
 					"type":"fadein"
+				}
+			]
+		}
+	],
+	"21":[
+		{
+			"type":"getItem",
+			"itemID":"1526",
+			"name":"子供用弁当箱"
+		},
+		{
+			"type":"removeLayer",
+			"layer":"item"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"22":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["8","21"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
 				}
 			]
 		}

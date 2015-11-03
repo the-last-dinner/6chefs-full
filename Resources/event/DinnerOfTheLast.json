@@ -243,8 +243,8 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"whiteout",
-							"time":3.0
+							"type":"fadeout",
+							"color":[255,255,255]
 						},
 						{
 							"type":"charaMsg",
@@ -253,6 +253,9 @@
 							"imgID":"2",
 							"option":"reaction"
 						},
+						{
+							"type":"fadein"
+						}
 					]
 				},
 				{
