@@ -126,7 +126,7 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
     SoundManager::getInstance()->playSound("se/cursorMove.mp3");
     switch (static_cast<Type>(idx)) {
         case Type::ITEM:
-            SoundManager::getInstance()->playSound("se/failure.mp3");
+            this->onItemMenuSelected();
             break;
         case Type::SAVE:
             this->onSaveMenuSelected();

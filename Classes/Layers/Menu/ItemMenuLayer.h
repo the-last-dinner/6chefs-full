@@ -41,7 +41,7 @@ private:
     //bool write_flag;
     //bool comfirm_flag;
 public:
-    //function<void(int)> onSaveDataSelected { nullptr };
+    function<void()> onItemMenuCanceled { nullptr };
     //function<void()> onSaveDataSelectCancelled { nullptr };
 };
 #endif /* ItemMenuLayer_h */

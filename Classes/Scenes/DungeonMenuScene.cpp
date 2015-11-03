@@ -9,6 +9,7 @@
 #include "Scenes/DungeonMenuScene.h"
 #include "Layers/Menu/DungeonMainMenuLayer.h"
 #include "Layers/Menu/SaveDataSelector.h"
+#include "Layers/Menu/ItemMenuLayer.h"
 
 // コンストラクタ
 DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
@@ -50,6 +51,7 @@ void DungeonMenuScene::createMainMenu()
     DungeonMainMenuLayer* menu = DungeonMainMenuLayer::create();
     menu->onSaveMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onSaveMenuSelected, this);
     menu->onMenuHidden = CC_CALLBACK_0(DungeonMenuScene::onMenuHidden, this);
+    menu->onItemMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onItemMenuSelected, this);
     this->addChild(menu);
     this->mainMenu = menu;
     this->mainMenu->show();
@@ -62,9 +64,7 @@ void DungeonMenuScene::createSaveMenu()
     SaveDataSelector* saveDataSelector { SaveDataSelector::create(true) };
     this->addChild(saveDataSelector);
     // セーブデータ選択レイヤーのイベントをリッスン
-    //saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(DungeonMenuScene::onSaveDataSelected, this);
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(DungeonMenuScene::onSaveDataSelectCancelled, this);
-    
     saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
 }
@@ -72,6 +72,11 @@ void DungeonMenuScene::createSaveMenu()
 void DungeonMenuScene::createItemMenu()
 {
     FUNCLOG
+    ItemMenuLayer* itemMenu { ItemMenuLayer::create()};
+    this->addChild(itemMenu);
+    itemMenu->hide();
+    itemMenu->onItemMenuCanceled = CC_CALLBACK_0(DungeonMenuScene::onItemMenuCanceled, this);
+    this->itemMenu = itemMenu;
 }
 
 void DungeonMenuScene::onPreloadFinished()
@@ -111,6 +116,10 @@ void DungeonMenuScene::onMenuHidden()
     Director::getInstance()->popScene();
 }
 
+#pragma mark -
+#pragma mark SaveDataSelecter
+
+// セーブメニューが選択された時
 void DungeonMenuScene::onSaveMenuSelected()
 {
     FUNCLOG
@@ -132,5 +141,35 @@ void DungeonMenuScene::onSaveDataSelectCancelled()
 {
     FUNCLOG
     SoundManager::getInstance()->playSound("se/back.mp3");
-    runAction(Sequence::create(CallFunc::create([=](){this->saveDataSelector->hide();}), CallFunc::create([=](){this->mainMenu->show();}), nullptr));
+    runAction(Sequence::create(
+        CallFunc::create([=](){this->saveDataSelector->hide();}),
+        CallFunc::create([=](){this->mainMenu->show();}),
+        nullptr
+    ));
 }
+
+#pragma mark -
+#pragma mark ItemMenu
+
+// アイテムメニューが選択された時
+void DungeonMenuScene::onItemMenuSelected()
+{
+    FUNCLOG
+    this->mainMenu->hide();
+    this->createItemMenu();
+    this->itemMenu->show();
+}
+
+// アイテムメニューでキャンセルを押した時
+void DungeonMenuScene::onItemMenuCanceled()
+{
+    FUNCLOG
+    SoundManager::getInstance()->playSound("se/back.mp3");
+    runAction(Sequence::create(
+        CallFunc::create([=](){this->itemMenu->hide();}),
+        CallFunc::create([=](){this->mainMenu->show();}),
+        nullptr
+    ));
+}
+
+
