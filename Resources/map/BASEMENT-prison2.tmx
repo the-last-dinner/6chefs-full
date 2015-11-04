@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="32">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -8,6 +8,9 @@
  </tileset>
  <tileset firstgid="961" name="map_icon" tilewidth="16" tileheight="16">
   <image source="map_icon.png" trans="080500" width="513" height="435"/>
+ </tileset>
+ <tileset firstgid="1825" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="000000" width="256" height="1990"/>
  </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
@@ -30,7 +33,12 @@
    <property name="EventID" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1ARfWRgYvrFQzzxRVgYGMVbqmTcKRsEoGAXUAgCXYAIp
+   eJxjYBgF1ASPWBgYHrNQzzwmVgYGZlbqmTcKRsEoGAXUAgAsiQHd
+  </data>
+ </layer>
+ <layer name="hint" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRgA+0c1LXvOlA82ZQ2cyBAACb+AHS
   </data>
  </layer>
  <objectgroup name="collision">
@@ -111,6 +119,12 @@
    <properties>
     <property name="EventID" value="3"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="31" x="160" y="272" width="32" height="16">
+   <properties>
+    <property name="eventID" value="10"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

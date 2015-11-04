@@ -67,6 +67,38 @@
 					"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
 					"charaID":"0",
 					"imgID":"1"
+				},
+				{
+					"type":"changeFlg",
+					"flg":"1"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","2"],
+					"Nequip":["158","1529"],
+					"flg":"1"
+				},
+				{
+					"event":["34","2"],
+					"Nequip":["159","1530"],
+					"flg":"1"
+				},
+				{
+					"event":["34","2"],
+					"Nequip":["1510","1531"],
+					"flg":"1"
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
+					"charaID":"0",
+					"imgID":"1"
 				}
 			]
 		}
@@ -75,6 +107,58 @@
 		{
 			"type":"sequence",
 			"action":[
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["34","2"],
+							"Nequip":["158","1529"],
+							"Nequip":["159","1530"],
+							"Nequip":["1510","1531"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":"1"
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["34","2"],
+							"Nequip":["158","1529"],
+							"Nequip":["159","1530"],
+							"Nequip":["1510","1531"],
+							"flg":"1"
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["目玉焼きにゆで玉子・・・茶碗蒸し・・・・\nあまり卵は使わないからよく分からないな・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ"],
+									"charaID":"0",
+									"imgID":"2"
+								}
+							]
+						}
+					]
+				},
 				{
 					"type":"if",
 					"condition":[
@@ -108,6 +192,10 @@
 								},
 								{
 									"type":"fadein"
+								},
+								{
+									"type":"removeItem",
+									"itemID":"158"	
 								},
 								{
 									"type":"getItem",
@@ -153,6 +241,10 @@
 									"type":"fadein"
 								},
 								{
+									"type":"removeItem",
+									"itemID":"159"	
+								},
+								{
 									"type":"getItem",
 									"itemID":"1512",
 									"name":"ゆで玉子"
@@ -194,6 +286,10 @@
 								},
 								{
 									"type":"fadein"
+								},
+								{
+									"type":"removeItem",
+									"itemID":"1510"	
 								},
 								{
 									"type":"getItem",

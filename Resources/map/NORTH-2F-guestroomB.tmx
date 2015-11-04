@@ -49,6 +49,14 @@
    eJztzjENAAAIA7B9yAX/FzIISaugCXCtK5m6XgAAAPy1aiIA7g==
   </data>
  </layer>
+ <layer name="hint" width="30" height="36">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzgENADAIA7DZQe5RjAuekFZBE2Dbq6Tr9wIAAOCOAZdHAXY=
+  </data>
+ </layer>
  <objectgroup name="collision">
   <object id="15" x="16" y="448" width="208" height="128"/>
   <object id="16" x="256" y="512" width="80" height="64"/>
@@ -96,7 +104,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="31" x="192" y="112" width="32" height="32">
+  <object id="31" x="192" y="112" width="32" height="16">
    <properties>
     <property name="EventID" value="4"/>
     <property name="trigger" value="2"/>
