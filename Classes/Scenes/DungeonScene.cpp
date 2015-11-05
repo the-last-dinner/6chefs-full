@@ -16,11 +16,14 @@
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
-#include "Tasks/TaskMediator.h"
+#include "Tasks/EventTask.h"
+#include "Tasks/CameraTask.h"
+#include "Tasks/PlayerControlTask.h"
 
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
-#include "MapObjects/Objects.h"
+
+#include "Event/EventScript.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
@@ -30,27 +33,15 @@ DungeonScene::~DungeonScene()
 {
 	FUNCLOG
     
-	CC_SAFE_RELEASE_NULL(this->mediator);
-    CC_SAFE_RELEASE_NULL(this->objectList);
-}
-
-// シーン生成
-Scene* DungeonScene::createScene()
-{
-	Scene* scene = Scene::create();
-	DungeonScene* layer = DungeonScene::create();
-	scene->addChild(layer);
-	return scene;
+    CC_SAFE_RELEASE_NULL(this->cameraTask);
+	CC_SAFE_RELEASE_NULL(this->eventTask);
+    CC_SAFE_RELEASE_NULL(this->playerControlTask);
 }
 
 // 初期化
-bool DungeonScene::init()
+bool DungeonScene::init(DungeonSceneData* data)
 {
-	FUNCLOG
-    
-    EventScriptManager::getInstance()->setEventScript(CsvDataManager::getInstance()->getMapFileName(PlayerDataManager::getInstance()->getLocation().map_id));
-    
-    return baseScene::init(DungeonSceneData::create());
+    return baseScene::init(data);
 }
 
 // リソースプリロード完了時の処理
@@ -62,37 +53,42 @@ void DungeonScene::onPreloadFinished()
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
-    // マップレイヤからオブジェクトリストを取り出す
-    this->objectList = mapLayer->getMapObjectList();
-    CC_SAFE_RETAIN(this->objectList);
-    
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
     ambientLightLayer->setGlobalZOrder(Priority::AMBIENT_LIGHT);
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
     
-    this->listener->setEnabled(true);
+    // カメラ処理クラス生成
+    CameraTask* cameraTask {CameraTask::create()};
+    CC_SAFE_RETAIN(cameraTask);
+    this->cameraTask = cameraTask;
     
-    mapLayer->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    // イベント処理クラス生成
+    EventTask* eventTask { EventTask::create() };
+    CC_SAFE_RETAIN(eventTask);
+    this->eventTask = eventTask;
     
-    // タスククラスを生成
-    TaskMediator* mediator {TaskMediator::create(this)};
-    CC_SAFE_RETAIN(mediator);
-    this->mediator = mediator;
+    // プレイヤー操作処理クラス生成
+    PlayerControlTask* playerControlTask {PlayerControlTask::create()};
+    CC_SAFE_RETAIN(playerControlTask);
+    this->playerControlTask = playerControlTask;
     
     // リスナにコールバックを設定
-    this->listener->onCursorKeyPressed = CC_CALLBACK_1(TaskMediator::onCursorKeyPressed, mediator);
-    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(TaskMediator::onSpaceKeyPressed, mediator);
-    this->listener->intervalInputCheck = CC_CALLBACK_1(TaskMediator::intervalInputCheck, mediator);
+    this->listener->onCursorKeyPressed = CC_CALLBACK_1(PlayerControlTask::turn, playerControlTask);
+    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(PlayerControlTask::search, playerControlTask);
+    this->listener->intervalInputCheck = CC_CALLBACK_1(PlayerControlTask::walking, playerControlTask);
     this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
     this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
+    
+    this->listener->setEnabled(true);
+    
+    mapLayer->getMapObjectList()->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
 }
 
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
-    FUNCLOG
     this->listener->setEnabled(false);
     // 主人公の位置をセット
     Character* chara = this->mapLayer->getMapObjectList()->getMainCharacter();
@@ -106,7 +102,7 @@ void DungeonScene::onMenuKeyPressed()
      if(success)
      {
          Sprite* screen = Sprite::create(filename);
-         Scene* menu = DungeonMenuScene::createScene(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         Scene* menu = DungeonMenuScene::create(screen->getTexture(), [=](){this->listener->setEnabled(true);});
          // メニューシーンをプッシュ
          Director::getInstance()->pushScene(menu);
          // cache削除

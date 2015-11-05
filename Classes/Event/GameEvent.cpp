@@ -8,9 +8,12 @@
 
 #include "Event/GameEvent.h"
 
+#include "Event/EventScript.h"
 #include "Event/EventFactory.h"
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 #pragma mark GameEvent
 
@@ -27,8 +30,8 @@ GameEvent::~GameEvent()
 // 初期化
 bool GameEvent::init()
 {
-    EventFactory* factory {EventScriptManager::getInstance()->getFactory()};
-    EventScriptValidator* validator {EventScriptManager::getInstance()->getValidator()};
+    EventFactory* factory {DungeonSceneManager::getInstance()->getEventFactory()};
+    EventScriptValidator* validator {DungeonSceneManager::getInstance()->getScriptValidator()};
     
     if(!factory || !validator) return false;
     
@@ -59,7 +62,7 @@ GameEvent* GameEvent::createSpawnFromIdOrAction(rapidjson::Value& json)
     // eventIDの指定があれば、指定のIDに対応するjsonから生成
     if(this->validator->hasMember(json, member::EVENT_ID))
     {
-        return this->factory->createGameEvent(EventScriptManager::getInstance()->getScript(json[member::EVENT_ID].GetInt()));
+        return this->factory->createGameEvent(DungeonSceneManager::getInstance()->getEventScript()->getScriptJson(json[member::EVENT_ID].GetInt()));
     }
     // eventIDの指定がなければ、action配列から生成
     else

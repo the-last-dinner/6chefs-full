@@ -14,7 +14,7 @@
 class EventListenerKeyboardLayer;
 class SceneData;
 
-class baseScene : public Layer
+class baseScene : public Scene
 {
 	// インスタンスメソッド
 private:

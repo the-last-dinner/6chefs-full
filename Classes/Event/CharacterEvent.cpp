@@ -11,7 +11,11 @@
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
 
+#include "Layers/Dungeon/TiledMapLayer.h"
+
 #include "MapObjects/Character.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 #pragma mark CharacterEvent
 
@@ -90,7 +94,7 @@ bool WalkToEvent::init(rapidjson::Value& json)
     if(!CharacterEvent::init(json)) return false;
     
     // キャラクタの現在座標と移動先座標の差を取る
-    Point diffVector {this->validator->getPoint(json) - this->target->getGridPosition(this->validator->getMapSize())};
+    Point diffVector {this->validator->getPoint(json) - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
     
     int diffX {abs(static_cast<int>(diffVector.x))};
     int diffY {abs(static_cast<int>(diffVector.y))};

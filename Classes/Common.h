@@ -5,7 +5,6 @@
 
 #include "define.h"
 
-#include "Managers/EventScriptManager.h"
 #include "Managers/SoundManager.h"
 #include "Managers/TextureManager.h"
 #include "Managers/PlayerDataManager.h"

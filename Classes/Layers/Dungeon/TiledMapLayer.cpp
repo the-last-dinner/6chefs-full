@@ -54,17 +54,10 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
 	Character* mainCharacter { Character::create(0, location.direction) };
     mainCharacter->setGridPosition(tiledMap->getContentSize(), Point(location.x, location.y));
 	tiledMap->addChild(mainCharacter);
-    this->mainCharacter = mainCharacter;
     objectList->setMainCharacter(mainCharacter);
     mainCharacter->setMapObjectList(objectList);
     
 	return true;
-}
-
-//主人公のオブジェクトを取得
-Character* TiledMapLayer::getMainCharacter()
-{
-    return this->mainCharacter;
 }
 
 // マップを取得

@@ -19,7 +19,6 @@ AppDelegate::~AppDelegate()
 {
 	FUNCLOG
     CsvDataManager::destroy();
-    EventScriptManager::destroy();
 	SoundManager::destory();
     PlayerDataManager::destroy();
 	TextureManager::destory();
@@ -55,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	director->setAnimationInterval(1.0 / 60);
 	
 	// シーンを指定してゲーム開始
-	director->runWithScene(TitleScene::createScene());
+	director->runWithScene(TitleScene::create());
 	return true;
 }
 

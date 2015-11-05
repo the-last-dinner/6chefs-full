@@ -10,12 +10,14 @@
 
 #include "MapObjects/MapObject.h"
 
-#include "Tasks/TaskMediator.h"
+#include "Layers/Dungeon/TiledMapLayer.h"
 
 #include "Tasks/FollowType/NeverFollow.h"
 #include "Tasks/FollowType/HorizontalFollow.h"
 #include "Tasks/FollowType/VerticalFollow.h"
 #include "Tasks/FollowType/BothFollow.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 // コンストラクタ
 CameraTask::CameraTask() {FUNCLOG};
@@ -32,13 +34,18 @@ CameraTask::~CameraTask()
 };
 
 // 初期化
-bool CameraTask::init(TaskMediator* mediator)
+bool CameraTask::init()
 {
-    if(!GameTask::init(mediator)) return false;
+    if(!GameTask::init()) return false;
+    
+    // マップレイヤ取得
+    TiledMapLayer* mapLayer { DungeonSceneManager::getInstance()->getMapLayer() };
+    if(!mapLayer) return false;
+    this->mapLayer = mapLayer;
     
     // マップの大きさから、縦方向、横方向のカメラ移動を許可するか判定
     Size winSize {Director::getInstance()->getWinSize()};
-    Size mapSize {mediator->getMapSize()};
+    Size mapSize {mapLayer->getMapSize()};
     
     // 外枠の大きさ
     Size margin {GRID * 4, GRID * 4};
@@ -97,7 +104,7 @@ void CameraTask::resumeFollowing()
 // updateメソッド
 void CameraTask::update(float delta)
 {
-    if(!this->target || !this->mediator || !this->follow) return;
+    if(!this->target || !this->follow) return;
     
-    this->mediator->setMapPosition(this->follow->getPosition(this->mediator->getMapSize(), this->target->getPosition()));
+    this->mapLayer->setPosition(this->follow->getPosition(this->mapLayer->getMapSize(), this->target->getPosition()));
 }

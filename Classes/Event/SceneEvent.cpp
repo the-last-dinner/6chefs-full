@@ -12,9 +12,13 @@
 #include "Event/EventScriptMember.h"
 
 #include "Scenes/DungeonScene.h"
+#include "Datas/Scene/DungeonSceneData.h"
 
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
+#include "MapObjects/Party.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 #pragma mark ChangeMapEvent
 
@@ -32,7 +36,7 @@ bool ChangeMapEvent::init(rapidjson::Value& json)
     // directionが指定されていない時
     else
     {
-        direction = this->validator->getMapObjectList()->getMainCharacter()->getDirection();
+        direction = DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getDirection();
     }
     
     this->location = PlayerDataManager::Location(stoi(json[member::MAP_ID].GetString()), json[member::X].GetInt(), json[member::Y].GetInt(), direction);
@@ -44,7 +48,7 @@ void ChangeMapEvent::run()
 {
     PlayerDataManager::getInstance()->setLocation(this->location);
     this->setDone();
-    Director::getInstance()->replaceScene(DungeonScene::createScene());
+    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
 }
 
 #pragma mark -
@@ -81,5 +85,5 @@ bool WaitEvent::init(rapidjson::Value& json)
 
 void WaitEvent::run()
 {
-    this->validator->getScene()->runAction(Sequence::createWithTwoActions(DelayTime::create(this->duration), CallFunc::create([this](){this->setDone();})));
+    DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(DelayTime::create(this->duration), CallFunc::create([this](){this->setDone();})));
 }

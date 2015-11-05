@@ -14,7 +14,6 @@
 class DungeonScene;
 class GameEvent;
 class MapObjectList;
-class TaskMediator;
 class MapObject;
 class TiledMapLayer;
 
@@ -23,17 +22,13 @@ class EventScriptValidator : public Ref
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(EventScriptValidator, TaskMediator*)
-    
-// インスタンス変数
-private:
-    TaskMediator* mediator { nullptr };
+    CREATE_FUNC(EventScriptValidator)
     
 // インスタンスメソッド
 private:
     EventScriptValidator();
     ~EventScriptValidator();
-    bool init(TaskMediator* mediator);
+    bool init();
     
     // condition
     bool detectEquipFlg(rapidjson::Value& json, bool negative);
@@ -52,10 +47,5 @@ public:
     
     Point getPoint(rapidjson::Value& json);
     Direction getDirection(rapidjson::Value& json);
-    
-    DungeonScene* getScene() const;
-    TiledMapLayer* getMapLayer() const;
-    MapObjectList* getMapObjectList() const;
-    Size getMapSize() const;
 };
 #endif /* defined(__LastSupper__EventScriptValidator__) */

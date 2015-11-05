@@ -8,6 +8,8 @@
 
 #include "Tasks/GameTask.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 // コンストラクタ
 GameTask::GameTask() {FUNCLOG};
 
@@ -15,11 +17,7 @@ GameTask::GameTask() {FUNCLOG};
 GameTask::~GameTask() {FUNCLOG};
 
 // 初期化
-bool GameTask::init(TaskMediator* mediator)
+bool GameTask::init()
 {
-    if(!mediator) return false;
-    
-    this->mediator = mediator;
-    
     return true;
 }

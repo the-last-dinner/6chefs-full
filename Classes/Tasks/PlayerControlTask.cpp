@@ -11,10 +11,11 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "MapObjects/Character.h"
-
+#include "MapObjects/MapObject.h"
 #include "MapObjects/MapObjectList.h"
+#include "MapObjects/Party.h"
 
-#include "Tasks/TaskMediator.h"
+#include "Managers/DungeonSceneManager.h"
 
 // コンストラクタ
 PlayerControlTask::PlayerControlTask(){FUNCLOG}
@@ -23,25 +24,34 @@ PlayerControlTask::PlayerControlTask(){FUNCLOG}
 PlayerControlTask::~PlayerControlTask(){FUNCLOG}
 
 // 初期化
-bool PlayerControlTask::init(TaskMediator* mediator)
+bool PlayerControlTask::init()
 {
-    if(!GameTask::init(mediator)) return false;
+    if(!GameTask::init()) return false;
+    
+    EventListenerKeyboardLayer* listener {DungeonSceneManager::getInstance()->getSceneEventListener()};
+    if(!listener) return false;
+    this->listener = listener;
+    
+    Party* party { DungeonSceneManager::getInstance()->getParty() };
+    if(!party) return false;
+    this->party = party;
     
     return true;
 }
 
 // 向きを変える
-void PlayerControlTask::turn(const Direction& direction)
+void PlayerControlTask::turn(const Key& key)
 {
-    Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
+    Direction direction { MapUtils::keyToDirection(key) };
+    Character* mainCharacter {this->party->getMainCharacter()};
     if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
 }
 
 // 目の前を調べる
 void PlayerControlTask::search()
 {
-    MapObjectList* objectList {this->mediator->getMapObjectList()};
-    Character* mainCharacter {objectList->getMainCharacter()};
+    MapObjectList* objectList {DungeonSceneManager::getInstance()->getMapObjectList()};
+    Character* mainCharacter {this->party->getMainCharacter()};
     
     Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
     
@@ -52,24 +62,26 @@ void PlayerControlTask::search()
         if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition))
         {
             objPosition = obj->getPosition();
-            this->mediator->runEventScript(obj->getEventId());
+            DungeonSceneManager::getInstance()->runEvent(obj->getEventId());
         }
     }
 }
 
 // 歩行中、あたり判定を行い次に向かう位置を決定する
-void PlayerControlTask::walking(vector<Direction> directions)
+void PlayerControlTask::walking(const vector<Key>& keys)
 {
-    Character* mainCharacter {this->mediator->getMapObjectList()->getMainCharacter()};
+    vector<Direction> directions { MapUtils::keyToDirection(keys) };
+    
+    Character* mainCharacter {this->party->getMainCharacter()};
     
     // 一番最近押したキーの方向に主人公を向ける
     mainCharacter->setDirection(directions.back());
     
     // ダッシュキーが押されていたら、速度の倍率をあげる
-    float ratio {this->mediator->getEventListener()->isPressed(Key::DASH)? 2.f : 1.f};
+    float ratio {this->listener->isPressed(Key::DASH)? 2.f : 1.f};
     
     // 入力確認の頻度を変更
-    this->mediator->getEventListener()->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP / ratio);
+    this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP / ratio);
     
     // 入力から、使う方向の個数を決める
     int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
@@ -89,16 +101,16 @@ void PlayerControlTask::walking(vector<Direction> directions)
     // 移動ベクトルがゼロの時リターン
     if(movement == Point::ZERO) return;
     
-    this->mediator->runOnScene(Sequence::createWithTwoActions(mainCharacter->createWalkByAction(movement, ratio), CallFunc::create([this](){this->onCharacterWalkedOneGrid();})));
+    this->party->move(movement, ratio);
 }
 
 // 一マス分移動し終えた時
 void PlayerControlTask::onCharacterWalkedOneGrid()
 {
-    MapObjectList* objectList {this->mediator->getMapObjectList()};
+    MapObjectList* objectList {DungeonSceneManager::getInstance()->getMapObjectList()};
     
     // 衝突判定用Rectの中心点を含むイベントを呼ぶ
-    Rect collisionRect {objectList->getMainCharacter()->getCollisionRect()};
+    Rect collisionRect {this->party->getMainCharacter()->getCollisionRect()};
     
     Vector<MapObject*> objs {objectList->getMapObjects(Point(collisionRect.getMidX(), collisionRect.getMidY()))};
     
@@ -114,7 +126,7 @@ void PlayerControlTask::onCharacterWalkedOneGrid()
         if(obj && obj->getTrigger() == Trigger::RIDE && obj->getEventId() != this->riddenEventID)
         {
             this->riddenEventID = obj->getEventId();
-            this->mediator->runEventScript(obj->getEventId());
+            DungeonSceneManager::getInstance()->runEvent(obj->getEventId());
         }
     }
 }

@@ -13,23 +13,28 @@
 
 class AmbientLightLayer;
 class TiledMapLayer;
-class MapObjectList;
-class TaskMediator;
+class DungeonSceneData;
+class EventScript;
+
+class CameraTask;
+class EventTask;
+class PlayerControlTask;
 
 class DungeonScene : public baseScene
 {
 // クラスメソッド
 public:
-	static Scene* createScene();
-	CREATE_FUNC(DungeonScene);
+	CREATE_FUNC_WITH_PARAM(DungeonScene, DungeonSceneData*);
 	
 // インスタンス変数
 private:
     cocos2d::FileUtils* fu;
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
-    MapObjectList* objectList { nullptr };
-    TaskMediator* mediator { nullptr };
+    
+    CameraTask* cameraTask { nullptr };
+    EventTask* eventTask { nullptr };
+    PlayerControlTask* playerControlTask { nullptr };
     
 // インスタンスメソッド
 public:
@@ -38,11 +43,13 @@ public:
 private:
 	DungeonScene();
 	~DungeonScene();
-	virtual bool init() override;
+	virtual bool init(DungeonSceneData* data);
 	virtual void onPreloadFinished() override;
     virtual void onMenuKeyPressed() override;
     
-    friend class TaskMediator;
+    void runEvent(const int eventId);
+    
+    friend class DungeonSceneManager;
 };
 
 

@@ -27,7 +27,7 @@ baseScene::~baseScene()
 bool baseScene::init(SceneData* data)
 {
 	FUNCLOG
-	if(!Layer::init()) return false;
+	if(!Scene::init()) return false;
 	
 	// データクラスをセットしretain
 	this->data = data;
