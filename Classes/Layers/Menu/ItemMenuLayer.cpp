@@ -26,13 +26,35 @@ bool ItemMenuLayer::init(){
     white->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     white->setColor(Color3B::WHITE);
     white->setPosition(WINDOW_CENTER);
+    white->setOpacity(128);
     this->addChild(white);
     
     // テスト
     Label* test = Label::createWithTTF("ITEM MENU だよ", "fonts/cinecaption2.28.ttf", 48);
     test->setPosition(white->getContentSize().width / 2, white->getContentSize().height / 2);
-    test->setColor(Color3B::BLACK);
+    test->setColor(Color3B::RED);
     white->addChild(test);
+    
+    // 定義
+    SpriteUtils::Square square;
+    SpriteUtils::Margin margin = SpriteUtils::Margin(4);
+    
+    // アイテム詳細欄
+    square = SpriteUtils::Square(0,0,30,100);
+    Sprite* left = SpriteUtils::getSquareSprite(square, margin);
+    left->setColor(Color3B::BLACK);
+    this->addChild(left);
+    
+    // 装備欄
+    square = SpriteUtils::Square(30,80,100,100);
+    Sprite* upRight = SpriteUtils::getSquareSprite(square, margin);
+    upRight->setColor(Color3B::BLACK);
+    this->addChild(upRight);
+    
+    square = SpriteUtils::Square(30,0,100,80);
+    Sprite * downRight = SpriteUtils::getSquareSprite(square, margin);
+    downRight->setColor(Color3B::RED);
+    this->addChild(downRight);
     return true;
 }
 
