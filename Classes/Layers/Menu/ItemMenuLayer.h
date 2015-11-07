@@ -28,6 +28,7 @@ private:
     virtual void onIndexChanged(int newIdx, bool sound);
     virtual void onSpacePressed(int idx);
     virtual void onMenuKeyPressed();
+    void changeItemDiscription(const int idx);
 protected:
     ItemMenuLayer();
     ~ItemMenuLayer();
@@ -37,9 +38,7 @@ public:
     
     // インスタンス変数
 private:
-    //vector<PlayerDataManager::SaveIndex> saveDatas {};
-    //bool write_flag;
-    //bool comfirm_flag;
+    vector<int> items {};
 public:
     function<void()> onItemMenuCanceled { nullptr };
     //function<void()> onSaveDataSelectCancelled { nullptr };
