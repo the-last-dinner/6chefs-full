@@ -84,7 +84,13 @@ void MenuLayer::onSpaceKeyPressed()
 
 // 現在選ばれているメニューのINDEXを取得(現時点では横優先配置の場合のみ)
 int MenuLayer::getSelectedIndex() const
-{return sizeX * indexY + indexX;}
+{
+    int selected = sizeX * indexY + indexX;
+    if (selected > this->menuObjects.size() - 1){
+        selected = this->menuObjects.size() - 1;
+    }
+    return selected;
+}
 
 // メニューサイズの横方向を取得
 int MenuLayer::getMenuSizeX() const
