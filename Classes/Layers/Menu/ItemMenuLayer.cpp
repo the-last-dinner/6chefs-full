@@ -22,6 +22,9 @@ bool ItemMenuLayer::init()
     FUNCLOG
     if (!MenuLayer::init(2, 10)) return false;
     
+    SpriteUtils::Square square;
+    SpriteUtils::Margin margin;
+    
     // 白い背景を生成
     Sprite* white = Sprite::create();
     white->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -30,32 +33,44 @@ bool ItemMenuLayer::init()
     //white->setOpacity(128);
     this->addChild(white);
     
-    // テスト
-//    Label* test = Label::createWithTTF("ITEM MENU だよ", "fonts/cinecaption2.28.ttf", 48);
-//    test->setPosition(white->getContentSize().width / 2, white->getContentSize().height / 2);
-//    test->setColor(Color3B::RED);
-//    white->addChild(test);
-//    
-    // 定義
-    SpriteUtils::Square square;
-    SpriteUtils::Margin margin;
-    // アイテム詳細欄
-    square = SpriteUtils::Square(0,0,30,100);
-    margin = SpriteUtils::Margin(3, 1.5, 3, 3);
-    Sprite* left = SpriteUtils::getSquareSprite(square, margin);
-    left->setColor(Color3B::BLACK);
-    this->addChild(left);
+    // タイトル
+    square = SpriteUtils::Square(0,80,30,100);
+    margin = SpriteUtils::Margin(3.0,1.5,1.5,3.0);
+    Sprite* leftTop = SpriteUtils::getSquareSprite(square, margin);
+    leftTop->setColor(Color3B(128,0,0));
+    this->addChild(leftTop);
     
-    // 装備欄
+    Label* title = Label::createWithTTF("アイテム", "fonts/cinecaption2.28.ttf", 48);
+    title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
+    title->setColor(Color3B::WHITE);
+    leftTop->addChild(title);
+    
+    // アイテム詳細
+    square = SpriteUtils::Square(0,0,30,80);
+    margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
+    Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
+    leftBottom->setColor(Color3B::BLACK);
+    this->addChild(leftBottom);
+    
+    // 装備
     square = SpriteUtils::Square(30,80,100,100);
-    margin = SpriteUtils::Margin(3,3,1.5,1.5);
-    Sprite* upRight = SpriteUtils::getSquareSprite(square, margin);
-    upRight->setColor(Color3B::BLACK);
-    this->addChild(upRight);
+    margin = SpriteUtils::Margin(3.0,3.0,1.5,1.5);
+    Sprite* rightTop = SpriteUtils::getSquareSprite(square, margin);
+    rightTop->setColor(Color3B::BLACK);
+    this->addChild(rightTop);
+    
+    int right_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT);
+    int left_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT);
+    string right_equip = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
+    string left_equip = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
+    Label* equipment = Label::createWithTTF("装備\n右手 : " + right_equip + "\n左手 : " + left_equip, "fonts/cinecaption2.28.ttf", 26);
+    equipment->setPosition(equipment->getContentSize().width/2 + 10, rightTop->getContentSize().height/2);
+    equipment->setColor(Color3B::WHITE);
+    rightTop->addChild(equipment);
     
     // アイテムリスト
     square = SpriteUtils::Square(30,0,100,80);
-    margin = SpriteUtils::Margin(1.5, 3, 3, 1.5);
+    margin = SpriteUtils::Margin(1.5,3.0,3.0,1.5);
     Sprite* item_list = SpriteUtils::getSquareSprite(square, margin);
     item_list->setColor(Color3B::BLACK);
     this->addChild(item_list);
@@ -88,7 +103,7 @@ bool ItemMenuLayer::init()
         Sprite* panel = Sprite::create();
         Size list_size {item_list->getContentSize()};
         panel->setTextureRect(Rect(0, 0, list_size.width / 2, list_size.height / 10));
-        panel->setColor(Color3B::RED);
+        panel->setColor(Color3B::BLACK);
         panel->setTag(i);
         Size panel_size {panel->getContentSize()};
         panel->setPosition((i%2) * (list_size.width / 2) + panel_size.width/2, list_size.height - ((floor(i/2) + 1)  *  (list_size.height/10)) + panel_size.height/2);
@@ -101,7 +116,7 @@ bool ItemMenuLayer::init()
         
         // アイテム
         Label* item = Label::createWithTTF("アイテム" + to_string(i), "fonts/cinecaption2.28.ttf", 24);
-        item->setPosition(item->getContentSize().width/2 + 10 , panel_size.height / 2);
+        item->setPosition(panel_size.width/2 , panel_size.height / 2);
         item->setColor(Color3B::WHITE);
         panel->addChild(item);
     }
