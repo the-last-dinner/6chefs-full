@@ -52,7 +52,6 @@ void SoundManager::preloadSound(const string& filePath)
 // 音声を再生
 void SoundManager::playSound(const string& filePath, bool loop, float volume)
 {
-	FUNCLOG
 	AudioEngine::play2d(filePath, loop, volume);
 	return;
 }

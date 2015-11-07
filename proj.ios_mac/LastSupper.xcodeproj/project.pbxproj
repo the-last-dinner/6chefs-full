@@ -27,6 +27,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
 		260CF2651B2D486700BB139B /* EventScriptManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260CF2621B2D486700BB139B /* EventScriptManager.cpp */; };
+		26114E761BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */; };
+		26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */; };
 		2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
@@ -238,6 +240,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		260CF2621B2D486700BB139B /* EventScriptManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventScriptManager.cpp; path = ../Classes/Managers/EventScriptManager.cpp; sourceTree = "<group>"; };
 		260CF2631B2D486700BB139B /* EventScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventScriptManager.h; path = ../Classes/Managers/EventScriptManager.h; sourceTree = "<group>"; };
+		26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpriteUtils.cpp; path = ../Classes/Utils/SpriteUtils.cpp; sourceTree = "<group>"; };
+		26114E751BEDF1720019C1C3 /* SpriteUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteUtils.h; path = ../Classes/Utils/SpriteUtils.h; sourceTree = "<group>"; };
 		2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerDataManager.cpp; path = ../Classes/Managers/PlayerDataManager.cpp; sourceTree = "<group>"; };
 		2621C4261B3FC30500112CB9 /* PlayerDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerDataManager.h; path = ../Classes/Managers/PlayerDataManager.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
@@ -862,6 +866,8 @@
 				557A87C81B4702BF001993E1 /* MapUtils.h */,
 				26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */,
 				26BA61F01BCB59EA00CE63C7 /* StringUtils.h */,
+				26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */,
+				26114E751BEDF1720019C1C3 /* SpriteUtils.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1130,6 +1136,7 @@
 				5564CCF51BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
 				260CF2641B2D486700BB139B /* EventScriptManager.cpp in Sources */,
 				554470761BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
+				26114E761BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				5564CCF11BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
 				556C71661BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -1202,6 +1209,7 @@
 				55C3C1F31BD1451800ECDB50 /* TaskMediator.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				55F1B6221BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
+				26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				554470861BDF61790048CD0B /* CharacterEvent.cpp in Sources */,
 				5544706F1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,

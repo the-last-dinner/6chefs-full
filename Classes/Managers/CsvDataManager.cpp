@@ -113,13 +113,13 @@ string CsvDataManager::getMapFileName(const int map_id)
 // アイテム名を取得
 string CsvDataManager::getItemName(const int item_id)
 {
-    return this->csv_data[DataType::ITEM][item_id][1];
+    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][1] : "アイテムがありません";
 }
 
 // アイテムの説明を取得
 string CsvDataManager::getItemDiscription(const int item_id)
 {
-    return this->csv_data[DataType::ITEM][item_id][3];
+    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][2] : "アイテムがありません";
 }
 
 // チャプター名を取得
