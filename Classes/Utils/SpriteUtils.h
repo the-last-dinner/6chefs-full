@@ -45,7 +45,7 @@ namespace SpriteUtils{
         float top {0};
         float bottom {0};
     public:
-        // 上,右,左,下
+        // 上,右,下,左
         Margin(const float top, const float right, const float bottom, const float left):top(top), right(right), bottom(bottom), left(left){};
         // 上,右左,下
         Margin(const float top, const float right_left, const float bottom):top(top), right(right_left), bottom(bottom), left(right_left){};
