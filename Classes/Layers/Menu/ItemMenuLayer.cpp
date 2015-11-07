@@ -20,7 +20,10 @@ ItemMenuLayer::~ItemMenuLayer(){FUNCLOG}
 bool ItemMenuLayer::init()
 {
     FUNCLOG
-    if (!MenuLayer::init(2, 10)) return false;
+    int obj_count = PlayerDataManager::getInstance()->getItemAll().size();
+    int sizeX = obj_count > 1 ? 2 : 1;
+    int sizeY = obj_count > 20 ? 10 : floor(obj_count/ 2) + 1;
+    if (!MenuLayer::init(sizeX, sizeY)) return false;
     
     SpriteUtils::Square square;
     SpriteUtils::Margin margin;
@@ -50,6 +53,7 @@ bool ItemMenuLayer::init()
     margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
     Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
     leftBottom->setColor(Color3B::BLACK);
+    leftBottom->setName("leftBottom");
     this->addChild(leftBottom);
     
     // 装備
@@ -71,43 +75,27 @@ bool ItemMenuLayer::init()
     // アイテムリスト
     square = SpriteUtils::Square(30,0,100,80);
     margin = SpriteUtils::Margin(1.5,3.0,3.0,1.5);
-    Sprite* item_list = SpriteUtils::getSquareSprite(square, margin);
-    item_list->setColor(Color3B::BLACK);
-    this->addChild(item_list);
+    Sprite* rightBottom = SpriteUtils::getSquareSprite(square, margin);
+    rightBottom->setColor(Color3B::BLACK);
+    this->addChild(rightBottom);
     
-    // アイテムリストの中身
     map<int,int> items = PlayerDataManager::getInstance()->getItemAll();
-//    int i = 0;
-//    for(auto itr = items.begin(); itr != items.end(); itr++)
-//    {
-//        // パネル生成
-//        Sprite* panel = Sprite::create();
-//        Size list_size {item_list->getContentSize()};
-//        panel->setTextureRect(Rect(0, 0, list_size.width / 2, list_size.height / 6));
-//        panel->setColor(Color3B::RED);
-//        panel->setPosition((i%2) * (list_size.width / 2) + panel->getContentSize().width, list_size.height - ((int)(i/2) *  (list_size.height/6)));
-//        item_list->addChild(panel);
-//        
-//        // アイテム
-//        Label* item = Label::createWithTTF("アイテム" + to_string(i), "fonts/cinecaption2.28.ttf", 48);
-//        //Size panel_size {panel->getContentSize()};
-//        item->setPosition(item->getContentSize().width/2, item->getContentSize().height/2);
-//        item->setColor(Color3B::WHITE);
-//        panel->addChild(item);
-//        // インクリメント
-//        i++;
-//    }
-    for(int i=0; i<19; i++)
+    if (items.size() == 0){
+        // アイテムが時は空用の番号をインサート
+        items.insert({-1,0});
+    }
+    int i = 0;
+    for(auto itr = items.begin(); itr != items.end(); itr++)
     {
         // パネル生成
         Sprite* panel = Sprite::create();
-        Size list_size {item_list->getContentSize()};
+        Size list_size {rightBottom->getContentSize()};
         panel->setTextureRect(Rect(0, 0, list_size.width / 2, list_size.height / 10));
         panel->setColor(Color3B::BLACK);
         panel->setTag(i);
         Size panel_size {panel->getContentSize()};
         panel->setPosition((i%2) * (list_size.width / 2) + panel_size.width/2, list_size.height - ((floor(i/2) + 1)  *  (list_size.height/10)) + panel_size.height/2);
-        item_list->addChild(panel);
+        rightBottom->addChild(panel);
         // メニューオブジェクトに登録
         this->menuObjects.push_back(panel);
         // 不透明度を半分にしておく
@@ -115,15 +103,35 @@ bool ItemMenuLayer::init()
         panel->setOpacity(100);
         
         // アイテム
-        Label* item = Label::createWithTTF("アイテム" + to_string(i), "fonts/cinecaption2.28.ttf", 24);
+        this->items.push_back(itr->first);
+        Label* item = Label::createWithTTF(CsvDataManager::getInstance()->getItemName(itr->first), "fonts/cinecaption2.28.ttf", 24);
         item->setPosition(panel_size.width/2 , panel_size.height / 2);
         item->setColor(Color3B::WHITE);
         panel->addChild(item);
+        // インクリメント
+        i++;
     }
     // デフォルトセレクト
     this->onIndexChanged(0, false);
     
     return true;
+}
+
+// アイテム説明部分更新
+void ItemMenuLayer::changeItemDiscription(const int idx)
+{
+    // 親のスプライトを取得
+    Node* leftBottom = this->getChildByName("leftBottom");
+    // 子のスプライトがすでに存在すれば消してから生成
+    string labelName = "discriptionLabel";
+    if (leftBottom->getChildByName(labelName)){
+        leftBottom->removeChildByName(labelName);
+    }
+    Label* discription = Label::createWithTTF(CsvDataManager::getInstance()->getItemDiscription(this->items[idx]), "fonts/cinecaption2.28.ttf", 18);
+    discription->setPosition(leftBottom->getContentSize().width / 2, leftBottom->getContentSize().height / 2);
+    discription->setColor(Color3B::WHITE);
+    discription->setName(labelName);
+    leftBottom->addChild(discription);
 }
 
 // 表示
@@ -174,4 +182,6 @@ void ItemMenuLayer::onIndexChanged(int newIdx, bool sound)
             obj->runAction(FadeTo::create(0.2f, 100));
         }
     }
+    // アイテム詳細を更新
+    this->changeItemDiscription(newIdx);
 }
