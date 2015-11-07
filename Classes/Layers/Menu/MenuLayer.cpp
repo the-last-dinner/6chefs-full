@@ -83,11 +83,14 @@ void MenuLayer::onSpaceKeyPressed()
 }
 
 // 現在選ばれているメニューのINDEXを取得(現時点では横優先配置の場合のみ)
-int MenuLayer::getSelectedIndex() const
+int MenuLayer::getSelectedIndex()
 {
     int selected = sizeX * indexY + indexX;
-    if (selected > this->menuObjects.size() - 1){
-        selected = this->menuObjects.size() - 1;
+    int maxIndex = this->menuObjects.size() - 1;
+    if (selected > maxIndex){
+        selected = maxIndex;
+        if (sizeX >= 2) this->indexX = maxIndex % sizeX;
+        if (sizeY >= 2) this->indexY = (maxIndex + 1) % sizeY;
     }
     return selected;
 }
