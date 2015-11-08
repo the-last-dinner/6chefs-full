@@ -46,6 +46,7 @@ private:
 	virtual bool init(DungeonSceneData* data);
 	virtual void onPreloadFinished() override;
     virtual void onMenuKeyPressed() override;
+    DungeonSceneData* getData() const;
     
     void runEvent(const int eventId);
     

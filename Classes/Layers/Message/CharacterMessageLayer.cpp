@@ -51,13 +51,13 @@ bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas, func
 Label* CharacterMessageLayer::createMessage()
 {
     CharacterMessageData* data {this->datas.front()};
-	if(data->getCharaId() != -1 && data->getImgId() != -1){
-	// キャラクター画像;
-//		Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getCharaFileName(info.charaId) + "_s_" + to_string(info.imgId) + ".png")};
-//		img->setScale(WINDOW_HEIGHT * 0.8f / img->getContentSize().height);
-//		img->setPosition(Point(WINDOW_WIDTH / 4, img->getContentSize().height / 2));
-//		img->setLocalZOrder(-1);
-//		this->addChild(img);
+    // キャラクター画像
+	if(data->getCharaId() != -1 && SpriteFrameCache::getInstance()->getSpriteFrameByName(CsvDataManager::getInstance()->getCharaFileName(data->getCharaId()) + "_s_" + to_string(data->getImgId()) + ".png"))
+    {
+        Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getCharaFileName(data->getCharaId()) + "_s_" + to_string(data->getImgId()) + ".png")};
+        img->setPosition(Point(WINDOW_WIDTH * 3 / 4, 0));
+        img->setLocalZOrder(-1);
+        this->addChild(img);
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();

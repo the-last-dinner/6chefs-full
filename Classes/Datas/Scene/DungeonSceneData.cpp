@@ -26,6 +26,8 @@ bool DungeonSceneData::init(const PlayerDataManager::Location& location)
 {
 	FUNCLOG
     
+    this->initialLocation = location;
+    
     // イベントスクリプト生成
     EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(location.map_id))};
     CC_SAFE_RETAIN(eventScript);
@@ -40,6 +42,12 @@ bool DungeonSceneData::init(const PlayerDataManager::Location& location)
     this->textureFilePaths.push_back("obj");
 	
 	return true;
+}
+
+// 初期位置データを取得
+PlayerDataManager::Location DungeonSceneData::getInitialLocation() const
+{
+    return this->initialLocation;
 }
 
 // イベントスクリプトを取得

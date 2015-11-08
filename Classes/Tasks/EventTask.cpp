@@ -44,24 +44,40 @@ bool EventTask::init()
 	return true;
 }
 
-// イベントスクリプトを実行
-void EventTask::runEvent(int eventId)
+// イベントキューにあるイベントを実行開始
+void EventTask::runEventQueue()
 {
-    // イベントを生成し、キューにプッシュする
-    // 同時実行のSpawnとして生成しておく
-    DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
-    
-    GameEvent* event { manager->getEventFactory()->createGameEvent(manager->getEventScript()->getScriptJson(eventId))};
-    
-    CC_SAFE_RETAIN(event);
-    
-    this->eventQueue.push_back(event);
-    
-    // 実行
+    if(!this->existsEvent()) return;
     this->run();
-    
     // update開始
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+}
+
+// イベントをIDから実行
+void EventTask::runEvent(int eventId)
+{
+    this->pushEventBack(eventId);
+    
+    // 実行
+    this->runEventQueue();
+}
+
+// キューに指定IDイベントを後ろから詰める
+void EventTask::pushEventBack(int eventId)
+{
+    GameEvent* event {this->createEventById(eventId)};
+    if(!event) return;
+    DungeonSceneManager::getInstance()->setEventListenerPaused(true);
+    this->eventQueue.push_back(event);
+}
+
+// キューに指定IDイベントを前から詰める
+void EventTask::pushEventFront(int eventId)
+{
+    GameEvent* event {this->createEventById(eventId)};
+    if(!event) return;
+    DungeonSceneManager::getInstance()->setEventListenerPaused(true);
+    this->eventQueue.push_front(event);
 }
 
 // キューにある先頭のイベントを実行
@@ -79,10 +95,28 @@ void EventTask::run()
     this->runningEvent->run();
 }
 
+// IDからイベントを生成
+GameEvent* EventTask::createEventById(int eventId)
+{
+    DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
+    
+    GameEvent* event { manager->getEventFactory()->createGameEvent(manager->getEventScript()->getScriptJson(eventId))};
+    
+    CC_SAFE_RETAIN(event);
+    
+    return event;
+}
+
 // 現在実行中のイベントがあるか
 bool EventTask::isEventRunning()
 {
     return this->runningEvent;
+}
+
+// キューにイベントが存在するか
+bool EventTask::existsEvent()
+{
+    return !this->eventQueue.empty();
 }
 
 // update
@@ -99,9 +133,10 @@ void EventTask::update(float delta)
     }
         
     // キューが空になったらupdate停止
-    if(this->eventQueue.empty())
+    if(this->eventQueue.empty() && !this->runningEvent)
     {
         Director::getInstance()->getScheduler()->unscheduleUpdate(this);
+        DungeonSceneManager::getInstance()->setEventListenerPaused(false);
     }
     
     // イベントを実行

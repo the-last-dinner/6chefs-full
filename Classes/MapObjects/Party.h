@@ -30,8 +30,8 @@ private:
     bool init(Character* mainCharacter);
     
 public:
-    void addCharacter(Character* character);
-    void move(const Point& movementVector, float ratio, function<void()> callback);
+    void addMember(Character* character);
+    void move(const vector<Direction>& directions, float ratio, function<void()> callback);
     Character* getMainCharacter() const;
     Vector<Character*> getMembers() const;
 };

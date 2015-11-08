@@ -76,14 +76,8 @@ bool WalkByEvent::init(rapidjson::Value& json)
 
 void WalkByEvent::run()
 {
-    Vector<FiniteTimeAction*> actions {};
-    
-    for(int i { 0 }; i < this->gridNum; i++)
-    {
-        actions.pushBack(this->target->createWalkByAction(this->direction, this->speedRatio));
-    }
-    
-    this->target->runAction(Sequence::createWithTwoActions(Sequence::create(actions), CallFunc::create([this]{this->setDone();})));
+    vector<Direction> dirs { this->direction };
+    this->target->walkBy(dirs, this->gridNum, [this]{this->setDone();});
 }
 
 #pragma mark -
@@ -93,52 +87,15 @@ bool WalkToEvent::init(rapidjson::Value& json)
 {
     if(!CharacterEvent::init(json)) return false;
     
-    // キャラクタの現在座標と移動先座標の差を取る
-    Point diffVector {this->validator->getPoint(json) - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
-    
-    int diffX {abs(static_cast<int>(diffVector.x))};
-    int diffY {abs(static_cast<int>(diffVector.y))};
-    
-    // 差の絶対値が大きい方向から処理
-    if(diffX >= diffY)
-    {
-        for(int x { 0 }; x < diffX; x++)
-        {
-            Direction direction {(diffVector.x < 0)?Direction::LEFT : Direction::RIGHT };
-            this->walkActions.pushBack(this->target->createWalkByAction(direction));
-        }
-        
-        for(int y { 0 }; y < diffY; y++)
-        {
-            Direction direction {(diffVector.y < 0)?Direction::FRONT : Direction::BACK };
-            this->walkActions.pushBack(this->target->createWalkByAction(direction));
-        }
-    }
-    else
-    {
-        for(int y { 0 }; y < diffY; y++)
-        {
-            Direction direction {(diffVector.y < 0)?Direction::FRONT : Direction::BACK };
-            this->walkActions.pushBack(this->target->createWalkByAction(direction));
-        }
-        
-        for(int x { 0 }; x < diffX; x++)
-        {
-            Direction direction {(diffVector.x < 0)?Direction::LEFT : Direction::RIGHT };
-            this->walkActions.pushBack(this->target->createWalkByAction(direction));
-        }
-    }
+    // 目的地座標をcocos座標系で保持
+    this->destPosition = this->validator->getPoint(json);
     
     return true;
 }
 
 void WalkToEvent::run()
 {
-    if(this->walkActions.empty())
-    {
-        this->setDone();
-        return;
-    }
-    
-    this->target->runAction(Sequence::createWithTwoActions(Sequence::create(this->walkActions), CallFunc::create([this]{this->setDone();})));
+    Vec2 movement {this->destPosition - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
+
+    this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
 }

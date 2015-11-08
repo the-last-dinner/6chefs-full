@@ -17,6 +17,10 @@ class MapObjectList;
 
 class MapObject : public Node
 {
+// 定数
+public:
+    static const float DURATION_MOVE_ONE_GRID;
+    
 // インスタンス変数
 private:
     int objectId { static_cast<int>(ObjectID::UNDIFINED)};
@@ -27,6 +31,8 @@ private:
     Rect collisionRect {Rect::ZERO};
 	Light* light { nullptr };
     MapObjectList* objectList { nullptr };
+public:
+    function<void(const Point&)> onMove { nullptr };
 	
 // インスタンスメソッド
 public:
@@ -56,6 +62,9 @@ public:
     Rect getCollisionRect() const;
     Rect getCollisionRect(const Direction& direction) const;
     Rect getCollisionRect(const Direction (&directions)[2]) const;
+    
+    void moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio = 1.0f);
+    void moveTo(const Point& destPosition, function<void()> onMoved, const float ratio = 1.0f);
 
     void drawDebugMask(); // デバッグ用マスク
 };

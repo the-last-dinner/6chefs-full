@@ -22,36 +22,44 @@ bool Party::init(Character* mainCharacter)
     if(!mainCharacter) return false;
     
     // 先頭に主人公を配置する
-    this->addCharacter(mainCharacter);
+    this->addMember(mainCharacter);
     
     return true;
 }
 
 // パーティにキャラクタを追加
-void Party::addCharacter(Character* character)
+void Party::addMember(Character* character)
 {
+    character->setHit(false);
     this->members.pushBack(character);
 }
 
 // パーティを移動
-void Party::move(const Point& movementVector, float ratio, function<void()> callback)
+void Party::move(const vector<Direction>& directions, float ratio, function<void()> callback)
 {
     Direction direction {Direction::SIZE};
     Point destPos { Point::ZERO };
-    Vec2 movement { movementVector };
     
     for(int i { 0 }; i < this->members.size(); i++)
     {
         Character* character {this->members.at(i)};
+        vector<Direction> dirs {};
+        function<void()> cb { nullptr };
         
+        // 主人公について
+        if(i == 0)
+        {
+            dirs = directions;
+            cb = callback;
+        }
         // 主人公以外について
         if(i != 0)
         {
             character->setDirection(direction);
-            movement = destPos - character->getPosition();
+            dirs = MapUtils::vecToDirection(destPos - character->getPosition());
         }
         
-        if(movement != Vec2::ZERO) character->runAction(character->createWalkByAction(movement));
+        character->walkBy(dirs, 1, cb);
         
         direction = character->getDirection();
         destPos = character->getPosition();

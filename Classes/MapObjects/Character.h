@@ -16,8 +16,6 @@ class Character : public MapObject
 // 定数
 private:
     static const string basePath;
-public:
-    static const float DURATION_FOR_ONE_STEP;
 
 // クラスメソッド
 public:
@@ -41,10 +39,9 @@ public:
 	Direction getDirection();
 	void setMoving(bool _isMoving);
 	bool isMoving();
-    void stamp(const Direction direction, float ratio = 1.0f);
-    ActionInterval* createWalkByAction(const Point& vector, float ratio = 1.0f);
-    ActionInterval* createWalkByAction(const Direction direction, float ratio = 1.0f);
-    ActionInterval* createWalkByAction(const Direction direction[2], float ratio = 1.0f);
+    void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
+    void walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
+    void walkBy(const vector<Direction>& directions, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
 };
 
 #endif // __CHARACTER_H__

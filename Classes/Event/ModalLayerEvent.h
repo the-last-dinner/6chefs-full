@@ -22,9 +22,6 @@ protected:
     ModalLayerEvent() {};
     ~ModalLayerEvent() {};
     virtual bool init() override;
-    void onOpenModalLayer();
-public:
-    void onCloseModalLayer();
 };
 
 // キャラクターメッセージイベント

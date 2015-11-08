@@ -38,6 +38,7 @@ public:
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
     void hideLayer(const string& layerName);
+    void addMapObject(MapObject* mapObject, const Point& gridPoint);
 };
 
 #endif // __TILED_MAP_LAYER_H__

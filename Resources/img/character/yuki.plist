@@ -4,198 +4,184 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>magoichi_0_0.png</key>
+			<key>yuki_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1323},{25,32}}</string>
+				<string>{{0,1385},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{25,32}}</string>
+				<string>{{6,4},{21,28}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_0_1.png</key>
+			<key>yuki_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1290},{25,32}}</string>
+				<string>{{0,1444},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{25,32}}</string>
+				<string>{{6,4},{21,28}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_0_2.png</key>
+			<key>yuki_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1483},{23,32}}</string>
+				<string>{{0,1473},{21,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,0},{23,32}}</string>
+				<string>{{5,6},{21,26}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_1_0.png</key>
+			<key>yuki_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1548},{22,30}}</string>
+				<string>{{0,1200},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,1},{22,30}}</string>
+				<string>{{4,1},{25,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_1_1.png</key>
+			<key>yuki_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1387},{24,31}}</string>
+				<string>{{0,1414},{21,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{2,0},{24,31}}</string>
+				<string>{{6,2},{21,29}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_1_2.png</key>
+			<key>yuki_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1356},{24,30}}</string>
+				<string>{{0,1323},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,1},{24,30}}</string>
+				<string>{{4,2},{23,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_2_0.png</key>
+			<key>yuki_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1451},{23,31}}</string>
+				<string>{{0,1354},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,0},{23,31}}</string>
+				<string>{{3,1},{23,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_2_1.png</key>
+			<key>yuki_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1516},{22,31}}</string>
+				<string>{{0,1262},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,0},{22,31}}</string>
+				<string>{{4,1},{23,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_2_2.png</key>
+			<key>yuki_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1419},{23,31}}</string>
+				<string>{{0,1231},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,0},{23,31}}</string>
+				<string>{{5,2},{23,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_3_0.png</key>
+			<key>yuki_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1258},{26,31}}</string>
+				<string>{{0,1293},{23,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,0},{26,31}}</string>
+				<string>{{5,3},{23,29}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_3_1.png</key>
+			<key>yuki_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1195},{27,31}}</string>
+				<string>{{0,1169},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{27,31}}</string>
+				<string>{{3,2},{25,30}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>magoichi_3_2.png</key>
+			<key>yuki_s_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1227},{26,30}}</string>
+				<string>{{0,0},{332,1168}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{26,30}}</string>
-				<key>sourceSize</key>
-				<string>{32,32}</string>
-			</dict>
-
-			<key>magoichi_s_0.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,0},{351,1194}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{215,0},{351,1194}}</string>
+				<string>{{220,21},{332,1168}}</string>
 				<key>sourceSize</key>
 				<string>{800,1200}</string>
 			</dict>
 
-			<key>magoichi_s_1.png</key>
+			<key>yuki_s_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{351,1194}}</string>
+				<string>{{0,0},{332,1168}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{215,0},{351,1194}}</string>
+				<string>{{220,21},{332,1168}}</string>
 				<key>sourceSize</key>
 				<string>{800,1200}</string>
 			</dict>
@@ -209,7 +195,7 @@
 			<key>size</key>
 			<string>{512,2048}</string>
 			<key>textureFileName</key>
-			<string>magoichi.png</string>
+			<string>yuki.png</string>
 			</dict>
 		</dict>
 </plist>

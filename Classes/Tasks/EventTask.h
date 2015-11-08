@@ -31,10 +31,15 @@ private:
     virtual bool init();
     void run();
     bool isEventRunning();
+    GameEvent* createEventById(int eventId);
     
 public:
+    void runEventQueue();
 	void runEvent(int eventId);
+    void pushEventBack(int eventId);
+    void pushEventFront(int eventId);
     void update(float delta);
+    bool existsEvent();
 };
 
 #endif /* defined(__LastSupper__EventScriptTask__) */

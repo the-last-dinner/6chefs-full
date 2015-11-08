@@ -14,6 +14,7 @@
 #include "Event/EventScriptValidator.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
@@ -119,8 +120,56 @@ Party* DungeonSceneManager::getParty() const
     return this->party;
 }
 
+#pragma mark -
+#pragma mark EventListener
+
+// インターバルを設定
+void DungeonSceneManager::setInputCheckInterval(const float interval)
+{
+    this->getScene()->listener->setInputCheckInterval(interval);
+}
+
+// コールバックを呼び出しの有無を設定
+void DungeonSceneManager::setEventListenerPaused(const bool paused)
+{
+    this->getScene()->listener->setPaused(paused);
+}
+
+// 指定キーが押されているかチェック
+bool DungeonSceneManager::isPressed(const Key& key)
+{
+    return this->getScene()->listener->isPressed(key);
+}
+
+#pragma mark -
+#pragma mark EventTask
+
 // イベントを実行
 void DungeonSceneManager::runEvent(const int eventId)
 {
     this->getScene()->eventTask->runEvent(eventId);
+}
+
+// キューにイベントを後ろから詰める
+void DungeonSceneManager::pushEventBack(const int eventId)
+{
+    this->getScene()->eventTask->pushEventBack(eventId);
+}
+
+// キューにイベントを前から詰める
+void DungeonSceneManager::pushEventFront(const int eventId)
+{
+    this->getScene()->eventTask->pushEventFront(eventId);
+}
+
+// キューにあるイベントを実行
+void DungeonSceneManager::runEventQueue()
+{
+    this->getScene()->eventTask->runEventQueue();
+}
+
+// キューにイベントがあるか
+bool DungeonSceneManager::existsEvent()
+{
+    return this->getScene()->eventTask->existsEvent();
 }

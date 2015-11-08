@@ -156,6 +156,8 @@
 		556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71701BC3FBDE00835D15 /* VerticalFollow.cpp */; };
 		556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71741BC3FD9A00835D15 /* BothFollow.cpp */; };
 		556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556C71741BC3FD9A00835D15 /* BothFollow.cpp */; };
+		55799D551BEE1D2A002462E6 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55799D531BEE1D2A002462E6 /* PathFinder.cpp */; };
+		55799D561BEE1D2A002462E6 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55799D531BEE1D2A002462E6 /* PathFinder.cpp */; };
 		557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */; };
 		557A87C91B4702BF001993E1 /* MapUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A87C71B4702BF001993E1 /* MapUtils.cpp */; };
@@ -407,6 +409,8 @@
 		556C71711BC3FBDE00835D15 /* VerticalFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerticalFollow.h; path = ../Classes/Tasks/FollowType/VerticalFollow.h; sourceTree = "<group>"; };
 		556C71741BC3FD9A00835D15 /* BothFollow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BothFollow.cpp; path = ../Classes/Tasks/FollowType/BothFollow.cpp; sourceTree = "<group>"; };
 		556C71751BC3FD9A00835D15 /* BothFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BothFollow.h; path = ../Classes/Tasks/FollowType/BothFollow.h; sourceTree = "<group>"; };
+		55799D531BEE1D2A002462E6 /* PathFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathFinder.cpp; path = ../Classes/Algorithm/PathFinder.cpp; sourceTree = "<group>"; };
+		55799D541BEE1D2A002462E6 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = ../Classes/Algorithm/PathFinder.h; sourceTree = "<group>"; };
 		557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSceneData.cpp; sourceTree = "<group>"; };
 		557A87C31B46EB3E001993E1 /* TitleSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneData.h; sourceTree = "<group>"; };
 		557A87C71B4702BF001993E1 /* MapUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapUtils.cpp; path = ../Classes/Utils/MapUtils.cpp; sourceTree = "<group>"; };
@@ -709,6 +713,7 @@
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
 				552D836A1B20BC6300B681A8 /* Common.h */,
 				552D836B1B20BC6300B681A8 /* define.h */,
+				55799D521BEE1152002462E6 /* Algorithm */,
 				552D83641B20BC1C00B681A8 /* Datas */,
 				551406801BA55916008DFAED /* Effects */,
 				55F3022D1BDA32AC00BDC418 /* Event */,
@@ -869,6 +874,15 @@
 				556C71751BC3FD9A00835D15 /* BothFollow.h */,
 			);
 			name = FollowType;
+			sourceTree = "<group>";
+		};
+		55799D521BEE1152002462E6 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				55799D531BEE1D2A002462E6 /* PathFinder.cpp */,
+				55799D541BEE1D2A002462E6 /* PathFinder.h */,
+			);
+			name = Algorithm;
 			sourceTree = "<group>";
 		};
 		557A87C61B470279001993E1 /* Utils */ = {
@@ -1187,6 +1201,7 @@
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				55F302341BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
+				55799D551BEE1D2A002462E6 /* PathFinder.cpp in Sources */,
 				55F1B6191BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				55F302301BDA331900BDC418 /* GameEvent.cpp in Sources */,
 				26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
@@ -1278,6 +1293,7 @@
 				554470771BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				55F302391BDAB0F800BDC418 /* EventFactory.cpp in Sources */,
 				26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
+				55799D561BEE1D2A002462E6 /* PathFinder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

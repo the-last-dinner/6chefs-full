@@ -22,6 +22,9 @@
 
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
+#include "MapObjects/Party.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 #include "Event/EventScript.h"
 
@@ -78,12 +81,23 @@ void DungeonScene::onPreloadFinished()
     this->listener->onCursorKeyPressed = CC_CALLBACK_1(PlayerControlTask::turn, playerControlTask);
     this->listener->onSpaceKeyPressed = CC_CALLBACK_0(PlayerControlTask::search, playerControlTask);
     this->listener->intervalInputCheck = CC_CALLBACK_1(PlayerControlTask::walking, playerControlTask);
-    this->listener->setInputCheckDelay(Character::DURATION_FOR_ONE_STEP);
-    this->listener->setInputCheckInterval(Character::DURATION_FOR_ONE_STEP);
+    this->listener->setInputCheckDelay(MapObject::DURATION_MOVE_ONE_GRID);
+    this->listener->setInputCheckInterval(MapObject::DURATION_MOVE_ONE_GRID);
+    
+    // パーティーをマップに配置
+    Party* party { DungeonSceneManager::getInstance()->getParty() };
+    PlayerDataManager::Location location { this->getData()->getInitialLocation() };
+//    Character* mainCharacter { party->getMainCharacter() };
+//    mapLayer->addMapObject(mainCharacter, Point(location.x, location.y));
+    for(Character* character : party->getMembers())
+    {
+        mapLayer->addMapObject(character, Point(location.x, location.y));
+    }
     
     this->listener->setEnabled(true);
     
-    mapLayer->getMapObjectList()->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    cameraTask->setTarget( party->getMainCharacter() );
 }
 
 // メニューキー押したとき
@@ -91,7 +105,7 @@ void DungeonScene::onMenuKeyPressed()
 {
     this->listener->setEnabled(false);
     // 主人公の位置をセット
-    Character* chara = this->mapLayer->getMapObjectList()->getMainCharacter();
+    Character* chara = DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
     Point point = chara->getGridPosition(this->mapLayer->getMapSize());
     Direction dir = chara->getDirection();
     PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
@@ -115,4 +129,10 @@ void DungeonScene::onMenuKeyPressed()
 EventListenerKeyboardLayer* DungeonScene::getListener() const
 {
     return this->listener;
+}
+
+// データクラスを取得
+DungeonSceneData* DungeonScene::getData() const
+{
+    return dynamic_cast<DungeonSceneData*>(this->data);
 }

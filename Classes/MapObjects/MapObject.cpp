@@ -13,6 +13,9 @@
 #include "Effects/AmbientLightLayer.h"
 #include "Effects/Light.h"
 
+// １マス動くのにかける時間の基準値
+const float MapObject::DURATION_MOVE_ONE_GRID = 0.1f;
+
 // コンストラクタ
 MapObject::MapObject(){FUNCLOG}
 
@@ -83,10 +86,13 @@ void MapObject::setMapObjectList(MapObjectList* objectList)
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
 {
-	this->light = light;
-	this->addChild(light);
-	light->setOpacity(0);
-	this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
+    if(this->light)
+    {
+        this->light = light;
+        this->addChild(light);
+        light->setOpacity(0);
+        this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
+    }
     
     // 環境光レイヤーに光源として追加
     ambientLightLayer->addLightSource(this, light->getInformation());
@@ -166,6 +172,42 @@ const bool MapObject::isHit(const Direction (&directions)[2]) const
     if(!this->objectList) return false;
     
     return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
+}
+
+// 方向、マス数指定移動用メソッド(移動させる時は必ずこのメソッドで)
+void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio)
+{
+    if(directions.empty()) return;
+    
+    Vec2 movement {};
+    
+    // 移動ベクトルを算出
+    for(Direction direction : directions)
+    {
+        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction);
+    }
+    
+    // 移動先座標をコールバック関数に送信(TiledMapLayerの関数を呼び出す)
+    if(this->onMove) this->onMove(this->getPosition() + movement * gridNum);
+    
+    // 移動開始
+    this->runAction(Sequence::createWithTwoActions(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create(onMoved)));
+}
+
+// 目的地指定移動用メソッド
+void MapObject::moveTo(const Point& destPosition, function<void()> onMoved, const float ratio)
+{
+    Vec2 movement { destPosition - this->getPosition() };
+    Vector<FiniteTimeAction*> movingActions {};
+    int gridNum { static_cast<int>(MapUtils::getGridNum(movement.length()))};
+    
+    vector<Vec2> movements {};
+    
+    for(int i {0}; i < gridNum; i++)
+    {
+        
+    }
+    
 }
 
 // デバッグ用に枠を描画

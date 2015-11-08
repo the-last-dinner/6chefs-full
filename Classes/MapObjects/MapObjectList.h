@@ -25,7 +25,6 @@ public:
 // インスタンス変数
 private:
     Vector<MapObject*> mapObjects {};
-    Character* mainCharacter { nullptr };
     
 // インスタンスメソッド
 private:

@@ -50,7 +50,17 @@ public:
     EventScript* getEventScript() const;
     Party* getParty() const;
     
+    // EventListener
+    void setInputCheckInterval(const float interval);
+    void setEventListenerPaused(const bool paused);
+    bool isPressed(const Key& key);
+    
+    // EventTask
     void runEvent(const int eventId);
+    void pushEventBack(const int eventId);
+    void pushEventFront(const int eventId);
+    void runEventQueue();
+    bool existsEvent();
 };
 
 #endif /* defined(__LastSupper__DungeonSceneManager__) */

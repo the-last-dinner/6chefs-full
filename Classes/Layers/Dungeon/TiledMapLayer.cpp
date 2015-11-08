@@ -50,13 +50,6 @@ bool TiledMapLayer::init(const PlayerDataManager::Location& location)
         tiledMap->addChild(obj);
     }
     
-	// 主人公を配置
-	Character* mainCharacter { Character::create(0, location.direction) };
-    mainCharacter->setGridPosition(tiledMap->getContentSize(), Point(location.x, location.y));
-	tiledMap->addChild(mainCharacter);
-    objectList->setMainCharacter(mainCharacter);
-    mainCharacter->setMapObjectList(objectList);
-    
 	return true;
 }
 
@@ -82,4 +75,13 @@ Size TiledMapLayer::getMapSize() const
 void TiledMapLayer::hideLayer(const string& layerName)
 {
     this->tiledMap->getLayer(layerName)->setVisible(false);
+}
+
+// マップにオブジェクトを追加
+void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
+{
+    mapObject->setGridPosition(this->getMapSize(), gridPoint);
+    this->tiledMap->addChild(mapObject);
+    this->objectList->add(mapObject);
+    mapObject->setMapObjectList(this->objectList);
 }

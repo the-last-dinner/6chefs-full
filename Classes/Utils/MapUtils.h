@@ -21,6 +21,7 @@ namespace MapUtils
     Direction keyToDirection(const Key& key);
     vector<Direction> keyToDirection(const vector<Key>& keys);
     Direction toEnumDirection(const string& sDirection);
+    vector<Direction> vecToDirection(const Vec2& vec);
 }
 
 #endif // __MAP_UTILS_H__

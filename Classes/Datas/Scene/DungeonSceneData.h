@@ -21,6 +21,7 @@ public:
     
 // インスタンス変数
 private:
+    PlayerDataManager::Location initialLocation {};
     EventScript* eventScript { nullptr };
 	
 // インスタンスメソッド
@@ -29,6 +30,7 @@ private:
 	~DungeonSceneData();
     bool init(const PlayerDataManager::Location& location);
 public:
+    PlayerDataManager::Location getInitialLocation() const;
     EventScript* getEventScript() const;
 };
 
