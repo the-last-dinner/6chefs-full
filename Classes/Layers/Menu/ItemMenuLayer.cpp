@@ -21,8 +21,8 @@ bool ItemMenuLayer::init()
 {
     FUNCLOG
     int obj_count = PlayerDataManager::getInstance()->getItemAll().size();
-    int sizeX = obj_count > 1 ? 2 : 1;
-    int sizeY = obj_count > 20 ? 10 : floor(obj_count/ 2) + 1;
+    int sizeX = obj_count < 3 ? obj_count : 3;
+    int sizeY = obj_count > 16 ? 8 : floor(obj_count/ 3) + 1;
     if (!MenuLayer::init(sizeX, sizeY)) return false;
     
     SpriteUtils::Square square;
@@ -49,12 +49,12 @@ bool ItemMenuLayer::init()
     leftTop->addChild(title);
     
     // アイテム詳細
-    square = SpriteUtils::Square(0,0,30,80);
-    margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
-    Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
-    leftBottom->setColor(Color3B::BLACK);
-    leftBottom->setName("leftBottom");
-    this->addChild(leftBottom);
+    square = SpriteUtils::Square(0,0,100,25);
+    margin = SpriteUtils::Margin(1.5,3.0,3.0,3.0);
+    Sprite* bottom = SpriteUtils::getSquareSprite(square, margin);
+    bottom->setColor(Color3B::BLACK);
+    bottom->setName("bottom");
+    this->addChild(bottom);
     
     // 装備
     square = SpriteUtils::Square(30,80,100,100);
@@ -73,8 +73,8 @@ bool ItemMenuLayer::init()
     rightTop->addChild(equipment);
     
     // アイテムリスト
-    square = SpriteUtils::Square(30,0,100,80);
-    margin = SpriteUtils::Margin(1.5,3.0,3.0,1.5);
+    square = SpriteUtils::Square(0,25,100,80);
+    margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
     Sprite* rightBottom = SpriteUtils::getSquareSprite(square, margin);
     rightBottom->setColor(Color3B::BLACK);
     this->addChild(rightBottom);
@@ -90,11 +90,11 @@ bool ItemMenuLayer::init()
         // パネル生成
         Sprite* panel = Sprite::create();
         Size list_size {rightBottom->getContentSize()};
-        panel->setTextureRect(Rect(0, 0, list_size.width / 2, list_size.height / 10));
+        panel->setTextureRect(Rect(0, 0, list_size.width / 3, list_size.height / 8));
         panel->setColor(Color3B::BLACK);
         panel->setTag(i);
         Size panel_size {panel->getContentSize()};
-        panel->setPosition((i%2) * (list_size.width / 2) + panel_size.width/2, list_size.height - ((floor(i/2) + 1)  *  (list_size.height/10)) + panel_size.height/2);
+        panel->setPosition((i%3) * (list_size.width / 3) + panel_size.width/2, list_size.height - ((floor(i/3) + 1)  *  (list_size.height/8)) + panel_size.height/2);
         rightBottom->addChild(panel);
         // メニューオブジェクトに登録
         this->menuObjects.push_back(panel);
@@ -111,6 +111,7 @@ bool ItemMenuLayer::init()
         // インクリメント
         i++;
     }
+    
     // デフォルトセレクト
     this->onIndexChanged(0, false);
     
@@ -121,17 +122,21 @@ bool ItemMenuLayer::init()
 void ItemMenuLayer::changeItemDiscription(const int idx)
 {
     // 親のスプライトを取得
-    Node* leftBottom = this->getChildByName("leftBottom");
+    Node* bottom = this->getChildByName("bottom");
     // 子のスプライトがすでに存在すれば消してから生成
     string labelName = "discriptionLabel";
-    if (leftBottom->getChildByName(labelName)){
-        leftBottom->removeChildByName(labelName);
+    if (bottom->getChildByName(labelName)){
+        bottom->removeChildByName(labelName);
     }
-    Label* discription = Label::createWithTTF(CsvDataManager::getInstance()->getItemDiscription(this->items[idx]), "fonts/cinecaption2.28.ttf", 18);
-    discription->setPosition(leftBottom->getContentSize().width / 2, leftBottom->getContentSize().height / 2);
+    cout << CsvDataManager::getInstance()->getItemDiscription(this->items[idx]) << endl;
+    string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getItemDiscription(this->items[idx]));
+    Label* discription = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
+    //discription->setPosition(bottom->getContentSize().width / 2, leftBottom->getContentSize().height / 2);
+    int margin = 10;
+    discription->setPosition(discription->getContentSize().width / 2 + margin, bottom->getContentSize().height - discription->getContentSize().height / 2 - margin);
     discription->setColor(Color3B::WHITE);
     discription->setName(labelName);
-    leftBottom->addChild(discription);
+    bottom->addChild(discription);
 }
 
 // 表示
