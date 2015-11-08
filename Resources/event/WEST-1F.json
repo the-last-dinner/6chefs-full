@@ -12,16 +12,12 @@
 				},
 				{
 					"type":"camera",
-					"mapID":"7",
+					"x":20,
+					"y":18,
 					"action":[
 						{
 							"type":"sequence",
 							"action":[
-								{
-									"type":"camera",
-									"x":20,
-									"y":18
-								},
 								{
 									"type":"fadein"
 								},
@@ -51,14 +47,14 @@
 				{
 					"type":"camera",
 					"mapID":"6",
+					"x":20,
+					"y":33,
 					"action":[
 						{
 							"type":"spawn",
 							"action":[
 								{
 									"type":"camera",
-									"x":20,
-									"y":33,
 									"nextX":20,
 									"nextY":18,
 									"time":2.0
@@ -91,15 +87,14 @@
 				{
 					"type":"camera",
 					"mapID":"8",
+					"x":20,
+					"y":3,
 					"action":[
 						{
 							"type":"spawn",
 							"action":[
 								{
 									"type":"camera",
-									"mapID":"8",
-									"x":20,
-									"y":3,
 									"nextX":20,
 									"nextY":18,
 									"time":2.0
@@ -118,7 +113,6 @@
 							"action":[
 								{
 									"type":"camera",
-									"mapID":"8",
 									"nextX":20,
 									"nextY":33,
 									"time":2.0
@@ -129,6 +123,9 @@
 							]
 						}
 					]
+				},
+				{
+					"type":"fadein"
 				},
 				{
 					"type":"charaMsg",

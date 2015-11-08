@@ -35,7 +35,6 @@
 				{
 					"type":"countDown",
 					"second":3.0,
-					"ID":"162",
 					"condition":[
 						{
 							"equip":["157"]
@@ -45,6 +44,9 @@
 						{
 							"type":"spawn",
 							"action":[
+								{
+									"type":"stopCount"
+								},
 								{
 									"type":"fadeout"
 								},

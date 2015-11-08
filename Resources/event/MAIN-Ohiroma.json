@@ -540,6 +540,10 @@
             {
               "type":"fadeout",
               "time":3.0
+            },
+            {
+              "type":"end",
+              "file":"end1.png"
             }
           ]
         }
@@ -760,6 +764,10 @@
             {
               "type":"fadeout",
               "time":3.0
+            },
+            {
+              "type":"end",
+              "file":"end1.png"
             }
           ]
         }
@@ -989,7 +997,162 @@
               "text":["帰るか"],
               "charaID":"2",
               "imgID":"3"
-            }
+            },
+            {
+              "type":"fadeout"
+            },
+            {
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"changeChapter",
+                  "chapterID":"6"
+                },
+                {
+                  "type":"displayImg",
+                  "file":"epilogue.png",
+                  "time":5.0
+                },
+                {
+                  "type":"playSE",
+                  "file":"epilogue.mp3"
+                }
+              ]
+            },
+            {
+              "type":"fadeout"
+            },
+            {
+              "type":"changeMap",
+              "mapID":"3",
+              "x":14,
+              "y":14
+            },
+            {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"RIGHT"
+            },
+            {
+              "type":"storyMsg",
+              "text":["翌日・・・\n館を脱出した僕たちは捜索隊とともに\n再び晩餐館に訪れていた。"]
+            },
+            {
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"createChara",
+                  "objID":"1090"
+                },
+                {
+                  "type":"createChara",
+                  "objID":"1091"
+                },
+                {
+                  "type":"createChara",
+                  "objID":"1092"
+                },
+                {
+                  "type":"createChara",
+                  "objID":"1093"
+                },
+                {
+                  "type":"createChara",
+                  "objID":"1094"
+                }
+              ]
+            },
+            {
+              "type":"fadein"
+            },
+            {
+              "type":"charaMsg",
+              "talk":[
+                {
+                  "text":["どうやらあの娘は本当に偏食症だったみてぇだ\nそれも人間の肉しか受けつけねぇらしい・・・","（まぁ俺は食うために殺すことは\n悪いことじゃねぇと思うけどよ・・・）","お前らは何で分かったんだ？\nあの娘が偏食症だってよ？"],
+                  "charaID":"2",
+                  "imgID":"3"
+                },
+                {
+                  "text":["実は夫人の目的やこの館のことを教えてくれたのは\n中山氏なのですぞ","中山氏は前回の晩餐会の覇者から\n希崎氏のご息女のことを聞いたらしいですぞ"],
+                  "charaID":"4",
+                  "imgID":"2"
+                },
+                {
+                  "text":["・・・"],
+                  "charaID":"1",
+                  "imgID":"1"
+                },
+                {
+                  "text":["前回の・・・覇者・・・"],
+                  "charaID":"0",
+                  "imgID":"1"
+                },
+                {
+                  "type":"fadeout"
+                },
+                {
+                  "type":"wait",
+                  "time":2.0
+                },
+                {
+                  "type":"camera",
+                  "mapID":"1" ,
+                  "x":27,
+                  "y":20,
+                  "action":[
+                    {
+                      "type":"sequence",
+                      "action":[
+                        {
+                          "type":"createChara",
+                          "objID":"1095"
+                        },
+                        {
+                          "type":"fadein"
+                        },
+                        {
+                          "type":"charaWalk",
+                          "objID":"1095",
+                          "direction":"LEFT",
+                          "steps":3.0,
+                          "speed":0.5
+                        },
+                        {
+                          "type":"changeDirection",
+                          "objID":"1095",
+                          "direction":"RIGHT"
+                        },
+                        {
+                          "type":"charaMsg",
+                          "text":["ったく・・・好き勝手荒らしやがって・・・/nまぁ・・・そろそろ潮時かね・・・","国に帰るか・・・"]
+                        },
+                        {
+                          "type":"spawn",
+                          "action":[
+                            {
+                              "type":"charaWalk",
+                              "objID":"1095",
+                              "direction":"LEFT",
+                              "steps":9.0,
+                              "speed":0.5
+                            },
+                            {
+                              "type":"fadeout",
+                              "time":2.0
+                            }
+                          ]
+                        },
+                        {
+                          "type":"end",
+                          "file":"true.png"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }            
           ]
         }
       ]
@@ -1204,6 +1367,10 @@
             {
               "type":"fadeout",
               "time":3.0
+            },
+            {
+              "type":"end",
+              "file":"end2.png"
             }
           ]
         }
@@ -1394,6 +1561,10 @@
             {
               "type":"fadeout",
               "time":3.0
+            },
+            {
+              "type":"end",
+              "file":"end2.png"
             }
           ]
         }
@@ -1465,7 +1636,7 @@
                   "text":["希崎ぃ！"],
                   "charaID":"2",
                   "imgID":"3",
-                  "option"
+                  "option":"reaction"
                 }
               ]
             },
@@ -1586,6 +1757,10 @@
             {
               "type":"fadeout",
               "time":3.0
+            },
+            {
+              "type":"end",
+              "file":"end2.png"
             }
           ]
         }
