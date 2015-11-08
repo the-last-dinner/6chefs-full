@@ -133,12 +133,6 @@
           ]
         },
         {
-          "type":"charaWalk",
-          "objID":"hero",
-          "direction":"UP",
-          "steps":0.5
-        },
-        {
           "type": "changeMap",
           "mapID": "3",
           "x": 14,
