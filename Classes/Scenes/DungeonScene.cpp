@@ -87,8 +87,6 @@ void DungeonScene::onPreloadFinished()
     // パーティーをマップに配置
     Party* party { DungeonSceneManager::getInstance()->getParty() };
     PlayerDataManager::Location location { this->getData()->getInitialLocation() };
-//    Character* mainCharacter { party->getMainCharacter() };
-//    mapLayer->addMapObject(mainCharacter, Point(location.x, location.y));
     for(Character* character : party->getMembers())
     {
         mapLayer->addMapObject(character, Point(location.x, location.y));

@@ -87,21 +87,30 @@ void PlayerControlTask::walking(const vector<Key>& keys)
     // 入力が２以上の時、斜め方向に当たり判定があるか確認
     bool isHit {(directionCount > 1)?mainCharacter->isHit({directions.back(), directions.at(directionCount - 2)}):false};
     
-    // 方向から当たり判定を一方向づつ確認し、移動ベクトルを生成する
-    Point movement {Point::ZERO};
+    // 方向から当たり判定を一方向づつ確認し、移動方向に詰める
+    vector<Direction> moveDirections {};
     for(int i {static_cast<int>(directions.size()) - 1}; i >= static_cast<int>(directions.size()) - directionCount; i--)
     {
-        if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && movement == Point::ZERO))
+        if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && moveDirections.empty()))
         {
-            movement += MapUtils::getGridVector(directions.at(i));
+            moveDirections.push_back(directions.at(i));
         }
     }
-    // 移動ベクトルがゼロの時リターン
-    if(movement == Point::ZERO) return;
+    
+    if(moveDirections.empty()) return;
     
     // 衝突判定用Rectの中心点を含むイベントをキューにつめる
-    Rect collisionRect { mainCharacter->getCollisionRect() };
-    Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjects(Point(collisionRect.getMidX() + movement.x, collisionRect.getMidY() + movement.y)) };
+    Rect collisionRect {};
+    if(moveDirections.size() == 1)
+    {
+        collisionRect = mainCharacter->getCollisionRect(moveDirections[0]);
+    }
+    else
+    {
+        collisionRect = mainCharacter->getCollisionRect({moveDirections[0], moveDirections[1]});
+    }
+    
+    Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjects(collisionRect) };
     
     // 主人公を無視
     if(objs.size() == 1 && objs.at(0) == this->party->getMainCharacter())
@@ -118,7 +127,7 @@ void PlayerControlTask::walking(const vector<Key>& keys)
         }
     }
     
-    this->party->move(MapUtils::vecToDirection(movement), ratio, CC_CALLBACK_0(PlayerControlTask::onPartyMovedOneGrid, this));
+    this->party->move(moveDirections, ratio, CC_CALLBACK_0(PlayerControlTask::onPartyMovedOneGrid, this));
 }
 
 // 一マス分移動し終えた時

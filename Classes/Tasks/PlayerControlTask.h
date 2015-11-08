@@ -34,8 +34,8 @@ private:
 public:
     void turn(const Key& key);                  // 向きを変える
     void search();                              // 目の前を調べる
-    void walking(const vector<Key>& keys);             // 歩行中
-    void onPartyMovedOneGrid();            // 一マス分移動し終えた時
+    void walking(const vector<Key>& keys);      // 歩行中
+    void onPartyMovedOneGrid();                 // 一マス分移動し終えた時
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

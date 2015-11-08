@@ -38,7 +38,9 @@ public:
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
     void hideLayer(const string& layerName);
+    void addMapObject(MapObject* mapObject);
     void addMapObject(MapObject* mapObject, const Point& gridPoint);
+    void setZOrderByPosition(MapObject* mapObject, const Point& ccPosition);
 };
 
 #endif // __TILED_MAP_LAYER_H__

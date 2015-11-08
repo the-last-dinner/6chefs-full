@@ -32,7 +32,7 @@ private:
 	Light* light { nullptr };
     MapObjectList* objectList { nullptr };
 public:
-    function<void(const Point&)> onMove { nullptr };
+    function<void(MapObject*, const Point&)> onMove { nullptr };
 	
 // インスタンスメソッド
 public:

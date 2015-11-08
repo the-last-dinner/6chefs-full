@@ -188,7 +188,7 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     }
     
     // 移動先座標をコールバック関数に送信(TiledMapLayerの関数を呼び出す)
-    if(this->onMove) this->onMove(this->getPosition() + movement * gridNum);
+    if(this->onMove) this->onMove(this, this->getPosition() + movement * gridNum);
     
     // 移動開始
     this->runAction(Sequence::createWithTwoActions(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create(onMoved)));
