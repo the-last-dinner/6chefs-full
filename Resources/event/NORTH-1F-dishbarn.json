@@ -46,7 +46,7 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"fadeout"	
+									"type":"fadeout"
 								},
 								{
 									"type":"playBGM",
@@ -78,7 +78,7 @@
 							"y":25,
 							"enemyID":"143",
 							"charaID":"8",
-							"speed":10
+							"speed":10.0
 						}
 					]
 				},

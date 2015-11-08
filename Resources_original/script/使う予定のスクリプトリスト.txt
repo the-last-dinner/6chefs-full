@@ -411,7 +411,8 @@
 （例）
 	{
 	"type":"fadeout",
-	"time":時間指定する場合秒数
+	"time":時間指定する場合秒数,#
+	"color":["r","g","b"]#
 	}
 
 
@@ -609,16 +610,6 @@
 	"objID":"歩くオブジェクトのID(int), or hero"
 	}
 
-●ホワイトアウト
-・type名・・・whiteout
-・必要なもの・・・時間
-※時間が経ったら解除する
-
-(例)
-{
-	"type":"whiteout
-	"time":秒数
-}
 
 ●charaMove
 ・type名・・・charaMove
