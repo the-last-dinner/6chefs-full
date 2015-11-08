@@ -9,6 +9,7 @@
 #include "MiniSelector.h"
 
 MiniSelector::MiniSelector(){FUNCLOG}
+MiniSelector::~MiniSelector(){FUNCLOG}
 
 bool MiniSelector::init()
 {
@@ -20,4 +21,5 @@ bool MiniSelector::init()
 void MiniSelector::onIndexChanged(int newIdx, bool sound){}
 void MiniSelector::onSpacePressed(int idx){}
 void MiniSelector::onMenuKeyPressed(){}
-
+void MiniSelector::show(){}
+void MiniSelector::hide(){}
