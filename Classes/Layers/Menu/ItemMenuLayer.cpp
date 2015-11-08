@@ -9,6 +9,7 @@
 #include "ItemMenuLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/DungeonScene.h"
+#include "Layers/Menu/MiniSelector.h"
 
 // コンストラクタ
 ItemMenuLayer::ItemMenuLayer(){FUNCLOG}
@@ -21,8 +22,9 @@ bool ItemMenuLayer::init()
 {
     FUNCLOG
     int obj_count = PlayerDataManager::getInstance()->getItemAll().size();
-    int sizeX = obj_count < 3 ? obj_count : 3;
-    int sizeY = obj_count > 16 ? 8 : floor(obj_count/ 3) + 1;
+    Point maxSize = Point(3,8);
+    int sizeX = obj_count < maxSize.x ? obj_count : maxSize.x;
+    int sizeY = obj_count < 16 ? floor((obj_count - 1 )/ 3) + 1 : maxSize.y;
     if (!MenuLayer::init(sizeX, sizeY)) return false;
     
     SpriteUtils::Square square;
@@ -75,9 +77,9 @@ bool ItemMenuLayer::init()
     // アイテムリスト
     square = SpriteUtils::Square(0,25,100,80);
     margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
-    Sprite* rightBottom = SpriteUtils::getSquareSprite(square, margin);
-    rightBottom->setColor(Color3B::BLACK);
-    this->addChild(rightBottom);
+    Sprite* center = SpriteUtils::getSquareSprite(square, margin);
+    center->setColor(Color3B::BLACK);
+    this->addChild(center);
     
     map<int,int> items = PlayerDataManager::getInstance()->getItemAll();
     if (items.size() == 0){
@@ -89,13 +91,13 @@ bool ItemMenuLayer::init()
     {
         // パネル生成
         Sprite* panel = Sprite::create();
-        Size list_size {rightBottom->getContentSize()};
-        panel->setTextureRect(Rect(0, 0, list_size.width / 3, list_size.height / 8));
+        Size list_size {center->getContentSize()};
+        panel->setTextureRect(Rect(0, 0, list_size.width / maxSize.x, list_size.height / maxSize.y));
         panel->setColor(Color3B::BLACK);
         panel->setTag(i);
         Size panel_size {panel->getContentSize()};
-        panel->setPosition((i%3) * (list_size.width / 3) + panel_size.width/2, list_size.height - ((floor(i/3) + 1)  *  (list_size.height/8)) + panel_size.height/2);
-        rightBottom->addChild(panel);
+        panel->setPosition((i%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor(i/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2);
+        center->addChild(panel);
         // メニューオブジェクトに登録
         this->menuObjects.push_back(panel);
         // 不透明度を半分にしておく
@@ -118,7 +120,7 @@ bool ItemMenuLayer::init()
     return true;
 }
 
-// アイテム説明部分更新
+// アイテム説明部分生成
 void ItemMenuLayer::changeItemDiscription(const int idx)
 {
     // 親のスプライトを取得
@@ -128,7 +130,6 @@ void ItemMenuLayer::changeItemDiscription(const int idx)
     if (bottom->getChildByName(labelName)){
         bottom->removeChildByName(labelName);
     }
-    cout << CsvDataManager::getInstance()->getItemDiscription(this->items[idx]) << endl;
     string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getItemDiscription(this->items[idx]));
     Label* discription = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
     //discription->setPosition(bottom->getContentSize().width / 2, leftBottom->getContentSize().height / 2);
@@ -137,6 +138,40 @@ void ItemMenuLayer::changeItemDiscription(const int idx)
     discription->setColor(Color3B::WHITE);
     discription->setName(labelName);
     bottom->addChild(discription);
+}
+
+// 選択肢の生成
+void ItemMenuLayer::createMiniSelector()
+{
+    // アイテムメニューのキーボードを無効化
+    this->listenerKeyboard->setEnabled(false);
+    
+    vector<string> labels = {"右手に装備", "左手に装備", "キャンセル"}; // メニューラベル
+    Point index = Point(1,labels.size()); // 要素数
+    SpriteUtils::Square position = SpriteUtils::Square(70,80,100,100); // 位置
+    MiniSelector::Selector selector = MiniSelector::Selector(index, position, labels);
+    MiniSelector* mini = {MiniSelector::create(selector)};
+    this->addChild(mini);
+    mini->show();
+    mini->onMiniSelectorCanceled = CC_CALLBACK_0(ItemMenuLayer::onMiniSelectorCanceled, this);
+    mini->onMiniIndexSelected = CC_CALLBACK_1(ItemMenuLayer::onMiniIndexSelected, this);
+    this->miniSelector = mini;
+}
+
+void ItemMenuLayer::onMiniIndexSelected(const int idx)
+{
+    SoundManager::getInstance()->playSound("se/failure.mp3");
+}
+
+// ミニセレクターを抜け出した時
+void ItemMenuLayer::onMiniSelectorCanceled()
+{
+    
+    SoundManager::getInstance()->playSound("se/back.mp3");
+    this->runAction(Sequence::createWithTwoActions(
+        CallFunc::create([this](){this->miniSelector->hide();}),
+        CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})
+    ));
 }
 
 // 表示
@@ -166,7 +201,7 @@ void ItemMenuLayer::onMenuKeyPressed()
 // スペースキーを押した時
 void ItemMenuLayer::onSpacePressed(int idx)
 {
-    SoundManager::getInstance()->playSound("se/failure.mp3");
+    this->createMiniSelector();
 }
 
 // 選択対象が変わった時
