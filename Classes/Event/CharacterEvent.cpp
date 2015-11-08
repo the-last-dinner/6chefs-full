@@ -58,13 +58,13 @@ bool WalkByEvent::init(rapidjson::Value& json)
     
     this->direction = this->validator->getDirection(json);
     
-    this->gridNum = static_cast<int>(stof(json[member::STEPS].GetString()) * 2);
+    this->gridNum = static_cast<int>(json[member::STEPS].GetDouble() * 2);
     
     if(this->direction == Direction::SIZE || this->gridNum == 0) return false;
     
     if(this->validator->hasMember(json, member::SPEED))
     {
-       this->speedRatio = stoi(json[member::SPEED].GetString());
+       this->speedRatio = json[member::SPEED].GetDouble();
     }
     
     return true;
