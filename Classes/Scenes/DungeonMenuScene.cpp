@@ -17,15 +17,6 @@ DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
 // デストラクタ
 DungeonMenuScene::~DungeonMenuScene(){FUNCLOG}
 
-// シーン生成
-Scene* DungeonMenuScene::createScene(Texture2D* screen, function<void()> onPopMenuScene)
-{
-    Scene* scene = Scene::create();
-    DungeonMenuScene* layer = DungeonMenuScene::create(screen, onPopMenuScene);
-    scene->addChild(layer);
-    return scene;
-}
-
 // 初期化
 bool DungeonMenuScene::init(Texture2D* screen, function<void()> onPopMenuScene)
 {

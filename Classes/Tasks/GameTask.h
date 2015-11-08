@@ -11,20 +11,17 @@
 
 #include "Common.h"
 
-class TaskMediator;
-
 // タスククラスの基底
 class GameTask : public Ref
 {
 // インスタンス変数
 protected:
-    TaskMediator* mediator;
     
 // インスタンスメソッド
 protected:
     GameTask();
     ~GameTask();
-    virtual bool init(TaskMediator* mediator);
+    virtual bool init();
 };
 
 #endif /* defined(__LastSupper__GameTask__) */

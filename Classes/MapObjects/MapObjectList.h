@@ -11,6 +11,8 @@
 
 #include "Common.h"
 
+#include "MapObjects/MapObject.h"
+
 class Character;
 class MapObject;
 
@@ -23,7 +25,6 @@ public:
 // インスタンス変数
 private:
     Vector<MapObject*> mapObjects {};
-    Character* mainCharacter { nullptr };
     
 // インスタンスメソッド
 private:
@@ -38,9 +39,6 @@ public:
     Vector<MapObject*> getMapObjects(const Point& position) const;
     Vector<MapObject*> getMapObjects(const Trigger trigger) const;
     void add(MapObject* mapObject);
-    
-    void setMainCharacter(Character* mainChara);
-    Character* getMainCharacter() const;
 };
 
 #endif /* defined(__LastSupper__MapObjectList__) */

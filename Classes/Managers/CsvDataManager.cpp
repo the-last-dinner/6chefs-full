@@ -29,7 +29,6 @@ CsvDataManager* CsvDataManager::getInstance()
 void CsvDataManager::destroy()
 {
     delete _instance;
-    return;
 }
 
 // デストラクタ

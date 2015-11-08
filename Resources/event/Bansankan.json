@@ -143,10 +143,10 @@
           ]
         },
         {
-          "type":"charaWalk",
-          "objID":"hero",
-          "direction":"UP",
-          "steps":0.5
+          "type": "charaWalk",
+          "objID": "hero",
+          "direction": "UP",
+          "steps": 0.5
         },
         {
           "type": "changeMap",

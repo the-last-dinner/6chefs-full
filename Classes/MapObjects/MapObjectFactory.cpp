@@ -47,8 +47,12 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     
     for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
     {
-        MapObjectFactory::Group group {static_cast<MapObjectFactory::Group>(i)};
-        ValueVector infos {tiledMap->getObjectGroup(typeToString.at(group))->getObjects()};
+        Group group {static_cast<Group>(i)};
+        
+        TMXObjectGroup* objGroup { tiledMap->getObjectGroup(typeToString.at(group)) };
+        if(!objGroup) continue;
+        
+        ValueVector infos {objGroup->getObjects()};
         for(cocos2d::Value info : infos)
         {
             MapObject* obj {typeToFunc[group](info.asValueMap())};

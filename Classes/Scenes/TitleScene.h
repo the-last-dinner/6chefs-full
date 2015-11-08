@@ -25,7 +25,6 @@ class TitleScene : public baseScene
 	};
 	// クラスメソッド
 public:
-	static Scene* createScene();
 	CREATE_FUNC(TitleScene);
 	
 	// インスタンスメソッド

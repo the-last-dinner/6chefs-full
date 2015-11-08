@@ -8,7 +8,9 @@
 
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+
 #include "Scenes/DungeonScene.h"
+#include "Datas/Scene/DungeonSceneData.h"
 
 // 定数
 const float SaveDataSelector::INNER_H_MARGIN_RATIO = 0.05f;
@@ -154,7 +156,7 @@ void SaveDataSelector::onSpacePressed(int idx)
             // ロード
             SoundManager::getInstance()->playSound("se/load.mp3");
             PlayerDataManager::getInstance()->setMainLocalData(idx);
-            Director::getInstance()->replaceScene(DungeonScene::createScene());
+            Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
         } else
         {
             // セーブデータが存在しない

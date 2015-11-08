@@ -11,17 +11,27 @@
 
 #include "SceneData.h"
 
+class EventScript;
+
 class DungeonSceneData : public SceneData
 {
-	// クラスメソッド
+// クラスメソッド
 public:
-	CREATE_FUNC(DungeonSceneData)
+    CREATE_FUNC_WITH_PARAM(DungeonSceneData, const PlayerDataManager::Location&)
+    
+// インスタンス変数
+private:
+    PlayerDataManager::Location initialLocation {};
+    EventScript* eventScript { nullptr };
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
 	DungeonSceneData();
 	~DungeonSceneData();
-	bool init();
+    bool init(const PlayerDataManager::Location& location);
+public:
+    PlayerDataManager::Location getInitialLocation() const;
+    EventScript* getEventScript() const;
 };
 
 #endif // __DUNGEON_SCENE_DATA_H__

@@ -1,5 +1,5 @@
 //
-//  EventScriptTask.h
+//  EventTask.h
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/09/05.
@@ -11,33 +11,35 @@
 
 #include "Tasks/GameTask.h"
 
-class TaskMediator;
-
 class GameEvent;
 
-class EventScriptTask : public GameTask
+class EventTask : public GameTask
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(EventScriptTask, TaskMediator*)
+    CREATE_FUNC(EventTask)
 
 // インスタンス変数
 private:
-    queue<GameEvent*> eventQueue {};
-    bool running {false};
+    deque<GameEvent*> eventQueue {};
+    GameEvent* runningEvent { nullptr };
     
 // インスタンスメソッド
 private:
-	EventScriptTask();
-	~EventScriptTask();
-    virtual bool init(TaskMediator* mediator);
+	EventTask();
+	~EventTask();
+    virtual bool init();
     void run();
     bool isEventRunning();
-    void popEventQueue();
+    GameEvent* createEventById(int eventId);
     
 public:
-	void runEventScript(int eventId);
+    void runEventQueue();
+	void runEvent(int eventId);
+    void pushEventBack(int eventId);
+    void pushEventFront(int eventId);
     void update(float delta);
+    bool existsEvent();
 };
 
 #endif /* defined(__LastSupper__EventScriptTask__) */

@@ -25,7 +25,6 @@ public:
 // インスタンス変数
 private:
     experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
-    Character* mainCharacter { nullptr };               // 主人公
     MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
     
 // インスタンスメソッド
@@ -35,11 +34,13 @@ private:
 	bool init(const PlayerDataManager::Location&);
 	
 public:
-    Character* getMainCharacter();
     experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
     void hideLayer(const string& layerName);
+    void addMapObject(MapObject* mapObject);
+    void addMapObject(MapObject* mapObject, const Point& gridPoint);
+    void setZOrderByPosition(MapObject* mapObject, const Point& ccPosition);
 };
 
 #endif // __TILED_MAP_LAYER_H__

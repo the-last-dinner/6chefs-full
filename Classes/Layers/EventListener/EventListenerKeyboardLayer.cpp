@@ -87,7 +87,7 @@ void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyC
         case Key::DOWN:
         case Key::LEFT:
         case Key::RIGHT:
-            if(this->onCursorKeyPressed) this->onCursorKeyPressed(key);
+            if(this->onCursorKeyPressed && !this->paused) this->onCursorKeyPressed(key);
             this->pressingKeys.push_back(key);
             // 方向キーを押した時は、入力チェック用にスケジューリング
             if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck))) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::inputCheck));
@@ -95,15 +95,15 @@ void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyC
             break;
             
         case Key::SPACE:
-            if(this->onSpaceKeyPressed) this->onSpaceKeyPressed();
+            if(this->onSpaceKeyPressed && !this->paused) this->onSpaceKeyPressed();
             break;
             
         case Key::MENU:
-            if(this->onMenuKeyPressed) this->onMenuKeyPressed();
+            if(this->onMenuKeyPressed && !this->paused) this->onMenuKeyPressed();
             break;
             
         case Key::DASH:
-            if(this->onDashKeyPressed) this->onDashKeyPressed();
+            if(this->onDashKeyPressed && !this->paused) this->onDashKeyPressed();
             break;
             
         default:
@@ -140,6 +140,7 @@ void EventListenerKeyboardLayer::releaseKeyAll()
 // キーを押し続けている時
 void EventListenerKeyboardLayer::inputCheck(float duration)
 {
+    if(this->paused) return;
     if(this->intervalInputCheck) this->intervalInputCheck(this->pressingKeys);
 }
 
@@ -154,3 +155,7 @@ bool EventListenerKeyboardLayer::isPressed(const Key& key)
     return this->keyStatus[key];
 }
 
+void EventListenerKeyboardLayer::setPaused(bool paused)
+{
+    this->paused = paused;
+}

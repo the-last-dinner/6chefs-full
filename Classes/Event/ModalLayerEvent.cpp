@@ -23,6 +23,8 @@
 #include "Layers/Message/StoryMessagelayer.h"
 #include "Layers/Message/SystemMessagelayer.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 #pragma mark ModalLayerEvent
 
 // 初期化
@@ -31,19 +33,6 @@ bool ModalLayerEvent::init()
     if(!GameEvent::init()) return false;
     
     return true;
-}
-
-// モーダルレイヤを表示する時
-void ModalLayerEvent::onOpenModalLayer()
-{
-    this->validator->getScene()->getListener()->setEnabled(false);
-}
-
-// モーダルレイヤを閉じる時
-void ModalLayerEvent::onCloseModalLayer()
-{
-    this->setDone();
-    this->validator->getScene()->getListener()->setEnabled(true);
 }
 
 #pragma mark -
@@ -142,8 +131,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
 
 void CharacterMessage::run()
 {
-    this->onOpenModalLayer();
-    this->validator->getScene()->addChild(CharacterMessageLayer::create(this->datas, CC_CALLBACK_0(ModalLayerEvent::onCloseModalLayer, this)));
+    DungeonSceneManager::getInstance()->getScene()->addChild(CharacterMessageLayer::create(this->datas, [this]{this->setDone();}));
 }
 
 #pragma mark -
@@ -176,8 +164,7 @@ bool StoryMessage::init(rapidjson::Value& json)
 
 void StoryMessage::run()
 {
-    this->onOpenModalLayer();
-    this->validator->getScene()->addChild(StoryMessageLayer::create(this->title, this->datas, CC_CALLBACK_0(ModalLayerEvent::onCloseModalLayer, this)));
+    DungeonSceneManager::getInstance()->getScene()->addChild(StoryMessageLayer::create(this->title, this->datas, [this]{this->setDone();}));
 }
 
 #pragma mark -
@@ -204,7 +191,5 @@ bool SystemMessage::init(rapidjson::Value& json)
 
 void SystemMessage::run()
 {
-    FUNCLOG
-    this->onOpenModalLayer();
-    this->validator->getScene()->addChild(SystemMessageLayer::create(this->datas, CC_CALLBACK_0(ModalLayerEvent::onCloseModalLayer, this)));
+    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(this->datas, [this]{this->setDone();}));
 }

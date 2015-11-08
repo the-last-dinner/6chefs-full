@@ -13,16 +13,17 @@
 
 class MapObject;
 class FollowType;
-class TaskMediator;
+class TiledMapLayer;
 
 class CameraTask : public GameTask
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(CameraTask, TaskMediator*)
+    CREATE_FUNC(CameraTask)
 
 // インスタンス変数
 private:
+    TiledMapLayer* mapLayer { nullptr };
     MapObject* target { nullptr };
     FollowType* follow { nullptr };
     
@@ -30,7 +31,7 @@ private:
 private:
     CameraTask();
     ~CameraTask();
-    bool init(TaskMediator* mediator);
+    bool init();
 public:
     void setTarget(MapObject* target);
     void stopFollowing();

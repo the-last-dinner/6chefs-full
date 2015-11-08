@@ -63,8 +63,7 @@ class WalkToEvent : public CharacterEvent
 public:
     CREATE_FUNC_WITH_PARAM(WalkToEvent, rapidjson::Value&)
 private:
-    Point movementVector {Point::ZERO};
-    Vector<FiniteTimeAction*> walkActions {};
+    Point destPosition { Point::ZERO };
 private:
     WalkToEvent() {FUNCLOG};
     ~WalkToEvent() {FUNCLOG};

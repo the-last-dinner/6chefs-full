@@ -11,6 +11,9 @@
 
 #include "Common.h"
 
+class EventFactory;
+class EventScriptValidator;
+
 // ゲーム上のイベント基底クラス
 class GameEvent : public Ref
 {

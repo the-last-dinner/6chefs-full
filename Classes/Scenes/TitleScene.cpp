@@ -10,6 +10,7 @@
 #include "Scenes/DungeonScene.h"
 
 #include "Datas/Scene/TitleSceneData.h"
+#include "Datas/Scene/DungeonSceneData.h"
 
 #include "Layers/Menu/TitleMainMenuLayer.h"
 #include "Layers/Menu/SaveDataSelector.h"
@@ -19,15 +20,6 @@ TitleScene::TitleScene(){FUNCLOG}
 
 // デストラクタ
 TitleScene::~TitleScene(){FUNCLOG}
-
-// シーン生成
-Scene* TitleScene::createScene()
-{
-	Scene* scene = Scene::create();
-	Layer* layer = TitleScene::create();
-	scene->addChild(layer);
-	return scene;
-}
 
 // 初期化
 bool TitleScene::init()
@@ -73,7 +65,7 @@ void TitleScene::onStartSelected()
 	SoundManager::getInstance()->unloadAllSounds();
 	TextureManager::getInstance()->unloadAllTectures();
 	PlayerDataManager::getInstance()->setMainLocalData(0);
-	Director::getInstance()->replaceScene(DungeonScene::createScene());
+    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
 }
 
 // 続きからが選ばれた時
@@ -97,7 +89,7 @@ void TitleScene::onSaveDataSelected(int dataId)
 {
 	FUNCLOG
 	PlayerDataManager::getInstance()->setMainLocalData(dataId);
-	Director::getInstance()->replaceScene(DungeonScene::createScene());
+	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
 }
 
 // セーブデータ選択をキャンセルした時

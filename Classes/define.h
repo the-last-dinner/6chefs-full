@@ -58,7 +58,7 @@ enum Priority
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,
     CHARACTER_MESSAGE = 100,
-    DEBUG_MASK = 70,
+    DEBUG_MASK = 40,
     AMBIENT_LIGHT = 50,
 	MAP = 0,
 };
@@ -94,8 +94,8 @@ enum struct Trigger
 	INIT,
 	RIDE,
 	SEARCH,
+    AFTER_INIT,
 	SIZE,
-	NONE,
 };
 
 // オブジェクトID

@@ -35,6 +35,7 @@ private:
     vector<Key> pressingKeys {};
     float delay {0.05f};        // キーを押した瞬間から初回キー入力確認までの時間
     float interval {0.05f};     // キー入力の確認間隔
+    bool paused { false };
     
 // インスタンスメソッド
 public:
@@ -51,7 +52,7 @@ public:
     void inputCheck(float duration);                        // キーを押し続けている時
     bool isPressed(const Key& key);                                // 指定キーが押し状態か判別
     Key convertKeyCode(const EventKeyboard::KeyCode& keyCode);     // cococs上でのキーコードをゲーム内キーに変換
-
+    void setPaused(bool paused);
 };
 
 #endif /* defined(_EventListenerKeyboardLayer__) */

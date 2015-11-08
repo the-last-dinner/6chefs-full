@@ -8,8 +8,6 @@
 
 #include "MapObjects/MapObjectList.h"
 
-#include "MapObjects/MapObject.h"
-
 // コンストラクタ
 MapObjectList::MapObjectList() {FUNCLOG};
 
@@ -101,16 +99,4 @@ const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 void MapObjectList::add(MapObject* mapObject)
 {
     this->mapObjects.pushBack(mapObject);
-}
-
-// 主人公を設定
-void MapObjectList::setMainCharacter(Character* mainChara)
-{
-    this->mainCharacter = mainChara;
-}
-
-// 主人公を取得
-Character* MapObjectList::getMainCharacter() const
-{
-    return this->mainCharacter;
 }

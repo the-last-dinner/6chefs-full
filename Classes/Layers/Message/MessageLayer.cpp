@@ -20,7 +20,6 @@ MessageLayer::~MessageLayer() {FUNCLOG};
 // 初期化
 bool MessageLayer::init(function<void()> onCloseCallback)
 {
-    FUNCLOG
     if(!Layer::init()) return false;
     
     this->onClose = onCloseCallback;

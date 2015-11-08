@@ -31,7 +31,7 @@ public:
 // インスタンス変数
 private:
     int charaId {static_cast<int>(CharacterID::UNDIFINED)};
-    int imgId {-1};
+    int imgId { 0 };
     string charaName {};
     queue<string> pages {};
     Option option {Option::SIZE};

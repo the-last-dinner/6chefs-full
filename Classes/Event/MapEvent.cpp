@@ -13,6 +13,8 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 #pragma mark HideLayerEvent
 
 bool HideLayerEvent::init(rapidjson::Value& json)
@@ -26,6 +28,6 @@ bool HideLayerEvent::init(rapidjson::Value& json)
 
 void HideLayerEvent::run()
 {
-    this->validator->getMapLayer()->hideLayer(this->layerName);
+    DungeonSceneManager::getInstance()->getMapLayer()->hideLayer(this->layerName);
     this->setDone();
 }

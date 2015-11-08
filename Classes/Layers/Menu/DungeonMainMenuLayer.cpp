@@ -136,7 +136,7 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             break;
         case Type::TITLE:
             SoundManager::getInstance()->playSound("se/back.mp3");
-            Director::getInstance()->replaceScene(TitleScene::createScene());
+            Director::getInstance()->replaceScene(TitleScene::create());
             break;
         case Type::CLOSE:
         default:

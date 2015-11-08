@@ -10,10 +10,11 @@
 
 #include "Event/EventScriptMember.h"
 
-#include "Tasks/TaskMediator.h"
-
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
+#include "MapObjects/Party.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 // コンストラクタ
 EventScriptValidator::EventScriptValidator() {FUNCLOG};
@@ -22,14 +23,7 @@ EventScriptValidator::EventScriptValidator() {FUNCLOG};
 EventScriptValidator::~EventScriptValidator() {FUNCLOG};
 
 // 初期化
-bool EventScriptValidator::init(TaskMediator* mediator)
-{
-    if(!mediator) return false;
-    
-    this->mediator = mediator;
-    
-    return true;
-}
+bool EventScriptValidator::init() {return true;}
 
 // メンバーが存在するかどうか
 bool EventScriptValidator::hasMember(rapidjson::Value& json, const char* member)
@@ -132,11 +126,21 @@ bool EventScriptValidator::detectItemFlg(rapidjson::Value& json, bool negative)
 {
     bool detection { false };
     
-    for(int i { 0 }; i < json.Size(); i++)
+    // 複数の場合
+    if(json.IsArray())
     {
-        detection = PlayerDataManager::getInstance()->checkItem(stoi(json[i].GetString()));
+        for(int i { 0 }; i < json.Size(); i++)
+        {
+            detection = PlayerDataManager::getInstance()->checkItem(stoi(json[i].GetString()));
+            if(negative) detection = !detection;
+            if(!detection) break;
+        }
+    }
+    // 一つの場合
+    else
+    {
+        detection = PlayerDataManager::getInstance()->checkItem(stoi(json.GetString()));
         if(negative) detection = !detection;
-        if(!detection) break;
     }
     
     return detection;
@@ -157,7 +161,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
             if(!detection) break;
         }
     }
-    //一つのイベント
+    // 一つの時
     else
     {
         detection = PlayerDataManager::getInstance()->checkFriendship(json[0].GetString(), stoi(json[1].GetString()));
@@ -177,12 +181,12 @@ MapObject* EventScriptValidator::getMapObjectById(rapidjson::Value& json)
     // heroであったら主人公を返す
     if (sObjid == "hero")
     {
-        return this->mediator->getMapObjectList()->getMainCharacter();
+        return DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
     }
     // heroでなければIDから検索して返す
     else
     {
-        MapObject* obj { this->mediator->getMapObjectList()->getMapObject(stoi(sObjid)) };
+        MapObject* obj { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObject(stoi(sObjid)) };
         
         return obj;
     }
@@ -202,28 +206,4 @@ Direction EventScriptValidator::getDirection(rapidjson::Value& json)
     if(!this->hasMember(json, member::DIRECTION)) return Direction::SIZE;
     
     return MapUtils::toEnumDirection(json[member::DIRECTION].GetString());
-}
-
-// シーンを取得
-DungeonScene* EventScriptValidator::getScene() const
-{
-    return this->mediator->getScene();
-}
-
-// マップレイヤを取得
-TiledMapLayer* EventScriptValidator::getMapLayer() const
-{
-    return this->mediator->getMapLayer();
-}
-
-// オブジェクトリストを取得
-MapObjectList* EventScriptValidator::getMapObjectList() const
-{
-    return this->mediator->getMapObjectList();
-}
-
-// 現在のマップの大きさを取得
-Size EventScriptValidator::getMapSize() const
-{
-    return this->mediator->getMapSize();
 }

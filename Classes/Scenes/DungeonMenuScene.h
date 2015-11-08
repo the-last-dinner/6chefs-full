@@ -19,9 +19,8 @@ class DungeonMenuScene : public baseScene
 {
 // クラスメソッド
 public:
-    static Scene* createScene(Texture2D* screen, function<void()> onPopMenuScene);
-    //CREATE_FUNC_WITH_PARAM(DungeonMenuScene, Texture2D*);
     CREATE_FUNC_WITH_TWO_PARAM(DungeonMenuScene, Texture2D*, function<void()>);
+
 // インスタンス変数
 public:
     function<void()> onPopMenuScene;
