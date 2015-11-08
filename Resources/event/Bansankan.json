@@ -143,20 +143,25 @@
           ]
         },
         {
-          "type": "charaWalk",
-          "objID": "hero",
-          "direction": "UP",
-          "steps": "0.5"
+          "type":"charaWalk",
+          "objID":"hero",
+          "direction":"UP",
+          "steps":0.5
         },
         {
           "type": "changeMap",
           "mapID": "3",
-          "x": 26,
+          "x": 14,
           "y": 14
         },
         {
-          "type": "playBGM",
-          "file": "Mozart-OboeConcerto-1.mp3"
+          "type":"changeDirection",
+          "objID":"hero",
+          "direction":"RIGHT"
+        },
+        {
+          "type":"playBGM",
+          "file":"Mozart-OboeConcerto-1.mp3"
         },
         {
           "type": "charaMsg",

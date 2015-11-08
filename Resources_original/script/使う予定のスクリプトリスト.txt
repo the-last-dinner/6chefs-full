@@ -294,8 +294,7 @@
 （例）
 	{
 	"type":"countDown",
-	"second":秒数,
-	"ID":"カウントダウンID",
+	"second":秒数
 	"condition":[
 		{		
 			"event":["{マップ番号、イベントID}"],
@@ -318,8 +317,7 @@
 ・必要なもの...カウントダウンID
 （例）
 	{
-	"type":"stopCount",
-	"ID":"カウントダウンID"
+	"type":"stopCount"
 	}
   
 
@@ -448,7 +446,7 @@
 （例）
 	{
 	"type" 　　:"camera",
-	"mapID"　　:"マップ番号",
+	"mapID"　　:"マップ番号",#
 	"x"　　　　:x座標,#
 	"y"　　　　:y座標,#
 	"nextX"　　:カメラが向かうx座標,#
@@ -456,7 +454,25 @@
 	"time"　　 :"かかる秒数",#
 	"return"   :"hero"←主人公に戻る,#
 	"objID"    :"追いかけるキャラのオブジェクトID"#
-	}
+	},
+
+(例)マップまたぐカメラ
+{
+	"type" 　　:"camera",
+	"mapID"　　:"マップ番号",#
+	"x"　　　　:x座標,#
+	"y"　　　　:y座標,#,
+	"action"   :[
+		{
+			"type":"camera",
+			"nextX":20,
+			"nextY":
+		}
+	
+	]
+}
+	
+	
   
 
 ●キャラが主人公（別キャラ）についてくるように
@@ -659,6 +675,16 @@ MAIN-Ohiromaの19
 		"type":"addProfile",
 		"charaID":"キャラID",
 		"infoID":"情報番号"#
+	}
+
+●ゲームを終了させてタイトル画面に戻す
+・type名・・・end
+・必要なもの・・・画像ファイル名
+
+（例）
+	{
+		"type":"end",
+		"file":"表示する画像ファイル名"
 	}
 
 

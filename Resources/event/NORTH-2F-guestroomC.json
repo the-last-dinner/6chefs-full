@@ -53,7 +53,6 @@
 				{
 					"type":"countDown",
 					"second":5.0,
-					"ID":"161",
 					"action":[
 						{
 							"type":"spawn",
@@ -94,8 +93,7 @@
 							"file":"kodou.wav"
 						},
 						{
-							"type":"stopCount",
-							"ID":"161"
+							"type":"stopCount"
 						},
 						{
 							"type":"fadeout"
