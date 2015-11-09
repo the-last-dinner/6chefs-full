@@ -10,6 +10,7 @@
 #include "Layers/Menu/DungeonMainMenuLayer.h"
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/ItemMenuLayer.h"
+#include "Layers/Menu/CharacterMenuLayer.h"
 
 // クラス変数
 const string DungeonMenuScene::MAIN_LAYER_NAME = "mainMenuLayer";
@@ -56,6 +57,7 @@ void DungeonMenuScene::createMainMenu()
     menu->onSaveMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onSaveMenuSelected, this);
     menu->onMenuHidden = CC_CALLBACK_0(DungeonMenuScene::onMenuHidden, this);
     menu->onItemMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onItemMenuSelected, this);
+    menu->onCharacterMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onCharaMenuSelected, this);
     this->addChild(menu);
     this->mainMenu = menu;
     this->mainMenu->show();
@@ -80,6 +82,7 @@ void DungeonMenuScene::createSaveMenu()
     this->saveDataSelector = saveDataSelector;
 }
 
+// アイテムメニューレイヤーの生成
 void DungeonMenuScene::createItemMenu()
 {
     FUNCLOG
@@ -89,7 +92,7 @@ void DungeonMenuScene::createItemMenu()
         this->removeChildByName(ITEM_LAYER_NAME);
     }
     // 生成
-    ItemMenuLayer* itemMenu { ItemMenuLayer::create()};
+    ItemMenuLayer* itemMenu { ItemMenuLayer::create() };
     itemMenu->setName(ITEM_LAYER_NAME);
     this->addChild(itemMenu);
     itemMenu->hide();
@@ -97,31 +100,38 @@ void DungeonMenuScene::createItemMenu()
     this->itemMenu = itemMenu;
 }
 
-void DungeonMenuScene::onPreloadFinished()
+// キャラクターメニューレイヤーの生成
+void DungeonMenuScene::createCharaMenu()
 {
+    FUNCLOG
+    // すでに存在すれば削除
+    if(this->getChildByName(CHARA_LAYER_NAME))
+    {
+        this->removeChildByName(CHARA_LAYER_NAME);
+    }
+    // 生成
+    CharacterMenuLayer* charaMenu { CharacterMenuLayer::create() };
+    charaMenu->setName(CHARA_LAYER_NAME);
+    charaMenu->onCharacterMenuCanceled = CC_CALLBACK_0(DungeonMenuScene::onCharaMenuCanceled, this);
+    this->addChild(charaMenu);
+    charaMenu->hide();
+    this->charaMenu = charaMenu;
 }
+
+void DungeonMenuScene::onPreloadFinished(){}
 
 // 方向キーを押した時
-void DungeonMenuScene::onCursorKeyPressed(const Key& key)
-{
-}
+void DungeonMenuScene::onCursorKeyPressed(const Key& key){}
 
 // スペースキーを押した時
-void DungeonMenuScene::onSpaceKeyPressed()
-{
-}
-
+void DungeonMenuScene::onSpaceKeyPressed(){}
 
 
 // キーを押し続けている時
-void DungeonMenuScene::intervalInputCheck(const vector<Key>& keys)
-{
-}
+void DungeonMenuScene::intervalInputCheck(const vector<Key>& keys){}
 
 // メニューキー押したとき
-void DungeonMenuScene::onMenuKeyPressed()
-{
-}
+void DungeonMenuScene::onMenuKeyPressed(){}
 
 //メニューが削除されたとき
 void DungeonMenuScene::onMenuHidden()
@@ -144,14 +154,6 @@ void DungeonMenuScene::onSaveMenuSelected()
     this->mainMenu->hide();
     this->createSaveMenu();
     this->saveDataSelector->show();
-}
-
-// セーブデータが選ばれた時
-void DungeonMenuScene::onSaveDataSelected(int dataId)
-{
-    FUNCLOG
-    //PlayerDataManager::getInstance()->setMainLocalData(dataId);
-    //SoundManager::getInstance()->playSound("se/failure.mp3");
 }
 
 // セーブデータ選択をキャンセルした時
@@ -188,4 +190,25 @@ void DungeonMenuScene::onItemMenuCanceled()
     ));
 }
 
+#pragma mark -
+#pragma mark CharacterMenu
 
+// キャラメニューが洗濯された時
+void DungeonMenuScene::onCharaMenuSelected()
+{
+    FUNCLOG
+    this->mainMenu->hide();
+    this->createCharaMenu();
+    this->charaMenu->show();
+}
+
+// キャラメニューでキャンセルされた時
+void DungeonMenuScene::onCharaMenuCanceled()
+{
+    FUNCLOG
+    SoundManager::getInstance()->playSound("se/back.mp3");
+    runAction(Sequence::createWithTwoActions(
+        CallFunc::create([this](){this->charaMenu->hide();}),
+        CallFunc::create([this](){this->createMainMenu();})
+    ));
+}

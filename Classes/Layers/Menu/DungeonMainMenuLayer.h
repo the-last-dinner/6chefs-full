@@ -31,9 +31,10 @@ public:
 
     //インスタンス変数
 public:
-    function<void()> onMenuHidden { nullptr };
+    function<void()> onMenuHidden {nullptr};
     function<void()> onSaveMenuSelected {nullptr};
     function<void()> onItemMenuSelected {nullptr};
+    function<void()> onCharacterMenuSelected {nullptr};
 private:
     int menuIndex {0};
 	// インスタンスメソッド

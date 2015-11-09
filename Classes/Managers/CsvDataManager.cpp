@@ -97,6 +97,9 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
     return values;
 }
 
+#pragma mark -
+#pragma mark Map
+
 // マップ名を取得
 string CsvDataManager::getMapName(const int map_id)
 {
@@ -121,6 +124,9 @@ string CsvDataManager::getItemDiscription(const int item_id)
     return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][2] : "アイテムがありません";
 }
 
+#pragma mark -
+#pragma mark Chapter
+
 // チャプター名を取得
 string CsvDataManager::getChapterName(const int chapter_id)
 {
@@ -132,6 +138,9 @@ string CsvDataManager::getChapterTitle(const int chapter_id)
 {
     return this->csv_data[DataType::CHAPTER][chapter_id][2];
 }
+
+#pragma mark -
+#pragma mark Character
 
 // キャラクター名の取得
 string CsvDataManager::getCharaName(const int chara_id)
@@ -155,5 +164,24 @@ int CsvDataManager::getCharaFaceDiff(const int chara_id)
 // @param int level 0 ~ 2
 string CsvDataManager::getCharaDiscription(const int chara_id, const int level)
 {
-    return this->csv_data[DataType::CHARACTER][chara_id][level];
+    return this->csv_data[DataType::CHARACTER][chara_id][level+4];
+}
+// キャラクターをメニューに表示するかどうか
+bool CsvDataManager::isDisplayChara(const int chara_id)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][7] == "1" ? true : false;
+}
+
+// 表示するキャラクターリスト
+vector<int> CsvDataManager::getDisplayCharacters()
+{
+    vector<int> charas;
+    for (auto itr:this->csv_data[DataType::CHARACTER])
+    {
+        if(this->isDisplayChara(itr.first))
+        {
+            charas.push_back(itr.first);
+        }
+    }
+    return charas;
 }
