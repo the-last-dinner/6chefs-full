@@ -11,6 +11,8 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
+class MiniSelector;
+
 class ItemMenuLayer : public MenuLayer
 {
     // クラスメソッド
@@ -29,6 +31,9 @@ private:
     virtual void onSpacePressed(int idx);
     virtual void onMenuKeyPressed();
     void changeItemDiscription(const int idx);
+    void createMiniSelector();
+    void onMiniSelectorCanceled();
+    void onMiniIndexSelected(const int idx);
 protected:
     ItemMenuLayer();
     ~ItemMenuLayer();
@@ -39,6 +44,9 @@ public:
     // インスタンス変数
 private:
     vector<int> items {};
+    MiniSelector* miniSelector {nullptr};
+    int selected_item {0};
+    bool isEquip {true};
 public:
     function<void()> onItemMenuCanceled { nullptr };
     //function<void()> onSaveDataSelectCancelled { nullptr };

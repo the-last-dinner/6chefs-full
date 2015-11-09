@@ -16,6 +16,8 @@ namespace SpriteUtils{
     struct Square
     {
     private:
+        float rate_width = WINDOW_WIDTH / 100;
+        float rate_height = WINDOW_HEIGHT / 100;
         float minX {0};
         float minY {0};
         float maxX {0};
@@ -23,9 +25,9 @@ namespace SpriteUtils{
         float width {0};
         float height {0};
     public:
-        Square(const float minX, const float minY, const float maxX, const float maxY):minX(minX), minY(minY), maxX(maxX), maxY(maxY){
-            width = maxX - minX;
-            height = maxY - minY;
+        Square(const float minX, const float minY, const float maxX, const float maxY):minX(minX * rate_width), minY(minY * rate_height), maxX(maxX * rate_width), maxY(maxY * rate_height){
+            width = this->maxX - this->minX;
+            height = this->maxY - this->minY;
         };
         Square(){};
         // getter
