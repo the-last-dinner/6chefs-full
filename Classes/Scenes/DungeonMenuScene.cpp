@@ -134,7 +134,7 @@ void DungeonMenuScene::onSaveDataSelectCancelled()
     SoundManager::getInstance()->playSound("se/back.mp3");
     runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->saveDataSelector->hide();}),
-        CallFunc::create([this](){this->mainMenu->show();})
+        CallFunc::create([this](){this->createMainMenu();})
     ));
 }
 
@@ -157,7 +157,7 @@ void DungeonMenuScene::onItemMenuCanceled()
     SoundManager::getInstance()->playSound("se/back.mp3");
     runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->itemMenu->hide();}),
-        CallFunc::create([this](){this->mainMenu->show();})
+        CallFunc::create([this](){this->createMainMenu();})
     ));
 }
 
