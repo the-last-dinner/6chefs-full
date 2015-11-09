@@ -41,9 +41,9 @@ public:
     bool hasMember(rapidjson::Value& json, const char* member);
     bool detectCondition(rapidjson::Value& json);
     
-    MapObject* getMapObjectById(rapidjson::Value& json);
+    MapObject* getMapObjectById(const string& objectId, bool available = true);
     template<typename T>
-    inline T getMapObjectById(rapidjson::Value& json) { return dynamic_cast<T>(this->getMapObjectById(json)); };
+    inline T getMapObjectById(const string& objectId, bool available = true) { return dynamic_cast<T>(this->getMapObjectById(objectId, available)); };
     
     Point getPoint(rapidjson::Value& json);
     Direction getDirection(rapidjson::Value& json);

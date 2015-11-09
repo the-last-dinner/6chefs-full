@@ -54,10 +54,12 @@ using namespace experimental;
 // レイヤーのZORDER値
 enum Priority
 {
-	SCREEN_COVER = 999,
+    LOADING_LAYER = 999,
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,
     CHARACTER_MESSAGE = 100,
+    DISP_IMAGE_LAYER = 90,
+    SCREEN_COVER = 80,
     DEBUG_MASK = 40,
     AMBIENT_LIGHT = 50,
 	MAP = 0,

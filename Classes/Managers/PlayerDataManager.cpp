@@ -263,6 +263,7 @@ void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const
     //mapが存在するかチェック
     if(itr == this->local["event"].MemberEnd()){
         this->local["event"].AddMember(StringRef(mid), rapidjson::Value(), this->local.GetAllocator());
+        this->local["event"][mid].SetObject();
     }
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();

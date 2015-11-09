@@ -9,13 +9,13 @@
 #ifndef __LastSupper__DungeonSceneManager__
 #define __LastSupper__DungeonSceneManager__
 
-#include "define.h"
+#include "Common.h"
 
 class DungeonScene;
 class TiledMapLayer;
+class MapObject;
 class MapObjectList;
 class EventFactory;
-class EventListenerKeyboardLayer;
 class EventScript;
 class EventScriptValidator;
 class Party;
@@ -45,10 +45,19 @@ public:
     TiledMapLayer* getMapLayer() const;
     MapObjectList* getMapObjectList() const;
     EventFactory* getEventFactory() const;
-    EventListenerKeyboardLayer* getSceneEventListener() const;
     EventScriptValidator* getScriptValidator() const;
     EventScript* getEventScript() const;
     Party* getParty() const;
+    
+    // Scene
+    void fadeOut(const Color3B& color, const float duration, function<void()> callback);
+    void fadeIn(const float duration, function<void()> callback);
+    
+    // TiledMaplayer
+    void addMapObject(MapObject* mapobject);
+    
+    // Director
+    void changeMap(const PlayerDataManager::Location& location);
     
     // EventListener
     void setInputCheckInterval(const float interval);
@@ -60,7 +69,8 @@ public:
     void pushEventBack(const int eventId);
     void pushEventFront(const int eventId);
     void runEventQueue();
-    bool existsEvent();
+    bool existsEvent() const;
+    int getRunningEventId() const;
 };
 
 #endif /* defined(__LastSupper__DungeonSceneManager__) */

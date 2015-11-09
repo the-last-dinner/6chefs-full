@@ -18,6 +18,7 @@ class CharacterEvent : public GameEvent
 {
 // インスタンス変数
 protected:
+    string objectId {};
     Character* target { nullptr };
     
 // インスタンスメソッド
@@ -25,6 +26,7 @@ protected:
     CharacterEvent() {};
     ~CharacterEvent() {};
     virtual bool init(rapidjson::Value& json);
+    bool onRun();
 };
 
 // 方向転換

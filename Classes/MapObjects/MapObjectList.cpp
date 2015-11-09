@@ -16,13 +16,15 @@ MapObjectList::~MapObjectList()
 {
     FUNCLOG
 
-    this->mapObjects.clear();
+    this->availableObjects.clear();
+    this->disableObjects.clear();
 };
 
 // 初期化
-bool MapObjectList::init(const Vector<MapObject*>& mapObjects)
+bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects)
 {
-    this->mapObjects = mapObjects;
+    this->availableObjects = availableObjects;
+    this->disableObjects = disableObjects;
     
     return true;
 }
@@ -30,7 +32,21 @@ bool MapObjectList::init(const Vector<MapObject*>& mapObjects)
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const
 {
-    for(MapObject* obj : this->mapObjects)
+    for(MapObject* obj : this->availableObjects)
+    {
+        if(objId == obj->getObjectId())
+        {
+            return obj;
+        }
+    }
+    
+    return nullptr;
+}
+
+// 無効リストから指定IDのマップオブジェクトを取得
+MapObject* MapObjectList::getMapObjectFromDisableList(int objId) const
+{
+    for(MapObject* obj : this->disableObjects)
     {
         if(objId == obj->getObjectId())
         {
@@ -44,14 +60,14 @@ MapObject* MapObjectList::getMapObject(int objId) const
 // マップオブジェクトのベクタを取得
 const Vector<MapObject*>& MapObjectList::getMapObjects() const
 {
-    return this->mapObjects;
+    return this->availableObjects;
 }
 
 // 指定範囲内にあるマップオブジェクトのベクタを取得
 Vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
 {
     Vector<MapObject*> mapObjects {};
-    for(MapObject* obj : this->mapObjects)
+    for(MapObject* obj : this->availableObjects)
     {
         if(rect.intersectsRect(obj->getCollisionRect())) mapObjects.pushBack(obj);
     }
@@ -63,7 +79,7 @@ Vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
 Vector<MapObject*> MapObjectList::getMapObjects(const Point& position) const
 {
     Vector<MapObject*> mapObjects {};
-    for(MapObject* obj : this->mapObjects)
+    for(MapObject* obj : this->availableObjects)
     {
         if(obj->getCollisionRect().containsPoint(position)) mapObjects.pushBack(obj);
     }
@@ -71,17 +87,17 @@ Vector<MapObject*> MapObjectList::getMapObjects(const Point& position) const
     return mapObjects;
 }
 
-// 指定トリガーのマップオブジェクトのベクタを取得
-Vector<MapObject*> MapObjectList::getMapObjects(const Trigger trigger) const
+// 指定トリガーのマップオブジェクトのEventIDベクタを取得
+vector<int> MapObjectList::getEventIds(const Trigger trigger) const
 {
-    Vector<MapObject*> mapObjects {};
+    vector<int> eventIds {};
     
-    for(MapObject* obj : this->mapObjects)
+    for(MapObject* obj : this->availableObjects)
     {
-        if(obj->getTrigger() == trigger) mapObjects.pushBack(obj);
+        if(obj->getTrigger() == trigger) eventIds.push_back(obj->getEventId());
     }
     
-    return mapObjects;
+    return eventIds;
 }
 
 // 指定範囲内にあたり判定を持つマップオブジェクトが存在するか
@@ -98,5 +114,16 @@ const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {
-    this->mapObjects.pushBack(mapObject);
+    this->availableObjects.pushBack(mapObject);
+    
+    // 無効リストに存在する場合は削除
+    for(MapObject* obj : this->disableObjects)
+    {
+        if(mapObject->getObjectId() == obj->getObjectId())
+        {
+            this->disableObjects.eraseObject(mapObject);
+            
+            break;
+        }
+    }
 }

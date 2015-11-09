@@ -54,7 +54,7 @@ bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>
     
     // タイトルを生成
     Label* titleLabel {Label::createWithTTF(title, "fonts/cinecaption2.28.ttf", 36.f)};
-    titleLabel->setPosition(titleLabel->getContentSize().width, winSize.height - titleLabel->getContentSize().height / 2);
+    titleLabel->setPosition(WINDOW_WIDTH / 2, winSize.height - titleLabel->getContentSize().height / 2);
     frame->addChild(titleLabel);
 	
 	return MessageLayer::init(onCloseCallback);
@@ -64,7 +64,7 @@ bool StoryMessageLayer::init(const string& title, const queue<StoryMessageData*>
 Label* StoryMessageLayer::createMessage()
 {
     Label* message { Label::createWithTTF(this->datas.front()->getMessage(), "fonts/cinecaption2.28.ttf", 24.f) };
-    message->setHorizontalAlignment(TextHAlignment::CENTER);
+    message->setHorizontalAlignment(TextHAlignment::LEFT);
     message->setVerticalAlignment(TextVAlignment::CENTER);
     message->setPosition(this->frame->getContentSize() / 2);
     this->frame->addChild(message);

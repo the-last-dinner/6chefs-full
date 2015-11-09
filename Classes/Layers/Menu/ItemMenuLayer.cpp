@@ -273,7 +273,7 @@ void ItemMenuLayer::onSpacePressed(int idx)
     if(this->items[idx] < 0)
     {
         // アイテムを持っていない時
-        SoundManager::getInstance()->playSound("se/failure.mp3");
+        SoundManager::getInstance()->playSE("failure.mp3");
     }
     else
     {
@@ -288,7 +288,7 @@ void ItemMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
     if (sound)
     {
-        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+        SoundManager::getInstance()->playSE("cursorMove.mp3");
     }
     for(Node* obj : this->menuObjects)
     {

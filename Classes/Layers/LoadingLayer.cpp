@@ -17,10 +17,19 @@ LoadingLayer::~LoadingLayer(){FUNCLOG}
 // 初期化
 bool LoadingLayer::init()
 {
-	FUNCLOG
 	if(!Layer::init()) return false;
+
+    this->setCascadeOpacityEnabled(true);
+    
 	// plistを読み込み
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(TextureManager::basePath + "load.plist");
+    
+    // カバー生成
+    Sprite* cover { Sprite::create() };
+    cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+    cover->setColor(Color3B::BLACK);
+    cover->setPosition(cover->getContentSize() / 2);
+    this->addChild(cover);
 	
 	// ローディングイメージを生成
 	for(int i = 0 ; i < 2 ; i++)
@@ -48,15 +57,7 @@ bool LoadingLayer::init()
 }
 
 // ロード完了時の処理
-void LoadingLayer::loadFinished(const function<void()>& callback)
+void LoadingLayer::loadFinished()
 {
-	FUNCLOG
-	this->setCascadeOpacityEnabled(true);
-	this->runAction(Sequence::create(FadeOut::create(0.8f), CallFunc::create([=]()
-    {
-		this->setVisible(false);
-		this->removeAllChildren();
-		callback();
-		this->removeFromParent();
-    }), nullptr));
+    this->runAction(Sequence::createWithTwoActions(FadeOut::create(0.5f), RemoveSelf::create()));
 }

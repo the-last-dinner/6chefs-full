@@ -54,6 +54,10 @@ bool EventScriptValidator::detectCondition(rapidjson::Value& json)
         for(rapidjson::Value::MemberIterator itr = conditions[i].MemberBegin(); itr != conditions[i].MemberEnd(); itr++)
         {
             string key {itr->name.GetString()};
+            
+            // typeを無視
+            if(key == member::TYPE) continue;
+            
             bool negative {false};
             
             if(key.find("N") == 0)
@@ -172,23 +176,18 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
 }
 
 // マップオブジェクトを取得
-MapObject* EventScriptValidator::getMapObjectById(rapidjson::Value& json)
+MapObject* EventScriptValidator::getMapObjectById(const string& objectId, bool available)
 {
-    if(!this->hasMember(json, member::OBJECT_ID)) return nullptr;
-    
-    string sObjid = json[member::OBJECT_ID].GetString();
-    
     // heroであったら主人公を返す
-    if (sObjid == "hero")
+    if (objectId == "hero")
     {
         return DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
     }
     // heroでなければIDから検索して返す
     else
     {
-        MapObject* obj { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObject(stoi(sObjid)) };
-        
-        return obj;
+        if(available) return DungeonSceneManager::getInstance()->getMapObjectList()->getMapObject(stoi(objectId));
+        return DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectFromDisableList(stoi(objectId));
     }
 }
 

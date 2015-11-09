@@ -20,6 +20,8 @@ class CameraTask;
 class EventTask;
 class PlayerControlTask;
 
+class LoadingLayer;
+
 class DungeonScene : public baseScene
 {
 // クラスメソッド
@@ -28,6 +30,7 @@ public:
 	
 // インスタンス変数
 private:
+    EventListenerKeyboardLayer* listener { nullptr };
     cocos2d::FileUtils* fu;
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
@@ -36,15 +39,19 @@ private:
     EventTask* eventTask { nullptr };
     PlayerControlTask* playerControlTask { nullptr };
     
+    LoadingLayer* loadingLayer { nullptr };
+    Sprite* cover { nullptr };
+    
 // インスタンスメソッド
 public:
-    EventListenerKeyboardLayer* getListener() const;
+    void onInitEventFinished();
     
 private:
 	DungeonScene();
 	~DungeonScene();
 	virtual bool init(DungeonSceneData* data);
 	virtual void onPreloadFinished() override;
+    
     virtual void onMenuKeyPressed() override;
     DungeonSceneData* getData() const;
     

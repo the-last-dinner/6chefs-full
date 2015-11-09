@@ -37,23 +37,40 @@ SoundManager::SoundManager()
 SoundManager::~SoundManager()
 {FUNCLOG}
 
+// SEを再生
+void SoundManager::playSE(const string& fileName, float volume)
+{
+	AudioEngine::play2d(sePath + fileName, false, volume);
+}
+
+// BGMを再生
+void SoundManager::playBGM(const string& fileName, bool loop, float volume)
+{
+    int BGMId { AudioEngine::play2d(bgmPath + fileName, loop, volume) };
+    
+    this->BGMFilePathToId.insert({fileName, BGMId});
+}
+
+// BGMを停止
+void SoundManager::stopBGM()
+{
+    if(this->BGMFilePathToId.empty()) return;
+    
+    for(pair<string, int> fileNameToId : this->BGMFilePathToId)
+    {
+        AudioEngine::stop(fileNameToId.second);
+    }
+}
+
 // 音声ファイルをプリロード
 void SoundManager::preloadSound(const string& filePath)
 {
-	// プリロード関数がないため、音量ゼロで再生する
-	int audioId = AudioEngine::play2d(filePath, false, 0.0f);
-	this->soundMap.insert({filePath, audioId});
-	
-	// すぐに再生停止
-	AudioEngine::stop(audioId);
-	return;
-}
-
-// 音声を再生
-void SoundManager::playSound(const string& filePath, bool loop, float volume)
-{
-	AudioEngine::play2d(filePath, loop, volume);
-	return;
+    // プリロード関数がないため、音量ゼロで再生する
+    int audioId = AudioEngine::play2d(filePath, false, 0.0f);
+    this->soundMap.insert({filePath, audioId});
+    
+    // すぐに再生停止
+    AudioEngine::stop(audioId);
 }
 
 // 音声をアンロード
