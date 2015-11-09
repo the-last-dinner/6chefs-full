@@ -90,7 +90,7 @@ void MessageLayer::displayMessageWithAnimation(Label* message)
         if(letter)
         {
             letter->setVisible(false);
-            this->runAction(Sequence::createWithTwoActions(DelayTime::create(this->latency * i), TargetedAction::create(letter, Show::create())));
+            letter->runAction(Sequence::createWithTwoActions(DelayTime::create(this->latency * i), TargetedAction::create(letter, Show::create())));
         }
     }
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(stringLength * this->latency), CallFunc::create([this](){this->onAllLetterDisplayed();})));
