@@ -57,5 +57,7 @@ public:
     string getCharaFileName(const int chara_id);
     int getCharaFaceDiff(const int chara_id);
     string getCharaDiscription(const int chara_id, const int level);
+    bool isDisplayChara(const int chara_id);
+    vector<int> getDisplayCharacters();
 };
 #endif

@@ -23,7 +23,7 @@ private:
     virtual void onIndexChanged(int newIdx, bool sound);
     virtual void onSpacePressed(int idx);
     virtual void onMenuKeyPressed();
-    void changeItemDiscription(const int idx);
+    void changeCharaImage(const int idx);
 protected:
     CharacterMenuLayer();
     ~CharacterMenuLayer();

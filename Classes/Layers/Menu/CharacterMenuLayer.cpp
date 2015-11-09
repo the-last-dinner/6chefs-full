@@ -17,7 +17,7 @@ CharacterMenuLayer::~CharacterMenuLayer(){FUNCLOG}
 bool CharacterMenuLayer::init()
 {
     
-    if (!MenuLayer::init(2,6)) return false;
+    if (!MenuLayer::init(1,12)) return false;
     SpriteUtils::Square square;
     SpriteUtils::Margin margin;
     
@@ -40,13 +40,96 @@ bool CharacterMenuLayer::init()
     title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
+    
+    // キャラ紹介
+    square = SpriteUtils::Square(0,0,30,80);
+    margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
+    Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
+    leftBottom->setColor(Color3B::BLACK);
+    leftBottom->setName("charaImage");
+    this->addChild(leftBottom);
+    
+    // キャラ選択部分
+    square = SpriteUtils::Square(30,0,100,100);
+    margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
+    Sprite* right = SpriteUtils::getSquareSprite(square, margin);
+    right->setColor(Color3B::BLACK);
+    this->addChild(right);
+    
+    Size list_size {right->getContentSize()};
+    Point maxSize {Point(1,12)};
+    this->characters = CsvDataManager::getInstance()->getDisplayCharacters();
+    int chara_count = this->characters.size();
+    for (int i=0;i<chara_count; i++){
+        // パネル生成
+        Sprite* panel = Sprite::create();
+        panel->setTextureRect(Rect(0, 0, list_size.width / maxSize.x, list_size.height / maxSize.y));
+        panel->setColor(Color3B::BLACK);
+        panel->setTag(i);
+        Size panel_size {panel->getContentSize()};
+        panel->setPosition((i%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor(i/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2);
+        right->addChild(panel);
+        // メニューオブジェクトに登録
+        this->menuObjects.push_back(panel);
+        // 不透明度を半分にしておく
+        panel->setCascadeOpacityEnabled(true);
+        panel->setOpacity(100);
+        
+        // キャラクター名
+        Label* chara = Label::createWithTTF(CsvDataManager::getInstance()->getCharaName(this->characters[i]), "fonts/cinecaption2.28.ttf", 24);
+        chara->setPosition(panel_size.width/2 , panel_size.height / 2);
+        chara->setColor(Color3B::WHITE);
+        panel->addChild(chara);
+    }
+    
+    // デフォルトセット
+    onIndexChanged(0, false);
+    
     return true;
 }
 
 // カーソル移動
 void CharacterMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
-    
+    if (sound)
+    {
+        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    }
+    for(Node* obj : this->menuObjects)
+    {
+        if(obj->getTag() == newIdx)
+        {
+            obj->runAction(FadeTo::create(0.2f, 255));
+        }
+        else
+        {
+            obj->runAction(FadeTo::create(0.2f, 100));
+        }
+    }
+    // キャラクターイメージを変更
+    this->changeCharaImage(newIdx);
+}
+
+void CharacterMenuLayer::changeCharaImage(const int idx)
+{
+    // 親のスプライトを取得
+    Node* leftBottom = this->getChildByName("charaImage");
+    // 子のスプライトがすでに存在すれば消してから生成
+    string labelName = "imgLabel";
+    if (leftBottom->getChildByName(labelName)){
+        leftBottom->removeChildByName(labelName);
+    }
+    Size panel = leftBottom->getContentSize();
+    string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_0.png";
+    if(SpriteFrameCache::getInstance()->getSpriteFrameByName(fileName))
+    {
+        Sprite* img { Sprite::createWithSpriteFrameName(fileName)};
+        img->setScale(0.30);
+        img->setPosition(panel.width/2,panel.height/2 + 20);
+        img->setName(labelName);
+        //img->setLocalZOrder(-1);
+        leftBottom->addChild(img);
+    }
 }
 
 // メニューキー
