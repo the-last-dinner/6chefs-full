@@ -36,6 +36,6 @@ private:
     vector<int> characters {};
     int selected_character {0};
 public:
-    function<void()> onItemMenuCanceled { nullptr };
+    function<void()> onCharacterMenuCanceled { nullptr };
 };
 #endif /* CharacterMenuLayer_h */

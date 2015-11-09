@@ -14,6 +14,7 @@
 class DungeonMainMenuLayer;
 class SaveDataSelector;
 class ItemMenuLayer;
+class CharacterMenuLayer;
 
 class DungeonMenuScene : public baseScene
 {
@@ -35,6 +36,7 @@ private:
     DungeonMainMenuLayer* mainMenu {nullptr};
     SaveDataSelector* saveDataSelector {nullptr};
     ItemMenuLayer* itemMenu {nullptr};
+    CharacterMenuLayer* charaMenu {nullptr};
     int menuIndex {0};
     
 // インスタンスメソッド
@@ -52,14 +54,17 @@ private:
     void createMainMenu();
     void createSaveMenu();
     void createItemMenu();
+    void createCharaMenu();
     // メインメニュー
     void onSaveMenuSelected();
     void onItemMenuSelected();
+    void onCharaMenuSelected();
     // セーブデータセレクター
-    void onSaveDataSelected(int dataId);
     void onSaveDataSelectCancelled();
     // アイテムメニュー
     void onItemMenuCanceled();
+    // キャラクターメニュー
+    void onCharaMenuCanceled();
 };
 
 #endif /* defined(__LastSupper__DungeonMenuScene__) */
