@@ -231,7 +231,7 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
 // ミニセレクターを抜け出した時
 void ItemMenuLayer::onMiniSelectorCanceled()
 {
-    SoundManager::getInstance()->playSound("se/back.mp3");
+    SoundManager::getInstance()->playSE("back.mp3");
     this->runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->miniSelector->hide();}),
         CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})

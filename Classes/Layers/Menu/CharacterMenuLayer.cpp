@@ -94,7 +94,7 @@ void CharacterMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
     if (sound)
     {
-        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+        SoundManager::getInstance()->playSE("cursorMove.mp3");
     }
     for(Node* obj : this->menuObjects)
     {

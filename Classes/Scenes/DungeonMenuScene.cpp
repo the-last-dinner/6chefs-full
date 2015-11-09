@@ -206,7 +206,7 @@ void DungeonMenuScene::onCharaMenuSelected()
 void DungeonMenuScene::onCharaMenuCanceled()
 {
     FUNCLOG
-    SoundManager::getInstance()->playSound("se/back.mp3");
+    SoundManager::getInstance()->playSE("back.mp3");
     runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->charaMenu->hide();}),
         CallFunc::create([this](){this->createMainMenu();})
