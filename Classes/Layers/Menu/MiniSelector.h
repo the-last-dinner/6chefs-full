@@ -11,8 +11,6 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
-class MiniSelector;
-
 class MiniSelector: public MenuLayer
 {
 public:
