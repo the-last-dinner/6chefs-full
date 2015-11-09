@@ -22,8 +22,6 @@ public:
 
 // インスタンス変数
 private:
-    EventListenerKeyboardLayer* listener { nullptr };
-    Party* party { nullptr };
     int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
     
 // インスタンスメソッド
@@ -32,10 +30,10 @@ private:
     ~PlayerControlTask();
     bool init();
 public:
-    void turn(const Key& key);                  // 向きを変える
-    void search();                              // 目の前を調べる
-    void walking(const vector<Key>& keys);      // 歩行中
-    void onPartyMovedOneGrid();                 // 一マス分移動し終えた時
+    void turn(const Key& key, Party* party);                                // 向きを変える
+    void search(Party* party);                                // 目の前を調べる
+    void walking(const vector<Key>& keys, Party* party);      // 歩行中
+    void onPartyMovedOneGrid();                               // 一マス分移動し終えた時
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

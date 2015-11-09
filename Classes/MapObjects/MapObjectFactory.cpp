@@ -43,7 +43,8 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     };
     
     // ベクタを用意
-    Vector<MapObject*> mapObjects {};
+    Vector<MapObject*> availableObjects {};
+    Vector<MapObject*> disableObjects {};
     
     for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
     {
@@ -56,7 +57,14 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         for(cocos2d::Value info : infos)
         {
             MapObject* obj {typeToFunc[group](info.asValueMap())};
-            if(obj) mapObjects.pushBack(obj);
+            if(obj && group == Group::CHARACTER)
+            {
+                disableObjects.pushBack(obj);
+            }
+            else if(obj)
+            {
+                availableObjects.pushBack(obj);
+            }
         }
     }
     
@@ -64,7 +72,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     delete p;
     
     // MapObjectListを生成して返す
-    return MapObjectList::create(mapObjects);
+    return MapObjectList::create(availableObjects, disableObjects);
 }
 
 // オブジェクトの位置、大きさを取得

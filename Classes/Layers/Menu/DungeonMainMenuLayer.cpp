@@ -116,14 +116,14 @@ void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
                                       TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
                                       nullptr));
     }
-    if(sound)SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
     return;
 }
 
 // 決定キー入力時
 void DungeonMainMenuLayer::onSpacePressed(int idx)
 {
-    SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+    SoundManager::getInstance()->playSE("cursorMove.mp3");
     switch (static_cast<Type>(idx)) {
         case Type::ITEM:
             if (this->onItemMenuSelected)
@@ -145,7 +145,7 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             }
             break;
         case Type::TITLE:
-            SoundManager::getInstance()->playSound("se/back.mp3");
+            SoundManager::getInstance()->playSE("back.mp3");
             Director::getInstance()->replaceScene(TitleScene::create());
             break;
         case Type::CLOSE:

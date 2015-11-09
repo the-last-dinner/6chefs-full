@@ -79,7 +79,7 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 									  TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
 									  nullptr));
 	}
-	if(sound)SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+	if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
 	return;
 }
 

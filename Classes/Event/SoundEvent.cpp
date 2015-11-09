@@ -12,41 +12,65 @@
 
 #include "Event/EventScriptValidator.h"
 
-#pragma mark PlayBGM
+#pragma mark PlayBGMEvent
 
-bool PlayBGM::init(rapidjson::Value& json)
+bool PlayBGMEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
+    // ファイル名。なければ生成しない
     if(!this->validator->hasMember(json, member::FILE)) return false;
     
     this->fileName = json[member::FILE].GetString();
     
+    // 音量
+    if(this->validator->hasMember(json, member::VOLUME)) this->volume = json[member::VOLUME].GetDouble();
+    
     return true;
 }
 
-void PlayBGM::run()
+void PlayBGMEvent::run()
 {
-    SoundManager::getInstance()->playSound(SoundManager::bgmPath + this->fileName);
+    SoundManager::getInstance()->playBGM(this->fileName, true, this->volume);
     this->setDone();
 }
 
 #pragma mark -
-#pragma mark PlaySE
+#pragma mark StopBGMEvent
 
-bool PlaySE::init(rapidjson::Value& json)
+bool StopBGMEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
-    
-    if(!this->validator->hasMember(json, member::FILE)) return false;
-    
-    this->fileName = json[member::FILE].GetString();
     
     return true;
 }
 
-void PlaySE::run()
+void StopBGMEvent::run()
 {
-    SoundManager::getInstance()->playSound(SoundManager::sePath + this->fileName);
+    SoundManager::getInstance()->stopBGM();
+    this->setDone();
+}
+
+#pragma mark -
+#pragma mark PlaySEEvent
+
+bool PlaySEEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // ファイル名。なければ生成しない
+    if(!this->validator->hasMember(json, member::FILE)) return false;
+    
+    this->fileName = json[member::FILE].GetString();
+    
+    // 音量
+    if(this->validator->hasMember(json, member::VOLUME)) this->volume = json[member::VOLUME].GetDouble();
+    
+    return true;
+}
+
+void PlaySEEvent::run()
+{
+    SoundManager::getInstance()->playSE(this->fileName, this->volume);
     this->setDone();
 }

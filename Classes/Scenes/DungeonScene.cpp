@@ -15,6 +15,7 @@
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Layers/LoadingLayer.h"
 
 #include "Tasks/EventTask.h"
 #include "Tasks/CameraTask.h"
@@ -44,7 +45,22 @@ DungeonScene::~DungeonScene()
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
-    return baseScene::init(data);
+    if(!Scene::init()) return false;
+    
+    // データクラスをセットしretain
+    this->data = data;
+    CC_SAFE_RETAIN(this->data);
+    
+    // ロード画面レイヤ
+    LoadingLayer* loadingLayer = LoadingLayer::create();
+    loadingLayer->setLocalZOrder(Priority::LOADING_LAYER);
+    this->addChild(loadingLayer);
+    this->loadingLayer = loadingLayer;
+    
+    // プリロード開始
+    this->data->preloadResources([=](float percentage){if(percentage == 1.f) this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.f), CallFunc::create([this]{this->onPreloadFinished();})));});
+    
+    return true;
 }
 
 // リソースプリロード完了時の処理
@@ -52,13 +68,13 @@ void DungeonScene::onPreloadFinished()
 {
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
-	mapLayer->setGlobalZOrder(Priority::MAP);
+    mapLayer->setLocalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
-    ambientLightLayer->setGlobalZOrder(Priority::AMBIENT_LIGHT);
+    ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
     
@@ -77,13 +93,6 @@ void DungeonScene::onPreloadFinished()
     CC_SAFE_RETAIN(playerControlTask);
     this->playerControlTask = playerControlTask;
     
-    // リスナにコールバックを設定
-    this->listener->onCursorKeyPressed = CC_CALLBACK_1(PlayerControlTask::turn, playerControlTask);
-    this->listener->onSpaceKeyPressed = CC_CALLBACK_0(PlayerControlTask::search, playerControlTask);
-    this->listener->intervalInputCheck = CC_CALLBACK_1(PlayerControlTask::walking, playerControlTask);
-    this->listener->setInputCheckDelay(MapObject::DURATION_MOVE_ONE_GRID);
-    this->listener->setInputCheckInterval(MapObject::DURATION_MOVE_ONE_GRID);
-    
     // パーティーをマップに配置
     Party* party { DungeonSceneManager::getInstance()->getParty() };
     PlayerDataManager::Location location { this->getData()->getInitialLocation() };
@@ -92,10 +101,33 @@ void DungeonScene::onPreloadFinished()
         mapLayer->addMapObject(character, Point(location.x, location.y));
     }
     
-    this->listener->setEnabled(true);
+    // イベントリスナ生成
+    EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
+    listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
+    listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
+    listener->intervalInputCheck = [playerControlTask, party](const vector<Key>& keys){playerControlTask->walking(keys, party);};
+    listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
+    listener->setInputCheckDelay(MapObject::DURATION_MOVE_ONE_GRID);
+    listener->setInputCheckInterval(MapObject::DURATION_MOVE_ONE_GRID);
     
+    this->addChild(listener);
+    this->listener = listener;
+    
+    // Trigger::INITを実行
+    eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), CC_CALLBACK_0(DungeonScene::onInitEventFinished, this));
+}
+
+// Trigger::INITのイベント実行後
+void DungeonScene::onInitEventFinished()
+{
     DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
-    cameraTask->setTarget( party->getMainCharacter() );
+    cameraTask->setTarget( DungeonSceneManager::getInstance()->getParty()->getMainCharacter() );
+    
+    // ローディングレイヤを消す
+    this->loadingLayer->loadFinished();
+    
+    // Trigger::AFTER_INITを実行
+    this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT));
 }
 
 // メニューキー押したとき
@@ -121,12 +153,6 @@ void DungeonScene::onMenuKeyPressed()
          Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
      }
     }, path);
-}
-
-// イベントリスナを取得
-EventListenerKeyboardLayer* DungeonScene::getListener() const
-{
-    return this->listener;
 }
 
 // データクラスを取得

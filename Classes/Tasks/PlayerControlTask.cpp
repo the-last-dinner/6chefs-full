@@ -26,30 +26,22 @@ bool PlayerControlTask::init()
 {
     if(!GameTask::init()) return false;
     
-    EventListenerKeyboardLayer* listener {DungeonSceneManager::getInstance()->getSceneEventListener()};
-    if(!listener) return false;
-    this->listener = listener;
-    
-    Party* party { DungeonSceneManager::getInstance()->getParty() };
-    if(!party) return false;
-    this->party = party;
-    
     return true;
 }
 
 // 向きを変える
-void PlayerControlTask::turn(const Key& key)
+void PlayerControlTask::turn(const Key& key, Party* party)
 {
     Direction direction { MapUtils::keyToDirection(key) };
-    Character* mainCharacter {this->party->getMainCharacter()};
+    Character* mainCharacter {party->getMainCharacter()};
     if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
 }
 
 // 目の前を調べる
-void PlayerControlTask::search()
+void PlayerControlTask::search(Party* party)
 {
     MapObjectList* objectList {DungeonSceneManager::getInstance()->getMapObjectList()};
-    Character* mainCharacter {this->party->getMainCharacter()};
+    Character* mainCharacter {party->getMainCharacter()};
     
     Vector<MapObject*> objs { objectList->getMapObjects(mainCharacter->getCollisionRect(mainCharacter->getDirection()))};
     
@@ -66,11 +58,11 @@ void PlayerControlTask::search()
 }
 
 // 歩行中、あたり判定を行い次に向かう位置を決定する
-void PlayerControlTask::walking(const vector<Key>& keys)
+void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
 {
     vector<Direction> directions { MapUtils::keyToDirection(keys) };
     
-    Character* mainCharacter {this->party->getMainCharacter()};
+    Character* mainCharacter {party->getMainCharacter()};
     
     // 一番最近押したキーの方向に主人公を向ける
     mainCharacter->setDirection(directions.back());
@@ -113,7 +105,7 @@ void PlayerControlTask::walking(const vector<Key>& keys)
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjects(collisionRect) };
     
     // 主人公を無視
-    if(objs.size() == 1 && objs.at(0) == this->party->getMainCharacter())
+    if(objs.size() == 1 && objs.at(0) == party->getMainCharacter())
     {
         this->riddenEventID = static_cast<int>(EventID::UNDIFINED);
     }
@@ -127,7 +119,7 @@ void PlayerControlTask::walking(const vector<Key>& keys)
         }
     }
     
-    this->party->move(moveDirections, ratio, CC_CALLBACK_0(PlayerControlTask::onPartyMovedOneGrid, this));
+    party->move(moveDirections, ratio, CC_CALLBACK_0(PlayerControlTask::onPartyMovedOneGrid, this));
 }
 
 // 一マス分移動し終えた時

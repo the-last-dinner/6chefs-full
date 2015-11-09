@@ -46,9 +46,8 @@ bool ChangeMapEvent::init(rapidjson::Value& json)
 
 void ChangeMapEvent::run()
 {
-    PlayerDataManager::getInstance()->setLocation(this->location);
     this->setDone();
-    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+    DungeonSceneManager::getInstance()->changeMap(this->location);
 }
 
 #pragma mark -
@@ -86,4 +85,44 @@ bool WaitEvent::init(rapidjson::Value& json)
 void WaitEvent::run()
 {
     DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(DelayTime::create(this->duration), CallFunc::create([this](){this->setDone();})));
+}
+
+#pragma mark -
+#pragma mark FadeOutEvent
+
+bool FadeOutEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
+    
+    if(this->validator->hasMember(json, member::COLOR))
+    {
+        rapidjson::Value& colorJson { json[member::COLOR] };
+        this->color = Color3B(colorJson[0].GetInt(), colorJson[1].GetInt(), colorJson[2].GetInt());
+    }
+    
+    return true;
+}
+
+void FadeOutEvent::run()
+{
+    DungeonSceneManager::getInstance()->fadeOut(this->color, this->duration, [this]{this->setDone();});
+}
+
+#pragma mark -
+#pragma mark FadeInEvent
+
+bool FadeInEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
+    
+    return true;
+}
+
+void FadeInEvent::run()
+{
+    DungeonSceneManager::getInstance()->fadeIn(this->duration, [this]{this->setDone();});
 }

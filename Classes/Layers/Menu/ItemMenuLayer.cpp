@@ -231,7 +231,7 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
 // ミニセレクターを抜け出した時
 void ItemMenuLayer::onMiniSelectorCanceled()
 {
-    SoundManager::getInstance()->playSound("se/back.mp3");
+    SoundManager::getInstance()->playSE("back.mp3");
     this->runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->miniSelector->hide();}),
         CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})
@@ -273,7 +273,7 @@ void ItemMenuLayer::onSpacePressed(int idx)
     if(this->items[idx] < 0)
     {
         // アイテムを持っていない時
-        SoundManager::getInstance()->playSound("se/failure.mp3");
+        SoundManager::getInstance()->playSE("failure.mp3");
     }
     else
     {
@@ -288,7 +288,7 @@ void ItemMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
     if (sound)
     {
-        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+        SoundManager::getInstance()->playSE("cursorMove.mp3");
     }
     for(Node* obj : this->menuObjects)
     {

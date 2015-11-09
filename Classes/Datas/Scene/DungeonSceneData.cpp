@@ -55,3 +55,24 @@ EventScript* DungeonSceneData::getEventScript() const
 {
     return this->eventScript;
 }
+
+#pragma mark -
+#pragma mark Cover
+
+// カバー情報をセット
+void DungeonSceneData::setCoverInfo(const CoverInfo& coverInfo)
+{
+    this->coverInfo = coverInfo;
+}
+
+// カバーを残すか確認
+bool DungeonSceneData::remainsCover() const
+{
+    return this->coverInfo.first;
+}
+
+// カバー色を取得
+Color3B DungeonSceneData::getCoverColor() const
+{
+    return this->coverInfo.second;
+}

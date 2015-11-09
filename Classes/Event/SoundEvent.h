@@ -12,29 +12,44 @@
 #include "Event/GameEvent.h"
 
 // BGM再生イベント
-class PlayBGM : public GameEvent
+class PlayBGMEvent : public GameEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(PlayBGM, rapidjson::Value&)
+    CREATE_FUNC_WITH_PARAM(PlayBGMEvent, rapidjson::Value&)
 private:
     string fileName {};
+    float volume { 1.f };
 private:
-    PlayBGM():fileName("") {FUNCLOG};
-    ~PlayBGM() {FUNCLOG};
+    PlayBGMEvent():fileName("") {FUNCLOG};
+    ~PlayBGMEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// BGM停止イベント
+class StopBGMEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(StopBGMEvent, rapidjson::Value&)
+    
+private:
+    StopBGMEvent() {FUNCLOG};
+    ~StopBGMEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };
 
 // SE再生イベント
-class PlaySE : public GameEvent
+class PlaySEEvent : public GameEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(PlaySE, rapidjson::Value&)
+    CREATE_FUNC_WITH_PARAM(PlaySEEvent, rapidjson::Value&)
 private:
     string fileName {};
+    float volume { 1.f };
 private:
-    PlaySE():fileName("") {FUNCLOG};
-    ~PlaySE() {FUNCLOG};
+    PlaySEEvent():fileName("") {FUNCLOG};
+    ~PlaySEEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

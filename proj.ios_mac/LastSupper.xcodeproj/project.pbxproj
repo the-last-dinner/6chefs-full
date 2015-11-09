@@ -126,6 +126,8 @@
 		5544708A1BDF89990048CD0B /* FlagEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554470871BDF89990048CD0B /* FlagEvent.cpp */; };
 		5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5544708B1BDFA0F10048CD0B /* MapEvent.cpp */; };
 		5544708E1BDFA0F10048CD0B /* MapEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5544708B1BDFA0F10048CD0B /* MapEvent.cpp */; };
+		55526C8B1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55526C891BF095B20049DD00 /* DisplayImageLayer.cpp */; };
+		55526C8C1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55526C891BF095B20049DD00 /* DisplayImageLayer.cpp */; };
 		5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */; };
 		5557AA7A1BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */; };
 		555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B650C1B5CE94F00D15530 /* TextureManager.cpp */; };
@@ -383,6 +385,8 @@
 		554470881BDF89990048CD0B /* FlagEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlagEvent.h; path = ../Classes/Event/FlagEvent.h; sourceTree = "<group>"; };
 		5544708B1BDFA0F10048CD0B /* MapEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapEvent.cpp; path = ../Classes/Event/MapEvent.cpp; sourceTree = "<group>"; };
 		5544708C1BDFA0F10048CD0B /* MapEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapEvent.h; path = ../Classes/Event/MapEvent.h; sourceTree = "<group>"; };
+		55526C891BF095B20049DD00 /* DisplayImageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisplayImageLayer.cpp; path = ../Classes/Layers/Dungeon/DisplayImageLayer.cpp; sourceTree = "<group>"; };
+		55526C8A1BF095B20049DD00 /* DisplayImageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayImageLayer.h; path = ../Classes/Layers/Dungeon/DisplayImageLayer.h; sourceTree = "<group>"; };
 		5557AA771BBB069F008ECA5D /* PlayerControlTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerControlTask.cpp; path = ../Classes/Tasks/PlayerControlTask.cpp; sourceTree = "<group>"; };
 		5557AA781BBB069F008ECA5D /* PlayerControlTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlTask.h; path = ../Classes/Tasks/PlayerControlTask.h; sourceTree = "<group>"; };
 		555B650C1B5CE94F00D15530 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureManager.cpp; path = ../Classes/Managers/TextureManager.cpp; sourceTree = "<group>"; };
@@ -863,6 +867,8 @@
 			children = (
 				556C18E01B3FA6D100D2BCA1 /* TiledMapLayer.cpp */,
 				556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */,
+				55526C891BF095B20049DD00 /* DisplayImageLayer.cpp */,
+				55526C8A1BF095B20049DD00 /* DisplayImageLayer.h */,
 			);
 			name = Dungeon;
 			sourceTree = "<group>";
@@ -1216,6 +1222,7 @@
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				55F302341BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55799D551BEE1D2A002462E6 /* PathFinder.cpp in Sources */,
+				55526C8B1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */,
 				55F1B6191BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				55F302301BDA331900BDC418 /* GameEvent.cpp in Sources */,
 				26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
@@ -1250,6 +1257,7 @@
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
+				55526C8C1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */,
 				55F1B6221BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
 				26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				554470861BDF61790048CD0B /* CharacterEvent.cpp in Sources */,

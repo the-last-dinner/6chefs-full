@@ -105,7 +105,7 @@ void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
     // 移動音
     if (sound)
     {
-        SoundManager::getInstance()->playSound("se/cursorMove.mp3");
+        SoundManager::getInstance()->playSE("cursorMove.mp3");
     }
 	for(Node* obj : this->menuObjects)
 	{
@@ -139,7 +139,7 @@ void SaveDataSelector::onSpacePressed(int idx)
     if (this->write_flag)
     {
         // セーブ時
-        SoundManager::getInstance()->playSound("se/save.mp3");
+        SoundManager::getInstance()->playSE("save.mp3");
         PlayerDataManager::getInstance()->save(idx);
         Sprite* back = Sprite::create();
         back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
@@ -157,13 +157,13 @@ void SaveDataSelector::onSpacePressed(int idx)
         if(PlayerDataManager::getInstance()->checkSaveDataExists(idx))
         {
             // ロード
-            SoundManager::getInstance()->playSound("se/load.mp3");
+            SoundManager::getInstance()->playSE("load.mp3");
             PlayerDataManager::getInstance()->setMainLocalData(idx);
             Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
         } else
         {
             // セーブデータが存在しない
-            SoundManager::getInstance()->playSound("se/failure.mp3");
+            SoundManager::getInstance()->playSE("failure.mp3");
         }
     }
     return;

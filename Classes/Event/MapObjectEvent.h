@@ -19,7 +19,7 @@ class MapObjectEvent : public GameEvent
 {
 // インスタンス変数
 protected:
-    MapObject* target { nullptr };
+    string objectId {};
     
 // インスタンスメソッド
 protected:
@@ -36,6 +36,18 @@ public:
 private:
     ReactionEvent() {FUNCLOG};
     ~ReactionEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// マップオブジェクトを生成
+class CreateMapObjectEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(CreateMapObjectEvent, rapidjson::Value&)
+private:
+    CreateMapObjectEvent() {FUNCLOG};
+    ~CreateMapObjectEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

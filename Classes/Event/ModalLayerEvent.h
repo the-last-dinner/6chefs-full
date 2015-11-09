@@ -76,4 +76,19 @@ private:
     virtual void run() override;
 };
 
+// 画像を表示
+class DispImageEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(DispImageEvent, rapidjson::Value&)
+private:
+    string fileName {};
+    float duration { 0.f };
+private:
+    DispImageEvent() {FUNCLOG};
+    ~DispImageEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MessageEvent__) */

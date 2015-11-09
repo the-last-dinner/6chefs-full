@@ -13,17 +13,21 @@
 
 class LoadingLayer : public Layer
 {
-	// クラスメソッド
+// クラスメソッド
 public:
 	CREATE_FUNC(LoadingLayer);
+    
+// インスタンス変数
+private:
+    Sprite* cover { nullptr };
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
 	LoadingLayer();
 	~LoadingLayer();
 	virtual bool init();
 public:
-	void loadFinished(const function<void()>& callback);
+	void loadFinished();
 };
 
 #endif // __LOADING_LAYER_H__

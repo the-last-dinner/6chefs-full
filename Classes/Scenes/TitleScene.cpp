@@ -61,7 +61,7 @@ void TitleScene::onPreloadFinished()
 void TitleScene::onStartSelected()
 {
 	FUNCLOG
-	SoundManager::getInstance()->playSound("se/gameStart.mp3");
+	SoundManager::getInstance()->playSE("gameStart.mp3");
 	SoundManager::getInstance()->unloadAllSounds();
 	TextureManager::getInstance()->unloadAllTectures();
 	PlayerDataManager::getInstance()->setMainLocalData(0);
@@ -80,7 +80,7 @@ void TitleScene::onContinueSelected()
 void TitleScene::onExitSelected()
 {
 	FUNCLOG
-	SoundManager::getInstance()->playSound("se/back.mp3");
+	SoundManager::getInstance()->playSE("back.mp3");
 	Director::getInstance()->end();
 }
 
@@ -96,7 +96,7 @@ void TitleScene::onSaveDataSelected(int dataId)
 void TitleScene::onSaveDataSelectCancelled()
 {
 	FUNCLOG
-	SoundManager::getInstance()->playSound("se/back.mp3");
+	SoundManager::getInstance()->playSE("back.mp3");
 	this->saveDataSelector->hide();
 	this->mainMenu->show();
 }

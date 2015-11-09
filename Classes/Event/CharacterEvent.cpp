@@ -23,10 +23,22 @@ bool CharacterEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
-    Character* target {this->validator->getMapObjectById<Character*>(json)};
+    if(!this->validator->hasMember(json, member::OBJECT_ID)) return false;
     
-    // nullptrならイベントを生成させない
-    if(!target) return false;
+    this->objectId = json[member::OBJECT_ID].GetString();
+    
+    return true;
+}
+
+bool CharacterEvent::onRun()
+{
+    Character* target { this->validator->getMapObjectById<Character*>(this->objectId) };
+    if(!target)
+    {
+        this->setDone();
+        
+        return false;
+    }
     
     this->target = target;
     
@@ -49,6 +61,8 @@ bool ChangeDirectionEvent::init(rapidjson::Value& json)
 
 void ChangeDirectionEvent::run()
 {
+    if(!CharacterEvent::onRun()) return;
+    
     this->target->setDirection(this->direction);
     this->setDone();
 }
@@ -76,6 +90,8 @@ bool WalkByEvent::init(rapidjson::Value& json)
 
 void WalkByEvent::run()
 {
+    if(!CharacterEvent::onRun()) return;
+    
     vector<Direction> dirs { this->direction };
     this->target->walkBy(dirs, this->gridNum, [this]{this->setDone();});
 }
@@ -95,6 +111,8 @@ bool WalkToEvent::init(rapidjson::Value& json)
 
 void WalkToEvent::run()
 {
+    if(!CharacterEvent::onRun()) return;
+    
     Vec2 movement {this->destPosition - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
 
     this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});

@@ -51,4 +51,33 @@ private:
     virtual void run() override;
 };
 
+// FadeOutイベント
+class FadeOutEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(FadeOutEvent, rapidjson::Value&)
+private:
+    Color3B color { Color3B::BLACK };
+    float duration { 0.5f };
+private:
+    FadeOutEvent() {FUNCLOG};
+    ~FadeOutEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// FadeInイベント
+class FadeInEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(FadeInEvent, rapidjson::Value&)
+private:
+    float duration { 0.5f };
+private:
+    FadeInEvent() {FUNCLOG};
+    ~FadeInEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__SceneEvent__) */

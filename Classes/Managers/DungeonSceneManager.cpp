@@ -72,6 +72,9 @@ DungeonSceneManager::~DungeonSceneManager()
     CC_SAFE_RELEASE_NULL(this->party);
 };
 
+#pragma mark -
+#pragma mark Getter Methods
+
 // シーンを取得
 DungeonScene* DungeonSceneManager::getScene() const
 {
@@ -96,12 +99,6 @@ EventFactory* DungeonSceneManager::getEventFactory() const
     return this->eventFactory;
 }
 
-// シーンのイベントリスナ取得
-EventListenerKeyboardLayer* DungeonSceneManager::getSceneEventListener() const
-{
-    return this->getScene()->listener;
-}
-
 // イベントスクリプトを取得
 EventScript* DungeonSceneManager::getEventScript() const
 {
@@ -118,6 +115,70 @@ EventScriptValidator* DungeonSceneManager::getScriptValidator() const
 Party* DungeonSceneManager::getParty() const
 {
     return this->party;
+}
+
+#pragma mark -
+#pragma mark Scene
+
+// フェードアウト
+void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, function<void()> callback)
+{
+    Sprite* cover { Sprite::create() };
+    cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+    cover->setColor(color);
+    cover->setPosition(cover->getContentSize() / 2);
+    this->getScene()->addChild(cover, Priority::SCREEN_COVER);
+    this->getScene()->cover = cover;
+    
+    cover->setOpacity(0.f);
+    cover->runAction(Sequence::createWithTwoActions(FadeIn::create(duration), CallFunc::create(callback)));
+}
+
+// フェードイン
+void DungeonSceneManager::fadeIn(const float duration, function<void()> callback)
+{
+    if(!this->getScene()->cover)
+    {
+        callback();
+        return;
+    }
+    
+    Sprite* cover { this->getScene()->cover };
+    this->getScene()->cover = nullptr;
+    
+    cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
+}
+
+#pragma mark -
+#pragma mark TiledMapLayer
+
+// マップオブジェクトをマップに追加
+void DungeonSceneManager::addMapObject(MapObject* mapObject)
+{
+    this->getMapLayer()->addMapObject(mapObject);
+}
+
+#pragma mark -
+#pragma mark Director
+
+// マップ切り替え
+void DungeonSceneManager::changeMap(const PlayerDataManager::Location& location)
+{
+    for(Character* member : this->party->getMembers())
+    {
+        member->setParent(nullptr);
+    }
+    
+    PlayerDataManager::getInstance()->setLocation(location);
+    
+    // 必要な情報を設定していく
+    DungeonSceneData* data { DungeonSceneData::create(location) };
+    
+    // フェードアウト用カバー
+    if(this->getScene()->cover) data->setCoverInfo(DungeonSceneData::CoverInfo({true, this->getScene()->cover->getColor()}));
+    
+    
+    Director::getInstance()->replaceScene(DungeonScene::create(data));
 }
 
 #pragma mark -
@@ -169,7 +230,13 @@ void DungeonSceneManager::runEventQueue()
 }
 
 // キューにイベントがあるか
-bool DungeonSceneManager::existsEvent()
+bool DungeonSceneManager::existsEvent() const
 {
     return this->getScene()->eventTask->existsEvent();
+}
+
+// 実行しているイベントのIDを取得
+int DungeonSceneManager::getRunningEventId() const
+{
+    return this->getScene()->eventTask->getRunningEventId();
 }

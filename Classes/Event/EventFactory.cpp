@@ -37,34 +37,42 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
     map<string, function<GameEvent*(rapidjson::Value&)>> pCreateFuncs
     {
         // 制御系
-        {"sequence", EventSequence::create},    //順番に処理を実行
-        {"spawn", EventSpawn::create},          //同時に処理を実行
+        {"sequence", EventSequence::create},    // 順番に処理を実行
+        {"spawn", EventSpawn::create},          // 同時に処理を実行
         {"if", EventIf::create},                // 場合分け処理
         
         // 音系
-        {"playSE", PlaySE::create},             //効果音再生
-        {"playBGM", PlayBGM::create},           //BGM再生
+        {"playBGM", PlayBGMEvent::create},           // BGM再生
+        {"stopBGM", StopBGMEvent::create},           // BGM停止
+        {"playSE", PlaySEEvent::create},             // 効果音再生
         
-        // メッセージ系
-        {"charaMsg", CharacterMessage::create},         //キャラメッセージ
-        {"storyMsg", StoryMessage::create},             //ストーリーメッセージ
-        {"systemMsg", SystemMessage::create},           //システムのメッセージ
+        // モーダルレイヤ系
+        {"charaMsg", CharacterMessage::create},         // キャラメッセージ
+        {"storyMsg", StoryMessage::create},             // ストーリーメッセージ
+        {"systemMsg", SystemMessage::create},           // システムのメッセージ
+        {"displayImg", DispImageEvent::create},         // 画像表示
         
         // シーン系
-        {"changeMap", ChangeMapEvent::create},          //マップ移動
+        {"changeMap", ChangeMapEvent::create},          // マップ移動
         {"camera", CameraEvent::create},                // カメラ
         {"wait", WaitEvent::create},                    // 時間待機
+        {"fadeout", FadeOutEvent::create},               // フェードアウト
+        {"fadein", FadeInEvent::create},                // フェードイン
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
         
         // マップオブジェクト系
+        {"createChara", CreateMapObjectEvent::create},      // マップオブジェクトを無効リストから有効リストへ移動、マップ上に表示
         {"reaction", ReactionEvent::create},                // リアクション
         
         // キャラクター系
         {"changeDirection", ChangeDirectionEvent::create},  // 方向転換
         {"charaWalkTo", WalkToEvent::create},               // 指定座標へ歩行
         {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
+        
+        // フラグ系
+        {"already", NeverAgainEvent::create},               // イベントIDを見たことにし、二度と発動しないようにする
     };
     
     // イベントタイプがなければ同時実行を生成して返す

@@ -13,12 +13,11 @@
 
 #include "Scenes/DungeonScene.h"
 
-#include "Layers/EventListener/EventListenerKeyboardLayer.h"
-
 #include "Datas/Message/CharacterMessageData.h"
 #include "Datas/Message/StoryMessageData.h"
 #include "Datas/Message/SystemMessageData.h"
 
+#include "Layers/Dungeon/DisplayImageLayer.h"
 #include "Layers/Message/CharacterMessagelayer.h"
 #include "Layers/Message/StoryMessagelayer.h"
 #include "Layers/Message/SystemMessagelayer.h"
@@ -104,7 +103,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
         CC_SAFE_RETAIN(data);
         
         // キャラID
-        data->setCharaId(stoi(json[member::CHARA_ID].GetString()));
+        if(this->validator->hasMember(json, member::CHARA_ID)) data->setCharaId(stoi(json[member::CHARA_ID].GetString()));
         
         // キャラ名
         string charaName {};
@@ -131,7 +130,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
 
 void CharacterMessage::run()
 {
-    DungeonSceneManager::getInstance()->getScene()->addChild(CharacterMessageLayer::create(this->datas, [this]{this->setDone();}));
+    DungeonSceneManager::getInstance()->getScene()->addChild(CharacterMessageLayer::create(this->datas, [this]{this->setDone();}), Priority::CHARACTER_MESSAGE);
 }
 
 #pragma mark -
@@ -164,7 +163,7 @@ bool StoryMessage::init(rapidjson::Value& json)
 
 void StoryMessage::run()
 {
-    DungeonSceneManager::getInstance()->getScene()->addChild(StoryMessageLayer::create(this->title, this->datas, [this]{this->setDone();}));
+    DungeonSceneManager::getInstance()->getScene()->addChild(StoryMessageLayer::create(this->title, this->datas, [this]{this->setDone();}), Priority::STORY_MESSAGE);
 }
 
 #pragma mark -
@@ -191,5 +190,35 @@ bool SystemMessage::init(rapidjson::Value& json)
 
 void SystemMessage::run()
 {
-    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(this->datas, [this]{this->setDone();}));
+    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(this->datas, [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
+}
+
+#pragma mark -
+#pragma mark DispImageEvent
+
+bool DispImageEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // ファイル名
+    if(!this->validator->hasMember(json, member::FILE)) return false;
+    this->fileName = json[member::FILE].GetString();
+    
+    // 表示時間
+    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
+    
+    return true;
+}
+
+void DispImageEvent::run()
+{
+    DisplayImageLayer* layer { DisplayImageLayer::create(this->fileName, this->duration, [this]{this->setDone();}) };
+    if(!layer)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(DisplayImageLayer::create(this->fileName, this->duration, [this]{this->setDone();}), Priority::DISP_IMAGE_LAYER);
 }

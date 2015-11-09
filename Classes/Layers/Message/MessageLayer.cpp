@@ -122,7 +122,7 @@ void MessageLayer::onAllLetterDisplayed()
 // 次のページへ
 void MessageLayer::nextPage()
 {
-    this->removeChild(this->message);
+    this->message->removeFromParentAndCleanup(true);
     this->allLetterDisplayed = false;
     this->displayMessageWithAnimation(this->createMessage());
 }
