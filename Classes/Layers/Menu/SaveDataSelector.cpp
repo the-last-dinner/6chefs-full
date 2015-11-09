@@ -100,6 +100,9 @@ void SaveDataSelector::hide()
 // 選択しているindexが変わった時
 void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 {
+    // セーブしましたがでてる場合は無視
+    if(this->comfirm_flag) return;
+    // 移動音
     if (sound)
     {
         SoundManager::getInstance()->playSound("se/cursorMove.mp3");
