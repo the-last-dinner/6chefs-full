@@ -20,11 +20,6 @@ public:
     CREATE_FUNC(ItemMenuLayer)
     virtual bool init();
     
-    // クラス変数
-private:
-    static const float INNER_H_MARGIN_RATIO;
-    static const float INNER_V_MARGIN_RATIO;
-    
     // インスタンスメソッド
 private:
     virtual void onIndexChanged(int newIdx, bool sound);
@@ -49,6 +44,5 @@ private:
     bool isEquip {true};
 public:
     function<void()> onItemMenuCanceled { nullptr };
-    //function<void()> onSaveDataSelectCancelled { nullptr };
 };
 #endif /* ItemMenuLayer_h */

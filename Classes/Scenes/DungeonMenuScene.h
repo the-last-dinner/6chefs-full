@@ -20,6 +20,13 @@ class DungeonMenuScene : public baseScene
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_TWO_PARAM(DungeonMenuScene, Texture2D*, function<void()>);
+    
+// クラス変数
+private:
+    static const string MAIN_LAYER_NAME;
+    static const string SAVE_LAYER_NAME;
+    static const string ITEM_LAYER_NAME;
+    static const string CHARA_LAYER_NAME;
 
 // インスタンス変数
 public:
