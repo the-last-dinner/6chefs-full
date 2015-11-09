@@ -11,8 +11,6 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
-class MiniSelector;
-
 class MiniSelector: public MenuLayer
 {
 public:
@@ -46,11 +44,6 @@ public:
 public:
     CREATE_FUNC_WITH_PARAM(MiniSelector, Selector&)
     virtual bool init(Selector& selector);
-    
-    // クラス変数
-private:
-    static const float INNER_H_MARGIN_RATIO;
-    static const float INNER_V_MARGIN_RATIO;
     
     // インスタンスメソッド
 private:

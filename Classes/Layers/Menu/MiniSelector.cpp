@@ -6,7 +6,7 @@
 //
 //
 
-#include "MiniSelector.h"
+#include "Layers/Menu/MiniSelector.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 MiniSelector::MiniSelector(){FUNCLOG}

@@ -6,7 +6,7 @@
 //
 //
 
-#include "ItemMenuLayer.h"
+#include "Layers/Menu/ItemMenuLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/DungeonScene.h"
 #include "Layers/Menu/MiniSelector.h"
@@ -270,8 +270,17 @@ void ItemMenuLayer::onMenuKeyPressed()
 // スペースキーを押した時
 void ItemMenuLayer::onSpacePressed(int idx)
 {
-    this->selected_item = this->items[idx];
-    this->createMiniSelector();
+    if(this->items[idx] < 0)
+    {
+        // アイテムを持っていない時
+        SoundManager::getInstance()->playSound("se/failure.mp3");
+    }
+    else
+    {
+        // アイテムを持っている時、ミニセレクター生成
+        this->selected_item = this->items[idx];
+        this->createMiniSelector();
+    }
 }
 
 // 選択対象が変わった時

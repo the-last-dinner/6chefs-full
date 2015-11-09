@@ -11,6 +11,12 @@
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/ItemMenuLayer.h"
 
+// クラス変数
+const string DungeonMenuScene::MAIN_LAYER_NAME = "mainMenuLayer";
+const string DungeonMenuScene::SAVE_LAYER_NAME = "saveMenuLayer";
+const string DungeonMenuScene::ITEM_LAYER_NAME = "itemMenuLayer";
+const string DungeonMenuScene::CHARA_LAYER_NAME = "charaMenuLayer";
+
 // コンストラクタ
 DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
 
@@ -39,7 +45,14 @@ bool DungeonMenuScene::init(Texture2D* screen, function<void()> onPopMenuScene)
 void DungeonMenuScene::createMainMenu()
 {
     FUNCLOG
+    // すでに存在すれば削除
+    if(this->getChildByName(MAIN_LAYER_NAME))
+    {
+        this->removeChildByName(MAIN_LAYER_NAME);
+    }
+    // 生成
     DungeonMainMenuLayer* menu = DungeonMainMenuLayer::create();
+    menu->setName(MAIN_LAYER_NAME);
     menu->onSaveMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onSaveMenuSelected, this);
     menu->onMenuHidden = CC_CALLBACK_0(DungeonMenuScene::onMenuHidden, this);
     menu->onItemMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onItemMenuSelected, this);
@@ -52,7 +65,14 @@ void DungeonMenuScene::createMainMenu()
 void DungeonMenuScene::createSaveMenu()
 {
     FUNCLOG
+    // すでに存在すれば削除
+    if(this->getChildByName(SAVE_LAYER_NAME))
+    {
+        this->removeChildByName(SAVE_LAYER_NAME);
+    }
+    // 生成
     SaveDataSelector* saveDataSelector { SaveDataSelector::create(true) };
+    saveDataSelector->setName(SAVE_LAYER_NAME);
     this->addChild(saveDataSelector);
     // セーブデータ選択レイヤーのイベントをリッスン
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(DungeonMenuScene::onSaveDataSelectCancelled, this);
@@ -63,7 +83,14 @@ void DungeonMenuScene::createSaveMenu()
 void DungeonMenuScene::createItemMenu()
 {
     FUNCLOG
+    // すでに存在すれば削除
+    if(this->getChildByName(ITEM_LAYER_NAME))
+    {
+        this->removeChildByName(ITEM_LAYER_NAME);
+    }
+    // 生成
     ItemMenuLayer* itemMenu { ItemMenuLayer::create()};
+    itemMenu->setName(ITEM_LAYER_NAME);
     this->addChild(itemMenu);
     itemMenu->hide();
     itemMenu->onItemMenuCanceled = CC_CALLBACK_0(DungeonMenuScene::onItemMenuCanceled, this);
@@ -134,7 +161,7 @@ void DungeonMenuScene::onSaveDataSelectCancelled()
     SoundManager::getInstance()->playSound("se/back.mp3");
     runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->saveDataSelector->hide();}),
-        CallFunc::create([this](){this->mainMenu->show();})
+        CallFunc::create([this](){this->createMainMenu();})
     ));
 }
 
@@ -157,7 +184,7 @@ void DungeonMenuScene::onItemMenuCanceled()
     SoundManager::getInstance()->playSound("se/back.mp3");
     runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->itemMenu->hide();}),
-        CallFunc::create([this](){this->mainMenu->show();})
+        CallFunc::create([this](){this->createMainMenu();})
     ));
 }
 
