@@ -66,6 +66,7 @@ public:
     virtual void hide() override;
     // インスタンス変数
 public:
+    bool confirm_flag {false};
     function<void()> onMiniSelectorCanceled { nullptr };
     function<void(int index)> onMiniIndexSelected {nullptr};
 };

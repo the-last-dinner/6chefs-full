@@ -45,6 +45,8 @@ public:
 private:
     vector<int> items {};
     MiniSelector* miniSelector {nullptr};
+    int selected_item {0};
+    bool isEquip {true};
 public:
     function<void()> onItemMenuCanceled { nullptr };
     //function<void()> onSaveDataSelectCancelled { nullptr };

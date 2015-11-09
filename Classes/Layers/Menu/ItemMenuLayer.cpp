@@ -69,8 +69,12 @@ bool ItemMenuLayer::init()
     int left_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT);
     string right_equip = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
     string left_equip = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
-    Label* equipment = Label::createWithTTF("装備\n右手 : " + right_equip + "\n左手 : " + left_equip, "fonts/cinecaption2.28.ttf", 26);
-    equipment->setPosition(equipment->getContentSize().width/2 + 10, rightTop->getContentSize().height/2);
+    Label* equip_title = Label::createWithTTF("装備", "fonts/cinecaption2.28.ttf", 26);
+    equip_title->setPosition(equip_title->getContentSize().width/2 + 30, rightTop->getContentSize().height - equip_title->getContentSize().height/2 - 10);
+    equip_title->setColor(Color3B::WHITE);
+    rightTop->addChild(equip_title);
+    Label* equipment = Label::createWithTTF("右手 : " + right_equip + "\n左手 : " + left_equip, "fonts/cinecaption2.28.ttf", 26);
+    equipment->setPosition(equipment->getContentSize().width/2 + 10, equipment->getContentSize().height/2 + 15);
     equipment->setColor(Color3B::WHITE);
     rightTop->addChild(equipment);
     
@@ -145,10 +149,20 @@ void ItemMenuLayer::createMiniSelector()
 {
     // アイテムメニューのキーボードを無効化
     this->listenerKeyboard->setEnabled(false);
-    
-    vector<string> labels = {"右手に装備", "左手に装備", "キャンセル"}; // メニューラベル
+    // メニューラベル
+    vector<string> labels;
+    if (!PlayerDataManager::getInstance()->checkItemEquipment(this->selected_item))
+    {
+        labels = {"右手に装備", "左手に装備", "キャンセル"};
+        this->isEquip = true;
+    }
+    else
+    {
+        labels = {"装備を外す", "キャンセル"};
+        this->isEquip = false;
+    }
     Point index = Point(1,labels.size()); // 要素数
-    SpriteUtils::Square position = SpriteUtils::Square(70,80,100,100); // 位置
+    SpriteUtils::Square position = SpriteUtils::Square(76,80,100,100); // 位置
     MiniSelector::Selector selector = MiniSelector::Selector(index, position, labels);
     MiniSelector* mini = {MiniSelector::create(selector)};
     this->addChild(mini);
@@ -158,20 +172,75 @@ void ItemMenuLayer::createMiniSelector()
     this->miniSelector = mini;
 }
 
+// ミニ選択肢が洗濯された時
 void ItemMenuLayer::onMiniIndexSelected(const int idx)
 {
-    SoundManager::getInstance()->playSound("se/failure.mp3");
+    // 完了しましたがでている時
+    if (this->miniSelector->confirm_flag)
+    {
+        this->onMiniSelectorCanceled();
+        this->onItemMenuCanceled();
+        return;
+    }
+    
+    // キャンセルが洗濯された時
+    int cancel_id = this->isEquip ? 2 : 1;
+    if (idx == cancel_id)
+    {
+        this->onMiniSelectorCanceled();
+        return;
+    }
+    
+    // 装備処理
+    if (this->isEquip)
+    {
+        Direction dir = idx == 0 ? Direction::RIGHT : Direction::LEFT;
+        PlayerDataManager::getInstance()->setItemEquipment(dir, this->selected_item);
+    }
+    else
+    {
+        // 装備をはずす
+        Direction dir;
+        if (this->selected_item == PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT))
+        {
+            dir = Direction::RIGHT;
+        }
+        if (this->selected_item == PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT))
+        {
+            dir = Direction::LEFT;
+        }
+        PlayerDataManager::getInstance()->setItemEquipment(dir, 0);
+        
+    }
+    
+    // 完了メッセージ表示帯
+    Sprite* back = Sprite::create();
+    back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
+    back->setColor(Color3B::GRAY);
+    back->setPosition(WINDOW_CENTER);
+    this->addChild(back);
+    
+    // 完了メッセージラベル
+    string equipMsg = this->isEquip ? "装備しました" : "外しました";
+    Label* message = Label::createWithTTF(CsvDataManager::getInstance()->getItemName(this->selected_item) + "を\n" + equipMsg, "fonts/cinecaption2.28.ttf", back->getContentSize().height / 5);
+    message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
+    back->addChild(message);
+    this->miniSelector->confirm_flag = true;
 }
 
 // ミニセレクターを抜け出した時
 void ItemMenuLayer::onMiniSelectorCanceled()
 {
-    
     SoundManager::getInstance()->playSound("se/back.mp3");
     this->runAction(Sequence::createWithTwoActions(
         CallFunc::create([this](){this->miniSelector->hide();}),
         CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})
     ));
+    if (this->miniSelector->confirm_flag)
+    {
+        this->onItemMenuCanceled();
+        return;
+    }
 }
 
 // 表示
@@ -201,6 +270,7 @@ void ItemMenuLayer::onMenuKeyPressed()
 // スペースキーを押した時
 void ItemMenuLayer::onSpacePressed(int idx)
 {
+    this->selected_item = this->items[idx];
     this->createMiniSelector();
 }
 

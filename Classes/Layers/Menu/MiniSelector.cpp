@@ -72,6 +72,7 @@ bool MiniSelector::init(Selector& selector)
 // インデックスが変わった時
 void MiniSelector::onIndexChanged(int newIdx, bool sound)
 {
+    if (this->confirm_flag) return;
     if(sound)
     {
         SoundManager::getInstance()->playSound("se/cursorMove.mp3");
@@ -91,7 +92,6 @@ void MiniSelector::onIndexChanged(int newIdx, bool sound)
 
 // スペースキーが押された時
 void MiniSelector::onSpacePressed(int idx){
-    SoundManager::getInstance()->playSound("se/failure.mp3");
     if(this->onMiniIndexSelected)
     {
       this->onMiniIndexSelected(idx);
