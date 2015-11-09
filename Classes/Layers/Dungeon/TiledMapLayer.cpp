@@ -95,6 +95,6 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
 // 座標からZOrder値を設定
 void TiledMapLayer::setZOrderByPosition(MapObject* mapObject, const Point& ccPosition)
 {
-    int z { static_cast<int>(MapUtils::getGridNum(MapUtils::convertToMapPoint(this->getMapSize(), ccPosition).y)) };
+    int z { static_cast<int>(MapUtils::getGridNum(MapUtils::convertToMapPoint(this->getMapSize(), ccPosition).y) - this->tiledMap->getMapSize().height) - 1};
     mapObject->setLocalZOrder(z);
 }
