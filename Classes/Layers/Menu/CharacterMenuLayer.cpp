@@ -54,6 +54,7 @@ bool CharacterMenuLayer::init()
     margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
     Sprite* right = SpriteUtils::getSquareSprite(square, margin);
     right->setColor(Color3B::BLACK);
+    right->setName("charaRight");
     this->addChild(right);
     
     Size list_size {right->getContentSize()};
@@ -135,6 +136,14 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
 // メニューキー
 void CharacterMenuLayer::onMenuKeyPressed()
 {
+    // キャラ説明が出ている場合は消すだけ
+    if (this->isDiscription)
+    {
+        this->onSpacePressed(0);
+        return;
+    }
+    
+    // キャラクターメニューを削除
     if (this->onCharacterMenuCanceled)
     {
         this->onCharacterMenuCanceled();
@@ -144,7 +153,39 @@ void CharacterMenuLayer::onMenuKeyPressed()
 // スペースキー
 void CharacterMenuLayer::onSpacePressed(int idx)
 {
-    
+    // 状態によって場合分け
+    if (this->isDiscription)
+    {
+        // キャラ説明を削除
+        this->removeChildByName("charaBack");
+        this->isDiscription = false;
+        this->setCursorEnable(true);
+    }
+    else
+    {
+        // 背景の作成
+        SpriteUtils::Square square = SpriteUtils::Square(30,0,100,100);
+        SpriteUtils::Margin margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
+        Sprite* back = SpriteUtils::getSquareSprite(square, margin);
+        back->setColor(Color3B::BLACK);
+        back->setName("charaBack");
+        this->addChild(back);
+        
+        // 詳細のラベルを作成
+        vector<Label*> discriptions;
+        Size panel_size = Size(back->getContentSize().width/3, back->getContentSize().height/3);
+        for(int i=0;i<3; i++)
+        {
+            string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getCharaDiscription(this->characters[idx], i));
+            Label* label = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
+            label->setColor(Color3B::WHITE);
+            label->setPosition(label->getContentSize().width/2 + 10, (2-i) * panel_size.height + panel_size.height/2);
+            discriptions.push_back(label);
+            back->addChild(label);
+        }
+        this->isDiscription = true;
+        this->setCursorEnable(false);
+    }
 }
 
 

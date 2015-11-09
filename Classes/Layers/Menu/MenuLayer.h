@@ -25,6 +25,7 @@ private:
     int indexY { 0 };
     int sizeX { 0 };
     int sizeY { 0 };
+    bool cursorEnabled {true};
 
 // インスタンスメソッド
 public:
@@ -44,6 +45,7 @@ protected:
     virtual void setSelectedIndex(const int index);
 	int getMenuSizeX() const;
 	int getMenuSizeY() const;
+    void setCursorEnable(const bool enable);
 };
 
 #endif // __MENU_LAYER_H__

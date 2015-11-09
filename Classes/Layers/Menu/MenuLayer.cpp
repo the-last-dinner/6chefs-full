@@ -49,6 +49,10 @@ bool MenuLayer::init(int sizeX, int sizeY)
 // 方向キーを押した時
 void MenuLayer::onCursorKeyPressed(const Key& key)
 {
+    // カーソルが無効な場合は何もしない
+    if(!this->cursorEnabled) return;
+
+    // インデックスの変更
     switch(key)
     {
         case Key::UP:
@@ -108,4 +112,10 @@ void MenuLayer::setSelectedIndex(const int index)
 {
     this->indexX = index % this->sizeX;
     this->indexY = (index / this->sizeX) % this->sizeY;
+}
+
+// カーソルの有効無効を設定
+void MenuLayer::setCursorEnable(const bool enable)
+{
+    this->cursorEnabled = enable;
 }

@@ -35,6 +35,7 @@ public:
 private:
     vector<int> characters {};
     int selected_character {0};
+    bool isDiscription {false};
 public:
     function<void()> onCharacterMenuCanceled { nullptr };
 };
