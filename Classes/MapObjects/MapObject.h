@@ -23,6 +23,7 @@ public:
     
 // インスタンス変数
 private:
+    Point gridPosition {Point::ZERO};
     int objectId { static_cast<int>(ObjectID::UNDIFINED)};
     int eventId { static_cast<int>(EventID::UNDIFINED) };
 	Trigger trigger {Trigger::SIZE};
