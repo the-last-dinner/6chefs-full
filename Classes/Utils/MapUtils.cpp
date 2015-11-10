@@ -109,3 +109,19 @@ vector<Direction> MapUtils::vecToDirection(const Vec2& vec)
     
     return directions;
 }
+
+// 方向から単位ベクトル取得
+Vec2 MapUtils::getUnitVector(const Direction& direction)
+{
+    map<Direction, Point> directionToVec
+    {
+        {Direction::FRONT, Point(0, -1)},
+        {Direction::RIGHT, Point(1, 0)},
+        {Direction::LEFT, Point(-1, 0)},
+        {Direction::BACK, Point(0, 1)},
+    };
+    
+    if(!directionToVec.count(direction)) return Point::ZERO;
+    
+    return directionToVec[direction];
+}
