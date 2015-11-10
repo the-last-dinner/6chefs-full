@@ -8,6 +8,7 @@
 
 #include "Event/ModalLayerEvent.h"
 
+#include "Event/EventFactory.h"
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
 
@@ -17,6 +18,7 @@
 #include "Datas/Message/StoryMessageData.h"
 #include "Datas/Message/SystemMessageData.h"
 
+#include "Layers/Dungeon/ButtonMashingLayer.h"
 #include "Layers/Dungeon/DisplayImageLayer.h"
 #include "Layers/Message/CharacterMessagelayer.h"
 #include "Layers/Message/StoryMessagelayer.h"
@@ -213,6 +215,7 @@ bool DispImageEvent::init(rapidjson::Value& json)
 void DispImageEvent::run()
 {
     DisplayImageLayer* layer { DisplayImageLayer::create(this->fileName, this->duration, [this]{this->setDone();}) };
+
     if(!layer)
     {
         this->setDone();
@@ -220,5 +223,91 @@ void DispImageEvent::run()
         return;
     }
     
-    DungeonSceneManager::getInstance()->getScene()->addChild(DisplayImageLayer::create(this->fileName, this->duration, [this]{this->setDone();}), Priority::DISP_IMAGE_LAYER);
+    DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::DISP_IMAGE_LAYER);
+}
+
+#pragma mark -
+#pragma mark ButtonMashingEvent
+
+bool ButtonMashingEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // 連打回数
+    if(!this->validator->hasMember(json, member::TIMES)) return false;
+    this->count = json[member::TIMES].GetInt();
+    
+    // 制限時間
+    if(!this->validator->hasMember(json, member::LIMIT)) return false;
+    this->limit = json[member::LIMIT].GetDouble();
+    
+    // 成功時イベント
+    if(this->validator->hasMember(json, member::TRUE_))
+    {
+        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
+        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
+    }
+    
+    // 失敗時イベント
+    if(this->validator->hasMember(json, member::FALSE_))
+    {
+        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
+        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
+    }
+    
+    return true;
+}
+
+void ButtonMashingEvent::run()
+{
+    ButtonMashingLayer* layer { ButtonMashingLayer::create(this->count, this->limit, [this](ButtonMashingLayer::Result result)
+        {
+            if(result == ButtonMashingLayer::Result::SUCCESS)
+            {
+                if(this->sEvent)
+                {
+                    this->event = this->sEvent;
+                    this->sEvent = nullptr;
+                }
+                else
+                {
+                    // ID指定の場合
+                    DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
+                }
+            }
+            else
+            {
+                if(this->fEvent)
+                {
+                    this->event = this->fEvent;
+                    this->fEvent = nullptr;
+                }
+                else
+                {
+                    // ID指定の場合
+                    DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
+                }
+            }
+            
+            // イベント実行
+            if(this->event) this->event->run();
+        }) };
+    
+    if(!layer)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::BUTTON_MASHING_LAYER);
+}
+
+void ButtonMashingEvent::update(float delta)
+{
+    if (this->event->isDone())
+    {
+        CC_SAFE_RELEASE_NULL(this->event);
+        this->setDone();
+    }
 }

@@ -31,28 +31,32 @@ private:
     CallbackWithId callbackInfo {CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
     
 // インスタンスメソッド
+public:
+    // 実行
+    void runEventQueue();
+	void runEvent(int eventId);
+    void runEvent(vector<int> eventIds, function<void()> callback);
+    void runEvent(vector<int> eventIds);
+    
+    // キュー操作
+    bool pushEventBack(int eventId);
+    bool pushEventFront(int eventId);
+
+    bool isEventRunning();
+    bool existsEvent();
+    int getRunningEventId() const;
+    deque<EventWithId> getEvents() const;
+    
+    void update(float delta);
 private:
-	EventTask();
-	~EventTask();
+    EventTask();
+    ~EventTask();
     bool init();
     
     void run();
-    bool isEventRunning();
     GameEvent* createEventById(int eventId);
     int getEventId(const EventWithId& eventWithId) const;
     GameEvent* getGameEvent(const EventWithId& eventWithId) const;
-    
-public:
-    void runEventQueue();
-	void runEvent(int eventId);
-    bool pushEventBack(int eventId);
-    bool pushEventFront(int eventId);
-    void update(float delta);
-    bool existsEvent();
-    void runEvent(vector<int> eventIds, function<void()> callback);
-    void runEvent(vector<int> eventIds);
-    int getRunningEventId() const;
-    deque<EventWithId> getEvents() const;
 };
 
 #endif /* defined(__LastSupper__EventScriptTask__) */

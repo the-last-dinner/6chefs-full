@@ -88,6 +88,8 @@
 		551406A61BA5828A008DFAED /* se in Resources */ = {isa = PBXBuildFile; fileRef = 5514069C1BA5828A008DFAED /* se */; };
 		551406A71BA5828A008DFAED /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5514069D1BA5828A008DFAED /* shaders */; };
 		551406A81BA5828A008DFAED /* story in Resources */ = {isa = PBXBuildFile; fileRef = 5514069E1BA5828A008DFAED /* story */; };
+		551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */; };
+		551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */; };
 		552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83681B20BC6300B681A8 /* AppDelegate.cpp */; };
 		552D836D1B20BC6300B681A8 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83681B20BC6300B681A8 /* AppDelegate.cpp */; };
 		552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D837B1B20BCA700B681A8 /* TitleScene.cpp */; };
@@ -343,6 +345,8 @@
 		5514069C1BA5828A008DFAED /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; name = se; path = ../Resources/se; sourceTree = "<group>"; };
 		5514069D1BA5828A008DFAED /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = ../Resources/shaders; sourceTree = "<group>"; };
 		5514069E1BA5828A008DFAED /* story */ = {isa = PBXFileReference; lastKnownFileType = folder; name = story; path = ../Resources/story; sourceTree = "<group>"; };
+		551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonMashingLayer.cpp; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.cpp; sourceTree = "<group>"; };
+		551B79C11BF0F54A000B790A /* ButtonMashingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonMashingLayer.h; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.h; sourceTree = "<group>"; };
 		5527BFFD1B305A7000612934 /* Objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Objects.h; path = ../Classes/MapObjects/Objects.h; sourceTree = "<group>"; };
 		552D83681B20BC6300B681A8 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		552D83691B20BC6300B681A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
@@ -869,6 +873,8 @@
 				556C18E11B3FA6D100D2BCA1 /* TiledMapLayer.h */,
 				55526C891BF095B20049DD00 /* DisplayImageLayer.cpp */,
 				55526C8A1BF095B20049DD00 /* DisplayImageLayer.h */,
+				551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */,
+				551B79C11BF0F54A000B790A /* ButtonMashingLayer.h */,
 			);
 			name = Dungeon;
 			sourceTree = "<group>";
@@ -1192,6 +1198,7 @@
 				55C3C1EE1BD143B700ECDB50 /* GameTask.cpp in Sources */,
 				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
+				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
@@ -1254,6 +1261,7 @@
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
+				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
