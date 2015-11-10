@@ -91,4 +91,25 @@ private:
     virtual void run() override;
 };
 
+// 連打イベント
+class ButtonMashingEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ButtonMashingEvent, rapidjson::Value&)
+private:
+    int count { 0 };
+    float limit { 0.f };
+    int sEventId { static_cast<int>(EventID::UNDIFINED) };
+    int fEventId { static_cast<int>(EventID::UNDIFINED) };
+    GameEvent* sEvent { nullptr };
+    GameEvent* fEvent { nullptr };
+    GameEvent* event { nullptr };
+private:
+    ButtonMashingEvent() {FUNCLOG};
+    ~ButtonMashingEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+    virtual void update(float delta) override;
+};
+
 #endif /* defined(__LastSupper__MessageEvent__) */

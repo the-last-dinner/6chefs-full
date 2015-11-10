@@ -10,7 +10,6 @@
 
 #include "Event/GameEvent.h"
 #include "Event/EventFactory.h"
-#include "Event/EventScriptValidator.h"
 
 #include "Event/EventScript.h"
 #include "Managers/DungeonSceneManager.h"
@@ -130,50 +129,6 @@ bool EventTask::pushEventFront(int eventId)
     return true;
 }
 
-// キューにある先頭のイベントを実行
-void EventTask::run()
-{
-    // 実行中のイベントがあればリターン
-    if(this->isEventRunning()) return;
-    
-    // イベントキューが空ならリターン
-    if(this->eventQueue.empty()) return;
-    
-    // なければ先頭を実行
-    this->runningEvent = this->eventQueue.front();
-    this->eventQueue.pop_front();
-    this->getGameEvent(this->runningEvent)->run();
-}
-
-// IDからイベントを生成
-GameEvent* EventTask::createEventById(int eventId)
-{
-    if(eventId == static_cast<int>(EventID::UNDIFINED) || PlayerDataManager::getInstance()->getEventFlag(PlayerDataManager::getInstance()->getLocation().map_id, eventId)) return nullptr;
-    
-    DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
-    
-    GameEvent* event { manager->getEventFactory()->createGameEvent(manager->getEventScript()->getScriptJson(eventId))};
-    
-    CC_SAFE_RETAIN(event);
-    
-    // 生成されたらキューに詰められるので、この場で操作不可状態にしておく
-    DungeonSceneManager::getInstance()->setEventListenerPaused(true);
-    
-    return event;
-}
-
-// イベントIDを取得
-int EventTask::getEventId(const EventWithId& eventWithId) const
-{
-    return eventWithId.first;
-}
-
-// イベントポインタを取得
-GameEvent* EventTask::getGameEvent(const EventWithId& eventWithId) const
-{
-    return eventWithId.second;
-}
-
 // 現在実行中のイベントがあるか
 bool EventTask::isEventRunning()
 {
@@ -227,4 +182,51 @@ int EventTask::getRunningEventId() const
 deque<EventTask::EventWithId> EventTask::getEvents() const
 {
     return this->eventQueue;
+}
+
+#pragma mark -
+#pragma mark private
+
+// キューにある先頭のイベントを実行
+void EventTask::run()
+{
+    // 実行中のイベントがあればリターン
+    if(this->isEventRunning()) return;
+    
+    // イベントキューが空ならリターン
+    if(this->eventQueue.empty()) return;
+    
+    // なければ先頭を実行
+    this->runningEvent = this->eventQueue.front();
+    this->eventQueue.pop_front();
+    this->getGameEvent(this->runningEvent)->run();
+}
+
+// IDからイベントを生成
+GameEvent* EventTask::createEventById(int eventId)
+{
+    if(eventId == static_cast<int>(EventID::UNDIFINED) || PlayerDataManager::getInstance()->getEventFlag(PlayerDataManager::getInstance()->getLocation().map_id, eventId)) return nullptr;
+    
+    DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
+    
+    GameEvent* event { manager->getEventFactory()->createGameEvent(manager->getEventScript()->getScriptJson(eventId))};
+    
+    CC_SAFE_RETAIN(event);
+    
+    // 生成されたらキューに詰められるので、この場で操作不可状態にしておく
+    DungeonSceneManager::getInstance()->setEventListenerPaused(true);
+    
+    return event;
+}
+
+// イベントIDを取得
+int EventTask::getEventId(const EventWithId& eventWithId) const
+{
+    return eventWithId.first;
+}
+
+// イベントポインタを取得
+GameEvent* EventTask::getGameEvent(const EventWithId& eventWithId) const
+{
+    return eventWithId.second;
 }
