@@ -120,10 +120,6 @@
 							"layer":"doorB2"
 						},
 						{
-							"type":"removeLayer",
-							"layer":"doorB3"
-						},
-						{
 							"type":"changeMap",
 							"mapID":"23",
 							"x":24,
@@ -171,10 +167,6 @@
 								{
 									"type":"removeLayer",
 									"layer":"doorB2"
-								},
-								{
-									"type":"removeLayer",
-									"layer":"doorB3"
 								}
 							]
 						}
@@ -183,7 +175,7 @@
 				{
 					"type":"charaWalk",
 					"direction":"UP",
-					"steps":1,
+					"steps":1.0,
 					"objID":"1016"
 				},
 				{
