@@ -257,14 +257,16 @@
 									"chapterID":"2"
 								},
 								{
-									"type":"playSE",
-									"file":"chapter2.wav",
-									"time":6.0
+									"type":"playBGM",
+									"file":"chapter2.wav"
 								},
 								{
 									"type":"displayImg",
 									"file":"chapter2.png",
 									"time":5.0
+								},
+								{
+									"type":"stopBGM"
 								}
 							]
 						},

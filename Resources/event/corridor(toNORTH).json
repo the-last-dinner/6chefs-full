@@ -132,13 +132,16 @@
               "chapterID":"1"
             },
             {
-              "type":"playSE",
+              "type":"playBGM",
               "file":"chapter1.mp3"
             },
             {
               "type":"displayImg",
               "file":"chapter1.png",
-              "time":9
+              "time":5.0
+            },
+            {
+              "type":"stopBGM"
             }
           ]
         },

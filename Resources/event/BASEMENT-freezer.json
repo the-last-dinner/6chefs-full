@@ -233,14 +233,16 @@
 									"chapterID":"5"
 								},
 								{
-									"type":"playSE",
-									"file":"chapter5.wav",
-									"time":6.0
+									"type":"playBGM",
+									"file":"chapter5.wav"
 								},
 								{
 									"type":"displayImg",
 									"file":"chapter5.png",
 									"time":5.0
+								},
+								{
+									"type":"stopBGM"
 								}
 							]
 						},

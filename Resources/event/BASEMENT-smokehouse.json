@@ -275,14 +275,16 @@
 									"chapterID":"4"
 								},
 								{
-									"type":"playSE",
-									"file":"chapter4.wav",
-									"time":6.0
+									"type":"playBGM",
+									"file":"chapter4.wav"
 								},
 								{
 									"type":"displayImg",
 									"file":"chapter4.png",
 									"time":5.0
+								},
+								{
+									"type":"stopBGM"
 								}
 							]
 						},
@@ -333,14 +335,16 @@
 									"chapterID":"4"
 								},
 								{
-									"type":"playSE",
-									"file":"chapter4.wav",
-									"time":6.0
+									"type":"playBGM",
+									"file":"chapter4.wav"
 								},
 								{
 									"type":"displayImg",
 									"file":"chapter4.png",
 									"time":5.0
+								},
+								{
+									"type":"stopBGM"
 								}
 							]
 						},
