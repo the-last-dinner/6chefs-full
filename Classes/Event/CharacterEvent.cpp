@@ -113,7 +113,7 @@ void WalkToEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    Vec2 movement {this->destPosition - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
+    Vec2 movement {this->destPosition - this->target->getGridPosition()};
 
     this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
 }

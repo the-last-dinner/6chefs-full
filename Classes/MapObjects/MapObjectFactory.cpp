@@ -26,6 +26,8 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     // 自身を生成
     MapObjectFactory* p {new(nothrow) MapObjectFactory()};
     
+    p->tiledMap = tiledMap;
+    
     // レイヤ別に処理が分かれるので用意
     map<MapObjectFactory::Group, string> typeToString
     {
@@ -134,11 +136,18 @@ Direction MapObjectFactory::getDirection(const ValueMap& info) const
     return MapUtils::toEnumDirection(info.at("direction").asString());
 }
 
+// マス座標を取得
+Point MapObjectFactory::getGridPosition(const Rect& rect)
+{
+    return MapUtils::convertToMapPoint(this->tiledMap->getContentSize(), Point(rect.getMinX(), rect.getMinY())) / GRID;
+}
+
 // 当たり判定レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
     MapObject* pObj = EventObject::create();
+    pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setPosition(rect.origin + rect.size / 2);
     pObj->setContentSize(rect.size);
     pObj->setHit(true);
@@ -166,6 +175,7 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
         pObj->setTrigger(this->getTrigger(info));
     }
     
+    pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
     pObj->setPosition(rect.origin + rect.size / 2);
     pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
@@ -181,6 +191,7 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
     
     if(!chara) return nullptr;
     
+    chara->setGridPosition(this->getGridPosition(rect));
     chara->setObjectId(this->getObjectId(info));
     chara->setTrigger(this->getTrigger(info));
     chara->setEventId(this->getEventId(info));

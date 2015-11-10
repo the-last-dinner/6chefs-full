@@ -136,7 +136,7 @@ void DungeonScene::onMenuKeyPressed()
     this->listener->setEnabled(false);
     // 主人公の位置をセット
     Character* chara = DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
-    Point point = chara->getGridPosition(this->mapLayer->getMapSize());
+    Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
     PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);

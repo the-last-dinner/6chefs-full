@@ -29,16 +29,15 @@ Size MapObject::getGridSize() const
 }
 
 // マップ上のマス座標を取得(一番左下のマス座標を返す)
-Point MapObject::getGridPosition(const Size& mapSize) const
+Point MapObject::getGridPosition() const
 {
-	return MapUtils::convertToMapPoint(mapSize, Point(this->getPositionX() - this->getContentSize().width / 2, this->getPositionY())) / GRID;
+	return this->gridPosition;
 }
 
-// マップ上のマス座標にセット
-void MapObject::setGridPosition(const Size& mapSize, const Point& mapGridPoint)
+// マス座標をセット、実際の位置は変更しない
+void MapObject::setGridPosition(const Point& gridPosition)
 {
-	Point cocosPoint = MapUtils::convertToCCPoint(mapSize, mapGridPoint);
-	this->setPosition(cocosPoint.x + this->getContentSize().width / 2, cocosPoint.y);
+    this->gridPosition = gridPosition;
 }
 
 // オブジェクトIDをセット
@@ -187,8 +186,11 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
         if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction);
     }
     
+    // マス座標を変更
+    this->setGridPosition(this->getGridPosition() + Vec2(movement.x, -movement.y) / GRID);
+    
     // 移動先座標をコールバック関数に送信(TiledMapLayerの関数を呼び出す)
-    if(this->onMove) this->onMove(this, this->getPosition() + movement * gridNum);
+    if(this->onMove) this->onMove(this);
     
     // 移動開始
     this->runAction(Sequence::createWithTwoActions(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create(onMoved)));

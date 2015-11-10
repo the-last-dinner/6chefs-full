@@ -15,7 +15,7 @@ Point MapUtils::convertToCCPoint(const Size& mapSize, const Point& gridPoint)
 
 Point MapUtils::convertToMapPoint(const Size& mapSize, const Point& ccPoint)
 {
-	return Point(ccPoint.x, (mapSize.height - ccPoint.y));
+	return Point(ccPoint.x, (mapSize.height - ccPoint.y - GRID));
 }
 
 // 画面上の座標を取得

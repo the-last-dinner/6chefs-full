@@ -23,7 +23,6 @@ public:
     
 // インスタンス変数
 private:
-    Point gridPosition {Point::ZERO};
     int objectId { static_cast<int>(ObjectID::UNDIFINED)};
     int eventId { static_cast<int>(EventID::UNDIFINED) };
 	Trigger trigger {Trigger::SIZE};
@@ -32,14 +31,15 @@ private:
     Rect collisionRect {Rect::ZERO};
 	Light* light { nullptr };
     MapObjectList* objectList { nullptr };
+    Point gridPosition {Point::ZERO};
 public:
-    function<void(MapObject*, const Point&)> onMove { nullptr };
+    function<void(MapObject*)> onMove { nullptr };
 	
 // インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
-	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
+	void setGridPosition(const Point& gridPosition);
     void setObjectId(int objectId);
 	void setEventId(int eventId);
 	void setTrigger(Trigger trigger);
@@ -52,7 +52,7 @@ public:
 	void removeLight();
 	
     Size  getGridSize() const;
-	Point getGridPosition(const Size& mapSize) const;
+	Point getGridPosition() const;
     int getObjectId() const;
 	int getEventId() const;
 	Trigger getTrigger() const;

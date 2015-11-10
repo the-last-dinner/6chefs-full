@@ -30,7 +30,11 @@ public:
 // クラスメソッド
 public:
     static MapObjectList* createMapObjectList(experimental::TMXTiledMap* tiledMap);
-      
+    
+// インスタンス変数
+private:
+    experimental::TMXTiledMap* tiledMap { nullptr };
+    
 // インスタンスメソッド
 private:
     MapObjectFactory();
@@ -43,6 +47,7 @@ private:
     int getCharacterId(const ValueMap& info) const;
     CharacterMovePattern getCharacterMovePattern(const ValueMap& info) const;
     Direction getDirection(const ValueMap& info) const;
+    Point getGridPosition(const Rect& rect);
     
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);
