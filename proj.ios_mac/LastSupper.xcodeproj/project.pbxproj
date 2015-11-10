@@ -88,6 +88,8 @@
 		551406A61BA5828A008DFAED /* se in Resources */ = {isa = PBXBuildFile; fileRef = 5514069C1BA5828A008DFAED /* se */; };
 		551406A71BA5828A008DFAED /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5514069D1BA5828A008DFAED /* shaders */; };
 		551406A81BA5828A008DFAED /* story in Resources */ = {isa = PBXBuildFile; fileRef = 5514069E1BA5828A008DFAED /* story */; };
+		551A51781BF239F600D6263A /* Direction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551A51761BF239F600D6263A /* Direction.cpp */; };
+		551A51791BF239F600D6263A /* Direction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551A51761BF239F600D6263A /* Direction.cpp */; };
 		551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */; };
 		551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */; };
 		552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552D83681B20BC6300B681A8 /* AppDelegate.cpp */; };
@@ -345,6 +347,8 @@
 		5514069C1BA5828A008DFAED /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; name = se; path = ../Resources/se; sourceTree = "<group>"; };
 		5514069D1BA5828A008DFAED /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = ../Resources/shaders; sourceTree = "<group>"; };
 		5514069E1BA5828A008DFAED /* story */ = {isa = PBXFileReference; lastKnownFileType = folder; name = story; path = ../Resources/story; sourceTree = "<group>"; };
+		551A51761BF239F600D6263A /* Direction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Direction.cpp; path = ../Classes/Models/Direction.cpp; sourceTree = "<group>"; };
+		551A51771BF239F600D6263A /* Direction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Direction.h; path = ../Classes/Models/Direction.h; sourceTree = "<group>"; };
 		551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonMashingLayer.cpp; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.cpp; sourceTree = "<group>"; };
 		551B79C11BF0F54A000B790A /* ButtonMashingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonMashingLayer.h; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.h; sourceTree = "<group>"; };
 		5527BFFD1B305A7000612934 /* Objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Objects.h; path = ../Classes/MapObjects/Objects.h; sourceTree = "<group>"; };
@@ -721,6 +725,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		551A51751BF237FE00D6263A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				551A51761BF239F600D6263A /* Direction.cpp */,
+				551A51771BF239F600D6263A /* Direction.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		552D83631B20BC1200B681A8 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +748,7 @@
 				55F3022D1BDA32AC00BDC418 /* Event */,
 				552D83661B20BC3400B681A8 /* Layers */,
 				552D83671B20BC4100B681A8 /* Managers */,
+				551A51751BF237FE00D6263A /* Models */,
 				5534BBD91B2DDEB6003CB847 /* MapObjects */,
 				552D83651B20BC2600B681A8 /* Scenes */,
 				5583CE3B1B9A15DB00F9ACB7 /* Tasks */,
@@ -1249,6 +1263,7 @@
 				5544706E1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
 				556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
+				551A51781BF239F600D6263A /* Direction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1319,6 +1334,7 @@
 				55F302311BDA331900BDC418 /* GameEvent.cpp in Sources */,
 				556C71671BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
+				551A51791BF239F600D6263A /* Direction.cpp in Sources */,
 				556C716B1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
