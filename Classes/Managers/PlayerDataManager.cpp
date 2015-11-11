@@ -14,6 +14,7 @@
 #include "Managers/CsvDataManager.h"
 #include "Utils/StringUtils.h"
 
+#pragma mark Instance
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
 
@@ -35,9 +36,8 @@ void PlayerDataManager::destroy()
 PlayerDataManager::~PlayerDataManager(){FUNCLOG}
 
 
-/* ******************************************************** *
- * ******************** Init functions ******************** *
- * ******************************************************** */
+#pragma mark -
+#pragma mark InitFunctions
 
 //コンストラクタ
 PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
@@ -97,9 +97,8 @@ void PlayerDataManager::initializeFiles()
     return;
 }
 
-/* ******************************************************** *
- * ******************* Normal functions ******************* *
- * ******************************************************** */
+#pragma mark -
+#pragma mark NormalFunctions
 
 //セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
@@ -226,11 +225,9 @@ bool PlayerDataManager::checkSaveDataExists(const int id)
     return this->local_exist[id - 1];
 }
 
-/* ******************************************************** *
- * ******************** Flag functions ******************** *
- * ******************************************************** */
+#pragma mark -
+#pragma mark Setter
 
-/* SET */
 //主人公の座標のセット
 void PlayerDataManager::setLocation(const Location& location)
 {
@@ -247,10 +244,10 @@ void PlayerDataManager::setLocation(const Location& location)
 }
 
 //友好度のセット
-void PlayerDataManager::setFriendship(const string& character, const int level)
+void PlayerDataManager::setFriendship(const int chara_id, const int level)
 {
     FUNCLOG
-    this->local["friendship"][character.c_str()].SetInt(level);
+    this->local["friendship"][to_string(chara_id).c_str()].SetInt(level);
     return;
 }
 
@@ -314,7 +311,9 @@ void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
     if(direction == Direction::LEFT)
     {
         this->local["equipment_left"].SetInt(item_id);
-    } else {
+    }
+    else
+    {
         this->local["equipment_right"].SetInt(item_id);
     }
     return;
@@ -328,7 +327,33 @@ void PlayerDataManager::setChapterId(const int chapter_id)
     return;
 }
 
-/* GET */
+// キャラクターのプロフィールを追加
+void PlayerDataManager::setCharacterProfile(const int chara_id, const int level)
+{
+    FUNCLOG
+    const char* cid_char = to_string(chara_id).c_str();
+    char buff[50];
+    sprintf(buff, "%d", chara_id);
+    rapidjson::Value cid  (kStringType);
+    cid.SetString(buff, strlen(buff), this->local.GetAllocator());
+    
+    rapidjson::Value::ConstMemberIterator itr = this->local["chara"].FindMember(cid_char);
+    if (itr != this->local["chara"].MemberEnd())
+    {
+        // すでに追加されているキャラクター
+        this->local["chara"][cid_char].SetInt(level);
+    }
+    else
+    {
+        // 初めて追加するキャラ
+        this->local["chara"].AddMember(cid, rapidjson::Value(level), this->local.GetAllocator());
+    }
+    return;
+}
+
+#pragma mark -
+#pragma mark Getter
+
 //主人公の位置をゲット
 PlayerDataManager::Location PlayerDataManager::getLocation()
 {
@@ -339,10 +364,16 @@ PlayerDataManager::Location PlayerDataManager::getLocation()
 }
 
 //友好度の取得
-int PlayerDataManager::getFriendship(const string& character)
+int PlayerDataManager::getFriendship(const int chara_id)
 {
     FUNCLOG
-    return this->local["friendship"][character.c_str()].GetInt();
+    const char* cid = to_string(chara_id).c_str();
+    rapidjson::Value::ConstMemberIterator itr = this->local["friendship"].FindMember(cid);
+    if(itr != this->local["friendship"].MemberEnd()){
+        return this->local["friendship"][cid].GetInt();
+    } else {
+        return -1;
+    }
 }
 
 //イベントフラグの取得
@@ -411,7 +442,27 @@ int PlayerDataManager::getChapterId()
     return this->local["chapter"].GetInt();
 }
 
-/* CHECK */
+// キャラクターのプロフィール情報の見れるレベルを取得
+int PlayerDataManager::getCharacterProfileLevel(const int chara_id)
+{
+    int level {-1}; // 存在しない場合は-1を返す
+    const char* cid_char = to_string(chara_id).c_str();
+    char buff[50];
+    sprintf(buff, "%d", chara_id);
+    rapidjson::Value cid  (kStringType);
+    cid.SetString(buff, strlen(buff), this->local.GetAllocator());
+    
+    rapidjson::Value::ConstMemberIterator itr = this->local["chara"].FindMember(cid_char);
+    if (itr != this->local["chara"].MemberEnd())
+    {
+        level = this->local["chara"][cid_char].GetInt();
+    }
+    return level;
+}
+
+#pragma mark -
+#pragma mark Checker
+
 //アイテムを1つ以上持っているかチェック
 bool PlayerDataManager::checkItem(const int item_id)
 {
@@ -438,10 +489,10 @@ bool PlayerDataManager::checkItemEquipment(const int item_id)
 }
 
 //友好度が指定の値と一致するか
-bool PlayerDataManager::checkFriendship(const string& character, const int val)
+bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
 {
     FUNCLOG
-    int level = this->getFriendship(character);
+    int level = this->getFriendship(chara_id);
     if(level == val){
         return true;
     } else {
@@ -461,9 +512,8 @@ bool PlayerDataManager::checkChapterId(const int chapter_id)
     }
 }
 
-/* ******************************************************** *
- * ******************** Util functions ******************** *
- * ******************************************************** */
+#pragma mark -
+#pragma mark JsonFileFunctions
 
 // 絶対パスからjsonファイルの取得
 rapidjson::Document PlayerDataManager::readJsonFile(const string& path)
