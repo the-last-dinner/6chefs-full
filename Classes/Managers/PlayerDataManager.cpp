@@ -64,6 +64,11 @@ bool PlayerDataManager::setGlobalData()
     }
     //global.jsonを読み込んでインスタンス変数globalに格納
     this->global = this->readJsonFile(path);
+    if(this->global["status"].GetInt() == 0)
+    {
+        // statusが0の場合は初期化
+        return false;
+    }
     return true;
 }
 
