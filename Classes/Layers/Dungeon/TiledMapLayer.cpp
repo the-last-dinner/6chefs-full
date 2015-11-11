@@ -77,6 +77,7 @@ void TiledMapLayer::hideLayer(const string& layerName)
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject)
 {
+    this->objectList->add(mapObject);
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
@@ -90,7 +91,6 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
     Point cocosPoint = MapUtils::convertToCCPoint(this->getMapSize(), gridPoint);
     mapObject->setPosition(cocosPoint.x + mapObject->getContentSize().width / 2, cocosPoint.y);
     mapObject->setGridPosition(gridPoint);
-    this->objectList->add(mapObject);
     this->addMapObject(mapObject);
 }
 

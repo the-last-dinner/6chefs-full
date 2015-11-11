@@ -139,6 +139,9 @@ const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {
+    // もうすでにリスト内にあればリターン
+    if(this->availableObjects.find(mapObject) != this->availableObjects.end()) return;
+    
     this->availableObjects.pushBack(mapObject);
     
     // 無効リストに存在する場合は削除
