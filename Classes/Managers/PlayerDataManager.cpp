@@ -244,10 +244,10 @@ void PlayerDataManager::setLocation(const Location& location)
 }
 
 //友好度のセット
-void PlayerDataManager::setFriendship(const string& character, const int level)
+void PlayerDataManager::setFriendship(const int chara_id, const int level)
 {
     FUNCLOG
-    this->local["friendship"][character.c_str()].SetInt(level);
+    this->local["friendship"][to_string(chara_id).c_str()].SetInt(level);
     return;
 }
 
@@ -364,10 +364,16 @@ PlayerDataManager::Location PlayerDataManager::getLocation()
 }
 
 //友好度の取得
-int PlayerDataManager::getFriendship(const string& character)
+int PlayerDataManager::getFriendship(const int chara_id)
 {
     FUNCLOG
-    return this->local["friendship"][character.c_str()].GetInt();
+    const char* cid = to_string(chara_id).c_str();
+    rapidjson::Value::ConstMemberIterator itr = this->local["friendship"].FindMember(cid);
+    if(itr != this->local["friendship"].MemberEnd()){
+        return this->local["friendship"][cid].GetInt();
+    } else {
+        return -1;
+    }
 }
 
 //イベントフラグの取得
@@ -483,10 +489,10 @@ bool PlayerDataManager::checkItemEquipment(const int item_id)
 }
 
 //友好度が指定の値と一致するか
-bool PlayerDataManager::checkFriendship(const string& character, const int val)
+bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
 {
     FUNCLOG
-    int level = this->getFriendship(character);
+    int level = this->getFriendship(chara_id);
     if(level == val){
         return true;
     } else {

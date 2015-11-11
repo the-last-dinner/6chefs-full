@@ -160,7 +160,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
     {
         for(int i { 0 }; i < json.Size(); i++)
         {
-            detection = PlayerDataManager::getInstance()->checkFriendship(json[i][0].GetString(), stoi(json[i][1].GetString()));
+            detection = PlayerDataManager::getInstance()->checkFriendship(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
             if(negative) detection = !detection;
             if(!detection) break;
         }
@@ -168,7 +168,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
     // 一つの時
     else
     {
-        detection = PlayerDataManager::getInstance()->checkFriendship(json[0].GetString(), stoi(json[1].GetString()));
+        detection = PlayerDataManager::getInstance()->checkFriendship(stoi(json[0].GetString()), stoi(json[1].GetString()));
         if(negative) detection = !detection;
     }
     

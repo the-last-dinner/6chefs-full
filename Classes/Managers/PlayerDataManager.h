@@ -70,7 +70,7 @@ public:
     /* flag管理系 */
     // SET
     void setLocation(const Location& location);
-    void setFriendship(const string& character, const int level);
+    void setFriendship(const int chara_id, const int level);
     void setEventFlag(const int map_id, const int event_id, const bool& flag);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
@@ -78,7 +78,7 @@ public:
     void setCharacterProfile(const int chara_id, const int level);
     // GET
     Location getLocation();
-    int getFriendship(const string& character);
+    int getFriendship(const int chara_id);
     bool getEventFlag(const int map_id, const int event_id);
     int getItem(const int item_id);
     map<int, int> getItemAll();
@@ -88,7 +88,7 @@ public:
     // CHECK
     bool checkItem(const int item_id);
     bool checkItemEquipment(const int item_id);
-    bool checkFriendship(const string& character, const int val);
+    bool checkFriendship(const int chara_id, const int val);
     bool checkChapterId(const int chapter_id);
 private:
     //グローバルデータのセット

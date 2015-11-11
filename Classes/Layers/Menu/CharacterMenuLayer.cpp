@@ -130,6 +130,14 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
         leftBottom->removeChildByName(labelName);
     }
     Size panel = leftBottom->getContentSize();
+    
+    // ハートパネルの削除
+    string panelName = "heartPanel";
+    if (leftBottom->getChildByName(panelName))
+    {
+        leftBottom->removeChildByName(panelName);
+    }
+    
     if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]) < 0)
     {
         // 見ることができないキャラクター
@@ -151,6 +159,24 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
             //img->setLocalZOrder(-1);
             leftBottom->addChild(img);
         }
+        // 友好度をセット
+        int level = PlayerDataManager::getInstance()->getFriendship(this->characters[idx]);
+        if (level < 0) return; // 友好度が存在しない時はリターン
+        // ハートを置くパネルの生成
+        Sprite* heart_panel = Sprite::create();
+        heart_panel->setPosition(heart_panel->getContentSize().width/2, heart_panel->getContentSize().height/2);
+        heart_panel->setName(panelName);
+        leftBottom->addChild(heart_panel);
+        // ハート生成
+        for (int i=0; i<3; i++)
+        {
+            string file_name = level>=i ? "img/heart_pink.png" : "img/heart_black.png";
+            Sprite* heart = Sprite::create(file_name);
+            heart->setScale(0.50);
+            heart->setPosition(i * panel.width / 3 + panel.width / 6, heart->getContentSize().height / 4);
+            heart_panel->addChild(heart);
+        }
+        
     }
 }
 
