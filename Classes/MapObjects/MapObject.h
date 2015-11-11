@@ -53,6 +53,7 @@ public:
 	
     Size  getGridSize() const;
 	Point getGridPosition() const;
+    Rect getGridRect() const;
     int getObjectId() const;
 	int getEventId() const;
 	Trigger getTrigger() const;

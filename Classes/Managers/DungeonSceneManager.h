@@ -63,6 +63,7 @@ public:
     void setInputCheckInterval(const float interval);
     void setEventListenerPaused(const bool paused);
     bool isPressed(const Key& key);
+    vector<Key> getPressedCursorKeys() const;
     
     // EventTask
     void runEvent(const int eventId);
@@ -71,6 +72,9 @@ public:
     void runEventQueue();
     bool existsEvent() const;
     int getRunningEventId() const;
+    
+    // PlayerControlTask
+    void setPlayerControlEnable(bool enable);
 };
 
 #endif /* defined(__LastSupper__DungeonSceneManager__) */

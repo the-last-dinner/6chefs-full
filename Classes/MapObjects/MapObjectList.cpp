@@ -87,6 +87,31 @@ Vector<MapObject*> MapObjectList::getMapObjects(const Point& position) const
     return mapObjects;
 }
 
+// Rect(マス座標, マスサイズ)とトリガーからマップオブジェクトを取得
+Vector<MapObject*> MapObjectList::getMapObjectsByGridRect(const Rect& gridRect, const Trigger trigger) const
+{
+    Vector<MapObject*> mapObjects {};
+    bool needToCheckTrigger {trigger != Trigger::SIZE};
+    
+    for(MapObject* obj : this->availableObjects)
+    {
+        bool flag { false };
+        
+        Rect rect {obj->getGridRect()};
+        
+        if(MapUtils::intersectsGridRect(gridRect, rect))
+        {
+            if(!needToCheckTrigger) flag = true;
+            
+            if(obj->getTrigger() == trigger) flag = true;
+        }
+        
+        if(flag) mapObjects.pushBack(obj);
+    }
+    
+    return mapObjects;
+}
+
 // 指定トリガーのマップオブジェクトのEventIDベクタを取得
 vector<int> MapObjectList::getEventIds(const Trigger trigger) const
 {

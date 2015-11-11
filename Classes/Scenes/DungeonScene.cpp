@@ -104,11 +104,10 @@ void DungeonScene::onPreloadFinished()
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
     listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
+    listener->delayedInputCheck = [playerControlTask, party](const vector<Key> keys){playerControlTask->walking(keys, party);};
     listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
-    listener->intervalInputCheck = [playerControlTask, party](const vector<Key>& keys){playerControlTask->walking(keys, party);};
     listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
     listener->setInputCheckDelay(MapObject::DURATION_MOVE_ONE_GRID);
-    listener->setInputCheckInterval(MapObject::DURATION_MOVE_ONE_GRID);
     
     this->addChild(listener);
     this->listener = listener;

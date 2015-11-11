@@ -39,6 +39,7 @@ public:
     const bool containsCollisionObject(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Point& position) const;
+    Vector<MapObject*> getMapObjectsByGridRect(const Rect& gridRect, const Trigger trigger = Trigger::SIZE) const;
     vector<int> getEventIds(const Trigger trigger) const;
     void add(MapObject* mapObject);
 };

@@ -28,7 +28,8 @@ public:
     function<void()> onSpaceKeyPressed { nullptr };
     function<void()> onMenuKeyPressed { nullptr };
     function<void()> onDashKeyPressed { nullptr };
-    function<void(const vector<Key>& keys)> intervalInputCheck { nullptr };
+    function<void(const vector<Key>&)> intervalInputCheck { nullptr };
+    function<void(const vector<Key>&)> delayedInputCheck { nullptr };
 private:
     EventListenerKeyboard* listenerKeyboard { nullptr };
     map<Key, bool> keyStatus {};
@@ -39,20 +40,25 @@ private:
     
 // インスタンスメソッド
 public:
-    EventListenerKeyboardLayer();   // コンストラクタ
-    ~EventListenerKeyboardLayer();  // デストラクタ
-    virtual bool init() override;    // 初期化
+    void onKeyPressed(const EventKeyboard::KeyCode& keyCode);
+    void onKeyReleased(const EventKeyboard::KeyCode& keyCode);
     void setEnabled(bool enabled);    // リスナを有効/無効化
     void setInputCheckDelay(float delay);               // キーを押した瞬間から初回キー入力確認までの時間を設定
     void setInputCheckInterval(float interval);         // キー入力の確認間隔を設定
-    void onKeyPressed(const EventKeyboard::KeyCode& keyCode);      // キーを押した時
-    void onKeyReleased(const EventKeyboard::KeyCode& keyCode);     // キーを離した時
     void releaseKey(const Key& key);  // キーを離すとき
     void releaseKeyAll();  // 全てのキーをリリース状態にリセット
-    void inputCheck(float duration);                        // キーを押し続けている時
     bool isPressed(const Key& key);                                // 指定キーが押し状態か判別
-    Key convertKeyCode(const EventKeyboard::KeyCode& keyCode);     // cococs上でのキーコードをゲーム内キーに変換
     void setPaused(bool paused);
+    vector<Key> getPressedCursorKeys() const;
+private:
+    EventListenerKeyboardLayer();   // コンストラクタ
+    ~EventListenerKeyboardLayer();  // デストラクタ
+    virtual bool init() override;    // 初期化
+    void intervalCheck(float duration);                        // キーを押し続けている時
+    void delayedCheck(float duration);                         // キーを押してから一定時間経った時
+    Key convertKeyCode(const EventKeyboard::KeyCode& keyCode);     // cococs上でのキーコードをゲーム内キーに変換
+    void scheduleIntervalCheck();
+    void scheduleDelayedCheck();
 };
 
 #endif /* defined(_EventListenerKeyboardLayer__) */

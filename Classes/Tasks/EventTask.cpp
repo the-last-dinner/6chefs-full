@@ -165,7 +165,7 @@ void EventTask::update(float delta)
         Director::getInstance()->getScheduler()->unscheduleUpdate(this);
  
         // 操作可能状態に
-        DungeonSceneManager::getInstance()->setEventListenerPaused(false);
+        DungeonSceneManager::getInstance()->setPlayerControlEnable(true);
     }
     
     // イベントを実行
@@ -214,7 +214,7 @@ GameEvent* EventTask::createEventById(int eventId)
     CC_SAFE_RETAIN(event);
     
     // 生成されたらキューに詰められるので、この場で操作不可状態にしておく
-    DungeonSceneManager::getInstance()->setEventListenerPaused(true);
+    DungeonSceneManager::getInstance()->setPlayerControlEnable(false);
     
     return event;
 }

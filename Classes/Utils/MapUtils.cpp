@@ -125,3 +125,12 @@ Vec2 MapUtils::getUnitVector(const Direction& direction)
     
     return directionToVec[direction];
 }
+
+// マップ座標、マップのマスサイズRectよう衝突判定メソッド（Y軸が反転しているため必要）
+bool MapUtils::intersectsGridRect(const Rect& rect1, const Rect& rect2)
+{
+    return !(rect1.getMaxX() - 1 < rect2.getMinX() ||
+             rect1.getMinX() > rect2.getMaxX() - 1||
+             rect1.origin.y - rect1.size.height + 1 > rect2.getMinY() ||
+             rect1.getMinY() < rect2.origin.y - rect2.size.height + 1);
+}

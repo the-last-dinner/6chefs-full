@@ -34,6 +34,12 @@ Point MapObject::getGridPosition() const
 	return this->gridPosition;
 }
 
+// マス座標、マスあたり判定サイズのRectを取得
+Rect MapObject::getGridRect() const
+{
+    return Rect(this->getGridPosition().x + this->collisionRect.getMinX() / GRID, this->getGridPosition().y + this->collisionRect.getMinY() / GRID, this->collisionRect.size.width / GRID, this->collisionRect.size.height / GRID);
+}
+
 // マス座標をセット、実際の位置は変更しない
 void MapObject::setGridPosition(const Point& gridPosition)
 {

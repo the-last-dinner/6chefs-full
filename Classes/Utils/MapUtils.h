@@ -23,6 +23,7 @@ namespace MapUtils
     Direction toEnumDirection(const string& sDirection);
     vector<Direction> vecToDirection(const Vec2& vec);
     Vec2 getUnitVector(const Direction& direction);
+    bool intersectsGridRect(const Rect& rect1, const Rect& rect2);
 }
 
 #endif // __MAP_UTILS_H__
