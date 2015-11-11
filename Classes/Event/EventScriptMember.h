@@ -34,7 +34,7 @@ namespace member
     static const char* IMGS = "imgs";
     static const char* IMG_ID = "imgID";
     static const char* INFO_ID = "infoID";
-    static const char* ITEM = "item";
+    static const char* ITEM_ID = "itemID";
     static const char* LAYER = "layer";
     static const char* LIMIT = "limit";
     static const char* MAP_ID = "mapID";
