@@ -67,10 +67,6 @@
 					"name":"吹き出物だらけの男"
 				},
 				{
-					"type":"addChara",
-					"charaID":"10"
-				},
-				{
 					"type":"addProfile",
 					"charaID":"10",
 					"infoID":"0"

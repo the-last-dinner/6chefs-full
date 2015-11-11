@@ -100,10 +100,6 @@
 							"time":2.0
 						},
 						{
-							"type":"addChara",
-							"charaID":"1"
-						},
-						{
 							"type":"addProfile",
 							"charaID":"1",
 							"infoID":"0"
@@ -213,10 +209,6 @@
 							"time":2.0
 						},
 						{
-							"type":"addChara",
-							"charaID":"2"
-						},
-						{
 							"type":"addProfile",
 							"charaID":"2",
 							"infoID":"0"
@@ -321,10 +313,6 @@
 							"type":"displayImg",
 							"file":"daigoro_stand.png",
 							"time":2.0
-						},
-						{
-							"type":"addChara",
-							"charaID":"5"
 						},
 						{
 							"type":"addProfile",
@@ -438,10 +426,6 @@
 							"time":2
 						},
 						{
-							"type":"addChara",
-							"charaID":"3"
-						},
-						{
 							"type":"addProfile",
 							"charaID":"3",
 							"infoID":"0"
@@ -551,10 +535,6 @@
 							"type":"displayImg",
 							"file":"dandan_stand.png",
 							"time":2
-						},
-						{
-							"type":"addChara",
-							"charaID":"4"
 						},
 						{
 							"type":"addProfile",

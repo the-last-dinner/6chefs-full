@@ -188,10 +188,6 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"addChara",
-							"charaID":"8"
-						},
-						{
 							"type":"addProfile",
 							"cgaraID":"8",
 							"infoID":"0"

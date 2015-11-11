@@ -42,7 +42,7 @@
 				{
 					"type":"playSE",
 					"file":"explosion.mp3"
-				}
+				},
 				{
 					"type":"gameOver"
 				}

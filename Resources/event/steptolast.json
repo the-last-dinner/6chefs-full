@@ -70,7 +70,7 @@
 							"charaID":"7",
 							"x":4,
 							"y":3,
-							"movePattern":"4",
+							"movePattern":"4"
 						},
 						{
 							"type":"charaMsg",
