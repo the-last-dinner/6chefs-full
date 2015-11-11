@@ -77,7 +77,16 @@ bool CharacterMenuLayer::init()
         panel->setOpacity(100);
         
         // キャラクター名
-        Label* chara = Label::createWithTTF(CsvDataManager::getInstance()->getCharaName(this->characters[i]), "fonts/cinecaption2.28.ttf", 24);
+        string chara_name {""};
+        if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[i]) < 0)
+        {
+            chara_name = "? ? ? ? ?";
+        }
+        else
+        {
+            chara_name = CsvDataManager::getInstance()->getCharaName(this->characters[i]);
+        }
+        Label* chara = Label::createWithTTF(chara_name, "fonts/cinecaption2.28.ttf", 24);
         chara->setPosition(panel_size.width/2 , panel_size.height / 2);
         chara->setColor(Color3B::WHITE);
         panel->addChild(chara);
@@ -121,15 +130,27 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
         leftBottom->removeChildByName(labelName);
     }
     Size panel = leftBottom->getContentSize();
-    string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_0.png";
-    if(SpriteFrameCache::getInstance()->getSpriteFrameByName(fileName))
+    if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]) < 0)
     {
-        Sprite* img { Sprite::createWithSpriteFrameName(fileName)};
-        img->setScale(0.30);
-        img->setPosition(panel.width/2,panel.height/2 + 20);
-        img->setName(labelName);
-        //img->setLocalZOrder(-1);
-        leftBottom->addChild(img);
+        // 見ることができないキャラクター
+        Label* label = Label::createWithTTF("? ? ? ? ?", "fonts/cinecaption2.28.ttf", 24);
+        label->setPosition(panel.width/2, panel.height/2);
+        label->setName(labelName);
+        leftBottom->addChild(label);
+    }
+    else
+    {
+        // 見ることができるキャラクター
+        string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_0.png";
+        if(SpriteFrameCache::getInstance()->getSpriteFrameByName(fileName))
+        {
+            Sprite* img { Sprite::createWithSpriteFrameName(fileName)};
+            img->setScale(0.30);
+            img->setPosition(panel.width/2,panel.height/2 + 20);
+            img->setName(labelName);
+            //img->setLocalZOrder(-1);
+            leftBottom->addChild(img);
+        }
     }
 }
 
@@ -153,6 +174,12 @@ void CharacterMenuLayer::onMenuKeyPressed()
 // スペースキー
 void CharacterMenuLayer::onSpacePressed(int idx)
 {
+    // 見れないレベルのキャラの時
+    if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]) < 0)
+    {
+        SoundManager::getInstance()->playSE("failure.mp3");
+        return;
+    }
     // 状態によって場合分け
     if (this->isDiscription)
     {
@@ -173,13 +200,23 @@ void CharacterMenuLayer::onSpacePressed(int idx)
         
         // 詳細のラベルを作成
         vector<Label*> discriptions;
-        Size panel_size = Size(back->getContentSize().width/3, back->getContentSize().height/3);
+        Size panel_size = Size(back->getContentSize().width, back->getContentSize().height/3);
+        int canCheckLevel = PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]);
         for(int i=0;i<3; i++)
         {
-            string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getCharaDiscription(this->characters[idx], i));
-            Label* label = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
+            string profile {""};
+            // 見れるレベルのプロフィールかチェック
+            if (canCheckLevel >= i)
+            {
+                profile = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getCharaDiscription(this->characters[idx], i));
+            }
+            else
+            {
+                profile = "? ? ? ? ?";
+            }
+            Label* label = Label::createWithTTF(profile, "fonts/cinecaption2.28.ttf", 24);
             label->setColor(Color3B::WHITE);
-            label->setPosition(label->getContentSize().width/2 + 10, (2-i) * panel_size.height + panel_size.height/2);
+            label->setPosition(canCheckLevel >= i ? label->getContentSize().width/2 + 10 : panel_size.width/2, (2-i) * panel_size.height + panel_size.height/2);
             discriptions.push_back(label);
             back->addChild(label);
         }

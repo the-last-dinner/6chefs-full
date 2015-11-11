@@ -75,6 +75,7 @@ public:
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
     void setChapterId(const int chapter_id);
+    void setCharacterProfile(const int chara_id, const int level);
     // GET
     Location getLocation();
     int getFriendship(const string& character);
@@ -83,6 +84,7 @@ public:
     map<int, int> getItemAll();
     int getItemEquipment(Direction direction);
     int getChapterId();
+    int getCharacterProfileLevel(const int chara_id);
     // CHECK
     bool checkItem(const int item_id);
     bool checkItemEquipment(const int item_id);
