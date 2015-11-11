@@ -9,6 +9,8 @@
 #ifndef __TILED_MAP_LAYER_H__
 #define __TILED_MAP_LAYER_H__
 
+#include "Common.h"
+
 class MapObject;
 class EventListenerKeyboardLayer;
 class Character;
