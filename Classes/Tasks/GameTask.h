@@ -12,7 +12,7 @@
 #include "Common.h"
 
 // タスククラスの基底
-class GameTask : public Ref
+class GameTask : public Node
 {
 // インスタンス変数
 protected:
