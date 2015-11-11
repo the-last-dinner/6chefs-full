@@ -178,7 +178,7 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     // 移動ベクトルを算出
     for(Direction direction : directions)
     {
-        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction);
+        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction) * gridNum;
     }
     
     // マス座標を変更
@@ -189,7 +189,7 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     
     // 移動開始
     this->_isMoving = true;
-    this->runAction(Sequence::create(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
+    this->runAction(Sequence::create(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
 }
 
 // 目的地指定移動用メソッド
