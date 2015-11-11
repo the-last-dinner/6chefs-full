@@ -34,9 +34,26 @@ void PlayerControlTask::turn(const Key& key, Party* party)
 {
     if(!this->enableControl) return;
     
+    this->party = party;
+    
     Direction direction { MapUtils::keyToDirection(key) };
     Character* mainCharacter {party->getMainCharacter()};
-    if(!mainCharacter->isMoving()) mainCharacter->setDirection(direction);
+    
+    // 主人公が移動中でなければ
+    if(!mainCharacter->isMoving())
+    {
+        // 主人公の向きを変更
+        mainCharacter->setDirection(direction);
+        
+        // 一定時間後に歩行開始
+        this->scheduleOnce(CC_SCHEDULE_SELECTOR(PlayerControlTask::startWalking), MapObject::DURATION_MOVE_ONE_GRID);
+    }
+}
+
+// 歩行開始
+void PlayerControlTask::startWalking(float _)
+{
+    this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), this->party);
 }
 
 // 目の前を調べる
@@ -64,7 +81,7 @@ void PlayerControlTask::search(Party* party)
 // 歩行中、あたり判定を行い次に向かう位置を決定する
 void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
 {
-    if(keys.empty() || !this->enableControl || !this->flag) return;
+    if(keys.empty() || !this->enableControl) return;
     
     vector<Direction> directions { MapUtils::keyToDirection(keys) };
     
@@ -96,8 +113,6 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     
     party->move(moveDirections, ratio, [this, party]{this->onPartyMovedOneGrid(party);});
     
-    this->flag = false;
-    
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     
     // 何も見つからなかった場合は、UNDIFINEDをセットする
@@ -123,8 +138,6 @@ void PlayerControlTask::onPartyMovedOneGrid(Party* party)
 {
     // キューにあるイベントを実行
     DungeonSceneManager::getInstance()->runEventQueue();
-    
-    this->flag = true;
     
     this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
 }

@@ -104,20 +104,19 @@ void MapObject::removeLight()
 }
 
 // オブジェクトIDを取得
-int MapObject::getObjectId() const
-{return this->objectId;}
+int MapObject::getObjectId() const {return this->objectId;}
 
 // イベントIDを取得
-int MapObject::getEventId() const
-{return this->eventId;}
+int MapObject::getEventId() const {return this->eventId;}
 
 // triggerを取得
-Trigger MapObject::getTrigger() const
-{return this->trigger;}
+Trigger MapObject::getTrigger() const {return this->trigger;}
+
+// 移動中かどうか
+bool MapObject::isMoving() const {return this->_isMoving;}
 
 // 当たり判定の有無を取得
-const bool MapObject::isHit() const
-{return this->_isHit;}
+const bool MapObject::isHit() const {return this->_isHit;}
 
 // 衝突判定用Rectを取得
 Rect MapObject::getCollisionRect() const

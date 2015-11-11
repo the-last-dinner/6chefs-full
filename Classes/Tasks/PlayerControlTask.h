@@ -24,7 +24,7 @@ public:
 private:
     int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
     bool enableControl { true };
-    bool flag { true };
+    Party* party { nullptr };
     
 // インスタンスメソッド
 private:
@@ -33,6 +33,7 @@ private:
     bool init();
 public:
     void turn(const Key& key, Party* party);                  // 向きを変える
+    void startWalking(float _);                               // 歩行開始
     void search(Party* party);                                // 目の前を調べる
     void walking(const vector<Key>& keys, Party* party);      // 歩行中
     void onPartyMovedOneGrid(Party* party);                   // 一マス分移動し終えた時
