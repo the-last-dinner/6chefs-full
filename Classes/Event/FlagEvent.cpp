@@ -11,6 +11,11 @@
 #include "Event/EventScriptMember.h"
 #include "Event/EventScriptValidator.h"
 
+#include "Scenes/DungeonScene.h"
+
+#include "Layers/Message/SystemMessageLayer.h"
+#include "Datas/Message/SystemMessageData.h"
+
 #include "Managers/DungeonSceneManager.h"
 
 #pragma mark NeverAgainEvent
@@ -44,6 +49,7 @@ bool GetItemEvent::init(rapidjson::Value& json)
 
 void GetItemEvent::run()
 {
-    this->setDone();
     PlayerDataManager::getInstance()->setItem(this->itemId);
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
 }

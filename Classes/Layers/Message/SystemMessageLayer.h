@@ -17,6 +17,7 @@ class SystemMessageLayer : public MessageLayer
 {
 // クラスメソッド
 public:
+    CREATE_FUNC_WITH_TWO_PARAM(SystemMessageLayer, SystemMessageData*, function<void()>);
 	CREATE_FUNC_WITH_TWO_PARAM(SystemMessageLayer, const queue<SystemMessageData*>&, function<void()>);
 
 // インスタンス変数
@@ -27,6 +28,7 @@ private:
 private:
 	SystemMessageLayer();
 	~SystemMessageLayer();
+    virtual bool init(SystemMessageData* data, function<void()> onCloseCallback);
 	virtual bool init(const queue<SystemMessageData*>& datas, function<void()> onCloseCallback);
     virtual Label* createMessage();
     virtual bool hasNextPage();

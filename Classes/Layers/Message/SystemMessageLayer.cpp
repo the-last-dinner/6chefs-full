@@ -19,6 +19,17 @@ SystemMessageLayer::~SystemMessageLayer()
 {FUNCLOG}
 
 // 初期化
+bool SystemMessageLayer::init(SystemMessageData *data, function<void()> onCloseCallback)
+{
+    CC_SAFE_RETAIN(data);
+    
+    queue<SystemMessageData*> datas {};
+    datas.push(data);
+    
+    return this->init(datas, onCloseCallback);
+}
+
+// 初期化
 bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas, function<void()> onCloseCallback)
 {
 	FUNCLOG
