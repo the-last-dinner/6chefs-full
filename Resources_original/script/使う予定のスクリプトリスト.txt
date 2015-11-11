@@ -655,16 +655,6 @@ MAIN-Ohiromaの19
 	"time":鳴らす時間(float)
 }
 
-●メニューの「キャラ」欄にキャラクター名を追加
-・type名,,,addChara
-・必要なもの,,,キャラID
-
-(例)
-{
-	"type":"addChara",
-	"charaID":"キャラID"
-}
-
 ●キャラプロファイルに追加
 ・type名...addProfile
 ・必要なもの...キャラID

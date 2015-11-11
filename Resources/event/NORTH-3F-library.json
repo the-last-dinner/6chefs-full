@@ -38,10 +38,6 @@
 				"text":["田村さんに咲賀谷さん・・・\nどっちも有名な料理人だ・・・\n戸塚さん？は聞いたことがないな・・・"]
 			},
 			{
-				"type":"addChara",
-				"charaID":"6"
-			},
-			{
 				"type":"addProfile",
 				"charaID":"6",
 				"infoID":"0"
