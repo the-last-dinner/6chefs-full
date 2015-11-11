@@ -22,7 +22,21 @@ private:
     NeverAgainEvent() {FUNCLOG};
     ~NeverAgainEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
-    virtual void run();
+    virtual void run() override;
+};
+
+// アイテムを入手する
+class GetItemEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(GetItemEvent, rapidjson::Value&)
+private:
+    int itemId { 0 };
+private:
+    GetItemEvent() {FUNCLOG};
+    ~GetItemEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
 };
 
 #endif /* defined(__LastSupper__FlagEvent__) */
