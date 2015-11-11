@@ -9,8 +9,6 @@
 #ifndef __TILED_MAP_LAYER_H__
 #define __TILED_MAP_LAYER_H__
 
-#include "Layers/Shader/SpotLightShaderLayer.h"
-
 class MapObject;
 class EventListenerKeyboardLayer;
 class Character;
