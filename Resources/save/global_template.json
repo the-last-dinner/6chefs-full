@@ -1,4 +1,5 @@
 {
-        "global_id":null,
-        "clear":0
+	"status":0,
+    "global_id":null,
+    "clear":0
 }
