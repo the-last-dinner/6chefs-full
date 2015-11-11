@@ -26,7 +26,6 @@ private:
     Sprite* character { nullptr };												// キャラクターのSprite部分
     string texturePrefix {};											// キャラプロパティリストファイル名の先頭部分
     Direction direction {Direction::SIZE};											// 現在向いている方向
-    bool _isMoving { false };
     bool stampingRightFoot { false };
 	
 // インスタンスメソッド
@@ -38,7 +37,6 @@ public:
 	void setDirection(Direction direction);
 	Direction getDirection();
 	void setMoving(bool _isMoving);
-	bool isMoving();
     void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
     void walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
     void walkBy(const vector<Direction>& directions, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);

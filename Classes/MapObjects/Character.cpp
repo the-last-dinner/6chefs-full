@@ -87,14 +87,6 @@ void Character::setDirection(Direction direction)
 Direction Character::getDirection()
 {return this->direction;}
 
-// キャラが動いているかをセット
-void Character::setMoving(bool _isMoving)
-{this->_isMoving = _isMoving;}
-
-// キャラが移動中かどうか取得
-bool Character::isMoving()
-{return this->_isMoving;}
-
 // 足踏み
 void Character::stamp(const Direction direction, const int gridNum, float ratio)
 {
