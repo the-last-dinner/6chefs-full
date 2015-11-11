@@ -39,4 +39,19 @@ private:
     virtual void run() override;
 };
 
+// キャラクタのプロフィールを追加
+class AddProfileEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(AddProfileEvent, rapidjson::Value&)
+private:
+    int charaId { static_cast<int>(CharacterID::UNDIFINED) };
+    int infoLevel { 0 };
+private:
+    AddProfileEvent() {FUNCLOG};
+    ~AddProfileEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__FlagEvent__) */

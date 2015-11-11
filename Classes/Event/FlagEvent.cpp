@@ -42,7 +42,7 @@ bool GetItemEvent::init(rapidjson::Value& json)
     
     // アイテムIDを取得
     if(!this->validator->hasMember(json, member::ITEM_ID)) return false;
-    this->itemId = json[member::ITEM_ID].GetInt();
+    this->itemId = stoi(json[member::ITEM_ID].GetString());
     
     return true;
 }
@@ -52,4 +52,28 @@ void GetItemEvent::run()
     PlayerDataManager::getInstance()->setItem(this->itemId);
     
     DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
+}
+
+#pragma mark -
+#pragma mark AddProfileEvent
+
+bool AddProfileEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // キャラクタIDを取得
+    if(!this->validator->hasMember(json, member::CHARA_ID)) return false;
+    this->charaId = stoi(json[member::CHARA_ID].GetString());
+    
+    // 情報レベル
+    if(!this->validator->hasMember(json, member::INFO_ID)) return false;
+    this->infoLevel = stoi(json[member::INFO_ID].GetString());
+    
+    return true;
+}
+
+void AddProfileEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setCharacterProfile(this->charaId, this->infoLevel);
 }
