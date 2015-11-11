@@ -258,20 +258,28 @@ void PlayerDataManager::setFriendship(const string& character, const int level)
 void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const bool& flag)
 {
     FUNCLOG
-    const char* mid = to_string(map_id).c_str();
-    rapidjson::Value::ConstMemberIterator itr = this->local["event"].FindMember(mid);
+    const char* mid_char = to_string(map_id).c_str();
+    char buff[50];
+    sprintf(buff, "%d", map_id);
+    rapidjson::Value mid  (kStringType);
+    mid.SetString(buff, strlen(buff), this->local.GetAllocator());
+    
+    rapidjson::Value::ConstMemberIterator itr = this->local["event"].FindMember(mid_char);
     //mapが存在するかチェック
     if(itr == this->local["event"].MemberEnd()){
-        this->local["event"].AddMember(StringRef(mid), rapidjson::Value(), this->local.GetAllocator());
-        this->local["event"][mid].SetObject();
+        this->local["event"].AddMember(mid, rapidjson::Value(), this->local.GetAllocator());
+        this->local["event"][mid_char].SetObject();
     }
     //event_idが存在するかチェック
-    const char* id = to_string(event_id).c_str();
-    itr = this->local["event"][mid].FindMember(id);
-    if(itr == this->local["event"][mid].MemberEnd()){
-        this->local["event"][mid].AddMember(StringRef(id), rapidjson::Value(flag), this->local.GetAllocator());
+    const char* id_char = to_string(event_id).c_str();
+    sprintf(buff, "%d", event_id);
+    rapidjson::Value id (kStringType);
+    id.SetString(buff,strlen(buff),this->local.GetAllocator());
+    itr = this->local["event"][mid_char].FindMember(id_char);
+    if(itr == this->local["event"][mid_char].MemberEnd()){
+        this->local["event"][mid_char].AddMember(id, rapidjson::Value(flag), this->local.GetAllocator());
     } else {
-        this->local["event"][mid][id].SetBool(flag);
+        this->local["event"][mid_char][id_char].SetBool(flag);
     }
     return;
 }
@@ -280,16 +288,21 @@ void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const
 void PlayerDataManager::setItem(const int item_id)
 {
     FUNCLOG
-    const char* id = to_string(item_id).c_str();
+    const char* id_char = to_string(item_id).c_str();
+    char buff[50];
+    sprintf(buff, "%d", item_id);
+    rapidjson::Value id  (kStringType);
+    id.SetString(buff, strlen(buff), this->local.GetAllocator());
+    
     rapidjson::Value::ConstMemberIterator itr = this->local["item"].FindMember(id);
     int count = 0;
     if(itr != this->local["item"].MemberEnd()){
         //既にゲットしているアイテムなら個数を+1する
         count = itr->value.GetInt();
-        this->local["item"][id].SetInt(count+1);
+        this->local["item"][id_char].SetInt(count+1);
     } else {
         //初めてゲットしたアイテムならば新しい値をセット
-        this->local["item"].AddMember(StringRef(id), rapidjson::Value(1), this->local.GetAllocator());
+        this->local["item"].AddMember(id, rapidjson::Value(1), this->local.GetAllocator());
     }
     return;
 }
@@ -343,14 +356,13 @@ bool PlayerDataManager::getEventFlag(const int map_id, const int event_id)
     if(itr == event.MemberEnd()){
         return false;
     }
-    event = event[mid];
     //event_idが存在するかチェック
     const char* id = to_string(event_id).c_str();
-    itr = event.FindMember(id);
-    if(itr == event.MemberEnd()){
+    itr = event[mid].FindMember(id);
+    if(itr == event[mid].MemberEnd()){
         return false;
     } else {
-        return event[id].GetBool();
+        return event[mid][id].GetBool();
     }
 }
 
