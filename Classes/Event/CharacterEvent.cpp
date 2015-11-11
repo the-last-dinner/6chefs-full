@@ -80,10 +80,7 @@ bool WalkByEvent::init(rapidjson::Value& json)
     
     if(this->direction == Direction::SIZE || this->gridNum == 0) return false;
     
-    if(this->validator->hasMember(json, member::SPEED))
-    {
-       this->speedRatio = json[member::SPEED].GetDouble();
-    }
+    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
     
     return true;
 }
@@ -92,8 +89,7 @@ void WalkByEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    vector<Direction> dirs { this->direction };
-    this->target->walkBy(dirs, this->gridNum, [this]{this->setDone();});
+    this->target->walkBy(this->direction, this->gridNum, [this]{this->setDone();}, this->speedRatio);
 }
 
 #pragma mark -
@@ -113,7 +109,7 @@ void WalkToEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    Vec2 movement {this->destPosition - this->target->getGridPosition(DungeonSceneManager::getInstance()->getMapLayer()->getMapSize())};
+    Vec2 movement {this->destPosition - this->target->getGridPosition()};
 
     this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
 }

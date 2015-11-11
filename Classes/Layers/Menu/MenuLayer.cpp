@@ -39,6 +39,9 @@ bool MenuLayer::init(int sizeX, int sizeY)
     listenerKeyboard->onCursorKeyPressed = CC_CALLBACK_1(MenuLayer::onCursorKeyPressed, this);
     listenerKeyboard->onSpaceKeyPressed = CC_CALLBACK_0(MenuLayer::onSpaceKeyPressed, this);
     listenerKeyboard->onMenuKeyPressed = CC_CALLBACK_0(MenuLayer::onMenuKeyPressed, this);
+    listenerKeyboard->intervalInputCheck = CC_CALLBACK_1(MenuLayer::intervalInputCheck, this);
+    listenerKeyboard->setInputCheckDelay(0.3f);
+    listenerKeyboard->setInputCheckInterval(0.1f);
     listenerKeyboard->setEnabled(false);
     this->addChild(listenerKeyboard);
     this->listenerKeyboard = listenerKeyboard;
@@ -118,4 +121,9 @@ void MenuLayer::setSelectedIndex(const int index)
 void MenuLayer::setCursorEnable(const bool enable)
 {
     this->cursorEnabled = enable;
+}
+
+void MenuLayer::intervalInputCheck(const vector<Key> keys)
+{
+    this->onCursorKeyPressed(keys.back());
 }

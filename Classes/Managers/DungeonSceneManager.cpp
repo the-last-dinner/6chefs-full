@@ -23,6 +23,7 @@
 #include "Scenes/DungeonScene.h"
 
 #include "Tasks/EventTask.h"
+#include "Tasks/PlayerControlTask.h"
 
 // 唯一のインスタンス
 static DungeonSceneManager* _instance {nullptr};
@@ -202,6 +203,12 @@ bool DungeonSceneManager::isPressed(const Key& key)
     return this->getScene()->listener->isPressed(key);
 }
 
+// 入力されている方向キーを取得
+vector<Key> DungeonSceneManager::getPressedCursorKeys() const
+{
+    return this->getScene()->listener->getPressedCursorKeys();
+}
+
 #pragma mark -
 #pragma mark EventTask
 
@@ -239,4 +246,12 @@ bool DungeonSceneManager::existsEvent() const
 int DungeonSceneManager::getRunningEventId() const
 {
     return this->getScene()->eventTask->getRunningEventId();
+}
+
+#pragma mark -
+#pragma mark PlayerControlTask
+
+void DungeonSceneManager::setPlayerControlEnable(bool enable)
+{
+    this->getScene()->playerControlTask->setControlEnable(enable);
 }

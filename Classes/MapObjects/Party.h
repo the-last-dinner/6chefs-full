@@ -34,6 +34,7 @@ public:
     void move(const vector<Direction>& directions, float ratio, function<void()> callback);
     Character* getMainCharacter() const;
     Vector<Character*> getMembers() const;
+    void reload();
 };
 
 #endif /* defined(__LastSupper__Party__) */

@@ -15,7 +15,7 @@ Point MapUtils::convertToCCPoint(const Size& mapSize, const Point& gridPoint)
 
 Point MapUtils::convertToMapPoint(const Size& mapSize, const Point& ccPoint)
 {
-	return Point(ccPoint.x, (mapSize.height - ccPoint.y));
+	return Point(ccPoint.x, (mapSize.height - ccPoint.y - GRID));
 }
 
 // 画面上の座標を取得
@@ -108,4 +108,29 @@ vector<Direction> MapUtils::vecToDirection(const Vec2& vec)
     }
     
     return directions;
+}
+
+// 方向から単位ベクトル取得
+Vec2 MapUtils::getUnitVector(const Direction& direction)
+{
+    map<Direction, Point> directionToVec
+    {
+        {Direction::FRONT, Point(0, -1)},
+        {Direction::RIGHT, Point(1, 0)},
+        {Direction::LEFT, Point(-1, 0)},
+        {Direction::BACK, Point(0, 1)},
+    };
+    
+    if(!directionToVec.count(direction)) return Point::ZERO;
+    
+    return directionToVec[direction];
+}
+
+// マップ座標、マップのマスサイズRectよう衝突判定メソッド（Y軸が反転しているため必要）
+bool MapUtils::intersectsGridRect(const Rect& rect1, const Rect& rect2)
+{
+    return !(rect1.getMaxX() - 1 < rect2.getMinX() ||
+             rect1.getMinX() > rect2.getMaxX() - 1||
+             rect1.origin.y - rect1.size.height + 1 > rect2.getMinY() ||
+             rect1.getMinY() < rect2.origin.y - rect2.size.height + 1);
 }

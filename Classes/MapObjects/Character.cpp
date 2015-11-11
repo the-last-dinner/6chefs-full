@@ -37,6 +37,7 @@ bool Character::init(int charaId, const Direction direction)
 	FUNCLOG
 	if(!Node::init()) return false;
 	// 生成時の情報をセット
+    this->charaId = charaId;
 	this->direction = direction;
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
 	
@@ -73,6 +74,12 @@ bool Character::init(int charaId, const Direction direction)
 	return true;
 }
 
+// キャラクタIDを取得
+int Character::getCharacterId() const {return this->charaId;}
+
+// 現在キャラが向いている方向を取得
+Direction Character::getDirection() const {return this->direction;}
+
 // キャラクターの向きを変える
 void Character::setDirection(Direction direction)
 {
@@ -82,18 +89,6 @@ void Character::setDirection(Direction direction)
 	// 向いている方向を更新
 	this->direction = direction;
 }
-
-// 現在キャラが向いている方向を取得
-Direction Character::getDirection()
-{return this->direction;}
-
-// キャラが動いているかをセット
-void Character::setMoving(bool _isMoving)
-{this->_isMoving = _isMoving;}
-
-// キャラが移動中かどうか取得
-bool Character::isMoving()
-{return this->_isMoving;}
 
 // 足踏み
 void Character::stamp(const Direction direction, const int gridNum, float ratio)
@@ -120,7 +115,8 @@ void Character::stamp(const Direction direction, const int gridNum, float ratio)
 // 方向とマス数してで歩行させる
 void Character::walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio)
 {
-    
+    MapObject::moveBy(direction, gridNum, onWalked, ratio);
+    this->stamp(this->direction, gridNum, ratio);
 }
 
 // 方向とマス数指定で歩行させる

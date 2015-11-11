@@ -46,6 +46,7 @@ protected:
 	int getMenuSizeX() const;
 	int getMenuSizeY() const;
     void setCursorEnable(const bool enable);
+    void intervalInputCheck(const vector<Key> keys);
 };
 
 #endif // __MENU_LAYER_H__

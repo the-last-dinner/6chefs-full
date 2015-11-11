@@ -29,16 +29,21 @@ Size MapObject::getGridSize() const
 }
 
 // マップ上のマス座標を取得(一番左下のマス座標を返す)
-Point MapObject::getGridPosition(const Size& mapSize) const
+Point MapObject::getGridPosition() const
 {
-	return MapUtils::convertToMapPoint(mapSize, Point(this->getPositionX() - this->getContentSize().width / 2, this->getPositionY())) / GRID;
+	return this->gridPosition;
 }
 
-// マップ上のマス座標にセット
-void MapObject::setGridPosition(const Size& mapSize, const Point& mapGridPoint)
+// マス座標、マスあたり判定サイズのRectを取得
+Rect MapObject::getGridRect() const
 {
-	Point cocosPoint = MapUtils::convertToCCPoint(mapSize, mapGridPoint);
-	this->setPosition(cocosPoint.x + this->getContentSize().width / 2, cocosPoint.y);
+    return Rect(this->getGridPosition().x + this->collisionRect.getMinX() / GRID, this->getGridPosition().y + this->collisionRect.getMinY() / GRID, this->collisionRect.size.width / GRID, this->collisionRect.size.height / GRID);
+}
+
+// マス座標をセット、実際の位置は変更しない
+void MapObject::setGridPosition(const Point& gridPosition)
+{
+    this->gridPosition = gridPosition;
 }
 
 // オブジェクトIDをセット
@@ -63,12 +68,6 @@ void MapObject::setTrigger(Trigger trigger)
 void MapObject::setHit(bool _isHit)
 {
 	this->_isHit = _isHit;
-}
-
-// 動いている方向をセット
-void MapObject::setMovingDirection(Direction direction)
-{
-	this->movingDirection = direction;
 }
 
 // 衝突判定用Rectをセット
@@ -105,24 +104,19 @@ void MapObject::removeLight()
 }
 
 // オブジェクトIDを取得
-int MapObject::getObjectId() const
-{return this->objectId;}
+int MapObject::getObjectId() const {return this->objectId;}
 
 // イベントIDを取得
-int MapObject::getEventId() const
-{return this->eventId;}
+int MapObject::getEventId() const {return this->eventId;}
 
 // triggerを取得
-Trigger MapObject::getTrigger() const
-{return this->trigger;}
+Trigger MapObject::getTrigger() const {return this->trigger;}
+
+// 移動中かどうか
+bool MapObject::isMoving() const {return this->_isMoving;}
 
 // 当たり判定の有無を取得
-const bool MapObject::isHit() const
-{return this->_isHit;}
-
-// 動いている方向を取得
-Direction MapObject::getMovingDirection()
-{return this->movingDirection;}
+const bool MapObject::isHit() const {return this->_isHit;}
 
 // 衝突判定用Rectを取得
 Rect MapObject::getCollisionRect() const
@@ -174,7 +168,14 @@ const bool MapObject::isHit(const Direction (&directions)[2]) const
     return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
 }
 
-// 方向、マス数指定移動用メソッド(移動させる時は必ずこのメソッドで)
+// 方向、マス数指定移動用メソッド
+void MapObject::moveBy(const Direction& direction, const int gridNum, function<void()> onMoved, const float ratio)
+{
+    vector<Direction> directions {direction};
+    this->moveBy(directions, gridNum, onMoved, ratio);
+}
+
+// 複数方向、マス数指定移動用メソッド
 void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio)
 {
     if(directions.empty()) return;
@@ -184,14 +185,18 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     // 移動ベクトルを算出
     for(Direction direction : directions)
     {
-        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction);
+        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction) * gridNum;
     }
     
+    // マス座標を変更
+    this->setGridPosition(this->getGridPosition() + Vec2(movement.x, -movement.y) / GRID);
+    
     // 移動先座標をコールバック関数に送信(TiledMapLayerの関数を呼び出す)
-    if(this->onMove) this->onMove(this, this->getPosition() + movement * gridNum);
+    if(this->onMove) this->onMove(this);
     
     // 移動開始
-    this->runAction(Sequence::createWithTwoActions(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create(onMoved)));
+    this->_isMoving = true;
+    this->runAction(Sequence::create(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
 }
 
 // 目的地指定移動用メソッド

@@ -23,10 +23,10 @@ public:
     
 // インスタンス変数
 private:
+    int charaId { static_cast<int>(CharacterID::UNDIFINED) };                   // キャラクタID
     Sprite* character { nullptr };												// キャラクターのSprite部分
-    string texturePrefix {};											// キャラプロパティリストファイル名の先頭部分
-    Direction direction {Direction::SIZE};											// 現在向いている方向
-    bool _isMoving { false };
+    string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
+    Direction direction {Direction::SIZE};										// 現在向いている方向
     bool stampingRightFoot { false };
 	
 // インスタンスメソッド
@@ -35,10 +35,11 @@ private:
 	~Character();
 	virtual bool init(int charaId, const Direction direction);
 public:
+    int getCharacterId() const;
+    Direction getDirection() const;
+    
 	void setDirection(Direction direction);
-	Direction getDirection();
 	void setMoving(bool _isMoving);
-	bool isMoving();
     void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
     void walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
     void walkBy(const vector<Direction>& directions, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);

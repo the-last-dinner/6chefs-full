@@ -40,7 +40,7 @@ public:
     void hideLayer(const string& layerName);
     void addMapObject(MapObject* mapObject);
     void addMapObject(MapObject* mapObject, const Point& gridPoint);
-    void setZOrderByPosition(MapObject* mapObject, const Point& ccPosition);
+    void setZOrderByPosition(MapObject* mapObject);
 };
 
 #endif // __TILED_MAP_LAYER_H__

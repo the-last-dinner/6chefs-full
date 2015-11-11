@@ -80,21 +80,23 @@ void TiledMapLayer::addMapObject(MapObject* mapObject)
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
-    this->setZOrderByPosition(mapObject, mapObject->getPosition());
-    mapObject->onMove = CC_CALLBACK_2(TiledMapLayer::setZOrderByPosition, this);
+    this->setZOrderByPosition(mapObject);
+    mapObject->onMove = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
 }
 
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
 {
-    mapObject->setGridPosition(this->getMapSize(), gridPoint);
+    Point cocosPoint = MapUtils::convertToCCPoint(this->getMapSize(), gridPoint);
+    mapObject->setPosition(cocosPoint.x + mapObject->getContentSize().width / 2, cocosPoint.y);
+    mapObject->setGridPosition(gridPoint);
     this->objectList->add(mapObject);
     this->addMapObject(mapObject);
 }
 
-// 座標からZOrder値を設定
-void TiledMapLayer::setZOrderByPosition(MapObject* mapObject, const Point& ccPosition)
+// マス座標からZOrder値を設定
+void TiledMapLayer::setZOrderByPosition(MapObject* mapObject)
 {
-    int z { static_cast<int>(MapUtils::getGridNum(MapUtils::convertToMapPoint(this->getMapSize(), ccPosition).y) - this->tiledMap->getMapSize().height) - 1};
+    int z { static_cast<int>(mapObject->getGridPosition().y - this->tiledMap->getMapSize().height) - 1};
     mapObject->setLocalZOrder(z);
 }

@@ -33,14 +33,7 @@
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
 // デストラクタ
-DungeonScene::~DungeonScene()
-{
-	FUNCLOG
-    
-    CC_SAFE_RELEASE_NULL(this->cameraTask);
-	CC_SAFE_RELEASE_NULL(this->eventTask);
-    CC_SAFE_RELEASE_NULL(this->playerControlTask);
-}
+DungeonScene::~DungeonScene() {FUNCLOG}
 
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
@@ -80,21 +73,25 @@ void DungeonScene::onPreloadFinished()
     
     // カメラ処理クラス生成
     CameraTask* cameraTask {CameraTask::create()};
-    CC_SAFE_RETAIN(cameraTask);
+    this->addChild(cameraTask);
     this->cameraTask = cameraTask;
     
     // イベント処理クラス生成
     EventTask* eventTask { EventTask::create() };
-    CC_SAFE_RETAIN(eventTask);
+    this->addChild(eventTask);
     this->eventTask = eventTask;
     
     // プレイヤー操作処理クラス生成
     PlayerControlTask* playerControlTask {PlayerControlTask::create()};
-    CC_SAFE_RETAIN(playerControlTask);
+    this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
     
-    // パーティーをマップに配置
+    // パーティーのキャラクタを生成しなおす
+    // NOTICE: 一時的に。本当はPlayerDatamanagerにキャラクタIDなどを保持しておいて、Partyインスタンス自体を生成し直すほうがよい
     Party* party { DungeonSceneManager::getInstance()->getParty() };
+    party->reload();
+    
+    // パーティーをマップに配置
     PlayerDataManager::Location location { this->getData()->getInitialLocation() };
     for(Character* character : party->getMembers())
     {
@@ -105,10 +102,7 @@ void DungeonScene::onPreloadFinished()
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
     listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
     listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
-    listener->intervalInputCheck = [playerControlTask, party](const vector<Key>& keys){playerControlTask->walking(keys, party);};
     listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
-    listener->setInputCheckDelay(MapObject::DURATION_MOVE_ONE_GRID);
-    listener->setInputCheckInterval(MapObject::DURATION_MOVE_ONE_GRID);
     
     this->addChild(listener);
     this->listener = listener;
@@ -136,7 +130,7 @@ void DungeonScene::onMenuKeyPressed()
     this->listener->setEnabled(false);
     // 主人公の位置をセット
     Character* chara = DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
-    Point point = chara->getGridPosition(this->mapLayer->getMapSize());
+    Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
     PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);

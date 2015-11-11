@@ -59,7 +59,7 @@ void Party::move(const vector<Direction>& directions, float ratio, function<void
             dirs = MapUtils::vecToDirection(destPos - character->getPosition());
         }
         
-        character->walkBy(dirs, 1, cb);
+        character->walkBy(dirs, 1, cb, ratio);
         
         direction = character->getDirection();
         destPos = character->getPosition();
@@ -76,4 +76,19 @@ Character* Party::getMainCharacter() const
 Vector<Character*> Party::getMembers() const
 {
     return this->members;
+}
+
+// リロード
+void Party::reload()
+{
+    Vector<Character*> newMembers {};
+    
+    for(Character* chara : this->members)
+    {
+        newMembers.pushBack(Character::create(chara->getCharacterId(), chara->getDirection()));
+    }
+    
+    this->members.clear();
+    
+    this->members = newMembers;
 }
