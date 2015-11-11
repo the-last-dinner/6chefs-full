@@ -70,12 +70,6 @@ void MapObject::setHit(bool _isHit)
 	this->_isHit = _isHit;
 }
 
-// 動いている方向をセット
-void MapObject::setMovingDirection(Direction direction)
-{
-	this->movingDirection = direction;
-}
-
 // 衝突判定用Rectをセット
 void MapObject::setCollisionRect(const Rect& rect)
 {
@@ -124,10 +118,6 @@ Trigger MapObject::getTrigger() const
 // 当たり判定の有無を取得
 const bool MapObject::isHit() const
 {return this->_isHit;}
-
-// 動いている方向を取得
-Direction MapObject::getMovingDirection()
-{return this->movingDirection;}
 
 // 衝突判定用Rectを取得
 Rect MapObject::getCollisionRect() const
@@ -199,7 +189,8 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     if(this->onMove) this->onMove(this);
     
     // 移動開始
-    this->runAction(Sequence::createWithTwoActions(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create(onMoved)));
+    this->_isMoving = true;
+    this->runAction(Sequence::create(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement * gridNum), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
 }
 
 // 目的地指定移動用メソッド
