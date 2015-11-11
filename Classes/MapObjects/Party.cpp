@@ -77,3 +77,18 @@ Vector<Character*> Party::getMembers() const
 {
     return this->members;
 }
+
+// リロード
+void Party::reload()
+{
+    Vector<Character*> newMembers {};
+    
+    for(Character* chara : this->members)
+    {
+        newMembers.pushBack(Character::create(chara->getCharacterId(), chara->getDirection()));
+    }
+    
+    this->members.clear();
+    
+    this->members = newMembers;
+}

@@ -37,6 +37,7 @@ bool Character::init(int charaId, const Direction direction)
 	FUNCLOG
 	if(!Node::init()) return false;
 	// 生成時の情報をセット
+    this->charaId = charaId;
 	this->direction = direction;
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
 	
@@ -73,6 +74,12 @@ bool Character::init(int charaId, const Direction direction)
 	return true;
 }
 
+// キャラクタIDを取得
+int Character::getCharacterId() const {return this->charaId;}
+
+// 現在キャラが向いている方向を取得
+Direction Character::getDirection() const {return this->direction;}
+
 // キャラクターの向きを変える
 void Character::setDirection(Direction direction)
 {
@@ -82,10 +89,6 @@ void Character::setDirection(Direction direction)
 	// 向いている方向を更新
 	this->direction = direction;
 }
-
-// 現在キャラが向いている方向を取得
-Direction Character::getDirection()
-{return this->direction;}
 
 // 足踏み
 void Character::stamp(const Direction direction, const int gridNum, float ratio)

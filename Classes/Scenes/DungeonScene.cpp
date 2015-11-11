@@ -86,8 +86,12 @@ void DungeonScene::onPreloadFinished()
     this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
     
-    // パーティーをマップに配置
+    // パーティーのキャラクタを生成しなおす
+    // NOTICE: 一時的に。本当はPlayerDatamanagerにキャラクタIDなどを保持しておいて、Partyインスタンス自体を生成し直すほうがよい
     Party* party { DungeonSceneManager::getInstance()->getParty() };
+    party->reload();
+    
+    // パーティーをマップに配置
     PlayerDataManager::Location location { this->getData()->getInitialLocation() };
     for(Character* character : party->getMembers())
     {
