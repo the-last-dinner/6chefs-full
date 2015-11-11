@@ -33,14 +33,7 @@
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
 // デストラクタ
-DungeonScene::~DungeonScene()
-{
-	FUNCLOG
-    
-    CC_SAFE_RELEASE_NULL(this->cameraTask);
-	CC_SAFE_RELEASE_NULL(this->eventTask);
-    CC_SAFE_RELEASE_NULL(this->playerControlTask);
-}
+DungeonScene::~DungeonScene() {FUNCLOG}
 
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
@@ -80,17 +73,17 @@ void DungeonScene::onPreloadFinished()
     
     // カメラ処理クラス生成
     CameraTask* cameraTask {CameraTask::create()};
-    CC_SAFE_RETAIN(cameraTask);
+    this->addChild(cameraTask);
     this->cameraTask = cameraTask;
     
     // イベント処理クラス生成
     EventTask* eventTask { EventTask::create() };
-    CC_SAFE_RETAIN(eventTask);
+    this->addChild(eventTask);
     this->eventTask = eventTask;
     
     // プレイヤー操作処理クラス生成
     PlayerControlTask* playerControlTask {PlayerControlTask::create()};
-    CC_SAFE_RETAIN(playerControlTask);
+    this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
     
     // パーティーをマップに配置
