@@ -168,7 +168,14 @@ const bool MapObject::isHit(const Direction (&directions)[2]) const
     return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
 }
 
-// 方向、マス数指定移動用メソッド(移動させる時は必ずこのメソッドで)
+// 方向、マス数指定移動用メソッド
+void MapObject::moveBy(const Direction& direction, const int gridNum, function<void()> onMoved, const float ratio)
+{
+    vector<Direction> directions {direction};
+    this->moveBy(directions, gridNum, onMoved, ratio);
+}
+
+// 複数方向、マス数指定移動用メソッド
 void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio)
 {
     if(directions.empty()) return;

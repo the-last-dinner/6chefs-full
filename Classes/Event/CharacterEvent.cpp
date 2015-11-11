@@ -89,8 +89,7 @@ void WalkByEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    vector<Direction> dirs { this->direction };
-    this->target->walkBy(dirs, this->gridNum, [this]{this->setDone();}, this->speedRatio);
+    this->target->walkBy(this->direction, this->gridNum, [this]{this->setDone();}, this->speedRatio);
 }
 
 #pragma mark -

@@ -115,7 +115,8 @@ void Character::stamp(const Direction direction, const int gridNum, float ratio)
 // 方向とマス数してで歩行させる
 void Character::walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio)
 {
-    
+    MapObject::moveBy(direction, gridNum, onWalked, ratio);
+    this->stamp(this->direction, gridNum, ratio);
 }
 
 // 方向とマス数指定で歩行させる

@@ -63,7 +63,8 @@ public:
     Rect getCollisionRect() const;
     Rect getCollisionRect(const Direction& direction) const;
     Rect getCollisionRect(const Direction (&directions)[2]) const;
-    
+
+    void moveBy(const Direction& direction, const int gridNum, function<void()> onMoved, const float ratio = 1.0f);
     void moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio = 1.0f);
     void moveTo(const Point& destPosition, function<void()> onMoved, const float ratio = 1.0f);
 
