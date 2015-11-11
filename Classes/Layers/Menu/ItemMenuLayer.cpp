@@ -194,12 +194,14 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
     // 装備処理
     if (this->isEquip)
     {
+        SoundManager::getInstance()->playSE("equip.mp3");
         Direction dir = idx == 0 ? Direction::RIGHT : Direction::LEFT;
         PlayerDataManager::getInstance()->setItemEquipment(dir, this->selected_item);
     }
     else
     {
         // 装備をはずす
+        SoundManager::getInstance()->playSE("equip.mp3");
         Direction dir;
         if (this->selected_item == PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT))
         {
