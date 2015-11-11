@@ -309,7 +309,7 @@ void PlayerDataManager::setItem(const int item_id)
     return;
 }
 
-//アイテム装備時の処理
+// アイテム装備時の処理
 void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
 {
     FUNCLOG
@@ -322,6 +322,30 @@ void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
         this->local["equipment_right"].SetInt(item_id);
     }
     return;
+}
+
+// アイテムを使用して消費する
+bool PlayerDataManager::setItemUsed(const int item_id)
+{
+    const char* id = to_string(item_id).c_str();
+    int count = this->getItem(item_id);
+    if (count > 1)
+    {
+        // 所持数を-1
+        this->local["item"][id].SetInt(count - 1);
+        // 右手を確認
+        if(item_id == this->getItemEquipment(Direction::RIGHT))
+        {
+            this->setItemEquipment(Direction::RIGHT, 0);
+        }
+        // 左手を確認
+        if (item_id == this->getItemEquipment(Direction::LEFT))
+        {
+            this->setItemEquipment(Direction::LEFT, 0);
+        }
+        return true;
+    }
+    return false;
 }
 
 // chapterを切り替え
@@ -402,7 +426,7 @@ bool PlayerDataManager::getEventFlag(const int map_id, const int event_id)
     }
 }
 
-//所持しているアイテムの取得
+//所持しているアイテムの所持数を取得
 int PlayerDataManager::getItem(const int item_id)
 {
     FUNCLOG
@@ -416,7 +440,7 @@ int PlayerDataManager::getItem(const int item_id)
     return count;
 }
 
-//所持しているアイテムの取得
+//所持しているアイテムをすべて取得
 map<int, int> PlayerDataManager::getItemAll()
 {
     FUNCLOG
@@ -426,7 +450,10 @@ map<int, int> PlayerDataManager::getItemAll()
     {
         int item_id = stoi(itr->name.GetString());
         int count = itr->value.GetInt();
-        items.insert({item_id, count});
+        if ( count > 0 )
+        {
+            items.insert({item_id, count});
+        }
     }
     return items;
 }

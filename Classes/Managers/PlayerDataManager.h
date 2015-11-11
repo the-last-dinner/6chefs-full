@@ -74,6 +74,7 @@ public:
     void setEventFlag(const int map_id, const int event_id, const bool& flag);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
+    bool setItemUsed(const int item_id);
     void setChapterId(const int chapter_id);
     void setCharacterProfile(const int chara_id, const int level);
     // GET
