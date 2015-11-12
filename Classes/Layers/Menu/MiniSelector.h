@@ -24,7 +24,7 @@ public:
         Color3B rectangle_color {Color3B::WHITE}; // 枠色
         SpriteUtils::Square position {SpriteUtils::Square(0,0,0,0)}; // 位置
         SpriteUtils::Margin margin {SpriteUtils::Margin(3.0)}; // margin
-        vector<string> menu {nullptr}; // menuのインデックス
+        vector<string> menu {}; // menuのインデックス
     public:
         Selector(const Point index, const SpriteUtils::Square position, vector<string>& menu):index(index),position(position),menu(menu){}
         Selector(const Point index, const SpriteUtils::Square position, vector<string>& menu, const SpriteUtils::Margin& margin):index(index),position(position),menu(menu),margin(margin){}
