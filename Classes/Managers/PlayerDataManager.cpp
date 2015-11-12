@@ -556,7 +556,12 @@ rapidjson::Document PlayerDataManager::readJsonFile(const string& path)
     rapidjson::Document doc;
     FILE* fp;
     char buf[512];
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+    fp = fopen(cpath, "r");
+#else
     fp = fopen(cpath, "rb");
+#endif
     FileReadStream rs(fp, buf, sizeof(buf));
     doc.ParseStream(rs);
     fclose(fp);
@@ -592,7 +597,11 @@ void PlayerDataManager::writeJsonFile(const string &path, const rapidjson::Docum
     FILE* fp;
     char buf[512];
     // write
+#if  CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+    fp = fopen(cpath, "w");
+#else
     fp = fopen(cpath, "wb");
+#endif
     FileWriteStream ws(fp, buf, sizeof(buf));
     Writer<FileWriteStream> writerf(ws);
     doc.Accept(writerf);
