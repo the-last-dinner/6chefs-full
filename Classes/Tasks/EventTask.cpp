@@ -132,7 +132,7 @@ bool EventTask::pushEventFront(int eventId)
 // 現在実行中のイベントがあるか
 bool EventTask::isEventRunning()
 {
-    return  this->getGameEvent(this->runningEvent);
+    return this->getGameEvent(this->runningEvent);
 }
 
 // キューにイベントが存在するか
