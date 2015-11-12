@@ -94,6 +94,13 @@ void EventSequence::run()
 
 void EventSequence::update(float delta)
 {
+    if(this->events.empty())
+    {
+        this->setDone();
+        
+        return;
+    }
+    
     this->events.front()->update(delta);
     
     if(this->events.front()->isDone())
@@ -139,6 +146,13 @@ void EventSpawn::run()
 
 void EventSpawn::update(float delta)
 {
+    if(this->events.empty())
+    {
+        this->setDone();
+        
+        return;
+    }
+    
     // 持っているイベントを更新し、終了したイベントを削除していく
     for (GameEvent* event : this->events)
     {
@@ -193,7 +207,12 @@ void EventIf::run()
 
 void EventIf::update(float delta)
 {
-    if(!this->event) return;
+    if(!this->event)
+    {
+        this->setDone();
+        
+        return;
+    }
     
     this->event->update(delta);
     
