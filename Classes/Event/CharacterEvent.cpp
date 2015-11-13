@@ -111,5 +111,5 @@ void WalkToEvent::run()
     
     Vec2 movement {this->destPosition - this->target->getGridPosition()};
 
-    this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
+    this->target->walkBy(MapUtils::vecToDirections(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
 }
