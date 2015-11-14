@@ -13,17 +13,18 @@
 
 namespace MapUtils
 {
-	Point convertToMapPoint(const Size& mapSize, const Point& ccPoint);
-	Point convertToCCPoint(const Size& mapSize, const Point& gridPoint);
-    Point convertToDispPosition(const Point& mapPosition, const Point& objectPosition);
-    Point getGridVector(const Direction& direction);
+    cocos2d::Point convertToMapPoint(const cocos2d::Size& mapSize, const cocos2d::Point& ccPoint);
+	cocos2d::Point convertToCCPoint(const cocos2d::Size& mapSize, const cocos2d::Point& gridPoint);
+    cocos2d::Point convertToDispPosition(const cocos2d::Point& mapPosition, const cocos2d::Point& objectPosition);
+    cocos2d::Point getGridVector(const Direction& direction);
     float   getGridNum(float length);
     Direction keyToDirection(const Key& key);
     vector<Direction> keyToDirection(const vector<Key>& keys);
     Direction toEnumDirection(const string& sDirection);
-    vector<Direction> vecToDirection(const Vec2& vec);
+    Direction vecToMapDirection(const Vec2& vec);
+    vector<Direction> vecToDirections(const Vec2& vec);
     Vec2 getUnitVector(const Direction& direction);
-    bool intersectsGridRect(const Rect& rect1, const Rect& rect2);
+    bool intersectsGridRect(const cocos2d::Rect& rect1, const cocos2d::Rect& rect2);
 }
 
 #endif // __MAP_UTILS_H__

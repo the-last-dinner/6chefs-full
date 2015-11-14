@@ -56,7 +56,7 @@ void Party::move(const vector<Direction>& directions, float ratio, function<void
         if(i != 0)
         {
             character->setDirection(direction);
-            dirs = MapUtils::vecToDirection(destPos - character->getPosition());
+            dirs = MapUtils::vecToDirections(destPos - character->getPosition());
         }
         
         character->walkBy(dirs, 1, cb, ratio);

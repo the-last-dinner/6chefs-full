@@ -54,6 +54,7 @@ public:
     void fadeIn(const float duration, function<void()> callback);
     
     // TiledMaplayer
+    Size getMapSize() const;
     void addMapObject(MapObject* mapobject);
     
     // Director

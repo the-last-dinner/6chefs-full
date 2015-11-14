@@ -11,9 +11,12 @@
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
 
+#include "Algorithm/PathFinder.h"
+
 #include "Layers/Dungeon/TiledMapLayer.h"
 
 #include "MapObjects/Character.h"
+#include "MapObjects/MapObjectList.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -109,7 +112,32 @@ void WalkToEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    Vec2 movement {this->destPosition - this->target->getGridPosition()};
+    //  経路探索開始
+    PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
+    stack<Direction> directions { pathFinder->getPath(this->target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(), this->destPosition) };
+    
+    this->directionStack = directions;
+    
+    this->walk();
+}
 
-    this->target->walkBy(MapUtils::vecToDirection(movement), static_cast<int>(movement.getLength()), [this]{this->setDone();});
+void WalkToEvent::walk()
+{
+    // スタックに何もなければ終了
+    if(this->directionStack.empty())
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    // スタックの一番上を取り出して削除
+    Direction direction { this->directionStack.top() };
+    this->directionStack.pop();
+    
+    // 取り出した方向に向かせる
+    this->target->setDirection(direction);
+    
+    // 取り出した方向を元に歩かせる、コールバックでこのメソッドを繰り返し呼ぶ
+    this->target->walkBy(direction, 1, [this]{this->walk();});
 }

@@ -136,6 +136,21 @@ const bool MapObjectList::containsCollisionObject(const Rect& rect) const
     return false;
 }
 
+// 当たり判定を持つオブジェクトのマスRectを全て取得
+vector<Rect> MapObjectList::getGridCollisionRects() const
+{
+    vector<Rect> gridRects {};
+    
+    for(MapObject* obj : this->availableObjects)
+    {
+        if(!obj->isHit()) continue;
+        
+        gridRects.push_back(obj->getGridRect());
+    }
+    
+    return gridRects;
+}
+
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {

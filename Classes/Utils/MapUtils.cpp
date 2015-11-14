@@ -84,8 +84,19 @@ Direction MapUtils::toEnumDirection(const string& sDirection)
     return stringToDirection.at(sDirection);
 }
 
+// マップ上ベクトルから方向へ変換
+Direction MapUtils::vecToMapDirection(const Vec2& vec)
+{
+    if(vec.x < 0) return Direction::LEFT;
+    if(vec.x > 0) return Direction::RIGHT;
+    if(vec.y < 0) return Direction::BACK;
+    if(vec.y > 0) return Direction::FRONT;
+    
+    return Direction::SIZE;
+}
+
 // ベクトルから方向へ変換
-vector<Direction> MapUtils::vecToDirection(const Vec2& vec)
+vector<Direction> MapUtils::vecToDirections(const Vec2& vec)
 {
     vector<Direction> directions {};
     
