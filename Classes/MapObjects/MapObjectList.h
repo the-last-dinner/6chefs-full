@@ -44,6 +44,7 @@ public:
     vector<int> getEventIds(const Trigger trigger) const;
     vector<Rect> getGridCollisionRects() const;
     void add(MapObject* mapObject);
+    void remove(MapObject* mapObject);
 };
 
 #endif /* defined(__LastSupper__MapObjectList__) */

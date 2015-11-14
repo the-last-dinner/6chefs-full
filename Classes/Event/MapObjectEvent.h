@@ -52,4 +52,16 @@ private:
     virtual void run() override;
 };
 
+//  マップオブジェクトを削除
+class RemoveMapObjectEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(RemoveMapObjectEvent, rapidjson::Value&)
+private:
+    RemoveMapObjectEvent() {FUNCLOG};
+    ~RemoveMapObjectEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MapObjectEvent__) */

@@ -77,6 +77,8 @@ void TiledMapLayer::hideLayer(const string& layerName)
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject)
 {
+    if(!mapObject) return;
+    
     this->objectList->add(mapObject);
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
@@ -88,10 +90,24 @@ void TiledMapLayer::addMapObject(MapObject* mapObject)
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
 {
+    if(!mapObject) return;
+    
     Point cocosPoint = MapUtils::convertToCCPoint(this->getMapSize(), gridPoint);
     mapObject->setPosition(cocosPoint.x + mapObject->getContentSize().width / 2, cocosPoint.y);
     mapObject->setGridPosition(gridPoint);
     this->addMapObject(mapObject);
+}
+
+// マップからオブジェクトを削除
+void TiledMapLayer::removeMapObject(MapObject* mapObject)
+{
+    if(!mapObject) return;
+    
+    // マップから削除
+    this->tiledMap->removeChild(mapObject);
+    
+    // リストから削除
+    this->objectList->remove(mapObject);
 }
 
 // マス座標からZOrder値を設定
