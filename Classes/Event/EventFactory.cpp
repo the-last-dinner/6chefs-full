@@ -64,6 +64,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // マップオブジェクト系
         {"createChara", CreateMapObjectEvent::create},      // マップオブジェクトを無効リストから有効リストへ移動、マップ上に表示
+        {"removeChara", RemoveMapObjectEvent::create},      // マップオブジェクトを削除（有効リストのもののみ対象）
         {"reaction", ReactionEvent::create},                // リアクション
         
         // キャラクター系
