@@ -57,6 +57,7 @@ bool DisplayImageLayer::init(const string& imageFileName, const float duration, 
     // 画像を生成
     string fullPath { FileUtils::getInstance()->fullPathForFilename(TextureManager::basePath + DISP_IMG_PATH + imageFileName) };
     if(fullPath.size() == 0) return false;
+    
     Sprite* img { Sprite::create(TextureManager::basePath + DISP_IMG_PATH + imageFileName) };
     img->setPosition(WINDOW_CENTER);
     this->addChild(img);

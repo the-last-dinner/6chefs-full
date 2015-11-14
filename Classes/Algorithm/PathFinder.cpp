@@ -17,8 +17,6 @@ PathFinder::~PathFinder() { FUNCLOG };
 // 初期化
 bool PathFinder::init(const Size& mapSize)
 {
-    this->mapSize = mapSize;
-    
     // マップのマス数
     this->gridWidth = static_cast<int>(MapUtils::getGridNum(mapSize.width));
     this->gridHeight = static_cast<int>(MapUtils::getGridNum(mapSize.height));
@@ -38,10 +36,8 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
         {
             for(Point gridPosition : this->splitByGrid(collisionGridRect))
             {
-                int chaserGridWidth {static_cast<int>(chaserGridRect.size.width)};
-                
                 // 追跡者のマス幅 - 1だけ左側のマスをCANT状態にする
-                for(int i {0}; i < chaserGridWidth - 1 ; i++)
+                for(int i {0}; i < static_cast<int>(chaserGridRect.size.width) - 1 ; i++)
                 {
                     Point position {Point(gridPosition.x - i, gridPosition.y)};
                     
@@ -51,7 +47,7 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
                     PathNode* node { this->createNode(position) };
                     node->setState(PathNode::State::CANT);
                     
-                    nodeMap.insert({position, PathNode::create(position)});
+                    nodeMap.insert({position, node});
                 }
             }
         }
@@ -68,11 +64,14 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
     
     // どの方向に進むのかを、目的地ノードから探索開始ノードまで取り出す
     PathNode* node {destNode};
-    while (node->getParent())
+    while (node->getParent() != nullptr)
     {
         // 親との差ベクトルを方向に変換
-        Direction direction {MapUtils::vecToMapDirection(node->getParent()->getGridPoint() - node->getGridPoint())};
+        Direction direction {MapUtils::vecToMapDirection(node->getGridPoint() - node->getParent()->getGridPoint())};
         if(direction != Direction::SIZE) directions.push(direction);
+        
+        // ノード入れ替え
+        node = node->getParent();
     }
     
     // ノードマップをリリース
@@ -106,9 +105,12 @@ PathFinder::PathNode* PathFinder::find(PathFinder::PathNode* referenceNode, cons
     // 周りの四方向についてノードを生成
     for(Point position : positions)
     {
+        // マップの座標外なら無視
+        if(position.x < 0 || position.x > this->gridWidth || position.y < 0 || position.y > this->gridHeight) continue;
+        
         // あたり判定がないか確認、あれば無視
         if(nodeMap.count(position) != 0 && nodeMap.at(position)->getState() == PathNode::State::CANT) continue;
-        
+
         PathNode* node {this->createNode(position, destGridPosition, referenceNode)};
         
         // マス座標にノードがないとき

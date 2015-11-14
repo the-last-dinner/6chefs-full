@@ -25,7 +25,6 @@ public:
     
 // インスタンス変数
 private:
-    Size mapSize { Size::ZERO };
     int gridWidth { 0 };
     int gridHeight { 0 };
     
@@ -34,12 +33,13 @@ private:
     PathFinder();
     ~PathFinder();
     bool init(const Size& mapSize);
-    stack<Direction> getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition);
     PathNode* find(PathNode* referenceNode, const Point& destGridPosition, map<Point, PathNode*>& nodeMap);
     
     vector<Point> splitByGrid(const Rect& gridRect);
     PathNode* createNode(const Point& gridPosition);
     PathNode* createNode(const Point& gridPosition, const Point& destGridPosition, PathNode* parent = nullptr);
+public:
+    stack<Direction> getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition);
     
 // クラス
 private:

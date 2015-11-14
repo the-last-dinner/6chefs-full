@@ -153,6 +153,12 @@ void DungeonSceneManager::fadeIn(const float duration, function<void()> callback
 #pragma mark -
 #pragma mark TiledMapLayer
 
+// マップの大きさを取得
+Size DungeonSceneManager::getMapSize() const
+{
+    return this->getMapLayer()->getMapSize();
+}
+
 // マップオブジェクトをマップに追加
 void DungeonSceneManager::addMapObject(MapObject* mapObject)
 {

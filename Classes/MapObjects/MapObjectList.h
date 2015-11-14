@@ -40,7 +40,9 @@ public:
     Vector<MapObject*> getMapObjects(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Point& position) const;
     Vector<MapObject*> getMapObjectsByGridRect(const Rect& gridRect, const Trigger trigger = Trigger::SIZE) const;
+    
     vector<int> getEventIds(const Trigger trigger) const;
+    vector<Rect> getGridCollisionRects() const;
     void add(MapObject* mapObject);
 };
 
