@@ -75,11 +75,17 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
         if(direction != Direction::SIZE) directions.push(direction);
     }
     
+    // ノードマップをリリース
+    for(pair<Point, PathNode*> nodeWithPos : nodeMap)
+    {
+        CC_SAFE_RELEASE(nodeWithPos.second);
+    }
+    
     return directions;
 }
 
 // 基準ノードを中心に周りをOPEN
-PathFinder::PathNode* PathFinder::find(PathFinder::PathNode* referenceNode, const Point& destGridPosition, map<Point, PathFinder::PathNode*> nodeMap)
+PathFinder::PathNode* PathFinder::find(PathFinder::PathNode* referenceNode, const Point& destGridPosition, map<Point, PathFinder::PathNode*>& nodeMap)
 {
     // 基準ノード座標 = 目的地座標ならばリターン
     if(referenceNode->getGridPoint() == destGridPosition) return referenceNode;

@@ -35,7 +35,7 @@ private:
     ~PathFinder();
     bool init(const Size& mapSize);
     stack<Direction> getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition);
-    PathNode* find(PathNode* referenceNode, const Point& destGridPosition, map<Point, PathNode*> nodeMap);
+    PathNode* find(PathNode* referenceNode, const Point& destGridPosition, map<Point, PathNode*>& nodeMap);
     
     vector<Point> splitByGrid(const Rect& gridRect);
     PathNode* createNode(const Point& gridPosition);
