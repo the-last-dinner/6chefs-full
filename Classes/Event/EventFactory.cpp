@@ -74,6 +74,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         // フラグ系
         {"already", NeverAgainEvent::create},               // イベントIDを見たことにし、二度と発動しないようにする
         {"getItem", GetItemEvent::create},                  // アイテムを入手
+        {"removeItem", RemoveItemEvent::create},            // アイテムを破棄
         {"addProfile", AddProfileEvent::create},            // プロフィールに情報を追加する
     };
     

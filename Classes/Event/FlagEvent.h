@@ -39,6 +39,20 @@ private:
     virtual void run() override;
 };
 
+// アイテムを破棄する
+class RemoveItemEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(RemoveItemEvent, rapidjson::Value&)
+private:
+    int itemId { 0 };
+private:
+    RemoveItemEvent() {FUNCLOG};
+    ~RemoveItemEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 // キャラクタのプロフィールを追加
 class AddProfileEvent : public GameEvent
 {

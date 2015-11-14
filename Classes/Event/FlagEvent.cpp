@@ -55,6 +55,26 @@ void GetItemEvent::run()
 }
 
 #pragma mark -
+#pragma mark RemoveItemEvent
+
+bool RemoveItemEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // アイテムIDを取得
+    if(!this->validator->hasMember(json, member::ITEM_ID)) return false;
+    this->itemId = stoi(json[member::ITEM_ID].GetString());
+    
+    return true;
+}
+
+void RemoveItemEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setItemUsed(this->itemId);
+}
+
+#pragma mark -
 #pragma mark AddProfileEvent
 
 bool AddProfileEvent::init(rapidjson::Value& json)
