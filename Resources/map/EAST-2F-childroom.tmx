@@ -45,7 +45,17 @@
    eJztlEdLA0EYhr9rAkmMmtMm2Sgo2MvNAole9GL5H5ZbYvkDluRmFCx/xwIKdq8WSPRiAcvZ55CBIJuZENj1khceZmB33gdm2U/E+9yHRB4gHBBphCaHtTlQ+fxpUOQsaO5XGWoQGYY5OudhwWFd1Pja6GoPVX6u+lW22OfhkM4jOHZYTzQ+U1S/yiv7N7C5kwS0OKytmvsyRfWrTIRFJsO195li6h+IiAxG3PP/TRZXzkNfAVfRQ1893qUQ49vCM7zEqjtzy+y5K5s/az6RdchCzqc/m4yLpGAMxuOV37OYD9HSjOjjX+8v+98fcTxBAYoG3y6OPdiHA40vjStT8m3g2izzjfhFRiEJKb/e94njC77hR+PTZRvHjsGjMmWLTMMMzNq1+d5xfVTpq6ee/45lMRsgBnGwIWG550vTnYElWIYVWHXRd073BVzCFVzDjYu+jqhIJ3RBN/RAb9Q9n5v5BVf8SQM=
   </data>
  </layer>
- <layer name="MonoUe" width="28" height="28">
+ <layer name="door3" width="28" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztzaEVACAMxNCbp/tvAg4cOBiCW4GKqnyfF+lfC6lHIkwafs3C3/JrF/6OX7fwBwAAAGQ9XoIITQ==
+  </data>
+ </layer>
+ <layer name="door2" width="28" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztzaEVACAMxNCbp+uDAwcOhuJWoKIq3+dF+tdC6pEIk4Zfs/C3/NqFv+PXLfwBAAAAWQ/7zgdN
+  </data>
+ </layer>
+ <layer name="door" width="28" height="28">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>

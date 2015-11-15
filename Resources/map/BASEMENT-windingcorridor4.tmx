@@ -42,7 +42,7 @@
   <object id="15" x="704" y="352" width="32" height="32">
    <properties>
     <property name="EventID" value="3"/>
-    <property name="trigger" value="2"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="16" x="64" y="32" width="32" height="32">

@@ -14,7 +14,7 @@
    <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2s1JA1EYQNEI6toadC/YgQVYg9ahjWgdgjZiOrARZ1AXuhj/IgnvngdnFSY8cvkmk/BWq9d1tseIHqa2j5OTNyu9h6Z3y9PUdq13ht4terfo3aJ3i94terfMrZ/0zlj7vyVl7X6e8pfv7/s3v32dZc8bnLv39/K8trv0bvpL98/X6r379Oa39G7Ru8Xv7xbz3aJ3i/OKLea75Xpqe6N3xu3U9k7vDPPdoneL3i16t3hea9mf2h7onaF3y9x7X++MY71TzvVOudQ75WT1kd5j07tF7xa9W/Ru0btF7xa9W/Ru0btF7xa9W/Ru0btF7xa9W/Rumc+mHuqdMTd2Hrmjfj8/XbDtvem9eRcLtr23/zCfT73SW+8d2Jvem+d+rne196new6vN97Heqd7mW2+99R6V3nrrPS699dZ7XHrrrfe49H5dR3vfs/R58X1L5y5+4qteeu8GvXv07jDfLXq3bLu3ZVnjrRdktr03
+   eJzt2sFtwkAUANG1RFCOqcG+W0oHKSA1JHWQRpJGSCN2BzSSXREOcHAMdmTzZ1Z6R5Dx6C8GbUrH9Vwpon1u+501v5K9Q7M3S5fb9vbGsDeLvVnszWJvFnuz2JultO7sjdH7fwtK736OMuX7+zGNs/RnvFeHGe/d6b18XlsvezNN6X75Wnuvn711K3uz2JvF398szjeLvVk8r8jifLPsctsPe2N85rZf9sZwvlnszWJvFnuz+LzGssltH+yNYW+W0ntjb4za3igv9kZ5szdKk87ZOzZ7s9ibxd4s9maxN4u9WezNYm8We7PYm8XeLPZmsTeLvVnszWJvlnI2dWtvjNLY88gc9P28HbD0tdl7fq8Dlr62/1DOp77b294ruDZ7z8/93N7U3q29w6PNd21vVG/n2972tndU9ra3veOyt73tHZe97W3vuOx9XE/VOEP3S+MNnbu4xl+97L0O9uaxN4fzzWJvlqV7u1yueOsHX1i5jw==
   </data>
  </layer>
  <layer name="MonoShita" width="124" height="82">
@@ -129,6 +129,11 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="CharaUe0" width="124" height="82">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJAEAIBEHt0v4r+eA70ECEGdjowosAAAAAAAAmKn/dnVv8DQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbHqLkgLJ
+  </data>
+ </layer>
  <layer name="CharaUe1" width="124" height="82">
   <data encoding="base64" compression="zlib">
    eJzt2UtKw1AYhuE0TrwNXIV3HbsAwYpuw+tK3KwKrsBzSA9EJSlapMmf54GPQkc9fQctOVUFAAAAAKs5qpudpr2kXWys+xPxn/SeFr2nRe9paffOrfWOTe9p0XtaSu9Hv9+D8DqrqvdA+5it+xsdtp26af42gFar7LxuWudXuuXeZWPt3m6td79277zNtK0Rbftba737lf9TZftpByPaYf21td4AAAAAwF8tuwOJqO9uZS/489ZyB7LbsYj67laiP1/PdyCXPfcNES27W4ks9z5OO+lYRE/1z92knU2g91U63zztOu1+sXnrvYi6eufdBj1zcbdo3O5d9hD07OVs7dfS/TnomQEAAAAAAAAAAAAAAAAAAAAAAAAAAH7jE6KbxYY=
