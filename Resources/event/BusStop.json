@@ -1,4 +1,5 @@
 {
+    "0":[],
   "1": [
     {
       "type": "sequence",
@@ -65,7 +66,36 @@
           "file": "bus-start1.mp3"
         },
         {
+          "type":"wait",
+          "time":4.0
+        },
+        {
           "type": "fadein"
+        },
+        {
+          "type":"charaMsg",
+          "text":["ふぅ・・・やっと着いた・・・"],
+          "charaID":"0",
+          "imgID":"1"
+        },
+        {
+          "type":"wait",
+          "time":1.0
+        },
+        {
+          "type":"changeDirection",
+          "direction":"RIGHT",
+          "objID":"hero"
+        },
+        {
+          "type":"wait",
+          "time":1.0
+        },
+        {
+          "type":"charaMsg",
+          "text":["会場はあっちかな？"],
+          "charaID":"0",
+          "imgID":"1"
         },
         {
           "type": "already"

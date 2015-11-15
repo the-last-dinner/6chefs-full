@@ -1,16 +1,16 @@
 {
 	"1":[
 		{
-			"type":"charaMsg",
-			"nexMap":"51",
+			"type":"changeMap",
+			"mapID":"51",
 			"x":2,
 			"y":9
 		}
 	],
 	"2":[
 		{
-			"type":"charaMsg",
-			"nexMap":"55",
+			"type":"changeMap",
+			"mapID":"55",
 			"x":12,
 			"y":3
 		}

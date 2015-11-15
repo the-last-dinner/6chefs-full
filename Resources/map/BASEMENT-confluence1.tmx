@@ -17,7 +17,7 @@
  </tileset>
  <layer name="Base" width="26" height="22">
   <properties>
-   <property name="cc_vertexz" value="--12"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzlk10OhCAMhIHX9WevoSteRO9/C/UK1uAkLKGKIfVBJ5mUROiHY1XqX5NWatZ8PdqH9RLZH6oyzvXujmzJ7W7oY5wLchmpeMap83pbb41zNd3xS26M88b+ef3LRA7Ox7z1tMToGU7IOuIM1GPU12uYoyTnSm45nOImjs/iOJgj6e+DOXpKbrmc8H+S4nA5SnPwbmfK5WB+pTmYX2lOqu7iQKk55yo157dpBVtgW7c=

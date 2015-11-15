@@ -35,6 +35,9 @@
 					"type":"storyMsg",
 					"title":"操作説明「潜水」",
 					"text":["潜水の操作説明"]
+				},
+				{
+					"type":"already"
 				}
 			]
 		}
@@ -375,7 +378,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["{61,6}"]
+					"Nevent":["61","6"]
 				}
 			],
 			"action":[
