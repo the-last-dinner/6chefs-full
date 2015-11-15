@@ -31,3 +31,37 @@ void HideLayerEvent::run()
     DungeonSceneManager::getInstance()->getMapLayer()->hideLayer(this->layerName);
     this->setDone();
 }
+
+#pragma mark -
+#pragma mark SwingLayerEvent
+
+bool SwingLayerEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    this->layerName = json[member::LAYER].GetString();
+    
+    return true;
+}
+
+void SwingLayerEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->getMapLayer()->swingLayer(this->layerName);
+}
+
+#pragma mark -
+#pragma mark StopLayerActionEvent
+
+bool StopLayerActionEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    return true;
+}
+
+void StopLayerActionEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->getMapLayer()->stopLayerActions();
+}
