@@ -98,6 +98,8 @@
 　　　　　　　 歩数
 　　　　　　　 歩く速さ
 　　　　　　　 歩くキャラのID
+		方向転換しないならoption:back
+		
 （例）
 	{
 	"type":"charaWalk",
@@ -673,7 +675,22 @@ MAIN-Ohiromaの19
 		"file":"表示する画像ファイル名"
 	}
 
+●stopBGM(file名指定で指定したBGMだけ止める 何も指定しなければ全て
+・type名・・・stopBGM
+・必要なもの・・・止めるBGMfile名
+（例）
+	{
+		"type":"stopBGM",
+		"file":"止めるBGMファイル名"#
+	}
 
+●swingLayerを止める
+・type名・・・stopSwing
+
+（例）
+	{
+		"type":"stopSwing",
+	}
 TODO >>>>>>>>>>>>>>>>>>
 
 show〜やhide〜、create〜やremove〜の時は出現させる時に、アニメーションようのオプションがあるといいかも
