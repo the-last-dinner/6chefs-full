@@ -146,28 +146,23 @@ void EventSpawn::run()
 
 void EventSpawn::update(float delta)
 {
-    if(this->events.empty())
-    {
-        this->setDone();
-        
-        return;
-    }
+    if(this->isDone()) return;
     
-    // 持っているイベントを更新し、終了したイベントを削除していく
+    // 持っているイベントを更新し、全て終了していたら自身を終了する
+    bool allDone { true };
+    
     for (GameEvent* event : this->events)
     {
         event->update(delta);
         
-        if (event->isDone())
-        {
-            this->events.eraseObject(event);
-        }
+        if(!event->isDone()) allDone = false;
     }
     
-    // ベクタが空になったら終了
-    if(this->events.empty())
+    if(allDone)
     {
         this->setDone();
+        
+        this->events.empty();
     }
 }
 

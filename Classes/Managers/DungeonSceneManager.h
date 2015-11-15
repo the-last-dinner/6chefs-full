@@ -19,6 +19,7 @@ class EventFactory;
 class EventScript;
 class EventScriptValidator;
 class Party;
+class GameEvent;
 
 // ダンジョンシーンのマップ間で共有すべき情報を持つシングルトンクラス
 class DungeonSceneManager
@@ -71,6 +72,8 @@ public:
     void runEvent(const int eventId);
     void pushEventBack(const int eventId);
     void pushEventFront(const int eventId);
+    void pushEventBack(GameEvent* event);
+    void pushEventFront(GameEvent* event);
     void runEventQueue();
     bool existsEvent() const;
     int getRunningEventId() const;

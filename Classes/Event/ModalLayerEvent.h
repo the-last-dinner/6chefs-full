@@ -109,7 +109,24 @@ private:
     ~ButtonMashingEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
-    virtual void update(float delta) override;
+};
+
+// 選択イベント
+class SelectEvent : public GameEvent
+{
+private:
+    using SelectCallBack = pair<int, GameEvent*>;
+public:
+    CREATE_FUNC_WITH_PARAM(SelectEvent, rapidjson::Value&)
+private:
+    string message {};
+    vector<string> choices {};
+    vector<SelectCallBack> eventCallBacks {};
+private:
+    SelectEvent() {FUNCLOG};
+    ~SelectEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
 };
 
 #endif /* defined(__LastSupper__MessageEvent__) */

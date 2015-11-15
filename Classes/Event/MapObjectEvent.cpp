@@ -97,7 +97,7 @@ bool RemoveMapObjectEvent::init(rapidjson::Value& json)
 
 void RemoveMapObjectEvent::run()
 {
-    MapObject* target {this->validator->getMapObjectById(this->objectId, false)};
+    MapObject* target {this->validator->getMapObjectById(this->objectId)};
     
     if(!target)
     {

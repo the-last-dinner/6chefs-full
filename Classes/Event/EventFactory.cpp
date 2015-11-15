@@ -51,6 +51,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"storyMsg", StoryMessage::create},             // ストーリーメッセージ
         {"systemMsg", SystemMessage::create},           // システムのメッセージ
         {"displayImg", DispImageEvent::create},         // 画像表示
+        {"barrage", ButtonMashingEvent::create},        // 連打イベント
+        {"questionMsg", SelectEvent::create},           // 選択肢イベント
         
         // シーン系
         {"changeMap", ChangeMapEvent::create},          // マップ移動

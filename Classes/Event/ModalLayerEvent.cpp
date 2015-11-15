@@ -20,6 +20,7 @@
 
 #include "Layers/Dungeon/ButtonMashingLayer.h"
 #include "Layers/Dungeon/DisplayImageLayer.h"
+#include "Layers/Dungeon/SelectEventLayer.h"
 #include "Layers/Message/CharacterMessagelayer.h"
 #include "Layers/Message/StoryMessagelayer.h"
 #include "Layers/Message/SystemMessagelayer.h"
@@ -82,6 +83,8 @@ bool CharacterMessage::init(rapidjson::Value& json)
             {
                 charaName = CsvDataManager::getInstance()->getCharaName(data->getCharaId());
             }
+            
+            data->setCharaName(charaName);
             
             // 画像ID
             if(this->validator->hasMember(chara, member::IMG_ID)) data->setImgId(stoi(chara[member::IMG_ID].GetString()));
@@ -246,6 +249,7 @@ bool ButtonMashingEvent::init(rapidjson::Value& json)
     {
         if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
         if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
+        CC_SAFE_RETAIN(this->sEvent);
     }
     
     // 失敗時イベント
@@ -253,6 +257,7 @@ bool ButtonMashingEvent::init(rapidjson::Value& json)
     {
         if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
         if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
+        CC_SAFE_RETAIN(this->fEvent);
     }
     
     return true;
@@ -262,6 +267,8 @@ void ButtonMashingEvent::run()
 {
     ButtonMashingLayer* layer { ButtonMashingLayer::create(this->count, this->limit, [this](ButtonMashingLayer::Result result)
         {
+            this->setDone();
+            
             if(result == ButtonMashingLayer::Result::SUCCESS)
             {
                 if(this->sEvent)
@@ -290,7 +297,7 @@ void ButtonMashingEvent::run()
             }
             
             // イベント実行
-            if(this->event) this->event->run();
+            DungeonSceneManager::getInstance()->pushEventFront(this->event);
         }) };
     
     if(!layer)
@@ -303,11 +310,56 @@ void ButtonMashingEvent::run()
     DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::BUTTON_MASHING_LAYER);
 }
 
-void ButtonMashingEvent::update(float delta)
+#pragma mark -
+#pragma mark SelectEvent
+
+bool SelectEvent::init(rapidjson::Value& json)
 {
-    if (this->event->isDone())
+    if(!GameEvent::init()) return false;
+    
+    // 質問文
+    if(!this->validator->hasMember(json, member::TEXT)) return false;
+    this->message = json[member::TEXT][0].GetString();
+    
+    // 選択肢
+    if(!this->validator->hasMember(json, member::CHOICES) || !json[member::CHOICES].IsArray()) return false;
+    rapidjson::Value& choicesJson { json[member::CHOICES] };
+    for(int i { 0 }; i < choicesJson.Size(); i++)
     {
-        CC_SAFE_RELEASE_NULL(this->event);
-        this->setDone();
+        rapidjson::Value& choiceJson {choicesJson[i]};
+        
+        // 選択肢の表示ラベル
+        if(!this->validator->hasMember(choiceJson, member::CHOICE)) return false;
+        this->choices.push_back(choiceJson[member::CHOICE].GetString());
+        
+        // 選択肢のコールバックイベント
+        int eventId { static_cast<int>(EventID::UNDIFINED) };
+        GameEvent* event { nullptr };
+        if(this->validator->hasMember(choiceJson, member::ACTION)) event = this->factory->createGameEvent(choiceJson[member::ACTION]);
+        if(this->validator->hasMember(choiceJson, member::EVENT_ID)) eventId = stoi(choiceJson[member::EVENT_ID].GetString());
+        CC_SAFE_RETAIN(event);
+        this->eventCallBacks.push_back(SelectCallBack({eventId, event}));
     }
+    
+    return true;
+}
+
+void SelectEvent::run()
+{
+    SelectEventLayer* layer { SelectEventLayer::create(this->message, this->choices) };
+    
+    // コールバック
+    layer->onSelected = [this](const int idx)
+    {
+        // 選ばれた選択肢のインデックスからコールバックを決定
+        SelectCallBack callback {this->eventCallBacks.at(idx)};
+        
+        // コールバック実行
+        DungeonSceneManager::getInstance()->pushEventFront(callback.first);
+        DungeonSceneManager::getInstance()->pushEventFront(callback.second);
+        
+        this->setDone();
+    };
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::SELECT_LAYER);
 }

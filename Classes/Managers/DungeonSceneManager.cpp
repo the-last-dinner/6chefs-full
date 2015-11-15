@@ -242,6 +242,18 @@ void DungeonSceneManager::pushEventFront(const int eventId)
     this->getScene()->eventTask->pushEventFront(eventId);
 }
 
+// キューにイベントを後ろから詰める
+void DungeonSceneManager::pushEventBack(GameEvent* event)
+{
+    this->getScene()->eventTask->pushEventBack(event);
+}
+
+// キューにイベントを前から詰める
+void DungeonSceneManager::pushEventFront(GameEvent* event)
+{
+    this->getScene()->eventTask->pushEventFront(event);
+}
+
 // キューにあるイベントを実行
 void DungeonSceneManager::runEventQueue()
 {

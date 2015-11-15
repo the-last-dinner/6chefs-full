@@ -129,6 +129,22 @@ bool EventTask::pushEventFront(int eventId)
     return true;
 }
 
+// キューにイベントを後ろから詰める、EventIDは、キューの先頭のものを使用
+void EventTask::pushEventBack(GameEvent* event)
+{
+    if(!event) return;
+    
+    this->eventQueue.push_back({this->getEventId(this->eventQueue.front()), event});
+}
+
+// キューにイベントを前から詰める、EventIDは現在実行中のものを使用
+void EventTask::pushEventFront(GameEvent* event)
+{
+    if(!event) return;
+    
+    this->eventQueue.push_front({this->getEventId(this->runningEvent), event});
+}
+
 // 現在実行中のイベントがあるか
 bool EventTask::isEventRunning()
 {

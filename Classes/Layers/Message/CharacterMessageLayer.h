@@ -31,6 +31,7 @@ public:
 private:
     queue<CharacterMessageData*> datas {};
     ui::Scale9Sprite* nameFrame { nullptr };
+    Sprite* charaImg { nullptr };
 
 // インスタンスメソッド
 private:
