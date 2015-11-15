@@ -170,3 +170,9 @@ void MapObjectList::add(MapObject* mapObject)
         }
     }
 }
+
+// マップオブジェクトを削除
+void MapObjectList::remove(MapObject* mapObject)
+{
+    this->availableObjects.eraseObject(mapObject);
+}

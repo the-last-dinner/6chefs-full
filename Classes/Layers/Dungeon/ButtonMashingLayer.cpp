@@ -48,7 +48,7 @@ bool ButtonMashingLayer::init(int time, float limit, ResultCallback callback)
     this->addChild(label);
     
     // 文字のアニメーション設定
-    label->runAction(Sequence::create(FadeOut::create(0.3f), FadeIn::create(0.3f), nullptr));
+    label->runAction(RepeatForever::create(Sequence::create(FadeOut::create(0.3f), FadeIn::create(0.3f), nullptr)));
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };

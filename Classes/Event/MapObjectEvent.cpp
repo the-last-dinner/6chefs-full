@@ -84,3 +84,28 @@ void CreateMapObjectEvent::run()
     DungeonSceneManager::getInstance()->addMapObject(target);
     this->setDone();
 }
+
+#pragma mark -
+#pragma mark RemoveMapObjectEvent
+
+bool RemoveMapObjectEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    return true;
+}
+
+void RemoveMapObjectEvent::run()
+{
+    MapObject* target {this->validator->getMapObjectById(this->objectId)};
+    
+    if(!target)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    DungeonSceneManager::getInstance()->removeMapObject(target);
+    this->setDone();
+}

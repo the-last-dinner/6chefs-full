@@ -38,8 +38,11 @@ public:
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
     void hideLayer(const string& layerName);
+    void swingLayer(const string& layerName);
+    void stopLayerActions();
     void addMapObject(MapObject* mapObject);
     void addMapObject(MapObject* mapObject, const Point& gridPoint);
+    void removeMapObject(MapObject* mapObject);
     void setZOrderByPosition(MapObject* mapObject);
 };
 

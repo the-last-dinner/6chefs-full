@@ -71,12 +71,35 @@ Size TiledMapLayer::getMapSize() const
 // マップの指定レイヤを隠す
 void TiledMapLayer::hideLayer(const string& layerName)
 {
-    this->tiledMap->getLayer(layerName)->setVisible(false);
+    if(experimental::TMXLayer* layer { this->tiledMap->getLayer(layerName) })
+    {
+        layer->setVisible(false);
+    }
+}
+
+// マップの指定レイヤを揺らす
+void TiledMapLayer::swingLayer(const string& layerName)
+{
+    if(experimental::TMXLayer* layer { this->tiledMap->getLayer(layerName) })
+    {
+        layer->runAction(RepeatForever::create(Sequence::create(MoveTo::create(0.2f, Point(layer->getPosition().x, layer->getPosition().y + GRID * 0.2f)), MoveTo::create(0.2f, Point(layer->getPosition().x, layer->getPosition().y - GRID * 0.2f)), nullptr)));
+    }
+}
+
+// マップレイヤのアクションを全て停止
+void TiledMapLayer::stopLayerActions()
+{
+    for(Node* layerNode : this->tiledMap->getChildren())
+    {
+        layerNode->stopAllActions();
+    }
 }
 
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject)
 {
+    if(!mapObject) return;
+    
     this->objectList->add(mapObject);
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
@@ -88,10 +111,24 @@ void TiledMapLayer::addMapObject(MapObject* mapObject)
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
 {
+    if(!mapObject) return;
+    
     Point cocosPoint = MapUtils::convertToCCPoint(this->getMapSize(), gridPoint);
     mapObject->setPosition(cocosPoint.x + mapObject->getContentSize().width / 2, cocosPoint.y);
     mapObject->setGridPosition(gridPoint);
     this->addMapObject(mapObject);
+}
+
+// マップからオブジェクトを削除
+void TiledMapLayer::removeMapObject(MapObject* mapObject)
+{
+    if(!mapObject) return;
+    
+    // マップから削除
+    this->tiledMap->removeChild(mapObject);
+    
+    // リストから削除
+    this->objectList->remove(mapObject);
 }
 
 // マス座標からZOrder値を設定

@@ -39,6 +39,20 @@ private:
     virtual void run() override;
 };
 
+// アイテムを破棄する
+class RemoveItemEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(RemoveItemEvent, rapidjson::Value&)
+private:
+    int itemId { 0 };
+private:
+    RemoveItemEvent() {FUNCLOG};
+    ~RemoveItemEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 // キャラクタのプロフィールを追加
 class AddProfileEvent : public GameEvent
 {
@@ -50,6 +64,35 @@ private:
 private:
     AddProfileEvent() {FUNCLOG};
     ~AddProfileEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// チャプターを切り替える
+class ChangeChapterEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeChapterEvent, rapidjson::Value&)
+private:
+    int chapterId { 0 };
+private:
+    ChangeChapterEvent() {FUNCLOG};
+    ~ChangeChapterEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// キャラクタの好感度を変更
+class ChangeLikabilityRatingEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeLikabilityRatingEvent, rapidjson::Value&)
+private:
+    int charaId { static_cast<int>(CharacterID::UNDIFINED) };
+    int rating { 0 };
+private:
+    ChangeLikabilityRatingEvent() {FUNCLOG};
+    ~ChangeLikabilityRatingEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

@@ -26,8 +26,8 @@ public:
         SpriteUtils::Margin margin {SpriteUtils::Margin(3.0)}; // margin
         vector<string> menu {}; // menuのインデックス
     public:
-        Selector(const Point index, const SpriteUtils::Square position, vector<string>& menu):index(index),position(position),menu(menu){}
-        Selector(const Point index, const SpriteUtils::Square position, vector<string>& menu, const SpriteUtils::Margin& margin):index(index),position(position),menu(menu),margin(margin){}
+        Selector(const Point index, const SpriteUtils::Square position, const vector<string>& menu):index(index),position(position),menu(menu){}
+        Selector(const Point index, const SpriteUtils::Square position, const vector<string>& menu, const SpriteUtils::Margin& margin):index(index),position(position),menu(menu),margin(margin){}
         void setColor(Color3B color){this->color = color;};
         void setBackgroundColor(Color3B color){this->background_color = color;};
         void setRectangleColor(Color3B color){this->rectangle_color = color;};

@@ -55,6 +55,26 @@ void GetItemEvent::run()
 }
 
 #pragma mark -
+#pragma mark RemoveItemEvent
+
+bool RemoveItemEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // アイテムIDを取得
+    if(!this->validator->hasMember(json, member::ITEM_ID)) return false;
+    this->itemId = stoi(json[member::ITEM_ID].GetString());
+    
+    return true;
+}
+
+void RemoveItemEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setItemUsed(this->itemId);
+}
+
+#pragma mark -
 #pragma mark AddProfileEvent
 
 bool AddProfileEvent::init(rapidjson::Value& json)
@@ -76,4 +96,48 @@ void AddProfileEvent::run()
 {
     this->setDone();
     PlayerDataManager::getInstance()->setCharacterProfile(this->charaId, this->infoLevel);
+}
+
+#pragma mark -
+#pragma mark ChangeChapterEvent
+
+bool ChangeChapterEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // チャプターID
+    if(!this->validator->hasMember(json, member::CHAPTER_ID)) return false;
+    this->chapterId = stoi(json[member::CHAPTER_ID].GetString());
+    
+    return true;
+}
+
+void ChangeChapterEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setChapterId(this->chapterId);
+}
+
+#pragma mark -
+#pragma mark ChangeLikabilityRatingEvent
+
+bool ChangeLikabilityRatingEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // キャラクタID
+    if(!this->validator->hasMember(json, member::CHARA_ID)) return false;
+    this->charaId = stoi(json[member::CHARA_ID].GetString());
+    
+    // 好感度
+    if(!this->validator->hasMember(json, member::FAVORITE)) return false;
+    this->rating = stoi(json[member::FAVORITE].GetString());
+    
+    return true;
+}
+
+void ChangeLikabilityRatingEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setFriendship(this->charaId, this->rating);
 }

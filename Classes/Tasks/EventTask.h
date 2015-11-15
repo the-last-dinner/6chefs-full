@@ -41,6 +41,8 @@ public:
     // キュー操作
     bool pushEventBack(int eventId);
     bool pushEventFront(int eventId);
+    void pushEventBack(GameEvent* event);
+    void pushEventFront(GameEvent* event);
 
     bool isEventRunning();
     bool existsEvent();

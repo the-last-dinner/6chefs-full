@@ -51,19 +51,24 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"storyMsg", StoryMessage::create},             // ストーリーメッセージ
         {"systemMsg", SystemMessage::create},           // システムのメッセージ
         {"displayImg", DispImageEvent::create},         // 画像表示
+        {"barrage", ButtonMashingEvent::create},        // 連打イベント
+        {"questionMsg", SelectEvent::create},           // 選択肢イベント
         
         // シーン系
         {"changeMap", ChangeMapEvent::create},          // マップ移動
         {"camera", CameraEvent::create},                // カメラ
         {"wait", WaitEvent::create},                    // 時間待機
-        {"fadeout", FadeOutEvent::create},               // フェードアウト
+        {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
+        {"swingLayer", SwingLayerEvent::create},        // マップの指定レイヤを揺らす
+        {"stopSwing", StopLayerActionEvent::create},    // マップレイヤのアクションを止める
         
         // マップオブジェクト系
         {"createChara", CreateMapObjectEvent::create},      // マップオブジェクトを無効リストから有効リストへ移動、マップ上に表示
+        {"removeChara", RemoveMapObjectEvent::create},      // マップオブジェクトを削除（有効リストのもののみ対象）
         {"reaction", ReactionEvent::create},                // リアクション
         
         // キャラクター系
@@ -72,9 +77,12 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
         
         // フラグ系
-        {"already", NeverAgainEvent::create},               // イベントIDを見たことにし、二度と発動しないようにする
-        {"getItem", GetItemEvent::create},                  // アイテムを入手
-        {"addProfile", AddProfileEvent::create},            // プロフィールに情報を追加する
+        {"already", NeverAgainEvent::create},                   // イベントIDを見たことにし、二度と発動しないようにする
+        {"getItem", GetItemEvent::create},                      // アイテムを入手
+        {"removeItem", RemoveItemEvent::create},                // アイテムを破棄
+        {"addProfile", AddProfileEvent::create},                // プロフィールに情報を追加する
+        {"changeChapter", ChangeChapterEvent::create},          // チャプターを切り替える
+        {"changeStatus", ChangeLikabilityRatingEvent::create},  // キャラクタの好感度を変更
     };
     
     // イベントタイプがなければ同時実行を生成して返す

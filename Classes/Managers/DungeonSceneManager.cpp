@@ -165,6 +165,12 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
     this->getMapLayer()->addMapObject(mapObject);
 }
 
+// マップオブジェクトをマップ上から削除
+void DungeonSceneManager::removeMapObject(MapObject* mapObject)
+{
+    this->getMapLayer()->removeMapObject(mapObject);
+}
+
 #pragma mark -
 #pragma mark Director
 
@@ -234,6 +240,18 @@ void DungeonSceneManager::pushEventBack(const int eventId)
 void DungeonSceneManager::pushEventFront(const int eventId)
 {
     this->getScene()->eventTask->pushEventFront(eventId);
+}
+
+// キューにイベントを後ろから詰める
+void DungeonSceneManager::pushEventBack(GameEvent* event)
+{
+    this->getScene()->eventTask->pushEventBack(event);
+}
+
+// キューにイベントを前から詰める
+void DungeonSceneManager::pushEventFront(GameEvent* event)
+{
+    this->getScene()->eventTask->pushEventFront(event);
 }
 
 // キューにあるイベントを実行

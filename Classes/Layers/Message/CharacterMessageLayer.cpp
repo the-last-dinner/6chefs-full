@@ -51,17 +51,25 @@ bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas, func
 Label* CharacterMessageLayer::createMessage()
 {
     CharacterMessageData* data {this->datas.front()};
+ 
     // キャラクター画像
+    if(this->charaImg)
+    {
+        this->charaImg->removeFromParent();
+        this->charaImg = nullptr;
+    }
+    
 	if(data->getCharaId() != -1 && SpriteFrameCache::getInstance()->getSpriteFrameByName(CsvDataManager::getInstance()->getCharaFileName(data->getCharaId()) + "_s_" + to_string(data->getImgId()) + ".png"))
     {
         Sprite* img { Sprite::createWithSpriteFrameName(CsvDataManager::getInstance()->getCharaFileName(data->getCharaId()) + "_s_" + to_string(data->getImgId()) + ".png")};
         img->setPosition(Point(WINDOW_WIDTH * 3 / 4, 0));
         img->setLocalZOrder(-1);
         this->addChild(img);
+        this->charaImg = img;
 	}
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF((data->getCharaId() == -1 || data->getCharaName() != "")?data->getCharaName():CsvDataManager::getInstance()->getCharaName(data->getCharaId()), "fonts/cinecaption2.28.ttf", 26.f)};
+	Label* name { Label::createWithTTF(data->getCharaName(), "fonts/cinecaption2.28.ttf", 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える

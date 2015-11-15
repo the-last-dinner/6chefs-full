@@ -147,6 +147,7 @@ MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
     MapObject* pObj = EventObject::create();
+    pObj->setObjectId(this->getObjectId(info));
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setPosition(rect.origin + rect.size / 2);
     pObj->setContentSize(rect.size);
@@ -175,6 +176,7 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
         pObj->setTrigger(this->getTrigger(info));
     }
     
+    pObj->setObjectId(this->getObjectId(info));
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
     pObj->setPosition(rect.origin + rect.size / 2);
