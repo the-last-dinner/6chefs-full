@@ -358,6 +358,14 @@ void SelectEvent::run()
         DungeonSceneManager::getInstance()->pushEventFront(callback.first);
         DungeonSceneManager::getInstance()->pushEventFront(callback.second);
         
+        // 選択されたコールバックイベント以外をリリース
+        for(int i { 0 }; i < this->eventCallBacks.size(); i++)
+        {
+            if(i == idx) continue;
+            
+            CC_SAFE_RELEASE(this->eventCallBacks.at(i).second);
+        }
+        
         this->setDone();
     };
     
