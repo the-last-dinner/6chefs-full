@@ -82,4 +82,19 @@ private:
     virtual void run() override;
 };
 
+// キャラクタの好感度を変更
+class ChangeLikabilityRatingEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeLikabilityRatingEvent, rapidjson::Value&)
+private:
+    int charaId { static_cast<int>(CharacterID::UNDIFINED) };
+    int rating { 0 };
+private:
+    ChangeLikabilityRatingEvent() {FUNCLOG};
+    ~ChangeLikabilityRatingEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__FlagEvent__) */

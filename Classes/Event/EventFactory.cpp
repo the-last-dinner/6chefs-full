@@ -75,11 +75,12 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
         
         // フラグ系
-        {"already", NeverAgainEvent::create},               // イベントIDを見たことにし、二度と発動しないようにする
-        {"getItem", GetItemEvent::create},                  // アイテムを入手
-        {"removeItem", RemoveItemEvent::create},            // アイテムを破棄
-        {"addProfile", AddProfileEvent::create},            // プロフィールに情報を追加する
-        {"changeChapter", ChangeChapterEvent::create},      // チャプターを切り替える
+        {"already", NeverAgainEvent::create},                   // イベントIDを見たことにし、二度と発動しないようにする
+        {"getItem", GetItemEvent::create},                      // アイテムを入手
+        {"removeItem", RemoveItemEvent::create},                // アイテムを破棄
+        {"addProfile", AddProfileEvent::create},                // プロフィールに情報を追加する
+        {"changeChapter", ChangeChapterEvent::create},          // チャプターを切り替える
+        {"changeStatus", ChangeLikabilityRatingEvent::create},  // キャラクタの好感度を変更
     };
     
     // イベントタイプがなければ同時実行を生成して返す

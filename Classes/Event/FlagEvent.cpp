@@ -117,3 +117,27 @@ void ChangeChapterEvent::run()
     this->setDone();
     PlayerDataManager::getInstance()->setChapterId(this->chapterId);
 }
+
+#pragma mark -
+#pragma mark ChangeLikabilityRatingEvent
+
+bool ChangeLikabilityRatingEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // キャラクタID
+    if(!this->validator->hasMember(json, member::CHARA_ID)) return false;
+    this->charaId = stoi(json[member::CHARA_ID].GetString());
+    
+    // 好感度
+    if(!this->validator->hasMember(json, member::FAVORITE)) return false;
+    this->rating = stoi(json[member::FAVORITE].GetString());
+    
+    return true;
+}
+
+void ChangeLikabilityRatingEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setFriendship(this->charaId, this->rating);
+}
