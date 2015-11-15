@@ -79,6 +79,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"getItem", GetItemEvent::create},                  // アイテムを入手
         {"removeItem", RemoveItemEvent::create},            // アイテムを破棄
         {"addProfile", AddProfileEvent::create},            // プロフィールに情報を追加する
+        {"changeChapter", ChangeChapterEvent::create},      // チャプターを切り替える
     };
     
     // イベントタイプがなければ同時実行を生成して返す

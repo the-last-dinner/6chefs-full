@@ -97,3 +97,23 @@ void AddProfileEvent::run()
     this->setDone();
     PlayerDataManager::getInstance()->setCharacterProfile(this->charaId, this->infoLevel);
 }
+
+#pragma mark -
+#pragma mark ChangeChapterEvent
+
+bool ChangeChapterEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // チャプターID
+    if(!this->validator->hasMember(json, member::CHAPTER_ID)) return false;
+    this->chapterId = stoi(json[member::CHAPTER_ID].GetString());
+    
+    return true;
+}
+
+void ChangeChapterEvent::run()
+{
+    this->setDone();
+    PlayerDataManager::getInstance()->setChapterId(this->chapterId);
+}

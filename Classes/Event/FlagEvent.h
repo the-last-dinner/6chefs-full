@@ -68,4 +68,18 @@ private:
     virtual void run() override;
 };
 
+// チャプターを切り替える
+class ChangeChapterEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeChapterEvent, rapidjson::Value&)
+private:
+    int chapterId { 0 };
+private:
+    ChangeChapterEvent() {FUNCLOG};
+    ~ChangeChapterEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__FlagEvent__) */
