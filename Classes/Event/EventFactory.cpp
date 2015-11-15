@@ -56,7 +56,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"changeMap", ChangeMapEvent::create},          // マップ移動
         {"camera", CameraEvent::create},                // カメラ
         {"wait", WaitEvent::create},                    // 時間待機
-        {"fadeout", FadeOutEvent::create},               // フェードアウト
+        {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
         
         // マップ系
