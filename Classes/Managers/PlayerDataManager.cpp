@@ -388,7 +388,7 @@ bool PlayerDataManager::removeItem(const int item_id)
 bool PlayerDataManager::removePartyMember(const int chara_id)
 {
     bool isExsits = false;
-    rapidjson::Value party = this->local["party"];
+    rapidjson::Value& party = this->local["party"];
     this->local["party"].Clear();
     this->local["party"].SetArray();
     int member_size = party.Size();
