@@ -71,7 +71,8 @@ public:
     // SET
     void setLocation(const Location& location);
     void setFriendship(const int chara_id, const int level);
-    void setEventFlag(const int map_id, const int event_id, const bool& flag);
+    void setEventFlag(const int map_id, const int event_id, const bool flag);
+    void setPeculiarFlag(const int flag_id, const bool flag);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
     void setChapterId(const int chapter_id);
@@ -86,6 +87,7 @@ public:
     Location getLocation();
     int getFriendship(const int chara_id);
     bool getEventFlag(const int map_id, const int event_id);
+    bool getPeculiarFlag(const int flag_id);
     int getItem(const int item_id);
     map<int, int> getItemAll();
     int getItemEquipment(Direction direction);

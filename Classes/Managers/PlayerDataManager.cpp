@@ -39,7 +39,7 @@ PlayerDataManager::~PlayerDataManager(){FUNCLOG}
 #pragma mark -
 #pragma mark InitFunctions
 
-//コンストラクタ
+// コンストラクタ
 PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
 {
     FUNCLOG
@@ -51,7 +51,7 @@ PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
     }
 }
 
-//グローバルデータの読み込み
+// グローバルデータの読み込み
 bool PlayerDataManager::setGlobalData()
 {
     FUNCLOG
@@ -72,7 +72,7 @@ bool PlayerDataManager::setGlobalData()
     return true;
 }
 
-//グローバルセーブデータの初期化
+// グローバルセーブデータの初期化
 void PlayerDataManager::initializeFiles()
 {
     FUNCLOG
@@ -105,7 +105,7 @@ void PlayerDataManager::initializeFiles()
 #pragma mark -
 #pragma mark NormalFunctions
 
-//セーブデータのリスト表示用データ
+// セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
 {
     FUNCLOG
@@ -168,7 +168,6 @@ void PlayerDataManager::setMainLocalData(const int id)
 // メインとなるローカルデータのidを取得
 int PlayerDataManager::getSaveDataId()
 {
-    FUNCLOG
     return this->local_id;
 }
 
@@ -193,7 +192,7 @@ int PlayerDataManager::getPlayTimeSeconds()
     return (this->local["play_time"].GetInt() + interval_time);
 }
 
-//セーブ
+// セーブ
 void PlayerDataManager::save(const int id)
 {
     FUNCLOG
@@ -225,7 +224,6 @@ void PlayerDataManager::save(const int id)
 // セーブデータの存在をチェック
 bool PlayerDataManager::checkSaveDataExists(const int id)
 {
-    FUNCLOG
     //return (this->fu->isFileExist("save/local" + to_string(id) + ".json")) ? true : false;
     return this->local_exist[id - 1];
 }
@@ -233,7 +231,7 @@ bool PlayerDataManager::checkSaveDataExists(const int id)
 #pragma mark -
 #pragma mark Setter
 
-//主人公の座標のセット
+// 主人公の座標のセット
 void PlayerDataManager::setLocation(const Location& location)
 {
     FUNCLOG
@@ -248,18 +246,16 @@ void PlayerDataManager::setLocation(const Location& location)
     return;
 }
 
-//友好度のセット
+// 友好度のセット
 void PlayerDataManager::setFriendship(const int chara_id, const int level)
 {
-    FUNCLOG
     this->local["friendship"][to_string(chara_id).c_str()].SetInt(level);
     return;
 }
 
-//イベントフラグのセット
-void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const bool& flag)
+// イベントフラグのセット
+void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const bool flag)
 {
-    FUNCLOG
     const char* mid_char = to_string(map_id).c_str();
     char buff[50];
     sprintf(buff, "%d", map_id);
@@ -285,10 +281,15 @@ void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const
     return;
 }
 
-//アイテムゲット時の処理
+// 固有フラグのセット (イベントフラグのmap_id = 0)
+void PlayerDataManager::setPeculiarFlag(const int flag_id, const bool flag)
+{
+    this->setEventFlag(0, flag_id, flag);
+}
+
+// アイテムゲット時の処理
 void PlayerDataManager::setItem(const int item_id)
 {
-    FUNCLOG
     const char* id_char = to_string(item_id).c_str();
     char buff[50];
     sprintf(buff, "%d", item_id);
@@ -311,7 +312,6 @@ void PlayerDataManager::setItem(const int item_id)
 // アイテム装備時の処理
 void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
 {
-    FUNCLOG
     if(direction == Direction::LEFT)
     {
         this->local["equipment_left"].SetInt(item_id);
@@ -326,15 +326,12 @@ void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
 // chapterを切り替え
 void PlayerDataManager::setChapterId(const int chapter_id)
 {
-    FUNCLOG
     this->local["chapter"].SetInt(chapter_id);
-    return;
 }
 
 // キャラクターのプロフィールを追加
 void PlayerDataManager::setCharacterProfile(const int chara_id, const int level)
 {
-    FUNCLOG
     const char* cid_char = to_string(chara_id).c_str();
     char buff[50];
     sprintf(buff, "%d", chara_id);
@@ -412,19 +409,17 @@ bool PlayerDataManager::removePartyMember(const int chara_id)
 #pragma mark -
 #pragma mark Getter
 
-//主人公の位置をゲット
+// 主人公の位置をゲット
 PlayerDataManager::Location PlayerDataManager::getLocation()
 {
-    FUNCLOG
     rapidjson::Value& loc = this->local["location"];
     PlayerDataManager::Location location(loc[0].GetInt(), loc[1].GetInt(), loc[2].GetInt(), loc[3].GetInt());
     return location;
 }
 
-//友好度の取得
+// 友好度の取得
 int PlayerDataManager::getFriendship(const int chara_id)
 {
-    FUNCLOG
     const char* cid = to_string(chara_id).c_str();
     rapidjson::Value::ConstMemberIterator itr = this->local["friendship"].FindMember(cid);
     if(itr != this->local["friendship"].MemberEnd()){
@@ -434,10 +429,9 @@ int PlayerDataManager::getFriendship(const int chara_id)
     }
 }
 
-//イベントフラグの取得
+// イベントフラグの取得
 bool PlayerDataManager::getEventFlag(const int map_id, const int event_id)
 {
-    FUNCLOG
     const char* mid = to_string(map_id).c_str();
     rapidjson::Value& event = this->local["event"];
     rapidjson::Value::ConstMemberIterator itr = event.FindMember(mid);
@@ -455,10 +449,15 @@ bool PlayerDataManager::getEventFlag(const int map_id, const int event_id)
     }
 }
 
-//所持しているアイテムの所持数を取得
+// 固有フラグの取得
+bool PlayerDataManager::getPeculiarFlag(const int flag_id)
+{
+    return this->getEventFlag(0, flag_id);
+}
+
+// 所持しているアイテムの所持数を取得
 int PlayerDataManager::getItem(const int item_id)
 {
-    FUNCLOG
     rapidjson::Value& item = this->local["item"];
     const char* id = to_string(item_id).c_str();
     rapidjson::Value::ConstMemberIterator itr = item.FindMember(id);
@@ -469,10 +468,9 @@ int PlayerDataManager::getItem(const int item_id)
     return count;
 }
 
-//所持しているアイテムをすべて取得
+// 所持しているアイテムをすべて取得
 map<int, int> PlayerDataManager::getItemAll()
 {
-    FUNCLOG
     map<int, int> items {};
     rapidjson::Value& item = this->local["item"];
     for(rapidjson::Value::ConstMemberIterator itr = item.MemberBegin();itr != item.MemberEnd(); itr++)
@@ -487,10 +485,9 @@ map<int, int> PlayerDataManager::getItemAll()
     return items;
 }
 
-//装備アイテムIDの取得
+// 装備アイテムIDの取得
 int PlayerDataManager::getItemEquipment(Direction direction)
 {
-    FUNCLOG
     string key;
     key = (direction == Direction::LEFT) ? "equipment_left" : "equipment_right";
     return this->local[key.c_str()].GetInt();
@@ -499,7 +496,6 @@ int PlayerDataManager::getItemEquipment(Direction direction)
 // 現在のチャプターIDの取得
 int PlayerDataManager::getChapterId()
 {
-    FUNCLOG
     return this->local["chapter"].GetInt();
 }
 
@@ -536,10 +532,9 @@ vector<int> PlayerDataManager::getPartyMemberAll()
 #pragma mark -
 #pragma mark Checker
 
-//アイテムを1つ以上持っているかチェック
+// アイテムを1つ以上持っているかチェック
 bool PlayerDataManager::checkItem(const int item_id)
 {
-    FUNCLOG
     int count = this->getItem(item_id);
     if (count > 0) {
         return true;
@@ -548,7 +543,7 @@ bool PlayerDataManager::checkItem(const int item_id)
     }
 }
 
-//アイテムを装備しているかチェック
+// アイテムを装備しているかチェック
 bool PlayerDataManager::checkItemEquipment(const int item_id)
 {
     int right = this->getItemEquipment(Direction::RIGHT);
@@ -560,7 +555,7 @@ bool PlayerDataManager::checkItemEquipment(const int item_id)
     }
 }
 
-//友好度が指定の値と一致するか
+// 友好度が指定の値と一致するか
 bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
 {
     int level = this->getFriendship(chara_id);
@@ -571,7 +566,7 @@ bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
     }
 }
 
-//チャプターIDが指定のIDと一致するか
+// チャプターIDが指定のIDと一致するか
 bool PlayerDataManager::checkChapterId(const int chapter_id)
 {
     if(chapter_id == this->getChapterId())
