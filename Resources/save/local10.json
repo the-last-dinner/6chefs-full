@@ -7,6 +7,8 @@
     "equipment_right":0,
     "equipment_left":0,
     "location":[4,29,24,0],
+    "player":0,
+    "party":[],
     "friendship":{
         "1": 0,
         "2": 0,
@@ -31,6 +33,7 @@
     "item":{
 		"151":1,
 		"153":1,
+        "152":1,
 		"154":1,
 		"155":1,
 		"156":1,

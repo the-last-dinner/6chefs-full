@@ -323,8 +323,48 @@ void PlayerDataManager::setItemEquipment(Direction direction, const int item_id)
     return;
 }
 
-// アイテムを使用して消費する
-bool PlayerDataManager::setItemUsed(const int item_id)
+// chapterを切り替え
+void PlayerDataManager::setChapterId(const int chapter_id)
+{
+    FUNCLOG
+    this->local["chapter"].SetInt(chapter_id);
+    return;
+}
+
+// キャラクターのプロフィールを追加
+void PlayerDataManager::setCharacterProfile(const int chara_id, const int level)
+{
+    FUNCLOG
+    const char* cid_char = to_string(chara_id).c_str();
+    char buff[50];
+    sprintf(buff, "%d", chara_id);
+    rapidjson::Value cid  (kStringType);
+    cid.SetString(buff, strlen(buff), this->local.GetAllocator());
+    rapidjson::Value::ConstMemberIterator itr = this->local["chara"].FindMember(cid_char);
+    if (itr != this->local["chara"].MemberEnd())
+    {
+        // すでに追加されているキャラクター
+        this->local["chara"][cid_char].SetInt(level);
+    }
+    else
+    {
+        // 初めて追加するキャラ
+        this->local["chara"].AddMember(cid, rapidjson::Value(level), this->local.GetAllocator());
+    }
+}
+
+// パーティメンバーを追加する
+void PlayerDataManager::setPartyMember(const int chara_id)
+{
+    rapidjson::Value& party = this->local["party"];
+    party.PushBack(chara_id, this->local.GetAllocator());
+}
+
+#pragma mark -
+#pragma mark Remover
+
+// アイテムを消費する
+bool PlayerDataManager::removeItem(const int item_id)
 {
     const char* id = to_string(item_id).c_str();
     int count = this->getItem(item_id);
@@ -347,36 +387,26 @@ bool PlayerDataManager::setItemUsed(const int item_id)
     return false;
 }
 
-// chapterを切り替え
-void PlayerDataManager::setChapterId(const int chapter_id)
+// パーティメンバーを解除する
+bool PlayerDataManager::removePartyMember(const int chara_id)
 {
-    FUNCLOG
-    this->local["chapter"].SetInt(chapter_id);
-    return;
-}
-
-// キャラクターのプロフィールを追加
-void PlayerDataManager::setCharacterProfile(const int chara_id, const int level)
-{
-    FUNCLOG
-    const char* cid_char = to_string(chara_id).c_str();
-    char buff[50];
-    sprintf(buff, "%d", chara_id);
-    rapidjson::Value cid  (kStringType);
-    cid.SetString(buff, strlen(buff), this->local.GetAllocator());
-    
-    rapidjson::Value::ConstMemberIterator itr = this->local["chara"].FindMember(cid_char);
-    if (itr != this->local["chara"].MemberEnd())
+    bool isExsits = false;
+    rapidjson::Value party = this->local["party"];
+    this->local["party"].Clear();
+    this->local["party"].SetArray();
+    int member_size = party.Size();
+    for (int i = 0; i < member_size; i++)
     {
-        // すでに追加されているキャラクター
-        this->local["chara"][cid_char].SetInt(level);
+        if (this->local["party"][i].GetInt() == chara_id)
+        {
+            isExsits = true;
+        }
+        else
+        {
+            this->local["party"].PushBack(party[i].GetInt(), this->local.GetAllocator());
+        }
     }
-    else
-    {
-        // 初めて追加するキャラ
-        this->local["chara"].AddMember(cid, rapidjson::Value(level), this->local.GetAllocator());
-    }
-    return;
+    return isExsits;
 }
 
 #pragma mark -
@@ -443,7 +473,7 @@ int PlayerDataManager::getItem(const int item_id)
 map<int, int> PlayerDataManager::getItemAll()
 {
     FUNCLOG
-    map<int, int> items;
+    map<int, int> items {};
     rapidjson::Value& item = this->local["item"];
     for(rapidjson::Value::ConstMemberIterator itr = item.MemberBegin();itr != item.MemberEnd(); itr++)
     {
@@ -491,6 +521,18 @@ int PlayerDataManager::getCharacterProfileLevel(const int chara_id)
     return level;
 }
 
+// パーティメンバーを取得
+vector<int> PlayerDataManager::getPartyMemberAll()
+{
+    vector<int> members {};
+    int party_size = this->local["party"].Size();
+    for (int i = 0; i < party_size; i++)
+    {
+        members.push_back(this->local["party"][i].GetInt());
+    }
+    return members;
+}
+
 #pragma mark -
 #pragma mark Checker
 
@@ -509,7 +551,6 @@ bool PlayerDataManager::checkItem(const int item_id)
 //アイテムを装備しているかチェック
 bool PlayerDataManager::checkItemEquipment(const int item_id)
 {
-    FUNCLOG
     int right = this->getItemEquipment(Direction::RIGHT);
     int left = this->getItemEquipment(Direction::LEFT);
     if (item_id == right || item_id == left) {
@@ -522,7 +563,6 @@ bool PlayerDataManager::checkItemEquipment(const int item_id)
 //友好度が指定の値と一致するか
 bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
 {
-    FUNCLOG
     int level = this->getFriendship(chara_id);
     if(level == val){
         return true;
@@ -534,13 +574,29 @@ bool PlayerDataManager::checkFriendship(const int chara_id, const int val)
 //チャプターIDが指定のIDと一致するか
 bool PlayerDataManager::checkChapterId(const int chapter_id)
 {
-    FUNCLOG
     if(chapter_id == this->getChapterId())
     {
         return true;
     } else {
         return false;
     }
+}
+
+// パーティメンバーが存在するか
+bool PlayerDataManager::checkPartyMember(const int chara_id)
+{
+    bool isExist = false;
+    vector<int> members = this->getPartyMemberAll();
+    int member_size = members.size();
+    for (int i = 0; i < member_size; i++)
+    {
+        if (members[i] == chara_id)
+        {
+            isExist = true;
+            break;
+        }
+    }
+    return isExist;
 }
 
 #pragma mark -
