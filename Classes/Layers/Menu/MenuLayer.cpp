@@ -16,6 +16,13 @@ MenuLayer::MenuLayer(){FUNCLOG}
 // デストラクタ
 MenuLayer::~MenuLayer(){FUNCLOG}
 
+// 初期化 (ページ数指定有)
+bool MenuLayer::init(const Size& size, const int page_size)
+{
+    this->page_size = page_size;
+    return this->init(size.width, size.height);
+}
+
 // 初期化
 bool MenuLayer::init(const Point& index, const Size& size)
 {
@@ -54,33 +61,60 @@ void MenuLayer::onCursorKeyPressed(const Key& key)
 {
     // カーソルが無効な場合は何もしない
     if(!this->cursorEnabled) return;
-
+    
     // インデックスの変更
     switch(key)
     {
         case Key::UP:
-            if(sizeY >= 2) this->indexY = (indexY == 0)? indexY = sizeY - 1 : (indexY - 1) % sizeY;
-            this->onIndexChanged(this->getSelectedIndex());
+            if (this->page_size > 1 && indexY == 0)
+            {
+                this->page = this->page == 0 ? this->page_size - 1 : this->page - 1;
+                this->onPageChanged(this->page);
+            }
+            if(sizeY >= 2) this->indexY = (indexY == 0) ? indexY = sizeY - 1 : (indexY - 1) % sizeY;
             break;
             
         case Key::DOWN:
+            if (this->page_size > 1 && indexY + 1 == sizeY)
+            {
+                this->page = this->page + 1 % this->page_size;
+                this->onPageChanged(this->page);
+            }
             if(sizeY >= 2) this->indexY = (indexY + 1) % sizeY;
-            this->onIndexChanged(this->getSelectedIndex());
+            // ページチェック
+            if (this->calcSelectedIndex() > this->menuObjects.size() - 1)
+            {
+                if (this->calcSelectedIndex() - sizeX < this->page * sizeX * sizeY)
+                {
+                    // 飛び先のページに要素が存在しないとき
+                    this->indexX = (this->menuObjects.size() - 1) % sizeX;
+                }
+                else
+                {
+                    // 飛び先のページの同じindexXのところへ飛ぶ
+                    this->page = 0;
+                    this->indexY = 0;
+                }
+                this->onPageChanged(this->page);
+                
+            }
             break;
             
         case Key::LEFT:
             if(sizeX >= 2) this->indexX = (indexX == 0)? indexX = sizeX - 1 : (indexX - 1) % sizeX;
-            this->onIndexChanged(this->getSelectedIndex());
             break;
             
         case Key::RIGHT:
             if(sizeX >= 2) this->indexX = (indexX + 1) % sizeX;
-            this->onIndexChanged(this->getSelectedIndex());
             break;
             
         default:
             break;
     }
+    
+    // ヴィジュアルの更新
+    this->onIndexChanged(this->getSelectedIndex());
+    cout << "page>>" << this->page << endl <<"indexX>>" << indexX << endl << "indexY>>" << indexY << endl;
 }
 
 // スペースを押した時
@@ -92,14 +126,32 @@ void MenuLayer::onSpaceKeyPressed()
 // 現在選ばれているメニューのINDEXを取得(現時点では横優先配置の場合のみ)
 int MenuLayer::getSelectedIndex()
 {
-    int selected = sizeX * indexY + indexX;
+    int selected = this->calcSelectedIndex();
     int maxIndex = this->menuObjects.size() - 1;
     if (selected > maxIndex){
-        selected = maxIndex;
-        if (sizeX >= 2) this->indexX = maxIndex % sizeX;
-        if (sizeY >= 2) this->indexY = (maxIndex + 1) % sizeY;
+        if (sizeY >= 2) this->indexY = ((int)floor((maxIndex + 1) / sizeX)) % sizeY;
+        selected = this->calcSelectedIndex();
+        if (selected > maxIndex)
+        {
+            if (selected - sizeX < this->page * sizeX * sizeY)
+            {
+                selected = maxIndex;
+                if (sizeX >= 2) this->indexX = (maxIndex + 1) % sizeX;
+                if (sizeY >= 2) this->indexY = ((int)floor((maxIndex + 1) / sizeX)) % sizeY;
+            }
+            else
+            {
+                indexY--;
+                selected -= sizeX;
+            }
+        }
     }
     return selected;
+}
+
+int MenuLayer::calcSelectedIndex()
+{
+    return this->sizeX * this->indexY + this->indexX + this->page * this->sizeX * this->sizeY;
 }
 
 // メニューサイズの横方向を取得
@@ -127,3 +179,6 @@ void MenuLayer::intervalInputCheck(const vector<Key> keys)
 {
     this->onCursorKeyPressed(keys.back());
 }
+
+// ページサイズを取得
+int MenuLayer::getPageSize(){return this->page_size;}

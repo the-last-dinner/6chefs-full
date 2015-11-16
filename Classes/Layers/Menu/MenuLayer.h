@@ -18,6 +18,7 @@ class MenuLayer : public Layer
 // インスタンス変数
 protected:
     vector<Node*> menuObjects {};
+    vector<Node*> pagePanels {};
     EventListenerKeyboardLayer* listenerKeyboard { nullptr };
     
 private:
@@ -26,6 +27,8 @@ private:
     int sizeX { 0 };
     int sizeY { 0 };
     bool cursorEnabled {true};
+    int page_size { 1 };
+    int page { 0 };
 
 // インスタンスメソッド
 public:
@@ -34,6 +37,7 @@ public:
 protected:
 	MenuLayer();
 	~MenuLayer();
+    virtual bool init(const Size& size, const int page_size);
 	virtual bool init(const Point& index, const Size& size);
 	virtual bool init(int sizeX, int sizeY);
 	virtual void onIndexChanged(int newIdx, bool sound = true) = 0;
@@ -43,10 +47,14 @@ protected:
 	virtual void onMenuKeyPressed() = 0;
 	virtual int getSelectedIndex();
     virtual void setSelectedIndex(const int index);
+    virtual void onPageChanged(const int page){};
 	int getMenuSizeX() const;
 	int getMenuSizeY() const;
+    int calcSelectedIndex();
     void setCursorEnable(const bool enable);
     void intervalInputCheck(const vector<Key> keys);
+    void changePage(const int page);
+    int getPageSize();
 };
 
 #endif // __MENU_LAYER_H__

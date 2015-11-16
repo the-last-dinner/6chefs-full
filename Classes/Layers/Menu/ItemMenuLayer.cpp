@@ -21,11 +21,14 @@ ItemMenuLayer::~ItemMenuLayer(){FUNCLOG}
 bool ItemMenuLayer::init()
 {
     FUNCLOG
+    // メニュー設定
     int obj_count = PlayerDataManager::getInstance()->getItemAll().size();
-    Point maxSize = Point(3,8);
+    Point maxSize = Point(3,6);
     int sizeX = obj_count < maxSize.x ? obj_count : maxSize.x;
-    int sizeY = obj_count < 16 ? floor((obj_count - 1 )/ 3) + 1 : maxSize.y;
-    if (!MenuLayer::init(sizeX, sizeY)) return false;
+    int sizeY = obj_count < maxSize.x * maxSize.y ? floor((obj_count - 1 )/ maxSize.x) + 1 : maxSize.y;
+    Size size = Size(sizeX, sizeY);
+    int page_size = floor(obj_count / (maxSize.x * maxSize.y)) + 1;
+    if (!MenuLayer::init(size, page_size)) return false;
     
     SpriteUtils::Square square;
     SpriteUtils::Margin margin;
@@ -82,7 +85,9 @@ bool ItemMenuLayer::init()
     square = SpriteUtils::Square(0,25,100,80);
     margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
     Sprite* center = SpriteUtils::getSquareSprite(square, margin);
+    center->setName("itemList");
     center->setColor(Color3B::BLACK);
+    CC_SAFE_RETAIN(center);
     this->addChild(center);
     
     map<int,int> items = PlayerDataManager::getInstance()->getItemAll();
@@ -91,18 +96,35 @@ bool ItemMenuLayer::init()
         items.insert({-1,0});
     }
     int i = 0;
+    int page = 0;
+    int upDownMargin = 40;
+    Size centerSize {center->getContentSize()};
     for(auto itr = items.begin(); itr != items.end(); itr++)
     {
+        // ページパネル生成
+        page = floor(i / (maxSize.x * maxSize.y));
+        if (this->pagePanels.size() < page + 1)
+        {
+            Sprite* page_panel = Sprite::create();
+            page_panel->setTextureRect(Rect(0,0,centerSize.width, centerSize.height));
+            page_panel->setPosition(page_panel->getContentSize().width/2, page_panel->getContentSize().height/2);
+            page_panel->setColor(Color3B::BLACK);
+            page_panel->setName("pagePanel");
+            CC_SAFE_RETAIN(page_panel);
+            this->pagePanels.push_back(page_panel);
+        }
+        
         // パネル生成
         Sprite* panel = Sprite::create();
-        Size list_size {center->getContentSize()};
+        Size list_size {this->pagePanels[page]->getContentSize()};
+        list_size.height -= upDownMargin;
         panel->setTextureRect(Rect(0, 0, list_size.width / maxSize.x, list_size.height / maxSize.y));
         panel->setColor(Color3B::BLACK);
         panel->setTag(i);
         Size panel_size {panel->getContentSize()};
-        panel->setPosition((i%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor(i/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2);
-        center->addChild(panel);
+        panel->setPosition(((i - (int)(page * maxSize.x * maxSize.y))%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor((i - page * maxSize.x * maxSize.y)/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2 + upDownMargin/2);
         // メニューオブジェクトに登録
+        this->pagePanels[page]->addChild(panel);
         this->menuObjects.push_back(panel);
         // 不透明度を半分にしておく
         panel->setCascadeOpacityEnabled(true);
@@ -117,8 +139,8 @@ bool ItemMenuLayer::init()
         // インクリメント
         i++;
     }
-    
     // デフォルトセレクト
+    this->onPageChanged(0);
     this->onIndexChanged(0, false);
     
     return true;
@@ -265,6 +287,12 @@ void ItemMenuLayer::onMenuKeyPressed()
     FUNCLOG
     if(this->onItemMenuCanceled)
     {
+        CC_SAFE_RELEASE(this->getChildByName("itemList"));
+        int size = this->pagePanels.size();
+        for (int i = 0; i < size; i++)
+        {
+            CC_SAFE_RELEASE(this->pagePanels[i]);
+        }
         this->onItemMenuCanceled();
     }
 }
@@ -288,21 +316,77 @@ void ItemMenuLayer::onSpacePressed(int idx)
 // 選択対象が変わった時
 void ItemMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
+    // カーソル音
     if (sound)
     {
         SoundManager::getInstance()->playSE("cursorMove.mp3");
     }
+    
+    // カーソル処理
     for(Node* obj : this->menuObjects)
     {
         if(obj->getTag() == newIdx)
         {
-            obj->runAction(FadeTo::create(0.2f, 255));
+            obj->runAction(FadeTo::create(0.1f, 255));
         }
         else
         {
-            obj->runAction(FadeTo::create(0.2f, 100));
+            obj->runAction(FadeTo::create(0.1f, 100));
         }
     }
     // アイテム詳細を更新
     this->changeItemDiscription(newIdx);
+}
+
+// ページが変わった時
+void ItemMenuLayer::onPageChanged(const int page)
+{
+    FUNCLOG
+    //　ページ処理
+    Node * itemList = this->getChildByName("itemList");
+    itemList->removeChildByName("pagePanel");
+    itemList->addChild(this->pagePanels[page]);
+    int page_size = this->getPageSize();
+    Size list_size = itemList->getContentSize();
+    
+    // ページカウンター
+    if (page_size > 1)
+    {
+        Label* counter = Label::createWithTTF(to_string(page+1) + "/" + to_string(page_size), "fonts/cinecaption2.28.ttf", 20);
+        counter->setPosition(counter->getContentSize().width/2 + 5 , counter->getContentSize().height/2 + 5);
+        counter->setColor(Color3B::WHITE);
+        itemList->addChild(counter);
+    }
+    
+    // 下への矢印
+    if(page + 1 != page_size)
+    {
+        Label* downPager = Label::createWithTTF("▼", "fonts/cinecaption2.28.ttf", 18);
+        downPager->setPosition(list_size.width/2 , downPager->getContentSize().height / 2 + 5);
+        downPager->setColor(Color3B::WHITE);
+        itemList->addChild(downPager);
+        
+        // アクション生成
+        ActionInterval* bigsmall = Sequence::createWithTwoActions(
+            TargetedAction::create(downPager, ScaleTo::create(0.3f, 0.8f)),
+            TargetedAction::create(downPager, ScaleTo::create(0.3f, 1.0f))
+        );
+        this->runAction(RepeatForever::create(bigsmall));
+    }
+    
+    // 上への矢印
+    if (page != 0)
+    {
+        Label* upPager = Label::createWithTTF("▲", "fonts/cinecaption2.28.ttf", 18);
+        upPager->setPosition(list_size.width/2 , list_size.height - upPager->getContentSize().height / 2 - 5);
+        upPager->setColor(Color3B::WHITE);
+        itemList->addChild(upPager);
+        
+        // アクション生成
+        ActionInterval* bigsmall = Sequence::createWithTwoActions(
+            TargetedAction::create(upPager, ScaleTo::create(0.3f, 0.8f)),
+            TargetedAction::create(upPager, ScaleTo::create(0.3f, 1.0f))
+        );
+        this->runAction(RepeatForever::create(bigsmall));
+    }
 }
