@@ -71,7 +71,7 @@ bool RemoveItemEvent::init(rapidjson::Value& json)
 void RemoveItemEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->setItemUsed(this->itemId);
+    PlayerDataManager::getInstance()->removeItem(this->itemId);
 }
 
 #pragma mark -

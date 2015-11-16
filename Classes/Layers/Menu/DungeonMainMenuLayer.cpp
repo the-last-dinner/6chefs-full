@@ -40,6 +40,29 @@ bool DungeonMainMenuLayer::init()
 	hBg->setCascadeOpacityEnabled(true);
 	this->addChild(hBg);
     
+    // メニューの選択肢を生成
+    map<Type, string> menuStrings
+    {
+        {Type::ITEM, "アイテム"},
+        { Type::SAVE, "セーブ" },
+        { Type::CHARA, "キャラ" },
+        { Type::TITLE, "タイトル" },
+        { Type::CLOSE, "閉じる" },
+    };
+    
+    for(int i {0}; i < static_cast<int>(Type::SIZE); i++)
+    {
+        Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
+        menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
+        hBg->addChild(menu);
+        this->menuObjects.push_back(menu);
+    }
+    
+    // マップ名表示
+    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
+    mapName->setPosition(mapName->getContentSize().width / 2, hBg->getContentSize().height - mapName->getContentSize().height / 2);
+    hBg->addChild(mapName);
+    
 	// 下のメニューを生成
     Sprite* fBg { Sprite::create() };
 	fBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
@@ -48,29 +71,6 @@ bool DungeonMainMenuLayer::init()
 	//fBg->setOpacity(0);
 	fBg->setCascadeOpacityEnabled(true);
 	this->addChild(fBg);
-	
-	// メニューの選択肢を生成
-	map<Type, string> menuStrings
-	{
-		{Type::ITEM, "アイテム"},
-		{ Type::SAVE, "セーブ" },
-		{ Type::CHARA, "キャラ" },
-		{ Type::TITLE, "タイトル" },
-		{ Type::CLOSE, "閉じる" },
-	};
-	
-	for(int i {0}; i < static_cast<int>(Type::SIZE); i++)
-	{
-		Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
-		menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
-		hBg->addChild(menu);
-		this->menuObjects.push_back(menu);
-	}
-	
-	// マップ名表示
-    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
-	mapName->setPosition(mapName->getContentSize().width / 2, hBg->getContentSize().height - mapName->getContentSize().height / 2);
-	hBg->addChild(mapName);
     
     // 装備品表示
     int right_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT);
