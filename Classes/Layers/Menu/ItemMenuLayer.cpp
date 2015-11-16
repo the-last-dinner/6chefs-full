@@ -347,12 +347,22 @@ void ItemMenuLayer::onPageChanged(const int page)
     itemList->removeChildByName("pagePanel");
     itemList->addChild(this->pagePanels[page]);
     int page_size = this->getPageSize();
+    Size list_size = itemList->getContentSize();
+    
+    // ページカウンター
+    if (page_size > 1)
+    {
+        Label* counter = Label::createWithTTF(to_string(page+1) + "/" + to_string(page_size), "fonts/cinecaption2.28.ttf", 20);
+        counter->setPosition(counter->getContentSize().width/2 + 5 , counter->getContentSize().height/2 + 5);
+        counter->setColor(Color3B::WHITE);
+        itemList->addChild(counter);
+    }
     
     // 下への矢印
     if(page + 1 != page_size)
     {
         Label* downPager = Label::createWithTTF("▼", "fonts/cinecaption2.28.ttf", 18);
-        downPager->setPosition(itemList->getContentSize().width/2 , downPager->getContentSize().height / 2 + 5);
+        downPager->setPosition(list_size.width/2 , downPager->getContentSize().height / 2 + 5);
         downPager->setColor(Color3B::WHITE);
         itemList->addChild(downPager);
         
@@ -368,7 +378,7 @@ void ItemMenuLayer::onPageChanged(const int page)
     if (page != 0)
     {
         Label* upPager = Label::createWithTTF("▲", "fonts/cinecaption2.28.ttf", 18);
-        upPager->setPosition(itemList->getContentSize().width/2 , itemList->getContentSize().height - upPager->getContentSize().height / 2 - 5);
+        upPager->setPosition(list_size.width/2 , list_size.height - upPager->getContentSize().height / 2 - 5);
         upPager->setColor(Color3B::WHITE);
         itemList->addChild(upPager);
         
