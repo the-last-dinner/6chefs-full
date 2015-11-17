@@ -257,5 +257,5 @@ int DungeonSceneManager::getRunningEventId() const
 
 void DungeonSceneManager::setPlayerControlEnable(bool enable)
 {
-    this->getScene()->playerControlTask->setControlEnable(enable);
+    this->getScene()->playerControlTask->setControlEnable(enable, this->getScene()->party);
 }

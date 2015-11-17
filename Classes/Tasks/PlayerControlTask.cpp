@@ -33,8 +33,6 @@ void PlayerControlTask::turn(const Key& key, Party* party)
 {
     if(!this->enableControl) return;
     
-    this->party = party;
-    
     Direction direction { MapUtils::keyToDirection(key) };
     Character* mainCharacter {party->getMainCharacter()};
     
@@ -45,14 +43,11 @@ void PlayerControlTask::turn(const Key& key, Party* party)
         mainCharacter->setDirection(direction);
         
         // 一定時間後に歩行開始
-        this->scheduleOnce(CC_SCHEDULE_SELECTOR(PlayerControlTask::startWalking), MapObject::DURATION_MOVE_ONE_GRID);
+        this->runAction(Sequence::createWithTwoActions(DelayTime::create(MapObject::DURATION_MOVE_ONE_GRID), CallFunc::create([this, party]
+        {
+            this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
+        })));
     }
-}
-
-// 歩行開始
-void PlayerControlTask::startWalking(float _)
-{
-    this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), this->party);
 }
 
 // 目の前を調べる
@@ -134,7 +129,7 @@ void PlayerControlTask::onPartyMovedOneGrid(Party* party)
 }
 
 // 操作可能状態か設定
-void PlayerControlTask::setControlEnable(bool enable)
+void PlayerControlTask::setControlEnable(bool enable, Party* party)
 {
     this->enableControl = enable;
     
