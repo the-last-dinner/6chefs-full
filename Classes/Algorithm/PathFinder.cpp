@@ -25,7 +25,7 @@ bool PathFinder::init(const Size& mapSize)
 }
 
 // A-starのアルゴリズムで経路を探索
-stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition)
+deque<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition)
 {
     map<Point, PathNode*> nodeMap {};
     
@@ -58,7 +58,7 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
     
     PathNode* destNode { this->find(startNode, destGridPosition, nodeMap)};
     
-    stack<Direction> directions;
+    deque<Direction> directions;
     
     if(!destNode) return directions;
     
@@ -68,7 +68,7 @@ stack<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
     {
         // 親との差ベクトルを方向に変換
         Direction direction {MapUtils::vecToMapDirection(node->getGridPoint() - node->getParent()->getGridPoint())};
-        if(direction != Direction::SIZE) directions.push(direction);
+        if(direction != Direction::SIZE) directions.push_front(direction);
         
         // ノード入れ替え
         node = node->getParent();

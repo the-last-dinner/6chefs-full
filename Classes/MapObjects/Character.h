@@ -41,8 +41,12 @@ public:
 	void setDirection(Direction direction);
 	void setMoving(bool _isMoving);
     void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
-    void walkBy(const Direction& direction, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
-    void walkBy(const vector<Direction>& directions, const int gridNum, function<void()> onWalked, const float ratio = 1.0f);
+    bool walkBy(const Direction& direction, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
+    bool walkBy(const vector<Direction>& directions, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
+    void walkBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkByQueue(deque<Direction> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
 };
 
 #endif // __CHARACTER_H__

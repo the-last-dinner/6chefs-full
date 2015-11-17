@@ -31,7 +31,7 @@ private:
     
 public:
     void addMember(Character* character);
-    void move(const vector<Direction>& directions, float ratio, function<void()> callback);
+    bool move(const vector<Direction>& directions, float ratio, function<void()> callback);
     Character* getMainCharacter() const;
     Vector<Character*> getMembers() const;
     void reload();

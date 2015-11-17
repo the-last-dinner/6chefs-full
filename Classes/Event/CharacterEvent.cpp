@@ -85,6 +85,8 @@ bool WalkByEvent::init(rapidjson::Value& json)
     
     if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
     
+    if(this->validator->hasMember(json, member::OPTION)) this->back = true;
+    
     return true;
 }
 
@@ -92,7 +94,7 @@ void WalkByEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    this->target->walkBy(this->direction, this->gridNum, [this]{this->setDone();}, this->speedRatio);
+    this->target->walkBy(this->direction, this->gridNum, [this](bool _){this->setDone();}, this->speedRatio, this->back);
 }
 
 #pragma mark -
@@ -112,32 +114,9 @@ void WalkToEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
     
-    //  経路探索開始
+    // 経路探索開始
     PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
-    stack<Direction> directions { pathFinder->getPath(this->target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(), this->destPosition) };
+    deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(), this->destPosition) };
     
-    this->directionStack = directions;
-    
-    this->walk();
-}
-
-void WalkToEvent::walk()
-{
-    // スタックに何もなければ終了
-    if(this->directionStack.empty())
-    {
-        this->setDone();
-        
-        return;
-    }
-    
-    // スタックの一番上を取り出して削除
-    Direction direction { this->directionStack.top() };
-    this->directionStack.pop();
-    
-    // 取り出した方向に向かせる
-    this->target->setDirection(direction);
-    
-    // 取り出した方向を元に歩かせる、コールバックでこのメソッドを繰り返し呼ぶ
-    this->target->walkBy(direction, 1, [this]{this->walk();});
+    this->target->walkByQueue(directions, [this](bool reached){this->setDone();});
 }
