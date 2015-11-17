@@ -52,6 +52,7 @@ private:
     Direction direction {Direction::SIZE};
     int gridNum {0};
     float speedRatio {1.f};
+    bool back { false };
 private:
     WalkByEvent() {FUNCLOG};
     ~WalkByEvent() {FUNCLOG};
@@ -66,14 +67,11 @@ public:
     CREATE_FUNC_WITH_PARAM(WalkToEvent, rapidjson::Value&)
 private:
     Point destPosition { Point::ZERO };
-    stack<Direction> directionStack {};
 private:
     WalkToEvent() {FUNCLOG};
     ~WalkToEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
-public:
-    void walk();
 };
 
 #endif /* defined(__LastSupper__CharacterEvent__) */

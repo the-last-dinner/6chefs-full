@@ -60,5 +60,5 @@ void RandomMove::move()
     // 移動可能方向からランダムな要素を取り出す
     vector<Direction> detectedDirs {enableDirections[cocos2d::random(0, static_cast<int>(enableDirections.size()))]};
     
-    this->chara->walkBy(detectedDirs, 1, [this]{this->move();});
+    this->chara->walkBy(detectedDirs, [this]{this->move();});
 }

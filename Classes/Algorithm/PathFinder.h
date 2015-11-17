@@ -39,7 +39,7 @@ private:
     PathNode* createNode(const Point& gridPosition);
     PathNode* createNode(const Point& gridPosition, const Point& destGridPosition, PathNode* parent = nullptr);
 public:
-    stack<Direction> getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition);
+    deque<Direction> getPath(const Rect& chaserGridRect, const vector<Rect>& collisionGridRects, const Point& destGridPosition);
     
 // クラス
 private:

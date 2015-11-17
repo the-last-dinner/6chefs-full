@@ -96,22 +96,14 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     // 入力から、使う方向の個数を決める
     int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
     
-    // 入力が２以上の時、斜め方向に当たり判定があるか確認
-    bool isHit {(directionCount > 1)?mainCharacter->isHit({directions.back(), directions.at(directionCount - 2)}):false};
-    
-    // 方向から当たり判定を一方向づつ確認し、移動方向に詰める
     vector<Direction> moveDirections {};
-    for(int i {static_cast<int>(directions.size()) - 1}; i >= static_cast<int>(directions.size()) - directionCount; i--)
+    for(int i { 0 }; i < directions.size(); i++)
     {
-        if((!isHit && !mainCharacter->isHit(directions.at(i))) || (isHit && !mainCharacter->isHit(directions.at(i)) && moveDirections.empty()))
-        {
-            moveDirections.push_back(directions.at(i));
-        }
+        if(directions.size() - directionCount > i) continue;
+        moveDirections.push_back(directions.at(i));
     }
     
-    if(moveDirections.empty()) return;
-    
-    party->move(moveDirections, ratio, [this, party]{this->onPartyMovedOneGrid(party);});
+    if(!party->move(moveDirections, ratio, [this, party]{this->onPartyMovedOneGrid(party);})) return;
     
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     

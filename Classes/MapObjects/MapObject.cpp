@@ -127,24 +127,22 @@ Rect MapObject::getCollisionRect() const
 // 指定方向に移動した場合の衝突判定用Rectを取得
 Rect MapObject::getCollisionRect(const Direction& direction) const
 {
-    Rect rect {this->getCollisionRect()};
+    vector<Direction> directions {direction};
     
-    Point movementVec {MapUtils::getGridVector(direction)};
-    
-    // あたり判定用Rectを縦横-2ピクセルした後に、x,y方向に1ピクセル足すことによって、関係ない範囲を巻き込まないようにしている（線分上、頂点上であっても判定がきいてしまうため）
-    return Rect(rect.origin.x + 1 + movementVec.x, rect.origin.y + 1 + movementVec.y, rect.size.width - 2, rect.size.height - 2);
+    return this->getCollisionRect(directions);
 }
 
 // 指定2方向に移動した場合の衝突判定用Rectを取得
-Rect MapObject::getCollisionRect(const Direction (&directions)[2]) const
+Rect MapObject::getCollisionRect(const vector<Direction>& directions) const
 {
     Rect rect {this->getCollisionRect()};
     
     Point movementVec {Point::ZERO};
     
     // 二方向分の移動ベクトルを生成する
-    for(int i{0};i < 2;i++)
+    for(int i { 0 }; i < directions.size(); i++)
     {
+        if(i > 2) break;
         movementVec += MapUtils::getGridVector(directions[i]);
     }
     
@@ -155,38 +153,47 @@ Rect MapObject::getCollisionRect(const Direction (&directions)[2]) const
 // 指定の方向に対して当たり判定があるか
 const bool MapObject::isHit(const Direction& direction) const
 {
-    if(!this->objectList) return false;
+    vector<Direction> directions {direction};
     
-    return this->objectList->containsCollisionObject(this->getCollisionRect(direction));
+    return this->isHit(directions);
 }
 
 // 指定の２方向に対して当たり判定があるか
-const bool MapObject::isHit(const Direction (&directions)[2]) const
+const bool MapObject::isHit(const vector<Direction>& directions) const
 {
     if(!this->objectList) return false;
     
     return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
 }
 
-// 方向、マス数指定移動用メソッド
-void MapObject::moveBy(const Direction& direction, const int gridNum, function<void()> onMoved, const float ratio)
+// 方向指定移動メソッド
+bool MapObject::moveBy(const Direction& direction, function<void()> onMoved, const float ratio)
 {
     vector<Direction> directions {direction};
-    this->moveBy(directions, gridNum, onMoved, ratio);
+    
+    return this->moveBy(directions, onMoved, ratio);
 }
 
-// 複数方向、マス数指定移動用メソッド
-void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void()> onMoved, const float ratio)
+// 方向指定移動メソッド
+bool MapObject::moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio)
 {
-    if(directions.empty()) return;
+    if(directions.empty()) return false;
     
-    Vec2 movement {};
+    // 入力が２以上の時、斜め方向に当たり判定があるか確認
+    bool isHitDiagnally { directions.size() >= 2 ? this->isHit(directions) : false };
     
     // 移動ベクトルを算出
+    Vec2 movement {Vec2::ZERO};
     for(Direction direction : directions)
     {
-        if(direction != Direction::SIZE) movement += MapUtils::getGridVector(direction) * gridNum;
+        if((!isHitDiagnally && !this->isHit(direction)) || (isHitDiagnally && !this->isHit(direction) && movement == Vec2::ZERO))
+        {
+            movement += MapUtils::getGridVector(direction);
+        }
     }
+    
+    // 移動ベクトルがゼロならリターン。移動失敗として処理
+    if(movement == Vec2::ZERO) return false;
     
     // マス座標を変更
     this->setGridPosition(this->getGridPosition() + Vec2(movement.x, -movement.y) / GRID);
@@ -196,7 +203,52 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     
     // 移動開始
     this->_isMoving = true;
-    this->runAction(Sequence::create(MoveBy::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio, movement), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
+    this->runAction(Sequence::create(MoveBy::create(DURATION_MOVE_ONE_GRID / ratio, movement), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
+    
+    return true;
+}
+
+// 方向、マス数指定移動用メソッド
+void MapObject::moveBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio)
+{
+    vector<Direction> directions {direction};
+    this->moveBy(directions, gridNum, callback, ratio);
+}
+
+// 複数方向、マス数指定移動用メソッド
+void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> callback, const float ratio)
+{
+    if(directions.empty() || this->isMoving()) return;
+    
+    deque<vector<Direction>> directionsQueue {};
+    
+    // 方向をキューに登録
+    for(int i { 0 }; i < gridNum; i++)
+    {
+        directionsQueue.push_back(directions);
+    }
+    
+    // キューに登録した動きを実行
+    this->moveByQueue(directionsQueue, callback, ratio);
+}
+
+// キューから動かす
+void MapObject::moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio)
+{
+    // キューが空になったら成功としてコールバックを呼び出し
+    if(directionsQueue.empty())
+    {
+        callback(true);
+        
+        return;
+    }
+    
+    // キューの先頭を実行。失敗時にはコールバックを失敗として実行
+    vector<Direction> directions { directionsQueue.front() };
+    directionsQueue.pop_front();
+    
+    // 移動開始。失敗時はコールバックを失敗として呼び出し
+    if(!this->moveBy(directions, [this, directionsQueue, callback, ratio]{this->moveByQueue(directionsQueue, callback, ratio);}, ratio)) callback(false);
 }
 
 // 目的地指定移動用メソッド
@@ -224,7 +276,7 @@ void MapObject::drawDebugMask()
         Point(0, this->getContentSize().height),
         this->getContentSize(),
         Point(this->getContentSize().width, 0),
-	Point::ZERO,
+        Point::ZERO,
     };
     Color4F lineColor = Color4F::BLUE;
     DrawNode* draw {DrawNode::create()};

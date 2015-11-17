@@ -35,7 +35,7 @@ void Party::addMember(Character* character)
 }
 
 // パーティを移動
-void Party::move(const vector<Direction>& directions, float ratio, function<void()> callback)
+bool Party::move(const vector<Direction>& directions, float ratio, function<void()> callback)
 {
     Direction direction {Direction::SIZE};
     Point destPos { Point::ZERO };
@@ -59,11 +59,13 @@ void Party::move(const vector<Direction>& directions, float ratio, function<void
             dirs = MapUtils::vecToDirections(destPos - character->getPosition());
         }
         
-        character->walkBy(dirs, 1, cb, ratio);
+        if(!character->walkBy(dirs, cb, ratio)) return false;
         
         direction = character->getDirection();
         destPos = character->getPosition();
     }
+    
+    return true;
 }
 
 // 主人公を取得

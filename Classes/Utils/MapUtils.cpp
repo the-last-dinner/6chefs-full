@@ -145,3 +145,19 @@ bool MapUtils::intersectsGridRect(const Rect& rect1, const Rect& rect2)
              rect1.origin.y - rect1.size.height + 1 > rect2.getMinY() ||
              rect1.getMinY() < rect2.origin.y - rect2.size.height + 1);
 }
+
+// 反対方向を取得
+Direction MapUtils::oppositeDirection(const Direction& direction)
+{
+    map<Direction, Direction> directionMap
+    {
+        {Direction::FRONT, Direction::BACK},
+        {Direction::BACK, Direction::FRONT},
+        {Direction::RIGHT, Direction::LEFT},
+        {Direction::LEFT, Direction::RIGHT},
+    };
+    
+    if(directionMap.count(direction) == 0) return Direction::SIZE;
+    
+    return directionMap[direction];
+}
