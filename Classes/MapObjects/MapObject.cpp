@@ -140,9 +140,9 @@ Rect MapObject::getCollisionRect(const vector<Direction>& directions) const
     Point movementVec {Point::ZERO};
     
     // 二方向分の移動ベクトルを生成する
-    for(int i { 0 }; i < 2; i++)
+    for(int i { 0 }; i < directions.size(); i++)
     {
-        if(directions.size() < i) break;
+        if(i > 2) break;
         movementVec += MapUtils::getGridVector(directions[i]);
     }
     
