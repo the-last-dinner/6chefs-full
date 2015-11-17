@@ -33,12 +33,19 @@
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
 // デストラクタ
-DungeonScene::~DungeonScene() {FUNCLOG}
+DungeonScene::~DungeonScene()
+{
+    FUNCLOG
+
+    CC_SAFE_RELEASE_NULL(this->party);
+}
 
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
     if(!Scene::init()) return false;
+    
+    DungeonSceneManager::getInstance();
     
     // データクラスをセットしretain
     this->data = data;
@@ -65,6 +72,17 @@ void DungeonScene::onPreloadFinished()
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
+    // 主人公一行を生成
+    Party* party { this->createParty() };
+    this->party = party;
+    
+    // パーティーをマップに配置
+    Location location { this->getData()->getInitialLocation() };
+    for(Character* character : party->getMembers())
+    {
+        mapLayer->addMapObject(character, Point(location.x, location.y));
+    }
+    
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
     ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
@@ -86,18 +104,6 @@ void DungeonScene::onPreloadFinished()
     this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
     
-    // パーティーのキャラクタを生成しなおす
-    // NOTICE: 一時的に。本当はPlayerDatamanagerにキャラクタIDなどを保持しておいて、Partyインスタンス自体を生成し直すほうがよい
-    Party* party { DungeonSceneManager::getInstance()->getParty() };
-    party->reload();
-    
-    // パーティーをマップに配置
-    Location location { this->getData()->getInitialLocation() };
-    for(Character* character : party->getMembers())
-    {
-        mapLayer->addMapObject(character, Point(location.x, location.y));
-    }
-    
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
     listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
@@ -114,14 +120,31 @@ void DungeonScene::onPreloadFinished()
 // Trigger::INITのイベント実行後
 void DungeonScene::onInitEventFinished()
 {
-    DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
-    cameraTask->setTarget( DungeonSceneManager::getInstance()->getParty()->getMainCharacter() );
+    this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    cameraTask->setTarget( this->party->getMainCharacter() );
     
     // ローディングレイヤを消す
     this->loadingLayer->loadFinished();
     
     // Trigger::AFTER_INITを実行
     this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT));
+}
+
+// 主人公一行を生成
+Party* DungeonScene::createParty()
+{
+    vector<int> characterIds { PlayerDataManager::getInstance()->getPartyMemberAll() };
+    
+    Party* party { Party::create(Character::create(characterIds.at(0), this->getData()->getInitialLocation().direction)) };
+    CC_SAFE_RETAIN(party);
+    
+    for(int i { 0 }; i < characterIds.size(); i++)
+    {
+        if(i == 0) continue;
+        party->addMember(Character::create(characterIds.at(i), this->getData()->getInitialLocation().direction));
+    }
+    
+    return party;
 }
 
 // メニューキー押したとき

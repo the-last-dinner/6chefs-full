@@ -14,7 +14,12 @@
 Party::Party() {FUNCLOG};
 
 // デストラクタ
-Party::~Party() {FUNCLOG};
+Party::~Party()
+{
+    FUNCLOG
+
+    this->members.clear();
+};
 
 // 初期化
 bool Party::init(Character* mainCharacter)

@@ -33,7 +33,6 @@ public:
 private:
     EventFactory* eventFactory { nullptr };
     EventScriptValidator* scriprtValidator { nullptr };
-    Party* party { nullptr };
     
 // インスタンスメソッド
 private:

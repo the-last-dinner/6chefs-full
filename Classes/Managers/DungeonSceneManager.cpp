@@ -57,10 +57,8 @@ DungeonSceneManager::DungeonSceneManager()
     CC_SAFE_RETAIN(scriptValidator);
     this->scriprtValidator = scriptValidator;
     
-    // パーティを生成
-    Party* party { Party::create(Character::create(0, Direction::FRONT)) };
-    CC_SAFE_RETAIN(party);
-    this->party = party;
+    // 主人公一行に主人公登録
+    PlayerDataManager::getInstance()->setPartyMember(0);
 };
 
 // デストラクタ
@@ -70,7 +68,6 @@ DungeonSceneManager::~DungeonSceneManager()
 
     CC_SAFE_RELEASE_NULL(this->eventFactory);
     CC_SAFE_RELEASE_NULL(this->scriprtValidator);
-    CC_SAFE_RELEASE_NULL(this->party);
 };
 
 #pragma mark -
@@ -115,7 +112,7 @@ EventScriptValidator* DungeonSceneManager::getScriptValidator() const
 // パーティを取得
 Party* DungeonSceneManager::getParty() const
 {
-    return this->party;
+    return this->getScene()->party;
 }
 
 #pragma mark -
@@ -177,11 +174,6 @@ void DungeonSceneManager::removeMapObject(MapObject* mapObject)
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location)
 {
-    for(Character* member : this->party->getMembers())
-    {
-        member->setParent(nullptr);
-    }
-    
     PlayerDataManager::getInstance()->setLocation(location);
     
     // 必要な情報を設定していく

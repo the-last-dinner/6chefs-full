@@ -9,7 +9,6 @@
 #include "Tasks/PlayerControlTask.h"
 
 #include "MapObjects/Character.h"
-#include "MapObjects/MapObject.h"
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
 
