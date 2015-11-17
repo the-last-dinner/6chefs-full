@@ -31,7 +31,7 @@ public:
 // インスタンス変数
 private:
     EventListenerKeyboardLayer* listener { nullptr };
-    cocos2d::FileUtils* fu;
+    cocos2d::FileUtils* fu { nullptr };
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
     
