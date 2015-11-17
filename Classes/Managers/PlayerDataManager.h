@@ -82,6 +82,7 @@ public:
     // REMOVE
     bool removeItem(const int item_id);
     bool removePartyMember(const int chara_id);
+    void removePartyMemberAll();
     
     // GET
     Location getLocation();
