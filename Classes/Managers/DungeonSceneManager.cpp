@@ -197,18 +197,6 @@ void DungeonSceneManager::changeMap(const Location& location)
 #pragma mark -
 #pragma mark EventListener
 
-// インターバルを設定
-void DungeonSceneManager::setInputCheckInterval(const float interval)
-{
-    this->getScene()->listener->setInputCheckInterval(interval);
-}
-
-// コールバックを呼び出しの有無を設定
-void DungeonSceneManager::setEventListenerPaused(const bool paused)
-{
-    this->getScene()->listener->setPaused(paused);
-}
-
 // 指定キーが押されているかチェック
 bool DungeonSceneManager::isPressed(const Key& key)
 {

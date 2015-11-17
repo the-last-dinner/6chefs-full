@@ -63,8 +63,6 @@ public:
     void changeMap(const Location& location);
     
     // EventListener
-    void setInputCheckInterval(const float interval);
-    void setEventListenerPaused(const bool paused);
     bool isPressed(const Key& key);
     vector<Key> getPressedCursorKeys() const;
     
