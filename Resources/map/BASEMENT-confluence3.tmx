@@ -16,7 +16,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkAEKgCAUQ+0A1UGyg+hZO2RBfhjy/WKCFWwwBhv/ITqna05eINdsl07bS9qSPeSe7dJpu8X1Sh7TbezxDTWFy1FJ4WIfYK9J7ls9mvuUR67N7eWN5v7tf8kll1xyySW3hWup5/YN7hd0Aj5XPGY=
+   eJzt1V8KgCAMB+B5gOqpOkT1lB2iHuuaHTJFhB/V6I9hBRuM2RofYoFE2+gUUUIuU6gZzGAP163aAcGtyGUNtYEZ7OH6jIumr7NyiX3cw5HbmzrQtnoX+z2851ytnDvfTM4dTX962A3ZZ2w39Fw5N/RcOTfUi+0W5rn80Xf72/8rrrjiiivue64Ne8/tJd59OTNTMCYX67vP7klfNL4eCzG9TMo=
   </data>
  </layer>
  <layer name="blood" width="22" height="36">
@@ -90,11 +90,6 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="CharaUe1" width="22" height="36">
-  <data encoding="base64" compression="zlib">
-   eJxjYMAEpoxYBIkExnj0jppLO3ODgOLBVDaXEncOF3MpDVdc5lIL0MtcMSBffAjF26i5o+YOVnNNsKgfzO4dNXfU3JFgLgiA6jlsGLnuE8WhRoyMcgDZLyA3YSsbhjIAACLRD/s=
-  </data>
- </layer>
  <objectgroup name="event">
   <properties>
    <property name="EventID" value="12110"/>

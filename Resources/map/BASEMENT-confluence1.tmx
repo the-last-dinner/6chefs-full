@@ -20,7 +20,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzlk10OhCAMhIHX9WevoSteRO9/C/UK1uAkLKGKIfVBJ5mUROiHY1XqX5NWatZ8PdqH9RLZH6oyzvXujmzJ7W7oY5wLchmpeMap83pbb41zNd3xS26M88b+ef3LRA7Ox7z1tMToGU7IOuIM1GPU12uYoyTnSm45nOImjs/iOJgj6e+DOXpKbrmc8H+S4nA5SnPwbmfK5WB+pTmYX2lOqu7iQKk55yo157dpBVtgW7c=
+   eJzlk0EOgjAQRdtuBWGjnkGlbtBT6ErvfwT1Cg4pPzZNp0wodeNPfoaEoQ/+DEp9ddFKPcmvRIVi93H9jvSrgLM2zs3ojmzJh9HQyjhX5DpScY/jdN7Z1rvGcw31tOS9cR7YR+/8WsjB8zEPZ1rqOTGckJXiXMm3GTXMsSRHkttZ53MqAedOvY8Fc+M42KPS88Eelc5tS727H+SWuwfh/zT1n87lcDmW5uDbOOXOCRX7yyl3TqjY35SW4Gy0y6Y0p9cumylhTsgZ7ye1VJgTcpa+37/oA7MNYsU=
   </data>
  </layer>
  <layer name="MonoShita" width="26" height="22">
@@ -61,11 +61,6 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <layer name="CharaUe1" width="26" height="22">
-  <data encoding="base64" compression="zlib">
-   eJxjYBi5QIIZwRZjxq1usNgDMucnE34MA8hiv5hwm0nIvbTUN5zsQQ9/WtlDCSDVP6SmG3LsIUc9ve0BAVLyE7XikxhzKIkndHMIpd/BmE5x6SfXP6bMxGMzCvLTUKhvhiMAADdCINE=
-  </data>
- </layer>
  <layer name="CharaUe2" width="26" height="22">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGAa3BXWYGhnvMtLfnN9COP3SwZ6gBAM/YA78=

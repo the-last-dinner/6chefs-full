@@ -334,8 +334,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":["1532"],
-					"Nflg":"1"
+					"item":["1532"]
 				}
 			],
 			"action":[
@@ -393,7 +392,6 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":"1532",
 					"flg":"1"
 				}
 			],
@@ -426,7 +424,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"flg":"0"
 				}
 			],
 			"action":[

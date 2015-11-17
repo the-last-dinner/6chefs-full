@@ -37,6 +37,9 @@
   </data>
  </layer>
  <layer name="hint" width="20" height="20">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRgA+0c1LXvOlA82ZQ2cyBAACb+AHS
   </data>

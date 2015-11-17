@@ -52,15 +52,18 @@
           "objID": "hero"
         },
         {
-          "type": "wait",
-          "time": 0.5
+          "type":"changeDirection",
+          "objID":"hero",
+          "direction":"LEFT"
+        },
+        {
+          "type":"wait",
+          "time":0.5
         },
         {
           "type": "charaMsg",
-          "charaID": "9",
-          "text": [
-            "皆様既にお揃いですので、\nお料理のしやすい格好にお着替えになって食堂でお待ちください。"
-          ],
+          "charaID":"9",
+          "text": ["皆様既にお揃いです。","お料理のしやすい格好にお着替えになって\n食堂でお待ちください。"],
           "name": "執事服の老人"
         }
       ]

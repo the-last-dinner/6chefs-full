@@ -39,6 +39,9 @@
   </data>
  </layer>
  <layer name="item " width="10" height="10">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBi64BAXA8NhLsLqHgHVPCZC3WAAAIseA3M=
   </data>

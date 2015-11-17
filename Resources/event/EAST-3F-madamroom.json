@@ -129,10 +129,20 @@
 					"limit":6.0,
 					"true":[
 						{
-							"type":"charaWalk",
-							"direction":"UP",
-							"objID":"hero",
-							"steps":1.0
+							"type":"sequence",
+							"action":[
+								{
+									"type":"changeDirection",
+									"direction":"UP",
+									"objID":"hero"
+								},
+								{
+									"type":"changeMap",
+									"mapID":"38",
+									"x":14,
+									"y":15
+								}
+							]
 						}
 					]
 				},

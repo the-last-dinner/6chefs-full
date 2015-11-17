@@ -64,18 +64,28 @@
 	],
 	"5":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"event":["39","4"]
+				}
+			],
 			"action":[
 				{
-					"type":"playSE",
-					"file":"door_keyopen.mp3"
-				},
-				{
-					"type":"removeChara",
-					"objID":"188"
-				},
-				{
-					"type":"already"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"playSE",
+							"file":"door_keyopen.mp3"
+						},
+						{
+							"type":"removeChara",
+							"objID":"188"
+						},
+						{
+							"type":"already"
+						}
+					]
 				}
 			]
 		}

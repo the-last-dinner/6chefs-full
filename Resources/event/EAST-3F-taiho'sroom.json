@@ -39,7 +39,7 @@
 							"imgID":"2"
 						},
 						{
-							"text":["何やら騒がしいと思ったら・・・\nお前ら、次の候補者か？\n・・・\nほらよ！\nおもしれぇことが分かるかも知れないぜ"],
+							"text":["何やら騒がしいと思ったら・・・\nお前ら、次の候補者か？","・・・","ほらよ！\nおもしれぇことが分かるかも知れないぜ"],
 							"charaID":"6",
 							"imgID":"1"
 						}
@@ -57,6 +57,10 @@
 							"layer":"hide"
 						}
 					]
+				},
+				{
+					"type":"wait",
+					"time":0.8
 				},
 				{
 					"type":"charaWalk",
@@ -136,9 +140,6 @@
 					"objID":"1024"
 				},
 				{
-					"type":"already"
-				},
-				{
 					"type":"charaMsg",
 					"talk":[
 						{
@@ -152,6 +153,9 @@
 							"imgID":"1"
 						}
 					]
+				},
+				{
+					"type":"already"
 				}
 			]	
 		}
@@ -191,43 +195,48 @@
 	],
 	"5":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":"0"
+				}
+			],
 			"action":[
 				{
-					"type":"storyMsg",
-					"text":["-◎月×日-\n\n\n今日は二人、\n一人は燻製にした。もう一人はそのまま"]
-				},
-				{
-					"type":"charaMsg",
-					"talk":[
+					"type":"sequence",
+					"action":[
 						{
-							"text":["・・・"],
-							"charaID":"0",
-							"imgID":"2"
+							"type":"storyMsg",
+							"text":["-◎月×日-\n\n\n今日は二人、\n一人は燻製にした。もう一人はそのまま"]
 						},
 						{
-							"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
-							"charaID":"5",
-							"imgID":"1"
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["・・・"],
+									"charaID":"0",
+									"imgID":"2"
+								},
+								{
+									"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
+									"charaID":"5",
+									"imgID":"1"
+								}
+							]
 						},
 						{
 							"type":"changeFlg",
 							"flg":"1"
 						}
 					]
-				},
-				{
-					"type":"already"
 				}
 			]
-		}
-	],
-	"6":[
+		},
 		{
 			"type":"if",
 			"condition":[
 				{
-					"event":["40","5"]
+					"flg":"1"
 				}
 			],
 			"action":[

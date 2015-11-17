@@ -40,26 +40,12 @@
           "time":1.0
         },
         {
-          "type":"spawn",
-          "action":[
-            {
-              "type":"playSE",
-              "file":"prologue.mp3",
-              "time":6.0
-            },
-            {
-              "type":"displayImg",
-              "file":"prologue.png",
-              "time":5.0
-            }
-          ]
-        },
-        {
-          "type": "stopBGM"
-        },
-        {
           "type": "playSE",
           "file": "bus-door1.mp3"
+        },
+        {
+          "type":"wait",
+          "time":2.0
         },
         {
           "type": "playSE",
@@ -68,6 +54,26 @@
         {
           "type":"wait",
           "time":4.0
+        },
+        {
+          "type":"stopBGM"
+        },
+        {
+          "type":"spawn",
+          "action":[
+            {
+              "type":"playBGM",
+              "file":"prologue.mp3"
+            },
+            {
+              "type":"displayImg",
+              "file":"prologue.png",
+              "time":10.0
+            }
+          ]
+        },
+        {
+          "type": "stopBGM"
         },
         {
           "type": "fadein"

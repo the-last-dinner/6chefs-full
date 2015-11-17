@@ -28,7 +28,7 @@
 					"action":[
 						{
 							"type":"removeLayer",
-							"layer":"doorB"
+							"layer":"doorC"
 						},
 						{
 							"type":"wait",
@@ -36,22 +36,17 @@
 						},
 						{
 							"type":"removeLayer",
-							"layer":"doorB2"
+							"layer":"doorC2"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"doorB3"
-								},
-								{
-									"type":"changeMap",
-									"mapID":"18",
-									"x":9,
-									"y":23
-								}
-							]
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"changeMap",
+							"mapID":"18",
+							"x":9,
+							"y":23
 						}
 					]
 				}
@@ -71,7 +66,7 @@
 					"action":[
 						{
 							"type":"removeLayer",
-							"layer":"doorC"
+							"layer":"doorB"
 						},
 						{
 							"type":"wait",
@@ -79,22 +74,17 @@
 						},
 						{
 							"type":"removeLayer",
-							"layer":"doorC2"
+							"layer":"doorB2"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"doorC3"
-								},
-								{
-									"type":"changeMap",
-									"mapID":"19",
-									"x":9,
-									"y":23
-								}
-							]
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"changeMap",
+							"mapID":"19",
+							"x":9,
+							"y":23
 						}
 					]
 				}
@@ -149,7 +139,7 @@
 			"type":"changeMap",
 			"mapID":"20",
 			"x":9,
-			"y":5
+			"y":25
 		}
 	],
 	"7":[

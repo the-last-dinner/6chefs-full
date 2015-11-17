@@ -17,71 +17,71 @@
 	],
 	"3":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["色々なジュースのボトルが置いてある"]
 		}
 	],
 	"4":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["クラブハウスサンドだ"]
 		}
 	],
 	"5":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["救急箱だ。\n料理中の怪我用にだろう"]
 		}
 	],
 	"6":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["ゴミ箱の中身はカラッポ"]
 		}
 	],
 	"7":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["冷蔵庫の中には色々なジュースが入っている"]
 		}
 	],
 	"8":[
 		{
-			"type":"charaMsg",
-			"text":["一色さん用の果物が沢山入ったダンボールだ"],
-			"charaID":"0",
-			"imgID":"1"
+			"type":"systemMsg",
+			"text":["一色用の果物が沢山入ったダンボールだ"]
 		}
 	],
 	"9":[
 		{
 			"type":"charaMsg",
-			"text":["加藤さんに用意された食材のダンボールだ。\nほとんど手がつけられていない"],
+			"text":["加藤さんに用意された食材のダンボール・・・\nほとんど手がつけられていないな"],
 			"charaID":"0",
 			"imgID":"1"
 		}
 	],
 	"10":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["調理具からは魚を焼いたような匂いがする"]
 		}
 	],
 	"11":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["魚を食べたあとがある"]
 		}
 	],
 	"12":[
 		{
 			"type":"charaMsg",
-			"text":["救急箱だ。\n加藤さんに必要になることがあるのだろうか・・・"]
+			"text":["救急箱だ。\n加藤さんに必要になることがあるのかな・・・"],
+			"charaID":"0",
+			"imgID":"1"
 		}
 	],
 	"13":[
 		{
-			"type":"systeMsg",
+			"type":"systemMsg",
 			"text":["キッチンは使われた形跡がない"]
 		}
 	],

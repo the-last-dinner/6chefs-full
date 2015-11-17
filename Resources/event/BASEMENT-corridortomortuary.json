@@ -39,6 +39,9 @@
 					"mapID":"48",
 					"x":4,
 					"y":9
+				},
+				{
+					"type":"fadein"
 				}
 			]
 		}
@@ -74,76 +77,80 @@
 							"type":"changeDirection",
 							"direction":"LEFT",
 							"objID":"hero"
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1040"
-						},
-						{
-							"type":"playSE",
-							"file":"hit.mp3"
-						},
-						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"playSE",
-									"file":"hyun1.mp3"
-								},
-								{
-									"type":"charaMsg",
-									"text":["うわああああああああ"],
-									"charaID":"0",
-									"imgID":"2",
-									"option":"reaction"
-								}
-							]
-						},
-						{
-							"type":"playSE",
-							"file":"bakibaki.wav"
-						},
-						{
-							"type":"charaMsg",
-							"text":["いてて・・・"],
-							"charaID":"0",
-							"imgID":"1"
-						},
-						{
-							"type":"changeMap",
-							"mapID":"48",
-							"x":4,
-							"y":9
-						},
-						{
-							"type":"charaMsg",
-							"text":["う、うわあああああああ！\n何だここ！？"],
-							"charaID":"0",
-							"imgID":"3",
-							"option":"reaction"
-						},
-						{
-							"type":"changeDirection",
-							"direction":"LEFT",
-							"objID":"hero"
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
-						{
-							"type":"charaMsg",
-							"text":["中山さん・・・？だったよな・・・\n何で・・・？"],
-							"charaID":"0",
-							"imgID":"1"
-						},
-						{
-							"type":"already"
 						}
 					]
+				},
+				{
+					"type":"wait",
+					"time":0.5
+				},
+				{
+					"type":"fadeout"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1040"
+				},
+				{
+					"type":"playSE",
+					"file":"hit.mp3"
+				},
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"playSE",
+							"file":"hyun1.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["うわああああああああ"],
+							"charaID":"0",
+							"imgID":"2",
+							"option":"reaction"
+						}
+					]
+				},
+				{
+					"type":"playSE",
+					"file":"bakibaki.wav"
+				},
+				{
+					"type":"charaMsg",
+					"text":["いてて・・・"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"changeMap",
+					"mapID":"48",
+					"x":4,
+					"y":9
+				},
+				{
+					"type":"charaMsg",
+					"text":["う、うわあああああああ！\n何だここ！？"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
+				},
+				{
+					"type":"changeDirection",
+					"direction":"LEFT",
+					"objID":"hero"
+				},
+				{
+					"type":"wait",
+					"time":1.0
+				},
+				{
+					"type":"charaMsg",
+					"text":["中山さん・・・？だったよな・・・\n何で・・・？"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"already"
 				}
 			]
 		}

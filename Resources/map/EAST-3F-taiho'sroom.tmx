@@ -75,6 +75,9 @@
   </data>
  </layer>
  <layer name="item" width="26" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgF1AT39BgY7uvR3p5/QDv+08GeUTAKRsEoGAWjYBQMPgAAj/QEcw==
   </data>
@@ -127,7 +130,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="15" x="192" y="320" width="32" height="32">
+  <object id="15" x="224" y="320" width="32" height="32">
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="3"/>
@@ -155,12 +158,6 @@
    <properties>
     <property name="EventID" value="3"/>
     <property name="trigger" value="0"/>
-   </properties>
-  </object>
-  <object id="26" x="224" y="128" width="32" height="32">
-   <properties>
-    <property name="EventID" value="6"/>
-    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="27" x="96" y="48" width="32" height="32">
