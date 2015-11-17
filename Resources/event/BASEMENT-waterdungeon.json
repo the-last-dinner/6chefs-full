@@ -103,5 +103,40 @@
 			"charaID":"0",
 			"imgID":"2"
 		}
+	],
+	"7":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":["1519"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1819"
+				},
+				{
+					"type":"already"
+				}
+			]
+		}
+	],
+	"8":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["46","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1819"
+				}
+			]
+		}
 	]
 }

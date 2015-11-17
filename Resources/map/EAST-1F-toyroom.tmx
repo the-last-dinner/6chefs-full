@@ -129,8 +129,18 @@
   <object id="24" x="336" y="240" width="32" height="32"/>
   <object id="25" x="400" y="256" width="32" height="32"/>
   <object id="28" x="16" y="272" width="64" height="16"/>
-  <object id="29" x="112" y="176" width="32" height="32"/>
-  <object id="32" x="224" y="128" width="32" height="16"/>
+  <object id="29" x="112" y="176" width="32" height="32">
+   <properties>
+    <property name="EventID" value="13"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="32" x="224" y="128" width="32" height="16">
+   <properties>
+    <property name="EventID" value="14"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
   <object id="33" x="48" y="208" width="16" height="16"/>
   <object id="36" x="288" y="208" width="32" height="32">
    <properties>

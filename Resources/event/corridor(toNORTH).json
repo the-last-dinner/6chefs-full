@@ -167,5 +167,34 @@
         }
       ]
     }
+  ],
+  "12":[
+    {
+      "type":"if",
+      "condition":[
+        {
+          "Nevent":["9","10"]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"charaMsg",
+              "text":["おう佐々木！\nちょっと来てみろ"],
+              "charaID":"2",
+              "imgID":"2"
+            },
+            {
+              "type":"charaWalk",
+              "objID":"hero",
+              "direction":"DOWN",
+              "steps":1.0
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

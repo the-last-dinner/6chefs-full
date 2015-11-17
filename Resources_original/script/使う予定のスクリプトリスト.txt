@@ -505,25 +505,6 @@
     }　　
 
 
-●キャラを見えなくする
-・type名、、、hideChara
-・必要なもの、、、消すキャラのID
-(例)
-　　{
-	  "type":"hideChara",
-	  "objID":"消すキャラのオブジェクトID or hero"
-    }　　
-
-
-●キャラを見えるように戻す
-・type名、、、showChara
-・必要なもの、、、キャラのobjID
-(例)
-　　{
-	  "type":"showChara",
-	  "objID":"キャラのオブジェクトID又はhero"
-    }
-    
     　　
 ●ゲームオーバー
 ・type名,,,gameOver
@@ -691,6 +672,20 @@ MAIN-Ohiromaの19
 	{
 		"type":"stopSwing",
 	}
+
+●環境光設定
+・type名・・・setAmbient
+・必要なもの・・・昼間　day
+		　夜　　night
+                  真っ暗　basement
+
+（例）
+	{
+		"type":"setAmbient",
+		"ambient":"環境名"
+	}
+
+
 TODO >>>>>>>>>>>>>>>>>>
 
 show〜やhide〜、create〜やremove〜の時は出現させる時に、アニメーションようのオプションがあるといいかも

@@ -17,7 +17,11 @@
 			"mapID":"16",
 			"x":2,
 			"y":7	
-		}
+		},
+        {
+          "type": "playSE",
+          "file": "bus-door1.mp3"
+        }
 	],
 	"3":[
 		{

@@ -5,6 +5,9 @@
 			"mapID":"42",
 			"x":26,
 			"y":11
+		},
+		{
+			"type":"stopBGM"
 		}
 	],
 	"2":[
@@ -13,6 +16,9 @@
 			"mapID":"44",
 			"x":8,
 			"y":3
+		},
+		{
+			"type":"stopBGM"
 		}
 	],
 	"3":[
@@ -21,6 +27,9 @@
 			"mapID":"49",
 			"x":2,
 			"y":10	
+		},
+		{
+			"type":"stopBGM"
 		}
 	],
 	"4":[
@@ -38,6 +47,10 @@
 						{
 							"type":"swingLayer",
 							"layer":"CharaUe"
+						},
+						{
+							"type":"swingLayer",
+							"layer":"MonoChu"
 						},
 						{
 							"type":"playBGM",

@@ -97,6 +97,7 @@
             {
               "type": "charaWalk",
               "direction": "DOWN",
+              "option":"back",
               "steps": 1.0,
               "objID": "hero"
             }
@@ -126,6 +127,7 @@
             {
               "type": "charaWalk",
               "direction": "LEFT",
+              "option":"back",
               "steps": 1.0,
               "objID": "hero"
             }
@@ -189,6 +191,7 @@
                             "type":"charaWalk",
                             "objID":"hero",
                             "direction":"DOWN",
+                            "option":"back",
                             "steps":1.0
                           }
                         ]

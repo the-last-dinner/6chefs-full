@@ -115,10 +115,10 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="31" x="224" y="224" width="32" height="32">
+  <object id="31" x="256" y="224" width="32" height="32">
    <properties>
     <property name="EventID" value="5"/>
-    <property name="trigger" value="1"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
   <object id="33" x="432" y="224" width="32" height="32">

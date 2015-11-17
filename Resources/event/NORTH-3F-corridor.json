@@ -39,8 +39,8 @@
 							"layer":"doorA2"
 						},
 						{
-							"type":"removeLayer",
-							"layer":"doorA3"
+							"type":"wait",
+							"time":0.5
 						},
 						{
 							"type":"changeMap",

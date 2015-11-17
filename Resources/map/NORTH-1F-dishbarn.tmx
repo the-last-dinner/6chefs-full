@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="50">
  <tileset firstgid="1" name="Yatai-option1" tilewidth="16" tileheight="16">
   <image source="Yatai-option1.png" trans="c1a5c8" width="944" height="255"/>
  </tileset>
@@ -118,13 +118,10 @@
   <object id="2" x="32" y="336" width="64" height="16"/>
   <object id="3" x="96" y="352" width="48" height="32"/>
   <object id="5" x="176" y="352" width="112" height="32"/>
-  <object id="6" x="224" y="320"/>
   <object id="7" x="256" y="320" width="32" height="32"/>
   <object id="8" x="256" y="288" width="32" height="32"/>
   <object id="9" x="256" y="272" width="32" height="16"/>
   <object id="10" x="288" y="0" width="16" height="384"/>
-  <object id="11" x="272" y="224"/>
-  <object id="12" x="240" y="224"/>
   <object id="17" x="32" y="288" width="64" height="16"/>
   <object id="18" x="48" y="304" width="16" height="16"/>
   <object id="19" x="80" y="304" width="16" height="16"/>
@@ -137,6 +134,8 @@
   <object id="30" x="192" y="64" width="96" height="16"/>
   <object id="31" x="96" y="384" width="48" height="32"/>
   <object id="32" x="176" y="384" width="16" height="32"/>
+  <object id="48" x="224" y="208" width="64" height="32"/>
+  <object id="49" x="208" y="304" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
