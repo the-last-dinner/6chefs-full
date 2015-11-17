@@ -388,10 +388,10 @@ bool PlayerDataManager::removeItem(const int item_id)
 bool PlayerDataManager::removePartyMember(const int chara_id)
 {
     bool isExsits = false;
-    rapidjson::Value& party = this->local["party"];
+    vector<int> members = this->getPartyMemberAll();
+    int member_size = members.size();
     this->local["party"].Clear();
     this->local["party"].SetArray();
-    int member_size = party.Size();
     for (int i = 0; i < member_size; i++)
     {
         if (this->local["party"][i].GetInt() == chara_id)
@@ -400,10 +400,17 @@ bool PlayerDataManager::removePartyMember(const int chara_id)
         }
         else
         {
-            this->local["party"].PushBack(party[i].GetInt(), this->local.GetAllocator());
+            this->local["party"].PushBack(members[i], this->local.GetAllocator());
         }
     }
     return isExsits;
+}
+
+// パーティーメンバーを全削除
+void PlayerDataManager::removePartyMemberAll()
+{
+    this->local["party"].Clear();
+    this->local["party"].SetArray();
 }
 
 #pragma mark -
