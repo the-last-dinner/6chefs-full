@@ -67,8 +67,8 @@
   </properties>
   <object id="55" x="320" y="608" width="32" height="32">
    <properties>
+    <property name="CharaID" value="10"/>
     <property name="EventID" value="35"/>
-    <property name="charaID" value="10"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1013"/>
@@ -136,8 +136,8 @@
   </object>
   <object id="62" x="320" y="480" width="32" height="32">
    <properties>
+    <property name="CharaID" value="11"/>
     <property name="EventID" value="23"/>
-    <property name="charaID" value="11"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1035"/>
@@ -146,8 +146,8 @@
   </object>
   <object id="63" x="320" y="480" width="32" height="32">
    <properties>
+    <property name="CharaID" value="11"/>
     <property name="EventID" value="24"/>
-    <property name="charaID" value="11"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1038"/>

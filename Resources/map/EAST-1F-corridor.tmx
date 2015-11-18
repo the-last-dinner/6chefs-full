@@ -85,7 +85,7 @@
   </properties>
   <object id="33" x="400" y="160" width="32" height="32">
    <properties>
-    <property name="charaID" value="3"/>
+    <property name="CharaID" value="3"/>
     <property name="direction" value="RIGHT"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1072"/>

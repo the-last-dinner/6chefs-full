@@ -112,7 +112,7 @@
   <object id="25" x="192" y="128" width="32" height="32">
    <properties>
     <property name="CharaID" value="6"/>
-    <property name="direction" value="Down"/>
+    <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1024"/>
    </properties>
