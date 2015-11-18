@@ -29,6 +29,9 @@ bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vecto
     this->availableObjects = availableObjects;
     this->disableObjects = disableObjects;
     
+    // 敵と主人公一行の衝突判定開始
+    this->scheduleUpdate();
+    
     return true;
 }
 
@@ -206,6 +209,22 @@ void MapObjectList::removeEnemy(const int enemyId)
             mtx.unlock();
             
             break;
+        }
+    }
+}
+
+// 敵と主人公一行の衝突監視用updateメソッド
+void MapObjectList::update(float delta)
+{
+    // partyがnullptrまたは、敵が一人もいない時は処理を中止
+    if(!this->party || this->enemies.empty()) return;
+    
+    for(MapObject* obj : this->enemies)
+    {
+        // 主人公と敵が一体でもぶつかっていれば、コールバック呼び出し
+        if(obj->getCollisionRect().intersectsRect(party->getMainCharacter()->getCollisionRect()))
+        {
+            if(this->onContactWithEnemy) this->onContactWithEnemy();
         }
     }
 }

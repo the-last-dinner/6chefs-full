@@ -18,12 +18,7 @@
 TiledMapLayer::TiledMapLayer(){FUNCLOG}
 
 // デストラクタ
-TiledMapLayer::~TiledMapLayer()
-{
-    FUNCLOG
-    
-    CC_SAFE_RELEASE_NULL(this->objectList);
-}
+TiledMapLayer::~TiledMapLayer(){FUNCLOG}
 
 // 初期化
 bool TiledMapLayer::init(const Location& location)
@@ -38,7 +33,7 @@ bool TiledMapLayer::init(const Location& location)
     
     // オブジェクトリスト生成
     MapObjectList* objectList {MapObjectFactory::createMapObjectList(tiledMap)};
-    CC_SAFE_RETAIN(objectList);
+    this->addChild(objectList);
     this->objectList = objectList;
     
     // オブジェクトリストを元にマップ上に配置

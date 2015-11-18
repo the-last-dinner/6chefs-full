@@ -16,7 +16,7 @@
 class Party;
 class Enemy;
 
-class MapObjectList : public Ref
+class MapObjectList : public Node
 {
 // クラスメソッド
 public:
@@ -28,6 +28,7 @@ private:
     Vector<MapObject*> disableObjects {};
     Party* party { nullptr };
     Vector<MapObject*> enemies {};
+    function<void()> onContactWithEnemy { nullptr };
     
 // インスタンスメソッド
 private:
@@ -51,6 +52,9 @@ public:
     void addEnemy(Enemy* enemy);
     void removeEnemy(const int enemyId);
     void setParty(Party* party);
+
+    // 敵と主人公一行の衝突監視用updateメソッド
+    void update(float delta);
 };
 
 #endif /* defined(__LastSupper__MapObjectList__) */
