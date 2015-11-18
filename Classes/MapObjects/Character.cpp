@@ -148,22 +148,23 @@ void Character::walkBy(const vector<Direction>& directions, const int gridNum, f
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<Direction> directionsQueue, function<void(bool)> callback, const float ratio, const bool back)
+void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back)
 {
-    // キューが空になったら成功としてコールバックを呼び出し
-    if(directionsQueue.empty())
+    if(directionQueue.empty())
     {
-        callback(true);
+        if(callback) callback(true);
         
         return;
     }
     
-    // キューの先頭を実行。失敗時にはコールバックを失敗として実行
-    Direction direction { directionsQueue.front() };
-    directionsQueue.pop_front();
+    deque<vector<Direction>> directionsQueue {};
     
-    // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(!this->walkBy(direction, [directionsQueue, callback, ratio, back, this]{this->walkByQueue(directionsQueue, callback, ratio, back);}, ratio, back)) callback(false);
+    for(Direction direction : directionQueue)
+    {
+        directionsQueue.push_back(vector<Direction>({direction}));
+    }
+    
+    this->walkByQueue(directionsQueue, callback, ratio, back);
 }
 
 // キューで歩行させる
