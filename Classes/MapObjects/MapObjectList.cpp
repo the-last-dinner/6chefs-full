@@ -8,6 +8,9 @@
 
 #include "MapObjects/MapObjectList.h"
 
+#include "MapObjects/Party.h"
+#include "MapObjects/Enemy.h"
+
 // コンストラクタ
 MapObjectList::MapObjectList() {FUNCLOG};
 
@@ -159,12 +162,16 @@ void MapObjectList::add(MapObject* mapObject)
     
     this->availableObjects.pushBack(mapObject);
     
+    std::mutex mtx;
+    
     // 無効リストに存在する場合は削除
     for(MapObject* obj : this->disableObjects)
     {
         if(mapObject->getObjectId() == obj->getObjectId())
         {
+            mtx.lock();
             this->disableObjects.eraseObject(mapObject);
+            mtx.unlock();
             
             break;
         }
@@ -175,4 +182,30 @@ void MapObjectList::add(MapObject* mapObject)
 void MapObjectList::remove(MapObject* mapObject)
 {
     this->availableObjects.eraseObject(mapObject);
+}
+
+// 敵を追加
+void MapObjectList::addEnemy(Enemy* enemy)
+{
+    this->enemies.pushBack(enemy);
+}
+
+// 敵を削除
+void MapObjectList::removeEnemy(const int enemyId)
+{
+    std::mutex mtx;
+    
+    for(MapObject* obj : this->enemies)
+    {
+        Enemy* enemy { dynamic_cast<Enemy*>(obj) };
+        
+        if(enemy->getEnemyId() == enemyId)
+        {
+            mtx.lock();
+            this->enemies.eraseObject(obj);
+            mtx.unlock();
+            
+            break;
+        }
+    }
 }

@@ -32,11 +32,11 @@ private:
     bool stampingRightFoot { false };
 	
 // インスタンスメソッド
-private:
+public:
 	Character();
 	~Character();
     bool init(const CharacterData& data);
-public:
+    
     int getCharacterId() const;
     Direction getDirection() const;
     

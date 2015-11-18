@@ -13,8 +13,8 @@
 
 #include "MapObjects/MapObject.h"
 
-class Character;
-class MapObject;
+class Party;
+class Enemy;
 
 class MapObjectList : public Ref
 {
@@ -26,6 +26,8 @@ public:
 private:
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
+    Party* party { nullptr };
+    Vector<MapObject*> enemies {};
     
 // インスタンスメソッド
 private:
@@ -43,8 +45,12 @@ public:
     
     vector<int> getEventIds(const Trigger trigger) const;
     vector<Rect> getGridCollisionRects() const;
+    
     void add(MapObject* mapObject);
     void remove(MapObject* mapObject);
+    void addEnemy(Enemy* enemy);
+    void removeEnemy(const int enemyId);
+    void setParty(Party* party);
 };
 
 #endif /* defined(__LastSupper__MapObjectList__) */

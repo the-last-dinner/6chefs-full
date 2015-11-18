@@ -186,6 +186,8 @@
 		55C3C1E71BD09BBC00ECDB50 /* RandomMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C3C1E41BD09BBC00ECDB50 /* RandomMove.cpp */; };
 		55C3C1EE1BD143B700ECDB50 /* GameTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C3C1EC1BD143B700ECDB50 /* GameTask.cpp */; };
 		55C3C1EF1BD143B700ECDB50 /* GameTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C3C1EC1BD143B700ECDB50 /* GameTask.cpp */; };
+		55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55CCBFED1BFC87CA00CBCB44 /* Enemy.cpp */; };
+		55CCBFF01BFC87CA00CBCB44 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55CCBFED1BFC87CA00CBCB44 /* Enemy.cpp */; };
 		55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */; };
 		55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */; };
 		55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */; };
@@ -452,6 +454,8 @@
 		55C3C1E51BD09BBC00ECDB50 /* RandomMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomMove.h; path = ../Classes/MapObjects/MovePatterns/RandomMove.h; sourceTree = "<group>"; };
 		55C3C1EC1BD143B700ECDB50 /* GameTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameTask.cpp; path = ../Classes/Tasks/GameTask.cpp; sourceTree = "<group>"; };
 		55C3C1ED1BD143B700ECDB50 /* GameTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameTask.h; path = ../Classes/Tasks/GameTask.h; sourceTree = "<group>"; };
+		55CCBFED1BFC87CA00CBCB44 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = ../Classes/MapObjects/Enemy.cpp; sourceTree = "<group>"; };
+		55CCBFEE1BFC87CA00CBCB44 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Classes/MapObjects/Enemy.h; sourceTree = "<group>"; };
 		55D8A6D91BB43772005F9717 /* DungeonMainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMainMenuLayer.cpp; path = ../Classes/Layers/Menu/DungeonMainMenuLayer.cpp; sourceTree = "<group>"; };
 		55D8A6DA1BB43772005F9717 /* DungeonMainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMainMenuLayer.h; path = ../Classes/Layers/Menu/DungeonMainMenuLayer.h; sourceTree = "<group>"; };
 		55D8A6DB1BB43772005F9717 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuLayer.cpp; path = ../Classes/Layers/Menu/MenuLayer.cpp; sourceTree = "<group>"; };
@@ -875,6 +879,8 @@
 				55F1B6201BBEC44900AA64EE /* MapObjectFactory.h */,
 				553577E31BEB99790095E6A9 /* Party.cpp */,
 				553577E41BEB99790095E6A9 /* Party.h */,
+				55CCBFED1BFC87CA00CBCB44 /* Enemy.cpp */,
+				55CCBFEE1BFC87CA00CBCB44 /* Enemy.h */,
 			);
 			name = MapObjects;
 			sourceTree = "<group>";
@@ -1240,6 +1246,7 @@
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
+				55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
@@ -1321,6 +1328,7 @@
 				556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				553577E21BEA42C80095E6A9 /* EventScript.cpp in Sources */,
 				553577DA1BE9DFF00095E6A9 /* DungeonSceneManager.cpp in Sources */,
+				55CCBFF01BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
 				26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
