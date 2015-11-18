@@ -56,9 +56,6 @@ DungeonSceneManager::DungeonSceneManager()
     EventScriptValidator* scriptValidator {EventScriptValidator::create()};
     CC_SAFE_RETAIN(scriptValidator);
     this->scriprtValidator = scriptValidator;
-    
-    // 主人公一行に主人公登録
-    PlayerDataManager::getInstance()->setPartyMember(0);
 };
 
 // デストラクタ

@@ -8,6 +8,8 @@
 
 #include "MapObjects/Character.h"
 
+#include "Datas/MapObject/CharacterData.h"
+
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
@@ -17,28 +19,16 @@ Character::Character(){FUNCLOG}
 // デストラクタ
 Character::~Character(){FUNCLOG}
 
-// create関数。この関数を用いてキャラクターを初期化
-Character* Character::create(int charaId, Direction direction)
-{
-	Character* pChara = new(nothrow)Character();
-	if (pChara && pChara->init(charaId, direction))
-	{
-		// オブジェクトを自動メモリ管理へ登録
-		pChara->autorelease();
-		return pChara;
-	}
-	CC_SAFE_DELETE(pChara);
-	return nullptr;
-}
-
 // 初期化
-bool Character::init(int charaId, const Direction direction)
+bool Character::init(const CharacterData& data)
 {
-	FUNCLOG
 	if(!Node::init()) return false;
+    
 	// 生成時の情報をセット
-    this->charaId = charaId;
-	this->direction = direction;
+    this->charaId = data.chara_id;
+	this->direction = data.location.direction;
+    this->setGridPosition(Point(data.location.x, data.location.y));
+    this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）

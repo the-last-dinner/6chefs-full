@@ -11,6 +11,8 @@
 
 #include "MapObjects/MapObject.h"
 
+struct CharacterData;
+
 class Character : public MapObject
 {
 // 定数
@@ -19,7 +21,7 @@ private:
 
 // クラスメソッド
 public:
-	static Character* create(int charaId, const Direction direction);
+    CREATE_FUNC_WITH_PARAM(Character, const CharacterData&);
     
 // インスタンス変数
 private:
@@ -33,7 +35,7 @@ private:
 private:
 	Character();
 	~Character();
-	virtual bool init(int charaId, const Direction direction);
+    bool init(const CharacterData& data);
 public:
     int getCharacterId() const;
     Direction getDirection() const;

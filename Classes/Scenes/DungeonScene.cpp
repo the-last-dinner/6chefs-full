@@ -25,10 +25,6 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
 
-#include "Managers/DungeonSceneManager.h"
-
-#include "Event/EventScript.h"
-
 // コンストラクタ
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
@@ -44,8 +40,6 @@ DungeonScene::~DungeonScene()
 bool DungeonScene::init(DungeonSceneData* data)
 {
     if(!Scene::init()) return false;
-    
-    DungeonSceneManager::getInstance();
     
     // データクラスをセットしretain
     this->data = data;
@@ -133,16 +127,8 @@ void DungeonScene::onInitEventFinished()
 // 主人公一行を生成
 Party* DungeonScene::createParty()
 {
-    vector<int> characterIds { PlayerDataManager::getInstance()->getPartyMemberAll() };
-    
-    Party* party { Party::create(Character::create(characterIds.at(0), this->getData()->getInitialLocation().direction)) };
+    Party* party { Party::create(PlayerDataManager::getInstance()->getPartyMemberAll()) };
     CC_SAFE_RETAIN(party);
-    
-    for(int i { 0 }; i < characterIds.size(); i++)
-    {
-        if(i == 0) continue;
-        party->addMember(Character::create(characterIds.at(i), this->getData()->getInitialLocation().direction));
-    }
     
     return party;
 }
@@ -152,7 +138,7 @@ void DungeonScene::onMenuKeyPressed()
 {
     this->listener->setEnabled(false);
     // 主人公の位置をセット
-    Character* chara = DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
+    Character* chara = this->party->getMainCharacter();
     Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
     Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
