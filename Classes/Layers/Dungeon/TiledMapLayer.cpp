@@ -26,7 +26,7 @@ TiledMapLayer::~TiledMapLayer()
 }
 
 // 初期化
-bool TiledMapLayer::init(const PlayerDataManager::Location& location)
+bool TiledMapLayer::init(const Location& location)
 {
     if(!Layer::init()) return false;
     

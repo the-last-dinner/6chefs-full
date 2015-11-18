@@ -17,7 +17,7 @@ class ChangeMapEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(ChangeMapEvent, rapidjson::Value&)
 private:
-    PlayerDataManager::Location location {};
+    Location location {};
 private:
     ChangeMapEvent() {FUNCLOG};
     ~ChangeMapEvent() {FUNCLOG};

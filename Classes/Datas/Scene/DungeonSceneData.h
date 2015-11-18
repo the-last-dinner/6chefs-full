@@ -21,11 +21,11 @@ public:
     
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(DungeonSceneData, const PlayerDataManager::Location&)
+    CREATE_FUNC_WITH_PARAM(DungeonSceneData, const Location&)
     
 // インスタンス変数
 private:
-    PlayerDataManager::Location initialLocation {};
+    Location initialLocation {};
     EventScript* eventScript { nullptr };
     CoverInfo coverInfo { CoverInfo({false, Color3B::BLACK}) };
 	
@@ -33,9 +33,9 @@ private:
 private:
 	DungeonSceneData();
 	~DungeonSceneData();
-    bool init(const PlayerDataManager::Location& location);
+    bool init(const Location& location);
 public:
-    PlayerDataManager::Location getInitialLocation() const;
+    Location getInitialLocation() const;
     EventScript* getEventScript() const;
     
     

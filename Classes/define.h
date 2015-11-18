@@ -142,6 +142,17 @@ enum struct EnemyMovePattern
     SIZE,
 };
 
+struct Location
+{
+    int map_id{0};
+    int x {0};
+    int y {0};
+    Direction direction {Direction::SIZE};
+    Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
+    Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
+    Location(){};
+};
+
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
 static __TYPE_1__* create(__TYPE_2__ param) \

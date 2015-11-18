@@ -60,7 +60,7 @@ public:
     void removeMapObject(MapObject* mapObject);
     
     // Director
-    void changeMap(const PlayerDataManager::Location& location);
+    void changeMap(const Location& location);
     
     // EventListener
     void setInputCheckInterval(const float interval);

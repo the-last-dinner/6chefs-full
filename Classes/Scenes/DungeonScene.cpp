@@ -92,7 +92,7 @@ void DungeonScene::onPreloadFinished()
     party->reload();
     
     // パーティーをマップに配置
-    PlayerDataManager::Location location { this->getData()->getInitialLocation() };
+    Location location { this->getData()->getInitialLocation() };
     for(Character* character : party->getMembers())
     {
         mapLayer->addMapObject(character, Point(location.x, location.y));
@@ -132,7 +132,7 @@ void DungeonScene::onMenuKeyPressed()
     Character* chara = DungeonSceneManager::getInstance()->getParty()->getMainCharacter();
     Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
-    PlayerDataManager::Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
+    Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);
     // スクショをとって、ダンジョンメニューシーンをプッシュ
     string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", fu->FileUtils::fullPathForFilename("save/global.json"));

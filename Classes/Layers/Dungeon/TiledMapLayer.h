@@ -20,7 +20,7 @@ class TiledMapLayer : public Layer
 {
 // クラスメソッド
 public:
-	CREATE_FUNC_WITH_PARAM(TiledMapLayer, const PlayerDataManager::Location&)
+	CREATE_FUNC_WITH_PARAM(TiledMapLayer, const Location&)
 
 // インスタンス変数
 private:
@@ -31,7 +31,7 @@ private:
 private:
 	TiledMapLayer();
 	~TiledMapLayer();
-	bool init(const PlayerDataManager::Location&);
+	bool init(const Location&);
 	
 public:
     experimental::TMXTiledMap* getTiledMap();

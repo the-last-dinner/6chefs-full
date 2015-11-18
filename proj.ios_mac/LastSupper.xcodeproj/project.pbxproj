@@ -256,6 +256,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* LastSupper iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastSupper iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2605577B1BFC88A200365B4C /* CharacterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterData.h; path = ../Classes/Datas/MapObject/CharacterData.h; sourceTree = "<group>"; };
 		260F45CC1BF08230003C9B2F /* CharacterMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterMenuLayer.cpp; path = ../Classes/Layers/Menu/CharacterMenuLayer.cpp; sourceTree = "<group>"; };
 		260F45CD1BF08230003C9B2F /* CharacterMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterMenuLayer.h; path = ../Classes/Layers/Menu/CharacterMenuLayer.h; sourceTree = "<group>"; };
 		26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpriteUtils.cpp; path = ../Classes/Utils/SpriteUtils.cpp; sourceTree = "<group>"; };
@@ -557,6 +558,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2605576D1BFC87E500365B4C /* MapObject */ = {
+			isa = PBXGroup;
+			children = (
+				2605577B1BFC88A200365B4C /* CharacterData.h */,
+			);
+			name = MapObject;
+			sourceTree = "<group>";
+		};
 		26D72C981B96D420005F598D /* rapidjson */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +773,7 @@
 		552D83641B20BC1C00B681A8 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
+				2605576D1BFC87E500365B4C /* MapObject */,
 				5564CCE61BCB89BF00A4C6D2 /* Message */,
 				552D83811B20BCC000B681A8 /* Scene */,
 			);

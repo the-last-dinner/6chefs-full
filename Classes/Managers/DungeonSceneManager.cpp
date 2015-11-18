@@ -175,7 +175,7 @@ void DungeonSceneManager::removeMapObject(MapObject* mapObject)
 #pragma mark Director
 
 // マップ切り替え
-void DungeonSceneManager::changeMap(const PlayerDataManager::Location& location)
+void DungeonSceneManager::changeMap(const Location& location)
 {
     for(Character* member : this->party->getMembers())
     {
