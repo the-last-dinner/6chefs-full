@@ -22,7 +22,7 @@ DungeonSceneData::~DungeonSceneData()
 }
 
 // 初期化
-bool DungeonSceneData::init(const PlayerDataManager::Location& location)
+bool DungeonSceneData::init(const Location& location)
 {
 	FUNCLOG
     
@@ -45,7 +45,7 @@ bool DungeonSceneData::init(const PlayerDataManager::Location& location)
 }
 
 // 初期位置データを取得
-PlayerDataManager::Location DungeonSceneData::getInitialLocation() const
+Location DungeonSceneData::getInitialLocation() const
 {
     return this->initialLocation;
 }

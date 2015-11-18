@@ -39,7 +39,7 @@ bool ChangeMapEvent::init(rapidjson::Value& json)
         direction = DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getDirection();
     }
     
-    this->location = PlayerDataManager::Location(stoi(json[member::MAP_ID].GetString()), json[member::X].GetInt(), json[member::Y].GetInt(), direction);
+    this->location = Location(stoi(json[member::MAP_ID].GetString()), json[member::X].GetInt(), json[member::Y].GetInt(), direction);
     
     return true;
 }

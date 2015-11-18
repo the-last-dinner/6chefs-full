@@ -25,16 +25,7 @@ public:
         SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc){};
         SaveIndex(){};
     };
-    struct Location
-    {
-        int map_id{0};
-        int x {0};
-        int y {0};
-        Direction direction {Direction::SIZE};
-        Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
-        Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
-        Location(){};
-    };
+    
 
 //インスタンス変数
 private:

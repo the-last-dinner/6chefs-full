@@ -201,7 +201,7 @@ void PlayerDataManager::save(const int id)
     this->local["play_time"].SetInt(this->getPlayTimeSeconds());
     this->local["datetime"].SetInt(this->getSec());
     this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
-    PlayerDataManager::Location loc = this->getLocation();
+    Location loc = this->getLocation();
     this->local["location"][0].SetInt(loc.map_id);
     this->local["location"][1].SetInt(loc.x);
     this->local["location"][2].SetInt(loc.y);
@@ -417,10 +417,10 @@ void PlayerDataManager::removePartyMemberAll()
 #pragma mark Getter
 
 // 主人公の位置をゲット
-PlayerDataManager::Location PlayerDataManager::getLocation()
+Location PlayerDataManager::getLocation()
 {
     rapidjson::Value& loc = this->local["location"];
-    PlayerDataManager::Location location(loc[0].GetInt(), loc[1].GetInt(), loc[2].GetInt(), loc[3].GetInt());
+    Location location(loc[0].GetInt(), loc[1].GetInt(), loc[2].GetInt(), loc[3].GetInt());
     return location;
 }
 
