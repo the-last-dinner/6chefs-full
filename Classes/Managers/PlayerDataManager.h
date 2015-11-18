@@ -11,6 +11,8 @@
 
 #include "define.h"
 
+class CharacterData;
+
 class PlayerDataManager
 {
 //構造体
@@ -60,7 +62,7 @@ public:
     double getSec();
     /* flag管理系 */
     // SET
-    void setLocation(const Location& location);
+    void setLocation(const Location& location, const int num = 0);
     void setFriendship(const int chara_id, const int level);
     void setEventFlag(const int map_id, const int event_id, const bool flag);
     void setPeculiarFlag(const int flag_id, const bool flag);
@@ -68,15 +70,14 @@ public:
     void setItemEquipment(const Direction direction, const int item_id);
     void setChapterId(const int chapter_id);
     void setCharacterProfile(const int chara_id, const int level);
-    void setPartyMember(const int chara_id);
+    void setPartyMember(const CharacterData& chara);
     
     // REMOVE
     bool removeItem(const int item_id);
     bool removePartyMember(const int chara_id);
-    void removePartyMemberAll();
     
     // GET
-    Location getLocation();
+    Location getLocation(const int num = 0);
     int getFriendship(const int chara_id);
     bool getEventFlag(const int map_id, const int event_id);
     bool getPeculiarFlag(const int flag_id);
@@ -85,25 +86,27 @@ public:
     int getItemEquipment(Direction direction);
     int getChapterId();
     int getCharacterProfileLevel(const int chara_id);
-    vector<int> getPartyMemberAll();
+    CharacterData getPartyMember(const int num = 0);
+    vector<CharacterData> getPartyMemberAll();
     
     // CHECK
     bool checkItem(const int item_id);
     bool checkItemEquipment(const int item_id);
     bool checkFriendship(const int chara_id, const int val);
     bool checkChapterId(const int chapter_id);
-    bool checkPartyMember(const int chara_id);
     
 private:
-    //グローバルデータのセット
+    // グローバルデータのセット
     bool setGlobalData();
-    //セーブデータを全初期化
+    // セーブデータを全初期化
     void initializeFiles();
-    //JSONファイル読み込み
+    // JSONファイル読み込み
     rapidjson::Document readJsonFile(const string& path);
-    //JSONファイル書き出し
+    // JSONファイル書き出し
     void writeJsonFile(const string& path, const rapidjson::Document& doc);
-
+    // rapidjsoのstringを生成
+//    rapidjson::Value& getRapidjsonString(const char* str);
+//    rapidjson::Value& getRapidjsonString(const int num);
 //singleton用関数
 public:
     static PlayerDataManager* getInstance();

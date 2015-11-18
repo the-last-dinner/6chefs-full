@@ -6,9 +6,16 @@
     "chapter":0,
     "equipment_right":0,
     "equipment_left":0,
-    "location":[1,9,17,0],
-    "player":0,
-    "party":[],
+    "map_id":1,
+    "party":[
+        {
+             "chara_id":0,
+             "obj_id":-1,
+             "x":9,
+             "y":17,
+             "direction":0
+        }
+    ],
     "friendship":{
         "1": 0,
         "2": 0,
