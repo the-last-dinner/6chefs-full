@@ -235,8 +235,11 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
 // キューから動かす
 void MapObject::moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio)
 {
+    // 初回呼び出し以外は空で渡されるため、空でない時は新たに格納する
+    if(!directionsQueue.empty()) this->directionsQueue = directionsQueue;
+    
     // キューが空になったら成功としてコールバックを呼び出し
-    if(directionsQueue.empty())
+    if(this->directionsQueue.empty())
     {
         callback(true);
         
@@ -244,27 +247,20 @@ void MapObject::moveByQueue(deque<vector<Direction>> directionsQueue, function<v
     }
     
     // キューの先頭を実行。失敗時にはコールバックを失敗として実行
-    vector<Direction> directions { directionsQueue.front() };
-    directionsQueue.pop_front();
+    vector<Direction> directions { this->directionsQueue.front() };
+    this->directionsQueue.pop_front();
     
     // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(!this->moveBy(directions, [this, directionsQueue, callback, ratio]{this->moveByQueue(directionsQueue, callback, ratio);}, ratio)) callback(false);
+    if(!this->moveBy(directions, [this, callback, ratio]{this->moveByQueue(deque<vector<Direction>>({}), callback, ratio);}, ratio)) callback(false);
 }
 
-// 目的地指定移動用メソッド
-void MapObject::moveTo(const Point& destPosition, function<void()> onMoved, const float ratio)
+// 移動用方向キューをクリア
+void MapObject::clearDirectionsQueue()
 {
-    Vec2 movement { destPosition - this->getPosition() };
-    Vector<FiniteTimeAction*> movingActions {};
-    int gridNum { static_cast<int>(MapUtils::getGridNum(movement.length()))};
-    
-    vector<Vec2> movements {};
-    
-    for(int i {0}; i < gridNum; i++)
-    {
-        
-    }
-    
+    mutex mtx;
+    mtx.lock();
+    this->directionsQueue.clear();
+    mtx.unlock();
 }
 
 // デバッグ用に枠を描画

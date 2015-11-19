@@ -32,6 +32,8 @@ private:
     MapObjectList* objectList { nullptr };
     Point gridPosition {Point::ZERO};
     bool _isMoving { false };
+protected:
+    deque<vector<Direction>> directionsQueue {};
 public:
     function<void(MapObject*)> onMove { nullptr };
 	
@@ -72,7 +74,7 @@ public:
     void moveBy(const Direction& direction, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
     void moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
     void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
-    void moveTo(const Point& destPosition, function<void()> onMoved, const float ratio = 1.0f);
+    void clearDirectionsQueue();
 
     void drawDebugMask(); // デバッグ用マスク
 };
