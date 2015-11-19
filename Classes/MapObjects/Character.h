@@ -12,6 +12,7 @@
 #include "MapObjects/MapObject.h"
 
 struct CharacterData;
+class MovePattern;
 
 class Character : public MapObject
 {
@@ -29,8 +30,8 @@ private:
     Sprite* character { nullptr };												// キャラクターのSprite部分
     string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
     Direction direction {Direction::SIZE};										// 現在向いている方向
-    bool stampingRightFoot { false };
-	
+    int stampingState {0};
+    
 // インスタンスメソッド
 public:
 	Character();
@@ -42,7 +43,7 @@ public:
     
 	void setDirection(Direction direction);
 	void setMoving(bool _isMoving);
-    void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
+    void stamp(const Direction direction, const float ratio = 1.0f);
     bool walkBy(const Direction& direction, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
     bool walkBy(const vector<Direction>& directions, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
     void walkBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);

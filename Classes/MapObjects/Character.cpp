@@ -81,25 +81,17 @@ void Character::setDirection(Direction direction)
 }
 
 // 足踏み
-void Character::stamp(const Direction direction, const int gridNum, float ratio)
+void Character::stamp(const Direction direction, float ratio)
 {
     this->character->stopAllActions();
     
-    Vector<FiniteTimeAction*> stampingActions {};
+    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(this->direction)) + to_string(this->stampingState < 2 ? 0 : 1));
+    this->stampingState++;
+    if(this->stampingState > 3) this->stampingState = 0;
+    anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
     
-    for(int i { 0 }; i < gridNum; i++)
-    {
-        Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(this->direction)) + ((this->stampingRightFoot)?"1":"0"));
-        this->stampingRightFoot = !this->stampingRightFoot;
-        anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
-        
-        stampingActions.pushBack(Animate::create(anime));
-    }
-    
-    if(stampingActions.empty()) return;
-    
-    this->character->runAction(Sequence::create(stampingActions));
-    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio), CallFunc::create([this, direction]{this->setDirection(this->direction);})));
+    this->character->runAction(Animate::create(anime));
+    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this, direction]{this->setDirection(direction);})));
 }
 
 // 方向を指定して歩行させる
@@ -117,7 +109,7 @@ bool Character::walkBy(const vector<Direction>& directions, function<void()> onW
     
     this->setDirection(back ? MapUtils::oppositeDirection(directions.back()) : directions.back());
     
-    this->stamp(directions.back(), 1, ratio);
+    this->stamp(directions.back(), ratio);
     
     return true;
 }
