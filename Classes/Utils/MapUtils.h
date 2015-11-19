@@ -14,7 +14,7 @@
 namespace MapUtils
 {
     cocos2d::Point convertToMapPoint(const cocos2d::Size& mapSize, const cocos2d::Point& ccPoint);
-	cocos2d::Point convertToCCPoint(const cocos2d::Size& mapSize, const cocos2d::Point& gridPoint);
+    cocos2d::Point convertToCCPoint(const cocos2d::Size& mapSize, const cocos2d::Point& gridPoint, const cocos2d::Size& objectSize);
     cocos2d::Point convertToDispPosition(const cocos2d::Point& mapPosition, const cocos2d::Point& objectPosition);
     cocos2d::Point getGridVector(const Direction& direction);
     float   getGridNum(float length);

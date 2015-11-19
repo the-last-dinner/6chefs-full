@@ -70,12 +70,8 @@ void DungeonScene::onPreloadFinished()
     Party* party { this->createParty() };
     this->party = party;
     
-    // パーティーをマップに配置
-    Location location { this->getData()->getInitialLocation() };
-    for(Character* character : party->getMembers())
-    {
-        mapLayer->addMapObject(character, Point(location.x, location.y));
-    }
+    // 主人公一行をマップに配置
+    mapLayer->setParty(party);
     
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};

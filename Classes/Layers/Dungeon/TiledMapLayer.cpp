@@ -10,9 +10,10 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
+#include "MapObjects/Character.h"
 #include "MapObjects/MapObjectFactory.h"
 #include "MapObjects/MapObjectList.h"
-#include "MapObjects/Character.h"
+#include "MapObjects/Party.h"
 
 // コンストラクタ
 TiledMapLayer::TiledMapLayer(){FUNCLOG}
@@ -90,28 +91,31 @@ void TiledMapLayer::stopLayerActions()
     }
 }
 
+// パーティをマップ上に設置
+void TiledMapLayer::setParty(Party* party)
+{
+    if(!party) return;
+    
+    for(Character* member : party->getMembers())
+    {
+        this->addMapObject(member, false);
+    }
+    
+}
+
 // マップにオブジェクトを追加
-void TiledMapLayer::addMapObject(MapObject* mapObject)
+void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
 {
     if(!mapObject) return;
     
-    this->objectList->add(mapObject);
+    if(addingToList) this->objectList->add(mapObject);
+    Point cocosPoint {MapUtils::convertToCCPoint(this->getMapSize(), mapObject->getGridPosition(), mapObject->getContentSize())};
+    mapObject->setPosition(cocosPoint);
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
     this->setZOrderByPosition(mapObject);
     mapObject->onMove = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
-}
-
-// マップにオブジェクトを追加
-void TiledMapLayer::addMapObject(MapObject* mapObject, const Point& gridPoint)
-{
-    if(!mapObject) return;
-    
-    Point cocosPoint = MapUtils::convertToCCPoint(this->getMapSize(), gridPoint);
-    mapObject->setPosition(cocosPoint.x + mapObject->getContentSize().width / 2, cocosPoint.y);
-    mapObject->setGridPosition(gridPoint);
-    this->addMapObject(mapObject);
 }
 
 // マップからオブジェクトを削除

@@ -12,9 +12,8 @@
 #include "Common.h"
 
 class MapObject;
-class EventListenerKeyboardLayer;
-class Character;
 class MapObjectList;
+class Party;
 
 class TiledMapLayer : public Layer
 {
@@ -37,11 +36,13 @@ public:
     experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
+    // Layer
     void hideLayer(const string& layerName);
     void swingLayer(const string& layerName);
     void stopLayerActions();
-    void addMapObject(MapObject* mapObject);
-    void addMapObject(MapObject* mapObject, const Point& gridPoint);
+    // MapObject
+    void setParty(Party* party);
+    void addMapObject(MapObject* mapObject, bool addingToList = true);
     void removeMapObject(MapObject* mapObject);
     void setZOrderByPosition(MapObject* mapObject);
 };
