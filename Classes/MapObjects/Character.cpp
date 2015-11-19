@@ -178,7 +178,7 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
         return;
     }
     
-    // キューの先頭を実行。失敗時にはコールバックを失敗として実行
+    // キューの先頭を実行
     vector<Direction> directions { directionsQueue.front() };
     directionsQueue.pop_front();
     
