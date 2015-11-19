@@ -12,6 +12,7 @@
 #include "Event/EventScriptMember.h"
 
 #include "MapObjects/MapObject.h"
+#include "MapObjects/MapObjectList.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -97,15 +98,6 @@ bool RemoveMapObjectEvent::init(rapidjson::Value& json)
 
 void RemoveMapObjectEvent::run()
 {
-    MapObject* target {this->validator->getMapObjectById(this->objectId)};
-    
-    if(!target)
-    {
-        this->setDone();
-        
-        return;
-    }
-    
-    DungeonSceneManager::getInstance()->removeMapObject(target);
     this->setDone();
+    DungeonSceneManager::getInstance()->getMapObjectList()->removeById(stoi(this->objectId));
 }

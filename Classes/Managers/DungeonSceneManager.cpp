@@ -159,12 +159,6 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
     this->getMapLayer()->addMapObject(mapObject);
 }
 
-// マップオブジェクトをマップ上から削除
-void DungeonSceneManager::removeMapObject(MapObject* mapObject)
-{
-    this->getMapLayer()->removeMapObject(mapObject);
-}
-
 #pragma mark -
 #pragma mark Director
 

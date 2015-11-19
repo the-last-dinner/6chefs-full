@@ -103,6 +103,15 @@ void TiledMapLayer::setParty(Party* party)
     
 }
 
+// 敵をマップに配置
+void TiledMapLayer::addEnemy(Enemy* enemy)
+{
+    if(!enemy) return;
+    
+    this->objectList->addEnemy(enemy);
+    this->addMapObject(enemy, false);
+}
+
 // マップにオブジェクトを追加
 void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
 {
@@ -116,18 +125,6 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
     this->tiledMap->addChild(mapObject);
     this->setZOrderByPosition(mapObject);
     mapObject->onMove = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
-}
-
-// マップからオブジェクトを削除
-void TiledMapLayer::removeMapObject(MapObject* mapObject)
-{
-    if(!mapObject) return;
-    
-    // マップから削除
-    this->tiledMap->removeChild(mapObject);
-    
-    // リストから削除
-    this->objectList->remove(mapObject);
 }
 
 // マス座標からZOrder値を設定

@@ -12,9 +12,9 @@
 #include "Common.h"
 
 #include "MapObjects/MapObject.h"
+#include "MapObjects/Enemy.h"
 
 class Party;
-class Enemy;
 
 class MapObjectList : public Node
 {
@@ -27,7 +27,7 @@ private:
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
     Party* party { nullptr };
-    Vector<MapObject*> enemies {};
+    Vector<Enemy*> enemies {};
     function<void()> onContactWithEnemy { nullptr };
     
 // インスタンスメソッド
@@ -48,9 +48,13 @@ public:
     vector<Rect> getGridCollisionRects() const;
     
     void add(MapObject* mapObject);
-    void remove(MapObject* mapObject);
+    void removeById(const int objectId);
+    
+    // 敵
     void addEnemy(Enemy* enemy);
-    void removeEnemy(const int enemyId);
+    void removeEnemyById(const int enemyId);
+    
+    // 主人公一行
     void setParty(Party* party);
 
     // 敵と主人公一行の衝突監視用updateメソッド

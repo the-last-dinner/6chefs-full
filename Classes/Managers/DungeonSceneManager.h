@@ -56,7 +56,6 @@ public:
     // TiledMaplayer
     Size getMapSize() const;
     void addMapObject(MapObject* mapobject);
-    void removeMapObject(MapObject* mapObject);
     
     // Director
     void changeMap(const Location& location);

@@ -11,6 +11,7 @@
 
 #include "Common.h"
 
+class Enemy;
 class MapObject;
 class MapObjectList;
 class Party;
@@ -42,8 +43,8 @@ public:
     void stopLayerActions();
     // MapObject
     void setParty(Party* party);
+    void addEnemy(Enemy* enemy);
     void addMapObject(MapObject* mapObject, bool addingToList = true);
-    void removeMapObject(MapObject* mapObject);
     void setZOrderByPosition(MapObject* mapObject);
 };
 
