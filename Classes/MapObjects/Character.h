@@ -31,6 +31,7 @@ private:
     string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
     Direction direction {Direction::SIZE};										// 現在向いている方向
     int stampingState {0};                                                      // 歩行アニメーションの状態
+protected:
     MovePattern* movePattern { nullptr };                                       // 動きのパターン
     
 // インスタンスメソッド

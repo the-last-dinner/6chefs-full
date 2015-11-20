@@ -186,5 +186,5 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
 // マップに配置された時
 void Character::onEnterMap()
 {
-    
+    if(this->movePattern) this->movePattern->start();
 }
