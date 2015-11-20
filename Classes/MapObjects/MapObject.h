@@ -75,6 +75,9 @@ public:
     void moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
     void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
     void clearDirectionsQueue();
+    
+    // イベントリスナ
+    void onEnterMap() {};                               // マップに追加された時
 
     void drawDebugMask(); // デバッグ用マスク
 };
