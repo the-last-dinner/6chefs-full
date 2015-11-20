@@ -10,6 +10,7 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/TitleScene.h"
+#include "Datas/MapObject/CharacterData.h"
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -30,7 +31,7 @@ bool DungeonMainMenuLayer::init()
 	cover->setPosition(WINDOW_CENTER);
 	cover->setOpacity(100);
 	this->addChild(cover);
-	
+    
 	// 上のメニューを生成
 	Sprite* hBg { Sprite::create() };
 	hBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
@@ -39,6 +40,16 @@ bool DungeonMainMenuLayer::init()
 	//hBg->setOpacity(0);
 	hBg->setCascadeOpacityEnabled(true);
 	this->addChild(hBg);
+    
+    // チャプター表示
+    int chapter_id = PlayerDataManager::getInstance()->getChapterId();
+    Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterName(chapter_id), "fonts/cinecaption2.28.ttf", 26);
+    chapter_name->setPosition(chapter_name->getContentSize().width / 2 + 10, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height / 2 - 10);
+    cover->addChild(chapter_name);
+    
+    Label* chapter_title = Label::createWithTTF(CsvDataManager::getInstance()->getChapterTitle(chapter_id), "fonts/cinecaption2.28.ttf", 26);
+    chapter_title->setPosition(chapter_title->getContentSize().width / 2 + 30, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height - chapter_title->getContentSize().height / 2 - 20);
+    cover->addChild(chapter_title);
     
     // メニューの選択肢を生成
     map<Type, string> menuStrings
@@ -63,6 +74,10 @@ bool DungeonMainMenuLayer::init()
     mapName->setPosition(mapName->getContentSize().width / 2, hBg->getContentSize().height - mapName->getContentSize().height / 2);
     hBg->addChild(mapName);
     
+    Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getPlayTimeDisplay(), "fonts/cinecaption2.28.ttf", 26);
+    play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2, hBg->getContentSize().height - play_time->getContentSize().height / 2);
+    hBg->addChild(play_time);
+    
 	// 下のメニューを生成
     Sprite* fBg { Sprite::create() };
 	fBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
@@ -82,9 +97,53 @@ bool DungeonMainMenuLayer::init()
     fBg->addChild(equipment);
     
     // キャラ表示
-    Label* chara = Label::createWithTTF("-カレー屋-\n佐々木孫一", "fonts/cinecaption2.28.ttf", 26);
-    chara->setPosition(-25 + fBg->getContentSize().width - chara->getContentSize().width / 2, fBg->getContentSize().height - chara->getContentSize().height / 2);
-    fBg->addChild(chara);
+    vector<CharacterData> charas = PlayerDataManager::getInstance()->getPartyMemberAll();
+    int party_count = charas.size();
+    Size  cPanelSize = Size(fBg->getContentSize().width/5, fBg->getContentSize().height);
+    float stand_scale = 0.25;
+    for (int i = 0; i < party_count; i++)
+    {
+        float colum_position = cPanelSize.width * (5 - party_count + i) + cPanelSize.width / 2;
+        // キャラ毎にパネルを作成
+        Sprite* chara_panel {Sprite::create()};
+        chara_panel->setTextureRect(Rect(0,0, cPanelSize.width, cPanelSize.height));
+        chara_panel->setPosition(colum_position, cPanelSize.height / 2);
+        //chara_panel->setColor(Color3B::RED);
+        chara_panel->setOpacity(0);
+        fBg->addChild(chara_panel);
+        
+        // 通り名
+        Label* street= Label::createWithTTF("-" + CsvDataManager::getInstance()->getCharaStreetName(charas[i].chara_id) + "-", "fonts/cinecaption2.28.ttf", 24);
+        street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 5);
+        chara_panel->addChild(street);
+        
+        // キャラ名
+        Label* name = Label::createWithTTF(CsvDataManager::getInstance()->getCharaName(charas[i].chara_id), "fonts/cinecaption2.28.ttf", 24);
+        name->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height - name->getContentSize().height /2 - 15);
+        chara_panel->addChild(name);
+        
+        // キャラのドット絵
+        string file_name = charas[i].getDotFileName();
+        if (SpriteFrameCache::getInstance()->getSpriteFrameByName(file_name))
+        {
+            Sprite* dotimg {Sprite::createWithSpriteFrameName(file_name)};
+            dotimg->setPosition(cPanelSize.width / 2, dotimg->getContentSize().height / 2 + 5);
+            dotimg->setZOrder(1);
+            chara_panel->addChild(dotimg);
+        }
+        
+        // キャラの立ち絵
+        file_name = charas[i].getStandFileName();
+        if(SpriteFrameCache::getInstance()->getSpriteFrameByName(file_name))
+        {
+            Sprite* img { Sprite::createWithSpriteFrameName(file_name)};
+            img->setScale(stand_scale);
+            img->setPosition(colum_position, img->getContentSize().height * stand_scale / 2 + fBg->getContentSize().height);
+            img->setLocalZOrder(-1);
+            cover->addChild(img);
+        }
+        
+    }
 	return true;
 }
 

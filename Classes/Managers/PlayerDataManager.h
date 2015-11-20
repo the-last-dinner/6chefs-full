@@ -58,6 +58,8 @@ public:
     int getSaveDataId();
     // プレイ時間の取得
     int getPlayTimeSeconds();
+    string getPlayTimeDisplay();
+    string getPlayTimeDisplay(const int sec);
     // 時間取得
     double getSec();
     /* flag管理系 */

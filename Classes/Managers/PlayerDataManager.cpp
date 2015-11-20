@@ -112,8 +112,6 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     FUNCLOG
     vector<PlayerDataManager::SaveIndex> save_list;
     SaveIndex save;
-    int sec, min;
-    string time;
     // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
         string file = "save/local" + to_string(i) + ".json";
@@ -133,17 +131,12 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
             cout << "set >> " << i << endl;
             this->local_exist[i-1] = true;
             
-            // プレイ時間
-            sec = local["play_time"].GetInt();
-            min = sec / 60;
-            time = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
-            
             // リスト生成
             save = SaveIndex(
                              i,
                              CsvDataManager::getInstance()->getChapterName(local["chapter"].GetInt()),
                              LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local["map_id"].GetInt())),
-                             time,
+                             this->getPlayTimeDisplay(local["play_time"].GetInt()),
                              LastSupper
                              ::StringUtils::getSprintf("%3s", to_string(local["save_count"].GetInt()))
                              );
@@ -190,7 +183,23 @@ int PlayerDataManager::getPlayTimeSeconds()
     // 開始時間を再設定
     this->start_time_ms = this->getSec();
     // プレイ時間を格納
-    return (this->local["play_time"].GetInt() + interval_time);
+    int play_time = this->local["play_time"].GetInt() + interval_time;
+    this->local["play_time"].SetInt(play_time);
+    return play_time;
+}
+
+//　表示用プレイ時間の取得
+string PlayerDataManager::getPlayTimeDisplay(const int sec)
+{
+    int min = floor(sec / 60);
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    return display;
+}
+
+// 現在のプレイ時間の表示用を取得
+string PlayerDataManager::getPlayTimeDisplay()
+{
+    return this->getPlayTimeDisplay(this->getPlayTimeSeconds());
 }
 
 // セーブ
