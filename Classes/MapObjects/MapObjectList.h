@@ -56,6 +56,7 @@ public:
     
     // 主人公一行
     void setParty(Party* party);
+    Party* getParty() const;
     void onPartyMoved(const Point& gridPosition);
 
     // 敵と主人公一行の衝突監視用updateメソッド

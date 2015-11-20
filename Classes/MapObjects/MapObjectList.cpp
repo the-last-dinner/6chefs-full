@@ -229,6 +229,12 @@ void MapObjectList::setParty(Party* party)
     this->party = party;
 }
 
+// 主人公一行を取得
+Party* MapObjectList::getParty() const
+{
+    return this->party;
+}
+
 // 主人公一行が移動した時
 void MapObjectList::onPartyMoved(const Point& gridPosition)
 {
