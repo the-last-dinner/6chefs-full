@@ -16,6 +16,7 @@ struct CharacterData
     int chara_id {static_cast<int>(CharacterID::UNDIFINED)};
     int obj_id {static_cast<int>(ObjectID::UNDIFINED)};
     Location location {};
+    CharacterMovePattern move_pattern {CharacterMovePattern::NONE};
     CharacterData(){};
     CharacterData(const int chara_id, const int obj_id, const Location& location):chara_id(chara_id), obj_id(obj_id), location(location){};
 };

@@ -11,6 +11,7 @@
 #include "Datas/MapObject/CharacterData.h"
 
 #include "MapObjects/MovePatterns/MovePattern.h"
+#include "MapObjects/MovePatterns/MovePatternFactory.h"
 
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
@@ -32,6 +33,12 @@ bool Character::init(const CharacterData& data)
     this->setGridPosition(Point(data.location.x, data.location.y));
     this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
+    
+    // 動きのアルゴリズムを生成
+    MovePatternFactory* factory { MovePatternFactory::create() };
+    CC_SAFE_RETAIN(factory);
+    if(MovePattern* pattern { factory->createMovePattern(data.move_pattern, this) }) this->movePattern = pattern;
+    CC_SAFE_RELEASE(factory);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
     string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };
