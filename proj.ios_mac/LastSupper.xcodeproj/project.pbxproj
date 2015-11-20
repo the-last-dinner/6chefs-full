@@ -219,6 +219,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
 		DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
+		DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
+		DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -487,6 +489,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
 		DC281A441BF8824400A6F8BF /* SelectEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectEventLayer.h; path = ../Classes/Layers/Dungeon/SelectEventLayer.h; sourceTree = "<group>"; };
+		DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePatternFactory.cpp; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.cpp; sourceTree = "<group>"; };
+		DCF1DEC21BFE3F7600D670B3 /* MovePatternFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePatternFactory.h; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -984,6 +988,8 @@
 				55C3C1DD1BD098EC00ECDB50 /* MovePattern.h */,
 				55C3C1E41BD09BBC00ECDB50 /* RandomMove.cpp */,
 				55C3C1E51BD09BBC00ECDB50 /* RandomMove.h */,
+				DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */,
+				DCF1DEC21BFE3F7600D670B3 /* MovePatternFactory.h */,
 			);
 			name = MovePatterns;
 			sourceTree = "<group>";
@@ -1250,6 +1256,7 @@
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
+				DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */,
 				553577E11BEA42C80095E6A9 /* EventScript.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
@@ -1315,6 +1322,7 @@
 				553577DE1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
 				26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
 				5544706B1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
+				DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */,

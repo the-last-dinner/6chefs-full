@@ -10,6 +10,8 @@
 
 #include "Datas/MapObject/CharacterData.h"
 
+#include "MapObjects/MovePatterns/MovePattern.h"
+
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
