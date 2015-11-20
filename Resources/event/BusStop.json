@@ -113,6 +113,17 @@
     {
       "type": "systemMsg",
       "text": ["今日のバスはもう終わってしまったようだ。"]
+    },
+    {
+      "type": "createEnemy",
+      "enemyID": "1",
+      "charaID": "2",
+      "direction": "DOWN",
+      "x": 49,
+      "y": 25,
+      "movePattern": 0,
+      "times": 1,
+      "speed": 1.0
     }
   ],
   "3": [

@@ -9,6 +9,7 @@
 #include "Event/EventFactory.h"
 
 #include "Event/CharacterEvent.h"
+#include "Event/EnemyEvent.h"
 #include "Event/FlagEvent.h"
 #include "Event/GameEvent.h"
 #include "Event/MapEvent.h"
@@ -75,6 +76,9 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"changeDirection", ChangeDirectionEvent::create},  // 方向転換
         {"charaWalkTo", WalkToEvent::create},               // 指定座標へ歩行
         {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
+        
+        // 敵系
+        {"createEnemy", CreateEnemyEvent::create},          // 敵生成
         
         // フラグ系
         {"already", NeverAgainEvent::create},                   // イベントIDを見たことにし、二度と発動しないようにする

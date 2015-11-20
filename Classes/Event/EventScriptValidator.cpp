@@ -206,3 +206,9 @@ Direction EventScriptValidator::getDirection(rapidjson::Value& json)
     
     return MapUtils::toEnumDirection(json[member::DIRECTION].GetString());
 }
+
+// 敵の移動アルゴリズムの種類を取得
+EnemyMovePattern EventScriptValidator::getMovePatternForEnemy(rapidjson::Value& json)
+{
+    return static_cast<EnemyMovePattern>(json[member::MOVE_PATTERN].GetInt());
+}

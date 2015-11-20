@@ -20,7 +20,12 @@ const string Character::basePath = "img/character/";
 Character::Character(){FUNCLOG}
 
 // デストラクタ
-Character::~Character(){FUNCLOG}
+Character::~Character()
+{
+    FUNCLOG
+    
+    CC_SAFE_RELEASE(this->movePattern);
+}
 
 // 初期化
 bool Character::init(const CharacterData& data)
@@ -37,7 +42,11 @@ bool Character::init(const CharacterData& data)
     // 動きのアルゴリズムを生成
     MovePatternFactory* factory { MovePatternFactory::create() };
     CC_SAFE_RETAIN(factory);
-    if(MovePattern* pattern { factory->createMovePattern(data.move_pattern, this) }) this->movePattern = pattern;
+    if(MovePattern* pattern { factory->createMovePattern(data.move_pattern, this) })
+    {
+        this->movePattern = pattern;
+        CC_SAFE_RETAIN(this->movePattern);
+    }
     CC_SAFE_RELEASE(factory);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）

@@ -11,11 +11,7 @@
 
 #include "Common.h"
 
-class DungeonScene;
-class GameEvent;
-class MapObjectList;
 class MapObject;
-class TiledMapLayer;
 
 // イベントスクリプトの値チェック、変換を担うクラス
 class EventScriptValidator : public Ref
@@ -47,5 +43,6 @@ public:
     
     Point getPoint(rapidjson::Value& json);
     Direction getDirection(rapidjson::Value& json);
+    EnemyMovePattern getMovePatternForEnemy(rapidjson::Value& json);
 };
 #endif /* defined(__LastSupper__EventScriptValidator__) */

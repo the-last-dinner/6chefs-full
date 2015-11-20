@@ -227,6 +227,8 @@
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
 		DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
+		DCFC39071BFF38780073A6CA /* EnemyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */; };
+		DCFC39081BFF38780073A6CA /* EnemyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -504,6 +506,8 @@
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
 		DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePatternFactory.cpp; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.cpp; sourceTree = "<group>"; };
 		DCF1DEC21BFE3F7600D670B3 /* MovePatternFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePatternFactory.h; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.h; sourceTree = "<group>"; };
+		DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyEvent.cpp; path = ../Classes/Event/EnemyEvent.cpp; sourceTree = "<group>"; };
+		DCFC39061BFF38780073A6CA /* EnemyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyEvent.h; path = ../Classes/Event/EnemyEvent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1049,27 +1053,29 @@
 			children = (
 				553577DF1BEA42C80095E6A9 /* EventScript.cpp */,
 				553577E01BEA42C80095E6A9 /* EventScript.h */,
-				55F3022E1BDA331900BDC418 /* GameEvent.cpp */,
-				55F3022F1BDA331900BDC418 /* GameEvent.h */,
 				55F302321BDA873900BDC418 /* EventScriptValidator.cpp */,
 				55F302331BDA873900BDC418 /* EventScriptValidator.h */,
 				55F302361BDAB0F800BDC418 /* EventFactory.cpp */,
 				55F302371BDAB0F800BDC418 /* EventFactory.h */,
 				554470651BDBB9C60048CD0B /* EventScriptMember.h */,
-				554470681BDCB5730048CD0B /* ModalLayerEvent.cpp */,
-				554470691BDCB5730048CD0B /* ModalLayerEvent.h */,
-				5544706C1BDCCA380048CD0B /* SoundEvent.cpp */,
-				5544706D1BDCCA380048CD0B /* SoundEvent.h */,
-				554470701BDCD5D80048CD0B /* SceneEvent.cpp */,
-				554470711BDCD5D80048CD0B /* SceneEvent.h */,
-				554470741BDCDFAE0048CD0B /* MapObjectEvent.cpp */,
-				554470751BDCDFAE0048CD0B /* MapObjectEvent.h */,
 				554470831BDF61790048CD0B /* CharacterEvent.cpp */,
 				554470841BDF61790048CD0B /* CharacterEvent.h */,
+				DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */,
+				DCFC39061BFF38780073A6CA /* EnemyEvent.h */,
 				554470871BDF89990048CD0B /* FlagEvent.cpp */,
 				554470881BDF89990048CD0B /* FlagEvent.h */,
+				55F3022E1BDA331900BDC418 /* GameEvent.cpp */,
+				55F3022F1BDA331900BDC418 /* GameEvent.h */,
 				5544708B1BDFA0F10048CD0B /* MapEvent.cpp */,
 				5544708C1BDFA0F10048CD0B /* MapEvent.h */,
+				554470741BDCDFAE0048CD0B /* MapObjectEvent.cpp */,
+				554470751BDCDFAE0048CD0B /* MapObjectEvent.h */,
+				554470681BDCB5730048CD0B /* ModalLayerEvent.cpp */,
+				554470691BDCB5730048CD0B /* ModalLayerEvent.h */,
+				554470701BDCD5D80048CD0B /* SceneEvent.cpp */,
+				554470711BDCD5D80048CD0B /* SceneEvent.h */,
+				5544706C1BDCCA380048CD0B /* SoundEvent.cpp */,
+				5544706D1BDCCA380048CD0B /* SoundEvent.h */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1293,6 +1299,7 @@
 				260F45CE1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
 				55F302381BDAB0F800BDC418 /* EventFactory.cpp in Sources */,
 				552F5DCB1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
+				DCFC39071BFF38780073A6CA /* EnemyEvent.cpp in Sources */,
 				552D83861B20BFD800B681A8 /* baseScene.cpp in Sources */,
 				DCAB9BBC1BFF1A2100887F68 /* CheapChaser.cpp in Sources */,
 				55F302341BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
@@ -1378,6 +1385,7 @@
 				5564CCE51BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				55C3C1DF1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
+				DCFC39081BFF38780073A6CA /* EnemyEvent.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,

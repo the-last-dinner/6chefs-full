@@ -101,6 +101,8 @@ void TiledMapLayer::setParty(Party* party)
         this->addMapObject(member, false);
     }
     
+    this->objectList->setParty(party);
+    
 }
 
 // 敵をマップに配置

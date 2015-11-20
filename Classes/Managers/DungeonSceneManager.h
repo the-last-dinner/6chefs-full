@@ -20,6 +20,7 @@ class EventScript;
 class EventScriptValidator;
 class Party;
 class GameEvent;
+class Enemy;
 
 // ダンジョンシーンのマップ間で共有すべき情報を持つシングルトンクラス
 class DungeonSceneManager
@@ -56,6 +57,7 @@ public:
     // TiledMaplayer
     Size getMapSize() const;
     void addMapObject(MapObject* mapobject);
+    void addEnemy(Enemy* enemy);
     
     // Director
     void changeMap(const Location& location);
