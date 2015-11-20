@@ -32,6 +32,16 @@ void CheapChaser::start(const Point& gridPosition)
     this->move();
 }
 
+// パーティが移動した時
+void CheapChaser::onPartyMoved(const Point& gridPosition)
+{
+    MovePattern::onPartyMoved(gridPosition);
+    
+    // もしキャラクタが動いていなければ、動かす
+    if(this->chara->isMoving()) return;
+    this->move();
+}
+
 // 移動
 void CheapChaser::move()
 {

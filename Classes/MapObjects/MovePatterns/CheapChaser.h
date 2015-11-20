@@ -24,6 +24,7 @@ private:
     virtual bool init(Character* character) override;
 public:
     virtual void start(const Point& gridPosition) override;
+    virtual void onPartyMoved(const Point& gridPosition) override;
     void move();
     Direction calcMoveDirection();
 };
