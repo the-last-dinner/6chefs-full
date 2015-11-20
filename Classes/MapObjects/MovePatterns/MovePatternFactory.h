@@ -25,6 +25,7 @@ private:
     MovePatternFactory();
     ~MovePatternFactory();
     bool init();
+public:
     MovePattern* createMovePattern(const EnemyMovePattern type, Character* character);
     MovePattern* createMovePattern(const CharacterMovePattern type, Character* character);
 };

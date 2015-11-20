@@ -11,7 +11,8 @@
 
 #include "define.h"
 
-struct CharacterData{
+struct CharacterData
+{
     int chara_id {static_cast<int>(CharacterID::UNDIFINED)};
     int obj_id {static_cast<int>(ObjectID::UNDIFINED)};
     Location location {};

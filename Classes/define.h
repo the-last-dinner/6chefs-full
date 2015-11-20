@@ -120,6 +120,16 @@ enum struct CharacterID
     UNDIFINED = -1,
 };
 
+enum struct EnemyID
+{
+    UNDIFINED = -1,
+};
+
+enum struct MapID
+{
+    UNDIFINED = -1,
+};
+
 // 味方キャラクタの動き方
 enum struct CharacterMovePattern
 {

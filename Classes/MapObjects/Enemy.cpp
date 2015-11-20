@@ -9,6 +9,7 @@
 #include "MapObjects/Enemy.h"
 
 #include "MapObjects/MovePatterns/MovePattern.h"
+#include "MapObjects/MovePatterns/MovePatternFactory.h"
 
 // コンストラクタ
 Enemy::Enemy() {FUNCLOG};
@@ -17,8 +18,17 @@ Enemy::Enemy() {FUNCLOG};
 Enemy::~Enemy() {FUNCLOG};
 
 // 初期化
-bool Enemy::init()
+bool Enemy::init(const EnemyData& data)
 {
+    if(!Character::init(data.chara_data)) return false;
+    
+    this->data = data;
+    
+    // 動きのアルゴリズムを生成
+    MovePatternFactory* factory { MovePatternFactory::create() };
+    CC_SAFE_RETAIN(factory);
+    this->movePattern = factory->createMovePattern(data.move_pattern, this);
+    CC_SAFE_RELEASE(factory);
     
     return false;
 }
@@ -26,7 +36,7 @@ bool Enemy::init()
 // 敵IDを取得
 int Enemy::getEnemyId() const
 {
-    return this->enemyId;
+    return this->data.enemy_id;
 }
 
 // マップに配置された時

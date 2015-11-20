@@ -495,6 +495,7 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
 		DC281A441BF8824400A6F8BF /* SelectEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectEventLayer.h; path = ../Classes/Layers/Dungeon/SelectEventLayer.h; sourceTree = "<group>"; };
+		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
 		DCAB9BB61BFF19A100887F68 /* Chaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chaser.cpp; path = ../Classes/MapObjects/MovePatterns/Chaser.cpp; sourceTree = "<group>"; };
 		DCAB9BB71BFF19A100887F68 /* Chaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaser.h; path = ../Classes/MapObjects/MovePatterns/Chaser.h; sourceTree = "<group>"; };
 		DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CheapChaser.cpp; path = ../Classes/MapObjects/MovePatterns/CheapChaser.cpp; sourceTree = "<group>"; };
@@ -582,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				2605577B1BFC88A200365B4C /* CharacterData.h */,
+				DC5B4C731BFF2882000A015A /* EnemyData.h */,
 			);
 			name = MapObject;
 			sourceTree = "<group>";

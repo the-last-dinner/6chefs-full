@@ -11,20 +11,23 @@
 
 #include "MapObjects/Character.h"
 
+#include "Datas/Mapobject/EnemyData.h"
+
 class Enemy : public Character
 {
 // クラスメソッド
 public:
+    CREATE_FUNC_WITH_PARAM(Enemy, const EnemyData&)
 
 // インスタンス変数
 private:
-    int enemyId { 0 };
+    EnemyData data {};
     
 // インスタンスメソッド
 private:
     Enemy();
     ~Enemy();
-    bool init();
+    bool init(const EnemyData& data);
 public:
     int getEnemyId() const;
     void onEnterMap(const Point& gridPosistion);
