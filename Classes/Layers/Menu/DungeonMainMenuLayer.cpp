@@ -43,12 +43,12 @@ bool DungeonMainMenuLayer::init()
     
     // チャプター表示
     int chapter_id = PlayerDataManager::getInstance()->getChapterId();
-    Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterName(chapter_id), "fonts/cinecaption2.28.ttf", 26);
-    chapter_name->setPosition(chapter_name->getContentSize().width / 2 + 10, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height / 2 - 10);
+    Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterName(chapter_id), "fonts/cinecaption2.28.ttf", 30);
+    chapter_name->setPosition(chapter_name->getContentSize().width / 2 + 15, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height / 2 - 15);
     cover->addChild(chapter_name);
     
-    Label* chapter_title = Label::createWithTTF(CsvDataManager::getInstance()->getChapterTitle(chapter_id), "fonts/cinecaption2.28.ttf", 26);
-    chapter_title->setPosition(chapter_title->getContentSize().width / 2 + 30, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height - chapter_title->getContentSize().height / 2 - 20);
+    Label* chapter_title = Label::createWithTTF(CsvDataManager::getInstance()->getChapterTitle(chapter_id), "fonts/cinecaption2.28.ttf", 30);
+    chapter_title->setPosition(chapter_title->getContentSize().width / 2 + 45, WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height - chapter_title->getContentSize().height / 2 - 30);
     cover->addChild(chapter_title);
     
     // メニューの選択肢を生成
@@ -65,17 +65,18 @@ bool DungeonMainMenuLayer::init()
     {
         Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
         menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
+        menu->setTag(i);
         hBg->addChild(menu);
         this->menuObjects.push_back(menu);
     }
     
     // マップ名表示
     Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
-    mapName->setPosition(mapName->getContentSize().width / 2, hBg->getContentSize().height - mapName->getContentSize().height / 2);
+    mapName->setPosition(mapName->getContentSize().width / 2 + 15, hBg->getContentSize().height - mapName->getContentSize().height / 2 - 15);
     hBg->addChild(mapName);
     
     Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getPlayTimeDisplay(), "fonts/cinecaption2.28.ttf", 26);
-    play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2, hBg->getContentSize().height - play_time->getContentSize().height / 2);
+    play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2 - 15, hBg->getContentSize().height - play_time->getContentSize().height / 2 - 15);
     hBg->addChild(play_time);
     
 	// 下のメニューを生成
@@ -168,12 +169,20 @@ void DungeonMainMenuLayer::hide()
 void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
     this->menuIndex = newIdx;
-    for(int i = 0; i < MenuLayer::menuObjects.size(); i++)
+    // カーソル処理
+    for(Node* obj : this->menuObjects)
     {
-        Node* obj {this->menuObjects.at(i)};
-        this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (newIdx == i)?1.2f:1.f)),
-                                      TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
-                                      nullptr));
+        if(obj->getTag() == newIdx)
+        {
+            obj->runAction(FadeTo::create(0.1f, 255));
+            obj->runAction(ScaleTo::create(0.2f, 1.2f));
+        }
+        else
+        {
+            obj->runAction(FadeTo::create(0.1f, 128));
+            obj->runAction(ScaleTo::create(0.2f, 1.0f));
+        }
+        obj->runAction(TintTo::create(0.5f, 255, 255, 255));
     }
     if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
     return;
