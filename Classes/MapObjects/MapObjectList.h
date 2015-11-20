@@ -12,11 +12,11 @@
 #include "Common.h"
 
 #include "MapObjects/MapObject.h"
+#include "MapObjects/Enemy.h"
 
-class Character;
-class MapObject;
+class Party;
 
-class MapObjectList : public Ref
+class MapObjectList : public Node
 {
 // クラスメソッド
 public:
@@ -26,6 +26,9 @@ public:
 private:
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
+    Party* party { nullptr };
+    Vector<Enemy*> enemies {};
+    function<void()> onContactWithEnemy { nullptr };
     
 // インスタンスメソッド
 private:
@@ -43,8 +46,21 @@ public:
     
     vector<int> getEventIds(const Trigger trigger) const;
     vector<Rect> getGridCollisionRects() const;
+    
     void add(MapObject* mapObject);
-    void remove(MapObject* mapObject);
+    void removeById(const int objectId);
+    
+    // 敵
+    void addEnemy(Enemy* enemy);
+    void removeEnemyById(const int enemyId);
+    
+    // 主人公一行
+    void setParty(Party* party);
+    Party* getParty() const;
+    void onPartyMoved(const Point& gridPosition);
+
+    // 敵と主人公一行の衝突監視用updateメソッド
+    void update(float delta);
 };
 
 #endif /* defined(__LastSupper__MapObjectList__) */

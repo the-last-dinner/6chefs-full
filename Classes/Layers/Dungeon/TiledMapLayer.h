@@ -11,10 +11,10 @@
 
 #include "Common.h"
 
+class Enemy;
 class MapObject;
-class EventListenerKeyboardLayer;
-class Character;
 class MapObjectList;
+class Party;
 
 class TiledMapLayer : public Layer
 {
@@ -37,12 +37,14 @@ public:
     experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
+    // Layer
     void hideLayer(const string& layerName);
     void swingLayer(const string& layerName);
     void stopLayerActions();
-    void addMapObject(MapObject* mapObject);
-    void addMapObject(MapObject* mapObject, const Point& gridPoint);
-    void removeMapObject(MapObject* mapObject);
+    // MapObject
+    void setParty(Party* party);
+    void addEnemy(Enemy* enemy);
+    void addMapObject(MapObject* mapObject, bool addingToList = true);
     void setZOrderByPosition(MapObject* mapObject);
 };
 

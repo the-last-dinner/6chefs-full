@@ -21,12 +21,13 @@ protected:
 
 // インスタンスメソッド
 public:
+    virtual void start() {};
+    virtual void start(const Point& gridPostion) {};
+    virtual void onPartyMoved(const Point& gridPosition) {};
 protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
-    virtual void move() = 0;
-    
 };
 
 #endif /* defined(__LastSupper__MovePattern__) */

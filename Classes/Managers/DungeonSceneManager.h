@@ -33,7 +33,6 @@ public:
 private:
     EventFactory* eventFactory { nullptr };
     EventScriptValidator* scriprtValidator { nullptr };
-    Party* party { nullptr };
     
 // インスタンスメソッド
 private:
@@ -57,14 +56,11 @@ public:
     // TiledMaplayer
     Size getMapSize() const;
     void addMapObject(MapObject* mapobject);
-    void removeMapObject(MapObject* mapObject);
     
     // Director
     void changeMap(const Location& location);
     
     // EventListener
-    void setInputCheckInterval(const float interval);
-    void setEventListenerPaused(const bool paused);
     bool isPressed(const Key& key);
     vector<Key> getPressedCursorKeys() const;
     

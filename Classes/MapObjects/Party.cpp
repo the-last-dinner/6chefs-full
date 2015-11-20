@@ -14,15 +14,23 @@
 Party::Party() {FUNCLOG};
 
 // デストラクタ
-Party::~Party() {FUNCLOG};
+Party::~Party()
+{
+    FUNCLOG
+
+    this->members.clear();
+};
 
 // 初期化
-bool Party::init(Character* mainCharacter)
+bool Party::init(const vector<CharacterData>& datas)
 {
-    if(!mainCharacter) return false;
+    if(datas.empty()) return false;
     
-    // 先頭に主人公を配置する
-    this->addMember(mainCharacter);
+    // データを元にキャラクタを生成して格納
+    for(CharacterData data : datas)
+    {
+        this->members.pushBack(Character::create(data));
+    }
     
     return true;
 }
@@ -50,7 +58,11 @@ bool Party::move(const vector<Direction>& directions, float ratio, function<void
         if(i == 0)
         {
             dirs = directions;
-            cb = callback;
+            cb = [this, callback, character]
+            {
+                callback();
+                if(this->onPartyMoved) this->onPartyMoved(character->getGridPosition());
+            };
         }
         // 主人公以外について
         if(i != 0)
@@ -78,19 +90,4 @@ Character* Party::getMainCharacter() const
 Vector<Character*> Party::getMembers() const
 {
     return this->members;
-}
-
-// リロード
-void Party::reload()
-{
-    Vector<Character*> newMembers {};
-    
-    for(Character* chara : this->members)
-    {
-        newMembers.pushBack(Character::create(chara->getCharacterId(), chara->getDirection()));
-    }
-    
-    this->members.clear();
-    
-    this->members = newMembers;
 }

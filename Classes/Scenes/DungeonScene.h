@@ -14,13 +14,13 @@
 class AmbientLightLayer;
 class TiledMapLayer;
 class DungeonSceneData;
-class EventScript;
 
 class CameraTask;
 class EventTask;
 class PlayerControlTask;
 
 class LoadingLayer;
+class Party;
 
 class DungeonScene : public baseScene
 {
@@ -31,7 +31,7 @@ public:
 // インスタンス変数
 private:
     EventListenerKeyboardLayer* listener { nullptr };
-    cocos2d::FileUtils* fu;
+    cocos2d::FileUtils* fu { nullptr };
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
     
@@ -42,6 +42,8 @@ private:
     LoadingLayer* loadingLayer { nullptr };
     Sprite* cover { nullptr };
     
+    Party* party { nullptr };
+    
 // インスタンスメソッド
 public:
     void onInitEventFinished();
@@ -51,6 +53,8 @@ private:
 	~DungeonScene();
 	virtual bool init(DungeonSceneData* data);
 	virtual void onPreloadFinished() override;
+    
+    Party* createParty();
     
     virtual void onMenuKeyPressed() override;
     DungeonSceneData* getData() const;

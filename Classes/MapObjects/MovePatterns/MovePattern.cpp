@@ -9,10 +9,10 @@
 #include "MapObjects/MovePatterns/MovePattern.h"
 
 // コンストラクタ
-MovePattern::MovePattern() {FUNCLOG};
+MovePattern::MovePattern() {};
 
 // デストラクタ
-MovePattern::~MovePattern() {FUNCLOG};
+MovePattern::~MovePattern() {};
 
 // 初期化
 bool MovePattern::init(Character* chara)

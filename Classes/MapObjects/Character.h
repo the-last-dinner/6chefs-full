@@ -11,6 +11,9 @@
 
 #include "MapObjects/MapObject.h"
 
+struct CharacterData;
+class MovePattern;
+
 class Character : public MapObject
 {
 // 定数
@@ -19,7 +22,7 @@ private:
 
 // クラスメソッド
 public:
-	static Character* create(int charaId, const Direction direction);
+    CREATE_FUNC_WITH_PARAM(Character, const CharacterData&);
     
 // インスタンス変数
 private:
@@ -27,26 +30,30 @@ private:
     Sprite* character { nullptr };												// キャラクターのSprite部分
     string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
     Direction direction {Direction::SIZE};										// 現在向いている方向
-    bool stampingRightFoot { false };
-	
+    int stampingState {0};                                                      // 歩行アニメーションの状態
+protected:
+    MovePattern* movePattern { nullptr };                                       // 動きのパターン
+    
 // インスタンスメソッド
-private:
+public:
 	Character();
 	~Character();
-	virtual bool init(int charaId, const Direction direction);
-public:
+    bool init(const CharacterData& data);
+    
     int getCharacterId() const;
     Direction getDirection() const;
     
 	void setDirection(Direction direction);
 	void setMoving(bool _isMoving);
-    void stamp(const Direction direction, const int gridNum , const float ratio = 1.0f);
+    void stamp(const Direction direction, const float ratio = 1.0f);
     bool walkBy(const Direction& direction, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
     bool walkBy(const vector<Direction>& directions, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
     void walkBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
     void walkBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
-    void walkByQueue(deque<Direction> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
     void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    
+    virtual void onEnterMap() override;
 };
 
 #endif // __CHARACTER_H__

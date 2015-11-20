@@ -8,9 +8,11 @@
 
 #include "MapObjects/MapObjectFactory.h"
 
-#include "MapObjects/MapObjectList.h"
+#include "Datas/MapObject/CharacterData.h"
 
-#include "Objects.h"
+#include "MapObjects/Character.h"
+#include "MapObjects/EventObject.h"
+#include "MapObjects/MapObjectList.h"
 
 // コンストラクタ
 MapObjectFactory::MapObjectFactory() {FUNCLOG};
@@ -189,12 +191,21 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
 MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
-    Character* chara {Character::create(this->getCharacterId(info), this->getDirection(info))};
+    Point gridPosition { this->getGridPosition(rect) };
+    
+    // データ生成
+    CharacterData data;
+    data.obj_id = this->getObjectId(info);
+    data.chara_id = this->getCharacterId(info);
+    data.location.x = gridPosition.x;
+    data.location.y = gridPosition.y;
+    data.location.direction = this->getDirection(info);
+    
+    // データからキャラクタを生成
+    Character* chara { Character::create(data) };
     
     if(!chara) return nullptr;
     
-    chara->setGridPosition(this->getGridPosition(rect));
-    chara->setObjectId(this->getObjectId(info));
     chara->setTrigger(this->getTrigger(info));
     chara->setEventId(this->getEventId(info));
     chara->setHit(true);

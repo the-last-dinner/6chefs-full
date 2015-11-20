@@ -8,9 +8,9 @@
 
 #include "MapUtils.h"
 
-Point MapUtils::convertToCCPoint(const Size& mapSize, const Point& gridPoint)
+Point MapUtils::convertToCCPoint(const Size& mapSize, const Point& gridPoint, const Size& objectSize)
 {
-	return Point(gridPoint.x * GRID, mapSize.height - gridPoint.y * GRID);
+	return Point(gridPoint.x * GRID + objectSize.width / 2, mapSize.height - gridPoint.y * GRID + (objectSize.height - GRID * 2) / 2);
 }
 
 Point MapUtils::convertToMapPoint(const Size& mapSize, const Point& ccPoint)

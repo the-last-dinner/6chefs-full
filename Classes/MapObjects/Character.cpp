@@ -8,6 +8,11 @@
 
 #include "MapObjects/Character.h"
 
+#include "Datas/MapObject/CharacterData.h"
+
+#include "MapObjects/MovePatterns/MovePattern.h"
+#include "MapObjects/MovePatterns/MovePatternFactory.h"
+
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
@@ -17,29 +22,23 @@ Character::Character(){FUNCLOG}
 // デストラクタ
 Character::~Character(){FUNCLOG}
 
-// create関数。この関数を用いてキャラクターを初期化
-Character* Character::create(int charaId, Direction direction)
-{
-	Character* pChara = new(nothrow)Character();
-	if (pChara && pChara->init(charaId, direction))
-	{
-		// オブジェクトを自動メモリ管理へ登録
-		pChara->autorelease();
-		return pChara;
-	}
-	CC_SAFE_DELETE(pChara);
-	return nullptr;
-}
-
 // 初期化
-bool Character::init(int charaId, const Direction direction)
+bool Character::init(const CharacterData& data)
 {
-	FUNCLOG
 	if(!Node::init()) return false;
+    
 	// 生成時の情報をセット
-    this->charaId = charaId;
-	this->direction = direction;
+    this->charaId = data.chara_id;
+	this->direction = data.location.direction;
+    this->setGridPosition(Point(data.location.x, data.location.y));
+    this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
+    
+    // 動きのアルゴリズムを生成
+    MovePatternFactory* factory { MovePatternFactory::create() };
+    CC_SAFE_RETAIN(factory);
+    if(MovePattern* pattern { factory->createMovePattern(data.move_pattern, this) }) this->movePattern = pattern;
+    CC_SAFE_RELEASE(factory);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
     string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };
@@ -91,25 +90,17 @@ void Character::setDirection(Direction direction)
 }
 
 // 足踏み
-void Character::stamp(const Direction direction, const int gridNum, float ratio)
+void Character::stamp(const Direction direction, float ratio)
 {
     this->character->stopAllActions();
     
-    Vector<FiniteTimeAction*> stampingActions {};
+    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(this->direction)) + to_string(this->stampingState < 2 ? 0 : 1));
+    this->stampingState++;
+    if(this->stampingState > 3) this->stampingState = 0;
+    anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
     
-    for(int i { 0 }; i < gridNum; i++)
-    {
-        Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(this->direction)) + ((this->stampingRightFoot)?"1":"0"));
-        this->stampingRightFoot = !this->stampingRightFoot;
-        anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
-        
-        stampingActions.pushBack(Animate::create(anime));
-    }
-    
-    if(stampingActions.empty()) return;
-    
-    this->character->runAction(Sequence::create(stampingActions));
-    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create((DURATION_MOVE_ONE_GRID * gridNum) / ratio), CallFunc::create([this, direction]{this->setDirection(this->direction);})));
+    this->character->runAction(Animate::create(anime));
+    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this, direction]{this->setDirection(direction);})));
 }
 
 // 方向を指定して歩行させる
@@ -127,7 +118,7 @@ bool Character::walkBy(const vector<Direction>& directions, function<void()> onW
     
     this->setDirection(back ? MapUtils::oppositeDirection(directions.back()) : directions.back());
     
-    this->stamp(directions.back(), 1, ratio);
+    this->stamp(directions.back(), ratio);
     
     return true;
 }
@@ -158,39 +149,49 @@ void Character::walkBy(const vector<Direction>& directions, const int gridNum, f
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<Direction> directionsQueue, function<void(bool)> callback, const float ratio, const bool back)
+void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back)
 {
-    // キューが空になったら成功としてコールバックを呼び出し
-    if(directionsQueue.empty())
+    if(directionQueue.empty())
     {
-        callback(true);
+        if(callback) callback(true);
         
         return;
     }
     
-    // キューの先頭を実行。失敗時にはコールバックを失敗として実行
-    Direction direction { directionsQueue.front() };
-    directionsQueue.pop_front();
+    deque<vector<Direction>> directionsQueue {};
     
-    // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(!this->walkBy(direction, [directionsQueue, callback, ratio, back, this]{this->walkByQueue(directionsQueue, callback, ratio, back);}, ratio, back)) callback(false);
+    for(Direction direction : directionQueue)
+    {
+        directionsQueue.push_back(vector<Direction>({direction}));
+    }
+    
+    this->walkByQueue(directionsQueue, callback, ratio, back);
 }
 
 // キューで歩行させる
 void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio, const bool back)
 {
+    // 初回のみ中身が存在するため、空でない時は格納する
+    if(!directionsQueue.empty()) this->directionsQueue = directionsQueue;
+    
     // キューが空になったら成功としてコールバックを呼び出し
-    if(directionsQueue.empty())
+    if(this->directionsQueue.empty())
     {
         callback(true);
         
         return;
     }
     
-    // キューの先頭を実行。失敗時にはコールバックを失敗として実行
-    vector<Direction> directions { directionsQueue.front() };
-    directionsQueue.pop_front();
+    // キューの先頭を実行
+    vector<Direction> directions { this->directionsQueue.front() };
+    this->directionsQueue.pop_front();
     
     // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(!this->walkBy(directions, [directionsQueue, callback, ratio, back, this]{this->walkByQueue(directionsQueue, callback, ratio, back);}, ratio, back)) callback(false);
+    if(!this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) callback(false);
+}
+
+// マップに配置された時
+void Character::onEnterMap()
+{
+    if(this->movePattern) this->movePattern->start();
 }

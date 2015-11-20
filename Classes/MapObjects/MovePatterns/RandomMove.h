@@ -15,7 +15,7 @@ class RandomMove : public MovePattern
 {
 // クラスメソッド
 public:
-    static RandomMove* create(Character* chara, float second);
+    CREATE_FUNC_WITH_PARAM(RandomMove, Character*);
 
 // インスタンス変数
 private:
@@ -25,8 +25,8 @@ private:
 private:
     RandomMove();
     ~RandomMove();
-    bool init(Character* chara, float second);
-    virtual void move();
+    bool init(Character* chara);
+    virtual void start() override;
 };
 
 #endif /* defined(__LastSupper__RandomMove__) */
