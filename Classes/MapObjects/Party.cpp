@@ -58,7 +58,11 @@ bool Party::move(const vector<Direction>& directions, float ratio, function<void
         if(i == 0)
         {
             dirs = directions;
-            cb = callback;
+            cb = [this, callback, character]
+            {
+                callback();
+                if(this->onPartyMoved) this->onPartyMoved(character->getGridPosition());
+            };
         }
         // 主人公以外について
         if(i != 0)

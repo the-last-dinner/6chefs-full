@@ -76,7 +76,7 @@ public:
     void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
     void clearDirectionsQueue();
     
-    // イベントリスナ
+    // イベント関数
     void onEnterMap() {};                               // マップに追加された時
 
     void drawDebugMask(); // デバッグ用マスク
