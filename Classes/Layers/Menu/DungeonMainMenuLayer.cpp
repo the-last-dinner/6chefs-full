@@ -34,10 +34,9 @@ bool DungeonMainMenuLayer::init()
     
 	// 上のメニューを生成
 	Sprite* hBg { Sprite::create() };
-	hBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
+    hBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
 	hBg->setColor(Color3B::GRAY);
 	hBg->setPosition(hBg->getContentSize().width / 2, WINDOW_HEIGHT - hBg->getContentSize().height / 2);
-	//hBg->setOpacity(0);
 	hBg->setCascadeOpacityEnabled(true);
 	this->addChild(hBg);
     
@@ -94,7 +93,7 @@ bool DungeonMainMenuLayer::init()
     string right = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
     string left = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
     Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, "fonts/cinecaption2.28.ttf", 26);
-    equipment->setPosition(equipment->getContentSize().width / 2, fBg->getContentSize().height - equipment->getContentSize().height / 2);
+    equipment->setPosition(equipment->getContentSize().width / 2 + 15, fBg->getContentSize().height - equipment->getContentSize().height / 2 - 15);
     fBg->addChild(equipment);
     
     // キャラ表示
