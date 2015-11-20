@@ -39,15 +39,15 @@ bool Character::init(const CharacterData& data)
     this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
     
-    // 動きのアルゴリズムを生成
-    MovePatternFactory* factory { MovePatternFactory::create() };
-    CC_SAFE_RETAIN(factory);
-    if(MovePattern* pattern { factory->createMovePattern(data.move_pattern, this) })
+    if(this->movePattern)
     {
-        this->movePattern = pattern;
+        // 動きのアルゴリズムを生成
+        MovePatternFactory* factory { MovePatternFactory::create() };
+        CC_SAFE_RETAIN(factory);
+        this->movePattern = factory->createMovePattern(data.move_pattern, this);
         CC_SAFE_RETAIN(this->movePattern);
+        CC_SAFE_RELEASE(factory);
     }
-    CC_SAFE_RELEASE(factory);
 	
     // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
     string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };
