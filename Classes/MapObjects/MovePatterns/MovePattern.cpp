@@ -23,3 +23,15 @@ bool MovePattern::init(Character* chara)
     
     return true;
 }
+
+// 主人公のマス座標を指定して移動開始
+void MovePattern::start(const Point& gridPosition)
+{
+    this->mainCharacterPos = gridPosition;
+}
+
+// 主人公一行が移動した時
+void MovePattern::onPartyMoved(const Point& gridPosition)
+{
+    this->mainCharacterPos = gridPosition;
+}

@@ -20,6 +20,7 @@ MapObjectList::~MapObjectList()
 
     this->availableObjects.clear();
     this->disableObjects.clear();
+    this->enemies.clear();
 };
 
 // 初期化

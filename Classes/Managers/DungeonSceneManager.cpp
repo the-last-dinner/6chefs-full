@@ -159,6 +159,12 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
     this->getMapLayer()->addMapObject(mapObject);
 }
 
+// 敵をマップに配置
+void DungeonSceneManager::addEnemy(Enemy* enemy)
+{
+    this->getMapLayer()->addEnemy(enemy);
+}
+
 #pragma mark -
 #pragma mark Director
 

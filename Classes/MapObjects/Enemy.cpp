@@ -28,9 +28,10 @@ bool Enemy::init(const EnemyData& data)
     MovePatternFactory* factory { MovePatternFactory::create() };
     CC_SAFE_RETAIN(factory);
     this->movePattern = factory->createMovePattern(data.move_pattern, this);
+    CC_SAFE_RETAIN(this->movePattern);
     CC_SAFE_RELEASE(factory);
     
-    return false;
+    return true;
 }
 
 // 敵IDを取得

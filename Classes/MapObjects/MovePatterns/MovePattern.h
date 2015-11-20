@@ -18,12 +18,13 @@ class MovePattern : public Ref
 // インスタンス変数
 protected:
     Character* chara { nullptr };
+    Point mainCharacterPos { Point::ZERO };
 
 // インスタンスメソッド
 public:
     virtual void start() {};
-    virtual void start(const Point& gridPostion) {};
-    virtual void onPartyMoved(const Point& gridPosition) {};
+    virtual void start(const Point& gridPostion);
+    virtual void onPartyMoved(const Point& gridPosition);
 protected:
     MovePattern();
     ~MovePattern();
