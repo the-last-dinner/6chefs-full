@@ -11,6 +11,7 @@
 
 #include "Common.h"
 
+class Character;
 class MovePattern;
 
 class MovePatternFactory : public Ref
@@ -24,8 +25,8 @@ private:
     MovePatternFactory();
     ~MovePatternFactory();
     bool init();
-    MovePattern* createMovePattern(const EnemyMovePattern type);
-    MovePattern* createMovePattern(const CharacterMovePattern type);
+    MovePattern* createMovePattern(const EnemyMovePattern type, Character* character);
+    MovePattern* createMovePattern(const CharacterMovePattern type, Character* character);
 };
 
 #endif /* MovePatternFactory_h */

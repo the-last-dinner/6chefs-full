@@ -8,6 +8,11 @@
 
 #include "MapObjects/MovePatterns/MovePatternFactory.h"
 
+#include "MapObjects/MovePatterns/Chaser.h"
+#include "MapObjects/MovePatterns/CheapChaser.h"
+#include "MapObjects/MovePatterns/RandomMove.h"
+#include "MapObjects/MovePatterns/Scouter.h"
+
 // コンストラクタ
 MovePatternFactory::MovePatternFactory() {FUNCLOG};
 
@@ -20,12 +25,35 @@ bool MovePatternFactory::init()
     return true;
 }
 
-MovePattern* MovePatternFactory::createMovePattern(const EnemyMovePattern type)
+MovePattern* MovePatternFactory::createMovePattern(const EnemyMovePattern type, Character* character)
 {
-    return nullptr;
+    if(type == EnemyMovePattern::SIZE) return nullptr;
+    
+    map<EnemyMovePattern, function<MovePattern*(Character*)>> typeToFunc
+    {
+        {EnemyMovePattern::CHASER, Chaser::create},
+        {EnemyMovePattern::CHEAP_CHASER, CheapChaser::create},
+        {EnemyMovePattern::PERFECT_RANDOM, RandomMove::create},
+        {EnemyMovePattern::SCOUTER, Scouter::create},
+    };
+    
+    if(typeToFunc.count(type) == 0) return nullptr;
+    
+    return typeToFunc[type](character);
 }
 
-MovePattern* MovePatternFactory::createMovePattern(const CharacterMovePattern type)
+MovePattern* MovePatternFactory::createMovePattern(const CharacterMovePattern type, Character* character)
 {
+    if(type == CharacterMovePattern::SIZE) return nullptr;
+    
+    map<CharacterMovePattern, function<MovePattern*(Character*)>> typeToFunc
+    {
+        {CharacterMovePattern::RANDOM, RandomMove::create}
+    };
+    
+    if(typeToFunc.count(type) == 0) return nullptr;
+    
+    return typeToFunc[type](character);
+    
     return nullptr;
 }

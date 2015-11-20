@@ -77,7 +77,7 @@ public:
     void clearDirectionsQueue();
     
     // イベント関数
-    void onEnterMap() {};                               // マップに追加された時
+    virtual void onEnterMap() {};                               // マップに追加された時
 
     void drawDebugMask(); // デバッグ用マスク
 };

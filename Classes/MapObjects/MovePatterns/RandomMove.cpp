@@ -10,23 +10,6 @@
 
 #include "MapObjects/Character.h"
 
-// create関数
-RandomMove* RandomMove::create(Character* chara, float second)
-{
-    RandomMove* p {new(nothrow) RandomMove()};
-    if(p && p->init(chara, second))
-    {
-        p->autorelease();
-        return p;
-    }
-    else
-    {
-        delete p;
-        p = nullptr;
-        return nullptr;
-    }
-}
-
 // コンストラクタ
 RandomMove::RandomMove() {FUNCLOG};
 
@@ -34,17 +17,15 @@ RandomMove::RandomMove() {FUNCLOG};
 RandomMove::~RandomMove() {FUNCLOG};
 
 // 初期化
-bool RandomMove::init(Character* chara, float second)
+bool RandomMove::init(Character* chara)
 {
     if(!MovePattern::init(chara)) return false;
-    
-    this->second = second;
     
     return true;
 }
 
 // 動かす
-void RandomMove::move()
+void RandomMove::start()
 {
     // 移動可能な方向のベクタを用意
     vector<Direction> enableDirections {};
@@ -60,5 +41,5 @@ void RandomMove::move()
     // 移動可能方向からランダムな要素を取り出す
     vector<Direction> detectedDirs {enableDirections[cocos2d::random(0, static_cast<int>(enableDirections.size()))]};
     
-    this->chara->walkBy(detectedDirs, [this]{this->move();});
+    this->chara->walkBy(detectedDirs, [this]{this->start();});
 }

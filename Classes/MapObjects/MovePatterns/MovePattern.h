@@ -25,7 +25,9 @@ protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
-    virtual void move() = 0;
+    virtual void start() {};
+    virtual void start(const Point& gridPostion) {};
+    virtual void onPartyMoved(const Point& gridPosition) {};
     
 };
 
