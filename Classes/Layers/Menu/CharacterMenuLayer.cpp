@@ -84,7 +84,7 @@ bool CharacterMenuLayer::init()
         }
         else
         {
-            chara_name = CsvDataManager::getInstance()->getCharaName(this->characters[i]);
+            chara_name = CsvDataManager::getInstance()->getCharaNameWithRuby(this->characters[i]);
         }
         Label* chara = Label::createWithTTF(chara_name, "fonts/cinecaption2.28.ttf", 24);
         chara->setPosition(panel_size.width/2 , panel_size.height / 2);

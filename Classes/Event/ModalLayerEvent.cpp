@@ -121,6 +121,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
         {
             charaName = CsvDataManager::getInstance()->getCharaName(data->getCharaId());
         }
+        data->setCharaName(charaName);
         
         // 画像ID
         if(this->validator->hasMember(json, member::IMG_ID)) data->setImgId(stoi(json[member::IMG_ID].GetString()));

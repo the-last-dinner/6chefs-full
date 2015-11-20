@@ -38,6 +38,7 @@ public:
     bool move(const vector<Direction>& directions, float ratio, function<void()> callback);
     Character* getMainCharacter() const;
     Vector<Character*> getMembers() const;
+    vector<CharacterData> getMembersData() const;
 };
 
 #endif /* defined(__LastSupper__Party__) */

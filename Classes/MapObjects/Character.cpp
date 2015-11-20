@@ -195,3 +195,10 @@ void Character::onEnterMap()
 {
     if(this->movePattern) this->movePattern->start();
 }
+
+// 自身のキャラクターデータを返す
+CharacterData Character::getCharacterData() const
+{
+    Location location(this->mapId, this->gridPosition.x, this->gridPosition.y, this->direction);
+    return CharacterData(this->charaId, this->getObjectId(), location);
+}

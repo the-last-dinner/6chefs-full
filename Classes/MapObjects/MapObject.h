@@ -30,10 +30,11 @@ private:
     Rect collisionRect {Rect::ZERO};
 	Light* light { nullptr };
     MapObjectList* objectList { nullptr };
-    Point gridPosition {Point::ZERO};
     bool _isMoving { false };
 protected:
     deque<vector<Direction>> directionsQueue {};
+    Point gridPosition {Point::ZERO};
+    int mapId {etoi(MapID::UNDIFINED)};
 public:
     function<void(MapObject*)> onMove { nullptr };
 	

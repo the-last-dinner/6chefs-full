@@ -163,6 +163,9 @@ struct Location
     Location(){};
 };
 
+// enum structをint型にキャスト
+#define etoi(param) static_cast<int>(param)
+
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
 static __TYPE_1__* create(__TYPE_2__ param) \

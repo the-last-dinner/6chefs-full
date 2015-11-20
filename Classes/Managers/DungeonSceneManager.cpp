@@ -165,7 +165,13 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location)
 {
-    PlayerDataManager::getInstance()->setLocation(location);
+    vector<CharacterData> members = this->getParty()->getMembersData();
+    int memberCount = members.size();
+    for(int i=0; i < memberCount; i++)
+    {
+        members[i].location = location;
+    }
+    PlayerDataManager::getInstance()->setLocation(members);
     
     // 必要な情報を設定していく
     DungeonSceneData* data { DungeonSceneData::create(location) };
