@@ -182,3 +182,9 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     // 移動開始。失敗時はコールバックを失敗として呼び出し
     if(!this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) callback(false);
 }
+
+// マップに配置された時
+void Character::onEnterMap()
+{
+    
+}
