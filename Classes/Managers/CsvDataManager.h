@@ -21,9 +21,41 @@ public:
         CHARACTER,
         CHAPTER
     };
+    enum struct CsvMap
+    {
+        ID,
+        NAME,
+        FILE_NAME
+    };
+    enum struct CsvChapter
+    {
+        ID,
+        NAME,
+        TITLE
+    };
+    enum struct CsvItem
+    {
+        ID,
+        NAME,
+        DISCRIPTION,
+    };
+    enum struct CsvCharacter
+    {
+        ID,
+        NAME,
+        RUBY,
+        STREET_NAME,
+        FILE_NAME_INI,
+        FACE_DIFF,
+        PROFILE_FLAG,
+        PROFILE0,
+        PROFILE1,
+        PROFILE2
+    };
 private:
     static const map<DataType, string> file_type;
     map<DataType, map<int, vector<string>>> csv_data;
+    
 //インスタンス変数
 private:
     //FileUtils
@@ -39,21 +71,30 @@ private:
     ~CsvDataManager(); // デストラクタ
     CsvDataManager(const CsvDataManager& other){}; // コピーコンストラクタ
     CsvDataManager& operator = (const CsvDataManager& other); // 代入演算子
+    
 //関数
 private:
     map<int, vector<string>> readCsvFile(string file_name);
+    
 public:
     // map
     string getMapName(const int map_id);
     string getMapFileName(const int map_id);
+    
     // item
     string getItemName(const int item_id);
     string getItemDiscription(const int item_id);
+    
     // chapter
     string getChapterName(const int chapter_id);
     string getChapterTitle(const int chapter_id);
+    
     // character
     string getCharaName(const int chara_id);
+    string getCharaNameWithRuby(const int chara_id);
+    string getCharaRuby(const int chara_id);
+    string getCharaRubyWithBracket(const int chara_id);
+    string getCharaStreetName(const int chara_id);
     string getCharaFileName(const int chara_id);
     int getCharaFaceDiff(const int chara_id);
     string getCharaDiscription(const int chara_id, const int level);

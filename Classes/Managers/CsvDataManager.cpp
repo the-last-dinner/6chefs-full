@@ -103,25 +103,28 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
 // マップ名を取得
 string CsvDataManager::getMapName(const int map_id)
 {
-    return this->csv_data[DataType::MAP][map_id][1];
+    return this->csv_data[DataType::MAP][map_id][etoi(CsvMap::NAME)];
 }
 
 // マップのファイル名を取得
 string CsvDataManager::getMapFileName(const int map_id)
 {
-    return this->csv_data[DataType::MAP][map_id][2];
+    return this->csv_data[DataType::MAP][map_id][etoi(CsvMap::FILE_NAME)];
 }
+
+#pragma mark -
+#pragma Item
 
 // アイテム名を取得
 string CsvDataManager::getItemName(const int item_id)
 {
-    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][1] : "アイテムがありません";
+    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][etoi(CsvItem::NAME)] : "アイテムがありません";
 }
 
 // アイテムの説明を取得
 string CsvDataManager::getItemDiscription(const int item_id)
 {
-    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][2] : "アイテムがありません";
+    return (item_id >= 0) ? this->csv_data[DataType::ITEM][item_id][etoi(CsvItem::DISCRIPTION)] : "アイテムがありません";
 }
 
 #pragma mark -
@@ -130,13 +133,13 @@ string CsvDataManager::getItemDiscription(const int item_id)
 // チャプター名を取得
 string CsvDataManager::getChapterName(const int chapter_id)
 {
-    return this->csv_data[DataType::CHAPTER][chapter_id][1];
+    return this->csv_data[DataType::CHAPTER][chapter_id][etoi(CsvChapter::NAME)];
 }
 
 // チャプターのタイトルを取得
 string CsvDataManager::getChapterTitle(const int chapter_id)
 {
-    return this->csv_data[DataType::CHAPTER][chapter_id][2];
+    return this->csv_data[DataType::CHAPTER][chapter_id][etoi(CsvChapter::TITLE)];
 }
 
 #pragma mark -
@@ -145,31 +148,58 @@ string CsvDataManager::getChapterTitle(const int chapter_id)
 // キャラクター名の取得
 string CsvDataManager::getCharaName(const int chara_id)
 {
-    return this->csv_data[DataType::CHARACTER][chara_id][1];
+    return this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::NAME)];
+}
+
+// キャラクター名とフリガナの組み合わせを取得
+string CsvDataManager::getCharaNameWithRuby(const int chara_id)
+{
+    return this->getCharaName(chara_id) + " " + this->getCharaRubyWithBracket(chara_id);
+}
+
+// キャラクター名のフリガナを取得
+string CsvDataManager::getCharaRuby(const int chara_id)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::RUBY)];
+}
+
+// キャラクターのフリガナをカッコつきで表示
+string CsvDataManager::getCharaRubyWithBracket(const int chara_id)
+{
+    string ruby = this->getCharaRuby(chara_id);
+    ruby = (ruby != "") ? "(" + ruby + ")" : ""; // フリガナが存在しなければから文字を返す
+    return ruby;
+}
+
+// キャラクターの通り名を取得
+string CsvDataManager::getCharaStreetName(const int chara_id)
+{
+    return this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::STREET_NAME)];
 }
 
 // キャラクターのファイル名を取得
 string CsvDataManager::getCharaFileName(const int chara_id)
 {
-    return this->csv_data[DataType::CHARACTER][chara_id][2];
+    return this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::FILE_NAME_INI)];
 }
 
 // キャラクターの表情差分IDを取得
 int CsvDataManager::getCharaFaceDiff(const int chara_id)
 {
-    return stoi(this->csv_data[DataType::CHARACTER][chara_id][3]);
+    return stoi(this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::FACE_DIFF)]);
 }
 
 // キャラクターの説明をレベルごとに取得
 // @param int level 0 ~ 2
 string CsvDataManager::getCharaDiscription(const int chara_id, const int level)
 {
-    return this->csv_data[DataType::CHARACTER][chara_id][level+4];
+    return this->csv_data[DataType::CHARACTER][chara_id][level + 1 + etoi(CsvCharacter::PROFILE_FLAG)];
 }
+
 // キャラクターをメニューに表示するかどうか
 bool CsvDataManager::isDisplayChara(const int chara_id)
 {
-    return this->csv_data[DataType::CHARACTER][chara_id][7] == "1" ? true : false;
+    return this->csv_data[DataType::CHARACTER][chara_id][etoi(CsvCharacter::PROFILE_FLAG)] == "1" ? true : false;
 }
 
 // 表示するキャラクターリスト
