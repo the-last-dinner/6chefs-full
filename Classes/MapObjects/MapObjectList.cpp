@@ -220,6 +220,21 @@ void MapObjectList::removeEnemyById(const int enemyId)
     }
 }
 
+// 主人公一行を格納
+void MapObjectList::setParty(Party* party)
+{
+    // 一行が動いた時のコールバックを設定
+    party->onPartyMoved = CC_CALLBACK_1(MapObjectList::onPartyMoved, this);
+    
+    this->party = party;
+}
+
+// 主人公一行が移動した時
+void MapObjectList::onPartyMoved(const Point& gridPosition)
+{
+    // 敵に移動後の主人公のマス座標を通知する
+}
+
 // 敵と主人公一行の衝突監視用updateメソッド
 void MapObjectList::update(float delta)
 {

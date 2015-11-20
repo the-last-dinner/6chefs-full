@@ -24,6 +24,7 @@ public:
 // インスタンス変数
 private:
     Vector<Character*> members {};
+public:
     function<void(const Point&)> onPartyMoved { nullptr };
 
 // インスタンスメソッド
