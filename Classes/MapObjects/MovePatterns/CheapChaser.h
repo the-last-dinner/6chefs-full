@@ -23,10 +23,9 @@ private:
     ~CheapChaser();
     virtual bool init(Character* character) override;
 public:
-    virtual void start(const Point& gridPosition) override;
-    virtual void onPartyMoved(const Point& gridPosition) override;
+    virtual void start(const Rect& gridRect) override;
+    virtual void onPartyMoved(const Rect& gridRect) override;
     void move();
-    Direction calcMoveDirection();
 };
 
 #endif /* CheapChaser_h */

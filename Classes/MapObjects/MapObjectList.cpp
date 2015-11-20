@@ -237,12 +237,12 @@ Party* MapObjectList::getParty() const
 }
 
 // 主人公一行が移動した時
-void MapObjectList::onPartyMoved(const Point& gridPosition)
+void MapObjectList::onPartyMoved(const Rect& gridRect)
 {
     // 敵に移動後の主人公のマス座標を通知する
     for(Enemy* enemy : this->enemies)
     {
-        enemy->onPartyMoved(gridPosition);
+        enemy->onPartyMoved(gridRect);
     }
 }
 

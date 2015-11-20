@@ -25,17 +25,17 @@ bool CheapChaser::init(Character* character)
 }
 
 // 追跡開始
-void CheapChaser::start(const Point& gridPosition)
+void CheapChaser::start(const Rect& gridRect)
 {
-    MovePattern::start(gridPosition);
+    MovePattern::start(gridRect);
     
     this->move();
 }
 
 // パーティが移動した時
-void CheapChaser::onPartyMoved(const Point& gridPosition)
+void CheapChaser::onPartyMoved(const Rect& gridRect)
 {
-    MovePattern::onPartyMoved(gridPosition);
+    MovePattern::onPartyMoved(gridRect);
     
     // もしキャラクタが動いていなければ、動かす
     if(this->chara->isMoving()) return;
@@ -45,24 +45,5 @@ void CheapChaser::onPartyMoved(const Point& gridPosition)
 // 移動
 void CheapChaser::move()
 {
-    this->chara->walkBy(this->calcMoveDirection(), CC_CALLBACK_0(CheapChaser::move, this));
-}
-
-// 主人公のマス座標から方向を算出
-Direction CheapChaser::calcMoveDirection()
-{
-    // 主人公へのベクトル
-    Vec2 diffVec { this->mainCharacterPos - this->chara->getGridPosition() };
-    
-    // 差が大き方の要素のみを使う
-    if(abs(diffVec.x) > abs(diffVec.y))
-    {
-        diffVec = Vec2(diffVec.x, 0);
-    }
-    else
-    {
-        diffVec = Vec2(0, diffVec.y);
-    }
-    
-    return MapUtils::vecToMapDirection(diffVec);
+    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition() - Vec2(-1, -1)), CC_CALLBACK_0(CheapChaser::move, this));
 }

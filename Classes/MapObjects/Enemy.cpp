@@ -41,13 +41,13 @@ int Enemy::getEnemyId() const
 }
 
 // マップに配置された時
-void Enemy::onEnterMap(const Point& gridPosistion)
+void Enemy::onEnterMap(const Rect& gridRect)
 {
-    if(this->movePattern) this->movePattern->start(gridPosistion);
+    if(this->movePattern) this->movePattern->start(gridRect);
 }
 
 // 主人公一行が移動した時
-void Enemy::onPartyMoved(const Point& gridPosition)
+void Enemy::onPartyMoved(const Rect& gridRect)
 {
-    if(this->movePattern) this->movePattern->onPartyMoved(gridPosition);
+    if(this->movePattern) this->movePattern->onPartyMoved(gridRect);
 }

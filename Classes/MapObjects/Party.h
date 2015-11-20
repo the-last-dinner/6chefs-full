@@ -25,7 +25,7 @@ public:
 private:
     Vector<Character*> members {};
 public:
-    function<void(const Point&)> onPartyMoved { nullptr };
+    function<void(const Rect&)> onPartyMoved { nullptr };
 
 // インスタンスメソッド
 private:
