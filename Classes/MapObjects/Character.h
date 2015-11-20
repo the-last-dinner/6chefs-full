@@ -42,6 +42,7 @@ public:
     
     int getCharacterId() const;
     Direction getDirection() const;
+    CharacterData getCharacterData() const;
     
 	void setDirection(Direction direction);
 	void setMoving(bool _isMoving);

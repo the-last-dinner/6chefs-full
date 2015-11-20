@@ -91,3 +91,15 @@ Vector<Character*> Party::getMembers() const
 {
     return this->members;
 }
+
+// パーティのキャラクターデータの取得
+vector<CharacterData> Party::getMembersData() const
+{
+    vector<CharacterData> datas {};
+    int member_count = this->members.size();
+    for (int i = 0; i < member_count; i++)
+    {
+        datas.push_back(this->members.at(i)->getCharacterData());
+    }
+    return datas;
+}

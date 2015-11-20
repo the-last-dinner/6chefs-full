@@ -65,6 +65,8 @@ public:
     /* flag管理系 */
     // SET
     void setLocation(const Location& location, const int num = 0);
+    void setLocation(const CharacterData& character, const int num = 0);
+    void setLocation(const vector<CharacterData>& characters);
     void setFriendship(const int chara_id, const int level);
     void setEventFlag(const int map_id, const int event_id, const bool flag);
     void setPeculiarFlag(const int flag_id, const bool flag);

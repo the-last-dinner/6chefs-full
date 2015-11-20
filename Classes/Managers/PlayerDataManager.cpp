@@ -239,14 +239,26 @@ bool PlayerDataManager::checkSaveDataExists(const int id)
 // 主人公の座標のセット
 void PlayerDataManager::setLocation(const Location& location, const int num)
 {
-    FUNCLOG
-    this->local["map_id"].SetInt(location.map_id);
+    if (num == 0) this->local["map_id"].SetInt(location.map_id);
     this->local["party"][num]["x"].SetInt(location.x);
     this->local["party"][num]["y"].SetInt(location.y);
     this->local["party"][num]["direction"].SetInt(static_cast<int>(location.direction));
     return;
 }
 
+void PlayerDataManager::setLocation(const CharacterData& character, const int num)
+{
+    this->setLocation(character.location, num);
+}
+
+void PlayerDataManager::setLocation(const vector<CharacterData>& characters)
+{
+    int chara_count = characters.size();
+    for (int i = 0; i < chara_count; i++)
+    {
+        this->setLocation(characters[i], i);
+    }
+}
 // 友好度のセット
 void PlayerDataManager::setFriendship(const int chara_id, const int level)
 {
