@@ -233,6 +233,10 @@ void MapObjectList::setParty(Party* party)
 void MapObjectList::onPartyMoved(const Point& gridPosition)
 {
     // 敵に移動後の主人公のマス座標を通知する
+    for(Enemy* enemy : this->enemies)
+    {
+        enemy->onPartyMoved(gridPosition);
+    }
 }
 
 // 敵と主人公一行の衝突監視用updateメソッド

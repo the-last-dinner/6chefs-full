@@ -27,6 +27,8 @@ private:
     bool init();
 public:
     int getEnemyId() const;
+    void onEnterMap(const Point& gridPosistion);
+    void onPartyMoved(const Point& gridPosition);
 };
 
 #endif /* defined(__LastSupper__Enemy__) */

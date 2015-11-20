@@ -26,3 +26,15 @@ int Enemy::getEnemyId() const
 {
     return this->enemyId;
 }
+
+// マップに配置された時
+void Enemy::onEnterMap(const Point& gridPosistion)
+{
+    
+}
+
+// 主人公一行が移動した時
+void Enemy::onPartyMoved(const Point& gridPosition)
+{
+    
+}
