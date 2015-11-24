@@ -103,7 +103,7 @@ bool EventScriptValidator::detectEventFlg(rapidjson::Value& json, bool negative)
     {
         for(int i { 0 }; i < json.Size(); i++)
         {
-            detection = PlayerDataManager::getInstance()->getEventFlag(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
+            detection = PlayerDataManager::getInstance()->checkEventIsDone(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
             if(negative) detection = !detection;
             if(!detection) return false;
         }
@@ -112,7 +112,7 @@ bool EventScriptValidator::detectEventFlg(rapidjson::Value& json, bool negative)
     //一つのイベントの場合
     else
     {
-        detection = PlayerDataManager::getInstance()->getEventFlag(stoi(json[0].GetString()), stoi(json[1].GetString()));
+        detection = PlayerDataManager::getInstance()->checkEventIsDone(stoi(json[0].GetString()), stoi(json[1].GetString()));
         if(negative) detection = !detection;
     }
     

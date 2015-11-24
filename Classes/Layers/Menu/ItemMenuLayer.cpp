@@ -361,32 +361,44 @@ void ItemMenuLayer::onPageChanged(const int page)
     // 下への矢印
     if(page + 1 != page_size)
     {
-        Label* downPager = Label::createWithTTF("▼", "fonts/cinecaption2.28.ttf", 18);
+        Label* downPager = Label::createWithTTF("▼", "fonts/cinecaption2.28.ttf", 16);
         downPager->setPosition(list_size.width/2 , downPager->getContentSize().height / 2 + 5);
         downPager->setColor(Color3B::WHITE);
         itemList->addChild(downPager);
         
         // アクション生成
-        ActionInterval* bigsmall = Sequence::createWithTwoActions(
-            TargetedAction::create(downPager, ScaleTo::create(0.3f, 0.8f)),
-            TargetedAction::create(downPager, ScaleTo::create(0.3f, 1.0f))
-        );
-        this->runAction(RepeatForever::create(bigsmall));
+        this->moveUpDown(downPager);
     }
     
     // 上への矢印
     if (page != 0)
     {
-        Label* upPager = Label::createWithTTF("▲", "fonts/cinecaption2.28.ttf", 18);
-        upPager->setPosition(list_size.width/2 , list_size.height - upPager->getContentSize().height / 2 - 5);
+        Label* upPager = Label::createWithTTF("▲", "fonts/cinecaption2.28.ttf", 16);
+        upPager->setPosition(list_size.width/2 , list_size.height - upPager->getContentSize().height / 2 - 10);
         upPager->setColor(Color3B::WHITE);
         itemList->addChild(upPager);
         
         // アクション生成
-        ActionInterval* bigsmall = Sequence::createWithTwoActions(
-            TargetedAction::create(upPager, ScaleTo::create(0.3f, 0.8f)),
-            TargetedAction::create(upPager, ScaleTo::create(0.3f, 1.0f))
-        );
-        this->runAction(RepeatForever::create(bigsmall));
+        this->moveUpDown(upPager);
     }
+}
+
+// 上下に反復移動
+void ItemMenuLayer::moveUpDown(cocos2d::Node* target)
+{
+    // 移動設定
+    float time = 0.3f;
+    float distance = 5.f;
+    
+    // 初期位置の取得
+    Vec2 position = target->getPosition();
+    
+    // 反復移動位置を設定
+    ActionInterval* upDown = Sequence::createWithTwoActions(
+        TargetedAction::create(target, MoveTo::create(time, Vec2(position.x, position.y + distance))),
+        TargetedAction::create(target, MoveTo::create(time, position))
+    );
+    
+    // 反復移動を登録
+    this->runAction(RepeatForever::create(upDown));
 }
