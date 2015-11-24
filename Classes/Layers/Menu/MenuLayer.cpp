@@ -62,6 +62,10 @@ void MenuLayer::onCursorKeyPressed(const Key& key)
     // カーソルが無効な場合は何もしない
     if(!this->cursorEnabled) return;
     
+    // 現在のインデックスを保存
+    int old_indexX = this->indexX;
+    int old_indexY = this->indexY;
+    
     // インデックスの変更
     switch(key)
     {
@@ -113,7 +117,8 @@ void MenuLayer::onCursorKeyPressed(const Key& key)
     }
     
     // ヴィジュアルの更新
-    this->onIndexChanged(this->getSelectedIndex());
+    bool sound =  (this->indexX == old_indexX && this->indexY == old_indexY) ? false : true;
+    this->onIndexChanged(this->getSelectedIndex(), sound);
     cout << "page>>" << this->page << endl <<"indexX>>" << indexX << endl << "indexY>>" << indexY << endl;
 }
 
