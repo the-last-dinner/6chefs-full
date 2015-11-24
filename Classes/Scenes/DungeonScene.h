@@ -40,7 +40,6 @@ private:
     PlayerControlTask* playerControlTask { nullptr };
     
     LoadingLayer* loadingLayer { nullptr };
-    Sprite* cover { nullptr };
     
     Party* party { nullptr };
     

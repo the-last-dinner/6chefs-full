@@ -9,6 +9,7 @@
 #include "Managers/DungeonSceneManager.h"
 
 #include "Datas/Scene/DungeonSceneData.h"
+#include "Datas/MapObject/EnemyData.h"
 
 #include "Event/EventFactory.h"
 #include "Event/EventScriptValidator.h"
@@ -123,7 +124,7 @@ void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, fu
     cover->setColor(color);
     cover->setPosition(cover->getContentSize() / 2);
     this->getScene()->addChild(cover, Priority::SCREEN_COVER);
-    this->getScene()->cover = cover;
+    this->cover = cover;
     
     cover->setOpacity(0.f);
     cover->runAction(Sequence::createWithTwoActions(FadeIn::create(duration), CallFunc::create(callback)));
@@ -132,14 +133,14 @@ void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, fu
 // フェードイン
 void DungeonSceneManager::fadeIn(const float duration, function<void()> callback)
 {
-    if(!this->getScene()->cover)
+    if(!this->cover)
     {
         callback();
         return;
     }
     
-    Sprite* cover { this->getScene()->cover };
-    this->getScene()->cover = nullptr;
+    Sprite* cover { this->cover };
+    this->cover = nullptr;
     
     cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
@@ -181,10 +182,6 @@ void DungeonSceneManager::changeMap(const Location& location)
     
     // 必要な情報を設定していく
     DungeonSceneData* data { DungeonSceneData::create(location) };
-    
-    // フェードアウト用カバー
-    if(this->getScene()->cover) data->setCoverInfo(DungeonSceneData::CoverInfo({true, this->getScene()->cover->getColor()}));
-    
     
     Director::getInstance()->replaceScene(DungeonScene::create(data));
 }

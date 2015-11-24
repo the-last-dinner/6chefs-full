@@ -11,6 +11,8 @@
 
 #include "Common.h"
 
+#include "Datas/MapObject/EnemyData.h"
+
 class DungeonScene;
 class TiledMapLayer;
 class MapObject;
@@ -34,6 +36,8 @@ public:
 private:
     EventFactory* eventFactory { nullptr };
     EventScriptValidator* scriprtValidator { nullptr };
+    Sprite* cover { nullptr };
+    vector<EnemyData> enemyDatas {};
     
 // インスタンスメソッド
 private:
