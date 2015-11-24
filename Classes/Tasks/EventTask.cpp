@@ -221,7 +221,7 @@ void EventTask::run()
 // IDからイベントを生成
 GameEvent* EventTask::createEventById(int eventId)
 {
-    if(eventId == static_cast<int>(EventID::UNDIFINED) || PlayerDataManager::getInstance()->getEventFlag(PlayerDataManager::getInstance()->getLocation().map_id, eventId)) return nullptr;
+    if(eventId == static_cast<int>(EventID::UNDIFINED) || PlayerDataManager::getInstance()->checkEventIsDone(PlayerDataManager::getInstance()->getLocation().map_id, eventId)) return nullptr;
     
     DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
     

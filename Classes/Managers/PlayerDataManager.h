@@ -69,7 +69,7 @@ public:
     void setLocation(const vector<CharacterData>& characters);
     void setFriendship(const int chara_id, const int level);
     void setEventFlag(const int map_id, const int event_id, const bool flag);
-    void setPeculiarFlag(const int flag_id, const bool flag);
+    void setEventStatus(const int map_id, const int event_id, const int status);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);
     void setChapterId(const int chapter_id);
@@ -83,8 +83,7 @@ public:
     // GET
     Location getLocation(const int num = 0);
     int getFriendship(const int chara_id);
-    bool getEventFlag(const int map_id, const int event_id);
-    bool getPeculiarFlag(const int flag_id);
+    int getEventStatus(const int map_id, const int event_id);
     int getItem(const int item_id);
     map<int, int> getItemAll();
     int getItemEquipment(Direction direction);
@@ -98,6 +97,8 @@ public:
     bool checkItemEquipment(const int item_id);
     bool checkFriendship(const int chara_id, const int val);
     bool checkChapterId(const int chapter_id);
+    bool checkEventIsDone(const int map_id, const int event_id);
+    bool checkEventStatus(const int map_id, const int event_id, const int status);
     
 private:
     // グローバルデータのセット
