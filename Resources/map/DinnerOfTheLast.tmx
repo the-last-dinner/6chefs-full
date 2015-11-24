@@ -85,8 +85,8 @@
   </object>
   <object id="27" x="48" y="320" width="32" height="32">
    <properties>
+    <property name="CharaID" value="18"/>
     <property name="EventID" value="8"/>
-    <property name="charaID" value="18"/>
     <property name="direction" value="RIGHT"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1086"/>

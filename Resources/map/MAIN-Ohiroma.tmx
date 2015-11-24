@@ -131,7 +131,7 @@
   </object>
   <object id="121" x="432" y="640" width="32" height="32">
    <properties>
-    <property name="charaID" value="4"/>
+    <property name="CharaID" value="4"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1080"/>
@@ -139,7 +139,7 @@
   </object>
   <object id="122" x="496" y="640" width="32" height="32">
    <properties>
-    <property name="charaID" value="5"/>
+    <property name="CharaID" value="5"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1081"/>
@@ -147,7 +147,7 @@
   </object>
   <object id="123" x="400" y="672" width="32" height="32">
    <properties>
-    <property name="charaID" value="3"/>
+    <property name="CharaID" value="3"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1082"/>
@@ -155,7 +155,7 @@
   </object>
   <object id="124" x="432" y="672" width="32" height="32">
    <properties>
-    <property name="charaID" value="1"/>
+    <property name="CharaID" value="1"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1083"/>
@@ -163,7 +163,7 @@
   </object>
   <object id="125" x="464" y="544" width="32" height="32">
    <properties>
-    <property name="charaID" value="21"/>
+    <property name="CharaID" value="21"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1084"/>
@@ -171,7 +171,7 @@
   </object>
   <object id="128" x="688" y="96" width="32" height="32">
    <properties>
-    <property name="charaID" value="19"/>
+    <property name="CharaID" value="19"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1085"/>
@@ -179,7 +179,7 @@
   </object>
   <object id="133" x="464" y="576" width="32" height="32">
    <properties>
-    <property name="charaID" value="5"/>
+    <property name="CharaID" value="5"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1089"/>
