@@ -141,3 +141,25 @@ void ChangeLikabilityRatingEvent::run()
     this->setDone();
     PlayerDataManager::getInstance()->setFriendship(this->charaId, this->rating);
 }
+
+#pragma mark -
+#pragma mark ChangeEventStatus
+
+bool ChangeEventStatusEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // status
+    if(!this->validator->hasMember(json, member::FLAG)) return false;
+    this->status = json[member::FLAG].GetInt();
+    
+    return true;
+}
+
+void ChangeEventStatusEvent::run()
+{
+    this->setDone();
+    int map_id {PlayerDataManager::getInstance()->getLocation().map_id};
+    int event_id {DungeonSceneManager::getInstance()->getRunningEventId()};
+    PlayerDataManager::getInstance()->setEventStatus(map_id, event_id, this->status);
+}
