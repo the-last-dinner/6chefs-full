@@ -257,7 +257,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -266,7 +266,7 @@
 					"action":[
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"reaction",
@@ -321,7 +321,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1",
+					"flg":1,
 					"Nevent":["54","3"]
 				}
 			],

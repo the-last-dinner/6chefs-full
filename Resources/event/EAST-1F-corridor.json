@@ -496,7 +496,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -523,8 +523,8 @@
 							"type":"already"
 						},
 						{
-							"type":"setflg",
-							"flg":"1"
+							"type":"changeflg",
+							"flg":1
 						}
 					]
 				}
@@ -534,7 +534,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[

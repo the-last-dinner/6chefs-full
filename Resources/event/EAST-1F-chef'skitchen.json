@@ -70,7 +70,7 @@
 				},
 				{
 					"type":"changeFlg",
-					"flg":"1"
+					"flg":1
 				}
 			]
 		},
@@ -80,17 +80,17 @@
 				{
 					"event":["34","2"],
 					"Nequip":["158","1529"],
-					"flg":"1"
+					"flg":1
 				},
 				{
 					"event":["34","2"],
 					"Nequip":["159","1530"],
-					"flg":"1"
+					"flg":1
 				},
 				{
 					"event":["34","2"],
 					"Nequip":["1510","1531"],
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -126,7 +126,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						}
 					]
 				},
@@ -138,7 +138,7 @@
 							"Nequip":["158","1529"],
 							"Nequip":["159","1530"],
 							"Nequip":["1510","1531"],
-							"flg":"1"
+							"flg":1
 						}
 					],
 					"action":[
@@ -382,7 +382,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						}
 					]
 				}
@@ -392,7 +392,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -424,7 +424,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"0"
+					"flg":0
 				}
 			],
 			"action":[
@@ -438,7 +438,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						}
 					]
 				}
@@ -448,7 +448,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
