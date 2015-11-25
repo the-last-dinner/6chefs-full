@@ -87,6 +87,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"addProfile", AddProfileEvent::create},                // プロフィールに情報を追加する
         {"changeChapter", ChangeChapterEvent::create},          // チャプターを切り替える
         {"changeStatus", ChangeLikabilityRatingEvent::create},  // キャラクタの好感度を変更
+        {"changeFlg", ChangeEventStatusEvent::create},          // イベントステータス(固有フラグ)を変更
     };
     
     // イベントタイプがなければ同時実行を生成して返す

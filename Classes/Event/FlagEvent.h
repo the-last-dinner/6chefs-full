@@ -97,4 +97,18 @@ private:
     virtual void run() override;
 };
 
+// イベントステータスの変更
+class ChangeEventStatusEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeEventStatusEvent, rapidjson::Value&)
+private:
+    int status {0};
+private:
+    ChangeEventStatusEvent() {FUNCLOG};
+    ~ChangeEventStatusEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__FlagEvent__) */

@@ -809,7 +809,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":5
+					"flg":4
 				}
 			],
 			"action":[

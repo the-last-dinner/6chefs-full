@@ -47,6 +47,7 @@ bool EventTask::init()
 void EventTask::runEventQueue()
 {
     if(!this->existsEvent()) return;
+    this->resetPushingEventId();
     this->run();
     // update開始
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
@@ -201,6 +202,24 @@ deque<EventTask::EventWithId> EventTask::getEvents() const
 }
 
 #pragma mark -
+#pragma mark pushingEventId
+
+int EventTask::getPushingEventId() const
+{
+    return this->pushingEventId;
+}
+
+void EventTask::setPushingEventId(const int event_id)
+{
+    this->pushingEventId = event_id;
+}
+
+void EventTask::resetPushingEventId()
+{
+    this->pushingEventId = etoi(EventID::UNDIFINED);
+}
+
+#pragma mark -
 #pragma mark private
 
 // キューにある先頭のイベントを実行
@@ -222,6 +241,8 @@ void EventTask::run()
 GameEvent* EventTask::createEventById(int eventId)
 {
     if(eventId == static_cast<int>(EventID::UNDIFINED) || PlayerDataManager::getInstance()->checkEventIsDone(PlayerDataManager::getInstance()->getLocation().map_id, eventId)) return nullptr;
+    
+    this->setPushingEventId(eventId);
     
     DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
     

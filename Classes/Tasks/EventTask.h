@@ -27,8 +27,8 @@ public:
 private:
     deque<EventWithId> eventQueue {};
     EventWithId runningEvent {EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
-    
     CallbackWithId callbackInfo {CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
+    int pushingEventId {etoi(EventID::UNDIFINED)};
     
 // インスタンスメソッド
 public:
@@ -48,6 +48,11 @@ public:
     bool existsEvent();
     int getRunningEventId() const;
     deque<EventWithId> getEvents() const;
+    
+    // キュー中のevent_id操作
+    int getPushingEventId() const;
+    void setPushingEventId(const int event_id);
+    void resetPushingEventId();
     
     void update(float delta);
 private:
