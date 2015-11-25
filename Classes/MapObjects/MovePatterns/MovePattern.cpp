@@ -35,3 +35,9 @@ void MovePattern::onPartyMoved(const Rect& gridRect)
 {
     this->mainCharacterRect = gridRect;
 }
+
+// 速度の倍率を設定
+void MovePattern::setSpeedRatio(float ratio)
+{
+    this->speedRatio = ratio;
+}

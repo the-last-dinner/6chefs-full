@@ -56,7 +56,7 @@ float CheapChaser::calcSummonDelay() const
     // 差が大きい方の要素を距離として時間を計算
     float distance { max(diffVec.x, diffVec.y) };
     
-    return distance * MapObject::DURATION_MOVE_ONE_GRID;
+    return distance * MapObject::DURATION_MOVE_ONE_GRID * this->speedRatio;
 }
 
 // 移動
