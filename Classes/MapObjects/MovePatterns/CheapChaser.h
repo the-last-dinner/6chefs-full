@@ -26,6 +26,7 @@ public:
     virtual void start(const Rect& gridRect) override;
     virtual void onPartyMoved(const Rect& gridRect) override;
     virtual bool canGoToNextMap() const override;
+    virtual float calcSummonDelay() const override;
     void move();
 };
 

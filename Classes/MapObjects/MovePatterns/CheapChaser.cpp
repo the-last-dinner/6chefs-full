@@ -48,6 +48,17 @@ bool CheapChaser::canGoToNextMap() const
     return !this->chara->isHit(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()));
 }
 
+// 次マップへの出現遅延時間を計算
+float CheapChaser::calcSummonDelay() const
+{
+    Vec2 diffVec { this->mainCharacterRect.origin - this->chara->getGridPosition() };
+    
+    // 差が大きい方の要素を距離として時間を計算
+    float distance { max(diffVec.x, diffVec.y) };
+    
+    return distance * MapObject::DURATION_MOVE_ONE_GRID;
+}
+
 // 移動
 void CheapChaser::move()
 {
