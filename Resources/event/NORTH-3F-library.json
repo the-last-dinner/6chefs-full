@@ -29,7 +29,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"0"
+					"flg":0
 				}
 			],
 			"action":[
@@ -54,7 +54,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						}
 					]
 				}
@@ -64,7 +64,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[

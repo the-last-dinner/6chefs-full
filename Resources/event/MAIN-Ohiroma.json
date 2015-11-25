@@ -1005,6 +1005,13 @@
               "type":"fadeout"
             },
             {
+              "type":"playBGM",
+              "file":"ending.mp3"
+            },
+            {
+              "type":"stopBGM"
+            },
+            {
               "type":"spawn",
               "action":[
                 {

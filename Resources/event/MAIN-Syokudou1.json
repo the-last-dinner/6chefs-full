@@ -55,7 +55,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -111,7 +111,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"charaMsg",
@@ -158,7 +158,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -176,7 +176,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -220,7 +220,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"charaMsg",
@@ -258,7 +258,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -276,7 +276,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -326,7 +326,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"charaMsg",
@@ -375,7 +375,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -393,7 +393,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -437,7 +437,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"charaMsg",
@@ -485,7 +485,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -504,7 +504,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":"1"
+					"Nflg":1
 				}
 			],
 			"action":[
@@ -548,7 +548,7 @@
 						},
 						{
 							"type":"changeFlg",
-							"flg":"1"
+							"flg":1
 						},
 						{
 							"type":"charaMsg",
@@ -600,7 +600,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":"1"
+					"flg":1
 				}
 			],
 			"action":[
@@ -1388,18 +1388,12 @@
 				{
 					"event":["4","15"],
 					"Nstatus":["2","2"]
-				},
-				{
-					"type":"already"
 				}
 			],
 			"action":[
 				{
 					"type":"createChara",
 					"objID":"1038"
-				},
-				{
-					"type":"already"
 				}
 			]
 		}
