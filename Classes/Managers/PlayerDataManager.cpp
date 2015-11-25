@@ -1,3 +1,4 @@
+
 //
 //  PlayerDataManager.cpp
 //  LastSupper
@@ -270,11 +271,27 @@ void PlayerDataManager::setFriendship(const int chara_id, const int level)
 }
 
 // イベントフラグのセット (イベントステータスへ変換 true>>1, false>>0)
-void PlayerDataManager::setEventFlag(const int map_id, const int event_id, const bool flag)
+void PlayerDataManager::setEventNeverAgain(const int map_id, const int event_id, const bool flag)
 {
-    int status = flag ? 1 : 0;
+    // status取得
+    int status {this->getEventStatus(map_id, event_id)};
+    
+    // statusを負の値にする
+    if (status == 0 && flag)
+    {
+        status = -1; // 初回の場合
+    }
+    else if ( (status > 0 && flag) || (status < 0 && !flag) )
+    {
+        status = status * -1;
+    }
+    else
+    {
+        status = 1;
+    }
+    
+    //　イベントステータスとしてセット
     this->setEventStatus(map_id, event_id, status);
-    return;
 }
 
 // イベントステータスのセット
@@ -299,7 +316,9 @@ void PlayerDataManager::setEventStatus(const int map_id, const int event_id, con
     if(itr == this->local["event"][mid_char].MemberEnd()){
         this->local["event"][mid_char].AddMember(eid, rapidjson::Value(status), this->local.GetAllocator());
     } else {
-        this->local["event"][mid_char][eid_char].SetInt(status);
+        bool negative = itr->value.GetInt() < 0 ? true : false;
+        int new_status = status < 0 ? status : (negative) ? status * -1 : status;
+        this->local["event"][mid_char][eid_char].SetInt(new_status);
     }
     return;
 }
@@ -388,7 +407,7 @@ bool PlayerDataManager::removeItem(const int item_id)
     char iid_char[10];
     sprintf(iid_char, "%d", item_id);
     int count = this->getItem(item_id);
-    if (count > 1)
+    if (count > 0)
     {
         // 所持数を-1
         this->local["item"][iid_char].SetInt(count - 1);
@@ -607,13 +626,13 @@ bool PlayerDataManager::checkChapterId(const int chapter_id)
 bool PlayerDataManager::checkEventIsDone(const int map_id, const int event_id)
 {
     int status = this->getEventStatus(map_id, event_id);
-    return status > 0 ? true : false;
+    return status < 0 ? true : false;
 }
 
 // イベントステータスが指定の値かどうか
 bool PlayerDataManager::checkEventStatus(const int map_id, const int event_id, const int status)
 {
-    return status == this->getEventStatus(map_id, event_id) ? true : false;
+    return status == abs(this->getEventStatus(map_id, event_id)) ? true : false;
 }
 
 #pragma mark -

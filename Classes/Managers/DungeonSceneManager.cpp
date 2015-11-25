@@ -255,6 +255,12 @@ int DungeonSceneManager::getRunningEventId() const
     return this->getScene()->eventTask->getRunningEventId();
 }
 
+// エンキュー中のイベントIDを取得
+int DungeonSceneManager::getPushingEventid() const
+{
+    return this->getScene()->eventTask->getPushingEventId();
+}
+
 #pragma mark -
 #pragma mark PlayerControlTask
 

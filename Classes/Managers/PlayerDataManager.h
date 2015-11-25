@@ -68,7 +68,7 @@ public:
     void setLocation(const CharacterData& character, const int num = 0);
     void setLocation(const vector<CharacterData>& characters);
     void setFriendship(const int chara_id, const int level);
-    void setEventFlag(const int map_id, const int event_id, const bool flag);
+    void setEventNeverAgain(const int map_id, const int event_id, const bool flag = true);
     void setEventStatus(const int map_id, const int event_id, const int status);
     void setItem(const int item_id);
     void setItemEquipment(const Direction direction, const int item_id);

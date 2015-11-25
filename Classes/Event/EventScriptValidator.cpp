@@ -126,7 +126,7 @@ bool EventScriptValidator::detectFlg(rapidjson::Value& json, bool negative)
     
     // 現在のmap_idとevent_idを取得
     int map_id {PlayerDataManager::getInstance()->getLocation().map_id};
-    int event_id {DungeonSceneManager::getInstance()->getRunningEventId()};
+    int event_id {DungeonSceneManager::getInstance()->getPushingEventid()};
     
     // 一つのイベントに対してステータスを確認
     detection = PlayerDataManager::getInstance()->checkEventStatus(map_id, event_id, json.GetInt());

@@ -75,6 +75,7 @@ public:
     void runEventQueue();
     bool existsEvent() const;
     int getRunningEventId() const;
+    int getPushingEventid() const;
     
     // PlayerControlTask
     void setPlayerControlEnable(bool enable);
