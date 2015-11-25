@@ -140,15 +140,12 @@
 									"type":"changeMap",
 									"mapID":"38",
 									"x":14,
-									"y":15
+									"y":15,
+									"EventID":"8"
 								}
 							]
 						}
 					]
-				},
-				{
-					"type":"removeEnemy",
-					"enemyID":"145"
 				}
 			]
 		}

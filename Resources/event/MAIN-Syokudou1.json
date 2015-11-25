@@ -3386,5 +3386,342 @@
 				}
 			]
 		}
+	],
+	"48":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+		          "type":"changeDirection",
+		          "objID":"hero",
+		          "direction":"RIGHT"
+		        },
+		        {
+		          "type":"playBGM",
+		          "file":"Mozart-OboeConcerto-1.mp3"
+		        },
+		        {
+		          "type": "charaMsg",
+		          "talk": [
+		            {
+		              "text": [
+		                "ったく！いつまで待たせんのよ"
+		              ],
+		              "charaID": "3",
+		              "imgID": "1",
+		              "name": "？？？",
+		              "option": "reaction"
+		            },
+		            {
+		              "text": ["おいおい、5分や10分くらい大人しく待てねーのか\nオメーは"],
+		              "charaID": "2",
+		              "imgID": "1",
+		              "name": "？？？"
+		            },
+		            {
+		              "text": ["１５分よ！"],
+		              "charaID": "2",
+		              "imgID": "1",
+		              "name": "？？？",
+		              "option": "reaction"
+		            },
+		            {
+		              "text": ["そうですぞ！さわいだところで"],
+		              "charaID": "4",
+		              "imgID": "1",
+		              "name": "？？？"
+		            },
+		            {
+		              "text": ["ウルセえ！"],
+		              "charaID": "5",
+		              "imgID": "1",
+		              "name": "？？？",
+		              "option": "reaction"
+		            },
+		            {
+		              "text": ["み、皆さん喧嘩は..."],
+		              "charaID": "1",
+		              "imgID": "1",
+		              "name": "？？？"
+		            }
+		          ]
+		        },
+		        {
+		          "type": "playSE",
+		          "file": "door1.mp3"
+		        },
+		        {
+		          "type": "createChara",
+		          "objID": "1013"
+		        },
+		        {
+		          "type": "spawn",
+		          "action": [
+		            {
+		              "type":"changeDirection",
+		              "objID":"hero",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type":"changeDirection",
+		              "objID":"102",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type":"changeDirection",
+		              "objID":"103",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type":"changeDirection",
+		              "objID":"104",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type":"changeDirection",
+		              "objID":"105",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type":"changeDirection",
+		              "objID":"106",
+		              "direction":"DOWN"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "hero"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "102"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "103"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "104"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "105"
+		            },
+		            {
+		              "type": "reaction",
+		              "objID": "106"
+		            }
+		          ]
+		        },
+		        {
+		          "type": "charaWalkTo",
+		          "x": 20,
+		          "y": 39,
+		          "objID": "1013"
+		        },
+		        {
+		          "type": "charaMsg",
+		          "charaID":"9",
+		          "text": ["皆様、お待たせいたしました。\n　皆様には只今より西棟に移動して頂き、お料理をして頂きます。\n道具や食材は西棟にあるもの、何でも使ってもらって　構いません。\n使って頂くキッチンは、西棟１階入って右手が佐々木様、左手が中山様\n２階入って右手が荒間田様、左手が大善様\n３階入って右手が一色様、左手が加藤様\nでございます。\n最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。\n私は大広間にいますので分からないことや足りないものがあれば、お申し付けください。\nそれでは皆さん、移動を開始してください。"]
+		        },
+		        {
+		          "type": "already"
+		        }
+			]
+		}
+	],
+	"49":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+	              "type":"changeDirection",
+	              "objID":"hero",
+	              "direction":"RIGHT"
+	            },
+	            {
+	              "type":"storyMsg",
+	              "text":["翌日・・・\n館を脱出した僕たちは捜索隊とともに\n再び晩餐館に訪れていた。"]
+	            },
+	            {
+	              "type":"spawn",
+	              "action":[
+	                {
+	                  "type":"createChara",
+	                  "objID":"1090"
+	                },
+	                {
+	                  "type":"createChara",
+	                  "objID":"1091"
+	                },
+	                {
+	                  "type":"createChara",
+	                  "objID":"1092"
+	                },
+	                {
+	                  "type":"createChara",
+	                  "objID":"1093"
+	                },
+	                {
+	                  "type":"createChara",
+	                  "objID":"1094"
+	                }
+	              ]
+	            },
+	            {
+	              "type":"fadein"
+	            },
+	            {
+	              "type":"charaMsg",
+	              "talk":[
+	                {
+	                  "text":["どうやらあの娘は本当に偏食症だったみてぇだ\nそれも人間の肉しか受けつけねぇらしい・・・","（まぁ俺は食うために殺すことは\n悪いことじゃねぇと思うけどよ・・・）","お前らは何で分かったんだ？\nあの娘が偏食症だってよ？"],
+	                  "charaID":"2",
+	                  "imgID":"3"
+	                },
+	                {
+	                  "text":["実は夫人の目的やこの館のことを教えてくれたのは\n中山氏なのですぞ","中山氏は前回の晩餐会の覇者から\n希崎氏のご息女のことを聞いたらしいですぞ"],
+	                  "charaID":"4",
+	                  "imgID":"2"
+	                },
+	                {
+	                  "text":["・・・"],
+	                  "charaID":"1",
+	                  "imgID":"1"
+	                },
+	                {
+	                  "text":["前回の・・・覇者・・・"],
+	                  "charaID":"0",
+	                  "imgID":"1"
+	                },
+	                {
+	                  "type":"fadeout"
+	                },
+	                {
+	                  "type":"wait",
+	                  "time":2.0
+	                },
+	                {
+	                  "type":"camera",
+	                  "mapID":"1" ,
+	                  "x":27,
+	                  "y":20,
+	                  "action":[
+	                    {
+	                      "type":"sequence",
+	                      "action":[
+	                        {
+	                          "type":"createChara",
+	                          "objID":"1095"
+	                        },
+	                        {
+	                          "type":"fadein"
+	                        },
+	                        {
+	                          "type":"charaWalk",
+	                          "objID":"1095",
+	                          "direction":"LEFT",
+	                          "steps":3.0,
+	                          "speed":0.5
+	                        },
+	                        {
+	                          "type":"changeDirection",
+	                          "objID":"1095",
+	                          "direction":"RIGHT"
+	                        },
+	                        {
+	                          "type":"charaMsg",
+	                          "text":["ったく・・・好き勝手荒らしやがって・・・/nまぁ・・・そろそろ潮時かね・・・","国に帰るか・・・"]
+	                        },
+	                        {
+	                          "type":"spawn",
+	                          "action":[
+	                            {
+	                              "type":"charaWalk",
+	                              "objID":"1095",
+	                              "direction":"LEFT",
+	                              "steps":9.0,
+	                              "speed":0.5
+	                            },
+	                            {
+	                              "type":"fadeout",
+	                              "time":2.0
+	                            }
+	                          ]
+	                        },
+	                        {
+	                          "type":"end",
+	                          "file":"true.png"
+	                        }
+	                      ]
+	                    }
+	                  ]
+	                }
+	              ]
+	            }      
+			]
+		}
+	],
+	"50":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+					"type":"changeDirection",
+					"direction":"RIGHT",
+					"objID":"hero"
+				},
+				{
+					"type":"fadein",
+					"time":1.0
+				},
+				{
+					"type":"charaMsg",
+					"talk":[
+						{
+							"text":["ふm・・・\n要するにこの館には人を殺す化物がいて\n出口も見つからないと\nそういうことですな?"],
+							"charaID":"4",
+							"imgID":"1"
+						},
+						{
+							"text":["ねえ！どーすんのよ！！"],
+							"charaID":"3",
+							"imgID":"1",
+							"option":"reaction"
+						},
+						{
+							"text":["とにかく今は出口を探さないと・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"text":["ああ、けど館内は危険だ。\n絶対に一人にはなるなよ\n山中と一色はここにいろ\n鍵もかけとけ\n俺は荒間田と、佐々木はダイゴローと出口を探してくれ"],
+							"charaID":"2",
+							"imgID":"1"
+						},
+						{
+							"text":["おい！ダイゴローって・・・"],
+							"charaID":"5",
+							"imgID":"1",
+							"option":"reaction"
+						},
+						{
+							"text":["じゃあ行くか"],
+							"charaID":"2",
+							"imgID":"1"
+						},
+						{
+							"text":["おい！！"],
+							"charaID":"5",
+							"imgID":"1",
+							"option":"reaction"
+						},
+						{
+							"type":"already"
+						}
+					]
+				}
+			]
+		}
 	]
 }

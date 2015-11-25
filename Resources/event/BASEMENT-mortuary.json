@@ -138,5 +138,37 @@
 			"type":"playSE",
 			"file":"koki.mp3"
 		}
+	],
+	"6":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["う、うわあああああああ！\n何だここ！？"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
+				},
+				{
+					"type":"changeDirection",
+					"direction":"LEFT",
+					"objID":"hero"
+				},
+				{
+					"type":"wait",
+					"time":1.0
+				},
+				{
+					"type":"charaMsg",
+					"text":["中山さん・・・？だったよな・・・\n何で・・・？"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"already"
+				}
+			]
+		}
 	]
 }

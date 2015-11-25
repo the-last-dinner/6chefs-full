@@ -275,70 +275,11 @@
 							]
 						},
 						{
-							"type":"spawn", 
-							"action":[
-								{
-									"type":"changeMap",
-									"mapID":"3",
-									"x":14,
-									"y":14
-								},
-								{
-									"type":"changeDirection",
-									"direction":"RIGHT",
-									"objID":"hero"
-								}
-							]
-						},
-						{
-							"type":"fadein",
-							"time":1.0
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["ふm・・・\n要するにこの館には人を殺す化物がいて\n出口も見つからないと\nそういうことですな?"],
-									"charaID":"4",
-									"imgID":"1"
-								},
-								{
-									"text":["ねえ！どーすんのよ！！"],
-									"charaID":"3",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["とにかく今は出口を探さないと・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"text":["ああ、けど館内は危険だ。\n絶対に一人にはなるなよ\n山中と一色はここにいろ\n鍵もかけとけ\n俺は荒間田と、佐々木はダイゴローと出口を探してくれ"],
-									"charaID":"2",
-									"imgID":"1"
-								},
-								{
-									"text":["おい！ダイゴローって・・・"],
-									"charaID":"5",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["じゃあ行くか"],
-									"charaID":"2",
-									"imgID":"1"
-								},
-								{
-									"text":["おい！！"],
-									"charaID":"5",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"type":"already"
-								}
-							]
+							"type":"changeMap",
+							"mapID":"3",
+							"x":14,
+							"y":14,
+							"EventID":"50"
 						}
 					]
 				}
