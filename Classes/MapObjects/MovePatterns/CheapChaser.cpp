@@ -62,5 +62,5 @@ float CheapChaser::calcSummonDelay() const
 // 移動
 void CheapChaser::move()
 {
-    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()), CC_CALLBACK_0(CheapChaser::move, this));
+    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()), CC_CALLBACK_0(CheapChaser::move, this), this->speedRatio);
 }
