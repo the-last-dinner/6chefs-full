@@ -45,11 +45,11 @@ void CheapChaser::onPartyMoved(const Rect& gridRect)
 // マップ移動可能か
 bool CheapChaser::canGoToNextMap() const
 {
-    return !this->chara->isHit(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition() - Vec2(-1, -1)));
+    return !this->chara->isHit(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()));
 }
 
 // 移動
 void CheapChaser::move()
 {
-    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition() - Vec2(-1, -1)), CC_CALLBACK_0(CheapChaser::move, this));
+    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()), CC_CALLBACK_0(CheapChaser::move, this));
 }

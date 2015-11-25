@@ -34,8 +34,7 @@ bool Character::init(const CharacterData& data)
     
 	// 生成時の情報をセット
     this->charaId = data.chara_id;
-	this->location.direction = data.location.direction;
-    this->setGridPosition(Point(data.location.x, data.location.y));
+	this->location = data.location;
     this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
     

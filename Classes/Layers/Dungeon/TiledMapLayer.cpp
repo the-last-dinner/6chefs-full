@@ -110,9 +110,9 @@ void TiledMapLayer::addEnemy(Enemy* enemy)
 {
     if(!enemy) return;
     
-    enemy->onEnterMap(this->objectList->getParty()->getMainCharacter()->getGridRect());
     this->objectList->addEnemy(enemy);
     this->addMapObject(enemy, false);
+    enemy->onEnterMap(this->objectList->getParty()->getMainCharacter()->getGridRect());
 }
 
 // マップにオブジェクトを追加
