@@ -23,6 +23,7 @@
 
 #include "Scenes/DungeonScene.h"
 
+#include "Tasks/EnemyTask.h"
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
 
@@ -172,6 +173,12 @@ void DungeonSceneManager::addEnemy(Enemy* enemy)
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location)
 {
+    // 敵情報を生成し直して格納
+    vector<EnemyData> enemyDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocation()) };
+    this->enemyDatas.clear();
+    this->enemyDatas = enemyDatas;
+    
+    // 主人公一行の位置を登録
     vector<CharacterData> members = this->getParty()->getMembersData();
     int memberCount = members.size();
     for(int i=0; i < memberCount; i++)
@@ -199,6 +206,15 @@ bool DungeonSceneManager::isPressed(const Key& key)
 vector<Key> DungeonSceneManager::getPressedCursorKeys() const
 {
     return this->getScene()->listener->getPressedCursorKeys();
+}
+
+#pragma mark -
+#pragma mark EnemyTask
+
+// 敵の情報を取得
+vector<EnemyData> DungeonSceneManager::getEnemyDatas() const
+{
+    return this->enemyDatas;
 }
 
 #pragma mark -

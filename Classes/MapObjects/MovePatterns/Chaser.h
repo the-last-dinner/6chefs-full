@@ -22,6 +22,7 @@ private:
     Chaser();
     ~Chaser();
     virtual bool init(Character* character) override;
+    virtual bool canGoToNextMap() const override { return true; };
 };
 
 #endif /* Chaser_h */

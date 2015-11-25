@@ -221,6 +221,12 @@ void MapObjectList::removeEnemyById(const int enemyId)
     }
 }
 
+// 敵を全て取得
+Vector<Enemy*> MapObjectList::getEnemiesAll()
+{
+    return this->enemies;
+}
+
 // 主人公一行を格納
 void MapObjectList::setParty(Party* party)
 {

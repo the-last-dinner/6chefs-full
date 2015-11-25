@@ -32,6 +32,9 @@ public:
     int getEnemyId() const;
     void onEnterMap(const Rect& gridRect);
     void onPartyMoved(const Rect& gridRect);
+    EnemyData getEnemyData() const;
+    bool canGoToNextMap() const;
+    float calcSummonDelay() const;
 };
 
 #endif /* defined(__LastSupper__Enemy__) */

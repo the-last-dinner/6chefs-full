@@ -11,17 +11,28 @@
 
 #include "Tasks/GameTask.h"
 
+#include "Datas/MapObject/EnemyData.h"
+
+class Enemy;
+
 class EnemyTask : public GameTask
 {
 // クラスメソッド
 public:
     CREATE_FUNC(EnemyTask);
 
+// インスタンス変数
+private:
+    vector<EnemyData> datas {};
+    
 // インスタンスメソッド
 private:
     EnemyTask();
     ~EnemyTask();
     bool init();
+public:
+    void start(const int mapId);
+    vector<EnemyData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
 };
 
 #endif /* EnemyTask_h */

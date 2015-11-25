@@ -16,6 +16,8 @@ struct EnemyData
 {
     int enemy_id { static_cast<int>(EnemyID::UNDIFINED) };
     int to_map_id {static_cast<int>(MapID::UNDIFINED)};
+    int to_x { 0 };
+    int to_y { 0 };
     int change_map_counter { -1 };
     float summon_delay { 0.f };
     float speed_ratio { 1.0f };

@@ -53,6 +53,7 @@ public:
     // 敵
     void addEnemy(Enemy* enemy);
     void removeEnemyById(const int enemyId);
+    Vector<Enemy*> getEnemiesAll();
     
     // 主人公一行
     void setParty(Party* party);

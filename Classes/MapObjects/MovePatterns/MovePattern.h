@@ -25,6 +25,8 @@ public:
     virtual void start() {};
     virtual void start(const Rect& gridRect);
     virtual void onPartyMoved(const Rect& gridRect);
+    virtual bool canGoToNextMap() const { return false; };
+    virtual float calcSummonDelay() const { return 0.0f; };
 protected:
     MovePattern();
     ~MovePattern();

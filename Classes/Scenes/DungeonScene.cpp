@@ -17,8 +17,9 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Layers/LoadingLayer.h"
 
-#include "Tasks/EventTask.h"
+#include "Tasks/EnemyTask.h"
 #include "Tasks/CameraTask.h"
+#include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
 
 #include "MapObjects/MapObjectList.h"
@@ -79,6 +80,11 @@ void DungeonScene::onPreloadFinished()
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
     
+    // 敵処理クラス生成
+    EnemyTask* enemyTask { EnemyTask::create() };
+    this->addChild(enemyTask);
+    this->enemyTask = enemyTask;
+    
     // カメラ処理クラス生成
     CameraTask* cameraTask {CameraTask::create()};
     this->addChild(cameraTask);
@@ -112,6 +118,8 @@ void DungeonScene::onInitEventFinished()
 {
     this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     cameraTask->setTarget( this->party->getMainCharacter() );
+    
+    this->enemyTask->start(this->getData()->getInitialLocation().map_id);
     
     // ローディングレイヤを消す
     this->loadingLayer->loadFinished();

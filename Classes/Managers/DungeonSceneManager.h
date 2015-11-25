@@ -70,6 +70,9 @@ public:
     bool isPressed(const Key& key);
     vector<Key> getPressedCursorKeys() const;
     
+    // Enemy
+    vector<EnemyData> getEnemyDatas() const;
+    
     // EventTask
     void runEvent(const int eventId);
     void pushEventBack(const int eventId);

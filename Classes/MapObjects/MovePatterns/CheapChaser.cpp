@@ -42,6 +42,12 @@ void CheapChaser::onPartyMoved(const Rect& gridRect)
     this->move();
 }
 
+// マップ移動可能か
+bool CheapChaser::canGoToNextMap() const
+{
+    return !this->chara->isHit(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition() - Vec2(-1, -1)));
+}
+
 // 移動
 void CheapChaser::move()
 {

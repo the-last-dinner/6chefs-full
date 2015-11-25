@@ -34,7 +34,7 @@ bool Character::init(const CharacterData& data)
     
 	// 生成時の情報をセット
     this->charaId = data.chara_id;
-	this->direction = data.location.direction;
+	this->location.direction = data.location.direction;
     this->setGridPosition(Point(data.location.x, data.location.y));
     this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
@@ -58,7 +58,7 @@ bool Character::init(const CharacterData& data)
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + this->texturePrefix + ".plist");
     
 	// Spriteを生成
-	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) +"_0.png");
+	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png");
 	this->addChild(this->character);
     
     // サイズ、衝突判定範囲をセット
@@ -86,7 +86,7 @@ bool Character::init(const CharacterData& data)
 int Character::getCharacterId() const {return this->charaId;}
 
 // 現在キャラが向いている方向を取得
-Direction Character::getDirection() const {return this->direction;}
+Direction Character::getDirection() const {return this->location.direction;}
 
 // キャラクターの向きを変える
 void Character::setDirection(Direction direction)
@@ -95,7 +95,7 @@ void Character::setDirection(Direction direction)
 	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
 	
 	// 向いている方向を更新
-	this->direction = direction;
+	this->location.direction = direction;
 }
 
 // 足踏み
@@ -103,7 +103,7 @@ void Character::stamp(const Direction direction, float ratio)
 {
     this->character->stopAllActions();
     
-    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(this->direction)) + to_string(this->stampingState < 2 ? 0 : 1));
+    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(direction)) + to_string(this->stampingState < 2 ? 0 : 1));
     this->stampingState++;
     if(this->stampingState > 3) this->stampingState = 0;
     anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
@@ -208,6 +208,5 @@ void Character::onEnterMap()
 // 自身のキャラクターデータを返す
 CharacterData Character::getCharacterData() const
 {
-    Location location(this->mapId, this->gridPosition.x, this->gridPosition.y, this->direction);
-    return CharacterData(this->charaId, this->getObjectId(), location);
+    return CharacterData(this->charaId, this->getObjectId(), this->location);
 }

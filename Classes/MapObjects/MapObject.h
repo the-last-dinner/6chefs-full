@@ -33,8 +33,7 @@ private:
     bool _isMoving { false };
 protected:
     deque<vector<Direction>> directionsQueue {};
-    Point gridPosition {Point::ZERO};
-    int mapId {etoi(MapID::UNDIFINED)};
+    Location location {};
 public:
     function<void(MapObject*)> onMove { nullptr };
 	

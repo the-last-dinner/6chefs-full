@@ -16,6 +16,7 @@ class TiledMapLayer;
 class DungeonSceneData;
 
 class CameraTask;
+class EnemyTask;
 class EventTask;
 class PlayerControlTask;
 
@@ -36,6 +37,7 @@ private:
     AmbientLightLayer* ambientLightLayer {nullptr};
     
     CameraTask* cameraTask { nullptr };
+    EnemyTask* enemyTask { nullptr };
     EventTask* eventTask { nullptr };
     PlayerControlTask* playerControlTask { nullptr };
     
