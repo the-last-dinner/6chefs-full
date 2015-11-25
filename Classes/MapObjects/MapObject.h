@@ -35,7 +35,7 @@ protected:
     deque<vector<Direction>> directionsQueue {};
     Location location {};
 public:
-    function<void(MapObject*)> onMove { nullptr };
+    function<void(MapObject*)> onMoved { nullptr };
 	
 // インスタンスメソッド
 public:

@@ -199,12 +199,13 @@ bool MapObject::moveBy(const vector<Direction>& directions, function<void()> onM
     // マス座標を変更
     this->setGridPosition(this->getGridPosition() + Vec2(movement.x, -movement.y) / GRID);
     
-    // 移動先座標をコールバック関数に送信(TiledMapLayerの関数を呼び出す)
-    if(this->onMove) this->onMove(this);
-    
     // 移動開始
     this->_isMoving = true;
-    this->runAction(Sequence::create(MoveBy::create(DURATION_MOVE_ONE_GRID / ratio, movement), CallFunc::create([this]{this->_isMoving = false;}), CallFunc::create(onMoved), nullptr));
+    this->runAction(Sequence::create(MoveBy::create(DURATION_MOVE_ONE_GRID / ratio, movement), CallFunc::create([this]
+    {
+        this->_isMoving = false;
+        if(this->onMoved) this->onMoved(this);
+    }), CallFunc::create(onMoved), nullptr));
     
     return true;
 }
