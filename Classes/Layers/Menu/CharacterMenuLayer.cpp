@@ -20,6 +20,7 @@ bool CharacterMenuLayer::init()
     if (!MenuLayer::init(1,12)) return false;
     SpriteUtils::Square square;
     SpriteUtils::Margin margin;
+    Size parcent = Size(WINDOW_WIDTH/100, WINDOW_HEIGHT/100);
     
     // 白い背景を生成
     Sprite* white = Sprite::create();
@@ -30,10 +31,12 @@ bool CharacterMenuLayer::init()
     this->addChild(white);
     
     // タイトル
-    square = SpriteUtils::Square(0,80,30,100);
-    margin = SpriteUtils::Margin(3.0,1.5,1.5,3.0);
-    Sprite* leftTop = SpriteUtils::getSquareSprite(square, margin);
-    leftTop->setColor(Color3B(128,0,0));
+    //square = SpriteUtils::Square(0,80,30,100);
+    //margin = SpriteUtils::Margin(3.0,1.5,1.5,3.0);
+    //Sprite* leftTop = SpriteUtils::getSquareSprite(square, margin);
+    //leftTop->setColor(Color3B(128,0,0));
+    Sprite* leftTop {Sprite::createWithSpriteFrameName("menu_title_panel.png")};
+    leftTop->setPosition(leftTop->getContentSize().width/2, WINDOW_HEIGHT - leftTop->getContentSize().height/2);
     this->addChild(leftTop);
     
     Label* title = Label::createWithTTF("キャラ", "fonts/cinecaption2.28.ttf", 48);
@@ -42,39 +45,38 @@ bool CharacterMenuLayer::init()
     leftTop->addChild(title);
     
     // キャラ紹介
-    square = SpriteUtils::Square(0,0,30,80);
-    margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
-    Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
-    leftBottom->setColor(Color3B::BLACK);
+    //square = SpriteUtils::Square(0,0,30,80);
+    //margin = SpriteUtils::Margin(1.5,1.5,3.0,3.0);
+    //Sprite* leftBottom = SpriteUtils::getSquareSprite(square, margin);
+    //leftBottom->setColor(Color3B::BLACK);
+    Sprite* leftBottom {Sprite::createWithSpriteFrameName("character_discription.png")};
+    leftBottom->setPosition(leftBottom->getContentSize().width/2, leftBottom->getContentSize().height/2);
     leftBottom->setName("charaImage");
     this->addChild(leftBottom);
     
     // キャラ選択部分
-    square = SpriteUtils::Square(30,0,100,100);
-    margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
-    Sprite* right = SpriteUtils::getSquareSprite(square, margin);
-    right->setColor(Color3B::BLACK);
+    //square = SpriteUtils::Square(30,0,100,100);
+    //margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
+    //Sprite* right = SpriteUtils::getSquareSprite(square, margin);
+    //right->setColor(Color3B::BLACK);
+    Sprite* right {Sprite::createWithSpriteFrameName("character_selector.png")};
+    right->setPosition(right->getContentSize().width/2 + parcent.width * 30, right->getContentSize().height/2);
     right->setName("charaRight");
     this->addChild(right);
     
     Size list_size {right->getContentSize()};
+    float space = 2;
     Point maxSize {Point(1,12)};
     this->characters = CsvDataManager::getInstance()->getDisplayCharacters();
     int chara_count = this->characters.size();
     for (int i=0;i<chara_count; i++){
         // パネル生成
         Sprite* panel = Sprite::create();
-        panel->setTextureRect(Rect(0, 0, list_size.width / maxSize.x, list_size.height / maxSize.y));
-        panel->setColor(Color3B::BLACK);
-        panel->setTag(i);
+        panel->setTextureRect(Rect(0, 0, list_size.width / maxSize.x, list_size.height / maxSize.y - space));
+        panel->setOpacity(0);
         Size panel_size {panel->getContentSize()};
-        panel->setPosition((i%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor(i/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2);
+        panel->setPosition((i%(int)maxSize.x) * (list_size.width / maxSize.x) + panel_size.width/2, list_size.height - ((floor(i/(int)maxSize.x) + 1)  *  (panel_size.height)) + panel_size.height/2 - space * 5);
         right->addChild(panel);
-        // メニューオブジェクトに登録
-        this->menuObjects.push_back(panel);
-        // 不透明度を半分にしておく
-        panel->setCascadeOpacityEnabled(true);
-        panel->setOpacity(100);
         
         // キャラクター名
         string chara_name {""};
@@ -86,10 +88,19 @@ bool CharacterMenuLayer::init()
         {
             chara_name = CsvDataManager::getInstance()->getCharaNameWithRuby(this->characters[i]);
         }
+        
+        // ラベル生成
         Label* chara = Label::createWithTTF(chara_name, "fonts/cinecaption2.28.ttf", 24);
         chara->setPosition(panel_size.width/2 , panel_size.height / 2);
         chara->setColor(Color3B::WHITE);
+        chara->setTag(i);
+        // 不透明度を抑えるしておく
+        chara->setCascadeOpacityEnabled(true);
+        chara->setOpacity(80);
         panel->addChild(chara);
+        
+        // メニューオブジェクトに登録
+        this->menuObjects.push_back(chara);
     }
     
     // デフォルトセット
@@ -110,10 +121,12 @@ void CharacterMenuLayer::onIndexChanged(int newIdx, bool sound)
         if(obj->getTag() == newIdx)
         {
             obj->runAction(FadeTo::create(0.2f, 255));
+            obj->runAction(ScaleTo::create(0.2f, 1.2f));
         }
         else
         {
-            obj->runAction(FadeTo::create(0.2f, 100));
+            obj->runAction(FadeTo::create(0.2f, 80));
+            obj->runAction(ScaleTo::create(0.2f, 1.0f));
         }
     }
     // キャラクターイメージを変更
@@ -217,10 +230,12 @@ void CharacterMenuLayer::onSpacePressed(int idx)
     else
     {
         // 背景の作成
-        SpriteUtils::Square square = SpriteUtils::Square(30,0,100,100);
-        SpriteUtils::Margin margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
-        Sprite* back = SpriteUtils::getSquareSprite(square, margin);
-        back->setColor(Color3B::BLACK);
+        //SpriteUtils::Square square = SpriteUtils::Square(30,0,100,100);
+        //SpriteUtils::Margin margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
+        //Sprite* back = SpriteUtils::getSquareSprite(square, margin);
+        //back->setColor(Color3B::BLACK);
+        Sprite* back {Sprite::createWithSpriteFrameName("character_selector.png")};
+        back->cocos2d::Node::setPosition(back->getContentSize().width/2 + (WINDOW_WIDTH/100) * 30, back->getContentSize().height/2);
         back->setName("charaBack");
         this->addChild(back);
         
@@ -242,7 +257,7 @@ void CharacterMenuLayer::onSpacePressed(int idx)
             }
             Label* label = Label::createWithTTF(profile, "fonts/cinecaption2.28.ttf", 24);
             label->setColor(Color3B::WHITE);
-            label->setPosition(canCheckLevel >= i ? label->getContentSize().width/2 + 10 : panel_size.width/2, (2-i) * panel_size.height + panel_size.height/2);
+            label->setPosition(canCheckLevel >= i ? label->getContentSize().width/2 + 20 : panel_size.width/2, (2-i) * panel_size.height + panel_size.height/2);
             discriptions.push_back(label);
             back->addChild(label);
         }
