@@ -84,16 +84,14 @@
 													"type":"stopBGM"
 												},
 												{
+													"type":"already"
+												},
+												{
 													"type":"changeMap",
 													"mapID":"52",
 													"x":9,
-													"y":5
-												},
-												{
-													"type":"fadein"
-												},
-												{
-													"type":"already"
+													"y":5,
+													"EventID":"6"
 												}
 											]
 										}

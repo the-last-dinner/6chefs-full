@@ -125,29 +125,8 @@
 					"type":"changeMap",
 					"mapID":"48",
 					"x":4,
-					"y":9
-				},
-				{
-					"type":"charaMsg",
-					"text":["う、うわあああああああ！\n何だここ！？"],
-					"charaID":"0",
-					"imgID":"2",
-					"option":"reaction"
-				},
-				{
-					"type":"changeDirection",
-					"direction":"LEFT",
-					"objID":"hero"
-				},
-				{
-					"type":"wait",
-					"time":1.0
-				},
-				{
-					"type":"charaMsg",
-					"text":["中山さん・・・？だったよな・・・\n何で・・・？"],
-					"charaID":"0",
-					"imgID":"1"
+					"y":9,
+					"EventID":"6"
 				},
 				{
 					"type":"already"
