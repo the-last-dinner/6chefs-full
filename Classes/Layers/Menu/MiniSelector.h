@@ -26,11 +26,11 @@ public:
         SpriteUtils::Margin margin {SpriteUtils::Margin(3.0)}; // margin
         vector<string> menu {}; // menuのインデックス
     public:
-        Selector(const Point index, const SpriteUtils::Square position, const vector<string>& menu):index(index),position(position),menu(menu){}
-        Selector(const Point index, const SpriteUtils::Square position, const vector<string>& menu, const SpriteUtils::Margin& margin):index(index),position(position),menu(menu),margin(margin){}
-        void setColor(Color3B color){this->color = color;};
-        void setBackgroundColor(Color3B color){this->background_color = color;};
-        void setRectangleColor(Color3B color){this->rectangle_color = color;};
+        Selector(const Point& index, const SpriteUtils::Square& position, const vector<string>& menu):index(index),position(position),menu(menu){}
+        Selector(const Point& index, const SpriteUtils::Square& position, const vector<string>& menu, const SpriteUtils::Margin& margin):index(index),position(position),menu(menu),margin(margin){}
+        void setColor(const Color3B& color){this->color = color;};
+        void setBackgroundColor(const Color3B& color){this->background_color = color;};
+        void setRectangleColor(const Color3B& color){this->rectangle_color = color;};
         const Point getIndexSize(){return index;};
         const Size getWindowSize(){return Size(position.getWidth(),position.getHeight());};
         const SpriteUtils::Square getPosition(){return position;};
@@ -40,10 +40,30 @@ public:
         const Color3B getBackgroundColor(){return background_color;};
         const Color3B getRectangleColor(){return rectangle_color;};
     };
+    
+    // 画像からミニ選択ウインドウを設定する構造体
+    struct SelectorWithSprite
+    {
+    private:
+        Point index {Point(0,0)};
+        Sprite* window {};
+        vector<string> menu {}; // menuのインデックス
+        Color3B color {Color3B::WHITE};
+    public:
+        SelectorWithSprite(const Point& index, Sprite* window, const vector<string>& menu):index(index),window(window),menu(menu){};
+        void setColor(const Color3B& color){this->color = color;};
+        const Point getIndexSize(){return index;};
+        const vector<string> getMenu(){return menu;};
+        Sprite* getWindow(){return window;};
+        Color3B getColor(){return color;};
+        
+    };
     // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(MiniSelector, Selector&)
+    CREATE_FUNC_WITH_PARAM(MiniSelector, SelectorWithSprite&)
     virtual bool init(Selector& selector);
+    virtual bool init(SelectorWithSprite& selector);
     
     // インスタンスメソッド
 private:
