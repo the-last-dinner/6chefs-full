@@ -11,6 +11,8 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
+class MiniSelector;
+
 class DungeonMainMenuLayer : public MenuLayer
 {
 	// 列挙型
@@ -37,15 +39,19 @@ public:
     function<void()> onCharacterMenuSelected {nullptr};
 private:
     int menuIndex {0};
+    MiniSelector* confirm {nullptr};
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();
 	~DungeonMainMenuLayer();
 	virtual bool init();
+    void confirmTitleback();
 
 	virtual void onIndexChanged(int newIdx, bool sound = true);
 	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed();
+    void onConfirmSelected(int idx);
+    void onConfirmCanceled();
 public:
     int getMenuIndex();
     virtual void show();

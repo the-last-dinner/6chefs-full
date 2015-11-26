@@ -11,6 +11,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/TitleScene.h"
 #include "Datas/MapObject/CharacterData.h"
+#include "Layers/Menu/MiniSelector.h"
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -210,13 +211,56 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             }
             break;
         case Type::TITLE:
-            SoundManager::getInstance()->playSE("back.mp3");
-            Director::getInstance()->replaceScene(TitleScene::create());
+            this->confirmTitleback();
             break;
         case Type::CLOSE:
         default:
             this->onMenuKeyPressed();
             break;
+    }
+}
+
+// タイトルへ戻る確認画面
+void DungeonMainMenuLayer::confirmTitleback()
+{
+    // アイテムメニューのキーボードを無効化
+    this->listenerKeyboard->setEnabled(false);
+    // メニューラベル
+    vector<string> labels = {"本当に戻る", "キャンセル"};
+    Point index = Point(1,labels.size()); // 要素数
+    SpriteUtils::Square position = SpriteUtils::Square(35,40,65,60); // 位置
+    MiniSelector::Selector selector = MiniSelector::Selector(index, position, labels);
+    MiniSelector* mini = {MiniSelector::create(selector)};
+    this->addChild(mini);
+    mini->show();
+    mini->onMiniSelectorCanceled = CC_CALLBACK_0(DungeonMainMenuLayer::onConfirmCanceled, this);
+    mini->onMiniIndexSelected = CC_CALLBACK_1(DungeonMainMenuLayer::onConfirmSelected, this);
+    this->confirm = mini;
+}
+
+// 確認画面
+void DungeonMainMenuLayer::onConfirmCanceled()
+{
+    SoundManager::getInstance()->playSE("back.mp3");
+    this->runAction(Sequence::createWithTwoActions(
+        CallFunc::create([this](){this->confirm->hide();}),
+        CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})
+    ));
+}
+
+// タイトル画面へ戻る確認画面セレクター処理
+void DungeonMainMenuLayer::onConfirmSelected(int idx)
+{
+    if (idx == 0)
+    {
+        // タイトルへ戻る
+        SoundManager::getInstance()->playSE("back.mp3");
+        Director::getInstance()->replaceScene(TitleScene::create());
+    }
+    else
+    {
+        // メニューへ戻る
+        this->onConfirmCanceled();
     }
 }
 
