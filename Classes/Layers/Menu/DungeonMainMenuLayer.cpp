@@ -11,6 +11,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/TitleScene.h"
 #include "Datas/MapObject/CharacterData.h"
+#include "Layers/Menu/MiniSelector.h"
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -33,9 +34,8 @@ bool DungeonMainMenuLayer::init()
 	this->addChild(cover);
     
 	// 上のメニューを生成
-	Sprite* hBg { Sprite::create() };
-    hBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
-	hBg->setColor(Color3B::GRAY);
+	Sprite* hBg { Sprite::createWithSpriteFrameName("main_menu_panel.png") };
+    hBg->setScale(1.f, 1.1f);
 	hBg->setPosition(hBg->getContentSize().width / 2, WINDOW_HEIGHT - hBg->getContentSize().height / 2);
 	hBg->setCascadeOpacityEnabled(true);
 	this->addChild(hBg);
@@ -64,6 +64,7 @@ bool DungeonMainMenuLayer::init()
     {
         Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
         menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
+        menu->setOpacity(100);
         menu->setTag(i);
         hBg->addChild(menu);
         this->menuObjects.push_back(menu);
@@ -79,11 +80,9 @@ bool DungeonMainMenuLayer::init()
     hBg->addChild(play_time);
     
 	// 下のメニューを生成
-    Sprite* fBg { Sprite::create() };
-	fBg->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 5));
-	fBg->setColor(Color3B::GRAY);
+    Sprite* fBg { Sprite::createWithSpriteFrameName("main_menu_panel.png") };
+    fBg->setScale(1.f, 1.11f);
 	fBg->setPosition(fBg->getContentSize().width / 2, fBg->getContentSize().height / 2);
-	//fBg->setOpacity(0);
 	fBg->setCascadeOpacityEnabled(true);
 	this->addChild(fBg);
     
@@ -114,12 +113,12 @@ bool DungeonMainMenuLayer::init()
         
         // 通り名
         Label* street= Label::createWithTTF("-" + CsvDataManager::getInstance()->getCharaStreetName(charas[i].chara_id) + "-", "fonts/cinecaption2.28.ttf", 24);
-        street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 5);
+        street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 10);
         chara_panel->addChild(street);
         
         // キャラ名
         Label* name = Label::createWithTTF(CsvDataManager::getInstance()->getCharaName(charas[i].chara_id), "fonts/cinecaption2.28.ttf", 24);
-        name->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height - name->getContentSize().height /2 - 15);
+        name->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height - name->getContentSize().height /2 - 20);
         chara_panel->addChild(name);
         
         // キャラのドット絵
@@ -127,7 +126,7 @@ bool DungeonMainMenuLayer::init()
         if (SpriteFrameCache::getInstance()->getSpriteFrameByName(file_name))
         {
             Sprite* dotimg {Sprite::createWithSpriteFrameName(file_name)};
-            dotimg->setPosition(cPanelSize.width / 2, dotimg->getContentSize().height / 2 + 5);
+            dotimg->setPosition(cPanelSize.width / 2, dotimg->getContentSize().height / 2 + 15);
             dotimg->setZOrder(1);
             chara_panel->addChild(dotimg);
         }
@@ -138,8 +137,8 @@ bool DungeonMainMenuLayer::init()
         {
             Sprite* img { Sprite::createWithSpriteFrameName(file_name)};
             img->setScale(stand_scale);
-            img->setPosition(colum_position, img->getContentSize().height * stand_scale / 2 + fBg->getContentSize().height);
-            img->setLocalZOrder(-1);
+            img->setPosition(colum_position, img->getContentSize().height * stand_scale / 2 + fBg->getContentSize().height + 10);
+            //img->setLocalZOrder(-1);
             cover->addChild(img);
         }
         
@@ -212,13 +211,56 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             }
             break;
         case Type::TITLE:
-            SoundManager::getInstance()->playSE("back.mp3");
-            Director::getInstance()->replaceScene(TitleScene::create());
+            this->confirmTitleback();
             break;
         case Type::CLOSE:
         default:
             this->onMenuKeyPressed();
             break;
+    }
+}
+
+// タイトルへ戻る確認画面
+void DungeonMainMenuLayer::confirmTitleback()
+{
+    // アイテムメニューのキーボードを無効化
+    this->listenerKeyboard->setEnabled(false);
+    // メニューラベル
+    vector<string> labels = {"本当に戻る", "キャンセル"};
+    Point index = Point(1,labels.size()); // 要素数
+    SpriteUtils::Square position = SpriteUtils::Square(35,40,65,60); // 位置
+    MiniSelector::Selector selector = MiniSelector::Selector(index, position, labels);
+    MiniSelector* mini = {MiniSelector::create(selector)};
+    this->addChild(mini);
+    mini->show();
+    mini->onMiniSelectorCanceled = CC_CALLBACK_0(DungeonMainMenuLayer::onConfirmCanceled, this);
+    mini->onMiniIndexSelected = CC_CALLBACK_1(DungeonMainMenuLayer::onConfirmSelected, this);
+    this->confirm = mini;
+}
+
+// 確認画面
+void DungeonMainMenuLayer::onConfirmCanceled()
+{
+    SoundManager::getInstance()->playSE("back.mp3");
+    this->runAction(Sequence::createWithTwoActions(
+        CallFunc::create([this](){this->confirm->hide();}),
+        CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);})
+    ));
+}
+
+// タイトル画面へ戻る確認画面セレクター処理
+void DungeonMainMenuLayer::onConfirmSelected(int idx)
+{
+    if (idx == 0)
+    {
+        // タイトルへ戻る
+        SoundManager::getInstance()->playSE("back.mp3");
+        Director::getInstance()->replaceScene(TitleScene::create());
+    }
+    else
+    {
+        // メニューへ戻る
+        this->onConfirmCanceled();
     }
 }
 

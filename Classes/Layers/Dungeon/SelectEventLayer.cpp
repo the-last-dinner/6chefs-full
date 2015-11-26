@@ -32,7 +32,11 @@ bool SelectEventLayer::init(const string& message, const vector<string>& choices
     
     // 選択レイヤ表示
     Point index = Point(1,choices.size()); // 要素数
-    SpriteUtils::Square position = SpriteUtils::Square(80, 20, 100, 40); // 位置
+    SpriteUtils::Square position = SpriteUtils::Square(75, 20, 95, 40); // 位置
+    //Size parcent = Size(WINDOW_WIDTH/100, WINDOW_HEIGHT/100);
+    //Sprite* window {Sprite::createWithSpriteFrameName("question_selector.png")};
+    //window->setPosition(window->getContentSize().width/2 + parcent.width * 75, window->getContentSize().height/2 + parcent.height * 20);
+    //MiniSelector::SelectorWithSprite selector = MiniSelector::SelectorWithSprite(index, window, choices);
     MiniSelector::Selector selector = MiniSelector::Selector(index, position, choices);
     MiniSelector* mini = {MiniSelector::create(selector)};
     mini->show();

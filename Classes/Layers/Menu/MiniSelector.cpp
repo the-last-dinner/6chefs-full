@@ -51,19 +51,65 @@ bool MiniSelector::init(Selector& selector)
         panel->setTextureRect(Rect(0,0,panel_size.width, panel_size.height));
         panel->setPosition(((i%(int)index.x)) * panel_size.width + panel_size.width/2, back_size.height - (floor(i/(int)index.x) + 1) * panel_size.height + panel_size.height/2);
         panel->setColor(selector.getBackgroundColor());
-        panel->setTag(i);
         background->addChild(panel);
-        // 不透明度を半分にしておく
-        panel->setCascadeOpacityEnabled(true);
-        panel->setOpacity(100);
-        // メニューオブジェクトに登録
-        this->menuObjects.push_back(panel);
         
         // 選択ラベル
         Label* label = Label::createWithTTF(menu[i], "fonts/cinecaption2.28.ttf", 24);
         label->setPosition(panel_size.width/2 , panel_size.height / 2);
-        label->setColor(Color3B::WHITE);
+        label->setColor(selector.getColor());
+        label->setTag(i);
+        // 不透明度を半分にしておく
+        label->setCascadeOpacityEnabled(true);
+        label->setOpacity(100);
         panel->addChild(label);
+        
+        // メニューオブジェクトに登録
+        this->menuObjects.push_back(label);
+    }
+    this->onIndexChanged(0, false);
+    return true;
+}
+
+bool MiniSelector::init(SelectorWithSprite& selector)
+{
+    FUNCLOG
+    
+    // 必要パラメータ
+    Point index = selector.getIndexSize();
+    
+    // メニュー生成
+    if(!MenuLayer::init(index.x, index.y)) return false;
+    
+    // ウインドウの取得
+    Sprite* window {selector.getWindow()};
+    Size back_size = window->getContentSize();
+    this->addChild(window);
+    
+    // 選択メニュー
+    const Size panel_size = Size(back_size.width/index.x, back_size.height/index.y);
+    const vector<string> menu = selector.getMenu();
+    const int menu_size = menu.size();
+    for(int i = 0; i < menu_size; i++)
+    {
+        // 選択パネル
+        Sprite* panel = Sprite::create();
+        panel->setTextureRect(Rect(0,0,panel_size.width, panel_size.height));
+        panel->setPosition(((i%(int)index.x)) * panel_size.width + panel_size.width/2, back_size.height - (floor(i/(int)index.x) + 1) * panel_size.height + panel_size.height/2);
+        panel->setOpacity(0);
+        window->addChild(panel);
+        
+        // 選択ラベル
+        Label* label = Label::createWithTTF(menu[i], "fonts/cinecaption2.28.ttf", 24);
+        label->setPosition(panel_size.width/2 , panel_size.height / 2);
+        label->setColor(selector.getColor());
+        label->setTag(i);
+        // 不透明度を半分にしておく
+        label->setCascadeOpacityEnabled(true);
+        label->setOpacity(100);
+        panel->addChild(label);
+        
+        // メニューオブジェクトに登録
+        this->menuObjects.push_back(label);
     }
     this->onIndexChanged(0, false);
     return true;
@@ -82,10 +128,12 @@ void MiniSelector::onIndexChanged(int newIdx, bool sound)
         if(obj->getTag() == newIdx)
         {
             obj->runAction(FadeTo::create(0.2f, 255));
+            obj->runAction(ScaleTo::create(0.2f, 1.2f));
         }
         else
         {
             obj->runAction(FadeTo::create(0.2f, 100));
+            obj->runAction(ScaleTo::create(0.2f, 1.0f));
         }
     }
 }
