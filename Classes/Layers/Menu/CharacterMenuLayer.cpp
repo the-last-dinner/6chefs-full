@@ -96,7 +96,7 @@ bool CharacterMenuLayer::init()
         chara->setTag(i);
         // 不透明度を抑えるしておく
         chara->setCascadeOpacityEnabled(true);
-        chara->setOpacity(80);
+        chara->setOpacity(120);
         panel->addChild(chara);
         
         // メニューオブジェクトに登録
@@ -125,7 +125,7 @@ void CharacterMenuLayer::onIndexChanged(int newIdx, bool sound)
         }
         else
         {
-            obj->runAction(FadeTo::create(0.2f, 80));
+            obj->runAction(FadeTo::create(0.2f, 120));
             obj->runAction(ScaleTo::create(0.2f, 1.0f));
         }
     }
