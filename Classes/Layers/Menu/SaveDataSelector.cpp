@@ -145,6 +145,7 @@ void SaveDataSelector::onSpacePressed(int idx)
         
         // 完了メッセージ表示
         NotificationBand* notification {NotificationBand::create("セーブが完了しました")};
+        notification->setBandColor(Color3B(64,0,0));
         this->addChild(notification);
         this->comfirm_flag = true;
     }

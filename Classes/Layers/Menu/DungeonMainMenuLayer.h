@@ -12,6 +12,7 @@
 #include "Layers/Menu/MenuLayer.h"
 
 class MiniSelector;
+class SlideNode;
 
 class DungeonMainMenuLayer : public MenuLayer
 {
@@ -26,6 +27,10 @@ public:
 		CLOSE,
 		SIZE
 	};
+
+    // 定数
+private:
+    static const float SLIDE_TIME;
 	
 	// クラスメソッド
 public:
@@ -37,6 +42,8 @@ public:
     function<void()> onSaveMenuSelected {nullptr};
     function<void()> onItemMenuSelected {nullptr};
     function<void()> onCharacterMenuSelected {nullptr};
+    vector<SlideNode*> slideNodes {};
+    
 private:
     int menuIndex {0};
     MiniSelector* confirm {nullptr};
@@ -52,6 +59,8 @@ private:
 	virtual void onMenuKeyPressed();
     void onConfirmSelected(int idx);
     void onConfirmCanceled();
+    void slideIn();
+    void slideOut();
 public:
     int getMenuIndex();
     virtual void show();
