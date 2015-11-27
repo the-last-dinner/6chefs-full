@@ -11,6 +11,7 @@
 
 #include "Scenes/DungeonScene.h"
 #include "Datas/Scene/DungeonSceneData.h"
+#include "UI/NotificationBand.h"
 
 // 定数
 const float SaveDataSelector::INNER_H_MARGIN_RATIO = 0.05f;
@@ -141,14 +142,10 @@ void SaveDataSelector::onSpacePressed(int idx)
         // セーブ時
         SoundManager::getInstance()->playSE("save.mp3");
         PlayerDataManager::getInstance()->save(idx);
-        Sprite* back = Sprite::create();
-        back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
-        back->setColor(Color3B::BLACK);
-        back->setPosition(WINDOW_CENTER);
-        this->addChild(back);
-        Label* message = Label::createWithTTF("セーブが完了しました", "fonts/cinecaption2.28.ttf", back->getContentSize().height / 5);
-        message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
-        back->addChild(message);
+        
+        // 完了メッセージ表示
+        NotificationBand* notification {NotificationBand::create("セーブが完了しました")};
+        this->addChild(notification);
         this->comfirm_flag = true;
     }
     else
