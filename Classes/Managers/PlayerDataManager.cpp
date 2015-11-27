@@ -15,6 +15,7 @@
 #include "Managers/CsvDataManager.h"
 #include "Utils/StringUtils.h"
 #include "Datas/MapObject/CharacterData.h"
+#include "Models/StopWatch.h"
 
 #pragma mark Instance
 // 唯一のインスタンスを初期化
@@ -35,7 +36,11 @@ void PlayerDataManager::destroy()
 }
 
 //デストラクタ
-PlayerDataManager::~PlayerDataManager(){FUNCLOG}
+PlayerDataManager::~PlayerDataManager()
+{
+    FUNCLOG
+    CC_SAFE_RELEASE_NULL(this->timer);
+}
 
 
 #pragma mark -
@@ -105,7 +110,7 @@ void PlayerDataManager::initializeFiles()
 }
 
 #pragma mark -
-#pragma mark NormalFunctions
+#pragma mark SaveDataFunctions
 
 // セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
@@ -156,7 +161,9 @@ void PlayerDataManager::setMainLocalData(const int id)
     string path = this->fu->fullPathForFilename(file);
     this->local = this->readJsonFile(path);
     // プレイ時間計測スタート
-    this->start_time_ms = this->getSec();
+    this->timer = StopWatch::create(this->local["play_time"].GetInt());
+    CC_SAFE_RETAIN(this->timer);
+    this->timer->tic();
     return;
 }
 
@@ -164,29 +171,6 @@ void PlayerDataManager::setMainLocalData(const int id)
 int PlayerDataManager::getSaveDataId()
 {
     return this->local_id;
-}
-
-// 時間取得
-double PlayerDataManager::getSec(){
-    timeval tv;
-    gettimeofday(&tv, nullptr);
-    return (tv.tv_sec) + (tv.tv_usec) * 1e-6;
-}
-
-// プレイ時間を秒で取得し、スタート時間のリセット
-int PlayerDataManager::getPlayTimeSeconds()
-{
-    // 計測時間の管理
-    double start = this->start_time_ms;
-    double stop = this->getSec();
-    // 計測処理
-    int interval_time = (int)(stop - start);
-    // 開始時間を再設定
-    this->start_time_ms = this->getSec();
-    // プレイ時間を格納
-    int play_time = this->local["play_time"].GetInt() + interval_time;
-    this->local["play_time"].SetInt(play_time);
-    return play_time;
 }
 
 //　表示用プレイ時間の取得
@@ -197,12 +181,6 @@ string PlayerDataManager::getPlayTimeDisplay(const int sec)
     return display;
 }
 
-// 現在のプレイ時間の表示用を取得
-string PlayerDataManager::getPlayTimeDisplay()
-{
-    return this->getPlayTimeDisplay(this->getPlayTimeSeconds());
-}
-
 // セーブ
 void PlayerDataManager::save(const int id)
 {
@@ -210,27 +188,16 @@ void PlayerDataManager::save(const int id)
     // save local
     string str_id = to_string(id);
     this->local["play_time"].SetInt(this->getPlayTimeSeconds());
-    this->local["datetime"].SetInt(this->getSec());
     this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
     string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
-    // キャプチャースクリーンの保存
-//    string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
-//    utils::captureScreen([=](bool success, string filename){
-//        if(success)
-//        {
-//            // cache削除
-//            Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
-//        }
-//    }, path_s);
     return;
 }
 
 // セーブデータの存在をチェック
 bool PlayerDataManager::checkSaveDataExists(const int id)
 {
-    //return (this->fu->isFileExist("save/local" + to_string(id) + ".json")) ? true : false;
     return this->local_exist[id - 1];
 }
 
@@ -574,6 +541,18 @@ vector<CharacterData> PlayerDataManager::getPartyMemberAll()
     return party;
 }
 
+// 現在のプレイ時間の表示用を取得
+string PlayerDataManager::getPlayTimeDisplay()
+{
+    return this->getPlayTimeDisplay(this->getPlayTimeSeconds());
+}
+
+// プレイ時間を秒で取得
+int PlayerDataManager::getPlayTimeSeconds()
+{
+    return this->timer->getTimeInt();;
+}
+
 #pragma mark -
 #pragma mark Checker
 
@@ -634,25 +613,6 @@ bool PlayerDataManager::checkEventStatus(const int map_id, const int event_id, c
 {
     return status == abs(this->getEventStatus(map_id, event_id)) ? true : false;
 }
-
-#pragma mark -
-#pragma mark RapidjsonUtils
-
-// rapidjson::Valueのstringを生成
-//rapidjson::Value& PlayerDataManager::getRapidjsonString(const char *str)
-//{
-//    rapidjson::Value jstr(kStringType);
-//    jstr.SetString(str, strlen(str), this->local.GetAllocator());
-//    static rapidjson::Value& jstrRef = jstr;
-//    return jstrRef;
-//}
-//
-//rapidjson::Value& PlayerDataManager::getRapidjsonString(const int num)
-//{
-//    char buff[20];
-//    sprintf(buff, "%d", num);
-//    return this->getRapidjsonString(buff);
-//}
 
 #pragma mark -
 #pragma mark JsonFileFunctions

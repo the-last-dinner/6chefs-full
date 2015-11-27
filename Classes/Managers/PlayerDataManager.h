@@ -12,6 +12,7 @@
 #include "define.h"
 
 class CharacterData;
+class StopWatch;
 
 class PlayerDataManager
 {
@@ -39,30 +40,20 @@ private:
     int local_id {0};
     // FileUtils
     cocos2d::FileUtils* fu;
-    // 時間計測開始時間(単位:ms)
-    double start_time_ms {0};
+    // Timer
+    StopWatch* timer {nullptr};
     // ローカルセーブデータの存在の有無
     bool local_exist[MAX_SAVE_COUNT];
 
 //通常関数
 public:
-    //メインとなるローカルデータのセット
+    // ローカルセーブデータ処理
     void setMainLocalData(const int id);
-    //ローカルセーブデータリストの取得
     vector<SaveIndex> getSaveList();
-    //セーブ
-    void save(const int id);
-    // セーブデータが存在するかチェック
-    bool checkSaveDataExists(const int id);
-    // セーブデータIDの取得
     int getSaveDataId();
-    // プレイ時間の取得
-    int getPlayTimeSeconds();
-    string getPlayTimeDisplay();
-    string getPlayTimeDisplay(const int sec);
-    // 時間取得
-    double getSec();
-    /* flag管理系 */
+    bool checkSaveDataExists(const int id);
+    void save(const int id);
+
     // SET
     void setLocation(const Location& location, const int num = 0);
     void setLocation(const CharacterData& character, const int num = 0);
@@ -91,6 +82,9 @@ public:
     int getCharacterProfileLevel(const int chara_id);
     CharacterData getPartyMember(const int num = 0);
     vector<CharacterData> getPartyMemberAll();
+    int getPlayTimeSeconds();
+    string getPlayTimeDisplay();
+    string getPlayTimeDisplay(const int sec);
     
     // CHECK
     bool checkItem(const int item_id);
@@ -109,9 +103,7 @@ private:
     rapidjson::Document readJsonFile(const string& path);
     // JSONファイル書き出し
     void writeJsonFile(const string& path, const rapidjson::Document& doc);
-    // rapidjsoのstringを生成
-//    rapidjson::Value& getRapidjsonString(const char* str);
-//    rapidjson::Value& getRapidjsonString(const int num);
+
 //singleton用関数
 public:
     static PlayerDataManager* getInstance();

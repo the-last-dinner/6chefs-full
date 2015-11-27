@@ -47,6 +47,7 @@ public:
 private:
     int menuIndex {0};
     MiniSelector* confirm {nullptr};
+    Label* play_time {nullptr};
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();
@@ -61,6 +62,7 @@ private:
     void onConfirmCanceled();
     void slideIn();
     void slideOut();
+    void updateTime(float delta);
 public:
     int getMenuIndex();
     virtual void show();
