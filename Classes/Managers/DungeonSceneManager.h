@@ -37,7 +37,7 @@ private:
     EventFactory* eventFactory { nullptr };
     EventScriptValidator* scriprtValidator { nullptr };
     Sprite* cover { nullptr };
-    vector<EnemyData> enemyDatas {};
+    vector<SummonData> summonDatas {};
     
 // インスタンスメソッド
 private:
@@ -71,7 +71,7 @@ public:
     vector<Key> getPressedCursorKeys() const;
     
     // Enemy
-    vector<EnemyData> getEnemyDatas() const;
+    vector<SummonData> getSummonDatas() const;
     
     // EventTask
     void runEvent(const int eventId);

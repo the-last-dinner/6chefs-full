@@ -223,6 +223,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
+		DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
+		DC2769131C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
 		DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
 		DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
 		DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
@@ -507,6 +509,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyTask.cpp; path = ../Classes/Tasks/EnemyTask.cpp; sourceTree = "<group>"; };
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
+		DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeMapHistory.cpp; path = ../Classes/Models/ChangeMapHistory.cpp; sourceTree = "<group>"; };
+		DC2769111C0800A300DAA11C /* ChangeMapHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeMapHistory.h; path = ../Classes/Models/ChangeMapHistory.h; sourceTree = "<group>"; };
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
 		DC281A441BF8824400A6F8BF /* SelectEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectEventLayer.h; path = ../Classes/Layers/Dungeon/SelectEventLayer.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
@@ -792,6 +796,8 @@
 			children = (
 				551A51761BF239F600D6263A /* Direction.cpp */,
 				551A51771BF239F600D6263A /* Direction.h */,
+				DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */,
+				DC2769111C0800A300DAA11C /* ChangeMapHistory.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1304,6 +1310,7 @@
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				55C3C1DE1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
+				DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
@@ -1373,6 +1380,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				55526C8C1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */,
+				DC2769131C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
 				55F1B6221BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
 				26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				554470861BDF61790048CD0B /* CharacterEvent.cpp in Sources */,

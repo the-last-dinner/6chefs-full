@@ -173,10 +173,13 @@ void DungeonSceneManager::addEnemy(Enemy* enemy)
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location)
 {
+    // 敵を止める
+    this->getScene()->enemyTask->stop();
+    
     // 敵情報を生成し直して格納
-    vector<EnemyData> enemyDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocation()) };
-    this->enemyDatas.clear();
-    this->enemyDatas = enemyDatas;
+    vector<SummonData> summonDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocation()) };
+    this->summonDatas.clear();
+    this->summonDatas = summonDatas;
     
     // 主人公一行の位置を登録
     vector<CharacterData> members = this->getParty()->getMembersData();
@@ -211,10 +214,10 @@ vector<Key> DungeonSceneManager::getPressedCursorKeys() const
 #pragma mark -
 #pragma mark EnemyTask
 
-// 敵の情報を取得
-vector<EnemyData> DungeonSceneManager::getEnemyDatas() const
+// 敵の出現情報を取得
+vector<SummonData> DungeonSceneManager::getSummonDatas() const
 {
-    return this->enemyDatas;
+    return this->summonDatas;
 }
 
 #pragma mark -

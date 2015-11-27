@@ -23,7 +23,8 @@ public:
 
 // インスタンス変数
 private:
-    vector<EnemyData> datas {};
+    vector<SummonData> datas {};
+    int currentMapId { etoi(MapID::UNDIFINED) };
     
 // インスタンスメソッド
 private:
@@ -32,7 +33,9 @@ private:
     bool init();
 public:
     void start(const int mapId);
-    vector<EnemyData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
+    void stop();
+    void update(float delta);
+    vector<SummonData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
 };
 
 #endif /* EnemyTask_h */

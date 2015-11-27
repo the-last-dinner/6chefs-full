@@ -24,7 +24,7 @@ bool EnemyTask::init()
     if(!GameTask::init()) return false;
     
     // 配置すべき敵の情報を格納
-    this->datas = DungeonSceneManager::getInstance()->getEnemyDatas();
+    this->datas = DungeonSceneManager::getInstance()->getSummonDatas();
     
     return true;
 }
@@ -34,61 +34,90 @@ void EnemyTask::start(const int mapId)
 {
     if(this->datas.empty()) return;
     
-    for(int i { 0 }; i < this->datas.size(); i++)
+    this->currentMapId = mapId;
+    
+    this->schedule(CC_SCHEDULE_SELECTOR(EnemyTask::update), 0.5f);
+}
+
+// 敵の出現と、動きを止める
+void EnemyTask::stop()
+{
+    this->unschedule(CC_SCHEDULE_SELECTOR(EnemyTask::update));
+}
+
+// update
+void EnemyTask::update(float delta)
+{
+    if(this->datas.empty()) return;
+    
+    for(SummonData& data : this->datas)
     {
-        EnemyData data { this->datas.at(i) };
+        // すでに出現済みの敵情報なら無視
+        if(data.isDone) continue;
         
-        if(data.to_map_id != mapId) continue;
+        // 経過時間を遅延時間から引く
+        float delay { data.summon_delays.front() };
+        delay -= delta;
+        data.summon_delays.pop_front();
+        data.summon_delays.push_front(delay);
         
-        this->runAction(Sequence::createWithTwoActions(DelayTime::create(data.summon_delay), CallFunc::create([this, data, i, mapId]
+        // 遅延時間が0以下になっていない場合は無視
+        if(delay > 0.0f) continue;
+        
+        // 最古の履歴の、来た場所のマップIDが現在のマップIDならば来た場所を、そうでなければ行き先を敵の居場所に設定
+        data.enemy_data.chara_data.location = (data.history.getOldestRelation().from_location.map_id == this->currentMapId)? data.history.getOldestRelation().from_location : data.history.getOldestRelation().to_location;
+        
+        // 最古の履歴を削除
+        data.deleteOldestHistory();
+        
+        // 敵に格納されているマップIDと、現在のマップIDが一緒かつ、履歴がないなら敵を出現させる
+        if(data.enemy_data.chara_data.location.map_id == this->currentMapId && !data.existsHistory())
         {
-            EnemyData newData { data };
-            newData.chara_data.location.map_id = mapId;
-            newData.chara_data.location.x = newData.to_x;
-            newData.chara_data.location.y = newData.to_y;
+            data.isDone = true;
             
-            DungeonSceneManager::getInstance()->addEnemy(Enemy::create(newData));
+            DungeonSceneManager::getInstance()->addEnemy(Enemy::create(data.enemy_data));
             
-            mutex mtx;
-            
-            mtx.lock();
-            this->datas.erase(this->datas.begin() + i);
-            mtx.unlock();
-        })));
+            // update一回につき一体まで出現とする
+            break;
+        }
     }
 }
 
 // 現在配置されている敵と、配置予定の敵から、次マップへの敵情報を生成する
-vector<EnemyData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation)
+vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& exitLocation)
 {
-    vector<EnemyData> datas {};
+    vector<SummonData> datas {};
     
     // 現在配置されている敵について
     if(!enemies.empty())
     {
         for(Enemy* enemy : enemies)
         {
-            EnemyData data {enemy->getEnemyData()};
+            // 出現情報生成
+            SummonData data {};
             
-            // マップ間移動不可なら、行き先マップIDに現在のマップIDを格納
+            // 敵情報を格納
+            data.enemy_data = enemy->getEnemyData();
+            
+            // 現在位置、行き先を格納
+            Relation relation {};
+            relation.from_location = data.enemy_data.chara_data.location;
+            relation.to_location = destLocation;
+            
+            float delay { 0.0f };
+            
+            // マップ間移動不可なら、移動不可という情報を付加する
             if(!enemy->canGoToNextMap())
             {
-                data.to_map_id = data.chara_data.location.map_id;
-                data.summon_delay = 0.0f;
-                datas.push_back(data);
+                data.canMove = false;
+                
+                data.addHistory(relation, delay);
                 
                 continue;
             }
             
-            // 移動可能なら、行き先マップIDを格納
-            data.to_map_id = destLocation.map_id;
-            
-            // 出現する座標を格納
-            data.to_x = destLocation.x;
-            data.to_y = destLocation.y;
-            
             // 次マップに出現するまでの遅延時間を格納
-            data.summon_delay = enemy->calcSummonDelay();
+            data.addHistory(relation, enemy->calcSummonDelay());
             
             datas.push_back(data);
         }
@@ -97,32 +126,30 @@ vector<EnemyData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const Lo
     // まだ配置されていない敵について
     if(!this->datas.empty())
     {
-        for(EnemyData data : this->datas)
+        // 主人公が利用した出口の位置と、行き先を格納
+        Relation relation {};
+        relation.from_location = exitLocation;
+        relation.to_location = destLocation;
+        
+        for(SummonData data : this->datas)
         {
-            // 行き先マップIDが、元々配置されていた場所だった時
-            if(data.chara_data.location.map_id == destLocation.map_id)
+            // すでに出現させていたら無視
+            if(data.isDone) continue;
+            
+            // 行き先が、来た場所ではない時
+            if(data.history.getLatestRelation().from_location.map_id != destLocation.map_id)
             {
-                // 出現座標を、元いた座標に設定
-                data.to_map_id = destLocation.map_id;
-                data.to_x = data.chara_data.location.x;
-                data.to_y = data.chara_data.location.y;
-                
-                // 出現までの遅延時間を０に
-                data.summon_delay = 0.0f;
+                // 履歴を追加
+                data.addHistory(relation, 2.0f);
                 
                 datas.push_back(data);
                 
                 continue;
             }
             
-            // 行き先マップIDが、元々配置されていない場所だった時
-            // 行き先を格納
-            data.to_map_id = destLocation.map_id;
-            data.to_x = data.chara_data.location.x;
-            data.to_y = data.chara_data.location.y;
-            
-            // 出現遅延時間+2秒
-            data.summon_delay += 2.0f;
+            // 行き先が、元々来た場所だった場合は最新の履歴を追加しないで、遅延時間を0秒にする
+            data.summon_delays.pop_back();
+            data.summon_delays.push_back(0.0f);
             
             datas.push_back(data);
         }
