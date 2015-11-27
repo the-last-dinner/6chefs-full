@@ -41,7 +41,7 @@ void baseScene::onEnter()
     
     // ロード画面レイヤー
     LoadingLayer* loadingLayer = LoadingLayer::create();
-    loadingLayer->setGlobalZOrder(Priority::SCREEN_COVER);
+    loadingLayer->setLocalZOrder(Priority::LOADING_LAYER);
     this->addChild(loadingLayer);
     
     // プリロード開始
