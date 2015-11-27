@@ -272,11 +272,14 @@ void CharacterMenuLayer::show()
 {
     this->listenerKeyboard->setEnabled(true);
     this->setVisible(true);
+    this->setScale(0);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
 }
 
 // 非表示
 void CharacterMenuLayer::hide()
 {
     this->listenerKeyboard->setEnabled(false);
-    this->setVisible(false);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
+    //this->setVisible(false);
 }

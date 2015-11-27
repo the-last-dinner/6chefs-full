@@ -33,7 +33,6 @@ bool TitleScene::init()
 // シーン切り替え完了時
 void TitleScene::onEnter()
 {
-    FUNCLOG
     baseScene::onEnter();
 }
 
@@ -62,7 +61,7 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // セーブデータ選択レイヤーのイベントをリッスン
     saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
-    
+    saveDataSelector->setVisible(false);
     saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
 }

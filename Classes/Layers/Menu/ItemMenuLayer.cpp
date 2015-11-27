@@ -280,6 +280,8 @@ void ItemMenuLayer::onMiniSelectorCanceled()
 // 表示
 void ItemMenuLayer::show()
 {
+    this->setScale(0);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
     this->listenerKeyboard->setEnabled(true);
     this->setVisible(true);
 }
@@ -288,7 +290,8 @@ void ItemMenuLayer::show()
 void ItemMenuLayer::hide()
 {
     this->listenerKeyboard->setEnabled(false);
-    this->setVisible(false);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
+    //this->setVisible(false);
 }
 
 // 戻る

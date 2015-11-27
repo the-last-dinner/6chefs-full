@@ -15,7 +15,7 @@
 #include "UI/SlideNode.h"
 
 // 定数
-const float DungeonMainMenuLayer::SLIDE_TIME {0.2f};
+const float DungeonMainMenuLayer::SLIDE_TIME {0.3f};
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}

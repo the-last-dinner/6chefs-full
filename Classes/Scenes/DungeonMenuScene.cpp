@@ -193,7 +193,7 @@ void DungeonMenuScene::onItemMenuCanceled()
 #pragma mark -
 #pragma mark CharacterMenu
 
-// キャラメニューが洗濯された時
+// キャラメニューが選択された時
 void DungeonMenuScene::onCharaMenuSelected()
 {
     FUNCLOG

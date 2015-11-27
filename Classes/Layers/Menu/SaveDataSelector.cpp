@@ -88,6 +88,8 @@ bool SaveDataSelector::init(bool write = false)
 void SaveDataSelector::show()
 {
 	this->setVisible(true);
+    this->setScale(0);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
 	this->listenerKeyboard->setEnabled(true);
 }
 
@@ -95,7 +97,8 @@ void SaveDataSelector::show()
 void SaveDataSelector::hide()
 {
 	this->listenerKeyboard->setEnabled(false);
-	this->setVisible(false);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
+	//this->setVisible(false);
 }
 
 // 選択しているindexが変わった時
