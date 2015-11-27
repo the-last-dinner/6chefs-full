@@ -10,6 +10,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Scenes/DungeonScene.h"
 #include "Layers/Menu/MiniSelector.h"
+#include "UI/NotificationBand.h"
 
 // コンストラクタ
 ItemMenuLayer::ItemMenuLayer(){FUNCLOG}
@@ -89,12 +90,13 @@ bool ItemMenuLayer::init()
     rightTop->addChild(equipment);
     
     // アイテムリスト
-    //square = SpriteUtils::Square(0,25,100,80);
+    square = SpriteUtils::Square(0,25,100,80);
     //margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
-    //Sprite* center = SpriteUtils::getSquareSprite(square, margin);
-    //center->setColor(Color3B::BLACK);
-    Sprite* center {Sprite::createWithSpriteFrameName("item_selector.png")};
-    center->setPosition(center->getContentSize().width/2, center->getContentSize().height/2 + parcent.height * 25);
+    margin = SpriteUtils::Margin(0);
+    Sprite* center = SpriteUtils::getSquareSprite(square, margin);
+    center->setColor(Color3B::BLACK);
+    //Sprite* center {Sprite::createWithSpriteFrameName("item_selector.png")};
+    //center->setPosition(center->getContentSize().width/2, center->getContentSize().height/2 + parcent.height * 25);
     center->setName("itemList");
     CC_SAFE_RETAIN(center);
     this->addChild(center);
@@ -253,17 +255,10 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
     }
     
     // 完了メッセージ表示帯
-    Sprite* back = Sprite::create();
-    back->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT/4));
-    back->setColor(Color3B::BLACK);
-    back->setPosition(WINDOW_CENTER);
-    this->addChild(back);
-    
-    // 完了メッセージラベル
     string equipMsg = this->isEquip ? "装備しました" : "外しました";
-    Label* message = Label::createWithTTF(CsvDataManager::getInstance()->getItemName(this->selected_item) + "を\n" + equipMsg, "fonts/cinecaption2.28.ttf", back->getContentSize().height / 5);
-    message->setPosition(Point(message->getContentSize().width / 2 + (WINDOW_WIDTH - message->getContentSize().width)/2, back->getContentSize().height / 2));
-    back->addChild(message);
+    NotificationBand* notification = NotificationBand::create(CsvDataManager::getInstance()->getItemName(this->selected_item) + "を\n" + equipMsg);
+    notification->setBandColor(Color3B(64,0,0));
+    this->addChild(notification);
     this->miniSelector->confirm_flag = true;
 }
 

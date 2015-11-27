@@ -216,14 +216,14 @@ void PlayerDataManager::save(const int id)
     this->writeJsonFile(path, this->local);
     this->local_id = id;
     // キャプチャースクリーンの保存
-    string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
-    utils::captureScreen([=](bool success, string filename){
-        if(success)
-        {
-            // cache削除
-            Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
-        }
-    }, path_s);
+//    string path_s = LastSupper::StringUtils::strReplace("global.json", "screen" + to_string(id)+ ".png", fu->FileUtils::fullPathForFilename("save/global.json"));
+//    utils::captureScreen([=](bool success, string filename){
+//        if(success)
+//        {
+//            // cache削除
+//            Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
+//        }
+//    }, path_s);
     return;
 }
 

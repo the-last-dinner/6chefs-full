@@ -33,12 +33,16 @@
 		2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		26221DFF1BEE86E7000203E6 /* MiniSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */; };
 		26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */; };
+		262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
+		262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
 		26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
+		26EB893D1C086A01001BEA9F /* SlideNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26EB893B1C086A01001BEA9F /* SlideNode.cpp */; };
+		26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26EB893B1C086A01001BEA9F /* SlideNode.cpp */; };
 		26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -277,6 +281,8 @@
 		2621C4261B3FC30500112CB9 /* PlayerDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerDataManager.h; path = ../Classes/Managers/PlayerDataManager.h; sourceTree = "<group>"; };
 		26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MiniSelector.cpp; path = ../Classes/Layers/Menu/MiniSelector.cpp; sourceTree = "<group>"; };
 		26221DFE1BEE86E7000203E6 /* MiniSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniSelector.h; path = ../Classes/Layers/Menu/MiniSelector.h; sourceTree = "<group>"; };
+		262728641C084D3A0028B732 /* NotificationBand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationBand.cpp; path = ../Classes/UI/NotificationBand.cpp; sourceTree = "<group>"; };
+		262728651C084D3A0028B732 /* NotificationBand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationBand.h; path = ../Classes/UI/NotificationBand.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
 		266E76531BC1160B005BC878 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = ../Classes/Scenes/DungeonMenuScene.h; sourceTree = "<group>"; };
 		26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringUtils.cpp; path = ../Classes/Utils/StringUtils.cpp; sourceTree = "<group>"; };
@@ -309,6 +315,8 @@
 		26D72CB21B96D420005F598D /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		26D72CB31B96D420005F598D /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		26D72CB41B96D420005F598D /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		26EB893B1C086A01001BEA9F /* SlideNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SlideNode.cpp; path = ../Classes/UI/SlideNode.cpp; sourceTree = "<group>"; };
+		26EB893C1C086A01001BEA9F /* SlideNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNode.h; path = ../Classes/UI/SlideNode.h; sourceTree = "<group>"; };
 		26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CsvDataManager.h; path = ../Classes/Managers/CsvDataManager.h; sourceTree = "<group>"; };
 		26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CsvDataManager.cpp; path = ../Classes/Managers/CsvDataManager.cpp; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -592,6 +600,17 @@
 			name = MapObject;
 			sourceTree = "<group>";
 		};
+		262728631C084B9E0028B732 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				262728641C084D3A0028B732 /* NotificationBand.cpp */,
+				262728651C084D3A0028B732 /* NotificationBand.h */,
+				26EB893B1C086A01001BEA9F /* SlideNode.cpp */,
+				26EB893C1C086A01001BEA9F /* SlideNode.h */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		26D72C981B96D420005F598D /* rapidjson */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +795,7 @@
 		552D83631B20BC1200B681A8 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				262728631C084B9E0028B732 /* UI */,
 				26D72C981B96D420005F598D /* rapidjson */,
 				552D83681B20BC6300B681A8 /* AppDelegate.cpp */,
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
@@ -1247,6 +1267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				26EB893D1C086A01001BEA9F /* SlideNode.cpp in Sources */,
 				553577D91BE9DFF00095E6A9 /* DungeonSceneManager.cpp in Sources */,
 				550708D11BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
 				55F1B6211BBEC44900AA64EE /* MapObjectFactory.cpp in Sources */,
@@ -1263,6 +1284,7 @@
 				557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
+				262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */,
 				55C3C1EE1BD143B700ECDB50 /* GameTask.cpp in Sources */,
 				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
@@ -1337,6 +1359,7 @@
 				5583CE3F1B9A163C00F9ACB7 /* EventTask.cpp in Sources */,
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
+				26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
@@ -1377,6 +1400,7 @@
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
+				262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */,
 				5544708A1BDF89990048CD0B /* FlagEvent.cpp in Sources */,
 				550708D21BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
 				5544708E1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
