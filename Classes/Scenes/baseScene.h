@@ -12,23 +12,21 @@
 #include "Common.h"
 
 class EventListenerKeyboardLayer;
+class LoadingLayer;
 class SceneData;
 
 class baseScene : public Scene
 {
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
-	virtual void onPreloadFinished() = 0;
-	virtual void onCursorKeyPressed(const Key& key){};
-	virtual void onSpaceKeyPressed(){};
-	virtual void onMenuKeyPressed(){};
-	virtual void onDashKeyPressed(){};
+	virtual void onPreloadFinished(LoadingLayer* loadingLayer) = 0;
 protected:
 	baseScene();
 	~baseScene();
 	bool init(SceneData* data);
+    virtual void onEnter() override;
 	
-	// インスタンス変数
+// インスタンス変数
 protected:
 	SceneData* data { nullptr };
 };

@@ -24,6 +24,8 @@ private:
     DungeonCameraScene();
     ~DungeonCameraScene();
     bool init(DungeonSceneData* data, Vector<GameEvent*> events);
+    virtual void onEnter();
+    virtual void onPreloadFinished(LoadingLayer* loadingLayer);
 };
 
 #endif /* defined(__LastSupper__DungeonCameraScene__) */

@@ -12,8 +12,9 @@
 #include "Datas/Scene/TitleSceneData.h"
 #include "Datas/Scene/DungeonSceneData.h"
 
-#include "Layers/Menu/TitleMainMenuLayer.h"
+#include "Layers/LoadingLayer.h"
 #include "Layers/Menu/SaveDataSelector.h"
+#include "Layers/Menu/TitleMainMenuLayer.h"
 
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
@@ -24,37 +25,46 @@ TitleScene::~TitleScene(){FUNCLOG}
 // 初期化
 bool TitleScene::init()
 {
-	return baseScene::init(TitleSceneData::create());
+    if(!baseScene::init(TitleSceneData::create())) return false;
+    
+    return true;
+}
+
+// シーン切り替え完了時
+void TitleScene::onEnter()
+{
+    FUNCLOG
+    baseScene::onEnter();
 }
 
 // リソースロード終了後の処理
-void TitleScene::onPreloadFinished()
+void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
-	FUNCLOG
-	// メインメニューレイヤーを生成
-	TitleMainMenuLayer* mainMenu {TitleMainMenuLayer::create()};
-	this->addChild(mainMenu);
-	
-	// メインメニューのイベントをリッスン
-	mainMenu->onStartSelected = CC_CALLBACK_0(TitleScene::onStartSelected, this);
-	mainMenu->onContinueSelected = CC_CALLBACK_0(TitleScene::onContinueSelected, this);
-	mainMenu->onExitSelected = CC_CALLBACK_0(TitleScene::onExitSelected, this);
-	
-	mainMenu->show();
-	this->mainMenu = mainMenu;
-	
-	// セーブデータ選択レイヤーを生成
-	SaveDataSelector* saveDataSelector { SaveDataSelector::create(false) };
-	this->addChild(saveDataSelector);
-	
-	// セーブデータ選択レイヤーのイベントをリッスン
-	saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
-	saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
-	
-	saveDataSelector->hide();
-	this->saveDataSelector = saveDataSelector;
-	
-	return;
+    // ローディング終了
+    loadingLayer->onLoadFinished();
+    
+    // メインメニューレイヤーを生成
+    TitleMainMenuLayer* mainMenu {TitleMainMenuLayer::create()};
+    this->addChild(mainMenu);
+    
+    // メインメニューのイベントをリッスン
+    mainMenu->onStartSelected = CC_CALLBACK_0(TitleScene::onStartSelected, this);
+    mainMenu->onContinueSelected = CC_CALLBACK_0(TitleScene::onContinueSelected, this);
+    mainMenu->onExitSelected = CC_CALLBACK_0(TitleScene::onExitSelected, this);
+    
+    mainMenu->show();
+    this->mainMenu = mainMenu;
+    
+    // セーブデータ選択レイヤーを生成
+    SaveDataSelector* saveDataSelector { SaveDataSelector::create(false) };
+    this->addChild(saveDataSelector);
+    
+    // セーブデータ選択レイヤーのイベントをリッスン
+    saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
+    saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
+    
+    saveDataSelector->hide();
+    this->saveDataSelector = saveDataSelector;
 }
 
 // 最初からが選ばれた時

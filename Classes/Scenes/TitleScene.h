@@ -30,7 +30,8 @@ public:
 	// インスタンスメソッド
 private:
 	virtual bool init();
-	void onPreloadFinished();
+    virtual void onEnter();
+	void onPreloadFinished(LoadingLayer* loadingLayer);
 	void onStartSelected();
 	void onContinueSelected();
 	void onExitSelected();
