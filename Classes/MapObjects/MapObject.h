@@ -33,10 +33,9 @@ private:
     bool _isMoving { false };
 protected:
     deque<vector<Direction>> directionsQueue {};
-    Point gridPosition {Point::ZERO};
-    int mapId {etoi(MapID::UNDIFINED)};
+    Location location {};
 public:
-    function<void(MapObject*)> onMove { nullptr };
+    function<void(MapObject*)> onMoved { nullptr };
 	
 // インスタンスメソッド
 public:
@@ -62,14 +61,16 @@ public:
     bool isMoving() const;
     
     // collision
-	const bool isHit() const;
-    const bool isHit(const Direction& direction) const;
-    const bool isHit(const vector<Direction>& directions) const;
     Rect getCollisionRect() const;
     Rect getCollisionRect(const Direction& direction) const;
     Rect getCollisionRect(const vector<Direction>& directions) const;
-
+    const bool isHit() const;
+    const bool isHit(const Direction& direction) const;
+    const bool isHit(const vector<Direction>& directions) const;
+    
     // move
+    Vec2 createMoveVec(const vector<Direction>& directions) const;
+    bool canMove(const vector<Direction>& directions) const;
     bool moveBy(const Direction& direction, function<void()> onMoved, const float ratio = 1.0f);
     bool moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio = 1.0f);
     void moveBy(const Direction& direction, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);

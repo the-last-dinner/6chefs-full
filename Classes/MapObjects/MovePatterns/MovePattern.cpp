@@ -25,13 +25,19 @@ bool MovePattern::init(Character* chara)
 }
 
 // 主人公のマス座標を指定して移動開始
-void MovePattern::start(const Point& gridPosition)
+void MovePattern::start(const Rect& gridRect)
 {
-    this->mainCharacterPos = gridPosition;
+    this->mainCharacterRect = gridRect;
 }
 
 // 主人公一行が移動した時
-void MovePattern::onPartyMoved(const Point& gridPosition)
+void MovePattern::onPartyMoved(const Rect& gridRect)
 {
-    this->mainCharacterPos = gridPosition;
+    this->mainCharacterRect = gridRect;
+}
+
+// 速度の倍率を設定
+void MovePattern::setSpeedRatio(float ratio)
+{
+    this->speedRatio = ratio;
 }

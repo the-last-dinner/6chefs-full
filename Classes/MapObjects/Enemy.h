@@ -30,8 +30,11 @@ private:
     bool init(const EnemyData& data);
 public:
     int getEnemyId() const;
-    void onEnterMap(const Point& gridPosistion);
-    void onPartyMoved(const Point& gridPosition);
+    void onEnterMap(const Rect& gridRect);
+    void onPartyMoved(const Rect& gridRect);
+    EnemyData getEnemyData() const;
+    bool canGoToNextMap() const;
+    float calcSummonDelay() const;
 };
 
 #endif /* defined(__LastSupper__Enemy__) */

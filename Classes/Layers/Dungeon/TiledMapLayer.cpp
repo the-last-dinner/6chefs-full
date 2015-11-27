@@ -110,9 +110,9 @@ void TiledMapLayer::addEnemy(Enemy* enemy)
 {
     if(!enemy) return;
     
-    enemy->onEnterMap(this->objectList->getParty()->getMainCharacter()->getGridPosition());
     this->objectList->addEnemy(enemy);
     this->addMapObject(enemy, false);
+    enemy->onEnterMap(this->objectList->getParty()->getMainCharacter()->getGridRect());
 }
 
 // マップにオブジェクトを追加
@@ -126,7 +126,7 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
     this->setZOrderByPosition(mapObject);
-    mapObject->onMove = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
+    mapObject->onMoved = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
     
     if(!addingToList) return;
     

@@ -22,6 +22,7 @@ namespace MapUtils
     vector<Direction> keyToDirection(const vector<Key>& keys);
     Direction toEnumDirection(const string& sDirection);
     Direction vecToMapDirection(const Vec2& vec);
+    vector<Direction> vectoMapDirections(const Vec2& vec);
     vector<Direction> vecToDirections(const Vec2& vec);
     Vec2 getUnitVector(const Direction& direction);
     bool intersectsGridRect(const cocos2d::Rect& rect1, const cocos2d::Rect& rect2);

@@ -9,18 +9,30 @@
 #ifndef LastSupper_EnemyData_h
 #define LastSupper_EnemyData_h
 
-#include "define.h"
 #include "Datas/MapObject/CharacterData.h"
+#include "Models/ChangeMapHistory.h"
 
 struct EnemyData
 {
     int enemy_id { static_cast<int>(EnemyID::UNDIFINED) };
-    int to_map_id {static_cast<int>(MapID::UNDIFINED)};
     int change_map_counter { -1 };
-    float summon_delay { 0.f };
     float speed_ratio { 1.0f };
     EnemyMovePattern move_pattern {EnemyMovePattern::SIZE};
     CharacterData chara_data {};
+};
+
+struct SummonData
+{
+    deque<float> summon_delays {};
+    ChangeMapHistory history {};
+    EnemyData enemy_data {};
+    bool canMove { true };
+    bool isDone { false };
+    
+    void addHistory(const Relation& relation, const float summon_delay) { history.add(relation); summon_delays.push_back(summon_delay); };
+    void deleteLatestHistory() { history.deleteLatest(); summon_delays.pop_back(); };
+    void deleteOldestHistory() { history.deleteOldest(); summon_delays.pop_front(); };
+    bool existsHistory() { return !summon_delays.empty(); };
 };
 
 #endif

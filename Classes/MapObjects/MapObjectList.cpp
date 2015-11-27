@@ -221,6 +221,12 @@ void MapObjectList::removeEnemyById(const int enemyId)
     }
 }
 
+// 敵を全て取得
+Vector<Enemy*> MapObjectList::getEnemiesAll()
+{
+    return this->enemies;
+}
+
 // 主人公一行を格納
 void MapObjectList::setParty(Party* party)
 {
@@ -237,12 +243,12 @@ Party* MapObjectList::getParty() const
 }
 
 // 主人公一行が移動した時
-void MapObjectList::onPartyMoved(const Point& gridPosition)
+void MapObjectList::onPartyMoved(const Rect& gridRect)
 {
     // 敵に移動後の主人公のマス座標を通知する
     for(Enemy* enemy : this->enemies)
     {
-        enemy->onPartyMoved(gridPosition);
+        enemy->onPartyMoved(gridRect);
     }
 }
 

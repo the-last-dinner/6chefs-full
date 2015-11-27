@@ -11,6 +11,8 @@
 
 #include "Common.h"
 
+#include "Datas/MapObject/EnemyData.h"
+
 class DungeonScene;
 class TiledMapLayer;
 class MapObject;
@@ -34,6 +36,8 @@ public:
 private:
     EventFactory* eventFactory { nullptr };
     EventScriptValidator* scriprtValidator { nullptr };
+    Sprite* cover { nullptr };
+    vector<SummonData> summonDatas {};
     
 // インスタンスメソッド
 private:
@@ -65,6 +69,9 @@ public:
     // EventListener
     bool isPressed(const Key& key);
     vector<Key> getPressedCursorKeys() const;
+    
+    // Enemy
+    vector<SummonData> getSummonDatas() const;
     
     // EventTask
     void runEvent(const int eventId);

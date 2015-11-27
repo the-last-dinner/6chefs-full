@@ -95,6 +95,32 @@ Direction MapUtils::vecToMapDirection(const Vec2& vec)
     return Direction::SIZE;
 }
 
+// マップ上ベクトルから方向へ変換
+vector<Direction> MapUtils::vectoMapDirections(const Vec2& vec)
+{
+    vector<Direction> directions {};
+    
+    if(vec.x > 0)
+    {
+        directions.push_back(Direction::RIGHT);
+    }
+    else if(vec.x < 0)
+    {
+        directions.push_back(Direction::LEFT);
+    }
+    
+    if(vec.y > 0)
+    {
+        directions.push_back(Direction::FRONT);
+    }
+    else if(vec.y < 0)
+    {
+        directions.push_back(Direction::BACK);
+    }
+    
+    return directions;
+}
+
 // ベクトルから方向へ変換
 vector<Direction> MapUtils::vecToDirections(const Vec2& vec)
 {

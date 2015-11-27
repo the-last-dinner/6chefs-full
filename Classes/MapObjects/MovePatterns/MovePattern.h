@@ -18,13 +18,17 @@ class MovePattern : public Ref
 // インスタンス変数
 protected:
     Character* chara { nullptr };
-    Point mainCharacterPos { Point::ZERO };
+    Rect mainCharacterRect { Rect::ZERO };
+    float speedRatio { 1.0f };
 
 // インスタンスメソッド
 public:
     virtual void start() {};
-    virtual void start(const Point& gridPostion);
-    virtual void onPartyMoved(const Point& gridPosition);
+    virtual void start(const Rect& gridRect);
+    virtual void onPartyMoved(const Rect& gridRect);
+    virtual bool canGoToNextMap() const { return false; };
+    virtual float calcSummonDelay() const { return 0.0f; };
+    void setSpeedRatio(float ratio);
 protected:
     MovePattern();
     ~MovePattern();

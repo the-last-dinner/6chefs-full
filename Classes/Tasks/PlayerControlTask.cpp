@@ -14,6 +14,9 @@
 
 #include "Managers/DungeonSceneManager.h"
 
+// 定数
+const string PlayerControlTask::START_WALKING_SCHEDULE_KEY { "start_walking" };
+
 // コンストラクタ
 PlayerControlTask::PlayerControlTask(){FUNCLOG}
 
@@ -43,10 +46,10 @@ void PlayerControlTask::turn(const Key& key, Party* party)
         mainCharacter->setDirection(direction);
         
         // 一定時間後に歩行開始
-        this->runAction(Sequence::createWithTwoActions(DelayTime::create(MapObject::DURATION_MOVE_ONE_GRID), CallFunc::create([this, party]
+        if(!this->isScheduled(START_WALKING_SCHEDULE_KEY)) this->scheduleOnce([this, party](float _)
         {
             this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
-        })));
+        }, MapObject::DURATION_MOVE_ONE_GRID, START_WALKING_SCHEDULE_KEY);
     }
 }
 

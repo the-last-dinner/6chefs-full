@@ -41,13 +41,40 @@ int Enemy::getEnemyId() const
 }
 
 // マップに配置された時
-void Enemy::onEnterMap(const Point& gridPosistion)
+void Enemy::onEnterMap(const Rect& gridRect)
 {
-    if(this->movePattern) this->movePattern->start(gridPosistion);
+    if(this->movePattern) this->movePattern->start(gridRect);
 }
 
 // 主人公一行が移動した時
-void Enemy::onPartyMoved(const Point& gridPosition)
+void Enemy::onPartyMoved(const Rect& gridRect)
 {
-    if(this->movePattern) this->movePattern->onPartyMoved(gridPosition);
+    if(this->movePattern) this->movePattern->onPartyMoved(gridRect);
+}
+
+// データを取得
+EnemyData Enemy::getEnemyData() const
+{
+    EnemyData data {this->data};
+    
+    // 位置情報を更新
+    data.chara_data.location = this->getCharacterData().location;
+    
+    return data;
+}
+
+// マップ移動可能か
+bool Enemy::canGoToNextMap() const
+{
+    if(!this->movePattern) return false;
+    
+    return this->movePattern->canGoToNextMap();
+}
+
+// 現在座標から、主人公までかかる時間を計算
+float Enemy::calcSummonDelay() const
+{
+    if(!this->movePattern) return 0.0f;
+    
+    return this->movePattern->calcSummonDelay();
 }
