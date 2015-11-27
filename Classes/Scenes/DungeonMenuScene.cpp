@@ -118,7 +118,7 @@ void DungeonMenuScene::createCharaMenu()
     this->charaMenu = charaMenu;
 }
 
-void DungeonMenuScene::onPreloadFinished(){}
+void DungeonMenuScene::onPreloadFinished(LoadingLayer* loadingLayer){}
 
 // 方向キーを押した時
 void DungeonMenuScene::onCursorKeyPressed(const Key& key){}

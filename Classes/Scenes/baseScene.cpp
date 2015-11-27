@@ -14,39 +14,43 @@
 #include "Datas/Scene/SceneData.h"
 
 // コンストラクタ
-baseScene::baseScene(){FUNCLOG}
+baseScene::baseScene(){}
 
 // デストラクタ
 baseScene::~baseScene()
 {
-	FUNCLOG
 	CC_SAFE_RELEASE_NULL(this->data);
 }
 
 // シーン共通初期化
 bool baseScene::init(SceneData* data)
 {
-	FUNCLOG
 	if(!Scene::init()) return false;
 	
 	// データクラスをセットしretain
 	this->data = data;
 	CC_SAFE_RETAIN(this->data);
-	
-	// ロード画面レイヤー
-	LoadingLayer* loadingLayer = LoadingLayer::create();
-	loadingLayer->setGlobalZOrder(Priority::SCREEN_COVER);
-	this->addChild(loadingLayer);
-	
-	// プリロード開始
-	this->data->preloadResources([=](float percentage)
+    
+	return true;
+}
+
+// シーンの切り替え完了時
+void baseScene::onEnter()
+{
+    Scene::onEnter();
+    
+    // ロード画面レイヤー
+    LoadingLayer* loadingLayer = LoadingLayer::create();
+    loadingLayer->setGlobalZOrder(Priority::SCREEN_COVER);
+    this->addChild(loadingLayer);
+    
+    // プリロード開始
+    this->data->preloadResources([this, loadingLayer](float percentage)
     {
         if(percentage == 1.f)
         {
-            this->onPreloadFinished();
-            loadingLayer->loadFinished();
+            // プリロード完了時にコールバック
+            this->onPreloadFinished(loadingLayer);
         }
     });
-    
-	return true;
 }

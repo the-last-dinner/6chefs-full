@@ -57,7 +57,7 @@ bool LoadingLayer::init()
 }
 
 // ロード完了時の処理
-void LoadingLayer::loadFinished()
+void LoadingLayer::onLoadFinished()
 {
     this->runAction(Sequence::createWithTwoActions(FadeOut::create(0.5f), RemoveSelf::create()));
 }

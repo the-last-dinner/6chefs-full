@@ -46,18 +46,19 @@ private:
     Party* party { nullptr };
     
 // インスタンスメソッド
-public:
-    void onInitEventFinished();
+protected:
+    DungeonScene();
+    ~DungeonScene();
     
 private:
-	DungeonScene();
-	~DungeonScene();
 	virtual bool init(DungeonSceneData* data);
-	virtual void onPreloadFinished() override;
+    virtual void onEnter() override;
+	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
+    void onInitEventFinished(LoadingLayer* loadingLayer);
     
     Party* createParty();
     
-    virtual void onMenuKeyPressed() override;
+    virtual void onMenuKeyPressed();
     DungeonSceneData* getData() const;
     
     void runEvent(const int eventId);

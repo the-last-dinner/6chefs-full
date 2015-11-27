@@ -40,26 +40,19 @@ DungeonScene::~DungeonScene()
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
-    if(!Scene::init()) return false;
-    
-    // データクラスをセットしretain
-    this->data = data;
-    CC_SAFE_RETAIN(this->data);
-    
-    // ロード画面レイヤ
-    LoadingLayer* loadingLayer = LoadingLayer::create();
-    loadingLayer->setLocalZOrder(Priority::LOADING_LAYER);
-    this->addChild(loadingLayer);
-    this->loadingLayer = loadingLayer;
-    
-    // プリロード開始
-    this->data->preloadResources([=](float percentage){if(percentage == 1.f) this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.f), CallFunc::create([this]{this->onPreloadFinished();})));});
+    if(!baseScene::init(data)) return false;
     
     return true;
 }
 
+// シーン切り替え終了時
+void DungeonScene::onEnter()
+{
+    baseScene::onEnter();
+}
+
 // リソースプリロード完了時の処理
-void DungeonScene::onPreloadFinished()
+void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
@@ -110,19 +103,19 @@ void DungeonScene::onPreloadFinished()
     this->listener = listener;
     
     // Trigger::INITを実行
-    eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), CC_CALLBACK_0(DungeonScene::onInitEventFinished, this));
+    eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), [this, loadingLayer](){this->onInitEventFinished(loadingLayer);});
 }
 
 // Trigger::INITのイベント実行後
-void DungeonScene::onInitEventFinished()
+void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 {
     this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     cameraTask->setTarget( this->party->getMainCharacter() );
     
     this->enemyTask->start(this->getData()->getInitialLocation().map_id);
     
-    // ローディングレイヤを消す
-    this->loadingLayer->loadFinished();
+    // ローディング終了
+    loadingLayer->onLoadFinished();
     
     // Trigger::AFTER_INITを実行
     this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT));

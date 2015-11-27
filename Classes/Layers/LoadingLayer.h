@@ -19,7 +19,6 @@ public:
     
 // インスタンス変数
 private:
-    Sprite* cover { nullptr };
 	
 // インスタンスメソッド
 private:
@@ -27,7 +26,7 @@ private:
 	~LoadingLayer();
 	virtual bool init();
 public:
-	void loadFinished();
+	void onLoadFinished();
 };
 
 #endif // __LOADING_LAYER_H__
