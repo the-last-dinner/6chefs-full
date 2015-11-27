@@ -48,10 +48,12 @@ private:
 // インスタンスメソッド
 public:
     void onInitEventFinished();
+
+protected:
+    DungeonScene();
+    ~DungeonScene();
     
 private:
-	DungeonScene();
-	~DungeonScene();
 	virtual bool init(DungeonSceneData* data);
 	virtual void onPreloadFinished() override;
     
