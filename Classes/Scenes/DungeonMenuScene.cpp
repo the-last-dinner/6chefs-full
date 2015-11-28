@@ -11,6 +11,7 @@
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/ItemMenuLayer.h"
 #include "Layers/Menu/CharacterMenuLayer.h"
+#include "Managers/DungeonSceneManager.h"
 
 // クラス変数
 const string DungeonMenuScene::MAIN_LAYER_NAME = "mainMenuLayer";
@@ -142,6 +143,8 @@ void DungeonMenuScene::onMenuHidden()
         this->onPopMenuScene();
     }
     Director::getInstance()->popScene();
+    
+    DungeonSceneManager::getInstance()->startStopWatch(); // カウントダウンをしれてば再開
 }
 
 #pragma mark -

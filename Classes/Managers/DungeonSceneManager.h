@@ -23,6 +23,7 @@ class EventScriptValidator;
 class Party;
 class GameEvent;
 class Enemy;
+class StopWatch;
 
 // ダンジョンシーンのマップ間で共有すべき情報を持つシングルトンクラス
 class DungeonSceneManager
@@ -38,6 +39,7 @@ private:
     EventScriptValidator* scriprtValidator { nullptr };
     Sprite* cover { nullptr };
     vector<SummonData> summonDatas {};
+    StopWatch* stopWatch {nullptr};
     
 // インスタンスメソッド
 private:
@@ -86,6 +88,12 @@ public:
     
     // PlayerControlTask
     void setPlayerControlEnable(bool enable);
+    
+    // StopWatch
+    StopWatch* getStopWatch();
+    void releaseStopWatch();
+    void pauseStopWatch();
+    void startStopWatch();
 };
 
 #endif /* defined(__LastSupper__DungeonSceneManager__) */

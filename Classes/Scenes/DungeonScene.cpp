@@ -26,6 +26,8 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 // コンストラクタ
 DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
 
@@ -134,6 +136,7 @@ Party* DungeonScene::createParty()
 void DungeonScene::onMenuKeyPressed()
 {
     this->listener->setEnabled(false);
+    DungeonSceneManager::getInstance()->pauseStopWatch(); // カウントダウンしてれば停止
     // 主人公の位置をセット
     Character* chara = this->party->getMainCharacter();
     Point point = chara->getGridPosition();

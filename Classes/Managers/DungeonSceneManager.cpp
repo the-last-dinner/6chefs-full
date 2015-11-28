@@ -27,6 +27,8 @@
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
 
+#include "Models/StopWatch.h"
+
 // 唯一のインスタンス
 static DungeonSceneManager* _instance {nullptr};
 
@@ -283,4 +285,38 @@ int DungeonSceneManager::getPushingEventid() const
 void DungeonSceneManager::setPlayerControlEnable(bool enable)
 {
     this->getScene()->playerControlTask->setControlEnable(enable, this->getScene()->party);
+}
+
+#pragma mark -
+#pragma mark StopWatch
+
+StopWatch* DungeonSceneManager::getStopWatch()
+{
+    if(!this->stopWatch)
+    {
+        this->stopWatch = StopWatch::create(0);
+        CC_SAFE_RETAIN(this->stopWatch);
+    }
+    return this->stopWatch;
+}
+
+void DungeonSceneManager::releaseStopWatch()
+{
+    CC_SAFE_RELEASE_NULL(this->stopWatch);
+}
+
+void DungeonSceneManager::pauseStopWatch()
+{
+    if(this->stopWatch)
+    {
+        this->stopWatch->stopCountDown();
+    }
+}
+
+void DungeonSceneManager::startStopWatch()
+{
+    if(this->stopWatch)
+    {
+        this->stopWatch->startCountDown();
+    }
 }

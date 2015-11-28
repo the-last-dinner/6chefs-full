@@ -11,6 +11,8 @@
 
 #include "define.h"
 
+class GameEvent;
+
 class StopWatch : public Ref
 {
 // クラスメソッド
@@ -27,6 +29,14 @@ private:
     double start_time {0.0};
     // 計測時間
     double time {0.0};
+    // インターバルタイム
+    float interval_time {0.0};
+    // カウントダウン用
+    GameEvent* countDownEvent {nullptr};
+
+public:
+    // スケジュール用コールバック関数
+    function<bool(double)> scheduleCallback {nullptr};
 
 // インスタンスメソッド
 private:
@@ -40,7 +50,12 @@ public:
     // 時間計測処理
     void tic();
     void toc();
-    
+    // スケジュール実行
+    void startCountDown(const float& interval_time);
+    void startCountDown();
+    void stopCountDown();
+    void scheduleFunction(float delta);
+    void setCountDown(GameEvent* event);
 };
 
 #endif /* StopWatch_h */

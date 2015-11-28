@@ -7,6 +7,11 @@
 //
 
 #include "Models/StopWatch.h"
+#include "Event/GameEvent.h"
+#include "Event/SceneEvent.h"
+
+#pragma mark -
+#pragma mark Init
 
 // 初期化
 bool StopWatch::init(const double& init_time)
@@ -20,6 +25,9 @@ bool StopWatch::init(const int init_time)
 {
     return this->init(static_cast<double>(init_time));
 }
+
+#pragma mark -
+#pragma mark MeasuringTime
 
 // 時間計測開始
 void StopWatch::tic()
@@ -35,6 +43,9 @@ void StopWatch::toc()
     double interval_time = stop - start;
     this->time += interval_time;
 }
+
+#pragma mark -
+#pragma mark GetTime
 
 // 時間取得
 double StopWatch::getSecMs(){
@@ -55,4 +66,52 @@ double StopWatch::getTime()
 int StopWatch::getTimeInt()
 {
     return floor(this->getTime());
+}
+
+#pragma mark -
+#pragma mark CountDown
+
+// カウントダウン開始
+void StopWatch::startCountDown(const float& interval_time)
+{
+    this->interval_time = interval_time;
+    Director::getInstance()->getScheduler()->schedule(schedule_selector(StopWatch::scheduleFunction), this, this->interval_time, false);
+    this->tic();
+}
+
+void StopWatch::startCountDown()
+{
+    startCountDown(this->interval_time);
+}
+
+// カウントダウン停止処理
+void StopWatch::stopCountDown()
+{
+    Director::getInstance()->getScheduler()->unschedule(schedule_selector(StopWatch::scheduleFunction), this);
+}
+
+// スケジュール関数
+void StopWatch::scheduleFunction(float delta)
+{
+    bool continueSchedule = true;
+    
+    // コールバック関数の実行
+    if(this->scheduleCallback)
+    {
+        // 引数に経過時間、戻り値がTRUE
+        continueSchedule = this->scheduleCallback(this->getTime());
+    }
+    
+    // カウントダウンをストップ
+    if (!continueSchedule)
+    {
+        this->stopCountDown();
+    }
+}
+
+void StopWatch::setCountDown(GameEvent *event)
+{
+    this->countDownEvent = event;
+    CC_SAFE_RETAIN(this->countDownEvent);
+    
 }
