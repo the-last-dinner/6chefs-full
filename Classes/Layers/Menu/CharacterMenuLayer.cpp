@@ -162,7 +162,7 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
     else
     {
         // 見ることができるキャラクター
-        string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_0.png";
+        string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_1.png";
         if(SpriteFrameCache::getInstance()->getSpriteFrameByName(fileName))
         {
             Sprite* img { Sprite::createWithSpriteFrameName(fileName)};

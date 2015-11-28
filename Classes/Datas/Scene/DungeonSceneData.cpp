@@ -33,7 +33,6 @@ bool DungeonSceneData::init(const Location& location)
     this->soundFilePaths = eventScript->getPreLoadList("sound");
     this->textureFilePaths = eventScript->getPreLoadList("texture");
 	
-    this->textureFilePaths.push_back("menu_panels");
 	this->textureFilePaths.push_back("frame");
 	this->textureFilePaths.push_back("ui");
     this->textureFilePaths.push_back("obj");
