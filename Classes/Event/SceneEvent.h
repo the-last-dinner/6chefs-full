@@ -18,6 +18,7 @@ public:
     CREATE_FUNC_WITH_PARAM(ChangeMapEvent, rapidjson::Value&)
 private:
     Location location {};
+    int initEventId { etoi(EventID::UNDIFINED) };
 private:
     ChangeMapEvent() {FUNCLOG};
     ~ChangeMapEvent() {FUNCLOG};

@@ -35,8 +35,8 @@ public:
     // 実行
     void runEventQueue();
 	void runEvent(int eventId);
-    void runEvent(vector<int> eventIds, function<void()> callback);
-    void runEvent(vector<int> eventIds);
+    void runEvent(vector<int> eventIds, function<void()> callback = nullptr);
+    void runEvent(GameEvent* event, function<void()> callback = nullptr);
     
     // キュー操作
     bool pushEventBack(int eventId);

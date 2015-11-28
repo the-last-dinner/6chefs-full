@@ -1,12 +1,12 @@
 //
-//  baseScene.cpp
+//  BaseScene.cpp
 //  LastSupper
 //
 //  Created by Kohei on 2015/06/05.
 //
 //
 
-#include "Scenes/baseScene.h"
+#include "Scenes/BaseScene.h"
 
 #include "Layers/LoadingLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
@@ -14,16 +14,16 @@
 #include "Datas/Scene/SceneData.h"
 
 // コンストラクタ
-baseScene::baseScene(){}
+BaseScene::BaseScene(){}
 
 // デストラクタ
-baseScene::~baseScene()
+BaseScene::~BaseScene()
 {
 	CC_SAFE_RELEASE_NULL(this->data);
 }
 
 // シーン共通初期化
-bool baseScene::init(SceneData* data)
+bool BaseScene::init(SceneData* data)
 {
 	if(!Scene::init()) return false;
 	
@@ -35,13 +35,16 @@ bool baseScene::init(SceneData* data)
 }
 
 // シーンの切り替え完了時
-void baseScene::onEnter()
+void BaseScene::onEnter()
 {
     Scene::onEnter();
     
+    // すでにプリロード済みなら無視
+    if(this->preloaded) return;
+    
     // ロード画面レイヤー
     LoadingLayer* loadingLayer = LoadingLayer::create();
-    loadingLayer->setGlobalZOrder(Priority::SCREEN_COVER);
+    loadingLayer->setLocalZOrder(Priority::LOADING_LAYER);
     this->addChild(loadingLayer);
     
     // プリロード開始
@@ -49,6 +52,8 @@ void baseScene::onEnter()
     {
         if(percentage == 1.f)
         {
+            this->preloaded = true;
+            
             // プリロード完了時にコールバック
             this->onPreloadFinished(loadingLayer);
         }

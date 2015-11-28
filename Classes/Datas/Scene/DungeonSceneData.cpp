@@ -24,10 +24,6 @@ DungeonSceneData::~DungeonSceneData()
 // 初期化
 bool DungeonSceneData::init(const Location& location)
 {
-	FUNCLOG
-    
-    this->initialLocation = location;
-    
     // イベントスクリプト生成
     EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(location.map_id))};
     CC_SAFE_RETAIN(eventScript);
@@ -45,35 +41,20 @@ bool DungeonSceneData::init(const Location& location)
 	return true;
 }
 
-// 初期位置データを取得
-Location DungeonSceneData::getInitialLocation() const
-{
-    return this->initialLocation;
-}
-
 // イベントスクリプトを取得
 EventScript* DungeonSceneData::getEventScript() const
 {
     return this->eventScript;
 }
 
-#pragma mark -
-#pragma mark Cover
-
-// カバー情報をセット
-void DungeonSceneData::setCoverInfo(const CoverInfo& coverInfo)
+// changeMap時に渡されるEventIDを設定
+void DungeonSceneData::setInitialEventId(const int eventId)
 {
-    this->coverInfo = coverInfo;
+    this->initEventId = eventId;
 }
 
-// カバーを残すか確認
-bool DungeonSceneData::remainsCover() const
+// changeMap時に渡されるEventIDを取得
+int DungeonSceneData::getInitialEventId() const
 {
-    return this->coverInfo.first;
-}
-
-// カバー色を取得
-Color3B DungeonSceneData::getCoverColor() const
-{
-    return this->coverInfo.second;
+    return this->initEventId;
 }

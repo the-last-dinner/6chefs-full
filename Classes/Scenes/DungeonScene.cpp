@@ -29,7 +29,7 @@
 #include "Managers/DungeonSceneManager.h"
 
 // コンストラクタ
-DungeonScene::DungeonScene():fu(FileUtils::getInstance()){FUNCLOG}
+DungeonScene::DungeonScene() {FUNCLOG}
 
 // デストラクタ
 DungeonScene::~DungeonScene()
@@ -42,7 +42,7 @@ DungeonScene::~DungeonScene()
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
-    if(!baseScene::init(data)) return false;
+    if(!BaseScene::init(data)) return false;
     
     return true;
 }
@@ -50,7 +50,7 @@ bool DungeonScene::init(DungeonSceneData* data)
 // シーン切り替え終了時
 void DungeonScene::onEnter()
 {
-    baseScene::onEnter();
+    BaseScene::onEnter();
 }
 
 // リソースプリロード完了時の処理
@@ -114,13 +114,19 @@ void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
     this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     cameraTask->setTarget( this->party->getMainCharacter() );
     
-    this->enemyTask->start(this->getData()->getInitialLocation().map_id);
+    this->enemyTask->start(PlayerDataManager::getInstance()->getLocation().map_id);
     
     // ローディング終了
     loadingLayer->onLoadFinished();
     
     // Trigger::AFTER_INITを実行
-    this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT));
+    this->eventTask->runEvent(this->mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonScene::onAfterInitEventFinished, this));
+}
+
+// Trigger::AFTER_INITのイベント終了時
+void DungeonScene::onAfterInitEventFinished()
+{
+    this->eventTask->runEvent(this->getData()->getInitialEventId());
 }
 
 // 主人公一行を生成
@@ -144,7 +150,7 @@ void DungeonScene::onMenuKeyPressed()
     Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);
     // スクショをとって、ダンジョンメニューシーンをプッシュ
-    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", fu->FileUtils::fullPathForFilename("save/global.json"));
+    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));
     utils::captureScreen([=](bool success, string filename){
      if(success)
      {

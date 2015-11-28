@@ -66,7 +66,7 @@ public:
     void addEnemy(Enemy* enemy);
     
     // Director
-    void changeMap(const Location& location);
+    void changeMap(const Location& location, const int initEventId);
     
     // EventListener
     bool isPressed(const Key& key);

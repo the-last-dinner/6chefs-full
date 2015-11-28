@@ -9,7 +9,7 @@
 #ifndef __DUNGEON_SCENE_H__
 #define __DUNGEON_SCENE_H__
 
-#include "Scenes/baseScene.h"
+#include "Scenes/BaseScene.h"
 
 class AmbientLightLayer;
 class TiledMapLayer;
@@ -23,16 +23,15 @@ class PlayerControlTask;
 class LoadingLayer;
 class Party;
 
-class DungeonScene : public baseScene
+class DungeonScene : public BaseScene
 {
 // クラスメソッド
 public:
 	CREATE_FUNC_WITH_PARAM(DungeonScene, DungeonSceneData*);
 	
 // インスタンス変数
-private:
+protected:
     EventListenerKeyboardLayer* listener { nullptr };
-    cocos2d::FileUtils* fu { nullptr };
     TiledMapLayer* mapLayer { nullptr };
     AmbientLightLayer* ambientLightLayer {nullptr};
     
@@ -54,7 +53,8 @@ private:
 	virtual bool init(DungeonSceneData* data);
     virtual void onEnter() override;
 	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
-    void onInitEventFinished(LoadingLayer* loadingLayer);
+    virtual void onInitEventFinished(LoadingLayer* loadingLayer);
+    virtual void onAfterInitEventFinished();
     
     Party* createParty();
     
