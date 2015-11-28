@@ -41,6 +41,7 @@ bool TitleSceneData::init()
         "character/Tfujin",
         "character/wManaka",
         "character/wDandan",
+        "character/oRanmaru",
         "character/sRanmaru",
         "character/dDaigoro",
 	};
