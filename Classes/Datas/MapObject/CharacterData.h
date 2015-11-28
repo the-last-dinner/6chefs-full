@@ -27,7 +27,7 @@ struct CharacterData
     string getDotFileName(){return CsvDataManager::getInstance()->getCharaFileName(this->chara_id) + "_0_0.png";};
     
     // 立ち絵画像のファイル名
-    string getStandFileName(){return CsvDataManager::getInstance()->getCharaFileName(this->chara_id) + "_s_0.png";}
+    string getStandFileName(){return CsvDataManager::getInstance()->getCharaFileName(this->chara_id) + "_s_1.png";}
 };
 
 #endif /* CharacterData_h */

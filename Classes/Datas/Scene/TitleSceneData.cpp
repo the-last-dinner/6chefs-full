@@ -37,7 +37,12 @@ bool TitleSceneData::init()
         "character/yuki",
         "character/fujin",
         "character/knife",
-        //"character/taiho"
+        "character/taihou",
+        "character/Tfujin",
+        "character/wManaka",
+        "character/wDandan",
+        "character/sRanmaru",
+        "character/dDaigoro",
 	};
 	
 	this->soundFilePaths =

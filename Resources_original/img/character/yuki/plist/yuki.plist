@@ -195,7 +195,7 @@
 			<key>size</key>
 			<string>{512,2048}</string>
 			<key>textureFileName</key>
-			<string>yuki.png</string>
+			<string>sprites.png</string>
 			</dict>
 		</dict>
 </plist>

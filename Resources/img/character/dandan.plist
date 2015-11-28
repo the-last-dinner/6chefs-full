@@ -7,7 +7,7 @@
 		<key>dandan_0_0.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{0,32},{24,30}}</string>
+			<string>{{0,1870},{24,30}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -20,7 +20,7 @@
 		<key>dandan_0_1.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{0,0},{25,31}}</string>
+			<string>{{0,1838},{25,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -33,7 +33,7 @@
 		<key>dandan_0_2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{26,0},{22,30}}</string>
+			<string>{{23,1932},{22,30}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -46,7 +46,7 @@
 		<key>dandan_1_0.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{48,31},{21,31}}</string>
+			<string>{{45,1963},{21,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -59,7 +59,7 @@
 		<key>dandan_1_1.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{25,32},{22,32}}</string>
+			<string>{{0,1996},{22,32}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -72,7 +72,7 @@
 		<key>dandan_1_2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{68,63},{21,31}}</string>
+			<string>{{25,1870},{21,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -85,7 +85,7 @@
 		<key>dandan_2_0.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{68,95},{21,32}}</string>
+			<string>{{23,1963},{21,32}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -98,7 +98,7 @@
 		<key>dandan_2_1.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{23,94},{22,31}}</string>
+			<string>{{0,1964},{22,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -111,7 +111,7 @@
 		<key>dandan_2_2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{46,65},{21,31}}</string>
+			<string>{{23,1996},{21,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -124,7 +124,7 @@
 		<key>dandan_3_0.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{0,63},{23,30}}</string>
+			<string>{{0,1901},{23,30}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -137,7 +137,7 @@
 		<key>dandan_3_1.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{49,0},{21,30}}</string>
+			<string>{{26,1838},{21,30}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -150,7 +150,7 @@
 		<key>dandan_3_2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{0,94},{22,31}}</string>
+			<string>{{0,1932},{22,31}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -160,13 +160,52 @@
 			<key>sourceSize</key>
 			<string>{32,32}</string>
 		</dict>
+		<key>dandan_s_0.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{0,1196},{438,641}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{438,641}}</string>
+			<key>sourceSize</key>
+			<string>{438,642}</string>
+		</dict>
+		<key>dandan_s_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{537,0},{536,1195}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{170,2},{536,1195}}</string>
+			<key>sourceSize</key>
+			<string>{800,1200}</string>
+		</dict>
+		<key>dandan_s_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{0,0},{536,1195}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{170,2},{536,1195}}</string>
+			<key>sourceSize</key>
+			<string>{800,1200}</string>
+		</dict>
 	</dict>
 	<key>metadata</key>
 	<dict>
 		<key>format</key>
 		<integer>2</integer>
 		<key>size</key>
-		<string>{128,128}</string>
+		<string>{2048,2048}</string>
 		<key>textureFileName</key>
 		<string>dandan.png</string>
 	</dict>

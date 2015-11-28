@@ -30,6 +30,7 @@ bool MiniSelector::init(Selector& selector)
     //rectangle->setTextureRect(Rect(0,0,size.width,size.height));
     //rectangle->setPosition(rectangle->getContentSize().width/2, rectangle->getContentSize().height/2);
     rectangle->setColor(selector.getRectangleColor());
+    this->window = rectangle;
     this->addChild(rectangle);
     
      //背景
@@ -83,6 +84,7 @@ bool MiniSelector::init(SelectorWithSprite& selector)
     // ウインドウの取得
     Sprite* window {selector.getWindow()};
     Size back_size = window->getContentSize();
+    this->window = window;
     this->addChild(window);
     
     // 選択メニュー
@@ -159,14 +161,14 @@ void MiniSelector::onMenuKeyPressed()
 void MiniSelector::show()
 {
     this->listenerKeyboard->setEnabled(true);
-    this->setScale(0);
-    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
+    this->window->setScale(0);
+    this->window->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
     this->setVisible(true);
 }
 
 // 非表示
 void MiniSelector::hide(){
     this->listenerKeyboard->setEnabled(false);
-    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
+    this->window->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
     //this->setVisible(false);
 }
