@@ -36,7 +36,7 @@
 						{
 							"type":"charaMsg",
 							"text":["皆に黙って出るのは・・・"],
-							"caharaID":"0",
+							"charaID":"0",
 							"imgID":"1"
 						},
 						{
@@ -3418,7 +3418,7 @@
 		            },
 		            {
 		              "text": ["１５分よ！"],
-		              "charaID": "2",
+		              "charaID": "3",
 		              "imgID": "1",
 		              "name": "？？？",
 		              "option": "reaction"
