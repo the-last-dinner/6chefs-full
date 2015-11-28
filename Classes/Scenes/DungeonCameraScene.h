@@ -26,6 +26,7 @@ private:
     bool init(DungeonSceneData* data, Vector<GameEvent*> events);
     virtual void onEnter();
     virtual void onPreloadFinished(LoadingLayer* loadingLayer);
+    void onInitEventFinished(LoadingLayer* loadingLayer);
 };
 
 #endif /* defined(__LastSupper__DungeonCameraScene__) */

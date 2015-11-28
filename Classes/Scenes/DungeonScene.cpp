@@ -42,7 +42,7 @@ DungeonScene::~DungeonScene()
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
-    if(!baseScene::init(data)) return false;
+    if(!BaseScene::init(data)) return false;
     
     return true;
 }
@@ -50,7 +50,7 @@ bool DungeonScene::init(DungeonSceneData* data)
 // シーン切り替え終了時
 void DungeonScene::onEnter()
 {
-    baseScene::onEnter();
+    BaseScene::onEnter();
 }
 
 // リソースプリロード完了時の処理

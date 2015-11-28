@@ -25,7 +25,7 @@ TitleScene::~TitleScene(){FUNCLOG}
 // 初期化
 bool TitleScene::init()
 {
-    if(!baseScene::init(TitleSceneData::create())) return false;
+    if(!BaseScene::init(TitleSceneData::create())) return false;
     
     return true;
 }
@@ -33,7 +33,7 @@ bool TitleScene::init()
 // シーン切り替え完了時
 void TitleScene::onEnter()
 {
-    baseScene::onEnter();
+    BaseScene::onEnter();
 }
 
 // リソースロード終了後の処理
