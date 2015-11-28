@@ -231,9 +231,9 @@ void PlayerDataManager::setLocation(const vector<CharacterData>& characters)
 // 友好度のセット
 void PlayerDataManager::setFriendship(const int chara_id, const int level)
 {
-    char level_char[2];
-    sprintf(level_char, "%d", level);
-    this->local["friendship"][level_char].SetInt(level);
+    char cid_char[10];
+    sprintf(cid_char, "%d", chara_id);
+    this->local["friendship"][cid_char].SetInt(level);
     return;
 }
 
