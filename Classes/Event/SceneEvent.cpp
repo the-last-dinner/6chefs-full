@@ -43,13 +43,16 @@ bool ChangeMapEvent::init(rapidjson::Value& json)
     
     this->location = Location(stoi(json[member::MAP_ID].GetString()), json[member::X].GetInt(), json[member::Y].GetInt(), direction);
     
+    // 移動後に実行するイベントID
+    if(this->validator->hasMember(json, member::EVENT_ID)) this->initEventId = stoi(json[member::EVENT_ID].GetString());
+    
     return true;
 }
 
 void ChangeMapEvent::run()
 {
     this->setDone();
-    DungeonSceneManager::getInstance()->changeMap(this->location);
+    DungeonSceneManager::getInstance()->changeMap(this->location, this->initEventId);
 }
 
 #pragma mark -

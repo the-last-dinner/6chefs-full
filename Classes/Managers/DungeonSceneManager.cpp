@@ -173,7 +173,7 @@ void DungeonSceneManager::addEnemy(Enemy* enemy)
 #pragma mark Director
 
 // マップ切り替え
-void DungeonSceneManager::changeMap(const Location& location)
+void DungeonSceneManager::changeMap(const Location& location, const int initEventId)
 {
     // 敵を止める
     this->getScene()->enemyTask->stop();
@@ -184,7 +184,7 @@ void DungeonSceneManager::changeMap(const Location& location)
     this->summonDatas = summonDatas;
     
     // 主人公一行の位置を登録
-    vector<CharacterData> members = this->getParty()->getMembersData();
+    vector<CharacterData> members { this->getParty()->getMembersData() };
     int memberCount = members.size();
     for(int i=0; i < memberCount; i++)
     {
@@ -194,6 +194,7 @@ void DungeonSceneManager::changeMap(const Location& location)
     
     // 必要な情報を設定していく
     DungeonSceneData* data { DungeonSceneData::create(location) };
+    data->setInitialEventId(initEventId);
     
     Director::getInstance()->replaceScene(DungeonScene::create(data));
 }

@@ -15,8 +15,27 @@
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/LoadingLayer.h"
 
+#include "MapObjects/MapObjectList.h"
+
 #include "Tasks/CameraTask.h"
 #include "Tasks/EventTask.h"
+
+// create関数
+DungeonCameraScene* DungeonCameraScene::create(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback)
+{
+    DungeonCameraScene* p { new(nothrow) DungeonCameraScene() };
+    if(p && p->init(data, event, callback))
+    {
+        p->autorelease();
+        return p;
+    }
+    else
+    {
+        delete p;
+        p = nullptr;
+        return nullptr;
+    }
+}
 
 // コンストラクタ
 DungeonCameraScene::DungeonCameraScene() { FUNCLOG };
@@ -25,9 +44,12 @@ DungeonCameraScene::DungeonCameraScene() { FUNCLOG };
 DungeonCameraScene::~DungeonCameraScene() { FUNCLOG };
 
 // 初期化
-bool DungeonCameraScene::init(DungeonSceneData* data, Vector<GameEvent*> events)
+bool DungeonCameraScene::init(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback)
 {
     if(!BaseScene::init(data)) return false;
+    
+    this->callback = callback;
+    this->event = event;
     
     return true;
 }
@@ -62,4 +84,30 @@ void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
     EventTask* eventTask { EventTask::create() };
     this->addChild(eventTask);
     this->eventTask = eventTask;
+    
+    // Trigger::INITを実行
+    eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), [this, loadingLayer](){this->onInitEventFinished(loadingLayer);});
+}
+
+// Trigger::INITのイベントが終了した時
+void DungeonCameraScene::onInitEventFinished(LoadingLayer* loadingLayer)
+{
+    // ローディング終了
+    loadingLayer->onLoadFinished();
+    
+    // Trigger::AFTER_INITを実行
+    this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonCameraScene::onAfterInitEventFinished, this));
+}
+
+// Trigger::AFTER_INITが終了した時
+void DungeonCameraScene::onAfterInitEventFinished()
+{
+    // 指定したイベントを実行
+    this->eventTask->runEvent(this->event, CC_CALLBACK_0(DungeonCameraScene::onCameraEventFinished, this));
+}
+
+// 渡されたイベントを終了した時
+void DungeonCameraScene::onCameraEventFinished()
+{
+    Director::getInstance()->popScene();
 }

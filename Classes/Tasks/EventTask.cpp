@@ -99,15 +99,14 @@ void EventTask::runEvent(vector<int> eventIds, function<void()> callback)
     this->callbackInfo = CallbackWithId({lastEventId, callback});
 }
 
-// イベントをIDベクタから実行
-void EventTask::runEvent(vector<int> eventIds)
+// イベントを実行
+void EventTask::runEvent(GameEvent* event, function<void()> callback)
 {
-    if(eventIds.empty()) return;
+    this->pushEventBack(event);
     
-    for(int eventId : eventIds)
-    {
-        this->runEvent(eventId);
-    }
+    this->callbackInfo = CallbackWithId({static_cast<int>(EventID::UNDIFINED), callback});
+    
+    this->runEventQueue();
 }
 
 // キューに指定IDイベントを後ろから詰める
@@ -169,8 +168,9 @@ void EventTask::update(float delta)
     {
         if(this->callbackInfo.second && this->callbackInfo.first == this->getEventId(this->runningEvent))
         {
-            this->callbackInfo.second();
+            function<void()> cb { this->callbackInfo.second };
             this->callbackInfo = CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr});
+            cb();
         }
         CC_SAFE_RELEASE(this->getGameEvent(this->runningEvent));
         this->runningEvent = EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr});
