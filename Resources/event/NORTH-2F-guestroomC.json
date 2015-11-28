@@ -57,7 +57,7 @@
 				{
 					"type":"countDown",
 					"second":5.0,
-					"action":[
+					"false":[
 						{
 							"type":"spawn",
 							"action":[
@@ -68,10 +68,16 @@
 								},
 								{
 									"type":"createEnemy",
+									"charaID":"8",
 									"enemyID":"142",
 									"x":14,
 									"y":33,
-									"speed":10.0
+									"speed":10.0,
+									"movePattern":"5"
+								},
+								{
+									"type":"already",
+									"event":["15","4"]
 								}
 							]
 						}
@@ -103,82 +109,76 @@
 							"type":"fadeout"
 						},
 						{
-							"type":"hideChara",
-							"objID":"hero"
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"createChara",
+							"type":"createCamera",
 							"objID":"1015",
-							"x":14,
-							"y":33,
-							"direction":"UP"
-						},
-						{
-							"type":"camera",
-							"objID":"1015"
-						},
-						{
-							"type":"charaWalk",
-							"direction":"UP",
-							"steps":9.0,
-							"speed":3.0,
-							"objID":"1015"
-						},
-						{
-							"type":"changeDirection",
-							"direction":"LEFT",
-							"objID":"1015"
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
-						{
-							"type":"changeDirection",
-							"direction":"RIGHT",
-							"objID":"1015"
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
-						{
-							"type":"changeDirection",
-							"direction":"LEFT",
-							"objID":"1015"
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
-						{
-							"type":"charaWalk",
-							"direction":"DOWN",
-							"steps":9.0,
-							"speed":3.0,
-							"objID":"1015"
-						},
-						{
-							"type":"playSE",
-							"file":"2doko.wav"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1015"
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"showChara",
-							"objID":"hero"
-						},
-						{
-							"type":"camera",
-							"return":"hero"
+							"action":[
+								{
+									"type":"createChara",
+									"objID":"1015",
+									"x":14,
+									"y":33,
+									"direction":"UP"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaWalk",
+									"direction":"UP",
+									"steps":9.0,
+									"speed":3.0,
+									"objID":"1015"
+								},
+								{
+									"type":"changeDirection",
+									"direction":"LEFT",
+									"objID":"1015"
+								},
+								{
+									"type":"wait",
+									"time":1.0
+								},
+								{
+									"type":"changeDirection",
+									"direction":"RIGHT",
+									"objID":"1015"
+								},
+								{
+									"type":"wait",
+									"time":1.0
+								},
+								{
+									"type":"changeDirection",
+									"direction":"LEFT",
+									"objID":"1015"
+								},
+								{
+									"type":"wait",
+									"time":1.0
+								},
+								{
+									"type":"charaWalk",
+									"direction":"DOWN",
+									"steps":9.0,
+									"speed":3.0,
+									"objID":"1015"
+								},
+								{
+									"type":"playSE",
+									"file":"2doko.wav"
+								},
+								{
+									"type":"removeChara",
+									"objID":"1015"
+								},
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"showChara",
+									"objID":"hero"
+								}
+							]
 						},
 						{
 							"type":"stopBGM"
