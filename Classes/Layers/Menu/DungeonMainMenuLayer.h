@@ -48,6 +48,7 @@ private:
     int menuIndex {0};
     MiniSelector* confirm {nullptr};
     Label* play_time {nullptr};
+    Sprite* cover {nullptr};
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();

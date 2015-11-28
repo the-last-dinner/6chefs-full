@@ -34,8 +34,9 @@ bool DungeonMainMenuLayer::init()
 	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	cover->setColor(Color3B::BLACK);
 	cover->setPosition(WINDOW_CENTER);
-	cover->setOpacity(64);
+	cover->setOpacity(0);
 	this->addChild(cover);
+    this->cover = cover;
     
 	// ヘッダーメニューを生成
     Sprite* hBg { Sprite::createWithSpriteFrameName("main_menu_panel.png") };
@@ -183,6 +184,7 @@ void DungeonMainMenuLayer::show()
     // プレイ時間を1秒ごとにアップデート登録
     this->schedule(schedule_selector(DungeonMainMenuLayer::updateTime), 1);
     this->slideIn();
+    this->cover->runAction(EaseCubicActionInOut::create(FadeTo::create(0.3f, 64)));
     this->onIndexChanged(this->menuIndex);
     this->setVisible(true);
     this->listenerKeyboard->setEnabled(true);
@@ -193,6 +195,7 @@ void DungeonMainMenuLayer::hide()
 {
 	FUNCLOG
     this->slideOut();
+    this->cover->runAction(EaseCubicActionInOut::create(FadeTo::create(0.3f, 0)));
     this->listenerKeyboard->setEnabled(false);
 }
 
