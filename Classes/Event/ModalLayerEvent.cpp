@@ -70,7 +70,10 @@ bool CharacterMessage::init(rapidjson::Value& json)
             CC_SAFE_RETAIN(data);
             
             // キャラID
-            data->setCharaId(stoi(chara[member::CHARA_ID].GetString()));
+            if (this->validator->hasMember(chara, member::CHARA_ID))
+            {
+                data->setCharaId(stoi(chara[member::CHARA_ID].GetString()));
+            }
             
             // キャラ名
             string charaName {};
