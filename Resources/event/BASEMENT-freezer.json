@@ -57,17 +57,14 @@
 					"time":3.0	
 				},
 				{
-					"type":"camera",
+					"type":"createCamera",
 					"mapID":"40",
+					"x":12,
+					"y":12,
 					"action":[
 						{
 							"type":"sequence",
 							"action":[
-								{
-									"type":"camera",
-									"x":12,
-									"y":12
-								},
 								{
 									"type":"createChara",
 									"objID":"1058"

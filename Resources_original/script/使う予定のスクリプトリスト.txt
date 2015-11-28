@@ -426,7 +426,7 @@
 
 
 ●カメラ
-・type名、、、camera
+・type名、、、createCamera
 ・必要なもの、、、マップ番号
 　　　　　　　　　当てるマスの左下の座標
 　　　　　　　　　ゴール地点の座標（動かす場合）
@@ -435,31 +435,28 @@
                   別のキャラを追いかける場合は追いかけるやつのobjID
 （例）
 	{
-	"type" 　　:"camera",
+	"type" 　　:"createCamera",
 	"mapID"　　:"マップ番号",#
 	"x"　　　　:x座標,#
 	"y"　　　　:y座標,#
-	"nextX"　　:カメラが向かうx座標,#
-	"nextY"　　:カメラが向かうy座標,#
-	"time"　　 :"かかる秒数",#
 	"return"   :"hero"←主人公に戻る,#
 	"objID"    :"追いかけるキャラのオブジェクトID"#
 	},
 
-(例)マップまたぐカメラ
-{
-	"type" 　　:"camera",
-	"mapID"　　:"マップ番号",#
-	"x"　　　　:x座標,#
-	"y"　　　　:y座標,#,
-	"action"   :[
-		{
-			"type":"camera",
-			"nextX":20,
-			"nextY":
-		}
+
+●マップまたぐカメラ
+type名,,,camera,
+必要なもの,,,nextX
+	     nextY
+	     timeだけ
 	
-	]
+
+
+(例){  
+			"type":"camera",
+			"nextX"　　:カメラが向かうx座標,#
+			"nextY"　　:カメラが向かうy座標,#
+			"time"　　 :"かかる秒数",#
 }
 	
 	
@@ -525,7 +522,7 @@
 (例)
 　　{
 	  "type":"removeItem",
-	  "itemID":"消すアイテムID"
+	  "itemID":"消すアイテムID"Fcount
     }　
 
 とりあえず、

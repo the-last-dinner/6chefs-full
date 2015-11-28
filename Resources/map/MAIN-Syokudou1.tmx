@@ -67,7 +67,7 @@
   </properties>
   <object id="55" x="320" y="608" width="32" height="32">
    <properties>
-    <property name="CharaID" value="10"/>
+    <property name="CharaID" value="9"/>
     <property name="EventID" value="35"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>

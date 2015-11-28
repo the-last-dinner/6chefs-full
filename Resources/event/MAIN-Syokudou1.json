@@ -907,7 +907,7 @@
 							"type":"already"
 						},
 						{
-							"type":"camera",
+							"type":"createCamera",
 							"mapID":"40",
 							"x":12,
 							"y":12,
@@ -1279,63 +1279,61 @@
 							"type":"already"
 						},
 						{
-							"type":"camera",
+							"type":"createCamera",
 							"mapID":"40",
 							"x":12,
-							"y":12
-						},
-						{
-							"type":"createChara",
-							"objID":"1058"
-						},
-						{
-							"type":"createChara",
-							"objID":"1059"
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
-									"charaID":"6",
-									"imgID":"1",
-									"name":"？？？"
-								},
-								{
-									"text":["貴方は・・・？"],
-									"charaID":"1",
-									"imgID":"2"
-								},
-								{
-									"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
-									"charaID":"6",
-									"imgID":"1",
-									"name":"？？？"
-								}
-							]
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"spawn",
+							"y":12,
 							"action":[
 								{
-									"type":"removeChara",
+									"type":"createChara",
 									"objID":"1058"
 								},
 								{
-									"type":"removeChara",
+									"type":"createChara",
 									"objID":"1059"
-								}
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
+											"charaID":"6",
+											"imgID":"1",
+											"name":"？？？"
+										},
+										{
+											"text":["貴方は・・・？"],
+											"charaID":"1",
+											"imgID":"2"
+										},
+										{
+											"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
+											"charaID":"6",
+											"imgID":"1",
+											"name":"？？？"
+										}
+									]
+								},
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"spawn",
+									"action":[
+										{
+											"type":"removeChara",
+											"objID":"1058"
+										},
+										{
+											"type":"removeChara",
+											"objID":"1059"
+										}
+									]
+								},
 							]
-						},
-						{
-							"type":"camera",
-							"return":"hero"
 						},
 						{
 							"type":"spawn",
@@ -2535,7 +2533,7 @@
 						},
 						{
 							"text":["あ、すみません。\n暗いお話してしまって"],
-							"charaID":"2",
+							"charaID":"1",
 							"imgID":"1"
 						}
 					]
@@ -3602,7 +3600,7 @@
 	                  "time":2.0
 	                },
 	                {
-	                  "type":"camera",
+	                  "type":"createCamera",
 	                  "mapID":"1" ,
 	                  "x":27,
 	                  "y":20,

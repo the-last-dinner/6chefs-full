@@ -11,7 +11,7 @@
 					"objID":"1087"
 				},
 				{
-					"type":"camera",
+					"type":"createCamera",
 					"x":20,
 					"y":18,
 					"action":[
@@ -30,7 +30,6 @@
 									"action":[
 										{
 											"type":"camera",
-											"mapID":"7",
 											"nextX":20,
 											"nextY":3,
 											"time":2.0
@@ -45,7 +44,7 @@
 					]
 				},
 				{
-					"type":"camera",
+					"type":"createCamera",
 					"mapID":"6",
 					"x":20,
 					"y":33,
@@ -85,7 +84,7 @@
 					]
 				},
 				{
-					"type":"camera",
+					"type":"createCamera",
 					"mapID":"8",
 					"x":20,
 					"y":3,
@@ -1015,7 +1014,7 @@
 						},
 						{
 							"text":["あ、すみません。\n暗いお話してしまって"],
-							"charaID":"2",
+							"charaID":"1",
 							"imgID":"1"
 						}
 					]
