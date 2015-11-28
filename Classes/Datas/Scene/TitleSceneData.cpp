@@ -22,11 +22,22 @@ TitleSceneData::~TitleSceneData()
 // 初期化
 bool TitleSceneData::init()
 {
-	FUNCLOG
 	this->textureFilePaths =
 	{
 		"title",
-		"frame"
+		"frame",
+        "menu_panels",
+        "character/magoichi",
+        "character/daigoro",
+        "character/dandan",
+        "character/nadeshiko",
+        "character/manaka",
+        "character/ranmaru",
+        "character/shituji",
+        "character/yuki",
+        "character/fujin",
+        "character/knife",
+        //"character/taiho"
 	};
 	
 	this->soundFilePaths =

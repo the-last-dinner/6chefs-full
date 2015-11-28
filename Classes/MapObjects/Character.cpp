@@ -47,14 +47,6 @@ bool Character::init(const CharacterData& data)
         CC_SAFE_RETAIN(this->movePattern);
         CC_SAFE_RELEASE(factory);
     }
-	
-    // プロパティリストが存在するか確認。存在しなければfalseを返す（生成しない）
-    string fullPath { FileUtils::getInstance()->fullPathForFilename(basePath + this->texturePrefix + ".plist") };
-    
-    if(fullPath.size() == 0) return false;
-    
-	// プロパティリスト読み込み
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + this->texturePrefix + ".plist");
     
 	// Spriteを生成
 	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png");
