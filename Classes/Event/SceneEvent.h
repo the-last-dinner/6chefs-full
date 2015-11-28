@@ -90,7 +90,9 @@ private:
     float second { 5.f };
     int sEventId { static_cast<int>(EventID::UNDIFINED) };
     int fEventId { static_cast<int>(EventID::UNDIFINED) };
-    rapidjson::Document doc { nullptr };
+    //rapidjson::Document doc { nullptr };
+    int equip {0};
+    bool checkEquip {false};
     GameEvent* sEvent { nullptr };
     GameEvent* fEvent { nullptr };
     GameEvent* event { nullptr };
