@@ -159,11 +159,14 @@ void MiniSelector::onMenuKeyPressed()
 void MiniSelector::show()
 {
     this->listenerKeyboard->setEnabled(true);
+    this->setScale(0);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 1.f)));
     this->setVisible(true);
 }
 
 // 非表示
 void MiniSelector::hide(){
     this->listenerKeyboard->setEnabled(false);
-    this->setVisible(false);
+    this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
+    //this->setVisible(false);
 }

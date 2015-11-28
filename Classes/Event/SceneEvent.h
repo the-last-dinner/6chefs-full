@@ -80,4 +80,37 @@ private:
     virtual void run() override;
 };
 
+// CountDownイベント
+class CountDownEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(CountDownEvent, rapidjson::Value&)
+private:
+    float second { 5.f };
+    int sEventId { static_cast<int>(EventID::UNDIFINED) };
+    int fEventId { static_cast<int>(EventID::UNDIFINED) };
+    rapidjson::Document doc { nullptr };
+    GameEvent* sEvent { nullptr };
+    GameEvent* fEvent { nullptr };
+    GameEvent* event { nullptr };
+private:
+    CountDownEvent() {FUNCLOG};
+    ~CountDownEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// StopCountイベント
+class StopCountEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(StopCountEvent, rapidjson::Value&);
+private:
+    StopCountEvent() {FUNCLOG};
+    ~StopCountEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+
 #endif /* defined(__LastSupper__SceneEvent__) */

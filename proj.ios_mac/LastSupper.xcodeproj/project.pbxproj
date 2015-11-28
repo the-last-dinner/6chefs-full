@@ -37,6 +37,8 @@
 		262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
+		2672664E1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */; };
+		2672664F1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */; };
 		26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
@@ -289,6 +291,8 @@
 		262728651C084D3A0028B732 /* NotificationBand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationBand.h; path = ../Classes/UI/NotificationBand.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
 		266E76531BC1160B005BC878 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = ../Classes/Scenes/DungeonMenuScene.h; sourceTree = "<group>"; };
+		2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StopWatch.cpp; path = ../Classes/Models/StopWatch.cpp; sourceTree = "<group>"; };
+		2672664D1C087BFE00FD1CF6 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopWatch.h; path = ../Classes/Models/StopWatch.h; sourceTree = "<group>"; };
 		26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringUtils.cpp; path = ../Classes/Utils/StringUtils.cpp; sourceTree = "<group>"; };
 		26BA61F01BCB59EA00CE63C7 /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtils.h; path = ../Classes/Utils/StringUtils.h; sourceTree = "<group>"; };
 		26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemMenuLayer.cpp; path = ../Classes/Layers/Menu/ItemMenuLayer.cpp; sourceTree = "<group>"; };
@@ -798,6 +802,8 @@
 				551A51771BF239F600D6263A /* Direction.h */,
 				DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */,
 				DC2769111C0800A300DAA11C /* ChangeMapHistory.h */,
+				2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */,
+				2672664D1C087BFE00FD1CF6 /* StopWatch.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1320,6 +1326,7 @@
 				DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */,
 				553577E11BEA42C80095E6A9 /* EventScript.cpp in Sources */,
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
+				2672664E1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
 				DCAB9BC01BFF1EF000887F68 /* Scouter.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
@@ -1448,6 +1455,7 @@
 				554470771BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				55F302391BDAB0F800BDC418 /* EventFactory.cpp in Sources */,
+				2672664F1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
 				26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
 				55799D561BEE1D2A002462E6 /* PathFinder.cpp in Sources */,
 			);

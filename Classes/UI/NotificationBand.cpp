@@ -6,7 +6,7 @@
 //
 //
 
-#include "NotificationBand.h"
+#include "UI/NotificationBand.h"
 
 bool NotificationBand::init(const string& message)
 {

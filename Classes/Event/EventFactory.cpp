@@ -61,6 +61,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"wait", WaitEvent::create},                    // 時間待機
         {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
+        {"countDown", CountDownEvent::create},               // カウントダウン
+        {"stopCount", StopCountEvent::create},               // ストップカウント
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示

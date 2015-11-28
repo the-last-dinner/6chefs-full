@@ -119,7 +119,7 @@ void MenuLayer::onCursorKeyPressed(const Key& key)
     // ヴィジュアルの更新
     bool sound =  (this->indexX == old_indexX && this->indexY == old_indexY) ? false : true;
     this->onIndexChanged(this->getSelectedIndex(), sound);
-    cout << "page>>" << this->page << endl <<"indexX>>" << indexX << endl << "indexY>>" << indexY << endl;
+    //cout << "page>>" << this->page << endl <<"indexX>>" << indexX << endl << "indexY>>" << indexY << endl;
 }
 
 // スペースを押した時

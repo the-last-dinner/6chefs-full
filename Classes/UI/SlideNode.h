@@ -27,7 +27,7 @@ private:
 private:
     Point inPosition {Point::ZERO};
     Point outPosition {Point::ZERO};
-    float slideTime {0.2f};
+    float slideTime {0.3f};
     
     // インスタンスメソッド
 private:

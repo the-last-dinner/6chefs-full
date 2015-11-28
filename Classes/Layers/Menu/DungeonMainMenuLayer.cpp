@@ -15,7 +15,7 @@
 #include "UI/SlideNode.h"
 
 // 定数
-const float DungeonMainMenuLayer::SLIDE_TIME {0.2f};
+const float DungeonMainMenuLayer::SLIDE_TIME {0.3f};
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -34,8 +34,9 @@ bool DungeonMainMenuLayer::init()
 	cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
 	cover->setColor(Color3B::BLACK);
 	cover->setPosition(WINDOW_CENTER);
-	cover->setOpacity(64);
+	cover->setOpacity(0);
 	this->addChild(cover);
+    this->cover = cover;
     
 	// ヘッダーメニューを生成
     Sprite* hBg { Sprite::createWithSpriteFrameName("main_menu_panel.png") };
@@ -95,9 +96,11 @@ bool DungeonMainMenuLayer::init()
     mapName->setPosition(mapName->getContentSize().width / 2 + 15, hBg->getContentSize().height - mapName->getContentSize().height / 2 - 15);
     hBg->addChild(mapName);
     
+    // プレイ時間表示
     Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getPlayTimeDisplay(), "fonts/cinecaption2.28.ttf", 26);
     play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2 - 15, hBg->getContentSize().height - play_time->getContentSize().height / 2 - 15);
     hBg->addChild(play_time);
+    this->play_time = play_time;
     
 	// 下のメニューを生成
     Sprite* fBg { Sprite::createWithSpriteFrameName("main_menu_panel.png") };
@@ -178,7 +181,10 @@ bool DungeonMainMenuLayer::init()
 void DungeonMainMenuLayer::show()
 {
 	FUNCLOG
+    // プレイ時間を1秒ごとにアップデート登録
+    this->schedule(schedule_selector(DungeonMainMenuLayer::updateTime), 1);
     this->slideIn();
+    this->cover->runAction(EaseCubicActionInOut::create(FadeTo::create(0.3f, 64)));
     this->onIndexChanged(this->menuIndex);
     this->setVisible(true);
     this->listenerKeyboard->setEnabled(true);
@@ -189,6 +195,7 @@ void DungeonMainMenuLayer::hide()
 {
 	FUNCLOG
     this->slideOut();
+    this->cover->runAction(EaseCubicActionInOut::create(FadeTo::create(0.3f, 0)));
     this->listenerKeyboard->setEnabled(false);
 }
 
@@ -329,4 +336,10 @@ void DungeonMainMenuLayer::slideOut()
     {
         this->slideNodes[i]->slideOut();
     }
+}
+
+// プレイ時間をアップデート
+void DungeonMainMenuLayer::updateTime(float delta)
+{
+    this->play_time->setString(PlayerDataManager::getInstance()->getPlayTimeDisplay());
 }
