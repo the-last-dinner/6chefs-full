@@ -124,6 +124,10 @@
 					]
 				},
 				{
+					"type":"removeChara",
+					"objID":"1087"
+				},
+				{
 					"type":"fadein"
 				},
 				{
