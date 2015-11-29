@@ -91,7 +91,12 @@
 	],
 	"6":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"event":["12","4"]
+				}
+			],
 			"action":[
 				{
 					"type":"getItem",

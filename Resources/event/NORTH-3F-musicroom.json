@@ -74,7 +74,7 @@
 						{
 							"text":["血だ・・・"],
 							"charaID":"2",
-							"imgID":"2"
+							"imgID":"1"
 						},
 						{
 							"text":["・・・"],
@@ -144,7 +144,7 @@
 						{
 							"text":["アブねぇ！！"],
 							"charaID":"2",
-							"imgID":"2",
+							"imgID":"1",
 							"option":"reaction"
 						}
 					]
@@ -188,7 +188,7 @@
 						{
 							"text":["くっ！！"],
 							"charaID":"2",
-							"imgID":"2",
+							"imgID":"1",
 							"option":"reaction"
 						},
 						{
@@ -236,7 +236,7 @@
 						{
 							"text":["じいさんを殺したのは多分アイツだろう・・・"],
 							"charaID":"2",
-							"imgID":"2"
+							"imgID":"1"
 						},
 						{
 							"text":["加藤さん！血が・・・\n大丈夫なんですか！？ソレ！？"],
@@ -247,41 +247,43 @@
 						{
 							"text":["ああ・・・\nけど普通の人間の動きじゃなかったな・・・","アイツらを集めろ\n食堂だ"],
 							"charaID":"2",
-							"imgID":"2"
-						},
-						{
-							"type":"fadeout",
-							"time":3.0
-						},
-						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"changeChapter",
-									"chapterID":"2"
-								},
-								{
-									"type":"playBGM",
-									"file":"chapter2.wav"
-								},
-								{
-									"type":"displayImg",
-									"file":"chapter2.png",
-									"time":5.0
-								},
-								{
-									"type":"stopBGM"
-								}
-							]
-						},
-						{
-							"type":"changeMap",
-							"mapID":"3",
-							"x":14,
-							"y":14,
-							"EventID":"50"
+							"imgID":"1"
 						}
 					]
+				},
+				{
+					"type":"fadeout"
+				},
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"changeChapter",
+							"chapterID":"2"
+						},
+						{
+							"type":"playBGM",
+							"file":"chapter2.wav"
+						},
+						{
+							"type":"displayImg",
+							"file":"chapter2.png",
+							"time":5.0
+						},
+						{
+							"type":"stopBGM"
+						}
+					]
+				},
+				{
+					"type":"already"
+				},
+				{
+					"type":"changeMap",
+					"mapID":"3",
+					"x":14,
+					"y":14,
+					"eventID":"50"
 				}
 			]
 		}

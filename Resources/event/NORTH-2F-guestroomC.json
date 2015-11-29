@@ -241,6 +241,9 @@
 					"layer":"apple"
 				},
 				{
+					"type":"fadein"
+				},
+				{
 					"type":"already"
 				}
 			]

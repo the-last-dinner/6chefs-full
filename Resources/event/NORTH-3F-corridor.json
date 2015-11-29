@@ -138,7 +138,7 @@
 					"type":"charaMsg",
 					"text":["ここだ・・・"],
 					"charaID":"2",
-					"imgID":"2"
+					"imgID":"1"
 				},
 				{
 					"type":"charaMsg",
@@ -216,7 +216,8 @@
 					"event":[
 						["22","3"],
 						["22","5"]
-					]
+					],
+					"Nevent":["21","6"]
 				}
 			],
 			"action":[
@@ -302,7 +303,7 @@
 					"type":"charaMsg",
 					"text":["ここの図書室・・・\n食人文化についての\n書物ばっかりだな"],
 					"charaID":"2",
-					"imgID":"2"
+					"imgID":"1"
 				},
 				{
 					"type":"if",

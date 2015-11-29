@@ -226,13 +226,13 @@
   </object>
   <object id="46" x="256" y="320" width="32" height="32">
    <properties>
-    <property name="eventID" value="12"/>
+    <property name="EventID" value="12"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="47" x="288" y="368" width="16" height="16">
    <properties>
-    <property name="eventID" value="13"/>
+    <property name="EventID" value="13"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>

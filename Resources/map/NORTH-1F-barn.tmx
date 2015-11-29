@@ -199,25 +199,25 @@
   </object>
   <object id="44" x="240" y="48" width="32" height="32">
    <properties>
-    <property name="eventID" value="16"/>
+    <property name="EventID" value="16"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="45" x="224" y="368" width="16" height="16">
    <properties>
-    <property name="eventID" value="17"/>
+    <property name="EventID" value="17"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>
   <object id="47" x="16" y="128" width="32" height="32">
    <properties>
-    <property name="eventID" value="14"/>
+    <property name="EventID" value="14"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="48" x="256" y="368" width="16" height="16">
    <properties>
-    <property name="eventID" value="15"/>
+    <property name="EventID" value="15"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>

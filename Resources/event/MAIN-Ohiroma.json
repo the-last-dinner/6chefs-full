@@ -457,7 +457,7 @@
               "type":"charaMsg",
               "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"changeDirection",
@@ -529,7 +529,7 @@
                 {
                   "text":["気絶させただけだ"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 }
               ]
             },
@@ -541,7 +541,7 @@
               "type":"charaMsg",
               "text":["帰るか"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout",
@@ -667,7 +667,7 @@
               "type":"charaMsg",
               "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"changeDirection",
@@ -753,7 +753,7 @@
                 {
                   "text":["気絶させただけだ"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 }
               ]
             },
@@ -765,7 +765,7 @@
               "type":"charaMsg",
               "text":["帰るか"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout",
@@ -895,7 +895,7 @@
               "type":"charaMsg",
               "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"changeDirection",
@@ -990,7 +990,7 @@
                 {
                   "text":["気絶させただけだ"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 }
               ]
             },
@@ -1002,7 +1002,7 @@
               "type":"charaMsg",
               "text":["帰るか"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout"
@@ -1123,7 +1123,7 @@
                   "type":"charaMsg",
                   "text":["佐々木ぃ！"],
                   "charaID":"2",
-                  "imgID":"3",
+                  "imgID":"2",
                   "option":"reaction"
                 },
                 {
@@ -1159,7 +1159,7 @@
                 {
                   "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
                   "charaID":"2",
-                  "imgID":"3",
+                  "imgID":"2",
                   "option":"reaction"
                 },
                 {
@@ -1238,7 +1238,7 @@
                 {
                   "text":["おい！"],
                   "charaID":"2",
-                  "imgID":"3",
+                  "imgID":"2",
                   "option":"reaction"
                 }
               ]
@@ -1251,7 +1251,7 @@
               "type":"charaMsg",
               "text":["死んでる・・・"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout",
@@ -1345,7 +1345,7 @@
               "type":"charaMsg",
               "text":["希崎ぃ！"],
               "charaID":"2",
-              "imgID":"3",
+              "imgID":"2",
               "option":"reaction"
             },
             {
@@ -1363,7 +1363,7 @@
                 {
                   "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 },
                 {
                   "text":["それは・・・"],
@@ -1433,7 +1433,7 @@
                 {
                   "text":["おい！"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 }
               ]
             },
@@ -1445,7 +1445,7 @@
               "type":"charaMsg",
               "text":["死んでる"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout",
@@ -1524,7 +1524,7 @@
                 {
                   "text":["希崎ぃ！"],
                   "charaID":"2",
-                  "imgID":"3",
+                  "imgID":"2",
                   "option":"reaction"
                 }
               ]
@@ -1554,7 +1554,7 @@
                 {
                   "text":["おい！さっきの部屋にあった人肉料理\n作ったのは誰だ！？","アンタじゃねぇだろ？"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 },
                 {
                   "text":["それは・・・"],
@@ -1629,7 +1629,7 @@
                 {
                   "text":["おい！"],
                   "charaID":"2",
-                  "imgID":"3"
+                  "imgID":"2"
                 }
               ]
             },
@@ -1641,7 +1641,7 @@
               "type":"charaMsg",
               "text":["死んでる・・・"],
               "charaID":"2",
-              "imgID":"3"
+              "imgID":"2"
             },
             {
               "type":"fadeout",

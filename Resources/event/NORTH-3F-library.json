@@ -26,52 +26,26 @@
 	],
 	"3":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":0
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
-					"action":[
-						{
-							"type":"storyMsg",
-							"title":"歴代晩餐会優秀者",
-							"text":["田村剣神・・・豚挽肉\n咲賀谷朱花・・・アメリカ菓子\n戸塚大宝・・・×××"]
-						},
-						{
-							"type":"charaMsg",
-							"text":["田村さんに咲賀谷さん・・・\nどっちも有名な料理人だ・・・\n戸塚さん？は聞いたことがないな・・・"],
-							"charaID":"0",
-							"imgID":"1"
-						},
-						{
-							"type":"addProfile",
-							"charaID":"6",
-							"infoID":"0"
-						},
-						{
-							"type":"changeFlg",
-							"flg":1
-						}
-					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":1
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
 					"type":"storyMsg",
 					"title":"歴代晩餐会優秀者",
 					"text":["田村剣神・・・豚挽肉\n咲賀谷朱花・・・アメリカ菓子\n戸塚大宝・・・×××"]
+				},
+				{
+					"type":"charaMsg",
+					"text":["田村さんに咲賀谷さん・・・\nどっちも有名な料理人だ・・・\n戸塚さん？は聞いたことがないな・・・"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"addProfile",
+					"charaID":"6",
+					"infoID":"0"
+				},
+				{
+					"type":"already"
 				}
 			]
 		}
@@ -457,6 +431,23 @@
 				},
 				{
 					"type":"fadein"
+				}
+			]
+		}
+	],
+	"21":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["22","3"]
+				}
+			],
+			"action":[
+				{
+					"type":"storyMsg",
+					"title":"歴代晩餐会優秀者",
+					"text":["田村剣神・・・豚挽肉\n咲賀谷朱花・・・アメリカ菓子\n戸塚大宝・・・×××"]
 				}
 			]
 		}

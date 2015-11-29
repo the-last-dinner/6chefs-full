@@ -19,15 +19,18 @@
 				},
 				{
 					"type":"getItem",
-					"itemID":"154"
+					"itemID":"154",
+					"name":"大根"
 				},
 				{
 					"type":"getItem",
-					"itemID":"155"	
+					"itemID":"155",
+					"name":"苺"
 				},
 				{
 					"type":"getItem",
-					"itemID":"156"
+					"itemID":"156",
+					"name":"レタス"
 				},
 				{
 					"type":"already"
@@ -52,38 +55,43 @@
 			"action":[
 				{
 					"type":"sequence",
-					"text":["さっさとしまっておこう"],
-					"charaID":"0",
-					"imgID":"1"
-				},
-				{
-					"type":"fadeout"
-				},
-				{
-					"type":"removeItem",
-					"itemID":"154"
-				},
-				{
-					"type":"removeItem",
-					"itemID":"155"
-				},
-				{
-					"type":"removeItem",
-					"itemID":"156"
-				},
-				{
-					"type":"fadein"
-				},
-				{
-					"type":"charaMsg",
-					"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・"],
-					"charaID":"0",
-					"imgID":"1"
-				},
-				{
-					"type":"getItem",
-					"itemID":"157",
-					"name":"ダンボール"
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["さっさとしまっておこう"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"154"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"155"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"156"
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"charaMsg",
+							"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"getItem",
+							"itemID":"157",
+							"name":"ダンボール"
+						}
+					]
 				}
 			]
 		},

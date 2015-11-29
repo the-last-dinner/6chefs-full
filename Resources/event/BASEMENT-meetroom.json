@@ -193,7 +193,7 @@
 								},
 								{
 									"type":"releaseChase",
-									"chaser":"1067"
+									"objID":"1067"
 								},
 								{
 									"type":"removeChara",

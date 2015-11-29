@@ -114,6 +114,9 @@
 						{
 							"type":"removeChara",
 							"objID":"182"
+						},
+						{
+							"type":"already"
 						}
 					]
 				}
@@ -248,6 +251,9 @@
 						{
 							"type":"removeChara",
 							"objID":"183"
+						},
+						{
+							"type":"already"
 						}
 					]
 				}
@@ -264,6 +270,26 @@
 				{
 					"type":"systemMsg",
 					"text":["鍵がかかっている"]
+				}
+			]
+		}
+	],
+	"10":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["17","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"184"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"foodroomdoor"
 				}
 			]
 		}

@@ -194,10 +194,13 @@
 						},
 						{
 							"type":"createEnemy",
+							"charaID":"8",
 							"enemyID":"141",
 							"x":7,
 							"y":17,
-							"times":1.0
+							"times":1.0,
+							"speed":1.3,
+							"movePattern":"0"
 						},
 						{
 							"type":"charaMsg",

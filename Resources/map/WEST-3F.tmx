@@ -44,6 +44,14 @@
    eJxjYBi54BgXA8NxLuLVh3Cj4t9oGB3MBJrtDRT3AWJfIL4K5F+D2icIpIWAeAJQfCKS3hYs5jACxZiAOJmHgSGFB7f7YPL93KjYjAcVI4M4oBuuAHEbUF07EHcAsQAQCwLxHKC4DxD7AvFpIP8MEAtD8X4s7oSBeUA75uNxJ0yeFHfOArphNhfETdeh9BxoWMZyoWIQgLkTGTxG498E2nELzZ45XJjypLhzFIwCcsEDEsqigQSnhkiaZ+UdaBcQB8LwlKWjYBSMguEBhkr5PupO6oJRd1IXDBZ3fuJkYMgEuiULiLOx0NKDpF4P5caPR9sfqAC9nzjYgQaW/JCKJuaFxU9CdPYnuptwyWHzDzlAkhsV0wucA9p1npt4eqDcOQoYGACzNkuE
   </data>
  </layer>
+ <layer name="item" width="42" height="32">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzlENABAABcCXQB2a0D8JDfgxs90luASAU7Ukrbxe7PV1HB88AQAA4LYJqJQBVw==
+  </data>
+ </layer>
  <objectgroup name="collision">
   <object id="1" x="656" y="0" width="16" height="480"/>
   <object id="2" x="0" y="0" width="16" height="480"/>
@@ -209,20 +217,15 @@
   </object>
   <object id="51" x="624" y="112" width="32" height="32">
    <properties>
-    <property name="eventID" value="21"/>
+    <property name="EventID" value="21"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="53" x="432" y="496" width="16" height="16">
    <properties>
-    <property name="eventID" value="22"/>
+    <property name="EventID" value="22"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>
- <layer name="item" width="42" height="32">
-  <data encoding="base64" compression="zlib">
-   eJztzlENABAABcCXQB2a0D8JDfgxs90luASAU7Ukrbxe7PV1HB88AQAA4LYJqJQBVw==
-  </data>
- </layer>
 </map>

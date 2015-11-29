@@ -775,7 +775,7 @@
 								{
 										"text":["ぐっ、、、"],
 										"charaID":"2",
-										"imgID":"3",
+										"imgID":"2",
 										"option":"reaction"
 								},
 								{
@@ -787,7 +787,7 @@
 								{
 									"text":["すまねえ\n気づいたときにはもう・・・"],
 									"charaID":"2",
-									"imgID":"3"
+									"imgID":"2"
 								}
 							]
 						},
@@ -982,9 +982,12 @@
 									"chapterID":"3"
 								},
 								{
+									"type":"fadein"
+								},
+								{
 									"type":"playBGM",
 									"file":"chapter3.wav"
-								},
+								},	
 								{
 									"type":"displayImg",
 									"file":"chapter3.png",
@@ -994,9 +997,6 @@
 									"type":"stopBGM"
 								}
 							]
-						},
-						{
-							"type":"fadein"
 						}
 					]
 				}
@@ -1084,7 +1084,8 @@
 											"direction":"UP",
 											"steps":2.0,
 											"objID":"1034"
-										}								]
+										}		
+									]
 								}
 							]
 						},
@@ -1349,6 +1350,9 @@
 									"chapterID":"3"
 								},
 								{
+									"type":"fadein"
+								},
+								{
 									"type":"playBGM",
 									"file":"chapter3.wav"
 								},
@@ -1361,9 +1365,6 @@
 									"type":"stopBGM"
 								}
 							]
-						},
-						{
-							"type":"fadein"
 						}
 					]
 				}
@@ -1407,7 +1408,7 @@
 			"type":"charaMsg",
 			"text":["ちっと休ませてくれ・・・"],
 			"charaID":"2",
-			"imgID":"3"
+			"imgID":"2"
 		}
 	],
 	"24":[
@@ -1952,7 +1953,7 @@
 								{
 									"text":["ぬう・・・"],
 									"charaID":"2",
-									"imgID":"2",
+									"imgID":"1",
 									"option":"reaction"
 								},
 								{
@@ -1964,7 +1965,7 @@
 								{
 									"text":["お前ら！早くこの部屋から出ろ！"],
 									"charaID":"2",
-									"imgID":"2",
+									"imgID":"1",
 									"option":"reaction"
 								}
 							]
@@ -2056,7 +2057,7 @@
 				},
 				{
 					"type":"chase",
-					"chaser":"1021",
+					"objID":"1021",
 					"target":"hero"
 				},
 				{
@@ -3581,7 +3582,7 @@
 	                {
 	                  "text":["どうやらあの娘は本当に偏食症だったみてぇだ\nそれも人間の肉しか受けつけねぇらしい・・・","（まぁ俺は食うために殺すことは\n悪いことじゃねぇと思うけどよ・・・）","お前らは何で分かったんだ？\nあの娘が偏食症だってよ？"],
 	                  "charaID":"2",
-	                  "imgID":"3"
+	                  "imgID":"2"
 	                },
 	                {
 	                  "text":["実は夫人の目的やこの館のことを教えてくれたのは\n中山氏なのですぞ","中山氏は前回の晩餐会の覇者から\n希崎氏のご息女のことを聞いたらしいですぞ"],
