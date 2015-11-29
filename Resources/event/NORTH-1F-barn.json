@@ -18,7 +18,7 @@
 					"imgID":"1"
 				},
 				{
-					"type":"password",
+					"type":"passward",
 					"pass":"1013",
 					"false":[
 						{
@@ -64,7 +64,7 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"password",
+							"type":"passward",
 							"pass":"1013",
 							"false":[
 								{
