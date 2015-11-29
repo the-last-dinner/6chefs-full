@@ -51,6 +51,14 @@ bool DungeonScene::init(DungeonSceneData* data)
 void DungeonScene::onEnter()
 {
     BaseScene::onEnter();
+    
+    // フェード用カバー
+    Sprite* cover {DungeonSceneManager::getInstance()->getCover()};
+    
+    if(!cover) return;
+    
+    cover->removeFromParent();
+    this->addChild(cover);
 }
 
 // リソースプリロード完了時の処理
@@ -94,6 +102,10 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     PlayerControlTask* playerControlTask {PlayerControlTask::create()};
     this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
+    
+    // コールバック設定
+    eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
+    eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };

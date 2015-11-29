@@ -20,6 +20,8 @@
 #include "Tasks/CameraTask.h"
 #include "Tasks/EventTask.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 // create関数
 DungeonCameraScene* DungeonCameraScene::create(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback)
 {
@@ -57,14 +59,14 @@ bool DungeonCameraScene::init(DungeonCameraSceneData* data, GameEvent* event, Ev
 // シーン切り替え終了時
 void DungeonCameraScene::onEnter()
 {
-    BaseScene::onEnter();
+    DungeonScene::onEnter();
 }
 
 // プリロード終了時
 void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
     // マップレイヤーを生成
-    TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
+    TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
     this->addChild(mapLayer);
     this->mapLayer = mapLayer;
@@ -84,6 +86,17 @@ void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
     EventTask* eventTask { EventTask::create() };
     this->addChild(eventTask);
     this->eventTask = eventTask;
+    
+    // カメラの設定
+    // IDのオブジェクトが存在すれば、そのオブジェクトが常に中心に来るようにする
+    if(this->getData()->getTargetId() != etoi(ObjectID::UNDIFINED))
+    {
+        cameraTask->setTarget(mapLayer->getMapObjectList()->getMapObject(this->getData()->getTargetId()));
+    }
+    else
+    {
+        cameraTask->setCenter(Point(this->getData()->getLocation().x, this->getData()->getLocation().y));
+    }
     
     // Trigger::INITを実行
     eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), [this, loadingLayer](){this->onInitEventFinished(loadingLayer);});
@@ -110,4 +123,10 @@ void DungeonCameraScene::onAfterInitEventFinished()
 void DungeonCameraScene::onCameraEventFinished()
 {
     if(this->callback) this->callback();
+}
+
+// データ取得
+DungeonCameraSceneData* DungeonCameraScene::getData() const
+{
+    return dynamic_cast<DungeonCameraSceneData*>(this->data);
 }

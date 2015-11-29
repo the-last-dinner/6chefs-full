@@ -152,6 +152,12 @@ void DungeonSceneManager::fadeIn(const float duration, function<void()> callback
     cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
+// フェード用カバーを取得
+Sprite* DungeonSceneManager::getCover() const
+{
+    return this->cover;
+}
+
 #pragma mark -
 #pragma mark TiledMapLayer
 
@@ -202,26 +208,12 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     
     DungeonScene* scene {DungeonScene::create(data)};
     
-    if(this->needsShiftCover())
-    {
-        this->cover->removeFromParent();
-        
-        scene->addChild(this->cover);
-    }
-    
     Director::getInstance()->replaceScene(scene);
 }
 
 // カメラシーンへ切り替え（スタックに積む）
 void DungeonSceneManager::pushCameraScene(DungeonCameraScene* scene)
 {
-    if(this->needsShiftCover())
-    {
-        this->cover->removeFromParent();
-        
-        scene->addChild(this->cover);
-    }
-    
     Director::getInstance()->pushScene(scene);
 }
 
@@ -229,16 +221,6 @@ void DungeonSceneManager::pushCameraScene(DungeonCameraScene* scene)
 void DungeonSceneManager::popCameraScene()
 {
     Director::getInstance()->popScene();
-}
-
-// フェード用カバーを移し替える必要があるかどうか
-bool DungeonSceneManager::needsShiftCover() const
-{
-    if(!this->cover) return false;
-    
-    if(!this->cover->getParent()) return false;
-    
-    return true;
 }
 
 #pragma mark -
@@ -329,14 +311,6 @@ int DungeonSceneManager::getRunningEventId() const
 int DungeonSceneManager::getPushingEventid() const
 {
     return this->getScene()->eventTask->getPushingEventId();
-}
-
-#pragma mark -
-#pragma mark PlayerControlTask
-
-void DungeonSceneManager::setPlayerControlEnable(bool enable)
-{
-    this->getScene()->playerControlTask->setControlEnable(enable, this->getScene()->party);
 }
 
 #pragma mark -

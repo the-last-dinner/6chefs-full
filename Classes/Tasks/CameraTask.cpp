@@ -84,6 +84,8 @@ bool CameraTask::init()
 // 追いかけるオブジェクトを設定
 void CameraTask::setTarget(MapObject* target)
 {
+    if(!target) return;
+    
     CC_SAFE_RELEASE(this->target);
     CC_SAFE_RETAIN(target);
     this->target = target;
@@ -111,7 +113,7 @@ void CameraTask::move(const Point& gridPosition, const float duration, function<
     
     Point toPosition {-MapUtils::convertToCCPoint(this->mapLayer->getMapSize(), gridPosition, Size(GRID, GRID)) + Director::getInstance()->getWinSize() / 2};
     
-    this->runAction(Sequence::createWithTwoActions(EaseCubicActionOut::create(MoveTo::create(duration, toPosition)), CallFunc::create(callback)));
+    this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->mapLayer, EaseCubicActionOut::create(MoveTo::create(duration, toPosition))), CallFunc::create(callback)));
 }
 
 // 指定マス座標が中心に設定

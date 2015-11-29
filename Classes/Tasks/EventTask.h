@@ -24,6 +24,9 @@ public:
     CREATE_FUNC(EventTask)
 
 // インスタンス変数
+public:
+    function<void()> onRunEvent { nullptr };
+    function<void()> onAllEventFinished { nullptr };
 private:
     deque<EventWithId> eventQueue {};
     EventWithId runningEvent {EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};

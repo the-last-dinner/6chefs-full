@@ -40,6 +40,8 @@ private:
     virtual void onInitEventFinished(LoadingLayer* loadingLayer) override;
     virtual void onAfterInitEventFinished() override;
     void onCameraEventFinished();
+    
+    DungeonCameraSceneData* getData() const;
 };
 
 #endif /* defined(__LastSupper__DungeonCameraScene__) */

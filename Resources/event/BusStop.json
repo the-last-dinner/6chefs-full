@@ -121,7 +121,7 @@
       "direction": "DOWN",
       "x": 49,
       "y": 25,
-      "movePattern": 0,
+      "movePattern": "0",
       "times": 1,
       "speed": 1.0
     }

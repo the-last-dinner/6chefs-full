@@ -129,12 +129,12 @@ bool EventTask::pushEventFront(int eventId)
     return true;
 }
 
-// キューにイベントを後ろから詰める、EventIDは、キューの先頭のものを使用
+// キューにイベントを後ろから詰める、EventIDはUNDIFINEDを使用
 void EventTask::pushEventBack(GameEvent* event)
 {
     if(!event) return;
     
-    this->eventQueue.push_back({this->getEventId(this->eventQueue.front()), event});
+    this->eventQueue.push_back({etoi(EventID::UNDIFINED), event});
 }
 
 // キューにイベントを前から詰める、EventIDは現在実行中のものを使用
@@ -181,8 +181,7 @@ void EventTask::update(float delta)
     {
         Director::getInstance()->getScheduler()->unscheduleUpdate(this);
  
-        // 操作可能状態に
-        DungeonSceneManager::getInstance()->setPlayerControlEnable(true);
+        if(this->onAllEventFinished) this->onAllEventFinished();
     }
     
     // イベントを実行
@@ -250,8 +249,7 @@ GameEvent* EventTask::createEventById(int eventId)
     
     CC_SAFE_RETAIN(event);
     
-    // 生成されたらキューに詰められるので、この場で操作不可状態にしておく
-    DungeonSceneManager::getInstance()->setPlayerControlEnable(false);
+    if(this->onRunEvent) this->onRunEvent();
     
     return event;
 }

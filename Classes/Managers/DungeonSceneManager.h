@@ -60,6 +60,7 @@ public:
     // Scene
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
     void fadeIn(const float duration, function<void()> callback);
+    Sprite* getCover() const;
     
     // TiledMaplayer
     Size getMapSize() const;
@@ -70,7 +71,6 @@ public:
     void changeMap(const Location& location, const int initEventId);
     void pushCameraScene(DungeonCameraScene* scene);
     void popCameraScene();
-    bool needsShiftCover() const;
     
     // EventListener
     bool isPressed(const Key& key);
@@ -92,9 +92,6 @@ public:
     bool existsEvent() const;
     int getRunningEventId() const;
     int getPushingEventid() const;
-    
-    // PlayerControlTask
-    void setPlayerControlEnable(bool enable);
     
     // StopWatch
     StopWatch* getStopWatch();

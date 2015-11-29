@@ -78,6 +78,7 @@ bool CreateCameraEvent::init(rapidjson::Value& json)
     // イベント
     if(!this->validator->hasMember(json, member::ACTION)) return false;
     this->event = this->factory->createGameEvent(json[member::ACTION]);
+    CC_SAFE_RETAIN(this->event);
     
     return true;
 }
