@@ -145,11 +145,9 @@ void DungeonSceneManager::fadeIn(const float duration, function<void()> callback
         return;
     }
     
-    Sprite* cover { this->cover };
+    CC_SAFE_RELEASE(this->cover);
+    this->cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
     this->cover = nullptr;
-    
-    CC_SAFE_RELEASE(cover);
-    cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
 // フェード用カバーを取得

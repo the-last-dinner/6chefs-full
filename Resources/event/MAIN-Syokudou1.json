@@ -3404,6 +3404,9 @@
 		          "type":"playBGM",
 		          "file":"Mozart-OboeConcerto-1.mp3"
 		        },
+            {
+              "type":"fadein"
+            },
 		        {
 		          "type": "charaMsg",
 		          "talk": [
