@@ -11,9 +11,6 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Layers/Menu/NumberSelector.h"
 
-// 定数
-const int PasswordEventLayer::PASS_LENGTH {4};
-
 // create関数
 PasswordEventLayer* PasswordEventLayer::create(const string& password, ResultCallback callback)
 {
@@ -40,7 +37,8 @@ PasswordEventLayer::~PasswordEventLayer(){FUNCLOG}
 // 初期化
 bool PasswordEventLayer::init(const string& password, ResultCallback callback)
 {
-    if(!Layer::init() || password == ""||  !callback) return false;
+    this->pass_length = password.length();
+    if(!Layer::init() || this->pass_length < 1 ||  !callback) return false;
     
     // 変数の保存
     this->password = password;
@@ -65,8 +63,8 @@ bool PasswordEventLayer::init(const string& password, ResultCallback callback)
     
     // 数字ラベル
     Size numPanelSize = numPanel->getContentSize();
-    float eachSize = numPanelSize.width / PASS_LENGTH;
-    for (int i = 0; i < PASS_LENGTH; i++)
+    float eachSize = numPanelSize.width / this->pass_length;
+    for (int i = 0; i < this->pass_length; i++)
     {
         Label* label { Label::createWithTTF("-", "fonts/cinecaption2.28.ttf", 48) };
         label->setPosition(Point(i * eachSize + eachSize/2, numPanelSize.height / 2));
@@ -95,14 +93,26 @@ void PasswordEventLayer::onNumberSelected(int num)
     // チェック状態確認
     if(this->checking) return;
     
-    // 入力登録
+    // ボタンにおける処理
     int index = this->inputed.size();
-    this->inputed.push_back(to_string(num));
-    this->confirmLabels[index]->setString(to_string(num));
+    if (num<10)
+    {
+        // 入力登録
+        this->inputed.push_back(to_string(num));
+        this->confirmLabels[index]->setString(to_string(num));
+    }
+    else
+    {
+        // 入力削除
+        if(index == 0) return;
+        this->inputed.pop_back();
+        this->confirmLabels[index-1]->setString("-");
+    }
+    
     
     // サイズの確認
     int len = this->inputed.size();
-    if (len >= PASS_LENGTH)
+    if (len >= this->pass_length)
     {
         string inputed_string = "";
         for(int i = 0; i < len; i++)

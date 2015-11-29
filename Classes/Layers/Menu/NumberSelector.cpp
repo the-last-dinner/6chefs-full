@@ -26,7 +26,7 @@ bool NumberSelector::init(SpriteUtils::Square& square)
     // ウインドウの中にボタンの生成
     float buttonMargin = 6.f;
     float buttonSize = windowSize.width / indexSize.x;
-    for(int i=0; i<10; i++)
+    for(int i=0; i<=10; i++)
     {
         // ボタンを作成
         DrawNode* circle = DrawNode::create();
@@ -36,7 +36,7 @@ bool NumberSelector::init(SpriteUtils::Square& square)
         window->addChild(circle);
         
         // ボタンラベルを作成
-        Label* label = Label::createWithTTF(to_string(this->indexToLabel(i)), "fonts/cinecaption2.28.ttf", 24);
+        Label* label = Label::createWithTTF(i < 10 ? to_string(this->indexToLabel(i)) : "C", "fonts/cinecaption2.28.ttf", 24);
         label->setPosition(circle->getContentSize().width/2, circle->getContentSize().height/2);
         label->setColor(Color3B::WHITE);
         circle->addChild(label);
@@ -108,5 +108,5 @@ void NumberSelector::onMenuKeyPressed()
 // インデックスの値からラベルの値に変換
 int NumberSelector::indexToLabel(int idx)
 {
-    return (idx+1)%10;
+    return idx < 10 ? (idx+1)%10 : idx;
 }

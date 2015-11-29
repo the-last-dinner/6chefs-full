@@ -25,17 +25,16 @@ public:
         SIZE,
     };
     using ResultCallback = function<void(Result)>;
-private:
-    static const int PASS_LENGTH;
     
     // クラスメソッド
 public:
     static PasswordEventLayer* create(const string& password, ResultCallback callback);
     
     // インスタンス変数
-public:
+private:
     bool checking {false};
     string password {};
+    int pass_length {1};
     ResultCallback callback { nullptr };
     vector<string> inputed {};
     vector<Label*> confirmLabels {};

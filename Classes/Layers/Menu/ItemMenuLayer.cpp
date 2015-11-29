@@ -92,7 +92,7 @@ bool ItemMenuLayer::init()
     // アイテムリスト
     square = SpriteUtils::Square(0,25,100,80);
     //margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
-    margin = SpriteUtils::Margin(0);
+    margin = SpriteUtils::Margin(1.0);
     Sprite* center = SpriteUtils::getSquareSprite(square, margin);
     center->setColor(Color3B::BLACK);
     //Sprite* center {Sprite::createWithSpriteFrameName("item_selector.png")};
