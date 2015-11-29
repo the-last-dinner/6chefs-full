@@ -25,7 +25,7 @@ private:
     int initEventId { etoi(EventID::UNDIFINED) };
 	
 // インスタンスメソッド
-private:
+protected:
 	DungeonSceneData();
 	~DungeonSceneData();
     bool init(const Location& location);

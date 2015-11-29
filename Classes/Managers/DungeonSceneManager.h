@@ -13,6 +13,7 @@
 
 #include "Datas/MapObject/EnemyData.h"
 
+class DungeonCameraScene;
 class DungeonScene;
 class TiledMapLayer;
 class MapObject;
@@ -59,6 +60,7 @@ public:
     // Scene
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
     void fadeIn(const float duration, function<void()> callback);
+    Sprite* getCover() const;
     
     // TiledMaplayer
     Size getMapSize() const;
@@ -67,6 +69,8 @@ public:
     
     // Director
     void changeMap(const Location& location, const int initEventId);
+    void pushCameraScene(DungeonCameraScene* scene);
+    void popCameraScene();
     
     // EventListener
     bool isPressed(const Key& key);
@@ -74,6 +78,9 @@ public:
     
     // Enemy
     vector<SummonData> getSummonDatas() const;
+    
+    // CameraTask
+    void moveCamera(const Point& gridPosition, const float duration, function<void()> callback);
     
     // EventTask
     void runEvent(const int eventId);
@@ -85,9 +92,6 @@ public:
     bool existsEvent() const;
     int getRunningEventId() const;
     int getPushingEventid() const;
-    
-    // PlayerControlTask
-    void setPlayerControlEnable(bool enable);
     
     // StopWatch
     StopWatch* getStopWatch();

@@ -36,6 +36,8 @@ public:
     void setTarget(MapObject* target);
     void stopFollowing();
     void resumeFollowing();
+    void move(const Point& gridPosition, const float duration, function<void()> callback);
+    void setCenter(const Point& gridPosition);
     void update(float delta);
 };
 

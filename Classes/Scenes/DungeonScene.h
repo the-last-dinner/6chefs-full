@@ -49,7 +49,7 @@ protected:
     DungeonScene();
     ~DungeonScene();
     
-private:
+protected:
 	virtual bool init(DungeonSceneData* data);
     virtual void onEnter() override;
 	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;

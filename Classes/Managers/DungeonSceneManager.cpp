@@ -22,7 +22,9 @@
 #include "MapObjects/Party.h"
 
 #include "Scenes/DungeonScene.h"
+#include "Scenes/DungeonCameraScene.h"
 
+#include "Tasks/CameraTask.h"
 #include "Tasks/EnemyTask.h"
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
@@ -122,11 +124,15 @@ Party* DungeonSceneManager::getParty()
 // フェードアウト
 void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, function<void()> callback)
 {
+    // 既にフェードアウトしている場合は無視
+    if(this->cover) return;
+    
     Sprite* cover { Sprite::create() };
     cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     cover->setColor(color);
     cover->setPosition(cover->getContentSize() / 2);
     this->getScene()->addChild(cover, Priority::SCREEN_COVER);
+    CC_SAFE_RETAIN(cover);
     this->cover = cover;
     
     cover->setOpacity(0.f);
@@ -142,10 +148,15 @@ void DungeonSceneManager::fadeIn(const float duration, function<void()> callback
         return;
     }
     
-    Sprite* cover { this->cover };
+    CC_SAFE_RELEASE(this->cover);
+    this->cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
     this->cover = nullptr;
-    
-    cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
+}
+
+// フェード用カバーを取得
+Sprite* DungeonSceneManager::getCover() const
+{
+    return this->cover;
 }
 
 #pragma mark -
@@ -196,7 +207,21 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     DungeonSceneData* data { DungeonSceneData::create(location) };
     data->setInitialEventId(initEventId);
     
-    Director::getInstance()->replaceScene(DungeonScene::create(data));
+    DungeonScene* scene {DungeonScene::create(data)};
+    
+    Director::getInstance()->replaceScene(scene);
+}
+
+// カメラシーンへ切り替え（スタックに積む）
+void DungeonSceneManager::pushCameraScene(DungeonCameraScene* scene)
+{
+    Director::getInstance()->pushScene(scene);
+}
+
+// カメラシーンを終了する
+void DungeonSceneManager::popCameraScene()
+{
+    Director::getInstance()->popScene();
 }
 
 #pragma mark -
@@ -221,6 +246,15 @@ vector<Key> DungeonSceneManager::getPressedCursorKeys() const
 vector<SummonData> DungeonSceneManager::getSummonDatas() const
 {
     return this->summonDatas;
+}
+
+#pragma mark -
+#pragma mark CameraTask
+
+// カメラを指定座標が中心になるように移動
+void DungeonSceneManager::moveCamera(const Point& gridPosition, const float duration, function<void()> callback)
+{
+    this->getScene()->cameraTask->move(gridPosition, duration, callback);
 }
 
 #pragma mark -
@@ -278,14 +312,6 @@ int DungeonSceneManager::getRunningEventId() const
 int DungeonSceneManager::getPushingEventid() const
 {
     return this->getScene()->eventTask->getPushingEventId();
-}
-
-#pragma mark -
-#pragma mark PlayerControlTask
-
-void DungeonSceneManager::setPlayerControlEnable(bool enable)
-{
-    this->getScene()->playerControlTask->setControlEnable(enable, this->getScene()->party);
 }
 
 #pragma mark -
