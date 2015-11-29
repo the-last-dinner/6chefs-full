@@ -146,6 +146,13 @@
           ]
         },
         {
+          "type":"fadeout"
+        },
+        {
+          "type":"wait",
+          "time":3.0
+        },
+        {
           "type": "changeMap",
           "mapID": "3",
           "x": 14,

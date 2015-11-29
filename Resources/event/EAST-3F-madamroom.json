@@ -63,7 +63,8 @@
 					"x":14,
 					"y":23,
 					"direction":"UP",
-					"speed":0.2
+					"movePattern":"5",
+					"speed":0.02
 				},
 				{
 					"type":"spawn",
