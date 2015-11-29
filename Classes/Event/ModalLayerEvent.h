@@ -129,4 +129,23 @@ private:
     virtual void run() override;
 };
 
+// パスワードイベント
+class PasswordEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(PasswordEvent, rapidjson::Value&)
+private:
+    string password {};
+    int sEventId { static_cast<int>(EventID::UNDIFINED) };
+    int fEventId { static_cast<int>(EventID::UNDIFINED) };
+    GameEvent* sEvent { nullptr };
+    GameEvent* fEvent { nullptr };
+    GameEvent* event { nullptr };
+private:
+    PasswordEvent() {FUNCLOG};
+    ~PasswordEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MessageEvent__) */

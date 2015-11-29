@@ -394,7 +394,7 @@ bool PlayerDataManager::removeItem(const int item_id)
 }
 
 // パーティメンバーを解除する
-bool PlayerDataManager::removePartyMember(const int chara_id)
+bool PlayerDataManager::removePartyMember(const int obj_id)
 {
     bool isExsits = false;
     vector<CharacterData> members = this->getPartyMemberAll();
@@ -403,7 +403,7 @@ bool PlayerDataManager::removePartyMember(const int chara_id)
     this->local["party"].SetArray();
     for (int i = 0; i < member_size; i++)
     {
-        if (members[i].chara_id == chara_id)
+        if (members[i].obj_id == obj_id)
         {
             isExsits = true;
         }

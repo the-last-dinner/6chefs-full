@@ -54,6 +54,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"displayImg", DispImageEvent::create},         // 画像表示
         {"barrage", ButtonMashingEvent::create},        // 連打イベント
         {"questionMsg", SelectEvent::create},           // 選択肢イベント
+        {"password", PasswordEvent::create},            // パスワードイベント
         
         // シーン系
         {"changeMap", ChangeMapEvent::create},          // マップ移動
@@ -73,6 +74,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"createChara", CreateMapObjectEvent::create},      // マップオブジェクトを無効リストから有効リストへ移動、マップ上に表示
         {"removeChara", RemoveMapObjectEvent::create},      // マップオブジェクトを削除（有効リストのもののみ対象）
         {"reaction", ReactionEvent::create},                // リアクション
+        {"chase", FollowCharacterEvent::create},            // パーティーの追加
+        {"releaseChase", ReleaseFollowingCharacterEvent::create},   // パーティの解除
         
         // キャラクター系
         {"changeDirection", ChangeDirectionEvent::create},  // 方向転換

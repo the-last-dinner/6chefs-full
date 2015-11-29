@@ -69,7 +69,7 @@ public:
     
     // REMOVE
     bool removeItem(const int item_id);
-    bool removePartyMember(const int chara_id);
+    bool removePartyMember(const int obj_id);
     
     // GET
     Location getLocation(const int num = 0);

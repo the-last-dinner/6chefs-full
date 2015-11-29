@@ -142,3 +142,9 @@ void PlayerControlTask::setControlEnable(bool enable, Party* party)
         this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
     }
 }
+
+// 操作可能状態か確認
+bool PlayerControlTask::checkControlEnabled()
+{
+    return this->enableControl;
+}

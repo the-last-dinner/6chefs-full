@@ -111,7 +111,7 @@ EventScriptValidator* DungeonSceneManager::getScriptValidator() const
 }
 
 // パーティを取得
-Party* DungeonSceneManager::getParty() const
+Party* DungeonSceneManager::getParty()
 {
     return this->getScene()->party;
 }

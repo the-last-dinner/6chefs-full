@@ -146,14 +146,8 @@ bool CountDownEvent::init(rapidjson::Value& json)
     // conditionを保存
     if (this->validator->hasMember(json, member::CONDITION))
     {
-        this->doc.SetObject();
-        rapidjson::Value cond_val  (kStringType);
-        cond_val.SetString(member::CONDITION, strlen(member::CONDITION), doc.GetAllocator());
-        this->doc.AddMember(cond_val, json, doc.GetAllocator());
-    }
-    else
-    {
-        this->doc.SetNull();
+        this->equip = stoi(json[member::CONDITION][0][member::EQUIP][0].GetString());
+        this->checkEquip = true;
     }
     
     // 成功時イベント
@@ -191,9 +185,9 @@ void CountDownEvent::run()
     {
         // 条件チェック
         bool condition = false;
-        if(this->doc.IsObject() && this->validator->hasMember(this->doc, member::CONDITION))
+        if(this->checkEquip)
         {
-             condition = this->validator->detectCondition(this->doc);
+            condition = PlayerDataManager::getInstance()->checkItemEquipment(this->equip);
         }
         
         // 条件を満たしていた場合
@@ -210,7 +204,6 @@ void CountDownEvent::run()
                 DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
             }
             DungeonSceneManager::getInstance()->runEventQueue();
-            this->setDone();
             return false;
         }
         CCLOG("COUNT DOWN >> %f", this->second - time);
@@ -228,7 +221,6 @@ void CountDownEvent::run()
                 DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
             }
             DungeonSceneManager::getInstance()->runEventQueue();
-            this->setDone();
             return false;
         }
         return true;

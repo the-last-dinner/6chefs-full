@@ -40,6 +40,7 @@ public:
     void walking(const vector<Key>& keys, Party* party);      // 歩行中
     void onPartyMovedOneGrid(Party* party);                   // 一マス分移動し終えた時
     void setControlEnable(bool enable, Party* party);         // 操作可能状態かどうか設定
+    bool checkControlEnabled();                                // 操作可能状態か確認
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

@@ -13,6 +13,7 @@
 
 #include "MapObjects/MapObject.h"
 #include "MapObjects/MapObjectList.h"
+#include "Mapobjects/Party.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -100,4 +101,37 @@ void RemoveMapObjectEvent::run()
 {
     this->setDone();
     DungeonSceneManager::getInstance()->getMapObjectList()->removeById(stoi(this->objectId));
+}
+
+#pragma mark -
+#pragma mark FollowCharacterEvent
+
+bool FollowCharacterEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    return true;
+}
+
+void FollowCharacterEvent::run()
+{
+    this->setDone();
+    MapObject* follower {this->validator->getMapObjectById(this->objectId)};
+    DungeonSceneManager::getInstance()->getParty()->addMember(static_cast<Character*>(follower));
+}
+
+#pragma mark -
+#pragma mark ReleaseFollowingCharacterEvent
+
+bool ReleaseFollowingCharacterEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    return true;
+}
+
+void ReleaseFollowingCharacterEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->getParty()->removeMember(stoi(this->objectId));
 }
