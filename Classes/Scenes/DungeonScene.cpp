@@ -141,14 +141,23 @@ Party* DungeonScene::createParty()
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
+    // 主人公がメニューを開ける状態かチェック
+    if (!this->playerControlTask->checkControlEnabled())
+    {
+        return;
+    }
+    
+    // リスナーを停止
     this->listener->setEnabled(false);
     DungeonSceneManager::getInstance()->pauseStopWatch(); // カウントダウンしてれば停止
+    
     // 主人公の位置をセット
     Character* chara = this->party->getMainCharacter();
     Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
     Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
     PlayerDataManager::getInstance()->setLocation(location);
+    
     // スクショをとって、ダンジョンメニューシーンをプッシュ
     string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));
     utils::captureScreen([=](bool success, string filename){

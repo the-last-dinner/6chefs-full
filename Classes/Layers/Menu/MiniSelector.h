@@ -58,6 +58,7 @@ public:
         Color3B getColor(){return color;};
         
     };
+    
     // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(MiniSelector, Selector&)
@@ -65,24 +66,24 @@ public:
     virtual bool init(Selector& selector);
     virtual bool init(SelectorWithSprite& selector);
     
-    // インスタンスメソッド
-private:
-    virtual void onIndexChanged(int newIdx, bool sound);
-    virtual void onSpacePressed(int idx);
-    virtual void onMenuKeyPressed();
-    void changeItemDiscription(const int idx);
-protected:
-    MiniSelector();
-    ~MiniSelector();
-public:
-    virtual void show() override;
-    virtual void hide() override;
     // インスタンス変数
 public:
     bool confirm_flag {false};
     function<void()> onMiniSelectorCanceled { nullptr };
     function<void(int index)> onMiniIndexSelected {nullptr};
     Sprite* window {nullptr};
+    
+    // インスタンスメソッド
+private:
+    virtual void onIndexChanged(int newIdx, bool sound);
+    virtual void onSpacePressed(int idx);
+    virtual void onMenuKeyPressed();
+protected:
+    MiniSelector();
+    ~MiniSelector();
+public:
+    virtual void show() override;
+    virtual void hide() override;
 };
 
 #endif /* MiniSelector_h */

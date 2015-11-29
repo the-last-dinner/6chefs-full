@@ -35,10 +35,14 @@
 		26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */; };
 		262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
 		262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
+		2640E14B1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */; };
+		2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
 		2672664E1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */; };
 		2672664F1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */; };
+		26857A2F1C0AEA6500295998 /* NumberSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26857A2D1C0AEA6500295998 /* NumberSelector.cpp */; };
+		26857A301C0AEA6500295998 /* NumberSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26857A2D1C0AEA6500295998 /* NumberSelector.cpp */; };
 		26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
@@ -289,10 +293,14 @@
 		26221DFE1BEE86E7000203E6 /* MiniSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniSelector.h; path = ../Classes/Layers/Menu/MiniSelector.h; sourceTree = "<group>"; };
 		262728641C084D3A0028B732 /* NotificationBand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationBand.cpp; path = ../Classes/UI/NotificationBand.cpp; sourceTree = "<group>"; };
 		262728651C084D3A0028B732 /* NotificationBand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationBand.h; path = ../Classes/UI/NotificationBand.h; sourceTree = "<group>"; };
+		2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PasswordEventLayer.cpp; path = ../Classes/Layers/Dungeon/PasswordEventLayer.cpp; sourceTree = "<group>"; };
+		2640E14A1C0ADAF300BC74F7 /* PasswordEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasswordEventLayer.h; path = ../Classes/Layers/Dungeon/PasswordEventLayer.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
 		266E76531BC1160B005BC878 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = ../Classes/Scenes/DungeonMenuScene.h; sourceTree = "<group>"; };
 		2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StopWatch.cpp; path = ../Classes/Models/StopWatch.cpp; sourceTree = "<group>"; };
 		2672664D1C087BFE00FD1CF6 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopWatch.h; path = ../Classes/Models/StopWatch.h; sourceTree = "<group>"; };
+		26857A2D1C0AEA6500295998 /* NumberSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NumberSelector.cpp; path = ../Classes/Layers/Menu/NumberSelector.cpp; sourceTree = "<group>"; };
+		26857A2E1C0AEA6500295998 /* NumberSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberSelector.h; path = ../Classes/Layers/Menu/NumberSelector.h; sourceTree = "<group>"; };
 		26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringUtils.cpp; path = ../Classes/Utils/StringUtils.cpp; sourceTree = "<group>"; };
 		26BA61F01BCB59EA00CE63C7 /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtils.h; path = ../Classes/Utils/StringUtils.h; sourceTree = "<group>"; };
 		26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemMenuLayer.cpp; path = ../Classes/Layers/Menu/ItemMenuLayer.cpp; sourceTree = "<group>"; };
@@ -969,6 +977,8 @@
 				551B79C11BF0F54A000B790A /* ButtonMashingLayer.h */,
 				DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */,
 				DC281A441BF8824400A6F8BF /* SelectEventLayer.h */,
+				2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */,
+				2640E14A1C0ADAF300BC74F7 /* PasswordEventLayer.h */,
 			);
 			name = Dungeon;
 			sourceTree = "<group>";
@@ -1073,6 +1083,8 @@
 				26221DFE1BEE86E7000203E6 /* MiniSelector.h */,
 				260F45CC1BF08230003C9B2F /* CharacterMenuLayer.cpp */,
 				260F45CD1BF08230003C9B2F /* CharacterMenuLayer.h */,
+				26857A2D1C0AEA6500295998 /* NumberSelector.cpp */,
+				26857A2E1C0AEA6500295998 /* NumberSelector.h */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1304,6 +1316,7 @@
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */,
 				55C3C1EE1BD143B700ECDB50 /* GameTask.cpp in Sources */,
+				2640E14B1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
 				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
@@ -1356,6 +1369,7 @@
 				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				5564CCED1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */,
 				5564CCE41BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
+				26857A2F1C0AEA6500295998 /* NumberSelector.cpp in Sources */,
 				554470891BDF89990048CD0B /* FlagEvent.cpp in Sources */,
 				266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
@@ -1404,6 +1418,7 @@
 				556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
+				2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
 				260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
@@ -1418,6 +1433,7 @@
 				26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
+				26857A301C0AEA6500295998 /* NumberSelector.cpp in Sources */,
 				55C3C1EF1BD143B700ECDB50 /* GameTask.cpp in Sources */,
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,

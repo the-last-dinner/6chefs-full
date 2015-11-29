@@ -21,6 +21,7 @@
 #include "Layers/Dungeon/ButtonMashingLayer.h"
 #include "Layers/Dungeon/DisplayImageLayer.h"
 #include "Layers/Dungeon/SelectEventLayer.h"
+#include "Layers/Dungeon/PasswordEventLayer.h"
 #include "Layers/Message/CharacterMessagelayer.h"
 #include "Layers/Message/StoryMessagelayer.h"
 #include "Layers/Message/SystemMessagelayer.h"
@@ -375,3 +376,80 @@ void SelectEvent::run()
     
     DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::SELECT_LAYER);
 }
+
+#pragma mark -
+#pragma mark PasswordEvent
+
+bool PasswordEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // 正解のパスワード
+    this->password = json[member::PASSWORD].GetString();
+    
+    // 成功時イベント
+    if(this->validator->hasMember(json, member::TRUE_))
+    {
+        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
+        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
+        CC_SAFE_RETAIN(this->sEvent);
+    }
+    
+    // 失敗時イベント
+    if(this->validator->hasMember(json, member::FALSE_))
+    {
+        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
+        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
+        CC_SAFE_RETAIN(this->fEvent);
+    }
+    
+    return true;
+}
+
+void PasswordEvent::run()
+{
+    PasswordEventLayer* pLayer {PasswordEventLayer::create(this->password, [this](PasswordEventLayer::Result result)
+    {
+        this->setDone();
+        
+        if(result == PasswordEventLayer::Result::SUCCESS)
+        {
+            if(this->sEvent)
+            {
+                this->event = this->sEvent;
+                this->sEvent = nullptr;
+            }
+            else
+            {
+                // ID指定の場合
+                DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
+            }
+        }
+        else
+        {
+            if(this->fEvent)
+            {
+                this->event = this->fEvent;
+                this->fEvent = nullptr;
+            }
+            else
+            {
+                // ID指定の場合
+                DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
+            }
+        }
+        // イベント実行
+        DungeonSceneManager::getInstance()->pushEventFront(this->event);
+    }
+    )};
+    
+    if(!pLayer)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(pLayer, Priority::SELECT_LAYER);
+}
+
