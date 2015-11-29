@@ -22,7 +22,9 @@
 #include "MapObjects/Party.h"
 
 #include "Scenes/DungeonScene.h"
+#include "Scenes/DungeonCameraScene.h"
 
+#include "Tasks/CameraTask.h"
 #include "Tasks/EnemyTask.h"
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
@@ -127,6 +129,7 @@ void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, fu
     cover->setColor(color);
     cover->setPosition(cover->getContentSize() / 2);
     this->getScene()->addChild(cover, Priority::SCREEN_COVER);
+    CC_SAFE_RETAIN(cover);
     this->cover = cover;
     
     cover->setOpacity(0.f);
@@ -145,6 +148,7 @@ void DungeonSceneManager::fadeIn(const float duration, function<void()> callback
     Sprite* cover { this->cover };
     this->cover = nullptr;
     
+    CC_SAFE_RELEASE(cover);
     cover->runAction(Sequence::create(FadeOut::create(duration), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
@@ -196,7 +200,45 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     DungeonSceneData* data { DungeonSceneData::create(location) };
     data->setInitialEventId(initEventId);
     
-    Director::getInstance()->replaceScene(DungeonScene::create(data));
+    DungeonScene* scene {DungeonScene::create(data)};
+    
+    if(this->needsShiftCover())
+    {
+        this->cover->removeFromParent();
+        
+        scene->addChild(this->cover);
+    }
+    
+    Director::getInstance()->replaceScene(scene);
+}
+
+// カメラシーンへ切り替え（スタックに積む）
+void DungeonSceneManager::pushCameraScene(DungeonCameraScene* scene)
+{
+    if(this->needsShiftCover())
+    {
+        this->cover->removeFromParent();
+        
+        scene->addChild(this->cover);
+    }
+    
+    Director::getInstance()->pushScene(scene);
+}
+
+// カメラシーンを終了する
+void DungeonSceneManager::popCameraScene()
+{
+    Director::getInstance()->popScene();
+}
+
+// フェード用カバーを移し替える必要があるかどうか
+bool DungeonSceneManager::needsShiftCover() const
+{
+    if(!this->cover) return false;
+    
+    if(!this->cover->getParent()) return false;
+    
+    return true;
 }
 
 #pragma mark -
@@ -221,6 +263,15 @@ vector<Key> DungeonSceneManager::getPressedCursorKeys() const
 vector<SummonData> DungeonSceneManager::getSummonDatas() const
 {
     return this->summonDatas;
+}
+
+#pragma mark -
+#pragma mark CameraTask
+
+// カメラを指定座標が中心になるように移動
+void DungeonSceneManager::moveCamera(const Point& gridPosition, const float duration, function<void()> callback)
+{
+    this->getScene()->cameraTask->move(gridPosition, duration, callback);
 }
 
 #pragma mark -

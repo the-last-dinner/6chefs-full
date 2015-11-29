@@ -58,12 +58,13 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // シーン系
         {"changeMap", ChangeMapEvent::create},          // マップ移動
-        {"camera", CameraEvent::create},                // カメラ
+        {"createCamera", CreateCameraEvent::create},    // カメラ生成
+        {"camera", MoveCameraEvent::create},            // カメラ移動
         {"wait", WaitEvent::create},                    // 時間待機
         {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
-        {"countDown", CountDownEvent::create},               // カウントダウン
-        {"stopCount", StopCountEvent::create},               // ストップカウント
+        {"countDown", CountDownEvent::create},          // カウントダウン
+        {"stopCount", StopCountEvent::create},          // ストップカウント
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示

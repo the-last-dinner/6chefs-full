@@ -42,6 +42,7 @@ public:
     inline T getMapObjectById(const string& objectId, bool available = true) { return dynamic_cast<T>(this->getMapObjectById(objectId, available)); };
     
     Point getPoint(rapidjson::Value& json);
+    Point getToPoint(rapidjson::Value& json);
     Direction getDirection(rapidjson::Value& json);
     EnemyMovePattern getMovePatternForEnemy(rapidjson::Value& json);
 };

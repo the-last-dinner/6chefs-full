@@ -8,7 +8,7 @@
 
 #include "Scenes/DungeonCameraScene.h"
 
-#include "Datas/Scene/DungeonSceneData.h"
+#include "Datas/Scene/DungeonCameraSceneData.h"
 
 #include "Effects/AmbientLightLayer.h"
 
@@ -21,7 +21,7 @@
 #include "Tasks/EventTask.h"
 
 // create関数
-DungeonCameraScene* DungeonCameraScene::create(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback)
+DungeonCameraScene* DungeonCameraScene::create(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback)
 {
     DungeonCameraScene* p { new(nothrow) DungeonCameraScene() };
     if(p && p->init(data, event, callback))
@@ -44,7 +44,7 @@ DungeonCameraScene::DungeonCameraScene() { FUNCLOG };
 DungeonCameraScene::~DungeonCameraScene() { FUNCLOG };
 
 // 初期化
-bool DungeonCameraScene::init(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback)
+bool DungeonCameraScene::init(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback)
 {
     if(!BaseScene::init(data)) return false;
     
@@ -109,5 +109,5 @@ void DungeonCameraScene::onAfterInitEventFinished()
 // 渡されたイベントを終了した時
 void DungeonCameraScene::onCameraEventFinished()
 {
-    Director::getInstance()->popScene();
+    if(this->callback) this->callback();
 }

@@ -13,6 +13,8 @@
 
 #include "Event/GameEvent.h"
 
+class DungeonCameraSceneData;
+
 class DungeonCameraScene : public DungeonScene
 {
 // 定数
@@ -21,7 +23,7 @@ public:
     
 // クラスメソッド
 public:
-    static DungeonCameraScene* create(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback);
+    static DungeonCameraScene* create(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback);
 
 // インスタンス変数
 private:
@@ -32,7 +34,7 @@ private:
 private:
     DungeonCameraScene();
     ~DungeonCameraScene();
-    bool init(DungeonSceneData* data, GameEvent* event, EventFinishCallback callback);
+    bool init(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback);
     virtual void onEnter() override;
     virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
     virtual void onInitEventFinished(LoadingLayer* loadingLayer) override;

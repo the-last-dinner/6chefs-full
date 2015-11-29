@@ -229,6 +229,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
+		DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
+		DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
 		DC2769131C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
 		DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
@@ -521,6 +523,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyTask.cpp; path = ../Classes/Tasks/EnemyTask.cpp; sourceTree = "<group>"; };
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
+		DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonCameraSceneData.cpp; sourceTree = "<group>"; };
+		DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonCameraSceneData.h; sourceTree = "<group>"; };
 		DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeMapHistory.cpp; path = ../Classes/Models/ChangeMapHistory.cpp; sourceTree = "<group>"; };
 		DC2769111C0800A300DAA11C /* ChangeMapHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeMapHistory.h; path = ../Classes/Models/ChangeMapHistory.h; sourceTree = "<group>"; };
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
@@ -902,6 +906,8 @@
 		552D83811B20BCC000B681A8 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */,
+				DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */,
 				55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */,
 				55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */,
 				55655AEF1B39A427000AFC17 /* SceneData.cpp */,
@@ -1305,6 +1311,7 @@
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				5564CCF51BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
 				553577E51BEB99790095E6A9 /* Party.cpp in Sources */,
+				DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */,
 				554470761BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				26114E761BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				5564CCF11BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
@@ -1449,6 +1456,7 @@
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				55C3C1DF1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
 				DCFC39081BFF38780073A6CA /* EnemyEvent.cpp in Sources */,
+				DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,

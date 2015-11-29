@@ -87,6 +87,8 @@ void CameraTask::setTarget(MapObject* target)
     CC_SAFE_RELEASE(this->target);
     CC_SAFE_RETAIN(target);
     this->target = target;
+    
+    this->mapLayer->setPosition(this->follow->getPosition(this->mapLayer->getMapSize(), this->target->getPosition()));
 }
 
 // 自動追尾を停止
@@ -99,6 +101,26 @@ void CameraTask::stopFollowing()
 void CameraTask::resumeFollowing()
 {
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+}
+
+// 指定マス座標が中心に来るように視点移動
+void CameraTask::move(const Point& gridPosition, const float duration, function<void()> callback)
+{
+    // 追尾を停止
+    this->stopFollowing();
+    
+    Point toPosition {-MapUtils::convertToCCPoint(this->mapLayer->getMapSize(), gridPosition, Size(GRID, GRID)) + Director::getInstance()->getWinSize() / 2};
+    
+    this->runAction(Sequence::createWithTwoActions(EaseCubicActionOut::create(MoveTo::create(duration, toPosition)), CallFunc::create(callback)));
+}
+
+// 指定マス座標が中心に設定
+void CameraTask::setCenter(const Point& gridPosition)
+{
+    // 追尾を停止
+    this->stopFollowing();
+    
+    this->mapLayer->setPosition(-MapUtils::convertToCCPoint(this->mapLayer->getMapSize(), gridPosition, Size(GRID, GRID)) + Director::getInstance()->getWinSize() / 2);
 }
 
 // updateメソッド

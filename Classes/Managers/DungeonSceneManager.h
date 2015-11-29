@@ -13,6 +13,7 @@
 
 #include "Datas/MapObject/EnemyData.h"
 
+class DungeonCameraScene;
 class DungeonScene;
 class TiledMapLayer;
 class MapObject;
@@ -67,6 +68,9 @@ public:
     
     // Director
     void changeMap(const Location& location, const int initEventId);
+    void pushCameraScene(DungeonCameraScene* scene);
+    void popCameraScene();
+    bool needsShiftCover() const;
     
     // EventListener
     bool isPressed(const Key& key);
@@ -74,6 +78,9 @@ public:
     
     // Enemy
     vector<SummonData> getSummonDatas() const;
+    
+    // CameraTask
+    void moveCamera(const Point& gridPosition, const float duration, function<void()> callback);
     
     // EventTask
     void runEvent(const int eventId);

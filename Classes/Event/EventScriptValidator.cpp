@@ -209,6 +209,14 @@ Point EventScriptValidator::getPoint(rapidjson::Value& json)
     return Point(json[member::X].GetInt(), json[member::Y].GetInt());
 }
 
+// nextX, nextYの組を取得
+Point EventScriptValidator::getToPoint(rapidjson::Value& json)
+{
+    if(!this->hasMember(json, member::NEXT_X) || !this->hasMember(json, member::NEXT_Y)) return Point::ZERO;
+    
+    return Point(json[member::NEXT_X].GetInt(), json[member::NEXT_Y].GetInt());
+}
+
 // 方向を取得
 Direction EventScriptValidator::getDirection(rapidjson::Value& json)
 {
