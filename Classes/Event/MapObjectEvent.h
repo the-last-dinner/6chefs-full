@@ -64,4 +64,28 @@ private:
     virtual void run() override;
 };
 
+// パーティを追加
+class FollowCharacterEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(FollowCharacterEvent, rapidjson::Value&)
+private:
+    FollowCharacterEvent() {FUNCLOG};
+    ~FollowCharacterEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// パーティを解除
+class ReleaseFollowingCharacterEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ReleaseFollowingCharacterEvent, rapidjson::Value&)
+private:
+    ReleaseFollowingCharacterEvent() {FUNCLOG};
+    ~ReleaseFollowingCharacterEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MapObjectEvent__) */

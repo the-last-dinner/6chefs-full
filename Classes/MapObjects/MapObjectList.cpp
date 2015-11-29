@@ -237,7 +237,7 @@ void MapObjectList::setParty(Party* party)
 }
 
 // 主人公一行を取得
-Party* MapObjectList::getParty() const
+Party* MapObjectList::getParty()
 {
     return this->party;
 }

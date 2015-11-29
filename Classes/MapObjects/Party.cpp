@@ -7,8 +7,9 @@
 //
 
 #include "MapObjects/Party.h"
-
 #include "MapObjects/Character.h"
+
+#include "Managers/PlayerDataManager.h"
 
 // コンストラクタ
 Party::Party() {FUNCLOG};
@@ -40,6 +41,27 @@ void Party::addMember(Character* character)
 {
     character->setHit(false);
     this->members.pushBack(character);
+    PlayerDataManager::getInstance()->setPartyMember(character->getCharacterData());
+}
+
+// パーティメンバーを削除
+void Party::removeMember(const int obj_id)
+{
+    int member_count = this->members.size();
+    Vector<Character*> temp_members = this->members;
+    this->members.clear();
+    for (int i = 0; i < member_count; i++)
+    {
+        int target_obj = temp_members.at(i)->getCharacterData().obj_id;
+        if (obj_id == target_obj)
+        {
+            PlayerDataManager::getInstance()->removePartyMember(target_obj);
+        }
+        else
+        {
+            this->members.pushBack(temp_members.at(i));
+        }
+    }
 }
 
 // パーティを移動

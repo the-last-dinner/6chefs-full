@@ -54,7 +54,7 @@ public:
     EventFactory* getEventFactory() const;
     EventScriptValidator* getScriptValidator() const;
     EventScript* getEventScript() const;
-    Party* getParty() const;
+    Party* getParty();
     
     // Scene
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
