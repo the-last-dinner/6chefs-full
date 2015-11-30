@@ -38,7 +38,7 @@
 									"x":10,
 									"y":8,
 									"movePattern":"1",
-									"times":5.0
+									"times":5
 								},
 								{
 									"type":"createEnemy",
@@ -47,7 +47,7 @@
 									"x":6,
 									"y":18,
 									"movePattern":"2",
-									"times":5.0
+									"times":5
 								},
 								{
 									"type":"createEnemy",
@@ -57,7 +57,7 @@
 									"y":10,
 									"movePattern":"3",
 									"speed":5.0,
-									"times":5.0
+									"times":5
 								},
 								{
 									"type":"createEnemy",
@@ -66,7 +66,7 @@
 									"x":6,
 									"y":6,
 									"movePattern":"1",
-									"times":5.0
+									"times":5
 								}
 							]
 						},

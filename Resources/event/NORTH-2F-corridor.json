@@ -198,7 +198,7 @@
 							"enemyID":"141",
 							"x":7,
 							"y":17,
-							"times":1.0,
+							"times":1,
 							"speed":1.3,
 							"movePattern":"0"
 						},
