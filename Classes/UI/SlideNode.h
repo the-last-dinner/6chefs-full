@@ -13,29 +13,30 @@
 
 class SlideNode : public Node
 {
+public:
     //定数
     using AnimationCallback = function<void(SlideNode*)>;
     
     // クラスメソッド
 public:
     CREATE_FUNC_WITH_TWO_PARAM(SlideNode, const Point&, const Point&)
-private:
+protected:
     SlideNode(){FUNCLOG};
     ~SlideNode(){FUNCLOG};
     
     // インスタンス変数
-private:
+protected:
     Point inPosition {Point::ZERO};
     Point outPosition {Point::ZERO};
     float slideTime {0.3f};
     
     // インスタンスメソッド
-private:
+protected:
     bool init(const Point& inPosition, const Point& outPosition);
 public:
     void setSlideTime(const float& time);
-    void slideIn(AnimationCallback callback = nullptr);
-    void slideOut(AnimationCallback callback = nullptr);
+    virtual void slideIn(AnimationCallback callback = nullptr);
+    virtual void slideOut(AnimationCallback callback = nullptr);
     
 };
 

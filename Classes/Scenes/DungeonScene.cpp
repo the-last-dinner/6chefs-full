@@ -153,11 +153,11 @@ Party* DungeonScene::createParty()
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
-    // 主人公がメニューを開ける状態かチェック
-    if (!this->playerControlTask->checkControlEnabled())
-    {
-        return;
-    }
+    // イベント中なら無視
+    if(this->eventTask->isEventRunning()) return;
+    
+    // 敵が存在すれば無視
+    if(this->enemyTask->existsEnemy()) return;
     
     // リスナーを停止
     this->listener->setEnabled(false);

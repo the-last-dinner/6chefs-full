@@ -227,6 +227,12 @@ Vector<Enemy*> MapObjectList::getEnemiesAll()
     return this->enemies;
 }
 
+// 敵が存在するか
+bool MapObjectList::existsEnemy() const
+{
+    return !this->enemies.empty();
+}
+
 // 主人公一行を格納
 void MapObjectList::setParty(Party* party)
 {

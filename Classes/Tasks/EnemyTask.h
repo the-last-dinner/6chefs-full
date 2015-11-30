@@ -36,6 +36,7 @@ public:
     void stop();
     void update(float delta);
     vector<SummonData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
+    bool existsEnemy() const;
 };
 
 #endif /* EnemyTask_h */
