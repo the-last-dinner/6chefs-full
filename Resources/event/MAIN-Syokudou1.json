@@ -20,19 +20,19 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nstatus":["1","0"]
+					"Nstatus":["1","-1"]
 				},
 				{
-					"Nstatus":["2","0"]
+					"Nstatus":["2","-1"]
 				},
 				{
-					"Nstatus":["3","0"]
+					"Nstatus":["3","-1"]
 				},
 				{
-					"Nstatus":["4","0"]
+					"Nstatus":["4","-1"]
 				},
 				{
-					"Nstatus":["5","0"]
+					"Nstatus":["5","-1"]
 				}
 			],
 			"action":[
@@ -429,7 +429,7 @@
 						{
 							"type":"displayImg",
 							"file":"manaka_stand.png",
-							"time":2
+							"time":2.0
 						},
 						{
 							"type":"addProfile",
@@ -540,7 +540,7 @@
 						{
 							"type":"displayImg",
 							"file":"dandan_stand.png",
-							"time":2
+							"time":2.0
 						},
 						{
 							"type":"addProfile",
@@ -3415,9 +3415,6 @@
 		          "objID":"hero",
 		          "direction":"RIGHT"
 		        },
-                {
-                  "type":"fadein"
-                },
 		        {
 		          "type":"playBGM",
 		          "file":"Mozart-OboeConcerto-1.mp3"
