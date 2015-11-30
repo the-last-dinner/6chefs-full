@@ -13,7 +13,12 @@
 	],
 	"2":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
 			"action":[
 				{
 					"type":"playSE",
@@ -24,7 +29,79 @@
 					"layer":"MonoChu"
 				},
 				{
-					"type":"already"
+					"type":"changeFlg",
+					"flg":1
+				},
+				{
+					"type":"already",
+					"event":["12","6"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"playSE",
+					"file":"water.mp3"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"bathtub"
+				},
+				{
+					"type":"changeFlg",
+					"flg":2
+				},
+				{
+					"type":"already",
+					"event":["12","4"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":2
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"151",
+					"name":"倉庫の鍵"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"key"
+				},
+				{
+					"type":"changeFlg",
+					"flg":3
+				},
+				{
+					"type":"already",
+					"event":["12","11"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":3
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["血生臭い・・・"]
 				}
 			]
 		}
@@ -34,7 +111,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["12","2"]
+					"event":["12","6"]
 				}
 			],
 			"action":[
@@ -45,33 +122,7 @@
 			]
 		}
 	],
-	"4":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["12","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"playSE",
-							"file":"water.mp3"
-						},
-						{
-							"type":"removeLayer",
-							"layer":"bathtub"
-						},
-						{
-							"type":"already"
-						}
-					]
-				}
-			]
-		}
+	"4":["風呂の水抜くイベント"
 	],
 	"5":[
 		{
@@ -89,36 +140,14 @@
 			]
 		}
 	],
-	"6":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["12","4"]
-				}
-			],
-			"action":[
-				{
-					"type":"getItem",
-					"itemID":"151",
-					"name":"倉庫の鍵"
-				},
-				{
-					"type":"removeLayer",
-					"layer":"key"
-				},
-				{
-					"type":"already"
-				}
-			]
-		}
+	"6":["カーテン用"
 	],
 	"7":[
 		{
 			"type":"if",
 			"condition":[
 				{
-					"event":["12","6"]
+					"event":["12","11"]
 				}
 			],
 			"action":[
@@ -135,36 +164,6 @@
 			"text":["なんだか臭い・・・"]
 		}
 	],
-	"9":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["12","6"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["血生臭い・・・"]
-				}
-			]
-		}
-	],
-	"10":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["12","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["血生臭い・・・"]
-				}
-			]
-		}
+	"11":["風呂の鍵用"
 	]
 }
