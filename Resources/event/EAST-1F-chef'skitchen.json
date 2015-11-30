@@ -65,6 +65,11 @@
 			"type":"if",
 			"condition":[
 				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
 					"type":"displayImg",
 					"file":"eggList.png"
 				}

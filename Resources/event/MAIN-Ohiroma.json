@@ -73,20 +73,25 @@
   ],
   "10": [
     {
-      "type":"stopBGM"
-    },
-    {
-      "type":"fadeout"
-    },
-    {
-      "type":"wait",
-      "time":3.0
-    },
-    {
-        "type": "already"
-    },
-    {
-      "type":"fadein"
+      "type":"sequence",
+      "action":[
+        {
+          "type":"stopBGM"
+        },
+        {
+          "type":"fadeout"
+        },
+        {
+          "type":"wait",
+          "time":3.0
+        },
+        {
+            "type": "already"
+        },
+        {
+          "type":"fadein"
+        }
+      ]
     }
   ],
   "11": [
