@@ -9,6 +9,7 @@
 #include "Tasks/EnemyTask.h"
 
 #include "MapObjects/Enemy.h"
+#include "MapObjects/MapObjectList.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -156,4 +157,16 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
     }
     
     return datas;
+}
+
+// 敵が存在するか
+bool EnemyTask::existsEnemy() const
+{
+    // データとして存在するか
+    if(!this->datas.empty()) return true;
+    
+    // マップ上に配置されているか
+    if(DungeonSceneManager::getInstance()->getMapObjectList()->existsEnemy()) return true;
+    
+    return false;
 }

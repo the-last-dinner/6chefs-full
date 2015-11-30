@@ -235,12 +235,16 @@
 		DC2769131C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
 		DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
 		DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
+		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
+		DC8115901C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
 		DCAB9BB91BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
 		DCAB9BBC1BFF1A2100887F68 /* CheapChaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */; };
 		DCAB9BBD1BFF1A2100887F68 /* CheapChaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */; };
 		DCAB9BC01BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
+		DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
+		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
 		DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
 		DCFC39071BFF38780073A6CA /* EnemyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */; };
@@ -530,12 +534,16 @@
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
 		DC281A441BF8824400A6F8BF /* SelectEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectEventLayer.h; path = ../Classes/Layers/Dungeon/SelectEventLayer.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
+		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
+		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
 		DCAB9BB61BFF19A100887F68 /* Chaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chaser.cpp; path = ../Classes/MapObjects/MovePatterns/Chaser.cpp; sourceTree = "<group>"; };
 		DCAB9BB71BFF19A100887F68 /* Chaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaser.h; path = ../Classes/MapObjects/MovePatterns/Chaser.h; sourceTree = "<group>"; };
 		DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CheapChaser.cpp; path = ../Classes/MapObjects/MovePatterns/CheapChaser.cpp; sourceTree = "<group>"; };
 		DCAB9BBB1BFF1A2100887F68 /* CheapChaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheapChaser.h; path = ../Classes/MapObjects/MovePatterns/CheapChaser.h; sourceTree = "<group>"; };
 		DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scouter.cpp; path = ../Classes/MapObjects/MovePatterns/Scouter.cpp; sourceTree = "<group>"; };
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
+		DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaminaBar.cpp; path = ../Classes/UI/StaminaBar.cpp; sourceTree = "<group>"; };
+		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
 		DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePatternFactory.cpp; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.cpp; sourceTree = "<group>"; };
 		DCF1DEC21BFE3F7600D670B3 /* MovePatternFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePatternFactory.h; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.h; sourceTree = "<group>"; };
 		DCFC39051BFF38780073A6CA /* EnemyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyEvent.cpp; path = ../Classes/Event/EnemyEvent.cpp; sourceTree = "<group>"; };
@@ -631,6 +639,8 @@
 				262728651C084D3A0028B732 /* NotificationBand.h */,
 				26EB893B1C086A01001BEA9F /* SlideNode.cpp */,
 				26EB893C1C086A01001BEA9F /* SlideNode.h */,
+				DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */,
+				DCAD927D1C0C18760059E4C4 /* StaminaBar.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -816,6 +826,8 @@
 				DC2769111C0800A300DAA11C /* ChangeMapHistory.h */,
 				2672664C1C087BFE00FD1CF6 /* StopWatch.cpp */,
 				2672664D1C087BFE00FD1CF6 /* StopWatch.h */,
+				DC81158D1C0B42290033157F /* Stamina.cpp */,
+				DC81158E1C0B42290033157F /* Stamina.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -823,7 +835,6 @@
 		552D83631B20BC1200B681A8 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				262728631C084B9E0028B732 /* UI */,
 				26D72C981B96D420005F598D /* rapidjson */,
 				552D83681B20BC6300B681A8 /* AppDelegate.cpp */,
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
@@ -839,6 +850,7 @@
 				5534BBD91B2DDEB6003CB847 /* MapObjects */,
 				552D83651B20BC2600B681A8 /* Scenes */,
 				5583CE3B1B9A15DB00F9ACB7 /* Tasks */,
+				262728631C084B9E0028B732 /* UI */,
 				557A87C61B470279001993E1 /* Utils */,
 			);
 			name = Class;
@@ -1335,6 +1347,7 @@
 				55C3C1E61BD09BBC00ECDB50 /* RandomMove.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				55C3C1DE1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
+				DC81158F1C0B42290033157F /* Stamina.cpp in Sources */,
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
@@ -1350,6 +1363,7 @@
 				DCAB9BC01BFF1EF000887F68 /* Scouter.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
+				DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				5544706A1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
 				556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
@@ -1404,6 +1418,7 @@
 				26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
+				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
@@ -1445,6 +1460,7 @@
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
+				DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */,
 				5544708A1BDF89990048CD0B /* FlagEvent.cpp in Sources */,

@@ -55,6 +55,7 @@ using namespace experimental;
 enum Priority
 {
     LOADING_LAYER = 999,
+    STAMINA_BAR = 800,
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,
     CHARACTER_MESSAGE = 100,

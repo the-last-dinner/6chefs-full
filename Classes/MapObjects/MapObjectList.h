@@ -54,6 +54,7 @@ public:
     void addEnemy(Enemy* enemy);
     void removeEnemyById(const int enemyId);
     Vector<Enemy*> getEnemiesAll();
+    bool existsEnemy() const;
     
     // 主人公一行
     void setParty(Party* party);

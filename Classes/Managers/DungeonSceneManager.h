@@ -25,6 +25,7 @@ class Party;
 class GameEvent;
 class Enemy;
 class StopWatch;
+class Stamina;
 
 // ダンジョンシーンのマップ間で共有すべき情報を持つシングルトンクラス
 class DungeonSceneManager
@@ -40,7 +41,8 @@ private:
     EventScriptValidator* scriprtValidator { nullptr };
     Sprite* cover { nullptr };
     vector<SummonData> summonDatas {};
-    StopWatch* stopWatch {nullptr};
+    StopWatch* stopWatch { nullptr };
+    Stamina* stamina { nullptr };
     
 // インスタンスメソッド
 private:
@@ -78,8 +80,9 @@ public:
     bool isPressed(const Key& key);
     vector<Key> getPressedCursorKeys() const;
     
-    // Enemy
+    // EnemyTask
     vector<SummonData> getSummonDatas() const;
+    bool existsEnemy() const;
     
     // CameraTask
     void moveCamera(const Point& gridPosition, const float duration, function<void()> callback);
@@ -100,6 +103,10 @@ public:
     void releaseStopWatch();
     void pauseStopWatch();
     void startStopWatch();
+    
+    // Stamina
+    Stamina* getStamina() const;
+    void setStaminaCallback(function<void(float)> callback);
 };
 
 #endif /* defined(__LastSupper__DungeonSceneManager__) */
