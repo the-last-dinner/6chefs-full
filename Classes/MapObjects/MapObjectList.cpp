@@ -131,6 +131,20 @@ vector<int> MapObjectList::getEventIds(const Trigger trigger) const
     return eventIds;
 }
 
+// マスRectとTriggerからイベントIDを取得
+vector<int> MapObjectList::getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const
+{
+    vector<int> ids {};
+    
+    for(MapObject* obj : this->getMapObjectsByGridRect(gridRect, trigger))
+    {
+        if(obj->getEventId() == etoi(EventID::UNDIFINED)) continue;
+        ids.push_back(obj->getEventId());
+    }
+    
+    return ids;
+}
+
 // 指定範囲内にあたり判定を持つマップオブジェクトが存在するか
 const bool MapObjectList::containsCollisionObject(const Rect& rect) const
 {

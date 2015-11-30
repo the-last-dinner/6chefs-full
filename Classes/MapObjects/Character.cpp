@@ -100,7 +100,7 @@ void Character::stamp(const Direction direction, float ratio)
     anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
     
     this->character->runAction(Animate::create(anime));
-    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this, direction]{this->setDirection(direction);})));
+    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this]{this->setDirection(this->getDirection());})));
 }
 
 // 方向を指定して歩行させる
