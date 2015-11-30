@@ -1212,7 +1212,7 @@
 							"type":"charaMsg",
 							"text":["あは、ははは・・・"],
 							"charaID":"3",
-							"imgID":"3"
+							"imgID":"2"
 						},
 						{
 							"type":"charaWalk",
@@ -1810,6 +1810,10 @@
 							"action":[
 								{
 									"type":"removeChara",
+									"objID":"1021"
+								},
+								{
+									"type":"removeChara",
 									"objID":"1025"
 								},
 								{
@@ -1858,7 +1862,7 @@
 								},
 								{
 									"text":["テメエ・・・"],
-									"charaID":"4",
+									"charaID":"5",
 									"imgID":"1",
 									"option":"reaction"
 								},
@@ -2044,7 +2048,7 @@
 			"condition":[
 				{
 					"event":["23","9"],
-					"Nevent":["40","5"]
+					"Nevent":["3","30"]
 				}
 			],
 			"action":[

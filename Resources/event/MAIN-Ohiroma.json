@@ -319,12 +319,12 @@
               "action": [
                 {
                   "type": "chase",
-                  "chaseer": "1033",
+                  "objID": "1033",
                   "target": "hero"
                 },
                 {
                   "type": "chase",
-                  "chaseer": "1034",
+                  "objID": "1034",
                   "target": "1033"
                 }
               ]

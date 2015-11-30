@@ -212,7 +212,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="42" x="256" y="288" width="32" height="64">
+  <object id="42" x="256" y="288" width="32" height="32">
    <properties>
     <property name="EventID" value="10"/>
     <property name="trigger" value="2"/>

@@ -308,6 +308,12 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"charaMsg",
+							"text":["コレでゆで卵が作れる！"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
 							"type":"fadeout"
 						},
 						{
@@ -383,6 +389,12 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"charaMsg",
+							"text":["コレでゆで卵が作れる！"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
 							"type":"fadeout"
 						},
 						{
@@ -438,6 +450,12 @@
 				{
 					"type":"sequence",
 					"action":[
+						{
+							"type":"charaMsg",
+							"text":["コレで茶碗蒸しが作れるかな"],
+							"charaID":"0",
+							"imgID":"1"
+						},
 						{
 							"type":"fadeout"
 						},
@@ -513,6 +531,12 @@
 				{
 					"type":"sequence",
 					"action":[
+						{
+							"type":"charaMsg",
+							"text":["コレで茶碗蒸しが作れるかな"],
+							"charaID":"0",
+							"imgID":"1"
+						},
 						{
 							"type":"fadeout"
 						},

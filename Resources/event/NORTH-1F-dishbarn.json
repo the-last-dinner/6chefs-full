@@ -198,16 +198,41 @@
 	],
 	"12":[
 		{
-			"type":"getItem",
-			"itemID":"1529",
-			"name":"目玉焼きリング"
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"1529",
+					"name":"目玉焼きリング"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"ring"
+				},
+				{
+					"type":"already",
+					"event":["20","16"]
+				}
+			]
 		},
 		{
-			"type":"removeLayer",
-			"layer":"ring"
-		},
-		{
-			"type":"already"
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["大量のダンボールが置いてある"]
+				}
+			]
 		}
 	],
 	"13":[
@@ -215,7 +240,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["20","12"]
+					"event":["20","16"]
 				}
 			],
 			"action":[
@@ -255,5 +280,6 @@
 				}
 			]
 		}
-	]
+	],
+	"16":"12のアイテムとった用"
 }
