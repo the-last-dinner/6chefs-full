@@ -24,6 +24,9 @@ DungeonSceneData::~DungeonSceneData()
 // 初期化
 bool DungeonSceneData::init(const Location& location)
 {
+    // ロケーション格納
+    this->location = location;
+    
     // イベントスクリプト生成
     EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(location.map_id))};
     CC_SAFE_RETAIN(eventScript);
@@ -56,4 +59,10 @@ void DungeonSceneData::setInitialEventId(const int eventId)
 int DungeonSceneData::getInitialEventId() const
 {
     return this->initEventId;
+}
+
+// 場所を取得
+Location DungeonSceneData::getLocation() const
+{
+    return this->location;
 }

@@ -80,7 +80,7 @@ int Character::getCharacterId() const {return this->charaId;}
 Direction Character::getDirection() const {return this->location.direction;}
 
 // キャラクターの向きを変える
-void Character::setDirection(Direction direction)
+void Character::setDirection(const Direction direction)
 {
 	// 画像差し替え
 	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");

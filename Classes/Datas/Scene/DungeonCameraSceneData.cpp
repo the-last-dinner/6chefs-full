@@ -19,15 +19,7 @@ bool DungeonCameraSceneData::init(const Location& location)
 {
     if(!DungeonSceneData::init(location)) return false;
     
-    this->location = location;
-    
     return true;
-}
-
-// 場所を取得
-Location DungeonCameraSceneData::getLocation() const
-{
-    return this->location;
 }
 
 // ターゲットのIDを設定

@@ -42,6 +42,7 @@ public:
 	MapObject();
 	~MapObject();
 	void setGridPosition(const Point& gridPosition);
+    virtual void setDirection(const Direction direction);
     void setObjectId(int objectId);
 	void setEventId(int eventId);
 	void setTrigger(Trigger trigger);

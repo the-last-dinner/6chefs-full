@@ -88,4 +88,19 @@ private:
     virtual void run() override;
 };
 
+// マップオブジェクトを再配置
+class WarpMapObjectEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(WarpMapObjectEvent, rapidjson::Value&)
+private:
+    Point point {Point(0,0)};
+    Direction direction {Direction::FRONT};
+private:
+    WarpMapObjectEvent(){FUNCLOG};
+    ~WarpMapObjectEvent(){FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MapObjectEvent__) */

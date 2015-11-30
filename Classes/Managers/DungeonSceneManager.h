@@ -61,11 +61,13 @@ public:
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
     void fadeIn(const float duration, function<void()> callback);
     Sprite* getCover() const;
+    Location getLocation() const;
     
     // TiledMaplayer
     Size getMapSize() const;
     void addMapObject(MapObject* mapobject);
     void addEnemy(Enemy* enemy);
+    void setMapObjectPosition(MapObject* mapObject);
     
     // Director
     void changeMap(const Location& location, const int initEventId);

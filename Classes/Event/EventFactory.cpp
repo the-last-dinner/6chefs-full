@@ -77,6 +77,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"reaction", ReactionEvent::create},                // リアクション
         {"chase", FollowCharacterEvent::create},            // パーティーの追加
         {"releaseChase", ReleaseFollowingCharacterEvent::create},   // パーティの解除
+        {"charaWarp", WarpMapObjectEvent::create},          // マップオブジェクトを再配置
         
         // キャラクター系
         {"changeDirection", ChangeDirectionEvent::create},  // 方向転換

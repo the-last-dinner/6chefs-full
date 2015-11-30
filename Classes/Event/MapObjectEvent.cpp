@@ -135,3 +135,28 @@ void ReleaseFollowingCharacterEvent::run()
     this->setDone();
     DungeonSceneManager::getInstance()->getParty()->removeMember(stoi(this->objectId));
 }
+
+#pragma mark -
+#pragma mark 
+
+bool WarpMapObjectEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    if(!this->validator->hasMember(json, member::X)) return false;
+    if(!this->validator->hasMember(json, member::Y)) return false;
+    if(!this->validator->hasMember(json, member::DIRECTION)) return false;
+    this->point = Point(json[member::X].GetInt(), json[member::Y].GetInt());
+    this->direction = this->validator->getDirection(json);
+    
+    return true;
+}
+
+void WarpMapObjectEvent::run()
+{
+    this->setDone();
+    MapObject* target = DungeonSceneManager::getInstance()->getMapObjectList()->getMapObject(stoi(this->objectId));
+    target->setGridPosition(this->point);
+    target->setDirection(this->direction);
+    DungeonSceneManager::getInstance()->setMapObjectPosition(target);
+}
