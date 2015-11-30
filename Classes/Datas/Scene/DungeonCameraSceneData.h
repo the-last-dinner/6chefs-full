@@ -19,7 +19,6 @@ public:
     
 // インスタンス変数
 private:
-    Location location {};
     int targetId {etoi(ObjectID::UNDIFINED)};
     
 // インスタンスメソッド
@@ -29,8 +28,6 @@ private:
     bool init(const Location& location);
 
 public:
-    Location getLocation() const;
-    
     void setTargetId(const int objId);
     int getTargetId() const;
 };

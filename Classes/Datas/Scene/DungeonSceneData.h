@@ -23,6 +23,7 @@ public:
 private:
     EventScript* eventScript { nullptr };
     int initEventId { etoi(EventID::UNDIFINED) };
+    Location location {};
 	
 // インスタンスメソッド
 protected:
@@ -33,6 +34,7 @@ public:
     EventScript* getEventScript() const;
     void setInitialEventId(const int eventId);
     int getInitialEventId() const;
+    Location getLocation() const;
 };
 
 #endif // __DUNGEON_SCENE_DATA_H__

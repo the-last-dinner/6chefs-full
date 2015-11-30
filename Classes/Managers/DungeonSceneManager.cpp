@@ -159,6 +159,12 @@ Sprite* DungeonSceneManager::getCover() const
     return this->cover;
 }
 
+// ロケーションを取得
+Location DungeonSceneManager::getLocation() const
+{
+    return this->getScene()->getData()->getLocation();
+}
+
 #pragma mark -
 #pragma mark TiledMapLayer
 
@@ -178,6 +184,12 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
 void DungeonSceneManager::addEnemy(Enemy* enemy)
 {
     this->getMapLayer()->addEnemy(enemy);
+}
+
+// マップオブジェクトの位置を設定
+void DungeonSceneManager::setMapObjectPosition(MapObject *mapObject)
+{
+    this->getMapLayer()->setMapObjectPosition(mapObject);
 }
 
 #pragma mark -

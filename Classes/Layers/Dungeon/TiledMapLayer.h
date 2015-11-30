@@ -46,6 +46,7 @@ public:
     void addEnemy(Enemy* enemy);
     void addMapObject(MapObject* mapObject, bool addingToList = true);
     void setZOrderByPosition(MapObject* mapObject);
+    void setMapObjectPosition(MapObject* mapObject);
 };
 
 #endif // __TILED_MAP_LAYER_H__

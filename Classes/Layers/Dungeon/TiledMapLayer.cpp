@@ -120,8 +120,7 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
 {
     if(!mapObject) return;
     
-    Point cocosPoint {MapUtils::convertToCCPoint(this->getMapSize(), mapObject->getGridPosition(), mapObject->getContentSize())};
-    mapObject->setPosition(cocosPoint);
+    this->setMapObjectPosition(mapObject);
     mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
@@ -132,6 +131,13 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
     
     this->objectList->add(mapObject);
     mapObject->onEnterMap();
+}
+
+// マス座標からcocos座標系に変換して配置
+void TiledMapLayer::setMapObjectPosition(MapObject *mapObject)
+{
+    Point cocosPoint {MapUtils::convertToCCPoint(this->getMapSize(), mapObject->getGridPosition(), mapObject->getContentSize())};
+    mapObject->setPosition(cocosPoint);
 }
 
 // マス座標からZOrder値を設定

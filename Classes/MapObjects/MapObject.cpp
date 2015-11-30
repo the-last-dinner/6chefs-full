@@ -47,6 +47,12 @@ void MapObject::setGridPosition(const Point& gridPosition)
     this->location.y = gridPosition.y;
 }
 
+// 方向をセット
+void MapObject::setDirection(const Direction direction)
+{
+    this->location.direction = direction;
+}
+
 // オブジェクトIDをセット
 void MapObject::setObjectId(int objectId)
 {

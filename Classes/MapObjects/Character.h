@@ -43,7 +43,7 @@ public:
     Direction getDirection() const;
     CharacterData getCharacterData() const;
     
-	void setDirection(Direction direction);
+	virtual void setDirection(const Direction direction) override;
 	void setMoving(bool _isMoving);
     void stamp(const Direction direction, const float ratio = 1.0f);
     bool walkBy(const Direction& direction, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
