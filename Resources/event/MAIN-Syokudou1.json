@@ -3415,6 +3415,9 @@
 		          "objID":"hero",
 		          "direction":"RIGHT"
 		        },
+                {
+                  "type":"fadein"
+                },
 		        {
 		          "type":"playBGM",
 		          "file":"Mozart-OboeConcerto-1.mp3"
