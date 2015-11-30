@@ -24,13 +24,41 @@ bool NeverAgainEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
+    if(this->validator->hasMember(json, member::EVENT))
+    {
+        // 別イベントの指定がある場合
+        if (json[member::EVENT][0].IsArray())
+        {
+            // 複数の場合
+            int arr_size = json[member::EVENT].Size();
+            for(int i = 0; i < arr_size; i++)
+            {
+                this->event.push_back(pair<int,int>({stoi(json[member::EVENT][i][0].GetString()), stoi(json[member::EVENT][i][1].GetString())}));
+            }
+        }
+        else
+        {
+            // 単数の場合
+            this->event.push_back(pair<int,int>({stoi(json[member::EVENT][0].GetString()), stoi(json[member::EVENT][1].GetString())}));
+        }
+    }
+    else
+    {
+        // 自分自身のイベントを設定
+        this->event.push_back(pair<int, int>({PlayerDataManager::getInstance()->getLocation().map_id,DungeonSceneManager::getInstance()->getPushingEventid()}));
+    }
     return true;
 }
 
 void NeverAgainEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->setEventNeverAgain(PlayerDataManager::getInstance()->getLocation().map_id, DungeonSceneManager::getInstance()->getRunningEventId());
+    int arr_size = this->event.size();
+    for(int i = 0; i < arr_size; i++)
+    {
+        PlayerDataManager::getInstance()->setEventNeverAgain(this->event[i].first, this->event[i].second);
+    }
+    
 }
 
 #pragma mark -

@@ -17,7 +17,7 @@ class NeverAgainEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(NeverAgainEvent, rapidjson::Value&)
 private:
-    int eventId {static_cast<int>(EventID::UNDIFINED)};
+    vector<pair<int,int>> event {};
 private:
     NeverAgainEvent() {FUNCLOG};
     ~NeverAgainEvent() {FUNCLOG};
