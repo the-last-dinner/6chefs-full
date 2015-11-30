@@ -76,7 +76,17 @@
       "type":"stopBGM"
     },
     {
+      "type":"fadeout"
+    },
+    {
+      "type":"wait",
+      "time":3.0
+    },
+    {
         "type": "already"
+    },
+    {
+      "type":"fadein"
     }
   ],
   "11": [
@@ -1699,39 +1709,11 @@
           ]
         },
         {
-          "type": "charaWalk",
-          "direction": "UP",
-          "steps": 6.0,
-          "speed": 3.0,
-          "objID": "1012"
-        },
-        {
-          "type": "charaWalk",
-          "direction": "RIGHT",
-          "steps": 7.0,
-          "speed": 3.0,
-          "objID": "1012"
-        },
-        {
-          "type": "charaWalk",
-          "direction": "UP",
-          "steps": 13.0,
-          "speed": 3.0,
-          "objID": "1012"
-        },
-        {
-          "type": "charaWalk",
-          "direction": "LEFT",
-          "steps": 7.0,
-          "speed": 3.0,
-          "objID": "1012"
-        },
-        {
-          "type": "charaWalk",
-          "direction": "UP",
-          "steps": 2.0,
-          "speed": 3.0,
-          "objID": "1012"
+          "type": "charaWalkTo",
+          "x": 14,
+          "y": 13,
+          "objID": "1012",
+          "speed":3.0
         },
         {
           "type": "removeChara",

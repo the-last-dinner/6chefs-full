@@ -2025,11 +2025,11 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":[
+					"event":["23","9"],
+					"Nevent":[
 						["3","33"],
-						["23","9"]
-					],
-					"Nevent":["4","12"]
+						["4","12"]
+					]
 				}
 			],
 			"action":[
@@ -3420,6 +3420,9 @@
 		          "file":"Mozart-OboeConcerto-1.mp3"
 		        },
 		        {
+		        	"type":"fadein"
+		        },
+		        {
 		          "type": "charaMsg",
 		          "talk": [
 		            {
@@ -3734,13 +3737,13 @@
 							"charaID":"5",
 							"imgID":"1",
 							"option":"reaction"
-						},
-						{
-							"type":"already"
 						}
 					]
 				}
 			]
+		},
+		{
+			"type":"already"
 		}
 	]
 }
