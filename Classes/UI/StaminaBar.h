@@ -13,9 +13,14 @@
 
 class StaminaBar : public SlideNode
 {
+// 定数
+private:
+    static const float HORIZONTAL_MARGIN;
+    static const float VERTICAL_MARGIN;
+    
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_TWO_PARAM(StaminaBar, const Point&, const Point&)
+    CREATE_FUNC(StaminaBar)
 
 // インスタンス変数
 private:
@@ -25,7 +30,7 @@ private:
 private:
     StaminaBar();
     ~StaminaBar();
-    virtual bool init(const Point& inPosition, const point& outPosition) override;
+    bool init();
 
 public:
     void setPercentage(const float percentage);

@@ -8,6 +8,10 @@
 
 #include "UI/StaminaBar.h"
 
+// 定数
+const float StaminaBar::HORIZONTAL_MARGIN {40.f};
+const float StaminaBar::VERTICAL_MARGIN {40.f};
+
 // コンストラクタ
 StaminaBar::StaminaBar() {FUNCLOG};
 
@@ -15,17 +19,20 @@ StaminaBar::StaminaBar() {FUNCLOG};
 StaminaBar::~StaminaBar() {FUNCLOG};
 
 // 初期化
-bool StaminaBar::init(const Point& inPosition, const Point& outPosition)
+bool StaminaBar::init()
 {
+    // 棒
+    Sprite* bar {Sprite::create()};
+    bar->setTextureRect(Rect(0, 0, WINDOW_WIDTH / 2, 5));
+    bar->setColor(Color3B(0, 148, 122));
+    
+    Point inPosition {Point(WINDOW_WIDTH - bar->getContentSize().width / 2 - HORIZONTAL_MARGIN, WINDOW_HEIGHT - bar->getContentSize().height / 2 - VERTICAL_MARGIN)};
+    Point outPosition {Point(WINDOW_WIDTH - bar->getContentSize().width / 2 - HORIZONTAL_MARGIN, WINDOW_HEIGHT + bar->getContentSize().height)};
+    
     if(!SlideNode::init(inPosition, outPosition)) return false;
     
     // カスケード
     this->setCascadeOpacityEnabled(true);
-    
-    // 棒
-    Sprite* bar {Sprite::create()};
-    bar->setTextureRect(Rect(0, 0, WINDOW_WIDTH / 2, 20));
-    bar->setColor(Color3B(0, 148, 122));
     
     // プログレスタイマー設置
     ProgressTimer* progressTimer { ProgressTimer::create(bar) };
@@ -34,8 +41,11 @@ bool StaminaBar::init(const Point& inPosition, const Point& outPosition)
     // 棒状
     progressTimer->setType(ProgressTimer::Type::BAR);
     
-    // 右から左へ減少するようにする
-    progressTimer->setReverseProgress(true);
+    progressTimer->setBarChangeRate(Vec2(1, 0));
+    
+    progressTimer->setMidpoint(Vec2(0, 0));
+    
+    this->progressTimer = progressTimer;
     
     return true;
 }
@@ -43,7 +53,7 @@ bool StaminaBar::init(const Point& inPosition, const Point& outPosition)
 // ％を設定
 void StaminaBar::setPercentage(const float percentage)
 {
-    this->progressTimer->setPercentage(percentage);
+    this->progressTimer->runAction(ProgressTo::create(0.05f, percentage));
 }
 
 // 表示

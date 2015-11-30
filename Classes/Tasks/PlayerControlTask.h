@@ -19,6 +19,7 @@ class PlayerControlTask : public GameTask
 // 定数
 private:
     static const string START_WALKING_SCHEDULE_KEY;
+    static const float DASH_SPEED_RATIO;
 
 // クラスメソッド
 public:
@@ -28,6 +29,7 @@ public:
 private:
     int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
     bool enableControl { true };
+    bool exhausted {false};
     
 // インスタンスメソッド
 private:
@@ -40,7 +42,7 @@ public:
     void walking(const vector<Key>& keys, Party* party);      // 歩行中
     void onPartyMovedOneGrid(Party* party);                   // 一マス分移動し終えた時
     void setControlEnable(bool enable, Party* party);         // 操作可能状態かどうか設定
-    bool checkControlEnabled();                                // 操作可能状態か確認
+    bool isControlEnabled();                                  // 操作可能状態か確認
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

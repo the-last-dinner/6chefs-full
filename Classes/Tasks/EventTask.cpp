@@ -148,9 +148,7 @@ void EventTask::pushEventFront(GameEvent* event)
 // 現在実行中のイベントがあるか
 bool EventTask::isEventRunning()
 {
-    if(this->getGameEvent(this->runningEvent)) return true;
-    
-    return this->existsEvent();
+    return this->getGameEvent(this->runningEvent);
 }
 
 // キューにイベントが存在するか
@@ -226,11 +224,11 @@ void EventTask::resetPushingEventId()
 // キューにある先頭のイベントを実行
 void EventTask::run()
 {
-    // 実行中のイベントがあればリターン
+    // 実行中のイベントがあれば無視
     if(this->isEventRunning()) return;
     
-    // イベントキューが空ならリターン
-    if(this->eventQueue.empty()) return;
+    // イベントキューにイベントがなければ無視
+    if(!this->existsEvent()) return;
     
     // なければ先頭を実行
     this->runningEvent = this->eventQueue.front();

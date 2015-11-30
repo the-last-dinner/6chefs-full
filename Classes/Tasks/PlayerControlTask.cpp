@@ -12,10 +12,13 @@
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
 
+#include "Models/Stamina.h"
+
 #include "Managers/DungeonSceneManager.h"
 
 // 定数
 const string PlayerControlTask::START_WALKING_SCHEDULE_KEY { "start_walking" };
+const float PlayerControlTask::DASH_SPEED_RATIO {2.0f};
 
 // コンストラクタ
 PlayerControlTask::PlayerControlTask(){FUNCLOG}
@@ -34,7 +37,7 @@ bool PlayerControlTask::init()
 // 向きを変える
 void PlayerControlTask::turn(const Key& key, Party* party)
 {
-    if(!this->enableControl) return;
+    if(!this->isControlEnabled()) return;
     
     Direction direction { MapUtils::keyToDirection(key) };
     Character* mainCharacter {party->getMainCharacter()};
@@ -56,7 +59,7 @@ void PlayerControlTask::turn(const Key& key, Party* party)
 // 目の前を調べる
 void PlayerControlTask::search(Party* party)
 {
-    if(!this->enableControl) return;
+    if(!this->isControlEnabled()) return;
     
     MapObjectList* objectList {DungeonSceneManager::getInstance()->getMapObjectList()};
     Character* mainCharacter {party->getMainCharacter()};
@@ -78,7 +81,9 @@ void PlayerControlTask::search(Party* party)
 // 歩行中、あたり判定を行い次に向かう位置を決定する
 void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
 {
-    if(keys.empty() || !this->enableControl) return;
+    if(keys.empty() || !this->isControlEnabled()) return;
+    
+    this->exhausted = false;
     
     vector<Direction> directions { MapUtils::keyToDirection(keys) };
     
@@ -88,7 +93,7 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     mainCharacter->setDirection(directions.back());
     
     // ダッシュキーが押されていたら、速度の倍率をあげる
-    float ratio {DungeonSceneManager::getInstance()->isPressed(Key::DASH)? 2.f : 1.f};
+    bool dash {DungeonSceneManager::getInstance()->isPressed(Key::DASH)};
     
     // 入力から、使う方向の個数を決める
     int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
@@ -100,7 +105,13 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
         moveDirections.push_back(directions.at(i));
     }
     
-    if(!party->move(moveDirections, ratio, [this, party]{this->onPartyMovedOneGrid(party);})) return;
+    if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
+    
+    // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
+    if(DungeonSceneManager::getInstance()->existsEnemy() && dash) DungeonSceneManager::getInstance()->getStamina()->decrease();
+    
+    // 減少後にスタミナが空になっていたら疲労状態へ移行
+    if(DungeonSceneManager::getInstance()->getStamina()->isEmpty()) this->exhausted = true;
     
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     
@@ -144,7 +155,10 @@ void PlayerControlTask::setControlEnable(bool enable, Party* party)
 }
 
 // 操作可能状態か確認
-bool PlayerControlTask::checkControlEnabled()
+bool PlayerControlTask::isControlEnabled()
 {
-    return this->enableControl;
+    if(!this->enableControl) return false;
+    
+    // 疲労状態でない、またはスタミナが最大であれば操作可能
+    return !this->exhausted || DungeonSceneManager::getInstance()->getStamina()->isMax();
 }

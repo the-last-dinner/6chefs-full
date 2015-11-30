@@ -835,7 +835,6 @@
 		552D83631B20BC1200B681A8 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				262728631C084B9E0028B732 /* UI */,
 				26D72C981B96D420005F598D /* rapidjson */,
 				552D83681B20BC6300B681A8 /* AppDelegate.cpp */,
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
@@ -851,6 +850,7 @@
 				5534BBD91B2DDEB6003CB847 /* MapObjects */,
 				552D83651B20BC2600B681A8 /* Scenes */,
 				5583CE3B1B9A15DB00F9ACB7 /* Tasks */,
+				262728631C084B9E0028B732 /* UI */,
 				557A87C61B470279001993E1 /* Utils */,
 			);
 			name = Class;

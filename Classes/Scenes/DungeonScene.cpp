@@ -7,7 +7,6 @@
 //
 
 #include "Scenes/DungeonScene.h"
-#include "Scenes/DungeonMenuScene.h"
 
 #include "Datas/Scene/DungeonSceneData.h"
 
@@ -17,16 +16,22 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Layers/LoadingLayer.h"
 
-#include "Tasks/EnemyTask.h"
-#include "Tasks/CameraTask.h"
-#include "Tasks/EventTask.h"
-#include "Tasks/PlayerControlTask.h"
-
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
 
 #include "Managers/DungeonSceneManager.h"
+
+#include "Models/Stamina.h"
+
+#include "Scenes/DungeonMenuScene.h"
+
+#include "Tasks/EnemyTask.h"
+#include "Tasks/CameraTask.h"
+#include "Tasks/EventTask.h"
+#include "Tasks/PlayerControlTask.h"
+
+#include "UI/StaminaBar.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene() {FUNCLOG}
@@ -103,6 +108,21 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
     
+    // スタミナバー生成
+    StaminaBar* staminaBar { StaminaBar::create() };
+    staminaBar->setLocalZOrder(Priority::STAMINA_BAR);
+    this->addChild(staminaBar);
+    this->staminaBar = staminaBar;
+    
+    // スタミナが変化した際のコールバック指定
+    DungeonSceneManager::getInstance()->setStaminaCallback(CC_CALLBACK_1(StaminaBar::setPercentage, staminaBar));
+    
+    // スタミナ残量を反映
+    staminaBar->setPercentage(DungeonSceneManager::getInstance()->getStamina()->getPercentage());
+    
+    // 敵が存在すれば、スタミナバーを表示しておく
+    if(enemyTask->existsEnemy()) staminaBar->slideIn();
+    
     // コールバック設定
     eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
     eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
@@ -154,7 +174,7 @@ Party* DungeonScene::createParty()
 void DungeonScene::onMenuKeyPressed()
 {
     // イベント中なら無視
-    if(this->eventTask->isEventRunning()) return;
+    if(this->eventTask->isEventRunning() || this->eventTask->existsEvent()) return;
     
     // 敵が存在すれば無視
     if(this->enemyTask->existsEnemy()) return;

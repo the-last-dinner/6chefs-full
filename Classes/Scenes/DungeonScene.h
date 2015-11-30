@@ -22,6 +22,7 @@ class PlayerControlTask;
 
 class LoadingLayer;
 class Party;
+class StaminaBar;
 
 class DungeonScene : public BaseScene
 {
@@ -43,6 +44,7 @@ protected:
     LoadingLayer* loadingLayer { nullptr };
     
     Party* party { nullptr };
+    StaminaBar* staminaBar { nullptr };
     
 // インスタンスメソッド
 protected:

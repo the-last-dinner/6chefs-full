@@ -54,6 +54,12 @@ void Stamina::setPercentage(const float percentage)
     if(this->onPercentageChanged) this->onPercentageChanged(percentage);
 }
 
+// ％を取得
+float Stamina::getPercentage() const
+{
+    return this->percentage;
+}
+
 // スタミナ減少
 void Stamina::decrease()
 {
@@ -82,6 +88,12 @@ void Stamina::decrease()
 bool Stamina::isEmpty() const
 {
     return this->percentage == MIN_VALUE;
+}
+
+// スタミナが最大かどうか
+bool Stamina::isMax() const
+{
+    return this->percentage == MAX_VALUE;
 }
 
 // update

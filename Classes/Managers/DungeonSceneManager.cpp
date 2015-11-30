@@ -21,6 +21,9 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
 
+#include "Models/Stamina.h"
+#include "Models/StopWatch.h"
+
 #include "Scenes/DungeonScene.h"
 #include "Scenes/DungeonCameraScene.h"
 
@@ -29,7 +32,7 @@
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
 
-#include "Models/StopWatch.h"
+#include "UI/StaminaBar.h"
 
 // 唯一のインスタンス
 static DungeonSceneManager* _instance {nullptr};
@@ -62,6 +65,11 @@ DungeonSceneManager::DungeonSceneManager()
     EventScriptValidator* scriptValidator {EventScriptValidator::create()};
     CC_SAFE_RETAIN(scriptValidator);
     this->scriprtValidator = scriptValidator;
+    
+    // スタミナ生成
+    Stamina* stamina {Stamina::create()};
+    CC_SAFE_RETAIN(stamina);
+    this->stamina = stamina;
 };
 
 // デストラクタ
@@ -71,6 +79,7 @@ DungeonSceneManager::~DungeonSceneManager()
 
     CC_SAFE_RELEASE_NULL(this->eventFactory);
     CC_SAFE_RELEASE_NULL(this->scriprtValidator);
+    CC_SAFE_RELEASE_NULL(this->stamina);
 };
 
 #pragma mark -
@@ -184,6 +193,9 @@ void DungeonSceneManager::addMapObject(MapObject* mapObject)
 void DungeonSceneManager::addEnemy(Enemy* enemy)
 {
     this->getMapLayer()->addEnemy(enemy);
+    
+    // スタミナバー表示
+    this->getScene()->staminaBar->slideIn();
 }
 
 // マップオブジェクトの位置を設定
@@ -258,6 +270,12 @@ vector<Key> DungeonSceneManager::getPressedCursorKeys() const
 vector<SummonData> DungeonSceneManager::getSummonDatas() const
 {
     return this->summonDatas;
+}
+
+// 敵が存在するか確認
+bool DungeonSceneManager::existsEnemy() const
+{
+    return this->getScene()->enemyTask->existsEnemy();
 }
 
 #pragma mark -
@@ -358,4 +376,17 @@ void DungeonSceneManager::startStopWatch()
     {
         this->stopWatch->startCountDown();
     }
+}
+
+#pragma mark -
+#pragma mark Stamina
+
+Stamina* DungeonSceneManager::getStamina() const
+{
+    return this->stamina;
+}
+
+void DungeonSceneManager::setStaminaCallback(function<void (float)> callback)
+{
+    this->stamina->onPercentageChanged = callback;
 }
