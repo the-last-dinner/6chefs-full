@@ -105,6 +105,11 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
         moveDirections.push_back(directions.at(i));
     }
     
+    // Trigger::WILLを持つオブジェクトを検索して実行
+    Rect gridRect {mainCharacter->getGridRect()};
+    gridRect.origin += MapUtils::directionsToMapVector(moveDirections);
+    DungeonSceneManager::getInstance()->runEvent(DungeonSceneManager::getInstance()->getMapObjectList()->getEventIdsByGridRect(gridRect, Trigger::WILL));
+    
     if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
     
     // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
@@ -113,7 +118,7 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     // 減少後にスタミナが空になっていたら疲労状態へ移行
     if(DungeonSceneManager::getInstance()->getStamina()->isEmpty()) this->exhausted = true;
     
-    Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
+    Vector<MapObject*> objs = DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE);
     
     // 何も見つからなかった場合は、UNDIFINEDをセットする
     if(objs.empty())

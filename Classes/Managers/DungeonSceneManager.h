@@ -89,6 +89,7 @@ public:
     
     // EventTask
     void runEvent(const int eventId);
+    void runEvent(const vector<int>& eventIds);
     void pushEventBack(const int eventId);
     void pushEventFront(const int eventId);
     void pushEventBack(GameEvent* event);
