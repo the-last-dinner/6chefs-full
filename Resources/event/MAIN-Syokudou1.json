@@ -2015,13 +2015,27 @@
 						},
 						{
 							"type":"createChara",
-							"objID":"1021"
-						},
-						{
-							"type":"createChara",
 							"objID":"1023"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":[
+						["3","33"],
+						["23","9"]
+					],
+					"Nevent":["4","12"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1021"
 				}
 			]
 		},
