@@ -40,8 +40,35 @@
 	],
 	"2":[
 		{
-			"type":"displayImg",
-			"file":"eggList.png"
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
+			"action":[
+				{
+					"type":"displayImg",
+					"file":"eggList.png"
+				},
+				{
+					"type":"already",
+					"event":["34","8"]
+				},
+				{
+					"type":"changeFlg",
+					"flg":1
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"type":"displayImg",
+					"file":"eggList.png"
+				}
+			]
 		}
 	],
 	"3":[
@@ -49,15 +76,9 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["34","2"],
-					"Nequip":["158","1529"]
-				},
-				{
-					"event":["34","2"],
-					"Nequip":["159","1530"]
-				},
-				{
-					"event":["34","2"],
+					"event":["34","8"],
+					"Nequip":["158","1529"],
+					"Nequip":["159","1530"],
 					"Nequip":["1510","1531"]
 				}
 			],
@@ -78,17 +99,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["34","2"],
 					"Nequip":["158","1529"],
-					"flg":1
-				},
-				{
-					"event":["34","2"],
 					"Nequip":["159","1530"],
-					"flg":1
-				},
-				{
-					"event":["34","2"],
 					"Nequip":["1510","1531"],
 					"flg":1
 				}
@@ -99,230 +111,441 @@
 					"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
 					"charaID":"0",
 					"imgID":"1"
+				},
+				{
+					"type":"changeFlg",
+					"flg":2
 				}
 			]
-		}
-	],
-	"4":[
+		},
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"Nequip":["158","1529"],
+					"Nequip":["159","1530"],
+					"Nequip":["1510","1531"],
+					"flg":2
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
+					"type":"charaMsg",
+					"talk":[
 						{
-							"event":["34","2"],
-							"Nequip":["158","1529"],
-							"Nequip":["159","1530"],
-							"Nequip":["1510","1531"]
-						}
-					],
-					"action":[
-						{
-							"type":"charaMsg",
-							"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
+							"text":["目玉焼きにゆで玉子・・・茶碗蒸し・・・・\nあまりよく分からないな・・・"],
 							"charaID":"0",
 							"imgID":"1"
 						},
 						{
-							"type":"changeFlg",
-							"flg":1
+							"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ"],
+							"charaID":"0",
+							"imgID":"2"
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","2"],
-							"Nequip":["158","1529"],
-							"Nequip":["159","1530"],
-							"Nequip":["1510","1531"],
-							"flg":1
-						}
-					],
+					"event":["34","8"],
+					"equip":["158","1529"],
+					"item":["1212","1213"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
 							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["目玉焼きにゆで玉子・・・茶碗蒸し・・・・\nあまり卵は使わないからよく分からないな・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ"],
-									"charaID":"0",
-									"imgID":"2"
-								}
-							]
+							"text":["コレで目玉焼きを作ろう"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"158"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1511",
+							"name":"目玉焼き"
+						},
+						{
+							"type":"charaMsg",
+							"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"getItem",
+							"itemID":"1532",
+							"name":"引き出しの鍵"
+						},
+						{
+							"type":"already"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","8"],
+					"equip":["158","1529"],
+					"Nitem":"1212"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","3"],
-							"equip":["158","1529"]
-						}
-					],
+					"event":["34","8"],
+					"equip":["158","1529"],
+					"Nitem":"1213"
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"158"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1511",
-									"name":"目玉焼き"
-								}
-							]
+							"type":"charaMsg",
+							"text":["コレで目玉焼きを作ろう"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"158"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1511",
+							"name":"目玉焼き"
+						}		
+					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","8"],
+					"equip":["159","1530"],
+					"item":["1511","1513"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"159"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1512",
+							"name":"ゆで玉子"
+						},
+						{
+							"type":"charaMsg",
+							"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"getItem",
+							"itemID":"1532",
+							"name":"引き出しの鍵"
+						},
+						{
+							"type":"already"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","8"],
+					"equip":["159","1530"],
+					"Nitem":"1511"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","3"],
-							"equip":["159","1530"]
-						}
-					],
+					"event":["34","8"],
+					"equip":["159","1530"],
+					"Nitem":"1513"
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"159"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1512",
-									"name":"ゆで玉子"
-								}
-							]
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"159"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1512",
+							"name":"ゆで玉子"
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","3"],
-							"equip":["1510","1531"]
-						}
-					],
+					"event":["34","8"],
+					"equip":["1510","1531"],
+					"item":["1511","1512"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break1.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"1510"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1513",
-									"name":"茶碗蒸し"
-								}
-							]
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"1510"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1513",
+							"name":"茶碗蒸し"
+						},
+						{
+							"type":"charaMsg",
+							"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"getItem",
+							"itemID":"1532",
+							"name":"引き出しの鍵"
+						},
+						{
+							"type":"already"
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","8"],
+					"equip":["1510","1531"],
+					"Nitem":"1511"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":["1511","1512","1513"]
-						}
-					],
+					"event":["34","8"],
+					"equip":["1510","1531"],
+					"Nitem":"1512"
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"getItem",
-									"itemID":"1532",
-									"name":"引き出しの鍵"
-								}
-							]
+							"type":"fadeout"
+						},
+						{
+							"type":"playSE",
+							"file":"egg-konkon1.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-start.mp3"
+						},
+						{
+							"type":"wait",
+							"time":7.0
+						},
+						{
+							"type":"playSE",
+							"file":"guskonro-stop.mp3"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"1510"	
+						},
+						{
+							"type":"getItem",
+							"itemID":"1513",
+							"name":"茶碗蒸し"
 						}
 					]
 				}
@@ -459,5 +682,6 @@
 				}
 			]	
 		}
-	]
+	],
+	"8":"卵のお品書き見たかどうか"
 }

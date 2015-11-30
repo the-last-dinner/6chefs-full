@@ -20,19 +20,19 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nstatus":["1","-1"]
+					"status":["1","-1"]
 				},
 				{
-					"Nstatus":["2","-1"]
+					"status":["2","-1"]
 				},
 				{
-					"Nstatus":["3","-1"]
+					"status":["3","-1"]
 				},
 				{
-					"Nstatus":["4","-1"]
+					"status":["4","-1"]
 				},
 				{
-					"Nstatus":["5","-1"]
+					"status":["5","-1"]
 				}
 			],
 			"action":[
