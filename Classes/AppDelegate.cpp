@@ -1,14 +1,13 @@
 #include "AppDelegate.h"
-#include  "TitleScene.h"
+#include "Scenes/TitleScene.h"
 
 // コンストタクタ
 // シングルトンクラスのインスタンスを生成しておく
 AppDelegate::AppDelegate()
 {
 	FUNCLOG
+    CsvDataManager::getInstance();
     PlayerDataManager::getInstance();
-    EventScriptManager::getInstance();
-	ActionKeyManager::getInstance();
 	SoundManager::getInstance();
 	TextureManager::getInstance();
 	this->init();
@@ -19,8 +18,7 @@ AppDelegate::AppDelegate()
 AppDelegate::~AppDelegate() 
 {
 	FUNCLOG
-    EventScriptManager::destroy();
-	ActionKeyManager::destroy();
+    CsvDataManager::destroy();
 	SoundManager::destory();
     PlayerDataManager::destroy();
 	TextureManager::destory();
@@ -56,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	director->setAnimationInterval(1.0 / 60);
 	
 	// シーンを指定してゲーム開始
-	director->runWithScene(TitleScene::createScene());
+	director->runWithScene(TitleScene::create());
 	return true;
 }
 

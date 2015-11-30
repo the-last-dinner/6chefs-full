@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.7.1</string>
+        <string>3.9.2</string>
         <key>fileName</key>
         <string>/Users/kohei/Source/Xcode/LastSupper/Resources_original/TexturePacker/character/magoichi.tps</string>
         <key>autoSDSettings</key>
@@ -43,6 +43,8 @@
         <false/>
         <key>pvrCompressionQuality</key>
         <enum type="SettingsBase::PvrCompressionQuality">PVR_QUALITY_NORMAL</enum>
+        <key>atfCompressData</key>
+        <false/>
         <key>mipMapMinSize</key>
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
@@ -145,7 +147,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../Resources/img/texture/character/magoichi.plist</filename>
+                <filename>../../../Resources/img/character/magoichi.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -200,6 +202,7 @@
             <filename>../../img/character/magoichi/magoichi_3_0.png</filename>
             <filename>../../img/character/magoichi/magoichi_3_1.png</filename>
             <filename>../../img/character/magoichi/magoichi_3_2.png</filename>
+            <filename>../../img/character/magoichi/magoichi_s_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

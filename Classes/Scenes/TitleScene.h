@@ -1,11 +1,20 @@
+//
+//  TitleScene.h
+//  LastSupper
+//
+//  Created by Kohei on 2015/06/05.
+//
+//
+
 #ifndef __TITLE_SCENE_H__
 #define __TITLE_SCENE_H__
 
-#include "Scenes/baseScene.h"
-#include "Datas/Scene/TitleSceneData.h"
-#include "Layers/Title/TitleMainMenuLayer.h"
+#include "Scenes/BaseScene.h"
 
-class TitleScene : public baseScene
+class TitleMainMenuLayer;
+class SaveDataSelector;
+
+class TitleScene : public BaseScene
 {
 	// 列挙型
 	enum struct MenuType
@@ -16,16 +25,25 @@ class TitleScene : public baseScene
 	};
 	// クラスメソッド
 public:
-	static Scene* createScene();
 	CREATE_FUNC(TitleScene);
 	
 	// インスタンスメソッド
+private:
+	virtual bool init();
+    virtual void onEnter();
+	void onPreloadFinished(LoadingLayer* loadingLayer);
+	void onStartSelected();
+	void onContinueSelected();
+	void onExitSelected();
+	void onSaveDataSelected(int dataId);
+	void onSaveDataSelectCancelled();
 public:
 	TitleScene();
 	~TitleScene();
-private:
-	virtual bool init();
-	void loadFinished();
+	
+	// インスタンス変数
+	TitleMainMenuLayer* mainMenu { nullptr };
+	SaveDataSelector* saveDataSelector { nullptr };
 };
 
 #endif // __TITLE_SCENE_H__

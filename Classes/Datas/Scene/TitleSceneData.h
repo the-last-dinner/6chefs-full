@@ -9,17 +9,18 @@
 #ifndef __TITLE_SCENE_DATA_H__
 #define __TITLE_SCENE_DATA_H__
 
-#include "Common.h"
 #include "SceneData.h"
 
 class TitleSceneData : public SceneData
 {
-	// インスタンスメソッド
+	// クラスメソッド
 public:
-	TitleSceneData();
+	CREATE_FUNC(TitleSceneData)
+	// インスタンスメソッド
 private:
+	TitleSceneData();
 	~TitleSceneData();
-	void init();
+	bool init();
 };
 
 #endif // __TITLE_SCENE_DATA_H__

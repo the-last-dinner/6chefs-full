@@ -3,6 +3,34 @@
           {
           "type": "playBGM",
           "file": "Mozart-OboeConcerto-1.mp3"
+          },
+          {
+          "type": "sequence",
+          "action": [
+                     {
+                     "type": "reaction",
+                     "objID": "hero"
+                     },
+                     {
+                     "type": "charaMsg",
+                     "talk": [
+                              {
+                              "charaID": "0",
+                              "imgID": "0",
+                              "text": ["おぐらー！！！！！！！"]
+                              },
+                              {
+                              "charaID": "1",
+                              "name": "おぐら",
+                              "text": ["まんこまんこ"]
+                              }
+                              ]
+                     },
+                     {
+                     "type": "systemMsg",
+                     "text": ["孫市がおぐらを呼んでいるようだ。"]
+                     }
+          ]
           }
           ],
     "1": [
@@ -82,23 +110,45 @@
           "type": "playSE",
           "file": "back.mp3"
           }
+    ],
+    "3": [
+          {
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 75
+          }
           ],
+    "4": [
+          {
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 77
+          }
+          ],
+    "5": [
+          {
+          "type": "changeMap",
+          "mapID": "2",
+          "x": 2,
+          "y": 79
+          }
+    ],
     "id": 0,
-    "name": "map",
+    "map_id": "map",
     "sound": [
-            "bgm/Mozart-OboeConcerto-1.mp3",
-            "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-            "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
-            "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
-            "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
-			"se/back.mp3",
-			"se/bus-door1.mp3",
-			"se/bus-start1.mp3",
-			"se/cursorMove.mp3",
-			"se/gameStart.mp3",
-			"se/title-enter.mp3"
-            ],
-	"texture": [
-			  
-			  ]
+              "bgm/Mozart-OboeConcerto-1.mp3",
+              "bgm/Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+              "bgm/Saint-Saens-AnimalCarnibal-TheSwan.mp3",
+              "bgm/106-Bach-Sheep-May-Safely-Graze.mp3",
+              "bgm/150-Beethoven-PianoSonata-No8-2nd.mp3",
+              "se/back.mp3",
+              "se/bus-door1.mp3",
+              "se/bus-start1.mp3",
+              "se/cursorMove.mp3",
+              "se/gameStart.mp3",
+              "se/title-enter.mp3"
+              ],
+    "texture": []
 }

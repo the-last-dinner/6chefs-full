@@ -11,71 +11,97 @@
 
 #include "define.h"
 
+class CharacterData;
+class StopWatch;
+
 class PlayerDataManager
 {
 //構造体
 public:
     struct SaveIndex
     {
-        int data_id;
-        string name;
-        string play_time;
-        string save_count;
-        string map_name;
-        SaveIndex(int i, const string& n, const string& pt, const string& sc, const string& mn):data_id(i), name(n), play_time(pt), save_count(sc), map_name(mn){};
+        int data_id {0};
+        string chapter {};
+        string map_name {};
+        string play_time {};
+        string save_count {};
+        SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc){};
         SaveIndex(){};
     };
-//クラス変数
-private:
-    static const int MAX_SAVE_COUNT;
+    
 
 //インスタンス変数
 private:
-    //グローバルセーブデータ
+    // グローバルセーブデータ
     rapidjson::Document global;
-    //対象ローカルセーブデータid
-    int local_id;
-    //ローカルセーブデータ達
+    // ローカルセーブデータ
     rapidjson::Document local;
-    //FileUtils
+    // 対象ローカルセーブデータid
+    int local_id {0};
+    // FileUtils
     cocos2d::FileUtils* fu;
+    // Timer
+    StopWatch* timer {nullptr};
+    // ローカルセーブデータの存在の有無
+    bool local_exist[MAX_SAVE_COUNT];
 
 //通常関数
 public:
-    //メインとなるローカルデータのセット
-    void setMainLocalData(const int& id);
-    //ローカルセーブデータリストの取得
+    // ローカルセーブデータ処理
+    void setMainLocalData(const int id);
     vector<SaveIndex> getSaveList();
-    //セーブ
-    void save(const int& id);
-    /* flag管理系 */
+    int getSaveDataId();
+    bool checkSaveDataExists(const int id);
+    void save(const int id);
+
     // SET
-    void setFriendship(const string& character, const int& level);
-    void setEventFlag(const string& map, const int& event_id, const bool& flag);
-    void setItem(const int& item_id);
-    void setItemEquipment(const int& which, const int& item_id);
+    void setLocation(const Location& location, const int num = 0);
+    void setLocation(const CharacterData& character, const int num = 0);
+    void setLocation(const vector<CharacterData>& characters);
+    void setFriendship(const int chara_id, const int level);
+    void setEventNeverAgain(const int map_id, const int event_id, const bool flag = true);
+    void setEventStatus(const int map_id, const int event_id, const int status);
+    void setItem(const int item_id);
+    void setItemEquipment(const Direction direction, const int item_id);
+    void setChapterId(const int chapter_id);
+    void setCharacterProfile(const int chara_id, const int level);
+    void setPartyMember(const CharacterData& chara);
+    
+    // REMOVE
+    bool removeItem(const int item_id);
+    bool removePartyMember(const int obj_id);
+    
     // GET
-    int getFriendship(const string& character);
-    bool getEventFlag(const string& map, const int& event_id);
-    int getItem(const int& item_id);
+    Location getLocation(const int num = 0);
+    int getFriendship(const int chara_id);
+    int getEventStatus(const int map_id, const int event_id);
+    int getItem(const int item_id);
     map<int, int> getItemAll();
-    int getItemEquipment(const int& which);
+    int getItemEquipment(Direction direction);
+    int getChapterId();
+    int getCharacterProfileLevel(const int chara_id);
+    CharacterData getPartyMember(const int num = 0);
+    vector<CharacterData> getPartyMemberAll();
+    int getPlayTimeSeconds();
+    string getPlayTimeDisplay();
+    string getPlayTimeDisplay(const int sec);
+    
     // CHECK
-    bool checkItem(const int& item_id);
-    bool checkItemEquipment(const int& item_id);
-    bool checkFriendship(const string& character, const int& min);
+    bool checkItem(const int item_id);
+    bool checkItemEquipment(const int item_id);
+    bool checkFriendship(const int chara_id, const int val);
+    bool checkChapterId(const int chapter_id);
+    bool checkEventIsDone(const int map_id, const int event_id);
+    bool checkEventStatus(const int map_id, const int event_id, const int status);
     
 private:
-    //グローバルデータのセット
+    // グローバルデータのセット
     bool setGlobalData();
-    //セーブデータを全初期化
+    // セーブデータを全初期化
     void initializeFiles();
-    //文字列置換(後でUtilsに行くかも)
-    string strReplace(const string& pattern, const string& replacement, string target);
-    string getSprintf(const string& format, const string& str);
-    //JSONファイル読み込み
+    // JSONファイル読み込み
     rapidjson::Document readJsonFile(const string& path);
-    //JSONファイル書き出し
+    // JSONファイル書き出し
     void writeJsonFile(const string& path, const rapidjson::Document& doc);
 
 //singleton用関数

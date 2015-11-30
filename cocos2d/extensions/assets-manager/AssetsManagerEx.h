@@ -30,8 +30,8 @@
 #include "CCEventAssetsManagerEx.h"
 #include "Downloader.h"
 #include "Manifest.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 #include "json/document.h"
 
 #include <string>

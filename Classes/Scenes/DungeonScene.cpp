@@ -6,91 +6,187 @@
 //
 //
 
-#include "DungeonScene.h"
+#include "Scenes/DungeonScene.h"
+#include "Scenes/DungeonMenuScene.h"
+
+#include "Datas/Scene/DungeonSceneData.h"
+
+#include "Effects/AmbientLightLayer.h"
+
+#include "Layers/Dungeon/TiledMapLayer.h"
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Layers/LoadingLayer.h"
+
+#include "Tasks/EnemyTask.h"
+#include "Tasks/CameraTask.h"
+#include "Tasks/EventTask.h"
+#include "Tasks/PlayerControlTask.h"
+
+#include "MapObjects/MapObjectList.h"
+#include "MapObjects/Character.h"
+#include "MapObjects/Party.h"
+
+#include "Managers/DungeonSceneManager.h"
 
 // コンストラクタ
-DungeonScene::DungeonScene():
-eventListener(nullptr),
-mapLayer(nullptr)
-{FUNCLOG}
+DungeonScene::DungeonScene() {FUNCLOG}
 
 // デストラクタ
 DungeonScene::~DungeonScene()
-{FUNCLOG}
-
-// シーン生成
-Scene* DungeonScene::createScene()
 {
-	Scene* scene = Scene::create();
-	DungeonScene* layer = DungeonScene::create();
-	scene->addChild(layer);
-	return scene;
+    FUNCLOG
+
+    CC_SAFE_RELEASE_NULL(this->party);
 }
 
 // 初期化
-bool DungeonScene::init()
+bool DungeonScene::init(DungeonSceneData* data)
 {
-	FUNCLOG
-	if(!Layer::init()) return false;
-	
-	// データクラスを初期化
-	baseScene::data = new DungeonSceneData("TestScript");
-	
-	return baseScene::init();
+    if(!BaseScene::init(data)) return false;
+    
+    return true;
+}
+
+// シーン切り替え終了時
+void DungeonScene::onEnter()
+{
+    BaseScene::onEnter();
+    
+    // フェード用カバー
+    Sprite* cover {DungeonSceneManager::getInstance()->getCover()};
+    
+    if(!cover) return;
+    
+    cover->removeFromParent();
+    this->addChild(cover);
 }
 
 // リソースプリロード完了時の処理
-void DungeonScene::loadFinished()
+void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
-	FUNCLOG
-	// 黒い幕を張っておく
-	Sprite* black = Sprite::create();
-	black->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
-	black->setColor(Color3B::BLACK);
-	black->setZOrder(static_cast<int>(Priority::SCREEN_EFFECT));
-	black->setPosition(WINDOW_CENTER);
-	this->addChild(black);
-	
-	// イベントリスナ生成
-	this->eventListener = EventListenerKeyboard::create();
-	this->eventListener->onKeyPressed = CC_CALLBACK_1(DungeonScene::onKeyPressed, this);
-	this->eventListener->onKeyReleased = CC_CALLBACK_1(baseScene::onKeyReleased, this);
-	
-	// イベントリスナ登録
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(this->eventListener, this);
-	
 	// マップレイヤーを生成
-	this->mapLayer = dynamic_cast<TiledMapLayer*>(TiledMapLayer::create("MAIN-Syokudou1", this->eventListener));
+	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
+    mapLayer->setLocalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
-	
-	// 黒い幕をフェードアウト
-	this->runAction(Sequence::create(TargetedAction::create(black, FadeOut::create(0.3f)),
-									 CallFunc::create([=](){black->removeFromParent();}),
-									 nullptr));
-	return;
+	this->mapLayer = mapLayer;
+    
+    // 主人公一行を生成
+    Party* party { this->createParty() };
+    this->party = party;
+    
+    // 主人公一行をマップに配置
+    mapLayer->setParty(party);
+    
+    // 環境光レイヤー生成
+    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
+    ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
+    this->addChild(ambientLightLayer);
+    this->ambientLightLayer = ambientLightLayer;
+    
+    // 敵処理クラス生成
+    EnemyTask* enemyTask { EnemyTask::create() };
+    this->addChild(enemyTask);
+    this->enemyTask = enemyTask;
+    
+    // カメラ処理クラス生成
+    CameraTask* cameraTask {CameraTask::create()};
+    this->addChild(cameraTask);
+    this->cameraTask = cameraTask;
+    
+    // イベント処理クラス生成
+    EventTask* eventTask { EventTask::create() };
+    this->addChild(eventTask);
+    this->eventTask = eventTask;
+    
+    // プレイヤー操作処理クラス生成
+    PlayerControlTask* playerControlTask {PlayerControlTask::create()};
+    this->addChild(playerControlTask);
+    this->playerControlTask = playerControlTask;
+    
+    // コールバック設定
+    eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
+    eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
+    
+    // イベントリスナ生成
+    EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
+    listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
+    listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
+    listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
+    
+    this->addChild(listener);
+    this->listener = listener;
+    
+    // Trigger::INITを実行
+    eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), [this, loadingLayer](){this->onInitEventFinished(loadingLayer);});
 }
 
-// キーを押した時の処理
-void DungeonScene::onKeyPressed(EventKeyboard::KeyCode keyCode)
+// Trigger::INITのイベント実行後
+void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 {
-	FUNCLOG
-	// cocos2d上のキーコードからゲーム内でのキーコードに変換
-	ActionKeyManager::Key key = ActionKeyManager::getInstance()->convertKeyCode(keyCode);
-	
-	// 押し状態にする
-	ActionKeyManager::getInstance()->pressKey(key);
-	
-	switch(key)
-	{
-		case::ActionKeyManager::Key::DOWN:
-		case::ActionKeyManager::Key::LEFT:
-		case::ActionKeyManager::Key::RIGHT:
-		case::ActionKeyManager::Key::UP:
-		case ActionKeyManager::Key::SPACE:
-			this->mapLayer->controlMainCharacter(key);
-			break;
-		default:
-			break;
-	}
-	return;
+    this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    cameraTask->setTarget( this->party->getMainCharacter() );
+    
+    this->enemyTask->start(PlayerDataManager::getInstance()->getLocation().map_id);
+    
+    // ローディング終了
+    loadingLayer->onLoadFinished();
+    
+    // Trigger::AFTER_INITを実行
+    this->eventTask->runEvent(this->mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonScene::onAfterInitEventFinished, this));
+}
+
+// Trigger::AFTER_INITのイベント終了時
+void DungeonScene::onAfterInitEventFinished()
+{
+    this->eventTask->runEvent(this->getData()->getInitialEventId());
+}
+
+// 主人公一行を生成
+Party* DungeonScene::createParty()
+{
+    Party* party { Party::create(PlayerDataManager::getInstance()->getPartyMemberAll()) };
+    CC_SAFE_RETAIN(party);
+    
+    return party;
+}
+
+// メニューキー押したとき
+void DungeonScene::onMenuKeyPressed()
+{
+    // 主人公がメニューを開ける状態かチェック
+    if (!this->playerControlTask->checkControlEnabled())
+    {
+        return;
+    }
+    
+    // リスナーを停止
+    this->listener->setEnabled(false);
+    DungeonSceneManager::getInstance()->pauseStopWatch(); // カウントダウンしてれば停止
+    
+    // 主人公の位置をセット
+    Character* chara = this->party->getMainCharacter();
+    Point point = chara->getGridPosition();
+    Direction dir = chara->getDirection();
+    Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
+    PlayerDataManager::getInstance()->setLocation(location);
+    
+    // スクショをとって、ダンジョンメニューシーンをプッシュ
+    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));
+    utils::captureScreen([=](bool success, string filename){
+     if(success)
+     {
+         Sprite* screen = Sprite::create(filename);
+         Scene* menu = DungeonMenuScene::create(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         // メニューシーンをプッシュ
+         Director::getInstance()->pushScene(menu);
+         // cache削除
+         Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
+     }
+    }, path);
+}
+
+// データクラスを取得
+DungeonSceneData* DungeonScene::getData() const
+{
+    return dynamic_cast<DungeonSceneData*>(this->data);
 }

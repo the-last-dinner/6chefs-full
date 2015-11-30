@@ -25,8 +25,8 @@
 #ifndef __Manifest__
 #define __Manifest__
 
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 #include "Downloader.h"
 
 #include <string>

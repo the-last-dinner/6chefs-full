@@ -10,29 +10,42 @@
 #define __TILED_MAP_LAYER_H__
 
 #include "Common.h"
-#include "Datas/Layer/TiledMapData.h"
-#include "Layers/Dungeon/CharacterMessageLayer.h"
-#include "Layers/Dungeon/StoryMessageLayer.h"
-#include "Layers/Dungeon/SystemMessageLayer.h"
+
+class Enemy;
+class MapObject;
+class MapObjectList;
+class Party;
 
 class TiledMapLayer : public Layer
 {
-	// クラスメソッド
+// クラスメソッド
 public:
-	static Layer* create(const string& mapFileName, EventListenerKeyboard* listener);
-	
-	// インスタンスメソッド
+	CREATE_FUNC_WITH_PARAM(TiledMapLayer, const Location&)
+
+// インスタンス変数
+private:
+    experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
+    MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
+    
+// インスタンスメソッド
 private:
 	TiledMapLayer();
 	~TiledMapLayer();
-	bool init(const string& mapFileName, EventListenerKeyboard* lisener);
-public:
-	void controlMainCharacter(ActionKeyManager::Key key);
+	bool init(const Location&);
 	
-	// インスタンス変数
-private:
-	TiledMapData* data;
-	EventListenerKeyboard* parentListener;	// DungeonSceneのイベントリスナー
+public:
+    experimental::TMXTiledMap* getTiledMap();
+    MapObjectList* getMapObjectList() const;
+    Size getMapSize() const;
+    // Layer
+    void hideLayer(const string& layerName);
+    void swingLayer(const string& layerName);
+    void stopLayerActions();
+    // MapObject
+    void setParty(Party* party);
+    void addEnemy(Enemy* enemy);
+    void addMapObject(MapObject* mapObject, bool addingToList = true);
+    void setZOrderByPosition(MapObject* mapObject);
 };
 
 #endif // __TILED_MAP_LAYER_H__

@@ -11,33 +11,77 @@
 
 #include "Common.h"
 
+class Light;
+class AmbientLightLayer;
+class MapObjectList;
+
 class MapObject : public Node
 {
-	// インスタンス変数
+// 定数
+public:
+    static const float DURATION_MOVE_ONE_GRID;
+    
+// インスタンス変数
 private:
-	Size objectSize;
-	int eventId;
-	TriggerType trigger;
-	bool _isHit;
-	Direction movingDirection;
+    int objectId { static_cast<int>(ObjectID::UNDIFINED)};
+    int eventId { static_cast<int>(EventID::UNDIFINED) };
+	Trigger trigger {Trigger::SIZE};
+	bool _isHit { false };
+    Rect collisionRect {Rect::ZERO};
+	Light* light { nullptr };
+    MapObjectList* objectList { nullptr };
+    bool _isMoving { false };
+protected:
+    deque<vector<Direction>> directionsQueue {};
+    Location location {};
+public:
+    function<void(MapObject*)> onMoved { nullptr };
 	
-	// インスタンスメソッド
+// インスタンスメソッド
 public:
 	MapObject();
 	~MapObject();
-	void setGridPosition(const Size& mapSize, const Point& mapGridPoint);
-	void setObjectSize(const Size& objSize);
+	void setGridPosition(const Point& gridPosition);
+    void setObjectId(int objectId);
 	void setEventId(int eventId);
-	void setTrigger(TriggerType trigger);
+	void setTrigger(Trigger trigger);
 	void setHit(bool _isHit);
-	void setMovingDirection(Direction direction);
+    void setCollisionRect(const Rect& rect);
+    void setMapObjectList(MapObjectList* objectList);
+    
+	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
+	void removeLight();
 	
-	Point getGridPosition(const Size& mapSize);
-	Size getObjectSize();
-	int getEventId();
-	TriggerType getTrigger();
-	bool isHit();
-	Direction getMovingDirection();
+    Size  getGridSize() const;
+	Point getGridPosition() const;
+    Rect getGridRect() const;
+    int getObjectId() const;
+	int getEventId() const;
+	Trigger getTrigger() const;
+    bool isMoving() const;
+    
+    // collision
+    Rect getCollisionRect() const;
+    Rect getCollisionRect(const Direction& direction) const;
+    Rect getCollisionRect(const vector<Direction>& directions) const;
+    const bool isHit() const;
+    const bool isHit(const Direction& direction) const;
+    const bool isHit(const vector<Direction>& directions) const;
+    
+    // move
+    Vec2 createMoveVec(const vector<Direction>& directions) const;
+    bool canMove(const vector<Direction>& directions) const;
+    bool moveBy(const Direction& direction, function<void()> onMoved, const float ratio = 1.0f);
+    bool moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio = 1.0f);
+    void moveBy(const Direction& direction, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
+    void moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
+    void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
+    void clearDirectionsQueue();
+    
+    // イベント関数
+    virtual void onEnterMap() {};                               // マップに追加された時
+
+    void drawDebugMask(); // デバッグ用マスク
 };
 
 #endif // __MAP_OBJECT_H__

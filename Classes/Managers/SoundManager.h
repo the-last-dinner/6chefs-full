@@ -13,12 +13,17 @@
 
 class SoundManager
 {
-	// クラスメソッド
+// 定数
+public:
+    static const string bgmPath;
+    static const string sePath;
+
+// クラスメソッド
 public:
 	static SoundManager* getInstance();
 	static void destory();
 	
-	// シングルトンであるためにprivateに
+// シングルトンであるためにprivateに
 private:
 	SoundManager();												// コンストラクタ
 	SoundManager(const SoundManager& other);					// デストラクタ
@@ -26,13 +31,18 @@ private:
 	~SoundManager();											// デストラクタ
 
 public:
-	void preloadSound(const string& filePath);
-	void playSound(const string& filePath, bool loop = false, float volume = 1.0f);
+    void playSE(const string& filePath, float volume = 1.f);
+    void playBGM(const string& filePath, bool loop = true, float volume = 1.f);
+    
+    void stopBGM();
+    
+    void preloadSound(const string& filePath);
 	void unloadAllSounds();
 	
 	// インスタンス変数
 private:
 	map<string, int> soundMap;
+    map<string, int> BGMFilePathToId {};
 };
 
 #endif // __SOUND_MANAGER_H__

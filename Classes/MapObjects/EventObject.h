@@ -9,7 +9,6 @@
 #ifndef __EVENT_OBJECT_H__
 #define __EVENT_OBJECT_H__
 
-#include "Common.h"
 #include "MapObject.h"
 
 class EventObject : public MapObject

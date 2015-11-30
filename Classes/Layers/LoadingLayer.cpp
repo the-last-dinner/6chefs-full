@@ -6,23 +6,30 @@
 //
 //
 
-#include "LoadingLayer.h"
+#include "Layers/LoadingLayer.h"
 
 // コンストラクタ
-LoadingLayer::LoadingLayer()
-{FUNCLOG}
+LoadingLayer::LoadingLayer(){FUNCLOG}
 
 // デストラクタ
-LoadingLayer::~LoadingLayer()
-{FUNCLOG}
+LoadingLayer::~LoadingLayer(){FUNCLOG}
 
 // 初期化
 bool LoadingLayer::init()
 {
-	FUNCLOG
 	if(!Layer::init()) return false;
+
+    this->setCascadeOpacityEnabled(true);
+    
 	// plistを読み込み
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("img/texture/load_scene.plist");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(TextureManager::basePath + "load.plist");
+    
+    // カバー生成
+    Sprite* cover { Sprite::create() };
+    cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+    cover->setColor(Color3B::BLACK);
+    cover->setPosition(cover->getContentSize() / 2);
+    this->addChild(cover);
 	
 	// ローディングイメージを生成
 	for(int i = 0 ; i < 2 ; i++)
@@ -39,7 +46,7 @@ bool LoadingLayer::init()
 		ActionInterval* loadingAnimation = Sequence::create(DelayTime::create(0.5f * i),
 													TargetedAction::create(circle, FadeIn::create(0.1f)),
 													Spawn::create(TargetedAction::create(circle, FadeOut::create(1.f + i)),
-																  TargetedAction::create(circle, ScaleTo::create(1.f + i, 0.5f)),
+                                                                  TargetedAction::create(circle, EaseCubicActionOut::create(ScaleTo::create(1.f + i, 0.5f))),
 																  nullptr),
 													TargetedAction::create(circle, ScaleTo::create(0.1f, 0.1f)),
 													nullptr);
@@ -50,15 +57,7 @@ bool LoadingLayer::init()
 }
 
 // ロード完了時の処理
-void LoadingLayer::loadFinished(const function<void()>& callback)
+void LoadingLayer::onLoadFinished()
 {
-	FUNCLOG
-	this->setCascadeOpacityEnabled(true);
-	this->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create([=](){
-		this->setVisible(false);
-		this->removeAllChildren();
-		callback();
-		this->removeFromParent();
-		}), nullptr));
-	return;
+    this->runAction(Sequence::createWithTwoActions(FadeOut::create(0.5f), RemoveSelf::create()));
 }

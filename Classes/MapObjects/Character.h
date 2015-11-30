@@ -2,58 +2,58 @@
 //  Character.h
 //  LastSupper
 //
-//  Created by Kohei on 2015/06/15.
+//  Created by Kohei Asami on 2015/06/15.
 //
 //
 
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
 
-#include "Common.h"
-#include "MapObject.h"
+#include "MapObjects/MapObject.h"
+
+struct CharacterData;
+class MovePattern;
 
 class Character : public MapObject
 {
-	// 列挙型
-public:
-	enum struct DataType
-	{
-		ID,
-		TexturePrefix,
-		Name,
-		SIZE,
-	};
-	
-	// クラスメソッド
-public:
-	static Character* create(int charaId, Direction direction);
-	
-	// クラス変数
+// 定数
 private:
-	static const vector<vector<string>> characterDatas;
-	static const string basePath;
+    static const string basePath;
+
+// クラスメソッド
 public:
-	static const float SECOND_PER_GRID;
-	
-	// インスタンスメソッド
+    CREATE_FUNC_WITH_PARAM(Character, const CharacterData&);
+    
+// インスタンス変数
 private:
+    int charaId { static_cast<int>(CharacterID::UNDIFINED) };                   // キャラクタID
+    Sprite* character { nullptr };												// キャラクターのSprite部分
+    string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
+    int stampingState {0};                                                      // 歩行アニメーションの状態
+protected:
+    MovePattern* movePattern { nullptr };                                       // 動きのパターン
+    
+// インスタンスメソッド
+public:
 	Character();
 	~Character();
-	virtual bool init(int charaId, Direction direction);
-public:
+    bool init(const CharacterData& data);
+    
+    int getCharacterId() const;
+    Direction getDirection() const;
+    CharacterData getCharacterData() const;
+    
 	void setDirection(Direction direction);
-	Direction getDirection();
 	void setMoving(bool _isMoving);
-	bool isMoving();
-	void stamp(float ratio = 1.0f);
-	
-	// インスタンス変数
-private:
-	Sprite* character;												// キャラクターのSprite部分
-	string texturePrefix;											// キャラプロパティリストファイル名の先頭部分
-	Direction direction;											// 現在向いている方向
-	bool _isMoving;
-	bool identifier;
+    void stamp(const Direction direction, const float ratio = 1.0f);
+    bool walkBy(const Direction& direction, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
+    bool walkBy(const vector<Direction>& directions, function<void()> onWalked, const float ratio = 1.0f, const bool back = false);
+    void walkBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
+    
+    virtual void onEnterMap() override;
 };
 
 #endif // __CHARACTER_H__

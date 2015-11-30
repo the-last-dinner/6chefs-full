@@ -2,8 +2,10 @@
   "1": [
     {
       "type": "charaMsg",
-      "charaID":"9",
-      "text": ["どうぞ、中へ"],
+      "charaID": "9",
+      "text": [
+        "どうぞ、中へ"
+      ],
       "name": "執事服の老人"
     }
   ],
@@ -12,7 +14,7 @@
       "type": "sequence",
       "action": [
         {
-          "type":"already"
+          "type": "already"
         },
         {
           "type": "reaction",
@@ -20,8 +22,11 @@
         },
         {
           "type": "charaMsg",
-          "charaID":"9",
-          "text": ["佐々木様！お待ちしておりました。"]
+          "charaID": "9",
+          "text": [
+            "佐々木様！お待ちしておりました。"
+          ],
+          "name": "執事服の男"
         },
         {
           "type":"addChara",
@@ -32,8 +37,8 @@
           "objID": "hero"
         },
         {
-          "type":"wait",
-          "time":1.0
+          "type": "wait",
+          "time": 1
         },
         {
           "type": "changeDirection",
@@ -96,44 +101,47 @@
       "y": 23
     }
   ],
-  "7":[
+  "7": [
     {
-      "type":"createChara",
-      "objID":"101"
+      "type": "createChara",
+      "objID": "101"
     },
     {
-      "type":"if",
-      "condition":[
+      "type": "if",
+      "condition": [
         {
-          "event":["2","9"]
+          "event": [
+            "2",
+            "9"
+          ]
         }
       ],
-      "action":[
+      "action": [
         {
-          "type":"removeLayer",
-          "layer":"item"
+          "type": "removeLayer",
+          "layer": "item"
         }
       ]
     }
   ],
-  "8":[
+  "8": [
     {
-      "type":"sequence",
-      "action":[
+      "type": "sequence",
+      "action": [
         {
-          "type":"spawn",
-          "action":[
+          "type": "spawn",
+          "action": [
             {
-              "type":"wait",
-              "time":1.0
+              "type": "wait",
+              "time": 1
             },
             {
-              "type":"removeLayer",
-              "layer":"door"
+              "type": "removeLayer",
+              "layer": "door"
             },
             {
-              "type":"playSE",
-              "file":"door2.mp3"
+              "type": "playSE",
+              "file": "door2.mp3"
             }
           ]
         },
@@ -154,18 +162,18 @@
       ]
     }
   ],
-  "9":[
+  "9": [
     {
-      "type":"getItem",
-      "itemID":"1523",
-      "name":"麻の髪紐"
+      "type": "getItem",
+      "itemID": "1523",
+      "name": "麻の髪紐"
     },
     {
-      "type":"removeLayer",
-      "layer":"item"
+      "type": "removeLayer",
+      "layer": "item"
     },
     {
-      "type":"already"
+      "type": "already"
     }
   ]
 }

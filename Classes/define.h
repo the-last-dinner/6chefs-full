@@ -9,12 +9,19 @@
 #include "AudioEngine.h"
 #include <iostream>
 #include <fstream>
+
+// rapidjson
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/filewritestream.h"
 #include "rapidjson/prettywriter.h"
 #include "rapidjson/error/en.h"
+using namespace rapidjson;
+typedef GenericDocument< UTF8<> > Document;
+typedef GenericValue< UTF8<> > Value;
+typedef GenericStringStream< UTF8<> > StringStream;
+typedef GenericStringBuffer< UTF8<> > StringBuffer;
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
@@ -29,7 +36,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 using namespace std;
-using namespace rapidjson;
 using namespace experimental;
 
 // メソッドログ
@@ -42,14 +48,37 @@ using namespace experimental;
 // 画面の中心点
 #define WINDOW_CENTER Point(WINDOW_WIDTH, WINDOW_HEIGHT) / 2
 
+// セーブデータの個数
+#define MAX_SAVE_COUNT 10
+
 // レイヤーのZORDER値
-enum struct Priority
+enum Priority
 {
-	SCREEN_EFFECT = 100,
-	CHARACTER_MESSAGE = 50,
-	STORY_MESSAGE = 60,
-	SYSTEM_MESSAGE = 70,
+    LOADING_LAYER = 999,
+	STORY_MESSAGE = 102,
+	SYSTEM_MESSAGE = 101,
+    CHARACTER_MESSAGE = 100,
+    SELECT_LAYER = 92,
+    BUTTON_MASHING_LAYER = 91,
+    DISP_IMAGE_LAYER = 90,
+    SCREEN_COVER = 80,
+    DEBUG_MASK = 40,
+    AMBIENT_LIGHT = 50,
 	MAP = 0,
+};
+
+// ゲームで使うキーの種類
+enum struct Key
+{
+    DOWN,
+    RIGHT,
+    LEFT,
+    UP,
+    MENU,
+    DASH,
+    SPACE,
+    
+    SIZE,
 };
 
 // 向き
@@ -59,40 +88,87 @@ enum struct Direction
 	RIGHT,
 	LEFT,
 	BACK,
+    
 	SIZE,
-	FRONT_RIGHT,
-	FRONT_LEFT,
-	BACK_RIGHT,
-	BACK_LEFT,
-	NONE,
 };
 
 // トリガータイプ
-enum struct TriggerType
+enum struct Trigger
 {
 	INIT,
 	RIDE,
 	SEARCH,
+    AFTER_INIT,
 	SIZE,
-	NONE,
 };
 
-// 向きと移動量を結びつける連想配列
-const map<Direction, Point> movementMap =
+// オブジェクトID
+enum struct ObjectID
 {
-	{Direction::FRONT, Point(0, -GRID)},
-	{Direction::RIGHT, Point(GRID, 0)},
-	{Direction::LEFT, Point(-GRID, 0)},
-	{Direction::BACK, Point(0, GRID)},
-	{Direction::FRONT_RIGHT, Point(GRID, -GRID)},
-	{Direction::FRONT_LEFT, Point(-GRID, -GRID)},
-	{Direction::BACK_RIGHT, Point(GRID, GRID)},
-	{Direction::BACK_LEFT, Point(-GRID, GRID)},
+    UNDIFINED = -1,
 };
+
+// イベントID
+enum struct EventID
+{
+    UNDIFINED = -1,
+};
+
+// キャラクターID
+enum struct CharacterID
+{
+    UNDIFINED = -1,
+};
+
+enum struct EnemyID
+{
+    UNDIFINED = -1,
+};
+
+enum struct MapID
+{
+    UNDIFINED = -1,
+};
+
+// 味方キャラクタの動き方
+enum struct CharacterMovePattern
+{
+    NONE = 1,
+    RANDOM = 2,
+    
+    SIZE,
+};
+
+// 敵キャラクタの動き方
+enum struct EnemyMovePattern
+{
+    CHEAP_CHASER,
+    RANDOM,
+    SPEED_UP,
+    PERFECT_RANDOM,
+    SCOUTER,
+    CHASER,
+    
+    SIZE,
+};
+
+struct Location
+{
+    int map_id{0};
+    int x {0};
+    int y {0};
+    Direction direction {Direction::SIZE};
+    Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
+    Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
+    Location(){};
+};
+
+// enum structをint型にキャスト
+#define etoi(param) static_cast<int>(param)
 
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
-static __TYPE_1__* create(const __TYPE_2__& param) \
+static __TYPE_1__* create(__TYPE_2__ param) \
 { \
 	__TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
 	if (pRet && pRet->init(param)) \
@@ -108,4 +184,20 @@ static __TYPE_1__* create(const __TYPE_2__& param) \
 	} \
 }
 
+#define CREATE_FUNC_WITH_TWO_PARAM(__TYPE_1__, __TYPE_2__, __TYPE_3__) \
+static __TYPE_1__* create(__TYPE_2__ param1, __TYPE_3__ param2) \
+{ \
+    __TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
+    if (pRet && pRet->init(param1, param2)) \
+    { \
+        pRet->autorelease(); \
+        return pRet; \
+    } \
+    else \
+    { \
+        delete pRet; \
+        pRet = NULL; \
+        return NULL; \
+    } \
+}
 #endif // __DEFINE_H__

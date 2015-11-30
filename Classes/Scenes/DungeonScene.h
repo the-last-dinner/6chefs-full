@@ -9,31 +9,61 @@
 #ifndef __DUNGEON_SCENE_H__
 #define __DUNGEON_SCENE_H__
 
-#include "Common.h"
-#include "baseScene.h"
-#include "Datas/Scene/DungeonSceneData.h"
-#include "Layers/Dungeon/TiledMapLayer.h"
+#include "Scenes/BaseScene.h"
 
-class DungeonScene : public baseScene
+class AmbientLightLayer;
+class TiledMapLayer;
+class DungeonSceneData;
+
+class CameraTask;
+class EnemyTask;
+class EventTask;
+class PlayerControlTask;
+
+class LoadingLayer;
+class Party;
+
+class DungeonScene : public BaseScene
 {
-	// クラスメソッド
+// クラスメソッド
 public:
-	static Scene* createScene();
-	CREATE_FUNC(DungeonScene);
+	CREATE_FUNC_WITH_PARAM(DungeonScene, DungeonSceneData*);
 	
-	// インスタンスメソッド
-public:
-	DungeonScene();
-	~DungeonScene();
-private:
-	virtual bool init();
-	void loadFinished();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode);
-	
-	// インスタンス変数
-private:
-	EventListenerKeyboard* eventListener;
-	TiledMapLayer* mapLayer;
+// インスタンス変数
+protected:
+    EventListenerKeyboardLayer* listener { nullptr };
+    TiledMapLayer* mapLayer { nullptr };
+    AmbientLightLayer* ambientLightLayer {nullptr};
+    
+    CameraTask* cameraTask { nullptr };
+    EnemyTask* enemyTask { nullptr };
+    EventTask* eventTask { nullptr };
+    PlayerControlTask* playerControlTask { nullptr };
+    
+    LoadingLayer* loadingLayer { nullptr };
+    
+    Party* party { nullptr };
+    
+// インスタンスメソッド
+protected:
+    DungeonScene();
+    ~DungeonScene();
+    
+protected:
+	virtual bool init(DungeonSceneData* data);
+    virtual void onEnter() override;
+	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
+    virtual void onInitEventFinished(LoadingLayer* loadingLayer);
+    virtual void onAfterInitEventFinished();
+    
+    Party* createParty();
+    
+    virtual void onMenuKeyPressed();
+    DungeonSceneData* getData() const;
+    
+    void runEvent(const int eventId);
+    
+    friend class DungeonSceneManager;
 };
 
 

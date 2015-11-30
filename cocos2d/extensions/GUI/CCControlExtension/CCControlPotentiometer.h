@@ -29,7 +29,7 @@
 
 #include "CCControl.h"
 #include "2d/CCProgressTimer.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionExport.h"
 
 NS_CC_EXT_BEGIN
 

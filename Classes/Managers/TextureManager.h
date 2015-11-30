@@ -16,6 +16,11 @@ class TextureManager{
 public:
 	static TextureManager* getInstance();
 	static void destory();
+
+	// クラス変数
+public:
+	static const string basePath;
+	static const string characterPath;
 	
 	// シングルトンであるためにprivateに
 private:

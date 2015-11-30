@@ -6,75 +6,54 @@
 //
 //
 
-#include "DungeonSceneData.h"
+#include "Datas/Scene/DungeonSceneData.h"
+
+#include "Event/EventScript.h"
 
 // コンストラクタ
-DungeonSceneData::DungeonSceneData(string mapName):
-mapName(mapName),
-fu(FileUtils::getInstance()),
-json()
-{
-	FUNCLOG
-	this->init();
-}
+DungeonSceneData::DungeonSceneData(){FUNCLOG}
 
 // デストラクタ
 DungeonSceneData::~DungeonSceneData()
-{FUNCLOG}
-
-// 初期化
-void DungeonSceneData::init()
 {
-	FUNCLOG
-	FILE* fp;
-	char buf[512];
-	
-	//ファイルパス
-	string path = this->fu->fullPathForFilename("event/" + this->mapName + ".json");
-	const char* cstr = path.c_str();
-	
-	//JSONファイルを読み込んでインスタンス変数jsonに格納
-	fp = fopen(cstr, "rb");
-	FileReadStream rs(fp, buf, sizeof(buf));
-	this->json.ParseStream(rs);
-	fclose(fp);
-	
-	//JSONの文法エラーチェック
-	bool error = this->json.HasParseError();
-	
-	if(error){
-		//エラーがあった場合
-		size_t offset = this->json.GetErrorOffset();
-		ParseErrorCode code = this->json.GetParseError();
-		const char* msg = GetParseError_En(code);
-		printf("JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
-		return;
-	} else {
-		//エラーがなかった場合
-#ifdef DEBUG
-		//テスト出力
-		ifstream filein(path);
-		for (string line; getline(filein, line);)
-		{
-			cout << line << endl;
-		}
-#endif
-	}
-	
-	// プリロード用リストを取得
-	SceneData::soundFilePaths = this->getPreLoadList("sound");
-	SceneData::textureFilePaths = this->getPreLoadList("texture");
-	return;
+    FUNCLOG
+
+    CC_SAFE_RELEASE_NULL(this->eventScript);
 }
 
-//リソースのプリロード関数
-vector<string> DungeonSceneData::getPreLoadList(string type){
-	vector<string> list;
-	const char* typec = type.c_str();
-	rapidjson::Value& obj = this->json[typec];
-	SizeType len = obj.Size();
-	for(int i=0;i<len;i++){
-		list.push_back(obj[i].GetString());
-	}
-	return list;
+// 初期化
+bool DungeonSceneData::init(const Location& location)
+{
+    // イベントスクリプト生成
+    EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(location.map_id))};
+    CC_SAFE_RETAIN(eventScript);
+    this->eventScript = eventScript;
+
+	// プリロード用リストを取得
+    this->soundFilePaths = eventScript->getPreLoadList("sound");
+    this->textureFilePaths = eventScript->getPreLoadList("texture");
+	
+	this->textureFilePaths.push_back("frame");
+	this->textureFilePaths.push_back("ui");
+    this->textureFilePaths.push_back("obj");
+	
+	return true;
+}
+
+// イベントスクリプトを取得
+EventScript* DungeonSceneData::getEventScript() const
+{
+    return this->eventScript;
+}
+
+// changeMap時に渡されるEventIDを設定
+void DungeonSceneData::setInitialEventId(const int eventId)
+{
+    this->initEventId = eventId;
+}
+
+// changeMap時に渡されるEventIDを取得
+int DungeonSceneData::getInitialEventId() const
+{
+    return this->initEventId;
 }

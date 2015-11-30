@@ -6,7 +6,10 @@
 //
 //
 
-#include "TextureManager.h"
+#include "Managers/TextureManager.h"
+
+const string TextureManager::basePath = "img/";
+const string TextureManager::characterPath = basePath + "character/";
 
 // 唯一のインスタンスを初期化
 static TextureManager* _instance = nullptr;
@@ -37,9 +40,9 @@ TextureManager::~TextureManager()
 void TextureManager::preloadTexture(const string& filePath, const function<void()> callback)
 {
 	FUNCLOG
-	Director::getInstance()->getTextureCache()->addImageAsync(filePath + ".pvr.ccz",
+	Director::getInstance()->getTextureCache()->addImageAsync(basePath + filePath + ".png",
 															  [=](Texture2D* loaded_texture){
-																  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(filePath + ".plist", loaded_texture);
+																  SpriteFrameCache::getInstance()->addSpriteFramesWithFile(basePath + filePath + ".plist", loaded_texture);
 																  this->texturePaths.push_back(filePath);
 																  callback();
 															  });
@@ -52,8 +55,8 @@ void TextureManager::unloadAllTectures()
 	FUNCLOG
 	for(string filePath : this->texturePaths)
 	{
-		SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(filePath + ".plist");
-		Director::getInstance()->getTextureCache()->removeTextureForKey(filePath + ".pvr.ccz");
+		SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(basePath + filePath + ".plist");
+		Director::getInstance()->getTextureCache()->removeTextureForKey(basePath + filePath + ".png");
 	}
 	this->texturePaths.clear();
 }
