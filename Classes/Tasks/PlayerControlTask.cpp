@@ -42,12 +42,12 @@ void PlayerControlTask::turn(const Key& key, Party* party)
     Direction direction { MapUtils::keyToDirection(key) };
     Character* mainCharacter {party->getMainCharacter()};
     
+    // 主人公の向きを変更
+    mainCharacter->setDirection(direction);
+    
     // 主人公が移動中でなければ
     if(!mainCharacter->isMoving())
     {
-        // 主人公の向きを変更
-        mainCharacter->setDirection(direction);
-        
         // 一定時間後に歩行開始
         if(!this->isScheduled(START_WALKING_SCHEDULE_KEY)) this->scheduleOnce([this, party](float _)
         {
