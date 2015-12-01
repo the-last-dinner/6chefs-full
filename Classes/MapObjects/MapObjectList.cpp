@@ -10,6 +10,23 @@
 
 #include "MapObjects/Party.h"
 
+// create関数
+MapObjectList* MapObjectList::create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects)
+{
+    MapObjectList* p {new(nothrow) MapObjectList()};
+    if(p && p->init(availableObjects, disableObjects, terrainObjects))
+    {
+        p->autorelease();
+        return p;
+    }
+    else
+    {
+        delete p;
+        p = nullptr;
+        return nullptr;
+    }
+}
+
 // コンストラクタ
 MapObjectList::MapObjectList() {FUNCLOG};
 
@@ -21,13 +38,15 @@ MapObjectList::~MapObjectList()
     this->availableObjects.clear();
     this->disableObjects.clear();
     this->enemies.clear();
+    this->terrainObjects.clear();
 };
 
 // 初期化
-bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects)
+bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects)
 {
     this->availableObjects = availableObjects;
     this->disableObjects = disableObjects;
+    this->terrainObjects = terrainObjects;
     
     // 敵と主人公一行の衝突判定開始
     this->scheduleUpdate();
@@ -212,6 +231,9 @@ void MapObjectList::removeById(const int objectId)
     }
 }
 
+#pragma mark -
+#pragma mark Enemy
+
 // 敵を追加
 void MapObjectList::addEnemy(Enemy* enemy)
 {
@@ -247,6 +269,9 @@ bool MapObjectList::existsEnemy() const
     return !this->enemies.empty();
 }
 
+#pragma mark -
+#pragma mark Party
+
 // 主人公一行を格納
 void MapObjectList::setParty(Party* party)
 {
@@ -271,6 +296,9 @@ void MapObjectList::onPartyMoved(const Rect& gridRect)
         enemy->onPartyMoved(gridRect);
     }
 }
+
+#pragma mark -
+#pragma mark update
 
 // 敵と主人公一行の衝突監視用updateメソッド
 void MapObjectList::update(float delta)

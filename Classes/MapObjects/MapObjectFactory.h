@@ -23,6 +23,7 @@ public:
         COLLISION,
         EVENT,
         CHARACTER,
+        TERRAIN,
         
         SIZE,
     };
@@ -52,6 +53,7 @@ private:
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);
     MapObject* createObjectOnCharacter(const ValueMap& info);
+    MapObject* createObjectOnTerrain(const ValueMap& info);
 };
 
 #endif /* defined(__LastSupper__MapObjectFactory__) */

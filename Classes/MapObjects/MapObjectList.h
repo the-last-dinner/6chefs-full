@@ -20,7 +20,7 @@ class MapObjectList : public Node
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_TWO_PARAM(MapObjectList, const Vector<MapObject*>&, const Vector<MapObject*>&)
+    static MapObjectList* create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects);
     
 // インスタンス変数
 private:
@@ -28,13 +28,14 @@ private:
     Vector<MapObject*> disableObjects {};
     Party* party { nullptr };
     Vector<Enemy*> enemies {};
+    Vector<MapObject*> terrainObjects {};
     function<void()> onContactWithEnemy { nullptr };
     
 // インスタンスメソッド
 private:
     MapObjectList();
     ~MapObjectList();
-    bool init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects);
+    bool init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects);
 public:
     MapObject* getMapObject(int objId) const;
     MapObject* getMapObjectFromDisableList(int objId) const;

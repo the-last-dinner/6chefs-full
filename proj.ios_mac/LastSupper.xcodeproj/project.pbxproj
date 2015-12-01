@@ -235,6 +235,12 @@
 		DC2769131C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
 		DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
 		DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */; };
+		DC398BEA1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BE81C0D6A8E00DA9811 /* TerrainObject.cpp */; };
+		DC398BEB1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BE81C0D6A8E00DA9811 /* TerrainObject.cpp */; };
+		DC398BEE1C0D70BC00DA9811 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BEC1C0D70BC00DA9811 /* Water.cpp */; };
+		DC398BEF1C0D70BC00DA9811 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BEC1C0D70BC00DA9811 /* Water.cpp */; };
+		DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
+		DC398BF31C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
 		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DC8115901C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
@@ -533,6 +539,12 @@
 		DC2769111C0800A300DAA11C /* ChangeMapHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeMapHistory.h; path = ../Classes/Models/ChangeMapHistory.h; sourceTree = "<group>"; };
 		DC281A431BF8824400A6F8BF /* SelectEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectEventLayer.cpp; path = ../Classes/Layers/Dungeon/SelectEventLayer.cpp; sourceTree = "<group>"; };
 		DC281A441BF8824400A6F8BF /* SelectEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectEventLayer.h; path = ../Classes/Layers/Dungeon/SelectEventLayer.h; sourceTree = "<group>"; };
+		DC398BE81C0D6A8E00DA9811 /* TerrainObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TerrainObject.cpp; path = ../Classes/MapObjects/TerrainObject/TerrainObject.cpp; sourceTree = "<group>"; };
+		DC398BE91C0D6A8E00DA9811 /* TerrainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TerrainObject.h; path = ../Classes/MapObjects/TerrainObject/TerrainObject.h; sourceTree = "<group>"; };
+		DC398BEC1C0D70BC00DA9811 /* Water.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Water.cpp; path = ../Classes/MapObjects/TerrainObject/Water.cpp; sourceTree = "<group>"; };
+		DC398BED1C0D70BC00DA9811 /* Water.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Water.h; path = ../Classes/MapObjects/TerrainObject/Water.h; sourceTree = "<group>"; };
+		DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SlipFloor.cpp; path = ../Classes/MapObjects/TerrainObject/SlipFloor.cpp; sourceTree = "<group>"; };
+		DC398BF11C0D727C00DA9811 /* SlipFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlipFloor.h; path = ../Classes/MapObjects/TerrainObject/SlipFloor.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
 		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
 		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
@@ -949,6 +961,7 @@
 		5534BBD91B2DDEB6003CB847 /* MapObjects */ = {
 			isa = PBXGroup;
 			children = (
+				DC398BE71C0D6A5C00DA9811 /* TerrainObject */,
 				55C3C1DB1BD098B900ECDB50 /* MovePatterns */,
 				5534BBDA1B2DDF52003CB847 /* Character.cpp */,
 				5534BBDB1B2DDF52003CB847 /* Character.h */,
@@ -1148,6 +1161,19 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
+		DC398BE71C0D6A5C00DA9811 /* TerrainObject */ = {
+			isa = PBXGroup;
+			children = (
+				DC398BE81C0D6A8E00DA9811 /* TerrainObject.cpp */,
+				DC398BE91C0D6A8E00DA9811 /* TerrainObject.h */,
+				DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */,
+				DC398BF11C0D727C00DA9811 /* SlipFloor.h */,
+				DC398BEC1C0D70BC00DA9811 /* Water.cpp */,
+				DC398BED1C0D70BC00DA9811 /* Water.h */,
+			);
+			name = TerrainObject;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1341,6 +1367,7 @@
 				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
+				DC398BEE1C0D70BC00DA9811 /* Water.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				554470721BDCD5D80048CD0B /* SceneEvent.cpp in Sources */,
@@ -1361,6 +1388,7 @@
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				2672664E1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
 				DCAB9BC01BFF1EF000887F68 /* Scouter.cpp in Sources */,
+				DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
 				DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
@@ -1370,6 +1398,7 @@
 				26221DFF1BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
 				DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */,
 				DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */,
+				DC398BEA1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */,
 				26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
 				553577DD1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
@@ -1419,6 +1448,7 @@
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
+				DC398BEF1C0D70BC00DA9811 /* Water.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
@@ -1428,6 +1458,7 @@
 				26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				554470861BDF61790048CD0B /* CharacterEvent.cpp in Sources */,
 				553577E61BEB99790095E6A9 /* Party.cpp in Sources */,
+				DC398BF31C0D727C00DA9811 /* SlipFloor.cpp in Sources */,
 				5544706F1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */,
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
@@ -1495,6 +1526,7 @@
 				554470771BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				55F302391BDAB0F800BDC418 /* EventFactory.cpp in Sources */,
+				DC398BEB1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */,
 				2672664F1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
 				26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
 				55799D561BEE1D2A002462E6 /* PathFinder.cpp in Sources */,
