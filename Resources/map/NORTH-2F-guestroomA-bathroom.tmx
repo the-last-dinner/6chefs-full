@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="8" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="31">
- <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
-  <image source="youkan.png" trans="007575" width="480" height="256"/>
- </tileset>
- <tileset firstgid="481" name="situnai" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="situnai" tilewidth="16" tileheight="16">
   <image source="situnai.png" trans="007575" width="960" height="511"/>
  </tileset>
- <tileset firstgid="2341" name="ST-Bath-I01" tilewidth="16" tileheight="16">
+ <tileset firstgid="1861" name="ST-Bath-I01" tilewidth="16" tileheight="16">
   <image source="ST-Bath-I01.png" trans="ffffff" width="256" height="838"/>
  </tileset>
- <tileset firstgid="3173" name="map_icon" tilewidth="16" tileheight="16">
+ <tileset firstgid="2693" name="map_icon" tilewidth="16" tileheight="16">
   <image source="map_icon.png" trans="080500" width="513" height="435"/>
  </tileset>
  <layer name="Base" width="10" height="8">
@@ -17,7 +14,7 @@
    <property name="cc_vertexz" value="-17"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYEAFRzkx8TFOBgxwlRMTX8OibjkndjzQ6rZzQjCy3HYkjK4OGwbpAQBhViZL
+   eJxjYEAFT9kx8TN2BgzwlR0Tf8Oi7jg7djzQ6q6zQzCy3HUkjK4OGwbpAQDbmyxj
   </data>
  </layer>
  <layer name="MonoShita" width="10" height="8">
@@ -25,7 +22,7 @@
    <property name="cc_vertexz" value="-16"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAPPnIzMAjxYIq3czEwdHAh+IpANUpY1BELNIB6NZGwFhBrYzHPAihmiYStgNgaizoPoJgnEvYCYm887rsI9OclbtLdDQCKOgky
+   eJxjYMAPBLkYGIy4MMWXczAwrOBA8B2BapywqCMWeAD1eiJhLyD2xmJeBFAsEglHAXE0FnUZQLFMJJwFxNl43PeRk4HhEyfp7gYATQQLPw==
   </data>
  </layer>
  <layer name="key" width="10" height="8">
@@ -33,7 +30,7 @@
    <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgcoI2XgaGdl7C6ZUA1y4lQRy8AAJnzAo8=
+   eJxjYBgcYBk3A8NybsLqjgHVHCdCHb0AAOXrAwc=
   </data>
  </layer>
  <layer name="bathtub" width="10" height="8">
@@ -41,7 +38,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgcQJeHgUEPivWh2IAHU50tUMwOiu2h2AGLOl+gmB8U+0NxABZ1lAIAoAIFPg==
+   eJxjYBgcwJeLgcEPiv2hOIALU10sUCwOiuOhOAGLulygWB4U50NxARZ1lAIAut0HWg==
   </data>
  </layer>
  <layer name="open" width="10" height="8">
@@ -49,7 +46,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAteM/JwPABiD9CaRhGB//R5PGpY+BiYGDkwm8vP1BeAIgFCaiTB8orALEiAXW4AAC/2g2l
+   eJxjYKAt4OdgYBAAYkEoDcPoQB5NHp86BSBWxCKHDPSB8gZAbEhAnT1Q3gGIHQmowwUAm28DKA==
   </data>
  </layer>
  <layer name="MonoChu" width="10" height="8">
@@ -57,7 +54,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAt+MyJib9wYqpj5sKOiVHHgkWdMBcmFsGijlIAAI/pBzY=
+   eJxjYKAtEObAxCIcmOqUObBjYtSpYFFnzIGJTbCooxQAAEIKBAw=
   </data>
  </layer>
  <layer name="MonoUe" width="10" height="8">
@@ -65,7 +62,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFyCCciYEhgomwuslANeeBGAApTAIa
+   eJxjYBgFyKAciCuIULcZiN8DMQA1hAKS
   </data>
  </layer>
  <objectgroup name="collision">
