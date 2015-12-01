@@ -215,9 +215,7 @@ bool MapObject::canMove(const vector<Direction>& directions) const
 // 方向指定移動メソッド
 bool MapObject::moveBy(const Direction& direction, function<void()> onMoved, const float ratio)
 {
-    vector<Direction> directions {direction};
-    
-    return this->moveBy(directions, onMoved, ratio);
+    return this->moveBy({direction}, onMoved, ratio);
 }
 
 // 方向指定移動メソッド
@@ -248,8 +246,7 @@ bool MapObject::moveBy(const vector<Direction>& directions, function<void()> onM
 // 方向、マス数指定移動用メソッド
 void MapObject::moveBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio)
 {
-    vector<Direction> directions {direction};
-    this->moveBy(directions, gridNum, callback, ratio);
+    this->moveBy({direction}, gridNum, callback, ratio);
 }
 
 // 複数方向、マス数指定移動用メソッド
