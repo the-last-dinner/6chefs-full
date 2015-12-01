@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="127">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="144">
  <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
@@ -70,102 +70,24 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="21" type="slip" x="64" y="64" width="32" height="32"/>
-  <object id="22" type="slip" x="64" y="96" width="32" height="32"/>
-  <object id="23" type="slip" x="96" y="64" width="32" height="32"/>
-  <object id="24" type="slip" x="128" y="64" width="32" height="32"/>
-  <object id="25" type="slip" x="96" y="96" width="32" height="32"/>
-  <object id="26" type="slip" x="128" y="96" width="32" height="32"/>
-  <object id="30" type="slip" x="160" y="96" width="32" height="32"/>
-  <object id="31" type="slip" x="192" y="64" width="32" height="32"/>
-  <object id="32" type="slip" x="192" y="96" width="32" height="32"/>
-  <object id="33" type="slip" x="224" y="64" width="32" height="32"/>
-  <object id="34" type="slip" x="256" y="64" width="32" height="32"/>
-  <object id="35" type="slip" x="288" y="64" width="32" height="32"/>
-  <object id="36" type="slip" x="320" y="64" width="32" height="32"/>
-  <object id="37" type="slip" x="384" y="64" width="32" height="32"/>
-  <object id="38" type="slip" x="416" y="64" width="32" height="32"/>
-  <object id="39" type="slip" x="416" y="96" width="32" height="32"/>
-  <object id="40" type="slip" x="384" y="96" width="32" height="32"/>
-  <object id="42" type="slip" x="352" y="96" width="32" height="32"/>
-  <object id="43" type="slip" x="320" y="96" width="32" height="32"/>
-  <object id="45" type="slip" x="288" y="96" width="32" height="32"/>
-  <object id="46" type="slip" x="224" y="96" width="32" height="32"/>
-  <object id="47" type="slip" x="96" y="128" width="32" height="32"/>
-  <object id="49" type="slip" x="128" y="128" width="32" height="32"/>
-  <object id="50" type="slip" x="160" y="128" width="32" height="32"/>
-  <object id="51" type="slip" x="192" y="128" width="32" height="32"/>
-  <object id="52" type="slip" x="224" y="128" width="32" height="32"/>
-  <object id="53" type="slip" x="256" y="128" width="32" height="32"/>
-  <object id="54" type="slip" x="288" y="128" width="32" height="32"/>
-  <object id="55" type="slip" x="320" y="128" width="32" height="32"/>
-  <object id="56" type="slip" x="352" y="128" width="32" height="32"/>
-  <object id="57" type="slip" x="384" y="128" width="32" height="32"/>
-  <object id="58" type="slip" x="384" y="160" width="32" height="32"/>
-  <object id="59" type="slip" x="416" y="192" width="32" height="32"/>
-  <object id="60" type="slip" x="416" y="224" width="32" height="32"/>
-  <object id="61" type="slip" x="384" y="192" width="32" height="32"/>
-  <object id="62" type="slip" x="384" y="224" width="32" height="32"/>
-  <object id="63" type="slip" x="384" y="256" width="32" height="32"/>
-  <object id="64" type="slip" x="416" y="256" width="32" height="32"/>
-  <object id="65" type="slip" x="416" y="288" width="32" height="32"/>
-  <object id="66" type="slip" x="416" y="320" width="32" height="32"/>
-  <object id="67" type="slip" x="384" y="288" width="32" height="32"/>
-  <object id="68" type="slip" x="384" y="320" width="32" height="32"/>
-  <object id="69" type="slip" x="352" y="224" width="32" height="32"/>
-  <object id="70" type="slip" x="352" y="256" width="32" height="32"/>
-  <object id="71" type="slip" x="352" y="288" width="32" height="32"/>
-  <object id="72" type="slip" x="352" y="320" width="32" height="32"/>
-  <object id="73" type="slip" x="320" y="320" width="32" height="32"/>
-  <object id="74" type="slip" x="288" y="288" width="32" height="32"/>
-  <object id="75" type="slip" x="320" y="256" width="32" height="32"/>
-  <object id="76" type="slip" x="320" y="160" width="32" height="32"/>
-  <object id="77" type="slip" x="320" y="192" width="32" height="32"/>
-  <object id="78" type="slip" x="320" y="224" width="32" height="32"/>
-  <object id="79" type="slip" x="288" y="160" width="32" height="32"/>
-  <object id="80" type="slip" x="288" y="192" width="32" height="32"/>
-  <object id="81" type="slip" x="288" y="224" width="32" height="32"/>
-  <object id="82" type="slip" x="288" y="256" width="32" height="32"/>
-  <object id="83" type="slip" x="256" y="160" width="32" height="32"/>
-  <object id="84" type="slip" x="256" y="192" width="32" height="32"/>
-  <object id="85" type="slip" x="64" y="160" width="32" height="32"/>
-  <object id="86" type="slip" x="96" y="160" width="32" height="32"/>
-  <object id="87" type="slip" x="128" y="160" width="32" height="32"/>
-  <object id="88" type="slip" x="160" y="160" width="32" height="32"/>
-  <object id="89" type="slip" x="192" y="160" width="32" height="32"/>
-  <object id="90" type="slip" x="224" y="160" width="32" height="32"/>
-  <object id="91" type="slip" x="224" y="192" width="32" height="32"/>
-  <object id="92" type="slip" x="224" y="224" width="32" height="32"/>
-  <object id="93" type="slip" x="256" y="224" width="32" height="32"/>
-  <object id="94" type="slip" x="256" y="256" width="32" height="32"/>
-  <object id="95" type="slip" x="256" y="288" width="32" height="32"/>
-  <object id="96" type="slip" x="224" y="256" width="32" height="32"/>
-  <object id="97" type="slip" x="224" y="288" width="32" height="32"/>
-  <object id="99" type="slip" x="192" y="256" width="32" height="32"/>
-  <object id="100" type="slip" x="192" y="288" width="32" height="32"/>
-  <object id="102" type="slip" x="192" y="320" width="32" height="32"/>
-  <object id="103" type="slip" x="160" y="320" width="32" height="32"/>
-  <object id="104" type="slip" x="128" y="320" width="32" height="32"/>
-  <object id="105" type="slip" x="96" y="320" width="32" height="32"/>
-  <object id="106" type="slip" x="64" y="320" width="32" height="32"/>
-  <object id="107" type="slip" x="64" y="288" width="32" height="32"/>
-  <object id="109" type="slip" x="96" y="288" width="32" height="32"/>
-  <object id="110" type="slip" x="128" y="288" width="32" height="32"/>
-  <object id="111" type="slip" x="160" y="288" width="32" height="32"/>
-  <object id="112" type="slip" x="160" y="256" width="32" height="32"/>
-  <object id="113" type="slip" x="224" y="320" width="32" height="32"/>
-  <object id="114" type="slip" x="288" y="320" width="32" height="32"/>
-  <object id="115" type="slip" x="96" y="256" width="32" height="32"/>
-  <object id="116" type="slip" x="128" y="256" width="32" height="32"/>
-  <object id="117" type="slip" x="160" y="224" width="32" height="32"/>
-  <object id="118" type="slip" x="192" y="192" width="32" height="32"/>
-  <object id="119" type="slip" x="160" y="192" width="32" height="32"/>
-  <object id="120" type="slip" x="128" y="224" width="32" height="32"/>
-  <object id="121" type="slip" x="128" y="192" width="32" height="32"/>
-  <object id="122" type="slip" x="96" y="192" width="32" height="32"/>
-  <object id="123" type="slip" x="96" y="224" width="32" height="32"/>
-  <object id="124" type="slip" x="64" y="224" width="32" height="32"/>
-  <object id="125" type="slip" x="64" y="192" width="32" height="32"/>
-  <object id="126" type="slip" x="352" y="160" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="terrain">
+  <object id="127" type="slip" x="64" y="64" width="96" height="64"/>
+  <object id="128" type="slip" x="64" y="160" width="128" height="96"/>
+  <object id="129" type="slip" x="96" y="128" width="64" height="32"/>
+  <object id="130" type="slip" x="160" y="96" width="96" height="64"/>
+  <object id="131" type="slip" x="192" y="160" width="160" height="64"/>
+  <object id="132" type="slip" x="192" y="64" width="160" height="32"/>
+  <object id="133" type="slip" x="288" y="96" width="160" height="32"/>
+  <object id="134" type="slip" x="256" y="128" width="160" height="32"/>
+  <object id="135" type="slip" x="352" y="160" width="64" height="32"/>
+  <object id="136" type="slip" x="384" y="192" width="64" height="32"/>
+  <object id="137" type="slip" x="96" y="256" width="160" height="96"/>
+  <object id="138" type="slip" x="224" y="224" width="224" height="32"/>
+  <object id="139" type="slip" x="256" y="256" width="192" height="32"/>
+  <object id="140" type="slip" x="256" y="288" width="64" height="32"/>
+  <object id="141" type="slip" x="288" y="320" width="160" height="32"/>
+  <object id="142" type="slip" x="336" y="288" width="112" height="32"/>
+  <object id="143" type="slip" x="64" y="288" width="32" height="64"/>
  </objectgroup>
 </map>
