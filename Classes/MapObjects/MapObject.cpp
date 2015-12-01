@@ -23,16 +23,10 @@ MapObject::MapObject(){FUNCLOG}
 MapObject::~MapObject(){FUNCLOG}
 
 // マス数サイズを取得
-Size MapObject::getGridSize() const
-{
-    return Size(floor(this->getContentSize().width / GRID),floor(this->getContentSize().height / GRID));
-}
+Size MapObject::getGridSize() const { return Size(floor(this->getContentSize().width / GRID),floor(this->getContentSize().height / GRID)); }
 
 // マップ上のマス座標を取得(一番左下のマス座標を返す)
-Point MapObject::getGridPosition() const
-{
-	return Point(this->location.x, this->location.y);
-}
+Point MapObject::getGridPosition() const { return Point(this->location.x, this->location.y); }
 
 // マス座標、マスあたり判定サイズのRectを取得
 Rect MapObject::getGridRect() const
@@ -41,53 +35,28 @@ Rect MapObject::getGridRect() const
 }
 
 // マス座標をセット、実際の位置は変更しない
-void MapObject::setGridPosition(const Point& gridPosition)
-{
-    this->location.x = gridPosition.x;
-    this->location.y = gridPosition.y;
-}
+void MapObject::setGridPosition(const Point& gridPosition) { this->location.x = gridPosition.x; this->location.y = gridPosition.y; }
 
 // 方向をセット
-void MapObject::setDirection(const Direction direction)
-{
-    this->location.direction = direction;
-}
+void MapObject::setDirection(const Direction direction) { this->location.direction = direction; }
 
 // オブジェクトIDをセット
-void MapObject::setObjectId(int objectId)
-{
-    this->objectId = objectId;
-}
+void MapObject::setObjectId(int objectId) { this->objectId = objectId; }
 
 // イベントIDをセット
-void MapObject::setEventId(int eventId)
-{
-	this->eventId = eventId;
-}
+void MapObject::setEventId(int eventId) { this->eventId = eventId; }
 
 // イベントのtriggerをセット
-void MapObject::setTrigger(Trigger trigger)
-{
-	this->trigger = trigger;
-}
+void MapObject::setTrigger(Trigger trigger) { this->trigger = trigger; }
 
 // 当たり判定の有無をセット
-void MapObject::setHit(bool _isHit)
-{
-	this->_isHit = _isHit;
-}
+void MapObject::setHit(bool _isHit) { this->_isHit = _isHit; }
 
 // 衝突判定用Rectをセット
-void MapObject::setCollisionRect(const Rect& rect)
-{
-    this->collisionRect = rect;
-}
+void MapObject::setCollisionRect(const Rect& rect) { this->collisionRect = rect;}
 
 // マップオブジェクトのリストをセット
-void MapObject::setMapObjectList(MapObjectList* objectList)
-{
-    this->objectList = objectList;
-}
+void MapObject::setMapObjectList(MapObjectList* objectList) { this->objectList = objectList; }
 
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
@@ -121,6 +90,9 @@ Trigger MapObject::getTrigger() const {return this->trigger;}
 
 // 移動中かどうか
 bool MapObject::isMoving() const {return this->_isMoving;}
+
+// 現在キャラが向いている方向を取得
+Direction MapObject::getDirection() const {return this->location.direction;}
 
 // 当たり判定の有無を取得
 const bool MapObject::isHit() const {return this->_isHit;}
@@ -207,16 +179,10 @@ Vec2 MapObject::createMoveVec(const vector<Direction>& directions) const
 }
 
 // 入力方向に対して動くことが可能かどうか
-bool MapObject::canMove(const vector<Direction>& directions) const
-{
-    return !this->createEnableDirections(directions).empty();
-}
+bool MapObject::canMove(const vector<Direction>& directions) const {return !this->createEnableDirections(directions).empty();}
 
 // 方向指定移動メソッド
-bool MapObject::moveBy(const Direction& direction, function<void()> onMoved, const float ratio)
-{
-    return this->moveBy({direction}, onMoved, ratio);
-}
+bool MapObject::moveBy(const Direction& direction, function<void()> onMoved, const float ratio) {return this->moveBy({direction}, onMoved, ratio);}
 
 // 方向指定移動メソッド
 bool MapObject::moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio)
@@ -244,10 +210,7 @@ bool MapObject::moveBy(const vector<Direction>& directions, function<void()> onM
 }
 
 // 方向、マス数指定移動用メソッド
-void MapObject::moveBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio)
-{
-    this->moveBy({direction}, gridNum, callback, ratio);
-}
+void MapObject::moveBy(const Direction& direction, const int gridNum, function<void(bool)> callback, const float ratio) {this->moveBy({direction}, gridNum, callback, ratio);}
 
 // 複数方向、マス数指定移動用メソッド
 void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> callback, const float ratio)

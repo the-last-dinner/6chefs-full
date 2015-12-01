@@ -60,6 +60,7 @@ public:
 	int getEventId() const;
 	Trigger getTrigger() const;
     bool isMoving() const;
+    Direction getDirection() const;
     
     // collision
     Rect getCollisionRect() const;
@@ -82,6 +83,7 @@ public:
     
     // イベント関数
     virtual void onEnterMap() {};                               // マップに追加された時
+    virtual void onSearched(MapObject* mainChara) {};           // 調べられた時
 
     void drawDebugMask(); // デバッグ用マスク
 };

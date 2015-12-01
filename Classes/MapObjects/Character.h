@@ -40,7 +40,6 @@ public:
     bool init(const CharacterData& data);
     
     int getCharacterId() const;
-    Direction getDirection() const;
     CharacterData getCharacterData() const;
     
 	virtual void setDirection(const Direction direction) override;
@@ -54,6 +53,7 @@ public:
     void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
     
     virtual void onEnterMap() override;
+    virtual void onSearched(MapObject* mainChara) override;
 };
 
 #endif // __CHARACTER_H__

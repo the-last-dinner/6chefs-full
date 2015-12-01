@@ -73,6 +73,7 @@ void PlayerControlTask::search(Party* party)
         if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition))
         {
             objPosition = obj->getPosition();
+            obj->onSearched(mainCharacter);
             DungeonSceneManager::getInstance()->runEvent(obj->getEventId());
         }
     }
