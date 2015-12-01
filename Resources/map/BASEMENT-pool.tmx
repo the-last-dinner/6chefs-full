@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="89">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
-  <image source="../../マップバックアップ/lower.png" trans="201c30" width="480" height="256"/>
+  <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
-  <image source="../../マップバックアップ/barrel-option.png" trans="201c30" width="256" height="224"/>
+  <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
  </tileset>
  <tileset firstgid="705" name="object_sack01" tilewidth="16" tileheight="16">
-  <image source="../../マップバックアップ/object_sack01.png" trans="201c30" width="384" height="256"/>
+  <image source="object_sack01.png" trans="201c30" width="384" height="256"/>
  </tileset>
  <tileset firstgid="1089" name="meet" tilewidth="16" tileheight="16">
-  <image source="../../マップバックアップ/meet.png" trans="0000ff" width="448" height="288"/>
+  <image source="meet.png" trans="0000ff" width="448" height="288"/>
  </tileset>
  <layer name="poolbottom" width="36" height="30">
   <properties>
@@ -49,7 +49,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjILBCdayMDCsA+L1LNjZpMpPhGJyAUz/JCrRlLoH2X/rkdjoNKFwGgnhgx5W+MJhqKSfSVRwD640gy8N4UtLwzV8iC1zCKkdruFDSjkzmn5ID5fhGj4TkdIPsfUXobKIUvdQG4+CUTAK6A8AO47fSg==
+   eJztlUEKACAIBD34/5+UX6yjRGV5inYHQqE6NMgmQgghb1JUpPZlOu+z+7/g32SuH2vkCcHP6GrnAXF+ojo7i+TnNHOQ8+c2Z5D8ZOZnde8Xsv9XlEWEENIApRd6aA==
   </data>
  </layer>
  <layer name="MonoChu" width="36" height="30">
@@ -132,6 +132,11 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="CharaUe1" width="36" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlUEKACAIBD34/5+UX6xjRGV56ODuQChUhwbZRAghhNxQVKT2Zbruo/tZGN9kQz9XzxOCn9nVyQPi/Hh1dRbJz23mIOfPa84g+YnMz+5eFqL/l5dFhJD/NMccemg=
+  </data>
+ </layer>
  <layer name="CharaUe2" width="36" height="30">
   <data encoding="base64" compression="zlib">
    eJztz9EJwCAQBNG1iMRCJIUY++8lNuAKRkFkHuznwZwEAHu6gnRPXgzjPenHbctDj0WPR49Hj0ePR493Uk+ut+/klQU/Auj7AJVZDuk=
@@ -275,11 +280,11 @@
   </object>
  </objectgroup>
  <objectgroup name="terrain">
-  <object id="83" type="water" x="48" y="128" width="32" height="256"/>
-  <object id="84" type="water" x="80" y="96" width="96" height="32"/>
-  <object id="85" type="water" x="208" y="96" width="224" height="32"/>
-  <object id="86" type="water" x="112" y="384" width="96" height="32"/>
-  <object id="87" type="water" x="240" y="384" width="192" height="32"/>
-  <object id="88" type="water" x="432" y="128" width="32" height="256"/>
+  <object id="83" type="water" x="96" y="128" width="32" height="256"/>
+  <object id="84" type="water" x="128" y="96" width="96" height="32"/>
+  <object id="85" type="water" x="256" y="96" width="224" height="32"/>
+  <object id="86" type="water" x="160" y="384" width="96" height="32"/>
+  <object id="87" type="water" x="288" y="384" width="192" height="32"/>
+  <object id="88" type="water" x="480" y="128" width="32" height="256"/>
  </objectgroup>
 </map>
