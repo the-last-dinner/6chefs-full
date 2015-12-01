@@ -70,6 +70,7 @@ public:
     const bool isHit(const vector<Direction>& directions) const;
     
     // move
+    vector<Direction> createEnableDirections(const vector<Direction>& directions) const;
     Vec2 createMoveVec(const vector<Direction>& directions) const;
     bool canMove(const vector<Direction>& directions) const;
     bool moveBy(const Direction& direction, function<void()> onMoved, const float ratio = 1.0f);

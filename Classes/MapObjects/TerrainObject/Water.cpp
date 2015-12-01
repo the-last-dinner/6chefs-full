@@ -19,13 +19,3 @@ bool Water::init()
 {
     return true;
 }
-
-// 複製を生成
-TerrainObject* Water::clone(MapObject* target)
-{
-    Water* p {Water::create()};
-    
-    p->setTarget(target);
-    
-    return p;
-}

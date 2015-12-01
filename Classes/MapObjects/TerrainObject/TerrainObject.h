@@ -13,18 +13,11 @@
 
 class TerrainObject : public MapObject
 {
-// インスタンス変数
-private:
-    MapObject* target { nullptr };
-    
 // インスタンスメソッド
 protected:
     TerrainObject();
     ~TerrainObject();
-    void setTarget(MapObject* target);
-    MapObject* getTarget();
 public:
-    virtual TerrainObject* clone(MapObject* target) = 0;
 };
 
 #endif /* TerrainObject_h */

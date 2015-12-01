@@ -19,13 +19,3 @@ bool SlipFloor::init()
 {
     return true;
 }
-
-// 複製
-TerrainObject* SlipFloor::clone(MapObject* target)
-{
-    SlipFloor* p { SlipFloor::create() };
-    
-    p->setTarget(target);
-    
-    return p;
-}

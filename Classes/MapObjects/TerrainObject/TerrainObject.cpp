@@ -13,15 +13,3 @@ TerrainObject::TerrainObject() {};
 
 // デストラクタ
 TerrainObject::~TerrainObject() {};
-
-// 上に乗るオブジェクトを格納
-void TerrainObject::setTarget(MapObject* target)
-{
-    this->target = target;
-}
-
-// 上に乗っているオブジェクトを取得
-MapObject* TerrainObject::getTarget()
-{
-    return this->target;
-}

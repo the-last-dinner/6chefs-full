@@ -173,21 +173,34 @@ const bool MapObject::isHit(const vector<Direction>& directions) const
     return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
 }
 
-// 方向から移動ベクトルを生成
-Vec2 MapObject::createMoveVec(const vector<Direction>& directions) const
+// 入力のあった方向から、移動可能方向のみを取り出して返す
+vector<Direction> MapObject::createEnableDirections(const vector<Direction>& directions) const
 {
+    vector<Direction> enableDirs {};
+    
     // 入力が２以上の時、斜め方向に当たり判定があるか確認
     bool isHitDiagnally { directions.size() >= 2 ? this->isHit(directions) : false };
     
-    // 移動ベクトルを当たり判定から生成
-    Vec2 movement {Vec2::ZERO};
-    
+    // 当たり判定
     for(Direction direction : directions)
     {
-        if((!isHitDiagnally && !this->isHit(direction)) || (isHitDiagnally && !this->isHit(direction) && movement == Vec2::ZERO))
+        if((!isHitDiagnally && !this->isHit(direction)) || (isHitDiagnally && !this->isHit(direction) && enableDirs.empty()))
         {
-            movement += MapUtils::getGridVector(direction);
+            enableDirs.push_back(direction);
         }
+    }
+    
+    return enableDirs;
+}
+
+// 方向から移動ベクトルを生成
+Vec2 MapObject::createMoveVec(const vector<Direction>& directions) const
+{
+    Vec2 movement {Vec2::ZERO};
+    
+    for(Direction direction : this->createEnableDirections(directions))
+    {
+        movement += MapUtils::getGridVector(direction);
     }
     
     return movement;
@@ -196,8 +209,7 @@ Vec2 MapObject::createMoveVec(const vector<Direction>& directions) const
 // 入力方向に対して動くことが可能かどうか
 bool MapObject::canMove(const vector<Direction>& directions) const
 {
-    // 生成した移動ベクトルがゼロベクトルでなければ移動可能と判断
-    return this->createMoveVec(directions) != Vec2::ZERO;
+    return !this->createEnableDirections(directions).empty();
 }
 
 // 方向指定移動メソッド

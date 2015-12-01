@@ -24,7 +24,7 @@ private:
     bool init();
     
 public:
-    virtual TerrainObject* clone(MapObject* target);
+    
 };
 
 #endif /* SlipFloor_h */

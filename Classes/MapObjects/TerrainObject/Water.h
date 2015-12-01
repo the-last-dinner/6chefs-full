@@ -23,7 +23,7 @@ private:
     ~Water();
     bool init();
 public:
-    virtual TerrainObject* clone(MapObject* target);
+
 };
 
 #endif /* Water_h */
