@@ -82,8 +82,35 @@
           "type":"fadeout"
         },
         {
-          "type":"wait",
-          "time":3.0
+          "type":"charaMsg",
+          "talk":[
+            {
+              "text":["おっ先～"],
+              "charaID":"2",
+              "imgID":"1"
+            },
+            {
+              "text":["オラ！邪魔だ!\nどけ！"],
+              "charaID":"5",
+              "imgID":"1",
+              "option":"reaction"
+            },
+            {
+              "text":["・・・"],
+              "charaID":"1",
+              "imgID":"1"
+            },
+            {
+              "text":["ふんっ"],
+              "charaID":"3",
+              "imgID":"1"
+            },
+            {
+              "text":["失礼しますぞ"],
+              "charaID":"4",
+              "imgID":"1"
+            }
+          ]
         },
         {
             "type": "already"
@@ -1714,21 +1741,20 @@
           ]
         },
         {
-          "type": "charaWalkTo",
-          "x": 14,
-          "y": 13,
-          "objID": "1012",
-          "speed":3.0
-        },
-        {
-          "type": "removeChara",
-          "objID": "1012"
+          "type":"charaWalkTo",
+          "x":14,
+          "y":13,
+          "objID":"1012"
         },
         {
           "type": "charaMsg",
           "text": ["行っちゃった・・・\n今の声は・・・？"],
           "charaID": "0",
           "imgID": "1"
+        },
+        {
+          "type": "removeChara",
+          "objID": "1012"
         },
         {
           "type": "already"
@@ -1823,7 +1849,24 @@
   ],
   "25":[
     {
-
+      "type":"if",
+      "condition":[
+        {
+          "Nevent":["7","1"]
+        }
+      ],
+      "action":[
+        {
+          "type":"createChara",
+          "objID":"1097"
+        }
+      ]
+    }
+  ],
+  "26":[
+    {
+      "type":"systemMsg",
+      "text":["キッチンは自由に使って下さい"]
     }
   ]
 }
