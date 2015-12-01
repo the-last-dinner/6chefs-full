@@ -3415,144 +3415,224 @@
 			"type":"sequence",
 			"action":[
 				{
-		          "type":"changeDirection",
-		          "objID":"hero",
-		          "direction":"RIGHT"
-		        },
-		        {
-		          "type":"playBGM",
-		          "file":"Mozart-OboeConcerto-1.mp3"
-		        },
-		        {
-		        	"type":"fadein"
-		        },
-		        {
-		          "type": "charaMsg",
-		          "talk": [
-		            {
-		              "text": [
-		                "ったく！いつまで待たせんのよ"
-		              ],
-		              "charaID": "3",
-		              "imgID": "1",
-		              "name": "？？？",
-		              "option": "reaction"
-		            },
-		            {
-		              "text": ["おいおい、5分や10分くらい大人しく待てねーのか\nオメーは"],
-		              "charaID": "2",
-		              "imgID": "1",
-		              "name": "？？？"
-		            },
-		            {
-		              "text": ["１５分よ！"],
-		              "charaID": "3",
-		              "imgID": "1",
-		              "name": "？？？",
-		              "option": "reaction"
-		            },
-		            {
-		              "text": ["そうですぞ！さわいだところで"],
-		              "charaID": "4",
-		              "imgID": "1",
-		              "name": "？？？"
-		            },
-		            {
-		              "text": ["ウルセえ！"],
-		              "charaID": "5",
-		              "imgID": "1",
-		              "name": "？？？",
-		              "option": "reaction"
-		            },
-		            {
-		              "text": ["み、皆さん喧嘩は..."],
-		              "charaID": "1",
-		              "imgID": "1",
-		              "name": "？？？"
-		            }
-		          ]
-		        },
-		        {
-		          "type": "playSE",
-		          "file": "door1.mp3"
-		        },
-		        {
-		          "type": "createChara",
-		          "objID": "1013"
-		        },
-		        {
-		          "type": "spawn",
-		          "action": [
-		            {
-		              "type":"changeDirection",
-		              "objID":"hero",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type":"changeDirection",
-		              "objID":"102",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type":"changeDirection",
-		              "objID":"103",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type":"changeDirection",
-		              "objID":"104",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type":"changeDirection",
-		              "objID":"105",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type":"changeDirection",
-		              "objID":"106",
-		              "direction":"DOWN"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "hero"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "102"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "103"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "104"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "105"
-		            },
-		            {
-		              "type": "reaction",
-		              "objID": "106"
-		            }
-		          ]
-		        },
-		        {
-		          "type": "charaWalkTo",
-		          "x": 20,
-		          "y": 32,
-		          "objID": "1013"
-		        },
-		        {
-		          "type": "charaMsg",
-		          "charaID":"9",
-		          "text": ["皆様、お待たせいたしました。","皆様には只今より西棟に移動して頂き、お料理をして頂きます。\n道具や食材は西棟にあるもの、何でも使ってもらって　構いません。","使って頂くキッチンは、\n西棟１階入って右手が佐々木様、左手が中山様","２階入って右手が荒間田様、左手が大善様","３階入って右手が一色様、左手が加藤様\nでございます。","\n私は大広間にいますので\n分からないことや足りないものがあれば、お申し付けください。","失礼、最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。","それでは皆さん、移動を開始してください。"]
-		        },
-		        {
-		          "type": "already"
-		        }
+				   	"type":"fadein"
+				},
+				{
+					"type":"charaMsg",
+					"text":["失礼します"],
+					"charaID":"0",
+					"imgID":"1"
+				},
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"steps":3.0,
+					"direction":"UP"
+				},
+				{
+					"type":"charaMsg",
+					"talk":[
+						{
+							"text":["チｨッ"],
+							"charaID":"5",
+							"imgID":"1",
+							"name":"？？？"
+						},
+						{
+							"text":["なーんだ"],
+							"charaID":"3",
+							"imgID":"1",
+							"name":"？？？"
+						},
+						{
+							"text":["おお、君で最後ですかな\n空いてる席に掛けるといいですぞ"],
+							"charaID":"4",
+							"imgID":"1",
+							"name":"？？？"
+						},
+						{
+							"text":["え？は、はい・・・"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
+				},
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"direction":"LEFT",
+					"steps":4.0
+				},
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"direction":"UP",
+					"steps":10.0
+				},
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"direction":"RIGHT",
+					"steps":1.0
+				},
+				{
+					"type":"createCamera",
+					"x":20,
+					"y":21,
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+						          "type":"createChara",
+						          "objID":"1096"
+						        },
+						        {
+						          "type":"playBGM",
+						          "file":"Mozart-OboeConcerto-1.mp3"
+						        },
+						        {
+						          "type": "charaMsg",
+						          "talk": [
+						            {
+						              "text": [
+						                "ったく！いつまで待たせんのよ"
+						              ],
+						              "charaID": "3",
+						              "imgID": "1",
+						              "name": "？？？",
+						              "option": "reaction"
+						            },
+						            {
+						              "text": ["おいおい、5分や10分くらい大人しく待てねーのか\nオメーは"],
+						              "charaID": "2",
+						              "imgID": "1",
+						              "name": "？？？"
+						            },
+						            {
+						              "text": ["１５分よ！"],
+						              "charaID": "3",
+						              "imgID": "1",
+						              "name": "？？？",
+						              "option": "reaction"
+						            },
+						            {
+						              "text": ["そうですぞ！さわいだところで・・・"],
+						              "charaID": "4",
+						              "imgID": "1",
+						              "name": "？？？"
+						            },
+						            {
+						              "text": ["ウルセえ！"],
+						              "charaID": "5",
+						              "imgID": "1",
+						              "name": "？？？",
+						              "option": "reaction"
+						            },
+						            {
+						              "text": ["み、皆さん喧嘩は・・・"],
+						              "charaID": "1",
+						              "imgID": "1",
+						              "name": "？？？"
+						            }
+						          ]
+						        },
+						        {
+						          "type": "playSE",
+						          "file": "door1.mp3"
+						        },
+						        {
+						          "type": "createChara",
+						          "objID": "1013"
+						        },
+						        {
+						          "type": "spawn",
+						          "action": [
+						            {
+						              "type":"changeDirection",
+						              "objID":"1096",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type":"changeDirection",
+						              "objID":"102",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type":"changeDirection",
+						              "objID":"103",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type":"changeDirection",
+						              "objID":"104",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type":"changeDirection",
+						              "objID":"105",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type":"changeDirection",
+						              "objID":"106",
+						              "direction":"DOWN"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "1096"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "102"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "103"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "104"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "105"
+						            },
+						            {
+						              "type": "reaction",
+						              "objID": "106"
+						            }
+						          ]
+						        },
+						        {
+						          "type": "charaWalkTo",
+						          "x": 20,
+						          "y": 32,
+						          "objID": "1013",
+						          "speed":0.5
+						        },
+						        {
+						          "type": "charaMsg",
+						          "charaID":"9",
+						          "text": ["皆様、お待たせいたしました。","皆様には只今より西棟に移動して頂き、\nお料理をして頂きます。","道具や食材は西棟にあるもの、\n何でも使ってもらって構いません。","使って頂くキッチンは、\n西棟１階入って右手が佐々木様、奥が中山様","２階入って右手が荒間田様、左手が大善様","３階入って左手が一色様、奥が加藤様\nでございます。","私はここにいますので\n分からないことや足りないものがあれば、\nお申し付けください。","失礼、最後にもう一つ。\nこの本棟と西棟以外には決して入らないでください。","それでは皆さん、移動を開始してください。"]
+						        },
+						        {
+						        	"type":"fadeout"
+						        }
+							]
+						}
+					]
+				},
+				{
+				    "type": "createChara",
+				    "objID": "1098"
+				},
+				{
+					"type":"fadein"
+				},
+				{
+				    "type": "already"
+				}
 			]
 		}
 	],
@@ -3748,6 +3828,30 @@
 		},
 		{
 			"type":"already"
+		}
+	],
+	"51":[
+		{
+			"type":"charaMsg",
+			"text":["移動を開始して下さい"],
+			"charaID":"9"
+		}
+	],
+	"52":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["3","48"],
+					"Nevent":["4","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1098"
+				}
+			]
 		}
 	]
 }
