@@ -15,17 +15,15 @@ SlipFloor::SlipFloor() {FUNCLOG};
 SlipFloor::~SlipFloor() {FUNCLOG};
 
 // 初期化
-bool SlipFloor::init(const Location& location)
+bool SlipFloor::init()
 {
-    if(!TerrainObject::init(location)) return false;
-    
     return true;
 }
 
 // 複製
 TerrainObject* SlipFloor::clone(MapObject* target)
 {
-    SlipFloor* p { SlipFloor::create(this->location) };
+    SlipFloor* p { SlipFloor::create() };
     
     p->setTarget(target);
     

@@ -15,13 +15,13 @@ class Water : public TerrainObject
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(Water, const Location&)
+    CREATE_FUNC(Water)
 // インスタンス変数
 // インスタンスメソッド
 private:
     Water();
     ~Water();
-    virtual bool init(const Location& location) override;
+    bool init();
 public:
     virtual TerrainObject* clone(MapObject* target);
 };

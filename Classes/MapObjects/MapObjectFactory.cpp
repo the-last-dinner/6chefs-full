@@ -14,6 +14,9 @@
 #include "MapObjects/EventObject.h"
 #include "MapObjects/MapObjectList.h"
 
+#include "MapObjects/TerrainObject/Water.h"
+#include "MapObjects/TerrainObject/SlipFloor.h"
+
 // コンストラクタ
 MapObjectFactory::MapObjectFactory() {FUNCLOG};
 
@@ -230,5 +233,28 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
 // 地形レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnTerrain(const ValueMap& info)
 {
+    map<string, function<TerrainObject*()>> typeStrToFunc
+    {
+        {"slip", SlipFloor::create},
+        {"water", Water::create},
+    };
     
+    string typeStr {this->getObjectType(info)};
+    
+    if(typeStrToFunc.count(typeStr) == 0) return nullptr;
+    
+    Rect rect {this->getRect(info)};
+    Point gridPosition { this->getGridPosition(rect) };
+    
+    TerrainObject* obj { typeStrToFunc[typeStr]() };
+    
+    if(!obj) return nullptr;
+    
+    obj->setObjectId(this->getObjectId(info));
+    obj->setGridPosition(this->getGridPosition(rect));
+    obj->setContentSize(rect.size);
+    obj->setPosition(rect.origin + rect.size / 2);
+    obj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    
+    return obj;
 }

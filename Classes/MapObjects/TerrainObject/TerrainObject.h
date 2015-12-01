@@ -21,7 +21,6 @@ private:
 protected:
     TerrainObject();
     ~TerrainObject();
-    virtual bool init(const Location& location);
     void setTarget(MapObject* target);
     MapObject* getTarget();
 public:

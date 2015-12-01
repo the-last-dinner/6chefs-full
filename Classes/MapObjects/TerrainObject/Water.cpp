@@ -15,17 +15,15 @@ Water::Water() {FUNCLOG};
 Water::~Water() {FUNCLOG};
 
 // 初期化
-bool Water::init(const Location& location)
+bool Water::init()
 {
-    if(!TerrainObject::init(location)) return false;
-    
     return true;
 }
 
 // 複製を生成
 TerrainObject* Water::clone(MapObject* target)
 {
-    Water* p {Water::create(this->location)};
+    Water* p {Water::create()};
     
     p->setTarget(target);
     

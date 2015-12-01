@@ -14,14 +14,6 @@ TerrainObject::TerrainObject() {};
 // デストラクタ
 TerrainObject::~TerrainObject() {};
 
-// 初期化
-bool TerrainObject::init(const Location& location)
-{
-    this->location = location;
-    
-    return true;
-}
-
 // 上に乗るオブジェクトを格納
 void TerrainObject::setTarget(MapObject* target)
 {

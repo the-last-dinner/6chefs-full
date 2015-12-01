@@ -15,13 +15,13 @@ class SlipFloor : public TerrainObject
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_PARAM(SlipFloor, const Location&)
+    CREATE_FUNC(SlipFloor)
     
 // インスタンスメソッド
 private:
     SlipFloor();
     ~SlipFloor();
-    virtual bool init(const Location& location) override;
+    bool init();
     
 public:
     virtual TerrainObject* clone(MapObject* target);
