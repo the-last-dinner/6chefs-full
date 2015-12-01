@@ -187,3 +187,27 @@ Direction MapUtils::oppositeDirection(const Direction& direction)
     
     return directionMap[direction];
 }
+
+// 方向ベクタからマップ上ベクトルに変換
+Vec2 MapUtils::directionsToMapVector(const vector<Direction>& directions)
+{
+    Vec2 vec {Vec2::ZERO};
+    
+    if(directions.empty()) return vec;
+    
+    map<Direction, Vec2> dirToVec2
+    {
+        {Direction::BACK, Vec2(0, -1)},
+        {Direction::FRONT, Vec2(0, 1)},
+        {Direction::LEFT, Vec2(-1, 0)},
+        {Direction::RIGHT, Vec2(1, 0)},
+    };
+    
+    for(Direction direction : directions)
+    {
+        if(dirToVec2.count(direction) == 0) continue;
+        vec += dirToVec2[direction];
+    }
+    
+    return vec;
+}

@@ -100,6 +100,7 @@ enum struct Trigger
 	RIDE,
 	SEARCH,
     AFTER_INIT,
+    WILL,
 	SIZE,
 };
 

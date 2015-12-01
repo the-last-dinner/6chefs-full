@@ -45,8 +45,10 @@ public:
     Vector<MapObject*> getMapObjectsByGridRect(const Rect& gridRect, const Trigger trigger = Trigger::SIZE) const;
     
     vector<int> getEventIds(const Trigger trigger) const;
+    vector<int> getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const;
     vector<Rect> getGridCollisionRects() const;
     
+    // 追加、削除
     void add(MapObject* mapObject);
     void removeById(const int objectId);
     

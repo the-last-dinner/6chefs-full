@@ -296,6 +296,12 @@ void DungeonSceneManager::runEvent(const int eventId)
     this->getScene()->eventTask->runEvent(eventId);
 }
 
+// イベント実行
+void DungeonSceneManager::runEvent(const vector<int>& eventIds)
+{
+    this->getScene()->eventTask->runEvent(eventIds);
+}
+
 // キューにイベントを後ろから詰める
 void DungeonSceneManager::pushEventBack(const int eventId)
 {
