@@ -66,7 +66,6 @@ bool TrophyListLayer::init()
     
     // トロフィーリスト
     square = SpriteUtils::Square(0,25,100,80);
-    //margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
     margin = SpriteUtils::Margin(1.0);
     Sprite* center = SpriteUtils::getSquareSprite(square, margin);
     center->setColor(Color3B::BLACK);
@@ -96,8 +95,8 @@ bool TrophyListLayer::init()
         center->addChild(panel);
         
         // トロフィー画像
-        Sprite* trophy_img = Sprite::create("img/trophy_gold.png");
-        trophy_img->setPosition(trophy_img->getContentSize().width, trophy_img->getContentSize().height/2 - 0.5);
+        Sprite* trophy_img {Sprite::createWithSpriteFrameName("trophy_gold.png")};
+        trophy_img->setPosition(trophy_img->getContentSize().width, trophy_img->getContentSize().height/2);
         trophy_img->setScale(0.8);
         
         // トロフィー名

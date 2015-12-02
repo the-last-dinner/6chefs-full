@@ -183,10 +183,10 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
         // ハート生成
         for (int i=0; i<3; i++)
         {
-            string file_name = level>=i ? "img/heart_pink.png" : "img/heart_black.png";
-            Sprite* heart = Sprite::create(file_name);
+            string file_name = level>=i ? "heart_pink.png" : "heart_black.png";
+            Sprite* heart {Sprite::createWithSpriteFrameName(file_name)};
             heart->setScale(0.50);
-            heart->setPosition(i * panel.width / 3 + panel.width / 6, heart->getContentSize().height / 4);
+            heart->setPosition(i * panel.width / 3 + panel.width / 6, heart->getContentSize().height / 4 + 15);
             heart_panel->addChild(heart);
         }
         
