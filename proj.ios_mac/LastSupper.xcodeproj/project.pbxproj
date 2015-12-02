@@ -241,6 +241,8 @@
 		DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BEC1C0D70BC00DA9811 /* WaterArea.cpp */; };
 		DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
 		DC398BF31C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
+		DC6E38FE1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
+		DC6E38FF1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
 		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DC8115901C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
@@ -548,6 +550,8 @@
 		DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SlipFloor.cpp; path = ../Classes/MapObjects/TerrainObject/SlipFloor.cpp; sourceTree = "<group>"; };
 		DC398BF11C0D727C00DA9811 /* SlipFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlipFloor.h; path = ../Classes/MapObjects/TerrainObject/SlipFloor.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
+		DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LightEvent.cpp; path = ../Classes/Event/LightEvent.cpp; sourceTree = "<group>"; };
+		DC6E38FD1C0EFF8900DBF569 /* LightEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightEvent.h; path = ../Classes/Event/LightEvent.h; sourceTree = "<group>"; };
 		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
 		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
 		DCAB9BB61BFF19A100887F68 /* Chaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chaser.cpp; path = ../Classes/MapObjects/MovePatterns/Chaser.cpp; sourceTree = "<group>"; };
@@ -1151,6 +1155,8 @@
 				554470881BDF89990048CD0B /* FlagEvent.h */,
 				55F3022E1BDA331900BDC418 /* GameEvent.cpp */,
 				55F3022F1BDA331900BDC418 /* GameEvent.h */,
+				DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */,
+				DC6E38FD1C0EFF8900DBF569 /* LightEvent.h */,
 				5544708B1BDFA0F10048CD0B /* MapEvent.cpp */,
 				5544708C1BDFA0F10048CD0B /* MapEvent.h */,
 				554470741BDCDFAE0048CD0B /* MapObjectEvent.cpp */,
@@ -1365,6 +1371,7 @@
 				557C035B1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				552D837D1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				552F5DCD1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
+				DC6E38FE1C0EFF8900DBF569 /* LightEvent.cpp in Sources */,
 				262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */,
 				55C3C1EE1BD143B700ECDB50 /* GameTask.cpp in Sources */,
 				2640E14B1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
@@ -1530,6 +1537,7 @@
 				551A51791BF239F600D6263A /* Direction.cpp in Sources */,
 				556C716B1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
+				DC6E38FF1C0EFF8900DBF569 /* LightEvent.cpp in Sources */,
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				554470771BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,

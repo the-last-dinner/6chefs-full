@@ -13,6 +13,7 @@
 
 #include "Datas/MapObject/EnemyData.h"
 
+class AmbientLightLayer;
 class DungeonCameraScene;
 class DungeonScene;
 class TiledMapLayer;
@@ -58,6 +59,7 @@ public:
     EventScriptValidator* getScriptValidator() const;
     EventScript* getEventScript() const;
     Party* getParty();
+    AmbientLightLayer* getAmbientLayer() const;
     
     // Scene
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
