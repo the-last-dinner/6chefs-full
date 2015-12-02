@@ -59,6 +59,8 @@ protected:
     virtual void onAfterInitEventFinished();
     virtual void onMenuKeyPressed();
     void onBackToTitleSelected();
+    void onContactWithEnemy();
+    
     DungeonSceneData* getData() const;
     
     friend class DungeonSceneManager;

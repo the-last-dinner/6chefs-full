@@ -231,6 +231,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
+		DC0914511C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
+		DC0914521C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
 		DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
@@ -243,6 +245,12 @@
 		DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BEC1C0D70BC00DA9811 /* WaterArea.cpp */; };
 		DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
 		DC398BF31C0D727C00DA9811 /* SlipFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */; };
+		DC40ADF81C0F478300864861 /* EndingSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC40ADF61C0F478300864861 /* EndingSceneData.cpp */; };
+		DC40ADF91C0F478300864861 /* EndingSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC40ADF61C0F478300864861 /* EndingSceneData.cpp */; };
+		DC40ADFC1C0F47E100864861 /* EndingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC40ADFA1C0F47E100864861 /* EndingScene.cpp */; };
+		DC40ADFD1C0F47E100864861 /* EndingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC40ADFA1C0F47E100864861 /* EndingScene.cpp */; };
+		DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */; };
+		DC48C6A11C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */; };
 		DC6E38FE1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
 		DC6E38FF1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
 		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
@@ -541,6 +549,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyTask.cpp; path = ../Classes/Tasks/EnemyTask.cpp; sourceTree = "<group>"; };
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
+		DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverSceneData.cpp; sourceTree = "<group>"; };
+		DC0914501C0F30AC007ACA50 /* GameOverSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverSceneData.h; sourceTree = "<group>"; };
 		DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonCameraSceneData.cpp; sourceTree = "<group>"; };
 		DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonCameraSceneData.h; sourceTree = "<group>"; };
 		DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeMapHistory.cpp; path = ../Classes/Models/ChangeMapHistory.cpp; sourceTree = "<group>"; };
@@ -553,6 +563,12 @@
 		DC398BED1C0D70BC00DA9811 /* WaterArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaterArea.h; path = ../Classes/MapObjects/TerrainObject/WaterArea.h; sourceTree = "<group>"; };
 		DC398BF01C0D727C00DA9811 /* SlipFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SlipFloor.cpp; path = ../Classes/MapObjects/TerrainObject/SlipFloor.cpp; sourceTree = "<group>"; };
 		DC398BF11C0D727C00DA9811 /* SlipFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlipFloor.h; path = ../Classes/MapObjects/TerrainObject/SlipFloor.h; sourceTree = "<group>"; };
+		DC40ADF61C0F478300864861 /* EndingSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EndingSceneData.cpp; sourceTree = "<group>"; };
+		DC40ADF71C0F478300864861 /* EndingSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndingSceneData.h; sourceTree = "<group>"; };
+		DC40ADFA1C0F47E100864861 /* EndingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EndingScene.cpp; path = ../Classes/Scenes/EndingScene.cpp; sourceTree = "<group>"; };
+		DC40ADFB1C0F47E100864861 /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = ../Classes/Scenes/EndingScene.h; sourceTree = "<group>"; };
+		DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameOverScene.cpp; path = ../Classes/Scenes/GameOverScene.cpp; sourceTree = "<group>"; };
+		DC48C69F1C0F2BEE004B0F30 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverScene.h; path = ../Classes/Scenes/GameOverScene.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
 		DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LightEvent.cpp; path = ../Classes/Event/LightEvent.cpp; sourceTree = "<group>"; };
 		DC6E38FD1C0EFF8900DBF569 /* LightEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightEvent.h; path = ../Classes/Event/LightEvent.h; sourceTree = "<group>"; };
@@ -893,8 +909,6 @@
 		552D83651B20BC2600B681A8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				552D837B1B20BCA700B681A8 /* TitleScene.cpp */,
-				552D837C1B20BCA700B681A8 /* TitleScene.h */,
 				552D83841B20BFD800B681A8 /* BaseScene.cpp */,
 				552D83851B20BFD800B681A8 /* BaseScene.h */,
 				5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */,
@@ -903,6 +917,12 @@
 				266E76531BC1160B005BC878 /* DungeonMenuScene.h */,
 				553577DB1BE9F7640095E6A9 /* DungeonCameraScene.cpp */,
 				553577DC1BE9F7640095E6A9 /* DungeonCameraScene.h */,
+				DC40ADFA1C0F47E100864861 /* EndingScene.cpp */,
+				DC40ADFB1C0F47E100864861 /* EndingScene.h */,
+				DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */,
+				DC48C69F1C0F2BEE004B0F30 /* GameOverScene.h */,
+				552D837B1B20BCA700B681A8 /* TitleScene.cpp */,
+				552D837C1B20BCA700B681A8 /* TitleScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -946,6 +966,10 @@
 				DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */,
 				55655AEB1B39A3AA000AFC17 /* DungeonSceneData.cpp */,
 				55655AEC1B39A3AB000AFC17 /* DungeonSceneData.h */,
+				DC40ADF61C0F478300864861 /* EndingSceneData.cpp */,
+				DC40ADF71C0F478300864861 /* EndingSceneData.h */,
+				DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */,
+				DC0914501C0F30AC007ACA50 /* GameOverSceneData.h */,
 				55655AEF1B39A427000AFC17 /* SceneData.cpp */,
 				55655AF01B39A427000AFC17 /* SceneData.h */,
 				557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */,
@@ -1386,6 +1410,7 @@
 				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
@@ -1394,6 +1419,7 @@
 				55C3C1E61BD09BBC00ECDB50 /* RandomMove.cpp in Sources */,
 				551406871BA55DBC008DFAED /* Light.cpp in Sources */,
 				55C3C1DE1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
+				DC0914511C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */,
 				DC81158F1C0B42290033157F /* Stamina.cpp in Sources */,
 				556C716A1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
@@ -1414,6 +1440,7 @@
 				DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				5544706A1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
+				DC40ADFC1C0F47E100864861 /* EndingScene.cpp in Sources */,
 				556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				26221DFF1BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
 				DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */,
@@ -1442,6 +1469,7 @@
 				5564CCE41BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
 				26857A2F1C0AEA6500295998 /* NumberSelector.cpp in Sources */,
 				554470891BDF89990048CD0B /* FlagEvent.cpp in Sources */,
+				DC40ADF81C0F478300864861 /* EndingSceneData.cpp in Sources */,
 				266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				55D8A6E71BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
@@ -1461,6 +1489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */,
+				DC40ADF91C0F478300864861 /* EndingSceneData.cpp in Sources */,
 				551406881BA55DBC008DFAED /* Light.cpp in Sources */,
 				5583CE3F1B9A163C00F9ACB7 /* EventTask.cpp in Sources */,
 				557A87CA1B4702BF001993E1 /* MapUtils.cpp in Sources */,
@@ -1516,11 +1545,13 @@
 				DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */,
+				DC40ADFD1C0F47E100864861 /* EndingScene.cpp in Sources */,
 				5544708A1BDF89990048CD0B /* FlagEvent.cpp in Sources */,
 				550708D21BAE7AAB00E75FE9 /* ShaderLayer.cpp in Sources */,
 				5544708E1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
 				554470731BDCD5D80048CD0B /* SceneEvent.cpp in Sources */,
 				55D8A6E21BB43772005F9717 /* MenuLayer.cpp in Sources */,
+				DC0914521C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */,
 				5564CCE51BCB515300A4C6D2 /* MessageLayer.cpp in Sources */,
 				552D837E1B20BCA700B681A8 /* TitleScene.cpp in Sources */,
 				55C3C1DF1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
@@ -1533,6 +1564,7 @@
 				DCAB9BBD1BFF1A2100887F68 /* CheapChaser.cpp in Sources */,
 				5557AA7A1BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5534BBCE1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
+				DC48C6A11C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				55C3C1E71BD09BBC00ECDB50 /* RandomMove.cpp in Sources */,

@@ -9,15 +9,10 @@
 #include "TitleSceneData.h"
 
 // コンストラクタ
-TitleSceneData::TitleSceneData()
-{
-	FUNCLOG
-	this->init();
-}
+TitleSceneData::TitleSceneData() {FUNCLOG}
 
 // デストラクタ
-TitleSceneData::~TitleSceneData()
-{FUNCLOG}
+TitleSceneData::~TitleSceneData() {FUNCLOG}
 
 // 初期化
 bool TitleSceneData::init()
@@ -58,5 +53,6 @@ bool TitleSceneData::init()
 		"se/gameStart.mp3",
 		"se/title-enter.mp3"
 	};
+    
 	return true;
 }

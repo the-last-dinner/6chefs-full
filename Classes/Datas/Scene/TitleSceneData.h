@@ -13,10 +13,11 @@
 
 class TitleSceneData : public SceneData
 {
-	// クラスメソッド
+// クラスメソッド
 public:
 	CREATE_FUNC(TitleSceneData)
-	// インスタンスメソッド
+
+// インスタンスメソッド
 private:
 	TitleSceneData();
 	~TitleSceneData();

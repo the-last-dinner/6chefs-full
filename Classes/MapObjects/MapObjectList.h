@@ -31,8 +31,9 @@ private:
     Party* party { nullptr };
     Vector<Enemy*> enemies {};
     Vector<TerrainObject*> terrainObjects {};
-    function<void()> onContactWithEnemy { nullptr };
     PlainArea* plainArea { nullptr };
+public:
+    function<void()> onContactWithEnemy { nullptr };
     
 // インスタンスメソッド
 private:

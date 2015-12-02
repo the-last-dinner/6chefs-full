@@ -125,9 +125,12 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // 敵が存在すれば、スタミナバーを表示しておく
     if(enemyTask->existsEnemy()) staminaBar->slideIn();
     
-    // コールバック設定
+    // イベント処理クラスにコールバック設定
     eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
     eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
+    
+    // オブジェクトリストにコールバック設定
+    mapLayer->getMapObjectList()->onContactWithEnemy = CC_CALLBACK_0(DungeonScene::onContactWithEnemy, this);
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
@@ -206,6 +209,12 @@ void DungeonScene::onBackToTitleSelected()
     Director::getInstance()->popScene();
     DungeonSceneManager::destroy();
     Director::getInstance()->replaceScene(TitleScene::create());
+}
+
+// 主人公が敵に触れた時
+void DungeonScene::onContactWithEnemy()
+{
+    
 }
 
 // データクラスを取得

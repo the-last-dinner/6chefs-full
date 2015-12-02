@@ -335,7 +335,10 @@ void MapObjectList::update(float delta)
         // 主人公と敵が一体でもぶつかっていれば、コールバック呼び出し
         if(obj->getCollisionRect().intersectsRect(party->getMainCharacter()->getCollisionRect()))
         {
-            if(this->onContactWithEnemy) this->onContactWithEnemy();
+            // スケジュール終了
+            this->unscheduleUpdate();
+            if(!this->onContactWithEnemy) return;
+            this->onContactWithEnemy();
         }
     }
 }
