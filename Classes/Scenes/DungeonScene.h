@@ -61,6 +61,7 @@ protected:
     Party* createParty();
     
     virtual void onMenuKeyPressed();
+    void onBackToTitleSelected();
     DungeonSceneData* getData() const;
     
     void runEvent(const int eventId);

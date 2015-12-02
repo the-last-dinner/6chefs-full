@@ -29,7 +29,7 @@ public:
 	};
 
     // 定数
-private:
+public:
     static const float SLIDE_TIME;
 	
 	// クラスメソッド
@@ -42,6 +42,7 @@ public:
     function<void()> onSaveMenuSelected {nullptr};
     function<void()> onItemMenuSelected {nullptr};
     function<void()> onCharacterMenuSelected {nullptr};
+    function<void()> onBackToTitleConfirmed {nullptr};
     vector<SlideNode*> slideNodes {};
     
 private:
