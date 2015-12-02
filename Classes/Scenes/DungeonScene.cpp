@@ -77,7 +77,8 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 	this->mapLayer = mapLayer;
     
     // 主人公一行を生成
-    Party* party { this->createParty() };
+    Party* party { Party::create(PlayerDataManager::getInstance()->getPartyMemberAll()) };
+    CC_SAFE_RETAIN(party);
     this->party = party;
     
     // 主人公一行をマップに配置
@@ -160,15 +161,6 @@ void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 void DungeonScene::onAfterInitEventFinished()
 {
     this->eventTask->runEvent(this->getData()->getInitialEventId());
-}
-
-// 主人公一行を生成
-Party* DungeonScene::createParty()
-{
-    Party* party { Party::create(PlayerDataManager::getInstance()->getPartyMemberAll()) };
-    CC_SAFE_RETAIN(party);
-    
-    return party;
 }
 
 // メニューキー押したとき

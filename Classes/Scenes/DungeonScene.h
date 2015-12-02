@@ -57,14 +57,9 @@ protected:
 	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
     virtual void onInitEventFinished(LoadingLayer* loadingLayer);
     virtual void onAfterInitEventFinished();
-    
-    Party* createParty();
-    
     virtual void onMenuKeyPressed();
     void onBackToTitleSelected();
     DungeonSceneData* getData() const;
-    
-    void runEvent(const int eventId);
     
     friend class DungeonSceneManager;
 };
