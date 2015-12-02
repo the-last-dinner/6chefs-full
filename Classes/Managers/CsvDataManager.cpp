@@ -2,7 +2,7 @@
 //  CsvDataManager.cpp
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/09/13.
+//  Created by Ryoya Ino on 2015/09/13.
 //
 //
 

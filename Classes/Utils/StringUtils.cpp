@@ -2,7 +2,7 @@
 //  StringUtils.cpp
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/10/12.
+//  Created by Ryoya Ino on 2015/10/12.
 //
 //
 
