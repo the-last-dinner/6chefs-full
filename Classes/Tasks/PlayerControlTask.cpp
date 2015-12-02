@@ -125,10 +125,8 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     
-    this->riddenEventID = etoi(EventID::UNDIFINED);
-
-    // 何も見つからなかった場合は無視
-    if(objs.empty()) return;
+    // 何も見つからなかった場合は、UNDIFINEDをセットする
+    if(objs.empty()) this->riddenEventID = etoi(EventID::UNDIFINED);
     
     for(MapObject* obj : objs)
     {
