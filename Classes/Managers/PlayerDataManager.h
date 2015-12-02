@@ -28,7 +28,11 @@ public:
         SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc){};
         SaveIndex(){};
     };
-    
+
+// 定数
+private:
+    static const int CHIKEN_SAVE_COUNT;
+    static const int FAST_CLEAR_TIME;
 
 //インスタンス変数
 private:
@@ -47,6 +51,9 @@ private:
 
 //通常関数
 public:
+    // グローバルセーブデータ処理
+    void setGameEnd(const int end_id);
+    
     // ローカルセーブデータ処理
     void setMainLocalData(const int id);
     vector<SaveIndex> getSaveList();
@@ -85,6 +92,9 @@ public:
     int getPlayTimeSeconds();
     string getPlayTimeDisplay();
     string getPlayTimeDisplay(const int sec);
+    int getSaveCount();
+    int getBestSaveCount();
+    int getBestClearTime();
     
     // CHECK
     bool checkItem(const int item_id);
@@ -93,16 +103,20 @@ public:
     bool checkChapterId(const int chapter_id);
     bool checkEventIsDone(const int map_id, const int event_id);
     bool checkEventStatus(const int map_id, const int event_id, const int status);
+    bool checkTrophyhaving(const int trophy_id);
     
 private:
     // グローバルデータのセット
     bool setGlobalData();
+    void saveGlobalData();
     // セーブデータを全初期化
     void initializeFiles();
     // JSONファイル読み込み
     rapidjson::Document readJsonFile(const string& path);
     // JSONファイル書き出し
     void writeJsonFile(const string& path, const rapidjson::Document& doc);
+    //トロフィーセット
+    void setTrophy(const int trophy_id);
 
 //singleton用関数
 public:

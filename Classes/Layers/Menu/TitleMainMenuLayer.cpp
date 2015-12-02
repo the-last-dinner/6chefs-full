@@ -13,6 +13,7 @@
 const map<TitleMainMenuLayer::MenuType, string> TitleMainMenuLayer::menu = {
 	{TitleMainMenuLayer::MenuType::START, string("はじめから")},
 	{TitleMainMenuLayer::MenuType::CONTINUE, string("つづきから")},
+    {TitleMainMenuLayer::MenuType::TROPHY, string("トロフィー")},
 	{TitleMainMenuLayer::MenuType::EXIT, string("終了")},
 };
 
@@ -38,8 +39,8 @@ bool TitleMainMenuLayer::init()
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
 		Label* menu = Label::createWithTTF(this->menu.at(static_cast<MenuType>(i)), "fonts/cinecaption2.28.ttf", menuSize);
-		menu->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - (menuSize + 20) * i);
-		menu->setTextColor(Color4B::RED);
+		menu->setPosition(WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 3 / 4 - (menuSize + 20) * i);
+		menu->setColor(Color3B::RED);
 		menu->setOpacity(0);
 		this->addChild(menu);
 		MenuLayer::menuObjects.push_back(menu);
@@ -75,9 +76,16 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 	for(int i = 0; i < MenuLayer::menuObjects.size(); i++)
 	{
         Node* obj {this->menuObjects.at(i)};
-		this->runAction(Spawn::create(TargetedAction::create(obj, ScaleTo::create(0.2f, (newIdx == i)?1.2f:1.f)),
-									  TargetedAction::create(obj, TintTo::create(0.5f, 255, 255, 255)),
-									  nullptr));
+        if (newIdx == i)
+        {
+            obj->runAction(ScaleTo::create(0.2f, 1.2f));
+            obj->runAction(TintTo::create(0.2f, 255, 255, 255));
+        }
+        else
+        {
+            obj->runAction(ScaleTo::create(0.2f, 1.f));
+            obj->runAction(TintTo::create(0.2f, Color3B::RED));
+        }
 	}
 	if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
 	return;
@@ -90,6 +98,7 @@ void TitleMainMenuLayer::onSpacePressed(int idx)
 	{
 		{MenuType::START, this->onStartSelected},
 		{MenuType::CONTINUE, this->onContinueSelected},
+        {MenuType::TROPHY, this->onTrophySelected},
 		{MenuType::EXIT, this->onExitSelected},
 	};
 	

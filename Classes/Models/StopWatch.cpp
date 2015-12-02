@@ -32,6 +32,7 @@ bool StopWatch::init(const int init_time)
 // 時間計測開始
 void StopWatch::tic()
 {
+    this->isCounting = true;
     this->start_time = this->getSecMs();
 }
 
@@ -57,8 +58,11 @@ double StopWatch::getSecMs(){
 // 経過時間を取得
 double StopWatch::getTime()
 {
-    this->toc();
-    this->tic();
+    if (this->isCounting)
+    {
+        this->toc();
+        this->tic();
+    }
     return this->time;
 }
 

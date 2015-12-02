@@ -1,5 +1,8 @@
 {
 	"status":1,
 	"global_id":null,
-	"clear":0
+    "clear_count":0,
+    "best_save_count":999,
+    "best_clear_time":359999,
+    "trophy":{}
 }
