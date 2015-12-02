@@ -14,6 +14,7 @@
 class Light;
 class AmbientLightLayer;
 class MapObjectList;
+class TerrainObject;
 
 class MapObject : public Node
 {
@@ -55,11 +56,13 @@ public:
 	
     Size  getGridSize() const;
 	Point getGridPosition() const;
-    Rect getGridRect() const;
+    Rect getGridRect(const vector<Direction>& directions = {}) const;
     int getObjectId() const;
 	int getEventId() const;
 	Trigger getTrigger() const;
     bool isMoving() const;
+    Direction getDirection() const;
+    virtual Sprite* getSprite() const { return nullptr; };
     
     // collision
     Rect getCollisionRect() const;
@@ -70,8 +73,10 @@ public:
     const bool isHit(const vector<Direction>& directions) const;
     
     // move
-    Vec2 createMoveVec(const vector<Direction>& directions) const;
+    vector<Direction> createEnableDirections(const vector<Direction>& directions) const;
+    Vec2 createMoveVec(const vector<Direction>& directions, const bool check = true) const;
     bool canMove(const vector<Direction>& directions) const;
+    void move(const vector<Direction>& enableDirections, function<void()> onMoved, const float ratio = 1.0f);
     bool moveBy(const Direction& direction, function<void()> onMoved, const float ratio = 1.0f);
     bool moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio = 1.0f);
     void moveBy(const Direction& direction, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
@@ -79,8 +84,12 @@ public:
     void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
     void clearDirectionsQueue();
     
+    // 地形
+    TerrainObject* getTerrain(const vector<Direction>& directions = {});
+    
     // イベント関数
     virtual void onEnterMap() {};                               // マップに追加された時
+    virtual void onSearched(MapObject* mainChara) {};           // 調べられた時
 
     void drawDebugMask(); // デバッグ用マスク
 };

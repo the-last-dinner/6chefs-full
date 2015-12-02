@@ -12,6 +12,7 @@
 #include "Event/EnemyEvent.h"
 #include "Event/FlagEvent.h"
 #include "Event/GameEvent.h"
+#include "Event/LightEvent.h"
 #include "Event/MapEvent.h"
 #include "Event/MapObjectEvent.h"
 #include "Event/ModalLayerEvent.h"
@@ -86,6 +87,9 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // 敵系
         {"createEnemy", CreateEnemyEvent::create},          // 敵生成
+        
+        // 光系
+        {"setAmbient", SetAmbientLightEvent::create},       // 環境光設定
         
         // フラグ系
         {"already", NeverAgainEvent::create},                   // イベントIDを見たことにし、二度と発動しないようにする

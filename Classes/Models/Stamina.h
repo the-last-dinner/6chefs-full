@@ -28,7 +28,7 @@ public:
 // インスタンス変数
 private:
     float percentage { MAX_VALUE };
-    float step { DEFAULT_STEP };
+    float ratio { 1.0f };
     bool decreasing {false};
 public:
     function<void(float)> onPercentageChanged { nullptr };
@@ -41,6 +41,7 @@ private:
     void increase();
     void setPercentage(const float percentage);
 public:
+    void setStepRatio(const float ratio);
     float getPercentage() const;
     void decrease();
     bool isEmpty() const;

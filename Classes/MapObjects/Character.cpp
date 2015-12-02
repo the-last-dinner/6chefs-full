@@ -76,17 +76,22 @@ bool Character::init(const CharacterData& data)
 // キャラクタIDを取得
 int Character::getCharacterId() const {return this->charaId;}
 
-// 現在キャラが向いている方向を取得
-Direction Character::getDirection() const {return this->location.direction;}
+// 自身のキャラクターデータを返す
+CharacterData Character::getCharacterData() const { return CharacterData(this->charaId, this->getObjectId(), this->location); }
+
+// Spriteを取得
+Sprite* Character::getSprite() const
+{
+    return this->character;
+}
 
 // キャラクターの向きを変える
 void Character::setDirection(const Direction direction)
 {
+    MapObject::setDirection(direction);
+    
 	// 画像差し替え
 	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
-	
-	// 向いている方向を更新
-	this->location.direction = direction;
 }
 
 // 足踏み
@@ -196,8 +201,9 @@ void Character::onEnterMap()
     if(this->movePattern) this->movePattern->start();
 }
 
-// 自身のキャラクターデータを返す
-CharacterData Character::getCharacterData() const
+// 調べられた時
+void Character::onSearched(MapObject* mainChara)
 {
-    return CharacterData(this->charaId, this->getObjectId(), this->location);
+    // 主人公の反対の方向を向かせる（向かいあわせる）
+    this->setDirection(MapUtils::oppositeDirection(mainChara->getDirection()));
 }

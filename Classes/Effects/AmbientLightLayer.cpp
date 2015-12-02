@@ -11,6 +11,8 @@
 #include "MapObjects/MapObject.h"
 
 // 定数
+const Color3B AmbientLightLayer::DAY {Color3B(Color4F(1.f, 1.0f, 0.8f, 1.f))};
+const Color3B AmbientLightLayer::EVENING {Color3B(Color4F(1.f, 0.4f, 0.f, 1.f))};
 const Color3B AmbientLightLayer::NIGHT {Color3B(Color4F(0.15f, 0.15f, 0.35f, 1.f))};
 const Color3B AmbientLightLayer::BASEMENT {Color3B(0.f, 0.f, 0.f)};
 
@@ -34,6 +36,7 @@ bool AmbientLightLayer::init(const Color3B& color)
     ambientSprite->setColor(color);
     ambientSprite->setPosition(winSize / 2);
     this->addChild(ambientSprite);
+    this->ambientLight = ambientSprite;
     
     this->setCascadeColorEnabled(true);
     this->setCascadeOpacityEnabled(true);
@@ -55,6 +58,12 @@ bool AmbientLightLayer::init(const Color3B& color)
     renderTexSprite->setBlendFunc(BlendFunc{GL_ZERO, GL_SRC_COLOR});
     
     return true;
+}
+
+// 環境光の色を設定
+void AmbientLightLayer::setAmbient(const Color3B& color)
+{
+    this->ambientLight->setColor(color);
 }
 
 // 光源を追加
