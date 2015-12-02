@@ -34,6 +34,7 @@ private:
 public:
     void start(const int mapId);
     void stop();
+    void removeEnemy(const int enemyId);
     void update(float delta);
     vector<SummonData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
     bool existsEnemy() const;

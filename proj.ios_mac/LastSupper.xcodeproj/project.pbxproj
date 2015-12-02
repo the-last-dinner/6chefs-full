@@ -35,6 +35,8 @@
 		26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */; };
 		262728661C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
 		262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 262728641C084D3A0028B732 /* NotificationBand.cpp */; };
+		263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 263BC5A51C0EFF190044D4B3 /* TrophyListLayer.cpp */; };
+		263BC5A81C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 263BC5A51C0EFF190044D4B3 /* TrophyListLayer.cpp */; };
 		2640E14B1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */; };
 		2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */; };
 		266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */; };
@@ -309,6 +311,8 @@
 		26221DFE1BEE86E7000203E6 /* MiniSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniSelector.h; path = ../Classes/Layers/Menu/MiniSelector.h; sourceTree = "<group>"; };
 		262728641C084D3A0028B732 /* NotificationBand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationBand.cpp; path = ../Classes/UI/NotificationBand.cpp; sourceTree = "<group>"; };
 		262728651C084D3A0028B732 /* NotificationBand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationBand.h; path = ../Classes/UI/NotificationBand.h; sourceTree = "<group>"; };
+		263BC5A51C0EFF190044D4B3 /* TrophyListLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrophyListLayer.cpp; path = ../Classes/Layers/Menu/TrophyListLayer.cpp; sourceTree = "<group>"; };
+		263BC5A61C0EFF190044D4B3 /* TrophyListLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrophyListLayer.h; path = ../Classes/Layers/Menu/TrophyListLayer.h; sourceTree = "<group>"; };
 		2640E1491C0ADAF300BC74F7 /* PasswordEventLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PasswordEventLayer.cpp; path = ../Classes/Layers/Dungeon/PasswordEventLayer.cpp; sourceTree = "<group>"; };
 		2640E14A1C0ADAF300BC74F7 /* PasswordEventLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasswordEventLayer.h; path = ../Classes/Layers/Dungeon/PasswordEventLayer.h; sourceTree = "<group>"; };
 		266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DungeonMenuScene.cpp; path = ../Classes/Scenes/DungeonMenuScene.cpp; sourceTree = "<group>"; };
@@ -1124,6 +1128,8 @@
 				260F45CD1BF08230003C9B2F /* CharacterMenuLayer.h */,
 				26857A2D1C0AEA6500295998 /* NumberSelector.cpp */,
 				26857A2E1C0AEA6500295998 /* NumberSelector.h */,
+				263BC5A51C0EFF190044D4B3 /* TrophyListLayer.cpp */,
+				263BC5A61C0EFF190044D4B3 /* TrophyListLayer.h */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1378,6 +1384,7 @@
 				556C71721BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
+				263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
@@ -1487,6 +1494,7 @@
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
 				260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
+				263BC5A81C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				DCAB9BB91BFF19A100887F68 /* Chaser.cpp in Sources */,

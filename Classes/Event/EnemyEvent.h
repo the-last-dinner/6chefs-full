@@ -27,4 +27,18 @@ private:
     virtual void run() override;
 };
 
+// 敵削除イベント
+class RemoveEnemyEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(RemoveEnemyEvent, rapidjson::Value&)
+private:
+    int enemyId { etoi(EnemyID::UNDIFINED) };
+private:
+    RemoveEnemyEvent() { FUNCLOG };
+    ~RemoveEnemyEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* EnemyEvent_h */

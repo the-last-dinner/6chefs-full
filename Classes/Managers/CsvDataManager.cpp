@@ -15,8 +15,11 @@ const map<CsvDataManager::DataType, string> CsvDataManager::file_type = {
     {CsvDataManager::DataType::MAP, "map"},
     {CsvDataManager::DataType::ITEM, "item"},
     {CsvDataManager::DataType::CHARACTER, "character"},
-    {CsvDataManager::DataType::CHAPTER, "chapter"}
+    {CsvDataManager::DataType::CHAPTER, "chapter"},
+    {CsvDataManager::DataType::TROPHY, "trophy"},
 };
+
+#pragma mark Core
 
 // インスタンスの生成&取得
 CsvDataManager* CsvDataManager::getInstance()
@@ -77,23 +80,8 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
             i++;
         }
         inner.push_back(str);
-        //values.push_back(inner);
         values[data_id] = inner;
     }
-#ifdef DEBUG
-    // デバッグ用出力
-    cout << "Read csv file >> " << file_name << ".csv" << endl;
-    string line;
-    for (auto itr: values)
-    {
-        line = "";
-        for(string str: itr.second)
-        {
-            line += str + ",";
-        }
-        //CCLOG(line.c_str());
-    }
-#endif
     return values;
 }
 
@@ -214,4 +202,36 @@ vector<int> CsvDataManager::getDisplayCharacters()
         }
     }
     return charas;
+}
+
+#pragma mark -
+#pragma mark Trophy
+
+// トロフィーの名前を取得
+string CsvDataManager::getTrophyName(const int trophy_id)
+{
+    return this->csv_data[DataType::TROPHY][trophy_id][etoi(CsvTrophy::NAME)];
+}
+
+// トロフィーの条件を取得
+string CsvDataManager::getTrophyCondition(const int trophy_id)
+{
+    return this->csv_data[DataType::TROPHY][trophy_id][etoi(CsvTrophy::CONDITION)];
+}
+
+// トロフィーのコメントを取得
+string CsvDataManager::getTrophyComment(const int trophy_id)
+{
+    return this->csv_data[DataType::TROPHY][trophy_id][etoi(CsvTrophy::COMMENT)];
+}
+
+// トロフィーを全て取得
+vector<int> CsvDataManager::getTrophyIdAll()
+{
+    vector<int> trophies;
+    for (auto itr:this->csv_data[DataType::TROPHY])
+    {
+        trophies.push_back(itr.first);
+    }
+    return trophies;
 }

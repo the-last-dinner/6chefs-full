@@ -87,6 +87,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // 敵系
         {"createEnemy", CreateEnemyEvent::create},          // 敵生成
+        {"removeEnemy", RemoveEnemyEvent::create},          // 敵削除
         
         // 光系
         {"setAmbient", SetAmbientLightEvent::create},       // 環境光設定

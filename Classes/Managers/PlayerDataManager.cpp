@@ -6,8 +6,6 @@
 //  Created by 猪野凌也 on 2015/06/28.
 /*
  [memo]
- ・オブジェクト生成時にコンストラクタでグローバルセーブデータの読込(初回時は作成)
- ・セーブデータ選択が開かれる時にgetSaveIndexからセーブデータ表示用構造体を取得
  ・セーブデータが選択されたらsetMainLocalData(int local_id)でlocalデータのセット
 */
 
@@ -17,7 +15,12 @@
 #include "Datas/MapObject/CharacterData.h"
 #include "Models/StopWatch.h"
 
-#pragma mark Instance
+// 定数
+const int PlayerDataManager::CHIKEN_SAVE_COUNT {50};
+const int PlayerDataManager::FAST_CLEAR_TIME {3600};
+
+#pragma mark Initialize
+
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
 
@@ -42,10 +45,6 @@ PlayerDataManager::~PlayerDataManager()
     CC_SAFE_RELEASE_NULL(this->timer);
 }
 
-
-#pragma mark -
-#pragma mark InitFunctions
-
 // コンストラクタ
 PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
 {
@@ -57,6 +56,9 @@ PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
         this->initializeFiles();
     }
 }
+
+#pragma mark -
+#pragma mark GlobalSaveData
 
 // グローバルデータの読み込み
 bool PlayerDataManager::setGlobalData()
@@ -109,8 +111,99 @@ void PlayerDataManager::initializeFiles()
     return;
 }
 
+// グローバルデータのセーブ
+void PlayerDataManager::saveGlobalData()
+{
+    this->writeJsonFile("save/global.json", this->global);
+}
+
+// トロフィーゲット処理
+void PlayerDataManager::setTrophy(const int trophy_id)
+{
+    char tid_char[10];
+    sprintf(tid_char, "%d", trophy_id);
+    rapidjson::Value tid  (kStringType);
+    tid.SetString(tid_char, strlen(tid_char), this->global.GetAllocator());
+    rapidjson::Value::ConstMemberIterator itr = this->global["trophy"].FindMember(tid_char);
+    
+    // 指定したトロフィーIDが存在するかチェック
+    if(itr == this->global["trophy"].MemberEnd()){
+        this->global["trophy"].AddMember(tid, rapidjson::Value(true), this->global.GetAllocator());
+    }
+    else
+    {
+        this->global["trophy"][tid_char].SetBool(true);
+    }
+}
+
+// クリア時の処理
+void PlayerDataManager::setGameEnd(const int end_id)
+{
+    // エンディングチェック
+    int trophy_id;
+    switch (end_id)
+    {
+        case 0:
+            trophy_id = 6;
+            break;
+        case 1:
+            trophy_id = 7;
+            break;
+        case 2:
+            trophy_id = 8;
+            break;
+    }
+    this->setTrophy(trophy_id);
+    
+    // セーブ回数チェック
+    int save_count = this->getSaveCount();
+    if (save_count == 0)
+    {
+        this->setTrophy(11);
+    }
+    else if (save_count >= CHIKEN_SAVE_COUNT)
+    {
+        this->setTrophy(9);
+    }
+    if (save_count < this->getBestSaveCount())
+    {
+        this->global["best_save_count"].SetInt(save_count);
+    }
+    
+    // プレイ時間チェック
+    int play_time = this->getPlayTimeSeconds();
+    if (play_time < FAST_CLEAR_TIME)
+    {
+        this->setTrophy(10);
+    }
+    if (play_time < this->getBestClearTime())
+    {
+        this->global["best_clear_time"].SetInt(play_time);
+    }
+    
+    // トロコンチェック
+    vector<int> trophies = CsvDataManager::getInstance()->getTrophyIdAll();
+    int trophy_count {0};
+    for(int trophy_id : trophies)
+    {
+        if (this->checkTrophyhaving(trophy_id)) trophy_count++;
+    }
+    if (trophy_count == trophies.size())
+    {
+        this->setTrophy(trophy_count);
+    }
+    
+    // グローバルデータをセーブ
+    int clear_count = this->global["clear_count"].GetInt();
+    if (clear_count < 999)
+    {
+        this->global["clear_count"].SetInt(clear_count + 1);
+    }
+    this->saveGlobalData();
+}
+
 #pragma mark -
-#pragma mark SaveDataFunctions
+#pragma mark LocalSaveData
 
 // セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
@@ -177,7 +270,9 @@ int PlayerDataManager::getSaveDataId()
 string PlayerDataManager::getPlayTimeDisplay(const int sec)
 {
     int min = floor(sec / 60);
-    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    int hour = floor(min / 60);
+    if (min > 99) min = 99;
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
     return display;
 }
 
@@ -185,13 +280,32 @@ string PlayerDataManager::getPlayTimeDisplay(const int sec)
 void PlayerDataManager::save(const int id)
 {
     FUNCLOG
-    // save local
+    
     string str_id = to_string(id);
-    this->local["play_time"].SetInt(this->getPlayTimeSeconds());
-    this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
+    
+    // プレイ時間
+    int playTime = this->getPlayTimeSeconds();
+    if (playTime >= 360000)
+    {
+        playTime = 359999;
+    }
+    this->local["play_time"].SetInt(playTime);
+    
+    // セーブ回数更新
+    int saveCnt = this->getSaveCount();
+    if (saveCnt < 999)
+    {
+        this->local["save_count"].SetInt(saveCnt + 1);
+    }
+    
+    // セーブ
     string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
+    
+    // グローバルデータのセーブ
+    this->saveGlobalData();
+    
     return;
 }
 
@@ -234,6 +348,10 @@ void PlayerDataManager::setFriendship(const int chara_id, const int level)
     char cid_char[10];
     sprintf(cid_char, "%d", chara_id);
     this->local["friendship"][cid_char].SetInt(level);
+    if (level >= 2)
+    {
+        this->setTrophy(chara_id);
+    }
     return;
 }
 
@@ -553,6 +671,24 @@ int PlayerDataManager::getPlayTimeSeconds()
     return this->timer->getTimeInt();;
 }
 
+// セーブ回数を取得
+int PlayerDataManager::getSaveCount()
+{
+    return this->local["save_count"].GetInt();
+}
+
+// セーブ回数の最小記録を取得
+int PlayerDataManager::getBestSaveCount()
+{
+    return this->global["best_save_count"].GetInt();
+}
+
+// 最短クリア時間を取得
+int PlayerDataManager::getBestClearTime()
+{
+    return this->global["best_clear_time"].GetInt();
+}
+
 #pragma mark -
 #pragma mark Checker
 
@@ -612,6 +748,22 @@ bool PlayerDataManager::checkEventIsDone(const int map_id, const int event_id)
 bool PlayerDataManager::checkEventStatus(const int map_id, const int event_id, const int status)
 {
     return status == abs(this->getEventStatus(map_id, event_id)) ? true : false;
+}
+
+// 指定のトロフィーを持っているか
+bool PlayerDataManager::checkTrophyhaving(const int trophy_id)
+{
+    bool hasTrophy {false};
+    char tid_char[10];
+    sprintf(tid_char, "%d", trophy_id);
+    if (this->global["trophy"].HasMember(tid_char))
+    {
+        if (this->global["trophy"][tid_char].GetBool())
+        {
+            hasTrophy =  true;
+        }
+    }
+    return hasTrophy;
 }
 
 #pragma mark -

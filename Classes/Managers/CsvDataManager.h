@@ -19,7 +19,8 @@ public:
         MAP,
         ITEM,
         CHARACTER,
-        CHAPTER
+        CHAPTER,
+        TROPHY
     };
     enum struct CsvMap
     {
@@ -51,6 +52,13 @@ public:
         PROFILE0,
         PROFILE1,
         PROFILE2
+    };
+    enum struct CsvTrophy
+    {
+        ID,
+        NAME,
+        CONDITION,
+        COMMENT
     };
 private:
     static const map<DataType, string> file_type;
@@ -100,5 +108,11 @@ public:
     string getCharaDiscription(const int chara_id, const int level);
     bool isDisplayChara(const int chara_id);
     vector<int> getDisplayCharacters();
+    
+    // trophy
+    string getTrophyName(const int trophy_id);
+    string getTrophyCondition(const int trophy_id);
+    string getTrophyComment(const int trophy_id);
+    vector<int> getTrophyIdAll();
 };
 #endif
