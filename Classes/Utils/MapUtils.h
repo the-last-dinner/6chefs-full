@@ -26,6 +26,7 @@ namespace MapUtils
     vector<Direction> vecToDirections(const Vec2& vec);
     Vec2 getUnitVector(const Direction& direction);
     bool intersectsGridRect(const cocos2d::Rect& rect1, const cocos2d::Rect& rect2);
+    bool includesGridRect(const Rect& parent, const Rect& child);
     Direction oppositeDirection(const Direction& direction);
     Vec2 directionsToMapVector(const vector<Direction>& directions);
 }

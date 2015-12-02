@@ -14,7 +14,7 @@
 #include "MapObjects/EventObject.h"
 #include "MapObjects/MapObjectList.h"
 
-#include "MapObjects/TerrainObject/Water.h"
+#include "MapObjects/TerrainObject/WaterArea.h"
 #include "MapObjects/TerrainObject/SlipFloor.h"
 
 // コンストラクタ
@@ -54,7 +54,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     // ベクタを用意
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
-    Vector<MapObject*> terrainObjects {};
+    Vector<TerrainObject*> terrainObjects {};
     
     for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
     {
@@ -76,7 +76,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
                     break;
                     
                 case Group::TERRAIN :
-                    terrainObjects.pushBack(obj);
+                    terrainObjects.pushBack(dynamic_cast<TerrainObject*>(obj));
                     break;
                     
                 default:
@@ -236,7 +236,7 @@ MapObject* MapObjectFactory::createObjectOnTerrain(const ValueMap& info)
     map<string, function<TerrainObject*()>> typeStrToFunc
     {
         {"slip", SlipFloor::create},
-        {"water", Water::create},
+        {"water", WaterArea::create},
     };
     
     string typeStr {this->getObjectType(info)};

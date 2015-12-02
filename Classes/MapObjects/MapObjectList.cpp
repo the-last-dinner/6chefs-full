@@ -9,9 +9,10 @@
 #include "MapObjects/MapObjectList.h"
 
 #include "MapObjects/Party.h"
+#include "MapObjects/TerrainObject/PlainArea.h"
 
 // create関数
-MapObjectList* MapObjectList::create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects)
+MapObjectList* MapObjectList::create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
 {
     MapObjectList* p {new(nothrow) MapObjectList()};
     if(p && p->init(availableObjects, disableObjects, terrainObjects))
@@ -39,14 +40,20 @@ MapObjectList::~MapObjectList()
     this->disableObjects.clear();
     this->enemies.clear();
     this->terrainObjects.clear();
+    CC_SAFE_RELEASE_NULL(this->plainArea);
 };
 
 // 初期化
-bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<MapObject*> terrainObjects)
+bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
 {
     this->availableObjects = availableObjects;
     this->disableObjects = disableObjects;
     this->terrainObjects = terrainObjects;
+    
+    // ノーマルの地形を生成
+    PlainArea* plainArea { PlainArea::create() };
+    CC_SAFE_RETAIN(plainArea);
+    this->plainArea = plainArea;
     
     // 敵と主人公一行の衝突判定開始
     this->scheduleUpdate();
@@ -295,6 +302,23 @@ void MapObjectList::onPartyMoved(const Rect& gridRect)
     {
         enemy->onPartyMoved(gridRect);
     }
+}
+
+#pragma mark -
+#pragma mark TerrainObject
+
+// 地形オブジェクトをマスRectから取得
+TerrainObject* MapObjectList::getTerrainByGridRect(const Rect& gridRect)
+{
+    for(TerrainObject* obj : this->terrainObjects)
+    {
+        if(!MapUtils::includesGridRect(obj->getGridRect(), gridRect)) continue;
+        
+        return obj;
+    }
+    
+    // 何も見つからなかった場合はノーマル地形を返す
+    return this->plainArea;
 }
 
 #pragma mark -

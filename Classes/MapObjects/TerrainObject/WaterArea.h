@@ -1,31 +1,30 @@
 //
-//  SlipFloor.h
+//  WaterArea.h
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/12/01.
 //
 //
 
-#ifndef SlipFloor_h
-#define SlipFloor_h
+#ifndef Water_h
+#define Water_h
 
 #include "MapObjects/TerrainObject/TerrainObject.h"
 
-class SlipFloor : public TerrainObject
+class WaterArea : public TerrainObject
 {
 // クラスメソッド
 public:
-    CREATE_FUNC(SlipFloor)
-    
+    CREATE_FUNC(WaterArea)
+
 // インスタンスメソッド
 private:
-    SlipFloor();
-    ~SlipFloor();
+    WaterArea();
+    ~WaterArea();
     bool init();
-    
 public:
     virtual void onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio);
-    virtual float getStaminaConsumptionRate() const { return 1.0f; };
+    virtual float getStaminaConsumptionRate() const { return 2.0f; };
 };
 
-#endif /* SlipFloor_h */
+#endif /* Water_h */

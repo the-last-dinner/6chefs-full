@@ -82,11 +82,10 @@ CharacterData Character::getCharacterData() const { return CharacterData(this->c
 // キャラクターの向きを変える
 void Character::setDirection(const Direction direction)
 {
+    MapObject::setDirection(direction);
+    
 	// 画像差し替え
 	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
-	
-	// 向いている方向を更新
-	this->location.direction = direction;
 }
 
 // 足踏み

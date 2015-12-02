@@ -1,31 +1,30 @@
 //
-//  SlipFloor.h
+//  PlainArea.h
 //  LastSupper
 //
-//  Created by Kohei Asami on 2015/12/01.
+//  Created by Kohei Asami on 2015/12/02.
 //
 //
 
-#ifndef SlipFloor_h
-#define SlipFloor_h
+#ifndef PlainArea_h
+#define PlainArea_h
 
 #include "MapObjects/TerrainObject/TerrainObject.h"
 
-class SlipFloor : public TerrainObject
+class PlainArea : public TerrainObject
 {
 // クラスメソッド
 public:
-    CREATE_FUNC(SlipFloor)
+    CREATE_FUNC(PlainArea)
     
 // インスタンスメソッド
 private:
-    SlipFloor();
-    ~SlipFloor();
+    PlainArea();
+    ~PlainArea();
     bool init();
-    
 public:
     virtual void onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio);
-    virtual float getStaminaConsumptionRate() const { return 1.0f; };
+    virtual float getStaminaConsumptionRate() const {return 1.0f;};
 };
 
-#endif /* SlipFloor_h */
+#endif /* PlainArea_h */

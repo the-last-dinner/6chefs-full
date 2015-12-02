@@ -14,6 +14,7 @@
 class Light;
 class AmbientLightLayer;
 class MapObjectList;
+class TerrainObject;
 
 class MapObject : public Node
 {
@@ -55,7 +56,7 @@ public:
 	
     Size  getGridSize() const;
 	Point getGridPosition() const;
-    Rect getGridRect() const;
+    Rect getGridRect(const vector<Direction>& directions = {}) const;
     int getObjectId() const;
 	int getEventId() const;
 	Trigger getTrigger() const;
@@ -72,14 +73,18 @@ public:
     
     // move
     vector<Direction> createEnableDirections(const vector<Direction>& directions) const;
-    Vec2 createMoveVec(const vector<Direction>& directions) const;
+    Vec2 createMoveVec(const vector<Direction>& directions, const bool check = true) const;
     bool canMove(const vector<Direction>& directions) const;
+    void move(const vector<Direction>& enableDirections, function<void()> onMoved, const float ratio = 1.0f);
     bool moveBy(const Direction& direction, function<void()> onMoved, const float ratio = 1.0f);
     bool moveBy(const vector<Direction>& directions, function<void()> onMoved, const float ratio = 1.0f);
     void moveBy(const Direction& direction, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
     void moveBy(const vector<Direction>& directions, const int gridNum, function<void(bool)> onMoved, const float ratio = 1.0f);
     void moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f);
     void clearDirectionsQueue();
+    
+    // 地形
+    TerrainObject* getTerrain(const vector<Direction>& directions = {});
     
     // イベント関数
     virtual void onEnterMap() {};                               // マップに追加された時
