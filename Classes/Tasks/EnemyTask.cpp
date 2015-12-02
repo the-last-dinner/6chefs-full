@@ -46,6 +46,22 @@ void EnemyTask::stop()
     this->unschedule(CC_SCHEDULE_SELECTOR(EnemyTask::update));
 }
 
+// 敵を削除
+void EnemyTask::removeEnemy(const int enemyId)
+{
+    // マップ上にいる敵を削除
+    DungeonSceneManager::getInstance()->getMapObjectList()->removeEnemyById(enemyId);
+    
+    // データとして存在している敵を論理削除
+    for(SummonData& data : this->datas)
+    {
+        if(data.enemy_data.enemy_id != enemyId) continue;
+        data.isDeleted = true;
+        
+        return;
+    }
+}
+
 // update
 void EnemyTask::update(float delta)
 {
@@ -53,6 +69,9 @@ void EnemyTask::update(float delta)
     
     for(SummonData& data : this->datas)
     {
+        // 論理削除済みなら無視
+        if(data.isDeleted) continue;
+        
         // すでに出現済みの敵情報なら無視
         if(data.isDone) continue;
         
@@ -68,8 +87,8 @@ void EnemyTask::update(float delta)
         // 最古の履歴の、来た場所のマップIDが現在のマップIDならば来た場所を、そうでなければ行き先を敵の居場所に設定
         data.enemy_data.chara_data.location = (data.history.getOldestRelation().from_location.map_id == this->currentMapId)? data.history.getOldestRelation().from_location : data.history.getOldestRelation().to_location;
         
-        // 最古の履歴を削除
-        data.deleteOldestHistory();
+        // 移動可能な敵であれば最古の履歴を削除
+        if(data.canMove) data.deleteOldestHistory();
         
         // 敵に格納されているマップIDと、現在のマップIDが一緒かつ、履歴がないなら敵を出現させる
         if(data.enemy_data.chara_data.location.map_id == this->currentMapId && !data.existsHistory())
@@ -111,14 +130,14 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             if(!enemy->canGoToNextMap())
             {
                 data.canMove = false;
-                
-                data.addHistory(relation, delay);
-                
-                continue;
+            }
+            else
+            {
+                // 次マップに出現するまでの遅延時間を格納
+                delay = enemy->calcSummonDelay();
             }
             
-            // 次マップに出現するまでの遅延時間を格納
-            data.addHistory(relation, enemy->calcSummonDelay());
+            data.addHistory(relation, delay);
             
             datas.push_back(data);
         }
@@ -141,7 +160,7 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             if(data.history.getLatestRelation().from_location.map_id != destLocation.map_id)
             {
                 // 履歴を追加
-                data.addHistory(relation, 2.0f);
+                data.addHistory(relation, 5.0f);
                 
                 datas.push_back(data);
                 

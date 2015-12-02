@@ -255,6 +255,12 @@ vector<SummonData> DungeonSceneManager::getSummonDatas() const
     return this->summonDatas;
 }
 
+// 敵を削除
+void DungeonSceneManager::removeEnemy(const int enemyId)
+{
+    this->getScene()->enemyTask->removeEnemy(enemyId);
+}
+
 // 敵が存在するか確認
 bool DungeonSceneManager::existsEnemy() const
 {

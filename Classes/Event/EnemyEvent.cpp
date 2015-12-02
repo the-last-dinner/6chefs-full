@@ -12,6 +12,7 @@
 #include "Event/EventScriptValidator.h"
 
 #include "MapObjects/Enemy.h"
+#include "MapObjects/MapObjectList.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -63,4 +64,20 @@ void CreateEnemyEvent::run()
 {
     this->setDone();
     DungeonSceneManager::getInstance()->addEnemy(Enemy::create(this->data));
+}
+
+#pragma mark -
+#pragma mark RemoveEnemyEvent
+
+bool RemoveEnemyEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    return true;
+}
+
+void RemoveEnemyEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->removeEnemy(this->enemyId);
 }

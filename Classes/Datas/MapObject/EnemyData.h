@@ -28,6 +28,7 @@ struct SummonData
     EnemyData enemy_data {};
     bool canMove { true };
     bool isDone { false };
+    bool isDeleted { false };
     
     void addHistory(const Relation& relation, const float summon_delay) { history.add(relation); summon_delays.push_back(summon_delay); };
     void deleteLatestHistory() { history.deleteLatest(); summon_delays.pop_back(); };
