@@ -139,6 +139,7 @@ void TitleScene::onTrophyListSelected()
 // トロフィーリストをキャンセル時
 void TitleScene::onTrophyListCanceled()
 {
+    SoundManager::getInstance()->playSE("back.mp3");
     this->trophyList->hide();
     this->mainMenu->show();
 }

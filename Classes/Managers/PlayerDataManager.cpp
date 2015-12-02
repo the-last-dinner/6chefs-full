@@ -271,8 +271,7 @@ string PlayerDataManager::getPlayTimeDisplay(const int sec)
 {
     int min = floor(sec / 60);
     int hour = floor(min / 60);
-    if (min > 99) min = 99;
-    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min % 60)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
     return display;
 }
 
