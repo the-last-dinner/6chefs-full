@@ -7,7 +7,7 @@
 			<key>yuki_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1385},{21,28}}</string>
+				<string>{{0,1415},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +21,7 @@
 			<key>yuki_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1444},{21,28}}</string>
+				<string>{{0,1474},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +35,7 @@
 			<key>yuki_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1473},{21,26}}</string>
+				<string>{{0,1503},{21,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -49,7 +49,7 @@
 			<key>yuki_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1200},{25,30}}</string>
+				<string>{{0,1169},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -63,7 +63,7 @@
 			<key>yuki_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1414},{21,29}}</string>
+				<string>{{0,1444},{21,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -77,7 +77,7 @@
 			<key>yuki_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1323},{23,30}}</string>
+				<string>{{0,1353},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -91,7 +91,7 @@
 			<key>yuki_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1354},{23,30}}</string>
+				<string>{{0,1384},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -105,7 +105,7 @@
 			<key>yuki_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1262},{23,30}}</string>
+				<string>{{0,1291},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -116,10 +116,24 @@
 				<string>{32,32}</string>
 			</dict>
 
+			<key>yuki_2_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1261},{23,29}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,3},{23,29}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
 			<key>yuki_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1231},{23,30}}</string>
+				<string>{{0,1322},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -133,7 +147,7 @@
 			<key>yuki_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1293},{23,29}}</string>
+				<string>{{0,1231},{23,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -147,7 +161,7 @@
 			<key>yuki_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1169},{25,30}}</string>
+				<string>{{0,1200},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -195,7 +209,7 @@
 			<key>size</key>
 			<string>{512,2048}</string>
 			<key>textureFileName</key>
-			<string>sprites.png</string>
+			<string>yuki.png</string>
 			</dict>
 		</dict>
 </plist>
