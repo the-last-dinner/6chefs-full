@@ -59,6 +59,7 @@ void DungeonMenuScene::createMainMenu()
     menu->onMenuHidden = CC_CALLBACK_0(DungeonMenuScene::onMenuHidden, this);
     menu->onItemMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onItemMenuSelected, this);
     menu->onCharacterMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onCharaMenuSelected, this);
+    menu->onBackToTitleConfirmed = CC_CALLBACK_0(DungeonMenuScene::onBackToTitleConfirmed, this);
     this->addChild(menu);
     this->mainMenu = menu;
     this->mainMenu->show();
@@ -214,4 +215,18 @@ void DungeonMenuScene::onCharaMenuCanceled()
         CallFunc::create([this](){this->charaMenu->hide();}),
         CallFunc::create([this](){this->createMainMenu();})
     ));
+}
+
+#pragma mark -
+#pragma mark MainMenu
+
+// タイトルへ戻るを承認した時
+void DungeonMenuScene::onBackToTitleConfirmed()
+{
+    this->mainMenu->hide();
+    SoundManager::getInstance()->playSE("back.mp3");
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(DungeonMainMenuLayer::SLIDE_TIME), CallFunc::create([this]
+    {
+        if(this->onBackToTitleSelected) this->onBackToTitleSelected();
+    })));
 }

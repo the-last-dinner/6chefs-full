@@ -43,6 +43,7 @@ bool MenuLayer::init(int sizeX, int sizeY)
 	this->sizeY = sizeY;
     
     EventListenerKeyboardLayer* listenerKeyboard { EventListenerKeyboardLayer::create() };
+    this->addChild(listenerKeyboard);
     listenerKeyboard->onCursorKeyPressed = CC_CALLBACK_1(MenuLayer::onCursorKeyPressed, this);
     listenerKeyboard->onSpaceKeyPressed = CC_CALLBACK_0(MenuLayer::onSpaceKeyPressed, this);
     listenerKeyboard->onMenuKeyPressed = CC_CALLBACK_0(MenuLayer::onMenuKeyPressed, this);
@@ -50,7 +51,6 @@ bool MenuLayer::init(int sizeX, int sizeY)
     listenerKeyboard->setInputCheckDelay(0.3f);
     listenerKeyboard->setInputCheckInterval(0.1f);
     listenerKeyboard->setEnabled(false);
-    this->addChild(listenerKeyboard);
     this->listenerKeyboard = listenerKeyboard;
 
 	return true;

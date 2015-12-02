@@ -31,7 +31,8 @@ private:
 
 // インスタンス変数
 public:
-    function<void()> onPopMenuScene;
+    function<void()> onPopMenuScene {nullptr};
+    function<void()> onBackToTitleSelected {nullptr};
 private:
     DungeonMainMenuLayer* mainMenu {nullptr};
     SaveDataSelector* saveDataSelector {nullptr};
@@ -66,6 +67,8 @@ private:
     void onItemMenuCanceled();
     // キャラクターメニュー
     void onCharaMenuCanceled();
+    // タイトルへ戻るを承認した時
+    void onBackToTitleConfirmed();
 };
 
 #endif /* defined(__LastSupper__DungeonMenuScene__) */

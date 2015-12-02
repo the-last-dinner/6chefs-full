@@ -25,6 +25,7 @@
 #include "Models/Stamina.h"
 
 #include "Scenes/DungeonMenuScene.h"
+#include "Scenes/TitleScene.h"
 
 #include "Tasks/EnemyTask.h"
 #include "Tasks/CameraTask.h"
@@ -196,13 +197,22 @@ void DungeonScene::onMenuKeyPressed()
      if(success)
      {
          Sprite* screen = Sprite::create(filename);
-         Scene* menu = DungeonMenuScene::create(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         DungeonMenuScene* menu = DungeonMenuScene::create(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         menu->onBackToTitleSelected = CC_CALLBACK_0(DungeonScene::onBackToTitleSelected, this);
+         
          // メニューシーンをプッシュ
          Director::getInstance()->pushScene(menu);
          // cache削除
          Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
      }
     }, path);
+}
+
+// メニューシーンでタイトルへ戻るを選択した時
+void DungeonScene::onBackToTitleSelected()
+{
+    Director::getInstance()->popScene();
+    Director::getInstance()->replaceScene(TitleScene::create());
 }
 
 // データクラスを取得

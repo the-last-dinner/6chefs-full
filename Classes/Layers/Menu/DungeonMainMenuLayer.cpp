@@ -9,7 +9,6 @@
 #include "Layers/Menu/DungeonMainMenuLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
-#include "Scenes/TitleScene.h"
 #include "Datas/MapObject/CharacterData.h"
 #include "Layers/Menu/MiniSelector.h"
 #include "UI/SlideNode.h"
@@ -290,8 +289,7 @@ void DungeonMainMenuLayer::onConfirmSelected(int idx)
     if (idx == 0)
     {
         // タイトルへ戻る
-        SoundManager::getInstance()->playSE("back.mp3");
-        Director::getInstance()->replaceScene(TitleScene::create());
+        if(this->onBackToTitleConfirmed) this->onBackToTitleConfirmed();
     }
     else
     {
