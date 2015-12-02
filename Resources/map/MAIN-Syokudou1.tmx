@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="40" height="42" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="106">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="40" height="42" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="110">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
@@ -300,6 +300,34 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
+  <object id="106" x="416" y="496" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="5"/>
+    <property name="EventID" value="58"/>
+    <property name="direction" value="LEFT"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="10101"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="107" x="224" y="512" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="4"/>
+    <property name="EventID" value="57"/>
+    <property name="direction" value="UP"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="10102"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="109" x="320" y="608" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="3"/>
+    <property name="direction" value="UP"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="1037"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="event">
   <object id="24" x="320" y="640" width="32" height="32">
@@ -318,12 +346,6 @@
    <properties>
     <property name="EventID" value="3"/>
     <property name="trigger" value="1"/>
-   </properties>
-  </object>
-  <object id="28" x="320" y="608" width="32" height="32">
-   <properties>
-    <property name="EventID" value="21"/>
-    <property name="trigger" value="3"/>
    </properties>
   </object>
   <object id="31" x="208" y="624" width="32" height="32">

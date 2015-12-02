@@ -98,7 +98,7 @@
     <property name="CharaID" value="1"/>
     <property name="direction" value="UP"/>
     <property name="movePattern" value="1"/>
-    <property name="obiID" value="1058"/>
+    <property name="objID" value="1058"/>
    </properties>
   </object>
   <object id="22" x="192" y="96" width="32" height="32">

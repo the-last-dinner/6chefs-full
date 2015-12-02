@@ -25,10 +25,23 @@
   ],
   "4": [
     {
-      "type":"changeMap",
-      "mapID":"3",
-      "x":20,
-      "y":39
+      "type":"if",
+      "condition":[
+        {
+          "Nevent":["3","30"]
+        },
+        {
+          "event":["3","21"]
+        }
+      ],
+      "action":[
+        {
+          "type":"changeMap",
+          "mapID":"3",
+          "x":20,
+          "y":39
+        }
+      ]
     },
     {
       "type":"if",
@@ -43,8 +56,67 @@
           "objID":"10100"
         },
         {
-          "type":"removeChara",
+          "type":"releaseChase",
           "objID":"10100"
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["3","30"],
+          "Nevent":["3","21"]
+        }
+      ],
+      "action":[
+        {
+          "type":"releaseChase",
+          "objID":"1033"
+        },
+        {
+          "type":"releaseChase",
+          "objID":"1034"
+        },
+        {
+          "type":"removeChara",
+          "objID":"1033"
+        },
+        {
+          "type":"removeChara",
+          "objID":"1034"
+        },
+        {
+          "type":"sequence",
+          "action":[
+            {
+             "type":"fadeout"
+            },
+            {
+              "type":"charaMsg",
+              "text":["オラァァァァァ！"],
+              "charaID":"5",
+              "imgID":"1",
+              "option":"reaction"
+            },
+            {
+              "type":"wait",
+              "time":1.0
+            },
+            {
+              "type":"charaMsg",
+              "text":["・・・","あん？"],
+              "charaID":"5",
+              "imgID":"2"
+            },
+            {
+              "type":"changeMap",
+              "mapID":"3",
+              "x":20,
+              "y":39,
+              "eventID":"21"
+            }
+          ]
         }
       ]
     }
@@ -1845,7 +1917,18 @@
         {
           "type":"createChara",
           "objID":"1032"
-        },
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["3","30"],
+          "Nevent":["4","15"]
+        }
+      ],
+      "action":[
         {
           "type":"createChara",
           "objID":"1033"

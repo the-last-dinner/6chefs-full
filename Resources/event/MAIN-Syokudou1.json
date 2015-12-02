@@ -690,7 +690,6 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["4","15"],
 					"status":["2","2"]
 				}
 			],
@@ -698,9 +697,6 @@
 				{
 					"type":"sequence",
 					"action":[
-						{
-							"type":"fadeout"
-						},
 						{
 							"type":"spawn",
 							"action":[
@@ -711,6 +707,14 @@
 								{
 									"type":"removeChara",
 									"objID":"1032"
+								},
+								{
+									"type":"createChara",
+									"objID":"10101"
+								},
+								{
+									"type":"createChara",
+									"objID":"10102"
 								}
 							]
 						},
@@ -719,7 +723,7 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["加藤さん！"],
+							"text":["加藤さん！","目が！\n大丈夫なんですか！？"],
 							"charaID":"0",
 							"imgID":"2",
 							"option":"reaction"
@@ -731,52 +735,13 @@
 							"objID":"hero"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaWalk",
-											"direction":"LEFT",
-											"steps":1.0,
-											"objID":"1033"
-										},
-										{
-											"type":"charaWalk",
-											"direction":"UP",
-											"steps":1.0,
-											"objID":"1033"
-										}
-									]
-								},		
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaWalk",
-											"direction":"RIGHT",
-											"steps":1.0,
-											"objID":"1034"
-										},
-										{
-											"type":"charaWalk",
-											"direction":"UP",
-											"steps":2.0,
-											"objID":"1033"
-										}
-									]
-								}
-							]
-						},
-						{
 							"type":"charaMsg",
 							"talk":[
 								{
-										"text":["ぐっ、、、"],
-										"charaID":"2",
-										"imgID":"2",
-										"option":"reaction"
+									"text":["ぐっ、、、\n何とかな"],
+									"charaID":"2",
+									"imgID":"2",
+									"option":"reaction"
 								},
 								{
 									"text":["ヤツは！？"],
@@ -794,7 +759,7 @@
 						{
 							"type":"changeDirection",
 							"direction":"DOWN",
-							"objID":"1034"
+							"objID":"10102"
 						},
 						{
 							"type":"wait",
@@ -807,16 +772,22 @@
 							"imgID":"1"
 						},
 						{
+							"type":"createChara",
+							"objID":"1037"
+						},
+						{
 							"type":"spawn",
 							"action":[
-							{
-								"type":"createChara",
-								"objID":"1036"
-							},
-							{
-								"type":"createChara",
-								"objID":"1037"
-							}
+								{
+									"type":"charaWalk",
+									"objID":"1037",
+									"direction":"UP",
+									"steps":1.0
+								},
+								{
+									"type":"createChara",
+									"objID":"1036"
+								}
 							]
 						},
 						{
@@ -837,7 +808,7 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["ちょっと・・・何よコレ・・・"],
+							"text":["ちょっと・・・何よコレ・・・","あ、撫子！\n待ちなさいよ！"],
 							"charaID":"3",
 							"imgID":"2"
 						},
@@ -848,13 +819,9 @@
 							"objID":"1037"
 						},
 						{
-							"type":"removeChara",
-							"objID":"1037"
-						},
-						{
 							"type":"changeDirection",
 							"direction":"DOWN",
-							"objID":"1033"
+							"objID":"10101"
 						},
 						{
 							"type":"charaMsg",
@@ -864,9 +831,13 @@
 							"option":"reaction"
 						},
 						{
+							"type":"removeChara",
+							"objID":"1037"
+						},
+						{
 							"type":"changeDirection",
-							"direction":"RIGHT",
-							"objID":"1033"
+							"direction":"LEFT",
+							"objID":"10101"
 						},
 						{
 							"type":"charaMsg",
@@ -880,13 +851,13 @@
 							"action":[
 								{
 									"type":"changeDirection",
-									"direction":"LEFT",
+									"direction":"RIGHT",
 									"objID":"hero"
 								},
 								{
 									"type":"changeDirection",
-									"direction":"LEFT",
-									"objID":"1034"
+									"direction":"RIGHT",
+									"objID":"10102"
 								}
 							]
 						},
@@ -907,10 +878,11 @@
 							]
 						},
 						{
-							"type":"fadeout"
+							"type":"already"
 						},
 						{
-							"type":"already"
+							"type":"fadeout",
+							"time":3.0
 						},
 						{
 							"type":"createCamera",
@@ -936,7 +908,7 @@
 											"type":"charaMsg",
 											"talk":[
 												{
-													"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
+													"text":["なるほどな","・・・","だったらお前にイイコト教えてやる"],
 													"charaID":"6",
 													"imgID":"1",
 													"name":"？？？"
@@ -956,19 +928,6 @@
 										},
 										{
 											"type":"fadeout"
-										},
-										{
-											"type":"spawn",
-											"action":[
-												{
-													"type":"removeChara",
-													"objID":"1058"
-												},
-												{
-													"type":"removeChara",
-													"objID":"1059"
-												}
-											]
 										}
 									]
 								}
@@ -1006,7 +965,6 @@
 			"type":"if",
 			"condition":[
 			{
-				"event":["4","15"],
 				"Nstatus":["2","2"]
 			}
 			],
@@ -1014,9 +972,6 @@
 				{
 					"type":"sequence",
 					"action":[
-						{
-							"type":"fadeout"
-						},
 						{
 							"type":"spawn",
 							"action":[
@@ -1027,6 +982,14 @@
 								{
 									"type":"removeChara",
 									"objID":"1032"
+								},
+								{
+									"type":"createChara",
+									"objID":"10101"
+								},
+								{
+									"type":"createChara",
+									"objID":"10102"
 								}
 							]
 						},
@@ -1045,49 +1008,10 @@
 							"option":"reaction"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaWalk",
-									"direction":"UP",
-									"steps":3.0,
-									"objID":"hero"
-								},
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaWalk",
-											"direction":"LEFT",
-											"steps":1.0,
-											"objID":"1033"
-										},
-										{
-											"type":"charaWalk",
-											"direction":"UP",
-											"steps":1.0,
-											"objID":"1033"	
-										}
-									]
-								},
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaWalk",
-											"direction":"RIGHT",
-											"steps":1.0,
-											"objID":"1034"
-										},
-										{
-											"type":"charaWalk",
-											"direction":"UP",
-											"steps":2.0,
-											"objID":"1034"
-										}		
-									]
-								}
-							]
+							"type":"charaWalk",
+							"direction":"UP",
+							"steps":3.0,
+							"objID":"hero"
 						},
 						{
 							"type":"displayImg",
@@ -1119,22 +1043,22 @@
 										{
 											"type":"changeDirection",
 											"direction":"LEFT",
-											"objID":"1033"
+											"objID":"10101"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"RIGHT",
-											"objID":"1033"
+											"objID":"10101"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"LEFT",
-											"objID":"1033"
+											"objID":"10101"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"RIGHT",
-											"objID":"1033"
+											"objID":"10101"
 										}
 									]
 								},
@@ -1144,22 +1068,22 @@
 										{
 											"type":"changeDirection",
 											"direction":"RIGHT",
-											"objID":"1034"
+											"objID":"10102"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"LEFT",
-											"objID":"1034"
+											"objID":"10102"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"RIGHT",
-											"objID":"1034"
+											"objID":"10102"
 										},
 										{
 											"type":"changeDirection",
 											"direction":"LEFT",
-											"objID":"1034"
+											"objID":"10102"
 										}
 									]
 								}
@@ -1175,7 +1099,7 @@
 						{
 							"type":"changeDirection",
 							"direction":"DOWN",
-							"objID":"1034"
+							"objID":"10102"
 						},
 						{
 							"type":"charaMsg",
@@ -1184,15 +1108,21 @@
 							"imgID":"1"
 						},
 						{
+							"type":"createChara",
+							"objID":"1037"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
-									"type":"createChara",
-									"objID":"1036"
+									"type":"charaWalk",
+									"objID":"1037",
+									"direction":"UP",
+									"steps":1.0
 								},
 								{
 									"type":"createChara",
-									"objID":"1037"
+									"objID":"1036"
 								}
 							]
 						},
@@ -1225,13 +1155,9 @@
 							"objID":"1037"
 						},
 						{
-							"type":"removeChara",
-							"objID":"1037"
-						},
-						{
 							"type":"changeDirection",
 							"direction":"DOWN",
-							"objID":"1033"
+							"objID":"10101"
 						},
 						{
 							"type":"charaMsg",
@@ -1241,9 +1167,13 @@
 							"option":"reaction"
 						},
 						{
+							"type":"removeChara",
+							"objID":"1037"
+						},
+						{
 							"type":"changeDirection",
-							"direction":"RIGHT",
-							"objID":"1033"
+							"direction":"LEFT",
+							"objID":"10101"
 						},
 						{
 							"type":"charaMsg",
@@ -1257,12 +1187,12 @@
 							"action":[
 								{
 									"type":"changeDirection",
-									"direction":"LEFT",
+									"direction":"RIGHT",
 									"objID":"hero"
 								},
 								{
 									"type":"changeDirection",
-									"direction":"LEFT",
+									"direction":"RIGHT",
 									"objID":"1034"
 								}
 							]
@@ -1284,7 +1214,8 @@
 							]
 						},
 						{
-							"type":"fadeout"
+							"type":"fadeout",
+							"time":3.0
 						},
 						{
 							"type":"already"
@@ -1296,51 +1227,44 @@
 							"y":12,
 							"action":[
 								{
-									"type":"createChara",
-									"objID":"1058"
-								},
-								{
-									"type":"createChara",
-									"objID":"1059"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"charaMsg",
-									"talk":[
-										{
-											"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
-											"charaID":"6",
-											"imgID":"1",
-											"name":"？？？"
-										},
-										{
-											"text":["貴方は・・・？"],
-											"charaID":"1",
-											"imgID":"2"
-										},
-										{
-											"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
-											"charaID":"6",
-											"imgID":"1",
-											"name":"？？？"
-										}
-									]
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"spawn",
+									"type":"sequence",
 									"action":[
 										{
-											"type":"removeChara",
+											"type":"createChara",
 											"objID":"1058"
 										},
 										{
-											"type":"removeChara",
+											"type":"createChara",
 											"objID":"1059"
+										},
+										{
+											"type":"fadein",
+											"time":3.0
+										},
+										{
+											"type":"charaMsg",
+											"talk":[
+												{
+													"text":["なるほどな・・・だったらお前にイイコト教えてやる"],
+													"charaID":"6",
+													"imgID":"1",
+													"name":"？？？"
+												},
+												{
+													"text":["貴方は・・・？"],
+													"charaID":"1",
+													"imgID":"2"
+												},
+												{
+													"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
+													"charaID":"6",
+													"imgID":"1",
+													"name":"？？？"
+												}
+											]
+										},
+										{
+											"type":"fadeout"
 										}
 									]
 								}
@@ -3933,7 +3857,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["40","10"]
+					"event":["40","10"],
+					"Nevent":["3","30"]
 				}
 			],
 			"action":[
@@ -3978,5 +3903,23 @@
 			"imgID":"1",
 			"option":"reaction"
 		}
+	],
+	"57":[
+		{
+			"type":"charaMsg",
+			"text":["我は北棟を見てきますぞ\n佐々木氏は西棟を頼みますぞ"],
+			"charaID":"4",
+			"imgID":"1"
+		}
+	],
+	"58":[
+		{
+			"type":"charaMsg",
+			"text":["俺は東棟を見てくる\nお前は西棟を頼む"],
+			"charaID":"5",
+			"imgID":"1",
+			"option":"reaction"
+		}
 	]
+
 }
