@@ -37,7 +37,7 @@ void Stamina::increase()
 {
     float percentage {this->percentage};
     
-    percentage += this->step * INCREASE_STEP_RATIO;
+    percentage += DEFAULT_STEP * INCREASE_STEP_RATIO;
     
     // 最大値以上になっていたら、最大値にする
     if(percentage > MAX_VALUE) percentage = MAX_VALUE;
@@ -60,12 +60,18 @@ float Stamina::getPercentage() const
     return this->percentage;
 }
 
+// スタミナ減少の速度倍率を設定
+void Stamina::setStepRatio(const float ratio)
+{
+    this->ratio = ratio;
+}
+
 // スタミナ減少
 void Stamina::decrease()
 {
     float percentage { this->percentage };
     
-    percentage -= this->step;
+    percentage -= DEFAULT_STEP * this->ratio;
     
     // 最低値以下になっていたら最低値にする
     if(percentage < MIN_VALUE) percentage = MIN_VALUE;

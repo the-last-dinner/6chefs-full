@@ -79,6 +79,12 @@ int Character::getCharacterId() const {return this->charaId;}
 // 自身のキャラクターデータを返す
 CharacterData Character::getCharacterData() const { return CharacterData(this->charaId, this->getObjectId(), this->location); }
 
+// Spriteを取得
+Sprite* Character::getSprite() const
+{
+    return this->character;
+}
+
 // キャラクターの向きを変える
 void Character::setDirection(const Direction direction)
 {

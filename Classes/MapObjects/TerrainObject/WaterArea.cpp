@@ -25,4 +25,5 @@ void WaterArea::onWillMove(MapObject* target, const vector<Direction>& direction
 {
     // 速度を1/2にして移動
     target->move(directions, onMoved, ratio / 2);
+    target->getSprite()->setTextureRect(Rect(GRID, GRID, GRID, GRID));
 }

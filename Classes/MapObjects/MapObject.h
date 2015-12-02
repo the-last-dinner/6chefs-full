@@ -62,6 +62,7 @@ public:
 	Trigger getTrigger() const;
     bool isMoving() const;
     Direction getDirection() const;
+    virtual Sprite* getSprite() const { return nullptr; };
     
     // collision
     Rect getCollisionRect() const;

@@ -41,6 +41,7 @@ public:
     
     int getCharacterId() const;
     CharacterData getCharacterData() const;
+    virtual Sprite* getSprite() const;
     
 	virtual void setDirection(const Direction direction) override;
 	void setMoving(bool _isMoving);

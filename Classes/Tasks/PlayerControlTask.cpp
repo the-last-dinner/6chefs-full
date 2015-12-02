@@ -11,6 +11,7 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
+#include "MapObjects/TerrainObject/TerrainObject.h"
 
 #include "Models/Stamina.h"
 
@@ -112,6 +113,9 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     DungeonSceneManager::getInstance()->runEvent(DungeonSceneManager::getInstance()->getMapObjectList()->getEventIdsByGridRect(gridRect, Trigger::WILL));
     
     if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
+    
+    // 地形から、スタミナ減少の倍率を取得しセット
+    DungeonSceneManager::getInstance()->getStamina()->setStepRatio(mainCharacter->getTerrain()->getStaminaConsumptionRate());
     
     // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
     if(DungeonSceneManager::getInstance()->existsEnemy() && dash) DungeonSceneManager::getInstance()->getStamina()->decrease();
