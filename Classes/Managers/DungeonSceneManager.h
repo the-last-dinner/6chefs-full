@@ -84,6 +84,7 @@ public:
     
     // EnemyTask
     vector<SummonData> getSummonDatas() const;
+    void removeEnemy(const int enemyId);
     bool existsEnemy() const;
     
     // CameraTask
