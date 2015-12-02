@@ -212,6 +212,7 @@ void DungeonScene::onMenuKeyPressed()
 void DungeonScene::onBackToTitleSelected()
 {
     Director::getInstance()->popScene();
+    DungeonSceneManager::destroy();
     Director::getInstance()->replaceScene(TitleScene::create());
 }
 
