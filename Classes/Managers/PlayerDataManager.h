@@ -101,6 +101,7 @@ public:
     bool checkChapterId(const int chapter_id);
     bool checkEventIsDone(const int map_id, const int event_id);
     bool checkEventStatus(const int map_id, const int event_id, const int status);
+    bool checkTrophyhaving(const int trophy_id);
     
 private:
     // グローバルデータのセット

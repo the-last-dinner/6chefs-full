@@ -171,15 +171,7 @@ void PlayerDataManager::setGameEnd(const int end_id)
     int trophy_count {0};
     for(int trophy_id : trophies)
     {
-        char tid_char[10];
-        sprintf(tid_char, "%d", trophy_id);
-        if (this->global["trophy"].HasMember(tid_char))
-        {
-            if (this->global["trophy"][tid_char].GetBool())
-            {
-                trophy_count++;
-            }
-        }
+        if (this->checkTrophyhaving(trophy_id)) trophy_count++;
     }
     if (trophy_count == trophies.size())
     {
@@ -700,6 +692,22 @@ bool PlayerDataManager::checkEventIsDone(const int map_id, const int event_id)
 bool PlayerDataManager::checkEventStatus(const int map_id, const int event_id, const int status)
 {
     return status == abs(this->getEventStatus(map_id, event_id)) ? true : false;
+}
+
+// 指定のトロフィーを持っているか
+bool PlayerDataManager::checkTrophyhaving(const int trophy_id)
+{
+    bool hasTrophy {false};
+    char tid_char[10];
+    sprintf(tid_char, "%d", trophy_id);
+    if (this->global["trophy"].HasMember(tid_char))
+    {
+        if (this->global["trophy"][tid_char].GetBool())
+        {
+            hasTrophy =  true;
+        }
+    }
+    return hasTrophy;
 }
 
 #pragma mark -

@@ -9,6 +9,7 @@
 #include "TrophyListLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Managers/PlayerDataManager.h"
 
 // 初期化
 bool TrophyListLayer::init()
@@ -96,7 +97,8 @@ bool TrophyListLayer::init()
         
         // トロフィー
         this->trophies.push_back(trophy_id);
-        Label* trophy = Label::createWithTTF(CsvDataManager::getInstance()->getTrophyName(trophy_id), "fonts/cinecaption2.28.ttf", 22);
+        string trophy_name = PlayerDataManager::getInstance()->checkTrophyhaving(trophy_id) ? CsvDataManager::getInstance()->getTrophyName(trophy_id) : "? ? ? ? ?";
+        Label* trophy = Label::createWithTTF(trophy_name, "fonts/cinecaption2.28.ttf", 22);
         trophy->setPosition(panel_size.width/2 , panel_size.height/2);
         trophy->setColor(Color3B::WHITE);
         trophy->setTag(i);
@@ -127,14 +129,26 @@ void TrophyListLayer::changeTrophyDiscription(const int idx)
     if (bottom->getChildByName(labelName)){
         bottom->removeChildByName(labelName);
     }
-    string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyCondition(this->trophies[idx]));
-    str += "\n" + LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyComment(this->trophies[idx]));
-    Label* discription = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
+    
+    // パネル作成
+    Node* label_panel {Node::create()};
+    label_panel->setName(labelName);
+    bottom->addChild(label_panel);
+    
+    // 条件
     int margin = 15;
-    discription->setPosition(discription->getContentSize().width / 2 + margin, bottom->getContentSize().height - discription->getContentSize().height / 2 - margin);
-    discription->setColor(Color3B::WHITE);
-    discription->setName(labelName);
-    bottom->addChild(discription);
+    string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyCondition(this->trophies[idx]));
+    Label* condition = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 28);
+    condition->setPosition(bottom->getContentSize().width / 2, bottom->getContentSize().height - condition->getContentSize().height / 2 - margin);
+    condition->setColor(Color3B::WHITE);
+    label_panel->addChild(condition);
+    
+    // コメント
+    string comment_str = PlayerDataManager::getInstance()->checkTrophyhaving(idx + 1) ? "\n  「" + LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyComment(this->trophies[idx])) + "」" : "";
+    Label* comment = Label::createWithTTF(comment_str, "fonts/cinecaption2.28.ttf", 28);
+    comment->setPosition(bottom->getContentSize().width / 2, bottom->getContentSize().height - condition->getContentSize().height - comment->getContentSize().height / 2 - margin / 2);
+    comment->setColor(Color3B::WHITE);
+    label_panel->addChild(comment);
 }
 
 // 表示
