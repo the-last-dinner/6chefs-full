@@ -2,7 +2,7 @@
 //  StringUtils.h
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/10/12.
+//  Created by Ryoya Ino on 2015/10/12.
 //
 //
 
@@ -18,6 +18,7 @@ namespace LastSupper
         string strReplace(const string& pattern, const string& replacement, string target);
         string getSprintf(const string& format, const string& str);
         string splitLineBreak(const string& target, const int line_limit);
+        string getRandomString(const int length = 50);
     }
 }
 

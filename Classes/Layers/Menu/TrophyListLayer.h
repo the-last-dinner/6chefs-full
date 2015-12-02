@@ -2,7 +2,7 @@
 //  TrophyListLayer.h
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/12/02.
+//  Created by Ryoya Ino on 2015/12/02.
 //
 //
 

@@ -27,6 +27,7 @@ bool TitleSceneData::init()
 		"title",
 		"frame",
         "menu_panels",
+        "icon",
         "character/magoichi",
         "character/daigoro",
         "character/dandan",

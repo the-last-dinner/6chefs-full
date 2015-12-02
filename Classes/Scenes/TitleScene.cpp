@@ -76,6 +76,7 @@ void TitleScene::onStartSelected()
 	SoundManager::getInstance()->unloadAllSounds();
 	//TextureManager::getInstance()->unloadAllTectures();
 	PlayerDataManager::getInstance()->setMainLocalData(0);
+    PlayerDataManager::getInstance()->setToken();
     Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
 }
 
@@ -128,6 +129,11 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
+    if (!PlayerDataManager::getInstance()->isCleard())
+    {
+        SoundManager::getInstance()->playSE("failure.mp3");
+        return;
+    }
     if(!this->trophyList)
     {
         this->createTrophyListLayer();
@@ -139,6 +145,7 @@ void TitleScene::onTrophyListSelected()
 // トロフィーリストをキャンセル時
 void TitleScene::onTrophyListCanceled()
 {
+    SoundManager::getInstance()->playSE("back.mp3");
     this->trophyList->hide();
     this->mainMenu->show();
 }

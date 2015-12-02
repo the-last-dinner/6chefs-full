@@ -2,7 +2,7 @@
 //  PlayerDataManager.h
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/06/28.
+//  Created by Ryoya Ino on 2015/06/28.
 //
 //
 
@@ -73,6 +73,7 @@ public:
     void setChapterId(const int chapter_id);
     void setCharacterProfile(const int chara_id, const int level);
     void setPartyMember(const CharacterData& chara);
+    void setToken();
     
     // REMOVE
     bool removeItem(const int item_id);
@@ -104,6 +105,8 @@ public:
     bool checkEventIsDone(const int map_id, const int event_id);
     bool checkEventStatus(const int map_id, const int event_id, const int status);
     bool checkTrophyhaving(const int trophy_id);
+    bool checkNotExistToken(const string& token);
+    bool isCleard();
     
 private:
     // グローバルデータのセット

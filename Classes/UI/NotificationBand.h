@@ -2,7 +2,7 @@
 //  NotificationBand.hpp
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/11/27.
+//  Created by Ryoya Ino on 2015/11/27.
 //
 //
 

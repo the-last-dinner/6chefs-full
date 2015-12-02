@@ -3,7 +3,7 @@
 //  PlayerDataManager.cpp
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/06/28.
+//  Created by Ryoya Ino on 2015/06/28.
 /*
  [memo]
  ・セーブデータが選択されたらsetMainLocalData(int local_id)でlocalデータのセット
@@ -193,12 +193,17 @@ void PlayerDataManager::setGameEnd(const int end_id)
         this->setTrophy(trophy_count);
     }
     
-    // グローバルデータをセーブ
-    int clear_count = this->global["clear_count"].GetInt();
-    if (clear_count < 999)
+    // クリアカウント
+    if (this->checkNotExistToken(this->local["token"].GetString()))
     {
-        this->global["clear_count"].SetInt(clear_count + 1);
+        int clear_count = this->global["clear_count"].GetInt();
+        if (clear_count < 999)
+        {
+            this->global["clear_count"].SetInt(clear_count + 1);
+        }
     }
+    
+    // グローバルデータをセーブ
     this->saveGlobalData();
 }
 
@@ -271,8 +276,7 @@ string PlayerDataManager::getPlayTimeDisplay(const int sec)
 {
     int min = floor(sec / 60);
     int hour = floor(min / 60);
-    if (min > 99) min = 99;
-    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min % 60)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
     return display;
 }
 
@@ -481,6 +485,15 @@ void PlayerDataManager::setPartyMember(const CharacterData& chara)
     member.AddMember("y", rapidjson::Value(chara.location.y), this->local.GetAllocator());
     member.AddMember("direction", rapidjson::Value(static_cast<int>(chara.location.direction)), this->local.GetAllocator());
     this->local["party"].PushBack(member, this->local.GetAllocator());
+}
+
+// トークンをセットする
+void PlayerDataManager::setToken()
+{
+    rapidjson::Value token(kStringType);
+    string ranstr = LastSupper::StringUtils::getRandomString();
+    CCLOG("TOKEN >>>>> %s", ranstr.c_str());
+    this->local["token"].SetString(ranstr.c_str(), strlen(ranstr.c_str()), this->local.GetAllocator());
 }
 
 #pragma mark -
@@ -764,6 +777,26 @@ bool PlayerDataManager::checkTrophyhaving(const int trophy_id)
         }
     }
     return hasTrophy;
+}
+
+// クリア済みのデータかチェックする
+bool PlayerDataManager::checkNotExistToken(const string &token)
+{
+    int token_count = this->global["tokens"].Size();
+    for (int i = 0; i < token_count; i++)
+    {
+        if (this->global["tokens"][i].GetString() == token)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+// グローバルデータからクリア済みかチェック
+bool PlayerDataManager::isCleard()
+{
+    return this->global["clear_count"].GetInt() > 0 ? true : false;
 }
 
 #pragma mark -

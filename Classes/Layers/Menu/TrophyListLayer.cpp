@@ -2,7 +2,7 @@
 //  TrophyListLayer.cpp
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/12/02.
+//  Created by Ryoya Ino on 2015/12/02.
 //
 //
 
@@ -39,7 +39,7 @@ bool TrophyListLayer::init()
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
     
-    // アイテム詳細
+    // トロフィー詳細欄
     Sprite* bottom {Sprite::createWithSpriteFrameName("item_detail.png")};
     bottom->setPosition(bottom->getContentSize().width/2, bottom->getContentSize().height/2);
     bottom->setName("bottom");
@@ -64,9 +64,8 @@ bool TrophyListLayer::init()
     equipment->setColor(Color3B::WHITE);
     rightTop->addChild(equipment);
     
-    // アイテムリスト
+    // トロフィーリスト
     square = SpriteUtils::Square(0,25,100,80);
-    //margin = SpriteUtils::Margin(1.5,3.0,1.5,3.0);
     margin = SpriteUtils::Margin(1.0);
     Sprite* center = SpriteUtils::getSquareSprite(square, margin);
     center->setColor(Color3B::BLACK);
@@ -80,6 +79,7 @@ bool TrophyListLayer::init()
     int page = 0;
     int upDownMargin = 40;
     Size centerSize {center->getContentSize()};
+    
     for(int trophy_id : trophies)
     {
         
@@ -88,20 +88,29 @@ bool TrophyListLayer::init()
         Size list_size {center->getContentSize()};
         list_size.height -= upDownMargin;
         panel->setTextureRect(Rect(0, 0, list_size.width / size.x, list_size.height / size.y));
-        //panel->setColor(Color3B::BLACK);
         panel->setOpacity(0);
         
         Size panel_size {panel->getContentSize()};
         panel->setPosition(((i - (int)(page * size.x * size.y))%(int)size.x) * (list_size.width / size.x) + panel_size.width/2, list_size.height - ((floor((i - page * size.x * size.y)/(int)size.x) + 1)  *  (panel_size.height)) + panel_size.height/2 + upDownMargin/2);
-        
-        // ページ登録
         center->addChild(panel);
         
-        // トロフィー
+        // トロフィー画像
+        Sprite* trophy_img {Sprite::createWithSpriteFrameName("trophy_gold.png")};
+        trophy_img->setPosition(trophy_img->getContentSize().width, trophy_img->getContentSize().height/2);
+        trophy_img->setScale(0.8);
+        
+        // トロフィー名
         this->trophies.push_back(trophy_id);
-        string trophy_name = PlayerDataManager::getInstance()->checkTrophyhaving(trophy_id) ? CsvDataManager::getInstance()->getTrophyName(trophy_id) : "? ? ? ? ?";
+        string trophy_name = "? ? ? ? ?";
+        if (PlayerDataManager::getInstance()->checkTrophyhaving(trophy_id))
+        {
+            trophy_name = CsvDataManager::getInstance()->getTrophyName(trophy_id);
+            
+            // トロフィー画像
+            panel->addChild(trophy_img);
+        }
         Label* trophy = Label::createWithTTF(trophy_name, "fonts/cinecaption2.28.ttf", 22);
-        trophy->setPosition(panel_size.width/2 , panel_size.height/2);
+        trophy->setPosition(trophy->getContentSize().width/2 + trophy_img->getContentSize().width * 2, panel_size.height/2);
         trophy->setColor(Color3B::WHITE);
         trophy->setTag(i);
         // 不透明度を半分にしておく

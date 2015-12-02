@@ -2,7 +2,7 @@
 //  StopWatch.h
 //  LastSupper
 //
-//  Created by 猪野凌也 on 2015/11/27.
+//  Created by Ryoya Ino on 2015/11/27.
 //
 //
 
@@ -44,8 +44,9 @@ public:
 private:
     bool init(const double& init_time);
     bool init(const int init_time);
-    double getSecMs();
 public:
+    // 元の時間取得
+    double getSecMs();
     // 時間取得
     double getTime();
     int getTimeInt();
