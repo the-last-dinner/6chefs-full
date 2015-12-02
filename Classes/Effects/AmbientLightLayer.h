@@ -19,6 +19,8 @@ class AmbientLightLayer : public Layer
 {
 // 定数
 public:
+    static const Color3B DAY;
+    static const Color3B EVENING;
 	static const Color3B NIGHT;
     static const Color3B BASEMENT;
     
@@ -28,12 +30,14 @@ public:
     
 // インスタンス変数
 private:
+    Sprite* ambientLight { nullptr };
     map<MapObject*, Light*> objectMap {};
     RenderTexture* renderTexture { nullptr };
     Sprite* renderTexSprite { nullptr };
 
 // インスタンスメソッド
 public:
+    void setAmbient(const Color3B& color);
     void addLightSource(MapObject* object, const Light::Information& info);
     void removeLightSource(MapObject* object);
     virtual void visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags);

@@ -86,46 +86,29 @@ DungeonSceneManager::~DungeonSceneManager()
 #pragma mark Getter Methods
 
 // シーンを取得
-DungeonScene* DungeonSceneManager::getScene() const
-{
-    return dynamic_cast<DungeonScene*>(Director::getInstance()->getRunningScene());
-}
+DungeonScene* DungeonSceneManager::getScene() const { return dynamic_cast<DungeonScene*>(Director::getInstance()->getRunningScene()); }
 
 // マップレイヤを取得
-TiledMapLayer* DungeonSceneManager::getMapLayer() const
-{
-    return this->getScene()->mapLayer;
-}
+TiledMapLayer* DungeonSceneManager::getMapLayer() const { return this->getScene()->mapLayer; }
 
 // オブジェクトリストを取得
-MapObjectList* DungeonSceneManager::getMapObjectList() const
-{
-    return this->getMapLayer()->getMapObjectList();
-}
+MapObjectList* DungeonSceneManager::getMapObjectList() const { return this->getMapLayer()->getMapObjectList(); }
 
 // イベントファクトリを取得
-EventFactory* DungeonSceneManager::getEventFactory() const
-{
-    return this->eventFactory;
-}
+EventFactory* DungeonSceneManager::getEventFactory() const { return this->eventFactory; }
 
 // イベントスクリプトを取得
 EventScript* DungeonSceneManager::getEventScript() const
-{
-    return dynamic_cast<DungeonSceneData*>(this->getScene()->data)->getEventScript();
-}
+{ return dynamic_cast<DungeonSceneData*>(this->getScene()->data)->getEventScript(); }
 
 // スクリプトバリデータを取得
-EventScriptValidator* DungeonSceneManager::getScriptValidator() const
-{
-    return this->scriprtValidator;
-}
+EventScriptValidator* DungeonSceneManager::getScriptValidator() const { return this->scriprtValidator; }
 
 // パーティを取得
-Party* DungeonSceneManager::getParty()
-{
-    return this->getScene()->party;
-}
+Party* DungeonSceneManager::getParty() { return this->getScene()->party; }
+
+// 環境光レイヤを取得
+AmbientLightLayer* DungeonSceneManager::getAmbientLayer() const { return this->getScene()->ambientLightLayer; };
 
 #pragma mark -
 #pragma mark Scene
