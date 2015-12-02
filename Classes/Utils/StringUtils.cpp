@@ -7,6 +7,7 @@
 //
 
 #include "StringUtils.h"
+#include "Models/StopWatch.h"
 
 // 文字列を置換する
 string LastSupper::StringUtils::strReplace(const string& pattern, const string& replacement, string target)
@@ -48,4 +49,24 @@ string LastSupper::StringUtils::splitLineBreak(const string &target, const int l
         }
     }
     return str;
+}
+
+// ランダムな文字列を取得
+string LastSupper::StringUtils::getRandomString(const int length)
+{
+    // 現在の時間を取得
+    StopWatch* watch {StopWatch::create(0)};
+    int runum = floor(watch->getSecMs());
+    string ranst = to_string(runum) + "/";
+    
+    // ランダムに文字列を追加
+    string alphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    int alphs_length = alphs.length();
+    int ranum;
+    for (int i = ranst.length(); i < length; i++)
+    {
+        ranum = rand() % alphs_length;
+        ranst += alphs[ranum];
+    }
+    return ranst;
 }

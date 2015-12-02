@@ -193,12 +193,17 @@ void PlayerDataManager::setGameEnd(const int end_id)
         this->setTrophy(trophy_count);
     }
     
-    // グローバルデータをセーブ
-    int clear_count = this->global["clear_count"].GetInt();
-    if (clear_count < 999)
+    // クリアカウント
+    if (this->checkNotExistToken(this->local["token"].GetString()))
     {
-        this->global["clear_count"].SetInt(clear_count + 1);
+        int clear_count = this->global["clear_count"].GetInt();
+        if (clear_count < 999)
+        {
+            this->global["clear_count"].SetInt(clear_count + 1);
+        }
     }
+    
+    // グローバルデータをセーブ
     this->saveGlobalData();
 }
 
@@ -482,6 +487,15 @@ void PlayerDataManager::setPartyMember(const CharacterData& chara)
     this->local["party"].PushBack(member, this->local.GetAllocator());
 }
 
+// トークンをセットする
+void PlayerDataManager::setToken()
+{
+    rapidjson::Value token(kStringType);
+    string ranstr = LastSupper::StringUtils::getRandomString();
+    CCLOG("TOKEN >>>>> %s", ranstr.c_str());
+    this->local["token"].SetString(ranstr.c_str(), strlen(ranstr.c_str()), this->local.GetAllocator());
+}
+
 #pragma mark -
 #pragma mark Remover
 
@@ -763,6 +777,26 @@ bool PlayerDataManager::checkTrophyhaving(const int trophy_id)
         }
     }
     return hasTrophy;
+}
+
+// クリア済みのデータかチェックする
+bool PlayerDataManager::checkNotExistToken(const string &token)
+{
+    int token_count = this->global["tokens"].Size();
+    for (int i = 0; i < token_count; i++)
+    {
+        if (this->global["tokens"][i].GetString() == token)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+// グローバルデータからクリア済みかチェック
+bool PlayerDataManager::isCleard()
+{
+    return this->global["clear_count"].GetInt() > 0 ? true : false;
 }
 
 #pragma mark -

@@ -18,6 +18,7 @@ namespace LastSupper
         string strReplace(const string& pattern, const string& replacement, string target);
         string getSprintf(const string& format, const string& str);
         string splitLineBreak(const string& target, const int line_limit);
+        string getRandomString(const int length = 50);
     }
 }
 

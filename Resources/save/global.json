@@ -1,8 +1,9 @@
 {
 	"status":1,
 	"global_id":null,
-    "clear_count":0,
-    "best_save_count":999,
-    "best_clear_time":359999,
-    "trophy":{"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true}
+    "clear_count":1,
+    "best_save_count":50,
+    "best_clear_time":3900,
+    "trophy":{"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true},
+    "tokens":[""]
 }

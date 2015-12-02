@@ -44,8 +44,9 @@ public:
 private:
     bool init(const double& init_time);
     bool init(const int init_time);
-    double getSecMs();
 public:
+    // 元の時間取得
+    double getSecMs();
     // 時間取得
     double getTime();
     int getTimeInt();
