@@ -14,6 +14,9 @@
 #include "MapObjects/EventObject.h"
 #include "MapObjects/MapObjectList.h"
 
+#include "MapObjects/TerrainObject/WaterArea.h"
+#include "MapObjects/TerrainObject/SlipFloor.h"
+
 // コンストラクタ
 MapObjectFactory::MapObjectFactory() {FUNCLOG};
 
@@ -36,6 +39,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         {MapObjectFactory::Group::COLLISION, "collision"},
         {MapObjectFactory::Group::EVENT, "event"},
         {MapObjectFactory::Group::CHARACTER, "Chara(object)"},
+        {MapObjectFactory::Group::TERRAIN, "terrain"},
     };
     
     // グループごとに生成メソッドを用意
@@ -44,11 +48,13 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         {Group::COLLISION, CC_CALLBACK_1(MapObjectFactory::createObjectOnCollision, p)},
         {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, p)},
         {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, p)},
+        {Group::TERRAIN, CC_CALLBACK_1(MapObjectFactory::createObjectOnTerrain, p)},
     };
     
     // ベクタを用意
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
+    Vector<TerrainObject*> terrainObjects {};
     
     for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
     {
@@ -61,13 +67,21 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         for(cocos2d::Value info : infos)
         {
             MapObject* obj {typeToFunc[group](info.asValueMap())};
-            if(obj && group == Group::CHARACTER)
+            if(!obj) continue;
+            
+            switch (group)
             {
-                disableObjects.pushBack(obj);
-            }
-            else if(obj)
-            {
-                availableObjects.pushBack(obj);
+                case Group::CHARACTER :
+                    disableObjects.pushBack(obj);
+                    break;
+                    
+                case Group::TERRAIN :
+                    terrainObjects.pushBack(dynamic_cast<TerrainObject*>(obj));
+                    break;
+                    
+                default:
+                    availableObjects.pushBack(obj);
+                    break;
             }
         }
     }
@@ -76,7 +90,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     delete p;
     
     // MapObjectListを生成して返す
-    return MapObjectList::create(availableObjects, disableObjects);
+    return MapObjectList::create(availableObjects, disableObjects, terrainObjects);
 }
 
 // オブジェクトの位置、大きさを取得
@@ -214,4 +228,33 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
     chara->setCollisionRect(Rect(0, 0, rect.size.width, GRID));
     
     return chara;
+}
+
+// 地形レイヤにあるオブジェクトを生成
+MapObject* MapObjectFactory::createObjectOnTerrain(const ValueMap& info)
+{
+    map<string, function<TerrainObject*()>> typeStrToFunc
+    {
+        {"slip", SlipFloor::create},
+        {"water", WaterArea::create},
+    };
+    
+    string typeStr {this->getObjectType(info)};
+    
+    if(typeStrToFunc.count(typeStr) == 0) return nullptr;
+    
+    Rect rect {this->getRect(info)};
+    Point gridPosition { this->getGridPosition(rect) };
+    
+    TerrainObject* obj { typeStrToFunc[typeStr]() };
+    
+    if(!obj) return nullptr;
+    
+    obj->setObjectId(this->getObjectId(info));
+    obj->setGridPosition(this->getGridPosition(rect));
+    obj->setContentSize(rect.size);
+    obj->setPosition(rect.origin + rect.size / 2);
+    obj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    
+    return obj;
 }

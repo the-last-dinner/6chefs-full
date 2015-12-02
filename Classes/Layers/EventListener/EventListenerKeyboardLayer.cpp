@@ -35,8 +35,6 @@ EventListenerKeyboardLayer::~EventListenerKeyboardLayer(){ FUNCLOG }
 // 初期化
 bool EventListenerKeyboardLayer::init()
 {
-    FUNCLOG
-    
     if(!Layer::init()) return false;
     
     EventListenerKeyboard* listenerKeyboard { EventListenerKeyboard::create() };

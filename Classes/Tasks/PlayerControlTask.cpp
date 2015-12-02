@@ -11,6 +11,7 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
+#include "MapObjects/TerrainObject/TerrainObject.h"
 
 #include "Models/Stamina.h"
 
@@ -73,6 +74,7 @@ void PlayerControlTask::search(Party* party)
         if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition))
         {
             objPosition = obj->getPosition();
+            obj->onSearched(mainCharacter);
             DungeonSceneManager::getInstance()->runEvent(obj->getEventId());
         }
     }
@@ -96,7 +98,7 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     bool dash {DungeonSceneManager::getInstance()->isPressed(Key::DASH)};
     
     // 入力から、使う方向の個数を決める
-    int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && static_cast<int>(directions.back()) + static_cast<int>(directions.at(directions.size() - 2)) != 3)?static_cast<int>(directions.size()):1};
+    int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && etoi(directions.back()) + etoi(directions.at(directions.size() - 2)) != 3)?etoi(directions.size()):1};
     
     vector<Direction> moveDirections {};
     for(int i { 0 }; i < directions.size(); i++)
@@ -112,27 +114,27 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     
     if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
     
+    // 地形から、スタミナ減少の倍率を取得しセット
+    DungeonSceneManager::getInstance()->getStamina()->setStepRatio(mainCharacter->getTerrain()->getStaminaConsumptionRate());
+    
     // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
     if(DungeonSceneManager::getInstance()->existsEnemy() && dash) DungeonSceneManager::getInstance()->getStamina()->decrease();
     
     // 減少後にスタミナが空になっていたら疲労状態へ移行
     if(DungeonSceneManager::getInstance()->getStamina()->isEmpty()) this->exhausted = true;
     
-    Vector<MapObject*> objs = DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE);
+    Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     
-    // 何も見つからなかった場合は、UNDIFINEDをセットする
-    if(objs.empty())
-    {
-        this->riddenEventID = static_cast<int>(EventID::UNDIFINED);
-        
-        return;
-    }
+    this->riddenEventID = etoi(EventID::UNDIFINED);
+
+    // 何も見つからなかった場合は無視
+    if(objs.empty()) return;
     
     for(MapObject* obj : objs)
     {
         if(obj->getEventId() != this->riddenEventID)
         {
-            if(this->riddenEventID == static_cast<int>(EventID::UNDIFINED)) this->riddenEventID = obj->getEventId();
+            if(this->riddenEventID == etoi(EventID::UNDIFINED)) this->riddenEventID = obj->getEventId();
             DungeonSceneManager::getInstance()->pushEventBack(obj->getEventId());
         }
     }
@@ -153,10 +155,7 @@ void PlayerControlTask::setControlEnable(bool enable, Party* party)
     this->enableControl = enable;
     
     // 有効にされた時は、入力しているキーに応じて移動開始
-    if(enable)
-    {
-        this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
-    }
+    if(enable) this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
 }
 
 // 操作可能状態か確認

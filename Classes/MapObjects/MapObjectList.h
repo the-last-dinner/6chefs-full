@@ -13,14 +13,16 @@
 
 #include "MapObjects/MapObject.h"
 #include "MapObjects/Enemy.h"
+#include "MapObjects/TerrainObject/TerrainObject.h"
 
 class Party;
+class PlainArea;
 
 class MapObjectList : public Node
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_TWO_PARAM(MapObjectList, const Vector<MapObject*>&, const Vector<MapObject*>&)
+    static MapObjectList* create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects);
     
 // インスタンス変数
 private:
@@ -28,13 +30,15 @@ private:
     Vector<MapObject*> disableObjects {};
     Party* party { nullptr };
     Vector<Enemy*> enemies {};
+    Vector<TerrainObject*> terrainObjects {};
     function<void()> onContactWithEnemy { nullptr };
+    PlainArea* plainArea { nullptr };
     
 // インスタンスメソッド
 private:
     MapObjectList();
     ~MapObjectList();
-    bool init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects);
+    bool init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects);
 public:
     MapObject* getMapObject(int objId) const;
     MapObject* getMapObjectFromDisableList(int objId) const;
@@ -62,6 +66,9 @@ public:
     void setParty(Party* party);
     Party* getParty();
     void onPartyMoved(const Rect& gridRect);
+    
+    // 地形
+    TerrainObject* getTerrainByGridRect(const Rect& gridRect);
 
     // 敵と主人公一行の衝突監視用updateメソッド
     void update(float delta);
