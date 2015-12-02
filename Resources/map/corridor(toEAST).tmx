@@ -14,7 +14,15 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBhcgJeJgUEdiDXohLWAWIAJ0x2yQDFzILagE7YCYgUs7tAdAHcYYHGH7QC4wwGLO3yBYu5A7IGEPWmIvYA4AIs7YoFikXTEEUCcgMUdCwcIj7pj1B2j7hh1x3BzxygYBYMZAACPweka
+   eJxjYBgFo2AUDFWwcIDwqDtG3THqjlF3DDd3jIJRMJgBABGcvK0=
+  </data>
+ </layer>
+ <layer name="wall" width="34" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-14"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBhcgJeJgUEdiDXohLWAWIAJ0x2yQDFzILagE7YCYgUs7tAdAHcYYHGH7QC4wwGLO3yBYu5A7IGEPWmIvYA4AIs7YoFikXTEEUCcgMUdo2AUjIJRMApGwSgY/gAAidUsbg==
   </data>
  </layer>
  <layer name="MonoShita" width="34" height="22">

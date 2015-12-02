@@ -83,7 +83,7 @@
    eJxjYBgFo2AUDGXwkoWB4RUQvwbiN0D8FojfsVBubiPQjCYqmAMDE4FmTaKieaNg4AEAGoIH1A==
   </data>
  </layer>
- <layer name="hide" width="20" height="20" visible="0">
+ <layer name="hide" width="20" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALs4A8Ldc2ipnmjYOABAMp/AwE=
   </data>

@@ -43,7 +43,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":1
+					"Nevent":["33","11"]
 				}
 			],
 			"action":[
@@ -90,8 +90,8 @@
 							]
 						},
 						{
-							"type":"changeFlag",
-							"flg":1
+							"type":"already",
+							"event":["33","11"]
 						}
 					]
 				}
@@ -101,7 +101,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":1
+					"event":["33","11"]
 				}
 			],
 			"action":[
@@ -141,7 +141,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nitem":"1533"
+					"Nevent":["33","10"]
 				}
 			],
 			"action":[
@@ -153,6 +153,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"item"
+				},
+				{
+					"type":"already",
+					"event":["33","10"]
 				}
 			]
 		},
@@ -160,10 +164,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":"1533"
-				},
-				{
-					"Nstatus":["1","0"]
+					"event":["33","10"]
 				}
 			],
 			"action":[
@@ -185,11 +186,9 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":"1533"
-				},
-				{
-					"Nstatus":["1","0"]
+					"event":["33","10"]
 				}
+
 			],
 			"action":[
 				{
@@ -198,5 +197,7 @@
 				}
 			]
 		}
-	]
+	],
+	"10":"三角巾用",
+	"11":"日記読む用"
 }

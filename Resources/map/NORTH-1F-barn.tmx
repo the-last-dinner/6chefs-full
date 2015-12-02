@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="49">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="51">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -23,7 +23,7 @@
  </tileset>
  <layer name="Base" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-6"/>
+   <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYGBg4AViPgoxPwMCaAOxDoVYl4bmeQKxF4XYG8m8j0AswEg5HjVv1LxR80bNG+nm8VPBLGTzCAE9EtVT0zwAGggxRA==
@@ -31,7 +31,7 @@
  </layer>
  <layer name="MonoShita" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-5"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztk0kOgkAQRWupOLAAHHGnF3PES+iNHHHniBfzLXpRQYiQ3pjoT17S6fz+SXXqi/z1a9p4IlvYwR4OcPSKv4/xnpS/4otUwYEa1KHhF89r4nWVf8x5AlOYwRwWJfIivEvlP3O+wBVucIdHTl5s/kTPl+B9Kn8rEGlDB7rQg36QP5uTmi/EO8jxf1JWno3+eXaKzI7qPJt+JWZH9b7Z9Cs0O6r3zbZfaZXpl9bQFRm57/dl+qW1ImudkffNegFVlits
@@ -39,7 +39,7 @@
  </layer>
  <layer name="MonoChu" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-4"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKAMTGSi0AA0cAaLee+ZGRg+APFHIP4ExItZGBiWsKCqyQHqk2NGxVxMEMwNxTCgBdSrDcQ6QKwLxPeA+D6aeSAQyYyKXZkg2A2KYSAVqDcNiNOBOAOIJVkZGKRYIXLXgPzrLNjNa2CC4EYohgENNLe4IfEFgeYKAbEyC6Z5uEAymnkXgGov4lFPCAQC3RqE5F5uoPk8QPyNkYHhKyN2PSlYwhcGeoBm9VIxHb2iwG/UBuFAt0QA8Tkq+W8S0KzJVPbfQmDcvB5EYYYNIKefbiqEJbJ5x6hcht3Fk9bJARKs1DVvMOWPkQ4AqqMlig==
@@ -47,7 +47,7 @@
  </layer>
  <layer name="MonoUe" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-3"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKAd8GBjYPAEYi8g9gZiHyD2ZUPI5wDZuVD+GiC9lg27OeggC6gumw1V/ygYBeSCQo6BsbcOaG89Fe2eBzRr/gD5hVjQN8jdRwiYAd1vTkU/hAHNCifCvC9ANV9B6rgYGBi5KLdXhJOBQRSIFYBmKZJoXhDQHcFUDIMioFnFVDRvEtCsyUMknQEAN34QFA==
@@ -55,18 +55,24 @@
  </layer>
  <layer name="bank" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-2"/>
+   <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFww3cMmBguG1APfPuAM26S0XzRsEoGAWjYBQwMAAADNEELw==
   </data>
  </layer>
  <layer name="item" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFxIL/hkDCiHrmyQPNUqCieaNgFIyCUTAKhg4AAJoRAgY=
   </data>
  </layer>
  <layer name="seiro" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2BgwX9DIGFEPfPkgWYpUNG8UTAKRsEooAUAAOMsAgY=
   </data>
@@ -209,15 +215,15 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="47" x="16" y="128" width="32" height="32">
+  <object id="47" x="16" y="144" width="32" height="16">
    <properties>
     <property name="EventID" value="14"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="48" x="256" y="368" width="16" height="16">
+  <object id="49" x="272" y="352" width="32" height="32">
    <properties>
-    <property name="EventID" value="15"/>
+    <property name="EventID" value="18"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>

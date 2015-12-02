@@ -29,6 +29,24 @@
       "mapID":"3",
       "x":20,
       "y":39
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["40","10"]
+        }
+      ],
+      "action":[
+        {
+          "type":"releaseChase",
+          "objID":"10100"
+        },
+        {
+          "type":"removeChara",
+          "objID":"10100"
+        }
+      ]
     }
   ],
   "5": [

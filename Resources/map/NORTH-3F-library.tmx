@@ -30,7 +30,15 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj8wJWdgcENiN3ZqSPmD2QHAHEglcQigewoII6mkligCANDEBCnIoklA9kp7OSJrQaatUaEYRSQCWKAYRkLxHHs1BFLA7LTgThelIEhQRRVLAM5rQHjLEAEVQybOmLBSqBZq0bTAQZoBoZlCzv1+L1Adh8V+cMdsALzAJso9cxDzlejgDIAAGQ7KsM=
+   eJxjYBj8wJWdgcENiN3ZqSPmD2QHAHEglcQigewoII6mklgykJ0CxKlUEhsFlIEYYFjGAnEcO3XE0oDsdLQ4gollYInLDALqRgFloBkYli3s1OP3Atl9VOSPglEwUAAAmlkmRg==
+  </data>
+ </layer>
+ <layer name="dropbook" width="20" height="26">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgw0EijAwBIlQz7zVQLPWUNG8UUAdEC/KwJAgilveHxhnAVSMt5VAs1aNpoNRMMgAKzAPsOHJB6QCQvlqFBAPAPidBpQ=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -102,12 +110,6 @@
   <object id="37" x="16" y="160" width="32" height="16">
    <properties>
     <property name="EventID" value="3"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="40" x="272" y="48" width="32" height="32">
-   <properties>
-    <property name="EventID" value="5"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>

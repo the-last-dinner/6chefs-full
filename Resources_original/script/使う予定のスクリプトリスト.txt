@@ -122,7 +122,7 @@
 	"x":x座標,
 	"y":y座標,
 	"objID":"歩くキャラのID, or hero",
-	"speed":"歩く速さint"
+	"speed":"歩く速さ"
 	}
   
 
@@ -215,11 +215,7 @@
 （例）
 	{
 	"type":"storyMsg",
-<<<<<<< HEAD
- 	 "title”:””,#
-=======
  	 "title":""#
->>>>>>> uehara
 	"text":["表示するテキスト", "", ...],
 	"alpha":不透明度(0 ~ 255 0で見えなくなる)#
 	}
@@ -666,6 +662,7 @@ MAIN-Ohiromaの19
 ●環境光設定
 ・type名・・・setAmbient
 ・必要なもの・・・昼間　day
+		　室内　light
 		　夜　　night
                   真っ暗　basement
 

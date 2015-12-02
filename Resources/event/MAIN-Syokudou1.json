@@ -1090,6 +1090,10 @@
 							]
 						},
 						{
+							"type":"displayImg",
+							"file":"ranmaru_death.png"
+						},
+						{
 							"type":"charaMsg",
 							"talk":[
 								{
@@ -1273,7 +1277,7 @@
 									"option":"reaction"
 								},
 								{
-									"text":["ああ、佐々木！お前は西棟を頼む！\n加藤はそこでおとなしくしとけ"],
+									"text":["ああ、佐々木！お前は西棟を頼む！"],
 									"charaID":"5",
 									"imgID":"1"
 								}
@@ -1791,7 +1795,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["40","5"]
+					"event":["40","10"]
 				}
 			],
 			"action":[
@@ -1799,180 +1803,196 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"fadeout"
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"UP",
+							"steps":3.0
 						},
 						{
-							"type":"releaseChase",
-							"objID":"1021"
+							"type":"charaWalk",
+							"objID":"1029",
+							"direction":"UP",
+							"steps":2.0
 						},
 						{
-							"type":"spawn",
+							"type":"sequence",
 							"action":[
 								{
-									"type":"removeChara",
-									"objID":"1021"
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["で？出口は見つかったの？"],
+											"charaID":"3",
+											"imgID":"1"
+										},
+										{
+											"text":["いやあ・・・"],
+											"charaID":"0",
+											"imgID":"1"	
+										},
+										{
+											"text":["ホンット使えないわね！！"],
+											"charaID":"3",
+											"imgID":"1",
+											"option":"reaction"
+										},
+										{
+											"text":["テメエ・・・"],
+											"charaID":"5",
+											"imgID":"1",
+											"option":"reaction"
+										},
+										{
+											"text":["まあ、、我らもこのままでは・・・"],
+											"charaID":"4",
+											"imgID":"1"
+										}
+									]
 								},
 								{
-									"type":"removeChara",
-									"objID":"1025"
-								},
-								{
-									"type":"removeChara",
-									"objID":"1026"
+									"type":"playSE",
+									"file":"door2.mp3"
 								},
 								{
 									"type":"createChara",
-									"objID":"1027"
+									"objID":"1030"
 								},
 								{
-									"type":"createChara",
-									"objID":"1028"
+									"type":"spawn",
+									"action":[
+										{
+											"type":"reaction",
+											"objID":"1027"
+										},
+										{
+											"type":"reaction",
+											"objID":"1028"
+										},
+										{
+											"type":"reaction",
+											"objID":"1029"
+										},
+										{
+											"type":"reaction",
+											"objID":"1019"
+										},
+										{
+											"type":"reaction",
+											"objID":"1022"
+										},
+										{
+											"type":"reaction",
+											"objID":"hero"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"1027"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"1028"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"1029"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"1019"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"1022"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"hero"
+										}
+									]
 								},
 								{
-									"type":"createChara",
-									"objID":"1029"
+									"type":"fadeout"
+								},
+								{
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaWalk",
+											"objID":"hero",
+											"direction":"LEFT",
+											"steps":2.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"hero",
+											"direction":"RIGHT"
+										},
+										{
+											"type":"charaWarp",
+											"x":20,
+											"y":32,
+											"objID":"1028",
+											"direction":"DOWN"
+										},
+										{
+											"type":"charaWarp",
+											"x":20,
+											"y":33,
+											"objID":"1030",
+											"direction":"UP"
+										},
+										{
+											"type":"charaWarp",
+											"x":24,
+											"y":32,
+											"objID":"1029",
+											"direction":"LEFT"
+										}
+									]
+								},
+								{
+									"type":"playSE",
+									"file":"hit.mp3"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["ぬう・・・"],
+											"charaID":"2",
+											"imgID":"1",
+											"option":"reaction"
+										},
+										{
+											"text":["加藤氏！！"],
+											"charaID":"4",
+											"imgID":"1",
+											"option":"reaction"
+										},
+										{
+											"text":["お前ら！早くこの部屋から出ろ！"],
+											"charaID":"2",
+											"imgID":"1",
+											"option":"reaction"
+										}
+									]
+								},
+								{
+									"type":"fadeout"
 								}
 							]
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
+						},	
 						{
 							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["で？出口は見つかったの？"],
-									"charaID":"3",
-									"imgID":"1"
-								},
-								{
-									"text":["いやあ・・・"],
-									"charaID":"0",
-									"imgID":"1"	
-								},
-								{
-									"text":["ホンット使えないわね！！"],
-									"charaID":"3",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["テメエ・・・"],
-									"charaID":"5",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["まあ、、我らもこのままでは・・・"],
-									"charaID":"4",
-									"imgID":"1"
-								}
-							]
-						},
-						{
-							"type":"playSE",
-							"file":"door2.mp3"
-						},
-						{
-							"type":"createChara",
-							"objID":"1030"
-						},
-						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"reaction",
-									"objID":"1027"
-								},
-								{
-									"type":"reaction",
-									"objID":"1028"
-								},
-								{
-									"type":"reaction",
-									"objID":"1029"
-								},
-								{
-									"type":"reaction",
-									"objID":"1019"
-								},
-								{
-									"type":"reaction",
-									"objID":"1022"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"1027"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"1028"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"1029"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"1019"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"1022"
-								}
-							]
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"charaWarp",
-							"x":20,
-							"y":31,
-							"objID":"1028",
-							"direction":"DOWN"
-						},
-						{
-							"type":"charaWarp",
-							"x":20,
-							"y":33,
-							"objID":"1030",
-							"direction":"UP"
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["ぬう・・・"],
-									"charaID":"2",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["加藤氏！！"],
-									"charaID":"4",
-									"imgID":"1",
-									"option":"reaction"
-								},
-								{
-									"text":["お前ら！早くこの部屋から出ろ！"],
-									"charaID":"2",
-									"imgID":"1",
-									"option":"reaction"
-								}
-							]
 						},
 						{
 							"type":"already"
@@ -2130,112 +2150,138 @@
 	],
 	"36":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"event":["40","10"]
+				}
+			],
 			"action":[
 				{
 					"type":"charaMsg",
-					"text":["イミワカンナイイミワカンナイイミワカンナイ\nイミワカンナイイミワカンナイイミワカンナイ・・・"],
+					"text":["もう・・・\nいい加減にしてよ・・・"],
 					"charaID":"3",
 					"imgID":"2"
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":["1520","1521"]
-						}
-					],
+					"Nevent":["40","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
+							"type":"charaMsg",
+							"text":["イミワカンナイイミワカンナイイミワカンナイ\nイミワカンナイイミワカンナイイミワカンナイ・・・"],
+							"charaID":"3",
+							"imgID":"2"
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"item":["1520","1521"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["林檎をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"42"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["林檎をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"42"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1520",
-							"Nitem":"1521"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1520",
+									"Nitem":"1521"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["林檎をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"42"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["林檎をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"42"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1521",
-							"Nitem":"1520",
-							"status":["3","1"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1521",
+									"Nitem":"1520",
+									"status":["3","1"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["小型低速ジューサーをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"43"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["小型低速ジューサーをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"43"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
@@ -2251,8 +2297,16 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["34","2"],
-					"Nitem":["1511","1512","1513"]
+					"event":["34","8"],
+					"item":["158"]
+				},
+				{
+					"event":["34","8"],
+					"item":["159"]
+				},
+				{
+					"event":["34","8"],
+					"item":["1510"]
 				}
 			],
 			"action":[
@@ -2261,7 +2315,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["えと・・・","新鮮な卵は目玉焼きとかに向いてて・・・\n採れて5日～9日くらいの卵は卵焼き","賞味期限切れ間近の卵は\n茶碗蒸しとかのお菓子類に適しているんですよ"],
+							"text":["えと・・・","新鮮な卵は目玉焼きとかに向いてて・・・\n採れて5日～9日くらいの卵は卵焼きやゆで玉子","賞味期限切れ間近の卵は\n茶碗蒸しとかのお菓子類に適しているんですよ"],
 							"charaID":"1",
 							"imgID":"1"
 						},
@@ -2378,9 +2432,13 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["34","2"]
+					"Nevent":[
+					["34","8"],
+					["3","30"]
+					]
 				},
 				{
+					"Nevent":["3","30"],
 					"item":["1511","1512","1513"]
 				}
 			],
@@ -2500,6 +2558,22 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["3","30"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["いや・・・"],
+					"charaID":"1",
+					"imgID":"2"
 				}
 			]
 		}
@@ -3801,7 +3875,7 @@
 							"imgID":"1"
 						},
 						{
-							"text":["ああ、けど館内は危険だ。\n絶対に一人にはなるなよ\n山中と一色はここにいろ\n鍵もかけとけ\n俺は荒間田と、佐々木はダイゴローと出口を探してくれ"],
+							"text":["ああ、けど館内は危険だ。\n絶対に一人にはなるなよ","中山と一色はここにいろ\n鍵もかけとけ","俺は荒間田と、\n佐々木はダイゴローと出口を探してくれ"],
 							"charaID":"2",
 							"imgID":"1"
 						},
@@ -3852,6 +3926,57 @@
 					"objID":"1098"
 				}
 			]
+		}
+	],
+	"53":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["40","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1027"
+				},
+				{
+					"type":"createChara",
+					"objID":"1028"
+				},
+				{
+					"type":"createChara",
+					"objID":"1029"
+				}
+			]
+
+		}
+	],
+	"54":[
+		{
+			"type":"charaMsg",
+			"text":["クソッ！"],
+			"charaID":"5",
+			"imgID":"1",
+			"option":"reaction"
+		}
+	],
+	"55":[
+		{
+			"type":"charaMsg",
+			"text":["ここは一旦加藤氏に任せるのが賢明ですな・・・"],
+			"charaID":"4",
+			"imgID":"1"
+		}
+	],
+	"56":[
+		{
+			"type":"charaMsg",
+			"text":["早く行け！"],
+			"charaID":"2",
+			"imgID":"1",
+			"option":"reaction"
 		}
 	]
 }

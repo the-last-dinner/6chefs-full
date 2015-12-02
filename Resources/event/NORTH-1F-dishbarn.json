@@ -142,25 +142,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"item":"1521"
-				},
-				{
-					"status":["3","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["半開きの救急箱だ。\n中身はない"]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nitem":"1521",
-					"Nstatus":["3","2"]
+					"Nevent":["19","17"]
 				}
 			],
 			"action":[
@@ -168,6 +150,28 @@
 					"type":"getItem",
 					"itemID":"1521",
 					"name":"小型低速ジューサー"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"juicer"
+				},
+				{
+					"type":"already",
+					"event":["20","17"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["20","17"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["半開きの救急箱だ。\n中身はない"]
 				}
 			]
 		}
@@ -201,7 +205,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":0
+					"Nevent":["20","16"],
+					"event":["34","8"]
 				}
 			],
 			"action":[
@@ -224,7 +229,10 @@
 			"type":"if",
 			"condition":[
 				{
-					"flg":1
+					"event":["20","16"]
+				},
+				{
+					"Nevent":["34","8"]
 				}
 			],
 			"action":[
@@ -281,5 +289,22 @@
 			]
 		}
 	],
-	"16":"12のアイテムとった用"
+	"16":"12のアイテムとった用",
+	"17":"7の小型低速ジューサー用",
+	"18":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["20","17"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"juicer"
+				}
+			]
+		}
+	]
 }

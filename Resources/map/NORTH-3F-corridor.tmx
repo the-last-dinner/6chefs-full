@@ -156,7 +156,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="47" x="1408" y="144" width="32" height="32">
+  <object id="47" x="1408" y="128" width="32" height="32">
    <properties>
     <property name="CharaID" value="2"/>
     <property name="EventID" value="6"/>

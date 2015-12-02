@@ -12,13 +12,14 @@
 			"type":"changeMap",
 			"mapID":"32",
 			"x":26,
-			"y":11
+			"y":5
 		}
 	],
 	"3":[
 		{
 			"type":"getItem",
-			"itemID":"1524"
+			"itemID":"1524",
+			"name":"ねじりハチマキ"
 		},
 		{
 			"type":"removeLayer",

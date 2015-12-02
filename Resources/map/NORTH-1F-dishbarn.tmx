@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="50">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="51">
  <tileset firstgid="1" name="Yatai-option1" tilewidth="16" tileheight="16">
   <image source="Yatai-option1.png" trans="c1a5c8" width="944" height="255"/>
  </tileset>
@@ -111,6 +111,14 @@
  <layer name="ring" width="20" height="26">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMAroD1LjGRjS4qlnXivQrDYqmjfSAQDWqANT
+  </data>
+ </layer>
+ <layer name="juicer" width="20" height="26">
+  <properties>
+   <property name="cc_vertexz" value="-1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2D4gdR4Boa0eOqZ1wo0q42K5o2CUTAKRsFgBwD7LANT
   </data>
  </layer>
  <objectgroup name="collision">
@@ -233,6 +241,12 @@
   <object id="47" x="288" y="368" width="16" height="16">
    <properties>
     <property name="EventID" value="13"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="50" x="224" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="18"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>

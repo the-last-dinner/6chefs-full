@@ -1158,7 +1158,29 @@
 			"name":"猪肉"
 		},
 		{
-			"type":"already"
+			"type":"already",
+			"event":["7","23"]
+		},
+		{
+			"type":"removeLayer",
+			"layer":"inoshishi"
+		}
+	],
+	"23":"猪肉アイコン用",
+	"24":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["7","23"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"inoshishi"
+				}
+			]
 		}
 	]
 }

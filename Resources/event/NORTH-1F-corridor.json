@@ -4,7 +4,7 @@
 			"type":"changeMap",
 			"mapID":"27",
 			"x":11,
-			"y":14
+			"y":13
 		}
 	],
 	"2":[
@@ -12,7 +12,7 @@
 			"type":"changeMap",
 			"mapID":"26",
 			"x":11,
-			"y":14
+			"y":13
 		}
 	],
 	"3":[
@@ -142,7 +142,7 @@
 			"type":"changeMap",
 			"mapID":"20",
 			"x":9,
-			"y":25
+			"y":23
 		}
 	],
 	"7":[
@@ -207,7 +207,7 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["この扉・・・\nガラスで出来ているな・・・","おかしいな・・・\nドアノブがない・・・"]
+					"text":["この扉・・・\nガラスで出来ているな・・・","おかしい・・・\nドアノブがない・・・"]
 				}
 			]
 		}
@@ -217,13 +217,27 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["17","7"]
+					"event":["17","9"]
 				}
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"foodroomdoor"
+					"type":"removeChara",
+					"objID":"183"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["17","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"182"
 				}
 			]
 		}
@@ -292,6 +306,12 @@
 					"layer":"foodroomdoor"
 				}
 			]
+		}
+	],
+	"11":[
+		{
+			"type":"playSE",
+			"file":"bakibaki.wav"
 		}
 	]
 }

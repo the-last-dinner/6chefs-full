@@ -9,54 +9,63 @@
 	],
 	"2":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
 			"action":[
 				{
-					"type":"charaMsg",
-					"text":["開けるには暗号が必要みたい"],
-					"charaID":"0",
-					"imgID":"1"
-				},
-				{
-					"type":"password",
-					"pass":"1013",
-					"false":[
+					"type":"sequence",
+					"action":[
 						{
 							"type":"charaMsg",
-							"text":["うーん開かないな・・・"],
+							"text":["開けるには暗号が必要みたい"],
 							"charaID":"0",
 							"imgID":"1"
-						}
-					],
-					"true":[
+						},
 						{
-							"type":"sequence",
-							"action":[
+							"type":"changeFlg",
+							"flg":1
+						},
+						{
+							"type":"password",
+							"pass":"1013",
+							"false":[
 								{
-									"type":"getItem",
-									"itemID":"153",
-									"name":"棍棒"
-								},
+									"type":"charaMsg",
+									"text":["うーん開かないな・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								}
+							],
+							"true":[
 								{
-									"type":"already",
-									"event":["18","3"]
+									"type":"sequence",
+									"action":[
+										{
+											"type":"getItem",
+											"itemID":"153",
+											"name":"棍棒"
+										},
+										{
+											"type":"already",
+											"event":["18","3"]
+										}
+									]
 								}
 							]
 						}
 					]
-				},
-				{
-					"type":"already"
 				}
 			]
-		}
-	],
-	"3":[
+		},
 		{
 			"type":"if",
 			"condition":[
 				{
-					"event":["18","2"]
+					"flg":1
 				}
 			],
 			"action":[
@@ -139,8 +148,41 @@
 	],
 	"11":[
 		{
-			"type":"systemMsg",
-			"text":["タンスは開かない"]
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["18","16"]
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"1527",
+					"name":"焔の裃"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				},
+				{
+					"type":"already",
+					"event":["18","16"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["18","16"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["タンスにはもうなにも\n入っていない"]
+				}
+			]
 		}
 	],
 	"12":[
@@ -157,8 +199,26 @@
 	],
 	"14":[
 		{
-			"type":"systemMsg",
-			"text":["石でできた釜戸だ"]
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","8"]
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"1531",
+					"name":"蒸しせいろ"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"seiro"
+				},
+				{
+					"type":"already"
+				}
+			]
 		}
 	],
 	"15":[
@@ -167,20 +227,8 @@
 			"text":["何かが床にこびりついている"]
 		}
 	],
-	"16":[
-		{
-			"type":"getItem",
-			"itemID":"1527",
-			"name":"焔の裃"
-		},
-		{
-			"type":"removeLayer",
-			"layer":"item"
-		},
-		{
-			"type":"already"
-		}
-	],
+	"16":"かみしもゲットイベント用"
+	,
 	"17":[
 		{
 			"type":"if",
@@ -193,6 +241,22 @@
 				{
 					"type":"removeLayer",
 					"layer":"item"
+				}
+			]
+		}
+	],
+	"18":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["18","14"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"seiro"
 				}
 			]
 		}

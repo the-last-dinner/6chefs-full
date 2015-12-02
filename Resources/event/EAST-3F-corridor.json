@@ -4,7 +4,7 @@
 			"type":"changeMap",
 			"mapID":"36",
 			"x":2,
-			"y":9
+			"y":7
 		}
 	],
 	"2":[
@@ -12,7 +12,7 @@
 			"type":"changeMap",
 			"mapID":"37",
 			"x":2,
-			"y":9
+			"y":7
 		}
 	],
 	"3":[
@@ -60,6 +60,24 @@
 					"y":21
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["40","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"releaseChase",
+					"objID":"1021"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1021"
+				}
+			]
 		}
 	],
 	"5":[
@@ -67,7 +85,11 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["39","4"]
+					"event":[
+					["39","4"],
+					["34","9"],
+					["33","11"]
+					]
 				}
 			],
 			"action":[
@@ -117,15 +139,40 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["鍵がかかっている・・・"]
+					"text":["開かない・・・"]
 				}
 			]
 		}
 	],
 	"8":[
 		{
-			"type":"removeEnemy",
-			"enemyID":"145"
+			"type":"sequence",
+			"action":[
+				{
+					"type":"wait",
+					"time":2.0
+				},
+				{
+					"type":"charaMsg",
+					"talk":[
+						{
+							"text":["さっき言ってたのってアレのことか"],
+							"charaID":"5",
+							"imgID":"2"
+						},
+						{
+							"text":["はい・・・"],
+							"charaID":"0",
+							"imgID":"2"
+						},
+						{
+							"text":["ふうっ\nとっとと出口探そうぜ"],
+							"charaID":"5",
+							"imgID":"2"
+						}
+					]
+				}
+			]
 		}
 	]
 }

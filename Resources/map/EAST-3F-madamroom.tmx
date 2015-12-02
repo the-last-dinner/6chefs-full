@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="62">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="64">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
@@ -26,7 +26,7 @@
  </tileset>
  <layer name="Base" width="30" height="26">
   <properties>
-   <property name="cc_vertexz" value="-16"/>
+   <property name="cc_vertexz" value="-18"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzTEOQEAQheFX2mm4/yHQcAo0nAINJ/CaDdXuSkZjZ5I/meIlHwDUDmgU6lgf2bTM38B/VGhmS2QzfeAe7Hzhrvw3hbwb2uwPtxDAKeTd0EbkdjXMVNeZa6655mbslqxK2Gm7qZlr7h/dnO4CFrKdYg==
@@ -34,7 +34,7 @@
  </layer>
  <layer name="MonoShita" width="30" height="26">
   <properties>
-   <property name="cc_vertexz" value="-15"/>
+   <property name="cc_vertexz" value="-17"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzbEJADAMxMBvvVriuRKPHRee4SGgA9WSAAAAAK8V0p4yfN/TrzuV8fuzB91sA5E=
@@ -42,7 +42,7 @@
  </layer>
  <layer name="MonoChu" width="30" height="26">
   <properties>
-   <property name="cc_vertexz" value="-14"/>
+   <property name="cc_vertexz" value="-16"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1LlPwmAYgPHPHjLoIoeLLpwLLFxddKEce8ux6OKx6cKhiy5cLrp4/Lc6+DQpyRetHagFQ3yTX0hIeB/KRz4h1j8nihCnyvf331UhPtTwulc0r6FAhQYdO5oQu1p43Tsa94gihjgSOKB5GGL3kcYTUkgjgyzyNAshdp0p0imhjAqqMDzO/C9Pnu9bkM5rVXNE61g6r2VnK8J/HapEg47tyM+fW5zXsrPH7ihikjgS2PfpBp0ku1NS22lmkEXOo1vThTBRR0MP3k27vUXTeTU8uhYtG210AnSL7C6hjIqr6tM9o3WOC1z+Uvdr26vbpzXAECOfbpI7KYU0MsgiJ91TNXabqLsariZaHt0xrQmmmPl0izRKKKOCKgypa7HbRtvVcXXR8+g+03rBK958ujUaJupooIlWyPeyMxYNG2100EVvBd11TZ9nG2CIEW5wu4LnHdOYYIoZ5njY4N/5fzZvPgE9QS04
@@ -50,10 +50,26 @@
  </layer>
  <layer name="MonoUe" width="30" height="26">
   <properties>
-   <property name="cc_vertexz" value="-13"/>
+   <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzjEBADAIA7Cic/jXgQae8SQKkgAbr5Ku6wUAwB8DiTAAug==
+  </data>
+ </layer>
+ <layer name="door3" width="30" height="26">
+  <properties>
+   <property name="cc_vertexz" value="-14"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzaERACAMxdC/AZgeOOpg/wkpKxRRk+dzkXKaSd2S8YcRz1nwXfH0gu+O5yn4AgAAAM8F9vgBhQ==
+  </data>
+ </layer>
+ <layer name="door2" width="30" height="26">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYCAPnBdhYLggQqZmCsB1oJ03RpC9z4F2vhgAe0fBKBgFo2AUjIJRMApGwSgAAQB8fQdt
   </data>
  </layer>
  <layer name="door" width="30" height="26">
@@ -93,6 +109,7 @@
   <object id="52" x="464" y="368" width="16" height="16"/>
   <object id="56" x="368" y="160" width="64" height="96"/>
   <object id="59" x="144" y="48" width="32" height="32"/>
+  <object id="62" x="400" y="96" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -103,6 +120,14 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="63" x="224" y="352" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="8"/>
+    <property name="direction" value="UP"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="1099"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="CharaUe1" width="30" height="26">
   <data encoding="base64" compression="zlib">
@@ -111,7 +136,7 @@
  </layer>
  <layer name="CharaUe2" width="30" height="26">
   <data encoding="base64" compression="zlib">
-   eJxjYGBg8BdhYAigEw4EYhjIRWLTGuSP2jtq76i9o/aO2jtq76i9o/aO2jvs7O0GsntIwOiAFL29dPTjYAIAXqkwSQ==
+   eJxjYGBgSOVkoBtIR7JroOzNFaGfvflIdo3aO2rvqL2j9o7aO2rvqL2j9o7aS117u4HsHhIwOiBFby8d/TiYAAAxtyYR
   </data>
  </layer>
  <objectgroup name="event">
@@ -127,7 +152,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="53" x="400" y="96" width="32" height="16">
+  <object id="53" x="400" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="3"/>
     <property name="trigger" value="2"/>
