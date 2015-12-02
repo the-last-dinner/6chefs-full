@@ -111,6 +111,12 @@ void PlayerDataManager::initializeFiles()
     return;
 }
 
+// グローバルデータのセーブ
+void PlayerDataManager::saveGlobalData()
+{
+    this->writeJsonFile("save/global.json", this->global);
+}
+
 // トロフィーゲット処理
 void PlayerDataManager::setTrophy(const int trophy_id)
 {
@@ -159,11 +165,20 @@ void PlayerDataManager::setGameEnd(const int end_id)
     {
         this->setTrophy(9);
     }
+    if (save_count < this->getBestSaveCount())
+    {
+        this->global["best_save_count"].SetInt(save_count);
+    }
     
     // プレイ時間チェック
-    if (this->getPlayTimeSeconds() < FAST_CLEAR_TIME)
+    int play_time = this->getPlayTimeSeconds();
+    if (play_time < FAST_CLEAR_TIME)
     {
         this->setTrophy(10);
+    }
+    if (play_time < this->getBestClearTime())
+    {
+        this->global["best_clear_time"].SetInt(play_time);
     }
     
     // トロコンチェック
@@ -177,6 +192,14 @@ void PlayerDataManager::setGameEnd(const int end_id)
     {
         this->setTrophy(trophy_count);
     }
+    
+    // グローバルデータをセーブ
+    int clear_count = this->global["clear_count"].GetInt();
+    if (clear_count < 999)
+    {
+        this->global["clear_count"].SetInt(clear_count + 1);
+    }
+    this->saveGlobalData();
 }
 
 #pragma mark -
@@ -247,7 +270,9 @@ int PlayerDataManager::getSaveDataId()
 string PlayerDataManager::getPlayTimeDisplay(const int sec)
 {
     int min = floor(sec / 60);
-    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(min/60)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    int hour = floor(min / 60);
+    if (min > 99) min = 99;
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h" +LastSupper::StringUtils::getSprintf("%02s", to_string(min)) + "m" + LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
     return display;
 }
 
@@ -255,13 +280,32 @@ string PlayerDataManager::getPlayTimeDisplay(const int sec)
 void PlayerDataManager::save(const int id)
 {
     FUNCLOG
-    // save local
+    
     string str_id = to_string(id);
-    this->local["play_time"].SetInt(this->getPlayTimeSeconds());
-    this->local["save_count"].SetInt(this->getSaveCount() + 1);
+    
+    // プレイ時間
+    int playTime = this->getPlayTimeSeconds();
+    if (playTime >= 360000)
+    {
+        playTime = 359999;
+    }
+    this->local["play_time"].SetInt(playTime);
+    
+    // セーブ回数更新
+    int saveCnt = this->getSaveCount();
+    if (saveCnt < 999)
+    {
+        this->local["save_count"].SetInt(saveCnt + 1);
+    }
+    
+    // セーブ
     string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
+    
+    // グローバルデータのセーブ
+    this->saveGlobalData();
+    
     return;
 }
 
@@ -631,6 +675,18 @@ int PlayerDataManager::getPlayTimeSeconds()
 int PlayerDataManager::getSaveCount()
 {
     return this->local["save_count"].GetInt();
+}
+
+// セーブ回数の最小記録を取得
+int PlayerDataManager::getBestSaveCount()
+{
+    return this->global["best_save_count"].GetInt();
+}
+
+// 最短クリア時間を取得
+int PlayerDataManager::getBestClearTime()
+{
+    return this->global["best_clear_time"].GetInt();
 }
 
 #pragma mark -

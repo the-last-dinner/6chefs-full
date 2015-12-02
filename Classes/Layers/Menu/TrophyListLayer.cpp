@@ -34,7 +34,7 @@ bool TrophyListLayer::init()
     leftTop->setPosition(leftTop->getContentSize().width/2, WINDOW_HEIGHT - leftTop->getContentSize().height/2);
     this->addChild(leftTop);
     
-    Label* title = Label::createWithTTF("トロフィー", "fonts/cinecaption2.28.ttf", 48);
+    Label* title = Label::createWithTTF("トロフィ", "fonts/cinecaption2.28.ttf", 48);
     title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
@@ -45,7 +45,7 @@ bool TrophyListLayer::init()
     bottom->setName("bottom");
     this->addChild(bottom);
     
-    // 装備
+    // 最高記録
     Sprite* rightTop {Sprite::createWithSpriteFrameName("item_equipment.png")};
     rightTop->setPosition(rightTop->getContentSize().width/2 + parcent.width * 30, rightTop->getContentSize().height/2 + parcent.height * 80);
     this->addChild(rightTop);
@@ -55,9 +55,11 @@ bool TrophyListLayer::init()
     rightup_title->setColor(Color3B::WHITE);
     rightTop->addChild(rightup_title);
     
-    string fast_time = "00h00m00s";
-    string min_save = "0回";
-    Label* equipment = Label::createWithTTF("最速クリアタイム : " + fast_time + "\n最小セーブ回数 : " + min_save, "fonts/cinecaption2.28.ttf", 26);
+    // 記録の取得
+    PlayerDataManager* pdm = PlayerDataManager::getInstance();
+    string fast_time = pdm->getPlayTimeDisplay(pdm->getBestClearTime());
+    string min_save = to_string(pdm->getBestSaveCount()) + "回";
+    Label* equipment = Label::createWithTTF("最速クリア時間 : " + fast_time + "\n最小セーブ回数 : " + min_save, "fonts/cinecaption2.28.ttf", 26);
     equipment->setPosition(equipment->getContentSize().width/2 + 20, equipment->getContentSize().height/2 + 20);
     equipment->setColor(Color3B::WHITE);
     rightTop->addChild(equipment);

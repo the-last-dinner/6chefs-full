@@ -93,6 +93,8 @@ public:
     string getPlayTimeDisplay();
     string getPlayTimeDisplay(const int sec);
     int getSaveCount();
+    int getBestSaveCount();
+    int getBestClearTime();
     
     // CHECK
     bool checkItem(const int item_id);
@@ -106,6 +108,7 @@ public:
 private:
     // グローバルデータのセット
     bool setGlobalData();
+    void saveGlobalData();
     // セーブデータを全初期化
     void initializeFiles();
     // JSONファイル読み込み
