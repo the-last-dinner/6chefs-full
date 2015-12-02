@@ -19,6 +19,7 @@ public:
 	{
 		START,
 		CONTINUE,
+        TROPHY,
 		EXIT,
 		
 		SIZE
@@ -48,6 +49,7 @@ public:
 public:
 	function<void()> onStartSelected { nullptr };
 	function<void()> onContinueSelected { nullptr };
+    function<void()> onTrophySelected { nullptr };
 	function<void()> onExitSelected { nullptr };
 };
 

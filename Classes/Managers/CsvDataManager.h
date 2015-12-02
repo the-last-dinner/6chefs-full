@@ -113,5 +113,6 @@ public:
     string getTrophyName(const int trophy_id);
     string getTrophyCondition(const int trophy_id);
     string getTrophyComment(const int trophy_id);
+    vector<int> getTrophyIdAll();
 };
 #endif

@@ -13,6 +13,7 @@
 
 class TitleMainMenuLayer;
 class SaveDataSelector;
+class TrophyListLayer;
 
 class TitleScene : public BaseScene
 {
@@ -37,6 +38,11 @@ private:
 	void onExitSelected();
 	void onSaveDataSelected(int dataId);
 	void onSaveDataSelectCancelled();
+    
+    // トロフィーリスト
+    void createTrophyListLayer();
+    void onTrophyListSelected();
+    void onTrophyListCanceled();
 public:
 	TitleScene();
 	~TitleScene();
@@ -44,6 +50,7 @@ public:
 	// インスタンス変数
 	TitleMainMenuLayer* mainMenu { nullptr };
 	SaveDataSelector* saveDataSelector { nullptr };
+    TrophyListLayer* trophyList {nullptr};
 };
 
 #endif // __TITLE_SCENE_H__

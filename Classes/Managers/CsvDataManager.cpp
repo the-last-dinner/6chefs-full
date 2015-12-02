@@ -80,23 +80,8 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
             i++;
         }
         inner.push_back(str);
-        //values.push_back(inner);
         values[data_id] = inner;
     }
-#ifdef DEBUG
-    // デバッグ用出力
-    cout << "Read csv file >> " << file_name << ".csv" << endl;
-    string line;
-    for (auto itr: values)
-    {
-        line = "";
-        for(string str: itr.second)
-        {
-            line += str + ",";
-        }
-        //CCLOG(line.c_str());
-    }
-#endif
     return values;
 }
 
@@ -238,4 +223,15 @@ string CsvDataManager::getTrophyCondition(const int trophy_id)
 string CsvDataManager::getTrophyComment(const int trophy_id)
 {
     return this->csv_data[DataType::TROPHY][trophy_id][etoi(CsvTrophy::COMMENT)];
+}
+
+// トロフィーを全て取得
+vector<int> CsvDataManager::getTrophyIdAll()
+{
+    vector<int> trophies;
+    for (auto itr:this->csv_data[DataType::TROPHY])
+    {
+        trophies.push_back(itr.first);
+    }
+    return trophies;
 }

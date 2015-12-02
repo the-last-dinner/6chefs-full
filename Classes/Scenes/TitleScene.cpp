@@ -15,6 +15,7 @@
 #include "Layers/LoadingLayer.h"
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/TitleMainMenuLayer.h"
+#include "Layers/Menu/TrophyListLayer.h"
 
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
@@ -50,6 +51,7 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     mainMenu->onStartSelected = CC_CALLBACK_0(TitleScene::onStartSelected, this);
     mainMenu->onContinueSelected = CC_CALLBACK_0(TitleScene::onContinueSelected, this);
     mainMenu->onExitSelected = CC_CALLBACK_0(TitleScene::onExitSelected, this);
+    mainMenu->onTrophySelected = CC_CALLBACK_0(TitleScene::onTrophyListSelected, this);
     
     mainMenu->show();
     this->mainMenu = mainMenu;
@@ -109,3 +111,35 @@ void TitleScene::onSaveDataSelectCancelled()
 	this->saveDataSelector->hide();
 	this->mainMenu->show();
 }
+
+#pragma mark -
+#pragma mark TrophyListLayer
+
+// トロフィーリストを生成
+void TitleScene::createTrophyListLayer()
+{
+    TrophyListLayer* trophyList {TrophyListLayer::create()};
+    trophyList->onTrophyListCanceled = CC_CALLBACK_0(TitleScene::onTrophyListCanceled, this);
+    trophyList->setVisible(false);
+    this->addChild(trophyList);
+    this->trophyList = trophyList;
+}
+
+// トロフィーリストを選択した時
+void TitleScene::onTrophyListSelected()
+{
+    if(!this->trophyList)
+    {
+        this->createTrophyListLayer();
+    }
+    this->mainMenu->hide();
+    this->trophyList->show();
+}
+
+// トロフィーリストをキャンセル時
+void TitleScene::onTrophyListCanceled()
+{
+    this->trophyList->hide();
+    this->mainMenu->show();
+}
+
