@@ -6,8 +6,6 @@
 //  Created by 猪野凌也 on 2015/06/28.
 /*
  [memo]
- ・オブジェクト生成時にコンストラクタでグローバルセーブデータの読込(初回時は作成)
- ・セーブデータ選択が開かれる時にgetSaveIndexからセーブデータ表示用構造体を取得
  ・セーブデータが選択されたらsetMainLocalData(int local_id)でlocalデータのセット
 */
 
@@ -17,7 +15,12 @@
 #include "Datas/MapObject/CharacterData.h"
 #include "Models/StopWatch.h"
 
-#pragma mark Instance
+// 定数
+const int PlayerDataManager::CHIKEN_SAVE_COUNT {50};
+const int PlayerDataManager::FAST_CLEAR_TIME {3600};
+
+#pragma mark Initialize
+
 // 唯一のインスタンスを初期化
 static PlayerDataManager* _instance = nullptr;
 
@@ -42,10 +45,6 @@ PlayerDataManager::~PlayerDataManager()
     CC_SAFE_RELEASE_NULL(this->timer);
 }
 
-
-#pragma mark -
-#pragma mark InitFunctions
-
 // コンストラクタ
 PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
 {
@@ -57,6 +56,9 @@ PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
         this->initializeFiles();
     }
 }
+
+#pragma mark -
+#pragma mark GlobalSaveData
 
 // グローバルデータの読み込み
 bool PlayerDataManager::setGlobalData()
@@ -109,8 +111,84 @@ void PlayerDataManager::initializeFiles()
     return;
 }
 
+// トロフィーゲット処理
+void PlayerDataManager::setTrophy(const int trophy_id)
+{
+    char tid_char[10];
+    sprintf(tid_char, "%d", trophy_id);
+    rapidjson::Value tid  (kStringType);
+    tid.SetString(tid_char, strlen(tid_char), this->global.GetAllocator());
+    rapidjson::Value::ConstMemberIterator itr = this->global["trophy"].FindMember(tid_char);
+    
+    // 指定したトロフィーIDが存在するかチェック
+    if(itr == this->global["trophy"].MemberEnd()){
+        this->global["trophy"].AddMember(tid, rapidjson::Value(true), this->global.GetAllocator());
+    }
+    else
+    {
+        this->global["trophy"][tid_char].SetBool(true);
+    }
+}
+
+// クリア時の処理
+void PlayerDataManager::setGameEnd(const int end_id)
+{
+    // エンディングチェック
+    int trophy_id;
+    switch (end_id)
+    {
+        case 0:
+            trophy_id = 6;
+            break;
+        case 1:
+            trophy_id = 7;
+            break;
+        case 2:
+            trophy_id = 8;
+            break;
+    }
+    this->setTrophy(trophy_id);
+    
+    // セーブ回数チェック
+    int save_count = this->getSaveCount();
+    if (save_count == 0)
+    {
+        this->setTrophy(11);
+    }
+    else if (save_count >= CHIKEN_SAVE_COUNT)
+    {
+        this->setTrophy(9);
+    }
+    
+    // プレイ時間チェック
+    if (this->getPlayTimeSeconds() < FAST_CLEAR_TIME)
+    {
+        this->setTrophy(10);
+    }
+    
+    // トロコンチェック
+    vector<int> trophies = CsvDataManager::getInstance()->getTrophyIdAll();
+    int trophy_count {0};
+    for(int trophy_id : trophies)
+    {
+        char tid_char[10];
+        sprintf(tid_char, "%d", trophy_id);
+        if (this->global["trophy"].HasMember(tid_char))
+        {
+            if (this->global["trophy"][tid_char].GetBool())
+            {
+                trophy_count++;
+            }
+        }
+    }
+    if (trophy_count == trophies.size())
+    {
+        this->setTrophy(trophy_count);
+    }
+}
+
 #pragma mark -
-#pragma mark SaveDataFunctions
+#pragma mark LocalSaveData
 
 // セーブデータのリスト表示用データ
 vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
@@ -188,7 +266,7 @@ void PlayerDataManager::save(const int id)
     // save local
     string str_id = to_string(id);
     this->local["play_time"].SetInt(this->getPlayTimeSeconds());
-    this->local["save_count"].SetInt(this->local["save_count"].GetInt() + 1);
+    this->local["save_count"].SetInt(this->getSaveCount() + 1);
     string path = "save/local" + str_id + ".json";
     this->writeJsonFile(path, this->local);
     this->local_id = id;
@@ -234,6 +312,10 @@ void PlayerDataManager::setFriendship(const int chara_id, const int level)
     char cid_char[10];
     sprintf(cid_char, "%d", chara_id);
     this->local["friendship"][cid_char].SetInt(level);
+    if (level >= 2)
+    {
+        this->setTrophy(chara_id);
+    }
     return;
 }
 
@@ -551,6 +633,12 @@ string PlayerDataManager::getPlayTimeDisplay()
 int PlayerDataManager::getPlayTimeSeconds()
 {
     return this->timer->getTimeInt();;
+}
+
+// セーブ回数を取得
+int PlayerDataManager::getSaveCount()
+{
+    return this->local["save_count"].GetInt();
 }
 
 #pragma mark -

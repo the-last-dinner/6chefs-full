@@ -1,5 +1,11 @@
 {
 	"status":1,
 	"global_id":null,
-	"clear":0
+	"clear":0,
+    "trophy":{
+        "1":true,
+        "2":true,
+        "3":true,
+        "4":true
+    }
 }

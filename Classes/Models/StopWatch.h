@@ -33,6 +33,8 @@ private:
     float interval_time {0.0};
     // カウントダウン用
     GameEvent* countDownEvent {nullptr};
+    // カウントしている状態か
+    bool isCounting {false};
 
 public:
     // スケジュール用コールバック関数
