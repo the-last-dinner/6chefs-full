@@ -60,6 +60,7 @@ protected:
     virtual void onMenuKeyPressed();
     void onBackToTitleSelected();
     void onContactWithEnemy();
+    void onAllEnemyRemoved();
     
     DungeonSceneData* getData() const;
     

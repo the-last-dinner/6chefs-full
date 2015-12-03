@@ -57,9 +57,10 @@ void EnemyTask::removeEnemy(const int enemyId)
     {
         if(data.enemy_data.enemy_id != enemyId) continue;
         data.isDeleted = true;
-        
-        return;
     }
+    
+    // 削除後に敵がいなくなればコールバックを呼ぶ
+    if(!this->existsEnemy() && this->onAllEnemyRemoved) this->onAllEnemyRemoved();
 }
 
 // update
@@ -199,11 +200,15 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
 // 敵が存在するか
 bool EnemyTask::existsEnemy() const
 {
-    // データとして存在するか
-    if(!this->datas.empty()) return true;
+    // 論理削除をチェック
+    bool empty {true};
+    for(SummonData data : this->datas)
+    {
+        if(data.isDeleted) continue;
+        empty = false;
+        break;
+    }
     
-    // マップ上に配置されているか
-    if(DungeonSceneManager::getInstance()->getMapObjectList()->existsEnemy()) return true;
-    
-    return false;
+    // マップ上に配置されている、もしくはデータとして存在していれば、true
+    return DungeonSceneManager::getInstance()->getMapObjectList()->existsEnemy() || !empty;
 }

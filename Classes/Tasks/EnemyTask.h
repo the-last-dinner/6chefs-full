@@ -25,6 +25,8 @@ public:
 private:
     vector<SummonData> datas {};
     int currentMapId { etoi(MapID::UNDIFINED) };
+public:
+    function<void()> onAllEnemyRemoved { nullptr };
     
 // インスタンスメソッド
 private:

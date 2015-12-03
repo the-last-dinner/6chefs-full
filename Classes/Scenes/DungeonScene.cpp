@@ -129,6 +129,9 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
     eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
     
+    // 敵処理クラスにコールバック設定
+    enemyTask->onAllEnemyRemoved = CC_CALLBACK_0(DungeonScene::onAllEnemyRemoved, this);
+    
     // オブジェクトリストにコールバック設定
     mapLayer->getMapObjectList()->onContactWithEnemy = CC_CALLBACK_0(DungeonScene::onContactWithEnemy, this);
     
@@ -217,8 +220,12 @@ void DungeonScene::onContactWithEnemy()
     
 }
 
-// データクラスを取得
-DungeonSceneData* DungeonScene::getData() const
+// 敵が全ていなくなった時
+void DungeonScene::onAllEnemyRemoved()
 {
-    return dynamic_cast<DungeonSceneData*>(this->data);
+    // スタミナバーを隠す
+    this->staminaBar->slideOut();
 }
+
+// データクラスを取得
+DungeonSceneData* DungeonScene::getData() const { return dynamic_cast<DungeonSceneData*>(this->data); }
