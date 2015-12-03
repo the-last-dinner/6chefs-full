@@ -75,22 +75,29 @@ void EnemyTask::update(float delta)
         // すでに出現済みの敵情報なら無視
         if(data.isDone) continue;
         
+        // 動けない敵の居場所が現在地でない場合は無視
+        if(!data.canMove && data.history.getOldestRelation().from_location.map_id != this->currentMapId) continue;
+        
         // 経過時間を遅延時間から引く
-        float delay { data.summon_delays.front() };
-        delay -= delta;
-        data.summon_delays.pop_front();
-        data.summon_delays.push_front(delay);
+        data.summon_delays.front() -= delta;
         
         // 遅延時間が0以下になっていない場合は無視
-        if(delay > 0.0f) continue;
+        if(data.summon_delays.front() > 0.0f) continue;
         
         // 最古の履歴の、来た場所のマップIDが現在のマップIDならば来た場所を、そうでなければ行き先を敵の居場所に設定
-        data.enemy_data.chara_data.location = (data.history.getOldestRelation().from_location.map_id == this->currentMapId)? data.history.getOldestRelation().from_location : data.history.getOldestRelation().to_location;
+        if(data.history.getOldestRelation().from_location.map_id == this->currentMapId)
+        {
+            data.enemy_data.chara_data.location = data.history.getOldestRelation().from_location;
+        }
+        else
+        {
+            data.enemy_data.chara_data.location = data.history.getOldestRelation().to_location;
+        }
         
-        // 移動可能な敵であれば最古の履歴を削除
-        if(data.canMove) data.deleteOldestHistory();
+        // 最古の履歴を削除
+        data.deleteOldestHistory();
         
-        // 敵に格納されているマップIDと、現在のマップIDが一緒かつ、履歴がないなら敵を出現させる
+        // 敵に格納されているマップIDと、現在のマップIDが一緒なら敵を出現させる
         if(data.enemy_data.chara_data.location.map_id == this->currentMapId && !data.existsHistory())
         {
             data.isDone = true;
@@ -153,8 +160,19 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
         
         for(SummonData data : this->datas)
         {
+            // 論理削除済みなら無視
+            if(data.isDeleted) continue;
+            
             // すでに出現させていたら無視
             if(data.isDone) continue;
+            
+            // 動けない敵の場合はそのままpush
+            if(!data.canMove)
+            {
+                datas.push_back(data);
+                
+                continue;
+            }
             
             // 行き先が、来た場所ではない時
             if(data.history.getLatestRelation().from_location.map_id != destLocation.map_id)
