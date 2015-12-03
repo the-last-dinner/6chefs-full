@@ -94,7 +94,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["60","4"]
+					"event":["60","4"]
 				}
 			],
 			"action":[

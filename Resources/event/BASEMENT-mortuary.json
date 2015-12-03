@@ -20,11 +20,8 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"fadeout"
-										},
-										{
 											"type":"barrage",
-											"times":24,
+											"times":20,
 											"limit":5.0,
 											"false":[
 												{
@@ -144,10 +141,13 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"fadein"
+				},
+				{
 					"type":"charaMsg",
 					"text":["う、うわあああああああ！\n何だここ！？"],
 					"charaID":"0",
-					"imgID":"2",
+					"imgID":"3",
 					"option":"reaction"
 				},
 				{
@@ -161,14 +161,19 @@
 				},
 				{
 					"type":"charaMsg",
-					"text":["中山さん・・・？だったよな・・・\n何で・・・？"],
+					"text":["中山さん・・・？だったよな・・・\nどうして・・・？"],
 					"charaID":"0",
-					"imgID":"1"
+					"imgID":"3"
 				},
 				{
 					"type":"already"
 				}
 			]
+		}
+	],
+	"7":[
+		{
+			"type":"fadein"
 		}
 	]
 }

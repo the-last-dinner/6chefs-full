@@ -11,7 +11,7 @@
 		{
 			"type":"changeMap",
 			"mapID":"43",
-			"x":2,
+			"x":6,
 			"y":16
 		}
 	],
@@ -386,6 +386,64 @@
 				{
 					"type":"systemMsg",
 					"text":["目が抉り取られている・・・"]
+				}
+			]
+		}
+	],
+	"9":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","4"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"hide1"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"hide4"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","6"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"hide2"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"hide3"
 				}
 			]
 		}

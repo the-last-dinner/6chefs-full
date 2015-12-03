@@ -9,7 +9,7 @@
 	],
 	"4":[
 		{
-			"type":"sequense",
+			"type":"sequence",
 			"action":[
 				{
 					"type":"fadeout"
@@ -35,23 +35,34 @@
 					"file":"bakibaki.wav"
 				},
 				{
+					"type":"charaMsg",
+					"text":["いてて・・・"],
+					"charaID":"0",
+					"imgID":"2"
+				},
+				{
 					"type":"changeMap",
 					"mapID":"48",
 					"x":4,
-					"y":9
-				},
-				{
-					"type":"fadein"
+					"y":9,
+					"eventID":"7"
 				}
 			]
 		}
 	],
 	"5":[
 		{
-			"type":"sequense",
+			"type":"already"
+		},
+		{
+			"type":"sequence",
 			"action":[
 				{
 					"type":"fadeout"
+				},
+				{
+					"type":"wait",
+					"time":1.0
 				},
 				{
 					"type":"charaMsg",
@@ -62,6 +73,18 @@
 				{
 					"type":"createChara",
 					"objID":"1040"
+				},
+				{
+					"type":"charaMsg",
+					"text":["え？"],
+					"charaID":"0",
+					"imgID":"2"
+				},
+				{
+					"type":"charaWalkTo",
+					"x":20,
+					"y":17,
+					"objID":"hero"
 				},
 				{
 					"type":"fadein"
@@ -119,17 +142,14 @@
 					"type":"charaMsg",
 					"text":["いてて・・・"],
 					"charaID":"0",
-					"imgID":"1"
+					"imgID":"2"
 				},
 				{
 					"type":"changeMap",
 					"mapID":"48",
 					"x":4,
 					"y":9,
-					"EventID":"6"
-				},
-				{
-					"type":"already"
+					"eventID":"6"
 				}
 			]
 		}

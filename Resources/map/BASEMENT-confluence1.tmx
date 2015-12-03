@@ -3,16 +3,13 @@
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="050505" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
-  <image source="lower.png" trans="201c30" width="480" height="256"/>
- </tileset>
- <tileset firstgid="961" name="youkan" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1441" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1921" name="object_fire06a" tilewidth="16" tileheight="16">
+ <tileset firstgid="1441" name="object_fire06a" tilewidth="16" tileheight="16">
   <image source="object_fire06a.png" trans="c1a5c8" width="288" height="256"/>
  </tileset>
  <layer name="Base" width="26" height="22">
@@ -20,7 +17,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzlk0EOgjAQRdtuBWGjnkGlbtBT6ErvfwT1Cg4pPzZNp0wodeNPfoaEoQ/+DEp9ddFKPcmvRIVi93H9jvSrgLM2zs3ojmzJh9HQyjhX5DpScY/jdN7Z1rvGcw31tOS9cR7YR+/8WsjB8zEPZ1rqOTGckJXiXMm3GTXMsSRHkttZ53MqAedOvY8Fc+M42KPS88Eelc5tS727H+SWuwfh/zT1n87lcDmW5uDbOOXOCRX7yyl3TqjY35SW4Gy0y6Y0p9cumylhTsgZ7ye1VJgTcpa+37/oA7MNYsU=
+   eJzllEESgjAMRdMDVN2oh7B1ox4CcaX3v4thyh8jNqUauvLPZMLAL6+kfyB66eKIPKVaKQXBI7vP3M9p4BzovQJXHHsQXjyTnphZU+IEsWbKW7Nn4z7fN12Ha43Tcb+S3iN7jhmf3E8Np+e6/dC//Z7WnLOzcfw4w26Gc2fvY4HvkYxcrpGj1nNDjlpzduzdGzk1ubbmABkYqi9wBlk42hxbc/Cf0GQ9J3TkV5P1nNCR35KW4Gxdmk1rzsml2cwJ54Q5Y3+1VSucE+Zcu79/0RM4qF2T
   </data>
  </layer>
  <layer name="MonoShita" width="26" height="22">
@@ -28,7 +25,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQw1MYKONWnRwhgS9pKgdBaNgFIwCWgFKyjxSwGiZN/QAABxmBDk=
+   eJxjYBgFQw1sYKGNWnTwhgS9pKgdBaNgFIwCWgFKyjxSwGiZN/QAANBvBO0=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -63,12 +60,12 @@
  </objectgroup>
  <layer name="CharaUe2" width="26" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGAa3BXWYGhnvMtLfnN9COP3SwZ6gBAM/YA78=
+   eJxjYBgFo2AUjIJRMApGAa3BX0YGhn+MtLdHmomBQYaJ9vYMNQAAQKsCOQ==
   </data>
  </layer>
  <layer name="fire" width="26" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQw28YqeN2lEwCkbBKBjqYLTMGwW4AAB7pALU
+   eJxjYBgFQw1wsdFG7SgYBaNgFAx1MFrmjQJcAAAPbQAx
   </data>
  </layer>
  <objectgroup name="event">

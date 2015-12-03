@@ -17,6 +17,10 @@
 					"name":"茶色く濁ったどぶろく"
 				},
 				{
+					"type":"removeLayer",
+					"layer":"item"
+				},
+				{
 					"type":"already"
 				}
 			]
@@ -110,6 +114,22 @@
 		{
 			"type":"systemMsg",
 			"text":["変な色の液体が\nペットボトルに詰められている・・・"]
+		}
+	],
+	"18":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["46","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"item"
+				}
+			]
 		}
 	]
 }

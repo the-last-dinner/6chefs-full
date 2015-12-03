@@ -133,6 +133,10 @@
 				{
 					"type":"systemMsg",
 					"text":["鍵がかかっている"]
+				},
+				{
+					"type":"playSE",
+					"file":"door_unopen.mp3"
 				}
 			]
 		}
@@ -284,6 +288,10 @@
 				{
 					"type":"systemMsg",
 					"text":["鍵がかかっている"]
+				},
+				{
+					"type":"playSE",
+					"file":"door_unopen.mp3"
 				}
 			]
 		}

@@ -916,7 +916,7 @@
 												{
 													"text":["貴方は・・・？"],
 													"charaID":"1",
-													"imgID":"1"
+													"imgID":"2"
 												},
 												{
 													"text":["俺は戸塚大宝（とつか　たいほう）っつーモンだ"],
@@ -1354,34 +1354,6 @@
 			]
 		}
 	],
-	"25":[
-		{
-			"type":"sequence",
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["火がパチパチ燃えている"]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["3","21"],
-							"Nequip":["1515"]
-						}
-					],
-					"action":[
-						{
-							"type":"charaMsg",
-							"text":["部屋の出口・・・"],
-							"charaID":"0",
-							"imgID":"1"
-						}
-					]
-				}
-			]
-		}
-	],
 	"26":[
 		{
 			"type":"if",
@@ -1392,7 +1364,7 @@
 			],
 			"action":[
 				{
-					"type":"removelayer",
+					"type":"removeLayer",
 					"layer":"MonoUe"
 				},
 				{
@@ -1403,6 +1375,37 @@
 		}
 	],
 	"27":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["3","21"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["火がパチパチと音を立てて\n燃えている"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["3","21"],
+					"Nequip":["1515"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["部屋の出口・・・"],
+					"charaID":"0",
+					"imgID":"1"
+				}
+			]
+		},
 		{
 			"type":"if",
 			"condition":[
@@ -1429,26 +1432,26 @@
 									"choice":"はい",
 									"action":[
 										{
-											"type":"fadeout"
-										},
-										{
-											"type":"wait",
-											"time":1.0
-										},
-										{
-											"type":"playSE",
-											"file":"water.mp3"
-										},
-										{
-											"type":"playSE",
-											"file":"fire_vanish.mp3"
-										},
-										{
-											"type":"spawn",
+											"type":"sequence",
 											"action":[
 												{
-													"type":"removelayer",
+													"type":"fadeout"
+												},
+												{
+													"type":"removeLayer",
 													"layer":"MonoUe"
+												},
+												{
+													"type":"playSE",
+													"file":"water.mp3"
+												},
+												{
+													"type":"wait",
+													"time":2.0
+												},
+												{
+													"type":"playSE",
+													"file":"fire_vanish.mp3"
 												},
 												{
 													"type":"removeChara",
@@ -1457,14 +1460,14 @@
 												{
 													"type":"removeItem",
 													"itemID":"1515"
+												},
+												{
+													"type":"already"
+												},
+												{
+													"type":"fadein"
 												}
 											]
-										},
-										{
-											"type":"already"
-										},
-										{
-											"type":"fadein"
 										}
 									]
 								},
