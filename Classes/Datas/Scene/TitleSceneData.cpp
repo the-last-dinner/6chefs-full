@@ -45,6 +45,10 @@ bool TitleSceneData::init()
         "character/oRanmaru",
         "character/sRanmaru",
         "character/dDaigoro",
+        "character/kyoujin1",
+        "character/kyoujin2",
+        "character/kyoujin3",
+        "character/kyoujin4"
 	};
 	
 	this->soundFilePaths =
