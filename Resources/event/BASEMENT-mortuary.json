@@ -80,12 +80,19 @@
 							"file":"switch1.mp3"
 						},
 						{
+							"type":"wait",
+							"time":1.0
+						},
+						{
 							"type":"playSE",
 							"file":"splash1.mp3"
 						},
 						{
 							"type":"systemMsg",
 							"text":["どこかで水が流れる音がした"]
+						},
+						{
+							"type":"fadein"
 						},
 						{
 							"type":"already"

@@ -29,7 +29,7 @@
 								},
 								{
 									"type":"removeEnemy",
-									"objID":"146"
+									"enemyID":"146"
 								},
 								{
 									"type":"createEnemy",
