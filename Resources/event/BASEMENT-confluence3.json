@@ -28,8 +28,10 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"systemMsg",
-					"text":["何かうめき声のような声が聞こえる・・・"]
+					"type":"charaMsg",
+					"text":["何かうめき声のような声が聞こえる・・・"],
+					"charaID":"0",
+					"imgID":"3"
 				},
 				{
 					"type":"charaWalk",
@@ -41,7 +43,7 @@
 			]
 		}
 	],
-	"4":[
+	"5":[
 		{
 			"type":"if",
 			"condition":[
@@ -54,8 +56,10 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"systemMsg",
-							"text":["何かうめき声のような声が聞こえる・・・"]
+							"type":"charaMsg",
+							"text":["何かうめき声のような声が聞こえる・・・"],
+							"charaID":"0",
+							"imgID":"3"
 						},
 						{
 							"type":"charaWalk",
@@ -257,17 +261,13 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":1
+					"flg":0
 				}
 			],
 			"action":[
 				{
 					"type":"sequence",
 					"action":[
-						{
-							"type":"changeFlg",
-							"flg":1
-						},
 						{
 							"type":"reaction",
 							"objID":"1057"
@@ -302,16 +302,16 @@
 									"charaID":"6",
 									"imgID":"1",
 									"name":"？？？"
-								},
-								{
-									"type":"already",
-									"event":["55","4"]
-								},
-								{
-									"type":"changeFlg",
-									"flg":1
 								}
 							]
+						},
+						{
+							"type":"already",
+							"event":["55","4"]
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
 						}
 					]
 				}
@@ -327,6 +327,7 @@
 			],
 			"action":[
 				{
+					"type":"charaMsg",
 					"text":["ケッケケ\n頼んだぜ"],
 					"charaID":"6",
 					"imgID":"1",
@@ -347,8 +348,8 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["カッカカカ\nホントに行きやがったか\nまあ下がってろって・・・"],
-							"charaID":"0",
+							"text":["カッカカカ\nホントに行きやがったか\n","まあ下がってろって・・・"],
+							"charaID":"6",
 							"imgID":"1",
 							"name":"？？？"
 						},
@@ -356,11 +357,15 @@
 							"type":"fadeout"
 						},
 						{
-							"type":"charaWarp",
+							"type":"charaWalkTO",
 							"objID":"hero",
-							"direction":"LEFT",
 							"x":18,
 							"y":25
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"LEFT"
 						},
 						{
 							"type":"charaWarp",
@@ -372,6 +377,10 @@
 						{
 							"type":"playSE",
 							"file":"busu.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"spawn",
@@ -399,12 +408,20 @@
 							"file":"syuba.mp3"
 						},
 						{
+							"type":"wait",
+							"time":1.0
+						},
+						{
 							"type":"removeLayer",
 							"layer":"hide"
 						},
 						{
 							"type":"playSE",
 							"file":"busu.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"spawn",
@@ -430,6 +447,10 @@
 						{
 							"type":"playSE",
 							"file":"syuba2.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"fadein"
@@ -469,6 +490,13 @@
 							"direction":"LEFT",
 							"steps":7.0,
 							"speed":1.5
+						},
+						{
+							"type":"charaMsg",
+							"text":["あの煙草はオメェにやるよ"],
+							"charaID":"6",
+							"imgID":"1",
+							"name":"？？？"
 						},
 						{
 							"type":"removeChara",

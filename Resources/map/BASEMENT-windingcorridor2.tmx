@@ -3,15 +3,12 @@
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="lower" tilewidth="16" tileheight="16">
-  <image source="lower.png" trans="201c30" width="480" height="256"/>
- </tileset>
  <layer name="Base" width="40" height="40">
   <properties>
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztj0EKgDAMBAue60eqD2n9mo82l0IIkRRXtIcdWLK0qYwpkTfJknVwZnDfS0SRbIOzgPteInb1jd49D2/vzif6F90jDkmVNNWrOrN3tuvpxe400yPO5d/Qj35P3n0F/TDoh0E/DPph0A+Dfhj0w6AfBv0w6IdBPwz6Yczu15nVqzO7HxnjAld6tp0=
+   eJztmF0KwzAIx90Buo+HbYfouj1sPUSb7f7XmYHKRBIMoUt9UPijtKb8tC0hAritZeMOoEO/hzLfFebl8lPS+Hr0NyjzfWFeLj8ljW9gz6A4xZHKy/FotfBY4wvoJ9QMv3hi1+Q9GXOfksyZRazxHVbSEXWqyNf4Bia+rpVK+sdrp/jRSLV8n0Yqeb/3pRbOd0ZdGkjjC6j3Ugvne6Jeyvp/m8a3tTmf8zmf8zmfXb7c/muFz3r/nM/5LPERo0W+wThfMM5n+fuTZ3MrfMQl5wdW+Gj/DWIvtsIn/w+KLfBFi2f4K+sbzQ2sWJwRjKJvW88N3OrtC3teVSA=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -28,11 +25,6 @@
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
- <layer name="CharaUe" width="40" height="40">
-  <data encoding="base64" compression="zlib">
-   eJzt1zEKgDAQBdHFHMF4/1NGW0mnjRhHYoR5sP3wu43QW5b0dcE1+xj7GPuYP/eVKWLtcE/75gG2tY+xj7GPsY+xj7GPsY+xj7GPsY+xj7GPqz/8dvjjy42/vqeczjvW3fIg26ndDqklIsI=
-  </data>
- </layer>
  <objectgroup name="event">
   <object id="12" x="576" y="96" width="32" height="64">
    <properties>

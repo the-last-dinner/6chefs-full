@@ -7,6 +7,9 @@
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="40" height="40">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1MEJgDAMBdBkAD3qEHpTh9CjrtkhDUipFASLtk3gBz4fc3pClKjcLEzUSLcU2k+8n7gg7OYbpEcK7Sfea/E5vqLFt0pvFNr74n0tn3sZ+OCDDz744IMPPvjggw8++Or4Zv7Ht3O+HB99Ke+XO9Z8qfdR2pd6H6V9tT3WfZ089wpcTz7t34f2/4sFn79DDbEyJ0/HrdY=
   </data>
