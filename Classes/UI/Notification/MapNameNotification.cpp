@@ -6,13 +6,13 @@
 //
 //
 
-#include "UI/MapNameNotification.h"
+#include "UI/Notification/MapNameNotification.h"
 
 #include "UI/Cloud.h"
 
 // 定数
-const float MapNameNotification::MARGIN_H {50.f};
-const float MapNameNotification::MARGIN_V {70};
+const float MapNameNotification::MARGIN_H {25.f};
+const float MapNameNotification::MARGIN_V {35.f};
 const float MapNameNotification::ANIMATION_DURATION {1.f};
 
 // コンストラクタ
@@ -24,11 +24,7 @@ MapNameNotification::~MapNameNotification() {FUNCLOG};
 // 初期化
 bool MapNameNotification::init(const string& message)
 {
-    if(!Node::init()) return false;
-    
-    // カスケード
-    this->setCascadeColorEnabled(true);
-    this->setCascadeOpacityEnabled(true);
+    if(!NotificationNode::init()) return false;
     
     this->setOpacity(0);
     
@@ -36,12 +32,11 @@ bool MapNameNotification::init(const string& message)
     Label* label { Label::createWithTTF(message, Resource::Font::system, 30.f) };
     
     // 背景を生成
-    Cloud* bg { Cloud::create(label->getContentSize() + Size(MARGIN_H, MARGIN_V)) };
+    Cloud* bg { Cloud::create(label->getContentSize() + Size(MARGIN_H * 2, MARGIN_V * 2)) };
+    bg->addChild(label);
     this->addChild(bg);
-    label->setPosition(bg->getContentSize() / 2);
-    this->addChild(label);
     
-    this->setContentSize(label->getContentSize() + Size(MARGIN_H, MARGIN_V));
+    this->setContentSize(bg->getContentSize());
     this->setPosition(this->getContentSize().width / 2 , WINDOW_HEIGHT - this->getContentSize().height / 2);
     
     return true;
@@ -60,7 +55,7 @@ void MapNameNotification::notify(AnimationCallback callback)
 void MapNameNotification::close(AnimationCallback callback)
 {
     this->runAction(Sequence::createWithTwoActions(Spawn::createWithTwoActions(FadeOut::create(ANIMATION_DURATION),
-                                                                 EaseCubicActionIn::create(MoveBy::create(ANIMATION_DURATION, Vec2(0, -30.f)))),
+                                                                 EaseCubicActionIn::create(MoveBy::create(ANIMATION_DURATION, Vec2(0, -15.f)))),
                                                    CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
 

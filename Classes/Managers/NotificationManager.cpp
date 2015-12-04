@@ -10,7 +10,8 @@
 
 #include "Managers/CsvDataManager.h"
 
-#include "UI/MapNameNotification.h"
+#include "UI/Notification/MapNameNotification.h"
+#include "UI/Notification/TrophyNotification.h"
 
 // 唯一のインスタンス
 static NotificationManager* _instance {nullptr};
@@ -33,6 +34,14 @@ void NotificationManager::destroy()
 void NotificationManager::notifyMapName(const int mapId)
 {
     MapNameNotification* n { MapNameNotification::create(CsvDataManager::getInstance()->getMapName(mapId)) };
+    Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
+    n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
+}
+
+// トロフィ獲得を通知
+void NotificationManager::notifyTrophy(const int trophyId)
+{
+    TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyName(trophyId)) };
     Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
     n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
 }

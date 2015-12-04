@@ -29,7 +29,9 @@ bool Cloud::init(const Size& size)
     this->addChild(sprite);
     
     // 最小サイズ
-    this->setScale(size.width / sprite->getContentSize().width);
+    float scale { size.width / sprite->getContentSize().width };
+    sprite->setScale(scale);
+    this->setContentSize(sprite->getContentSize() * scale);
     
     return true;
 }

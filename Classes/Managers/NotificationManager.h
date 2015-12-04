@@ -23,6 +23,7 @@ public:
 // インスタンスメソッド
 public:
     void notifyMapName(const int mapId);
+    void notifyTrophy(const int trophyId);
     void onNotifyEnterAnimationFinished(NotificationNode* node);
     void onNotifyExitAnimationFinished(NotificationNode* node);
 };

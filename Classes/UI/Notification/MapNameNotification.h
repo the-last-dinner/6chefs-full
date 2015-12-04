@@ -9,7 +9,7 @@
 #ifndef MapNameNotification_h
 #define MapNameNotification_h
 
-#include "UI/NotificationNode.h"
+#include "UI/Notification/NotificationNode.h"
 
 class MapNameNotification : public NotificationNode
 {
