@@ -16,6 +16,7 @@
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/TitleMainMenuLayer.h"
 #include "Layers/Menu/TrophyListLayer.h"
+#include "Models/GlobalPlayerData.h"
 
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
@@ -129,7 +130,7 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
-    if (!PlayerDataManager::getInstance()->isCleard())
+    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
     {
         SoundManager::getInstance()->playSE("failure.mp3");
         return;

@@ -11,13 +11,15 @@
 
 #include "Managers/PlayerDataManager.h"
 #include "Managers/CsvDataManager.h"
-#include "Utils/StringUtils.h"
-#include "Datas/MapObject/CharacterData.h"
+
+#include "Models/GlobalPlayerData.h"
+#include "Models/LocalPlayerData.h"
 #include "Models/StopWatch.h"
 
-// 定数
-const int PlayerDataManager::CHIKEN_SAVE_COUNT {50};
-const int PlayerDataManager::FAST_CLEAR_TIME {3600};
+#include "Utils/StringUtils.h"
+#include "Utils/JsonUtils.h"
+
+#include "Datas/MapObject/CharacterData.h"
 
 #pragma mark Initialize
 
@@ -43,60 +45,26 @@ PlayerDataManager::~PlayerDataManager()
 {
     FUNCLOG
     CC_SAFE_RELEASE_NULL(this->timer);
+    CC_SAFE_RELEASE_NULL(this->globalData);
 }
 
 // コンストラクタ
-PlayerDataManager::PlayerDataManager():fu(FileUtils::getInstance())
+PlayerDataManager::PlayerDataManager()
 {
     FUNCLOG
     //グローバルセーブデータの読み込み
-    if(!this->setGlobalData())
-    {
-        //セーブデータの初期作成
-        this->initializeFiles();
-    }
+    this->globalData = GlobalPlayerData::create();
+    CC_SAFE_RETAIN(this->globalData);
 }
 
 #pragma mark -
 #pragma mark GlobalSaveData
 
-// グローバルデータの読み込み
-bool PlayerDataManager::setGlobalData()
-{
-    FUNCLOG
-    //ファイルパス
-    string path = this->fu->fullPathForFilename("save/global.json");
-    if(path == "")
-    {
-        cout << "Global save data is missing." << endl;
-        return false;
-    }
-    //global.jsonを読み込んでインスタンス変数globalに格納
-    this->global = this->readJsonFile(path);
-    if(this->global["status"].GetInt() == 0)
-    {
-        // statusが0の場合は初期化
-        return false;
-    }
-    return true;
-}
 
 // グローバルセーブデータの初期化
 void PlayerDataManager::initializeFiles()
 {
-    FUNCLOG
-    /* global save data */
-    cout << "Create global save data." << endl;
-    // Get path of global template
-    string global_temp_path = fu->fullPathForFilename("save/global_template.json");
-    // Create path of global save data
-    string global_path = LastSupper::StringUtils::strReplace("global_template.json", "global.json", global_temp_path);
-    // read global template data
-    rapidjson::Document global_temp = this->readJsonFile(global_temp_path);
-    // create global save data
-    this->writeJsonFile(global_path, global_temp);
-    // set global save data
-    this->global = readJsonFile(global_path);
+    string global_temp_path = FileUtils::getInstance()->fullPathForFilename("save/global_template.json");
     
     /* local save data */
     rapidjson::Document local_init;
@@ -106,34 +74,9 @@ void PlayerDataManager::initializeFiles()
     status.AddMember(StringRef("status"), rapidjson::Value(0), local_init.GetAllocator());
     string local_path = LastSupper::StringUtils::strReplace("global_template.json", "", global_temp_path);
     for(int i = 1; i <= MAX_SAVE_COUNT; i++){
-        this->writeJsonFile(local_path + "local" +  to_string(i) + ".json", local_init);
+        LastSupper::JsonUtils::writeJsonFile(local_path + "local" +  to_string(i) + ".json", local_init);
     }
     return;
-}
-
-// グローバルデータのセーブ
-void PlayerDataManager::saveGlobalData()
-{
-    this->writeJsonFile("save/global.json", this->global);
-}
-
-// トロフィーゲット処理
-void PlayerDataManager::setTrophy(const int trophy_id)
-{
-    char tid_char[10];
-    sprintf(tid_char, "%d", trophy_id);
-    rapidjson::Value tid  (kStringType);
-    tid.SetString(tid_char, strlen(tid_char), this->global.GetAllocator());
-    rapidjson::Value::ConstMemberIterator itr = this->global["trophy"].FindMember(tid_char);
-    
-    // 指定したトロフィーIDが存在するかチェック
-    if(itr == this->global["trophy"].MemberEnd()){
-        this->global["trophy"].AddMember(tid, rapidjson::Value(true), this->global.GetAllocator());
-    }
-    else
-    {
-        this->global["trophy"][tid_char].SetBool(true);
-    }
 }
 
 // クリア時の処理
@@ -153,58 +96,28 @@ void PlayerDataManager::setGameEnd(const int end_id)
             trophy_id = 8;
             break;
     }
-    this->setTrophy(trophy_id);
+    this->globalData->setTrophy(trophy_id);
     
     // セーブ回数チェック
-    int save_count = this->getSaveCount();
-    if (save_count == 0)
-    {
-        this->setTrophy(11);
-    }
-    else if (save_count >= CHIKEN_SAVE_COUNT)
-    {
-        this->setTrophy(9);
-    }
-    if (save_count < this->getBestSaveCount())
-    {
-        this->global["best_save_count"].SetInt(save_count);
-    }
-    
-    // プレイ時間チェック
-    int play_time = this->getPlayTimeSeconds();
-    if (play_time < FAST_CLEAR_TIME)
-    {
-        this->setTrophy(10);
-    }
-    if (play_time < this->getBestClearTime())
-    {
-        this->global["best_clear_time"].SetInt(play_time);
-    }
+    this->globalData->setBestSaveCount(this->getSaveCount());
+    this->globalData->setBestClearTime(this->getPlayTimeSeconds());
     
     // トロコンチェック
     vector<int> trophies = CsvDataManager::getInstance()->getTrophyIdAll();
     int trophy_count {0};
     for(int trophy_id : trophies)
     {
-        if (this->checkTrophyhaving(trophy_id)) trophy_count++;
+        if (!this->globalData->hasTrophy(trophy_id)) trophy_count++;
     }
     if (trophy_count == trophies.size())
     {
-        this->setTrophy(trophy_count);
+        this->globalData->setTrophy(trophy_count);
     }
     
-    // クリアカウント
-    if (this->checkNotExistToken(this->local["token"].GetString()))
-    {
-        int clear_count = this->global["clear_count"].GetInt();
-        if (clear_count < 999)
-        {
-            this->global["clear_count"].SetInt(clear_count + 1);
-        }
-    }
+    this->globalData->setClearCount(this->local["token"].GetString());
     
     // グローバルデータをセーブ
-    this->saveGlobalData();
+    this->globalData->saveGlobalData();
 }
 
 #pragma mark -
@@ -219,7 +132,7 @@ vector<PlayerDataManager::SaveIndex> PlayerDataManager::getSaveList()
     // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
         string file = "save/local" + to_string(i) + ".json";
-        rapidjson::Document local = this->readJsonFile(file.c_str());
+        rapidjson::Document local = LastSupper::JsonUtils::readJsonFile(file.c_str());
         // status: 0>>セーブデータが存在しない, 1>>セーブデータが存在する
         if(local["status"].GetInt() == 0)
         {
@@ -256,8 +169,8 @@ void PlayerDataManager::setMainLocalData(const int id)
     FUNCLOG
     this->local_id = id;
     string file = (id == 0) ? "save/local_template.json": "save/local" + to_string(id) + ".json";
-    string path = this->fu->fullPathForFilename(file);
-    this->local = this->readJsonFile(path);
+    string path = FileUtils::getInstance()->fullPathForFilename(file);
+    this->local = LastSupper::JsonUtils::readJsonFile(path);
     // プレイ時間計測スタート
     this->timer = StopWatch::create(this->local["play_time"].GetInt());
     CC_SAFE_RETAIN(this->timer);
@@ -304,11 +217,11 @@ void PlayerDataManager::save(const int id)
     
     // セーブ
     string path = "save/local" + str_id + ".json";
-    this->writeJsonFile(path, this->local);
+    LastSupper::JsonUtils::writeJsonFile(path, this->local);
     this->local_id = id;
     
     // グローバルデータのセーブ
-    this->saveGlobalData();
+    this->globalData->saveGlobalData();
     
     return;
 }
@@ -354,7 +267,7 @@ void PlayerDataManager::setFriendship(const int chara_id, const int level)
     this->local["friendship"][cid_char].SetInt(level);
     if (level >= 2)
     {
-        this->setTrophy(chara_id);
+        this->globalData->setTrophy(chara_id);
     }
     return;
 }
@@ -690,17 +603,9 @@ int PlayerDataManager::getSaveCount()
     return this->local["save_count"].GetInt();
 }
 
-// セーブ回数の最小記録を取得
-int PlayerDataManager::getBestSaveCount()
-{
-    return this->global["best_save_count"].GetInt();
-}
 
-// 最短クリア時間を取得
-int PlayerDataManager::getBestClearTime()
-{
-    return this->global["best_clear_time"].GetInt();
-}
+
+
 
 #pragma mark -
 #pragma mark Checker
@@ -763,96 +668,7 @@ bool PlayerDataManager::checkEventStatus(const int map_id, const int event_id, c
     return status == abs(this->getEventStatus(map_id, event_id)) ? true : false;
 }
 
-// 指定のトロフィーを持っているか
-bool PlayerDataManager::checkTrophyhaving(const int trophy_id)
+GlobalPlayerData* PlayerDataManager::getGlobalData() const
 {
-    bool hasTrophy {false};
-    char tid_char[10];
-    sprintf(tid_char, "%d", trophy_id);
-    if (this->global["trophy"].HasMember(tid_char))
-    {
-        if (this->global["trophy"][tid_char].GetBool())
-        {
-            hasTrophy =  true;
-        }
-    }
-    return hasTrophy;
+    return this->globalData;
 }
-
-// クリア済みのデータかチェックする
-bool PlayerDataManager::checkNotExistToken(const string &token)
-{
-    int token_count = this->global["tokens"].Size();
-    for (int i = 0; i < token_count; i++)
-    {
-        if (this->global["tokens"][i].GetString() == token)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-// グローバルデータからクリア済みかチェック
-bool PlayerDataManager::isCleard()
-{
-    return this->global["clear_count"].GetInt() > 0 ? true : false;
-}
-
-#pragma mark -
-#pragma mark JsonFileFunctions
-
-// 絶対パスからjsonファイルの取得
-rapidjson::Document PlayerDataManager::readJsonFile(const string& path)
-{
-    FUNCLOG
-    cout << "Read json file. path>>" << path << endl;
-    const char* cpath = path.c_str();
-    rapidjson::Document doc;
-    FILE* fp;
-    char buf[512];
-
-    fp = fopen(cpath, "rb");
-    FileReadStream rs(fp, buf, sizeof(buf));
-    doc.ParseStream(rs);
-    fclose(fp);
-    //構文エラー判定
-    bool error = doc.HasParseError();
-    if(error){
-        //エラーがあった場合
-        size_t offset = doc.GetErrorOffset();
-        ParseErrorCode code = doc.GetParseError();
-        const char* msg = GetParseError_En(code);
-        printf("GlobalTemplate JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
-        return nullptr;
-    } else {
-        //エラーがなかった場合
-#ifdef DEBUG
-        //テスト出力
-        ifstream filein(path);
-        for (string line; getline(filein, line);)
-        {
-            cout << line << endl;
-        }
-#endif
-        return doc;
-    }
-}
-
-// JsonFile書き出し
-void PlayerDataManager::writeJsonFile(const string &path, const rapidjson::Document& doc)
-{
-    FUNCLOG
-    cout << "Write json file. path>>" << path << endl;
-    const char* cpath = path.c_str();
-    FILE* fp;
-    char buf[512];
-    // write
-    fp = fopen(cpath, "wb");
-    FileWriteStream ws(fp, buf, sizeof(buf));
-    Writer<FileWriteStream> writerf(ws);
-    doc.Accept(writerf);
-    fclose(fp);
-    return;
-}
-

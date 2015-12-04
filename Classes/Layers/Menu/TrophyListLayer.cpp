@@ -10,6 +10,7 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Managers/PlayerDataManager.h"
+#include "Models/GlobalPlayerData.h"
 
 // 初期化
 bool TrophyListLayer::init()
@@ -57,8 +58,8 @@ bool TrophyListLayer::init()
     
     // 記録の取得
     PlayerDataManager* pdm = PlayerDataManager::getInstance();
-    string fast_time = pdm->getPlayTimeDisplay(pdm->getBestClearTime());
-    string min_save = to_string(pdm->getBestSaveCount()) + "回";
+    string fast_time = pdm->getPlayTimeDisplay(pdm->getGlobalData()->getBestClearTimeSecound());
+    string min_save = to_string(pdm->getGlobalData()->getBestSaveCount()) + "回";
     Label* equipment = Label::createWithTTF("最速クリア時間 : " + fast_time + "\n最小セーブ回数 : " + min_save, "fonts/cinecaption2.28.ttf", 26);
     equipment->setPosition(equipment->getContentSize().width/2 + 20, equipment->getContentSize().height/2 + 20);
     equipment->setColor(Color3B::WHITE);
@@ -102,7 +103,7 @@ bool TrophyListLayer::init()
         // トロフィー名
         this->trophies.push_back(trophy_id);
         string trophy_name = "? ? ? ? ?";
-        if (PlayerDataManager::getInstance()->checkTrophyhaving(trophy_id))
+        if (PlayerDataManager::getInstance()->getGlobalData()->hasTrophy(trophy_id))
         {
             trophy_name = CsvDataManager::getInstance()->getTrophyName(trophy_id);
             
@@ -155,7 +156,7 @@ void TrophyListLayer::changeTrophyDiscription(const int idx)
     label_panel->addChild(condition);
     
     // コメント
-    string comment_str = PlayerDataManager::getInstance()->checkTrophyhaving(idx + 1) ? "\n  「" + LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyComment(this->trophies[idx])) + "」" : "";
+    string comment_str = PlayerDataManager::getInstance()->getGlobalData()->hasTrophy(idx + 1) ? "\n  「" + LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyComment(this->trophies[idx])) + "」" : "";
     Label* comment = Label::createWithTTF(comment_str, "fonts/cinecaption2.28.ttf", 28);
     comment->setPosition(bottom->getContentSize().width / 2, bottom->getContentSize().height - condition->getContentSize().height - comment->getContentSize().height / 2 - margin / 2);
     comment->setColor(Color3B::WHITE);

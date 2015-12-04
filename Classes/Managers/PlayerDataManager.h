@@ -13,6 +13,7 @@
 
 class CharacterData;
 class StopWatch;
+class GlobalPlayerData;
 
 class PlayerDataManager
 {
@@ -29,21 +30,14 @@ public:
         SaveIndex(){};
     };
 
-// 定数
-private:
-    static const int CHIKEN_SAVE_COUNT;
-    static const int FAST_CLEAR_TIME;
-
 //インスタンス変数
 private:
     // グローバルセーブデータ
-    rapidjson::Document global;
+    GlobalPlayerData* globalData {nullptr};
     // ローカルセーブデータ
     rapidjson::Document local;
     // 対象ローカルセーブデータid
     int local_id {0};
-    // FileUtils
-    cocos2d::FileUtils* fu;
     // Timer
     StopWatch* timer {nullptr};
     // ローカルセーブデータの存在の有無
@@ -94,8 +88,6 @@ public:
     string getPlayTimeDisplay();
     string getPlayTimeDisplay(const int sec);
     int getSaveCount();
-    int getBestSaveCount();
-    int getBestClearTime();
     
     // CHECK
     bool checkItem(const int item_id);
@@ -104,22 +96,12 @@ public:
     bool checkChapterId(const int chapter_id);
     bool checkEventIsDone(const int map_id, const int event_id);
     bool checkEventStatus(const int map_id, const int event_id, const int status);
-    bool checkTrophyhaving(const int trophy_id);
-    bool checkNotExistToken(const string& token);
-    bool isCleard();
+    
+    GlobalPlayerData* getGlobalData() const;
     
 private:
-    // グローバルデータのセット
-    bool setGlobalData();
-    void saveGlobalData();
     // セーブデータを全初期化
     void initializeFiles();
-    // JSONファイル読み込み
-    rapidjson::Document readJsonFile(const string& path);
-    // JSONファイル書き出し
-    void writeJsonFile(const string& path, const rapidjson::Document& doc);
-    //トロフィーセット
-    void setTrophy(const int trophy_id);
 
 //singleton用関数
 public:

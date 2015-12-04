@@ -13,5 +13,6 @@
 #include "Utils/MapUtils.h"
 #include "Utils/StringUtils.h"
 #include "Utils/SpriteUtils.h"
+#include "Utils/JsonUtils.h"
 
 #endif // __COMMON_H__
