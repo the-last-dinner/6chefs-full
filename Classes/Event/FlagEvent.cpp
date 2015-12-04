@@ -45,7 +45,7 @@ bool NeverAgainEvent::init(rapidjson::Value& json)
     else
     {
         // 自分自身のイベントを設定
-        this->event.push_back(pair<int, int>({PlayerDataManager::getInstance()->getLocation().map_id,DungeonSceneManager::getInstance()->getPushingEventid()}));
+        this->event.push_back(pair<int, int>({DungeonSceneManager::getInstance()->getLocation().map_id,DungeonSceneManager::getInstance()->getPushingEventid()}));
     }
     return true;
 }
@@ -56,7 +56,7 @@ void NeverAgainEvent::run()
     int arr_size = this->event.size();
     for(int i = 0; i < arr_size; i++)
     {
-        PlayerDataManager::getInstance()->setEventNeverAgain(this->event[i].first, this->event[i].second);
+        PlayerDataManager::getInstance()->getLocalData()->setEventNeverAgain(this->event[i].first, this->event[i].second);
     }
     
 }
@@ -77,7 +77,7 @@ bool GetItemEvent::init(rapidjson::Value& json)
 
 void GetItemEvent::run()
 {
-    PlayerDataManager::getInstance()->setItem(this->itemId);
+    PlayerDataManager::getInstance()->getLocalData()->setItem(this->itemId);
     
     DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
 }
@@ -99,7 +99,7 @@ bool RemoveItemEvent::init(rapidjson::Value& json)
 void RemoveItemEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->removeItem(this->itemId);
+    PlayerDataManager::getInstance()->getLocalData()->removeItem(this->itemId);
 }
 
 #pragma mark -
@@ -123,7 +123,7 @@ bool AddProfileEvent::init(rapidjson::Value& json)
 void AddProfileEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->setCharacterProfile(this->charaId, this->infoLevel);
+    PlayerDataManager::getInstance()->getLocalData()->setCharacterProfile(this->charaId, this->infoLevel);
 }
 
 #pragma mark -
@@ -143,7 +143,7 @@ bool ChangeChapterEvent::init(rapidjson::Value& json)
 void ChangeChapterEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->setChapterId(this->chapterId);
+    PlayerDataManager::getInstance()->getLocalData()->setChapterId(this->chapterId);
 }
 
 #pragma mark -
@@ -167,7 +167,7 @@ bool ChangeLikabilityRatingEvent::init(rapidjson::Value& json)
 void ChangeLikabilityRatingEvent::run()
 {
     this->setDone();
-    PlayerDataManager::getInstance()->setFriendship(this->charaId, this->rating);
+    PlayerDataManager::getInstance()->getLocalData()->setFriendship(this->charaId, this->rating);
 }
 
 #pragma mark -
@@ -186,8 +186,8 @@ bool ChangeEventStatusEvent::init(rapidjson::Value& json)
 
 void ChangeEventStatusEvent::run()
 {
-    int map_id {PlayerDataManager::getInstance()->getLocation().map_id};
+    int map_id {DungeonSceneManager::getInstance()->getLocation().map_id};
     int event_id {DungeonSceneManager::getInstance()->getRunningEventId()};
-    PlayerDataManager::getInstance()->setEventStatus(map_id, event_id, this->status);
+    PlayerDataManager::getInstance()->getLocalData()->setEventStatus(map_id, event_id, this->status);
     this->setDone();
 }

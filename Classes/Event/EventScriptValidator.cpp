@@ -85,7 +85,7 @@ bool EventScriptValidator::detectEquipFlg(rapidjson::Value& json, bool negative)
 
     for(int i { 0 }; i < json.Size(); i++)
     {
-        detection = PlayerDataManager::getInstance()->checkItemEquipment(stoi(json[i].GetString()));
+        detection = PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(stoi(json[i].GetString()));
         if(negative) detection = !detection;
         if(!detection) break;
     }
@@ -103,7 +103,7 @@ bool EventScriptValidator::detectEventFlg(rapidjson::Value& json, bool negative)
     {
         for(int i { 0 }; i < json.Size(); i++)
         {
-            detection = PlayerDataManager::getInstance()->checkEventIsDone(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
+            detection = PlayerDataManager::getInstance()->getLocalData()->checkEventIsDone(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
             if(negative) detection = !detection;
             if(!detection) return false;
         }
@@ -112,7 +112,7 @@ bool EventScriptValidator::detectEventFlg(rapidjson::Value& json, bool negative)
     //一つのイベントの場合
     else
     {
-        detection = PlayerDataManager::getInstance()->checkEventIsDone(stoi(json[0].GetString()), stoi(json[1].GetString()));
+        detection = PlayerDataManager::getInstance()->getLocalData()->checkEventIsDone(stoi(json[0].GetString()), stoi(json[1].GetString()));
         if(negative) detection = !detection;
     }
     
@@ -125,11 +125,11 @@ bool EventScriptValidator::detectFlg(rapidjson::Value& json, bool negative)
     bool detection { false };
     
     // 現在のmap_idとevent_idを取得
-    int map_id {PlayerDataManager::getInstance()->getLocation().map_id};
+    int map_id {DungeonSceneManager::getInstance()->getLocation().map_id};
     int event_id {DungeonSceneManager::getInstance()->getPushingEventid()};
     
     // 一つのイベントに対してステータスを確認
-    detection = PlayerDataManager::getInstance()->checkEventStatus(map_id, event_id, json.GetInt());
+    detection = PlayerDataManager::getInstance()->getLocalData()->checkEventStatus(map_id, event_id, json.GetInt());
     if(negative) detection = !detection;
     
     return detection;
@@ -145,7 +145,7 @@ bool EventScriptValidator::detectItemFlg(rapidjson::Value& json, bool negative)
     {
         for(int i { 0 }; i < json.Size(); i++)
         {
-            detection = PlayerDataManager::getInstance()->checkItem(stoi(json[i].GetString()));
+            detection = PlayerDataManager::getInstance()->getLocalData()->hasItem(stoi(json[i].GetString()));
             if(negative) detection = !detection;
             if(!detection) break;
         }
@@ -153,7 +153,7 @@ bool EventScriptValidator::detectItemFlg(rapidjson::Value& json, bool negative)
     // 一つの場合
     else
     {
-        detection = PlayerDataManager::getInstance()->checkItem(stoi(json.GetString()));
+        detection = PlayerDataManager::getInstance()->getLocalData()->hasItem(stoi(json.GetString()));
         if(negative) detection = !detection;
     }
     
@@ -170,7 +170,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
     {
         for(int i { 0 }; i < json.Size(); i++)
         {
-            detection = PlayerDataManager::getInstance()->checkFriendship(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
+            detection = PlayerDataManager::getInstance()->getLocalData()->checkFriendship(stoi(json[i][0].GetString()), stoi(json[i][1].GetString()));
             if(negative) detection = !detection;
             if(!detection) break;
         }
@@ -178,7 +178,7 @@ bool EventScriptValidator::detectStatusFlg(rapidjson::Value& json, bool negative
     // 一つの時
     else
     {
-        detection = PlayerDataManager::getInstance()->checkFriendship(stoi(json[0].GetString()), stoi(json[1].GetString()));
+        detection = PlayerDataManager::getInstance()->getLocalData()->checkFriendship(stoi(json[0].GetString()), stoi(json[1].GetString()));
         if(negative) detection = !detection;
     }
     

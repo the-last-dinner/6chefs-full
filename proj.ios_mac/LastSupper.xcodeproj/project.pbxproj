@@ -49,6 +49,12 @@
 		26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BA61EF1BCB59EA00CE63C7 /* StringUtils.cpp */; };
 		26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
 		26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
+		26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */; };
+		26D9F56B1C117514003BA438 /* GlobalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */; };
+		26D9F56E1C117608003BA438 /* LocalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */; };
+		26D9F56F1C117608003BA438 /* LocalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */; };
+		26E27D451C118DC100157F9A /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26E27D431C118DC100157F9A /* JsonUtils.cpp */; };
+		26E27D461C118DC100157F9A /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26E27D431C118DC100157F9A /* JsonUtils.cpp */; };
 		26EB893D1C086A01001BEA9F /* SlideNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26EB893B1C086A01001BEA9F /* SlideNode.cpp */; };
 		26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26EB893B1C086A01001BEA9F /* SlideNode.cpp */; };
 		26F989D51BA4BD23009EB4B5 /* CsvDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26F989D41BA4BD23009EB4B5 /* CsvDataManager.cpp */; };
@@ -363,6 +369,12 @@
 		26D72CB21B96D420005F598D /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		26D72CB31B96D420005F598D /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		26D72CB41B96D420005F598D /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalPlayerData.cpp; path = ../Classes/Models/GlobalPlayerData.cpp; sourceTree = "<group>"; };
+		26D9F5691C117514003BA438 /* GlobalPlayerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalPlayerData.h; path = ../Classes/Models/GlobalPlayerData.h; sourceTree = "<group>"; };
+		26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LocalPlayerData.cpp; path = ../Classes/Models/LocalPlayerData.cpp; sourceTree = "<group>"; };
+		26D9F56D1C117608003BA438 /* LocalPlayerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalPlayerData.h; path = ../Classes/Models/LocalPlayerData.h; sourceTree = "<group>"; };
+		26E27D431C118DC100157F9A /* JsonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonUtils.cpp; path = ../Classes/Utils/JsonUtils.cpp; sourceTree = "<group>"; };
+		26E27D441C118DC100157F9A /* JsonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonUtils.h; path = ../Classes/Utils/JsonUtils.h; sourceTree = "<group>"; };
 		26EB893B1C086A01001BEA9F /* SlideNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SlideNode.cpp; path = ../Classes/UI/SlideNode.cpp; sourceTree = "<group>"; };
 		26EB893C1C086A01001BEA9F /* SlideNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNode.h; path = ../Classes/UI/SlideNode.h; sourceTree = "<group>"; };
 		26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CsvDataManager.h; path = ../Classes/Managers/CsvDataManager.h; sourceTree = "<group>"; };
@@ -881,6 +893,10 @@
 				2672664D1C087BFE00FD1CF6 /* StopWatch.h */,
 				DC81158D1C0B42290033157F /* Stamina.cpp */,
 				DC81158E1C0B42290033157F /* Stamina.h */,
+				26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */,
+				26D9F5691C117514003BA438 /* GlobalPlayerData.h */,
+				26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */,
+				26D9F56D1C117608003BA438 /* LocalPlayerData.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1099,6 +1115,8 @@
 				26BA61F01BCB59EA00CE63C7 /* StringUtils.h */,
 				26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */,
 				26114E751BEDF1720019C1C3 /* SpriteUtils.h */,
+				26E27D431C118DC100157F9A /* JsonUtils.cpp */,
+				26E27D441C118DC100157F9A /* JsonUtils.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1404,6 +1422,7 @@
 				5583CE3E1B9A163C00F9ACB7 /* EventTask.cpp in Sources */,
 				556C18E21B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				5564CCF51BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
+				26D9F56E1C117608003BA438 /* LocalPlayerData.cpp in Sources */,
 				553577E51BEB99790095E6A9 /* Party.cpp in Sources */,
 				DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */,
 				554470761BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
@@ -1427,6 +1446,7 @@
 				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
 				DCDD2D661C11B83B00FE7289 /* NotificationCloud.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
+				26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
@@ -1495,6 +1515,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5544706E1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
+				26E27D451C118DC100157F9A /* JsonUtils.cpp in Sources */,
 				556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				551A51781BF239F600D6263A /* Direction.cpp in Sources */,
 			);
@@ -1531,6 +1552,7 @@
 				DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */,
 				553577DE1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
 				26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
+				26D9F56B1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
 				5544706B1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
 				DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
@@ -1560,6 +1582,7 @@
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
+				26D9F56F1C117608003BA438 /* LocalPlayerData.cpp in Sources */,
 				DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				552F5DCE1B710D2900E4CEB6 /* SystemMessageLayer.cpp in Sources */,
 				262728671C084D3A0028B732 /* NotificationBand.cpp in Sources */,
@@ -1578,6 +1601,7 @@
 				DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
+				26E27D461C118DC100157F9A /* JsonUtils.cpp in Sources */,
 				552F5DCA1B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
 				DCAB9BBD1BFF1A2100887F68 /* CheapChaser.cpp in Sources */,
 				5557AA7A1BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,

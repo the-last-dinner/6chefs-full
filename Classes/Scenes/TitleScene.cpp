@@ -16,6 +16,7 @@
 #include "Layers/Menu/SaveDataSelector.h"
 #include "Layers/Menu/TitleMainMenuLayer.h"
 #include "Layers/Menu/TrophyListLayer.h"
+#include "Models/GlobalPlayerData.h"
 
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
@@ -75,9 +76,8 @@ void TitleScene::onStartSelected()
 	SoundManager::getInstance()->playSE("gameStart.mp3");
 	SoundManager::getInstance()->unloadAllSounds();
 	//TextureManager::getInstance()->unloadAllTectures();
-	PlayerDataManager::getInstance()->setMainLocalData(0);
-    PlayerDataManager::getInstance()->setToken();
-    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+	PlayerDataManager::getInstance()->setGameStart(0);
+    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
 // 続きからが選ばれた時
@@ -100,8 +100,8 @@ void TitleScene::onExitSelected()
 void TitleScene::onSaveDataSelected(int dataId)
 {
 	FUNCLOG
-	PlayerDataManager::getInstance()->setMainLocalData(dataId);
-	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+	PlayerDataManager::getInstance()->setGameStart(dataId);
+	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
 // セーブデータ選択をキャンセルした時
@@ -129,7 +129,7 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
-    if (!PlayerDataManager::getInstance()->isCleard())
+    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
     {
         SoundManager::getInstance()->playSE("failure.mp3");
         return;

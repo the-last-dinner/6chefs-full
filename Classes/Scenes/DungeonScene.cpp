@@ -73,13 +73,13 @@ void DungeonScene::onEnter()
 void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
 	// マップレイヤーを生成
-	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocation())};
+	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
     // 主人公一行を生成
-    Party* party { Party::create(PlayerDataManager::getInstance()->getPartyMemberAll()) };
+    Party* party { Party::create(PlayerDataManager::getInstance()->getLocalData()->getPartyMemberAll()) };
     CC_SAFE_RETAIN(party);
     this->party = party;
     
@@ -156,7 +156,7 @@ void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
     this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     cameraTask->setTarget( this->party->getMainCharacter() );
     
-    this->enemyTask->start(PlayerDataManager::getInstance()->getLocation().map_id);
+    this->enemyTask->start(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id);
     
     // ローディング終了
     loadingLayer->onLoadFinished();
@@ -199,8 +199,8 @@ void DungeonScene::onMenuKeyPressed()
     Character* chara = this->party->getMainCharacter();
     Point point = chara->getGridPosition();
     Direction dir = chara->getDirection();
-    Location location{PlayerDataManager::getInstance()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
-    PlayerDataManager::getInstance()->setLocation(location);
+    Location location{PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id, static_cast<int>(point.x), static_cast<int>(point.y), dir};
+    PlayerDataManager::getInstance()->getLocalData()->setLocation(location);
     
     // スクショをとって、ダンジョンメニューシーンをプッシュ
     string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));

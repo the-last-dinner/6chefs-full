@@ -197,7 +197,7 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     this->getScene()->enemyTask->stop();
     
     // 敵情報を生成し直して格納
-    vector<SummonData> summonDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocation()) };
+    vector<SummonData> summonDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocalData()->getLocation()) };
     this->summonDatas.clear();
     this->summonDatas = summonDatas;
     
@@ -208,7 +208,7 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     {
         members[i].location = location;
     }
-    PlayerDataManager::getInstance()->setLocation(members);
+    PlayerDataManager::getInstance()->getLocalData()->setLocation(members);
     
     // 必要な情報を設定していく
     DungeonSceneData* data { DungeonSceneData::create(location) };
