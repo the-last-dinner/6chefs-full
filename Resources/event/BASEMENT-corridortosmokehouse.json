@@ -23,7 +23,7 @@
 					"type":"charaMsg",
 					"text":["うわああああああ"],
 					"charaID":"0",
-					"imgID":"2",
+					"imgID":"3",
 					"option":"reaction"
 				},
 				{
@@ -329,7 +329,7 @@
 					"type":"charaMsg",
 					"text":["何なんだ・・・ゴキブリ・・・？"],
 					"charaID":"0",
-					"imgID":"2"
+					"imgID":"3"
 				},
 				{
 					"type":"already"
