@@ -26,6 +26,10 @@ public:
 public:
     CREATE_FUNC_WITH_PARAM(GameOverScene, const Type)
     
+// インスタンス変数
+public:
+    Sprite* bloodCover { nullptr };
+    
 // インスタンスメソッド
 private:
     GameOverScene();

@@ -17,7 +17,10 @@ GameOverSceneData::~GameOverSceneData() {FUNCLOG};
 // 初期化
 bool GameOverSceneData::init()
 {
-    this->textureFilePaths = {};
+    this->textureFilePaths =
+    {
+        "blood",
+    };
     this->soundFilePaths = {};
     
     return true;

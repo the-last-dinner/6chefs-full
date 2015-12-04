@@ -25,6 +25,7 @@
 #include "Models/Stamina.h"
 
 #include "Scenes/DungeonMenuScene.h"
+#include "Scenes/GameOverScene.h"
 #include "Scenes/TitleScene.h"
 
 #include "Tasks/EnemyTask.h"
@@ -217,7 +218,8 @@ void DungeonScene::onBackToTitleSelected()
 // 主人公が敵に触れた時
 void DungeonScene::onContactWithEnemy()
 {
-    
+    DungeonSceneManager::destroy();
+    Director::getInstance()->replaceScene(GameOverScene::create(GameOverScene::Type::BLOOD));
 }
 
 // 敵が全ていなくなった時

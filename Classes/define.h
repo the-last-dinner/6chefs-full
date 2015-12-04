@@ -9,6 +9,7 @@
 #include "AudioEngine.h"
 #include <iostream>
 #include <fstream>
+#include "resources.h"
 
 // rapidjson
 #include "rapidjson/document.h"

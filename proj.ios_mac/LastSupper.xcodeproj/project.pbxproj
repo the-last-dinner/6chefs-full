@@ -574,6 +574,7 @@
 		DC6E38FD1C0EFF8900DBF569 /* LightEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightEvent.h; path = ../Classes/Event/LightEvent.h; sourceTree = "<group>"; };
 		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
 		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
+		DC9986FA1C11954C0057BA7B /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = ../Classes/resources.h; sourceTree = "<group>"; };
 		DCAB9BB61BFF19A100887F68 /* Chaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chaser.cpp; path = ../Classes/MapObjects/MovePatterns/Chaser.cpp; sourceTree = "<group>"; };
 		DCAB9BB71BFF19A100887F68 /* Chaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaser.h; path = ../Classes/MapObjects/MovePatterns/Chaser.h; sourceTree = "<group>"; };
 		DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CheapChaser.cpp; path = ../Classes/MapObjects/MovePatterns/CheapChaser.cpp; sourceTree = "<group>"; };
@@ -880,6 +881,7 @@
 				552D83691B20BC6300B681A8 /* AppDelegate.h */,
 				552D836A1B20BC6300B681A8 /* Common.h */,
 				552D836B1B20BC6300B681A8 /* define.h */,
+				DC9986FA1C11954C0057BA7B /* resources.h */,
 				55799D521BEE1152002462E6 /* Algorithm */,
 				552D83641B20BC1C00B681A8 /* Datas */,
 				551406801BA55916008DFAED /* Effects */,

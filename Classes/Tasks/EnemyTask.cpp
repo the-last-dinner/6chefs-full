@@ -142,7 +142,7 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             else
             {
                 // 次マップに出現するまでの遅延時間を格納
-                delay = enemy->calcSummonDelay();
+                delay = enemy->calcSummonDelay() + 1.f;
             }
             
             data.addHistory(relation, delay);
