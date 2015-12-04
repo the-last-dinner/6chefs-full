@@ -239,6 +239,10 @@
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC0914511C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
 		DC0914521C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
+		DC1938161C11F6DE00C0DBF1 /* NotificationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938141C11F6DE00C0DBF1 /* NotificationNode.cpp */; };
+		DC1938171C11F6DE00C0DBF1 /* NotificationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938141C11F6DE00C0DBF1 /* NotificationNode.cpp */; };
+		DC19381A1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
+		DC19381B1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
 		DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
@@ -567,6 +571,10 @@
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
 		DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverSceneData.cpp; sourceTree = "<group>"; };
 		DC0914501C0F30AC007ACA50 /* GameOverSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverSceneData.h; sourceTree = "<group>"; };
+		DC1938141C11F6DE00C0DBF1 /* NotificationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationNode.cpp; path = ../Classes/UI/NotificationNode.cpp; sourceTree = "<group>"; };
+		DC1938151C11F6DE00C0DBF1 /* NotificationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationNode.h; path = ../Classes/UI/NotificationNode.h; sourceTree = "<group>"; };
+		DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationManager.cpp; path = ../Classes/Managers/NotificationManager.cpp; sourceTree = "<group>"; };
+		DC1938191C11F71200C0DBF1 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = ../Classes/Managers/NotificationManager.h; sourceTree = "<group>"; };
 		DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonCameraSceneData.cpp; sourceTree = "<group>"; };
 		DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonCameraSceneData.h; sourceTree = "<group>"; };
 		DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeMapHistory.cpp; path = ../Classes/Models/ChangeMapHistory.cpp; sourceTree = "<group>"; };
@@ -700,6 +708,8 @@
 				DCDD2D611C11B7A000FE7289 /* Cloud.h */,
 				262728641C084D3A0028B732 /* NotificationBand.cpp */,
 				262728651C084D3A0028B732 /* NotificationBand.h */,
+				DC1938141C11F6DE00C0DBF1 /* NotificationNode.cpp */,
+				DC1938151C11F6DE00C0DBF1 /* NotificationNode.h */,
 				26EB893B1C086A01001BEA9F /* SlideNode.cpp */,
 				26EB893C1C086A01001BEA9F /* SlideNode.h */,
 				DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */,
@@ -985,6 +995,8 @@
 				26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */,
 				553577D71BE9DFF00095E6A9 /* DungeonSceneManager.cpp */,
 				553577D81BE9DFF00095E6A9 /* DungeonSceneManager.h */,
+				DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */,
+				DC1938191C11F71200C0DBF1 /* NotificationManager.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1472,6 +1484,7 @@
 				DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
+				DC1938161C11F6DE00C0DBF1 /* NotificationNode.cpp in Sources */,
 				DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				5544706A1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
@@ -1516,6 +1529,7 @@
 				5544706E1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
 				26E27D451C118DC100157F9A /* JsonUtils.cpp in Sources */,
+				DC19381A1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */,
 				556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				551A51781BF239F600D6263A /* Direction.cpp in Sources */,
 			);
@@ -1533,6 +1547,7 @@
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
+				DC19381B1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */,
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
 				DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
@@ -1574,6 +1589,7 @@
 				553577E21BEA42C80095E6A9 /* EventScript.cpp in Sources */,
 				553577DA1BE9DFF00095E6A9 /* DungeonSceneManager.cpp in Sources */,
 				55CCBFF01BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
+				DC1938171C11F6DE00C0DBF1 /* NotificationNode.cpp in Sources */,
 				26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */,
 				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
