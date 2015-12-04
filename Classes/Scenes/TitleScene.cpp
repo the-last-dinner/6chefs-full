@@ -76,9 +76,8 @@ void TitleScene::onStartSelected()
 	SoundManager::getInstance()->playSE("gameStart.mp3");
 	SoundManager::getInstance()->unloadAllSounds();
 	//TextureManager::getInstance()->unloadAllTectures();
-	PlayerDataManager::getInstance()->setMainLocalData(0);
-    PlayerDataManager::getInstance()->setToken();
-    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+	PlayerDataManager::getInstance()->setGameStart(0);
+    Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
 // 続きからが選ばれた時
@@ -101,8 +100,8 @@ void TitleScene::onExitSelected()
 void TitleScene::onSaveDataSelected(int dataId)
 {
 	FUNCLOG
-	PlayerDataManager::getInstance()->setMainLocalData(dataId);
-	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+	PlayerDataManager::getInstance()->setGameStart(dataId);
+	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
 // セーブデータ選択をキャンセルした時

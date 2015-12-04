@@ -23,7 +23,7 @@ bool ItemMenuLayer::init()
 {
     FUNCLOG
     // メニュー設定
-    int obj_count = PlayerDataManager::getInstance()->getItemAll().size();
+    int obj_count = PlayerDataManager::getInstance()->getLocalData()->getItemAll().size();
     Point maxSize = Point(3,6);
     int sizeX = obj_count < maxSize.x ? obj_count : maxSize.x;
     int sizeY = obj_count < maxSize.x * maxSize.y ? floor((obj_count - 1 )/ maxSize.x) + 1 : maxSize.y;
@@ -76,8 +76,8 @@ bool ItemMenuLayer::init()
     rightTop->setPosition(rightTop->getContentSize().width/2 + parcent.width * 30, rightTop->getContentSize().height/2 + parcent.height * 80);
     this->addChild(rightTop);
     
-    int right_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT);
-    int left_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT);
+    int right_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::RIGHT);
+    int left_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT);
     string right_equip = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
     string left_equip = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
     Label* equip_title = Label::createWithTTF("装備", "fonts/cinecaption2.28.ttf", 26);
@@ -101,7 +101,7 @@ bool ItemMenuLayer::init()
     CC_SAFE_RETAIN(center);
     this->addChild(center);
     
-    map<int,int> items = PlayerDataManager::getInstance()->getItemAll();
+    map<int,int> items = PlayerDataManager::getInstance()->getLocalData()->getItemAll();
     if (items.size() == 0){
         // アイテムが時は空用の番号をインサート
         items.insert({-1,0});
@@ -190,7 +190,7 @@ void ItemMenuLayer::createMiniSelector()
     this->listenerKeyboard->setEnabled(false);
     // メニューラベル
     vector<string> labels;
-    if (!PlayerDataManager::getInstance()->checkItemEquipment(this->selected_item))
+    if (!PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(this->selected_item))
     {
         labels = {"右手に装備", "左手に装備", "キャンセル"};
         this->isEquip = true;
@@ -235,22 +235,22 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
     {
         SoundManager::getInstance()->playSE("equip.mp3");
         Direction dir = idx == 0 ? Direction::RIGHT : Direction::LEFT;
-        PlayerDataManager::getInstance()->setItemEquipment(dir, this->selected_item);
+        PlayerDataManager::getInstance()->getLocalData()->setItemEquipment(dir, this->selected_item);
     }
     else
     {
         // 装備をはずす
         SoundManager::getInstance()->playSE("equip.mp3");
         Direction dir;
-        if (this->selected_item == PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT))
+        if (this->selected_item == PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::RIGHT))
         {
             dir = Direction::RIGHT;
         }
-        if (this->selected_item == PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT))
+        if (this->selected_item == PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT))
         {
             dir = Direction::LEFT;
         }
-        PlayerDataManager::getInstance()->setItemEquipment(dir, 0);
+        PlayerDataManager::getInstance()->getLocalData()->setItemEquipment(dir, 0);
         
     }
     

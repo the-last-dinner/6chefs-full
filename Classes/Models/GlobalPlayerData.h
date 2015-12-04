@@ -42,11 +42,10 @@ private:
 // Instance methods
 private:
     bool init();
-    
-public:
-    // Global data file
     bool loadGlobalData();
     bool initGlobalData();
+    
+public:
     void saveGlobalData();
     
     // Clear count
@@ -65,6 +64,7 @@ public:
     // Trophy data
     void setTrophy(const int trophy_id);
     bool hasTrophy(const int trophy_id);
+    void setTrophyComplete();
     
     // Clear token
     bool isClearedToken(const string& token);

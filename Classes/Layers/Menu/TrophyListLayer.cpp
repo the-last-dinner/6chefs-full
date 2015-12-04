@@ -58,7 +58,7 @@ bool TrophyListLayer::init()
     
     // 記録の取得
     PlayerDataManager* pdm = PlayerDataManager::getInstance();
-    string fast_time = pdm->getPlayTimeDisplay(pdm->getGlobalData()->getBestClearTimeSecound());
+    string fast_time = LastSupper::StringUtils::getTimeForDisplay(pdm->getGlobalData()->getBestClearTimeSecound());
     string min_save = to_string(pdm->getGlobalData()->getBestSaveCount()) + "回";
     Label* equipment = Label::createWithTTF("最速クリア時間 : " + fast_time + "\n最小セーブ回数 : " + min_save, "fonts/cinecaption2.28.ttf", 26);
     equipment->setPosition(equipment->getContentSize().width/2 + 20, equipment->getContentSize().height/2 + 20);

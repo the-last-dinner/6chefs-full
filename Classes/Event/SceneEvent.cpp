@@ -66,7 +66,7 @@ bool CreateCameraEvent::init(rapidjson::Value& json)
     if(!GameEvent::init()) return false;
     
     // 映したい場所
-    this->location.map_id = (this->validator->hasMember(json, member::MAP_ID)) ? stoi(json[member::MAP_ID].GetString()) : PlayerDataManager::getInstance()->getLocation().map_id;
+    this->location.map_id = (this->validator->hasMember(json, member::MAP_ID)) ? stoi(json[member::MAP_ID].GetString()) : DungeonSceneManager::getInstance()->getLocation().map_id;
  
     Point position { this->validator->getPoint(json) };
     this->location.x = position.x;
@@ -230,7 +230,7 @@ void CountDownEvent::run()
         bool condition = false;
         if(this->checkEquip)
         {
-            condition = PlayerDataManager::getInstance()->checkItemEquipment(this->equip);
+            condition = PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(this->equip);
         }
         
         // 条件を満たしていた場合

@@ -7,6 +7,7 @@
 //
 
 #include "Models/GlobalPlayerData.h"
+#include "Managers/CsvDataManager.h"
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 
@@ -59,10 +60,7 @@ bool GlobalPlayerData::initGlobalData()
 }
 
 // グローバルデータのセーブ
-void GlobalPlayerData::saveGlobalData()
-{
-    LastSupper::JsonUtils::writeJsonFile(GLOBAL_DATA_PATH, this->globalData);
-}
+void GlobalPlayerData::saveGlobalData(){LastSupper::JsonUtils::writeJsonFile(GLOBAL_DATA_PATH, this->globalData);}
 
 #pragma mark -
 #pragma mark ClearCount
@@ -81,16 +79,10 @@ void GlobalPlayerData::setClearCount(const string& token)
 }
 
 // クリア回数を取得
-int GlobalPlayerData::getClearCount()
-{
-    return this->globalData[CLEAR_COUNT].GetInt();
-}
+int GlobalPlayerData::getClearCount(){return this->globalData[CLEAR_COUNT].GetInt();}
 
 // クリアしているか
-bool GlobalPlayerData::isCleared()
-{
-    return this->getClearCount() > 0 ? true : false;
-}
+bool GlobalPlayerData::isCleared(){return this->getClearCount() > 0 ? true : false;}
 
 #pragma mark -
 #pragma mark MinimumSaveCount
@@ -107,10 +99,7 @@ void GlobalPlayerData::setBestSaveCount(const int save_count)
 }
 
 // セーブ回数の最小記録を取得
-int GlobalPlayerData::getBestSaveCount()
-{
-    return this->globalData[BEST_SAVE_COUNT].GetInt();
-}
+int GlobalPlayerData::getBestSaveCount(){return this->globalData[BEST_SAVE_COUNT].GetInt();}
 
 #pragma mark -
 #pragma mark BestClearTime
@@ -126,10 +115,7 @@ void GlobalPlayerData::setBestClearTime(const int play_time)
 }
 
 // 最短クリア時間を取得
-int GlobalPlayerData::getBestClearTimeSecound()
-{
-    return this->globalData[BEST_CLEAR_TIME].GetInt();
-}
+int GlobalPlayerData::getBestClearTimeSecound(){return this->globalData[BEST_CLEAR_TIME].GetInt();}
 
 #pragma mark -
 #pragma mark TrophyData
@@ -168,6 +154,21 @@ bool GlobalPlayerData::hasTrophy(const int trophy_id)
         }
     }
     return hasTrophy;
+}
+
+// トロフィーコンプリート処理
+void GlobalPlayerData::setTrophyComplete()
+{
+    vector<int> trophies = CsvDataManager::getInstance()->getTrophyIdAll();
+    int trophy_count {0};
+    for(int trophy_id : trophies)
+    {
+        if (!this->hasTrophy(trophy_id)) trophy_count++;
+    }
+    if (trophy_count == trophies.size())
+    {
+        this->setTrophy(trophy_count);
+    }
 }
 
 #pragma mark -

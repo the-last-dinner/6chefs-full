@@ -40,12 +40,12 @@ bool SaveDataSelector::init(bool write = false)
 	this->addChild(black);
 	
 	// セーブデータリストを取得
-	this->saveDatas = PlayerDataManager::getInstance()->getSaveList();
+	this->saveDatas = this->getSaveList();
 	
 	Point center = WINDOW_CENTER;
 	for(int i = 0; i < this->saveDatas.size();i++)
 	{
-		PlayerDataManager::SaveIndex data {this->saveDatas.at(i)};
+		SaveIndex data {this->saveDatas.at(i)};
 		Sprite* panel {Sprite::createWithSpriteFrameName("save_frame.png")};
 		Size panelSize {panel->getContentSize()};
 		panel->setPosition((panelSize.width / 2) * (2 * (i % 2) + 1), WINDOW_HEIGHT - (panelSize.height / 2) * (2 * (i / 2) + 1));
@@ -54,11 +54,11 @@ bool SaveDataSelector::init(bool write = false)
 		this->menuObjects.push_back(panel);
 		
 		// 表示ラベルを生成
-		// データ名
+		// チャプター
 		Label* name = Label::createWithTTF(data.chapter, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
 		name->setPosition(Point(name->getContentSize().width / 2 + panelSize.width * INNER_H_MARGIN_RATIO, panel->getContentSize().height / 2));
 		panel->addChild(name);
-		
+        
 		// マップ名
 		Label* mapName = Label::createWithTTF(data.map_name, "fonts/cinecaption2.28.ttf", panelSize.height / 6);
 		mapName->setPosition(Point(panelSize.width - mapName->getContentSize().width / 2 - panelSize.width * INNER_H_MARGIN_RATIO, panelSize.height * 0.75f));
@@ -68,7 +68,12 @@ bool SaveDataSelector::init(bool write = false)
 		Label* time = Label::createWithTTF(data.play_time, "fonts/cinecaption2.28.ttf", panelSize.height / 6);
 		time->setPosition(Point(panelSize.width - time->getContentSize().width / 2 - panelSize.width * INNER_V_MARGIN_RATIO, panelSize.height * 0.25f));
 		panel->addChild(time);
-		
+        
+        // セーブ回数
+        Label* count = Label::createWithTTF(data.save_count + "回", "fonts/cinecaption2.28.ttf", panelSize.height / 6);
+        count->setPosition(Point(panelSize.width - time->getContentSize().width / 2 - panelSize.width * INNER_H_MARGIN_RATIO + 15, panelSize.height * 0.25f + time->getContentSize().height + 10));
+        panel->addChild(count);
+        
 		// 不透明度を半分にしておく
 		panel->setCascadeOpacityEnabled(true);
 		panel->setOpacity(100);
@@ -76,12 +81,45 @@ bool SaveDataSelector::init(bool write = false)
     
     // デフォルトセレクト
 	this->setCascadeOpacityEnabled(true);
-    int id = PlayerDataManager::getInstance()->getSaveDataId();
+    LocalPlayerData* local = PlayerDataManager::getInstance()->getLocalData();
+    int id = local != nullptr ? local->getLocalId() : 1;
     int index = (id <= 0) ? 0 : id - 1;
     this->setSelectedIndex(index);
 	this->onIndexChanged(index, false);
 	
 	return true;
+}
+
+// セーブデータを取得
+vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
+{
+    vector<SaveIndex> save_list;
+    SaveIndex save;
+    // セーブデータを一つずつチェック
+    for(int i=1; i<=MAX_SAVE_COUNT; i++){
+        string file = "save/local" + to_string(i) + ".json";
+        LocalPlayerData* local {LocalPlayerData::create(i)};
+        if(!local)
+        {
+            // セーブデータが存在しない
+            this->existsSaveData[i-1] = false;
+            save = SaveIndex(i, "--- NO DATA ---", "---------------", "00h00m00s", "000");
+            
+        } else {
+            // セーブデータが存在する
+            this->existsSaveData[i-1] = true;
+            save = SaveIndex(
+                             i,
+                             "--- " + CsvDataManager::getInstance()->getChapterName(local->getChapterId()) + " ---",
+                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local->getLocation().map_id)),
+                             local->getPlayTimeForDisplay(),
+                             LastSupper
+                             ::StringUtils::getSprintf("%03s", to_string(local->getSaveCount()))
+                             );
+        }
+        save_list.push_back(save);
+    }
+    return save_list;
 }
 
 // 表示
@@ -155,12 +193,12 @@ void SaveDataSelector::onSpacePressed(int idx)
     else
     {
         // ロード時
-        if(PlayerDataManager::getInstance()->checkSaveDataExists(idx))
+        if(this->existsSaveData[idx-1])
         {
             // ロード
             SoundManager::getInstance()->playSE("load.mp3");
-            PlayerDataManager::getInstance()->setMainLocalData(idx);
-            Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocation())));
+            PlayerDataManager::getInstance()->setGameStart(idx);
+            Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
         } else
         {
             // セーブデータが存在しない

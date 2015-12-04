@@ -51,7 +51,7 @@ bool DungeonMainMenuLayer::init()
     this->slideNodes.push_back(header);
     
     // チャプター表示
-    int chapter_id = PlayerDataManager::getInstance()->getChapterId();
+    int chapter_id = PlayerDataManager::getInstance()->getLocalData()->getChapterId();
     Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterName(chapter_id), "fonts/cinecaption2.28.ttf", 30);
     float chapter_name_y = WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height / 2 - 15;
     inPosition = Point(chapter_name->getContentSize().width/2 + 15, chapter_name_y);
@@ -91,12 +91,12 @@ bool DungeonMainMenuLayer::init()
     }
     
     // マップ名表示
-    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
+    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapName(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
     mapName->setPosition(mapName->getContentSize().width / 2 + 15, hBg->getContentSize().height - mapName->getContentSize().height / 2 - 15);
     hBg->addChild(mapName);
     
     // プレイ時間表示
-    Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getPlayTimeDisplay(), "fonts/cinecaption2.28.ttf", 26);
+    Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getCurrentTimeForDisplay(), "fonts/cinecaption2.28.ttf", 26);
     play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2 - 15, hBg->getContentSize().height - play_time->getContentSize().height / 2 - 15);
     hBg->addChild(play_time);
     this->play_time = play_time;
@@ -113,8 +113,8 @@ bool DungeonMainMenuLayer::init()
 	this->slideNodes.push_back(footer);
     
     // 装備品表示
-    int right_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::RIGHT);
-    int left_id = PlayerDataManager::getInstance()->getItemEquipment(Direction::LEFT);
+    int right_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::RIGHT);
+    int left_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT);
     string right = (right_id != 0) ? CsvDataManager::getInstance()->getItemName(right_id) : "なし";
     string left = (left_id != 0) ? CsvDataManager::getInstance()->getItemName(left_id) : "なし";
     Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, "fonts/cinecaption2.28.ttf", 26);
@@ -122,7 +122,7 @@ bool DungeonMainMenuLayer::init()
     fBg->addChild(equipment);
     
     // キャラ表示
-    vector<CharacterData> charas = PlayerDataManager::getInstance()->getPartyMemberAll();
+    vector<CharacterData> charas = PlayerDataManager::getInstance()->getLocalData()->getPartyMemberAll();
     int party_count = charas.size();
     Size  cPanelSize = Size(fBg->getContentSize().width/5, fBg->getContentSize().height);
     float stand_scale = 0.25;
@@ -339,5 +339,5 @@ void DungeonMainMenuLayer::slideOut()
 // プレイ時間をアップデート
 void DungeonMainMenuLayer::updateTime(float delta)
 {
-    this->play_time->setString(PlayerDataManager::getInstance()->getPlayTimeDisplay());
+    this->play_time->setString(PlayerDataManager::getInstance()->getCurrentTimeForDisplay());
 }

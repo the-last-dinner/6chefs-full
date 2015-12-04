@@ -41,7 +41,7 @@ void Party::addMember(Character* character)
 {
     character->setHit(false);
     this->members.pushBack(character);
-    PlayerDataManager::getInstance()->setPartyMember(character->getCharacterData());
+    PlayerDataManager::getInstance()->getLocalData()->setPartyMember(character->getCharacterData());
 }
 
 // パーティメンバーを削除
@@ -55,7 +55,7 @@ void Party::removeMember(const int obj_id)
         int target_obj = temp_members.at(i)->getCharacterData().obj_id;
         if (obj_id == target_obj)
         {
-            PlayerDataManager::getInstance()->removePartyMember(target_obj);
+            PlayerDataManager::getInstance()->getLocalData()->removePartyMember(target_obj);
         }
         else
         {

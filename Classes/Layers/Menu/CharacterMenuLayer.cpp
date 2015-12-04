@@ -80,7 +80,7 @@ bool CharacterMenuLayer::init()
         
         // キャラクター名
         string chara_name {""};
-        if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[i]) < 0)
+        if (PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->characters[i]) < 0)
         {
             chara_name = "? ? ? ? ?";
         }
@@ -151,7 +151,7 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
         leftBottom->removeChildByName(panelName);
     }
     
-    if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]) < 0)
+    if (PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->characters[idx]) < 0)
     {
         // 見ることができないキャラクター
         Label* label = Label::createWithTTF("? ? ? ? ?", "fonts/cinecaption2.28.ttf", 24);
@@ -173,7 +173,7 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
             leftBottom->addChild(img);
         }
         // 友好度をセット
-        int level = PlayerDataManager::getInstance()->getFriendship(this->characters[idx]);
+        int level = PlayerDataManager::getInstance()->getLocalData()->getFriendship(this->characters[idx]);
         if (level < 0) return; // 友好度が存在しない時はリターン
         // ハートを置くパネルの生成
         Sprite* heart_panel = Sprite::create();
@@ -214,7 +214,7 @@ void CharacterMenuLayer::onMenuKeyPressed()
 void CharacterMenuLayer::onSpacePressed(int idx)
 {
     // 見れないレベルのキャラの時
-    if (PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]) < 0)
+    if (PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->characters[idx]) < 0)
     {
         SoundManager::getInstance()->playSE("failure.mp3");
         return;
@@ -242,7 +242,7 @@ void CharacterMenuLayer::onSpacePressed(int idx)
         // 詳細のラベルを作成
         vector<Label*> discriptions;
         Size panel_size = Size(back->getContentSize().width, back->getContentSize().height/3);
-        int canCheckLevel = PlayerDataManager::getInstance()->getCharacterProfileLevel(this->characters[idx]);
+        int canCheckLevel = PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->characters[idx]);
         for(int i=0;i<3; i++)
         {
             string profile {""};

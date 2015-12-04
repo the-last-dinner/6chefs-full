@@ -10,6 +10,9 @@
 #include "Managers/PlayerDataManager.h"
 #include "Managers/CsvDataManager.h"
 
+#include "Models/LocalPlayerData.h"
+#include "Models/GlobalPlayerData.h"
+
 #include "Utils/MapUtils.h"
 #include "Utils/StringUtils.h"
 #include "Utils/SpriteUtils.h"

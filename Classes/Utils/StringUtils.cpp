@@ -70,3 +70,14 @@ string LastSupper::StringUtils::getRandomString(const int length)
     }
     return ranst;
 }
+
+// 時間(秒)を表示用にに
+string LastSupper::StringUtils::getTimeForDisplay(const int sec)
+{
+    int min = floor(sec / 60);
+    int hour = floor(min / 60);
+    string display = LastSupper::StringUtils::getSprintf("%02s", to_string(hour)) + "h";
+    display += LastSupper::StringUtils::getSprintf("%02s", to_string(min % 60)) + "m";
+    display += LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
+    return display;
+}

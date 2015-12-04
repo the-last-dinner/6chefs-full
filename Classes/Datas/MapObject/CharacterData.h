@@ -10,6 +10,7 @@
 #define CharacterData_h
 
 #include "define.h"
+#include "Managers/CsvDataManager.h"
 
 struct CharacterData
 {

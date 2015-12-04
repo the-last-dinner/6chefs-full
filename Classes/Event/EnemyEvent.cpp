@@ -43,7 +43,7 @@ bool CreateEnemyEvent::init(rapidjson::Value& json)
     data.chara_data.location.y = json[member::Y].GetInt();
     
     // 現在のマップID
-    data.chara_data.location.map_id = PlayerDataManager::getInstance()->getLocation().map_id;
+    data.chara_data.location.map_id = DungeonSceneManager::getInstance()->getLocation().map_id;
     
     // 追跡アルゴリズム
     data.move_pattern = this->validator->getMovePatternForEnemy(json);
