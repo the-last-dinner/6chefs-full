@@ -1,29 +1,28 @@
 //
-//  NotificationCloud.cpp
+//  MapNameNotification.cpp
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/12/04.
 //
 //
 
-#include "UI/NotificationCloud.h"
+#include "UI/MapNameNotification.h"
 
 #include "UI/Cloud.h"
 
 // 定数
-const float NotificationCloud::MARGIN_H {50.f};
-const float NotificationCloud::MARGIN_V {70};
-const float NotificationCloud::ANIMATION_DURATION {1.f};
-const float NotificationCloud::DURATION {5.f};
+const float MapNameNotification::MARGIN_H {50.f};
+const float MapNameNotification::MARGIN_V {70};
+const float MapNameNotification::ANIMATION_DURATION {1.f};
 
 // コンストラクタ
-NotificationCloud::NotificationCloud() {FUNCLOG};
+MapNameNotification::MapNameNotification() {FUNCLOG};
 
 // デストラクタ
-NotificationCloud::~NotificationCloud() {FUNCLOG};
+MapNameNotification::~MapNameNotification() {FUNCLOG};
 
 // 初期化
-bool NotificationCloud::init(const string& message)
+bool MapNameNotification::init(const string& message)
 {
     if(!Node::init()) return false;
     
@@ -43,26 +42,27 @@ bool NotificationCloud::init(const string& message)
     this->addChild(label);
     
     this->setContentSize(label->getContentSize() + Size(MARGIN_H, MARGIN_V));
+    this->setPosition(this->getContentSize().width / 2 , WINDOW_HEIGHT - this->getContentSize().height / 2);
     
     return true;
 }
 
 // 通知
-void NotificationCloud::notify(function<void()> callback)
+void MapNameNotification::notify(AnimationCallback callback)
 {
     Point toPosition {this->getPosition()};
     this->setPosition(toPosition - Vec2(0, 30.f));
     this->runAction(Spawn::createWithTwoActions(FadeIn::create(ANIMATION_DURATION), EaseCubicActionOut::create(MoveTo::create(ANIMATION_DURATION, toPosition))));
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(ANIMATION_DURATION), CallFunc::create([this, callback]{this->onShowAnimationFinished(callback);})));
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(ANIMATION_DURATION), CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
 
-// 表示アニメーション終了時
-void NotificationCloud::onShowAnimationFinished(function<void()> callback)
+// 閉じる
+void MapNameNotification::close(AnimationCallback callback)
 {
-    this->runAction(Sequence::create(DelayTime::create(DURATION),
-                                     Spawn::createWithTwoActions(FadeOut::create(ANIMATION_DURATION),
+    this->runAction(Sequence::createWithTwoActions(Spawn::createWithTwoActions(FadeOut::create(ANIMATION_DURATION),
                                                                  EaseCubicActionIn::create(MoveBy::create(ANIMATION_DURATION, Vec2(0, -30.f)))),
-                                     CallFunc::create(callback),
-                                     RemoveSelf::create(),
-                                     nullptr));
+                                                   CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
+
+// 表示時間を取得
+float MapNameNotification::getShowingDuration() const { return 5.f; }

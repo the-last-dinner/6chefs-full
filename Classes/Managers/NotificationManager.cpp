@@ -8,6 +8,10 @@
 
 #include "Managers/NotificationManager.h"
 
+#include "Managers/CsvDataManager.h"
+
+#include "UI/MapNameNotification.h"
+
 // 唯一のインスタンス
 static NotificationManager* _instance {nullptr};
 
@@ -24,3 +28,24 @@ void NotificationManager::destroy()
 {
     delete _instance;
 }
+
+// マップ名を通知
+void NotificationManager::notifyMapName(const int mapId)
+{
+    MapNameNotification* n { MapNameNotification::create(CsvDataManager::getInstance()->getMapName(mapId)) };
+    Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
+    n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
+}
+
+// 通知の表示アニメーション終了時
+void NotificationManager::onNotifyEnterAnimationFinished(NotificationNode* node)
+{
+    node->runAction(Sequence::createWithTwoActions(DelayTime::create(node->getShowingDuration()), CallFunc::create([this, node]{node->close(CC_CALLBACK_1(NotificationManager::onNotifyExitAnimationFinished, this));})));
+}
+
+// 通知の閉じるアニメーション終了時
+void NotificationManager::onNotifyExitAnimationFinished(NotificationNode* node)
+{
+    node->removeFromParent();
+}
+
