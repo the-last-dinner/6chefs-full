@@ -263,6 +263,10 @@
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
+		DCDD2D621C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
+		DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
+		DCDD2D661C11B83B00FE7289 /* NotificationCloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */; };
+		DCDD2D671C11B83B00FE7289 /* NotificationCloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */; };
 		DCE10A5B1C0E154D000FCE81 /* PlainArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCE10A591C0E154D000FCE81 /* PlainArea.cpp */; };
 		DCE10A5C1C0E154D000FCE81 /* PlainArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCE10A591C0E154D000FCE81 /* PlainArea.cpp */; };
 		DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
@@ -583,6 +587,10 @@
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
 		DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaminaBar.cpp; path = ../Classes/UI/StaminaBar.cpp; sourceTree = "<group>"; };
 		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
+		DCDD2D601C11B7A000FE7289 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cloud.cpp; path = ../Classes/UI/Cloud.cpp; sourceTree = "<group>"; };
+		DCDD2D611C11B7A000FE7289 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cloud.h; path = ../Classes/UI/Cloud.h; sourceTree = "<group>"; };
+		DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationCloud.cpp; path = ../Classes/UI/NotificationCloud.cpp; sourceTree = "<group>"; };
+		DCDD2D651C11B83B00FE7289 /* NotificationCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCloud.h; path = ../Classes/UI/NotificationCloud.h; sourceTree = "<group>"; };
 		DCE10A591C0E154D000FCE81 /* PlainArea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlainArea.cpp; path = ../Classes/MapObjects/TerrainObject/PlainArea.cpp; sourceTree = "<group>"; };
 		DCE10A5A1C0E154D000FCE81 /* PlainArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainArea.h; path = ../Classes/MapObjects/TerrainObject/PlainArea.h; sourceTree = "<group>"; };
 		DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePatternFactory.cpp; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.cpp; sourceTree = "<group>"; };
@@ -676,12 +684,16 @@
 		262728631C084B9E0028B732 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DCDD2D601C11B7A000FE7289 /* Cloud.cpp */,
+				DCDD2D611C11B7A000FE7289 /* Cloud.h */,
 				262728641C084D3A0028B732 /* NotificationBand.cpp */,
 				262728651C084D3A0028B732 /* NotificationBand.h */,
 				26EB893B1C086A01001BEA9F /* SlideNode.cpp */,
 				26EB893C1C086A01001BEA9F /* SlideNode.h */,
 				DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */,
 				DCAD927D1C0C18760059E4C4 /* StaminaBar.h */,
+				DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */,
+				DCDD2D651C11B83B00FE7289 /* NotificationCloud.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1413,6 +1425,7 @@
 				263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
+				DCDD2D661C11B83B00FE7289 /* NotificationCloud.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
@@ -1449,6 +1462,7 @@
 				DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */,
 				DC398BEA1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */,
 				26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
+				DCDD2D621C11B7A000FE7289 /* Cloud.cpp in Sources */,
 				553577DD1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				260F45CE1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
@@ -1524,6 +1538,8 @@
 				5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
+				DCDD2D671C11B83B00FE7289 /* NotificationCloud.cpp in Sources */,
+				DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */,
 				260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
 				263BC5A81C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,

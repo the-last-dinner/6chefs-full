@@ -13,7 +13,7 @@
 
 class TitleMainMenuLayer : public MenuLayer
 {
-	// 列挙型、構造他
+// 定数
 public:
 	enum struct MenuType
 	{
@@ -25,15 +25,11 @@ public:
 		SIZE
 	};
 	
-	// クラスメソッド
+// クラスメソッド
 public:
 	CREATE_FUNC(TitleMainMenuLayer);
 	
-	// クラス変数
-private:
-	static const map<MenuType, string> menu;
-	
-	// インスタンスメソッド
+// インスタンスメソッド
 private:
 	TitleMainMenuLayer();
 	~TitleMainMenuLayer();
@@ -45,7 +41,7 @@ public:
 	virtual void show() override;
 	virtual void hide() override;
 	
-	// インスタンス変数
+// インスタンス変数
 public:
 	function<void()> onStartSelected { nullptr };
 	function<void()> onContinueSelected { nullptr };

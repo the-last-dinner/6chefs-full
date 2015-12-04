@@ -8,9 +8,16 @@
 
 #include "Scenes/GameOverScene.h"
 
-#include "Layers/LoadingLayer.h"
-
 #include "Datas/Scene/GameOverSceneData.h"
+
+#include "Layers/LoadingLayer.h"
+#include "Layers/EventListener/EventListenerKeyboardLayer.h"
+
+#include "Scenes/TitleScene.h"
+
+// 定数
+const float GameOverScene::CHAR_ANIMATION_DURATION = 4.f;
+const float GameOverScene::CHAR_ANIMATION_LATENCY = 0.8f;
 
 // コンストラクタ
 GameOverScene::GameOverScene() {FUNCLOG};
@@ -21,6 +28,15 @@ GameOverScene::~GameOverScene() {FUNCLOG};
 // 初期化
 bool GameOverScene::init(const Type type)
 {
+    SoundManager::getInstance()->playSE("blood.wav");
+    
+    Sprite* blood {Sprite::create()};
+    blood->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+    blood->setColor(Color3B(177, 0, 0));
+    blood->setPosition(WINDOW_CENTER);
+    this->addChild(blood, Priority::TOP_COVER);
+    this->bloodCover = blood;
+    
     return BaseScene::init(GameOverSceneData::create());
 }
 
@@ -28,15 +44,6 @@ bool GameOverScene::init(const Type type)
 void GameOverScene::onEnter()
 {
     BaseScene::onEnter();
-    
-    SoundManager::getInstance()->playSE("blood.wav");
-    
-    Sprite* blood {Sprite::create()};
-    blood->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
-    blood->setColor(Color3B(177, 0, 0));
-    blood->setPosition(WINDOW_CENTER);
-    this->addChild(blood, Priority::LOADING_LAYER);
-    this->bloodCover = blood;
 }
 
 // リソースのプリロード完了時
@@ -52,4 +59,42 @@ void GameOverScene::onPreloadFinished(LoadingLayer* loadingLayer)
     bloodFrame->setPosition(WINDOW_CENTER);
     bloodFrame->setScale(bloodFrame->getContentSize().width / WINDOW_WIDTH, bloodFrame->getContentSize().height / WINDOW_HEIGHT);
     this->addChild(bloodFrame);
+    
+    Label* gameover { Label::createWithTTF("Game Over", Resource::Font::system, 120.f) };
+    gameover->setPosition(WINDOW_CENTER);
+    this->addChild(gameover);
+    
+    vector<Vec2> idxToVec
+    {
+        Vec2(-120, 40),
+        Vec2(-120, -50),
+        Vec2(-70, 0),
+        Vec2(-50, 100),
+        Vec2::ZERO,
+        Vec2(0, -50),
+        Vec2(70, 50),
+        Vec2(100, 100),
+        Vec2(70, 0),
+    };
+    
+    // 文字のアニメーション
+    int charNum {gameover->getStringLength()};
+    for(int i { 0 }; i < charNum; i++)
+    {
+        Sprite* c { gameover->getLetter(i) };
+        c->setOpacity(0);
+        c->runAction(Sequence::createWithTwoActions(DelayTime::create(CHAR_ANIMATION_LATENCY * i), Spawn::createWithTwoActions(FadeIn::create(CHAR_ANIMATION_DURATION), MoveBy::create(CHAR_ANIMATION_DURATION, idxToVec[i]))));
+    }
+    
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(CHAR_ANIMATION_DURATION + CHAR_ANIMATION_LATENCY * charNum), CallFunc::create(CC_CALLBACK_0(GameOverScene::onAnimationFinished, this))));
+}
+
+// アニメーションが終了した時
+void GameOverScene::onAnimationFinished()
+{
+    // キーボードリスナ生成
+    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
+    this->addChild(listener);
+    
+    listener->onSpaceKeyPressed = []{Director::getInstance()->replaceScene(TitleScene::create());};
 }

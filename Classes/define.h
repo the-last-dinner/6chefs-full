@@ -55,7 +55,9 @@ using namespace experimental;
 // レイヤーのZORDER値
 enum Priority
 {
+    TOP_COVER = 1000,
     LOADING_LAYER = 999,
+    NOTIFICATION = 900,
     STAMINA_BAR = 800,
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,

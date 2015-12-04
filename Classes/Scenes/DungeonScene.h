@@ -57,6 +57,7 @@ protected:
 	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
     virtual void onInitEventFinished(LoadingLayer* loadingLayer);
     virtual void onAfterInitEventFinished();
+    virtual void onPassedEventFinished();
     virtual void onMenuKeyPressed();
     void onBackToTitleSelected();
     void onContactWithEnemy();

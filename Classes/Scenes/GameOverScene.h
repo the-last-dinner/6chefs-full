@@ -22,6 +22,9 @@ public:
         SIZE,
     };
     
+    static const float CHAR_ANIMATION_DURATION;
+    static const float CHAR_ANIMATION_LATENCY;
+    
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(GameOverScene, const Type)
@@ -37,6 +40,7 @@ private:
     bool init(const Type type);
     virtual void onEnter() override;
     virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
+    void onAnimationFinished();
 };
 
 #endif /* GameOverScene_h */

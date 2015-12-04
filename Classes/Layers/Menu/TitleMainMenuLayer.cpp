@@ -10,13 +10,6 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
-const map<TitleMainMenuLayer::MenuType, string> TitleMainMenuLayer::menu = {
-	{TitleMainMenuLayer::MenuType::START, string("はじめから")},
-	{TitleMainMenuLayer::MenuType::CONTINUE, string("つづきから")},
-    {TitleMainMenuLayer::MenuType::TROPHY, string("トロフィー")},
-	{TitleMainMenuLayer::MenuType::EXIT, string("終了")},
-};
-
 // コンストラクタ
 TitleMainMenuLayer::TitleMainMenuLayer(){FUNCLOG}
 
@@ -26,8 +19,15 @@ TitleMainMenuLayer::~TitleMainMenuLayer(){FUNCLOG}
 // 初期化
 bool TitleMainMenuLayer::init()
 {
-	FUNCLOG
-	if(!MenuLayer::init(1, menu.size())) return false;
+    map<MenuType, string> typeToString
+    {
+        {MenuType::START, "はじめから"},
+        {MenuType::CONTINUE, "つづきから"},
+        {MenuType::TROPHY, "トロフィー"},
+        {MenuType::EXIT, "終了"},
+    };
+    
+	if(!MenuLayer::init(1, typeToString.size())) return false;
 	
 	//タイトル画像をキャッシュから生成
 	Sprite* titleBg = Sprite::createWithSpriteFrameName("title.png");
@@ -35,19 +35,19 @@ bool TitleMainMenuLayer::init()
 	titleBg->setOpacity(0);
 	this->addChild(titleBg);
 	
-	int menuSize = 32;
+	int menuSize = 50;
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
-		Label* menu = Label::createWithTTF(this->menu.at(static_cast<MenuType>(i)), "fonts/cinecaption2.28.ttf", menuSize);
-		menu->setPosition(WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 3 / 4 - (menuSize + 20) * i);
-		menu->setColor(Color3B::RED);
-		menu->setOpacity(0);
-		this->addChild(menu);
-		MenuLayer::menuObjects.push_back(menu);
+        Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::system, menuSize) };
+		menuItem->setPosition(WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 3 / 4 - (menuSize + 20) * i);
+		menuItem->setColor(Color3B::RED);
+		menuItem->setOpacity(0);
+		this->addChild(menuItem);
+		this->menuObjects.push_back(menuItem);
 		
-		menu->runAction(Sequence::create(DelayTime::create(1.f * i),
-										 Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
-										 nullptr));
+		menuItem->runAction(Sequence::create(DelayTime::create(1.f * i),
+                                             Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
+                                             nullptr));
 	}
 	
 	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。

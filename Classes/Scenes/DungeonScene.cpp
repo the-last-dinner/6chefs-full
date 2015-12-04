@@ -34,6 +34,7 @@
 #include "Tasks/PlayerControlTask.h"
 
 #include "UI/StaminaBar.h"
+#include "UI/NotificationCloud.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene() {FUNCLOG}
@@ -167,7 +168,18 @@ void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 // Trigger::AFTER_INITのイベント終了時
 void DungeonScene::onAfterInitEventFinished()
 {
-    this->eventTask->runEvent(this->getData()->getInitialEventId());
+    this->eventTask->runEvent({this->getData()->getInitialEventId()}, CC_CALLBACK_0(DungeonScene::onPassedEventFinished, this));
+}
+
+// マップ移動前に渡されたイベント終了時
+void DungeonScene::onPassedEventFinished()
+{
+    // マップ名通知
+    NotificationCloud* mapNotification { NotificationCloud::create(CsvDataManager::getInstance()->getMapName(this->getData()->getLocation().map_id)) };
+    mapNotification->setPosition(mapNotification->getContentSize().width / 2 , WINDOW_HEIGHT - mapNotification->getContentSize().height / 2);
+    this->addChild(mapNotification, Priority::NOTIFICATION);
+    
+    mapNotification->notify();
 }
 
 // メニューキー押したとき
