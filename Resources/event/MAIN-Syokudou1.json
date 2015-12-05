@@ -1663,7 +1663,7 @@
 								},
 								{
 									"type":"questionMsg",
-									"text":["焔の裃をあげますか？"],
+									"text":["焔のかみしもをあげますか？"],
 									"choices":[
 										{
 											"choice":"はい",
