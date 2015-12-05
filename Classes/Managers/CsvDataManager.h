@@ -60,17 +60,13 @@ public:
         CONDITION,
         COMMENT
     };
+    
+// インスタンス変数
 private:
     static const map<DataType, string> file_type;
     map<DataType, map<int, vector<string>>> csv_data;
     
-//インスタンス変数
-private:
-    //FileUtils
-    cocos2d::FileUtils* fu;
-public:
-    
-//singleton用関数
+// singleton用関数
 public:
     static CsvDataManager* getInstance();
     static void destroy();
@@ -80,7 +76,7 @@ private:
     CsvDataManager(const CsvDataManager& other){}; // コピーコンストラクタ
     CsvDataManager& operator = (const CsvDataManager& other); // 代入演算子
     
-//関数
+// 関数
 private:
     map<int, vector<string>> readCsvFile(string file_name);
     
