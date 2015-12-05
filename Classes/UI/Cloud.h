@@ -13,6 +13,10 @@
 
 class Cloud : public Node
 {
+// 定数
+private:
+    static const float MARGIN;
+    
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(Cloud, const Size&)

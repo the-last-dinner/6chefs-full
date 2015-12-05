@@ -24,23 +24,26 @@ bool TrophyNotification::init(const string& message)
     this->setOpacity(0);
     
     // ラベルを生成
-    Label* label { Label::createWithTTF(message, Resource::Font::system, 30.f) };
+    Label* messageL {Label::createWithTTF("トロフィを獲得しました", Resource::Font::system, 20.f)};
+    Label* trophyName { Label::createWithTTF(message, Resource::Font::system, 25.f) };
     
     // トロフィ生成
     Sprite* trophy { Sprite::createWithSpriteFrameName("trophy_gold.png") };
-    float trophyScale {label->getContentSize().height / trophy->getContentSize().height};
+    float trophyScale { (messageL->getContentSize().height + trophyName->getContentSize().height) * 0.6f / trophy->getContentSize().height};
     trophy->setScale(trophyScale);
     
     // 背景を生成
-    Cloud* bg { Cloud::create(Size(trophy->getContentSize().width + label->getContentSize().width, label->getContentSize().height)) };
-    bg->addChild(label);
+    Cloud* bg { Cloud::create(Size(trophy->getContentSize().width * trophyScale + max(trophyName->getContentSize().width, messageL->getContentSize().width), trophyName->getContentSize().height)) };
+    bg->addChild(messageL);
+    bg->addChild(trophyName);
     bg->addChild(trophy);
     this->addChild(bg);
     
-    label->setPosition(trophy->getContentSize().width, 0);
-    trophy->setPosition(-bg->getContentSize().width / 2, 0);
+    messageL->setPosition(trophy->getContentSize().width * trophyScale / 2, messageL->getContentSize().height / 2 + 5.f);
+    trophyName->setPosition(trophy->getContentSize().width * trophyScale / 2, -messageL->getContentSize().height / 2);
+    trophy->setPosition(-bg->getContentSize().width / 2 + trophy->getContentSize().width * trophyScale, 0);
     
-    this->setPosition(WINDOW_CENTER);
+    this->setPosition(WINDOW_WIDTH - bg->getContentSize().width / 2, WINDOW_HEIGHT - bg->getContentSize().height / 2);
     
     return true;
 }
@@ -49,7 +52,7 @@ bool TrophyNotification::init(const string& message)
 void TrophyNotification::notify(AnimationCallback callback)
 {
     Point toPosition {this->getPosition()};
-    this->setPosition(toPosition - Vec2(0, 30.f));
+    this->setPosition(toPosition + Vec2(0, 30.f));
     this->runAction(Spawn::createWithTwoActions(FadeIn::create(0.3f), EaseCubicActionOut::create(MoveTo::create(0.3f, toPosition))));
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(0.3f), CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
@@ -58,7 +61,7 @@ void TrophyNotification::notify(AnimationCallback callback)
 void TrophyNotification::close(AnimationCallback callback)
 {
     this->runAction(Sequence::createWithTwoActions(Spawn::createWithTwoActions(FadeOut::create(0.3f),
-                                                                               EaseCubicActionIn::create(MoveBy::create(0.3f, Vec2(0, -15.f)))),
+                                                                               EaseCubicActionIn::create(MoveBy::create(0.3f, Vec2(0, 15.f)))),
                                                    CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
 

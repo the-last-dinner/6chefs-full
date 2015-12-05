@@ -15,8 +15,6 @@ class MapNameNotification : public NotificationNode
 {
 // 定数
 private:
-    static const float MARGIN_V;
-    static const float MARGIN_H;
     static const float ANIMATION_DURATION;
     
 // クラスメソッド

@@ -10,6 +10,9 @@
 
 #include "cocos-ext.h"
 
+// 定数
+const float Cloud::MARGIN {25.f};
+
 // コンストラクタ
 Cloud::Cloud() {FUNCLOG};
 
@@ -29,7 +32,7 @@ bool Cloud::init(const Size& size)
     this->addChild(sprite);
     
     // 最小サイズ
-    float scale { size.width / sprite->getContentSize().width };
+    float scale { (size.width + MARGIN * 2) / sprite->getContentSize().width };
     sprite->setScale(scale);
     this->setContentSize(sprite->getContentSize() * scale);
     

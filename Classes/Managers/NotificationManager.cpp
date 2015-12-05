@@ -9,6 +9,7 @@
 #include "Managers/NotificationManager.h"
 
 #include "Managers/CsvDataManager.h"
+#include "Managers/SoundManager.h"
 
 #include "UI/Notification/MapNameNotification.h"
 #include "UI/Notification/TrophyNotification.h"
@@ -44,6 +45,7 @@ void NotificationManager::notifyTrophy(const int trophyId)
     TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyName(trophyId)) };
     Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
     n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
+    SoundManager::getInstance()->playSE(Resource::SE::trophy_notification);
 }
 
 // 通知の表示アニメーション終了時

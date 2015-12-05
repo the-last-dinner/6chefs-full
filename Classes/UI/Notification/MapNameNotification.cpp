@@ -11,8 +11,6 @@
 #include "UI/Cloud.h"
 
 // 定数
-const float MapNameNotification::MARGIN_H {25.f};
-const float MapNameNotification::MARGIN_V {35.f};
 const float MapNameNotification::ANIMATION_DURATION {1.f};
 
 // コンストラクタ
@@ -32,7 +30,7 @@ bool MapNameNotification::init(const string& message)
     Label* label { Label::createWithTTF(message, Resource::Font::system, 30.f) };
     
     // 背景を生成
-    Cloud* bg { Cloud::create(label->getContentSize() + Size(MARGIN_H * 2, MARGIN_V * 2)) };
+    Cloud* bg { Cloud::create(label->getContentSize()) };
     bg->addChild(label);
     this->addChild(bg);
     

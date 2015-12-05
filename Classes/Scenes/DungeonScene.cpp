@@ -177,7 +177,7 @@ void DungeonScene::onPassedEventFinished()
     // マップ名通知
     NotificationManager::getInstance()->notifyMapName(this->getData()->getLocation().map_id);
     
-    NotificationManager::getInstance()->notifyTrophy(10);
+    NotificationManager::getInstance()->notifyTrophy(11);
 }
 
 // メニューキー押したとき
