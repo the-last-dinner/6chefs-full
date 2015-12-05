@@ -116,7 +116,7 @@ int LocalPlayerData::getSaveCount(){return this->localData[SAVE_COUNT].GetInt();
 // プレイ時間をセット
 void LocalPlayerData::setPlayTime(const int secound)
 {
-    int playTime = this->getPlayTime();
+    int playTime = secound;
     if (playTime >= 360000) playTime = 359999;
     this->localData[PLAY_TIME].SetInt(playTime);
 }
@@ -162,6 +162,17 @@ bool LocalPlayerData::checkFriendship(const int chara_id, const int level)
 {
     int value = this->getFriendship(chara_id);
     return level == value ? true : false;
+}
+
+// 友好度がMAXの人数を取得
+int LocalPlayerData::getMaxFriendshipCount()
+{
+    int maxCount {0};
+    for (int i = 1; i <= 5; i++)
+    {
+        if (this->checkFriendship(i, 2)) maxCount++;
+    }
+    return maxCount;
 }
 
 #pragma mark -
@@ -407,27 +418,17 @@ bool LocalPlayerData::checkEventStatus(const int map_id, const int event_id, con
 #pragma mark -
 #pragma mark Party
 
-// オブジェクトの座標のセット
-void LocalPlayerData::setLocation(const Location& location, const int num)
-{
-    if (num == 0) this->localData[MAP_ID].SetInt(location.map_id);
-    this->localData[PARTY][num][X].SetInt(location.x);
-    this->localData[PARTY][num][Y].SetInt(location.y);
-    this->localData[PARTY][num][DIRECTION].SetInt(static_cast<int>(location.direction));
-    return;
-}
-
-void LocalPlayerData::setLocation(const CharacterData& character, const int num)
-{
-    this->setLocation(character.location, num);
-}
-
+// パーティの座標のセット
 void LocalPlayerData::setLocation(const vector<CharacterData>& characters)
 {
     int chara_count = characters.size();
     for (int i = 0; i < chara_count; i++)
     {
-        this->setLocation(characters[i], i);
+        Location location {characters[i].location};
+        if (i == 0) this->localData[MAP_ID].SetInt(location.map_id);
+        this->localData[PARTY][i][X].SetInt(location.x);
+        this->localData[PARTY][i][Y].SetInt(location.y);
+        this->localData[PARTY][i][DIRECTION].SetInt(static_cast<int>(location.direction));
     }
 }
 

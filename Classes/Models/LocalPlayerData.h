@@ -80,6 +80,7 @@ public:
     void setFriendship(const int chara_id, const int level);
     int getFriendship(const int chara_id);
     bool checkFriendship(const int chara_id, const int level);
+    int getMaxFriendshipCount();
     
     // Equipment
     void setItemEquipment(const Direction direction, const int item_id);
@@ -105,8 +106,6 @@ public:
     bool checkEventStatus(const int map_id, const int event_id, const int status);
     
     // Party
-    void setLocation(const Location& location, const int num = 0);
-    void setLocation(const CharacterData& character, const int num = 0);
     void setLocation(const vector<CharacterData>& characters);
     void setPartyMember(const CharacterData& chara);
     bool removePartyMember(const int obj_id);
