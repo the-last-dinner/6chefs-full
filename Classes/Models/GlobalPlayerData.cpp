@@ -8,6 +8,7 @@
 
 #include "Models/GlobalPlayerData.h"
 #include "Managers/CsvDataManager.h"
+#include "Managers/NotificationManager.h"
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 
@@ -131,11 +132,14 @@ void GlobalPlayerData::setTrophy(const int trophy_id)
     
     // 指定したトロフィーIDが存在するかチェック
     if(itr == this->globalData[TROPHY].MemberEnd()){
+        // keyを作成してtrueを登録
         this->globalData[TROPHY].AddMember(tid, rapidjson::Value(true), this->globalData.GetAllocator());
-    }
-    else
-    {
-        this->globalData[TROPHY][tid_char].SetBool(true);
+        
+        // トロフィーゲット通知
+        NotificationManager::getInstance()->notifyTrophy(trophy_id);
+        
+        // グローバルデータをセーブ　　　
+        this->saveGlobalData();
     }
 }
 
