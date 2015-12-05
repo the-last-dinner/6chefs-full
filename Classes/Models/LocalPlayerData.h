@@ -105,8 +105,6 @@ public:
     bool checkEventStatus(const int map_id, const int event_id, const int status);
     
     // Party
-    void setLocation(const Location& location, const int num = 0);
-    void setLocation(const CharacterData& character, const int num = 0);
     void setLocation(const vector<CharacterData>& characters);
     void setPartyMember(const CharacterData& chara);
     bool removePartyMember(const int obj_id);

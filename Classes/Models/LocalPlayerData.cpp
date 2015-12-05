@@ -407,27 +407,17 @@ bool LocalPlayerData::checkEventStatus(const int map_id, const int event_id, con
 #pragma mark -
 #pragma mark Party
 
-// オブジェクトの座標のセット
-void LocalPlayerData::setLocation(const Location& location, const int num)
-{
-    if (num == 0) this->localData[MAP_ID].SetInt(location.map_id);
-    this->localData[PARTY][num][X].SetInt(location.x);
-    this->localData[PARTY][num][Y].SetInt(location.y);
-    this->localData[PARTY][num][DIRECTION].SetInt(static_cast<int>(location.direction));
-    return;
-}
-
-void LocalPlayerData::setLocation(const CharacterData& character, const int num)
-{
-    this->setLocation(character.location, num);
-}
-
+// パーティの座標のセット
 void LocalPlayerData::setLocation(const vector<CharacterData>& characters)
 {
     int chara_count = characters.size();
     for (int i = 0; i < chara_count; i++)
     {
-        this->setLocation(characters[i], i);
+        Location location {characters[i].location};
+        if (i == 0) this->localData[MAP_ID].SetInt(location.map_id);
+        this->localData[PARTY][i][X].SetInt(location.x);
+        this->localData[PARTY][i][Y].SetInt(location.y);
+        this->localData[PARTY][i][DIRECTION].SetInt(static_cast<int>(location.direction));
     }
 }
 
