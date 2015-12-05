@@ -43,9 +43,16 @@ void NotificationManager::notifyMapName(const int mapId)
 void NotificationManager::notifyTrophy(const int trophyId)
 {
     TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyName(trophyId)) };
-    Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
     this->notifications.pushBack(n);
     this->notifyInQueue(n);
+}
+
+// キューに残っている通知を再開する。シーン切替完了時に実行
+void NotificationManager::notifyRemainsInQueue()
+{
+    if(this->notifications.empty()) return;
+    
+    this->notifyInQueue(this->notifications.front());
 }
 
 // トロフィ獲得通知をキューから表示
@@ -53,6 +60,7 @@ void NotificationManager::notifyInQueue(NotificationNode* node)
 {
     if(this->notifications.front() != node) return;
     
+    Director::getInstance()->getRunningScene()->addChild(node, Priority::NOTIFICATION);
     node->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
     SoundManager::getInstance()->playSE(Resource::SE::trophy_notification);
 }

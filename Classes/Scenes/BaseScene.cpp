@@ -8,10 +8,12 @@
 
 #include "Scenes/BaseScene.h"
 
+#include "Datas/Scene/SceneData.h"
+
 #include "Layers/LoadingLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
-#include "Datas/Scene/SceneData.h"
+#include "Managers/NotificationManager.h"
 
 // コンストラクタ
 BaseScene::BaseScene(){}
@@ -38,6 +40,9 @@ bool BaseScene::init(SceneData* data)
 void BaseScene::onEnter()
 {
     Scene::onEnter();
+    
+    // 通知がキューに残っていたら、通知を開始する
+    NotificationManager::getInstance()->notifyRemainsInQueue();
     
     // すでにプリロード済みなら無視
     if(this->preloaded) return;
