@@ -76,6 +76,8 @@ void NotificationManager::onNotifyExitAnimationFinished(NotificationNode* node)
 {
     node->removeFromParent();
     
+    if(this->notifications.empty()) return;
+    
     if(this->notifications.front() != node) return;
     
     this->notifications.erase(0);
