@@ -21,6 +21,7 @@
 #include "MapObjects/Party.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Managers/NotificationManager.h"
 
 #include "Models/Stamina.h"
 
@@ -34,7 +35,6 @@
 #include "Tasks/PlayerControlTask.h"
 
 #include "UI/StaminaBar.h"
-#include "UI/NotificationCloud.h"
 
 // コンストラクタ
 DungeonScene::DungeonScene() {FUNCLOG}
@@ -175,11 +175,12 @@ void DungeonScene::onAfterInitEventFinished()
 void DungeonScene::onPassedEventFinished()
 {
     // マップ名通知
-    NotificationCloud* mapNotification { NotificationCloud::create(CsvDataManager::getInstance()->getMapName(this->getData()->getLocation().map_id)) };
-    mapNotification->setPosition(mapNotification->getContentSize().width / 2 , WINDOW_HEIGHT - mapNotification->getContentSize().height / 2);
-    this->addChild(mapNotification, Priority::NOTIFICATION);
+    NotificationManager::getInstance()->notifyMapName(this->getData()->getLocation().map_id);
     
-    mapNotification->notify();
+    for(int i {1}; i < 13; i++)
+    {
+        NotificationManager::getInstance()->notifyTrophy(i);
+    }
 }
 
 // メニューキー押したとき

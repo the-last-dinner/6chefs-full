@@ -239,6 +239,8 @@
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC0914511C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
 		DC0914521C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
+		DC19381A1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
+		DC19381B1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
 		DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
 		DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */; };
@@ -261,6 +263,12 @@
 		DC6E38FF1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
 		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DC8115901C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
+		DCAB379D1C120952000DF676 /* MapNameNotification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB37971C120952000DF676 /* MapNameNotification.cpp */; };
+		DCAB379E1C120952000DF676 /* MapNameNotification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB37971C120952000DF676 /* MapNameNotification.cpp */; };
+		DCAB379F1C120952000DF676 /* NotificationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB37991C120952000DF676 /* NotificationNode.cpp */; };
+		DCAB37A01C120952000DF676 /* NotificationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB37991C120952000DF676 /* NotificationNode.cpp */; };
+		DCAB37A11C120952000DF676 /* TrophyNotification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB379B1C120952000DF676 /* TrophyNotification.cpp */; };
+		DCAB37A21C120952000DF676 /* TrophyNotification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB379B1C120952000DF676 /* TrophyNotification.cpp */; };
 		DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
 		DCAB9BB91BFF19A100887F68 /* Chaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BB61BFF19A100887F68 /* Chaser.cpp */; };
 		DCAB9BBC1BFF1A2100887F68 /* CheapChaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */; };
@@ -271,8 +279,6 @@
 		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCDD2D621C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
 		DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
-		DCDD2D661C11B83B00FE7289 /* NotificationCloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */; };
-		DCDD2D671C11B83B00FE7289 /* NotificationCloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */; };
 		DCE10A5B1C0E154D000FCE81 /* PlainArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCE10A591C0E154D000FCE81 /* PlainArea.cpp */; };
 		DCE10A5C1C0E154D000FCE81 /* PlainArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCE10A591C0E154D000FCE81 /* PlainArea.cpp */; };
 		DCF1DEC31BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */; };
@@ -567,6 +573,8 @@
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
 		DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverSceneData.cpp; sourceTree = "<group>"; };
 		DC0914501C0F30AC007ACA50 /* GameOverSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverSceneData.h; sourceTree = "<group>"; };
+		DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationManager.cpp; path = ../Classes/Managers/NotificationManager.cpp; sourceTree = "<group>"; };
+		DC1938191C11F71200C0DBF1 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = ../Classes/Managers/NotificationManager.h; sourceTree = "<group>"; };
 		DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonCameraSceneData.cpp; sourceTree = "<group>"; };
 		DC2325711C09D700009338F3 /* DungeonCameraSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonCameraSceneData.h; sourceTree = "<group>"; };
 		DC2769101C0800A300DAA11C /* ChangeMapHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeMapHistory.cpp; path = ../Classes/Models/ChangeMapHistory.cpp; sourceTree = "<group>"; };
@@ -591,6 +599,12 @@
 		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
 		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
 		DC9986FA1C11954C0057BA7B /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = ../Classes/resources.h; sourceTree = "<group>"; };
+		DCAB37971C120952000DF676 /* MapNameNotification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapNameNotification.cpp; path = ../Classes/UI/Notification/MapNameNotification.cpp; sourceTree = "<group>"; };
+		DCAB37981C120952000DF676 /* MapNameNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapNameNotification.h; path = ../Classes/UI/Notification/MapNameNotification.h; sourceTree = "<group>"; };
+		DCAB37991C120952000DF676 /* NotificationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationNode.cpp; path = ../Classes/UI/Notification/NotificationNode.cpp; sourceTree = "<group>"; };
+		DCAB379A1C120952000DF676 /* NotificationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationNode.h; path = ../Classes/UI/Notification/NotificationNode.h; sourceTree = "<group>"; };
+		DCAB379B1C120952000DF676 /* TrophyNotification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrophyNotification.cpp; path = ../Classes/UI/Notification/TrophyNotification.cpp; sourceTree = "<group>"; };
+		DCAB379C1C120952000DF676 /* TrophyNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrophyNotification.h; path = ../Classes/UI/Notification/TrophyNotification.h; sourceTree = "<group>"; };
 		DCAB9BB61BFF19A100887F68 /* Chaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chaser.cpp; path = ../Classes/MapObjects/MovePatterns/Chaser.cpp; sourceTree = "<group>"; };
 		DCAB9BB71BFF19A100887F68 /* Chaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaser.h; path = ../Classes/MapObjects/MovePatterns/Chaser.h; sourceTree = "<group>"; };
 		DCAB9BBA1BFF1A2100887F68 /* CheapChaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CheapChaser.cpp; path = ../Classes/MapObjects/MovePatterns/CheapChaser.cpp; sourceTree = "<group>"; };
@@ -601,8 +615,6 @@
 		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
 		DCDD2D601C11B7A000FE7289 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cloud.cpp; path = ../Classes/UI/Cloud.cpp; sourceTree = "<group>"; };
 		DCDD2D611C11B7A000FE7289 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cloud.h; path = ../Classes/UI/Cloud.h; sourceTree = "<group>"; };
-		DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationCloud.cpp; path = ../Classes/UI/NotificationCloud.cpp; sourceTree = "<group>"; };
-		DCDD2D651C11B83B00FE7289 /* NotificationCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCloud.h; path = ../Classes/UI/NotificationCloud.h; sourceTree = "<group>"; };
 		DCE10A591C0E154D000FCE81 /* PlainArea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlainArea.cpp; path = ../Classes/MapObjects/TerrainObject/PlainArea.cpp; sourceTree = "<group>"; };
 		DCE10A5A1C0E154D000FCE81 /* PlainArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainArea.h; path = ../Classes/MapObjects/TerrainObject/PlainArea.h; sourceTree = "<group>"; };
 		DCF1DEC11BFE3F7600D670B3 /* MovePatternFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePatternFactory.cpp; path = ../Classes/MapObjects/MovePatterns/MovePatternFactory.cpp; sourceTree = "<group>"; };
@@ -696,6 +708,7 @@
 		262728631C084B9E0028B732 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DCAB378A1C12081A000DF676 /* Notification */,
 				DCDD2D601C11B7A000FE7289 /* Cloud.cpp */,
 				DCDD2D611C11B7A000FE7289 /* Cloud.h */,
 				262728641C084D3A0028B732 /* NotificationBand.cpp */,
@@ -704,8 +717,6 @@
 				26EB893C1C086A01001BEA9F /* SlideNode.h */,
 				DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */,
 				DCAD927D1C0C18760059E4C4 /* StaminaBar.h */,
-				DCDD2D641C11B83B00FE7289 /* NotificationCloud.cpp */,
-				DCDD2D651C11B83B00FE7289 /* NotificationCloud.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -985,6 +996,8 @@
 				26F989D31BA4BCF0009EB4B5 /* CsvDataManager.h */,
 				553577D71BE9DFF00095E6A9 /* DungeonSceneManager.cpp */,
 				553577D81BE9DFF00095E6A9 /* DungeonSceneManager.h */,
+				DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */,
+				DC1938191C11F71200C0DBF1 /* NotificationManager.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1248,6 +1261,19 @@
 			name = TerrainObject;
 			sourceTree = "<group>";
 		};
+		DCAB378A1C12081A000DF676 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				DCAB37991C120952000DF676 /* NotificationNode.cpp */,
+				DCAB379A1C120952000DF676 /* NotificationNode.h */,
+				DCAB37971C120952000DF676 /* MapNameNotification.cpp */,
+				DCAB37981C120952000DF676 /* MapNameNotification.h */,
+				DCAB379B1C120952000DF676 /* TrophyNotification.cpp */,
+				DCAB379C1C120952000DF676 /* TrophyNotification.h */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1444,7 +1470,6 @@
 				263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
 				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
-				DCDD2D661C11B83B00FE7289 /* NotificationCloud.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
@@ -1478,11 +1503,13 @@
 				DC40ADFC1C0F47E100864861 /* EndingScene.cpp in Sources */,
 				556C71761BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				26221DFF1BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
+				DCAB379F1C120952000DF676 /* NotificationNode.cpp in Sources */,
 				DCAB9BB81BFF19A100887F68 /* Chaser.cpp in Sources */,
 				DC02F71F1BFF85B800FE4CBB /* EnemyTask.cpp in Sources */,
 				DC398BEA1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */,
 				26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */,
 				DCDD2D621C11B7A000FE7289 /* Cloud.cpp in Sources */,
+				DCAB379D1C120952000DF676 /* MapNameNotification.cpp in Sources */,
 				553577DD1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
 				5534BBCD1B2D33D7003CB847 /* DungeonScene.cpp in Sources */,
 				260F45CE1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
@@ -1499,6 +1526,7 @@
 				55F302301BDA331900BDC418 /* GameEvent.cpp in Sources */,
 				26BA61F11BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
 				55619F621B36970B007EBD6E /* MapObject.cpp in Sources */,
+				DCAB37A11C120952000DF676 /* TrophyNotification.cpp in Sources */,
 				55655AED1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				55E542A91BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
 				5564CCED1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */,
@@ -1516,6 +1544,7 @@
 				5544706E1BDCCA380048CD0B /* SoundEvent.cpp in Sources */,
 				5534BBDC1B2DDF52003CB847 /* Character.cpp in Sources */,
 				26E27D451C118DC100157F9A /* JsonUtils.cpp in Sources */,
+				DC19381A1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */,
 				556C716E1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				551A51781BF239F600D6263A /* Direction.cpp in Sources */,
 			);
@@ -1533,6 +1562,7 @@
 				557A87DB1B49215F001993E1 /* EventObject.cpp in Sources */,
 				26EB893E1C086A01001BEA9F /* SlideNode.cpp in Sources */,
 				55F1B61A1BBEBECB00AA64EE /* MapObjectList.cpp in Sources */,
+				DC19381B1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */,
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
 				DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
@@ -1554,13 +1584,13 @@
 				26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
 				26D9F56B1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
 				5544706B1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
+				DCAB379E1C120952000DF676 /* MapNameNotification.cpp in Sources */,
 				DCF1DEC41BFE3F7600D670B3 /* MovePatternFactory.cpp in Sources */,
 				55655AEE1B39A3AB000AFC17 /* DungeonSceneData.cpp in Sources */,
 				556C71731BC3FBDE00835D15 /* VerticalFollow.cpp in Sources */,
 				5564CCEA1BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				557C035C1B37D11E00F3F8A2 /* SoundManager.cpp in Sources */,
 				2640E14C1C0ADAF300BC74F7 /* PasswordEventLayer.cpp in Sources */,
-				DCDD2D671C11B83B00FE7289 /* NotificationCloud.cpp in Sources */,
 				DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */,
 				260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
 				263BC5A81C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
@@ -1581,6 +1611,7 @@
 				55C3C1EF1BD143B700ECDB50 /* GameTask.cpp in Sources */,
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
+				DCAB37A01C120952000DF676 /* NotificationNode.cpp in Sources */,
 				555B650F1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
 				26D9F56F1C117608003BA438 /* LocalPlayerData.cpp in Sources */,
 				DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
@@ -1610,6 +1641,7 @@
 				557A87CE1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
 				557A87C51B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				55C3C1E71BD09BBC00ECDB50 /* RandomMove.cpp in Sources */,
+				DCAB37A21C120952000DF676 /* TrophyNotification.cpp in Sources */,
 				5564CCEE1BCB915D00A4C6D2 /* SystemMessageData.cpp in Sources */,
 				266E76551BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				556C715C1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
