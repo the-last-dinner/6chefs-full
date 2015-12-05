@@ -95,7 +95,7 @@
   </object>
   <object id="32" x="240" y="320" width="32" height="32">
    <properties>
-    <property name="CharaID" value="1"/>
+    <property name="CharaID" value="21"/>
     <property name="direction" value="LEFT"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="10106"/>
