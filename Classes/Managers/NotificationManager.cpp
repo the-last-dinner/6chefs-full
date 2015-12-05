@@ -44,7 +44,16 @@ void NotificationManager::notifyTrophy(const int trophyId)
 {
     TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyName(trophyId)) };
     Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
-    n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
+    this->notifications.pushBack(n);
+    this->notifyInQueue(n);
+}
+
+// トロフィ獲得通知をキューから表示
+void NotificationManager::notifyInQueue(NotificationNode* node)
+{
+    if(this->notifications.front() != node) return;
+    
+    node->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
     SoundManager::getInstance()->playSE(Resource::SE::trophy_notification);
 }
 
@@ -58,5 +67,13 @@ void NotificationManager::onNotifyEnterAnimationFinished(NotificationNode* node)
 void NotificationManager::onNotifyExitAnimationFinished(NotificationNode* node)
 {
     node->removeFromParent();
+    
+    if(this->notifications.front() != node) return;
+    
+    this->notifications.erase(0);
+    
+    if(this->notifications.empty()) return;
+    
+    this->notifyInQueue(this->notifications.front());
 }
 
