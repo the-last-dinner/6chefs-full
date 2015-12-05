@@ -116,7 +116,7 @@ int LocalPlayerData::getSaveCount(){return this->localData[SAVE_COUNT].GetInt();
 // プレイ時間をセット
 void LocalPlayerData::setPlayTime(const int secound)
 {
-    int playTime = this->getPlayTime();
+    int playTime = secound;
     if (playTime >= 360000) playTime = 359999;
     this->localData[PLAY_TIME].SetInt(playTime);
 }
