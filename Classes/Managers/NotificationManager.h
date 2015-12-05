@@ -27,13 +27,12 @@ private:
 // インスタンスメソッド
 public:
     void notifyMapName(const int mapId);
-    void onNotifyEnterAnimationFinished(NotificationNode* node);
-    void onNotifyExitAnimationFinished(NotificationNode* node);
-    
     void notifyTrophy(const int trophyId);
     
 private:
     void notifyInQueue(NotificationNode* node);
+    void onNotifyEnterAnimationFinished(NotificationNode* node);
+    void onNotifyExitAnimationFinished(NotificationNode* node);
 };
 
 #endif /* NotificationManager_h */
