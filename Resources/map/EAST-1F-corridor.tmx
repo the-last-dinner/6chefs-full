@@ -143,13 +143,13 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="31" x="16" y="128" width="144" height="32">
+  <object id="31" x="16" y="112" width="144" height="32">
    <properties>
     <property name="EventID" value="6"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="32" x="416" y="32" width="32" height="32">
+  <object id="32" x="416" y="80" width="32" height="16">
    <properties>
     <property name="EventID" value="7"/>
     <property name="trigger" value="1"/>

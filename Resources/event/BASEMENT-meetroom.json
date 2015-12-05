@@ -196,7 +196,7 @@
 						{
 							"type":"createChara",
 							"objID":"1076"
-						},
+						}, 
 						{
 							"type":"wait",
 							"time":2.0

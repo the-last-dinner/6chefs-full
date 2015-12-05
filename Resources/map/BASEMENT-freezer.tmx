@@ -36,6 +36,14 @@
    eJxjYCAPRLEwMESzkKkZC3BlZWBwY8Utv44FgokFyUCzUvCYd4YFgokFjUCzmvCYNwqoAyyBYWzFSpgmFoQD1UawEqZHAX3AaPwOLwAAFdISUQ==
   </data>
  </layer>
+ <layer name="ice" width="20" height="20">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEa4B4LRZxcsEpID5NJbNgbqOWG2Fuo5YbcbmPXPfich81w3QUjIJRMArIAQCNvhGV
+  </data>
+ </layer>
  <objectgroup name="collision">
   <object id="3" x="256" y="0" width="64" height="160"/>
   <object id="4" x="256" y="192" width="64" height="96"/>
@@ -78,7 +86,7 @@
  </layer>
  <layer name="CharaUe2" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYICAZEYIRgduQDF3Rtx8XADZvDVAvBYqngIUS2VEmAPjEwtgZsHoJqDeZiRzYHxiwSkgPo1EwwCp5uByHwxcBOJLpBuH033vgfgDGeZRG7gyEoeHi3kjDQz2+BiN34EFAAstKa8=
+   eJxjYICAZEYIRgduQDF3Rtx8XACXeSlAsVRGhDkwPrmgCai3GckcGJ9SQC1zhjtwZSQOD5R5o4AyMBq/owAfAACKYhOk
   </data>
  </layer>
  <objectgroup name="event">
