@@ -114,7 +114,7 @@
 						{
 							"text":["ああ、あはは、アハハ"],
 							"charaID":"3",
-							"imgID":"3"
+							"imgID":"2"
 						},
 						{
 							"text":["一色さん！！"],
@@ -123,6 +123,14 @@
 							"option":"reaction"
 						}
 					]
+				},
+				{
+					"type":"removeChara",
+					"objID":"1065"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1064"
 				},
 				{
 					"type":"fadein"
@@ -171,87 +179,68 @@
 	],
 	"7":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"Nstatus":["3","1"]
+				}
+			],
 			"action":[
 				{
-					"type":"removeEnemy",
-					"enemyID":"1421"
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["61","6"]
-						}
-					],
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
+							"type":"fadeout"
+						},
+						{
+							"type":"createChara",
+							"objID":"1076"
+						},
+						{
+							"type":"wait",
+							"time":2.0
+						},
+						{
+							"type":"removeEnemy",
+							"enemyID":"1421"
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"UP",
+							"steps":3.0
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"DOWN"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
 								{
-									"type":"fadeout"
+									"text":["もう追ってこないみたいですね"],
+									"charaID":"0",
+									"imgID":"1"
 								},
 								{
-									"type":"releaseChase",
-									"objID":"1067"
+									"text":["うう・・・"],
+									"charaID":"3",
+									"imgID":"2"
 								},
 								{
-									"type":"removeChara",
-									"objID":"1067"
-								},
-								{
-									"type":"createChara",
-									"objID":"1076"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"spawn",
-									"action":[
-										{
-											"type":"charaWalk",
-											"objID":"hero",
-											"direction":"UP",
-											"steps":3.0
-										},
-										{
-											"type":"charaWalk",
-											"objID":"1067",
-											"direction":"UP",
-											"steps":3.0
-										}
-									]
-								},
-								{
-									"type":"changeDirection",
-									"objID":"hero",
-									"direction":"DOWN"
-								},
-								{
-									"type":"charaMsg",
-									"talk":[
-										{
-											"text":["もう追ってこないみたいですね"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"text":["うう・・・"],
-											"charaID":"3",
-											"imgID":"2"
-										},
-										{
-											"text":["一色さん！！どこかに隠れていて下さい\n僕は出口を探してきます"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"already"
-										}
-									]
+									"text":["一色さん！！どこかに隠れていて下さい\n僕は出口を探してきます"],
+									"charaID":"0",
+									"imgID":"1"
 								}
 							]
+						},
+						{
+							"type":"already"
 						},
 						{
 							"type":"if",
@@ -262,47 +251,53 @@
 							],
 							"action":[
 								{
-									"type":"spawn",
+									"type":"sequence",
 									"action":[
 										{
+											"type":"spawn",
+											"action":[
+												{
+													"type":"playSE",
+													"file":"kimowarai.wav"
+												},
+												{
+													"type":"charaMsg",
+													"text":["ああ、あはは、アハハははははは"],
+													"name":"一色真夏"
+												}
+											]
+										},
+										{
+											"type":"fadeout"
+										},
+										{
 											"type":"playSE",
-											"file":"kimowarai.wav"
+											"file":"hit.mp3"
 										},
 										{
 											"type":"charaMsg",
-											"text":["ああ、あはは、アハハははははは"],
-											"charaID":"3",
-											"imgID":"3"
+											"text":["一色さん！？"],
+											"charaID":"0",
+											"imgID":"2",
+											"option":"reaction"
+										},
+										{
+											"type":"removeChara",
+											"objID":"1076"
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"charaMsg",
+											"text":["ダメだ・・・\n正気を失ってる\nドコ行ったんだろう・・・"],
+											"charaID":"0",
+											"imgID":"2"
+										},
+										{
+											"type":"already"
 										}
 									]
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"hit.mp3"
-								},
-								{
-									"type":"charaMsg",
-									"text":["一色さん！？"],
-									"charaID":"0",
-									"imgID":"2",
-									"option":"reaction"
-								},
-								{
-									"type":"removeChara",
-									"objID":"1076"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"charaMsg",
-									"text":["ダメだ・・・\n正気を失ってる\nドコ行ったんだろう・・・"]
-								},
-								{
-									"type":"already"
 								}
 							]
 						}

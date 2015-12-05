@@ -21,20 +21,20 @@
 						{
 							"type":"createEnemy",
 							"enemyID":"1411",
-							"charaID":"13",
+							"charaID":"16",
 							"x":2,
 							"y":8,
 							"movePattern":"1",
-							"times":2
+							"times":3
 						},
 						{
 							"type":"createEnemy",
 							"enemyID":"1412",
-							"charaID":"14",
+							"charaID":"13",
 							"x":4,
 							"y":14,
 							"movePattern":"2",
-							"times":2
+							"times":3
 						},
 						{
 							"type":"createEnemy",
@@ -43,7 +43,7 @@
 							"x":12,
 							"y":14,
 							"movePattern":"1",
-							"times":2
+							"times":3
 						},
 						{
 							"type":"createEnemy",
@@ -52,7 +52,7 @@
 							"x":8,
 							"y":6,
 							"movePattern":"2",
-							"times":2
+							"times":3
 						},
 						{
 							"type":"already"

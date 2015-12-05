@@ -19,7 +19,7 @@
 					"type":"charaMsg",
 					"text":["（いた！アイツだ・・・）"],
 					"charaID":"0",
-					"imgID":"2"
+					"imgID":"3"
 				},
 				{
 					"type":"wait",
@@ -34,33 +34,10 @@
 				{
 					"type":"storyMsg",
 					"title":"操作説明「潜水」",
-					"text":["潜水の操作説明"]
+					"text":["水中では走ることが出来ません\nまた、泳ぐだけで体力を多く消耗します。\nうまく物陰に隠れて休みながら\n真夏を救出しましょう"]
 				},
 				{
 					"type":"already"
-				}
-			]
-		}
-	],
-	"3":[
-		{
-			"type":"spawn",
-			"action":[
-				{
-					"type":"removeChara",
-					"objID":"1815"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1816"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1817"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1818"
 				}
 			]
 		}
@@ -95,7 +72,7 @@
 							"type":"charaMsg",
 							"text":["急ごう・・・"],
 							"charaID":"0",
-							"imgID":"1"
+							"imgID":"2"
 						},
 						{
 							"type":"already"
@@ -113,35 +90,40 @@
 			],
 			"action":[
 				{
-					"type":"fadeout"
-				},
-				{
-					"type":"removeLayer",
-					"layer":"manaka"
-				},
-				{
-					"type":"charaMsg",
-					"text":["え・・・？"],
-					"charaID":"0",
-					"imgID":"3"
-				},
-				{
-					"type":"fadein"
-				},
-				{
-					"type":"charaMsg",
-					"text":["そんな・・・"],
-					"charaID":"0",
-					"imgID":"3"
-				},
-				{
-					"type":"charaMsg",
-					"text":["とにかく・・・水から出なきゃ・・・"],
-					"charaID":"0",
-					"imgID":"3"
-				},
-				{
-					"type":"already"
+					"type":"sequence",
+					"action":[
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"removeLayer",
+							"layer":"manaka"
+						},
+						{
+							"type":"charaMsg",
+							"text":["え・・・？"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"charaMsg",
+							"text":["そんな・・・"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["とにかく・・・水から出なきゃ・・・"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"already"
+						}
+					]
 				}
 			]
 		}
@@ -179,32 +161,28 @@
 							"type":"fadeout"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaWarp",
-									"objID":"hero",
-									"direction":"RIGHT",
-									"x":16,
-									"y":25
-								},
-								{
-									"type":"createChara",
-									"objID":"1066"
-								},
-								{
-									"type":"removeEnemy",
-									"enemyID":"1420"
-								},
-								{
-									"type":"createEnemy",
-									"enemyID":"1421",
-									"charaID":"8",
-									"x":14,
-									"y":5,
-									"speed":1.2
-								}
-							]
+							"type":"charaWalkTo",
+							"objID":"hero",
+							"x":18,
+							"y":25,
+							"speed":10.0
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"LEFT"
+						},
+						{
+							"type":"createChara",
+							"objID":"1066"
+						},
+						{
+							"type":"createChara",
+							"objID":"10105"
+						},
+						{
+							"type":"removeEnemy",
+							"enemyID":"1420"
 						},
 						{
 							"type":"fadein"
@@ -224,10 +202,6 @@
 									"option":"reaction"
 								}
 							]
-						},
-						{
-							"type":"reaction",
-							"enemyID":"1421"
 						},
 						{
 							"type":"charaMsg",
@@ -254,35 +228,47 @@
 									"text":["・・・・・・・・・・・・"],
 									"charaID":"3",
 									"imgID":"2"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"spawn",
-									"action":[
-										{
-											"type":"removeChara",
-											"objID":"1066"
-										},
-										{
-											"type":"createChara",
-											"objID":"1067"
-										}
-									]
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"chase",
-									"objID":"1067",
-									"target":"hero"
-								},
-								{
-									"type":"already"
 								}
 							]
+						},
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"removeChara",
+									"objID":"1066"
+								},
+								{
+									"type":"createChara",
+									"objID":"1067"
+								},
+								{
+									"type":"removeChara",
+									"objID":"10105"
+								}
+							]
+						},
+						{
+							"type":"createEnemy",
+							"enemyID":"1421",
+							"charaID":"8",
+							"x":14,
+							"y":5,
+							"speed":1.2
+						},
+						{
+							"type":"fadein"
+						},
+						{
+							"type":"chase",
+							"objID":"1067",
+							"target":"hero"
+						},
+						{
+							"type":"already"
 						}
 					]
 				}
@@ -306,25 +292,26 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"charaWarp",
+									"type":"charaWalkTo",
 									"objID":"hero",
-									"direction":"RIGHT",
-									"x":16,
-									"y":25
+									"x":18,
+									"y":25,
+									"speed":10.0
 								},
 								{
 									"type":"removeEnemy",
 									"enemyID":"1420"
 								},
 								{
-									"type":"createEnemy",
-									"enemyID":"1421",
-									"charaID":"8",
-									"x":14,
-									"y":5,
-									"speed":1.2
+									"type":"createChara",
+									"objID":"10105"
 								}
 							]
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"LEFT"
 						},
 						{
 							"type":"charaMsg",
@@ -334,8 +321,20 @@
 							"option":"reaction"
 						},
 						{
-							"type":"displayImg",
-							"file":"manaka_neck.png"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"displayImg",
+									"file":"manaka_neck.png"
+								},
+								{
+									"type":"playSE",
+									"file":"despair.mp3"
+								}
+							]
+						},
+						{
+							"type":"fadein"
 						},
 						{
 							"type":"charaMsg",
@@ -346,7 +345,7 @@
 						},
 						{
 							"type":"reaction",
-							"enemyID":"1421"
+							"objID":"10105"
 						},
 						{
 							"type":"charaMsg",
@@ -364,6 +363,24 @@
 									"option":"reaction"
 								}
 							]
+						},
+						{
+							"type":"fadeout"
+						},
+						{
+							"type":"removeChara",
+							"objID":"10105"
+						},
+						{
+							"type":"createEnemy",
+							"enemyID":"1421",
+							"charaID":"8",
+							"x":14,
+							"y":5,
+							"speed":1.2
+						},
+						{
+							"type":"fadein"
 						},
 						{
 							"type":"already"
@@ -384,7 +401,7 @@
 			"action":[
 				{
 					"type":"createEnemy",
-					"objID":"1420",
+					"enemyID":"1420",
 					"charaID":"8",
 					"x":16,
 					"y":7,

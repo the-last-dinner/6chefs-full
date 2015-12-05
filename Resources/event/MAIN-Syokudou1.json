@@ -2008,6 +2008,41 @@
 					"objID":"1022"
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["3","30"],
+					"Nevent":["4","15"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1027"
+				},
+				{
+					"type":"createChara",
+					"objID":"1022"
+				},
+				{
+					"type":"createChara",
+					"objID":"1019"
+				},
+				{
+					"type":"createChara",
+					"objID":"10103"
+				},
+				{
+					"type":"createChara",
+					"objID":"10101"
+				},
+				{
+					"type":"createChara",
+					"objID":"10104"
+				}
+			]
 		}
 	],
 	"33":[
@@ -3917,11 +3952,59 @@
 	],
 	"58":[
 		{
-			"type":"charaMsg",
-			"text":["俺は東棟を見てくる\nお前は西棟を頼む"],
-			"charaID":"5",
-			"imgID":"1",
-			"option":"reaction"
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["4","15"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["クソッ！"],
+					"charaID":"5",
+					"imgID":"1",
+					"option":"reaction"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","15"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["俺は東棟を見てくる\nお前は西棟を頼む"],
+					"charaID":"5",
+					"imgID":"1",
+					"option":"reaction"
+				}
+			]
+		}
+	],
+	"59":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["3","30"],
+					"Nevent":["4","15"]
+				}
+			],
+			"action":[
+				{
+					"type":"createChara",
+					"objID":"1027"
+				},
+				{
+					"type":"createChara",
+					"objID":"1022"
+				}
+			]
 		}
 	]
 

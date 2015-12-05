@@ -70,9 +70,11 @@
   <object id="29" x="144" y="160" width="32" height="32">
    <properties>
     <property name="CharaID" value="17"/>
+    <property name="EventID" value="7"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1062"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

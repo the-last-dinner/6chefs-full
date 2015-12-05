@@ -364,6 +364,11 @@
 	],
 	"6":[
 		{
+			"type":"changeDirection",
+			"objID":"hero",
+			"direction":"UP"
+		},
+		{
 			"type":"fadein"
 		}
 	]
