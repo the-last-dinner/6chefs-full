@@ -121,7 +121,7 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
     if(!mapObject) return;
     
     this->setMapObjectPosition(mapObject);
-    mapObject->drawDebugMask();
+    if (DebugManager::getInstance()->displayDebugMask()) mapObject->drawDebugMask();
     mapObject->setMapObjectList(this->objectList);
     this->tiledMap->addChild(mapObject);
     this->setZOrderByPosition(mapObject);

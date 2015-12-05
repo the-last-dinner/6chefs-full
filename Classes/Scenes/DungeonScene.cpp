@@ -222,6 +222,7 @@ void DungeonScene::onBackToTitleSelected()
 // 主人公が敵に触れた時
 void DungeonScene::onContactWithEnemy()
 {
+    if (DebugManager::getInstance()->isInvincibleMode()) return;
     DungeonSceneManager::destroy();
     Director::getInstance()->replaceScene(GameOverScene::create(GameOverScene::Type::BLOOD));
 }
