@@ -22,7 +22,8 @@ private:
         string map_name {};
         string play_time {};
         string save_count {};
-        SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc){};
+        int friendship {0};
+        SaveIndex(int i, const string& chap, const string& mn, const string& pt, const string& sc, const int fs):data_id(i), chapter(chap), map_name(mn), play_time(pt), save_count(sc), friendship(fs){};
         SaveIndex(){};
     };
     
@@ -30,11 +31,6 @@ private:
 public:
 	CREATE_FUNC_WITH_PARAM(SaveDataSelector, bool);
 	virtual bool init(bool write);
-	
-	// クラス変数
-private:
-	static const float INNER_H_MARGIN_RATIO;
-	static const float INNER_V_MARGIN_RATIO;
     
     // インスタンス変数
 private:

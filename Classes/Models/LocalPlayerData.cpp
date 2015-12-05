@@ -164,6 +164,17 @@ bool LocalPlayerData::checkFriendship(const int chara_id, const int level)
     return level == value ? true : false;
 }
 
+// 友好度がMAXの人数を取得
+int LocalPlayerData::getMaxFriendshipCount()
+{
+    int maxCount {0};
+    for (int i = 1; i <= 5; i++)
+    {
+        if (this->checkFriendship(i, 2)) maxCount++;
+    }
+    return maxCount;
+}
+
 #pragma mark -
 #pragma mark Equipment
 

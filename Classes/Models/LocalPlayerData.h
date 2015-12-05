@@ -80,6 +80,7 @@ public:
     void setFriendship(const int chara_id, const int level);
     int getFriendship(const int chara_id);
     bool checkFriendship(const int chara_id, const int level);
+    int getMaxFriendshipCount();
     
     // Equipment
     void setItemEquipment(const Direction direction, const int item_id);
