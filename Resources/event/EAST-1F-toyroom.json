@@ -33,35 +33,8 @@
 									"choice":"はい",
 									"action":[
 										{
-											"type":"sequence",
-											"action":[
-												{
-													"type":"spawn",
-													"action":[
-														{
-															"type":"playSE",
-															"file":"door1.mp3"
-														},
-														{
-															"type":"removeLayer",
-															"layer":"door"
-														},
-														{
-															"type":"removeChara",
-															"objID":"187"
-														},
-														{
-															"type":"already"
-														}
-													]
-												}
-											]
-										},
-										{
-											"type":"charaWalk",
-											"direction":"UP",
-											"objID":"hero",
-											"steps":1.0
+											"type":"playSE",
+											"file":"door1.mp3"
 										},
 										{
 											"type":"changeMap",

@@ -5,6 +5,26 @@
 			"mapID":"58",
 			"x":14,
 			"y":17
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"Nstatus":["3","1"],
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"releaseChase",
+					"objID":"1067"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1067"
+				}
+			]
 		}
 	],
 	"2":[
@@ -20,7 +40,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"equip":["1514"]
+					"equip":["1514"],
+					"Nevent":["60","4"]
 				}
 			],
 			"action":[

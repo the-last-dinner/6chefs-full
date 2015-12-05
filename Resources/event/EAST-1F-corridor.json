@@ -51,10 +51,6 @@
 							"layer":"door2"
 						},
 						{
-							"type":"removeLayer",
-							"layer":"door3"
-						},
-						{
 							"type":"changeMap",
 							"mapID":"35",
 							"x":13,
@@ -133,6 +129,17 @@
 							]
 						},
 						{
+							"type":"charaWalkTo",
+							"objID":"hero",
+							"x":8,
+							"y":8
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"RIGHT"
+						},
+						{
 							"type":"wait",
 							"time":1.0
 						},
@@ -151,31 +158,22 @@
 								},
 								{
 									"type":"charaMsg",
-									"text":["アハ、佐々木ぃ・・・\nアンタもアタシのジュースになってくれんの？？"],
+									"text":["あは！！佐々木じゃない！\nアンタもアタシのジュースになってくれんの？？"],
 									"charaID":"7",
-									"name":"一色　真夏(イッシキ　マナカ)"
+									"name":"一色　真夏"
 								}
 							]
 						},
 						{
-							"type":"charaWalk",
-							"direction":"UP",
-							"steps":1.0,
-							"speed":2.0,
-							"objID":"1072"
+							"type":"charaWalkTo",
+							"objID":"1072",
+							"x":10,
+							"y":8
 						},
 						{
-							"type":"charaWalk",
-							"direction":"RIGHT",
-							"steps":0.5,
-							"speed":2.0,
-							"objID":"1072"
-						},
-						{
-							"type":"charaWalk",
-							"direction":"UP",
-							"speed":2.0,
-							"objID":"1072"
+							"type":"changeDirection",
+							"objID":"1072",
+							"direction":"LEFT"
 						},
 						{
 							"type":"barrage",
@@ -188,10 +186,9 @@
 										{
 											"type":"fadeout"
 										},
-
 										{
 											"type":"playSE",
-											"file":"splash1.mp3"
+											"file":"blood.wav"
 										},
 										{
 											"type":"fadein"
@@ -207,30 +204,22 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"spawn",
-											"action":[
-												{
-													"type":"charaMsg",
-													"text":["うわあ！！"],
-													"charaID":"0",
-													"imgID":"2",
-													"option":"reaction"
-												},
-												{
-													"type":"charaMove",
-													"eaging":"out",
-													"direction":"DOWN",
-													"steps":2,
-													"objID":"1072"
-												},
-												{
-													"type":"playSE",
-													"file":"bon1.mp3"
-												}
-											]
+											"type":"fadeout"
 										},
 										{
-											"type":"fadeout"
+											"type":"charaMsg",
+											"text":["うわあ！！"],
+											"charaID":"0",
+											"imgID":"2",
+											"option":"reaction"
+										},
+										{
+											"type":"playSE",
+											"file":"bon1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
 										},
 										{
 											"type":"spawn",
@@ -241,13 +230,23 @@
 												},
 												{
 													"type":"createChara",
-													"objID":"1073"
+													"objID":"1078"
 												}
 											]
 										},
 										{
+											"type":"charaWalkTo",
+											"objID":"1078",
+											"x":12,
+											"y":8
+										},
+										{
 											"type":"playSE",
-											"file":"bakibaki.wav"
+											"file":"blood.wav"
+										},
+										{
+											"type":"wait",
+											"time":1.0
 										},
 										{
 											"type":"spawn",
@@ -255,7 +254,7 @@
 												{
 													"type":"charaMsg",
 													"text":["コポポポポポポポ・・・"],
-													"charaID":"",
+													"charaID":"3",
 													"imgID":"3"
 												},
 												{
@@ -263,6 +262,15 @@
 													"file":"ofu.wav"
 												}
 											]
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"charaMsg",
+											"text":["一色さん・・・？"],
+											"charaID":"0",
+											"imgID":"3"
 										}
 									]
 								}
@@ -307,24 +315,14 @@
 								},
 								{
 									"type":"changeDirection",
-									"direction":"LEFT",
+									"direction":"UP",
 									"objID":"1072"
 								}
 							]
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"reaction",
-									"objID":"hero"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"RIGHT",
-									"objID":"hero"
-								}
-							]
+							"type":"reaction",
+							"objID":"hero"
 						},
 						{
 							"type":"wait",
@@ -332,32 +330,36 @@
 						},
 						{
 							"type":"charaMsg",
-							"talk":[
+							"text":["一色さん・・・何・・・\nしてるの・・・？"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"spawn",
+							"action":[
 								{
-									"text":["一色さん・・・何・・・\nしてるの・・・？"],
-									"charaID":"0",
-									"imgID":"3"
+									"type":"displayImg",
+									"file":"manaka_juiced.png"
 								},
 								{
+									"type":"charaMsg",
 									"text":["あは！！佐々木じゃない！\nアンタもアタシのジュースになってくれんの？？"],
-									"charaID":"3",
-									"imgID":"3",
-									"option":"reaction"
+									"charaID":"7",
+									"name":"一色　真夏"
 								}
 							]
 						},
 						{
 							"type":"charaWalk",
+							"objID":"1072",
 							"direction":"UP",
-							"steps":1.0,
-							"speed":2.0,
-							"objID":"1072"
+							"steps":2.0
 						},
 						{
 							"type":"charaWalk",
-							"direction":"LEFT",
-							"speed":2.0,
-							"objID":"1072"
+							"objID":"1072",
+							"direction":"RIGHT",
+							"steps":0.5
 						},
 						{
 							"type":"barrage",
@@ -371,17 +373,8 @@
 											"type":"fadeout"
 										},
 										{
-											"type":"spawn",
-											"action":[
-												{
-													"type":"displayImg",
-													"file":"manaka_juiced.png"
-												},
-												{
-													"type":"playSE",
-													"file":"splash1.mp3"
-												}
-											]
+											"type":"playSE",
+											"file":"splash1.mp3"
 										},
 										{
 											"type":"fadein"
@@ -397,30 +390,22 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"spawn",
-											"action":[
-												{
-													"type":"charaMsg",
-													"text":["うわあ！！"],
-													"charaID":"0",
-													"imgID":"2",
-													"option":"reaction"
-												},
-												{
-													"type":"charaMove",
-													"eaging":"out",
-													"direction":"RIGHT",
-													"steps":5,
-													"objID":"1072"
-												},
-												{
-													"type":"playSE",
-													"file":"bon1.mp3"
-												}
-											]
+											"type":"fadeout"
 										},
 										{
-											"type":"fadeout"
+											"type":"charaMsg",
+											"text":["うわあ！！"],
+											"charaID":"0",
+											"imgID":"2",
+											"option":"reaction"
+										},
+										{
+											"type":"playSE",
+											"file":"bon1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
 										},
 										{
 											"type":"spawn",
@@ -431,13 +416,17 @@
 												},
 												{
 													"type":"createChara",
-													"objID":"1073"
+													"objID":"1078"
 												}
 											]
 										},
 										{
 											"type":"playSE",
-											"file":"bakibaki.wav"
+											"file":"splash1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
 										},
 										{
 											"type":"spawn",
@@ -453,6 +442,15 @@
 													"file":"ofu.wav"
 												}
 											]
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"charaMsg",
+											"text":["一色さん・・・？"],
+											"charaID":"0",
+											"imgID":"3"
 										}
 									]
 								}
@@ -473,7 +471,7 @@
 					]
 				}
 			]
-		}
+		}	
 	],
 	"8":[
 		{
@@ -496,7 +494,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nflg":1
+					"flg":0
 				}
 			],
 			"action":[
@@ -515,13 +513,10 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["やっぱり・・・ムリだったんだ・・・\nこんな所から皆で生きて脱出なんて・・・\nハハ、ハハハハハハ・・・"],
+							"text":["やっぱり・・・\nムリだったんだ・・・","ハハ、ハハハハハハ・・・"],
 							"charaID":"0",
-							"imgID":"2"
-						},
-						{
-							"type":"already"
-						},
+							"imgID":"3"
+						}, 
 						{
 							"type":"changeflg",
 							"flg":1
