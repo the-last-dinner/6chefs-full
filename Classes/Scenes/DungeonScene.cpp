@@ -87,7 +87,7 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     mapLayer->setParty(party);
     
     // 環境光レイヤー生成
-    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::NIGHT)};
+    AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::ROOM)};
     ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
     this->addChild(ambientLightLayer);
     this->ambientLightLayer = ambientLightLayer;
@@ -153,7 +153,7 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 // Trigger::INITのイベント実行後
 void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 {
-    this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    //this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
     cameraTask->setTarget( this->party->getMainCharacter() );
     
     this->enemyTask->start(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id);

@@ -26,10 +26,11 @@ bool SetAmbientLightEvent::init(rapidjson::Value& json)
     // 環境光の色
     map<string, Color3B> strToColor
     {
+        {"basement", AmbientLightLayer::BASEMENT},
         {"day", AmbientLightLayer::DAY},
         {"evening", AmbientLightLayer::EVENING},
         {"night", AmbientLightLayer::NIGHT},
-        {"basement", AmbientLightLayer::BASEMENT},
+        {"room", AmbientLightLayer::ROOM},
     };
     
     string str {json[member::AMBIENT].GetString()};
