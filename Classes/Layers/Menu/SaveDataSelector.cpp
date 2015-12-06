@@ -80,11 +80,11 @@ bool SaveDataSelector::init(bool write = false)
         for (int i=0; i<data.friendship; i++)
         {
             Sprite* heart {Sprite::createWithSpriteFrameName("heart_pink.png")};
-            float scale = 0.33;
+            float scale = 0.30;
             heart->setScale(scale);
-            heart->setOpacity(150);
+            heart->setOpacity(128);
             Size heartSize {Size(heart->getContentSize().width * scale - 5, heart->getContentSize().height * scale - 25)};
-            heart->setPosition(i * (heartSize.width + 5) + heartSize.width + num->getContentSize().width + 5, heartSize.height / 2 + margin);
+            heart->setPosition(i * (heartSize.width + 8) + heartSize.width + num->getContentSize().width + 10, heartSize.height / 2 + margin);
             panel->addChild(heart);
         }
         
@@ -128,7 +128,7 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
                              LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local->getLocation().map_id)),
                              local->getPlayTimeForDisplay(),
                              LastSupper
-                             ::StringUtils::getSprintf("%03s", to_string(local->getSaveCount())) + "回",
+                             ::StringUtils::getSprintf("%3s", to_string(local->getSaveCount())) + "回",
                              local->getMaxFriendshipCount()
                              );
         }

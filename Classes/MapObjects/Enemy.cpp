@@ -31,6 +31,9 @@ bool Enemy::init(const EnemyData& data)
     CC_SAFE_RETAIN(this->movePattern);
     CC_SAFE_RELEASE(factory);
     
+    // 速さの倍率を設定
+    this->movePattern->setSpeedRatio(data.speed_ratio);
+    
     return true;
 }
 

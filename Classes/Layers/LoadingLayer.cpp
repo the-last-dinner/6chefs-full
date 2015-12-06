@@ -18,8 +18,6 @@ LoadingLayer::~LoadingLayer(){FUNCLOG}
 bool LoadingLayer::init()
 {
 	if(!Layer::init()) return false;
-
-    this->setCascadeOpacityEnabled(true);
     
 	// plistを読み込み
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(TextureManager::basePath + "load.plist");
@@ -59,5 +57,6 @@ bool LoadingLayer::init()
 // ロード完了時の処理
 void LoadingLayer::onLoadFinished()
 {
+    this->setCascadeOpacityEnabled(true);
     this->runAction(Sequence::createWithTwoActions(FadeOut::create(0.5f), RemoveSelf::create()));
 }

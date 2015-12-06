@@ -48,10 +48,10 @@ bool TitleSceneData::init()
 	
 	this->soundFilePaths =
 	{
-		"se/cursorMove.mp3",
-		"se/back.mp3",
-		"se/gameStart.mp3",
-		"se/title-enter.mp3"
+		//"se/cursorMove.mp3",
+		//"se/back.mp3",
+		//"se/gameStart.mp3",
+		//"se/title-enter.mp3"
 	};
     
 	return true;
