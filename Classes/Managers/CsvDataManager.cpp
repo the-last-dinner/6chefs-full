@@ -39,7 +39,7 @@ CsvDataManager::~CsvDataManager()
 {FUNCLOG}
 
 // コンストラクタ
-CsvDataManager::CsvDataManager():fu(FileUtils::getInstance())
+CsvDataManager::CsvDataManager()
 {
     FUNCLOG
     //各CSVデータの取得
@@ -53,7 +53,7 @@ CsvDataManager::CsvDataManager():fu(FileUtils::getInstance())
 map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
 {
     //ファイル読み込み
-    ifstream file(this->fu->fullPathForFilename("csv/" + file_name + ".csv"));
+    ifstream file(FileUtils::getInstance()->fullPathForFilename("csv/" + file_name + ".csv"));
     map<int, vector<string>> values;
     string str;
     int p, i, data_id;

@@ -186,6 +186,7 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
             string file_name = level>=i ? "heart_pink.png" : "heart_black.png";
             Sprite* heart {Sprite::createWithSpriteFrameName(file_name)};
             heart->setScale(0.50);
+            heart->setOpacity(180);
             heart->setPosition(i * panel.width / 3 + panel.width / 6, heart->getContentSize().height / 4 + 15);
             heart_panel->addChild(heart);
         }

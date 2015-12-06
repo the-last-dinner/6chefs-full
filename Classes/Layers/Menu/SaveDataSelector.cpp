@@ -13,10 +13,6 @@
 #include "Datas/Scene/DungeonSceneData.h"
 #include "UI/NotificationBand.h"
 
-// 定数
-const float SaveDataSelector::INNER_H_MARGIN_RATIO = 0.05f;
-const float SaveDataSelector::INNER_V_MARGIN_RATIO = 0.05f;
-
 // コンストラクタ
 SaveDataSelector::SaveDataSelector(){FUNCLOG}
 
@@ -43,6 +39,8 @@ bool SaveDataSelector::init(bool write = false)
 	this->saveDatas = this->getSaveList();
 	
 	Point center = WINDOW_CENTER;
+    float margin {15.f};
+    
 	for(int i = 0; i < this->saveDatas.size();i++)
 	{
 		SaveIndex data {this->saveDatas.at(i)};
@@ -53,26 +51,42 @@ bool SaveDataSelector::init(bool write = false)
 		this->addChild(panel);
 		this->menuObjects.push_back(panel);
 		
-		// 表示ラベルを生成
+        // 番号
+        Label* num = Label::createWithTTF(to_string(data.data_id), "fonts/cinecaption2.28.ttf", panelSize.height / 5);
+        num->setPosition(Point(num->getContentSize().width / 2 + margin, panel->getContentSize().height - num->getContentSize().height / 2 - margin));
+        panel->addChild(num);
+        
 		// チャプター
 		Label* name = Label::createWithTTF(data.chapter, "fonts/cinecaption2.28.ttf", panelSize.height / 5);
-		name->setPosition(Point(name->getContentSize().width / 2 + panelSize.width * INNER_H_MARGIN_RATIO, panel->getContentSize().height / 2));
+		name->setPosition(Point(name->getContentSize().width / 2 + num->getContentSize().width + margin * 2, name->getContentSize().height * 2 + margin));
 		panel->addChild(name);
         
 		// マップ名
 		Label* mapName = Label::createWithTTF(data.map_name, "fonts/cinecaption2.28.ttf", panelSize.height / 6);
-		mapName->setPosition(Point(panelSize.width - mapName->getContentSize().width / 2 - panelSize.width * INNER_H_MARGIN_RATIO, panelSize.height * 0.75f));
+		mapName->setPosition(Point(panelSize.width - mapName->getContentSize().width / 2 - margin, panelSize.height - mapName->getContentSize().height/2 - margin));
 		panel->addChild(mapName);
 		
 		// プレイ時間
 		Label* time = Label::createWithTTF(data.play_time, "fonts/cinecaption2.28.ttf", panelSize.height / 6);
-		time->setPosition(Point(panelSize.width - time->getContentSize().width / 2 - panelSize.width * INNER_V_MARGIN_RATIO, panelSize.height * 0.25f));
+		time->setPosition(Point(panelSize.width - time->getContentSize().width / 2 - margin, time->getContentSize().height / 2 + margin));
 		panel->addChild(time);
         
         // セーブ回数
-        Label* count = Label::createWithTTF(data.save_count + "回", "fonts/cinecaption2.28.ttf", panelSize.height / 6);
-        count->setPosition(Point(panelSize.width - time->getContentSize().width / 2 - panelSize.width * INNER_H_MARGIN_RATIO + 15, panelSize.height * 0.25f + time->getContentSize().height + 10));
+        Label* count = Label::createWithTTF(data.save_count, "fonts/cinecaption2.28.ttf", panelSize.height / 6);
+        count->setPosition(Point(panelSize.width - count->getContentSize().width / 2 - margin, time->getContentSize().height + time->getContentSize().height / 2 + margin * 2));
         panel->addChild(count);
+        
+        // 友好度
+        for (int i=0; i<data.friendship; i++)
+        {
+            Sprite* heart {Sprite::createWithSpriteFrameName("heart_pink.png")};
+            float scale = 0.33;
+            heart->setScale(scale);
+            heart->setOpacity(150);
+            Size heartSize {Size(heart->getContentSize().width * scale - 5, heart->getContentSize().height * scale - 25)};
+            heart->setPosition(i * (heartSize.width + 5) + heartSize.width + num->getContentSize().width + 5, heartSize.height / 2 + margin);
+            panel->addChild(heart);
+        }
         
 		// 不透明度を半分にしておく
 		panel->setCascadeOpacityEnabled(true);
@@ -103,7 +117,7 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
         {
             // セーブデータが存在しない
             this->existsSaveData[i-1] = false;
-            save = SaveIndex(i, "--- NO DATA ---", "---------------", "00h00m00s", "000");
+            save = SaveIndex(i, "--------- NO DATA ---------", "", "", "", 0);
             
         } else {
             // セーブデータが存在する
@@ -114,7 +128,8 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
                              LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local->getLocation().map_id)),
                              local->getPlayTimeForDisplay(),
                              LastSupper
-                             ::StringUtils::getSprintf("%03s", to_string(local->getSaveCount()))
+                             ::StringUtils::getSprintf("%03s", to_string(local->getSaveCount())) + "回",
+                             local->getMaxFriendshipCount()
                              );
         }
         save_list.push_back(save);
