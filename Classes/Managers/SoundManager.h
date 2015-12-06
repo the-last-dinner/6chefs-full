@@ -41,7 +41,7 @@ public:
 	
 	// インスタンス変数
 private:
-	map<string, int> soundMap;
+    map<int, string> preloadMap {};
     map<int, string> bgmIdMap {};
 };
 

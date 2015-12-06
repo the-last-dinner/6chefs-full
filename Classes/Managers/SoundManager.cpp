@@ -26,7 +26,7 @@ SoundManager* SoundManager::getInstance()
 void SoundManager::destory()
 {
 	delete _instance;
-	return;
+    _instance = nullptr;
 }
 
 // コンストラクタ
@@ -66,8 +66,8 @@ void SoundManager::stopBGM()
 void SoundManager::preloadSound(const string& filePath)
 {
     // プリロード関数がないため、音量ゼロで再生する
-    int audioId = AudioEngine::play2d(filePath, false, 0.0f);
-    this->soundMap.insert({filePath, audioId});
+    int audioId { AudioEngine::play2d(filePath, false, 0.0f) };
+    this->preloadMap.insert({audioId, filePath});
     
     // すぐに再生停止
     AudioEngine::stop(audioId);
@@ -78,12 +78,11 @@ void SoundManager::unloadAllSounds()
 {
 	FUNCLOG
 	// 音声パスリストを元にアンロードしていく
-	for(auto iterator : this->soundMap)
+	for(auto iterator : this->preloadMap)
 	{
-		AudioEngine::uncache(iterator.first);
+		AudioEngine::uncache(iterator.second);
 	}
 	
 	// 音声パスリストを初期化する
-	this->soundMap.clear();
-	return;
+	this->preloadMap.clear();
 }
