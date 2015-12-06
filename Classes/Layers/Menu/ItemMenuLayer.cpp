@@ -28,7 +28,7 @@ bool ItemMenuLayer::init()
     int sizeX = obj_count < maxSize.x ? obj_count : maxSize.x;
     int sizeY = obj_count < maxSize.x * maxSize.y ? floor((obj_count - 1 )/ maxSize.x) + 1 : maxSize.y;
     Size size = Size(sizeX, sizeY);
-    int page_size = floor(obj_count / (maxSize.x * maxSize.y)) + 1;
+    int page_size = floor(abs(obj_count-1) / (maxSize.x * maxSize.y)) + 1;
     if (!MenuLayer::init(size, page_size)) return false;
     
     SpriteUtils::Square square;
