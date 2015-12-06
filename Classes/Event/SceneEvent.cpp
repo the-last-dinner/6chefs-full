@@ -22,8 +22,10 @@
 #include "Managers/DungeonSceneManager.h"
 #include "Models/StopWatch.h"
 
+#include "Scenes/EndingScene.h"
 #include "Scenes/DungeonCameraScene.h"
 #include "Scenes/DungeonScene.h"
+#include "Scenes/GameOverScene.h"
 
 #pragma mark ChangeMapEvent
 
@@ -173,4 +175,42 @@ bool FadeInEvent::init(rapidjson::Value& json)
 void FadeInEvent::run()
 {
     DungeonSceneManager::getInstance()->fadeIn(this->duration, [this]{this->setDone();});
+}
+
+#pragma mark -
+#pragma mark GameOverEvent
+
+bool GameOverEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // ゲームオーバーのID
+    if(this->validator->hasMember(json, member::ID)) this->gameOverId = stoi(json[member::ID].GetString());
+    
+    return true;
+}
+
+void GameOverEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->exitDungeon(GameOverScene::create(static_cast<GameOverScene::Type>(this->gameOverId)));
+}
+
+#pragma mark -
+#pragma mark EndingEvent
+
+bool EndingEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // エンディングID
+    if(this->validator->hasMember(json, member::ID)) this->endingId = stoi(json[member::ID].GetString());
+    
+    return true;
+}
+
+void EndingEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->exitDungeon(EndingScene::create(this->endingId));
 }

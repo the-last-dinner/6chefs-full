@@ -62,6 +62,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"wait", WaitEvent::create},                    // 時間待機
         {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
+        {"gameover", GameOverEvent::create},            // ゲームオーバー
+        {"ending", EndingEvent::create},                // エンディング
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示

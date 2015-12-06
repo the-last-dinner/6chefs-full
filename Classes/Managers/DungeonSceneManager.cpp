@@ -195,6 +195,13 @@ void DungeonSceneManager::setMapObjectPosition(MapObject *mapObject)
 #pragma mark -
 #pragma mark Director
 
+// ダンジョンから抜ける
+void DungeonSceneManager::exitDungeon(Scene* scene)
+{
+    this->getScene()->onExitDungeon();
+    Director::getInstance()->replaceScene(scene);
+}
+
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location, const int initEventId)
 {

@@ -215,8 +215,7 @@ void DungeonScene::onMenuKeyPressed()
 void DungeonScene::onBackToTitleSelected()
 {
     Director::getInstance()->popScene();
-    DungeonSceneManager::destroy();
-    SoundManager::getInstance()->stopBGMAll();
+    this->onExitDungeon();
     Director::getInstance()->replaceScene(TitleScene::create());
 }
 
@@ -224,8 +223,7 @@ void DungeonScene::onBackToTitleSelected()
 void DungeonScene::onContactWithEnemy()
 {
     if (DebugManager::getInstance()->isInvincibleMode()) return;
-    DungeonSceneManager::destroy();
-    SoundManager::getInstance()->stopBGMAll();
+    this->onExitDungeon();
     Director::getInstance()->replaceScene(GameOverScene::create(GameOverScene::Type::BLOOD));
 }
 
@@ -234,6 +232,13 @@ void DungeonScene::onAllEnemyRemoved()
 {
     // スタミナバーを隠す
     this->staminaBar->slideOut();
+}
+
+// ダンジョンシーンから他のシーンへ移動する時
+void DungeonScene::onExitDungeon()
+{
+    DungeonSceneManager::destroy();
+    SoundManager::getInstance()->stopBGMAll();
 }
 
 // データクラスを取得

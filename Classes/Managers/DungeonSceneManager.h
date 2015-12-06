@@ -74,6 +74,7 @@ public:
     void setMapObjectPosition(MapObject* mapObject);
     
     // Director
+    void exitDungeon(Scene* scene);
     void changeMap(const Location& location, const int initEventId);
     void pushCameraScene(DungeonCameraScene* scene);
     void popCameraScene();
