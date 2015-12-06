@@ -1,20 +1,16 @@
 {
 	"1":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"event":["65","5"]
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["65","5"]
-						}
-					],
+					"type":"sequence",
 					"action":[
-						{
-							"type":"removeChara",
-							"objID":"hero"
-						},
 						{
 							"type":"wait",
 							"time":2.0
@@ -28,10 +24,19 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"charaWalkTo",
-									"objID":"1086",
-									"x":19,
-									"y":27
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaWalkTo",
+											"objID":"1086",
+											"x":19,
+											"y":27
+										},
+										{
+											"type":"removeChara",
+											"objID":"1086"
+										}
+									]
 								},
 								{
 									"type":"sequence",
@@ -53,21 +58,21 @@
 											"charaID":"2",
 											"imgID":"2",
 											"option":"reaction"
+										},
+										{
+											"type":"changeMap",
+											"mapID":"64",
+											"x":4,
+											"y":3
 										}
 									]
 								}
 							]
 						}
 					]
-				},
-				{
-					"type":"changeMap",
-					"mapID":"64",
-					"x":4,
-					"y":3
 				}
 			]
-		}
+		}				
 	],
 	"2":[
 		{
@@ -270,54 +275,63 @@
 					],
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1075"
-						},
-						{
-							"type":"fadein",
-							"time":2.0
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
+							"type":"sequence",
+							"action":[
 								{
-									"text":["ソレはやっちゃぁイケねぇよ・・・"],
-									"charaID":"2",
-									"imgID":"2"
+									"type":"playSE",
+									"file":"hit.mp3"
 								},
 								{
-									"text":["雪・・・なんで・・・！？"],
-									"charaID":"7"
-								}
-							]
-						},
-						{
-							"type":"asaa.wav"
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["があああああああああああああ"],
-									"charaID":"8",
-									"option":"reaction"
+									"type":"createChara",
+									"objID":"1075"
 								},
 								{
-									"text":["加藤さん！！"],
-									"charaID":"0",
-									"imgID":"2",
-									"option":"reaction"
+									"type":"fadein",
+									"time":2.0
 								},
 								{
-									"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた"],
-									"charaID":"2",
-									"imgID":"2",
-									"option":"reaction"
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["ソレはやっちゃぁイケねぇよ・・・"],
+											"charaID":"2",
+											"imgID":"2"
+										},
+										{
+											"text":["雪・・・なんで・・・！？"],
+											"charaID":"7"
+										}
+									]
 								},
 								{
-									"text":["は・・・はい！"],
-									"charaID":"0",
-									"imgID":"2"
+									"type":"asaa.wav"
+								},
+								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["があああああああああああああ"],
+											"charaID":"8",
+											"option":"reaction"
+										},
+										{
+											"text":["加藤さん！！"],
+											"charaID":"0",
+											"imgID":"2",
+											"option":"reaction"
+										},
+										{
+											"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた"],
+											"charaID":"2",
+											"imgID":"2",
+											"option":"reaction"
+										},
+										{
+											"text":["は・・・はい！"],
+											"charaID":"0",
+											"imgID":"2"
+										}
+									]
 								},
 								{
 									"type":"already"
@@ -467,7 +481,12 @@
 	],
 	"6":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["65","5"]
+				}
+			],
 			"action":[
 				{
 					"type":"createChara",
@@ -482,11 +501,6 @@
 	],
 	"7":[
 		{
-			"type":"changeDirection",
-			"objID":"1075",
-			"direction":"UP"
-		},
-		{
 			"type":"charaMsg",
 			"text":["中山が他のヤツらを集めてるハズだ！\nお前も早く大広間に向かえ！"],
 			"charaID":"2",
@@ -496,9 +510,19 @@
 	],
 	"8":[
 		{
-			"type":"charaMsg",
-			"text":["そんな・・・雪・・・どうして・・・"],
-			"charaID":"7"
+			"type":"if",
+			"condition":[
+				{
+					"event":["65","5"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["そんな・・・雪・・・どうして・・・"],
+					"charaID":"7"
+				}
+			]
 		}
 	],
 	"9":[
@@ -509,7 +533,39 @@
 	],
 	"10":[
 		{
-			"type":"sequence"
+			"type":"if",
+			"condition":[
+				{
+					"event":["65","5"],
+					"status":["2","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"createChara",
+							"objID":"1075"
+						},
+						{
+							"type":"createChara",
+							"objID":"10106"
+						},
+						{
+							"type":"createChara",
+							"objID":"1073"
+						},
+						{
+							"type":"charaWarp",
+							"objID":"1073",
+							"x":15,
+							"y":19,
+							"direction":"DOWN"
+						}
+					]
+				}
+			]
 		}
 	]
 }

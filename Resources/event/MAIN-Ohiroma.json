@@ -955,7 +955,9 @@
               "objID":"1084"
             },
             {
-              "type":"stopBGM"
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
             },
             {
               "type":"charaMsg",
@@ -974,7 +976,7 @@
             },
             {
               "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","\nさ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
               "charaID":"4",
               "imgID":"2"
             },
@@ -987,6 +989,9 @@
             {
               "type":"playSE",
               "file":"hit_dry.mp3"
+            },
+            {
+              "type":"stopBGM"
             },
             {
               "type":"changeDirection",
@@ -1044,6 +1049,9 @@
               "file":"hit.mp3"
             },
             {
+              "type":"stopBGM"
+            },
+            {
               "type":"wait",
               "time":0.8
             },
@@ -1062,34 +1070,39 @@
               "direction":"LEFT"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1080"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1082"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"reaction",
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1080"
+                },
+                {
+                  "type":"changeDirection",
+                  "objID":"1080",
+                  "direction":"UP"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1081"
+                },
+                {
+                  "type":"changeDirection",
+                  "objID":"1081",
+                  "direction":"UP"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1082"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -1107,7 +1120,7 @@
                 {
                   "text":["！？"],
                   "charaID":"3",
-                  "imgID":"2"
+                  "imgID":"1"
                 },
                 {
                   "text":["！？"],
@@ -1168,12 +1181,8 @@
               "type":"fadeout"
             },
             {
-              "type":"changeMap",
-              "mapID":"3",
-              "x":14,
-              "y":14,
-              "EventID":"49"
-            }           
+              "type":"end"
+            }        
           ]
         }
       ]
