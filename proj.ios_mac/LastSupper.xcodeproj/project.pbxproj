@@ -243,6 +243,8 @@
 		DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC02F71D1BFF85B800FE4CBB /* EnemyTask.cpp */; };
 		DC0914511C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
 		DC0914521C0F30AC007ACA50 /* GameOverSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */; };
+		DC09A4B11C14647400ADB474 /* MiniGameEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09A4AF1C14647400ADB474 /* MiniGameEvent.cpp */; };
+		DC09A4B21C14647400ADB474 /* MiniGameEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC09A4AF1C14647400ADB474 /* MiniGameEvent.cpp */; };
 		DC19381A1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
 		DC19381B1C11F71200C0DBF1 /* NotificationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */; };
 		DC2325721C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */; };
@@ -580,6 +582,8 @@
 		DC02F71E1BFF85B800FE4CBB /* EnemyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyTask.h; path = ../Classes/Tasks/EnemyTask.h; sourceTree = "<group>"; };
 		DC09144F1C0F30AC007ACA50 /* GameOverSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverSceneData.cpp; sourceTree = "<group>"; };
 		DC0914501C0F30AC007ACA50 /* GameOverSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverSceneData.h; sourceTree = "<group>"; };
+		DC09A4AF1C14647400ADB474 /* MiniGameEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MiniGameEvent.cpp; path = ../Classes/Event/MiniGameEvent.cpp; sourceTree = "<group>"; };
+		DC09A4B01C14647400ADB474 /* MiniGameEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniGameEvent.h; path = ../Classes/Event/MiniGameEvent.h; sourceTree = "<group>"; };
 		DC1938181C11F71200C0DBF1 /* NotificationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationManager.cpp; path = ../Classes/Managers/NotificationManager.cpp; sourceTree = "<group>"; };
 		DC1938191C11F71200C0DBF1 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = ../Classes/Managers/NotificationManager.h; sourceTree = "<group>"; };
 		DC2325701C09D700009338F3 /* DungeonCameraSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonCameraSceneData.cpp; sourceTree = "<group>"; };
@@ -1252,6 +1256,8 @@
 				554470711BDCD5D80048CD0B /* SceneEvent.h */,
 				5544706C1BDCCA380048CD0B /* SoundEvent.cpp */,
 				5544706D1BDCCA380048CD0B /* SoundEvent.h */,
+				DC09A4AF1C14647400ADB474 /* MiniGameEvent.cpp */,
+				DC09A4B01C14647400ADB474 /* MiniGameEvent.h */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1481,6 +1487,7 @@
 				551B79C21BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				263BC5A71C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
 				552D836C1B20BC6300B681A8 /* AppDelegate.cpp in Sources */,
+				DC09A4B11C14647400ADB474 /* MiniGameEvent.cpp in Sources */,
 				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
@@ -1594,6 +1601,7 @@
 				552F5DCC1B710D2900E4CEB6 /* StoryMessageLayer.cpp in Sources */,
 				DC02F7201BFF85B800FE4CBB /* EnemyTask.cpp in Sources */,
 				553577DE1BE9F7640095E6A9 /* DungeonCameraScene.cpp in Sources */,
+				DC09A4B21C14647400ADB474 /* MiniGameEvent.cpp in Sources */,
 				26221E001BEE86E7000203E6 /* MiniSelector.cpp in Sources */,
 				26D9F56B1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
 				5544706B1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
