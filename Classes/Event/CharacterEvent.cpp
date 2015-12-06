@@ -107,6 +107,9 @@ bool WalkToEvent::init(rapidjson::Value& json)
     // 目的地座標をcocos座標系で保持
     this->destPosition = this->validator->getPoint(json);
     
+    // 速さの倍率
+    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
+    
     return true;
 }
 
@@ -118,5 +121,5 @@ void WalkToEvent::run()
     PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
     deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(), this->destPosition) };
     
-    this->target->walkByQueue(directions, [this](bool reached){this->setDone();});
+    this->target->walkByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
 }

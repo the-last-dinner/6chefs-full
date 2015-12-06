@@ -73,6 +73,10 @@ bool RemoveEnemyEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
+    // 敵ID
+    if(!this->validator->hasMember(json, member::ENEMY_ID)) return false;
+    this->enemyId = stoi(json[member::ENEMY_ID].GetString());
+    
     return true;
 }
 

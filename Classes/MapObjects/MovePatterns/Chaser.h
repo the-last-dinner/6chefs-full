@@ -22,7 +22,9 @@ private:
     Chaser();
     ~Chaser();
     virtual bool init(Character* character) override;
-    virtual bool canGoToNextMap() const override { return true; };
+    virtual void start(const Rect& gridRect) override;
+    virtual bool canGoToNextMap() const override;
+    virtual float calcSummonDelay() const override;
 };
 
 #endif /* Chaser_h */
