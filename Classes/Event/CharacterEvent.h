@@ -67,6 +67,7 @@ public:
     CREATE_FUNC_WITH_PARAM(WalkToEvent, rapidjson::Value&)
 private:
     Point destPosition { Point::ZERO };
+    float speedRatio {1.f};
 private:
     WalkToEvent() {FUNCLOG};
     ~WalkToEvent() {FUNCLOG};

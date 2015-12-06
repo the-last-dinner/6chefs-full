@@ -21,3 +21,20 @@ bool Chaser::init(Character* character)
     
     return true;
 }
+
+// 追跡開始
+void Chaser::start(const Rect& gridRect)
+{
+    MovePattern::start(gridRect);
+    
+    
+}
+
+// マップ移動可能か
+bool Chaser::canGoToNextMap() const { return true; };
+
+// 出口までに掛る時間を計算
+float Chaser::calcSummonDelay() const
+{
+    return 0;
+}
