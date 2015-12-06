@@ -210,71 +210,44 @@ void LocalPlayerData::setItem(const int item_id){
     sprintf(iid_char, "%d", item_id);
     rapidjson::Value iid  (kStringType);
     iid.SetString(iid_char, strlen(iid_char), this->localData.GetAllocator());
-    
-    rapidjson::Value::ConstMemberIterator itr = this->localData[ITEM].FindMember(iid_char);
-    int count = 0;
-    if(itr != this->localData[ITEM].MemberEnd()){
-        //既にゲットしているアイテムなら個数を+1する
-        count = itr->value.GetInt();
-        this->localData[ITEM][iid_char].SetInt(count+1);
-    } else {
-        //初めてゲットしたアイテムならば新しい値をセット
-        this->localData[ITEM].AddMember(iid, rapidjson::Value(1), this->localData.GetAllocator());
-    }
+    this->localData[ITEM].PushBack(iid, this->localData.GetAllocator());
 }
 
 // アイテムを消費
 bool LocalPlayerData::removeItem(const int item_id)
 {
-    char iid_char[10];
-    sprintf(iid_char, "%d", item_id);
-    int count = this->getItemCount(item_id);
-    if (count > 0)
+    bool isExist = false;
+    vector<int> items {this->getItemAll()};
+    this->localData[ITEM].Clear();
+    this->localData[ITEM].SetArray();
+    int itemCount = items.size();
+    for(int i = 0; i < itemCount; i++)
     {
-        // 所持数を-1
-        this->localData[ITEM][iid_char].SetInt(count - 1);
-        // 右手を確認
-        if(item_id == this->getItemEquipment(Direction::RIGHT))
+        if (items[i] == item_id && !isExist)
         {
-            this->setItemEquipment(Direction::RIGHT, 0);
+            isExist = true;
         }
-        // 左手を確認
-        if (item_id == this->getItemEquipment(Direction::LEFT))
+        else
         {
-            this->setItemEquipment(Direction::LEFT, 0);
-        }
-        return true;
+            char iid_char[10];
+            sprintf(iid_char, "%d", items[i]);
+            rapidjson::Value iid  (kStringType);
+            iid.SetString(iid_char, strlen(iid_char), this->localData.GetAllocator());
+            this->localData[ITEM].PushBack(iid, this->localData.GetAllocator());
+        } 
     }
-    return false;
-}
-
-// 所持しているアイテムの所持数を取得
-int LocalPlayerData::getItemCount(const int item_id)
-{
-    rapidjson::Value& item = this->localData[ITEM];
-    char iid_char[10];
-    sprintf(iid_char, "%d", item_id);
-    rapidjson::Value::ConstMemberIterator itr = item.FindMember(iid_char);
-    int count = 0;
-    if(itr != item.MemberEnd()){
-        count =  itr->value.GetInt();
-    }
-    return count;
+    return isExist;
 }
 
 // 所持しているアイテムをすべて取得
-map<int, int> LocalPlayerData::getItemAll()
+vector<int> LocalPlayerData::getItemAll()
 {
-    map<int, int> items {};
-    rapidjson::Value& item = this->localData[ITEM];
-    for(rapidjson::Value::ConstMemberIterator itr = item.MemberBegin();itr != item.MemberEnd(); itr++)
+    vector<int> items {};
+    rapidjson::Value& itemList = this->localData[ITEM];
+    int itemCount = itemList.Size();
+    for(int i = 0; i < itemCount; i++)
     {
-        int item_id = stoi(itr->name.GetString());
-        int count = itr->value.GetInt();
-        if ( count > 0 )
-        {
-            items.insert({item_id, count});
-        }
+        items.push_back(stoi(itemList[i].GetString()));
     }
     return items;
 }
@@ -282,8 +255,13 @@ map<int, int> LocalPlayerData::getItemAll()
 // アイテムを所持しているか確認
 bool LocalPlayerData::hasItem(const int item_id)
 {
-    int count = this->getItemCount(item_id);
-    return count > 0 ? true : false;
+    rapidjson::Value& itemList = this->localData[ITEM];
+    int itemCount = itemList.Size();
+    for(int i = 0; i < itemCount; i++)
+    {
+        if (stoi(itemList[i].GetString()) == item_id) return true;
+    }
+    return false;
 }
 
 #pragma mark -

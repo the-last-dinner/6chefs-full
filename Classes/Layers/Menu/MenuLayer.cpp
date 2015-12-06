@@ -81,7 +81,7 @@ void MenuLayer::onCursorKeyPressed(const Key& key)
         case Key::DOWN:
             if (this->page_size > 1 && indexY + 1 == sizeY)
             {
-                this->page = this->page + 1 % this->page_size;
+                this->page = (this->page + 1) % this->page_size;
                 this->onPageChanged(this->page);
             }
             if(sizeY >= 2) this->indexY = (indexY + 1) % sizeY;

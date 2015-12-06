@@ -28,7 +28,7 @@ bool ItemMenuLayer::init()
     int sizeX = obj_count < maxSize.x ? obj_count : maxSize.x;
     int sizeY = obj_count < maxSize.x * maxSize.y ? floor((obj_count - 1 )/ maxSize.x) + 1 : maxSize.y;
     Size size = Size(sizeX, sizeY);
-    int page_size = floor(abs(obj_count-1) / (maxSize.x * maxSize.y)) + 1;
+    int page_size = floor(abs(obj_count-1 ) / (maxSize.x * maxSize.y)) + 1;
     if (!MenuLayer::init(size, page_size)) return false;
     
     SpriteUtils::Square square;
@@ -101,16 +101,16 @@ bool ItemMenuLayer::init()
     CC_SAFE_RETAIN(center);
     this->addChild(center);
     
-    map<int,int> items = PlayerDataManager::getInstance()->getLocalData()->getItemAll();
-    if (items.size() == 0){
+    vector<int> items = PlayerDataManager::getInstance()->getLocalData()->getItemAll();
+    if (items.empty()){
         // アイテムが時は空用の番号をインサート
-        items.insert({-1,0});
+        items.push_back(-1);
     }
     int i = 0;
     int page = 0;
     int upDownMargin = 40;
     Size centerSize {center->getContentSize()};
-    for(auto itr = items.begin(); itr != items.end(); itr++)
+    for(auto itr : items)
     {
         // ページパネル生成
         page = floor(i / (maxSize.x * maxSize.y));
@@ -140,8 +140,8 @@ bool ItemMenuLayer::init()
         this->pagePanels[page]->addChild(panel);
         
         // アイテム
-        this->items.push_back(itr->first);
-        Label* item = Label::createWithTTF(CsvDataManager::getInstance()->getItemName(itr->first), "fonts/cinecaption2.28.ttf", 22);
+        this->items.push_back(itr);
+        Label* item = Label::createWithTTF(CsvDataManager::getInstance()->getItemName(itr), "fonts/cinecaption2.28.ttf", 22);
         item->setPosition(panel_size.width/2 , panel_size.height/2);
         item->setColor(Color3B::WHITE);
         item->setTag(i);
