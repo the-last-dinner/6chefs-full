@@ -16,7 +16,7 @@
 #include "Managers/NotificationManager.h"
 
 // コンストラクタ
-BaseScene::BaseScene(){}
+BaseScene::BaseScene() {}
 
 // デストラクタ
 BaseScene::~BaseScene()

@@ -49,6 +49,7 @@ DungeonSceneManager* DungeonSceneManager::getInstance()
 void DungeonSceneManager::destroy()
 {
     delete _instance;
+    _instance = nullptr;
 }
 
 // コンストラクタ
@@ -117,7 +118,11 @@ AmbientLightLayer* DungeonSceneManager::getAmbientLayer() const { return this->g
 void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, function<void()> callback)
 {
     // 既にフェードアウトしている場合は無視
-    if(this->cover) return;
+    if(this->cover)
+    {
+        callback();
+        return;
+    }
     
     Sprite* cover { Sprite::create() };
     cover->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -128,7 +133,7 @@ void DungeonSceneManager::fadeOut(const Color3B& color, const float duration, fu
     this->cover = cover;
     
     cover->setOpacity(0.f);
-    cover->runAction(Sequence::createWithTwoActions(FadeIn::create(duration), CallFunc::create(callback)));
+    this->getScene()->runAction(Sequence::createWithTwoActions(TargetedAction::create(cover, FadeIn::create(duration)), CallFunc::create(callback)));
 }
 
 // フェードイン
