@@ -48,17 +48,17 @@ void SoundManager::playBGM(const string& fileName, bool loop, float volume)
 {
     int BGMId { AudioEngine::play2d(bgmPath + fileName, loop, volume) };
     
-    this->BGMFilePathToId.insert({fileName, BGMId});
+    this->bgmIdMap.insert({BGMId, fileName});
 }
 
 // BGMを停止
 void SoundManager::stopBGM()
 {
-    if(this->BGMFilePathToId.empty()) return;
+    if(this->bgmIdMap.empty()) return;
     
-    for(pair<string, int> fileNameToId : this->BGMFilePathToId)
+    for(pair<int, string> idToPath : this->bgmIdMap)
     {
-        AudioEngine::stop(fileNameToId.second);
+        AudioEngine::stop(idToPath.first);
     }
 }
 

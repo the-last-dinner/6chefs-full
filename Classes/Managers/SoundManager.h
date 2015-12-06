@@ -42,7 +42,7 @@ public:
 	// インスタンス変数
 private:
 	map<string, int> soundMap;
-    map<string, int> BGMFilePathToId {};
+    map<int, string> bgmIdMap {};
 };
 
 #endif // __SOUND_MANAGER_H__
