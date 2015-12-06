@@ -1843,6 +1843,7 @@
           "type":"charaWalkTo",
           "x":14,
           "y":13,
+          "speed":5.0,
           "objID":"1012"
         },
         {

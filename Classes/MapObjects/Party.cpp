@@ -28,9 +28,14 @@ bool Party::init(const vector<CharacterData>& datas)
     if(datas.empty()) return false;
     
     // データを元にキャラクタを生成して格納
-    for(CharacterData data : datas)
+    for(int i { 0 }; i < datas.size(); i++)
     {
-        this->members.pushBack(Character::create(data));
+        Character* chara {Character::create(datas[i])};
+        
+        // 主人公のみ当たり判定
+        if(i == 0) chara->setHit(true);
+        
+        this->members.pushBack(chara);
     }
     
     return true;
@@ -39,7 +44,6 @@ bool Party::init(const vector<CharacterData>& datas)
 // パーティにキャラクタを追加
 void Party::addMember(Character* character)
 {
-    character->setHit(false);
     this->members.pushBack(character);
     PlayerDataManager::getInstance()->getLocalData()->setPartyMember(character->getCharacterData());
 }
