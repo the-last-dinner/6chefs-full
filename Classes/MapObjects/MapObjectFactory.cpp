@@ -214,6 +214,7 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
     data.location.x = gridPosition.x;
     data.location.y = gridPosition.y;
     data.location.direction = this->getDirection(info);
+    data.move_pattern = this->getCharacterMovePattern(info);
     
     // データからキャラクタを生成
     Character* chara { Character::create(data) };

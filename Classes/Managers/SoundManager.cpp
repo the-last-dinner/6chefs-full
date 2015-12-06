@@ -26,7 +26,7 @@ SoundManager* SoundManager::getInstance()
 void SoundManager::destory()
 {
 	delete _instance;
-	return;
+    _instance = nullptr;
 }
 
 // コンストラクタ
@@ -48,17 +48,17 @@ void SoundManager::playBGM(const string& fileName, bool loop, float volume)
 {
     int BGMId { AudioEngine::play2d(bgmPath + fileName, loop, volume) };
     
-    this->BGMFilePathToId.insert({fileName, BGMId});
+    this->bgmIdMap.insert({BGMId, fileName});
 }
 
 // BGMを停止
 void SoundManager::stopBGM()
 {
-    if(this->BGMFilePathToId.empty()) return;
+    if(this->bgmIdMap.empty()) return;
     
-    for(pair<string, int> fileNameToId : this->BGMFilePathToId)
+    for(pair<int, string> idToPath : this->bgmIdMap)
     {
-        AudioEngine::stop(fileNameToId.second);
+        AudioEngine::stop(idToPath.first);
     }
 }
 
@@ -66,8 +66,8 @@ void SoundManager::stopBGM()
 void SoundManager::preloadSound(const string& filePath)
 {
     // プリロード関数がないため、音量ゼロで再生する
-    int audioId = AudioEngine::play2d(filePath, false, 0.0f);
-    this->soundMap.insert({filePath, audioId});
+    int audioId { AudioEngine::play2d(filePath, false, 0.0f) };
+    this->preloadMap.insert({audioId, filePath});
     
     // すぐに再生停止
     AudioEngine::stop(audioId);
@@ -78,12 +78,11 @@ void SoundManager::unloadAllSounds()
 {
 	FUNCLOG
 	// 音声パスリストを元にアンロードしていく
-	for(auto iterator : this->soundMap)
+	for(auto iterator : this->preloadMap)
 	{
-		AudioEngine::uncache(iterator.first);
+		AudioEngine::uncache(iterator.second);
 	}
 	
 	// 音声パスリストを初期化する
-	this->soundMap.clear();
-	return;
+	this->preloadMap.clear();
 }
