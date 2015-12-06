@@ -67,18 +67,10 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2k1OAzEMhuExO8QhZom4M1wEtsBBgIOAJSzcr8nkZ6AC+j6SRdWiSRUndqbtshx6LMTTjniWeFtQ4vP8IjEy9zG3OZ47x9Wx/Xqvk6Hv48JmZuP/8zlf7DD8uZ45jnz73Obo2VuxrvK4fj2zuYj3EX/Z32VaU33ePRet+a3V0ch5kx2P69dbbS6m3sMZ0pqa99psPR/Nd4w707dXq687HCvVc4899Xw037rGRvr2al/9O9Ye+a7L+zvnu6dnlvZV91zb4d6OfHvuRvr2mvp31BbyXad5zr20Ftq/99bz1pi9/TtqC/nekPKsc1+roWbfU8/z/d+Srpn/xuNWD8/vg/uxutK9d8x9q4buredaU+KaJuP39HA9m5PvCjmnRX3PNXsrtJbvqedx1l7Tulqtvu7y+sv5pp7Xle6/l8595bkp1fLZer7Vr1t9nXz30Xp+yvO51pTo2bcfj+8kx3md6euab/r3BjsO32+nqOcacc37j8cPdnxG1Nc133l88l3mub20w3oen6fO1POrgXqufaTnPL51XhvuKWfIc3td6KW9+1tr+Y31fT+W+3c+I7bWWe28pvWFfFekehr7vPe85hFzfCVzPjJuRM95vPZ5y9SZ8Qzlmnot+c5x+xn6fMztzeBc//TvHbpqDKr8jHT/jXtG7ws8Zn/rkOvMUI3ByUQd0e/H9vzegc/Xfq/a/tY8tvZ1/N/UPSFOp3Bem93b+RzB/gYAAAAAAAAAAAAAAAAAAADQ8sDvjQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwB/3Dp3byWQ=
+   eJzt2lFOwzAMgOGaN7RD9HHancdFtlfggWMAB2GWsHDdpE3SUdj6f5K1iaFmxImdjnXd0HMiXhbEa4jPDik6z+8haube5tbHa+G4cWy93kdjxPfxIC2zcf90zjsZhv6sZI4t3zq3Pkr2lq0rP65eT6Qt7H3YI/s7LdZUnXfNxdz85uqo5XyWjMfV6/XSFk3vYYNiTfV7rbWe1+bbxm3p273k1x3GUvVcY0k9r813XGM1fbuXn/5ta4985/n97fNd0jNT+6p4rmW4ty3fmruavt27/m21hXznxTz7XpqL2L+X1vO5MUv7t9UW8j3B5TnOfa6Gilynnvv7v85d0z/a87ke7t8H92N5qXtvm/u5Grq0nseaYteUMH5JD49nc/KdEc5pVt99zZ6KWMuX1HM7a/duXfWSX3d+/fl8U8/zUvffXeG+0tykanlrPZ/q13N9nXyXifV8zfN5rCnWs4+X508hx36dxddjvunfE2Qcut/WqOcx7Jqny/OzjM+I8fWYbz8++U7T3D7KsJ7b56kt9XxXUc9jHyk5j0+d16p7ygZpbveJXlq6v2MtP0jZ/8d8//ZnxLl1ljuvxfpCvjNcPbV9Xnpe07A53oU5rxnXouQ8nvu8penMuEG+pu5Dvn0cvyP+3Ob2UDnXv/19h6Iagyw9I52uuGfifYFG63cdfJ2pqjFYjdWR+P+xJd934PO1/yu3v2Me5/a1/V7TPSHWkzivte5tf45gfwMAAAAAAAAAAAAAgFv2JtNxj7b4NwMAAODvnTlrAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAG/cF+y7WFA==
   </data>
  </layer>
- <layer name="corrider" width="124" height="82">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztzzENAEAIwEDw7wxV7+AXBhK4SyqgEQAAAAAAAAAAAAAAAAAAAAAAAEyr/LfRxWcAAAAAAAAAAAAAAAAAAAAAAAAAAOh6/DMMsQ==
-  </data>
- </layer>
- <objectgroup name="collision">
+ <objectgroup name="collision" visible="0">
   <properties>
    <property name="cc_vertexz" value="-11"/>
   </properties>

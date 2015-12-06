@@ -49,6 +49,9 @@
 			"condition":[
 				{
 					"Nevent":["53","6"]
+				},
+				{
+					"Nevent":["53","7"]
 				}
 			],
 			"action":[

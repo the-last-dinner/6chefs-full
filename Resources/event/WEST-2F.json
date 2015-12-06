@@ -229,7 +229,7 @@
 								},
 								{
 									"type":"questionMsg",
-									"text":["焔のかみしもをあげますか？"],
+									"text":["焔の裃をあげますか？"],
 									"choices":[
 										{
 											"choice":"はい",
@@ -269,7 +269,7 @@
 									"choices":[
 										{
 											"choice":"はい",
-											"eventID":"30"
+											"eventID":"29"
 										},
 										{
 											"choice":"いいえ"
