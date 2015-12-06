@@ -90,8 +90,7 @@ public:
     // Item
     void setItem(const int item_id);
     bool removeItem(const int item_id);
-    int getItemCount(const int item_id);
-    map<int,int> getItemAll();
+    vector<int> getItemAll();
     bool hasItem(const int item_id);
     
     // Character prifile
