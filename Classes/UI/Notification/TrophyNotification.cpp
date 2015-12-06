@@ -24,8 +24,8 @@ bool TrophyNotification::init(const string& message)
     this->setOpacity(0);
     
     // ラベルを生成
-    Label* messageL {Label::createWithTTF("トロフィを獲得しました", Resource::Font::system, 20.f)};
-    Label* trophyName { Label::createWithTTF(message, Resource::Font::system, 25.f) };
+    Label* messageL {Label::createWithTTF("トロフィを獲得しました", Resource::Font::SYSTEM, 20.f)};
+    Label* trophyName { Label::createWithTTF(message, Resource::Font::SYSTEM, 25.f) };
     
     // トロフィ生成
     Sprite* trophy { Sprite::createWithSpriteFrameName("trophy_gold.png") };

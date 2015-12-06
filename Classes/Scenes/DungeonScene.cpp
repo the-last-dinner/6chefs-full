@@ -216,7 +216,7 @@ void DungeonScene::onBackToTitleSelected()
 {
     Director::getInstance()->popScene();
     DungeonSceneManager::destroy();
-    SoundManager::getInstance()->stopBGM();
+    SoundManager::getInstance()->stopBGMAll();
     Director::getInstance()->replaceScene(TitleScene::create());
 }
 
@@ -225,7 +225,7 @@ void DungeonScene::onContactWithEnemy()
 {
     if (DebugManager::getInstance()->isInvincibleMode()) return;
     DungeonSceneManager::destroy();
-    SoundManager::getInstance()->stopBGM();
+    SoundManager::getInstance()->stopBGMAll();
     Director::getInstance()->replaceScene(GameOverScene::create(GameOverScene::Type::BLOOD));
 }
 

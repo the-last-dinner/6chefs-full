@@ -27,7 +27,7 @@ bool MapNameNotification::init(const string& message)
     this->setOpacity(0);
     
     // ラベルを生成
-    Label* label { Label::createWithTTF(message, Resource::Font::system, 30.f) };
+    Label* label { Label::createWithTTF(message, Resource::Font::SYSTEM, 30.f) };
     
     // 背景を生成
     Cloud* bg { Cloud::create(label->getContentSize()) };

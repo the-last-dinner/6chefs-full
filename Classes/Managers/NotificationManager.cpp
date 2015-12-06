@@ -62,7 +62,7 @@ void NotificationManager::notifyInQueue(NotificationNode* node)
     
     Director::getInstance()->getRunningScene()->addChild(node, Priority::NOTIFICATION);
     node->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
-    SoundManager::getInstance()->playSE(Resource::SE::trophy_notification);
+    SoundManager::getInstance()->playSE(Resource::SE::TROPHY_NOTIFICATION);
 }
 
 // 通知の表示アニメーション終了時

@@ -60,7 +60,7 @@ void GameOverScene::onPreloadFinished(LoadingLayer* loadingLayer)
     bloodFrame->setScale(bloodFrame->getContentSize().width / WINDOW_WIDTH, bloodFrame->getContentSize().height / WINDOW_HEIGHT);
     this->addChild(bloodFrame);
     
-    Label* gameover { Label::createWithTTF("Game Over", Resource::Font::system, 120.f) };
+    Label* gameover { Label::createWithTTF("Game Over", Resource::Font::SYSTEM, 120.f) };
     gameover->setPosition(WINDOW_CENTER);
     this->addChild(gameover);
     

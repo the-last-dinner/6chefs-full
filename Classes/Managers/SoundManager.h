@@ -13,11 +13,6 @@
 
 class SoundManager
 {
-// 定数
-public:
-    static const string bgmPath;
-    static const string sePath;
-
 // クラスメソッド
 public:
 	static SoundManager* getInstance();
@@ -34,7 +29,8 @@ public:
     void playSE(const string& filePath, float volume = 1.f);
     void playBGM(const string& filePath, bool loop = true, float volume = 1.f);
     
-    void stopBGM();
+    void stopBGM(const string& filePath);
+    void stopBGMAll();
     
     void preloadSound(const string& filePath);
 	void unloadAllSounds();
