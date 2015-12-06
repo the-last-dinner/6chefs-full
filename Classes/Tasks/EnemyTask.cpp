@@ -127,6 +127,12 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             // 敵情報を格納
             data.enemy_data = enemy->getEnemyData();
             
+            // マップ移動カウントを-1
+            data.enemy_data.change_map_counter -= 1;
+            
+            // カウントが1より小さくなっていたら引き継がない
+            if(data.enemy_data.change_map_counter < 1) continue;
+            
             // 現在位置、行き先を格納
             Relation relation {};
             relation.from_location = data.enemy_data.chara_data.location;
@@ -166,6 +172,12 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             
             // すでに出現させていたら無視
             if(data.isDone) continue;
+            
+            // マップ移動カウントを-1
+            data.enemy_data.change_map_counter -= 1;
+            
+            // カウントが1より小さくなっていたら引き継がない
+            if(data.enemy_data.change_map_counter < 1 && data.enemy_data.change_map_counter >= 0) continue;
             
             // 動けない敵の場合はそのままpush
             if(!data.canMove)
