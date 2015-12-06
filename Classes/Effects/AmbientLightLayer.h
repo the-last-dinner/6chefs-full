@@ -21,6 +21,7 @@ class AmbientLightLayer : public Layer
 public:
     static const Color3B DAY;
     static const Color3B EVENING;
+    static const Color3B ROOM;
 	static const Color3B NIGHT;
     static const Color3B BASEMENT;
     
