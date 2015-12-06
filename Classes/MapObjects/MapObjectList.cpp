@@ -99,6 +99,7 @@ const Vector<MapObject*>& MapObjectList::getMapObjects() const
 Vector<MapObject*> MapObjectList::getMapObjects(const Rect& rect) const
 {
     Vector<MapObject*> mapObjects {};
+    
     for(MapObject* obj : this->availableObjects)
     {
         if(rect.intersectsRect(obj->getCollisionRect())) mapObjects.pushBack(obj);
@@ -169,17 +170,6 @@ vector<int> MapObjectList::getEventIdsByGridRect(const Rect& gridRect, const Tri
     }
     
     return ids;
-}
-
-// 指定範囲内にあたり判定を持つマップオブジェクトが存在するか
-const bool MapObjectList::containsCollisionObject(const Rect& rect) const
-{
-    for(MapObject* obj : this->getMapObjects(rect))
-    {
-        if(obj->isHit()) return true;
-    }
-    
-    return false;
 }
 
 // 当たり判定を持つオブジェクトのマスRectを全て取得

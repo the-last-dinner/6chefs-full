@@ -145,7 +145,13 @@ const bool MapObject::isHit(const vector<Direction>& directions) const
 {
     if(!this->objectList) return false;
     
-    return this->objectList->containsCollisionObject(this->getCollisionRect(directions));
+    // 自身以外の当たり判定を持つオブジェクトが、指定方向にあればtrueを返す
+    for(MapObject* obj : this->objectList->getMapObjects(this->getCollisionRect(directions)))
+    {
+        if(obj->isHit() && obj != this) return true;
+    }
+    
+    return false;
 }
 
 // 入力のあった方向から、移動可能方向のみを取り出して返す
