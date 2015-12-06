@@ -22,8 +22,10 @@
 #include "Managers/DungeonSceneManager.h"
 #include "Models/StopWatch.h"
 
+#include "Scenes/EndingScene.h"
 #include "Scenes/DungeonCameraScene.h"
 #include "Scenes/DungeonScene.h"
+#include "Scenes/GameOverScene.h"
 
 #pragma mark ChangeMapEvent
 
@@ -176,117 +178,39 @@ void FadeInEvent::run()
 }
 
 #pragma mark -
-#pragma mark CountDown
+#pragma mark GameOverEvent
 
-bool CountDownEvent::init(rapidjson::Value& json)
+bool GameOverEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
-    // 制限時間
-    if(!this->validator->hasMember(json, member::SECOND)) return false;
-    this->second = json[member::SECOND].GetDouble();
-    
-    // conditionを保存
-    if (this->validator->hasMember(json, member::CONDITION))
-    {
-        this->equip = stoi(json[member::CONDITION][0][member::EQUIP][0].GetString());
-        this->checkEquip = true;
-    }
-    
-    // 成功時イベント
-    if(this->validator->hasMember(json, member::TRUE_))
-    {
-        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
-        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
-        CC_SAFE_RETAIN(this->sEvent);
-    }
-    
-    // 失敗時イベント
-    if (this->validator->hasMember(json, member::FALSE_))
-    {
-        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
-        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
-    if (this->validator->hasMember(json, member::ACTION))
-    {
-        if(json[member::ACTION].IsString()) this->fEventId = stoi(json[member::ACTION].GetString());
-        if(json[member::ACTION].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::ACTION]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
+    // ゲームオーバーのID
+    if(this->validator->hasMember(json, member::ID)) this->gameOverId = stoi(json[member::ID].GetString());
     
     return true;
 }
 
-void CountDownEvent::run()
+void GameOverEvent::run()
 {
-    StopWatch* stopWatch = DungeonSceneManager::getInstance()->getStopWatch();
-    
-    stopWatch->setCountDown(this);
-    
-    stopWatch->scheduleCallback = [this](double time)
-    {
-        // 条件チェック
-        bool condition = false;
-        if(this->checkEquip)
-        {
-            condition = PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(this->equip);
-        }
-        
-        // 条件を満たしていた場合
-        if (condition)
-        {
-            CC_SAFE_RELEASE_NULL(this->fEvent);
-            if(this->sEvent)
-            {
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
-            }
-            DungeonSceneManager::getInstance()->runEventQueue();
-            return false;
-        }
-        CCLOG("COUNT DOWN >> %f", this->second - time);
-        // 時間切れチェック
-        if (static_cast<float>(time) >= this->second)
-        {
-            CC_SAFE_RELEASE_NULL(this->sEvent);
-            if(this->fEvent)
-            {
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
-            }
-            DungeonSceneManager::getInstance()->runEventQueue();
-            return false;
-        }
-        return true;
-    };
-    
-    // カウントダウンスタート
-    stopWatch->startCountDown(0.5f);
-    
     this->setDone();
+    DungeonSceneManager::getInstance()->exitDungeon(GameOverScene::create(static_cast<GameOverScene::Type>(this->gameOverId)));
 }
 
 #pragma mark -
-#pragma mark StopCount
+#pragma mark EndingEvent
 
-bool StopCountEvent::init(rapidjson::Value& json)
+bool EndingEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
+    
+    // エンディングID
+    if(this->validator->hasMember(json, member::ID)) this->endingId = stoi(json[member::ID].GetString());
+    
     return true;
 }
 
-void StopCountEvent::run()
+void EndingEvent::run()
 {
-    DungeonSceneManager::getInstance()->pauseStopWatch();
-    DungeonSceneManager::getInstance()->releaseStopWatch();
     this->setDone();
+    DungeonSceneManager::getInstance()->exitDungeon(EndingScene::create(this->endingId));
 }

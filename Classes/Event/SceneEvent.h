@@ -100,39 +100,32 @@ private:
     virtual void run() override;
 };
 
-// CountDownイベント
-class CountDownEvent : public GameEvent
+// ゲームオーバーシーンへ移動
+class GameOverEvent : public GameEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(CountDownEvent, rapidjson::Value&)
+    CREATE_FUNC_WITH_PARAM(GameOverEvent, rapidjson::Value&)
 private:
-    float second { 5.f };
-    int sEventId { static_cast<int>(EventID::UNDIFINED) };
-    int fEventId { static_cast<int>(EventID::UNDIFINED) };
-    //rapidjson::Document doc { nullptr };
-    int equip {0};
-    bool checkEquip {false};
-    GameEvent* sEvent { nullptr };
-    GameEvent* fEvent { nullptr };
-    GameEvent* event { nullptr };
+    int gameOverId {0};
 private:
-    CountDownEvent() {FUNCLOG};
-    ~CountDownEvent() {FUNCLOG};
+    GameOverEvent() {FUNCLOG};
+    ~GameOverEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };
 
-// StopCountイベント
-class StopCountEvent : public GameEvent
+// エンディングシーンへ移動
+class EndingEvent : public GameEvent
 {
 public:
-    CREATE_FUNC_WITH_PARAM(StopCountEvent, rapidjson::Value&);
+    CREATE_FUNC_WITH_PARAM(EndingEvent, rapidjson::Value&)
 private:
-    StopCountEvent() {FUNCLOG};
-    ~StopCountEvent() {FUNCLOG};
+    int endingId {0};
+private:
+    EndingEvent() {FUNCLOG};
+    ~EndingEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };
-
 
 #endif /* defined(__LastSupper__SceneEvent__) */

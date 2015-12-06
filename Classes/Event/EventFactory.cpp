@@ -15,6 +15,7 @@
 #include "Event/LightEvent.h"
 #include "Event/MapEvent.h"
 #include "Event/MapObjectEvent.h"
+#include "Event/MiniGameEvent.h"
 #include "Event/ModalLayerEvent.h"
 #include "Event/SoundEvent.h"
 #include "Event/SceneEvent.h"
@@ -53,9 +54,6 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"storyMsg", StoryMessage::create},             // ストーリーメッセージ
         {"systemMsg", SystemMessage::create},           // システムのメッセージ
         {"displayImg", DispImageEvent::create},         // 画像表示
-        {"barrage", ButtonMashingEvent::create},        // 連打イベント
-        {"questionMsg", SelectEvent::create},           // 選択肢イベント
-        {"password", PasswordEvent::create},            // パスワードイベント
         
         // シーン系
         {"changeMap", ChangeMapEvent::create},          // マップ移動
@@ -64,8 +62,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"wait", WaitEvent::create},                    // 時間待機
         {"fadeout", FadeOutEvent::create},              // フェードアウト
         {"fadein", FadeInEvent::create},                // フェードイン
-        {"countDown", CountDownEvent::create},          // カウントダウン
-        {"stopCount", StopCountEvent::create},          // ストップカウント
+        {"gameover", GameOverEvent::create},            // ゲームオーバー
+        {"ending", EndingEvent::create},                // エンディング
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
@@ -91,6 +89,13 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // 光系
         {"setAmbient", SetAmbientLightEvent::create},       // 環境光設定
+        
+        // ミニゲーム系
+        {"barrage", ButtonMashingEvent::create},        // 連打イベント
+        {"questionMsg", SelectEvent::create},           // 選択肢イベント
+        {"password", PasswordEvent::create},            // パスワードイベント
+        {"countDown", CountDownEvent::create},          // カウントダウン
+        {"stopCount", StopCountEvent::create},          // ストップカウント
         
         // フラグ系
         {"already", NeverAgainEvent::create},                   // イベントIDを見たことにし、二度と発動しないようにする

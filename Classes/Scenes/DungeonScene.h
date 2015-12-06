@@ -62,6 +62,7 @@ protected:
     void onBackToTitleSelected();
     void onContactWithEnemy();
     void onAllEnemyRemoved();
+    void onExitDungeon();
     
     DungeonSceneData* getData() const;
     
