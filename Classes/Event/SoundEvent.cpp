@@ -42,12 +42,16 @@ bool StopBGMEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
+    // ファイル名
+    if(this->validator->hasMember(json, member::FILE)) this->fileName = json[member::FILE].GetString();
+    
     return true;
 }
 
 void StopBGMEvent::run()
 {
-    SoundManager::getInstance()->stopBGM();
+    if(this->fileName == "") SoundManager::getInstance()->stopBGMAll();
+    if(this->fileName != "") SoundManager::getInstance()->stopBGM(this->fileName);
     this->setDone();
 }
 

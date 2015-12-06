@@ -78,7 +78,7 @@ bool GetItemEvent::init(rapidjson::Value& json)
 void GetItemEvent::run()
 {
     PlayerDataManager::getInstance()->getLocalData()->setItem(this->itemId);
-    SoundManager::getInstance()->playSE(Resource::SE::get_item);
+    SoundManager::getInstance()->playSE(Resource::SE::GET_ITEM);
     DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
 }
 

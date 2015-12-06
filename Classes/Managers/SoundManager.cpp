@@ -8,10 +8,6 @@
 
 #include "Managers/SoundManager.h"
 
-// 定数
-const string SoundManager::bgmPath = "bgm/";
-const string SoundManager::sePath = "se/";
-
 // 唯一のインスタンスを初期化
 static SoundManager* _instance = nullptr;
 
@@ -40,19 +36,28 @@ SoundManager::~SoundManager()
 // SEを再生
 void SoundManager::playSE(const string& fileName, float volume)
 {
-	AudioEngine::play2d(sePath + fileName, false, volume);
+    AudioEngine::play2d(Resource::SE::BASE_PATH + fileName, false, volume);
 }
 
 // BGMを再生
 void SoundManager::playBGM(const string& fileName, bool loop, float volume)
 {
-    int BGMId { AudioEngine::play2d(bgmPath + fileName, loop, volume) };
+    int BGMId { AudioEngine::play2d(Resource::BGM::BASE_PATH + fileName, loop, volume) };
     
     this->bgmIdMap.insert({BGMId, fileName});
 }
 
-// BGMを停止
-void SoundManager::stopBGM()
+// BGMをファイル名指定で停止
+void SoundManager::stopBGM(const string& filePath)
+{
+    for(pair<int, string> idToPath : this->bgmIdMap)
+    {
+        if(idToPath.second == filePath) AudioEngine::stop(idToPath.first);
+    }
+}
+
+// BGM全て停止
+void SoundManager::stopBGMAll()
 {
     if(this->bgmIdMap.empty()) return;
     

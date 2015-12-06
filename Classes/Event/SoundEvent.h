@@ -31,7 +31,8 @@ class StopBGMEvent : public GameEvent
 {
 public:
     CREATE_FUNC_WITH_PARAM(StopBGMEvent, rapidjson::Value&)
-    
+private:
+    string fileName {};
 private:
     StopBGMEvent() {FUNCLOG};
     ~StopBGMEvent() {FUNCLOG};

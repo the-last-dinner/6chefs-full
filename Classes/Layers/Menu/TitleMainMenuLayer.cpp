@@ -38,7 +38,7 @@ bool TitleMainMenuLayer::init()
 	int menuSize = 50;
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
-        Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::system, menuSize) };
+        Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::SYSTEM, menuSize) };
 		menuItem->setPosition(WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 3 / 4 - (menuSize + 20) * i);
 		menuItem->setColor(Color3B::RED);
 		menuItem->setOpacity(0);
