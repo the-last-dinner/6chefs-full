@@ -44,7 +44,7 @@
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
- <layer name="CharaUe" width="22" height="22" visible="0">
+ <layer name="CharaUe" width="22" height="22">
   <data encoding="base64" compression="zlib">
    eJzdlGdPxDAMhkPKEOPgALHX//8hfEKA2IJjI/YS45iC46muEZbrlDvEJyw9Uuq8sd3YrXPOVb1zT/AML+CUT+/LddXYD6b9WtuSOOchSfLadE/utybfcbVfa0vQC31GjJKRK5g8V8600ifPaq0vqFfnm/X5uPpsWeTWuWL3sOTt95VnU80yrMAqrME6bBTcw47xvpv4tqAC276u2YU92IcDOIQjETfUdYrvDM7hAi7hCq7hGE58seYGbkXcUNcDvkdjHvWzpXmFN3g36q2lPqNHuX4Ln47fkeTrjX1j+q5j30yac07UO896QWm0PvR60ce/mTSnnIfQaz2zUh96XTHqj81DM71uZh7uWN/7+DzIXjeiCfbB+tPH56EN2pN6r2sNzGGwTvRd0A09xt32wwAMZpof5zCzIdbDMAKjMAbjMAGTMAXTMJNprP+f9d/5rYUa/9pCjf/BvgC15rGp
   </data>
