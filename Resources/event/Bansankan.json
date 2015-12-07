@@ -15,6 +15,11 @@
           "type":"already"
         },
         {
+          "type":"changeDirection",
+          "objID":"101",
+          "direction":"RIGHT"
+        },
+        {
           "type": "reaction",
           "objID": "101"
         },
@@ -39,11 +44,6 @@
           "type": "changeDirection",
           "direction": "LEFT",
           "objID": "hero"
-        },
-        {
-          "type":"changeDirection",
-          "objID":"101",
-          "direction":"RIGHT"
         },
         {
           "type": "charaWalkTo",
