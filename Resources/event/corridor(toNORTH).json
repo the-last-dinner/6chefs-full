@@ -108,9 +108,9 @@
           ]
         },
         {
-          "type": "charaWalk",
-          "direction": "UP",
-          "steps": 9.0,
+          "type": "charaWalkTo",
+          "x": 4,
+          "y": 3,
           "speed": 3.0,
           "objID": "1014"
         },

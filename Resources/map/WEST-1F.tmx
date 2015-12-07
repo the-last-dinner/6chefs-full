@@ -41,7 +41,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlz9rwkAYh8W5tksnh9p+E/+OXdTaSSeVboqDirPaFp3bWqi0m7oouvbD9REiHEeSSyG5i5oHHt7c8ZL3ByEcF4tFnDJFLJkO4UIdG8L6C+c2fXb7Xez9Y1bTRTc6wvMaNzY9dvsv+OoxW1+himv89LAfF9b3ljryBY1f+S4w4Xu68+PJdAAFcr7Dd7/EK6xiTXcogYG0vsEU3uIdtrCtIcd+bg7zWBDqVOqbSupCnmsiQ0TEseD0PztV3ZTxASv46KGGnbCfg/I5EzYmpgMoCHu+CH/4xh/TIVzY4i6A9w5xhGN8xgUuhbq/S66s3nQA81W84Tt+4Myh5xczmLXWSal64VTvv39DgEKm
+   eJztl7sKwjAUhsVZNycHn8Xr6OL1BVTcFAcVZ6/Y2RsouqmLoqsP5y90CCFNIrRJrPng4zTpIfmhlJBIxBJmSrCsOwSHBmwS4z08MPpY8304+GKvFkcePeL5Bu+MHtb8HC4ksw0FikjAncR8lBgXXVXkCxq/8sVg3Pd0/0dbdwABdD7TvvtI8L4DuwpypGAO5mGBqA7V51Cqgt5XRwaL5Vfw+p+9qmoqsAprsC5RTcf0c1B0zuhmqTuAANPzWfzhCE+6Q3B4wGcA647hBE7hDJ7hhaifu+TV7U0HsL+IFVzDDdx69LxgBmbdcZKqMoT1/vsGT0VBUA==
   </data>
  </layer>
  <objectgroup name="collision">
@@ -108,6 +108,11 @@
  <layer name="CharaUe1" width="40" height="32">
   <data encoding="base64" compression="zlib">
    eJztz80JACAIQGFvztLvWM3Q+DlA0KUw6n3wEG8qAryveR8AAMBFgopEK1nZKpN996zq/TUAAH9oi7z1RThjAEw9DVY=
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzksNwCAABUEEtOCgH2HgX0bfFQWkYSbZ+5YCAPs60plqaqmnsfRodqU7PelduwIAAPzUB0xOAXA=
   </data>
  </layer>
  <objectgroup name="event">
