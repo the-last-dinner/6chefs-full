@@ -45,33 +45,20 @@
 	],
 	"5":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["53","6"]
-				},
-				{
-					"Nevent":["53","7"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
-					"action":[
-						{
-							"type":"charaMsg",
-							"text":["何かうめき声のような声が聞こえる・・・"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"charaWalk",
-							"objID":"hero",
-							"direction":"RIGHT",
-							"steps":1.0,
-							"option":"back"
-						}
-					]
+					"type":"charaMsg",
+					"text":["何かうめき声のような声が聞こえる・・・"],
+					"charaID":"0",
+					"imgID":"3"
+				},
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"direction":"RIGHT",
+					"steps":1.0,
+					"option":"back"
 				}
 			]
 		}
@@ -525,11 +512,11 @@
 									"type":"displayImg",
 									"file":"chapter4.png",
 									"time":5.0
-								},
-								{
-									"type":"stopBGM"
 								}
 							]
+						},
+						{
+							"type":"stopBGM"
 						},
 						{
 							"type":"fadein"

@@ -95,6 +95,10 @@
 				{
 					"type":"systemMsg",
 					"text":["鍵がかかっている"]
+				},
+				{
+					"type":"playSE",
+					"file":"door_unopen.mp3"
 				}
 			]
 		}
@@ -148,6 +152,11 @@
 					"text":["え？・・・"],
 					"charaID":"0",
 					"imgID":"2"
+				},
+				{
+					"type":"changeDirection",
+					"direction":"UP",
+					"objID":"1016"
 				},
 				{
 					"type":"spawn",
@@ -207,6 +216,10 @@
 				{
 					"type":"systemMsg",
 					"text":["鍵がかかっている"]
+				},
+				{
+					"type":"playSE",
+					"file":"door_unopen.mp3"
 				}
 			]
 		}

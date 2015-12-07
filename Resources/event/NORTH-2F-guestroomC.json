@@ -48,7 +48,7 @@
 					"type":"charaMsg",
 					"text":["隠れなきゃ！！"],
 					"charaID":"0",
-					"imgID":"2",
+					"imgID":"3",
 					"option":"reaction"
 				},
 				{
@@ -99,84 +99,166 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"playBGM",
-							"file":"kodou.mp3"
-						},
-						{
 							"type":"stopCount"
 						},
 						{
-							"type":"fadeout"
+							"type":"fadeout",
+							"time":3.0
 						},
 						{
 							"type":"createCamera",
-							"objID":"1015",
+							"x":14,
+							"y":19,
 							"action":[
 								{
-									"type":"createChara",
-									"objID":"1015",
-									"x":14,
-									"y":33,
-									"direction":"UP"
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"charaWalk",
-									"direction":"UP",
-									"steps":9.0,
-									"speed":3.0,
-									"objID":"1015"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"LEFT",
-									"objID":"1015"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"changeDirection",
-									"direction":"RIGHT",
-									"objID":"1015"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"changeDirection",
-									"direction":"LEFT",
-									"objID":"1015"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"charaWalk",
-									"direction":"DOWN",
-									"steps":9.0,
-									"speed":3.0,
-									"objID":"1015"
-								},
-								{
-									"type":"playSE",
-									"file":"2doko.mp3"
-								},
-								{
-									"type":"removeChara",
-									"objID":"1015"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"showChara",
-									"objID":"hero"
+									"type":"sequence",
+									"action":[
+										{
+											"type":"createChara",
+											"objID":"1015"	
+										},
+										{
+											"type":"stopBGM"
+										},
+										{
+											"type":"playBGM",
+											"file":"kodou.mp3",
+											"volume":2.5
+										},
+										{
+											"type":"fadein",
+											"time":3.0
+										},
+										{
+											"type":"charaWalk",
+											"direction":"UP",
+											"steps":10.0,
+											"speed":2.0,
+											"objID":"1015"
+										},
+										{
+											"type":"playSE",
+											"file":"2doko.mp3"
+										},
+										{
+											"type":"changeDirection",
+											"direction":"LEFT",
+											"objID":"1015"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"changeDirection",
+											"direction":"RIGHT",
+											"objID":"1015"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1015",
+											"direction":"LEFT",
+											"steps":6.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"1015",
+											"direction":"UP"
+										},
+										{
+											"type":"wait",
+											"time":0.5
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1015",
+											"direction":"UP",
+											"steps":2.0,
+											"speed":0.5
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"agaa.mp3"
+										},
+										{
+											"type":"charaMsg",
+											"text":["ぎがっ？"],
+											"charaID":"8",
+											"name":"？？？"
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1015",
+											"direction":"DOWN",
+											"steps":2.0
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1015",
+											"direction":"RIGHT",
+											"steps":13.0,
+											"speed":3.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"1015",
+											"direction":"UP"
+										},
+										{
+											"type":"wait",
+											"time":0.5
+										},
+										{
+											"type":"changeDirection",
+											"objID":"1015",
+											"direction":"DOWN"
+										},
+										{
+											"type":"wait",
+											"time":0.5
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1015",
+											"direction":"LEFT",
+											"steps":6.0,
+											"speed":3.0
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"agaa.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"charaWalk",
+											"direction":"DOWN",
+											"steps":10.0,
+											"speed":2.0,
+											"objID":"1015"
+										},
+										{
+											"type":"removeChara",
+											"objID":"1015"
+										},
+										{
+											"type":"fadeout"
+										}
+									]
 								}
 							]
 						},
@@ -184,7 +266,8 @@
 							"type":"stopBGM"
 						},
 						{
-							"type":"fadein"
+							"type":"fadein",
+							"time":3.0
 						},
 						{
 							"type":"charaMsg",
@@ -261,6 +344,37 @@
 				{
 					"type":"removeLayer",
 					"layer":"apple"
+				}
+			]
+		}
+	],
+	"10":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["15","3"],
+					"Nevent":["15","4"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["早く隠れなきゃ！"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"UP",
+							"steps":1.0,
+							"option":"back"
+						}
+					]
 				}
 			]
 		}

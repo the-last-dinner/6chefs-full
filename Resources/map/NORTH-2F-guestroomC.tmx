@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="35">
  <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16">
   <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
  </tileset>
@@ -34,7 +34,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlblOw0AUAB/pnD7pdv0B0JI4SNBwdCBxdMl/QMspQZMDWo4OfgdaEoiUNDmgAYmjYrpYkdYrkL2i2JGmeK/wxGvLEfF43PGmRN5V9h1VENGFybyuRTZ09t1dmnux7i3NOwfde5oPse5MKJILs+/OFkXmipO5SrPmoPtX6rx7DWwq877l4P30/E8GPPshjnCs7Pu0WOYbsYKruKbtexOngchZYJ6nueSaV3iNN9q+N9Gj0Q/M8zTznGEJyxjFzvO33cW8yFLePGfV3efeDvAQj/AYTxzc7yONNnbwCZ+xm9D94Jqf+IXf2r43/n7OtIRljLCCCwnnvMl/wBZu405o35uo02hgE1t4jhcJ3bQY0BjiCMf4gq8Ouh6Px+NJhx9FNVM0
+   eJztlblOw0AUAB90Tp90u/4AaEkCEjQQOpA4OvIfoeWUSJOLlqOD34GWUyJNDmiIBKRiuliR1gvEXlHsSFPsKzzxs+WIeDzueFciA5V+R2VFdHZ0XtMi6zr9boXmbqR7RfPaQfeG5m2kOxWKTIfpd2dyIrO50XmHZtlB96/UePfq2FDmedPB++n5n3R49l3sYV/Z50mxzDdiBUu4qu1zEyeBSDUwn8c545rneIGX2j438UKjHZjP48yxwzwWsBjZ52+7ixmRpYz5nFZ3j3vbxwM8xCM8/sH9TrrnOxr3+ICP+ITPMd0PrvmJXzjU9rnx97PTPBawiPO4ELPnDf4DNnELt0P73ESNRh0b2MQWnsZ0k6JDo4s97OMrvjnoejwejycZvgFdyVQG
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="36">
@@ -42,7 +42,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzkERACAMxMB7YAIZFQe+qC/QQFW0A5M1kEgAXjFMmpbfXdH0gu6O5inoAsBPWq8+AAAgxwXm1gVt
+   eJztzQERABAQALCvJBy96EUGUvj7u63AIoAqeosY7f8737kS3v3Ok/ACAAD1XB1LBVA=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -71,6 +71,14 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
+  <object id="33" x="224" y="512" width="32" height="32">
+   <properties>
+    <property name="CharaID" value="8"/>
+    <property name="direction" value="UP"/>
+    <property name="movePattern" value="1"/>
+    <property name="objID" value="1015"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="CharaUe1" width="30" height="36" opacity="0.94">
   <data encoding="base64" compression="zlib">
@@ -149,6 +157,12 @@
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="34" x="224" y="448" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
  </objectgroup>

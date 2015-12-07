@@ -206,7 +206,8 @@
 							"type":"charaWalk",
 							"objID":"1086",	
 							"direction":"RIGHT",
-							"steps":6.0
+							"steps":6.0,
+							"speed":0.3
 						},
 						{
 							"type":"playSE",

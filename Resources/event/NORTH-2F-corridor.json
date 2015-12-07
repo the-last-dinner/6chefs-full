@@ -188,6 +188,10 @@
 					"type":"spawn",
 					"action":[
 						{
+							"type":"playSE",
+							"file":"agaa.mp3"
+						},
+						{
 							"type":"addProfile",
 							"cgaraID":"8",
 							"infoID":"0"

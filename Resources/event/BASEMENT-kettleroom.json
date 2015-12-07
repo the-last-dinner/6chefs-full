@@ -17,8 +17,32 @@
 	],
 	"3":[
 		{
-			"type":"displayImg",
-			"file":"kettle.png"
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["42","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"displayImg",
+					"file":"kettle.png"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"storyMsg",
+					"text":["ゴキブリは煙草の煙が苦手だという\nゴキブリの殲滅のために\n部屋に煙草の煙を充満させた主婦が\n喘息を患ったという笑い話がある"]
+				}
+			]
 		}
 	],
 	"4":[
@@ -287,7 +311,7 @@
 							"choice":"はい",
 							"action":[
 								{
-									"type":"spawn",
+									"type":"sequence",
 									"action":[
 										{
 											"type":"removeLayer",
@@ -299,6 +323,24 @@
 										},
 										{
 											"type":"already"
+										},
+										{
+											"type":"removeLayer",
+											"layer":"hideHint"
+										},
+										{
+											"type":"removeLayer",
+											"layer":"MonoShita"
+										},
+										{
+											"type":"playSE",
+											"file":"dosa.mp3"
+										},
+										{
+											"type":"charaMsg",
+											"text":["？何か落ちたな"],
+											"charaID":"0",
+											"imgID":"2"
 										}
 									]
 								}
@@ -444,6 +486,26 @@
 				{
 					"type":"removeLayer",
 					"layer":"hide3"
+				}
+			]
+		}
+	],
+	"10":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["42","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeLayer",
+					"layer":"hideHint"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"MonoShita"
 				}
 			]
 		}

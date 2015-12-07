@@ -96,7 +96,7 @@
 							"name":"？？？"
 						},
 						{
-							"type":"playSE",
+							"type":"playBGM",
 							"file":"7umeki.mp3"
 						}
 					]
@@ -134,6 +134,10 @@
 					]
 				},
 				{
+					"type":"wait",
+					"time":1.0
+				},
+				{
 					"type":"charaMsg",
 					"talk":[
 						{
@@ -157,7 +161,7 @@
 					"action":[
 						{
 							"type":"charaWarp",
-							"x":14,
+							"x":15,
 							"y":13,
 							"objID":"1017",
 							"direction":"RIGHT"
@@ -200,7 +204,7 @@
 					]
 				},
 				{
-					"type":"playSE",
+					"type":"stopBGM",
 					"file":"7umeki.mp3"
 				},
 				{
@@ -245,7 +249,7 @@
 							"option":"reaction"
 						},
 						{
-							"text":["ああ・・・\nけど普通の人間の動きじゃなかったな・・・","アイツらを集めろ\n食堂だ"],
+							"text":["ああ・・・どうってことねぇ・・・\nけど普通の人間の動きじゃなかったな・・・","アイツらを集めろ\n食堂だ"],
 							"charaID":"2",
 							"imgID":"1"
 						}
@@ -268,12 +272,12 @@
 						{
 							"type":"displayImg",
 							"file":"chapter2.png",
-							"time":5.0
-						},
-						{
-							"type":"stopBGM"
+							"time":10.0
 						}
 					]
+				},
+				{
+					"type":"stopBGM"
 				},
 				{
 					"type":"already"
