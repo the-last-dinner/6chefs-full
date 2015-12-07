@@ -188,7 +188,7 @@
 										},
 										{
 											"type":"playSE",
-											"file":"blood.wav"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"fadein"
@@ -242,7 +242,7 @@
 										},
 										{
 											"type":"playSE",
-											"file":"blood.wav"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"wait",
@@ -259,7 +259,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":"ofu.wav"
+													"file":"ofu.mp3"
 												}
 											]
 										},
@@ -439,7 +439,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":"ofu.wav"
+													"file":"ofu.mp3"
 												}
 											]
 										},

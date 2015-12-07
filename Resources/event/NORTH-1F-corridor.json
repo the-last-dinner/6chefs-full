@@ -181,7 +181,7 @@
 						},
 						{
 							"type":"playSE",
-							"file":"bakibaki.wav"
+							"file":"bakibaki.mp3"
 						},
 						{
 							"type":"removeLayer",
@@ -319,7 +319,7 @@
 	"11":[
 		{
 			"type":"playSE",
-			"file":"bakibaki.wav"
+			"file":"bakibaki.mp3"
 		}
 	]
 }

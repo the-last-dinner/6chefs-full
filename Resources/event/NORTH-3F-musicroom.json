@@ -97,7 +97,7 @@
 						},
 						{
 							"type":"playSE",
-							"file":"7umeki.wav"
+							"file":"7umeki.mp3"
 						}
 					]
 				},
@@ -263,7 +263,7 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"chapter2.wav"
+							"file":"chapter2.mp3"
 						},
 						{
 							"type":"displayImg",

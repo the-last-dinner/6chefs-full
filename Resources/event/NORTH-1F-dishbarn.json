@@ -21,7 +21,7 @@
 						},
 						{
 							"type":"playSE",
-							"file":"agaa.wav"
+							"file":"agaa.mp3"
 						}
 					]
 				},
@@ -52,7 +52,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"kodou.wav"
+									"file":"kodou.mp3"
 								},
 								{
 									"type":"wait",

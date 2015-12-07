@@ -237,7 +237,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter5.wav"
+									"file":"chapter5.mp3"
 								},
 								{
 									"type":"displayImg",

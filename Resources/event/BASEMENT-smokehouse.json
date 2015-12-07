@@ -67,7 +67,7 @@
 												},
 												{
 													"type":"playSE",
-													"fire":"fire_burn.wav"
+													"fire":"fire_burn.mp3"
 												},
 												{
 													"type":"wait",

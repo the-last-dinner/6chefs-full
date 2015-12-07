@@ -29,7 +29,7 @@
 			"action":[
 				{
 					"type":"playSE",
-					"file":"7haizuri.wav"
+					"file":"7haizuri.mp3"
 				},
 				{
 					"type":"charaMsg",
@@ -42,7 +42,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"7haizuri.wav"
+					"file":"7haizuri.mp3"
 				},
 				{
 					"type":"charaMsg",
@@ -100,7 +100,7 @@
 					"action":[
 						{
 							"type":"playBGM",
-							"file":"kodou.wav"
+							"file":"kodou.mp3"
 						},
 						{
 							"type":"stopCount"
@@ -165,7 +165,7 @@
 								},
 								{
 									"type":"playSE",
-									"file":"2doko.wav"
+									"file":"2doko.mp3"
 								},
 								{
 									"type":"removeChara",

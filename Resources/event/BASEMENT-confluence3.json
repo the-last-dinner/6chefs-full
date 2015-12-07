@@ -519,7 +519,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter4.wav"
+									"file":"chapter4.mp3"
 								},
 								{
 									"type":"displayImg",

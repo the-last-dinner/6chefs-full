@@ -945,7 +945,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter3.wav"
+									"file":"chapter3.mp3"
 								},	
 								{
 									"type":"displayImg",
@@ -1282,7 +1282,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter3.wav"
+									"file":"chapter3.mp3"
 								},
 								{
 									"type":"displayImg",
