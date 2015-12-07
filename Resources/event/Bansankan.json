@@ -41,6 +41,11 @@
           "objID": "hero"
         },
         {
+          "type":"changeDirection",
+          "objID":"101",
+          "direction":"RIGHT"
+        },
+        {
           "type": "charaWalkTo",
           "x": 62,
           "y": 58,
