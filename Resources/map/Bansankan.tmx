@@ -134,7 +134,7 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
-  <object id="107" x="960" y="912" width="32" height="32">
+  <object id="107" x="960" y="896" width="32" height="32">
    <properties>
     <property name="CharaID" value="9"/>
     <property name="EventID" value="1"/>

@@ -90,7 +90,7 @@
           "type": "charaMsg",
           "talk": [
             {
-              "text": ["何かに首を食いちぎられてる・・・\n何かいんのか？中に・・・","おい佐々木！\nお前は出口を探せ"],
+              "text": ["何かに首を食いちぎられてる・・・\n何かいんのか？中に・・・","・・・","おい佐々木！\nお前は出口を探せ"],
               "charaID": "2",
               "imgID": "1"
             },
@@ -108,9 +108,9 @@
           ]
         },
         {
-          "type": "charaWalk",
-          "direction": "UP",
-          "steps": 9.0,
+          "type": "charaWalkTo",
+          "x": 4,
+          "y": 3,
           "speed": 3.0,
           "objID": "1014"
         },
@@ -143,7 +143,8 @@
           ]
         },
         {
-          "type":"stopBGM"
+          "type":"stopBGM",
+          "file":"chapter1.mp3"
         },
         {
           "type": "already"

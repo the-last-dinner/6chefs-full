@@ -16,7 +16,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYGBgSAfiDDwYBlqBuA0PRlfXigUjq1sMxEugNDpegqTuIiN+PJzUAQBYOTgT
+   eJxjYGBgSAfiDDwYBlqBuA0PRlfXigUjq1sMxEugNDpegqTuIiN+PFTVYQMAKk00yw==
   </data>
  </layer>
  <layer name="MonoChu" width="10" height="10">
@@ -24,7 +24,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBh5IJMTFXdyMDB0IWFc6mYC5WYhYVqoAwBMixD9
+   eJxjYBh5IJMTFXdyMDB0IWFc6mYC5WYhYUrVYQMAKU8Odg==
   </data>
  </layer>
  <layer name="MonoUe" width="10" height="10">

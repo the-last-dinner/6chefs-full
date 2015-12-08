@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="30">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="33">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -17,10 +17,26 @@
  </tileset>
  <layer name="Base" width="30" height="22">
   <properties>
-   <property name="cc_vertexz" value="-20"/>
+   <property name="cc_vertexz" value="-21"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztlFEKwjAQRHcPoNUP7SFq9cOWnkHbfqj3v4sTQukSWhLI7l8GHpmEkIEhCdGqnokOGI+gonwv50+mXbncBuMNtJTv5TyW+8L4BiPlezmP5Z5BBU7KPpb7AC24K/tY7gxGMCn70rNXx/Y9DxvZX6z9DHv+sM8IJfdo9yzPDiX3a/cszw51xVpt2POFfcbevbK8z91G7vKOyr9R/ufFp2DRcwoWPaeQ0rOTe9sWhPoDyThgCA==
+  </data>
+ </layer>
+ <layer name="Ghint" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFO7gYGHZyMdAdHAHaeXQA7B0oMAfo17kD4N8VQDtXjqBwHgWjYBSMglEwCkYB7QEAizoF1Q==
+  </data>
+ </layer>
+ <layer name="hideHint" width="30" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-19"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzQENAAAERcGvAUXo344UbPauwEm44CaF7b85Zx28AADgrwZaqACD
   </data>
  </layer>
  <layer name="MonoShita" width="30" height="22">
@@ -183,6 +199,12 @@
   <object id="29" x="416" y="336" width="32" height="32">
    <properties>
     <property name="EventID" value="9"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="32" x="384" y="336" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>

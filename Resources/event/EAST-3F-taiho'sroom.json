@@ -29,37 +29,32 @@
 					]
 				},
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaWalk",
-									"direction":"UP",
-									"objID":"hero",
-									"steps":1.0
-								},
-								{
-									"type":"charaWalk",
-									"direction":"RIGHT",
-									"objID":"hero",
-									"steps":1.0
-								},
-								{
-									"type":"changeDirection",
-									"objID":"hero",
-									"direction":"UP"
-								}
-							]
-						},
-						{
-							"type":"charaWalk",
-							"objID":"10100",
-							"direction":"UP",
-							"steps":2.0
-						}
-					]
+					"type":"charaWalk",
+					"direction":"UP",
+					"objID":"hero",
+					"steps":1.0
+				},
+				{
+					"type":"charaWalk",
+					"direction":"RIGHT",
+					"objID":"hero",
+					"steps":1.0
+				},
+				{
+					"type":"changeDirection",
+					"objID":"hero",
+					"direction":"UP"
+				},
+				{
+					"type":"charaWalkTo",
+					"objID":"10100",
+					"x":10,
+					"y":19
+				},
+				{
+					"type":"changeDirection",
+					"objID":"10100",
+					"direction":"UP"
 				},
 				{
 					"type":"charaMsg",
@@ -78,29 +73,8 @@
 					]
 				},
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaWalk",
-									"objID":"10100",
-									"direction":"LEFT",
-									"steps":1.0
-								},
-								{
-									"type":"changeDirection",
-									"objID":"10100",
-									"direction":"UP"
-								}
-							]
-						},
-						{
-							"type":"wait",
-							"time":2.0
-						}
-					]
+					"type":"wait",
+					"time":1.0
 				},
 				{
 					"type":"spawn",
@@ -114,6 +88,10 @@
 							"layer":"hide"
 						}
 					]
+				},
+				{
+					"type":"wait",
+					"time":1.0
 				},
 				{
 					"type":"charaMsg",
@@ -135,6 +113,21 @@
 				{
 					"type":"wait",
 					"time":1.0
+				},
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"changeDirection",
+							"objID":"10100",
+							"direction":"RIGHT"
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"LEFT"
+						}
+					]
 				},
 				{
 					"type":"charaMsg",

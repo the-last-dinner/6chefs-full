@@ -76,16 +76,34 @@
 					"action":[
 						{
 							"type":"createChara",
-							"objID":"1072"
-						},
-						{
-							"type":"createChara",
 							"objID":"1079"
 						}
 					]
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["58","7"],
+					"status":["3","0"],
+					"Nevent":["32","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"createChara",
+							"objID":"1072"
+						}
+					]
+				}
+			]
 		}
+
 	],
 	"6":[
 		{
@@ -188,7 +206,7 @@
 										},
 										{
 											"type":"playSE",
-											"file":"blood.wav"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"fadein"
@@ -242,7 +260,7 @@
 										},
 										{
 											"type":"playSE",
-											"file":"blood.wav"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"wait",
@@ -259,7 +277,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":"ofu.wav"
+													"file":"ofu.mp3"
 												}
 											]
 										},
@@ -439,7 +457,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":"ofu.wav"
+													"file":"ofu.mp3"
 												}
 											]
 										},

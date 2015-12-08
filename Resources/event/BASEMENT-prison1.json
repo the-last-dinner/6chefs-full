@@ -23,6 +23,10 @@
 							"type":"spawn",
 							"action":[
 								{
+									"type":"reaction",
+									"objID":"hero"
+								},
+								{
 									"type":"addProfile",
 									"charaID":"13",
 									"infoID":"0"
@@ -69,17 +73,6 @@
 									"times":5
 								}
 							]
-						},
-						{
-							"type":"reaction",
-							"objID":"hero"
-						},
-						{
-							"type":"charaMsg",
-							"text":["うわあ！何だ！？この人達！？"],
-							"charaID":"0",
-							"imgID":"2",
-							"option":"reaction"
 						}
 					]
 				}

@@ -32,7 +32,7 @@
 				},
 				{
 					"type":"playSE",
-					"file":"bakibaki.wav"
+					"file":"bakibaki.mp3"
 				},
 				{
 					"type":"charaMsg",
@@ -136,7 +136,7 @@
 				},
 				{
 					"type":"playSE",
-					"file":"bakibaki.wav"
+					"file":"bakibaki.mp3"
 				},
 				{
 					"type":"charaMsg",

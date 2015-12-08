@@ -182,5 +182,11 @@
 		{
 			"type":"fadein"
 		}
+	],
+	"8":[
+		{
+			"type":"playSE",
+			"file":"koki.mp3"
+		}
 	]
 }

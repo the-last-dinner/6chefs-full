@@ -83,7 +83,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="57" x="160" y="368" width="32" height="16">
+  <object id="57" x="160" y="384" width="32" height="16">
    <properties>
     <property name="CharaID" value="5"/>
     <property name="EventID" value="27"/>

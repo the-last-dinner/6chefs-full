@@ -258,7 +258,7 @@
 											"action":[
 												{
 													"type":"playSE",
-													"file":"kimowarai.wav"
+													"file":"kimowarai.mp3"
 												},
 												{
 													"type":"charaMsg",

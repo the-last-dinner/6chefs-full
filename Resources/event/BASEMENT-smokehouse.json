@@ -67,7 +67,7 @@
 												},
 												{
 													"type":"playSE",
-													"fire":"fire_burn.wav"
+													"fire":"fire_burn.mp3"
 												},
 												{
 													"type":"wait",
@@ -79,9 +79,6 @@
 													"charaID":"0",
 													"imgID":"2",
 													"option":"reaction"
-												},
-												{
-													"type":"stopBGM"
 												},
 												{
 													"type":"already"
@@ -290,6 +287,10 @@
 						},
 						{
 							"type":"already"
+						},
+						{
+							"type":"already",
+							"event":["55","5"]
 						}
 					]
 				}

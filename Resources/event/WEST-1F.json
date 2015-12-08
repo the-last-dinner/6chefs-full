@@ -137,12 +137,19 @@
 				},
 				{
 					"type":"charaMsg",
-					"text":["スパイスが足りないな・・・\nさがしてこよう"],
+					"text":["スパイスが足りないな・・・\nさがしてこよう","・・・","確かさっきの執事さんが\n大広間にいるんだったよな"],
+					"charaID":"0",
+					"imgID":"2"
+				},
+				{
+					"type":"charaMsg",
+					"text":["聞いてみよ"],
 					"charaID":"0",
 					"imgID":"1"
 				},
 				{
-					"type":"stopBGM"
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
 				},
 				{
 					"type":"already"

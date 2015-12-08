@@ -62,11 +62,11 @@
 					"action":[
 						{
 							"type":"playSE",
-							"file":"4gatagata.wav"
+							"file":"4gatagata.mp3"
 						},
 						{
 							"type":"systemMsg",
-							"text":["男は震えている・・・"]
+							"text":["少年は震えている・・・"]
 						}
 					]	
 				}

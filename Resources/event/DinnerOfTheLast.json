@@ -12,6 +12,10 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"stopBGM",
+							"file":"psychopath.mp3"
+						},
+						{
 							"type":"wait",
 							"time":2.0
 						},
@@ -21,53 +25,33 @@
 							"charaID":"7"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaWalkTo",
-											"objID":"1086",
-											"x":19,
-											"y":27
-										},
-										{
-											"type":"removeChara",
-											"objID":"1086"
-										}
-									]
-								},
-								{
-									"type":"sequence",
-									"action":[
-										{
-											"type":"charaMsg",
-											"text":["な、おい！"],
-											"charaID":"2",
-											"imgID":"2",
-											"option":"reaction"
-										},
-										{
-											"type":"playSE",
-											"file":"agaa.wav"
-										},
-										{
-											"type":"charaMsg",
-											"text":["チィっ"],
-											"charaID":"2",
-											"imgID":"2",
-											"option":"reaction"
-										},
-										{
-											"type":"changeMap",
-											"mapID":"64",
-											"x":4,
-											"y":3
-										}
-									]
-								}
-							]
+							"type":"changeDirection",
+							"objID":"10106",
+							"direction":"DOWN"
+						},	
+						{
+							"type":"charaMsg",
+							"text":["な、おい！"],
+							"charaID":"2",
+							"imgID":"2",
+							"option":"reaction"
+						},
+						{
+							"type":"playSE",
+							"file":"agaa.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["チィっ"],
+							"charaID":"2",
+							"imgID":"2",
+							"option":"reaction"
+						},
+						{
+							"type":"changeMap",
+							"mapID":"64",
+							"x":4,
+							"y":3
 						}
 					]
 				}
@@ -89,7 +73,7 @@
 	"4":[
 		{
 			"type":"systemMsg",
-			"text":["心の臟だ・・・"]
+			"text":["ぐちゃぐちゃした赤いものが\n皿にのっている・・・"]
 		}
 	],
 	"5":[
@@ -164,7 +148,7 @@
 						{
 							"text":["コレは・・・一体なんですか！？"],
 							"charaID":"0",
-							"imgID":"1",
+							"imgID":"2",
 							"type":"reaction"
 						},
 						{
@@ -206,11 +190,19 @@
 							"type":"charaWalk",
 							"objID":"1086",	
 							"direction":"RIGHT",
-							"steps":6.0
+							"steps":6.0,
+							"speed":0.3
 						},
 						{
 							"type":"playSE",
-							"file":"7umeki.wav"
+							"file":"7umeki.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["なっ！？"],
+							"charaID":"0",
+							"imgID":"2",
+							"option":"reaction"
 						},
 						{
 							"type":"sequence",
@@ -231,7 +223,7 @@
 								},
 								{
 									"type":"playSE",
-									"file":"agaa.wav"
+									"file":"agaa.mp3"
 								},
 								{
 									"type":"charaWalk",
@@ -245,26 +237,14 @@
 					]
 				},
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"fadeout",
-							"color":[255,255,255]
-						},
-						{
-							"type":"charaMsg",
-							"text":["希崎さん！！"],
-							"charaID":"0",
-							"imgID":"2",
-							"option":"reaction"
-						},
-						{
-							"type":"fadein"
-						}
-					]
+					"type":"fadeout"
 				},
 				{
-					"type":"fadeout"
+					"type":"charaMsg",
+					"text":["希崎さん！！"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
 				},
 				{
 					"type":"if",
@@ -286,6 +266,14 @@
 									"objID":"1075"
 								},
 								{
+									"type":"removeChara",
+									"objID":"1086"
+								},
+								{
+									"type":"createChara",
+									"objID":"10106"
+								},
+								{
 									"type":"fadein",
 									"time":2.0
 								},
@@ -304,7 +292,8 @@
 									]
 								},
 								{
-									"type":"asaa.wav"
+									"type":"playSE",
+									"file":"agaa.mp3"
 								},
 								{
 									"type":"charaMsg",
@@ -353,7 +342,7 @@
 							"action":[
 								{
 									"type":"playSE",
-									"file":"blood.wav"
+									"file":"blood.mp3"
 								},
 								{
 									"type":"charaMsg",
@@ -422,7 +411,7 @@
 								},
 								{
 									"type":"playSE",
-									"file":"blood.wav"
+									"file":"blood.mp3"
 								},
 								{
 									"type":"createCamera",
@@ -510,28 +499,23 @@
 	],
 	"8":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["65","5"]
-				}
-			],
-			"action":[
-				{
-					"type":"charaMsg",
-					"text":["そんな・・・雪・・・どうして・・・"],
-					"charaID":"7"
-				}
-			]
+			"type":"charaMsg",
+			"text":["そんな・・・雪・・・どうして・・・"],
+			"charaID":"7"
 		}
 	],
 	"9":[
 		{
 			"type":"playSE",
-			"file":"agaa.wav"
+			"file":"agaa.mp3"
 		}
 	],
 	"10":[
+		{
+			"type":"playBGM",
+			"file":"psychopath.mp3",
+			"volume":0.5
+		},
 		{
 			"type":"if",
 			"condition":[

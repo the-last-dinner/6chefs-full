@@ -176,12 +176,11 @@
 						},
 						{
 							"type":"playSE",
-							"file":"hit.mp3",
-							"times":3
+							"file":"broken-glass.mp3"
 						},
 						{
-							"type":"playSE",
-							"file":"bakibaki.wav"
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"removeLayer",
@@ -319,7 +318,7 @@
 	"11":[
 		{
 			"type":"playSE",
-			"file":"bakibaki.wav"
+			"file":"bakibaki.mp3"
 		}
 	]
 }

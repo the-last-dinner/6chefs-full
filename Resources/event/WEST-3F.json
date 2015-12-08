@@ -415,7 +415,8 @@
 					"time":2.0
 				},
 				{
-					"type":"stopBGM"
+					"type":"stopBGM",
+					"file":"juice.mp3"
 				},
 				{
 					"type":"fadein"

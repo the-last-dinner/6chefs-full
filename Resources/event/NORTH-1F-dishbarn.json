@@ -17,11 +17,12 @@
 						{
 							"type":"charaMsg",
 							"text":["あがあああああああああ"],
+							"charaID":"9",
 							"name":"？？？"
 						},
 						{
 							"type":"playSE",
-							"file":"agaa.wav"
+							"file":"agaa.mp3"
 						}
 					]
 				},
@@ -29,7 +30,7 @@
 					"type":"charaMsg",
 					"text":["アイツだ！"],
 					"charaID":"0",
-					"imgID":"1",
+					"imgID":"3",
 					"option":"reaction"
 				},
 				{
@@ -52,14 +53,15 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"kodou.wav"
+									"file":"kodou.mp3"
 								},
 								{
 									"type":"wait",
 									"time":5.0
 								},
 								{
-									"type":"stopBGM"
+									"type":"stopBGM",
+									"file":"kodou.mp3"
 								},
 								{
 									"type":"fadein"
@@ -80,6 +82,7 @@
 							"y":25,
 							"enemyID":"143",
 							"charaID":"8",
+							"movePattern":"5",
 							"speed":10.0
 						}
 					]
@@ -142,7 +145,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["19","17"]
+					"Nevent":["20","17"]
 				}
 			],
 			"action":[

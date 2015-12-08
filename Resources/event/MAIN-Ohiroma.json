@@ -166,9 +166,6 @@
       "type":"sequence",
       "action":[
         {
-          "type":"stopBGM"
-        },
-        {
           "type":"fadeout"
         },
         {
@@ -532,6 +529,11 @@
               "objID":"1084"
             },
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
+            },
+            {
               "type":"stopBGM"
             },
             {
@@ -546,29 +548,18 @@
               "time":3.0
             },
             {
-              "type":"playBGM",
-              "file":"DanDan.mp3"
-            },
-            {
               "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう"],
-              "charaID":"4",
-              "imgID":"2"
-            },
-            {
-              "type":"playSE",
-              "file":"hit_dry.mp3"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"RIGHT"
-            },
-            {
-              "type":"charaMsg",
-              "text":["・・・！？"],
-              "charaID":"4",
-              "imgID":"1"
+              "talk":[
+                {
+                  "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう"],
+                  "charaID":"4",
+                  "imgID":"2"
+                },
+                {
+                  "text":["荒間田　暖暖・・・"],
+                  "charaID":"7"
+                }
+              ]
             },
             {
               "type":"createChara",
@@ -587,9 +578,10 @@
             },
             {
               "type":"charaMsg",
-              "text":["喰うために殺す\nそいつぁは決して悪ではねぇ・・・","でもなぁ","アンタは俺らの仲間を殺した\nそいつぁ許せねぇな"],
+              "text":["おい！\nさっきの部屋にあった人肉料理","アレ作ったのは誰だ！？","アンタじゃねぇだろ！？"],
               "charaID":"2",
-              "imgID":"2"
+              "imgID":"2",
+              "option":"reaction"
             },
             {
               "type":"changeDirection",
@@ -598,16 +590,35 @@
             },
             {
               "type":"charaMsg",
-              "text":["アナタ達・・・"],
+              "text":["それは・・・"],
               "charaID":"7"
             },
             {
-              "type":"playSE",
-              "file":"hit.mp3"
+              "type":"createChara",
+              "objID":"1088"
             },
             {
-              "type":"wait",
-              "time":0.8
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"playSE",
+                  "file":"syuba.mp3"
+                },
+                {
+                  "type":"charaWalk",
+                  "objID":"1088",
+                  "direction":"LEFT",
+                  "steps":9.0
+                }
+              ]
+            },
+            {
+              "type":"playSE",
+              "file":"blood.mp3"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1088"
             },
             {
               "type":"changeDirection",
@@ -624,21 +635,34 @@
               "direction":"LEFT"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
+              "type":"playSE",
+              "file":"cloth.mp3"
             },
             {
+              "type":"spawn",
+              "action":[
+                {
               "type":"reaction",
-              "objID":"1080"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1080"
+                },
+                {
+                  "type":"changeDirection",
+                  "objID":"1080",
+                  "direction":"UP"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1085"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -659,9 +683,10 @@
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["おい！","・・・","死んでる・・・"],
                   "charaID":"2",
-                  "imgID":"2"
+                  "imgID":"2",
+                  "option":"reaction"
                 }
               ]
             },
@@ -670,18 +695,12 @@
               "time":2.0
             },
             {
-              "type":"charaMsg",
-              "text":["帰るか"],
-              "charaID":"2",
-              "imgID":"2"
-            },
-            {
               "type":"fadeout",
               "time":3.0
             },
             {
-              "type":"end",
-              "file":"end1.png"
+              "type":"ending",
+              "endID":"2"
             }
           ]
         }
@@ -727,6 +746,11 @@
               "objID":"1084"
             },
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
+            },
+            {
               "type":"stopBGM"
             },
             {
@@ -741,12 +765,8 @@
               "time":3.0
             },
             {
-              "type":"playBGM",
-              "file":"DanDan.mp3"
-            },
-            {
               "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも","作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","さ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
               "charaID":"4",
               "imgID":"2"
             },
@@ -808,12 +828,48 @@
             },
             {
               "type":"charaMsg",
-              "text":["アナタ達・・・"],
-              "charaID":"7"
+              "talk":[
+                {
+                  "text":["アナタ達・・・"],
+                  "charaID":"7"
+                },
+                {
+                  "text":["それよかあの部屋にあった料理・・・\nアレは誰が作ったんだ？","人の肉であそこまでの料理を\n作れるってこたぁ・・・"],
+                  "charaID":"2",
+                  "imgID":"2"
+                },
+                {
+                  "type":["それは・・・"],
+                  "charaID":"7"
+                }
+              ]
+            },
+            {
+              "type":"createChara",
+              "objID":"1088"
+            },
+            {
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"playSE",
+                  "file":"syuba.mp3"
+                },
+                {
+                  "type":"charaWalk",
+                  "objID":"1088",
+                  "direction":"LEFT",
+                  "steps":9.0
+                }
+              ]
             },
             {
               "type":"playSE",
-              "file":"hit.mp3"
+              "file":"blood.mp3"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1088"
             },
             {
               "type":"wait",
@@ -834,30 +890,43 @@
               "direction":"LEFT"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
+              "type":"playSE",
+              "file":"cloth.mp3"
             },
             {
-              "type":"reaction",
-              "objID":"1080"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1080",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1081"
-            },
-            {
-              "type":"changeDirection",
-              "objID":"1081",
-              "direction":"UP"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"reaction",
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1080"
+                },
+                {
+                  "type":"changeDirection",
+                  "objID":"1080",
+                  "direction":"UP"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1081"
+                },
+                {
+                  "type":"changeDirection",
+                  "objID":"1081",
+                  "direction":"UP"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1085"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -883,9 +952,10 @@
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["おい！","・・・","死んでる・・・"],
                   "charaID":"2",
-                  "imgID":"2"
+                  "imgID":"2",
+                  "option":"reaction"
                 }
               ]
             },
@@ -904,8 +974,8 @@
               "time":3.0
             },
             {
-              "type":"end",
-              "file":"end1.png"
+              "type":"ending",
+              "endID":"2"
             }
           ]
         }
@@ -991,7 +1061,8 @@
               "file":"hit_dry.mp3"
             },
             {
-              "type":"stopBGM"
+              "type":"stopBGM",
+              "file":"DanDan.mp3"
             },
             {
               "type":"changeDirection",
@@ -1049,9 +1120,6 @@
               "file":"hit.mp3"
             },
             {
-              "type":"stopBGM"
-            },
-            {
               "type":"wait",
               "time":0.8
             },
@@ -1068,6 +1136,10 @@
               "type":"changeDirection",
               "objID":"1084",
               "direction":"LEFT"
+            },
+            {
+              "type":"playSE",
+              "file":"cloth.mp3"
             },
             {
               "type":"spawn",
@@ -1150,7 +1222,8 @@
               "imgID":"2"
             },
             {
-              "type":"fadeout"
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"playBGM",
@@ -1178,10 +1251,12 @@
               ]
             },
             {
-              "type":"fadeout"
+              "type":"fadeout",
+              "time":3.0
             },
             {
-              "type":"end"
+              "type":"ending",
+              "endID":"3"
             }        
           ]
         }
@@ -1206,14 +1281,6 @@
             },
             {
               "type":"createChara",
-              "objID":"1089"
-            },
-            {
-              "type":"createChara",
-              "objID":"1082"
-            },
-            {
-              "type":"createChara",
               "objID":"1083"
             },
             {
@@ -1225,33 +1292,23 @@
               "objID":"1084"
             },
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
+            },
+            {
               "type":"stopBGM"
             },
             {
-              "type":"changeDirection",
-              "objID":"1084",
-              "direction":"RIGHT"
-            },
-            {
               "type":"charaMsg",
-              "text":["オラァ！"],
-              "charaID":"5",
-              "imgID":"1",
+              "text":["佐々木くん・・・\nこっち！"],
+              "charaID":"1",
+              "imgID":"2",
               "option":"reaction"
-            },
-            {
-              "type":"playSE",
-              "file":"hit.mp3"
             },
             {
               "type":"fadein",
               "time":3.0
-            },
-            {
-              "type":"charaMsg",
-              "text":["ぐっっ、大善吾郎・・・"],
-              "charaID":"7",
-              "option":"reaction"
             },
             {
               "type":"createChara",
@@ -1262,7 +1319,7 @@
               "action":[
                 {
                   "type":"charaMsg",
-                  "text":["佐々木ぃ！"],
+                  "text":["希崎ぃ！"],
                   "charaID":"2",
                   "imgID":"2",
                   "option":"reaction"
@@ -1310,24 +1367,35 @@
               ]
             },
             {
-              "type":"playSE",
-              "file":"syuba.mp3"
-            },
-            {
               "type":"createChara",
               "objID":"1088"
             },
             {
-              "type":"charaMove",
-              "objID":"1088",
-              "direction":"LEFT",
-              "steps":13,
-              "speed":4.0,
-              "hit":"false"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"playSE",
+                  "file":"syuba.mp3"
+                },
+                {
+                  "type":"charaWalk",
+                  "objID":"1088",
+                  "direction":"LEFT",
+                  "steps":9.0
+                }
+              ]
+            },
+            {
+              "type":"playSE",
+              "file":"blood.mp3"
             },
             {
               "type":"removeChara",
               "objID":"1088"
+            },
+            {
+              "type":"reaction",
+              "objID":"1085"
             },
             {
               "type":"wait",
@@ -1343,20 +1411,21 @@
               "file":"cloth.mp3"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1089"
-            },
-            {
-              "type":"reaction",
-              "objID":"1082"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"reaction",
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1082"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -1369,11 +1438,6 @@
                 {
                   "text":["！？"],
                   "charaID":"1",
-                  "imgID":"2"
-                },
-                {
-                  "text":["！？"],
-                  "charaID":"5",
                   "imgID":"2"
                 },
                 {
@@ -1399,8 +1463,8 @@
               "time":3.0
             },
             {
-              "type":"end",
-              "file":"end2.png"
+              "type":"ending",
+              "endID":"2"
             }
           ]
         }
@@ -1440,6 +1504,11 @@
               "objID":"1084"
             },
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
+            },
+            {
               "type":"stopBGM"
             },
             {
@@ -1457,6 +1526,11 @@
               "type":"changeDirection",
               "objID":"1084",
               "direction":"RIGHT"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
             },
             {
               "type":"fadein",
@@ -1513,20 +1587,27 @@
               ]
             },
             {
-              "type":"playSE",
-              "file":"syuba.mp3"
-            },
-            {
               "type":"createChara",
               "objID":"1088"
             },
             {
-              "type":"charaMove",
-              "objID":"1088",
-              "direction":"LEFT",
-              "steps":13,
-              "speed":4.0,
-              "hit":"false"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"playSE",
+                  "file":"syuba.mp3"
+                },
+                {
+                  "type":"charaWalk",
+                  "objID":"1088",
+                  "direction":"LEFT",
+                  "steps":9.0
+                }
+              ]
+            },
+            {
+              "type":"playSE",
+              "file":"blood.mp3"
             },
             {
               "type":"removeChara",
@@ -1542,16 +1623,21 @@
               "direction":"LEFT"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1089"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"reaction",
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1089"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -1574,7 +1660,8 @@
                 {
                   "text":["おい！"],
                   "charaID":"2",
-                  "imgID":"2"
+                  "imgID":"2",
+                  "option":"reaction"
                 }
               ]
             },
@@ -1594,7 +1681,7 @@
             },
             {
               "type":"end",
-              "file":"end2.png"
+              "endID":"2"
             }
           ]
         }
@@ -1638,6 +1725,11 @@
               "objID":"1084"
             },
             {
+              "type":"changeDirection",
+              "objID":"hero",
+              "direction":"UP"
+            },
+            {
               "type":"stopBGM"
             },
             {
@@ -1650,6 +1742,11 @@
             {
               "type":"playSE",
               "file":"hit.mp3"
+            },
+            {
+              "type":"changeDirection",
+              "objID":"1084",
+              "direction":"RIGHT"
             },
             {
               "type":"fadein",
@@ -1704,20 +1801,27 @@
               ]
             },
             {
-              "type":"playSE",
-              "file":"syuba.mp3"
-            },
-            {
               "type":"createChara",
               "objID":"1088"
             },
             {
-              "type":"charaMove",
-              "objID":"1088",
-              "direction":"LEFT",
-              "steps":13,
-              "speed":4.0,
-              "hit":"false"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"playSE",
+                  "file":"syuba.mp3"
+                },
+                {
+                  "type":"charaWalk",
+                  "objID":"1088",
+                  "direction":"LEFT",
+                  "steps":9.0
+                }
+              ]
+            },
+            {
+              "type":"playSE",
+              "file":"blood.mp3"
             },
             {
               "type":"removeChara",
@@ -1733,16 +1837,21 @@
               "direction":"LEFT"
             },
             {
-              "type":"reaction",
-              "objID":"hero"
-            },
-            {
-              "type":"reaction",
-              "objID":"1089"
-            },
-            {
-              "type":"reaction",
-              "objID":"1083"
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"reaction",
+                  "objID":"hero"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1089"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1083"
+                }
+              ]
             },
             {
               "type":"charaMsg",
@@ -1789,8 +1898,8 @@
               "time":3.0
             },
             {
-              "type":"end",
-              "file":"end2.png"
+              "type":"ending",
+              "endID":"2"
             }
           ]
         }
