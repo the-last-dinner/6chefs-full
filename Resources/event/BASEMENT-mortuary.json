@@ -179,6 +179,11 @@
 					"imgID":"3"
 				},
 				{
+					"type":"playBGM",
+					"file":"bgm_noroi.mp3",
+					"volume":0.5
+				},
+				{
 					"type":"already"
 				}
 			]

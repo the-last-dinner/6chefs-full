@@ -114,12 +114,5 @@
 				}
 			]
 		}
-	],
-	"8":[
-		{
-			"type":"playBGM",
-			"file":"bgm_noroi.mp3",
-			"volume":0.5
-		}
 	]
 }

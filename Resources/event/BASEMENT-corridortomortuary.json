@@ -64,6 +64,10 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"stopBGM",
+					"file":"bgm_noroi.mp3"
+				},
+				{
 					"type":"fadeout"
 				},
 				{

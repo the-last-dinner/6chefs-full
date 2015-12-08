@@ -152,6 +152,10 @@
 	],
 	"6":[
 		{
+			"type":"stopBGM",
+			"file":"bgm_noroi.mp3"
+		},
+		{
 			"type":"if",
 			"condition":[
 				{

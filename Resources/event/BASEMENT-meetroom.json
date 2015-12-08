@@ -50,6 +50,10 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"stopBGM",
+					"file":"bgm_noroi.mp3"
+				},
+				{
 					"type":"reaction",
 					"objID":"hero"
 				},
@@ -149,6 +153,11 @@
 					"option":"reaction"
 				},
 				{
+					"type":"playBGM",
+					"file":"bgm_noroi.mp3",
+					"volume":0.5
+				},
+				{
 					"type":"already"
 				}
 			]
@@ -246,6 +255,11 @@
 							]
 						},
 						{
+							"type":"playBGM",
+							"file":"bgm_noroi.mp3",
+							"volume":0.5
+						},
+						{
 							"type":"already"
 						},
 						{
@@ -299,6 +313,11 @@
 											"text":["ダメだ・・・\n正気を失ってる\nドコ行ったんだろう・・・"],
 											"charaID":"0",
 											"imgID":"2"
+										},
+																		{
+											"type":"playBGM",
+											"file":"bgm_noroi.mp3",
+											"volume":0.5
 										},
 										{
 											"type":"already"
