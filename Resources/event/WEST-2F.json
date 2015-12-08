@@ -239,7 +239,7 @@
 									"choices":[
 										{
 											"choice":"はい",
-											"eventID":"30"
+											"eventID":"29"
 										},
 										{
 											"choice":"いいえ"
@@ -275,7 +275,7 @@
 									"choices":[
 										{
 											"choice":"はい",
-											"eventID":"29"
+											"eventID":"30"
 										},
 										{
 											"choice":"いいえ"
