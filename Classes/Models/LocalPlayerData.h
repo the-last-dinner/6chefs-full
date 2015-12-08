@@ -34,6 +34,8 @@ class LocalPlayerData : public Ref
     static const char* EVENT;
     static const char* ITEM;
     static const char* CHARA;
+    static const char* BGM;
+    
 // Class methods
 public:
     CREATE_FUNC_WITH_PARAM(LocalPlayerData, const int)
@@ -111,6 +113,12 @@ public:
     Location getLocation(const int num = 0);
     CharacterData getPartyMember(const int num = 0);
     vector<CharacterData> getPartyMemberAll();
+    
+    // BGM
+    void setBgm(const string& bgm_name);
+    bool removeBgm(const string& bgm_name);
+    void removeBgmAll();
+    vector<string> getBgmAll();
 };
 
 #endif /* LocalPlayerData_h */
