@@ -182,6 +182,10 @@
 							"objID":"hero"
 						},
 						{
+							"type":"stopBGM",
+							"file":"bgm_noroi.mp3"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
@@ -248,6 +252,10 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"stopBGM",
+							"file":"bgm_noroi.mp3"
+						},
+						{
 							"type":"reaction",
 							"objID":"hero"
 						},
@@ -290,6 +298,11 @@
 							"charaID":"0",
 							"imgID":"3",
 							"option":"reaction"
+						},
+						{
+							"type":"playBGM",
+							"file":"bgm_noroi.mp3",
+							"volume":0.5
 						},
 						{
 							"type":"already"

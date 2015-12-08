@@ -17,6 +17,9 @@
 			],
 			"action":[
 				{
+					"type":"stopBGM"
+				},
+				{
 					"type":"changeMap",
 					"mapID":"65",
 					"x":19,

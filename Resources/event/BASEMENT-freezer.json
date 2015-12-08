@@ -259,7 +259,7 @@
 						},
 						{
 							"type":"stopBGM",
-							"file":"chapter5.mo3"
+							"file":"chapter5.mp3"
 						},
 						{
 							"type":"removeChara",

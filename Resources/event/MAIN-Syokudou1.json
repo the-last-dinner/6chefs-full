@@ -19,6 +19,11 @@
 			"mapID":"41",
 			"x":8,
 			"y":19
+		},
+		{
+			"type":"playBGM",
+			"file":"bgm_noroi.mp3",
+			"volume":0.5
 		}
 	],
 	"3":[

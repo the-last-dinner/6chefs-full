@@ -124,10 +124,10 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="24" x="192" y="32" width="32" height="32">
+  <object id="24" x="320" y="32" width="32" height="32">
    <properties>
     <property name="EventID" value="6"/>
-    <property name="trigger" value="1"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
   <object id="25" x="256" y="320" width="32" height="32">
