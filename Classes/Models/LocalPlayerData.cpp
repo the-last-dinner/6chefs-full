@@ -226,6 +226,17 @@ bool LocalPlayerData::removeItem(const int item_id)
         if (items[i] == item_id && !isExist)
         {
             isExist = true;
+            
+            // 右手を確認
+            if(item_id == this->getItemEquipment(Direction::RIGHT))
+            {
+                this->setItemEquipment(Direction::RIGHT, 0);
+            }
+            // 左手を確認
+            if (item_id == this->getItemEquipment(Direction::LEFT))
+            {
+                this->setItemEquipment(Direction::LEFT, 0);
+            }
         }
         else
         {
