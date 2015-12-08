@@ -63,7 +63,6 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     this->addChild(saveDataSelector);
     
     // セーブデータ選択レイヤーのイベントをリッスン
-    saveDataSelector->onSaveDataSelected = CC_CALLBACK_1(TitleScene::onSaveDataSelected, this);
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
     saveDataSelector->setVisible(false);
     saveDataSelector->hide();
@@ -93,24 +92,6 @@ void TitleScene::onExitSelected()
 	FUNCLOG
 	SoundManager::getInstance()->playSE("back.mp3");
 	Director::getInstance()->end();
-}
-
-// セーブデータが選ばれた時
-void TitleScene::onSaveDataSelected(int dataId)
-{
-	FUNCLOG
-    // ローカルセーブデータの確定
-	PlayerDataManager::getInstance()->setGameStart(dataId);
-    
-    // 保存されているBGMの再生
-    vector<string> bgms {PlayerDataManager::getInstance()->getLocalData()->getBgmAll()};
-    for(string bgm : bgms)
-    {
-        SoundManager::getInstance()->playBGM(bgm);
-    }
-    
-    // シーンの移動
-	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
 // セーブデータ選択をキャンセルした時

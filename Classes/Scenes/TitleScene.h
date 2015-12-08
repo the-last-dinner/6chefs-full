@@ -36,7 +36,6 @@ private:
 	void onStartSelected();
 	void onContinueSelected();
 	void onExitSelected();
-	void onSaveDataSelected(int dataId);
 	void onSaveDataSelectCancelled();
     
     // トロフィーリスト
