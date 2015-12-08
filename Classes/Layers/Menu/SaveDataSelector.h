@@ -39,7 +39,6 @@ private:
     bool write_flag;
     bool comfirm_flag;
 public:
-    function<void(int)> onSaveDataSelected { nullptr };
     function<void()> onSaveDataSelectCancelled { nullptr };
 	
 	// インスタンスメソッド
