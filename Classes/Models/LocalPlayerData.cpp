@@ -262,7 +262,7 @@ vector<int> LocalPlayerData::getItemAll()
         items.push_back(stoi(itemList[i].GetString()));
     }
     return items;
-}
+} 
 
 // アイテムを所持しているか確認
 bool LocalPlayerData::hasItem(const int item_id)
@@ -534,7 +534,7 @@ bool LocalPlayerData::removeBgm(const string &bgm_name)
         {
             rapidjson::Value bgname  (kStringType);
             bgname.SetString(bgm_name.c_str(), strlen(bgm_name.c_str()), this->localData.GetAllocator());
-            this->localData[ITEM].PushBack(bgname, this->localData.GetAllocator());
+            this->localData[BGM].PushBack(bgname, this->localData.GetAllocator());
         }
     }
     return isExist;

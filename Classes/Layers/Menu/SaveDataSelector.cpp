@@ -213,8 +213,18 @@ void SaveDataSelector::onSpacePressed(int idx)
             // ロード
             SoundManager::getInstance()->playSE("load.mp3");
             PlayerDataManager::getInstance()->setGameStart(idx);
+            
+            // 保存されているBGMの再生
+            vector<string> bgms {PlayerDataManager::getInstance()->getLocalData()->getBgmAll()};
+            for(string bgm : bgms)
+            {
+                SoundManager::getInstance()->playBGM(bgm);
+            }
+            
+            // シーン移動
             Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
-        } else
+        }
+        else
         {
             // セーブデータが存在しない
             SoundManager::getInstance()->playSE("failure.mp3");
