@@ -237,8 +237,18 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"fadeout"
+				},
+				{
+					"type":"playSE",
+					"file":"water.mp3"
+				},
+				{
 					"type":"systemMsg",
 					"text":["酢を薄めて\n苺を酢水で軽く洗った"]
+				},
+				{
+					"type":"fadein"
 				},
 				{
 					"type":"already"
@@ -287,8 +297,18 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"fadeout"
+				},
+				{
+					"type":"playSE",
+					"file":"water.mp3"
+				},
+				{
 					"type":"systemMsg",
 					"text":["お湯でレタスを洗った"]
+				},
+				{
+					"type":"fadein"
 				},
 				{
 					"type":"already"
@@ -319,8 +339,18 @@
 											"type":"sequence",
 											"action":[
 												{
+													"type":"fadeout"
+												},
+												{
+													"type":"playSE",
+													"file":"busu.mp3"
+												},
+												{
 													"type":"systemMsg",
 													"text":["大根の葉を切り落とした"]
+												},
+												{
+													"type":"fadein"
 												},
 												{
 													"type":"already"

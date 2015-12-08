@@ -1,4 +1,10 @@
 {
+	"0":[
+    	{
+      		"type":"setAmbient",
+      		"ambient":"night"
+    	}
+	],
 	"3":[
 		{
 			"type":"changeMap",
