@@ -1,5 +1,9 @@
 {
 	"1":[
+    	{
+      		"type":"stopBGM",
+      		"file":"EAST.mp3"
+    	},
 		{
 			"type":"changeMap",
 			"mapID":"24",
@@ -9,6 +13,10 @@
 	],
 	"2":[
 		{
+      		"type":"stopBGM",
+      		"file":"EAST.mp3"
+    	},
+		{
 			"type":"changeMap",
 			"mapID":"24",
 			"x":30,
@@ -17,6 +25,10 @@
 	],
 	"3":[
 		{
+      		"type":"stopBGM",
+      		"file":"EAST.mp3"
+    	},
+		{
 			"type":"changeMap",
 			"mapID":"24",
 			"x":30,
@@ -24,6 +36,10 @@
 		}
 	],
 	"4":[
+		{
+      		"type":"stopBGM",
+      		"file":"EAST.mp3"
+    	},
 		{
 			"type":"changeMap",
 			"mapID":"24",

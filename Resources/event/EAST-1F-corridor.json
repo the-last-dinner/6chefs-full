@@ -51,6 +51,14 @@
 							"layer":"door2"
 						},
 						{
+				      		"type":"stopBGM",
+				      		"file":"EAST.mp3"
+    					},
+    					{
+    						"type":"playBGM",
+    						"file":"toyroom.mp3"
+    					},
+						{
 							"type":"changeMap",
 							"mapID":"35",
 							"x":13,

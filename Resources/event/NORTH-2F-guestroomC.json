@@ -28,6 +28,10 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"playSE",
 					"file":"7haizuri.mp3"
 				},
@@ -36,9 +40,6 @@
 					"text":["何か来る・・・？"],
 					"charaID":"0",
 					"imgID":"2"
-				},
-				{
-					"type":"stopBGM"
 				},
 				{
 					"type":"playBGM",
@@ -276,6 +277,11 @@
 							"text":["行った・・・\n何だったんだアレは・・・？"],
 							"charaID":"0",
 							"imgID":"2"
+						},
+						{
+							"type":"playBGM",
+							"file":"NORTH.mp3",
+							"volume":0.1
 						},
 						{
 							"type":"already"

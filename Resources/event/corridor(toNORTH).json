@@ -25,6 +25,11 @@
   ],
   "4": [
     {
+      "type":"playBGM",
+      "file":"NORTH.mp3",
+      "volume":0.1
+    },
+    {
       "type": "changeMap",
       "mapID": "10",
       "x": 61,
@@ -33,6 +38,11 @@
   ],
   "5": [
     {
+      "type":"playBGM",
+      "file":"NORTH.mp3",
+      "volume":0.1
+    },
+    {
       "type": "changeMap",
       "mapID": "10",
       "x": 63,
@@ -40,6 +50,11 @@
     }
   ],
   "6": [
+    {
+      "type":"playBGM",
+      "file":"NORTH.mp3",
+      "volume":0.1
+    },
     {
       "type": "changeMap",
       "mapID": "10",
