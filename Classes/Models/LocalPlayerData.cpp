@@ -540,6 +540,13 @@ bool LocalPlayerData::removeBgm(const string &bgm_name)
     return isExist;
 }
 
+// BGMを全削除
+void LocalPlayerData::removeBgmAll()
+{
+    this->localData[BGM].Clear();
+    this->localData[BGM].SetArray();
+}
+
 // BGMを取得
 vector<string> LocalPlayerData::getBgmAll()
 {

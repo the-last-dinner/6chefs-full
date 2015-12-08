@@ -117,6 +117,7 @@ public:
     // BGM
     void setBgm(const string& bgm_name);
     bool removeBgm(const string& bgm_name);
+    void removeBgmAll();
     vector<string> getBgmAll();
 };
 

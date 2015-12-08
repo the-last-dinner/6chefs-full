@@ -32,6 +32,7 @@ bool PlayBGMEvent::init(rapidjson::Value& json)
 void PlayBGMEvent::run()
 {
     SoundManager::getInstance()->playBGM(this->fileName, true, this->volume);
+    PlayerDataManager::getInstance()->getLocalData()->setBgm(this->fileName);
     this->setDone();
 }
 
@@ -50,8 +51,15 @@ bool StopBGMEvent::init(rapidjson::Value& json)
 
 void StopBGMEvent::run()
 {
-    if(this->fileName == "") SoundManager::getInstance()->stopBGMAll();
-    if(this->fileName != "") SoundManager::getInstance()->stopBGM(this->fileName);
+    if(this->fileName == "")
+    {
+        SoundManager::getInstance()->stopBGMAll();
+        PlayerDataManager::getInstance()->getLocalData()->removeBgmAll();
+    }
+    if(this->fileName != ""){
+        SoundManager::getInstance()->stopBGM(this->fileName);
+        PlayerDataManager::getInstance()->getLocalData()->removeBgm(this->fileName);
+    }
     this->setDone();
 }
 
