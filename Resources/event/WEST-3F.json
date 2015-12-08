@@ -1,4 +1,10 @@
 {
+	"0":[
+    	{
+      		"type":"setAmbient",
+      		"ambient":"day"
+    	}
+	],
 	"1":[
 		{
 			"type":"changeMap",
@@ -377,6 +383,11 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"playBGM",
+					"file":"favo_manaka.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1520"
 				},
@@ -446,7 +457,7 @@
 							"option":"reaction"
 						},
 						{
-							"text":["あ、ありがとうごありがとうございます。\n頂きます。","・・・","うまい！"],
+							"text":["あ、ありがとうございます。\n頂きます。","・・・","うまい！"],
 							"charaID":"0",
 							"imgID":"2"
 						}
@@ -460,7 +471,7 @@
 					"type":"charaMsg",
 					"talk":[
 						{
-							"text":["あたりまえじゃない！\nこれはね、アタシが愛情込めて丁寧に搾ったから","栄養たっぷりなのよ"],
+							"text":["あたりまえじゃない！\nこれはね、","アタシが愛情込めて丁寧に搾ったから\n栄養たっぷりなのよ"],
 							"charaID":"3",
 							"imgID":"1"
 						},
@@ -499,6 +510,10 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_manaka.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -522,6 +537,11 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"playBGM",
+					"file":"favo_manaka.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1521"
 				},
@@ -542,7 +562,7 @@
 							"imgID":"1"
 						},
 						{
-							"text":["でもあんま大勢の人の前に出るの好きじゃないのよね\nプロデューサーさんには「あれしちゃダメこれしちゃダメ」","って言われるし、やっぱりアンチも出てきて叩かれるし","何でアタシがあんなこと言われなくちゃいけないのよ・・・"],
+							"text":["でもあんま大勢の人の前に出るの好きじゃないのよね","プロデューサーさんには「あれしちゃダメこれしちゃダメ」\nって言われるし、","やっぱりアンチも出てきて叩かれるし","何でアタシがあんなこと言われなくちゃいけないのよ・・・"],
 							"charaID":"3",
 							"imgID":"1"
 						},
@@ -580,6 +600,10 @@
 					"infoID":"2"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_manaka.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -603,6 +627,15 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1522"
 				},
@@ -618,7 +651,7 @@
 							"imgID":"2"
 						},
 						{
-							"text":["ああ、だってフェアじゃねぇだろ？\n肉食動物ってのは他の動物の命を","頂いて生きてんだ。\nでもそこに上下はねぇ","強ぇ方が相手を殺して生きる。ソレが自然だ。","俺らだって例外じゃねぇよ"],
+							"text":["ああ、だってフェアじゃねぇだろ？","肉食動物ってのは他の動物の命を\n頂いて生きてんだ。","でもそこに上下はねぇ\n強ぇ方が相手を殺して生きる。ソレが自然だ。","俺らだって例外じゃねぇよ"],
 							"charaID":"2",
 							"imgID":"1"
 						},
@@ -656,6 +689,15 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"Mozart-OboeConcerto-1.mp3",
+					"volume":0.3
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -677,6 +719,11 @@
 				},
 				{
 					"type":"fadeout"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"removeItem",
@@ -735,6 +782,10 @@
 					"type":"addProfile",
 					"charaID":"2",
 					"infoID":"2"
+				},
+				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
 				},
 				{
 					"type":"fadein"

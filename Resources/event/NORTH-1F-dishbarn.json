@@ -12,6 +12,10 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"spawn",
 					"action":[
 						{
@@ -34,6 +38,9 @@
 					"option":"reaction"
 				},
 				{
+					"type":"already"
+				},
+				{
 					"type":"countDown",
 					"second":3.0,
 					"condition":[
@@ -43,7 +50,7 @@
 					],
 					"true":[
 						{
-							"type":"spawn",
+							"type":"sequence",
 							"action":[
 								{
 									"type":"stopCount"
@@ -52,8 +59,31 @@
 									"type":"fadeout"
 								},
 								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["隠れる場所がない！？"],
+											"charaID":"0",
+											"imgID":"3"
+										},
+										{
+											"text":["仕方がない！！\nこのダンボールで身を隠そう"],
+											"charaID":"0",
+											"imgID":"2"
+										}
+									]
+								},
+								{
 									"type":"playBGM",
 									"file":"kodou.mp3"
+								},
+								{
+									"type":"wait",
+									"time":5.0
+								},
+								{
+									"type":"playSE",
+									"file":"agaa.mp3"
 								},
 								{
 									"type":"wait",
@@ -71,6 +101,15 @@
 									"text":["もう・・・行ったかな？"],
 									"charaID":"0",
 									"imgID":"1"
+								},
+								{
+									"type":"playBGM",
+									"file":"NORTH.mp3",
+									"volume":0.1
+								},
+								{
+									"type":"already",
+									"event":["20","20"]
 								}
 							]
 						}
@@ -86,9 +125,6 @@
 							"speed":10.0
 						}
 					]
-				},
-				{
-					"type":"already"
 				}
 			]
 		}
@@ -309,5 +345,26 @@
 				}
 			]
 		}
-	]
+	],
+	"19":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["20","2"],
+					"Nevent":["20","20"]
+				}
+			],
+			"action":[		
+				{
+					"type":"charaWalk",
+					"objID":"hero",
+					"direction":"UP",
+					"steps":1.0,
+					"option":"back"
+				}
+			]
+		}
+	],
+	"20":"ダンボールに隠れたかどうかチェック用"
 }

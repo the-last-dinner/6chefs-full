@@ -1,4 +1,4 @@
-ー使いそうなスクリプトリストー
+﻿ー使いそうなスクリプトリストー
 
 
 ●キャラメッセージウインドウの表示
@@ -666,10 +666,10 @@ MAIN-Ohiromaの19
 ●環境光設定
 ・type名・・・setAmbient
 ・必要なもの・・・昼間　day
-		夕方 evening
+		  夕方 evening
 		　夜　　night
                   真っ暗　basement
-
+		  +room
 （例）
 	{
 		"type":"setAmbient",
