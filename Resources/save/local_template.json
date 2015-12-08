@@ -4,6 +4,7 @@
     "save_count":0,
     "play_time":0,
     "chapter":0,
+    "bgm":[],
     "equipment_right":0,
     "equipment_left":0,
     "map_id":1,
