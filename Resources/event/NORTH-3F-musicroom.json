@@ -259,6 +259,10 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"spawn",
 					"action":[
 						{

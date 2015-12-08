@@ -1,6 +1,15 @@
 {
 	"1":[
 		{
+	   		"type":"stopBGM",
+	 		"file":"toyroom.mp3"
+    	},
+    	{
+    		"type":"playBGM",
+    		"file":"EAST.mp3",
+     		 "volume":0.5
+    	},
+		{
 			"type":"changeMap",
 			"mapID":"32",
 			"x":14,

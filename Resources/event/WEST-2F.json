@@ -445,6 +445,11 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"playBGM",
+					"file":"DanDan.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1527"
 				},
@@ -506,6 +511,10 @@
 					"type":"addProfile",
 					"charaID":"4",
 					"infoID":"1"
+				},
+				{
+					"type":"stopBGM",
+					"file":"DanDan.mp3"
 				},
 				{
 					"type":"fadein"

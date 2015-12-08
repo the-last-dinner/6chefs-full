@@ -12,6 +12,10 @@
 			"type":"sequence",
 			"action":[
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"spawn",
 					"action":[
 						{
@@ -43,7 +47,7 @@
 					],
 					"true":[
 						{
-							"type":"spawn",
+							"type":"sequence",
 							"action":[
 								{
 									"type":"stopCount"
@@ -71,6 +75,11 @@
 									"text":["もう・・・行ったかな？"],
 									"charaID":"0",
 									"imgID":"1"
+								},
+								{
+									"type":"playBGM",
+									"file":"NORTH.mp3",
+									"volume":0.1
 								}
 							]
 						}

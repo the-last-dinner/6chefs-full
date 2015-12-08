@@ -377,6 +377,11 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"playBGM",
+					"file":"favo_manaka.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1520"
 				},
@@ -499,6 +504,10 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_manaka.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -520,6 +529,11 @@
 				},
 				{
 					"type":"fadeout"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_manaka.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"removeItem",
@@ -580,6 +594,10 @@
 					"infoID":"2"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_manaka.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -601,6 +619,11 @@
 				},
 				{
 					"type":"fadeout"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"removeItem",
@@ -656,6 +679,10 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -677,6 +704,11 @@
 				},
 				{
 					"type":"fadeout"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"removeItem",
@@ -735,6 +767,10 @@
 					"type":"addProfile",
 					"charaID":"2",
 					"infoID":"2"
+				},
+				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
 				},
 				{
 					"type":"fadein"
