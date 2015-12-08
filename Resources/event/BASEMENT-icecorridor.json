@@ -14,5 +14,19 @@
 			"x":16,
 			"y":11
 		}
+	],
+	"3":[
+		{
+			"type":"createEnemy",
+			"enemyID":"1423",
+			"charaID":"14",
+			"x":4,
+			"y":21,
+			"speed":2.0
+		},
+		{
+			"type":"playSE",
+			"file":"agaa.mp3"
+		}
 	]
 }

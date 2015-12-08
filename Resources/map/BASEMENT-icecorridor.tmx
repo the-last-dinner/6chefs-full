@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="144">
- <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="147">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16" tilecount="224">
+ <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
   <image source="barrel-option.png" trans="674c56" width="256" height="224"/>
  </tileset>
- <tileset firstgid="705" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480">
+ <tileset firstgid="705" name="chip10e_glas" tilewidth="16" tileheight="16">
   <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1185" name="lower" tilewidth="16" tileheight="16" tilecount="480">
+ <tileset firstgid="1185" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="000000" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="36" height="24">
@@ -68,6 +68,12 @@
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="145" x="400" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="3"/>
    </properties>
   </object>
  </objectgroup>

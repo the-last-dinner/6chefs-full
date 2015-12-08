@@ -277,7 +277,8 @@
 					]
 				},
 				{
-					"type":"stopBGM"
+					"type":"stopBGM",
+					"file":"chapter2.mp3"
 				},
 				{
 					"type":"already"

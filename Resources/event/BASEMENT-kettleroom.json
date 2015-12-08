@@ -325,6 +325,10 @@
 											"type":"already"
 										},
 										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
 											"type":"removeLayer",
 											"layer":"hideHint"
 										},

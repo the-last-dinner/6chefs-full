@@ -1,7 +1,8 @@
 {
 	"1":[
 		{
-			"type":"stopBGM"
+			"type":"stopBGM",
+			"file":"jail-door-close1.mp3"
 		},
 		{
 			"type":"changeMap",
@@ -12,7 +13,8 @@
 	],
 	"2":[
 		{
-			"type":"stopBGM"
+			"type":"stopBGM",
+			"file":"jail-door-close1.mp3"
 		},
 		{
 			"type":"changeMap",
@@ -23,8 +25,9 @@
 	],
 	"3":[
 		{
-			"type":"stopBGM"
-		},
+			"type":"stopBGM",
+			"file":"jail-door-close1.mp3"
+		},	
 		{
 			"type":"changeMap",
 			"mapID":"49",

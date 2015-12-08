@@ -81,9 +81,6 @@
 													"option":"reaction"
 												},
 												{
-													"type":"stopBGM"
-												},
-												{
 													"type":"already"
 												},
 												{

@@ -494,6 +494,10 @@
 							"objID":"1057"
 						},
 						{
+							"type":"stopBGM",
+							"file":"bgm_noroi.mp3"
+						},
+						{
 							"type":"fadeout",
 							"time":3.0
 						},
@@ -516,10 +520,15 @@
 							]
 						},
 						{
-							"type":"stopBGM"
+							"type":"stopBGM",
+							"file":"chapter4.mp3"
 						},
 						{
 							"type":"fadein"
+						},
+						{
+							"type":"playBGM",
+							"file":"bgm_noroi.mp3"
 						},
 						{
 							"type":"already"

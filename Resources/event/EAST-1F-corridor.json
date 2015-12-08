@@ -76,16 +76,34 @@
 					"action":[
 						{
 							"type":"createChara",
-							"objID":"1072"
-						},
-						{
-							"type":"createChara",
 							"objID":"1079"
 						}
 					]
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["58","7"],
+					"status":["3","0"],
+					"Nevent":["32","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"createChara",
+							"objID":"1072"
+						}
+					]
+				}
+			]
 		}
+
 	],
 	"6":[
 		{

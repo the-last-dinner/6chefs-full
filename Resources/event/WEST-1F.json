@@ -148,7 +148,8 @@
 					"imgID":"1"
 				},
 				{
-					"type":"stopBGM"
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
 				},
 				{
 					"type":"already"

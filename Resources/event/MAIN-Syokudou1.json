@@ -927,7 +927,8 @@
 											]
 										},
 										{
-											"type":"fadeout"
+											"type":"fadeout",
+											"time":3.0
 										}
 									]
 								}
@@ -950,12 +951,13 @@
 								{
 									"type":"displayImg",
 									"file":"chapter3.png",
-									"time":5.0
-								},
-								{
-									"type":"stopBGM"
+									"time":10.0
 								}
 							]
+						},
+						{
+							"type":"stopBGM",
+							"file":"chapter3.mp3"
 						}
 					]
 				}
@@ -1264,7 +1266,8 @@
 											]
 										},
 										{
-											"type":"fadeout"
+											"type":"fadeout",
+											"time":3.0
 										}
 									]
 								}
@@ -1287,12 +1290,13 @@
 								{
 									"type":"displayImg",
 									"file":"chapter3.png",
-									"time":5.0
-								},
-								{
-									"type":"stopBGM"
+									"time":10.0
 								}
 							]
+						},
+						{
+							"type":"stopBGM",
+							"file":"chapter3.mp3"
 						}
 					]
 				}
@@ -2915,7 +2919,8 @@
 					"time":2.0
 				},
 				{
-					"type":"stopBGM"
+					"type":"stopBGM",
+					"file":"juice.mp3"
 				},
 				{
 					"type":"fadein"

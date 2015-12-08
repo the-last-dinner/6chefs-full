@@ -60,7 +60,8 @@
 									"time":5.0
 								},
 								{
-									"type":"stopBGM"
+									"type":"stopBGM",
+									"file":"kodou.mp3"
 								},
 								{
 									"type":"fadein"

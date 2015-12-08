@@ -118,7 +118,8 @@
 											"objID":"1015"	
 										},
 										{
-											"type":"stopBGM"
+											"type":"stopBGM",
+											"file":"7haizuri.mp3"
 										},
 										{
 											"type":"playBGM",
@@ -263,7 +264,8 @@
 							]
 						},
 						{
-							"type":"stopBGM"
+							"type":"stopBGM",
+							"file":"kodou.mp3"
 						},
 						{
 							"type":"fadein",

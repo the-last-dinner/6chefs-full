@@ -69,7 +69,7 @@
   <properties>
    <property name="cc_vertexz" value="0"/>
   </properties>
-  <object id="131" x="880" y="544" width="32" height="32">
+  <object id="131" x="736" y="544" width="16" height="16">
    <properties>
     <property name="img" value="mes.png"/>
     <property name="objID" value="1088"/>
