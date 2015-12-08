@@ -1,4 +1,10 @@
 {
+	"0":[
+    	{
+      		"type":"setAmbient",
+      		"ambient":"night"
+    	}
+	],
 	"1":[
 		{
 			"type":"sequence",

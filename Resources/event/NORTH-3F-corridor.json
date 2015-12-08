@@ -464,8 +464,17 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1522"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -479,7 +488,7 @@
 							"imgID":"2"
 						},
 						{
-							"text":["ああ、だってフェアじゃねぇだろ？\n肉食動物ってのは他の動物の命を","頂いて生きてんだ。\nでもそこに上下はねぇ","強ぇ方が相手を殺して生きる。ソレが自然だ。","俺らだって例外じゃねぇよ"],
+							"text":["ああ、だってフェアじゃねぇだろ？","肉食動物ってのは他の動物の命を\n頂いて生きてんだ。","でもそこに上下はねぇ\n強ぇ方が相手を殺して生きる。ソレが自然だ。","俺らだって例外じゃねぇよ"],
 							"charaID":"2",
 							"imgID":"1"
 						},
@@ -517,6 +526,15 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"NORTH.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -540,8 +558,18 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1523"
+				},
+
+				{
+					"type":"playBGM",
+					"file":"favo_rannmaru.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -596,6 +624,15 @@
 					"type":"addProfile",
 					"charaID":"2",
 					"infoID":"2"
+				},
+				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"NORTH.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"

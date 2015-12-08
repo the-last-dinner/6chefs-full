@@ -57,6 +57,14 @@
 					"direction":"UP"
 				},
 				{
+					"type":"stopBGM",
+					"file":"EAST.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
+				},
+				{
 					"type":"charaMsg",
 					"talk":[
 						{
@@ -158,6 +166,10 @@
 					"objID":"1024"
 				},
 				{
+					"type":"stopBGM",
+					"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
+				},
+				{
 					"type":"charaMsg",
 					"talk":[
 						{
@@ -176,6 +188,11 @@
 					"type":"chase",
 					"objID":"10100",
 					"target":"hero"
+				},
+				{
+					"type":"playBGM",
+					"file":"EAST.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"already"

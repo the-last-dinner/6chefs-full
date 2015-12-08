@@ -291,8 +291,17 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1527"
+				},
+				{
+					"type":"playBGM",
+					"file":"DanDan.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -316,7 +325,17 @@
 							"imgID":"1"
 						},
 						{
-							"text":["あー・・・アレは我の店ではないですな・・・\n当たり前なのですが本店以外の鍋は","我が直接作っているワケではないのですぞ・・・\nアレを我のモノと言って良いのか・・・","佐々木氏の店もチェーンでしたな？"],
+							"text":["あー・・・アレは我の店ではないですな・・・"],
+							"charaID":"4",
+							"imgID":"1"
+						},
+						{
+							"text":["？"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"text":["当たり前なのですが本店以外の鍋は\n我が直接作っているワケではないのですぞ・・・","アレを我のモノと言って良いのか・・・","佐々木氏の店もチェーンでしたな？"],
 							"charaID":"4",
 							"imgID":"1"
 						},
@@ -354,6 +373,15 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"DanDan.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"NORTH.mp3",
+					"volume":0.1
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -377,8 +405,17 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"NORTH.mp3"
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1528"
+				},
+				{
+					"type":"playBGM",
+					"file":"DanDan.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -433,6 +470,15 @@
 					"type":"addProfile",
 					"charaID":"4",
 					"infoID":"2"
+				},
+				{
+					"type":"stopBGM",
+					"file":"DanDan.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"NORTH.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"

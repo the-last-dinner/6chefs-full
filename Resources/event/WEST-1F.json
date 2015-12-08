@@ -1,4 +1,10 @@
 {
+	"0":[
+    	{
+      		"type":"setAmbient",
+      		"ambient":"day"
+    	}
+	],
 	"1":[
 		{
 			"type":"sequence",
@@ -994,8 +1000,17 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
+				},
+				{
 					"type":"removeItem",
 					"itemID":"1526"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_nadeshiko.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -1019,7 +1034,7 @@
 							"imgID":"1"
 						},
 						{
-							"text":["はい・・・\n小さいお店ですけど・・・","でも毎日来てくれるお客さんもいて・・・\nお婆ちゃんのお店だったんですけどお婆ちゃんが倒れちゃって・・・","私が頑張らないといけないんです。"],
+							"text":["はい・・・\n小さいお店ですけど・・・","でも毎日来てくれるお客さんもいて・・・\nお婆ちゃんのお店だったんですけどお婆ちゃんが\n倒れちゃって・・・","私が頑張らないといけないんです。"],
 							"charaID":"1",
 							"imgID":"1"
 						},
@@ -1057,6 +1072,15 @@
 					"infoID":"1"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_nadeshiko.mp3"
+				},
+				{
+					"type":"playBGM",
+					"file":"Mozart-OboeConcerto-1.mp3",
+					"volume":0.3
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -1082,6 +1106,11 @@
 				{
 					"type":"removeItem",
 					"itemID":"1533"
+				},
+				{
+					"type":"playBGM",
+					"file":"favo_nadeshiko.mp3",
+					"volume":0.1
 				},
 				{
 					"type":"fadein"
@@ -1133,6 +1162,10 @@
 					"infoID":"2"
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_nadeshiko.mp3"
+				},
+				{
 					"type":"fadein"
 				}
 			]
@@ -1160,17 +1193,27 @@
 	],
 	"22":[
 		{
-			"type":"getItem",
-			"itemID":"1522",
-			"name":"猪肉"
-		},
-		{
-			"type":"already",
-			"event":["7","23"]
-		},
-		{
-			"type":"removeLayer",
-			"layer":"inoshishi"
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["7","23"]
+				}
+			],
+			"action":[
+				{
+					"type":"getItem",
+					"itemID":"1522",
+					"name":"猪肉"
+				},
+				{
+					"type":"already",
+					"event":["7","23"]
+				},
+				{
+					"type":"removeLayer",
+					"layer":"inoshishi"
+				}
+			]
 		}
 	],
 	"23":"猪肉アイコン用",
