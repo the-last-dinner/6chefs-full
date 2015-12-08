@@ -29,6 +29,7 @@ const char* LocalPlayerData::FRIENDSHIP {"friendship"};
 const char* LocalPlayerData::EVENT {"event"};
 const char* LocalPlayerData::CHARA {"chara"};
 const char* LocalPlayerData::ITEM {"item"};
+const char* LocalPlayerData::BGM {"bgm"};
 
 #pragma mark LocalDataFile
 
@@ -226,6 +227,17 @@ bool LocalPlayerData::removeItem(const int item_id)
         if (items[i] == item_id && !isExist)
         {
             isExist = true;
+            
+            // 右手を確認
+            if(item_id == this->getItemEquipment(Direction::RIGHT))
+            {
+                this->setItemEquipment(Direction::RIGHT, 0);
+            }
+            // 左手を確認
+            if (item_id == this->getItemEquipment(Direction::LEFT))
+            {
+                this->setItemEquipment(Direction::LEFT, 0);
+            }
         }
         else
         {
@@ -491,4 +503,59 @@ vector<CharacterData> LocalPlayerData::getPartyMemberAll()
         party.push_back(this->getPartyMember(i));
     }
     return party;
+}
+
+#pragma mark -
+#pragma mark BGM
+
+// BGMをセット
+void LocalPlayerData::setBgm(const string &bgm_name)
+{
+    rapidjson::Value bgname  (kStringType);
+    bgname.SetString(bgm_name.c_str(), strlen(bgm_name.c_str()), this->localData.GetAllocator());
+    this->localData[BGM].PushBack(bgname, this->localData.GetAllocator());
+}
+
+// BGMを削除
+bool LocalPlayerData::removeBgm(const string &bgm_name)
+{
+    bool isExist = false;
+    vector<string> bgms {this->getBgmAll()};
+    this->localData[BGM].Clear();
+    this->localData[BGM].SetArray();
+    int bgmCount = bgms.size();
+    for(int i = 0; i < bgmCount; i++)
+    {
+        if (bgms[i] == bgm_name)
+        {
+            isExist = true;
+        }
+        else
+        {
+            rapidjson::Value bgname  (kStringType);
+            bgname.SetString(bgm_name.c_str(), strlen(bgm_name.c_str()), this->localData.GetAllocator());
+            this->localData[ITEM].PushBack(bgname, this->localData.GetAllocator());
+        }
+    }
+    return isExist;
+}
+
+// BGMを全削除
+void LocalPlayerData::removeBgmAll()
+{
+    this->localData[BGM].Clear();
+    this->localData[BGM].SetArray();
+}
+
+// BGMを取得
+vector<string> LocalPlayerData::getBgmAll()
+{
+    vector<string> bgms {};
+    rapidjson::Value& bgmList = this->localData[BGM];
+    int bgmCount = bgmList.Size();
+    for(int i = 0; i < bgmCount; i++)
+    {
+        bgms.push_back(bgmList[i].GetString());
+    }
+    return bgms;
 }

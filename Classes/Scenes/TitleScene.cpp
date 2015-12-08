@@ -99,7 +99,17 @@ void TitleScene::onExitSelected()
 void TitleScene::onSaveDataSelected(int dataId)
 {
 	FUNCLOG
+    // ローカルセーブデータの確定
 	PlayerDataManager::getInstance()->setGameStart(dataId);
+    
+    // 保存されているBGMの再生
+    vector<string> bgms {PlayerDataManager::getInstance()->getLocalData()->getBgmAll()};
+    for(string bgm : bgms)
+    {
+        SoundManager::getInstance()->playBGM(bgm);
+    }
+    
+    // シーンの移動
 	Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
 
