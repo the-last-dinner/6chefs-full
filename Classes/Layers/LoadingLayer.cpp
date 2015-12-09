@@ -20,7 +20,7 @@ bool LoadingLayer::init()
 	if(!Layer::init()) return false;
     
 	// plistを読み込み
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(TextureManager::basePath + "load.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile(Resource::SpriteFrame::BASE_PATH + "load.plist");
     
     // カバー生成
     Sprite* cover { Sprite::create() };

@@ -4,10 +4,24 @@
 	<dict>
 		<key>frames</key>
 		<dict>
+			<key>G.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{28,8},{15,14}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{15,14}}</string>
+				<key>sourceSize</key>
+				<string>{16,16}</string>
+			</dict>
+
 			<key>item_blue_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{27,27}}</string>
+				<string>{{0,8},{27,27}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +35,7 @@
 			<key>item_blue_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,28},{23,24}}</string>
+				<string>{{0,36},{23,24}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,13 +49,27 @@
 			<key>item_blue_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{24,28},{19,19}}</string>
+				<string>{{24,36},{19,19}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
 				<string>{{6,6},{19,19}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>mes.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{29,7}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,10},{29,7}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -55,7 +83,7 @@
 			<key>size</key>
 			<string>{64,64}</string>
 			<key>textureFileName</key>
-			<string>item.png</string>
+			<string>map_object.png</string>
 			</dict>
 		</dict>
 </plist>

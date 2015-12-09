@@ -7,7 +7,7 @@
 			<key>heart_black.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{81,0},{80,80}}</string>
+				<string>{{0,0},{80,80}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +21,7 @@
 			<key>heart_pink.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{80,80}}</string>
+				<string>{{81,0},{80,80}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -30,6 +30,20 @@
 				<string>{{26,23},{80,80}}</string>
 				<key>sourceSize</key>
 				<string>{128,128}</string>
+			</dict>
+
+			<key>icon_sign.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{46,81},{12,28}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{10,2},{12,28}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
 			</dict>
 
 			<key>trophy_gold.png</key>
