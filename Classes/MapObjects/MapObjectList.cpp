@@ -172,14 +172,35 @@ vector<int> MapObjectList::getEventIdsByGridRect(const Rect& gridRect, const Tri
     return ids;
 }
 
-// 当たり判定を持つオブジェクトのマスRectを全て取得
-vector<Rect> MapObjectList::getGridCollisionRects() const
+// 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
+vector<Rect> MapObjectList::getGridCollisionRects(MapObject* exclusion) const
+{
+    Vector<MapObject*> ex {};
+    ex.pushBack(exclusion);
+    
+    vector<Rect> collisionRects {this->getGridCollisionRects(ex)};
+    
+    ex.clear();
+    
+    return collisionRects;
+}
+
+// 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
+vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) const
 {
     vector<Rect> gridRects {};
     
     for(MapObject* obj : this->availableObjects)
     {
         if(!obj->isHit()) continue;
+        
+        bool flg { false };
+        for(MapObject* ex : exclusion)
+        {
+            if(obj == ex) flg = true;
+        }
+        
+        if(flg) continue;
         
         gridRects.push_back(obj->getGridRect());
     }
@@ -287,10 +308,10 @@ Party* MapObjectList::getParty()
 // 主人公一行が移動した時
 void MapObjectList::onPartyMoved(const Rect& gridRect)
 {
-    // 敵に移動後の主人公のマス座標を通知する
+    // 敵に移動したことを通知する
     for(Enemy* enemy : this->enemies)
     {
-        enemy->onPartyMoved(gridRect);
+        enemy->onPartyMoved();
     }
 }
 

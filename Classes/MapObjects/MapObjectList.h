@@ -50,7 +50,8 @@ public:
     
     vector<int> getEventIds(const Trigger trigger) const;
     vector<int> getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const;
-    vector<Rect> getGridCollisionRects() const;
+    vector<Rect> getGridCollisionRects(MapObject* exclusion = nullptr) const;
+    vector<Rect> getGridCollisionRects(Vector<MapObject*> exclusion) const;
     
     // 追加、削除
     void add(MapObject* mapObject);

@@ -25,18 +25,14 @@ bool CheapChaser::init(Character* character)
 }
 
 // 追跡開始
-void CheapChaser::start(const Rect& gridRect)
+void CheapChaser::start()
 {
-    MovePattern::start(gridRect);
-    
     this->move();
 }
 
 // パーティが移動した時
-void CheapChaser::onPartyMoved(const Rect& gridRect)
+void CheapChaser::onPartyMoved()
 {
-    MovePattern::onPartyMoved(gridRect);
-    
     // もしキャラクタが動いていなければ、動かす
     if(this->chara->isMoving()) return;
     this->move();
@@ -45,13 +41,13 @@ void CheapChaser::onPartyMoved(const Rect& gridRect)
 // マップ移動可能か
 bool CheapChaser::canGoToNextMap() const
 {
-    return this->chara->canMove(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()));
+    return this->chara->canMove(MapUtils::vectoMapDirections(this->getMainCharacter()->getGridRect().origin - this->chara->getGridPosition()));
 }
 
 // 次マップへの出現遅延時間を計算
 float CheapChaser::calcSummonDelay() const
 {
-    Vec2 diffVec { this->mainCharacterRect.origin - this->chara->getGridPosition() };
+    Vec2 diffVec { this->getMainCharacter()->getGridRect().origin - this->chara->getGridPosition() };
     
     // 差が大きい方の要素を距離として時間を計算
     float distance { max(abs(diffVec.x), abs(diffVec.y)) };
@@ -60,7 +56,9 @@ float CheapChaser::calcSummonDelay() const
 }
 
 // 移動
-void CheapChaser::move()
+void CheapChaser::move(function<void()> callback)
 {
-    this->chara->walkBy(MapUtils::vectoMapDirections(this->mainCharacterRect.origin - this->chara->getGridPosition()), CC_CALLBACK_0(CheapChaser::move, this), this->speedRatio);
+    if(this->paused) return;
+    if(this->chara->walkBy(MapUtils::vectoMapDirections(this->getMainCharacter()->getGridRect().origin - this->chara->getGridPosition()), [this, callback](){this->move(callback);}, this->speedRatio)) return;
+    if(callback) callback();
 }
