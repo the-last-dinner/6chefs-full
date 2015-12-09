@@ -24,6 +24,7 @@ public:
         EVENT,
         CHARACTER,
         TERRAIN,
+        ITEM,
         
         SIZE,
     };
@@ -54,6 +55,7 @@ private:
     MapObject* createObjectOnEvent(const ValueMap& info);
     MapObject* createObjectOnCharacter(const ValueMap& info);
     MapObject* createObjectOnTerrain(const ValueMap& info);
+    MapObject* createObjectOnItem(const ValueMap& info);
 };
 
 #endif /* defined(__LastSupper__MapObjectFactory__) */

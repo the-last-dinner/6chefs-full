@@ -18,6 +18,7 @@ private:
     static const string PREFIX;
     static const string BLUE;
     static const int ANIMATION_FRAME_NUM;
+    static const float ANIMATION_DELAY_PER_UNIT;
     
 // クラスメソッド
 public:
@@ -28,6 +29,7 @@ public:
     ItemObject();
     ~ItemObject();
     bool init();
+    string getSpriteFrameName(int state);
 };
 
 #endif /* ItemObject_h */
