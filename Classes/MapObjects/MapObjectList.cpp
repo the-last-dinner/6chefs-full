@@ -11,23 +11,6 @@
 #include "MapObjects/Party.h"
 #include "MapObjects/TerrainObject/PlainArea.h"
 
-// create関数
-MapObjectList* MapObjectList::create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
-{
-    MapObjectList* p {new(nothrow) MapObjectList()};
-    if(p && p->init(availableObjects, disableObjects, terrainObjects))
-    {
-        p->autorelease();
-        return p;
-    }
-    else
-    {
-        delete p;
-        p = nullptr;
-        return nullptr;
-    }
-}
-
 // コンストラクタ
 MapObjectList::MapObjectList() {FUNCLOG};
 
@@ -44,12 +27,8 @@ MapObjectList::~MapObjectList()
 };
 
 // 初期化
-bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
+bool MapObjectList::init()
 {
-    this->availableObjects = availableObjects;
-    this->disableObjects = disableObjects;
-    this->terrainObjects = terrainObjects;
-    
     // ノーマルの地形を生成
     PlainArea* plainArea { PlainArea::create() };
     CC_SAFE_RETAIN(plainArea);
@@ -60,6 +39,30 @@ bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vecto
     
     return true;
 }
+
+// 有効オブジェクトリストを設定
+void MapObjectList::setAvailableObjects(const Vector<MapObject*>& objects)
+{
+    if(!this->availableObjects.empty()) return;
+    
+    this->availableObjects = objects;
+}
+
+// 無効オブジェクトを設定
+void MapObjectList::setDisableObjects(const Vector<MapObject*>& objects)
+{
+    if(!this->disableObjects.empty()) return;
+    
+    this->disableObjects = objects;
+};
+
+// 地形オブジェクトを設定
+void MapObjectList::setTerrainObjects(const Vector<TerrainObject*>& objects)
+{
+    if(!this->terrainObjects.empty()) return;
+    
+    this->terrainObjects = objects;
+};
 
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const

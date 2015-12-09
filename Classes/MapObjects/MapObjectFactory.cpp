@@ -12,6 +12,8 @@
 
 #include "MapObjects/Character.h"
 #include "MapObjects/EventObject.h"
+#include "MapOBjects/GhostObject.h"
+#include "MapObjects/ItemObject.h"
 #include "MapObjects/MapObjectList.h"
 
 #include "MapObjects/TerrainObject/WaterArea.h"
@@ -40,6 +42,8 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         {MapObjectFactory::Group::EVENT, "event"},
         {MapObjectFactory::Group::CHARACTER, "Chara(object)"},
         {MapObjectFactory::Group::TERRAIN, "terrain"},
+        {MapObjectFactory::Group::ITEM, "item"},
+        {MapObjectFactory::Group::GHOST, "Ugokumono(object)"},
     };
     
     // グループごとに生成メソッドを用意
@@ -49,6 +53,8 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         {Group::EVENT, CC_CALLBACK_1(MapObjectFactory::createObjectOnEvent, p)},
         {Group::CHARACTER, CC_CALLBACK_1(MapObjectFactory::createObjectOnCharacter, p)},
         {Group::TERRAIN, CC_CALLBACK_1(MapObjectFactory::createObjectOnTerrain, p)},
+        {Group::ITEM, CC_CALLBACK_1(MapObjectFactory::createObjectOnItem, p)},
+        {Group::GHOST, CC_CALLBACK_1(MapObjectFactory::createObjectOnGhost, p)},
     };
     
     // ベクタを用意
@@ -90,7 +96,13 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     delete p;
     
     // MapObjectListを生成して返す
-    return MapObjectList::create(availableObjects, disableObjects, terrainObjects);
+    MapObjectList* list { MapObjectList::create() };
+    
+    list->setAvailableObjects(availableObjects);
+    list->setDisableObjects(disableObjects);
+    list->setTerrainObjects(terrainObjects);
+    
+    return list;
 }
 
 // オブジェクトの位置、大きさを取得
@@ -153,9 +165,17 @@ Direction MapObjectFactory::getDirection(const ValueMap& info) const
 }
 
 // マス座標を取得
-Point MapObjectFactory::getGridPosition(const Rect& rect)
+Point MapObjectFactory::getGridPosition(const Rect& rect) const
 {
     return MapUtils::convertToMapPoint(this->tiledMap->getContentSize(), Point(rect.getMinX(), rect.getMinY())) / GRID;
+}
+
+// Spriteを取得
+Sprite* MapObjectFactory::getSprite(const ValueMap& info) const
+{
+    if(info.count("img") == 0) return nullptr;
+    
+    return Sprite::createWithSpriteFrameName(info.at("img").asString());
 }
 
 // 当たり判定レイヤにあるオブジェクトを生成
@@ -165,7 +185,6 @@ MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
     MapObject* pObj = EventObject::create();
     pObj->setObjectId(this->getObjectId(info));
     pObj->setGridPosition(this->getGridPosition(rect));
-    pObj->setPosition(rect.origin + rect.size / 2);
     pObj->setContentSize(rect.size);
     pObj->setHit(true);
     pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
@@ -195,7 +214,6 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
     pObj->setObjectId(this->getObjectId(info));
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
-    pObj->setPosition(rect.origin + rect.size / 2);
     pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
     
     return pObj;
@@ -223,7 +241,6 @@ MapObject* MapObjectFactory::createObjectOnCharacter(const ValueMap& info)
     
     chara->setTrigger(this->getTrigger(info));
     chara->setEventId(this->getEventId(info));
-    chara->setPosition(rect.origin + rect.size / 2);
     chara->setHit(true);
     
     return chara;
@@ -252,8 +269,41 @@ MapObject* MapObjectFactory::createObjectOnTerrain(const ValueMap& info)
     obj->setObjectId(this->getObjectId(info));
     obj->setGridPosition(this->getGridPosition(rect));
     obj->setContentSize(rect.size);
-    obj->setPosition(rect.origin + rect.size / 2);
     obj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    
+    return obj;
+}
+
+// アイテムレイヤにあるオブジェクトを生成
+MapObject* MapObjectFactory::createObjectOnItem(const ValueMap& info)
+{
+    ItemObject* obj { ItemObject::create() };
+    
+    if(!obj) return nullptr;
+    
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(this->getRect(info)));
+    
+    return obj;
+}
+
+// 動くものレイヤにあるオブジェクトを生成
+MapObject* MapObjectFactory::createObjectOnGhost(const ValueMap& info)
+{
+    GhostObject* obj { GhostObject::create() };
+    
+    if(!obj) return nullptr;
+    
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(this->getRect(info)));
+    Sprite* sprite { this->getSprite(info) };
+    obj->setSprite(sprite);
+    obj->setContentSize(sprite->getContentSize());
+    obj->setCollisionRect(Rect(0, 0, sprite->getContentSize().width, sprite->getContentSize().height));
     
     return obj;
 }

@@ -61,6 +61,16 @@ void MapObject::setCollisionRect(const Rect& rect) { this->collisionRect = rect;
 // マップオブジェクトのリストをセット
 void MapObject::setMapObjectList(MapObjectList* objectList) { this->objectList = objectList; }
 
+// Spriteを設定
+void MapObject::setSprite(Sprite* sprite)
+{
+    if(!sprite) return;
+    
+    this->sprite = sprite;
+    
+    this->addChild(sprite);
+};
+
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
 {
@@ -96,6 +106,9 @@ bool MapObject::isMoving() const {return this->_isMoving;}
 
 // 現在キャラが向いている方向を取得
 Direction MapObject::getDirection() const {return this->location.direction;}
+
+// Spriteを取得
+Sprite* MapObject::getSprite() const { return this->sprite;};
 
 // 当たり判定の有無を取得
 const bool MapObject::isHit() const {return this->_isHit;}

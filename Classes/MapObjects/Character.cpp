@@ -49,11 +49,10 @@ bool Character::init(const CharacterData& data)
     }
     
 	// Spriteを生成
-	this->character = Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png");
-	this->addChild(this->character);
+    this->setSprite(Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png"));
     
     // サイズ、衝突判定範囲をセット
-    this->setContentSize(this->character->getContentSize());
+    this->setContentSize(this->getSprite()->getContentSize());
     this->setCollisionRect(Rect(0, 0, this->getContentSize().width, this->getContentSize().height / 2));
 	
     for(int i {0}; i < static_cast<int>(Direction::SIZE); i++)
@@ -79,33 +78,27 @@ int Character::getCharacterId() const {return this->charaId;}
 // 自身のキャラクターデータを返す
 CharacterData Character::getCharacterData() const { return CharacterData(this->charaId, this->getObjectId(), this->location); }
 
-// Spriteを取得
-Sprite* Character::getSprite() const
-{
-    return this->character;
-}
-
 // キャラクターの向きを変える
 void Character::setDirection(const Direction direction)
 {
     MapObject::setDirection(direction);
     
 	// 画像差し替え
-	this->character->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
+	this->getSprite()->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
 }
 
 // 足踏み
 void Character::stamp(const Direction direction, float ratio)
 {
-    this->character->stopAllActions();
+    this->getSprite()->stopAllActions();
     
     Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(direction)) + to_string(this->stampingState < 2 ? 0 : 1));
     this->stampingState++;
     if(this->stampingState > 3) this->stampingState = 0;
     anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
     
-    this->character->runAction(Animate::create(anime));
-    this->character->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this]{this->setDirection(this->getDirection());})));
+    this->getSprite()->runAction(Animate::create(anime));
+    this->getSprite()->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this]{this->setDirection(this->getDirection());})));
 }
 
 // 方向を指定して歩行させる

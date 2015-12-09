@@ -24,6 +24,8 @@ public:
         EVENT,
         CHARACTER,
         TERRAIN,
+        ITEM,
+        GHOST,
         
         SIZE,
     };
@@ -48,12 +50,15 @@ private:
     int getCharacterId(const ValueMap& info) const;
     CharacterMovePattern getCharacterMovePattern(const ValueMap& info) const;
     Direction getDirection(const ValueMap& info) const;
-    Point getGridPosition(const Rect& rect);
+    Point getGridPosition(const Rect& rect) const;
+    Sprite* getSprite(const ValueMap& info) const;
     
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);
     MapObject* createObjectOnCharacter(const ValueMap& info);
     MapObject* createObjectOnTerrain(const ValueMap& info);
+    MapObject* createObjectOnItem(const ValueMap& info);
+    MapObject* createObjectOnGhost(const ValueMap& info);
 };
 
 #endif /* defined(__LastSupper__MapObjectFactory__) */
