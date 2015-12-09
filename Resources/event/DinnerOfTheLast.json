@@ -184,6 +184,9 @@
 					"objID":"hero"
 				},
 				{
+					"type":"stopBGM"
+				},
+				{
 					"type":"spawn",
 					"action":[
 						{
@@ -395,10 +398,20 @@
 											"time":4.0
 										},
 										{
-											"type":"charaWalkTo",
-											"x":19,
-											"y":21,
-											"objID":"1073"
+											"type":"sequence",
+											"action":[
+												{
+													"type":"charaWalk",
+													"objID":"1073",
+													"direction":"RIGHT",
+													"steps":3.0
+												},
+												{
+													"type":"changeDirection",
+													"objID":"1073",
+													"direction":"DOWN"
+												}
+											]
 										},
 										{
 											"type":"charaMsg",
@@ -416,7 +429,7 @@
 								{
 									"type":"createCamera",
 									"mapID":"1",
-									"x":27,
+									"x":26,
 									"y":26,
 									"action":[
 										{
@@ -447,7 +460,7 @@
 															"type":"charaWalk",
 															"objID":"1095",
 															"direction":"LEFT",
-															"steps":10.0
+															"steps":20.0
 														}
 													]
 												}
@@ -515,6 +528,10 @@
 			"type":"playBGM",
 			"file":"psychopath.mp3",
 			"volume":0.5
+		},
+		{
+			"type":"playBGM",
+			"file":"chapter4.mp3"
 		},
 		{
 			"type":"if",

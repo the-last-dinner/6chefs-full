@@ -180,7 +180,15 @@
 						},
 						{
 							"type":"wait",
-							"time":2.0
+							"time":1.0
+						},
+						{
+							"type":"playSE",
+							"file":"egg-break.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"playSE",
@@ -188,7 +196,7 @@
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",
@@ -261,7 +269,15 @@
 						},
 						{
 							"type":"wait",
-							"time":2.0
+							"time":1.0
+						},
+						{
+							"type":"playSE",
+							"file":"egg-break.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"playSE",
@@ -269,7 +285,7 @@
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",
@@ -319,19 +335,11 @@
 						},
 						{
 							"type":"playSE",
-							"file":"egg-konkon1.mp3"
-						},
-						{
-							"type":"wait",
-							"time":2.0
-						},
-						{
-							"type":"playSE",
 							"file":"guskonro-start.mp3"
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",
@@ -400,19 +408,11 @@
 						},
 						{
 							"type":"playSE",
-							"file":"egg-konkon1.mp3"
-						},
-						{
-							"type":"wait",
-							"time":2.0
-						},
-						{
-							"type":"playSE",
 							"file":"guskonro-start.mp3"
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",
@@ -466,7 +466,15 @@
 						},
 						{
 							"type":"wait",
-							"time":2.0
+							"time":1.0
+						},
+						{
+							"type":"playSE",
+							"file":"egg-break.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"playSE",
@@ -474,7 +482,7 @@
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",
@@ -547,7 +555,15 @@
 						},
 						{
 							"type":"wait",
-							"time":2.0
+							"time":1.0
+						},
+						{
+							"type":"playSE",
+							"file":"egg-break.mp3"
+						},
+						{
+							"type":"wait",
+							"time":1.0
 						},
 						{
 							"type":"playSE",
@@ -555,7 +571,7 @@
 						},
 						{
 							"type":"wait",
-							"time":7.0
+							"time":5.0
 						},
 						{
 							"type":"playSE",

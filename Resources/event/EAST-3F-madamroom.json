@@ -87,6 +87,10 @@
 					"type":"spawn",
 					"action":[	
 						{
+							"type":"stopBGM",
+							"file":"EAST.mp3"
+						},
+						{
 							"type":"reaction",
 							"objID":"1021"
 						},

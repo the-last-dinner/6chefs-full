@@ -50,8 +50,7 @@
 											"name":"棍棒"
 										},
 										{
-											"type":"already",
-											"event":["18","3"]
+											"type":"already"
 										}
 									]
 								}

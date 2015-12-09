@@ -583,5 +583,23 @@
 				}
 			]
 		}
+	],
+	"16":[
+		{
+			"type":"systemMsg",
+			"text":["客室A"]
+		}
+	],
+	"17":[
+		{
+			"type":"systemMsg",
+			"text":["客室B"]
+		}
+	],
+	"18":[
+		{
+			"type":"systemMsg",
+			"text":["客室C"]
+		}
 	]
 }

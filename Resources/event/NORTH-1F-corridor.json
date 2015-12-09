@@ -320,5 +320,23 @@
 			"type":"playSE",
 			"file":"bakibaki.mp3"
 		}
+	],
+	"12":[
+		{
+			"type":"systemMsg",
+			"text":["食器庫"]
+		}
+	],
+	"13":[
+		{
+			"type":"systemMsg",
+			"text":["食材庫"]
+		}
+	],
+	"14":[
+		{
+			"type":"systemMsg",
+			"text":["倉庫"]
+		}
 	]
 }

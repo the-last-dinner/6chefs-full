@@ -176,8 +176,16 @@
 							"imgID":"3"
 						},
 						{
+							"type":"stopBGM",
+							"file":"EAST.mp3"
+						},
+						{
 							"type":"spawn",
 							"action":[
+								{
+									"type":"playSE",
+									"file":"kimowarai.mp3"
+								},
 								{
 									"type":"displayImg",
 									"file":"manaka_juiced.png"
@@ -263,8 +271,8 @@
 										{
 											"type":"charaWalkTo",
 											"objID":"1078",
-											"x":12,
-											"y":8
+											"x":20,
+											"y":9
 										},
 										{
 											"type":"playSE",
@@ -297,6 +305,11 @@
 											"text":["一色さん・・・？"],
 											"charaID":"0",
 											"imgID":"3"
+										},
+										{
+											"type":"playBGM",
+											"file":"EAST.mp3",
+											"volume":0.1
 										}
 									]
 								}
@@ -361,8 +374,16 @@
 							"imgID":"3"
 						},
 						{
+							"type":"stopBGM",
+							"file":"EAST.mp3"
+						},
+						{
 							"type":"spawn",
 							"action":[
+								{
+									"type":"playSE",
+									"file":"kimowarai.mp3"
+								},
 								{
 									"type":"displayImg",
 									"file":"manaka_juiced.png"
@@ -388,6 +409,11 @@
 							"steps":0.5
 						},
 						{
+							"type":"changeDirection",
+							"objID":"1072",
+							"direction":"UP"
+						},
+						{
 							"type":"barrage",
 							"times":20,
 							"limit":5.0,
@@ -400,7 +426,7 @@
 										},
 										{
 											"type":"playSE",
-											"file":"splash1.mp3"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"fadein"
@@ -448,11 +474,22 @@
 										},
 										{
 											"type":"playSE",
-											"file":"splash1.mp3"
+											"file":"blood.mp3"
 										},
 										{
 											"type":"wait",
 											"time":1.0
+										},
+										{
+											"type":"charaWalk",
+											"objID":"hero",
+											"direction":"DOWN",
+											"steps":2.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"hero",
+											"direction":"LEFT"
 										},
 										{
 											"type":"spawn",
@@ -477,6 +514,11 @@
 											"text":["一色さん・・・？"],
 											"charaID":"0",
 											"imgID":"3"
+										},
+										{
+											"type":"playBGM",
+											"file":"EAST.mp3",
+											"volume":0.1
 										}
 									]
 								}
@@ -520,6 +562,7 @@
 			"type":"if",
 			"condition":[
 				{
+					"event":["32","6"],
 					"flg":0
 				}
 			],
@@ -544,7 +587,7 @@
 							"imgID":"3"
 						}, 
 						{
-							"type":"changeflg",
+							"type":"changeFlg",
 							"flg":1
 						}
 					]

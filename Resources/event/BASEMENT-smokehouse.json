@@ -36,6 +36,41 @@
 					]	
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["53","3"],
+					"Nstatus":["1","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"systemMsg",
+									"text":["肌はガサガサになり、\n頬には虫に食い破られたような穴が空いている"]
+								},
+								{
+									"type":"playSE",
+									"file":"horror_notice.mp3"
+								}
+							]
+						},
+						{
+							"type":"charaMsg",
+							"text":["うっ！！"],
+							"charaID":"0",
+							"imgID":"3"
+						}		
+					]
+				}
+			]
 		}
 	],
 	"3":[
@@ -152,7 +187,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["53","3"]
+					"event":["53","3"],
+					"Nevent":["52","7"]
 				}
 			],
 			"action":[
@@ -223,6 +259,9 @@
 							"imgID":"2"
 						},
 						{
+							"type":"already"
+						},
+						{
 							"type":"fadeout"
 						},
 						{
@@ -231,9 +270,6 @@
 							"x":9,
 							"y":7,
 							"eventID":"7"
-						},
-						{
-							"type":"already"
 						}
 					]
 				}
@@ -313,32 +349,6 @@
 						}
 					]
 				}
-			]
-		}
-	],
-	"7":[
-		{
-			"type":"sequence",
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"systemMsg",
-							"text":["肌はガサガサになり、\n頬には虫に食い破られたような穴が空いている"]
-						},
-						{
-							"type":"playSE",
-							"file":"horror_notice.mp3"
-						}
-					]
-				},
-				{
-					"type":"charaMsg",
-					"text":["うっ！！"],
-					"charaID":"0",
-					"imgID":"3"
-				}		
 			]
 		}
 	]

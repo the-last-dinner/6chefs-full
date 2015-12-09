@@ -45,7 +45,7 @@
    <property name="cc_vertexz" value="-16"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1LlPwmAYgPHPHjLoIoeLLpwLLFxddKEce8ux6OKx6cKhiy5cLrp4/Lc6+DQpyRetHagFQ3yTX0hIeB/KRz4h1j8nihCnyvf331UhPtTwulc0r6FAhQYdO5oQu1p43Tsa94gihjgSOKB5GGL3kcYTUkgjgyzyNAshdp0p0imhjAqqMDzO/C9Pnu9bkM5rVXNE61g6r2VnK8J/HapEg47tyM+fW5zXsrPH7ihikjgS2PfpBp0ku1NS22lmkEXOo1vThTBRR0MP3k27vUXTeTU8uhYtG210AnSL7C6hjIqr6tM9o3WOC1z+Uvdr26vbpzXAECOfbpI7KYU0MsgiJ91TNXabqLsariZaHt0xrQmmmPl0izRKKKOCKgypa7HbRtvVcXXR8+g+03rBK958ujUaJupooIlWyPeyMxYNG2100EVvBd11TZ9nG2CIEW5wu4LnHdOYYIoZ5njY4N/5fzZvPgE9QS04
+   eJzt1LlPwmAYgPFP2sqgC1BYdKEUFlg4F13KtVOORRePTRcOXXTh0EUXj/9WB58mJfmitQNNwRDf5BcSEt6H8pFPiM3PSUSI08jP9z8UIT6V8LpXNK8RgQIVGvZUIfbV8Lp3NO4RRwI6kjigeRhi94nGMwxkYCKLPM1CiF1ninRKKKOCKmoeZ/6XJ8/3LUjnta45onUsndeqsxPlvw5FokLDbvT3zy3Pa9WJsTuOhERHEimfbtBJs9uQ2k7TRBY5j66lCVFHA00teDfj9pZN57Xm0e3QstFFL0C3yO4Syqi4qj7dM1rnuMClTzfG3RBHAjqSSEn3hdz93vbqDmmNMMbEp5umYSADE1nkpK7F7joarqarhbZHd0prhjkWPt0ijRLKqKCKmtTtsNtG19Vz9THw6L7QesUb3n26Fo06GmiihXbI97IzHRo2uuihj8EaupuaIc82whgT3OB2Dc87pTHDHAs84HGLf+f/2b75AowqLcU=
   </data>
  </layer>
  <layer name="MonoUe" width="30" height="26">
@@ -97,7 +97,7 @@
   <object id="23" x="112" y="48" width="112" height="16"/>
   <object id="24" x="256" y="48" width="80" height="16"/>
   <object id="25" x="368" y="48" width="96" height="16"/>
-  <object id="39" x="48" y="224" width="96" height="16"/>
+  <object id="39" x="48" y="208" width="96" height="16"/>
   <object id="40" x="48" y="256" width="96" height="16"/>
   <object id="41" x="48" y="304" width="96" height="32"/>
   <object id="42" x="16" y="48" width="32" height="16"/>
@@ -131,7 +131,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="30" height="26">
   <data encoding="base64" compression="zlib">
-   eJzt0skNgEAMBEEDXv6cecCSEGf+IdBJABaaluo9fthMKaXiNCWzGRlL+vqaOBVuVqKCI6H253cbNlp06DFgfGFX/buVH9qw48CJS3+lVNhu9g0EBg==
+   eJzt0rsRgEAMA1HB2fTDQUN8+y+BrYHkHOjNbK5AkplZHWtKnTbac/SaOqaQZmoUlLTE6FVm/xx896SLbnro9Z/NyvoApyQDeQ==
   </data>
  </layer>
  <layer name="CharaUe2" width="30" height="26">

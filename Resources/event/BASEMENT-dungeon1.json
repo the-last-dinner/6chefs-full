@@ -79,7 +79,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nequip":["1516"],
+					"Nitem":["1516"],
 					"Nevent":["43","6"]
 				}
 			],
@@ -100,7 +100,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"equip":["1516"]
+					"item":["1516"]
 				}
 			],
 			"action":[
@@ -141,7 +141,7 @@
 												},
 												{
 													"type":"playSE",
-													"file":"drink1.mp3"
+													"file":"drink.mp3"
 												},
 												{
 													"type":"charaMsg",

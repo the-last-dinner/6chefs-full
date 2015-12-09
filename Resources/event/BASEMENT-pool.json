@@ -7,16 +7,57 @@
 	],
 	"1":[
 		{
-			"type":"changeMap",
-			"mapID":"60",
-			"x":42,
-			"y":23
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["61","6"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["早く一色さんを見つけなきゃ！"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"RIGHT",
+							"steps":1.0
+						}
+					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"]
+				}
+			],
+			"action":[
+				{
+					"type":"changeMap",
+					"mapID":"60",
+					"x":42,
+					"y":23
+				}
+			]
 		}
 	],
 	"2":[
 		{
 			"type":"sequence",
 			"action":[
+				{
+					"type":"createChara",
+					"objID":"10105"
+				},
 				{
 					"type":"reaction",
 					"objID":"hero"
@@ -40,7 +81,19 @@
 				{
 					"type":"storyMsg",
 					"title":"操作説明「潜水」",
-					"text":["水中では走ることが出来ません\nまた、泳ぐだけで体力を多く消耗します。\nうまく物陰に隠れて休みながら\n真夏を救出しましょう"]
+					"text":["水中では走ることが出来ません。\nまた、泳ぐだけで体力を多く消耗します。\nうまく物陰に隠れて休みながら\n真夏を救出しましょう。"]
+				},
+				{
+					"type":"removeChara",
+					"objID":"10105"
+				},
+				{
+					"type":"createEnemy",
+					"enemyID":"1420",
+					"charaID":"8",
+					"x":16,
+					"y":7,
+					"movePattern":"4"
 				},
 				{
 					"type":"already"
@@ -53,7 +106,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nstatus":["3","0"]
+					"Nstatus":["3","1"]
 				}
 			],
 			"action":[
@@ -91,7 +144,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"status":["3","0"]
+					"status":["3","1"]
 				}
 			],
 			"action":[
@@ -188,7 +241,7 @@
 						},
 						{
 							"type":"createChara",
-							"objID":"10105"
+							"objID":"10107"
 						},
 						{
 							"type":"removeEnemy",
@@ -212,6 +265,10 @@
 									"option":"reaction"
 								}
 							]
+						},
+						{
+							"type":"playSE",
+							"file":"agaa.mp3"
 						},
 						{
 							"type":"charaMsg",
@@ -257,7 +314,7 @@
 								},
 								{
 									"type":"removeChara",
-									"objID":"10105"
+									"objID":"10107"
 								}
 							]
 						},
@@ -288,6 +345,7 @@
 			"type":"if",
 			"condition":[
 				{
+					"event":["61","4"],
 					"status":["3","1"]
 				}
 			],
@@ -314,7 +372,7 @@
 								},
 								{
 									"type":"createChara",
-									"objID":"10105"
+									"objID":"10107"
 								}
 							]
 						},
@@ -359,27 +417,17 @@
 						},
 						{
 							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["うわあっ"],
-									"charaID":"0",
-									"imgID":"3",
-									"option":"reaction"
-								},
-								{
-									"text":["ぎがっ？"],
-									"charaID":"8",
-									"imgID":"1",
-									"option":"reaction"
-								}
-							]
+							"text":["ぎがっ？"],
+							"charaID":"8",
+							"imgID":"1",
+							"option":"reaction"
 						},
 						{
 							"type":"fadeout"
 						},
 						{
 							"type":"removeChara",
-							"objID":"10105"
+							"objID":"10107"
 						},
 						{
 							"type":"createEnemy",
@@ -394,28 +442,12 @@
 						},
 						{
 							"type":"already"
+						},
+						{
+							"type":"already",
+							"event":["58","6"]
 						}
 					]
-				}
-			]
-		}
-	],
-	"7":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["61","6"]
-				}
-			],
-			"action":[
-				{
-					"type":"createEnemy",
-					"enemyID":"1420",
-					"charaID":"8",
-					"x":16,
-					"y":7,
-					"movePattern":"4"
 				}
 			]
 		}

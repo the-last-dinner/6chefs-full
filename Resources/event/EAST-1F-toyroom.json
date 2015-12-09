@@ -7,7 +7,7 @@
     	{
     		"type":"playBGM",
     		"file":"EAST.mp3",
-     		 "volume":0.5
+     		 "volume":0.1
     	},
 		{
 			"type":"changeMap",

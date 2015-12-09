@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="86">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="92">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -247,5 +247,28 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
+  <object id="88" x="608" y="128" width="16" height="16">
+   <properties>
+    <property name="EventID" value="12"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="90" x="1040" y="128" width="16" height="16">
+   <properties>
+    <property name="EventID" value="13"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="91" x="1440" y="128" width="16" height="16">
+   <properties>
+    <property name="EventID" value="14"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
+ <layer name="name" width="126" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztz0ERAAAEAEGtFNE/ixJ4mN0CNxcBAAAwq/JX6/IHAAAAAAAAAIA9DUgnAaI=
+  </data>
+ </layer>
 </map>

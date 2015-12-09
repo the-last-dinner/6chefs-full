@@ -345,10 +345,21 @@
 	],
 	"4":[
 		{
-			"type":"charaMsg",
-			"text":["少し・・・気分が悪いですぞ・・・\n佐々木氏・・・後は任せてよろしいですかな"],
-			"charaID":"4",
-			"imgID":"1"
+			"type":"if",
+			"condition":[
+				{
+					"event":["53","6"],
+					"status":["1","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["少し・・・気分が悪いですぞ・・・\n佐々木氏・・・後は任せてよろしいですかな"],
+					"charaID":"4",
+					"imgID":"1"
+				}
+			]
 		}
 	],
 	"5":[
@@ -383,11 +394,11 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1063"
+					"type":"fadein"
 				},
 				{
-					"type":"fadein"
+					"type":"createChara",
+					"objID":"1063"
 				},
 				{
 					"type":"charaMsg",
