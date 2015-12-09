@@ -54,6 +54,7 @@ public:
     void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false);
     
     virtual void onEnterMap() override;
+    virtual void onPartyMoved();
     virtual void onSearched(MapObject* mainChara) override;
 };
 

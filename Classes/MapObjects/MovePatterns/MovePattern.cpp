@@ -8,6 +8,12 @@
 
 #include "MapObjects/MovePatterns/MovePattern.h"
 
+#include "MapObjects/Character.h"
+
+#include "MapObjects/MapObjectList.h"
+
+#include "MapObjects/Party.h"
+
 // コンストラクタ
 MovePattern::MovePattern() {};
 
@@ -24,16 +30,10 @@ bool MovePattern::init(Character* chara)
     return true;
 }
 
-// 主人公のマス座標を指定して移動開始
-void MovePattern::start(const Rect& gridRect)
+// 止めるフラグを変更
+void MovePattern::setPaused(bool paused)
 {
-    this->mainCharacterRect = gridRect;
-}
-
-// 主人公一行が移動した時
-void MovePattern::onPartyMoved(const Rect& gridRect)
-{
-    this->mainCharacterRect = gridRect;
+    this->paused = paused;
 }
 
 // 速度の倍率を設定
@@ -41,3 +41,9 @@ void MovePattern::setSpeedRatio(float ratio)
 {
     this->speedRatio = ratio;
 }
+
+// 主人公を取得
+Character* MovePattern::getMainCharacter() const { return this->chara->objectList->getParty()->getMainCharacter(); }
+
+// マップオブジェクト一覧を取得
+MapObjectList* MovePattern::getMapObjectList() const { return this->chara->objectList; }

@@ -112,7 +112,6 @@ void TiledMapLayer::addEnemy(Enemy* enemy)
     
     this->objectList->addEnemy(enemy);
     this->addMapObject(enemy, false);
-    enemy->onEnterMap(this->objectList->getParty()->getMainCharacter()->getGridRect());
 }
 
 // マップにオブジェクトを追加
@@ -126,11 +125,11 @@ void TiledMapLayer::addMapObject(MapObject* mapObject, bool addingToList)
     this->tiledMap->addChild(mapObject);
     this->setZOrderByPosition(mapObject);
     mapObject->onMoved = CC_CALLBACK_1(TiledMapLayer::setZOrderByPosition, this);
+    mapObject->onEnterMap();
     
     if(!addingToList) return;
     
     this->objectList->add(mapObject);
-    mapObject->onEnterMap();
 }
 
 // マス座標からcocos座標系に変換して配置
