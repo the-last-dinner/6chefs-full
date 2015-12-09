@@ -20,7 +20,7 @@ class DungeonMenuScene : public BaseScene
 {
 // クラスメソッド
 public:
-    CREATE_FUNC_WITH_TWO_PARAM(DungeonMenuScene, Texture2D*, function<void()>);
+    CREATE_FUNC_WITH_PARAM(DungeonMenuScene, Texture2D*);
     
 // クラス変数
 private:
@@ -46,7 +46,7 @@ public:
 private:
     DungeonMenuScene();
     ~DungeonMenuScene();
-    bool init(Texture2D* screen, function<void()> onPopMenuScene);
+    bool init(Texture2D* screen);
     virtual void onEnter() override { Scene::onEnter();};
     virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
     virtual void onCursorKeyPressed(const Key& key);

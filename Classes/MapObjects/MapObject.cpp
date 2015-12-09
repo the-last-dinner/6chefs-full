@@ -64,13 +64,13 @@ void MapObject::setMapObjectList(MapObjectList* objectList) { this->objectList =
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
 {
-    if(this->light)
-    {
-        this->light = light;
-        this->addChild(light);
-        light->setOpacity(0);
-        this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
-    }
+    if(this->light) return;
+    
+    // ライトを追加
+    this->light = light;
+    this->addChild(light);
+    light->setOpacity(0);
+    this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
     
     // 環境光レイヤーに光源として追加
     ambientLightLayer->addLightSource(this, light->getInformation());
