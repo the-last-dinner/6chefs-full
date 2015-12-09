@@ -182,7 +182,7 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     // キューが空になったら成功としてコールバックを呼び出し
     if(this->directionsQueue.empty())
     {
-        callback(true);
+        if(callback) callback(true);
         
         return;
     }
@@ -192,13 +192,21 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     this->directionsQueue.pop_front();
     
     // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(!this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) callback(false);
+    if(this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) return;
+    
+    if(callback) callback(false);
 }
 
 // マップに配置された時
 void Character::onEnterMap()
 {
     if(this->movePattern) this->movePattern->start();
+}
+
+// 主人公一行が動いた時
+void Character::onPartyMoved()
+{
+    if(this->movePattern) this->movePattern->onPartyMoved();
 }
 
 // 調べられた時

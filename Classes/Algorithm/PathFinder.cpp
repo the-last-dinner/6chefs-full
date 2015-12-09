@@ -37,7 +37,7 @@ deque<Direction> PathFinder::getPath(const Rect& chaserGridRect, const vector<Re
             for(Point gridPosition : this->splitByGrid(collisionGridRect))
             {
                 // 追跡者のマス幅 - 1だけ左側のマスをCANT状態にする
-                for(int i {0}; i < static_cast<int>(chaserGridRect.size.width) - 1 ; i++)
+                for(int i {0}; i < static_cast<int>(chaserGridRect.size.width) ; i++)
                 {
                     Point position {Point(gridPosition.x - i, gridPosition.y)};
                     

@@ -14,6 +14,7 @@
 class Light;
 class AmbientLightLayer;
 class MapObjectList;
+class MovePattern;
 class TerrainObject;
 
 class MapObject : public Node
@@ -92,6 +93,8 @@ public:
     virtual void onSearched(MapObject* mainChara) {};           // 調べられた時
 
     void drawDebugMask(); // デバッグ用マスク
+    
+    friend class MovePattern;
 };
 
 #endif // __MAP_OBJECT_H__

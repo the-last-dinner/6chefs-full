@@ -43,18 +43,6 @@ int Enemy::getEnemyId() const
     return this->data.enemy_id;
 }
 
-// マップに配置された時
-void Enemy::onEnterMap(const Rect& gridRect)
-{
-    if(this->movePattern) this->movePattern->start(gridRect);
-}
-
-// 主人公一行が移動した時
-void Enemy::onPartyMoved(const Rect& gridRect)
-{
-    if(this->movePattern) this->movePattern->onPartyMoved(gridRect);
-}
-
 // データを取得
 EnemyData Enemy::getEnemyData() const
 {

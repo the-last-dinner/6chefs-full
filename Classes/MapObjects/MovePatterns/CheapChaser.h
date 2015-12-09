@@ -23,11 +23,11 @@ private:
     ~CheapChaser();
     virtual bool init(Character* character) override;
 public:
-    virtual void start(const Rect& gridRect) override;
-    virtual void onPartyMoved(const Rect& gridRect) override;
+    virtual void start() override;
+    virtual void onPartyMoved() override;
     virtual bool canGoToNextMap() const override;
     virtual float calcSummonDelay() const override;
-    void move();
+    void move(function<void()> callback = nullptr);
 };
 
 #endif /* CheapChaser_h */
