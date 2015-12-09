@@ -651,5 +651,14 @@
 			"type":"systemMsg",
 			"text":["音楽室"]
 		}
+	],
+	"19":[
+		{
+			"type":"playSE",
+			"file":"broken-glass.mp3"
+		},
+		{
+			"type":"already"
+		}
 	]
 }

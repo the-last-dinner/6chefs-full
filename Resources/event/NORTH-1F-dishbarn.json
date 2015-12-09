@@ -38,6 +38,10 @@
 					"option":"reaction"
 				},
 				{
+					"type":"playBGM",
+					"file":"7haizuri.mp3"
+				},
+				{
 					"type":"already"
 				},
 				{
@@ -101,6 +105,10 @@
 									"text":["もう・・・行ったかな？"],
 									"charaID":"0",
 									"imgID":"1"
+								},
+								{
+									"type":"stopBGM",
+									"file":"7haizuri.mp3"
 								},
 								{
 									"type":"playBGM",

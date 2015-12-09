@@ -1917,6 +1917,28 @@
       "type": "sequence",
       "action": [
         {
+          "type":"fadeout"
+        },
+        {
+          "type":"charaWalkTo",
+          "objID":"hero",
+          "x":27,
+          "y":45
+        },
+        {
+          "type":"changeDirection",
+          "objID":"1012",
+          "direction":"LEFT"
+        },
+        {
+          "type":"changeDirection",
+          "objID":"hero",
+          "direction":"RIGHT"
+        },
+        {
+          "type":"fadein"
+        },
+        {
           "type": "charaMsg",
           "talk": [
             {

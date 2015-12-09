@@ -603,6 +603,20 @@
 			"type":"if",
 			"condition":[
 				{
+					"Nitem":["1532"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["鍵がかかっている"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
 					"item":["1532"],
 					"Nevent":["34","9"]
 				}

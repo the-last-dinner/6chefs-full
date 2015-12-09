@@ -1370,15 +1370,26 @@
 	],
 	"24":[
 		{
-			"type":"spawn",
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","15"],
+					"Nstatus":["2","2"]
+				}
+			],
 			"action":[
 				{
-					"type":"systemMsg",
-					"text":["両目がくり抜かれている・・・"]
-				},
-				{
-					"type":"playSE",
-					"file":"despair.mp3"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"systemMsg",
+							"text":["両目がくり抜かれている・・・"]
+						},
+						{
+							"type":"playSE",
+							"file":"despair.mp3"
+						}
+					]
 				}
 			]
 		}
@@ -1798,7 +1809,7 @@
 											"option":"reaction"
 										},
 										{
-											"text":["テメエ・・・"],
+											"text":["テメェ・・・"],
 											"charaID":"5",
 											"imgID":"1",
 											"option":"reaction"
@@ -3233,7 +3244,7 @@
 						{
 							"text":["？"],
 							"charaID":"0",
-							"imgID":"3"
+							"imgID":"2"
 						},
 						{
 							"text":["当たり前なのですが本店以外の鍋は\n我が直接作っているワケではないのですぞ・・・","アレを我のモノと言って良いのか・・・","佐々木氏の店もチェーンでしたな？"],
