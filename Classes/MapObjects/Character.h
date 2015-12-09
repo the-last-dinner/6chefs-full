@@ -27,7 +27,6 @@ public:
 // インスタンス変数
 private:
     int charaId { static_cast<int>(CharacterID::UNDIFINED) };                   // キャラクタID
-    Sprite* character { nullptr };												// キャラクターのSprite部分
     string texturePrefix {};                                                    // キャラプロパティリストファイル名の先頭部分
     int stampingState {0};                                                      // 歩行アニメーションの状態
 protected:
@@ -41,7 +40,6 @@ public:
     
     int getCharacterId() const;
     CharacterData getCharacterData() const;
-    virtual Sprite* getSprite() const;
     
 	virtual void setDirection(const Direction direction) override;
 	void setMoving(bool _isMoving);

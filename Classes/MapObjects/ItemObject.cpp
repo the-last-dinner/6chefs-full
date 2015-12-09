@@ -27,7 +27,10 @@ bool ItemObject::init()
     
     // アイテムSpriteを生成
     Sprite* sprite { Sprite::createWithSpriteFrameName(this->getSpriteFrameName(0)) };
-    this->addChild(sprite);
+    this->setSprite(sprite);
+    
+    this->setContentSize(sprite->getContentSize());
+    this->setCollisionRect(Rect(0, 0, sprite->getContentSize().width, sprite->getContentSize().height));
     
     // 輝きアニメーション生成
     Animation* animation { Animation::create() };

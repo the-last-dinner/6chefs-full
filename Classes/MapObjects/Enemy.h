@@ -28,6 +28,7 @@ private:
     Enemy();
     ~Enemy();
     bool init(const EnemyData& data);
+    virtual const bool isHit(const vector<Direction>& directions) const;
 public:
     int getEnemyId() const;
     EnemyData getEnemyData() const;

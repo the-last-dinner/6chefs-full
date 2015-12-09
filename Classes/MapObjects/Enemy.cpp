@@ -8,6 +8,9 @@
 
 #include "MapObjects/Enemy.h"
 
+#include "MapObjects/MapObjectList.h"
+#include "MapOBjects/Party.h"
+
 #include "MapObjects/MovePatterns/MovePattern.h"
 #include "MapObjects/MovePatterns/MovePatternFactory.h"
 
@@ -35,6 +38,22 @@ bool Enemy::init(const EnemyData& data)
     if(this->movePattern) this->movePattern->setSpeedRatio(data.speed_ratio);
     
     return true;
+}
+
+// 主人公と自身に対して当たり判定を適用しないようにする
+const bool Enemy::isHit(const vector<Direction>& directions) const
+{
+    if(!this->objectList) return false;
+    
+    // 自身以外の当たり判定を持つオブジェクトが、指定方向にあればtrueを返す
+    for(MapObject* obj : this->objectList->getMapObjects(this->getCollisionRect(directions)))
+    {
+        if(obj == this || obj == this->objectList->getParty()->getMainCharacter()) continue;
+        
+        if(obj->isHit()) return true;
+    }
+    
+    return false;
 }
 
 // 敵IDを取得

@@ -11,4 +11,21 @@
 
 #include "MapObjects/MapObject.h"
 
+// 当たり判定をすり抜けるオブジェクト
+class GhostObject : public MapObject
+{
+// クラスメソッド
+public:
+    CREATE_FUNC(GhostObject)
+    
+// インスタンスメソッド
+private:
+    GhostObject();
+    ~GhostObject();
+    bool init();
+    
+public:
+    virtual const bool isHit(const vector<Direction>& directions) const override;
+};
+
 #endif /* GhostObject_h */
