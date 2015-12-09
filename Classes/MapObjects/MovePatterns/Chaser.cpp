@@ -19,7 +19,7 @@
 
 // 定数
 const int Chaser::PATH_FINDING_THRESHOLD { 10 };
-const int Chaser::SHIFT_PATTERN_THRESHOLD { 20 };
+const int Chaser::SHIFT_PATTERN_THRESHOLD { 10 };
 
 // コンストラクタ
 Chaser::Chaser() {FUNCLOG};
@@ -87,14 +87,19 @@ void Chaser::move()
     
     this->cutPath(path);
     
-    this->chara->walkByQueue(path, [this](bool reached){this->move();}, this->speedRatio);
+    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio);
 }
 
 // サブアルゴリズムから自身へ移行
 void Chaser::shiftFromSubPattern()
 {
-    // 経路をカットせずにそのまま移動させる
-    this->chara->walkByQueue(this->getPath(), [this](bool reached){this->move();}, this->speedRatio);
+    // 経路を取得
+    deque<Direction> path { this->getPath() };
+    
+    // 経路をカット
+    this->cutPath(path);
+ 
+    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio);
 }
 
 // サブアルゴリズムへ移行
