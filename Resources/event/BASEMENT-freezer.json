@@ -172,7 +172,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["63","4"]
+					"event":["63","4"],
+					"Nevent":["65","1"]
 				}
 			],
 			"action":[

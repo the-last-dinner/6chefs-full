@@ -368,7 +368,8 @@
 			"condition":[
 				{
 					"event":["53","6"],
-					"status":["1","2"]
+					"status":["1","2"],
+					"Nevent":["65","1"]
 				}
 			],
 			"action":[

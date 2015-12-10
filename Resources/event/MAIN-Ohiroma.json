@@ -576,10 +576,21 @@
               "objID":"1085"
             },
             {
-              "type":"charaWalkTo",
-              "objID":"1085",
-              "x":29,
-              "y":33
+              "type":"spawn",
+              "action":[
+                {
+                  "type":"charaMsg",
+                  "text":["希崎ぃ！"],
+                  "charaID":"2",
+                  "imgID":"2"
+                },
+                {
+                  "type":"charaWalkTo",
+                  "objID":"1085",
+                  "x":29,
+                  "y":33
+                }
+              ]
             },
             {
               "type":"changeDirection",
@@ -844,12 +855,12 @@
                   "charaID":"7"
                 },
                 {
-                  "text":["それよかあの部屋にあった料理・・・\nアレは誰が作ったんだ？","人の肉であそこまでの料理を\n作れるってこたぁ・・・"],
+                  "text":["それよか・・・\nあの部屋にあった料理・・・\nアレは誰が作ったんだ？","人の肉であそこまでの料理を\n作れるってこたぁ・・・"],
                   "charaID":"2",
                   "imgID":"2"
                 },
                 {
-                  "type":["それは・・・"],
+                  "text":["それは・・・"],
                   "charaID":"7"
                 }
               ]
@@ -972,12 +983,6 @@
             {
               "type":"wait",
               "time":2.0
-            },
-            {
-              "type":"charaMsg",
-              "text":["帰るか"],
-              "charaID":"2",
-              "imgID":"2"
             },
             {
               "type":"fadeout",

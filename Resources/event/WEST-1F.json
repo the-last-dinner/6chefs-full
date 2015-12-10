@@ -1059,7 +1059,7 @@
 				},
 				{
 					"type":"systemMsg",
-					"text":["中山は苦労しているようだ","中山のことが少しだけ分かった気がする","中山撫子と仲良くなった"]
+					"text":["中山は苦労しているようだ","中山のことが少しだけ分かった気がする","撫子と仲良くなった"]
 				},
 				{
 					"type":"changeStatus",
@@ -1076,9 +1076,19 @@
 					"file":"favo_nadeshiko.mp3"
 				},
 				{
-					"type":"playBGM",
-					"file":"Mozart-OboeConcerto-1.mp3",
-					"volume":0.3
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["7","1"]
+						}
+					],
+					"action":[
+						{
+							"type":"playBGM",
+							"file":"Mozart-OboeConcerto-1.mp3",
+							"volume":0.3
+						}
+					]
 				},
 				{
 					"type":"fadein"
