@@ -300,6 +300,7 @@ void DungeonMainMenuLayer::onConfirmSelected(int idx)
 //　メニューキー入力時
 void DungeonMainMenuLayer::onMenuKeyPressed()
 {
+    SoundManager::getInstance()->playSE("back.mp3");
     this->hide();
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(SLIDE_TIME),CallFunc::create([this]
     {
