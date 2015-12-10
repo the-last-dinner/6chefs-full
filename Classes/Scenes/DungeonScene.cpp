@@ -153,7 +153,7 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 // Trigger::INITのイベント実行後
 void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
 {
-    //this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), ambientLightLayer);
+    this->setLight();
     cameraTask->setTarget( this->party->getMainCharacter() );
     
     this->enemyTask->start(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id);
@@ -189,7 +189,9 @@ void DungeonScene::onMenuKeyPressed()
     
     // リスナーを停止
     this->listener->setEnabled(false);
-    DungeonSceneManager::getInstance()->pauseStopWatch(); // カウントダウンしてれば停止
+    
+    // カウントダウンしてれば停止
+    DungeonSceneManager::getInstance()->pauseStopWatch();
     
     // パーティの位置をセット
     PlayerDataManager::getInstance()->getLocalData()->setLocation(DungeonSceneManager::getInstance()->getParty()->getMembersData());
@@ -200,8 +202,9 @@ void DungeonScene::onMenuKeyPressed()
      if(success)
      {
          Sprite* screen = Sprite::create(filename);
-         DungeonMenuScene* menu = DungeonMenuScene::create(screen->getTexture(), [=](){this->listener->setEnabled(true);});
+         DungeonMenuScene* menu = DungeonMenuScene::create(screen->getTexture());
          menu->onBackToTitleSelected = CC_CALLBACK_0(DungeonScene::onBackToTitleSelected, this);
+         menu->onPopMenuScene = CC_CALLBACK_0(DungeonScene::onPopMenuScene, this);
          
          // メニューシーンをプッシュ
          Director::getInstance()->pushScene(menu);
@@ -209,6 +212,19 @@ void DungeonScene::onMenuKeyPressed()
          Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
      }
     }, path);
+}
+
+// メニューシーンから戻ってきた時
+void DungeonScene::onPopMenuScene()
+{
+    // カウントダウンをしれてば再開
+    DungeonSceneManager::getInstance()->startStopWatch();
+    
+    // たいまつを装備していればライトをつける
+    this->setLight();
+    
+    // 操作可能に戻す
+    this->listener->setEnabled(true);
 }
 
 // メニューシーンでタイトルへ戻るを選択した時
@@ -239,6 +255,19 @@ void DungeonScene::onExitDungeon()
 {
     DungeonSceneManager::destroy();
     SoundManager::getInstance()->stopBGMAll();
+}
+
+// ライトの管理
+void DungeonScene::setLight()
+{
+    if (PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(1514))
+    {
+        this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), this->ambientLightLayer);
+    }
+    else
+    {
+        //this->party->getMainCharacter()->removeLight();
+    }
 }
 
 // データクラスを取得

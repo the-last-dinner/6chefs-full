@@ -11,23 +11,6 @@
 #include "MapObjects/Party.h"
 #include "MapObjects/TerrainObject/PlainArea.h"
 
-// create関数
-MapObjectList* MapObjectList::create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
-{
-    MapObjectList* p {new(nothrow) MapObjectList()};
-    if(p && p->init(availableObjects, disableObjects, terrainObjects))
-    {
-        p->autorelease();
-        return p;
-    }
-    else
-    {
-        delete p;
-        p = nullptr;
-        return nullptr;
-    }
-}
-
 // コンストラクタ
 MapObjectList::MapObjectList() {FUNCLOG};
 
@@ -44,12 +27,8 @@ MapObjectList::~MapObjectList()
 };
 
 // 初期化
-bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects)
+bool MapObjectList::init()
 {
-    this->availableObjects = availableObjects;
-    this->disableObjects = disableObjects;
-    this->terrainObjects = terrainObjects;
-    
     // ノーマルの地形を生成
     PlainArea* plainArea { PlainArea::create() };
     CC_SAFE_RETAIN(plainArea);
@@ -60,6 +39,30 @@ bool MapObjectList::init(const Vector<MapObject*>& availableObjects, const Vecto
     
     return true;
 }
+
+// 有効オブジェクトリストを設定
+void MapObjectList::setAvailableObjects(const Vector<MapObject*>& objects)
+{
+    if(!this->availableObjects.empty()) return;
+    
+    this->availableObjects = objects;
+}
+
+// 無効オブジェクトを設定
+void MapObjectList::setDisableObjects(const Vector<MapObject*>& objects)
+{
+    if(!this->disableObjects.empty()) return;
+    
+    this->disableObjects = objects;
+};
+
+// 地形オブジェクトを設定
+void MapObjectList::setTerrainObjects(const Vector<TerrainObject*>& objects)
+{
+    if(!this->terrainObjects.empty()) return;
+    
+    this->terrainObjects = objects;
+};
 
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const
@@ -172,14 +175,35 @@ vector<int> MapObjectList::getEventIdsByGridRect(const Rect& gridRect, const Tri
     return ids;
 }
 
-// 当たり判定を持つオブジェクトのマスRectを全て取得
-vector<Rect> MapObjectList::getGridCollisionRects() const
+// 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
+vector<Rect> MapObjectList::getGridCollisionRects(MapObject* exclusion) const
+{
+    Vector<MapObject*> ex {};
+    ex.pushBack(exclusion);
+    
+    vector<Rect> collisionRects {this->getGridCollisionRects(ex)};
+    
+    ex.clear();
+    
+    return collisionRects;
+}
+
+// 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
+vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) const
 {
     vector<Rect> gridRects {};
     
     for(MapObject* obj : this->availableObjects)
     {
         if(!obj->isHit()) continue;
+        
+        bool flg { false };
+        for(MapObject* ex : exclusion)
+        {
+            if(obj == ex) flg = true;
+        }
+        
+        if(flg) continue;
         
         gridRects.push_back(obj->getGridRect());
     }
@@ -287,10 +311,10 @@ Party* MapObjectList::getParty()
 // 主人公一行が移動した時
 void MapObjectList::onPartyMoved(const Rect& gridRect)
 {
-    // 敵に移動後の主人公のマス座標を通知する
+    // 敵に移動したことを通知する
     for(Enemy* enemy : this->enemies)
     {
-        enemy->onPartyMoved(gridRect);
+        enemy->onPartyMoved();
     }
 }
 

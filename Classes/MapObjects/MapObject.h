@@ -14,6 +14,7 @@
 class Light;
 class AmbientLightLayer;
 class MapObjectList;
+class MovePattern;
 class TerrainObject;
 
 class MapObject : public Node
@@ -30,9 +31,10 @@ private:
 	bool _isHit { false };
     Rect collisionRect {Rect::ZERO};
 	Light* light { nullptr };
-    MapObjectList* objectList { nullptr };
     bool _isMoving { false };
+    Sprite* sprite { nullptr };
 protected:
+    MapObjectList* objectList { nullptr };
     deque<vector<Direction>> directionsQueue {};
     Location location {};
 public:
@@ -50,6 +52,7 @@ public:
 	void setHit(bool _isHit);
     void setCollisionRect(const Rect& rect);
     void setMapObjectList(MapObjectList* objectList);
+    void setSprite(Sprite* sprite);
     
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
 	void removeLight();
@@ -62,7 +65,7 @@ public:
 	Trigger getTrigger() const;
     bool isMoving() const;
     Direction getDirection() const;
-    virtual Sprite* getSprite() const { return nullptr; };
+    Sprite* getSprite() const;
     
     // collision
     Rect getCollisionRect() const;
@@ -70,7 +73,7 @@ public:
     Rect getCollisionRect(const vector<Direction>& directions) const;
     const bool isHit() const;
     const bool isHit(const Direction& direction) const;
-    const bool isHit(const vector<Direction>& directions) const;
+    virtual const bool isHit(const vector<Direction>& directions) const;
     
     // move
     vector<Direction> createEnableDirections(const vector<Direction>& directions) const;
@@ -92,6 +95,8 @@ public:
     virtual void onSearched(MapObject* mainChara) {};           // 調べられた時
 
     void drawDebugMask(); // デバッグ用マスク
+    
+    friend class MovePattern;
 };
 
 #endif // __MAP_OBJECT_H__

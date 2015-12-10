@@ -26,11 +26,9 @@ DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
 DungeonMenuScene::~DungeonMenuScene(){FUNCLOG}
 
 // 初期化
-bool DungeonMenuScene::init(Texture2D* screen, function<void()> onPopMenuScene)
+bool DungeonMenuScene::init(Texture2D* screen)
 {
-    FUNCLOG
-    // メニューシーンをポップする際の処理
-    this->onPopMenuScene = onPopMenuScene;
+    FUNCLOG;
     // スクショを生成
     Sprite* screenSprite = Sprite::createWithTexture(screen);
     screenSprite->setScale(Director::getInstance()->getWinSize().width / screenSprite->getContentSize().width);
@@ -144,8 +142,6 @@ void DungeonMenuScene::onMenuHidden()
         this->onPopMenuScene();
     }
     Director::getInstance()->popScene();
-    
-    DungeonSceneManager::getInstance()->startStopWatch(); // カウントダウンをしれてば再開
 }
 
 #pragma mark -

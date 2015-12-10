@@ -12,20 +12,21 @@
 #include "Common.h"
 
 class Character;
+class MapObjectList;
 
 class MovePattern : public Ref
 {
 // インスタンス変数
 protected:
     Character* chara { nullptr };
-    Rect mainCharacterRect { Rect::ZERO };
     float speedRatio { 1.0f };
+    bool paused { false };
 
 // インスタンスメソッド
 public:
     virtual void start() {};
-    virtual void start(const Rect& gridRect);
-    virtual void onPartyMoved(const Rect& gridRect);
+    virtual void setPaused(bool paused);
+    virtual void onPartyMoved() {};
     virtual bool canGoToNextMap() const { return false; };
     virtual float calcSummonDelay() const { return 0.0f; };
     void setSpeedRatio(float ratio);
@@ -33,6 +34,8 @@ protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
+    Character* getMainCharacter() const;
+    MapObjectList* getMapObjectList() const;
 };
 
 #endif /* defined(__LastSupper__MovePattern__) */

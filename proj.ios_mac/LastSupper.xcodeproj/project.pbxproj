@@ -267,6 +267,8 @@
 		DC48C6A11C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */; };
 		DC6E38FE1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
 		DC6E38FF1C0EFF8900DBF569 /* LightEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */; };
+		DC7AD6491C183C37008066DA /* Sight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC7AD6471C183C37008066DA /* Sight.cpp */; };
+		DC7AD64A1C183C37008066DA /* Sight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC7AD6471C183C37008066DA /* Sight.cpp */; };
 		DC81158F1C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DC8115901C0B42290033157F /* Stamina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC81158D1C0B42290033157F /* Stamina.cpp */; };
 		DCAB379D1C120952000DF676 /* MapNameNotification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB37971C120952000DF676 /* MapNameNotification.cpp */; };
@@ -283,6 +285,12 @@
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
+		DCD85F1F1C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
+		DCD85F201C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
+		DCD85F231C18540500BCFDC9 /* GhostObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F211C18540500BCFDC9 /* GhostObject.cpp */; };
+		DCD85F241C18540500BCFDC9 /* GhostObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F211C18540500BCFDC9 /* GhostObject.cpp */; };
+		DCD85F271C18541700BCFDC9 /* PathObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F251C18541700BCFDC9 /* PathObject.cpp */; };
+		DCD85F281C18541700BCFDC9 /* PathObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F251C18541700BCFDC9 /* PathObject.cpp */; };
 		DCDD2D621C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
 		DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCDD2D601C11B7A000FE7289 /* Cloud.cpp */; };
 		DCE10A5B1C0E154D000FCE81 /* PlainArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCE10A591C0E154D000FCE81 /* PlainArea.cpp */; };
@@ -607,6 +615,8 @@
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
 		DC6E38FC1C0EFF8900DBF569 /* LightEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LightEvent.cpp; path = ../Classes/Event/LightEvent.cpp; sourceTree = "<group>"; };
 		DC6E38FD1C0EFF8900DBF569 /* LightEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightEvent.h; path = ../Classes/Event/LightEvent.h; sourceTree = "<group>"; };
+		DC7AD6471C183C37008066DA /* Sight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sight.cpp; path = ../Classes/Models/Sight.cpp; sourceTree = "<group>"; };
+		DC7AD6481C183C37008066DA /* Sight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sight.h; path = ../Classes/Models/Sight.h; sourceTree = "<group>"; };
 		DC81158D1C0B42290033157F /* Stamina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stamina.cpp; path = ../Classes/Models/Stamina.cpp; sourceTree = "<group>"; };
 		DC81158E1C0B42290033157F /* Stamina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stamina.h; path = ../Classes/Models/Stamina.h; sourceTree = "<group>"; };
 		DC9986FA1C11954C0057BA7B /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = ../Classes/resources.h; sourceTree = "<group>"; };
@@ -624,6 +634,12 @@
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
 		DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaminaBar.cpp; path = ../Classes/UI/StaminaBar.cpp; sourceTree = "<group>"; };
 		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
+		DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemObject.cpp; path = ../Classes/MapObjects/ItemObject.cpp; sourceTree = "<group>"; };
+		DCD85F1E1C1853C500BCFDC9 /* ItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemObject.h; path = ../Classes/MapObjects/ItemObject.h; sourceTree = "<group>"; };
+		DCD85F211C18540500BCFDC9 /* GhostObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GhostObject.cpp; path = ../Classes/MapObjects/GhostObject.cpp; sourceTree = "<group>"; };
+		DCD85F221C18540500BCFDC9 /* GhostObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GhostObject.h; path = ../Classes/MapObjects/GhostObject.h; sourceTree = "<group>"; };
+		DCD85F251C18541700BCFDC9 /* PathObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathObject.cpp; path = ../Classes/MapObjects/PathObject.cpp; sourceTree = "<group>"; };
+		DCD85F261C18541700BCFDC9 /* PathObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathObject.h; path = ../Classes/MapObjects/PathObject.h; sourceTree = "<group>"; };
 		DCDD2D601C11B7A000FE7289 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cloud.cpp; path = ../Classes/UI/Cloud.cpp; sourceTree = "<group>"; };
 		DCDD2D611C11B7A000FE7289 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cloud.h; path = ../Classes/UI/Cloud.h; sourceTree = "<group>"; };
 		DCE10A591C0E154D000FCE81 /* PlainArea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlainArea.cpp; path = ../Classes/MapObjects/TerrainObject/PlainArea.cpp; sourceTree = "<group>"; };
@@ -920,6 +936,8 @@
 				26D9F5691C117514003BA438 /* GlobalPlayerData.h */,
 				26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */,
 				26D9F56D1C117608003BA438 /* LocalPlayerData.h */,
+				DC7AD6471C183C37008066DA /* Sight.cpp */,
+				DC7AD6481C183C37008066DA /* Sight.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1071,6 +1089,12 @@
 				553577E41BEB99790095E6A9 /* Party.h */,
 				55CCBFED1BFC87CA00CBCB44 /* Enemy.cpp */,
 				55CCBFEE1BFC87CA00CBCB44 /* Enemy.h */,
+				DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */,
+				DCD85F1E1C1853C500BCFDC9 /* ItemObject.h */,
+				DCD85F211C18540500BCFDC9 /* GhostObject.cpp */,
+				DCD85F221C18540500BCFDC9 /* GhostObject.h */,
+				DCD85F251C18541700BCFDC9 /* PathObject.cpp */,
+				DCD85F261C18541700BCFDC9 /* PathObject.h */,
 			);
 			name = MapObjects;
 			sourceTree = "<group>";
@@ -1472,6 +1496,7 @@
 				554470761BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				26114E761BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */,
 				5564CCF11BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
+				DCD85F1F1C1853C500BCFDC9 /* ItemObject.cpp in Sources */,
 				556C71661BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55D8A6E11BB43772005F9717 /* MenuLayer.cpp in Sources */,
@@ -1505,6 +1530,7 @@
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
 				55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
+				DC7AD6491C183C37008066DA /* Sight.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
 				552F5DC91B710D2900E4CEB6 /* CharacterMessageLayer.cpp in Sources */,
@@ -1516,6 +1542,7 @@
 				DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
+				DCD85F231C18540500BCFDC9 /* GhostObject.cpp in Sources */,
 				DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */,
 				55E0FB631BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				5544706A1BDCB5730048CD0B /* ModalLayerEvent.cpp in Sources */,
@@ -1556,6 +1583,7 @@
 				DC40ADF81C0F478300864861 /* EndingSceneData.cpp in Sources */,
 				266E76541BC1160B005BC878 /* DungeonMenuScene.cpp in Sources */,
 				557A87CD1B47A22B001993E1 /* LoadingLayer.cpp in Sources */,
+				DCD85F271C18541700BCFDC9 /* PathObject.cpp in Sources */,
 				55D8A6E71BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				55D8A6E31BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
 				554470851BDF61790048CD0B /* CharacterEvent.cpp in Sources */,
@@ -1587,6 +1615,7 @@
 				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
 				DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
+				DCD85F201C1853C500BCFDC9 /* ItemObject.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55D8A6E01BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				55526C8C1BF095B20049DD00 /* DisplayImageLayer.cpp in Sources */,
@@ -1615,6 +1644,7 @@
 				DCDD2D631C11B7A000FE7289 /* Cloud.cpp in Sources */,
 				260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */,
 				263BC5A81C0EFF190044D4B3 /* TrophyListLayer.cpp in Sources */,
+				DCD85F241C18540500BCFDC9 /* GhostObject.cpp in Sources */,
 				55D8A6E81BB4429A005F9717 /* SaveDataSelector.cpp in Sources */,
 				556C71771BC3FD9A00835D15 /* BothFollow.cpp in Sources */,
 				DCAB9BB91BFF19A100887F68 /* Chaser.cpp in Sources */,
@@ -1650,6 +1680,7 @@
 				55C3C1DF1BD098EC00ECDB50 /* MovePattern.cpp in Sources */,
 				DCE10A5C1C0E154D000FCE81 /* PlainArea.cpp in Sources */,
 				DCFC39081BFF38780073A6CA /* EnemyEvent.cpp in Sources */,
+				DC7AD64A1C183C37008066DA /* Sight.cpp in Sources */,
 				DC2325731C09D700009338F3 /* DungeonCameraSceneData.cpp in Sources */,
 				5534BBDD1B2DDF52003CB847 /* Character.cpp in Sources */,
 				55E542AA1BAE59850003A230 /* AmbientLightLayer.cpp in Sources */,
@@ -1670,6 +1701,7 @@
 				556C71671BC3DA9E00835D15 /* FollowType.cpp in Sources */,
 				55D8A6E41BB43772005F9717 /* TitleMainMenuLayer.cpp in Sources */,
 				551A51791BF239F600D6263A /* Direction.cpp in Sources */,
+				DCD85F281C18541700BCFDC9 /* PathObject.cpp in Sources */,
 				556C716B1BC3DCA000835D15 /* NeverFollow.cpp in Sources */,
 				55655AF21B39A427000AFC17 /* SceneData.cpp in Sources */,
 				266A122F1C133F7900F02E11 /* DebugManager.cpp in Sources */,

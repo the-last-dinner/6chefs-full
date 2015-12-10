@@ -8,6 +8,9 @@
 
 #include "MapObjects/Enemy.h"
 
+#include "MapObjects/MapObjectList.h"
+#include "MapOBjects/Party.h"
+
 #include "MapObjects/MovePatterns/MovePattern.h"
 #include "MapObjects/MovePatterns/MovePatternFactory.h"
 
@@ -37,22 +40,26 @@ bool Enemy::init(const EnemyData& data)
     return true;
 }
 
+// 主人公と自身に対して当たり判定を適用しないようにする
+const bool Enemy::isHit(const vector<Direction>& directions) const
+{
+    if(!this->objectList) return false;
+    
+    // 自身以外の当たり判定を持つオブジェクトが、指定方向にあればtrueを返す
+    for(MapObject* obj : this->objectList->getMapObjects(this->getCollisionRect(directions)))
+    {
+        if(obj == this || obj == this->objectList->getParty()->getMainCharacter()) continue;
+        
+        if(obj->isHit()) return true;
+    }
+    
+    return false;
+}
+
 // 敵IDを取得
 int Enemy::getEnemyId() const
 {
     return this->data.enemy_id;
-}
-
-// マップに配置された時
-void Enemy::onEnterMap(const Rect& gridRect)
-{
-    if(this->movePattern) this->movePattern->start(gridRect);
-}
-
-// 主人公一行が移動した時
-void Enemy::onPartyMoved(const Rect& gridRect)
-{
-    if(this->movePattern) this->movePattern->onPartyMoved(gridRect);
 }
 
 // データを取得

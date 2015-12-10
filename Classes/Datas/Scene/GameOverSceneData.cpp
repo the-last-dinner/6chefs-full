@@ -19,8 +19,9 @@ bool GameOverSceneData::init()
 {
     this->textureFilePaths =
     {
-        "blood",
+        Resource::SpriteFrame::BLOOD,
     };
+    
     this->soundFilePaths = {};
     
     return true;

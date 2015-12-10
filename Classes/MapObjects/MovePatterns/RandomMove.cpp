@@ -39,7 +39,7 @@ void RandomMove::start()
     if (enableDirections.empty()) return;
     
     // 移動可能方向からランダムな要素を取り出す
-    vector<Direction> detectedDirs {enableDirections[cocos2d::random(0, static_cast<int>(enableDirections.size()))]};
+    vector<Direction> detectedDirs {enableDirections[cocos2d::random(0, static_cast<int>(enableDirections.size()) - 1)]};
     
     this->chara->walkBy(detectedDirs, [this]{this->start();});
 }

@@ -59,10 +59,12 @@ protected:
     virtual void onAfterInitEventFinished();
     virtual void onPassedEventFinished();
     virtual void onMenuKeyPressed();
+    void onPopMenuScene();
     void onBackToTitleSelected();
     void onContactWithEnemy();
     void onAllEnemyRemoved();
     void onExitDungeon();
+    void setLight();
     
     DungeonSceneData* getData() const;
     

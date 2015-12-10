@@ -28,10 +28,9 @@ private:
     Enemy();
     ~Enemy();
     bool init(const EnemyData& data);
+    virtual const bool isHit(const vector<Direction>& directions) const;
 public:
     int getEnemyId() const;
-    void onEnterMap(const Rect& gridRect);
-    void onPartyMoved(const Rect& gridRect);
     EnemyData getEnemyData() const;
     bool canGoToNextMap() const;
     float calcSummonDelay() const;

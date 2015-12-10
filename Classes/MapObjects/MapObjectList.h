@@ -22,7 +22,7 @@ class MapObjectList : public Node
 {
 // クラスメソッド
 public:
-    static MapObjectList* create(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects);
+    CREATE_FUNC(MapObjectList)
     
 // インスタンス変数
 private:
@@ -39,8 +39,14 @@ public:
 private:
     MapObjectList();
     ~MapObjectList();
-    bool init(const Vector<MapObject*>& availableObjects, const Vector<MapObject*> disableObjects, const Vector<TerrainObject*> terrainObjects);
+    bool init();
 public:
+    // 初期設定
+    void setAvailableObjects(const Vector<MapObject*>& objects);
+    void setDisableObjects(const Vector<MapObject*>& objects);
+    void setTerrainObjects(const Vector<TerrainObject*>& objects);
+    
+    // 取得系
     MapObject* getMapObject(int objId) const;
     MapObject* getMapObjectFromDisableList(int objId) const;
     const Vector<MapObject*>& getMapObjects() const;
@@ -50,7 +56,8 @@ public:
     
     vector<int> getEventIds(const Trigger trigger) const;
     vector<int> getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const;
-    vector<Rect> getGridCollisionRects() const;
+    vector<Rect> getGridCollisionRects(MapObject* exclusion = nullptr) const;
+    vector<Rect> getGridCollisionRects(Vector<MapObject*> exclusion) const;
     
     // 追加、削除
     void add(MapObject* mapObject);

@@ -4,60 +4,74 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>heart_black.png</key>
+			<key>G.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{80,80}}</string>
+				<string>{{28,8},{15,14}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{26,22},{80,80}}</string>
+				<string>{{0,0},{15,14}}</string>
 				<key>sourceSize</key>
-				<string>{128,128}</string>
+				<string>{16,16}</string>
 			</dict>
 
-			<key>heart_pink.png</key>
+			<key>item_blue_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{81,0},{80,80}}</string>
+				<string>{{0,8},{27,27}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{26,23},{80,80}}</string>
-				<key>sourceSize</key>
-				<string>{128,128}</string>
-			</dict>
-
-			<key>icon_sign.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{46,81},{12,28}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{10,2},{12,28}}</string>
+				<string>{{2,2},{27,27}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
 
-			<key>trophy_gold.png</key>
+			<key>item_blue_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,81},{45,39}}</string>
+				<string>{{0,36},{23,24}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{1,0},{45,39}}</string>
+				<string>{{4,4},{23,24}}</string>
 				<key>sourceSize</key>
-				<string>{46,39}</string>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>item_blue_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{24,36},{19,19}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,6},{19,19}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>mes.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{29,7}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,10},{29,7}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
 			</dict>
 
 		</dict>
@@ -67,9 +81,9 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{256,128}</string>
+			<string>{64,64}</string>
 			<key>textureFileName</key>
-			<string>icon.png</string>
+			<string>map_object.png</string>
 			</dict>
 		</dict>
 </plist>
