@@ -454,12 +454,6 @@
     <property name="trigger" value="3"/>
    </properties>
   </object>
-  <object id="78" x="640" y="0" width="32" height="32">
-   <properties>
-    <property name="EventID" value="31"/>
-    <property name="trigger" value="0"/>
-   </properties>
-  </object>
   <object id="80" x="144" y="624" width="32" height="32">
    <properties>
     <property name="EventID" value="32"/>

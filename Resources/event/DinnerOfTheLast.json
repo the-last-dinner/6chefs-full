@@ -41,11 +41,18 @@
 							"file":"agaa.mp3"
 						},
 						{
+							"type":"wait",
+							"time":1.0
+						},
+						{
 							"type":"charaMsg",
 							"text":["チィっ"],
 							"charaID":"2",
 							"imgID":"2",
 							"option":"reaction"
+						},
+						{
+							"type":"already"
 						},
 						{
 							"type":"changeMap",
@@ -313,7 +320,7 @@
 											"option":"reaction"
 										},
 										{
-											"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた"],
+											"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた！"],
 											"charaID":"2",
 											"imgID":"2",
 											"option":"reaction"
@@ -524,15 +531,6 @@
 		}
 	],
 	"10":[
-		{
-			"type":"playBGM",
-			"file":"psychopath.mp3",
-			"volume":0.5
-		},
-		{
-			"type":"playBGM",
-			"file":"chapter4.mp3"
-		},
 		{
 			"type":"if",
 			"condition":[

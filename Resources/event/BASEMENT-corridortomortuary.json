@@ -21,32 +21,6 @@
 					"type":"fadeout"
 				},
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"charaMsg",
-							"text":["うわああああああああ"],
-							"charaID":"0",
-							"imgID":"2",
-							"option":"reaction"
-						},
-						{
-							"type":"playSE",
-							"file":"hyun1.mp3"
-						}
-					]
-				},
-				{
-					"type":"playSE",
-					"file":"bakibaki.mp3"
-				},
-				{
-					"type":"charaMsg",
-					"text":["いてて・・・"],
-					"charaID":"0",
-					"imgID":"2"
-				},
-				{
 					"type":"changeMap",
 					"mapID":"48",
 					"x":4,

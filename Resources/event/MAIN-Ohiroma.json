@@ -96,6 +96,10 @@
           "type":"sequence",
           "action":[
             {
+              "type":"stopBGM",
+              "file":"lastBoss.mp3"
+            },
+            {
              "type":"fadeout"
             },
             {
@@ -611,10 +615,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaWalk",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":9.0
+                  "x":28,
+                  "y":34
                 }
               ]
             },
@@ -862,10 +866,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaWalk",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":9.0
+                  "x":28,
+                  "y":34
                 }
               ]
             },
@@ -1384,10 +1388,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaWalk",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":9.0
+                  "x":28,
+                  "y":34
                 }
               ]
             },
@@ -1604,10 +1608,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaWalk",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":9.0
+                  "x":28,
+                  "y":34
                 }
               ]
             },
@@ -1742,7 +1746,7 @@
               "type":"charaMsg",
               "text":["オラァ！"],
               "charaID":"5",
-              "imgID":"2",
+              "imgID":"1",
               "option":"reaction"
             },
             {
@@ -1818,10 +1822,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaWalk",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":9.0
+                  "x":28,
+                  "y":34
                 }
               ]
             },
@@ -1856,6 +1860,10 @@
                 {
                   "type":"reaction",
                   "objID":"1083"
+                },
+                {
+                  "type":"reaction",
+                  "objID":"1082"
                 }
               ]
             },

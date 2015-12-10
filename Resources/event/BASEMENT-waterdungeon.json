@@ -121,7 +121,7 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["酒蔵の鍵を使った"]
+					"text":["地下倉庫の鍵を使った"]
 				},
 				{
 					"type":"playSE",

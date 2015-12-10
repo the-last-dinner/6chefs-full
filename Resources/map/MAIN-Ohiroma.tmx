@@ -22,12 +22,20 @@
    eJztmNEOgjAMReHNT/UT/GGQH1B4VCKNzdJbWxzTh3uSG5OxrmvJzC5d92bqu26uoAWMI2rk9PaCWJ+tNd+SGp4agfQ8RGQda73onj7Ve9/mR/Ij3TeNgbwo1tKePUXqlT55uT1ZsQgrVuJHo8bsXhDzVu9wgLw+63lWn8qxWnnlfGfPb0Ren4/IF8lLCCGE1OJ8+vUO2nJkvdf+pUn9aqG7jMTpmHI9D+9efDmwXvFYep+Lku6F1myMeeNlf9C9WPLuvU9G6tXe1vK5yPtmfHI5B90Vlw/Pv71PSv7S54nkudXnjMfVXtfzgFLvXj+YqdcSeh+Wl854ygHESL17/WC0XtRH9H4tL23NscY8/9fq/Gbfb9S3ZcZbnF+h9jn5t3y/zm99C2tZb+3/hX/LRwghhBBCCCGEEEIIIYRkeQAWi0rS
   </data>
  </layer>
+ <layer name="tesuri" width="60" height="48">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzqEBACAMA7DK/f8Nuw6JQ8JEckESAAAAuFuVdP1eHNM+AAAAAAAAALyzAVccAwc=
+  </data>
+ </layer>
  <layer name="MonoChu" width="60" height="48">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="MonoUe" width="60" height="48">
@@ -35,7 +43,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0MsJwkAUheFZzCJ9+GjARwNG+0g6MB3oSnClHZgOdKe7pAOtyLMTVO6sBofx/+AQyIFwT5zDu4F3bqiMlLH/9TUvse6a6FtTZabME9ob666FvlUqS2WV0N7QXZXe1QndG9taWxtj71ndJaP/sdGWrbGnU9dntPegLUdjz13dI6O9J21pM9oDAMA3+8Lur+pvxefTsgv0AAAAAAAAAAAAAID/9ASQgBTR
+   eJzt0LsJAkEUheEbbDB9+GjARwM++tAOtAONBCPtQDPNNNNMO9CKPGCwoDAbDXMZ/g8uC3Nh9pwxw69WZdbWdDTdKneaWqpcPd3V1ww0Q0d9U+Ua6a6xZqKZOurblGums7mjvKkt1HUZ6XvR7lrQe6zUZR3p89DuWVDfnbrsI31e2r0L6ntQl2NBfQAAX6dgdg65U9Ry59k2/Pum/T38f2M2jt4XAAAAAAAAAAAAAODHB7VxF5c=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -199,7 +207,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="60" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt2U0KwjAQhuHPNJYeVfACQs+gN9C9bvQGege9gR7ECC41gZgf274PDF0MX2eySqESgDG4Wulma29Rzt2d9TGh8wIAMATLTlp0/n5qoXm+/q/6wLtf/YOrfcLnyjOzD/SBVI6tdGrL5Wo7u50vEXvH5gAg1tpIG1MuV9vW7byL2Ds2BwDAJ9y/eXMAAGB6+L7Km0NY6H/dvxrq3iXNGsm8q3FlXc0T1ze557ae2WP3BMKeN0I=
+   eJzt2UEKwjAQheFnWkuPKngBwTPoDXSvG72B3kFvoAdxBJc2gZgmtv0/GLoYXmayaqESgDG41dK9Lr1FPg+763NC9wUAYAiWrbRo/f3UQvN8/V+t7eyV5/x3/2h1SPgMzfP1gVROjXRu8uVKu9jO14i9Y3MAEGvjpK3LlyttZzvvI/aOzQEA8A3v335zAABgevi+6jeHsND/un811L1zmlWS+1RlVVvNE1eXvuc2ntlj9wKbhjfC
   </data>
  </layer>
  <objectgroup name="event">

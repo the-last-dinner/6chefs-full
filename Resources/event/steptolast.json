@@ -20,6 +20,15 @@
 					"type":"stopBGM"
 				},
 				{
+					"type":"playBGM",
+					"file":"psychopath.mp3",
+					"volume":0.5
+				},
+				{
+					"type":"playBGM",
+					"file":"chapter4.mp3"
+				},
+				{
 					"type":"changeMap",
 					"mapID":"65",
 					"x":19,
@@ -70,10 +79,10 @@
 						{
 							"type":"createEnemy",
 							"enemyID":"1422",
-							"charaID":"7",
+							"charaID":"18",
 							"x":4,
 							"y":3,
-							"movePattern":"4"
+							"movePattern":"5"
 						},
 						{
 							"type":"charaMsg",

@@ -6,7 +6,7 @@
  <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
- <layer name="Base" width="16" height="16">
+ <layer name="Base" width="16" height="16" opacity="0.99">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -27,7 +27,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BgQTUHdvEKoHg0J3a5CCTxbhz6O4Di2Tj0ZxCpvxqH/goK9VNqP7X0AwAqIwxB
+   eJxjYBgFo2BgQTUHdvEKDvxyMNCNQ00HUDybE7tcBpI4Pv3VOPRXUKifUvuppR8AfH0Mfw==
   </data>
  </layer>
  <objectgroup name="collision">
@@ -43,7 +43,7 @@
  <objectgroup name="Chrara(object)"/>
  <layer name="CharaUe" width="16" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4AykM2BXTwDh/goGDwAAIMzAOQ=
+   eJxjYBgFo4AykM2BXTyDA7/cKBh4AADpkgHH
   </data>
  </layer>
  <objectgroup name="event">
