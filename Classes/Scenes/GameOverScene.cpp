@@ -28,7 +28,7 @@ GameOverScene::~GameOverScene() {FUNCLOG};
 // 初期化
 bool GameOverScene::init(const Type type)
 {
-    SoundManager::getInstance()->playSE("blood.wav");
+    SoundManager::getInstance()->playSE("blood.mp3");
     
     Sprite* blood {Sprite::create()};
     blood->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -53,7 +53,7 @@ void GameOverScene::onPreloadFinished(LoadingLayer* loadingLayer)
     
     this->bloodCover->runAction(Sequence::createWithTwoActions(FadeOut::create(0.4f), RemoveSelf::create()));
     
-    SoundManager::getInstance()->playSE("gameover.wav");
+    SoundManager::getInstance()->playSE("gameover.mp3");
     
     Sprite* bloodFrame {Sprite::createWithSpriteFrameName("blood2.png")};
     bloodFrame->setPosition(WINDOW_CENTER);

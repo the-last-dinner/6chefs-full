@@ -12,6 +12,7 @@
 #include "Layers/Menu/ItemMenuLayer.h"
 #include "Layers/Menu/CharacterMenuLayer.h"
 #include "Managers/DungeonSceneManager.h"
+#include "Models/StopWatch.h"
 
 // クラス変数
 const string DungeonMenuScene::MAIN_LAYER_NAME = "mainMenuLayer";
@@ -151,6 +152,14 @@ void DungeonMenuScene::onMenuHidden()
 void DungeonMenuScene::onSaveMenuSelected()
 {
     FUNCLOG
+    // カウントダウン中は開けなくする
+    if (DungeonSceneManager::getInstance()->getStopWatch()->isCountingNow())
+    {
+        SoundManager::getInstance()->playSE("failure.mp3");
+        return;
+    }
+    
+    SoundManager::getInstance()->playSE("cursorMove.mp3");
     this->mainMenu->hide();
     this->createSaveMenu();
     this->saveDataSelector->show();
@@ -174,6 +183,7 @@ void DungeonMenuScene::onSaveDataSelectCancelled()
 void DungeonMenuScene::onItemMenuSelected()
 {
     FUNCLOG
+    SoundManager::getInstance()->playSE("cursorMove.mp3");
     this->mainMenu->hide();
     this->createItemMenu();
     this->itemMenu->show();
@@ -197,6 +207,7 @@ void DungeonMenuScene::onItemMenuCanceled()
 void DungeonMenuScene::onCharaMenuSelected()
 {
     FUNCLOG
+    SoundManager::getInstance()->playSE("cursorMove.mp3");
     this->mainMenu->hide();
     this->createCharaMenu();
     this->charaMenu->show();
