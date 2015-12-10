@@ -37,9 +37,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 	auto glView = director->getOpenGLView();
 	if (!glView) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-		glView = GLViewImpl::createWithRect("My Game", Rect(0, 0, WINDOW_WIDTH , WINDOW_HEIGHT));
+		glView = GLViewImpl::createWithRect("6人の料理人と隻眼の少女", Rect(0, 0, WINDOW_WIDTH , WINDOW_HEIGHT));
 #else	
-		glView = GLViewImpl::create("My Game");
+		glView = GLViewImpl::create("6人の料理人と隻眼の少女");
 #endif
 		director->setOpenGLView(glView);
 	}
