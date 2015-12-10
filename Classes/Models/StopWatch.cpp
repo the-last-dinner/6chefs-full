@@ -113,9 +113,15 @@ void StopWatch::scheduleFunction(float delta)
     }
 }
 
+// カウントダウンイベントの保持
 void StopWatch::setCountDown(GameEvent *event)
 {
     this->countDownEvent = event;
     CC_SAFE_RETAIN(this->countDownEvent);
-    
+}
+
+// カウントダウン状態か判別
+bool StopWatch::isCountingNow()
+{
+    return this->isCounting;
 }

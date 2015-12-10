@@ -224,7 +224,6 @@ void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 // 決定キー入力時
 void DungeonMainMenuLayer::onSpacePressed(int idx)
 {
-    SoundManager::getInstance()->playSE("cursorMove.mp3");
     switch (static_cast<Type>(idx)) {
         case Type::ITEM:
             if (this->onItemMenuSelected)
