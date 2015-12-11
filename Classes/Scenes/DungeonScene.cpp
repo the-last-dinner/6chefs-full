@@ -262,7 +262,7 @@ void DungeonScene::setLight()
 {
     if (PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(1514))
     {
-        this->party->getMainCharacter()->setLight(Light::create(Light::Information(20)), this->ambientLightLayer);
+        this->party->getMainCharacter()->setLight(Light::create(Light::Information(50)), this->ambientLightLayer);
     }
     else
     {
