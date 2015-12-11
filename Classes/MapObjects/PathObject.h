@@ -11,4 +11,24 @@
 
 #include "MapObjects/MapObject.h"
 
+class PathObject : public MapObject
+{
+// クラスメソッド
+public:
+    CREATE_FUNC(PathObject)
+    
+// インスタンス変数
+private:
+    PathObject* next { nullptr };
+    
+// インスタンスメソッド
+private:
+    PathObject();
+    ~PathObject();
+    bool init();
+    void setNext(PathObject* next);
+    PathObject* getNext() const;
+    
+};
+
 #endif /* PathObject_h */

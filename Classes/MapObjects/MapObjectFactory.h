@@ -26,6 +26,7 @@ public:
         TERRAIN,
         ITEM,
         GHOST,
+        PATH,
         
         SIZE,
     };
@@ -59,6 +60,7 @@ private:
     MapObject* createObjectOnTerrain(const ValueMap& info);
     MapObject* createObjectOnItem(const ValueMap& info);
     MapObject* createObjectOnGhost(const ValueMap& info);
+    MapObject* createObjectOnPath(const ValueMap& info);
 };
 
 #endif /* defined(__LastSupper__MapObjectFactory__) */

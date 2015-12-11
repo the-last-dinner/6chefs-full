@@ -22,6 +22,7 @@ private:
     static const float TOP_MARGIN;
     static const float LEFT_MARGIN;
     static const float H_MARGIN_S;
+    static const int REACTION_EFFECT_ZORDER;
     
 // クラスメソッド
 public:
@@ -32,6 +33,8 @@ private:
     queue<CharacterMessageData*> datas {};
     ui::Scale9Sprite* nameFrame { nullptr };
     Sprite* charaImg { nullptr };
+    Sprite* reactionEffect { nullptr };
+    Point defaultMFramePosition { Point::ZERO };
 
 // インスタンスメソッド
 private:

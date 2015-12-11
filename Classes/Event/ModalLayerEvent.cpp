@@ -90,6 +90,9 @@ bool CharacterMessage::init(rapidjson::Value& json)
             // 画像ID
             if(this->validator->hasMember(chara, member::IMG_ID)) data->setImgId(stoi(chara[member::IMG_ID].GetString()));
             
+            // リアクション
+            if(this->validator->hasMember(json, member::OPTION)) data->setOption(CharacterMessageData::Option::REACTION);
+            
             datas.push(data);
         }
     }
@@ -126,6 +129,9 @@ bool CharacterMessage::init(rapidjson::Value& json)
         
         // 画像ID
         if(this->validator->hasMember(json, member::IMG_ID)) data->setImgId(stoi(json[member::IMG_ID].GetString()));
+        
+        // リアクション
+        if(this->validator->hasMember(json, member::OPTION)) data->setOption(CharacterMessageData::Option::REACTION);
         
         datas.push(data);
     }

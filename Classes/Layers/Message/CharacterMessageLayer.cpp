@@ -14,6 +14,7 @@
 const float CharacterMessageLayer::TOP_MARGIN { 50 };
 const float CharacterMessageLayer::LEFT_MARGIN {60};
 const float CharacterMessageLayer::H_MARGIN_S {30};
+const int CharacterMessageLayer::REACTION_EFFECT_ZORDER { -1 };
 
 // コンストラクタ
 CharacterMessageLayer::CharacterMessageLayer(){FUNCLOG}
@@ -31,8 +32,8 @@ bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas, func
     // メッセージ用枠を生成
     Sprite* mainFrame {Sprite::createWithSpriteFrameName("cm_frame.png")};
     Size mFrameSize = mainFrame->getContentSize();
-    mainFrame->setPosition(Point(WINDOW_WIDTH / 2, mFrameSize.height / 2 + 10)); // 30は縦方向の調整用
-    mainFrame->setLocalZOrder(0);
+    this->defaultMFramePosition = Point(WINDOW_WIDTH / 2, mFrameSize.height / 2 + 10);
+    mainFrame->setPosition(this->defaultMFramePosition); // 30は縦方向の調整用
     mainFrame->setCascadeOpacityEnabled(true);
     this->addChild(mainFrame);
     this->frame = mainFrame;
@@ -51,6 +52,28 @@ bool CharacterMessageLayer::init(const queue<CharacterMessageData*>& datas, func
 Label* CharacterMessageLayer::createMessage()
 {
     CharacterMessageData* data {this->datas.front()};
+    
+    // フレームの位置を戻す
+    this->frame->stopAllActions();
+    this->frame->setPosition(this->defaultMFramePosition);
+    
+    // リアクション
+    if(data->getOption() == CharacterMessageData::Option::REACTION)
+    {
+        // 白いエフェクトを出してフェードアウト
+        Sprite* white { Sprite::create() };
+        white->setTextureRect(Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+        white->setColor(Color3B::WHITE);
+        white->setPosition(white->getContentSize() / 2);
+        this->addChild(white);
+        this->reactionEffect = white;
+        white->runAction(Sequence::createWithTwoActions(FadeOut::create(1.f), RemoveSelf::create()));
+        
+        // フレームを揺らす
+        this->frame->runAction(RepeatForever::create(Sequence::create(MoveBy::create(0.05f, Vec2(10.f, 0)), MoveBy::create(0.05f, Vec2(-10.f, 0)), nullptr)));
+        
+        SoundManager::getInstance()->playSE("msg_reaction.mp3");
+    }
  
     // キャラクター画像
     if(this->charaImg)
