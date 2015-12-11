@@ -16,6 +16,9 @@ class EventListenerKeyboardLayer;
 
 class MessageLayer : public Layer
 {
+// 定数
+public:
+    static const float INPUT_WAIT_DURATION;
 // インスタンス変数
 protected:
     Sprite* frame { nullptr };
