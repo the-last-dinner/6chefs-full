@@ -14,6 +14,7 @@
 #include "MapObjects/EventObject.h"
 #include "MapOBjects/GhostObject.h"
 #include "MapObjects/ItemObject.h"
+#include "MapObjects/PathObject.h"
 #include "MapObjects/MapObjectList.h"
 
 #include "MapObjects/TerrainObject/WaterArea.h"
@@ -182,7 +183,8 @@ Sprite* MapObjectFactory::getSprite(const ValueMap& info) const
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
-    MapObject* pObj = EventObject::create();
+    
+    EventObject* pObj { EventObject::create() };
     pObj->setObjectId(this->getObjectId(info));
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
@@ -196,22 +198,11 @@ MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
-    
-    // 入れ物を用意
-    MapObject* pObj {nullptr};
-    
-    // オブジェクトの種類を取得
-    string type { this->getObjectType(info) };
-    
-    // 種類が空の場合は単なるイベントのトリガーとして処理
-    if(type == "")
-    {
-        pObj = EventObject::create();
-        pObj->setEventId(this->getEventId(info));
-        pObj->setTrigger(this->getTrigger(info));
-    }
-    
+
+    EventObject* pObj { EventObject::create() };
     pObj->setObjectId(this->getObjectId(info));
+    pObj->setEventId(this->getEventId(info));
+    pObj->setTrigger(this->getTrigger(info));
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
     pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
@@ -304,6 +295,16 @@ MapObject* MapObjectFactory::createObjectOnGhost(const ValueMap& info)
     obj->setSprite(sprite);
     obj->setContentSize(sprite->getContentSize());
     obj->setCollisionRect(Rect(0, 0, sprite->getContentSize().width, sprite->getContentSize().height));
+    
+    return obj;
+}
+
+// 経路レイヤにあるオブジェクトを生成
+MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
+{
+    PathObject* obj { PathObject::create() };
+    
+    if(!obj) return nullptr;
     
     return obj;
 }
