@@ -39,12 +39,13 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     // レイヤ別に処理が分かれるので用意
     map<MapObjectFactory::Group, string> typeToString
     {
-        {MapObjectFactory::Group::COLLISION, "collision"},
-        {MapObjectFactory::Group::EVENT, "event"},
-        {MapObjectFactory::Group::CHARACTER, "Chara(object)"},
-        {MapObjectFactory::Group::TERRAIN, "terrain"},
-        {MapObjectFactory::Group::ITEM, "item"},
-        {MapObjectFactory::Group::GHOST, "Ugokumono(object)"},
+        {Group::COLLISION, "collision"},
+        {Group::EVENT, "event"},
+        {Group::CHARACTER, "Chara(object)"},
+        {Group::TERRAIN, "terrain"},
+        {Group::ITEM, "item"},
+        {Group::GHOST, "Ugokumono(object)"},
+        {Group::PATH, "path"},
     };
     
     // グループごとに生成メソッドを用意
@@ -56,6 +57,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
         {Group::TERRAIN, CC_CALLBACK_1(MapObjectFactory::createObjectOnTerrain, p)},
         {Group::ITEM, CC_CALLBACK_1(MapObjectFactory::createObjectOnItem, p)},
         {Group::GHOST, CC_CALLBACK_1(MapObjectFactory::createObjectOnGhost, p)},
+        {Group::PATH, CC_CALLBACK_1(MapObjectFactory::createObjectOnPath, p)},
     };
     
     // ベクタを用意
