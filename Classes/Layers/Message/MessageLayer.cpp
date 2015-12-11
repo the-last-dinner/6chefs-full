@@ -11,11 +11,14 @@
 #include "Datas/Message/MessageData.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
+// 定数
+const float MessageLayer::INPUT_WAIT_DURATION { 0.3f };
+
 // コンストラクタ
-MessageLayer::MessageLayer() {FUNCLOG};
+MessageLayer::MessageLayer() {};
 
 // デストラクタ
-MessageLayer::~MessageLayer() {FUNCLOG};
+MessageLayer::~MessageLayer() {};
 
 // 初期化
 bool MessageLayer::init(function<void()> onCloseCallback)
@@ -66,6 +69,10 @@ void MessageLayer::displayMessageWithAnimation(Label* message)
     // messageがnullptrなら終了
     if(!message) return;
     
+    // 入力を待たせる
+    this->listener->setEnabled(false);
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(INPUT_WAIT_DURATION), CallFunc::create([this]{this->listener->setEnabled(true);})));
+    
     this->message = message;
     
     int stringLength = message->getStringLength();
@@ -89,8 +96,8 @@ void MessageLayer::displayMessageWithAnimation(Label* message)
         // エスケープ文字をスルー
         if(letter)
         {
-            letter->setVisible(false);
-            letter->runAction(Sequence::createWithTwoActions(DelayTime::create(this->latency * i), TargetedAction::create(letter, Show::create())));
+            letter->setOpacity(0);
+            letter->runAction(Sequence::createWithTwoActions(DelayTime::create(this->latency * i), FadeIn::create(0.1f)));
         }
     }
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(stringLength * this->latency), CallFunc::create([this](){this->onAllLetterDisplayed();})));
@@ -107,7 +114,7 @@ void MessageLayer::displayMessage(Label* message)
         if(letter)
         {
             letter->stopAllActions();
-            letter->setVisible(true);
+            letter->setOpacity(255);
         }
     }
     this->onAllLetterDisplayed();
@@ -122,7 +129,7 @@ void MessageLayer::onAllLetterDisplayed()
 // 次のページへ
 void MessageLayer::nextPage()
 {
-    this->message->removeFromParentAndCleanup(true);
+    this->message->removeFromParent();
     this->allLetterDisplayed = false;
     this->displayMessageWithAnimation(this->createMessage());
 }
@@ -130,7 +137,6 @@ void MessageLayer::nextPage()
 // メッセージレイヤを閉じる
 void MessageLayer::close()
 {
-    FUNCLOG
     this->message->setCascadeOpacityEnabled(true);
     this->frame->setCascadeOpacityEnabled(true);
     this->listener->setEnabled(false);
