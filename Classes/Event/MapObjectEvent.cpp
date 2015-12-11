@@ -59,6 +59,7 @@ void ReactionEvent::run()
     icon->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
     target->addChild(icon);
     
+    SoundManager::getInstance()->playSE("reaction.mp3");
     icon->runAction(Sequence::create(EaseElasticOut::create(ScaleTo::create(0.6f, 1.f), 0.5f), DelayTime::create(1.f), RemoveSelf::create(), CallFunc::create([this](){this->setDone();}), nullptr));
 }
 
