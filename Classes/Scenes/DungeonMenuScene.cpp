@@ -153,7 +153,7 @@ void DungeonMenuScene::onSaveMenuSelected()
 {
     FUNCLOG
     // カウントダウン中は開けなくする
-    if (DungeonSceneManager::getInstance()->getStopWatch()->isCountingNow())
+    if (DungeonSceneManager::getInstance()->existsStopWatch())
     {
         SoundManager::getInstance()->playSE("failure.mp3");
         return;

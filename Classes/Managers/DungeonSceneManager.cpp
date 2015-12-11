@@ -354,6 +354,7 @@ int DungeonSceneManager::getPushingEventid() const
 #pragma mark -
 #pragma mark StopWatch
 
+// ストップウォッチインスタンスの取得
 StopWatch* DungeonSceneManager::getStopWatch()
 {
     if(!this->stopWatch)
@@ -364,11 +365,13 @@ StopWatch* DungeonSceneManager::getStopWatch()
     return this->stopWatch;
 }
 
+// ストップウォッチをリリース
 void DungeonSceneManager::releaseStopWatch()
 {
     CC_SAFE_RELEASE_NULL(this->stopWatch);
 }
 
+// ストップォッチを一時停止
 void DungeonSceneManager::pauseStopWatch()
 {
     if(this->stopWatch)
@@ -377,12 +380,19 @@ void DungeonSceneManager::pauseStopWatch()
     }
 }
 
+// カウントダウンをスタート
 void DungeonSceneManager::startStopWatch()
 {
     if(this->stopWatch)
     {
         this->stopWatch->startCountDown();
     }
+}
+
+// ストップウォッチインスタンスが存在するかどうか
+bool DungeonSceneManager::existsStopWatch()
+{
+    return this->stopWatch ? true : false;
 }
 
 #pragma mark -

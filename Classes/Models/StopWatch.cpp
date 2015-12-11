@@ -43,6 +43,7 @@ void StopWatch::toc()
     double stop = this->getSecMs();
     double interval_time = stop - start;
     this->time += interval_time;
+    this->isCounting = false;
 }
 
 #pragma mark -
@@ -85,7 +86,7 @@ void StopWatch::startCountDown(const float& interval_time)
 
 void StopWatch::startCountDown()
 {
-    startCountDown(this->interval_time);
+    this->startCountDown(this->interval_time);
 }
 
 // カウントダウン停止処理
@@ -118,10 +119,4 @@ void StopWatch::setCountDown(GameEvent *event)
 {
     this->countDownEvent = event;
     CC_SAFE_RETAIN(this->countDownEvent);
-}
-
-// カウントダウン状態か判別
-bool StopWatch::isCountingNow()
-{
-    return this->isCounting;
 }

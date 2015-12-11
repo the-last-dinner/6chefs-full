@@ -53,7 +53,6 @@ public:
     // 時間計測処理
     void tic();
     void toc();
-    bool isCountingNow();
     // スケジュール実行
     void startCountDown(const float& interval_time);
     void startCountDown();
