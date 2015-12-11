@@ -108,6 +108,7 @@ public:
     void releaseStopWatch();
     void pauseStopWatch();
     void startStopWatch();
+    bool existsStopWatch();
     
     // Stamina
     Stamina* getStamina() const;
