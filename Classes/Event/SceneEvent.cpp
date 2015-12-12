@@ -214,3 +214,36 @@ void EndingEvent::run()
     this->setDone();
     DungeonSceneManager::getInstance()->exitDungeon(EndingScene::create(this->endingId));
 }
+
+#pragma mark -
+#pragma mark AnimationEvent
+
+bool AnimationEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // img
+    if(!validator->hasMember(json, member::IMGS)) return false;
+    
+    // 配列じゃなければ無視
+    if(!json[member::IMGS].IsArray()) return false;
+    
+    for(int i {0}; i < json[member::IMGS].Size(); i++)
+    {
+        this->spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(json[member::IMGS][i].GetString()));
+    }
+    
+    // 一枚あたりの表示する時間
+    if(this->validator->hasMember(json, member::TIME)) this->delayPerUnit = json[member::TIME].GetDouble();
+    
+    return true;
+}
+
+void AnimationEvent::run()
+{
+    Animation* animation { Animation::createWithSpriteFrames(this->spriteFrames) };
+    
+    animation->setDelayPerUnit(this->delayPerUnit);
+    
+    DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(Animate::create(animation), CallFunc::create([this]{this->setDone();})));
+}
