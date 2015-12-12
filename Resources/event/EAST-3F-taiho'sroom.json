@@ -304,8 +304,8 @@
 			"name":"曇り止めスプレー（レンズ用）"
 		},
 		{
-			"type":"removeLayer",
-			"layer":"item"
+			"type":"removeChara",
+			"objID":"1928"
 		},
 		{
 			"type":"already"
@@ -321,8 +321,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1928"
 				}
 			]
 		}

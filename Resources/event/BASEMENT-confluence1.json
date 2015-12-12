@@ -79,6 +79,10 @@
 							"type":"getItem",
 							"itemID":"1514",
 							"name":"たいまつ"
+						},
+						{
+							"type":"removeChara",
+							"obj":"1914"
 						}
 					]
 				}
@@ -111,6 +115,20 @@
 				{
 					"type":"removeChara",
 					"objID":"189"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":["1514"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1914"
 				}
 			]
 		}

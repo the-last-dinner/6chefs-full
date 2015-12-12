@@ -77,8 +77,8 @@
 					"itemID":"1517"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"tabacco"
+					"type":"removeChara",
+					"objID":"1917"
 				},
 				{
 					"type":"already"
@@ -96,8 +96,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"tabacco"
+					"type":"removeChara",
+					"objID":"1917"
 				}
 			]
 		}

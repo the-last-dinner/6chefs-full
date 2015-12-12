@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="240">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="241">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -9,10 +9,7 @@
  <tileset firstgid="529" name="Skull" tilewidth="16" tileheight="16">
   <image source="Skull.png" trans="007575" width="64" height="64"/>
  </tileset>
- <tileset firstgid="545" name="map_icon" tilewidth="16" tileheight="16">
-  <image source="map_icon.png" trans="080500" width="513" height="435"/>
- </tileset>
- <tileset firstgid="1409" name="steps" tilewidth="16" tileheight="16">
+ <tileset firstgid="545" name="steps" tilewidth="16" tileheight="16">
   <image source="steps.png" trans="080500" width="544" height="1120"/>
  </tileset>
  <layer name="Base" width="26" height="22">
@@ -63,20 +60,12 @@
    eJxjYBgFo4C6QJqJgUGGifb2yAPtUKCDPSAwVPwkSafwwAdk0dwgAeSLUNFdwnjMkqCCPTAzxOkQlqB0hewf9HRGrTQHSlfI/kFPZ8SmOSkc6nCJD2YAyisgd9M6b4PygxwTfcurUYAdAABNJQQf
   </data>
  </layer>
- <layer name="key" width="26" height="22">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFwxk4MTMwODPT3p4koB3JdLBnFIyCUTAKRsEoIAcAACOjAVc=
-  </data>
- </layer>
  <layer name="slope" width="26" height="22">
   <properties>
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYIAAATYIpjUYbvYcZ2VgOMFKe3teAu14RQd7uIFhxkOHcNMF2qFHB3vi2RkYEthpb08j0I4mOtizGGjHEjrYM9zy6ag9o/aM2jMKAM6yCXA=
+   eJxjYICADUwQTGsw3OxJB9qRQQd7OoF2dNHBntVAO9bQwZ6zQDvO0cGe/8xAgoX29igC7VCigz3OQDtc6GDPcMuno/aM2jNqzygAACSjGNk=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -112,12 +101,6 @@
   <object id="13" x="160" y="320" width="32" height="32">
    <properties>
     <property name="EventID" value="2"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="15" x="256" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="3"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
@@ -587,6 +570,15 @@
    <properties>
     <property name="EventID" value="0"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="240" x="256" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="objID" value="1919"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

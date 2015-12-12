@@ -118,8 +118,8 @@
 					"name":"酒倉庫の鍵"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"1919"
 				},
 				{
 					"type":"already"
@@ -137,8 +137,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"1919"
 				}
 			]
 		}

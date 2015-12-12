@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="55">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="56">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -18,10 +18,7 @@
  <tileset firstgid="3973" name="option-set" tilewidth="16" tileheight="16">
   <image source="option-set.png" trans="c1a5c8" width="281" height="1018"/>
  </tileset>
- <tileset firstgid="5044" name="map_icon" tilewidth="16" tileheight="16">
-  <image source="map_icon.png" trans="080500" width="513" height="435"/>
- </tileset>
- <tileset firstgid="5908" name="cyber2" tilewidth="16" tileheight="16">
+ <tileset firstgid="5044" name="cyber2" tilewidth="16" tileheight="16">
   <image source="cyber2.png" trans="000000" width="480" height="256"/>
  </tileset>
  <layer name="Base" width="126" height="24">
@@ -38,14 +35,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztlslOwzAQhnPLLW8FpS1XoIm4Viw3NkGPIFCBI6gUuLG8AItEr7Rc4Q3gWZgIW51M7dhp4iZI80ufLGIzRP48Dp7neYu+HlVM8xz3afpjVKEe43WrAlwjFNQRDU3NEK3nlJOmwRF2KKHrm+LnkBAZvKvm8TlkikO1z7aOJHQ99Y7XfgZJvoK/cxNp/iZ+Hx6LG9P2WeeoTpyavIeGmvhsbAHbwA6w6yfvHx6LG9P2WecIe5R3PfUekXWmfpc17oAj4BJ49LnfXY2HwIXY52Pf3O/UI0Zm4I95I6hq4vUq71Xoj6qMMnnrUO8jYCgwORqIdSOBTb6DJD9Bct51v+NvFEXeXXQ9fq5j1t/lovs9iyMXod6HORghZ6q5aWvqnuNecAHurby10ryXkdj7PfAgvHPcxNU+z8HdMA/UgIUU6oKGuEue4B2egRfg1Z+sU2NyE+813WfszNabdIazBM+6lnSASNR4R3faB3ACzw+ANaYwzoPJfY7TFvO23jYV3ttofgVoAaGFdxr27sa7KtS7yZvK+16Gc8Peq+ndRJr3ZXRu2Hv5tCy923jjfv8/2Hq3wdTv3YC/71UhS7+bvJn6Pa61Dmyw99LJ0u8mbybv+8Jdh71XAlvvJm823/dT4Iy9V4Is3/c0by7/r+vB8yvgJiP9KX6naPqIst8Fc5vBexouvXNmlyK8yz7VEffAtcUZ5MwuPY0bnTd2xvkF5aDr6w==
-  </data>
- </layer>
- <layer name="key" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-15"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt0TENACAQBMET8f5dgROoQQUUP6Ngk00AAAAAAAAAAAAA+hqVzPpdwWvrPt++QzsHSA0D5w==
   </data>
  </layer>
  <layer name="MonoChu" width="126" height="24">
@@ -207,12 +196,6 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="40" x="1968" y="320" width="32" height="32">
-   <properties>
-    <property name="EventID" value="11"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
   <object id="41" x="1696" y="32" width="32" height="32">
    <properties>
     <property name="EventID" value="12"/>
@@ -264,7 +247,16 @@
  </objectgroup>
  <layer name="name" width="126" height="24">
   <data encoding="base64" compression="zlib">
-   eJztzwEJAAAIwDBj2MT+zSwhCLol+CMAAABmVW4XzLr2AwAAAAAAAADwVQNxawCf
+   eJztzwEJAAAIwDBD2L+WdSwhCLol+CMAAABmVW4XzLr2AwAAAAAAAADwVQNsaQHX
   </data>
  </layer>
+ <objectgroup name="item">
+  <object id="55" x="1968" y="320" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11"/>
+    <property name="objID" value="192"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

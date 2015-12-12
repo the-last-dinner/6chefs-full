@@ -122,8 +122,8 @@
       ],
       "action":[
         {
-          "type":"removeLayer",
-          "layer":"item"
+          "type":"removeChara",
+          "objID":"1923"
         }
       ]
     }
@@ -173,8 +173,8 @@
       "name":"麻の髪紐"
     },
     {
-      "type":"removeLayer",
-      "layer":"item"
+      "type":"removeChara",
+      "objID":"1923"
     },
     {
       "type":"already"

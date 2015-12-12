@@ -78,8 +78,8 @@
 					"name":"倉庫の鍵"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"191"
 				},
 				{
 					"type":"changeFlg",
@@ -147,13 +147,16 @@
 			"type":"if",
 			"condition":[
 				{
+					"Nevent":["12","4"]
+				},
+				{
 					"event":["12","11"]
 				}
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"191"
 				}
 			]
 		}

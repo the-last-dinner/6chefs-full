@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="34">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="map_icon" tilewidth="16" tileheight="16">
-  <image source="map_icon.png" trans="080500" width="513" height="435"/>
- </tileset>
- <tileset firstgid="1345" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="000000" width="256" height="1990"/>
  </tileset>
  <layer name="Base" width="20" height="20">
@@ -25,20 +22,12 @@
    eJxjYBgF1ADTGBkYpgPxDEb86vYwEqd2C1BuKxBvI2AesWovAeUuA/EVIswjRe0oGAUDAYjNb8SqxZaH1jBix6TmN2S9hNQONQAAeWUgaw==
   </data>
  </layer>
- <layer name="tabacco" width="20" height="20">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgF1ARMzAwMzMzUM08JaJYyFc0bBaNgFIwCagEAlsMAVw==
-  </data>
- </layer>
  <layer name="hint" width="20" height="20">
   <properties>
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRgA8sZ6eueduB5u2gspkDAQDrNgIs
+   eJxjYBgFo2AUjIJRgA+4s1DXvHCgeRFUNnMgAADlxAED
   </data>
  </layer>
  <objectgroup name="collision">
@@ -59,12 +48,6 @@
    <properties>
     <property name="EventID" value="1"/>
     <property name="trigger" value="1"/>
-   </properties>
-  </object>
-  <object id="21" x="64" y="64" width="32" height="32">
-   <properties>
-    <property name="EventID" value="4"/>
-    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="22" x="224" y="288" width="32" height="32">
@@ -119,6 +102,15 @@
    <properties>
     <property name="EventID" value="0"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="33" x="64" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="4"/>
+    <property name="objID" value="1917"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

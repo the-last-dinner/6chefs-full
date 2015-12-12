@@ -203,8 +203,8 @@
 							"name":"水"
 						},
 						{
-							"type":"removeLayer",
-							"layer":"item"
+							"type":"removeChara",
+							"objID":"1915"
 						},
 						{
 							"type":"already"
@@ -1195,8 +1195,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1915"
 				}
 			]
 		}
@@ -1220,8 +1220,8 @@
 					"event":["7","23"]
 				},
 				{
-					"type":"removeLayer",
-					"layer":"inoshishi"
+					"type":"removeChara",
+					"objID":"1922"
 				}
 			]
 		}
@@ -1237,8 +1237,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"inoshishi"
+					"type":"removeChara",
+					"objID":"1922"
 				}
 			]
 		}

@@ -219,8 +219,8 @@
 			"name":"お祭りはっぴ"
 		},
 		{
-			"type":"removeLayer",
-			"layer":"item"
+			"type":"removeChara",
+			"objID":"1925"
 		},
 		{
 			"type":"already"
@@ -236,8 +236,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1925"
 				}
 			]
 		}

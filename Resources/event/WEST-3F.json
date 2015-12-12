@@ -800,8 +800,8 @@
 			"name":"子供用弁当箱"
 		},
 		{
-			"type":"removeLayer",
-			"layer":"item"
+			"type":"removeChara",
+			"objID":"1921"
 		},
 		{
 			"type":"already"
@@ -817,8 +817,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1921"
 				}
 			]
 		}

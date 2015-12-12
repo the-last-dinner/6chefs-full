@@ -332,6 +332,10 @@
 					"layer":"apple"
 				},
 				{
+					"type":"removeChara",
+					"objID":"1920"
+				},
+				{
 					"type":"fadein"
 				},
 				{
@@ -352,6 +356,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"apple"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1920"
 				}
 			]
 		}

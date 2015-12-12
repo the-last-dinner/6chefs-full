@@ -104,6 +104,10 @@
 							"type":"getItem",
 							"itemID":"1510",
 							"name":"賞味期限切れ前の卵"
+						},
+						{
+							"type":"removeChara",
+							"objID":"198"
 						}
 					]
 				},
@@ -125,6 +129,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"MonoUe"
+				},
+				{
+					"type":"removeChara",
+					"objID":"198"
 				}
 			]
 		}

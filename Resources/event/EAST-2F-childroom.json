@@ -151,8 +151,8 @@
 					"name":"三角巾"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1933"
 				},
 				{
 					"type":"already",
@@ -192,8 +192,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1933"
 				}
 			]
 		}

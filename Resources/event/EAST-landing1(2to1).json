@@ -22,8 +22,8 @@
 			"name":"ねじりハチマキ"
 		},
 		{
-			"type":"removeLayer",
-			"layer":"item"
+			"type":"removeChara",
+			"objID":"1924"
 		},
 		{
 			"type":"already"
@@ -39,8 +39,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"objID"
 				}
 			]
 		}

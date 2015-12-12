@@ -147,8 +147,8 @@
 					"name":"図書室の鍵"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"1918"
 				},
 				{
 					"type":"already"
@@ -166,8 +166,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"1918"
 				}
 			]
 		}
@@ -199,8 +199,8 @@
 					"name":"小型低速ジューサー"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"juicer"
+					"type":"removeChara",
+					"objID":"1921"
 				},
 				{
 					"type":"already",
@@ -263,8 +263,8 @@
 					"name":"目玉焼きリング"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"ring"
+					"type":"removeChara",
+					"objID":"1929"
 				},
 				{
 					"type":"already",
@@ -300,38 +300,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"ring"
-				}
-			]
-		}
-	],
-	"14":[
-		{
-			"type":"getItem",
-			"itemID":"1531",
-			"name":"蒸しせいろ"
-		},
-		{
-			"type":"removeLayer",
-			"layer":"seiro"
-		},
-		{
-			"type":"already"
-		}
-	],
-	"15":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["18","14"]
-				}
-			],
-			"action":[
-				{
-					"type":"removeLayer",
-					"layer":"seiro"
+					"type":"removeChara",
+					"objID":"1929"
 				}
 			]
 		}
@@ -348,8 +318,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"juicer"
+					"type":"removeChara",
+					"objID":"1921"
 				}
 			]
 		}

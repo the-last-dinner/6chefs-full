@@ -23,8 +23,8 @@
 					"name":"茶色く濁ったどぶろく"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1916"
 				},
 				{
 					"type":"already"
@@ -132,8 +132,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1916"
 				}
 			]
 		}

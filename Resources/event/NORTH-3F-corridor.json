@@ -286,8 +286,8 @@
 					"name":"食材庫の鍵"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"192"
 				},
 				{
 					"type":"already"
@@ -305,8 +305,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"key"
+					"type":"removeChara",
+					"objID":"192"
 				}
 			]
 		}

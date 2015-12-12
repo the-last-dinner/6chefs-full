@@ -701,6 +701,20 @@
 					"layer":"hide"
 				}
 			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":["1530"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1930"
+				}
+			]
 		}
 	],
 	"7":[
@@ -719,6 +733,10 @@
 							"type":"getItem",
 							"itemID":"1530",
 							"name":"エッグボイラー"
+						},
+						{
+							"type":"removeChara",
+							"objID":"1930"
 						},
 						{
 							"type":"changeFlg",

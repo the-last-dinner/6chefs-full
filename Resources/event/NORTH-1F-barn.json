@@ -160,8 +160,8 @@
 					"name":"焔の裃"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1927"
 				},
 				{
 					"type":"already",
@@ -211,8 +211,8 @@
 					"name":"蒸しせいろ"
 				},
 				{
-					"type":"removeLayer",
-					"layer":"seiro"
+					"type":"removeChara",
+					"objID":"1931"
 				},
 				{
 					"type":"already"
@@ -238,8 +238,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"item"
+					"type":"removeChara",
+					"objID":"1927"
 				}
 			]
 		}
@@ -254,8 +254,8 @@
 			],
 			"action":[
 				{
-					"type":"removeLayer",
-					"layer":"seiro"
+					"type":"removeChara",
+					"objID":"1931"
 				}
 			]
 		}
