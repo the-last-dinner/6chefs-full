@@ -53,6 +53,10 @@
 		26C196421C1349B20093830B /* debug_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 26C196401C1349B20093830B /* debug_config.json */; };
 		26D019AA1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
 		26D019AB1BE8B28F0047BC05 /* ItemMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */; };
+		26D628EC1C1C8AAF007C45C8 /* StartUpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D628EA1C1C8AAF007C45C8 /* StartUpScene.cpp */; };
+		26D628ED1C1C8AAF007C45C8 /* StartUpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D628EA1C1C8AAF007C45C8 /* StartUpScene.cpp */; };
+		26D628F01C1C8B73007C45C8 /* StartUpSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D628EE1C1C8B73007C45C8 /* StartUpSceneData.cpp */; };
+		26D628F11C1C8B73007C45C8 /* StartUpSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D628EE1C1C8B73007C45C8 /* StartUpSceneData.cpp */; };
 		26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */; };
 		26D9F56B1C117514003BA438 /* GlobalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F5681C117514003BA438 /* GlobalPlayerData.cpp */; };
 		26D9F56E1C117608003BA438 /* LocalPlayerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */; };
@@ -369,6 +373,10 @@
 		26C196401C1349B20093830B /* debug_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = debug_config.json; path = ../Resources/debug_config.json; sourceTree = "<group>"; };
 		26D019A81BE8B28F0047BC05 /* ItemMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemMenuLayer.cpp; path = ../Classes/Layers/Menu/ItemMenuLayer.cpp; sourceTree = "<group>"; };
 		26D019A91BE8B28F0047BC05 /* ItemMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemMenuLayer.h; path = ../Classes/Layers/Menu/ItemMenuLayer.h; sourceTree = "<group>"; };
+		26D628EA1C1C8AAF007C45C8 /* StartUpScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StartUpScene.cpp; path = ../Classes/Scenes/StartUpScene.cpp; sourceTree = "<group>"; };
+		26D628EB1C1C8AAF007C45C8 /* StartUpScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartUpScene.h; path = ../Classes/Scenes/StartUpScene.h; sourceTree = "<group>"; };
+		26D628EE1C1C8B73007C45C8 /* StartUpSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartUpSceneData.cpp; sourceTree = "<group>"; };
+		26D628EF1C1C8B73007C45C8 /* StartUpSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartUpSceneData.h; sourceTree = "<group>"; };
 		26D72C991B96D420005F598D /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
 		26D72C9A1B96D420005F598D /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
 		26D72C9B1B96D420005F598D /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
@@ -1002,6 +1010,8 @@
 				DC48C69F1C0F2BEE004B0F30 /* GameOverScene.h */,
 				552D837B1B20BCA700B681A8 /* TitleScene.cpp */,
 				552D837C1B20BCA700B681A8 /* TitleScene.h */,
+				26D628EA1C1C8AAF007C45C8 /* StartUpScene.cpp */,
+				26D628EB1C1C8AAF007C45C8 /* StartUpScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1057,6 +1067,8 @@
 				55655AF01B39A427000AFC17 /* SceneData.h */,
 				557A87C21B46EB3E001993E1 /* TitleSceneData.cpp */,
 				557A87C31B46EB3E001993E1 /* TitleSceneData.h */,
+				26D628EE1C1C8B73007C45C8 /* StartUpSceneData.cpp */,
+				26D628EF1C1C8B73007C45C8 /* StartUpSceneData.h */,
 			);
 			name = Scene;
 			path = ../Classes/Datas/Scene;
@@ -1528,6 +1540,7 @@
 				DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */,
 				55655AF11B39A427000AFC17 /* SceneData.cpp in Sources */,
 				26D9F56A1C117514003BA438 /* GlobalPlayerData.cpp in Sources */,
+				26D628EC1C1C8AAF007C45C8 /* StartUpScene.cpp in Sources */,
 				DC398BEE1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
 				55D8A6DF1BB43772005F9717 /* DungeonMainMenuLayer.cpp in Sources */,
 				555B650E1B5CE94F00D15530 /* TextureManager.cpp in Sources */,
@@ -1551,6 +1564,7 @@
 				557A87C41B46EB3E001993E1 /* TitleSceneData.cpp in Sources */,
 				2672664E1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
 				DCAB9BC01BFF1EF000887F68 /* Scouter.cpp in Sources */,
+				26D628F01C1C8B73007C45C8 /* StartUpSceneData.cpp in Sources */,
 				DC398BF21C0D727C00DA9811 /* SlipFloor.cpp in Sources */,
 				DC281A451BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
 				5544708D1BDFA0F10048CD0B /* MapEvent.cpp in Sources */,
@@ -1626,6 +1640,7 @@
 				551B79C31BF0F54A000B790A /* ButtonMashingLayer.cpp in Sources */,
 				DC8115901C0B42290033157F /* Stamina.cpp in Sources */,
 				DC398BEF1C0D70BC00DA9811 /* WaterArea.cpp in Sources */,
+				26D628ED1C1C8AAF007C45C8 /* StartUpScene.cpp in Sources */,
 				55E0FB641BB234D2005BC929 /* EventListenerKeyboardLayer.cpp in Sources */,
 				DCD85F201C1853C500BCFDC9 /* ItemObject.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
@@ -1721,6 +1736,7 @@
 				556C18E31B3FA6D100D2BCA1 /* TiledMapLayer.cpp in Sources */,
 				554470771BDCDFAE0048CD0B /* MapObjectEvent.cpp in Sources */,
 				DC281A461BF8824400A6F8BF /* SelectEventLayer.cpp in Sources */,
+				26D628F11C1C8B73007C45C8 /* StartUpSceneData.cpp in Sources */,
 				55F302391BDAB0F800BDC418 /* EventFactory.cpp in Sources */,
 				DC398BEB1C0D6A8E00DA9811 /* TerrainObject.cpp in Sources */,
 				2672664F1C087BFE00FD1CF6 /* StopWatch.cpp in Sources */,
