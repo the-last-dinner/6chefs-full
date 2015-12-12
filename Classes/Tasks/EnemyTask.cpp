@@ -130,8 +130,8 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             // マップ移動カウントを-1
             data.enemy_data.change_map_counter -= 1;
             
-            // カウントが1より小さくなっていたら引き継がない
-            if(data.enemy_data.change_map_counter < 1) continue;
+            // カウントが0なら引き継がない
+            if(data.enemy_data.change_map_counter == 0) continue;
             
             // 現在位置、行き先を格納
             Relation relation {};
@@ -176,8 +176,8 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             // マップ移動カウントを-1
             data.enemy_data.change_map_counter -= 1;
             
-            // カウントが1より小さくなっていたら引き継がない
-            if(data.enemy_data.change_map_counter < 1 && data.enemy_data.change_map_counter >= 0) continue;
+            // カウントがなら引き継がない
+            if(data.enemy_data.change_map_counter == 0) continue;
             
             // 動けない敵の場合はそのままpush
             if(!data.canMove)

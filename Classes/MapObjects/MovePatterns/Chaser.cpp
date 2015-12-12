@@ -149,5 +149,5 @@ bool Chaser::canGoToNextMap() const { return true; };
 // 出口までに掛る時間を計算
 float Chaser::calcSummonDelay() const
 {
-    return this->getPath().size() * MapObject::DURATION_MOVE_ONE_GRID * this->speedRatio;
+    return this->getPath().size() * MapObject::DURATION_MOVE_ONE_GRID / this->speedRatio;
 }
