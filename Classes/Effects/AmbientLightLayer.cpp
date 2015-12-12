@@ -21,7 +21,17 @@ const Color3B AmbientLightLayer::BASEMENT {Color3B(0.f, 0.f, 0.f)};
 AmbientLightLayer::AmbientLightLayer(){ FUNCLOG }
 
 // デストラクタ
-AmbientLightLayer::~AmbientLightLayer(){ FUNCLOG }
+AmbientLightLayer::~AmbientLightLayer()
+{
+    FUNCLOG
+
+    for(pair<Light*, Light*> element : this->lightMap)
+    {
+        if(!element.first) continue;
+        
+        CC_SAFE_RELEASE_NULL(element.first);
+    }
+}
 
 // 初期化
 bool AmbientLightLayer::init(const Color3B& color)
@@ -68,48 +78,52 @@ void AmbientLightLayer::setAmbient(const Color3B& color)
 }
 
 // 光源を追加
-void AmbientLightLayer::addLightSource(MapObject* object, const Light::Information& info)
+void AmbientLightLayer::addLightSource(Light* lightSource)
 {
-    if(!object) return;
+    if(!lightSource) return;
     
-    CC_SAFE_RETAIN(object);
+    Light::Information info {lightSource->getInformation()};
+    
+    CC_SAFE_RETAIN(lightSource);
     Color3B color { Color3B(info.color.r * 1.3f, info.color.g * 1.3f, info.color.b * 1.3f)};
     float radius {info.radius * 7.0f};
     
     Light* light {Light::create(Light::Information(color, radius, info.type))};
-    light->setPosition(MapUtils::convertToDispPosition(object->getParent()->getParent()->getPosition(), object->getPosition()));
+    light->setPosition(lightSource->convertToWorldSpace(lightSource->getPosition()));
     light->setOpacity(0);
     this->addChild(light);
     
     float duration {0.5f};
     light->runAction(FadeIn::create(duration));
     
-    this->objectMap.insert({object, light});
+    this->lightMap.insert({lightSource, light});
 }
 
 // 光源を削除
-void AmbientLightLayer::removeLightSource(MapObject* object)
+void AmbientLightLayer::removeLightSource(Light* lightSource)
 {
-    if(!object) return;
+    if(!lightSource) return;
     
-    if(this->objectMap.count(object) == 0) return;
-    Light* light {this->objectMap.at(object)};
-    light->runAction(Sequence::create(FadeOut::create(0.5f), RemoveSelf::create(), CallFunc::create([this, object](){this->objectMap.erase(object); CC_SAFE_RELEASE(object);}), nullptr));
+    if(this->lightMap.count(lightSource) == 0) return;
+    Light* light {this->lightMap.at(lightSource)};
+    light->runAction(Sequence::create(FadeOut::create(0.5f), RemoveSelf::create(), CallFunc::create([this, lightSource](){this->lightMap.erase(lightSource); CC_SAFE_RELEASE(lightSource);}), nullptr));
 }
 
 void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
     // 光の状態、位置を更新
-    for(pair<MapObject*, Light*> element : this->objectMap)
+    for(pair<Light*, Light*> element : this->lightMap)
     {
-        MapObject* obj {element.first};
+        Light* lightSource {element.first};
         Light* light {element.second};
-        if(!obj || !light)
+        if(lightSource->getReferenceCount() == 1)
         {
-            this->removeLightSource(obj);
+            this->removeLightSource(lightSource);
+            
             continue;
         }
-        light->setPosition(MapUtils::convertToDispPosition(obj->getParent()->getParent()->getPosition(), obj->getPosition()));
+        
+        light->setPosition(lightSource->convertToWorldSpace(lightSource->getPosition()));
     }
     
     this->renderTexture->beginWithClear(0, 0, 0, 0);

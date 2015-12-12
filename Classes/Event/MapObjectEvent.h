@@ -12,6 +12,7 @@
 #include "Event/GameEvent.h"
 
 class MapObject;
+class Light;
 
 // マップオブジェクトに関わるイベント
 // 基底クラス
@@ -130,6 +131,32 @@ private:
 private:
     MoveByEvent() {FUNCLOG};
     ~MoveByEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// 光をセット
+class SetLightEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(SetLightEvent, rapidjson::Value&)
+private:
+    Light* light { nullptr };
+private:
+    SetLightEvent() {FUNCLOG};
+    ~SetLightEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// 光を消す
+class RemoveLightEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(RemoveLightEvent, rapidjson::Value&)
+private:
+    RemoveLightEvent() {FUNCLOG};
+    ~RemoveLightEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

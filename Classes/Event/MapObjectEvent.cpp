@@ -10,6 +10,8 @@
 
 #include "Algorithm/PathFinder.h"
 
+#include "Effects/Light.h"
+
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
 
@@ -231,4 +233,56 @@ void MoveByEvent::run()
     }
     
     target->moveBy(this->direction, this->gridNum, [this](bool _){this->setDone();}, this->speedRatio);
+}
+
+#pragma mark -
+#pragma mark SetLightEvent
+
+bool SetLightEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    Light::Information info {};
+    
+    int range {1};
+    
+    // 範囲
+    if(this->validator->hasMember(json, member::RANGE)) range = json[member::RANGE].GetInt();
+    info.radius = range * GRID;
+    
+    // 色
+    if(this->validator->hasMember(json, member::COLOR)) info.color = this->validator->getColor(json);
+    
+    // 光生成
+    Light* light { Light::create(info) };
+    CC_SAFE_RETAIN(light);
+    this->light = light;
+    
+    return true;
+}
+
+void SetLightEvent::run()
+{
+    MapObject* target { this->validator->getMapObjectById(this->objectId) };
+    
+    target->setLight(this->light, DungeonSceneManager::getInstance()->getAmbientLayer(), [this]{this->setDone();});
+    
+    CC_SAFE_RELEASE_NULL(this->light);
+}
+
+#pragma mark -
+#pragma mark RemvoeLightEvent
+
+bool RemoveLightEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    return true;
+}
+
+void RemoveLightEvent::run()
+{
+    MapObject* target { this->validator->getMapObjectById(this->objectId) };
+    
+    target->removeLight([this]{this->setDone();});
 }
