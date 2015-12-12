@@ -6,7 +6,7 @@
 //
 //
 
-#include "TitleSceneData.h"
+#include "Datas/Scene/TitleSceneData.h"
 
 // コンストラクタ
 TitleSceneData::TitleSceneData() {FUNCLOG}

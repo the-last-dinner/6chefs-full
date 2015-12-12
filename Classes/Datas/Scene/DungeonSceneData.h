@@ -9,7 +9,7 @@
 #ifndef __DUNGEON_SCENE_DATA_H__
 #define __DUNGEON_SCENE_DATA_H__
 
-#include "SceneData.h"
+#include "Datas/Scene/SceneData.h"
 
 class EventScript;
 
