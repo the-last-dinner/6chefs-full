@@ -26,7 +26,7 @@ EventScriptValidator::~EventScriptValidator() {FUNCLOG};
 bool EventScriptValidator::init() {return true;}
 
 // メンバーが存在するかどうか
-bool EventScriptValidator::hasMember(rapidjson::Value& json, const char* member)
+bool EventScriptValidator::hasMember(rapidjson::Value& json, const char* member) const
 {
     return json.HasMember(member);
 }
@@ -229,4 +229,13 @@ Direction EventScriptValidator::getDirection(rapidjson::Value& json)
 EnemyMovePattern EventScriptValidator::getMovePatternForEnemy(rapidjson::Value& json)
 {
     return this->hasMember(json, member::MOVE_PATTERN) ? static_cast<EnemyMovePattern>(stoi(json[member::MOVE_PATTERN].GetString())) : EnemyMovePattern::CHEAP_CHASER;
+}
+
+// 色を取得
+Color3B EventScriptValidator::getColor(rapidjson::Value& json) const
+{
+    if(!this->hasMember(json, member::COLOR)) return Color3B::BLACK;
+    
+    rapidjson::Value& colorJson { json[member::COLOR] };
+    return Color3B(colorJson[0].GetInt(), colorJson[1].GetInt(), colorJson[2].GetInt());
 }

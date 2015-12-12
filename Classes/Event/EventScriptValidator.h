@@ -34,7 +34,7 @@ private:
     bool detectStatusFlg(rapidjson::Value& json, bool negative);
     
 public:
-    bool hasMember(rapidjson::Value& json, const char* member);
+    bool hasMember(rapidjson::Value& json, const char* member) const;
     bool detectCondition(rapidjson::Value& json);
     
     MapObject* getMapObjectById(const string& objectId, bool available = true);
@@ -45,5 +45,6 @@ public:
     Point getToPoint(rapidjson::Value& json);
     Direction getDirection(rapidjson::Value& json);
     EnemyMovePattern getMovePatternForEnemy(rapidjson::Value& json);
+    Color3B getColor(rapidjson::Value& json) const;
 };
 #endif /* defined(__LastSupper__EventScriptValidator__) */

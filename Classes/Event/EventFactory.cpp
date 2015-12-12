@@ -12,7 +12,7 @@
 #include "Event/EnemyEvent.h"
 #include "Event/FlagEvent.h"
 #include "Event/GameEvent.h"
-#include "Event/LightEvent.h"
+#include "Event/EffectEvent.h"
 #include "Event/MapEvent.h"
 #include "Event/MapObjectEvent.h"
 #include "Event/MiniGameEvent.h"
