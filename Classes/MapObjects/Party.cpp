@@ -44,6 +44,7 @@ bool Party::init(const vector<CharacterData>& datas)
 // パーティにキャラクタを追加
 void Party::addMember(Character* character)
 {
+    character->setHit(false);
     this->members.pushBack(character);
     PlayerDataManager::getInstance()->getLocalData()->setPartyMember(character->getCharacterData());
 }

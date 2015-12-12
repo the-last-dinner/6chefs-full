@@ -13,7 +13,7 @@
 
 #include "Effects/Light.h"
 
-class MapObject;
+class Light;
 
 class AmbientLightLayer : public Layer
 {
@@ -32,15 +32,15 @@ public:
 // インスタンス変数
 private:
     Sprite* ambientLight { nullptr };
-    map<MapObject*, Light*> objectMap {};
+    map<Light*, Light*> lightMap {};
     RenderTexture* renderTexture { nullptr };
     Sprite* renderTexSprite { nullptr };
 
 // インスタンスメソッド
 public:
     void setAmbient(const Color3B& color);
-    void addLightSource(MapObject* object, const Light::Information& info);
-    void removeLightSource(MapObject* object);
+    void addLightSource(Light* lightSource);
+    void removeLightSource(Light* lightSource);
     virtual void visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags);
 private:
     AmbientLightLayer();   // コンストラクタ

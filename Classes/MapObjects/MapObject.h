@@ -54,8 +54,8 @@ public:
     void setMapObjectList(MapObjectList* objectList);
     void setSprite(Sprite* sprite);
     
-	void setLight(Light* light, AmbientLightLayer* ambientLightLayer);
-	void removeLight();
+	void setLight(Light* light, AmbientLightLayer* ambientLightLayer, function<void()> callback = nullptr);
+	void removeLight(function<void()> callback = nullptr);
 	
     Size  getGridSize() const;
 	Point getGridPosition() const;

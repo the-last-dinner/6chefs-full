@@ -1,5 +1,5 @@
 //
-//  LightEvent.h
+//  EffectEvent.h
 //  LastSupper
 //
 //  Created by Kohei Asami on 2015/12/02.
@@ -25,4 +25,19 @@ private:
     virtual void run() override;
 };
 
-#endif /* LightEvent_h */
+// アニメーション
+class AnimationEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(AnimationEvent, rapidjson::Value&)
+private:
+    float delayPerUnit {0.2f};
+    Vector<SpriteFrame*> spriteFrames {};
+private:
+    AnimationEvent() {FUNCLOG};
+    ~AnimationEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+#endif /* EffectEvent_h */

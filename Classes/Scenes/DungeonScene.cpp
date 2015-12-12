@@ -266,7 +266,7 @@ void DungeonScene::setLight()
     }
     else
     {
-        //this->party->getMainCharacter()->removeLight();
+        this->party->getMainCharacter()->removeLight();
     }
 }
 

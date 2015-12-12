@@ -72,7 +72,7 @@ void MapObject::setSprite(Sprite* sprite)
 };
 
 // ライトをセット
-void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
+void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer, function<void()> callback)
 {
     if(this->light) return;
     
@@ -80,16 +80,18 @@ void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer)
     this->light = light;
     this->addChild(light);
     light->setOpacity(0);
-    this->runAction(TargetedAction::create(light, FadeIn::create(0.5f)));
+    light->runAction(Sequence::createWithTwoActions(FadeIn::create(0.5f), CallFunc::create(callback)));
     
     // 環境光レイヤーに光源として追加
-    ambientLightLayer->addLightSource(this, light->getInformation());
+    ambientLightLayer->addLightSource(light);
 }
 
 // ライトを消す
-void MapObject::removeLight()
+void MapObject::removeLight(function<void()> callback)
 {
-	this->runAction(Sequence::createWithTwoActions(TargetedAction::create(this->light, FadeOut::create(0.5f)), TargetedAction::create(this->light, RemoveSelf::create())));
+    if(!this->light) return;
+    
+    this->light->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
 // オブジェクトIDを取得
