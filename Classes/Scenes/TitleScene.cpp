@@ -73,6 +73,7 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
 void TitleScene::onStartSelected()
 {
 	FUNCLOG
+    SoundManager::getInstance()->stopBGMAll();
 	SoundManager::getInstance()->playSE("gameStart.mp3");
 	PlayerDataManager::getInstance()->setGameStart(0);
     Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
@@ -82,6 +83,7 @@ void TitleScene::onStartSelected()
 void TitleScene::onContinueSelected()
 {
 	FUNCLOG
+    SoundManager::getInstance()->playSE("title-enter.mp3");
 	this->mainMenu->hide();
 	this->saveDataSelector->show();
 }
@@ -119,11 +121,15 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
+    // クリアしていない場合は見れない
     if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
     {
         SoundManager::getInstance()->playSE("failure.mp3");
         return;
     }
+    
+    // トロフイーリストレイヤーを作成
+    SoundManager::getInstance()->playSE("title-enter.mp3");
     if(!this->trophyList)
     {
         this->createTrophyListLayer();

@@ -24,8 +24,8 @@ private:
     void onPreloadFinished(LoadingLayer* loadingLayer);
 
 public:
-    StartUpScene();
-    ~StartUpScene();
+    StartUpScene() {FUNCLOG};
+    ~StartUpScene() {FUNCLOG};
 };
 
 #endif /* StartUpScene_h */

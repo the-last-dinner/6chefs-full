@@ -40,6 +40,7 @@ namespace Resource
         static const std::string MENU_PANELS = BASE_PATH + "menu_panels";
         static const std::string TITLE = BASE_PATH + "title";
         static const std::string UI = BASE_PATH + "ui";
+        static const std::string STARTUP = BASE_PATH + "startup";
         
         namespace Character
         {

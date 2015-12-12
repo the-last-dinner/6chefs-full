@@ -215,6 +215,7 @@ void SaveDataSelector::onSpacePressed(int idx)
             PlayerDataManager::getInstance()->setGameStart(idx);
             
             // 保存されているBGMの再生
+            SoundManager::getInstance()->stopBGMAll();
             vector<string> bgms {PlayerDataManager::getInstance()->getLocalData()->getBgmAll()};
             for(string bgm : bgms)
             {
