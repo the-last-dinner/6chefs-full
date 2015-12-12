@@ -264,6 +264,25 @@ void MapObject::moveBy(const vector<Direction>& directions, const int gridNum, f
     this->moveByQueue(directionsQueue, callback, ratio);
 }
 
+void MapObject::moveByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio)
+{
+    if(directionQueue.empty())
+    {
+        if(callback) callback(true);
+        
+        return;
+    }
+    
+    deque<vector<Direction>> directionsQueue {};
+    
+    for(Direction direction : directionQueue)
+    {
+        directionsQueue.push_back(vector<Direction>({direction}));
+    }
+    
+    this->moveByQueue(directionsQueue, callback, ratio);
+}
+
 // キューから動かす
 void MapObject::moveByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio)
 {

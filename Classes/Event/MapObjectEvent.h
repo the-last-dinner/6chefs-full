@@ -103,4 +103,35 @@ private:
     virtual void run() override;
 };
 
+// マップオブジェクトを目的地に動かす
+class MoveToEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(MoveToEvent, rapidjson::Value&)
+private:
+    Point dest {Point::ZERO};
+    float speedRatio { 1.0f };
+private:
+    MoveToEvent() {FUNCLOG};
+    ~MoveToEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// マップオブジェクトを、向きと格子数を指定して移動
+class MoveByEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(MoveByEvent, rapidjson::Value&)
+private:
+    Direction direction {Direction::SIZE};
+    int gridNum {0};
+    float speedRatio {1.f};
+private:
+    MoveByEvent() {FUNCLOG};
+    ~MoveByEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__MapObjectEvent__) */

@@ -8,6 +8,8 @@
 
 #include "MapObjectEvent.h"
 
+#include "Algorithm/PathFinder.h"
+
 #include "Event/EventScriptValidator.h"
 #include "Event/EventScriptMember.h"
 
@@ -138,7 +140,7 @@ void ReleaseFollowingCharacterEvent::run()
 }
 
 #pragma mark -
-#pragma mark 
+#pragma mark WarpMapObjectEvents
 
 bool WarpMapObjectEvent::init(rapidjson::Value& json)
 {
@@ -160,4 +162,73 @@ void WarpMapObjectEvent::run()
     target->setGridPosition(this->point);
     target->setDirection(this->direction);
     DungeonSceneManager::getInstance()->setMapObjectPosition(target);
+}
+
+#pragma mark -
+#pragma mark MoveToEvent
+
+bool MoveToEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    // 目的地
+    this->dest = this->validator->getPoint(json);
+    
+    // 速さ倍率
+    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
+    
+    return true;
+}
+
+void MoveToEvent::run()
+{
+    MapObject* target {this->validator->getMapObjectById(this->objectId)};
+    
+    if(!target)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    // 経路探索開始
+    PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
+    deque<Direction> directions { pathFinder->getPath(target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(target), this->dest) };
+    
+    target->moveByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
+}
+
+#pragma mark -
+#pragma mark MoveByEvent
+
+bool MoveByEvent::init(rapidjson::Value& json)
+{
+    if(!MapObjectEvent::init(json)) return false;
+    
+    // 向き
+    this->direction = this->validator->getDirection(json);
+    
+    // 格子数
+    this->gridNum = static_cast<int>(json[member::STEPS].GetDouble() * 2);
+    
+    if(this->direction == Direction::SIZE || this->gridNum == 0) return false;
+    
+    // 速さ倍率
+    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
+    
+    return true;
+}
+
+void MoveByEvent::run()
+{
+    MapObject* target { this->validator->getMapObjectById(this->objectId) };
+    
+    if(!target)
+    {
+        this->setDone();
+        
+        return;
+    }
+    
+    target->moveBy(this->direction, this->gridNum, [this](bool _){this->setDone();}, this->speedRatio);
 }
