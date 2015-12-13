@@ -79,6 +79,9 @@ public:
     
     // 地形
     TerrainObject* getTerrainByGridRect(const Rect& gridRect);
+    
+    // 経路オブジェクト
+    PathObject* getPathObjectById(const int pathId);
 
     // 敵と主人公一行の衝突監視用updateメソッド
     void update(float delta);

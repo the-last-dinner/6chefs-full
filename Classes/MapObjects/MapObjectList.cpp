@@ -344,6 +344,20 @@ TerrainObject* MapObjectList::getTerrainByGridRect(const Rect& gridRect)
 }
 
 #pragma mark -
+#pragma mark PathObject
+
+// 経路オブジェクトをIDから取得
+PathObject* MapObjectList::getPathObjectById(const int pathId)
+{
+    for(PathObject* obj : this->pathObjects)
+    {
+        if(obj->getPathId() == pathId) return obj;
+    }
+    
+    return nullptr;
+}
+
+#pragma mark -
 #pragma mark update
 
 // 敵と主人公一行の衝突監視用updateメソッド
