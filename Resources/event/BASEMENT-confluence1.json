@@ -109,6 +109,14 @@
 			"objID":"14"
 		},
 		{
+			"type":"setLight",
+			"objID":"15"
+		},
+		{
+			"type":"setLight",
+			"objID":"16"
+		},
+		{
 			"type":"if",
 			"condition":[
 				{
