@@ -34,10 +34,10 @@ bool TrophyNotification::init(const string& message)
     
     // 背景を生成
     Cloud* bg { Cloud::create(Size(trophy->getContentSize().width * trophyScale + max(trophyName->getContentSize().width, messageL->getContentSize().width), trophyName->getContentSize().height)) };
-    bg->addChild(messageL);
-    bg->addChild(trophyName);
-    bg->addChild(trophy);
     this->addChild(bg);
+    this->addChild(messageL);
+    this->addChild(trophyName);
+    this->addChild(trophy);
     
     messageL->setPosition(trophy->getContentSize().width * trophyScale / 2, messageL->getContentSize().height / 2 + 5.f);
     trophyName->setPosition(trophy->getContentSize().width * trophyScale / 2, -messageL->getContentSize().height / 2);

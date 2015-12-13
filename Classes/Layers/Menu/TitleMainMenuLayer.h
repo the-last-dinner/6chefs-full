@@ -43,6 +43,7 @@ public:
 	
 // インスタンス変数
 public:
+    Node* cursor { nullptr };
 	function<void()> onStartSelected { nullptr };
 	function<void()> onContinueSelected { nullptr };
     function<void()> onTrophySelected { nullptr };

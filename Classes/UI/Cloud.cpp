@@ -31,6 +31,8 @@ bool Cloud::init(const Size& size)
     Sprite* sprite { Sprite::createWithSpriteFrameName("cloud.png") };
     this->addChild(sprite);
     
+    this->setColor(Color3B::BLACK);
+    
     // 最小サイズ
     float scale { (size.width + MARGIN * 2) / sprite->getContentSize().width };
     sprite->setScale(scale);

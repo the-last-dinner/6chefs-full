@@ -10,6 +10,8 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
+#include "UI/Cloud.h"
+
 // コンストラクタ
 TitleMainMenuLayer::TitleMainMenuLayer(){FUNCLOG}
 
@@ -56,13 +58,18 @@ bool TitleMainMenuLayer::init()
     title3->setOpacity(0);
     this->addChild(title3);
     
+    // カーソル生成
+    Cloud* cursor { Cloud::create(Size::ZERO) };
+    cursor->setColor(Color3B(100, 0, 0));
+    this->addChild(cursor);
+    this->cursor = cursor;
+    
     // タイトルメニューを生成
 	int menuSize = 48.f;
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
 	{
         Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::SYSTEM, menuSize) };
 		menuItem->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 5 / 11 - (menuSize + 20) * i);
-		menuItem->setColor(Color3B::RED);
 		menuItem->setOpacity(0);
 		this->addChild(menuItem);
 		this->menuObjects.push_back(menuItem);
@@ -137,17 +144,10 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
 	for(int i = 0; i < MenuLayer::menuObjects.size(); i++)
 	{
+        if (newIdx != i) continue;
+        
         Node* obj {this->menuObjects.at(i)};
-        if (newIdx == i)
-        {
-            obj->runAction(ScaleTo::create(0.2f, 1.2f));
-            obj->runAction(TintTo::create(0.2f, 255, 255, 255));
-        }
-        else
-        {
-            obj->runAction(ScaleTo::create(0.2f, 1.f));
-            obj->runAction(TintTo::create(0.2f, Color3B::RED));
-        }
+        this->cursor->runAction(EaseCubicActionOut::create(Spawn::createWithTwoActions(ScaleTo::create(0.2f, obj->getContentSize().width / this->cursor->getContentSize().width), MoveTo::create(0.2f, obj->getPosition()))));
 	}
 	if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
 	return;
