@@ -55,16 +55,9 @@ void ReactionEvent::run()
         
         return;
     }
-    
-    Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
-    icon->setPosition(Point(0, target->getContentSize().height / 2));
-    icon->setGlobalZOrder(Priority::CHARACTER_MESSAGE);
-    icon->setScaleY(0.01f);
-    icon->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
-    target->addChild(icon);
-    
+
     SoundManager::getInstance()->playSE("reaction.mp3");
-    icon->runAction(Sequence::create(EaseElasticOut::create(ScaleTo::create(0.6f, 1.f), 0.5f), DelayTime::create(1.f), RemoveSelf::create(), CallFunc::create([this](){this->setDone();}), nullptr));
+    target->reaction([this]{this->setDone();});
 }
 
 #pragma mark -

@@ -14,6 +14,7 @@
 #include "MapObjects/MapObject.h"
 #include "MapObjects/Enemy.h"
 #include "MapObjects/TerrainObject/TerrainObject.h"
+#include "MapObjects/PathObject.h"
 
 class Party;
 class PlainArea;
@@ -31,6 +32,7 @@ private:
     Party* party { nullptr };
     Vector<Enemy*> enemies {};
     Vector<TerrainObject*> terrainObjects {};
+    Vector<PathObject*> pathObjects {};
     PlainArea* plainArea { nullptr };
 public:
     function<void()> onContactWithEnemy { nullptr };
@@ -45,6 +47,7 @@ public:
     void setAvailableObjects(const Vector<MapObject*>& objects);
     void setDisableObjects(const Vector<MapObject*>& objects);
     void setTerrainObjects(const Vector<TerrainObject*>& objects);
+    void setPathObjects(const Vector<PathObject*>& objects);
     
     // 取得系
     MapObject* getMapObject(int objId) const;
@@ -58,6 +61,7 @@ public:
     vector<int> getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const;
     vector<Rect> getGridCollisionRects(MapObject* exclusion = nullptr) const;
     vector<Rect> getGridCollisionRects(Vector<MapObject*> exclusion) const;
+    vector<Rect> getCollisionRects(Vector<MapObject*> exclusion) const;
     
     // 追加、削除
     void add(MapObject* mapObject);
@@ -76,6 +80,9 @@ public:
     
     // 地形
     TerrainObject* getTerrainByGridRect(const Rect& gridRect);
+    
+    // 経路オブジェクト
+    PathObject* getPathObjectById(const int pathId);
 
     // 敵と主人公一行の衝突監視用updateメソッド
     void update(float delta);

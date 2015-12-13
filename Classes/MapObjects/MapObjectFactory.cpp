@@ -64,6 +64,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     Vector<MapObject*> availableObjects {};
     Vector<MapObject*> disableObjects {};
     Vector<TerrainObject*> terrainObjects {};
+    Vector<PathObject*> pathObjects {};
     
     for(int i {0}; i < static_cast<int>(MapObjectFactory::Group::SIZE); i++)
     {
@@ -83,6 +84,10 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
                 case Group::CHARACTER :
                 case Group::GHOST :
                     disableObjects.pushBack(obj);
+                    break;
+                    
+                case Group::PATH :
+                    pathObjects.pushBack(dynamic_cast<PathObject*>(obj));
                     break;
                     
                 case Group::TERRAIN :
@@ -105,6 +110,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
     list->setAvailableObjects(availableObjects);
     list->setDisableObjects(disableObjects);
     list->setTerrainObjects(terrainObjects);
+    list->setPathObjects(pathObjects);
     
     return list;
 }
@@ -180,6 +186,30 @@ Sprite* MapObjectFactory::getSprite(const ValueMap& info) const
     if(info.count("img") == 0) return nullptr;
     
     return Sprite::createWithSpriteFrameName(info.at("img").asString());
+}
+
+// 経路オブジェクトIDを取得
+int MapObjectFactory::getPathId(const ValueMap& info) const
+{
+    if(info.count("pathID") == 0) return -1;
+    
+    return info.at("pathID").asInt();
+}
+
+// 前の経路オブジェクトIDを取得
+int MapObjectFactory::getPreviousPathId(const ValueMap& info) const
+{
+    if(info.count("previousID") == 0) return -1;
+    
+    return info.at("previousID").asInt();
+}
+
+// 次の経路オブジェクトIDを取得
+int MapObjectFactory::getNextPathId(const ValueMap& info) const
+{
+    if(info.count("nextID") == 0) return -1;
+    
+    return info.at("nextID").asInt();
 }
 
 // 当たり判定レイヤにあるオブジェクトを生成
@@ -313,6 +343,9 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     obj->setEventId(this->getEventId(info));
     obj->setTrigger(this->getTrigger(info));
     obj->setGridPosition(this->getGridPosition(this->getRect(info)));
+    obj->setPathId(this->getPathId(info));
+    obj->setPreviousId(this->getPreviousPathId(info));
+    obj->setNextId(this->getNextPathId(info));
     
     return obj;
 }

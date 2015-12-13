@@ -46,3 +46,15 @@ http://obane.tuzikaze.com/
 サイト名：茫然の流もの喫茶
 URL：http://bozen.web.fc2.com/
 作者名：茫然（アイテムアニメーション）
+
+
+フリー音楽素材 Senses Circuit
+http://www.senses-circuit.com
+
+se/gameover.wav
+bgm/psychopath.mp3
+
+効果音素材：ポケットサウンド
+http://pocket-se.info/
+se/mystery5.mp3
+se/receipt05.mp3

@@ -32,14 +32,15 @@ private:
     int partyMoveCount { 0 };
 
 // インスタンスメソッド
+public:
+    virtual void setPaused(bool paused) override;
+    virtual void start() override;
+    virtual void onPartyMoved() override;
+    virtual void move();
 private:
     Chaser();
     ~Chaser();
     virtual bool init(Character* character) override;
-    virtual void start() override;
-    virtual void setPaused(bool paused) override;
-    virtual void onPartyMoved() override;
-    virtual void move();
     void shiftFromSubPattern();
     void shiftToSubPattern();
     bool needsShiftToSubPattern(const deque<Direction>& path);

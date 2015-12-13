@@ -471,7 +471,6 @@
 		551A51771BF239F600D6263A /* Direction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Direction.h; path = ../Classes/Models/Direction.h; sourceTree = "<group>"; };
 		551B79C01BF0F54A000B790A /* ButtonMashingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonMashingLayer.cpp; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.cpp; sourceTree = "<group>"; };
 		551B79C11BF0F54A000B790A /* ButtonMashingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonMashingLayer.h; path = ../Classes/Layers/Dungeon/ButtonMashingLayer.h; sourceTree = "<group>"; };
-		5527BFFD1B305A7000612934 /* Objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Objects.h; path = ../Classes/MapObjects/Objects.h; sourceTree = "<group>"; };
 		552D83681B20BC6300B681A8 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		552D83691B20BC6300B681A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		552D836A1B20BC6300B681A8 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../Classes/Common.h; sourceTree = "<group>"; };
@@ -1096,7 +1095,6 @@
 				55C3C1DB1BD098B900ECDB50 /* MovePatterns */,
 				5534BBDA1B2DDF52003CB847 /* Character.cpp */,
 				5534BBDB1B2DDF52003CB847 /* Character.h */,
-				5527BFFD1B305A7000612934 /* Objects.h */,
 				55619F601B36970B007EBD6E /* MapObject.cpp */,
 				55619F611B36970B007EBD6E /* MapObject.h */,
 				557A87D81B49215F001993E1 /* EventObject.cpp */,

@@ -327,6 +327,46 @@ TerrainObject* MapObject::getTerrain(const vector<Direction>& directions)
     return this->objectList->getTerrainByGridRect(this->getGridRect(directions));
 }
 
+// リアクション
+void MapObject::reaction(function<void()> callback)
+{
+    Sprite* icon {Sprite::createWithSpriteFrameName("icon_sign.png")};
+    icon->setPosition(Point(0, this->getContentSize().height / 2));
+    icon->setGlobalZOrder(Priority::TOP_COVER);
+    icon->setScaleY(0.01f);
+    icon->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+    this->addChild(icon);
+    
+    icon->runAction(Sequence::create(EaseElasticOut::create(ScaleTo::create(0.6f, 1.f), 0.5f), DelayTime::create(1.f), RemoveSelf::create(), CallFunc::create(callback), nullptr));
+}
+
+// 指定方法をマップ上での方向に変換
+Direction MapObject::convertToWorldDir(const Direction direction)
+{
+    switch (this->getDirection()) {
+        case Direction::FRONT:
+            return MapUtils::oppositeDirection(direction);
+            
+        case Direction::BACK:
+            return direction;
+        
+        case Direction::RIGHT:
+            if(direction == Direction::BACK) return Direction::LEFT;
+            if(direction == Direction::FRONT) return Direction::RIGHT;
+            if(direction == Direction::RIGHT) return Direction::FRONT;
+            if(direction == Direction::LEFT) return Direction::BACK;
+            
+        case Direction::LEFT:
+            if(direction == Direction::BACK) return Direction::RIGHT;
+            if(direction == Direction::FRONT) return Direction::LEFT;
+            if(direction == Direction::RIGHT) return Direction::BACK;
+            if(direction == Direction::LEFT) return Direction::FRONT;
+            
+        default:
+            return Direction::SIZE;
+    }
+}
+
 // デバッグ用に枠を描画
 void MapObject::drawDebugMask()
 {

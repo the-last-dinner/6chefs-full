@@ -11,6 +11,8 @@
 
 #include "Common.h"
 
+#include "MapObjects/PathObject.h"
+
 class MapObject;
 class MapObjectList;
 
@@ -53,6 +55,9 @@ private:
     Direction getDirection(const ValueMap& info) const;
     Point getGridPosition(const Rect& rect) const;
     Sprite* getSprite(const ValueMap& info) const;
+    int getPathId(const ValueMap& info) const;
+    int getPreviousPathId(const ValueMap& info) const;
+    int getNextPathId(const ValueMap& info) const;
     
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);

@@ -64,6 +64,14 @@ void MapObjectList::setTerrainObjects(const Vector<TerrainObject*>& objects)
     this->terrainObjects = objects;
 };
 
+// 経路オブジェクト
+void MapObjectList::setPathObjects(const Vector<PathObject*>& objects)
+{
+    if(!this->pathObjects.empty()) return;
+    
+    this->pathObjects = objects;
+}
+
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const
 {
@@ -211,6 +219,29 @@ vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) 
     return gridRects;
 }
 
+// 当たり判定を持つオブジェクトのCollisionRectを例外を除いて全て取得
+vector<Rect> MapObjectList::getCollisionRects(Vector<MapObject*> exclusion) const
+{
+    vector<Rect> collisionRects {};
+    
+    for(MapObject* obj : this->availableObjects)
+    {
+        if(!obj->isHit()) continue;
+        
+        bool flg { false };
+        for(MapObject* ex : exclusion)
+        {
+            if(obj == ex) flg = true;
+        }
+        
+        if(flg) continue;
+        
+        collisionRects.push_back(obj->getCollisionRect());
+    }
+    
+    return collisionRects;
+}
+
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {
@@ -333,6 +364,20 @@ TerrainObject* MapObjectList::getTerrainByGridRect(const Rect& gridRect)
     
     // 何も見つからなかった場合はノーマル地形を返す
     return this->plainArea;
+}
+
+#pragma mark -
+#pragma mark PathObject
+
+// 経路オブジェクトをIDから取得
+PathObject* MapObjectList::getPathObjectById(const int pathId)
+{
+    for(PathObject* obj : this->pathObjects)
+    {
+        if(obj->getPathId() == pathId) return obj;
+    }
+    
+    return nullptr;
 }
 
 #pragma mark -

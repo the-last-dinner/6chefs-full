@@ -21,6 +21,7 @@ protected:
     Character* chara { nullptr };
     float speedRatio { 1.0f };
     bool paused { false };
+    int startPathId { -1 };
 
 // インスタンスメソッド
 public:
@@ -30,6 +31,7 @@ public:
     virtual bool canGoToNextMap() const { return false; };
     virtual float calcSummonDelay() const { return 0.0f; };
     void setSpeedRatio(float ratio);
+    void setStartPathId(const int pathId);
 protected:
     MovePattern();
     ~MovePattern();

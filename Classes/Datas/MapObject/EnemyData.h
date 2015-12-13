@@ -17,6 +17,7 @@ struct EnemyData
     int enemy_id { static_cast<int>(EnemyID::UNDIFINED) };
     int change_map_counter { -1 };
     float speed_ratio { 1.0f };
+    int start_path_id { -1 };
     EnemyMovePattern move_pattern {EnemyMovePattern::SIZE};
     CharacterData chara_data {};
 };

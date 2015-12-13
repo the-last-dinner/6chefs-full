@@ -54,6 +54,9 @@ bool CreateEnemyEvent::init(rapidjson::Value& json)
     // 移動速度の倍率
     if(this->validator->hasMember(json, member::SPEED)) data.speed_ratio = json[member::SPEED].GetDouble();
     
+    // 最初に目指す移動経路オブジェクトのID
+    if(this->validator->hasMember(json, member::PATH_ID)) data.start_path_id = stoi(json[member::PATH_ID].GetString());
+    
     // データを格納
     this->data = data;
     
