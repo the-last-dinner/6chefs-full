@@ -44,10 +44,10 @@ bool Sight::isIn(MapObject* target, MapObjectList* list) const
     Vec2 v2 { target->getPosition() - this->chara->getPosition() };
     
     // 視界限界距離より遠くにいれば視界外
-    if(v2.getLength() > this->limitDistance) return false;
+    if(v2.getLength() > this->limitDistance * GRID) return false;
     
     // 二本のベクトルの間にできる角度を取得
-    float degree { this->toDegree(v1.getAngle(v2)) };
+    float degree { fabs(this->toDegree(v1.getAngle(v2))) };
     
     // 視野角の半分に収まっていなければ視界外
     if(degree > this->angle / 2) return false;

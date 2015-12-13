@@ -91,9 +91,13 @@ public:
     // 地形
     TerrainObject* getTerrain(const vector<Direction>& directions = {});
     
+    void reaction(function<void()> callback = nullptr);
+    
     // イベント関数
     virtual void onEnterMap() {};                               // マップに追加された時
     virtual void onSearched(MapObject* mainChara) {};           // 調べられた時
+    
+    Direction convertToWorldDir(const Direction direcction);
 
     void drawDebugMask(); // デバッグ用マスク
     

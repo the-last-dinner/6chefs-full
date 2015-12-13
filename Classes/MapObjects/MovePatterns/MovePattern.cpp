@@ -42,6 +42,12 @@ void MovePattern::setSpeedRatio(float ratio)
     this->speedRatio = ratio;
 }
 
+// 最初に通る経路オブジェクトのIDを取得
+void MovePattern::setStartPathId(const int pathId)
+{
+    this->startPathId = pathId;
+}
+
 // 主人公を取得
 Character* MovePattern::getMainCharacter() const { return this->chara->objectList->getParty()->getMainCharacter(); }
 

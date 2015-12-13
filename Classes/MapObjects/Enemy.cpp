@@ -37,6 +37,9 @@ bool Enemy::init(const EnemyData& data)
     // 速さの倍率を設定
     if(this->movePattern) this->movePattern->setSpeedRatio(data.speed_ratio);
     
+    // 最初に通る経路オブジェクトIDを設定
+    if(this->movePattern) this->movePattern->setStartPathId(data.start_path_id);
+    
     return true;
 }
 

@@ -190,6 +190,13 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     if(callback) callback(false);
 }
 
+// 周りを見渡す
+void Character::lookAround(function<void()> callback)
+{
+    this->setDirection(this->convertToWorldDir(Direction::RIGHT));
+    this->runAction(Sequence::create(DelayTime::create(1.f), CallFunc::create([this]{this->setDirection(this->convertToWorldDir(Direction::BACK));}), DelayTime::create(1.f), CallFunc::create([callback]{callback();}), nullptr));
+}
+
 // マップに配置された時
 void Character::onEnterMap()
 {

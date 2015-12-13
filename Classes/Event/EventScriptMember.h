@@ -46,6 +46,7 @@ namespace member
     static const char* OBJECT_ID = "objID";
     static const char* OPTION = "option";
     static const char* PASSWORD = "pass";
+    static const char* PATH_ID = "pathID";
     static const char* RANGE = "range";
     static const char* SECOND = "second";
     static const char* SPEED = "speed";
