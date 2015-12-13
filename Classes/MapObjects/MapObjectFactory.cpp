@@ -309,5 +309,10 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     
     if(!obj) return nullptr;
     
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(this->getRect(info)));
+    
     return obj;
 }
