@@ -105,6 +105,10 @@
 	],
 	"7":[
 		{
+			"type":"setLight",
+			"objID":"14"
+		},
+		{
 			"type":"if",
 			"condition":[
 				{
