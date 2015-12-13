@@ -81,6 +81,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
             switch (group)
             {
                 case Group::CHARACTER :
+                case Group::GHOST :
                     disableObjects.pushBack(obj);
                     break;
                     

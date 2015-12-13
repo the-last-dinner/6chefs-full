@@ -91,7 +91,10 @@ void MapObject::removeLight(function<void()> callback)
 {
     if(!this->light) return;
     
-    this->light->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create(callback), RemoveSelf::create(), nullptr));
+    Light* light { this->light };
+    this->light = nullptr;
+    
+    light->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
 // オブジェクトIDを取得
