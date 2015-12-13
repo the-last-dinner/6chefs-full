@@ -14,6 +14,7 @@
 #include "MapObjects/MapObject.h"
 #include "MapObjects/Enemy.h"
 #include "MapObjects/TerrainObject/TerrainObject.h"
+#include "MapObjects/PathObject.h"
 
 class Party;
 class PlainArea;
@@ -31,6 +32,7 @@ private:
     Party* party { nullptr };
     Vector<Enemy*> enemies {};
     Vector<TerrainObject*> terrainObjects {};
+    Vector<PathObject*> pathObjects {};
     PlainArea* plainArea { nullptr };
 public:
     function<void()> onContactWithEnemy { nullptr };
@@ -45,6 +47,7 @@ public:
     void setAvailableObjects(const Vector<MapObject*>& objects);
     void setDisableObjects(const Vector<MapObject*>& objects);
     void setTerrainObjects(const Vector<TerrainObject*>& objects);
+    void setPathObjects(const Vector<PathObject*>& objects);
     
     // 取得系
     MapObject* getMapObject(int objId) const;

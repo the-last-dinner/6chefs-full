@@ -64,6 +64,14 @@ void MapObjectList::setTerrainObjects(const Vector<TerrainObject*>& objects)
     this->terrainObjects = objects;
 };
 
+// 経路オブジェクト
+void MapObjectList::setPathObjects(const Vector<PathObject*>& objects)
+{
+    if(!this->pathObjects.empty()) return;
+    
+    this->pathObjects = objects;
+}
+
 // 指定IDのマップオブジェクトを取得
 MapObject* MapObjectList::getMapObject(int objId) const
 {

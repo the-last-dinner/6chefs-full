@@ -19,19 +19,22 @@ public:
     
 // インスタンス変数
 private:
-    PathObject* previous { nullptr };
-    PathObject* next { nullptr };
+    int pathId { -1 };
+    int previousId { -1 };
+    int nextId { -1 };
     
 // インスタンスメソッド
 private:
     PathObject();
     ~PathObject();
     bool init();
-    void setPrevious(PathObject* previous);
-    void setNext(PathObject* next);
-    PathObject* getPrevious() const;
-    PathObject* getNext() const;
-    
+public:
+    void setPathId(int pathId);
+    void setPreviousId(int previousId);
+    void setNextId(int nextId);
+    int getPathId() const;
+    int getPreviousId() const;
+    int getNextId() const;
 };
 
 #endif /* PathObject_h */

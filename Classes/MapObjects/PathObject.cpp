@@ -22,26 +22,38 @@ bool PathObject::init()
     return true;
 }
 
-// 前のオブジェクトを設定
-void PathObject::setPrevious(PathObject* previous)
+// 経路オブジェクトIDを設定
+void PathObject::setPathId(int pathId)
 {
-    this->previous = previous;
+    this->pathId = pathId;
 }
 
-// 次のオブジェクトを設定
-void PathObject::setNext(PathObject* next)
+// 前のオブジェクトIDを設定
+void PathObject::setPreviousId(int previousId)
 {
-    this->next = next;
+    this->previousId = previousId;
 }
 
-// 前のオブジェクトを取得
-PathObject* PathObject::getPrevious() const
+// 次のオブジェクトIDを設定
+void PathObject::setNextId(int nextId)
 {
-    return this->previous;
+    this->nextId = nextId;
 }
 
-// 次のオブジェクトを取得
-PathObject* PathObject::getNext() const
+// 経路オブジェクトIDを取得
+int PathObject::getPathId() const
 {
-    return this->next;
+    return this->pathId;
+}
+
+// 前のオブジェクトIDを取得
+int PathObject::getPreviousId() const
+{
+    return this->previousId;
+}
+
+// 次のオブジェクトIDを取得
+int PathObject::getNextId() const
+{
+    return this->nextId;
 }
