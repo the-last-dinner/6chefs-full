@@ -219,6 +219,29 @@ vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) 
     return gridRects;
 }
 
+// 当たり判定を持つオブジェクトのCollisionRectを例外を除いて全て取得
+vector<Rect> MapObjectList::getCollisionRects(Vector<MapObject*> exclusion) const
+{
+    vector<Rect> collisionRects {};
+    
+    for(MapObject* obj : this->availableObjects)
+    {
+        if(!obj->isHit()) continue;
+        
+        bool flg { false };
+        for(MapObject* ex : exclusion)
+        {
+            if(obj == ex) flg = true;
+        }
+        
+        if(flg) continue;
+        
+        collisionRects.push_back(obj->getCollisionRect());
+    }
+    
+    return collisionRects;
+}
+
 // マップオブジェクトを追加
 void MapObjectList::add(MapObject* mapObject)
 {

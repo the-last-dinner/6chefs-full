@@ -37,6 +37,10 @@ private:
     ~Sight();
     bool init(Character* chara);
     float toDegree(const float radian) const;
+    bool isSegmentIntersectWithLeft(const Point& p1, const Point& p2, const Rect& rect) const;
+    bool isSegmentIntersectWithRight(const Point& p1, const Point& p2, const Rect& rect) const;
+    bool isSegmentIntersectWithUpper(const Point& p1, const Point& p2, const Rect& rect) const;
+    bool isSegmentIntersectWithBottom(const Point& p1, const Point& p2, const Rect& rect) const;
 public:
     bool isIn(MapObject* target, MapObjectList* list) const;
 };
