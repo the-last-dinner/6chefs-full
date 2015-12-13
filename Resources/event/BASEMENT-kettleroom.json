@@ -159,7 +159,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":1.0,
+													"time":0.1,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -168,8 +168,7 @@
 														"wheat5.png",
 														"wheat6.png",
 														"wheat7.png",
-														"wheat8.png",
-														"wheat9.png"
+														"wheat8.png"
 													]
 												},
 												{
@@ -182,7 +181,7 @@
 											]
 										},
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}
@@ -262,7 +261,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":1.0,
+													"time":0.1,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -271,8 +270,7 @@
 														"wheat5.png",
 														"wheat6.png",
 														"wheat7.png",
-														"wheat8.png",
-														"wheat9.png"
+														"wheat8.png"
 													]
 												},
 												{
@@ -285,7 +283,7 @@
 											]
 										},
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}
@@ -390,7 +388,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":1.0,
+													"time":0.1,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -399,8 +397,7 @@
 														"wheat5.png",
 														"wheat6.png",
 														"wheat7.png",
-														"wheat8.png",
-														"wheat9.png"
+														"wheat8.png"
 													]
 												},
 												{
@@ -413,7 +410,7 @@
 											]
 										},
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}

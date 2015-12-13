@@ -19,6 +19,7 @@ public:
     
 // インスタンス変数
 private:
+    PathObject* previous { nullptr };
     PathObject* next { nullptr };
     
 // インスタンスメソッド
@@ -26,7 +27,9 @@ private:
     PathObject();
     ~PathObject();
     bool init();
+    void setPrevious(PathObject* previous);
     void setNext(PathObject* next);
+    PathObject* getPrevious() const;
     PathObject* getNext() const;
     
 };

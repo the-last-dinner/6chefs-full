@@ -81,6 +81,7 @@ MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* 
             switch (group)
             {
                 case Group::CHARACTER :
+                case Group::GHOST :
                     disableObjects.pushBack(obj);
                     break;
                     
@@ -307,6 +308,11 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     PathObject* obj { PathObject::create() };
     
     if(!obj) return nullptr;
+    
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(this->getRect(info)));
     
     return obj;
 }

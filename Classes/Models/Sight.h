@@ -36,7 +36,9 @@ private:
     Sight();
     ~Sight();
     bool init(Character* chara);
-    bool isIn(MapObject* target, MapObjectList* list);
+    float toDegree(const float radian) const;
+public:
+    bool isIn(MapObject* target, MapObjectList* list) const;
 };
 
 #endif /* Sight_h */

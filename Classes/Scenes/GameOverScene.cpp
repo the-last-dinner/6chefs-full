@@ -17,7 +17,7 @@
 
 // 定数
 const float GameOverScene::CHAR_ANIMATION_DURATION = 4.f;
-const float GameOverScene::CHAR_ANIMATION_LATENCY = 0.8f;
+const float GameOverScene::CHAR_ANIMATION_LATENCY = 0.1f;
 
 // コンストラクタ
 GameOverScene::GameOverScene() {FUNCLOG};
@@ -53,7 +53,7 @@ void GameOverScene::onPreloadFinished(LoadingLayer* loadingLayer)
     
     this->bloodCover->runAction(Sequence::createWithTwoActions(FadeOut::create(0.4f), RemoveSelf::create()));
     
-    SoundManager::getInstance()->playSE("gameover.mp3");
+    SoundManager::getInstance()->playBGM("gameover.mp3", false);
     
     Sprite* bloodFrame {Sprite::createWithSpriteFrameName("blood2.png")};
     bloodFrame->setPosition(WINDOW_CENTER);
@@ -96,5 +96,5 @@ void GameOverScene::onAnimationFinished()
     EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
     this->addChild(listener);
     
-    listener->onSpaceKeyPressed = []{Director::getInstance()->replaceScene(TitleScene::create());};
+    listener->onSpaceKeyPressed = []{SoundManager::getInstance()->stopBGMAll(); Director::getInstance()->replaceScene(TitleScene::create());};
 }

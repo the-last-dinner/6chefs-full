@@ -80,5 +80,10 @@ void AnimationEvent::run()
     
     animation->setDelayPerUnit(this->delayPerUnit);
     
-    DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(Animate::create(animation), CallFunc::create([this]{this->setDone();})));
+    Sprite* animationSprite { Sprite::createWithSpriteFrame(this->spriteFrames.at(0)) };
+    animationSprite->setPosition(WINDOW_CENTER);
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(animationSprite, Priority::TOP_COVER);
+    
+    animationSprite->runAction(Sequence::create(Animate::create(animation), CallFunc::create([this]{this->setDone();}), RemoveSelf::create(), nullptr));
 }
