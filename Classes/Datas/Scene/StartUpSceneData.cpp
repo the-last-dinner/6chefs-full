@@ -12,6 +12,7 @@
 bool StartUpSceneData::init()
 {
     this->textureFilePaths = {
+        Resource::SpriteFrame::ANIMATION,
         Resource::SpriteFrame::STARTUP,
         Resource::SpriteFrame::TITLE,
         Resource::SpriteFrame::FRAME,

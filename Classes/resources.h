@@ -33,14 +33,15 @@ namespace Resource
     namespace SpriteFrame
     {
         static const std::string BASE_PATH = "img/";
+        static const std::string ANIMATION = BASE_PATH + "animation";
         static const std::string BLOOD = BASE_PATH + "blood";
         static const std::string FRAME = BASE_PATH + "frame";
         static const std::string ICON = BASE_PATH + "icon";
         static const std::string MAP_OBJECT = BASE_PATH + "map_object";
         static const std::string MENU_PANELS = BASE_PATH + "menu_panels";
+        static const std::string STARTUP = BASE_PATH + "startup";
         static const std::string TITLE = BASE_PATH + "title";
         static const std::string UI = BASE_PATH + "ui";
-        static const std::string STARTUP = BASE_PATH + "startup";
         
         namespace Character
         {
