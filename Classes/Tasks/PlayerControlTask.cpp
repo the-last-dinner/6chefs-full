@@ -133,9 +133,8 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
         if(obj->getEventId() != this->riddenEventID)
         {
             if(this->riddenEventID == etoi(EventID::UNDIFINED)) this->riddenEventID = obj->getEventId();
-//            DungeonSceneManager::getInstance()->pushEventBack(obj->getEventId());
+            DungeonSceneManager::getInstance()->pushEventBack(obj->getEventId());
         }
-        DungeonSceneManager::getInstance()->pushEventBack(obj->getEventId());
     }
 }
 
