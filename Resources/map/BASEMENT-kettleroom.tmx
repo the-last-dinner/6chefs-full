@@ -169,24 +169,28 @@
   <object id="21" x="96" y="96" width="64" height="32">
    <properties>
     <property name="EventID" value="4"/>
+    <property name="objID" value="1"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="22" x="320" y="256" width="64" height="32">
    <properties>
     <property name="EventID" value="5"/>
+    <property name="objID" value="4"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="23" x="320" y="96" width="64" height="32">
    <properties>
     <property name="EventID" value="6"/>
+    <property name="objID" value="2"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="24" x="96" y="256" width="64" height="32">
    <properties>
     <property name="EventID" value="7"/>
+    <property name="objID" value="3"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>

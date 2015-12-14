@@ -26,6 +26,10 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"removeEnemy",
+							"enemyID":"146"
+						},
+						{
 							"type":"reaction",
 							"objID":"hero"
 						},
@@ -43,25 +47,21 @@
 									"infoID":"0"
 								},
 								{
-									"type":"removeEnemy",
-									"enemyID":"146"
-								},
-								{
 									"type":"createEnemy",
 									"enemyID":"147",
 									"charaID":"13",
-									"x":10,
+									"x":13,
 									"y":8,
-									"movePattern":"1",
+									"speed":1.0,
 									"times":5
 								},
 								{
 									"type":"createEnemy",
 									"enemyID":"148",
 									"charaID":"14",
-									"x":6,
+									"x":5,
 									"y":18,
-									"movePattern":"2",
+									"movePattern":"3",
 									"times":5
 								},
 								{
@@ -78,9 +78,8 @@
 									"type":"createEnemy",
 									"enemyID":"1410",
 									"charaID":"16",
-									"x":6,
-									"y":6,
-									"movePattern":"1",
+									"x":13,
+									"y":13,
 									"times":5
 								}
 							]

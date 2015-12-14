@@ -82,7 +82,15 @@
 						},
 						{
 							"type":"removeChara",
-							"obj":"1914"
+							"objID":"1914"
+						},
+						{
+							"type":"removeChara",
+							"objID":"1915"
+						},
+						{
+							"type":"removeChara",
+							"objID":"1916"
 						}
 					]
 				}
@@ -141,6 +149,14 @@
 				{
 					"type":"removeChara",
 					"objID":"1914"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1915"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1916"
 				}
 			]
 		}

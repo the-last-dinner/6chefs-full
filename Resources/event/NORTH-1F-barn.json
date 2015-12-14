@@ -201,6 +201,20 @@
 			"type":"if",
 			"condition":[
 				{
+					"Nevent":["34","8"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["小さい蒸し器がある"]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
 					"event":["34","8"]
 				}
 			],
@@ -250,6 +264,9 @@
 			"condition":[
 				{
 					"event":["18","14"]
+				},
+				{
+					"Nevent":["34","8"]
 				}
 			],
 			"action":[

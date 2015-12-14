@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="82" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="129">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="82" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="131">
  <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16">
   <image source="castle7.png" trans="007575" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="empire-3" tilewidth="16" tileheight="16">
   <image source="empire-3.png" trans="a6caf0" width="480" height="480"/>
  </tileset>
- <layer name="Base" width="124" height="82" opacity="0.96">
+ <layer name="Base" width="124" height="82" opacity="0.94">
   <properties>
    <property name="cc_vertexz" value="-15"/>
   </properties>
@@ -116,6 +116,7 @@
   <object id="124" x="1040" y="832" width="16" height="16"/>
   <object id="125" x="976" y="832" width="16" height="16"/>
   <object id="126" x="64" y="144" width="400" height="208"/>
+  <object id="130" x="1568" y="736" width="352" height="48"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>

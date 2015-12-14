@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="53">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="54">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -39,7 +39,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAMTGSi0AA0cAaLee+ZGRg+APFHIP4ExItZGBiWsKCqyQHqk2NGxVxMEMwNxTCgBdSrDcQ6QKwLxPeA+D6aeSAQyYyKXZkg2A2KYSAVqDcNiNOBOAOIJVkZGKRYIXLXgPzrLNjNa2CC4EYohgENNLe4IfEFgeYKAbEyC6Z5uEAymnkXgGov4lFPCAQC3RqE5F5uoPk8QPyNkYHhKyN2PSlYwhcGeoBm9VIxHb2iwG/UBuFAt0QA8Tkq+W8S0KzJVPbfQmDcvB5EYYYNIKefbiqEJbJ5x6hcht3Fk9bJARKs1DVvMOWPkQ4AqqMlig==
+   eJxjYKAMTGSi0AA0cAaLee+ZGRg+APFHIP4ExItZGBiWsKCqyQHqk2NGxVxMEMwNxTCgBdSrDcQ6QKwLxPeA+D6aeSAQyYyKXZkg2A2KYSAVqDcNiNOBOAOIJVkZGKRYIXLXgPzrLNjNa2CC4EYohgENNLe4IfEFgeYKAbEyC6Z5uEAymnkXgGov4lFPCAQC3RqE5F5uoPk8QPyNkYHhKyN2PSlYwhcGeoBm9eJJR68ocOtAg3Cg2yOA+ByV8skkoFmTqRweC4Fx83qQhzFy+ummQlgim3eMymXYXTxpnRwgwUpd84ZyfhpuAADXEyWK
   </data>
  </layer>
  <layer name="MonoUe" width="20" height="24">
@@ -196,6 +196,12 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
+  <object id="53" x="144" y="112" width="32" height="32">
+   <properties>
+    <property name="EventID" value="14"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="item">
   <object id="51" x="240" y="48" width="32" height="32">
@@ -203,11 +209,9 @@
     <property name="objID" value="1927"/>
    </properties>
   </object>
-  <object id="52" x="16" y="128" width="32" height="32">
+  <object id="52" x="144" y="112" width="32" height="32">
    <properties>
-    <property name="EventID" value="14"/>
     <property name="objID" value="1931"/>
-    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

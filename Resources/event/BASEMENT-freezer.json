@@ -200,8 +200,7 @@
 							"type":"charaMsg",
 							"text":["佐々木くん！"],
 							"charaID":"1",
-							"imgID":"2",
-							"option":"reaction"
+							"imgID":"2"
 						},
 						{
 							"type":"charaWalk",

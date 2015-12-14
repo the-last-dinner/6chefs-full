@@ -28,7 +28,8 @@
 			"charaID":"14",
 			"x":4,
 			"y":21,
-			"speed":2.0
+			"speed":2.0,
+			"times":1
 		},
 		{
 			"type":"playSE",

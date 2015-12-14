@@ -105,7 +105,6 @@
   <object id="11" x="320" y="128" width="256" height="16"/>
   <object id="12" x="608" y="128" width="752" height="16"/>
   <object id="13" x="1360" y="128" width="48" height="16"/>
-  <object id="14" x="1296" y="464" width="128"/>
   <object id="15" x="1440" y="128" width="256" height="16"/>
   <object id="19" x="1696" y="64" width="64" height="128"/>
   <object id="20" x="1760" y="96" width="48" height="16"/>

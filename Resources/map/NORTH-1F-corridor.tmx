@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="92">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="126" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="104">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -151,7 +151,6 @@
   <object id="60" x="1760" y="112" height="16"/>
   <object id="61" x="1744" y="112" width="16" height="16"/>
   <object id="62" x="80" y="96" width="48" height="16"/>
-  <object id="63" x="1648" y="464" height="32"/>
   <object id="64" x="1888" y="96" width="112" height="16"/>
   <object id="65" x="976" y="352" width="96" height="16"/>
   <object id="77" x="1408" y="112" width="32" height="32">
@@ -181,7 +180,7 @@
   </properties>
  </objectgroup>
  <objectgroup name="event">
-  <object id="67" x="1822" y="0" width="48" height="16">
+  <object id="67" x="1822" y="0" width="64" height="16">
    <properties>
     <property name="EventID" value="1"/>
     <property name="trigger" value="1"/>
@@ -265,10 +264,88 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
+  <object id="103" x="256" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="15"/>
+    <property name="trigger" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="name" width="126" height="24">
   <data encoding="base64" compression="zlib">
    eJztz0ERAAAEAEGtFNE/ixJ4mN0CNxcBAAAwq/JX6/IHAAAAAAAAAIA9DUgnAaI=
   </data>
  </layer>
+ <objectgroup name="path">
+  <object id="92" x="64" y="256" width="32" height="32">
+   <properties>
+    <property name="nextID" value="2"/>
+    <property name="pathID" value="1"/>
+    <property name="previousID" value="0"/>
+   </properties>
+  </object>
+  <object id="93" x="448" y="176" width="32" height="32">
+   <properties>
+    <property name="nextID" value="3"/>
+    <property name="pathID" value="2"/>
+    <property name="previousID" value="1"/>
+   </properties>
+  </object>
+  <object id="95" x="800" y="288" width="32" height="32">
+   <properties>
+    <property name="nextID" value="4"/>
+    <property name="pathID" value="3"/>
+    <property name="previousID" value="2"/>
+   </properties>
+  </object>
+  <object id="96" x="1216" y="176" width="32" height="32">
+   <properties>
+    <property name="nextID" value="5"/>
+    <property name="pathID" value="4"/>
+    <property name="previousID" value="3"/>
+   </properties>
+  </object>
+  <object id="97" x="1568" y="272" width="32" height="32">
+   <properties>
+    <property name="nextID" value="6"/>
+    <property name="pathID" value="5"/>
+    <property name="previousID" value="4"/>
+   </properties>
+  </object>
+  <object id="98" x="1856" y="240" width="32" height="32">
+   <properties>
+    <property name="nextID" value="7"/>
+    <property name="pathID" value="6"/>
+    <property name="previousID" value="5"/>
+   </properties>
+  </object>
+  <object id="99" x="1568" y="176" width="32" height="32">
+   <properties>
+    <property name="nextID" value="8"/>
+    <property name="pathID" value="7"/>
+    <property name="previousID" value="6"/>
+   </properties>
+  </object>
+  <object id="100" x="1216" y="272" width="32" height="32">
+   <properties>
+    <property name="nextID" value="9"/>
+    <property name="pathID" value="8"/>
+    <property name="previousID" value="7"/>
+   </properties>
+  </object>
+  <object id="101" x="800" y="176" width="32" height="32">
+   <properties>
+    <property name="nextID" value="10"/>
+    <property name="pathID" value="9"/>
+    <property name="previousID" value="8"/>
+   </properties>
+  </object>
+  <object id="102" x="448" y="288" width="32" height="32">
+   <properties>
+    <property name="nextID" value="1"/>
+    <property name="pathID" value="10"/>
+    <property name="previousID" value="9"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

@@ -338,5 +338,27 @@
 			"type":"systemMsg",
 			"text":["倉庫"]
 		}
+	],
+	"15":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["23","9"]
+				}
+			],
+			"action":[
+				{
+					"type":"createEnemy",
+					"enemyID":"1424",
+					"charaID":"8",
+					"x":4,
+					"y":17,
+					"movePattern":"4",
+					"pathID":"1",
+					"times":1
+				}
+			]
+		}
 	]
 }

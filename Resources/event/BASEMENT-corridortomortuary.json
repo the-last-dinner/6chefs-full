@@ -95,6 +95,10 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"removeItem",
+					"itemID":"1514"	
+				},
+				{
 					"type":"removeChara",
 					"objID":"1040"
 				},

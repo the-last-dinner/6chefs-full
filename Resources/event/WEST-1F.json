@@ -181,33 +181,42 @@
 	],
 	"4":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["3","21"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"systemMsg",
+					"text":["水の入ったペットボトルが沢山ある"]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["3","21"]
+						}
+					],
 					"action":[
 						{
-							"type":"charaMsg",
-							"text":["これで・・・"],
-							"charaID":"0",
-							"imgID":"1"
-						},
-						{
-							"type":"getItem",
-							"itemID":"1515",
-							"name":"水"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1915"
-						},
-						{
-							"type":"already"
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["これで・・・"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"type":"getItem",
+									"itemID":"1515",
+									"name":"水"
+								},
+								{
+									"type":"removeChara",
+									"objID":"1915"
+								},
+								{
+									"type":"already"
+								}
+							]
 						}
 					]
 				}
@@ -1186,11 +1195,10 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["3","21"],
-					"item":"1515"
+					"Nevent":["3","21"]
 				},
 				{
-					"event":["3","27"]
+					"event":["7","4"]
 				}
 			],
 			"action":[

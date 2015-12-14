@@ -154,7 +154,11 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"fadein"
+					"type":"wait",
+					"time":2.0
+				},
+				{
+					"type":"fadein"	
 				},
 				{
 					"type":"charaMsg",
@@ -177,6 +181,16 @@
 					"text":["中山さん・・・？だったよな・・・\nどうして・・・？"],
 					"charaID":"0",
 					"imgID":"3"
+				},
+				{
+					"type":"wait",
+					"time":1.0
+				},
+				{
+					"type":"charaMsg",
+					"text":["しまった！明かりが・・・\n落としたのか・・・"],
+					"charaID":"0",
+					"imgID":"2"
 				},
 				{
 					"type":"playBGM",

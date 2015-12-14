@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="94">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="106">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -264,5 +264,84 @@
  </objectgroup>
  <objectgroup name="terrain">
   <object id="89" type="water" x="128" y="128" width="352" height="256"/>
+ </objectgroup>
+ <objectgroup name="path">
+  <object id="94" x="160" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="1"/>
+    <property name="pathID" value="1"/>
+    <property name="previousID" value="0"/>
+   </properties>
+  </object>
+  <object id="95" x="256" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="3"/>
+    <property name="pathID" value="2"/>
+    <property name="previousID" value="1"/>
+   </properties>
+  </object>
+  <object id="96" x="320" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="4"/>
+    <property name="pathID" value="3"/>
+    <property name="previousID" value="2"/>
+   </properties>
+  </object>
+  <object id="98" x="416" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="5"/>
+    <property name="pathID" value="4"/>
+    <property name="previousID" value="3"/>
+   </properties>
+  </object>
+  <object id="99" x="480" y="224" width="32" height="32">
+   <properties>
+    <property name="nextID" value="6"/>
+    <property name="pathID" value="5"/>
+    <property name="previousID" value="4"/>
+   </properties>
+  </object>
+  <object id="100" x="480" y="320" width="32" height="32">
+   <properties>
+    <property name="nextID" value="7"/>
+    <property name="pathID" value="6"/>
+    <property name="previousID" value="5"/>
+   </properties>
+  </object>
+  <object id="101" x="352" y="384" width="32" height="32">
+   <properties>
+    <property name="nextID" value="8"/>
+    <property name="pathID" value="7"/>
+    <property name="previousID" value="6"/>
+   </properties>
+  </object>
+  <object id="102" x="480" y="352" width="32" height="32">
+   <properties>
+    <property name="nextID" value="9"/>
+    <property name="pathID" value="8"/>
+    <property name="previousID" value="7"/>
+   </properties>
+  </object>
+  <object id="103" x="480" y="256" width="32" height="32">
+   <properties>
+    <property name="nextID" value="10"/>
+    <property name="pathID" value="9"/>
+    <property name="previousID" value="8"/>
+   </properties>
+  </object>
+  <object id="104" x="480" y="160" width="32" height="32">
+   <properties>
+    <property name="nextID" value="11"/>
+    <property name="pathID" value="10"/>
+    <property name="previousID" value="9"/>
+   </properties>
+  </object>
+  <object id="105" x="416" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="3"/>
+    <property name="pathID" value="11"/>
+    <property name="previousID" value="10"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -79,6 +79,10 @@
 											"file":"fire_ignition.mp3"
 										},
 										{
+											"type":"setLight",
+											"objID":"1"
+										},
+										{
 											"type":"already"
 										}
 									]
@@ -120,6 +124,10 @@
 										{
 											"type":"playSE",
 											"file":"fire_ignition.mp3"
+										},
+										{
+											"type":"setLight",
+											"objID":"4"
 										},
 										{
 											"type":"already"
@@ -224,6 +232,10 @@
 											"file":"fire_ignition.mp3"
 										},
 										{
+											"type":"setLight",
+											"objID":"2"
+										},
+										{
 											"type":"already"
 										}
 									]
@@ -324,6 +336,10 @@
 										{
 											"type":"playSE",
 											"file":"fire_ignition.mp3"
+										},
+										{
+											"type":"setLight",
+											"objID":"3"
 										},
 										{
 											"type":"already"
@@ -451,6 +467,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"hide1"
+				},
+				{
+					"type":"setLight",
+					"objID":"1"
 				}
 			]
 		},
@@ -465,6 +485,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"hide4"
+				},
+				{
+					"type":"setLight",
+					"objID":"4"
 				}
 			]
 		},
@@ -479,6 +503,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"hide2"
+				},
+				{
+					"type":"setLight",
+					"objID":"2"
 				}
 			]
 		},
@@ -493,6 +521,10 @@
 				{
 					"type":"removeLayer",
 					"layer":"hide3"
+				},
+				{
+					"type":"setLight",
+					"objID":"3"
 				}
 			]
 		}

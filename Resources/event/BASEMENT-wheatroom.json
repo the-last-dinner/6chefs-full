@@ -52,26 +52,46 @@
 			],
 			"action":[
 				{
-					"type":"animation",
-					"time":1.0,
-					"imgs":[
-						"wheat1.png",
-						"wheat2.png",
-						"wheat3.png",
-						"wheat4.png",
-						"wheat5png",
-						"wheat6.png",
-						"wheat7.png",
-						"wheat8.png",
-						"wheat9.png"
+					"type":"sequence",
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"stopBGM"
+								},
+								{
+									"type":"playSE",
+									"file":"explosion.mp3"
+								},
+								{
+									"type":"fadeout",
+									"time":2.5
+								},
+								{
+									"type":"animation",
+									"time":0.3,
+									"imgs":[
+										"wheat1.png",
+										"wheat2.png",
+										"wheat3.png",
+										"wheat4.png",
+										"wheat5.png",
+										"wheat6.png",
+										"wheat7.png",
+										"wheat8.png"
+									]
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"gameover"
+						}
 					]
-				},
-				{
-					"type":"playSE",
-					"file":"explosion.mp3"
-				},
-				{
-					"type":"gameOver"
 				}
 			]
 		}
@@ -96,6 +116,61 @@
 		{
 			"type":"systemMsg",
 			"text":["白い粉が入った麻袋だ・・・"]
+		}
+	],
+	"6":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"equip":["1514"],
+					"Nevent":["60","4"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"stopBGM"
+								},
+								{
+									"type":"playSE",
+									"file":"explosion.mp3"
+								},
+								{
+									"type":"fadeout",
+									"time":2.5
+								},
+								{
+									"type":"animation",
+									"time":0.3,
+									"imgs":[
+										"wheat1.png",
+										"wheat2.png",
+										"wheat3.png",
+										"wheat4.png",
+										"wheat5.png",
+										"wheat6.png",
+										"wheat7.png",
+										"wheat8.png"
+									]
+								}
+							]
+						},
+						{
+							"type":"wait",
+							"time":0.5
+						},
+						{
+							"type":"gameover"
+						}
+					]
+				}
+			]
 		}
 	]
 }

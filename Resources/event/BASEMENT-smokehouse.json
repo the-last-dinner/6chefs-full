@@ -103,6 +103,10 @@
 													"type":"fadeout"
 												},
 												{
+													"type":"removeItem",
+													"itemID":"1517"
+												},
+												{
 													"type":"playSE",
 													"file":"fire_ignition.mp3"
 												},

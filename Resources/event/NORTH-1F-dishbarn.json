@@ -22,7 +22,8 @@
 							"type":"charaMsg",
 							"text":["あがあああああああああ"],
 							"charaID":"9",
-							"name":"？？？"
+							"name":"？？？",
+							"option":"reaction"
 						},
 						{
 							"type":"playSE",
@@ -285,7 +286,7 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["大量のダンボールが置いてある"]
+					"text":["大量のダンボールの中にはなぜか\n目玉焼き専用の焼き器が沢山入っている"]
 				}
 			]
 		}
@@ -296,6 +297,9 @@
 			"condition":[
 				{
 					"event":["20","16"]
+				},
+				{
+					"Nevent":["34","8"]
 				}
 			],
 			"action":[
