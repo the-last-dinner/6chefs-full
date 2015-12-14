@@ -58,12 +58,6 @@ bool TitleMainMenuLayer::init()
     title3->setOpacity(0);
     this->addChild(title3);
     
-    // カーソル生成
-    Cloud* cursor { Cloud::create(Size::ZERO) };
-    cursor->setColor(Color3B(100, 0, 0));
-    this->addChild(cursor);
-    this->cursor = cursor;
-    
     // タイトルメニューを生成
 	int menuSize = 48.f;
 	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
@@ -78,6 +72,13 @@ bool TitleMainMenuLayer::init()
                                              Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
                                              nullptr));
 	}
+    
+    // カーソル生成
+    Cloud* cursor { Cloud::create(Size::ZERO) };
+    cursor->setColor(Color3B(100, 0, 0));
+    cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
+    this->addChild(cursor);
+    this->cursor = cursor;
 	
     this->runAction(Sequence::create(
                                      TargetedAction::create(title1, FadeIn::create(1.f)),
@@ -147,7 +148,8 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
         if (newIdx != i) continue;
         
         Node* obj {this->menuObjects.at(i)};
-        this->cursor->runAction(EaseCubicActionOut::create(Spawn::createWithTwoActions(ScaleTo::create(0.2f, obj->getContentSize().width / this->cursor->getContentSize().width), MoveTo::create(0.2f, obj->getPosition()))));
+        this->cursor->setScale((obj->getContentSize().width + 50) / this->cursor->getContentSize().width);
+        this->cursor->setPosition(obj->getPosition());
 	}
 	if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
 	return;

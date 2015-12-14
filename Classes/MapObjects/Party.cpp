@@ -79,26 +79,20 @@ bool Party::move(const vector<Direction>& directions, float ratio, function<void
     {
         Character* character {this->members.at(i)};
         vector<Direction> dirs {};
-        function<void()> cb { nullptr };
         
         // 主人公について
         if(i == 0)
         {
             dirs = directions;
-            cb = [this, callback, character]
-            {
-                callback();
-                if(this->onPartyMoved) this->onPartyMoved(character->getGridRect());
-            };
+            if(!character->walkBy(dirs, [this, callback, character]{callback(); if(this->onPartyMoved) this->onPartyMoved(character->getGridRect());}, ratio)) return false;
         }
         // 主人公以外について
         if(i != 0)
         {
             character->setDirection(direction);
             dirs = MapUtils::vecToDirections(destPos - character->getPosition());
+            character->walkBy(dirs, nullptr, ratio);
         }
-        
-        if(!character->walkBy(dirs, cb, ratio)) return false;
         
         direction = character->getDirection();
         destPos = character->getPosition();
