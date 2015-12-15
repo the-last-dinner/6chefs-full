@@ -12,7 +12,7 @@
 const string ItemObject::PREFIX { "item_" };
 const string ItemObject::BLUE {"blue_"};
 const int ItemObject::ANIMATION_FRAME_NUM { 3 };
-const float ItemObject::ANIMATION_DELAY_PER_UNIT { 0.3f };
+const float ItemObject::ANIMATION_DELAY_PER_UNIT { 0.2f };
 
 // コンストラクタ
 ItemObject::ItemObject() {FUNCLOG};
@@ -55,11 +55,10 @@ bool ItemObject::init()
     return true;
 }
 
-void ItemObject::onEnter()
+void ItemObject::onEnterMap()
 {
-    MapObject::onEnter();
+    MapObject::onEnterMap();
     
-    // アニメーション開始
     this->getSprite()->runAction(this->action);
 }
 

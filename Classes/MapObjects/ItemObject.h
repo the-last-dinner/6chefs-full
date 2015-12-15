@@ -33,7 +33,7 @@ public:
     ItemObject();
     ~ItemObject();
     bool init();
-    virtual void onEnter() override;
+    virtual void onEnterMap() override;
     string getSpriteFrameName(int state);
 };
 
