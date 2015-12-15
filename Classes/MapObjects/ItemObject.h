@@ -23,12 +23,17 @@ private:
 // クラスメソッド
 public:
     CREATE_FUNC(ItemObject)
+
+// インスタンス変数
+private:
+    Action* action { nullptr };
     
 // インスタンスメソッド
 public:
     ItemObject();
     ~ItemObject();
     bool init();
+    virtual void onEnter() override;
     string getSpriteFrameName(int state);
 };
 

@@ -20,6 +20,8 @@ protected:
 public:
     virtual void onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio) = 0;
     virtual float getStaminaConsumptionRate() const = 0;
+    virtual bool canDash() const = 0;
+    virtual bool consumeStaminaWalking() const = 0;
 };
 
 #endif /* TerrainObject_h */

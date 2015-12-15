@@ -24,7 +24,9 @@ private:
     bool init();
 public:
     virtual void onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio);
-    virtual float getStaminaConsumptionRate() const {return 1.0f;};
+    virtual float getStaminaConsumptionRate() const { return 1.f; };
+    virtual bool canDash() const { return true; };
+    virtual bool consumeStaminaWalking() const { return false; };
 };
 
 #endif /* PlainArea_h */

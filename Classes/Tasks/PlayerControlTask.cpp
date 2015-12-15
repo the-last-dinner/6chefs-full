@@ -94,8 +94,11 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     // 一番最近押したキーの方向に主人公を向ける
     mainCharacter->setDirection(directions.back());
     
+    // 移動前の地形オブジェクトを取得
+    TerrainObject* terrain { mainCharacter->getTerrain() };
+    
     // ダッシュキーが押されていたら、速度の倍率をあげる
-    bool dash {DungeonSceneManager::getInstance()->isPressed(Key::DASH)};
+    bool dash { terrain->canDash() ? DungeonSceneManager::getInstance()->isPressed(Key::DASH) : false };
     
     // 入力から、使う方向の個数を決める
     int directionCount {(directions.size() == 2 && directions.back() != directions.at(directions.size() - 2) && etoi(directions.back()) + etoi(directions.at(directions.size() - 2)) != 3)?etoi(directions.size()):1};
@@ -115,10 +118,10 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
     
     // 地形から、スタミナ減少の倍率を取得しセット
-    DungeonSceneManager::getInstance()->getStamina()->setStepRatio(mainCharacter->getTerrain()->getStaminaConsumptionRate());
+    DungeonSceneManager::getInstance()->getStamina()->setStepRatio(terrain->getStaminaConsumptionRate());
     
     // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
-    if(DungeonSceneManager::getInstance()->existsEnemy() && dash) DungeonSceneManager::getInstance()->getStamina()->decrease();
+    if(DungeonSceneManager::getInstance()->existsEnemy() && (dash || terrain->consumeStaminaWalking())) DungeonSceneManager::getInstance()->getStamina()->decrease();
     
     // 減少後にスタミナが空になっていたら疲労状態へ移行
     if(DungeonSceneManager::getInstance()->getStamina()->isEmpty()) this->exhausted = true;

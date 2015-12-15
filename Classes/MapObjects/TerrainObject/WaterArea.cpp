@@ -24,6 +24,7 @@ bool WaterArea::init()
 void WaterArea::onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio)
 {
     // 速度を1/2にして移動
-    target->move(directions, onMoved, ratio / 2);
-    target->getSprite()->setTextureRect(Rect(GRID, GRID, GRID, GRID));
+    target->move(directions, onMoved, ratio / 4);
+    
+    target->getSprite()->setTextureRect(Rect(target->getSprite()->getContentSize().height, GRID, target->getSprite()->getContentSize().width, target->getSprite()->getContentSize().height));
 }
