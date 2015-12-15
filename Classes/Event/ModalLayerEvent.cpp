@@ -91,7 +91,7 @@ bool CharacterMessage::init(rapidjson::Value& json)
             if(this->validator->hasMember(chara, member::IMG_ID)) data->setImgId(stoi(chara[member::IMG_ID].GetString()));
             
             // リアクション
-            if(this->validator->hasMember(json, member::OPTION)) data->setOption(CharacterMessageData::Option::REACTION);
+            if(this->validator->hasMember(chara, member::OPTION)) data->setOption(CharacterMessageData::Option::REACTION);
             
             datas.push(data);
         }
