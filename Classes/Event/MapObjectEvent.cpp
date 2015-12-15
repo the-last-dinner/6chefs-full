@@ -188,7 +188,7 @@ void MoveToEvent::run()
     
     // 経路探索開始
     PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
-    deque<Direction> directions { pathFinder->getPath(target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(target), this->dest) };
+    deque<Direction> directions { pathFinder->getPath(target->getGridRect(), target->getWorldGridCollisionRects(), this->dest) };
     
     target->moveByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
 }

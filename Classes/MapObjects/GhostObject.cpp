@@ -25,5 +25,11 @@ bool GhostObject::init()
     return true;
 }
 
+// 周りには当たり判定オブジェクトがないとする
+vector<Rect> GhostObject::getWorldGridCollisionRects()
+{
+    return {};
+}
+
 // 当たり判定は常にfalseを返す
 const bool GhostObject::isHit(const vector<Direction>& directions) const { return false; }

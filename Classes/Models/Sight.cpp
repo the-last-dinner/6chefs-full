@@ -79,13 +79,7 @@ bool Sight::isIn(MapObject* target, MapObjectList* list) const
     if(degree > this->angle / 2) return false;
     
     // 対象と本人以外の当たり判定用Rectを取得
-    Vector<MapObject*> exclusion {};
-    exclusion.pushBack(target);
-    exclusion.pushBack(this->chara);
-    
-    vector<Rect> collisionRects {list->getCollisionRects(exclusion)};
-    
-    exclusion.clear();
+    vector<Rect> collisionRects {list->getCollisionRects({target, this->chara})};
     
     // Rectを４辺に分解し、それぞれの辺ベクトルとv2が交差しているかチェックする
     for(Rect rect : collisionRects)

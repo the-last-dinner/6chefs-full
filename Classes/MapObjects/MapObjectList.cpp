@@ -100,10 +100,33 @@ MapObject* MapObjectList::getMapObjectFromDisableList(int objId) const
     return nullptr;
 }
 
-// マップオブジェクトのベクタを取得
+// 有効マップオブジェクトのベクタを取得
 const Vector<MapObject*>& MapObjectList::getMapObjects() const
 {
     return this->availableObjects;
+}
+
+// 当たり判定を持つオブジェクトを取得
+Vector<MapObject*> MapObjectList::getCollisionObjects(vector<MapObject*> exclusion) const
+{
+    Vector<MapObject*> collisionObjects {};
+    
+    for(MapObject* obj : this->getMapObjects())
+    {
+        if(!obj->isHit()) continue;
+        
+        bool flg { false };
+        for(MapObject* ex : exclusion)
+        {
+            if(obj == ex) flg = true;
+        }
+        
+        if(flg) continue;
+        
+        collisionObjects.pushBack(obj);
+    }
+    
+    return collisionObjects;
 }
 
 // 指定範囲内にあるマップオブジェクトのベクタを取得
@@ -186,33 +209,18 @@ vector<int> MapObjectList::getEventIdsByGridRect(const Rect& gridRect, const Tri
 // 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
 vector<Rect> MapObjectList::getGridCollisionRects(MapObject* exclusion) const
 {
-    Vector<MapObject*> ex {};
-    ex.pushBack(exclusion);
-    
-    vector<Rect> collisionRects {this->getGridCollisionRects(ex)};
-    
-    ex.clear();
+    vector<Rect> collisionRects {this->getGridCollisionRects({exclusion})};
     
     return collisionRects;
 }
 
 // 当たり判定を持つオブジェクトのマスRectを全て取得(例外を指定できる)
-vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) const
+vector<Rect> MapObjectList::getGridCollisionRects(vector<MapObject*> exclusion) const
 {
     vector<Rect> gridRects {};
     
-    for(MapObject* obj : this->availableObjects)
+    for(MapObject* obj : this->getCollisionObjects(exclusion))
     {
-        if(!obj->isHit()) continue;
-        
-        bool flg { false };
-        for(MapObject* ex : exclusion)
-        {
-            if(obj == ex) flg = true;
-        }
-        
-        if(flg) continue;
-        
         gridRects.push_back(obj->getGridRect());
     }
     
@@ -220,22 +228,12 @@ vector<Rect> MapObjectList::getGridCollisionRects(Vector<MapObject*> exclusion) 
 }
 
 // 当たり判定を持つオブジェクトのCollisionRectを例外を除いて全て取得
-vector<Rect> MapObjectList::getCollisionRects(Vector<MapObject*> exclusion) const
+vector<Rect> MapObjectList::getCollisionRects(vector<MapObject*> exclusion) const
 {
     vector<Rect> collisionRects {};
     
-    for(MapObject* obj : this->availableObjects)
+    for(MapObject* obj : this->getCollisionObjects(exclusion))
     {
-        if(!obj->isHit()) continue;
-        
-        bool flg { false };
-        for(MapObject* ex : exclusion)
-        {
-            if(obj == ex) flg = true;
-        }
-        
-        if(flg) continue;
-        
         collisionRects.push_back(obj->getCollisionRect());
     }
     

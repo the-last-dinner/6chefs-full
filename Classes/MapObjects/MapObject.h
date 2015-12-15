@@ -68,6 +68,7 @@ public:
     Sprite* getSprite() const;
     
     // collision
+    virtual vector<Rect> getWorldGridCollisionRects();
     Rect getCollisionRect() const;
     Rect getCollisionRect(const Direction& direction) const;
     Rect getCollisionRect(const vector<Direction>& directions) const;

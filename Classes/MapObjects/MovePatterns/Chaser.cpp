@@ -132,13 +132,7 @@ void Chaser::cutPath(deque<Direction>& path)
 // 経路を取得
 deque<Direction> Chaser::getPath() const
 {
-    Vector<MapObject*> exclusion {};
-    exclusion.pushBack(this->getMainCharacter());
-    exclusion.pushBack(this->chara);
-    
-    deque<Direction> path { this->pathFinder->getPath(this->chara->getGridRect(), this->getMapObjectList()->getGridCollisionRects(exclusion), this->getMainCharacter()->getGridRect().origin) };
-    
-    exclusion.clear();
+    deque<Direction> path { this->pathFinder->getPath(this->chara->getGridRect(), this->getMapObjectList()->getGridCollisionRects({this->getMainCharacter(), this->chara}), this->getMainCharacter()->getGridRect().origin) };
     
     return path;
 }

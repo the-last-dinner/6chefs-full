@@ -53,6 +53,7 @@ public:
     MapObject* getMapObject(int objId) const;
     MapObject* getMapObjectFromDisableList(int objId) const;
     const Vector<MapObject*>& getMapObjects() const;
+    Vector<MapObject*> getCollisionObjects(const vector<MapObject*> exclusion = {}) const;
     Vector<MapObject*> getMapObjects(const Rect& rect) const;
     Vector<MapObject*> getMapObjects(const Point& position) const;
     Vector<MapObject*> getMapObjectsByGridRect(const Rect& gridRect, const Trigger trigger = Trigger::SIZE) const;
@@ -60,8 +61,8 @@ public:
     vector<int> getEventIds(const Trigger trigger) const;
     vector<int> getEventIdsByGridRect(const Rect& gridRect, const Trigger trigger) const;
     vector<Rect> getGridCollisionRects(MapObject* exclusion = nullptr) const;
-    vector<Rect> getGridCollisionRects(Vector<MapObject*> exclusion) const;
-    vector<Rect> getCollisionRects(Vector<MapObject*> exclusion) const;
+    vector<Rect> getGridCollisionRects(vector<MapObject*> exclusion) const;
+    vector<Rect> getCollisionRects(vector<MapObject*> exclusion) const;
     
     // 追加、削除
     void add(MapObject* mapObject);

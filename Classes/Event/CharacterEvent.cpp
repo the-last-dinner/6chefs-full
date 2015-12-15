@@ -119,7 +119,7 @@ void WalkToEvent::run()
     
     // 経路探索開始
     PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
-    deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), DungeonSceneManager::getInstance()->getMapObjectList()->getGridCollisionRects(this->target), this->destPosition) };
+    deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), this->target->getWorldGridCollisionRects(), this->destPosition) };
     
     this->target->walkByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
 }
