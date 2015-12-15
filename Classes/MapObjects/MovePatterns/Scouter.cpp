@@ -103,13 +103,7 @@ void Scouter::move(const int pathObjId)
 // 指定経路オブジェクトまでの経路を取得
 deque<Direction> Scouter::getPath(PathObject* pathObject)
 {
-    Vector<MapObject*> exclusion {};
-    exclusion.pushBack(this->getMainCharacter());
-    exclusion.pushBack(this->chara);
-    
-    deque<Direction> path {this->finder->getPath(this->chara->getGridRect(), this->getMapObjectList()->getGridCollisionRects(exclusion), pathObject->getGridPosition())};
-    
-    exclusion.clear();
+    deque<Direction> path {this->finder->getPath(this->chara->getGridRect(), this->getMapObjectList()->getGridCollisionRects({this->chara, this->getMainCharacter()}), pathObject->getGridPosition())};
     
     return path;
 }

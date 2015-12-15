@@ -115,8 +115,18 @@ Direction MapObject::getDirection() const {return this->location.direction;}
 // Spriteを取得
 Sprite* MapObject::getSprite() const { return this->sprite;};
 
-// 当たり判定の有無を取得
-const bool MapObject::isHit() const {return this->_isHit;}
+// マップ上にある格子Rectを取得
+vector<Rect> MapObject::getWorldGridCollisionRects()
+{
+    vector<Rect> gridCollisionRects {};
+    
+    for(MapObject* obj : this->objectList->getCollisionObjects({this}))
+    {
+        gridCollisionRects.push_back(obj->getGridRect());
+    }
+    
+    return gridCollisionRects;
+}
 
 // 衝突判定用Rectを取得
 Rect MapObject::getCollisionRect() const
@@ -149,6 +159,9 @@ Rect MapObject::getCollisionRect(const vector<Direction>& directions) const
     // あたり判定用Rectを縦横-2ピクセルした後に、x,y方向に1ピクセル足すことによって、関係ない範囲を巻き込まないようにしている（線分上、頂点上であっても判定がきいてしまうため）
     return Rect(rect.origin.x + 1 + movementVec.x, rect.origin.y + 1 + movementVec.y, rect.size.width - 2, rect.size.height - 2);
 }
+
+// 当たり判定の有無を取得
+const bool MapObject::isHit() const {return this->_isHit;}
 
 // 指定の方向に対して当たり判定があるか
 const bool MapObject::isHit(const Direction& direction) const

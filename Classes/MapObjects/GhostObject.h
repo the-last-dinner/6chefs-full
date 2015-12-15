@@ -25,6 +25,7 @@ private:
     bool init();
     
 public:
+    virtual vector<Rect> getWorldGridCollisionRects() override;
     virtual const bool isHit(const vector<Direction>& directions) const override;
 };
 
