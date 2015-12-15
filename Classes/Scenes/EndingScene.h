@@ -22,6 +22,10 @@ private:
     bool init(const int endingId);
     virtual void onEnter() override;
     virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
+    
+// インスタンス変数
+private:
+    int end_id {0};
 };
 
 #endif /* EndingScene_h */
