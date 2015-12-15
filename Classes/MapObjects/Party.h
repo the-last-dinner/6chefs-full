@@ -32,7 +32,8 @@ private:
     Party();
     ~Party();
     bool init(const vector<CharacterData>& datas);
-    
+    bool moveMainCharacter(const vector<Direction>& directions, float ratio, function<void()> callback);
+    void moveMember(Character* member, Character* previousMember, float ratio);
 public:
     void addMember(Character* character);
     void removeMember(const int obj_id);
