@@ -278,6 +278,7 @@ void MapObjectList::removeById(const int objectId)
             mtx.lock();
             obj->removeFromParent();
             this->availableObjects.eraseObject(obj);
+            this->disableObjects.pushBack(obj);
             mtx.unlock();
         }
     }
