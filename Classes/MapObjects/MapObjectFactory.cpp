@@ -212,6 +212,14 @@ int MapObjectFactory::getNextPathId(const ValueMap& info) const
     return info.at("nextID").asInt();
 }
 
+// 周りを見渡す必要があるか
+bool MapObjectFactory::isThroughObject(const ValueMap& info) const
+{
+    if(info.count("through") == 0) return false;
+    
+    return info.at("through").asBool();
+}
+
 // 当たり判定レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
@@ -346,6 +354,7 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     obj->setPathId(this->getPathId(info));
     obj->setPreviousId(this->getPreviousPathId(info));
     obj->setNextId(this->getNextPathId(info));
+    obj->setThrough(this->isThroughObject(info));
     
     return obj;
 }

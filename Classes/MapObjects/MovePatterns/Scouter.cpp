@@ -33,6 +33,8 @@ Scouter::~Scouter()
     CC_SAFE_RELEASE_NULL(this->finder);
     CC_SAFE_RELEASE_NULL(this->sight);
     CC_SAFE_RELEASE_NULL(this->subPattern);
+    
+    Director::getInstance()->getScheduler()->unscheduleUpdate(this);
 };
 
 // 初期化
@@ -89,15 +91,22 @@ void Scouter::move(const int pathObjId)
         return;
     }
     
-    this->chara->lookAround([this, pathObjId]
+    // 目的地までの経路を取得
+    PathObject* destObj { this->getMapObjectList()->getPathObjectById(pathObjId) };
+    
+    function<void()> func
     {
-        // 目的地までの経路を取得
-        PathObject* destObj { this->getMapObjectList()->getPathObjectById(pathObjId) };
-        this->chara->walkByQueue(this->getPath(destObj), [this, destObj](bool _)
+        [this, destObj]
         {
-            this->move(this->getMapObjectList()->getPathObjectById(destObj->getNextId())->getPathId());
-        }, SEARCHING_SPEED_RATIO);
-    });
+            this->chara->walkByQueue(this->getPath(destObj), [this, destObj](bool _)
+                                     {
+                                         this->move(this->getMapObjectList()->getPathObjectById(destObj->getNextId())->getPathId());
+                                     }, SEARCHING_SPEED_RATIO);
+        }
+    };
+    
+    if(destObj->needsLookingAround()) this->chara->lookAround(func);
+    if(!destObj->needsLookingAround()) func();
 }
 
 // 指定経路オブジェクトまでの経路を取得

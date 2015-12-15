@@ -18,7 +18,12 @@ const float ItemObject::ANIMATION_DELAY_PER_UNIT { 0.3f };
 ItemObject::ItemObject() {FUNCLOG};
 
 // デストラクタ
-ItemObject::~ItemObject() {FUNCLOG};
+ItemObject::~ItemObject()
+{
+    FUNCLOG
+
+    CC_SAFE_RELEASE_NULL(this->action);
+};
 
 // 初期化
 bool ItemObject::init()
@@ -44,10 +49,18 @@ bool ItemObject::init()
     
     Animate* animate { Animate::create(animation) };
     
-    // アニメーション開始
-    sprite->runAction(RepeatForever::create(animate));
+    this->action = RepeatForever::create(animate);
+    CC_SAFE_RETAIN(this->action);
     
     return true;
+}
+
+void ItemObject::onEnter()
+{
+    MapObject::onEnter();
+    
+    // アニメーション開始
+    this->getSprite()->runAction(this->action);
 }
 
 string ItemObject::getSpriteFrameName(int state)

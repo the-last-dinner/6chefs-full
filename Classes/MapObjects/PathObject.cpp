@@ -40,6 +40,12 @@ void PathObject::setNextId(int nextId)
     this->nextId = nextId;
 }
 
+// 周りを見渡すかどうか
+void PathObject::setThrough(bool through)
+{
+    this->through = through;
+}
+
 // 経路オブジェクトIDを取得
 int PathObject::getPathId() const
 {
@@ -56,4 +62,10 @@ int PathObject::getPreviousId() const
 int PathObject::getNextId() const
 {
     return this->nextId;
+}
+
+// 周りを見渡す必要があるか
+bool PathObject::needsLookingAround() const
+{
+    return this->through;
 }
