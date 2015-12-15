@@ -70,7 +70,10 @@ Label* CharacterMessageLayer::createMessage()
         white->runAction(Sequence::createWithTwoActions(FadeOut::create(1.f), RemoveSelf::create()));
         
         // フレームを揺らす
-        this->frame->runAction(RepeatForever::create(Sequence::create(MoveBy::create(0.05f, Vec2(10.f, 0)), MoveBy::create(0.05f, Vec2(-10.f, 0)), nullptr)));
+        Action* swingAction { RepeatForever::create(Sequence::createWithTwoActions(MoveBy::create(0.05f, Vec2(10.f, 0)), MoveBy::create(0.05f, Vec2(-10.f, 0)))) };
+        this->frame->runAction(swingAction);
+        
+        this->runAction(Sequence::create(DelayTime::create(1.5f), CallFunc::create([this, swingAction]{this->stopAction(swingAction); this->frame->setPosition(this->defaultMFramePosition);}), nullptr));
         
         SoundManager::getInstance()->playSE("msg_reaction.mp3");
     }
