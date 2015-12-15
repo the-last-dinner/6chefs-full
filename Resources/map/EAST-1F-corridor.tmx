@@ -33,12 +33,20 @@
    eJztxrEJgEAQRcGLXv8INiDYgHANCDYg2I+RsMLLNv0TzRh/K/6OBX+14+/Y8FcTf8eBv7rwd5z4qwd/x40/IiLi8wL4bQ5/
   </data>
  </layer>
- <layer name="door3" width="30" height="18">
+ <layer name="door4" width="30" height="18">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFgxmwczEwcHDR315+oJ0CA2CvONBOiQGwVx5op8IA2DsKRsEoGAUjBQAAgtsA7Q==
+  </data>
+ </layer>
+ <layer name="door3" width="30" height="18">
+  <properties>
+   <property name="cc_vertexz" value="-12"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSigLQAACHAAAQ==
   </data>
  </layer>
  <layer name="door2" width="30" height="18">

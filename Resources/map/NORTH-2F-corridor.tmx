@@ -42,7 +42,7 @@
    eJzt0zEKg0AQhlGrgMVaCt7/TkIuELBKJ6RL7RQ7WyhuyHvdD8s2HzMMR1up71fY3C9r1NJM99+j+386o/uz1Lfu/Ynd12S3/OHe+3fGvb/Dm0/Yu+7dyRq1NBun+n6Ezf2yRi3Nlqm+Z927kzXSDAAAAAAAAACu8QVrTiPb
   </data>
  </layer>
- <layer name="doorC3" width="126" height="24">
+ <layer name="doorC4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -50,7 +50,7 @@
    eJzt0bENwCAMAEFvwKChC13oYHC8QbpEgrsJXvoIAADgzVUiavm7gq/d+bz5fpwnn3ffjzPy+fQdAAAAAAAAYHsLmP4ENQ==
   </data>
  </layer>
- <layer name="doorB3" width="126" height="24">
+ <layer name="doorB4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -58,12 +58,36 @@
    eJzt0cENgCAQAMHrgELlJz/5QeFcEUZDmKlgk40AAIC9XSWilr8r+Nqdz5vvx3nyeff9OCOfT98BAAAAAAAAeMECPWwENQ==
   </data>
  </layer>
- <layer name="doorA3" width="126" height="24">
+ <layer name="doorA4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0cENgCAQAMHrgELlJz/5QeFcEUZDmKlgk40AAID3XSWilr8r+Nqdz5vvx3nyeff9OCOfT98BAAAAAAAA2MwCA3oENQ==
+  </data>
+ </layer>
+ <layer name="doorC3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENwCAMAEFvwGChC13oYP8Z8AbpEgnuJnjpIwAAgDdXiajl7wq+dufz5vtxnnzefT/OyOfTdwAAAAAAAIDtLYUPAzU=
+  </data>
+ </layer>
+ <layer name="doorB3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA9naViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAOAFC8VuAzU=
+  </data>
+ </layer>
+ <layer name="doorA3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA3neViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAGAzCx98AzU=
   </data>
  </layer>
  <layer name="doorC2" width="126" height="24">

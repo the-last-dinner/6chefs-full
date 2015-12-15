@@ -179,5 +179,63 @@
     {
       "type":"already"
     }
+  ],
+  "10":[
+    {
+      "type":"setLight",
+      "objID":"1"
+    },
+    {
+      "type":"setLight",
+      "objID":"2"
+    },
+    {
+      "type":"setLight",
+      "objID":"3"
+    },
+    {
+      "type":"setLight",
+      "objID":"4"
+    },
+    {
+      "type":"setLight",
+      "objID":"5"
+    },
+    {
+      "type":"setLight",
+      "objID":"6"
+    },
+    {
+      "type":"setLight",
+      "objID":"7"
+    },
+    {
+      "type":"setLight",
+      "objID":"8"
+    },
+    {
+      "type":"setLight",
+      "objID":"9"
+    },
+    {
+      "type":"setLight",
+      "objID":"10"
+    },
+    {
+      "type":"setLight",
+      "objID":"11"
+    },
+    {
+      "type":"setLight",
+      "objID":"12"
+    },
+    {
+      "type":"setLight",
+      "objID":"13"
+    },
+    {
+      "type":"setLight",
+      "objID":"14"
+    }
   ]
 }

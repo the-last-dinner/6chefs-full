@@ -1242,29 +1242,7 @@
               "time":3.0
             },
             {
-              "type":"playBGM",
-              "file":"ending.mp3"
-            },
-            {
               "type":"stopBGM"
-            },
-            {
-              "type":"spawn",
-              "action":[
-                {
-                  "type":"changeChapter",
-                  "chapterID":"6"
-                },
-                {
-                  "type":"displayImg",
-                  "file":"epilogue.png",
-                  "time":5.0
-                },
-                {
-                  "type":"playSE",
-                  "file":"epilogue.mp3"
-                }
-              ]
             },
             {
               "type":"fadeout",

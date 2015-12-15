@@ -679,6 +679,10 @@
 					"text":["加藤の料理人としての姿勢が少し分かった気がする。","しばらく加藤から狩猟の心得を聞かされた。","加藤と仲良くなった"]
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_rannmaru.mp3"
+				},
+				{
 					"type":"changeStatus",
 					"charaID":"2",
 					"favorite":"1"
@@ -687,10 +691,6 @@
 					"type":"addProfile",
 					"charaID":"2",
 					"infoID":"1"
-				},
-				{
-					"type":"stopBGM",
-					"file":"favo_rannmaru.mp3"
 				},
 				{
 					"type":"playBGM",

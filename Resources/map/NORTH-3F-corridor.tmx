@@ -45,7 +45,7 @@
    eJzt0zEKgDAMQFEnwaEdBe9/Ki8geAHBzblS3EIDvrcFQpZPpunbWdr5KP09xolopHt+uv9TRKNd9/QiGvn3/CIa3a8bl+7pRDRaajvPtb/HOBGNtteNVfd0NAIAAAAAAACAMR7v0hf5
   </data>
  </layer>
- <layer name="doorB3" width="126" height="24">
+ <layer name="doorB4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -53,7 +53,7 @@
    eJzt0bENwCAMAEFvwKChC13oYHC8QbpEgrsJXvoIAADgzVUiavm7gq/d+bz5fpwnn3ffjzPy+fQdAAAAAAAAYHsLmP4ENQ==
   </data>
  </layer>
- <layer name="doorA3" width="126" height="24">
+ <layer name="doorA4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -61,12 +61,25 @@
    eJzt0cENgCAQAMHrgELlJz/5QeFcEUZDmKlgk40AAID3XSWilr8r+Nqdz5vvx3nyeff9OCOfT98BAAAAAAAA2MwCA3oENQ==
   </data>
  </layer>
+ <layer name="doorB3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0cENABAQAMHrQHH8+NF/DRTgTcJMBZtsBAAAADs5RZR0u4LT6nrefP9OX8+H7wAAAAAAAADPmwt6AoA=
+  </data>
+ </layer>
+ <layer name="doorA3" width="126" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA3neViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAGAzCx98AzU=
+  </data>
+ </layer>
  <layer name="doorB2" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bENwCAMAEFvwGChC13oYP8Z8AbpEgnuJnjpIwAAgDdXiajl7wq+dufz5vtxnnzefT/OyOfTdwAAAAAAAIDtLYUPAzU=
+   eJzt0bENwCAMAEFvwCChC13oYP+Z8AbpEgnuJnjpIwAAgDdXiajl7wq+dufz5vtxnnzefT/OyOfTdwAAAAAAAIDtLXEgAjU=
   </data>
  </layer>
  <layer name="doorA2" width="126" height="24">
@@ -74,7 +87,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA3neViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAGAzCx98AzU=
+   eJzt0UENwCAQAMFzgJDyK7/yA/+aOBFNG8KMgk02AgAA3neViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAGAzCzt+AjU=
   </data>
  </layer>
  <layer name="doorB" width="126" height="24">

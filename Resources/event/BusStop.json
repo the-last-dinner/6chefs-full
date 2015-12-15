@@ -10,9 +10,6 @@
       "type": "sequence",
       "action": [
         {
-          "type": "fadeout"
-        },
-        {
           "type":"displayImg",
           "file":"warning.png",
           "time":3.0
@@ -157,6 +154,14 @@
       "mapID": "2",
       "x": 2,
       "y": 79
+    }
+  ],
+  "6":[
+    {
+      "type":"fadeout"
+    },
+    {
+      "type":"already"
     }
   ]
 }

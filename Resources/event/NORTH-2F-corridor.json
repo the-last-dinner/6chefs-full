@@ -52,26 +52,29 @@
 						},
 						{
 							"type":"wait",
-							"time":0.5
+							"time":0.2
 						},
 						{
 							"type":"removeLayer",
 							"layer":"doorA2"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"doorA3"
-								},
-								{
-									"type":"changeMap",
-									"mapID":"11",
-									"x":14,
-									"y":33
-								}
-							]
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"removeLayer",
+							"layer":"doorA3"
+						},
+						{
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"changeMap",
+							"mapID":"11",
+							"x":14,
+							"y":33
 						}
 					]
 				}
@@ -95,26 +98,29 @@
 						},
 						{
 							"type":"wait",
-							"time":0.5
+							"time":0.2
 						},
 						{
 							"type":"removeLayer",
 							"layer":"doorB2"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"doorB3"
-								},
-								{
-									"type":"changeMap",
-									"mapID":"13",
-									"x":14,
-									"y":33
-								}
-							]
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"removeLayer",
+							"layer":"doorB3"
+						},
+						{
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"changeMap",
+							"mapID":"13",
+							"x":14,
+							"y":33
 						}
 					]
 				}
@@ -137,23 +143,30 @@
 							"layer":"doorC"
 						},
 						{
+							"type":"wait",
+							"time":0.2
+						},
+						{
 							"type":"removeLayer",
 							"layer":"doorC2"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"doorC3"
-								},
-								{
-									"type":"changeMap",
-									"mapID":"15",
-									"x":14,
-									"y":33
-								}
-							]
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"removeLayer",
+							"layer":"doorC3"
+						},
+						{
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"changeMap",
+							"mapID":"15",
+							"x":14,
+							"y":33
 						}
 					]
 				}

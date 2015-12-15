@@ -58,10 +58,10 @@
 					"type":"changeFlg",
 					"flg":2
 				},
-                {
-                    "type":"createChara",
-                    "objID":"191"
-                },
+				{
+					"type":"createChara",
+					"objID":"191"
+				},
 				{
 					"type":"already",
 					"event":["12","4"]

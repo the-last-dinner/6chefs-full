@@ -32,7 +32,7 @@
 						},
 						{
 							"type":"wait",
-							"time":0.5
+							"time":0.2
 						},
 						{
 							"type":"removeLayer",
@@ -40,7 +40,15 @@
 						},
 						{
 							"type":"wait",
-							"time":0.5
+							"time":0.2
+						},
+						{
+							"type":"removeLayer",
+							"layer":"doorA3"
+						},
+						{
+							"type":"wait",
+							"time":0.2
 						},
 						{
 							"type":"changeMap",
@@ -120,11 +128,23 @@
 						},
 						{
 							"type":"wait",
-							"time":0.5
+							"time":0.2
 						},
 						{
 							"type":"removeLayer",
 							"layer":"doorB2"
+						},
+						{
+							"type":"wait",
+							"time":0.2
+						},
+						{
+							"type":"removeLayer",
+							"layer":"doorB3"
+						},
+						{
+							"type":"wait",
+							"time":0.2
 						},
 						{
 							"type":"changeMap",
@@ -174,11 +194,23 @@
 								},
 								{
 									"type":"wait",
-									"time":0.5
+									"time":0.2
 								},
 								{
 									"type":"removeLayer",
 									"layer":"doorB2"
+								},
+								{
+									"type":"wait",
+									"time":0.2
+								},
+								{
+									"type":"removeLayer",
+									"layer":"doorB3"
+								},
+								{
+									"type":"wait",
+									"time":0.2
 								}
 							]
 						}
@@ -278,19 +310,29 @@
 	],
 	"11":[
 		{
-			"type":"spawn",
+			"type":"sequence",
 			"action":[
 				{
-					"type":"getItem",
-					"itemID":"152",
-					"name":"食材庫の鍵"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"152",
+							"name":"食材庫の鍵"
+						},
+						{
+							"type":"removeChara",
+							"objID":"192"
+						},
+						{
+							"type":"already"
+						}
+					]
 				},
 				{
-					"type":"removeChara",
-					"objID":"192"
-				},
-				{
-					"type":"already"
+					"type":"storyMsg",
+					"title":"アイテムの装備",
+					"text":["人にものをあげるときや、\n鍵などのアイテムは装備しなくても使用できますが\nそれ以外のアイテムは装備しないと\n使用できません。\nアイテムを使用したい時は装備を忘れないようにしましょう。"]
 				}
 			]
 		}

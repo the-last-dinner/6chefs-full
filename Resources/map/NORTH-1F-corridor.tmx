@@ -29,15 +29,7 @@
    <property name="cc_vertexz" value="-17"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt00EOQDAQQFFO67ycyIKFWEiTlo7Om+QlVtLOZ5qMMZlmnQ/L5bnE07toq3TXJQ1qW73R3fdTtucW3XrfK/qZRhNxx9up9zmiG+1/11133qF7ThG7ozu6ozu6ozu6ozu6o3tWuufUovt9et9pVC33rPt/RO9uvhndc05tsx0NNv+H
-  </data>
- </layer>
- <layer name="dishroom" width="126" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-16"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt0TENAAAIBDH8C0MXCxJYyLfJKbgqAAC41xtZfM/keybfAQAAAAAAAPhoAOHfBjE=
+   eJzt0zsKgDAUBdG4WtfrjixsJIU8yIv5zFw4YCWa0VKcc6Rdx+N8XUd83Uu5omcdadDaqkd3v5/YOWd0G/1esz/Tbjzjde32v8vu6sPuTHZnsjuT3ZnszmR3Jrsz2Z3J7kx2Z7I7k92ZMrrXG/1Ou8o8Z7uvY/bu7p/ZnbnWZjf+CP9/
   </data>
  </layer>
  <layer name="MonoShita" width="126" height="24">
@@ -56,7 +48,7 @@
    eJzt07EJgEAMQNGrBAstBfffSXABwQUEO+s7xC5cwPe6QEjzSSnfzqmej+l9j34iGumen+7/FNFo1z29tvvm338hotHd3Lh0Tyei0TjX8zC/79FPRKO1ubHono5GAAAAAAAAANDHA/DSF/k=
   </data>
  </layer>
- <layer name="doorC3" width="126" height="24">
+ <layer name="doorC4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
@@ -64,12 +56,28 @@
    eJzt0bENwCAMAEFvwKChC13oYHC8QbpEgrsJXvoIAADgzVUiavm7gq/d+bz5fpwnn3ffjzPy+fQdAAAAAAAAYHsLmP4ENQ==
   </data>
  </layer>
- <layer name="doorB3" width="126" height="24">
+ <layer name="doorC3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENwCAMAEFvwGChC13oYP8Z8AbpEgnuJnjpIwAAgDdXiajl7wq+dufz5vtxnnzefT/OyOfTdwAAAAAAAIDtLYUPAzU=
+  </data>
+ </layer>
+ <layer name="doorB4" width="126" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0cENgCAQAMHrgELlJz/5QeFcEUZDmKlgk40AAIC9XSWilr8r+Nqdz5vvx3nyeff9OCOfT98BAAAAAAAAeMECPWwENQ==
+  </data>
+ </layer>
+ <layer name="doorB3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA9naViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAOAFC8VuAzU=
   </data>
  </layer>
  <layer name="doorC2" width="126" height="24">
@@ -85,7 +93,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA9naViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAOAFC8VuAzU=
+   eJzt0UENwCAQAMFzgJDyK7/yA/+aOBFNG8KMgk02AgAA9naViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAOAFC01/AjU=
   </data>
  </layer>
  <layer name="breakdoor" width="126" height="24">
