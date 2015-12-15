@@ -116,17 +116,17 @@ void EndingScene::createTrueEnding()
         {"エンジニア",68.0},
         {"いのす", 69.0},
         //
-        {"孫一ペロペロ", 73.5},
-        {"キャラクターデザイナー", 74.0},
-        {"早乙女", 75.0},
+        {"孫一ペロペロ", 73.0},
+        {"キャラクターデザイナー", 73.5},
+        {"早乙女", 74.5},
         //
-        {"ピクセル", 79.5},
-        {"アート", 80.0},
-        {"おぐぐ", 81.0},
+        {"ピクセル", 78.5},
+        {"アート", 79.0},
+        {"おぐぐ", 80.0},
         //
-        {"マエストロ", 86.0},
-        {"プランナー", 86.5},
-        {"スズラン", 87.5},
+        {"マエストロ", 84.0},
+        {"プランナー", 84.5},
+        {"スズラン", 85.5},
     };
     vector<string> pictures_name = {
         "epilogue.png",
@@ -164,7 +164,7 @@ void EndingScene::createTrueEnding()
         label->setPosition(x, -1 * label->getContentSize().height / 2);
         label->setColor(Color3B::WHITE);
         this->addChild(label);
-        label_acts.pushBack(Sequence::createWithTwoActions(TargetedAction::create(label, DelayTime::create(credits_name[i].second)), TargetedAction::create(label, MoveTo::create(credits_name[i].second < 55 ? moving_time : (moving_time + 2.0), Vec2(label->getPosition().x, label->getContentSize().height / 2 + WINDOW_HEIGHT)))));
+        label_acts.pushBack(Sequence::createWithTwoActions(TargetedAction::create(label, DelayTime::create(credits_name[i].second)), TargetedAction::create(label, MoveTo::create(credits_name[i].second < 55 ? moving_time : (moving_time + 1.0), Vec2(label->getPosition().x, label->getContentSize().height / 2 + WINDOW_HEIGHT)))));
     }
     
     // 制作
@@ -172,7 +172,7 @@ void EndingScene::createTrueEnding()
     last_label->setPosition(x, -1 * last_label->getContentSize().height / 2);
     last_label->setColor(Color3B::WHITE);
     this->addChild(last_label);
-    last_label->runAction(Sequence::createWithTwoActions(DelayTime::create(92.5), MoveTo::create(5.5, Vec2(last_label->getPosition().x, last_label->getContentSize().height * 2.5 + WINDOW_HEIGHT / 2))));
+    last_label->runAction(Sequence::createWithTwoActions(DelayTime::create(91.0), MoveTo::create(5.5, Vec2(last_label->getPosition().x, last_label->getContentSize().height * 2.5 + WINDOW_HEIGHT / 2))));
     
     // ロゴ
     Sprite* logo {Sprite::createWithSpriteFrameName("the_last_dinner_log.png")};
@@ -180,7 +180,7 @@ void EndingScene::createTrueEnding()
     float scale_logo = 0.75;
     logo->setScale(scale_logo);
     this->addChild(logo);
-    logo->runAction(Sequence::createWithTwoActions(DelayTime::create(93.0), MoveTo::create(5.0, Vec2(logo->getPosition().x, WINDOW_HEIGHT/2))));
+    logo->runAction(Sequence::createWithTwoActions(DelayTime::create(91.5), MoveTo::create(5.0, Vec2(logo->getPosition().x, WINDOW_HEIGHT/2))));
     
     // 画像
     vector<Sprite*> pictures {};
