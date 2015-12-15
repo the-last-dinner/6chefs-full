@@ -31,8 +31,8 @@ bool MapNameNotification::init(const string& message)
     
     // 背景を生成
     Cloud* bg { Cloud::create(label->getContentSize()) };
-    bg->addChild(label);
     this->addChild(bg);
+    this->addChild(label);
     
     this->setContentSize(bg->getContentSize());
     this->setPosition(this->getContentSize().width / 2 , WINDOW_HEIGHT - this->getContentSize().height / 2);

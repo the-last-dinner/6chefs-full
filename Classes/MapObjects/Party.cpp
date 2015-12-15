@@ -69,39 +69,57 @@ void Party::removeMember(const int obj_id)
     }
 }
 
+// 主人公を移動
+bool Party::moveMainCharacter(const vector<Direction>& directions, float ratio, function<void()> callback)
+{
+    return this->getMainCharacter()->walkBy(directions, [this, callback]
+    {
+        callback();
+        if(this->onPartyMoved) this->onPartyMoved(this->getMainCharacter()->getGridRect());
+    }, ratio);
+}
+
+// メンバーを移動
+void Party::moveMember(Character* member, Character* previousMember, float ratio)
+{
+    // 前のメンバーの後ろに移動するようにする
+    Direction backDirection { MapUtils::oppositeDirection(previousMember->getDirection()) };
+    
+    Point destPos {previousMember->getGridPosition()};
+    
+    switch (backDirection)
+    {
+        case Direction::FRONT:
+        case Direction::BACK:
+            destPos += MapUtils::directionsToMapVector({backDirection}) * previousMember->getGridSize().height;
+            break;
+            
+        case Direction::LEFT:
+            destPos += MapUtils::directionsToMapVector({backDirection}) * (member->getGridSize().width);
+            break;
+            
+        case Direction::RIGHT:
+            destPos += MapUtils::directionsToMapVector({backDirection}) * (previousMember->getGridSize().width);
+            break;
+            
+        default:
+            break;
+    }
+    
+    Vec2 movement { destPos - member->getGridPosition() };
+    member->walkBy(MapUtils::vectoMapDirections(movement), nullptr, ratio);
+}
+
 // パーティを移動
 bool Party::move(const vector<Direction>& directions, float ratio, function<void()> callback)
 {
-    Direction direction {Direction::SIZE};
-    Point destPos { Point::ZERO };
+    // 主人公を移動
+    if(!this->moveMainCharacter(directions, ratio, callback)) return false;
     
-    for(int i { 0 }; i < this->members.size(); i++)
+    // メンバーを移動
+    for(int i { 1 }; i < this->members.size(); i++)
     {
-        Character* character {this->members.at(i)};
-        vector<Direction> dirs {};
-        function<void()> cb { nullptr };
-        
-        // 主人公について
-        if(i == 0)
-        {
-            dirs = directions;
-            cb = [this, callback, character]
-            {
-                callback();
-                if(this->onPartyMoved) this->onPartyMoved(character->getGridRect());
-            };
-        }
-        // 主人公以外について
-        if(i != 0)
-        {
-            character->setDirection(direction);
-            dirs = MapUtils::vecToDirections(destPos - character->getPosition());
-        }
-        
-        if(!character->walkBy(dirs, cb, ratio)) return false;
-        
-        direction = character->getDirection();
-        destPos = character->getPosition();
+        this->moveMember(this->members.at(i), this->members.at(i - 1), ratio);
     }
     
     return true;

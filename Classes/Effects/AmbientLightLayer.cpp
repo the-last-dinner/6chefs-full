@@ -15,7 +15,7 @@ const Color3B AmbientLightLayer::DAY {Color3B(Color4F(1.f, 1.f, 0.95f, 1.f))};
 const Color3B AmbientLightLayer::EVENING {Color3B(Color4F(1.f, 0.4f, 0.f, 1.f))};
 const Color3B AmbientLightLayer::ROOM {Color3B(Color4F(0.35f, 0.35f, 0.50f, 1.f))};
 const Color3B AmbientLightLayer::NIGHT {Color3B(Color4F(0.15f, 0.15f, 0.35f, 1.f))};
-const Color3B AmbientLightLayer::BASEMENT {Color3B(0.f, 0.f, 0.f)};
+const Color3B AmbientLightLayer::BASEMENT {Color3B(Color4F(0.08f, 0.08f, 0.15f, 1.f))};
 
 // コンストラクタ
 AmbientLightLayer::AmbientLightLayer(){ FUNCLOG }

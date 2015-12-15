@@ -181,7 +181,7 @@ void DungeonScene::onPassedEventFinished()
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
-    // イベント中なら無視
+    // イベント中なら無視ｒ
     if(this->eventTask->isEventRunning() || this->eventTask->existsEvent()) return;
     
     // 敵が存在すれば無視

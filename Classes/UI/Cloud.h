@@ -21,11 +21,17 @@ private:
 public:
     CREATE_FUNC_WITH_PARAM(Cloud, const Size&)
 
+// インスタンス変数
+private:
+    Sprite* sprite { nullptr };
+    
 // インスタンスメソッド
 private:
     Cloud();
     ~Cloud();
     bool init(const Size& size);
+public:
+    void setBlendFunc(const BlendFunc& blendFunc);
 };
 
 #endif /* Cloud_h */

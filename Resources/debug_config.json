@@ -1,5 +1,5 @@
 {
-	"stats":true,
+	"stats":false,
 	"debug_mask":false,
-	"invincible_mode":true
+	"invincible_mode":false
 }

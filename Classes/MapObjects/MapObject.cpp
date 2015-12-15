@@ -164,7 +164,7 @@ const bool MapObject::isHit(const vector<Direction>& directions) const
     if(!this->objectList) return false;
     
     // 自身以外の当たり判定を持つオブジェクトが、指定方向にあればtrueを返す
-    for(MapObject* obj : this->objectList->getMapObjects(this->getCollisionRect(directions)))
+    for(MapObject* obj : this->objectList->getMapObjectsByGridRect(this->getGridRect(directions)))
     {
         if(obj->isHit() && obj != this) return true;
     }

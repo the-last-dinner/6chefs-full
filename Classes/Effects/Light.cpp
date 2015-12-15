@@ -26,9 +26,8 @@ bool Light::init(const Information& info)
     
     this->info = info;
 	
-	Sprite* light {Sprite::createWithSpriteFrameName("light_white.png")};
+	Sprite* light {Sprite::createWithSpriteFrameName("light.png")};
 	light->setColor(info.color);
-    light->setOpacity(150);
 	float scale {(info.radius * 2) / light->getContentSize().width};
 	light->setScale(scale);
 	this->setContentSize(light->getContentSize() * scale);
