@@ -52,17 +52,17 @@ void NotificationManager::notifyRemainsInQueue()
 {
     if(this->notifications.empty()) return;
     
-    this->notifyInQueue(this->notifications.front());
+    this->notifyInQueue(this->notifications.front(), false);
 }
 
 // トロフィ獲得通知をキューから表示
-void NotificationManager::notifyInQueue(NotificationNode* node)
+void NotificationManager::notifyInQueue(NotificationNode* node, const bool sound)
 {
     if(this->notifications.front() != node) return;
     
     Director::getInstance()->getRunningScene()->addChild(node, Priority::NOTIFICATION);
     node->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
-    SoundManager::getInstance()->playSE(Resource::SE::TROPHY_NOTIFICATION);
+    if(sound) SoundManager::getInstance()->playSE(Resource::SE::TROPHY_NOTIFICATION);
 }
 
 // 通知の表示アニメーション終了時

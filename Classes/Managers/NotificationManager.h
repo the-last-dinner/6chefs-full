@@ -31,7 +31,7 @@ public:
     void notifyRemainsInQueue();
     
 private:
-    void notifyInQueue(NotificationNode* node);
+    void notifyInQueue(NotificationNode* node, const bool sound = true);
     void onNotifyEnterAnimationFinished(NotificationNode* node);
     void onNotifyExitAnimationFinished(NotificationNode* node);
 };
