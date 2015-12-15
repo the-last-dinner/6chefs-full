@@ -106,6 +106,7 @@ Label* CharacterMessageLayer::createMessage()
 	
 	// メッセージ本文
 	Label* message = Label::createWithTTF(data->getMessage(), "fonts/cinecaption2.28.ttf", 24.f);
+    message->setLineHeight(36.f);
     message->setHorizontalAlignment(TextHAlignment::LEFT);
     message->setVerticalAlignment(TextVAlignment::TOP);
 	message->setPosition(Point(message->getContentSize().width / 2 + LEFT_MARGIN, this->frame->getContentSize().height - message->getContentSize().height / 2 - TOP_MARGIN));
