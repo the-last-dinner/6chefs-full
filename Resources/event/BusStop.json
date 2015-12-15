@@ -18,6 +18,11 @@
           "time":3.0
         },
         {
+          "type":"displayImg",
+          "file":"fiction.png",
+          "time":3.0
+        },
+        {
           "type":"storyMsg",
           "title":"操作説明",
           "text":["←↑↓→,awsd・・・移動\nShiftキー　　・・・走る\nxキー　　　　・・・メニュー\nスペースキー ・・・決定,選択"]
