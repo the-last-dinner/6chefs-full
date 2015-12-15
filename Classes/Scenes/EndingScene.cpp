@@ -10,7 +10,9 @@
 
 #include "Datas/Scene/EndingSceneData.h"
 #include "Datas/Scene/DungeonSceneData.h"
+#include "Datas/Scene/TitleSceneData.h"
 #include "Scenes/DungeonScene.h"
+#include "Scenes/TitleScene.h"
 #include "Layers/LoadingLayer.h"
 
 // コンストラクタ
@@ -34,6 +36,26 @@ void EndingScene::onEnter()
 
 // リソースのプリロード完了時
 void EndingScene::onPreloadFinished(LoadingLayer* loadingLayer)
+{
+    // プリロード終了
+    loadingLayer->onLoadFinished();
+    
+    // エンディング振り分け
+    switch (this->end_id) {
+        case etoi(END_ID::NORMAL_END):
+            createNormalEnding();
+            break;
+        case etoi(END_ID::TRUE_END):
+            createTrueEnding();
+            break;
+        default:
+            createBadEnding();
+            break;
+    }
+}
+
+// トゥルーエンディング生成
+void EndingScene::createTrueEnding()
 {
     vector<pair<string,float>> credits_name = {
         // ------------------
@@ -198,6 +220,41 @@ void EndingScene::onPreloadFinished(LoadingLayer* loadingLayer)
         }
     }
     
+    // エディング実行
+    SoundManager::getInstance()->playBGM("ending.mp3", false);
+    this->runAction(Sequence::create(picture_acts));
+    this->runAction(Spawn::create(label_acts));
+    this->runAction(Sequence::create(DelayTime::create(103), CallFunc::create([this](){
+        this->onEndingFinished();
+    }), nullptr));
+}
+
+// ノーマルエンドを生成
+void EndingScene::createNormalEnding()
+{
+    Label* label {Label::createWithTTF("Normal END", Resource::Font::SYSTEM, 48)};
+    label->setColor(Color3B::WHITE);
+    label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
+    label->setOpacity(0);
+    this->addChild(label);
+    label->runAction(Sequence::create(FadeIn::create(3.f), DelayTime::create(3.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
+}
+
+// バッドエンドを生成
+void EndingScene::createBadEnding()
+{
+    Label* label {Label::createWithTTF("BAD END", Resource::Font::SYSTEM, 48)};
+    label->setColor(Color3B::WHITE);
+    label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
+    label->setOpacity(0);
+    this->addChild(label);
+    label->runAction(Sequence::create(FadeIn::create(3.f), TintTo::create(2.f, Color3B::RED), DelayTime::create(2.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
+    
+}
+
+// エンディングが終了した時
+void EndingScene::onEndingFinished()
+{
     // FadeOut用幕
     SpriteUtils::Square square = SpriteUtils::Square(0,0,100,100);
     Sprite* black {SpriteUtils::getSquareSprite(square, 0)};
@@ -205,14 +262,27 @@ void EndingScene::onPreloadFinished(LoadingLayer* loadingLayer)
     black->setColor(Color3B::BLACK);
     this->addChild(black);
     
-    // エディング実行
-    loadingLayer->onLoadFinished();
-    SoundManager::getInstance()->playBGM("ending.mp3", false);
-    this->runAction(Sequence::create(picture_acts));
-    this->runAction(Spawn::create(label_acts));
-    this->runAction(Sequence::create(DelayTime::create(103), TargetedAction::create(black, FadeIn::create(2.f)), CallFunc::create([this](){
-        PlayerDataManager::getInstance()->setGameClear(this->end_id);
-        Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
-    }), nullptr));
+    // ゲームクリアをセット
+    this->runAction(Sequence::create(
+                                     TargetedAction::create(black, FadeIn::create(2.f)),
+                                     CallFunc::create([this](){
+            PlayerDataManager::getInstance()->setGameClear(this->end_id);
+            this->replaceScene();
+        }), nullptr));
+    
 }
 
+// シーンを切り替える
+void EndingScene::replaceScene()
+{
+    BaseScene* target {nullptr};
+    if (this->end_id == etoi(END_ID::TRUE_END))
+    {
+        target = DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation()));
+    }
+    else
+    {
+        target = TitleScene::create();
+    }
+    Director::getInstance()->replaceScene(target);
+}
