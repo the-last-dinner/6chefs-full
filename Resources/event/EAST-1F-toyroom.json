@@ -5,6 +5,10 @@
 	 		"file":"toyroom.mp3"
     	},
     	{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+    	{
     		"type":"playBGM",
     		"file":"EAST.mp3",
      		 "volume":0.1

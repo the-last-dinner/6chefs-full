@@ -17,14 +17,14 @@
 	],
 	"3":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"34",
 			"x":9,
 			"y":5
-		},
-		{
-			"type":"playSE",
-			"file":"door1.mp3"
 		}
 	],
 	"4":[
@@ -214,7 +214,8 @@
 							"type":"charaWalkTo",
 							"objID":"1072",
 							"x":10,
-							"y":8
+							"y":8,
+							"speed":3.0
 						},
 						{
 							"type":"changeDirection",
@@ -412,18 +413,21 @@
 							"type":"charaWalk",
 							"objID":"1072",
 							"direction":"UP",
-							"steps":2.0
+							"steps":2.0,
+							"speed":3.0
 						},
 						{
 							"type":"charaWalk",
 							"objID":"1072",
 							"direction":"RIGHT",
-							"steps":0.5
+							"steps":0.5,
+							"speed":3.0
 						},
 						{
 							"type":"changeDirection",
 							"objID":"1072",
-							"direction":"UP"
+							"direction":"UP",
+							"speed":3.0
 						},
 						{
 							"type":"barrage",

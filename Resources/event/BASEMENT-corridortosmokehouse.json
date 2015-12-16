@@ -108,190 +108,266 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"charaMoveTo",
-									"x":11,
-									"y":4,
-									"objID":"1041",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":11,
+											"y":4,
+											"objID":"1041",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1041"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":5,
-									"y":5,
-									"objID":"1042",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":5,
+											"y":5,
+											"objID":"1042",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1042"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":9,
-									"y":3,
-									"objID":"1043",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":9,
+											"y":3,
+											"objID":"1043",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1043"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":13,
-									"y":5,
-									"objID":"1044",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":13,
+											"y":5,
+											"objID":"1044",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1044"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":13,
-									"y":3,
-									"objID":"1045",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":13,
+											"y":3,
+											"objID":"1045",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1045"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":7,
-									"y":4,
-									"objID":"1046",
-									"speed":2.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":7,
+											"y":4,
+											"objID":"1046",
+											"speed":2.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1046"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":14,
-									"y":4,
-									"objID":"1047",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":14,
+											"y":4,
+											"objID":"1047",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1047"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":13,
-									"y":4,
-									"objID":"1048",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":13,
+											"y":4,
+											"objID":"1048",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1048"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":9,
-									"y":3,
-									"objID":"1049",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":9,
+											"y":3,
+											"objID":"1049",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1049"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":14,
-									"y":4,
-									"objID":"1050",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":14,
+											"y":4,
+											"objID":"1050",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1050"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":12,
-									"y":4,
-									"objID":"1051",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":12,
+											"y":4,
+											"objID":"1051",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1051"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":7,
-									"y":3,
-									"objID":"1052",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":7,
+											"y":3,
+											"objID":"1052",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1052"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":9,
-									"y":3,
-									"objID":"1053",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":9,
+											"y":3,
+											"objID":"1053",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1053"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":6,
-									"y":3,
-									"objID":"1054",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":6,
+											"y":3,
+											"objID":"1054",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1054"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":9,
-									"y":3,
-									"objID":"1055",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":9,
+											"y":3,
+											"objID":"1055",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1055"
+										}
+									]
 								},
 								{
-									"type":"charaMoveTo",
-									"x":9,
-									"y":3,
-									"objID":"1056",
-									"speed":5.0
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMoveTo",
+											"x":9,
+											"y":3,
+											"objID":"1056",
+											"speed":5.0
+										},
+										{
+											"type":"removeChara",
+											"objID":"1056"
+										}
+									]
 								}
 							]
 						}
 					]	
 				},
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"removeChara",
-							"objID":"1041"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1042"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1043"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1044"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1045"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1046"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1047"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1048"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1049"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1050"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1051"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1052"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1053"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1054"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1055"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1056"
-						}
-					]
-				},
+				
 				{
 					"type":"charaMsg",
 					"text":["何なんだ・・・ゴキブリ・・・？"],

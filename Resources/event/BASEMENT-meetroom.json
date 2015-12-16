@@ -213,10 +213,6 @@
 							"objID":"1076"
 						}, 
 						{
-							"type":"wait",
-							"time":2.0
-						},
-						{
 							"type":"removeEnemy",
 							"enemyID":"1421"
 						},

@@ -70,6 +70,9 @@
   </data>
  </layer>
  <layer name="doorA3" width="126" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-13"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0UENwCAQAMFzgLDyK7/yA/8aOBFNG8KMgk02AgAA3neViFr+ruBrdz5vvh/nyefd9+OMfD59BwAAAAAAAGAzCx98AzU=
   </data>

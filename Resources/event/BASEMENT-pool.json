@@ -263,8 +263,20 @@
 							]
 						},
 						{
-							"type":"playSE",
-							"file":"agaa.mp3"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"playSE",
+									"file":"agaa.mp3"
+								},
+								{
+									"type":"charaMsg",
+									"text":["ぎがあああああああああ！！！"],
+									"charaID":"8",
+									"imgID":"1",
+									"option":"reaction"	
+								}
+							]
 						},
 						{
 							"type":"charaMsg",
@@ -272,13 +284,7 @@
 								{
 									"text":["気づかれた！？"],
 									"charaID":"0",
-									"imgID":"2",
-									"option":"reaction"
-								},
-								{
-									"text":["ぎがあああああああああ！！！"],
-									"charaID":"8",
-									"imgID":"1",
+									"imgID":"3",
 									"option":"reaction"
 								},
 								{

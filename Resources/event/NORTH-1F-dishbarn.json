@@ -125,13 +125,25 @@
 					],
 					"false":[
 						{
-							"type":"createEnemy",
-							"x":9,
-							"y":25,
-							"enemyID":"143",
-							"charaID":"8",
-							"movePattern":"5",
-							"speed":10.0
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["そんな！\nどこにも隠れられそうな場所がない！"],
+									"charaID":"0",
+									"imgID":"3",
+									"option":"reaction"
+								},
+								{
+									"type":"createEnemy",
+									"x":9,
+									"y":25,
+									"enemyID":"143",
+									"charaID":"8",
+									"movePattern":"5",
+									"speed":10.0
+								}
+							]
 						}
 					]
 				}
@@ -187,41 +199,8 @@
 	],
 	"7":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["20","17"]
-				}
-			],
-			"action":[
-				{
-					"type":"getItem",
-					"itemID":"1521",
-					"name":"小型低速ジューサー"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1921"
-				},
-				{
-					"type":"already",
-					"event":["20","17"]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["20","17"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["半開きの救急箱だ。\n中身はない"]
-				}
-			]
+			"type":"systemMsg",
+			"text":["半開きの救急箱だ。\n中身はない"]
 		}
 	],
 	"8":[
@@ -311,23 +290,6 @@
 		}
 	],
 	"16":"12のアイテムとった用",
-	"17":"7の小型低速ジューサー用",
-	"18":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["20","17"]
-				}
-			],
-			"action":[
-				{
-					"type":"removeChara",
-					"objID":"1921"
-				}
-			]
-		}
-	],
 	"19":[
 		{
 			"type":"if",

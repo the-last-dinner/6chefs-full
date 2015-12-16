@@ -214,12 +214,6 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="50" x="224" y="352" width="32" height="32">
-   <properties>
-    <property name="EventID" value="18"/>
-    <property name="trigger" value="0"/>
-   </properties>
-  </object>
   <object id="51" x="144" y="384" width="32" height="32">
    <properties>
     <property name="EventID" value="19"/>
@@ -233,11 +227,6 @@
     <property name="EventID" value="3"/>
     <property name="objID" value="1918"/>
     <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="55" x="32" y="144" width="32" height="32">
-   <properties>
-    <property name="objID" value="1921"/>
    </properties>
   </object>
   <object id="56" x="256" y="320" width="32" height="32">

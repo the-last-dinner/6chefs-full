@@ -626,10 +626,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMoveTo",
+                  "type":"charaMove",
                   "objID":"1088",
-                  "x":28,
-                  "y":34,
+                  "direction":"LEFT",
+                  "steps":13.5,
                   "speed":5.0
                 }
               ]
@@ -744,6 +744,10 @@
           "type":"sequence",
           "action":[
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
               "type":"fadeout",
               "time":3.0
             },
@@ -758,10 +762,6 @@
             {
               "type":"createChara",
               "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -878,10 +878,11 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMoveTo",
+                  "type":"charaMove",
                   "objID":"1088",
-                  "x":28,
-                  "y":34
+                  "direction":"LEFT",
+                  "steps":13.5,
+                  "speed":5.0
                 }
               ]
             },
@@ -1013,6 +1014,10 @@
           "type":"sequence",
           "action":[
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
               "type":"fadeout",
               "time":3.0
             },
@@ -1031,10 +1036,6 @@
             {
               "type":"createChara",
               "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1245,13 +1246,12 @@
               "type":"stopBGM"
             },
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-            {
               "type":"ending",
               "endID":"3"
-            }        
+            },
+            {
+              "type":"already"
+            }       
           ]
         }
       ]
@@ -1270,16 +1270,16 @@
           "type":"sequence",
           "action":[
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
               "type":"fadeout",
               "time":3.0
             },
             {
               "type":"createChara",
               "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1372,10 +1372,11 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMoveTo",
+                  "type":"charaMove",
                   "objID":"1088",
-                  "x":28,
-                  "y":34
+                  "direction":"LEFT",
+                  "steps":13.5,
+                  "speed":5.0
                 }
               ]
             },
@@ -1478,6 +1479,10 @@
           "type":"sequence",
           "action":[
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
               "type":"fadeout",
               "time":3.0
             },
@@ -1488,10 +1493,6 @@
             {
               "type":"createChara",
               "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1592,10 +1593,11 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMoveTo",
+                  "type":"charaMove",
                   "objID":"1088",
-                  "x":28,
-                  "y":34
+                  "direction":"LEFT",
+                  "steps":13.5,
+                  "speed":5.0
                 }
               ]
             },
@@ -1695,6 +1697,10 @@
           "type":"sequence",
           "action":[
             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
+            },
+            {
               "type":"fadeout",
               "time":3.0
             },
@@ -1709,10 +1715,6 @@
             {
               "type":"createChara",
               "objID":"1083"
-            },
-            {
-              "type":"removeEnemy",
-              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1806,10 +1808,11 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMoveTo",
+                  "type":"charaMove",
                   "objID":"1088",
-                  "x":28,
-                  "y":34
+                  "direction":"LEFT",
+                  "steps":13.5,
+                  "speed":5.0
                 }
               ]
             },

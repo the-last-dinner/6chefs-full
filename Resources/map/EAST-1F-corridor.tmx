@@ -46,7 +46,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSigLQAACHAAAQ==
+   eJxjYBgFgxk852RgeMFJf3vfA+38MAD2fgfa+WMA7P0PspOL/vaOglEwCkbBSAEAq6EG5g==
   </data>
  </layer>
  <layer name="door2" width="30" height="18">
@@ -54,7 +54,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxk852RgeMFJf3vfA+38MAD2fgfa+WMA7P0PspOL/vaOglEwCkbBSAEAq6EG5g==
+   eJxjYBgFgxkc52RgOMFJf3vPA+28MAD2XgfaeWMA7L0PtPPBANg7CkbBKBgFIwUAAPAvBuU=
   </data>
  </layer>
  <layer name="door" width="30" height="18">

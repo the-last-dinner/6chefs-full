@@ -1,6 +1,10 @@
 {
 	"1":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"21",
 			"x":88,
@@ -91,8 +95,7 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"stopBGM",
-							"file":"NORTH.mp3"
+							"type":"stopBGM"
 						},
 						{
 							"type":"charaMsg",

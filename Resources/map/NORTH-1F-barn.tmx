@@ -47,7 +47,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAd8GBjYPAEYi8g9gZiHyD2ZUPI5wDZuVD+GiC9lg27OeggC6gumw1V/ygYBeSCQo6BsbcOaG89Fe2eBzRr/gD5hVjQN8jdRwiYAd1vTkU/hAHNCifCvC9ANV9B6rgYGBi5KLdXhJOBQRSIFYBmKZJoXhDQHcFUDIMioFnFVDRvEtCsyUMknQEAN34QFA==
+   eJxjYKAd8GBjYPAEYi8g9gZiHyD2ZUPI5wDZuVD+GiC9lg27OeggC6gumw1V/ygYBeSCQo6BsbcOaG89Fe2eBzRr/gD5hVjQN8jdRwiYAd1vTkU/hAHNCifCvHdANe9B6rgYGBi5KLeXj5OBgR+IFYBmKZJoXhDQHcFUDIMioFnFVDRvEtCsyUMknQEADy4P/A==
   </data>
  </layer>
  <layer name="bank" width="20" height="24">
