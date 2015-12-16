@@ -1246,13 +1246,12 @@
               "type":"stopBGM"
             },
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-            {
               "type":"ending",
               "endID":"3"
-            }        
+            },
+            {
+              "type":"already"
+            }       
           ]
         }
       ]
