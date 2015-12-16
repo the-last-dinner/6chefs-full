@@ -17,14 +17,14 @@
 	],
 	"3":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"34",
 			"x":9,
 			"y":5
-		},
-		{
-			"type":"playSE",
-			"file":"door1.mp3"
 		}
 	],
 	"4":[

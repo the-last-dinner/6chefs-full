@@ -824,9 +824,16 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["ちょっと・・・何よコレ・・・","あ、撫子！\n待ちなさいよ！"],
+							"text":["ちょっと・・・何よコレ・・・"],
 							"charaID":"3",
 							"imgID":"2"
+						},
+						{
+							"type":"charaMsg",
+							"text":["あ、撫子！\n待ちなさいよ！"],
+							"charaID":"3",
+							"imgID":"1",
+							"option":"reaction"
 						},
 						{
 							"type":"charaWalk",

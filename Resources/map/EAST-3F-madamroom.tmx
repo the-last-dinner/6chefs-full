@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="65">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="66">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
@@ -53,12 +53,20 @@
    eJztzjEBADAIA7Cic/jXgQae8SQKkgAbr5Ku6wUAwB8DiTAAug==
   </data>
  </layer>
- <layer name="door3" width="30" height="26">
+ <layer name="door4" width="30" height="26">
   <properties>
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzaERACAMxdC/AZgeOOpg/wkpKxRRk+dzkXKaSd2S8YcRz1nwXfH0gu+O5yn4AgAAAM8F9vgBhQ==
+  </data>
+ </layer>
+ <layer name="door3" width="30" height="26">
+  <properties>
+   <property name="cc_vertexz" value="-14"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzcENACAIBMH7aQHYf5n4A2kCQ7LTwEizuEnX+t+o8/S/6537wwsAAACUBCzWA3k=
   </data>
  </layer>
  <layer name="door2" width="30" height="26">
@@ -177,6 +185,12 @@
    <properties>
     <property name="EventID" value="8"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="65" x="96" y="48" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

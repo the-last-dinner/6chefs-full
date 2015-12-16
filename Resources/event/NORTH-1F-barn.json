@@ -1,6 +1,10 @@
 {
 	"1":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"17",
 			"x":88,

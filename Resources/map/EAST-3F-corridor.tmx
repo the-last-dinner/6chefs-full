@@ -42,6 +42,9 @@
   </data>
  </layer>
  <layer name="door3" width="30" height="18">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFgxk852RgeMFJf3vfA+38MAD2fgfa+WMA7P0PspOL/vaOglEwCkbBSAEAq6EG5g==
   </data>

@@ -65,6 +65,10 @@
 	],
 	"7":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"33",
 			"x":13,

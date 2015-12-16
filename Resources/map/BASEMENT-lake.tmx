@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="19">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -8,7 +8,7 @@
    <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj8YCmVMAy0UgG3IZnXRgAPtLo1jNTBo+aNmjdq3qh5o+aNLPMIAVLVEwKnGCF4OAAArAMb/Q==
+   eJxjYBj8YCmVMAy0UgG3IZnXRgBTW10AFBNr3hpG6uBR80bNGzVv1LxR80aWeYQAqeoJgVOMEDwcAAB2jhyd
   </data>
  </layer>
  <layer name="lake" width="20" height="30">
@@ -38,6 +38,8 @@
     <property name="objID" value="1810"/>
    </properties>
   </object>
+  <object id="17" x="176" y="64" width="128" height="32"/>
+  <object id="18" x="16" y="64" width="128" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>

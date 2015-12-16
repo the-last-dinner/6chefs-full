@@ -99,6 +99,12 @@
 							"type":"stopCount"
 						},
 						{
+							"type":"charaMsg",
+							"text":["ここに！"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
 							"type":"fadeout",
 							"time":3.0
 						},

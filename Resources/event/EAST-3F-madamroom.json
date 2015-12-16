@@ -4,25 +4,32 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"playSE",
-							"file":"door1.mp3"
-						},
-						{
-							"type":"removeLayer",
-							"layer":"door"
-						}
-					]
+					"type":"playSE",
+					"file":"door1.mp3"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door"
 				},
 				{
 					"type":"wait",
-					"time":0.5
+					"time":0.2
 				},
 				{
 					"type":"removeLayer",
 					"layer":"door2"
+				},
+				{
+					"type":"wait",
+					"time":0.2
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door3"
+				},
+				{
+					"type":"wait",
+					"time":0.2
 				},
 				{
 					"type":"changeMap",
@@ -242,5 +249,34 @@
 			]
 		}
 	],
-	"9":"日記読んだ用"
+	"9":"日記読んだ用",
+	"10":[
+		{
+			"type":"password",
+			"pass":"1120",
+			"false":[
+				{
+					"type":"charaMsg",
+					"text":["うーん開かないな・・・"],
+					"charaID":"0",
+					"imgID":"1"
+				}
+			],
+			"true":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"1521",
+							"name":"小型低速ジューサー"
+						},
+						{
+							"type":"already"
+						}
+					]
+				}
+			]
+		}
+	]
 }

@@ -4,30 +4,32 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"playSE",
-							"file":"door1.mp3"
-						},
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"door"
-								},
-								{
-									"type":"wait",
-									"time":0.5
-								},
-								{
-									"type":"removeLayer",
-									"layer":"door2"
-								}
-							]
-						}
-					]
+					"type":"playSE",
+					"file":"door1.mp3"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door"
+				},
+				{
+					"type":"wait",
+					"time":0.2
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door2"
+				},
+				{
+					"type":"wait",
+					"time":0.2
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door3"
+				},
+				{
+					"type":"wait",
+					"time":0.5
 				},
 				{
 					"type":"changeMap",
@@ -140,12 +142,12 @@
 				{
 					"event":["34","8"],
 					"Nequip":["158"],
-					"flg":0
+					"flg":1
 				},
 				{
 					"event":["34","8"],
 					"Nequip":["1529"],
-					"flg":0
+					"flg":1
 				}
 			],
 			"action":[
@@ -197,12 +199,12 @@
 				{
 					"event":["34","8"],
 					"Nequip":["158"],
-					"flg":0
+					"flg":2
 				},
 				{
 					"event":["34","8"],
 					"Nequip":["1529"],
-					"flg":0
+					"flg":2
 				}
 			],
 			"action":[

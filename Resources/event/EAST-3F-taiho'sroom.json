@@ -1,6 +1,10 @@
 {
 	"1":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"38",
 			"x":14,
@@ -141,7 +145,7 @@
 					"type":"charaMsg",
 					"talk":[
 						{
-							"text":["まっせいぜい頑張れや"],
+							"text":["まっ\nせいぜい頑張れや"],
 							"charaID":"6",
 							"imgID":"1",
 							"name":"？？？"
