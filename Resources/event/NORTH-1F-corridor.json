@@ -360,7 +360,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["23","9"]
+					"event":["23","9"],
+					"Nevent":["63","2"]
 				}
 			],
 			"action":[
