@@ -18,8 +18,8 @@
 	"3":[
 		{
 			"type":"getItem",
-			"itemID":"1524",
-			"name":"ねじりハチマキ"
+			"itemID":"1522",
+			"name":"猪肉"
 		},
 		{
 			"type":"removeChara",
