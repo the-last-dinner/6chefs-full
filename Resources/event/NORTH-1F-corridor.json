@@ -373,7 +373,8 @@
 					"y":17,
 					"movePattern":"4",
 					"pathID":"1",
-					"times":1
+					"times":1,
+					"speed":2.1
 				}
 			]
 		}
