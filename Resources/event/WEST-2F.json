@@ -194,7 +194,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ"],
+									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -229,7 +229,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ"],
+									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -265,7 +265,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ"],
+									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -312,7 +312,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["大善さんが喜びそうなものを持ってたハズだ"],
+									"text":["大善さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -347,7 +347,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["大善さんが喜びそうなものを持ってたハズだ"],
+									"text":["大善さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -383,7 +383,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["大善さんが喜びそうなものを持ってたハズだ"],
+									"text":["大善さんが喜びそうなものを持ってたハズだ。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -650,6 +650,10 @@
 					"itemID":"1524"
 				},
 				{
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
+				},
+				{
 					"type":"playBGM",
 					"file":"favo_daigoro.mp3",
 					"volume":0.1
@@ -716,6 +720,10 @@
 					"text":["そう語る大善は少し満足そうだ。","大善は少し心を開いてくれたようだ。","顔を赤らめた大善になぜか蹴飛ばされた。"]
 				},
 				{
+					"type":"stopBGM",
+					"file":"favo_daigoro.mp3"
+				},
+				{
 					"type":"changeStatus",
 					"charaID":"5",
 					"favorite":"1"
@@ -726,8 +734,19 @@
 					"infoID":"1"
 				},
 				{
-					"type":"stopBGM",
-					"file":"favo_daigoro.mp3"
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["7","1"]
+						}
+					],
+					"action":[
+						{
+							"type":"playBGM",
+							"file":"Mozart-OboeConcerto-1.mp3",
+							"volume":0.3
+						}
+					]
 				},
 				{
 					"type":"fadein"
