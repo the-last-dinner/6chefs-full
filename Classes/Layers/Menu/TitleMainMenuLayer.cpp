@@ -30,12 +30,17 @@ bool TitleMainMenuLayer::init()
     };
     
 	if(!MenuLayer::init(1, typeToString.size())) return false;
+    
+    this->setCursorEnable(false);
 	
-	// タイトル画像をキャッシュから生成
+	// 背景画像を生成
 	Sprite* titleBg = Sprite::createWithSpriteFrameName("background.png");
 	titleBg->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	titleBg->setOpacity(0);
 	this->addChild(titleBg);
+    
+    // タイトル背景画像をフェードイン
+    this->runAction(TargetedAction::create(titleBg, FadeIn::create(1.f)));
     
     // タイトル文字を生成
     float font_size = 56.f;
@@ -60,7 +65,9 @@ bool TitleMainMenuLayer::init()
     
     // タイトルメニューを生成
 	int menuSize = 48.f;
-	for(int i = 0; i < static_cast<int>(MenuType::SIZE); i++)
+    float duration { 1.0f };
+    float latency { 0.2f };
+	for(int i = 0; i < etoi(MenuType::SIZE); i++)
 	{
         Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::SYSTEM, menuSize) };
 		menuItem->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 5 / 11 - (menuSize + 20) * i);
@@ -68,17 +75,12 @@ bool TitleMainMenuLayer::init()
 		this->addChild(menuItem);
 		this->menuObjects.push_back(menuItem);
 		
-		menuItem->runAction(Sequence::create(DelayTime::create(1.f * i),
-                                             Spawn::create(MoveBy::create(2.f, Vec2(0, -20)), FadeIn::create(2.f), nullptr),
+		menuItem->runAction(Sequence::create(DelayTime::create(latency * i),
+                                             Spawn::create(MoveBy::create(duration, Vec2(0, -20)), FadeIn::create(duration), nullptr),
                                              nullptr));
 	}
     
-    // カーソル生成
-    Cloud* cursor { Cloud::create(Size::ZERO) };
-    cursor->setColor(Color3B(100, 0, 0));
-    cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
-    this->addChild(cursor);
-    this->cursor = cursor;
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(duration + latency * etoi(MenuType::SIZE)), CallFunc::create(CC_CALLBACK_0(TitleMainMenuLayer::onEnterAnimationFinished, this))));
 	
     this->runAction(Sequence::create(
                                      TargetedAction::create(title1, FadeIn::create(1.f)),
@@ -86,10 +88,6 @@ bool TitleMainMenuLayer::init()
                                      TargetedAction::create(title3,FadeIn::create(1.f)),
                                     nullptr
                     ));
-	// アニメーションをセット。全てのアニメーションが終わったらイベントリスナを有効にする。
-	this->runAction(Sequence::create(TargetedAction::create(titleBg, FadeIn::create(1.f)),
-									 CallFunc::create([this](){this->listenerKeyboard->setEnabled(true);this->onIndexChanged(this->getSelectedIndex(), false);}),
-									 nullptr));
     
     // クリア時の立ち絵
     float scale = 0.3f;
@@ -125,6 +123,23 @@ bool TitleMainMenuLayer::init()
 	return true;
 }
 
+// タイトルメニュー表示のためのアニメーションが終了した時
+void TitleMainMenuLayer::onEnterAnimationFinished()
+{
+    // カーソル生成
+    Cloud* cursor { Cloud::create(Size::ZERO) };
+    cursor->setColor(Color3B(100, 0, 0));
+    cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
+    this->addChild(cursor);
+    this->cursor = cursor;
+    
+    // カーソルを初期位置まで移動
+    this->onIndexChanged(this->getSelectedIndex(), false);
+    
+    // リスナを有効化
+    this->setCursorEnable(true);
+}
+
 // 表示
 void TitleMainMenuLayer::show()
 {
@@ -145,6 +160,7 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
         if (newIdx != i) continue;
         
         Node* obj {this->menuObjects.at(i)};
+        this->cursor->setVisible(true);
         this->cursor->setScale((obj->getContentSize().width + 50) / this->cursor->getContentSize().width);
         this->cursor->setPosition(obj->getPosition());
 	}
