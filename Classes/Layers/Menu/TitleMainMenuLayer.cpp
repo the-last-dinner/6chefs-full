@@ -121,9 +121,6 @@ bool TitleMainMenuLayer::init()
     opr->setOpacity(0);
     this->addChild(opr);
     opr->runAction(FadeTo::create(1.2f, 200));
-
-    // BGM
-    SoundManager::getInstance()->playBGM("title_bgm.mp3");
     
 	return true;
 }
@@ -151,7 +148,7 @@ void TitleMainMenuLayer::onIndexChanged(int newIdx, bool sound)
         this->cursor->setScale((obj->getContentSize().width + 50) / this->cursor->getContentSize().width);
         this->cursor->setPosition(obj->getPosition());
 	}
-	if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
+    if(sound)SoundManager::getInstance()->playSE(Resource::SE::CURSOR_MOVE);
 	return;
 }
 

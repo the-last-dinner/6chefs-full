@@ -67,6 +67,9 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     saveDataSelector->setVisible(false);
     saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
+    
+    // BGM
+    SoundManager::getInstance()->playBGM("title_bgm.mp3", true, 0.1f);
 }
 
 // 最初からが選ばれた時
@@ -83,7 +86,7 @@ void TitleScene::onStartSelected()
 void TitleScene::onContinueSelected()
 {
 	FUNCLOG
-    SoundManager::getInstance()->playSE("title-enter.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
 	this->mainMenu->hide();
 	this->saveDataSelector->show();
 }
@@ -92,7 +95,7 @@ void TitleScene::onContinueSelected()
 void TitleScene::onExitSelected()
 {
 	FUNCLOG
-	SoundManager::getInstance()->playSE("back.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::BACK);
 	Director::getInstance()->end();
 }
 
@@ -100,7 +103,7 @@ void TitleScene::onExitSelected()
 void TitleScene::onSaveDataSelectCancelled()
 {
 	FUNCLOG
-	SoundManager::getInstance()->playSE("back.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::BACK);
 	this->saveDataSelector->hide();
 	this->mainMenu->show();
 }
@@ -129,7 +132,7 @@ void TitleScene::onTrophyListSelected()
     }
     
     // トロフイーリストレイヤーを作成
-    SoundManager::getInstance()->playSE("title-enter.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
     if(!this->trophyList)
     {
         this->createTrophyListLayer();
@@ -141,7 +144,7 @@ void TitleScene::onTrophyListSelected()
 // トロフィーリストをキャンセル時
 void TitleScene::onTrophyListCanceled()
 {
-    SoundManager::getInstance()->playSE("back.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::BACK);
     this->trophyList->hide();
     this->mainMenu->show();
 }

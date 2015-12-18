@@ -8,6 +8,14 @@
 
 #include "Managers/SoundManager.h"
 
+// 定数
+const map<string, float> SoundManager::VOLUME_CONFIG
+{
+    {Resource::SE::CURSOR_MOVE, 0.1f},
+    {Resource::SE::BACK, 0.1f},
+    {Resource::SE::TITLE_ENTER, 0.1f},
+};
+
 // 唯一のインスタンスを初期化
 static SoundManager* _instance = nullptr;
 
@@ -36,12 +44,14 @@ SoundManager::~SoundManager()
 // SEを再生
 void SoundManager::playSE(const string& fileName, float volume)
 {
+    if(VOLUME_CONFIG.count(fileName) != 0) volume *= VOLUME_CONFIG.at(fileName);
     AudioEngine::play2d(Resource::SE::BASE_PATH + fileName, false, volume);
 }
 
 // BGMを再生
 void SoundManager::playBGM(const string& fileName, bool loop, float volume)
 {
+    if(VOLUME_CONFIG.count(fileName) != 0) volume *= VOLUME_CONFIG.at(fileName);
     int BGMId { AudioEngine::play2d(Resource::BGM::BASE_PATH + fileName, loop, volume) };
     
     this->bgmIdMap.insert({BGMId, fileName});
