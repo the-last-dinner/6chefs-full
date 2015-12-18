@@ -167,7 +167,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.2,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -273,7 +273,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.2,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -404,7 +404,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.2,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
