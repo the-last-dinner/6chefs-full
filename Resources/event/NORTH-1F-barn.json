@@ -25,7 +25,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["開けるには暗号が必要みたい"],
+							"text":["開けるには暗号が必要みたい。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
