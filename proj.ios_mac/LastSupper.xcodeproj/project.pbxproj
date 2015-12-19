@@ -294,6 +294,8 @@
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
+		DCB9AF061C25A45400093B1E /* Fog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB9AF041C25A45400093B1E /* Fog.cpp */; };
+		DCB9AF071C25A45400093B1E /* Fog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB9AF041C25A45400093B1E /* Fog.cpp */; };
 		DCD85F1F1C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
 		DCD85F201C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
 		DCD85F231C18540500BCFDC9 /* GhostObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F211C18540500BCFDC9 /* GhostObject.cpp */; };
@@ -651,6 +653,8 @@
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
 		DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaminaBar.cpp; path = ../Classes/UI/StaminaBar.cpp; sourceTree = "<group>"; };
 		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
+		DCB9AF041C25A45400093B1E /* Fog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fog.cpp; path = ../Classes/Effects/Fog.cpp; sourceTree = "<group>"; };
+		DCB9AF051C25A45400093B1E /* Fog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fog.h; path = ../Classes/Effects/Fog.h; sourceTree = "<group>"; };
 		DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemObject.cpp; path = ../Classes/MapObjects/ItemObject.cpp; sourceTree = "<group>"; };
 		DCD85F1E1C1853C500BCFDC9 /* ItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemObject.h; path = ../Classes/MapObjects/ItemObject.h; sourceTree = "<group>"; };
 		DCD85F211C18540500BCFDC9 /* GhostObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GhostObject.cpp; path = ../Classes/MapObjects/GhostObject.cpp; sourceTree = "<group>"; };
@@ -916,6 +920,8 @@
 				55E542A61BAE59850003A230 /* AmbientLightLayer.h */,
 				551406851BA55DBC008DFAED /* Light.cpp */,
 				551406861BA55DBC008DFAED /* Light.h */,
+				DCB9AF041C25A45400093B1E /* Fog.cpp */,
+				DCB9AF051C25A45400093B1E /* Fog.h */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -1558,6 +1564,7 @@
 				DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
+				DCB9AF061C25A45400093B1E /* Fog.cpp in Sources */,
 				55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
 				DC51B1591C2585F700E24635 /* MobRandom.cpp in Sources */,
 				DC7AD6491C183C37008066DA /* Sight.cpp in Sources */,
@@ -1693,6 +1700,7 @@
 				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
 				26857A301C0AEA6500295998 /* NumberSelector.cpp in Sources */,
 				55C3C1EF1BD143B700ECDB50 /* GameTask.cpp in Sources */,
+				DCB9AF071C25A45400093B1E /* Fog.cpp in Sources */,
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				DCAB37A01C120952000DF676 /* NotificationNode.cpp in Sources */,

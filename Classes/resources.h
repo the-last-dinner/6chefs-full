@@ -38,6 +38,7 @@ namespace Resource
         static const std::string BASE_PATH = "img/";
         static const std::string ANIMATION = BASE_PATH + "animation";
         static const std::string BLOOD = BASE_PATH + "blood";
+        static const std::string EFFECT = BASE_PATH + "effect";
         static const std::string FRAME = BASE_PATH + "frame";
         static const std::string ICON = BASE_PATH + "icon";
         static const std::string MAP_OBJECT = BASE_PATH + "map_object";

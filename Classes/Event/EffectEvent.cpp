@@ -12,6 +12,7 @@
 #include "Event/EventScriptValidator.h"
 
 #include "Effects/AmbientLightLayer.h"
+#include "Effects/Fog.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -86,4 +87,24 @@ void AnimationEvent::run()
     DungeonSceneManager::getInstance()->getScene()->addChild(animationSprite, Priority::TOP_COVER);
     
     animationSprite->runAction(Sequence::create(Animate::create(animation), CallFunc::create([this]{this->setDone();}), RemoveSelf::create(), nullptr));
+}
+
+#pragma mark -
+#pragma mark CreateFogEvent
+
+bool CreateFogEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    return true;
+}
+
+void CreateFogEvent::run()
+{
+    this->setDone();
+    
+    Fog* fog { Fog::create() };
+    fog->setPosition(WINDOW_CENTER);
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(fog);
 }
