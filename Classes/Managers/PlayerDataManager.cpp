@@ -7,6 +7,8 @@
 
 #include "Managers/PlayerDataManager.h"
 
+#include "Scenes/EndingScene.h"
+
 #include "Models/GlobalPlayerData.h"
 #include "Models/LocalPlayerData.h"
 #include "Models/StopWatch.h"
@@ -61,14 +63,15 @@ void PlayerDataManager::setGameClear(const int end_id)
     int trophy_id;
     switch (end_id)
     {
-        case 0:
-            trophy_id = 6;
-            break;
-        case 1:
+        case etoi(EndingScene::END_ID::NORMAL_END):
             trophy_id = 7;
             break;
-        case 2:
+        case etoi(EndingScene::END_ID::TRUE_END):
             trophy_id = 8;
+            break;
+        default:
+            // default bad_end
+            trophy_id = 6;
             break;
     }
     this->globalData->setTrophy(trophy_id);
