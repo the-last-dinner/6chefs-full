@@ -30,10 +30,6 @@
 							"enemyID":"146"
 						},
 						{
-							"type":"reaction",
-							"objID":"hero"
-						},
-						{
 							"type":"spawn",
 							"action":[
 								{
@@ -82,6 +78,17 @@
 									"times":5
 								}
 							]
+						},
+						{
+							"type":"reaction",
+							"objID":"hero"
+						},
+						{
+							"type":"charaMsg",
+							"text":["うわああああ！\n何だこの人達！！？？"],
+							"charaID":"0",
+							"imgID":"3",
+							"option":"reaction"
 						}
 					]
 				}

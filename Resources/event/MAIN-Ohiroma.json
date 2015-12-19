@@ -516,12 +516,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -558,7 +558,7 @@
               "type":"charaMsg",
               "talk":[
                 {
-                  "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","\nさ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう"],
+                  "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ！","\nさ・ら・に！","我には医者の知り合いもいますぞ！\n偏食症の治療もできましょう。"],
                   "charaID":"4",
                   "imgID":"2"
                 },
@@ -661,7 +661,7 @@
               "type":"spawn",
               "action":[
                 {
-              "type":"reaction",
+                  "type":"reaction",
                   "objID":"hero"
                 },
                 {
@@ -745,12 +745,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -789,7 +789,7 @@
             },
             {
               "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","\nさ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ！","\nさ・ら・に！","我には医者の知り合いもいますぞ！\n偏食症の治療もできましょう。","何しろ我は・・・"],
               "charaID":"4",
               "imgID":"2"
             },
@@ -817,7 +817,7 @@
                   "imgID":"1"
                 },
                 {
-                  "text":["うるせぇ"],
+                  "text":["うるせぇ！"],
                   "charaID":"5",
                   "imgID":"1"
                 }
@@ -840,7 +840,7 @@
             },
             {
               "type":"charaMsg",
-              "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
+              "text":["荒間田の言う通りだ。\nあとは俺らに任せとけ。"],
               "charaID":"2",
               "imgID":"2"
             },
@@ -1019,12 +1019,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1068,7 +1068,7 @@
             },
             {
               "type":"charaMsg",
-              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ","\nさ・ら・に！","我には医者の知り合いもいますぞ\n偏食症の治療もできましょう","何しろ我は・・・"],
+              "text":["希崎氏！\n事情は何となく分かりましたぞ！","我らに言って頂ければ\n娘さんが食べられるものも\n作り上げられましょうぞ！","\nさ・ら・に！","我には医者の知り合いもいますぞ！\n偏食症の治療もできましょう！","何しろ我は・・・"],
               "charaID":"4",
               "imgID":"2"
             },
@@ -1100,7 +1100,7 @@
                   "imgID":"1"
                 },
                 {
-                  "text":["うるせぇ"],
+                  "text":["うるせぇ！"],
                   "charaID":"5",
                   "imgID":"1"
                 }
@@ -1123,7 +1123,7 @@
             },
             {
               "type":"charaMsg",
-              "text":["荒間田の言う通りだ\nあとは俺らに任せとけ"],
+              "text":["荒間田の言う通りだ。\nあとは俺らに任せとけ。"],
               "charaID":"2",
               "imgID":"2"
             },
@@ -1227,7 +1227,7 @@
                   "imgID":"2"
                 },
                 {
-                  "text":["気絶させただけだ"],
+                  "text":["気絶させただけだ。"],
                   "charaID":"2",
                   "imgID":"2"
                 }
@@ -1275,12 +1275,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1488,12 +1488,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
@@ -1710,12 +1710,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"removeEnemy",
-              "enemyID":"1422"
-            },
-            {
               "type":"fadeout",
               "time":3.0
+            },
+             {
+              "type":"removeEnemy",
+              "enemyID":"1422"
             },
             {
               "type":"createChara",
