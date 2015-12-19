@@ -3825,9 +3825,6 @@
 					    {
 					    	"type":"already"
 					    },
-			            {
-			            	"type":"already"
-			            },
 						{
 							"type":"createCamera",
 							"x":20,

@@ -46,13 +46,13 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["60","4"]
+					"Nevent":["58","7"]
 				}
 			],
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["鍵がかかっている・・・"]
+					"text":["開かない・・・"]
 				}
 			]
 		}
