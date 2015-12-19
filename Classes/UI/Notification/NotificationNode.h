@@ -17,14 +17,22 @@ class NotificationNode : public Node
 public:
     using AnimationCallback = function<void(NotificationNode*)>;
 // インスタンス変数
+private:
+    float showingDuration { 0.f };
+    Point defaultPosition { Point::ZERO };
+    
+// インスタンスメソッド
 protected:
     NotificationNode();
     ~NotificationNode();
+    void setDefaultPosition(const Point& position);
+    Point getDefaultPosition() const;
 public:
-    virtual bool init();
-    virtual void notify(AnimationCallback callback) = 0;
+    virtual bool init(const float showingDuration);
+    virtual void notify(AnimationCallback callback);
     virtual void close(AnimationCallback callback) = 0;
-    virtual float getShowingDuration() const = 0;
+    virtual float getShowingDuration() const;
+    void update(float delta);
 };
 
 #endif /* NotificationNode_h */

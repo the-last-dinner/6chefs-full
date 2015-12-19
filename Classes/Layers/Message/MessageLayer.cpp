@@ -69,10 +69,6 @@ void MessageLayer::displayMessageWithAnimation(Label* message)
     // messageがnullptrなら終了
     if(!message) return;
     
-    // 入力を待たせる
-    this->listener->setEnabled(false);
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(INPUT_WAIT_DURATION), CallFunc::create([this]{this->listener->setEnabled(true);})));
-    
     this->message = message;
     
     int stringLength = message->getStringLength();
@@ -117,7 +113,12 @@ void MessageLayer::displayMessage(Label* message)
             letter->setOpacity(255);
         }
     }
+    
     this->onAllLetterDisplayed();
+    
+    // 全ての文字を表示してから数秒間リスナを無効にしておく
+    this->listener->setEnabled(false);
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(INPUT_WAIT_DURATION), CallFunc::create([this]{this->listener->setEnabled(true);})));
 }
 
 // すべての文字を表示した時

@@ -30,7 +30,6 @@ private:
 public:
     virtual void notify(AnimationCallback callback);
     virtual void close(AnimationCallback callback);
-    virtual float getShowingDuration() const;
 };
 
 #endif /* NotificationCloud_h */

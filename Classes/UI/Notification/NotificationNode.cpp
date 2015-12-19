@@ -15,13 +15,49 @@ NotificationNode::NotificationNode() {};
 NotificationNode::~NotificationNode() {};
 
 // 初期化
-bool NotificationNode::init()
+bool NotificationNode::init(const float showingDuration)
 {
     if(!Node::init()) return false;
+    
+    // 表示時間
+    this->showingDuration = showingDuration;
     
     // カスケード
     this->setCascadeColorEnabled(true);
     this->setCascadeOpacityEnabled(true);
     
     return true;
+}
+
+// 表示位置を設定
+void NotificationNode::setDefaultPosition(const Point& position)
+{
+    this->setPosition(position);
+    
+    this->defaultPosition = position;
+}
+
+// 表示位位置を取得
+Point NotificationNode::getDefaultPosition() const
+{
+    return this->defaultPosition;
+}
+
+// 通知時に呼び出す
+void NotificationNode::notify(AnimationCallback callback)
+{
+    this->scheduleUpdate();
+}
+
+// update
+void NotificationNode::update(float delta)
+{
+    // 表示時間を削っていく
+    this->showingDuration -= delta;
+}
+
+// 表示時間を取得
+float NotificationNode::getShowingDuration() const
+{
+    return this->showingDuration;
 }

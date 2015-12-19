@@ -19,9 +19,7 @@ TrophyNotification::~TrophyNotification() {FUNCLOG};
 // 初期化
 bool TrophyNotification::init(const string& message)
 {
-    if(!NotificationNode::init()) return false;
-    
-    this->setOpacity(0);
+    if(!NotificationNode::init(5.f)) return false;
     
     // ラベルを生成
     Label* messageL {Label::createWithTTF("トロフィを獲得しました", Resource::Font::SYSTEM, 20.f)};
@@ -43,7 +41,7 @@ bool TrophyNotification::init(const string& message)
     trophyName->setPosition(trophy->getContentSize().width * trophyScale / 2, -messageL->getContentSize().height / 2);
     trophy->setPosition(-bg->getContentSize().width / 2 + trophy->getContentSize().width * trophyScale, 0);
     
-    this->setPosition(WINDOW_WIDTH - bg->getContentSize().width / 2, WINDOW_HEIGHT - bg->getContentSize().height / 2);
+    this->setDefaultPosition(Point(WINDOW_WIDTH - bg->getContentSize().width / 2, WINDOW_HEIGHT - bg->getContentSize().height / 2));
     
     return true;
 }
@@ -51,8 +49,11 @@ bool TrophyNotification::init(const string& message)
 // 通知
 void TrophyNotification::notify(AnimationCallback callback)
 {
-    Point toPosition {this->getPosition()};
+    NotificationNode::notify(callback);
+    
+    Point toPosition {this->getDefaultPosition()};
     this->setPosition(toPosition + Vec2(0, 30.f));
+    this->setOpacity(0);
     this->runAction(Spawn::createWithTwoActions(FadeIn::create(0.3f), EaseCubicActionOut::create(MoveTo::create(0.3f, toPosition))));
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(0.3f), CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
@@ -64,6 +65,3 @@ void TrophyNotification::close(AnimationCallback callback)
                                                                                EaseCubicActionIn::create(MoveBy::create(0.3f, Vec2(0, 15.f)))),
                                                    CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
-
-// 表示時間を取得
-float TrophyNotification::getShowingDuration() const { return 5.f; }

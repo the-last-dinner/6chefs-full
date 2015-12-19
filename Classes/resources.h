@@ -21,7 +21,10 @@ namespace Resource
     namespace SE
     {
         static const std::string BASE_PATH = "se/";
+        static const std::string BACK = "back.mp3";
+        static const std::string CURSOR_MOVE = "cursorMove.mp3";
         static const std::string GET_ITEM = "mystery5.mp3";
+        static const std::string TITLE_ENTER = "title-enter.mp3";
         static const std::string TROPHY_NOTIFICATION = "receipt05.mp3";
     };
     

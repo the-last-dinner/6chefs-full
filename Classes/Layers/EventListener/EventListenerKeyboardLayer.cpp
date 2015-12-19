@@ -132,7 +132,6 @@ void EventListenerKeyboardLayer::releaseKey(const Key& key)
 // 全てのキーを強制リリースする
 void EventListenerKeyboardLayer::releaseKeyAll()
 {
-    FUNCLOG
     for(int key = 0; key < static_cast<int>(Key::SIZE); key++)
     {
         this->releaseKey(static_cast<Key>(key));
