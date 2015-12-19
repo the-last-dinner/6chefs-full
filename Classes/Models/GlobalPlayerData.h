@@ -25,6 +25,8 @@ class GlobalPlayerData : public Ref
     static const char* BEST_CLEAR_TIME;
     static const char* TROPHY;
     static const char* TOKENS;
+    static const char* BGM_VOLUME;
+    static const char* SE_VOLUME;
     
     // Record
     static const int CHIKEN_SAVE_COUNT;
@@ -70,6 +72,11 @@ public:
     bool isClearedToken(const string& token);
     void setClearToken(const string& token);
     
+    // Volume
+    void setBgmVolume(const float& volume);
+    float getBgmVolume();
+    void setSeVolume(const float& volume);
+    float getSeVolume();
 };
 
 #endif /* GlobalPlayerData_h */
