@@ -25,7 +25,7 @@ protected:
 
 // インスタンスメソッド
 public:
-    virtual void start() {};
+    virtual void start();
     virtual void setPaused(bool paused);
     virtual void onPartyMoved() {};
     virtual bool canGoToNextMap() const { return false; };

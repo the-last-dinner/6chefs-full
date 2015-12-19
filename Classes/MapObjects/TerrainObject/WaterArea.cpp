@@ -25,6 +25,18 @@ void WaterArea::onWillMove(MapObject* target, const vector<Direction>& direction
 {
     // 速度を1/2にして移動
     target->move(directions, onMoved, ratio / 4);
+    target->getSprite()->setVisible(false);
     
-    target->getSprite()->setTextureRect(Rect(target->getSprite()->getContentSize().height, GRID, target->getSprite()->getContentSize().width, target->getSprite()->getContentSize().height));
+//
+//    Sprite* rect {Sprite::create()};
+//    rect->setTextureRect(Rect(0,0,GRID * 2, GRID));
+//    
+//    ClippingNode* node {ClippingNode::create()};
+//    node->setAlphaThreshold(0.1f);
+//    node->setStencil(rect);
+//    
+//    target->addChild(node);
+//    node->addChild( Sprite::createWithSpriteFrame(target->getSpriteFrames().at(etoi(target->getDirection()))) );
+    
+    
 }

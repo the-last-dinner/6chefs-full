@@ -56,6 +56,8 @@ bool Scouter::init(Character* character)
 // 移動開始
 void Scouter::start()
 {
+    MovePattern::start();
+    
     this->move(this->startPathId);
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 }

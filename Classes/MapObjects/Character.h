@@ -53,6 +53,9 @@ public:
     
     void lookAround(function<void()> callback);
     
+    virtual void moveStart() override;
+    virtual void moveStop() override;
+    
     virtual void onEnterMap() override;
     virtual void onPartyMoved();
     virtual void onSearched(MapObject* mainChara) override;

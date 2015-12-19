@@ -27,6 +27,8 @@ bool CheapChaser::init(Character* character)
 // 追跡開始
 void CheapChaser::start()
 {
+    MovePattern::start();
+    
     this->move();
 }
 

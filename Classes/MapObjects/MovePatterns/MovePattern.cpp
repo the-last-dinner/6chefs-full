@@ -30,6 +30,12 @@ bool MovePattern::init(Character* chara)
     return true;
 }
 
+// 動き開始
+void MovePattern::start()
+{
+    this->setPaused(false);
+}
+
 // 止めるフラグを変更
 void MovePattern::setPaused(bool paused)
 {

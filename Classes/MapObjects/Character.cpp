@@ -38,7 +38,7 @@ bool Character::init(const CharacterData& data)
     this->setObjectId(data.obj_id);
     this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
     
-    if(this->movePattern)
+    if(!this->movePattern)
     {
         // 動きのアルゴリズムを生成
         MovePatternFactory* factory { MovePatternFactory::create() };
@@ -50,6 +50,12 @@ bool Character::init(const CharacterData& data)
     
 	// Spriteを生成
     this->setSprite(Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png"));
+    
+    // それぞれの方向の直立チップをSpriteFrameとして格納しておく
+    for(int i { 0 }; i < etoi(Direction::SIZE); i++)
+    {
+        this->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) +"_0.png" ));
+    }
     
     // サイズ、衝突判定範囲をセット
     this->setContentSize(this->getSprite()->getContentSize());
@@ -197,10 +203,22 @@ void Character::lookAround(function<void()> callback)
     this->runAction(Sequence::create(DelayTime::create(1.f), CallFunc::create([this]{this->setDirection(this->convertToWorldDir(Direction::BACK));}), DelayTime::create(1.f), CallFunc::create([callback]{callback();}), nullptr));
 }
 
+// 動き開始
+void Character::moveStart()
+{
+    if(this->movePattern) this->movePattern->start();
+}
+
+// 動き停止
+void Character::moveStop()
+{
+    if(this->movePattern) this->movePattern->setPaused(true);
+}
+
 // マップに配置された時
 void Character::onEnterMap()
 {
-    if(this->movePattern) this->movePattern->start();
+    this->moveStart();
 }
 
 // 主人公一行が動いた時

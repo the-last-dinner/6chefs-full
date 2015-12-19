@@ -84,6 +84,10 @@ public:
     
     // 経路オブジェクト
     PathObject* getPathObjectById(const int pathId);
+    
+    // オブジェクトの自動移動
+    void moveStartAllObjects();
+    void moveStopAllObjects();
 
     // 敵と主人公一行の衝突監視用updateメソッド
     void update(float delta);

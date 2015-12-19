@@ -10,6 +10,7 @@
 
 #include "MapObjects/MovePatterns/Chaser.h"
 #include "MapObjects/MovePatterns/CheapChaser.h"
+#include "MapObjects/MovePatterns/MobRandom.h"
 #include "MapObjects/MovePatterns/RandomMove.h"
 #include "MapObjects/MovePatterns/Scouter.h"
 
@@ -48,7 +49,7 @@ MovePattern* MovePatternFactory::createMovePattern(const CharacterMovePattern ty
     
     map<CharacterMovePattern, function<MovePattern*(Character*)>> typeToFunc
     {
-        {CharacterMovePattern::RANDOM, RandomMove::create}
+        {CharacterMovePattern::RANDOM, MobRandom::create}
     };
     
     if(typeToFunc.count(type) == 0) return nullptr;
