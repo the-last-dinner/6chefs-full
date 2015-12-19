@@ -65,6 +65,7 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"gameover", GameOverEvent::create},            // ゲームオーバー
         {"ending", EndingEvent::create},                // エンディング
         {"animation", AnimationEvent::create},          // アニメーション
+        {"backToTitle", BackToTitleEvent::create},      // タイトルへ戻る
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
@@ -149,7 +150,7 @@ Vector<GameEvent*> EventFactory::createEventVector(rapidjson::Value& json)
 queue<GameEvent*> EventFactory::createEventQueue(rapidjson::Value& json)
 {
     queue<GameEvent*> events {};
-    \
+    
     rapidjson::Value& eventJson {(json.IsObject() && json.HasMember(member::ACTION))?json[member::ACTION]:json};
     
     for (int i { 0 }; i < eventJson.Size(); i++)

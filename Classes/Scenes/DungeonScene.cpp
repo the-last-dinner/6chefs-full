@@ -73,7 +73,7 @@ void DungeonScene::onEnter()
 void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
 	// マップレイヤーを生成
-	TiledMapLayer* mapLayer {TiledMapLayer::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())};
+	TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
@@ -156,7 +156,7 @@ void DungeonScene::onInitEventFinished(LoadingLayer* loadingLayer)
     this->setLight();
     cameraTask->setTarget( this->party->getMainCharacter() );
     
-    this->enemyTask->start(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id);
+    this->enemyTask->start(this->getData()->getLocation().map_id);
     
     // ローディング終了
     loadingLayer->onLoadFinished();
