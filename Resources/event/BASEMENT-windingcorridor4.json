@@ -15,10 +15,20 @@
 	],
 	"2":[
 		{
-			"type":"changeMap",
-			"mapID":"41",
-			"x":2,
-			"y":9
+			"type":"if",
+			"condition":[
+				{
+					"event":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"changeMap",
+					"mapID":"41",
+					"x":2,
+					"y":9
+				}
+			]
 		}
 	],
 	"3":[
@@ -41,6 +51,22 @@
 				},
 				{
 					"type":"already"
+				}
+			]
+		}
+	],
+	"5":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["開かない・・・"]
 				}
 			]
 		}
