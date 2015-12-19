@@ -1043,8 +1043,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_nadeshiko.mp3",
-					"volume":0.1
+					"file":"favo_nadeshiko.mp3"
 				},
 				{
 					"type":"fadein"
@@ -1119,8 +1118,7 @@
 					"action":[
 						{
 							"type":"playBGM",
-							"file":"Mozart-OboeConcerto-1.mp3",
-							"volume":0.3
+							"file":"Mozart-OboeConcerto-1.mp3"
 						}
 					]
 				},
@@ -1153,8 +1151,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_nadeshiko.mp3",
-					"volume":0.1
+					"file":"favo_nadeshiko.mp3"
 				},
 				{
 					"type":"fadein"

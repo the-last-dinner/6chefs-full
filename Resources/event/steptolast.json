@@ -21,8 +21,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"psychopath.mp3",
-					"volume":0.5
+					"file":"psychopath.mp3"
 				},
 				{
 					"type":"playBGM",
