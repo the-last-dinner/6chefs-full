@@ -3,6 +3,19 @@
     	{
       		"type":"setAmbient",
       		"ambient":"night"
+    	},
+    	{
+    		"type":"if",
+    		"condition":[
+    			{
+    				"Nevent":["60","4"]
+    			}
+    		],
+    		"action":[
+    			{
+    				"type":"setFog"
+    			}
+    		]
     	}
 	],
 	"1":[
@@ -43,22 +56,6 @@
 			"mapID":"60",
 			"x":4,
 			"y":3
-		}
-	],
-	"4":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["60","4"]
-				}
-			],
-			"action":[
-				{
-					"type":"removeLayer",
-					"layer":"CharaUe"
-				}
-			]
 		}
 	],
 	"5":[

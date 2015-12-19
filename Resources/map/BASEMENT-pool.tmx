@@ -271,6 +271,7 @@
     <property name="nextID" value="2"/>
     <property name="pathID" value="1"/>
     <property name="previousID" value="0"/>
+    <property name="speed" value="2.0"/>
    </properties>
   </object>
   <object id="95" x="224" y="64" width="32" height="32">
@@ -278,6 +279,7 @@
     <property name="nextID" value="3"/>
     <property name="pathID" value="2"/>
     <property name="previousID" value="1"/>
+    <property name="speed" value="5.0"/>
     <property name="through" value="true"/>
    </properties>
   </object>
@@ -286,6 +288,7 @@
     <property name="nextID" value="4"/>
     <property name="pathID" value="3"/>
     <property name="previousID" value="2"/>
+    <property name="speed" value="5.0"/>
    </properties>
   </object>
   <object id="98" x="320" y="96" width="32" height="32">
@@ -300,6 +303,7 @@
     <property name="nextID" value="6"/>
     <property name="pathID" value="5"/>
     <property name="previousID" value="4"/>
+    <property name="speed" value="2.5"/>
    </properties>
   </object>
   <object id="100" x="480" y="96" width="32" height="32">
@@ -307,6 +311,7 @@
     <property name="nextID" value="7"/>
     <property name="pathID" value="6"/>
     <property name="previousID" value="5"/>
+    <property name="speed" value="3.0"/>
     <property name="through" value="true"/>
    </properties>
   </object>
@@ -322,6 +327,7 @@
     <property name="nextID" value="9"/>
     <property name="pathID" value="8"/>
     <property name="previousID" value="7"/>
+    <property name="speed" value="3.5"/>
    </properties>
   </object>
   <object id="103" x="480" y="352" width="32" height="32">
@@ -329,6 +335,7 @@
     <property name="nextID" value="10"/>
     <property name="pathID" value="9"/>
     <property name="previousID" value="8"/>
+    <property name="speed" value="10.0"/>
    </properties>
   </object>
   <object id="104" x="512" y="416" width="32" height="32">
@@ -336,6 +343,7 @@
     <property name="nextID" value="11"/>
     <property name="pathID" value="10"/>
     <property name="previousID" value="9"/>
+    <property name="speed" value="10.0"/>
     <property name="through" value="true"/>
    </properties>
   </object>
@@ -344,6 +352,7 @@
     <property name="nextID" value="12"/>
     <property name="pathID" value="11"/>
     <property name="previousID" value="10"/>
+    <property name="speed" value="2.3"/>
    </properties>
   </object>
   <object id="107" x="336" y="384" width="32" height="32">
@@ -351,6 +360,7 @@
     <property name="nextID" value="13"/>
     <property name="pathID" value="12"/>
     <property name="previousID" value="11"/>
+    <property name="speed" value="4.5"/>
    </properties>
   </object>
   <object id="110" x="416" y="384" width="32" height="32">
@@ -358,6 +368,7 @@
     <property name="nextID" value="14"/>
     <property name="pathID" value="13"/>
     <property name="previousID" value="12"/>
+    <property name="speed" value="10.0"/>
    </properties>
   </object>
   <object id="111" x="512" y="416" width="32" height="32">
@@ -365,6 +376,7 @@
     <property name="nextID" value="15"/>
     <property name="pathID" value="14"/>
     <property name="previousID" value="13"/>
+    <property name="speed" value="10.0"/>
    </properties>
   </object>
   <object id="112" x="480" y="320" width="32" height="32">
@@ -372,6 +384,7 @@
     <property name="nextID" value="16"/>
     <property name="pathID" value="15"/>
     <property name="previousID" value="14"/>
+    <property name="speed" value="1.3"/>
    </properties>
   </object>
   <object id="113" x="480" y="256" width="32" height="32">
@@ -379,6 +392,7 @@
     <property name="nextID" value="17"/>
     <property name="pathID" value="16"/>
     <property name="previousID" value="15"/>
+    <property name="speed" value="3.6"/>
    </properties>
   </object>
   <object id="114" x="480" y="96" width="32" height="32">
@@ -386,6 +400,7 @@
     <property name="nextID" value="5"/>
     <property name="pathID" value="17"/>
     <property name="previousID" value="16"/>
+    <property name="speed" value="5.0"/>
    </properties>
   </object>
  </objectgroup>

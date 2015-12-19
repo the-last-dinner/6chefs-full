@@ -6,9 +6,6 @@
  <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
   <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
  </tileset>
- <tileset firstgid="705" name="smoke" tilewidth="16" tileheight="16">
-  <image source="smoke.png" trans="000000" width="192" height="128"/>
- </tileset>
  <layer name="Base" width="22" height="22">
   <properties>
    <property name="cc_vertexz" value="-12"/>
@@ -44,11 +41,6 @@
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
- <layer name="CharaUe" width="22" height="22">
-  <data encoding="base64" compression="zlib">
-   eJzdlGdPxDAMhkPKEOPgALHX//8hfEKA2IJjI/YS45iC46muEZbrlDvEJyw9Uuq8sd3YrXPOVb1zT/AML+CUT+/LddXYD6b9WtuSOOchSfLadE/utybfcbVfa0vQC31GjJKRK5g8V8600ifPaq0vqFfnm/X5uPpsWeTWuWL3sOTt95VnU80yrMAqrME6bBTcw47xvpv4tqAC276u2YU92IcDOIQjETfUdYrvDM7hAi7hCq7hGE58seYGbkXcUNcDvkdjHvWzpXmFN3g36q2lPqNHuX4Ln47fkeTrjX1j+q5j30yac07UO896QWm0PvR60ce/mTSnnIfQaz2zUh96XTHqj81DM71uZh7uWN/7+DzIXjeiCfbB+tPH56EN2pN6r2sNzGGwTvRd0A09xt32wwAMZpof5zCzIdbDMAKjMAbjMAGTMAXTMJNprP+f9d/5rYUa/9pCjf/BvgC15rGp
-  </data>
- </layer>
  <objectgroup name="event">
   <object id="21" x="160" y="0" width="32" height="32">
    <properties>
@@ -60,12 +52,6 @@
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="1"/>
-   </properties>
-  </object>
-  <object id="25" x="16" y="288" width="32" height="32">
-   <properties>
-    <property name="EventID" value="4"/>
-    <property name="trigger" value="0"/>
    </properties>
   </object>
   <object id="26" x="48" y="64" width="32" height="32">

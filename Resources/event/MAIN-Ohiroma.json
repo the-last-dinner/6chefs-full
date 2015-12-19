@@ -516,12 +516,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",
@@ -745,12 +745,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",
@@ -1019,12 +1019,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",
@@ -1275,12 +1275,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",
@@ -1488,12 +1488,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",
@@ -1710,12 +1710,12 @@
           "type":"sequence",
           "action":[
             {
-              "type":"fadeout",
-              "time":3.0
-            },
-             {
               "type":"removeEnemy",
               "enemyID":"1422"
+            },
+            {
+              "type":"fadeout",
+              "time":3.0
             },
             {
               "type":"createChara",

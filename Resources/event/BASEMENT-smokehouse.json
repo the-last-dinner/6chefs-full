@@ -3,6 +3,9 @@
     	{
       		"type":"setAmbient",
       		"ambient":"night"
+    	},
+    	{
+    		"type":"createFog"
     	}
 	],
 	"1":[

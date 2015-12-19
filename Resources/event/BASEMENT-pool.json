@@ -86,10 +86,11 @@
 					"type":"createEnemy",
 					"enemyID":"1420",
 					"charaID":"8",
-					"x":16,
+					"x":10,
 					"y":7,
 					"movePattern":"4",
-					"pathID":"1"
+					"pathID":"1",
+					"speed":5.0
 				},
 				{
 					"type":"already"
@@ -201,10 +202,6 @@
 	],
 	"6":[
 		{
-			"type":"stopBGM",
-			"file":"bgm_noroi.mp3"
-		},
-		{
 			"type":"if",
 			"condition":[
 				{
@@ -216,6 +213,10 @@
 				{
 					"type":"sequence",
 					"action":[
+						{
+							"type":"stopBGM",
+							"file":"bgm_noroi.mp3"
+						},
 						{
 							"type":"fadeout"
 						},
@@ -356,6 +357,10 @@
 				{
 					"type":"sequence",
 					"action":[
+						{
+							"type":"stopBGM",
+							"file":"bgm_noroi.mp3"
+						},
 						{
 							"type":"fadeout"
 						},
