@@ -16,6 +16,8 @@ namespace LastSupper
     {
         rapidjson::Document readJsonFile(const string& path);
         void writeJsonFile(const string& path, const rapidjson::Document& doc);
+        rapidjson::Document readJsonCrypted(const string& path);
+        void writeJsonCrypt(const string& path, const rapidjson::Document& doc);
     }
 }
 
