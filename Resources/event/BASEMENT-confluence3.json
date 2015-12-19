@@ -27,6 +27,30 @@
 			"mapID":"58",
 			"x":22,
 			"y":9
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"Nstatus":["3","1"],
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"releaseChase",
+					"objID":"1067"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1067"
+				},
+				{
+					"type":"already",
+					"event":["55","14"]
+				}
+			]
 		}
 	],
 	"4":[
@@ -559,5 +583,6 @@
 				}
 			]
 		}
-	]
+	],
+	"14":"右から入る用"
 }

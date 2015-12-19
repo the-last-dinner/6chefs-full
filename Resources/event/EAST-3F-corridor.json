@@ -190,8 +190,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"EAST.mp3",
-					"volume":0.1
+					"file":"EAST.mp3"
 				}
 			]
 		}

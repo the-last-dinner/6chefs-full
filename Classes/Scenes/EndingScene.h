@@ -14,11 +14,12 @@
 class EndingScene : public BaseScene
 {
 // 定数
+public:
     enum struct END_ID
     {
-        BAD_END,
-        NORMAL_END,
-        TRUE_END
+        BAD_END = 1,
+        NORMAL_END = 2,
+        TRUE_END = 3
     };
     
 // クラスメソッド

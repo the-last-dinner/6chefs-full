@@ -22,6 +22,8 @@ const char* GlobalPlayerData::BEST_SAVE_COUNT {"best_save_count"};
 const char* GlobalPlayerData::BEST_CLEAR_TIME {"best_clear_time"};
 const char* GlobalPlayerData::TROPHY {"trophy"};
 const char* GlobalPlayerData::TOKENS {"tokens"};
+const char* GlobalPlayerData::BGM_VOLUME {"bgm_volume"};
+const char* GlobalPlayerData::SE_VOLUME {"se_volume"};
 
 const int GlobalPlayerData::CHIKEN_SAVE_COUNT {80};
 const int GlobalPlayerData::FAST_CLEAR_TIME {3600};
@@ -198,4 +200,31 @@ bool GlobalPlayerData::isClearedToken(const string &token)
         }
     }
     return false;
+}
+
+#pragma mark -
+#pragma mark Volume
+
+// BGMのマスターボリュームをセット
+void GlobalPlayerData::setBgmVolume(const float& volume)
+{
+    this->globalData[BGM_VOLUME].SetDouble(volume);
+}
+
+// BGMのマスターボリュームをゲット
+float GlobalPlayerData::getBgmVolume()
+{
+    return this->globalData[BGM_VOLUME].GetDouble();
+}
+
+// SEのマスターボリュームをセット
+void GlobalPlayerData::setSeVolume(const float &volume)
+{
+    this->globalData[SE_VOLUME].SetDouble(volume);
+}
+
+// SEのマスターボリュームをゲット
+float GlobalPlayerData::getSeVolume()
+{
+    return this->globalData[SE_VOLUME].GetDouble();
 }

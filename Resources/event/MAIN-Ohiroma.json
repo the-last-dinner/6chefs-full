@@ -176,9 +176,6 @@
       "type":"sequence",
       "action":[
         {
-          "type":"fadeout"
-        },
-        {
           "type":"charaMsg",
           "talk":[
             {
@@ -721,8 +718,12 @@
               "time":3.0
             },
             {
+              "type":"already",
+              "event":["4","27"]
+            },
+            {
               "type":"ending",
-              "endID":"2"
+              "id":"2"
             }
           ]
         }
@@ -991,8 +992,12 @@
               "time":3.0
             },
             {
+              "type":"already",
+              "event":["4","27"]
+            },
+            {
               "type":"ending",
-              "endID":"2"
+              "id":"2"
             }
           ]
         }
@@ -1247,7 +1252,7 @@
             },
             {
               "type":"ending",
-              "endID":"3"
+              "id":"3"
             },
             {
               "type":"already"
@@ -1458,8 +1463,12 @@
               "time":3.0
             },
             {
+              "type":"already",
+              "event":["4","27"]
+            },
+            {
               "type":"ending",
-              "endID":"2"
+              "id":"2"
             }
           ]
         }
@@ -1676,8 +1685,12 @@
               "time":3.0
             },
             {
-              "type":"end",
-              "endID":"2"
+              "type":"already",
+              "event":["4","27"]
+            },
+            {
+              "type":"ending",
+              "id":"2"
             }
           ]
         }
@@ -1899,8 +1912,12 @@
               "time":3.0
             },
             {
+              "type":"already",
+              "event":["4","27"]
+            },
+            {
               "type":"ending",
-              "endID":"2"
+              "id":"2"
             }
           ]
         }
@@ -1995,6 +2012,30 @@
     }
   ],
   "21":[
+    {
+      "type":"setLight",
+      "objID":"1"
+    },
+    {
+      "type":"setLight",
+      "objID":"2"
+    },
+    {
+      "type":"setLight",
+      "objID":"3"
+    },
+    {
+      "type":"setLight",
+      "objID":"4"
+    },
+    {
+      "type":"setLight",
+      "objID":"5"
+    },
+    {
+      "type":"setLight",
+      "objID":"6"
+    },
     {
       "type":"if",
       "condition":[
@@ -2111,6 +2152,15 @@
       "type":"charaMsg",
       "text":["キッチンは自由に使って下さい。"],
       "charaID":"9"
+    }
+  ],
+  "27":"ノーマルエンド見たかチェック用",
+  "28":[
+    {
+      "type":"fadeout"
+    },
+    {
+      "type":"already"
     }
   ]
 }

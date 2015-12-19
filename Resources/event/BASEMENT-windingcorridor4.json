@@ -44,5 +44,21 @@
 				}
 			]
 		}
+	],
+	"5":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["開かない・・・"]
+				}
+			]
+		}
 	]
 }

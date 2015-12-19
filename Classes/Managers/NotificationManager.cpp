@@ -52,6 +52,8 @@ void NotificationManager::notifyRemainsInQueue()
 {
     if(this->notifications.empty()) return;
     
+    this->notifications.front()->setParent(nullptr);
+    
     this->notifyInQueue(this->notifications.front(), false);
 }
 

@@ -128,4 +128,16 @@ private:
     virtual void run() override;
 };
 
+// タイトルへ移動
+class BackToTitleEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(BackToTitleEvent, rapidjson::Value&)
+private:
+    BackToTitleEvent() {FUNCLOG};
+    ~BackToTitleEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* defined(__LastSupper__SceneEvent__) */

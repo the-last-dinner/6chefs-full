@@ -154,8 +154,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"bgm_noroi.mp3",
-					"volume":0.5
+					"file":"bgm_noroi.mp3"
 				},
 				{
 					"type":"already"
@@ -220,15 +219,56 @@
 							"type":"fadein"
 						},
 						{
-							"type":"charaWalk",
-							"objID":"hero",
-							"direction":"UP",
-							"steps":3.0
+							"type":"if",
+							"condition":[
+								{
+									"event":["59","7"]
+								}
+							],
+							"action":[
+								{
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaWalk",
+											"objID":"hero",
+											"direction":"UP",
+											"steps":3.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"hero",
+											"direction":"DOWN"
+										}
+									]
+								}
+							]
 						},
 						{
-							"type":"changeDirection",
-							"objID":"hero",
-							"direction":"DOWN"
+							"type":"if",
+							"condition":[
+								{
+									"event":["55","14"]
+								}
+							],
+							"action":[
+								{
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaWalk",
+											"objID":"hero",
+											"direction":"LEFT",
+											"steps":3.0
+										},
+										{
+											"type":"changeDirection",
+											"objID":"hero",
+											"direction":"DOWN"
+										}
+									]
+								}
+							]
 						},
 						{
 							"type":"charaMsg",
@@ -252,8 +292,7 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"bgm_noroi.mp3",
-							"volume":0.5
+							"file":"bgm_noroi.mp3"
 						},
 						{
 							"type":"already"
@@ -312,8 +351,7 @@
 										},
 										{
 											"type":"playBGM",
-											"file":"bgm_noroi.mp3",
-											"volume":0.5
+											"file":"bgm_noroi.mp3"
 										},
 										{
 											"type":"already"

@@ -22,8 +22,7 @@
 		},
 		{
 			"type":"playBGM",
-			"file":"bgm_noroi.mp3",
-			"volume":0.5
+			"file":"bgm_noroi.mp3"
 		}
 	],
 	"3":[
@@ -731,8 +730,7 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"fuan_talk.mp3",
-							"volume":0.1
+							"file":"fuan_talk.mp3"
 						},
 						{
 							"type":"fadein"
@@ -1794,8 +1792,7 @@
 							"action":[	
 								{
 									"type":"playBGM",
-									"file":"fuan_talk.mp3",
-									"volume":0.1
+									"file":"fuan_talk.mp3"
 								},
 								{
 									"type":"charaMsg",
@@ -1974,8 +1971,7 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"lastBoss.mp3",
-							"volume":0.1
+							"file":"lastBoss.mp3"
 						},
 						{
 							"type":"already"
@@ -2602,8 +2598,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_nadeshiko.mp3",
-					"volume":0.1
+					"file":"favo_nadeshiko.mp3"
 				},
 				{
 					"type":"fadein"
@@ -2697,8 +2692,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_nadeshiko.mp3",
-					"volume":0.1
+					"file":"favo_nadeshiko.mp3"
 				},
 				{
 					"type":"fadein"
@@ -2783,8 +2777,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_rannmaru.mp3",
-					"volume":0.1
+					"file":"favo_rannmaru.mp3"
 				},
 				{
 					"type":"fadein"
@@ -2868,8 +2861,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_rannmaru.mp3",
-					"volume":0.1
+					"file":"favo_rannmaru.mp3"
 				},
 				{
 					"type":"fadein"
@@ -2958,8 +2950,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_manaka.mp3",
-					"volume":0.1
+					"file":"favo_manaka.mp3"
 				},
 				{
 					"type":"fadein"
@@ -3112,8 +3103,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_manaka.mp3",
-					"volume":0.1
+					"file":"favo_manaka.mp3"
 				},
 				{
 					"type":"fadein"
@@ -3198,8 +3188,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"DanDan.mp3",
-					"volume":0.1
+					"file":"DanDan.mp3"
 				},
 				{
 					"type":"removeItem",
@@ -3307,8 +3296,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"DanDan.mp3",
-					"volume":0.1
+					"file":"DanDan.mp3"
 				},
 				{
 					"type":"fadein"
@@ -3397,8 +3385,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_daigoro.mp3",
-					"volume":0.1
+					"file":"favo_daigoro.mp3"
 				},
 				{
 					"type":"fadein"
@@ -3504,8 +3491,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_daigoro.mp3",
-					"volume":0.1
+					"file":"favo_daigoro.mp3"
 				},
 				{
 					"type":"fadein"
@@ -3662,8 +3648,7 @@
 						        },
 						        {
 						          "type":"playBGM",
-						          "file":"Mozart-OboeConcerto-1.mp3",
-						          "volume":0.3
+						          "file":"Mozart-OboeConcerto-1.mp3"
 						        },
 						        {
 						          "type": "charaMsg",
@@ -3825,9 +3810,6 @@
 					    {
 					    	"type":"already"
 					    },
-			            {
-			            	"type":"already"
-			            },
 						{
 							"type":"createCamera",
 							"x":20,
@@ -3838,7 +3820,7 @@
 									"action":[
 										{
 									        "type":"storyMsg",
-									        "text":["その後・・・\n徒歩での下山は危険だという蘭丸の見立てにより\n「男子勢が寝ないで見張りをすること」を条件に\n翌朝のバスの時間まで食堂で待機することにした。"]
+									        "text":["その後・・・\n徒歩での下山は危険だという加藤の見立てにより\n「男子勢が寝ないで見張りをすること」を条件に\n翌朝のバスの時間まで食堂で待機することにした。"]
 									    },
 							            {
 							            	"type":"stopBGM"
@@ -3873,8 +3855,7 @@
 							            },
 							            {
 							            	"type":"playBGM",
-							            	"file":"106-Bach-Sheep-May-Safely-Graze.mp3",
-							            	"volume":0.1
+							            	"file":"106-Bach-Sheep-May-Safely-Graze.mp3"
 							            },
 							            {
 							              "type":"charaMsg",
@@ -4073,8 +4054,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"fuan_talk.mp3",
-					"volume":0.1
+					"file":"fuan_talk.mp3"
 				},
 				{
 					"type":"charaMsg",

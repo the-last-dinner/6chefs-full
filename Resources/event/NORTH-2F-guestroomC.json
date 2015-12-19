@@ -282,8 +282,7 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"NORTH.mp3",
-							"volume":0.1
+							"file":"NORTH.mp3"
 						},
 						{
 							"type":"already"

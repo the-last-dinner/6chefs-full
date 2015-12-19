@@ -40,7 +40,7 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
     this->addChild(logo);
     
     // 効果音
-    SoundManager::getInstance()->playSE("logo_display.mp3", 0.1f);
+    SoundManager::getInstance()->playSE("logo_display.mp3", 0.5f);
     
     // ロゴのアニメーション
     logo->runAction(Sequence::createWithTwoActions(FadeIn::create(0.5f),EaseCubicActionOut::create(TintTo::create(1.0f, Color3B::RED))));
