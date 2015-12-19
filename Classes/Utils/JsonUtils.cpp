@@ -67,18 +67,12 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     
     // 文字列を複合化
     string jsonStr;
-    int line {1};
-    while(getline(ifs, jsonStr) && line == 1)
+    getline(ifs, jsonStr);
+    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
     {
-        for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-        {
-            jsonStr[i] ^= C_KEY;
-        }
-        line++;
+        jsonStr[i] ^= C_KEY;
     }
-    
-    StringStream rs(jsonStr.c_str());
-    doc.ParseStream(rs);
+    doc.Parse(jsonStr.c_str());
     
     //構文エラー判定
     bool error = doc.HasParseError();
@@ -106,15 +100,12 @@ void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::
     
     // 文字列を複合化
     string jsonStr;
-    int line {1};
-    while(getline(ifs, jsonStr) && line == 1)
+    getline(ifs, jsonStr);
+    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
     {
-        for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-        {
-            jsonStr[i] ^= C_KEY;
-        }
-        line++;
+        jsonStr[i] ^= C_KEY;
     }
+    
     
     // ファイル書き出し
     ofstream ofs;
