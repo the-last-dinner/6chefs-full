@@ -1,6 +1,10 @@
 {
 	"1":[
 		{
+			"type":"playSE",
+			"file":"door1.mp3"
+		},
+		{
 			"type":"changeMap",
 			"mapID":"17",
 			"x":63,
@@ -13,7 +17,7 @@
 			"action":[
 				{
 					"type":"charaMsg",
-					"text":["こんなふうに置いておいたら\n悪くになっちゃうよ・・・","ちゃんとしまっとこ"],
+					"text":["こんなふうに置いておいたら\n悪くになっちゃうよ・・・","ちゃんとしまっとこ！"],
 					"charaID":"0",
 					"imgID":"1"
 				},
@@ -43,13 +47,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":[
-						["19","2"],
-						["19","13"],
-						["19","15"],
-						["19","16"]
-					],
-					"item":["154","155","156"]
+					"item":["1534","1535","1536"]
 				}
 			],
 			"action":[
@@ -67,22 +65,22 @@
 						},
 						{
 							"type":"removeItem",
-							"itemID":"154"
+							"itemID":"1534"
 						},
 						{
 							"type":"removeItem",
-							"itemID":"155"
+							"itemID":"1535"
 						},
 						{
 							"type":"removeItem",
-							"itemID":"156"
+							"itemID":"1536"
 						},
 						{
 							"type":"fadein"
 						},
 						{
 							"type":"charaMsg",
-							"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・"],
+							"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・","隠れるのに使えるかもしれない！"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -99,16 +97,32 @@
 			"type":"if",
 			"condition":[
 				{
+					"event":["19","2"],
+					"Nitem":["1534"]
+				},
+				{
+					"event":["19","2"],
+					"Nitem":["1535"]
+				},
+				{
+					"event":["19","2"],
+					"Nitem":["1536"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["野菜室はまだスペースが空いているな・・・","早くさっきの野菜しまわなきゃ！"],
+					"charaID":"0",
+					"imgID":"1"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
 					"Nevent":["19","2"]
-				},
-				{
-					"Nevent":["19","13"]
-				},
-				{
-					"Nevent":["19","15"]
-				},
-				{
-					"Nevent":["19","16"]
 				}
 			],
 			"action":[
@@ -240,12 +254,20 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"removeItem",
+					"itemID":"155"
+				},
+				{
 					"type":"playSE",
 					"file":"water.mp3"
 				},
 				{
 					"type":"systemMsg",
 					"text":["酢を薄めて\n苺を酢水で軽く洗った"]
+				},
+				{
+					"type":"getItem",
+					"itemID":"1535"
 				},
 				{
 					"type":"fadein"
@@ -300,12 +322,20 @@
 					"type":"fadeout"
 				},
 				{
+					"type":"removeItem",
+					"itemID":"156"
+				},
+				{
 					"type":"playSE",
 					"file":"water.mp3"
 				},
 				{
 					"type":"systemMsg",
 					"text":["お湯でレタスを洗った"]
+				},
+				{
+					"type":"getItem",
+					"itemID":"1536"
 				},
 				{
 					"type":"fadein"
@@ -342,12 +372,20 @@
 													"type":"fadeout"
 												},
 												{
+													"type":"removeItem",
+													"itemID":"154"
+												},
+												{
 													"type":"playSE",
 													"file":"busu.mp3"
 												},
 												{
 													"type":"systemMsg",
 													"text":["大根の葉を切り落とした"]
+												},
+												{
+													"type":"getItem",
+													"itemID":"1534"
 												},
 												{
 													"type":"fadein"

@@ -46,7 +46,7 @@
 			"action":[
 				{
 					"type":"storyMsg",
-					"text":["ゴキブリは煙草の煙が苦手だという\nゴキブリの殲滅のために\n部屋に煙草の煙を充満させた主婦が\n喘息を患ったという笑い話がある"]
+					"text":["ゴキブリは煙草の煙が苦手だという\nゴキブリの殲滅のために\n部屋に煙草の煙を充満させた主婦が\n喘息を患ったという笑い話がある。"]
 				}
 			]
 		}
@@ -167,7 +167,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.1,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -273,7 +273,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.1,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",
@@ -404,7 +404,7 @@
 											"action":[
 												{
 													"type":"animation",
-													"time":0.1,
+													"time":0.15,
 													"imgs":[
 														"wheat1.png",
 														"wheat2.png",

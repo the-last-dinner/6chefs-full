@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="41">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="42">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
  </tileset>
@@ -46,7 +46,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSigLQAACHAAAQ==
+   eJxjYBgFgxk852RgeMFJf3vfA+38MAD2fgfa+WMA7P0PspOL/vaOglEwCkbBSAEAq6EG5g==
   </data>
  </layer>
  <layer name="door2" width="30" height="18">
@@ -54,7 +54,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxk852RgeMFJf3vfA+38MAD2fgfa+WMA7P0PspOL/vaOglEwCkbBSAEAq6EG5g==
+   eJxjYBgFgxkc52RgOMFJf3vPA+28MAD2XgfaeWMA7L0PtPPBANg7CkbBKBgFIwUAAPAvBuU=
   </data>
  </layer>
  <layer name="door" width="30" height="18">

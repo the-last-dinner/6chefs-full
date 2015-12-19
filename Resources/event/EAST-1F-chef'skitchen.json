@@ -4,30 +4,32 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"playSE",
-							"file":"door1.mp3"
-						},
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"removeLayer",
-									"layer":"door"
-								},
-								{
-									"type":"wait",
-									"time":0.5
-								},
-								{
-									"type":"removeLayer",
-									"layer":"door2"
-								}
-							]
-						}
-					]
+					"type":"playSE",
+					"file":"door1.mp3"
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door"
+				},
+				{
+					"type":"wait",
+					"time":0.2
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door2"
+				},
+				{
+					"type":"wait",
+					"time":0.2
+				},
+				{
+					"type":"removeLayer",
+					"layer":"door3"
+				},
+				{
+					"type":"wait",
+					"time":0.5
 				},
 				{
 					"type":"changeMap",
@@ -140,12 +142,12 @@
 				{
 					"event":["34","8"],
 					"Nequip":["158"],
-					"flg":0
+					"flg":1
 				},
 				{
 					"event":["34","8"],
 					"Nequip":["1529"],
-					"flg":0
+					"flg":1
 				}
 			],
 			"action":[
@@ -177,7 +179,7 @@
 							"action":[
 								{
 									"type":"charaMsg",
-									"text":["さっきのメニューリスト・・・\n作ってみようか・・・","確か北棟に調理に必要そうな\n道具のある部屋があったな"],
+									"text":["さっきのメニューリスト・・・\n作ってみようか・・・","確か北棟に調理に必要そうな\n道具のある部屋があったな。"],
 									"charaID":"0",
 									"imgID":"1"
 								},
@@ -197,12 +199,12 @@
 				{
 					"event":["34","8"],
 					"Nequip":["158"],
-					"flg":0
+					"flg":2
 				},
 				{
 					"event":["34","8"],
 					"Nequip":["1529"],
-					"flg":0
+					"flg":2
 				}
 			],
 			"action":[
@@ -241,7 +243,7 @@
 											"imgID":"1"
 										},
 										{
-											"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ"],
+											"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ！"],
 											"charaID":"0",
 											"imgID":"2"
 										}
@@ -272,7 +274,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["コレで目玉焼きを作ろう"],
+							"text":["コレで目玉焼きを作ろう。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -361,7 +363,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["コレで目玉焼きを作ろう"],
+							"text":["コレで目玉焼きを作ろう。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -558,7 +560,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["コレで茶碗蒸しが作れるかな"],
+							"text":["コレで茶碗蒸しが作れるかな。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -647,7 +649,7 @@
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["コレで茶碗蒸しが作れるかな"],
+							"text":["コレで茶碗蒸しが作れるかな。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -767,7 +769,7 @@
 							"type":"charaMsg",
 							"text":["・・・"],
 							"charaID":"0",
-							"imgID":"1"
+							"imgID":"2"
 						},
 						{
 							"type":"already",

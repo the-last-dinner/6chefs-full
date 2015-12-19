@@ -143,7 +143,7 @@
  </layer>
  <layer name="manaka" width="36" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzrEVABAQBbD/bv+l2IJp6JRKimSCJADwVquk1+vFMfZlfvQBAOBuAZGgAz8=
+   eJztzrEVABAQBbD/bv+p2IJl6JRKimSCJADwVq+k1evFMfdlfPQBAOBuAbnQA0M=
   </data>
  </layer>
  <objectgroup name="event">

@@ -22,9 +22,7 @@ MapNameNotification::~MapNameNotification() {FUNCLOG};
 // 初期化
 bool MapNameNotification::init(const string& message)
 {
-    if(!NotificationNode::init()) return false;
-    
-    this->setOpacity(0);
+    if(!NotificationNode::init(5.f)) return false;
     
     // ラベルを生成
     Label* label { Label::createWithTTF(message, Resource::Font::SYSTEM, 30.f) };
@@ -35,7 +33,7 @@ bool MapNameNotification::init(const string& message)
     this->addChild(label);
     
     this->setContentSize(bg->getContentSize());
-    this->setPosition(this->getContentSize().width / 2 , WINDOW_HEIGHT - this->getContentSize().height / 2);
+    this->setDefaultPosition(Point(this->getContentSize().width / 2 , WINDOW_HEIGHT - this->getContentSize().height / 2));
     
     return true;
 }
@@ -43,7 +41,10 @@ bool MapNameNotification::init(const string& message)
 // 通知
 void MapNameNotification::notify(AnimationCallback callback)
 {
-    Point toPosition {this->getPosition()};
+    NotificationNode::notify(callback);
+    
+    Point toPosition {this->getDefaultPosition()};
+    this->setOpacity(0);
     this->setPosition(toPosition - Vec2(0, 30.f));
     this->runAction(Spawn::createWithTwoActions(FadeIn::create(ANIMATION_DURATION), EaseCubicActionOut::create(MoveTo::create(ANIMATION_DURATION, toPosition))));
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(ANIMATION_DURATION), CallFunc::create([this, callback]{if(callback) callback(this);})));
@@ -56,6 +57,3 @@ void MapNameNotification::close(AnimationCallback callback)
                                                                  EaseCubicActionIn::create(MoveBy::create(ANIMATION_DURATION, Vec2(0, -15.f)))),
                                                    CallFunc::create([this, callback]{if(callback) callback(this);})));
 }
-
-// 表示時間を取得
-float MapNameNotification::getShowingDuration() const { return 5.f; }

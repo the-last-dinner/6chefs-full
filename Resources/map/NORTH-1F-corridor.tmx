@@ -117,7 +117,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bENwCAMAEE3oSNU0MH+Y+IhokQRdxO89BEAAPBvV4so7esK3lbz+e37cXo+H74fZ+bz5TsAAAAAAAAAD9iPBwEF
+   eJzt0cEJwCAQAMH7G/Chv/hL+q/RK0ISxJkKFjYCAAD2VmrEVf+u4Gstn3ffj3Pn8+H7cZ58/voOAAAAAAAAwAIT1YEBNQ==
   </data>
  </layer>
  <layer name="foodroomdoor" width="126" height="24">

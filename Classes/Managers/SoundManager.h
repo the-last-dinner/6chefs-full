@@ -13,6 +13,10 @@
 
 class SoundManager
 {
+// 定数
+private:
+    static const map<string, float> VOLUME_CONFIG;
+    
 // クラスメソッド
 public:
 	static SoundManager* getInstance();
