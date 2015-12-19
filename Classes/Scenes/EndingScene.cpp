@@ -278,7 +278,7 @@ void EndingScene::replaceScene()
     BaseScene* target {nullptr};
     if (this->end_id == etoi(END_ID::TRUE_END))
     {
-        target = DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation()));
+        target = DungeonScene::create(DungeonSceneData::create(Location(3,20,39,Direction::BACK)));
     }
     else
     {
