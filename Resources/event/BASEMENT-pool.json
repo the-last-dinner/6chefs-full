@@ -326,7 +326,8 @@
 							"charaID":"8",
 							"x":14,
 							"y":5,
-							"speed":1.2
+							"speed":1.5,
+							"movePattern":"5"
 						},
 						{
 							"type":"fadein"
@@ -437,7 +438,8 @@
 							"charaID":"8",
 							"x":14,
 							"y":5,
-							"speed":1.2
+							"speed":1.5,
+							"movePattern":"5"
 						},
 						{
 							"type":"fadein"

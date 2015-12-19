@@ -15,20 +15,10 @@
 	],
 	"2":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["58","7"]
-				}
-			],
-			"action":[
-				{
-					"type":"changeMap",
-					"mapID":"41",
-					"x":2,
-					"y":9
-				}
-			]
+			"type":"changeMap",
+			"mapID":"41",
+			"x":2,
+			"y":9
 		}
 	],
 	"3":[

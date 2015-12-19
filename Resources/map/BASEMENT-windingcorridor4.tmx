@@ -23,7 +23,6 @@
   <object id="10" x="96" y="16" width="32" height="48"/>
   <object id="11" x="368" y="0" width="32" height="64"/>
   <object id="12" x="0" y="16" width="64" height="48"/>
-  <object id="18" x="672" y="64" width="32" height="64"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)"/>
@@ -37,7 +36,7 @@
   <object id="14" x="672" y="64" width="32" height="64">
    <properties>
     <property name="EventID" value="2"/>
-    <property name="trigger" value="4"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
   <object id="15" x="704" y="352" width="32" height="32">
