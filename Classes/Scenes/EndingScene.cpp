@@ -232,7 +232,7 @@ void EndingScene::createTrueEnding()
 // ノーマルエンドを生成
 void EndingScene::createNormalEnding()
 {
-    Label* label {Label::createWithTTF("Normal END", Resource::Font::SYSTEM, 48)};
+    Label* label {Label::createWithTTF("Normal END", Resource::Font::SYSTEM, 80)};
     label->setColor(Color3B::WHITE);
     label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     label->setOpacity(0);
@@ -243,7 +243,7 @@ void EndingScene::createNormalEnding()
 // バッドエンドを生成
 void EndingScene::createBadEnding()
 {
-    Label* label {Label::createWithTTF("BAD END", Resource::Font::SYSTEM, 48)};
+    Label* label {Label::createWithTTF("BAD END", Resource::Font::SYSTEM, 80)};
     label->setColor(Color3B::WHITE);
     label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     label->setOpacity(0);
@@ -276,13 +276,16 @@ void EndingScene::onEndingFinished()
 void EndingScene::replaceScene()
 {
     BaseScene* target {nullptr};
-    if (this->end_id == etoi(END_ID::TRUE_END))
-    {
-        target = DungeonScene::create(DungeonSceneData::create(Location(3,20,39,Direction::BACK)));
-    }
-    else
-    {
-        target = TitleScene::create();
+    switch (this->end_id) {
+        case etoi(END_ID::TRUE_END):
+            target = DungeonScene::create(DungeonSceneData::create(Location(3,20,39,Direction::BACK)));
+            break;
+        case etoi(END_ID::NORMAL_END):
+            target = DungeonScene::create(DungeonSceneData::create(Location(39,16,5,Direction::FRONT)));
+            break;
+        default:
+            target = TitleScene::create();
+            break;
     }
     Director::getInstance()->replaceScene(target);
 }

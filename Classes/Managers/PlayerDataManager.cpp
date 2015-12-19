@@ -64,10 +64,10 @@ void PlayerDataManager::setGameClear(const int end_id)
     switch (end_id)
     {
         case etoi(EndingScene::END_ID::NORMAL_END):
-            trophy_id = 6;
+            trophy_id = 7;
             break;
         case etoi(EndingScene::END_ID::TRUE_END):
-            trophy_id = 7;
+            trophy_id = 8;
             break;
         default:
             // default bad_end
