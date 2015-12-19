@@ -26,6 +26,7 @@
 #include "Scenes/DungeonCameraScene.h"
 #include "Scenes/DungeonScene.h"
 #include "Scenes/GameOverScene.h"
+#include "Scenes/TitleScene.h"
 
 #pragma mark ChangeMapEvent
 
@@ -209,4 +210,19 @@ void EndingEvent::run()
 {
     this->setDone();
     DungeonSceneManager::getInstance()->exitDungeon(EndingScene::create(this->endingId));
+}
+
+#pragma mark -
+#pragma mark BackToTitleEvent
+
+bool BackToTitleEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    return true;
+}
+
+void BackToTitleEvent::run()
+{
+    this->setDone();
+    DungeonSceneManager::getInstance()->exitDungeon(TitleScene::create());
 }
