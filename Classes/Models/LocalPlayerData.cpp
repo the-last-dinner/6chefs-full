@@ -52,24 +52,6 @@ bool LocalPlayerData::loadLocalData(const int local_id)
     return true;
 }
 
-// ローカルデータの全初期化
-void LocalPlayerData::initLocalData()
-{
-    // status=0のオブジェクトを生成
-    rapidjson::Document initLocal;
-    initLocal.SetObject();
-    rapidjson::Value jval (kStringType);
-    jval.SetString(STATUS, strlen(STATUS), initLocal.GetAllocator());
-    initLocal.AddMember(jval, rapidjson::Value(0), initLocal.GetAllocator());
-    
-    // 全セーブデータを初期化
-    string path = FileUtils::getInstance()->fullPathForFilename("save/local_templete.json");
-    path = LastSupper::StringUtils::strReplace("_template.json", "", path);
-    for(int i = 1; i <= MAX_SAVE_COUNT; i++){
-        LastSupper::JsonUtils::writeJsonFile(path + to_string(i) + ".json", initLocal);
-    }
-}
-
 // ローカルデータのセーブ
 void LocalPlayerData::saveLocalData(const int local_id)
 {

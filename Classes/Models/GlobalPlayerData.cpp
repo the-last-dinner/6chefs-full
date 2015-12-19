@@ -45,7 +45,6 @@ bool GlobalPlayerData::loadGlobalData()
     if (path == "") return false;
     
     this->globalData = LastSupper::JsonUtils::readJsonFile(path);
-    if(this->globalData[STATUS].GetInt() == 0) return false;
     
     return true;
 }
@@ -64,6 +63,16 @@ bool GlobalPlayerData::initGlobalData()
 
 // グローバルデータのセーブ
 void GlobalPlayerData::saveGlobalData(){LastSupper::JsonUtils::writeJsonFile(GLOBAL_DATA_PATH, this->globalData);}
+
+#pragma mark -
+#pragma mark Status
+
+// statusの取得
+int GlobalPlayerData::getStatus()
+{
+    return this->globalData[STATUS].GetInt();
+}
+
 
 #pragma mark -
 #pragma mark ClearCount

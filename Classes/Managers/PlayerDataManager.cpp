@@ -48,13 +48,37 @@ PlayerDataManager::~PlayerDataManager()
 PlayerDataManager::PlayerDataManager()
 {
     FUNCLOG
-    //グローバルセーブデータの読み込み
+    // グローバルセーブデータの読み込み
     this->globalData = GlobalPlayerData::create();
+    
+    // ローカルデータの初期化
+    if(this->globalData->getStatus() == 0)
+    {
+        this->initLocalData();
+    }
     CC_SAFE_RETAIN(this->globalData);
 }
 
 #pragma mark -
 #pragma mark
+
+// ローカルデータの全初期化
+void PlayerDataManager::initLocalData()
+{
+    // status=0のオブジェクトを生成
+    rapidjson::Document initLocal;
+    initLocal.SetObject();
+    rapidjson::Value jval (kStringType);
+    jval.SetString(GlobalPlayerData::STATUS, strlen(GlobalPlayerData::STATUS), initLocal.GetAllocator());
+    initLocal.AddMember(jval, rapidjson::Value(0), initLocal.GetAllocator());
+    
+    // 全セーブデータを初期化
+    string path = FileUtils::getInstance()->fullPathForFilename("save/local_template.json");
+    path = LastSupper::StringUtils::strReplace("_template.json", "", path);
+    for(int i = 1; i <= MAX_SAVE_COUNT; i++){
+        LastSupper::JsonUtils::writeJsonFile(path + to_string(i) + ".json", initLocal);
+    }
+}
 
 // クリア時の処理
 void PlayerDataManager::setGameClear(const int end_id)
