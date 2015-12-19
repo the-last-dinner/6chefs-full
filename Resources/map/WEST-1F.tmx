@@ -103,12 +103,6 @@
   </data>
  </layer>
  <objectgroup name="event">
-  <object id="40" x="64" y="208" width="32" height="32">
-   <properties>
-    <property name="EventID" value="1"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
   <object id="41" x="560" y="0" width="32" height="32">
    <properties>
     <property name="EventID" value="2"/>
@@ -123,13 +117,13 @@
   </object>
   <object id="45" x="0" y="208" width="96" height="32">
    <properties>
-    <property name="EventID" value="5"/>
+    <property name="EventID" value="1"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="46" x="96" y="160" width="16" height="64">
    <properties>
-    <property name="EventID" value="5"/>
+    <property name="EventID" value="1"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
