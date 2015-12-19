@@ -411,8 +411,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"DanDan.mp3",
-					"volume":0.1
+					"file":"DanDan.mp3"
 				},
 				{
 					"type":"fadein"
@@ -489,8 +488,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"NORTH.mp3",
-					"volume":0.1
+					"file":"NORTH.mp3"
 				},
 				{
 					"type":"fadein"
@@ -525,8 +523,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"DanDan.mp3",
-					"volume":0.1
+					"file":"DanDan.mp3"
 				},
 				{
 					"type":"fadein"
@@ -588,8 +585,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"NORTH.mp3",
-					"volume":0.1
+					"file":"NORTH.mp3"
 				},
 				{
 					"type":"fadein"

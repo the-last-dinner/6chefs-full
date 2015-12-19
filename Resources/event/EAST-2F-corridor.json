@@ -396,8 +396,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_daigoro.mp3",
-					"volume":0.1
+					"file":"favo_daigoro.mp3"
 				},
 				{
 					"type":"fadein"
@@ -476,8 +475,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"EAST.mp3",
-					"volume":0.1
+					"file":"EAST.mp3"
 				},
 				{
 					"type":"fadein"
@@ -512,8 +510,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"favo_daigoro.mp3",
-					"volume":0.1
+					"file":"favo_daigoro.mp3"
 				},
 				{
 					"type":"fadein"
@@ -587,8 +584,7 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"EAST.mp3",
-					"volume":0.1
+					"file":"EAST.mp3"
 				},
 				{
 					"type":"fadein"

@@ -10,8 +10,7 @@
 	"2":[
 		{
 			"type":"playBGM",
-			"file":"EAST.mp3",
-      		"volume":0.1
+			"file":"EAST.mp3"
 		},
 		{
 			"type":"changeMap",
@@ -23,8 +22,7 @@
 	"3":[
 		{
 			"type":"playBGM",
-			"file":"EAST.mp3",
-  		    "volume":0.1
+			"file":"EAST.mp3"
 		},
 		{
 			"type":"changeMap",
@@ -36,8 +34,7 @@
 	"4":[
 		{
 			"type":"playBGM",
-			"file":"EAST.mp3",
-      		"volume":0.1
+			"file":"EAST.mp3"
 		},
 		{
 			"type":"changeMap",
@@ -49,8 +46,7 @@
 	"5":[
 		{
 			"type":"playBGM",
-			"file":"EAST.mp3",
-      		"volume":0.1
+			"file":"EAST.mp3"
 		},
 		{
 			"type":"changeMap",

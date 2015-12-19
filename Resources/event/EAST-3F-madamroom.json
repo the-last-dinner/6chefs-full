@@ -339,8 +339,7 @@
 							            },
 							            {
 							            	"type":"playBGM",
-							            	"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-							            	"volume":0.1
+							            	"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
 							            },
 							            {
 							              "type":"charaMsg",
@@ -473,8 +472,8 @@
 							            		{
 							            			"type":"charaMsg",
 							            			"text":["これ・・・食べてみ？\n美味しいから・・・"],
-							            			"charaID":"7",
-							            			"imgID":"1"
+							            			"charaID":"9",
+							            			"name":"戸塚　大宝"
 							            		}
 							            	]
 							            },
@@ -488,7 +487,7 @@
 							            		},
 							            		{
 							            			"text":["それはね・・・人間の目ん玉だよ・・・"],
-							            			"charaID":"7",
+							            			"charaID":"6",
 							            			"imgID":"1"
 							            		},
 							            		{
@@ -498,7 +497,7 @@
 							            		},
 							            		{
 							            			"text":["フフ・・・\n冗談だよ・・・"],
-							            			"charaID":"7",
+							            			"charaID":"6",
 							            			"imgID":"1"
 							            		},
 							            		{
@@ -511,6 +510,10 @@
 							            {
 							                "type":"fadeout",
 							                "time":3.0
+							            },
+							            {
+							            	"type":"wait",
+							            	"time":2.0
 							            },
 							            {
 							            	"type":"stopBGM"

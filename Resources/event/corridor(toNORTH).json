@@ -26,8 +26,7 @@
   "4": [
     {
       "type":"playBGM",
-      "file":"NORTH.mp3",
-      "volume":0.1
+      "file":"NORTH.mp3"
     },
     {
       "type": "changeMap",
@@ -39,8 +38,7 @@
   "5": [
     {
       "type":"playBGM",
-      "file":"NORTH.mp3",
-      "volume":0.1
+      "file":"NORTH.mp3"
     },
     {
       "type": "changeMap",
@@ -52,8 +50,7 @@
   "6": [
     {
       "type":"playBGM",
-      "file":"NORTH.mp3",
-      "volume":0.1
+      "file":"NORTH.mp3"
     },
     {
       "type": "changeMap",

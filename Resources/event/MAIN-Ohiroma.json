@@ -176,9 +176,6 @@
       "type":"sequence",
       "action":[
         {
-          "type":"fadeout"
-        },
-        {
           "type":"charaMsg",
           "talk":[
             {
@@ -2157,5 +2154,13 @@
       "charaID":"9"
     }
   ],
-  "27":"ノーマルエンド見たかチェック用"
+  "27":"ノーマルエンド見たかチェック用",
+  "28":[
+    {
+      "type":"fadeout"
+    },
+    {
+      "type":"already"
+    }
+  ]
 }
