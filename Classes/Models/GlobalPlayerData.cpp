@@ -25,7 +25,7 @@ const char* GlobalPlayerData::TOKENS {"tokens"};
 const char* GlobalPlayerData::BGM_VOLUME {"bgm_volume"};
 const char* GlobalPlayerData::SE_VOLUME {"se_volume"};
 
-const int GlobalPlayerData::CHIKEN_SAVE_COUNT {30};
+const int GlobalPlayerData::CHIKEN_SAVE_COUNT {50};
 const int GlobalPlayerData::FAST_CLEAR_TIME {1265};
 
 #pragma mark GlobalDataFile
@@ -102,7 +102,6 @@ bool GlobalPlayerData::isCleared(){return this->getClearCount() > 0 ? true : fal
 void GlobalPlayerData::setBestSaveCount(const int save_count)
 {
     // トロフィーチェック
-    if (save_count >= CHIKEN_SAVE_COUNT) this->setTrophy(9); // チキン料理人
     if (save_count == 0) this->setTrophy(11); // マエストロ
     
     if (save_count > this->getBestSaveCount()) return;
