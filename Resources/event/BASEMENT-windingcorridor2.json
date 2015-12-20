@@ -2,7 +2,7 @@
 	"0":[
     	{
       		"type":"setAmbient",
-      		"ambient":"night"
+      		"ambient":"basement"
     	}
 	],
 	"1":[
@@ -34,6 +34,22 @@
 				{
 					"type":"spawn",
 					"action":[
+						{
+							"type":"removeEnemy",
+							"enemyID":"1411"
+						},
+						{
+							"type":"removeEnemy",
+							"enemyID":"1412"
+						},
+						{
+							"type":"removeEnemy",
+							"enemyID":"1413"
+						},
+						{
+							"type":"removeEnemy",
+							"enemyID":"1414"
+						},
 						{
 							"type":"createEnemy",
 							"enemyID":"1415",

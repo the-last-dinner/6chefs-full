@@ -2,7 +2,7 @@
 	"0":[
     	{
       		"type":"setAmbient",
-      		"ambient":"night"
+      		"ambient":"basement"
     	}
 	],
 	"1":[

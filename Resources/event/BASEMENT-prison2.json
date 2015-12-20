@@ -2,7 +2,7 @@
 	"0":[
     	{
       		"type":"setAmbient",
-      		"ambient":"night"
+      		"ambient":"basement"
     	}
 	],
 	"1":[
@@ -30,8 +30,7 @@
 							"charaID":"16",
 							"x":2,
 							"y":8,
-							"speed":1.2,
-							"times":3
+							"speed":1.7
 						},
 						{
 							"type":"createEnemy",
@@ -39,8 +38,7 @@
 							"charaID":"13",
 							"x":4,
 							"y":14,
-							"speed":1.2,
-							"times":3
+							"speed":1.7
 						},
 						{
 							"type":"createEnemy",
@@ -49,8 +47,7 @@
 							"x":12,
 							"y":14,
 							"speed":2,
-							"movePattern":"3",
-							"times":3
+							"movePattern":"3"
 						},
 						{
 							"type":"createEnemy",
@@ -59,8 +56,7 @@
 							"x":8,
 							"y":6,
 							"speed":2,
-							"movePattern":"3",
-							"times":3
+							"movePattern":"3"
 						},
 						{
 							"type":"already"
@@ -133,6 +129,58 @@
 			"type":"storyMsg",
 			"title":"粉塵爆発",
 			"text":["小麦粉などの可燃性の粉塵が\n大気中に浮遊した状態で\n火花等により引火して爆発を起こす現象。\n状況によっては\n建物を吹き飛ばす程の威力が出る場合もある"]
+		}
+	],
+	"11":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["55","12"]
+				}
+			],
+			"action":[
+				{
+					"type":"createEnemy",
+					"enemyID":"1425",
+					"charaID":"14",
+					"x":4,
+					"y":7,
+					"speed":3.0,
+					"movePattern":"5",
+					"times":1
+				},
+				{
+					"type":"createEnemy",
+					"enemyID":"1426",
+					"charaID":"14",
+					"x":6,
+					"y":5,
+					"speed":3.0,
+					"movePattern":"5",
+					"times":1
+				},
+				{
+					"type":"createEnemy",
+					"enemyID":"1425",
+					"charaID":"14",
+					"x":4,
+					"y":5,
+					"speed":3.0,
+					"movePattern":"5",
+					"times":1
+				},
+				{
+					"type":"createEnemy",
+					"enemyID":"1426",
+					"charaID":"14",
+					"x":6,
+					"y":7,
+					"speed":3.0,
+					"movePattern":"5",
+					"times":1
+				}
+			]
 		}
 	]
 }

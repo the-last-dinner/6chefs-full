@@ -2,7 +2,7 @@
 	"0":[
     	{
       		"type":"setAmbient",
-      		"ambient":"night"
+      		"ambient":"basement"
     	}
 	],
 	"1":[
@@ -368,6 +368,23 @@
 					"type":"sequence",
 					"action":[
 						{
+							"type":"fadeout"
+						},
+						{
+							"type":"charaWalkTo",
+							"objID":"hero",
+							"x":18,
+							"y":27
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"UP"
+						},
+						{
+							"type":"fadein"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
@@ -423,27 +440,6 @@
 						{
 							"type":"wait",
 							"time":1.0
-						},
-						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"createChara",
-									"objID":"1811"
-								},
-								{
-									"type":"createChara",
-									"objID":"1812"
-								},
-								{
-									"type":"createChara",
-									"objID":"1813"
-								},
-								{
-									"type":"createChara",
-									"objID":"1814"
-								}
-							]
 						},
 						{
 							"type":"playSE",
