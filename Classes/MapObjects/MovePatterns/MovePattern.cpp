@@ -30,6 +30,12 @@ bool MovePattern::init(Character* chara)
     return true;
 }
 
+// 動き開始
+void MovePattern::start()
+{
+    this->setPaused(false);
+}
+
 // 止めるフラグを変更
 void MovePattern::setPaused(bool paused)
 {
@@ -53,3 +59,9 @@ Character* MovePattern::getMainCharacter() const { return this->chara->objectLis
 
 // マップオブジェクト一覧を取得
 MapObjectList* MovePattern::getMapObjectList() const { return this->chara->objectList; }
+
+// 停止中か
+bool MovePattern::isPaused() const
+{
+    return this->paused;
+}

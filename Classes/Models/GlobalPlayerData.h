@@ -13,6 +13,7 @@
 
 class GlobalPlayerData : public Ref
 {
+public:
     // path
     static const string GLOBAL_DATA_PATH;
     static const string GLOBAL_TEMPLATE_PATH;
@@ -45,10 +46,13 @@ private:
 private:
     bool init();
     bool loadGlobalData();
-    bool initGlobalData();
     
 public:
+    bool initGlobalData();
     void saveGlobalData();
+    
+    // status
+    int getStatus();
     
     // Clear count
     void setClearCount(const string& token);

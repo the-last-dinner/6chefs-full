@@ -24,7 +24,6 @@ private:
 //インスタンス変数
 private:
     rapidjson::Document json;
-    cocos2d::FileUtils* fu;
     
 // インスタンスメソッド
 public:

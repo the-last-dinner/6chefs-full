@@ -40,4 +40,16 @@ private:
     virtual void run() override;
 };
 
+// 靄発生
+class CreateFogEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(CreateFogEvent, rapidjson::Value&)
+private:
+    CreateFogEvent() {FUNCLOG};
+    ~CreateFogEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
 #endif /* EffectEvent_h */

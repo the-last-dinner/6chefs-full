@@ -380,6 +380,37 @@ PathObject* MapObjectList::getPathObjectById(const int pathId)
 }
 
 #pragma mark -
+#pragma mark Move
+
+// 全オブジェクトを自動移動開始
+void MapObjectList::moveStartAllObjects()
+{
+    for(MapObject* obj : this->availableObjects)
+    {
+        obj->moveStart();
+    }
+    
+    for(Enemy* enemy : this->enemies)
+    {
+        enemy->moveStart();
+    }
+}
+
+// 全オブジェクトの自動移動を停止
+void MapObjectList::moveStopAllObjects()
+{
+    for(MapObject* obj : this->availableObjects)
+    {
+        obj->moveStop();
+    }
+    
+    for(Enemy* enemy : this->enemies)
+    {
+        enemy->moveStop();
+    }
+}
+
+#pragma mark -
 #pragma mark update
 
 // 敵と主人公一行の衝突監視用updateメソッド

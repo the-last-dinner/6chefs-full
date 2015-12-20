@@ -20,6 +20,7 @@ bool StartUpSceneData::init()
         Resource::SpriteFrame::ICON,
         Resource::SpriteFrame::UI,
         Resource::SpriteFrame::MAP_OBJECT,
+        Resource::SpriteFrame::EFFECT,
         Resource::SpriteFrame::Character::MAGOICHI,
         Resource::SpriteFrame::Character::DAIGORO,
         Resource::SpriteFrame::Character::DANDAN,

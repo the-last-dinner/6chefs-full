@@ -272,6 +272,8 @@
 		DC40ADFD1C0F47E100864861 /* EndingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC40ADFA1C0F47E100864861 /* EndingScene.cpp */; };
 		DC48C6A01C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */; };
 		DC48C6A11C0F2BEE004B0F30 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */; };
+		DC51B1591C2585F700E24635 /* MobRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC51B1571C2585F700E24635 /* MobRandom.cpp */; };
+		DC51B15A1C2585F700E24635 /* MobRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC51B1571C2585F700E24635 /* MobRandom.cpp */; };
 		DC6E38FE1C0EFF8900DBF569 /* EffectEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* EffectEvent.cpp */; };
 		DC6E38FF1C0EFF8900DBF569 /* EffectEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E38FC1C0EFF8900DBF569 /* EffectEvent.cpp */; };
 		DC7AD6491C183C37008066DA /* Sight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC7AD6471C183C37008066DA /* Sight.cpp */; };
@@ -292,6 +294,8 @@
 		DCAB9BC11BFF1EF000887F68 /* Scouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB9BBE1BFF1EF000887F68 /* Scouter.cpp */; };
 		DCAD927E1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
 		DCAD927F1C0C18760059E4C4 /* StaminaBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */; };
+		DCB9AF061C25A45400093B1E /* Fog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB9AF041C25A45400093B1E /* Fog.cpp */; };
+		DCB9AF071C25A45400093B1E /* Fog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB9AF041C25A45400093B1E /* Fog.cpp */; };
 		DCD85F1F1C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
 		DCD85F201C1853C500BCFDC9 /* ItemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */; };
 		DCD85F231C18540500BCFDC9 /* GhostObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCD85F211C18540500BCFDC9 /* GhostObject.cpp */; };
@@ -625,6 +629,8 @@
 		DC40ADFB1C0F47E100864861 /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = ../Classes/Scenes/EndingScene.h; sourceTree = "<group>"; };
 		DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameOverScene.cpp; path = ../Classes/Scenes/GameOverScene.cpp; sourceTree = "<group>"; };
 		DC48C69F1C0F2BEE004B0F30 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverScene.h; path = ../Classes/Scenes/GameOverScene.h; sourceTree = "<group>"; };
+		DC51B1571C2585F700E24635 /* MobRandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MobRandom.cpp; path = ../Classes/MapObjects/MovePatterns/MobRandom.cpp; sourceTree = "<group>"; };
+		DC51B1581C2585F700E24635 /* MobRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobRandom.h; path = ../Classes/MapObjects/MovePatterns/MobRandom.h; sourceTree = "<group>"; };
 		DC5B4C731BFF2882000A015A /* EnemyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyData.h; path = ../Classes/Datas/MapObject/EnemyData.h; sourceTree = "<group>"; };
 		DC6E38FC1C0EFF8900DBF569 /* EffectEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EffectEvent.cpp; path = ../Classes/Event/EffectEvent.cpp; sourceTree = "<group>"; };
 		DC6E38FD1C0EFF8900DBF569 /* EffectEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectEvent.h; path = ../Classes/Event/EffectEvent.h; sourceTree = "<group>"; };
@@ -647,6 +653,8 @@
 		DCAB9BBF1BFF1EF000887F68 /* Scouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scouter.h; path = ../Classes/MapObjects/MovePatterns/Scouter.h; sourceTree = "<group>"; };
 		DCAD927C1C0C18760059E4C4 /* StaminaBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaminaBar.cpp; path = ../Classes/UI/StaminaBar.cpp; sourceTree = "<group>"; };
 		DCAD927D1C0C18760059E4C4 /* StaminaBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaminaBar.h; path = ../Classes/UI/StaminaBar.h; sourceTree = "<group>"; };
+		DCB9AF041C25A45400093B1E /* Fog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fog.cpp; path = ../Classes/Effects/Fog.cpp; sourceTree = "<group>"; };
+		DCB9AF051C25A45400093B1E /* Fog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fog.h; path = ../Classes/Effects/Fog.h; sourceTree = "<group>"; };
 		DCD85F1D1C1853C500BCFDC9 /* ItemObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemObject.cpp; path = ../Classes/MapObjects/ItemObject.cpp; sourceTree = "<group>"; };
 		DCD85F1E1C1853C500BCFDC9 /* ItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemObject.h; path = ../Classes/MapObjects/ItemObject.h; sourceTree = "<group>"; };
 		DCD85F211C18540500BCFDC9 /* GhostObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GhostObject.cpp; path = ../Classes/MapObjects/GhostObject.cpp; sourceTree = "<group>"; };
@@ -912,6 +920,8 @@
 				55E542A61BAE59850003A230 /* AmbientLightLayer.h */,
 				551406851BA55DBC008DFAED /* Light.cpp */,
 				551406861BA55DBC008DFAED /* Light.h */,
+				DCB9AF041C25A45400093B1E /* Fog.cpp */,
+				DCB9AF051C25A45400093B1E /* Fog.h */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -951,6 +961,7 @@
 				26D9F5691C117514003BA438 /* GlobalPlayerData.h */,
 				26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */,
 				26D9F56D1C117608003BA438 /* LocalPlayerData.h */,
+				DC40ADFA1C0F47E100864861 /* EndingScene.cpp */,
 				DC7AD6471C183C37008066DA /* Sight.cpp */,
 				DC7AD6481C183C37008066DA /* Sight.h */,
 			);
@@ -1003,7 +1014,6 @@
 				266E76531BC1160B005BC878 /* DungeonMenuScene.h */,
 				553577DB1BE9F7640095E6A9 /* DungeonCameraScene.cpp */,
 				553577DC1BE9F7640095E6A9 /* DungeonCameraScene.h */,
-				DC40ADFA1C0F47E100864861 /* EndingScene.cpp */,
 				DC40ADFB1C0F47E100864861 /* EndingScene.h */,
 				DC48C69E1C0F2BEE004B0F30 /* GameOverScene.cpp */,
 				DC48C69F1C0F2BEE004B0F30 /* GameOverScene.h */,
@@ -1230,6 +1240,8 @@
 				DCAB9BBF1BFF1EF000887F68 /* Scouter.h */,
 				55C3C1E41BD09BBC00ECDB50 /* RandomMove.cpp */,
 				55C3C1E51BD09BBC00ECDB50 /* RandomMove.h */,
+				DC51B1571C2585F700E24635 /* MobRandom.cpp */,
+				DC51B1581C2585F700E24635 /* MobRandom.h */,
 			);
 			name = MovePatterns;
 			sourceTree = "<group>";
@@ -1552,7 +1564,9 @@
 				DC2769121C0800A300DAA11C /* ChangeMapHistory.cpp in Sources */,
 				5557AA791BBB069F008ECA5D /* PlayerControlTask.cpp in Sources */,
 				5564CCE91BCB89E700A4C6D2 /* MessageData.cpp in Sources */,
+				DCB9AF061C25A45400093B1E /* Fog.cpp in Sources */,
 				55CCBFEF1BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
+				DC51B1591C2585F700E24635 /* MobRandom.cpp in Sources */,
 				DC7AD6491C183C37008066DA /* Sight.cpp in Sources */,
 				556C715B1BC2C8D100835D15 /* CameraTask.cpp in Sources */,
 				557A87DA1B49215F001993E1 /* EventObject.cpp in Sources */,
@@ -1678,6 +1692,7 @@
 				5564CCF61BCB932000A4C6D2 /* CharacterMessageData.cpp in Sources */,
 				556C716F1BC3F66200835D15 /* HorizontalFollow.cpp in Sources */,
 				553577E21BEA42C80095E6A9 /* EventScript.cpp in Sources */,
+				DC51B15A1C2585F700E24635 /* MobRandom.cpp in Sources */,
 				553577DA1BE9DFF00095E6A9 /* DungeonSceneManager.cpp in Sources */,
 				55CCBFF01BFC87CA00CBCB44 /* Enemy.cpp in Sources */,
 				26BA61F21BCB59EA00CE63C7 /* StringUtils.cpp in Sources */,
@@ -1685,6 +1700,7 @@
 				5564CCF21BCB928800A4C6D2 /* StoryMessageData.cpp in Sources */,
 				26857A301C0AEA6500295998 /* NumberSelector.cpp in Sources */,
 				55C3C1EF1BD143B700ECDB50 /* GameTask.cpp in Sources */,
+				DCB9AF071C25A45400093B1E /* Fog.cpp in Sources */,
 				55F302351BDA873900BDC418 /* EventScriptValidator.cpp in Sources */,
 				55619F631B36970B007EBD6E /* MapObject.cpp in Sources */,
 				DCAB37A01C120952000DF676 /* NotificationNode.cpp in Sources */,

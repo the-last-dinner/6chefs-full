@@ -128,8 +128,8 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     if(enemyTask->existsEnemy()) staminaBar->slideIn();
     
     // イベント処理クラスにコールバック設定
-    eventTask->onRunEvent = [playerControlTask, party]{playerControlTask->setControlEnable(false, party);};
-    eventTask->onAllEventFinished = [playerControlTask, party]{playerControlTask->setControlEnable(true, party);};
+    eventTask->onRunEvent = CC_CALLBACK_0(DungeonScene::onRunEvent, this);
+    eventTask->onAllEventFinished = CC_CALLBACK_0(DungeonScene::onAllEventFinished, this);
     
     // 敵処理クラスにコールバック設定
     enemyTask->onAllEnemyRemoved = CC_CALLBACK_0(DungeonScene::onAllEnemyRemoved, this);
@@ -197,7 +197,7 @@ void DungeonScene::onMenuKeyPressed()
     PlayerDataManager::getInstance()->getLocalData()->setLocation(DungeonSceneManager::getInstance()->getParty()->getMembersData());
     
     // スクショをとって、ダンジョンメニューシーンをプッシュ
-    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));
+    string path = LastSupper::StringUtils::strReplace("global.inos", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.inos"));
     utils::captureScreen([=](bool success, string filename){
      if(success)
      {
@@ -268,6 +268,26 @@ void DungeonScene::setLight()
     {
         this->party->getMainCharacter()->removeLight();
     }
+}
+
+// イベントを実行する時
+void DungeonScene::onRunEvent()
+{
+    // プレイヤーの操作を無効に
+    this->playerControlTask->setControlEnable(false, party);
+    
+    // 全てのオブジェクトの動きを止める
+    this->mapLayer->getMapObjectList()->moveStopAllObjects();
+}
+
+// イベントキューが空になった時
+void DungeonScene::onAllEventFinished()
+{
+    // プレイヤーの操作を有効に
+    this->playerControlTask->setControlEnable(true, party);
+    
+    // 全てのオブジェクトの自動移動を開始する
+    this->mapLayer->getMapObjectList()->moveStartAllObjects();
 }
 
 // データクラスを取得

@@ -27,6 +27,7 @@ private:
     ~RandomMove();
     bool init(Character* chara);
     virtual void start() override;
+    virtual void move();
 };
 
 #endif /* defined(__LastSupper__RandomMove__) */

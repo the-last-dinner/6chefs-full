@@ -20,12 +20,12 @@ class MovePattern : public Ref
 protected:
     Character* chara { nullptr };
     float speedRatio { 1.0f };
-    bool paused { false };
+    bool paused { true };
     int startPathId { -1 };
 
 // インスタンスメソッド
 public:
-    virtual void start() {};
+    virtual void start();
     virtual void setPaused(bool paused);
     virtual void onPartyMoved() {};
     virtual bool canGoToNextMap() const { return false; };
@@ -36,6 +36,7 @@ protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
+    bool isPaused() const;
     Character* getMainCharacter() const;
     MapObjectList* getMapObjectList() const;
 };

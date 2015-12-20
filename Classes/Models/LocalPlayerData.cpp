@@ -42,32 +42,14 @@ bool LocalPlayerData::init(const int local_id)
 // ローカルセーブデータの読み込み
 bool LocalPlayerData::loadLocalData(const int local_id)
 {
-    string file = (local_id == 0) ? "save/local_template.json": "save/local" + to_string(local_id) + ".json";
+    string file = (local_id == 0) ? "save/local_template.inos": "save/local" + to_string(local_id) + ".inos";
     string path = FileUtils::getInstance()->fullPathForFilename(file);
     if (path == "") return false;
     
     this->local_id = local_id;
-    this->localData = LastSupper::JsonUtils::readJsonFile(path);
+    this->localData = LastSupper::JsonUtils::readJsonCrypted(path);
     if (this->localData[STATUS].GetInt() == 0) return false;
     return true;
-}
-
-// ローカルデータの全初期化
-void LocalPlayerData::initLocalData()
-{
-    // status=0のオブジェクトを生成
-    rapidjson::Document initLocal;
-    initLocal.SetObject();
-    rapidjson::Value jval (kStringType);
-    jval.SetString(STATUS, strlen(STATUS), initLocal.GetAllocator());
-    initLocal.AddMember(jval, rapidjson::Value(0), initLocal.GetAllocator());
-    
-    // 全セーブデータを初期化
-    string path = FileUtils::getInstance()->fullPathForFilename("save/local_templete.json");
-    path = LastSupper::StringUtils::strReplace("_template.json", "", path);
-    for(int i = 1; i <= MAX_SAVE_COUNT; i++){
-        LastSupper::JsonUtils::writeJsonFile(path + to_string(i) + ".json", initLocal);
-    }
 }
 
 // ローカルデータのセーブ
@@ -76,8 +58,8 @@ void LocalPlayerData::saveLocalData(const int local_id)
     // セーブ回数のインクリメント
     this->incrementSaveCount();
 
-    string path = "save/local" + to_string(local_id) + ".json";
-    LastSupper::JsonUtils::writeJsonFile(path, this->localData);
+    string path = "save/local" + to_string(local_id) + ".inos";
+    LastSupper::JsonUtils::writeJsonCrypt(path, this->localData);
     this->local_id = local_id;
 }
 

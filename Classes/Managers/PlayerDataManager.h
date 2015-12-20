@@ -26,9 +26,11 @@ private:
 
 // インスタンスメソッド
 public:
+    void initLocalData();
     void setGameClear(const int end_id);
     void setGameStart(const int local_id);
     void save(const int local_id);
+    void cryptSaveData();
     
     GlobalPlayerData* getGlobalData() const;
     LocalPlayerData* getLocalData() const;

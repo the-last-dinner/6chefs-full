@@ -71,6 +71,12 @@ void MapObject::setSprite(Sprite* sprite)
     this->addChild(sprite);
 };
 
+// SpriteFrameを追加
+void MapObject::addSpriteFrame(SpriteFrame* spriteFrame)
+{
+    this->spriteFrames.pushBack(spriteFrame);
+}
+
 // ライトをセット
 void MapObject::setLight(Light* light, AmbientLightLayer* ambientLightLayer, function<void()> callback)
 {
@@ -114,6 +120,9 @@ Direction MapObject::getDirection() const {return this->location.direction;}
 
 // Spriteを取得
 Sprite* MapObject::getSprite() const { return this->sprite;};
+
+// SpriteFrameを取得
+Vector<SpriteFrame*> MapObject::getSpriteFrames() const { return this->spriteFrames; };
 
 // マップ上にある格子Rectを取得
 vector<Rect> MapObject::getWorldGridCollisionRects()
