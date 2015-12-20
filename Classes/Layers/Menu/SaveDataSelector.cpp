@@ -111,7 +111,7 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
     SaveIndex save;
     // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
-        string file = "save/local" + to_string(i) + ".inos";
+        string file = "save/local" + to_string(i) + SAVE_EXTENSION;
         LocalPlayerData* local {LocalPlayerData::create(i)};
         if(!local)
         {
@@ -211,7 +211,7 @@ void SaveDataSelector::onSpacePressed(int idx)
         if(this->existsSaveData[idx-1])
         {
             // ロード
-            SoundManager::getInstance()->playSE("load.mp3");
+            SoundManager::getInstance()->playSE(Resource::SE::LOAD);
             PlayerDataManager::getInstance()->setGameStart(idx);
             
             // 保存されているBGMの再生

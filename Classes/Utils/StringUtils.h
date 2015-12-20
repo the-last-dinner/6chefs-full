@@ -20,6 +20,7 @@ namespace LastSupper
         string splitLineBreak(const string& target, const int line_limit);
         string getRandomString(const int length = 50);
         string getTimeForDisplay(const int sec);
+        void encryptXor(string& str);
     }
 }
 

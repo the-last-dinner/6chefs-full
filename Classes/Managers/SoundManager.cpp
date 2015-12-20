@@ -13,9 +13,11 @@
 // 定数
 const map<string, float> SoundManager::VOLUME_CONFIG
 {
-    {Resource::SE::CURSOR_MOVE, 0.5f},
-    {Resource::SE::BACK, 0.5f},
-    {Resource::SE::TITLE_ENTER, 0.5f},
+    {Resource::SE::CURSOR_MOVE, 0.3f},
+    {Resource::SE::BACK, 0.3f},
+    {Resource::SE::TITLE_ENTER, 0.3f},
+    {Resource::SE::GAME_START, 0.3f},
+    {Resource::SE::LOAD, 0.3f}
 };
 
 // 唯一のインスタンスを初期化

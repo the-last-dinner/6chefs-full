@@ -24,6 +24,14 @@ typedef GenericValue< UTF8<> > Value;
 typedef GenericStringStream< UTF8<> > StringStream;
 typedef GenericStringBuffer< UTF8<> > StringBuffer;
 
+// セーブデータの拡張子
+#define SAVE_EXTENSION ".inos"
+#define ES_EXTENSION ".atg"
+#define CSV_EXTENSION ".mnk"
+
+// 暗号キー
+#define C_KEY 4545
+
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600

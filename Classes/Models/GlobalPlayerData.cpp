@@ -12,8 +12,8 @@
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 
-const string GlobalPlayerData::GLOBAL_DATA_PATH {"save/global.inos"};
-const string GlobalPlayerData::GLOBAL_TEMPLATE_PATH {"save/global_template.inos"};
+const string GlobalPlayerData::GLOBAL_DATA_PATH {"save/global"};
+const string GlobalPlayerData::GLOBAL_TEMPLATE_PATH {"save/global_template"};
 
 const char* GlobalPlayerData::STATUS {"status"};
 const char* GlobalPlayerData::GLOBAL_ID {"global_id"};
@@ -41,7 +41,7 @@ bool GlobalPlayerData::init()
 // グローバルデータのロード
 bool GlobalPlayerData::loadGlobalData()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_DATA_PATH);
+    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_DATA_PATH + SAVE_EXTENSION);
     if (path == "") return false;
     this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     return true;
@@ -50,7 +50,7 @@ bool GlobalPlayerData::loadGlobalData()
 // グローバルデータの初期化
 bool GlobalPlayerData::initGlobalData()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_TEMPLATE_PATH);
+    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_TEMPLATE_PATH + SAVE_EXTENSION);
     if (path == "") return false;
     this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     this->saveGlobalData();

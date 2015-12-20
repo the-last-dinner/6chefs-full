@@ -79,7 +79,7 @@ bool DebugManager::isInvincibleMode()
     return this->debugConfig[INVINCIBLE_MODE].GetBool();
 }
 
-// セーブデータの初期暗号化が必要かどうか
+// セーブデータの暗号化状態かどうか
 bool DebugManager::isCryptedSaveData()
 {
     if (!this->hasDebugConfig) return true;
@@ -88,12 +88,50 @@ bool DebugManager::isCryptedSaveData()
     return this->debugConfig[CRYPT][SAVE].GetBool();
 }
 
-// セーブデータの暗号化をセット
+// セーブデータの暗号化済みをセット
 void DebugManager::setCryptedSaveData()
 {
     if (!this->hasDebugConfig) return;
     if (!this->debugConfig.HasMember(CRYPT)) return;
     if (!this->debugConfig[CRYPT].HasMember(SAVE)) return;
     this->debugConfig[CRYPT][SAVE].SetBool(true);
+    this->writeConfig();
+}
+
+// イベントスクリプトが暗号化状態かどうか
+bool DebugManager::isCryptedEventScript()
+{
+    if (!this->hasDebugConfig) return true;
+    if (!this->debugConfig.HasMember(CRYPT)) return true;
+    if (!this->debugConfig[CRYPT].HasMember(EVENT_SCRIPT)) return true;
+    return this->debugConfig[CRYPT][EVENT_SCRIPT].GetBool();
+}
+
+// イベントスクリプトの暗号化済みをセット
+void DebugManager::setCryptedEventScript()
+{
+    if (!this->hasDebugConfig) return;
+    if (!this->debugConfig.HasMember(CRYPT)) return;
+    if (!this->debugConfig[CRYPT].HasMember(EVENT_SCRIPT)) return;
+    this->debugConfig[CRYPT][EVENT_SCRIPT].SetBool(true);
+    this->writeConfig();
+}
+
+// CSVデータが暗号化状態かどうか
+bool DebugManager::isCryptedCsvData()
+{
+    if (!this->hasDebugConfig) return true;
+    if (!this->debugConfig.HasMember(CRYPT)) return true;
+    if (!this->debugConfig[CRYPT].HasMember(CSV)) return true;
+    return this->debugConfig[CRYPT][CSV].GetBool();
+}
+
+// CSVデータの暗号化済みをセット
+void DebugManager::setCryptedCsvData()
+{
+    if (!this->hasDebugConfig) return;
+    if (!this->debugConfig.HasMember(CRYPT)) return;
+    if (!this->debugConfig[CRYPT].HasMember(CSV)) return;
+    this->debugConfig[CRYPT][CSV].SetBool(true);
     this->writeConfig();
 }
