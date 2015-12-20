@@ -36,14 +36,19 @@ public:
     void stopBGM(const string& filePath);
     void stopBGMAll();
     
+    void onSEFinished(int seId, const string& filename);
+    void onBGMFinished(int bgmId, const string& filename);
+    
     bool isPlaying(const string& filePath);
     
     void preloadSound(const string& filePath);
+    
 	void unloadAllSounds();
 	
 // インスタンス変数
 private:
     map<int, string> preloadMap {};
+    map<int, string> seIdMap {};
     map<int, string> bgmIdMap {};
 };
 

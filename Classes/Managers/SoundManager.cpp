@@ -47,7 +47,10 @@ SoundManager::~SoundManager()
 void SoundManager::playSE(const string& fileName, float volume)
 {
     if(VOLUME_CONFIG.count(fileName) != 0) volume *= VOLUME_CONFIG.at(fileName);
-    AudioEngine::play2d(Resource::SE::BASE_PATH + fileName, false, volume * PlayerDataManager::getInstance()->getGlobalData()->getSeVolume());
+    int seId { AudioEngine::play2d(Resource::SE::BASE_PATH + fileName, false, volume * PlayerDataManager::getInstance()->getGlobalData()->getSeVolume()) };
+    AudioEngine::setFinishCallback(seId, CC_CALLBACK_2(SoundManager::onSEFinished, this));
+    
+    this->seIdMap.insert({seId, fileName});
 }
 
 // BGMを再生
@@ -55,8 +58,19 @@ void SoundManager::playBGM(const string& fileName, bool loop, float volume)
 {
     if(VOLUME_CONFIG.count(fileName) != 0) volume *= VOLUME_CONFIG.at(fileName);
     int BGMId { AudioEngine::play2d(Resource::BGM::BASE_PATH + fileName, loop, volume * PlayerDataManager::getInstance()->getGlobalData()->getBgmVolume()) };
+    AudioEngine::setFinishCallback(BGMId, CC_CALLBACK_2(SoundManager::onBGMFinished, this));
     
     this->bgmIdMap.insert({BGMId, fileName});
+}
+
+// SE再生終了時
+void SoundManager::onSEFinished(int seId, const string& filename)
+{
+}
+
+// BGM再生終了時
+void SoundManager::onBGMFinished(int bgmId, const string& filename)
+{
 }
 
 // BGMをファイル名指定で停止
@@ -90,6 +104,14 @@ bool SoundManager::isPlaying(const string& filePath)
         return true;
     }
     
+    for(pair<int, string> idToFilename : this->seIdMap)
+    {
+        if(idToFilename.second != filePath) continue;
+        if(AudioEngine::AudioState::PLAYING != AudioEngine::getState(idToFilename.first)) continue;
+        
+        return true;
+    }
+    
     return false;
 }
 
@@ -107,13 +129,19 @@ void SoundManager::preloadSound(const string& filePath)
 // 音声をアンロード
 void SoundManager::unloadAllSounds()
 {
-	FUNCLOG
-	// 音声パスリストを元にアンロードしていく
-	for(auto iterator : this->preloadMap)
-	{
-		AudioEngine::uncache(iterator.second);
-	}
-	
-	// 音声パスリストを初期化する
-	this->preloadMap.clear();
+    for(pair<int, string> idToFilename : this->seIdMap)
+    {
+        if(this->isPlaying(idToFilename.second)) continue;
+        
+        this->seIdMap.erase(idToFilename.first);
+        AudioEngine::uncache(Resource::SE::BASE_PATH + idToFilename.second);
+    }
+    
+    for(pair<int, string> idToFilename : this->bgmIdMap)
+    {
+        if(this->isPlaying(idToFilename.second)) continue;
+        
+        this->bgmIdMap.erase(idToFilename.first);
+        AudioEngine::uncache(Resource::BGM::BASE_PATH + idToFilename.second);
+    }
 }

@@ -103,7 +103,7 @@ void Scouter::move(const int pathObjId)
     
     if(destObj->needsLookingAround()) walkCallback = [this, destObj, walkCallback]{ this->chara->lookAround(walkCallback, destObj->getLookDirection()); };
     
-    if(!this->chara->isMoving()) this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, 0.5f, false, CC_CALLBACK_0(Scouter::isPaused, this));
+    if(!this->chara->isMoving()) this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, destObj->getSpeedRatio(), false, CC_CALLBACK_0(Scouter::isPaused, this));
 }
 
 // 指定経路オブジェクトまでの経路を取得

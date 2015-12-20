@@ -228,6 +228,14 @@ float MapObjectFactory::getSpeedRatio(const ValueMap& info) const
     return info.at("speed").asFloat();
 }
 
+// 当たり判定があるかどうか
+bool MapObjectFactory::isHit(const ValueMap &info) const
+{
+    if(info.count("hit") == 0) return false;
+    
+    return info.at("hit").asBool();
+}
+
 // 当たり判定レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
@@ -255,6 +263,7 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
     pObj->setGridPosition(this->getGridPosition(rect));
     pObj->setContentSize(rect.size);
     pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    pObj->setHit(this->isHit(info));
     
     return pObj;
 }
