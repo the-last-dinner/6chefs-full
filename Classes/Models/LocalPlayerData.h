@@ -36,6 +36,9 @@ class LocalPlayerData : public Ref
     static const char* CHARA;
     static const char* BGM;
     
+    static const int MAX_COUNT;
+    static const int MAX_PLAY_TIME;
+    
 // Class methods
 public:
     CREATE_FUNC_WITH_PARAM(LocalPlayerData, const int)
