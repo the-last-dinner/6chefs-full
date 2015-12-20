@@ -1,5 +1,6 @@
 {
 	"stats":false,
 	"debug_mask":false,
-	"invincible_mode":false
+	"invincible_mode":false,
+    "crypt":{"csv":true}
 }

@@ -28,17 +28,26 @@ private:
     static const char* DEBUG_MASK;
     static const char* STATS;
     static const char* INVINCIBLE_MODE;
+    static const char* CRYPT;
+    static const char* SAVE;
+    static const char* CSV;
+    static const char* EVENT_SCRIPT;
     
     // インスタンス変数
 private:
     bool hasDebugConfig {false};
     rapidjson::Document debugConfig {nullptr};
+    string file_path {};
     
     // インスタンスメソッド
 public:
     bool displayDebugMask();
     bool displayStats();
     bool isInvincibleMode();
+    bool isCryptedSaveData();
+    void setCryptedSaveData();
+private:
+    void writeConfig();
 };
 
 #endif /* DebugManager_h */

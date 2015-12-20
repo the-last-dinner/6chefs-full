@@ -91,7 +91,10 @@ void GlobalPlayerData::setClearCount(const string& token)
 }
 
 // クリア回数を取得
-int GlobalPlayerData::getClearCount(){return this->globalData[CLEAR_COUNT].GetInt();}
+int GlobalPlayerData::getClearCount(){
+    if (!this->globalData.HasMember(CLEAR_COUNT)) return 0;
+    return this->globalData[CLEAR_COUNT].GetInt();
+}
 
 // クリアしているか
 bool GlobalPlayerData::isCleared(){return this->getClearCount() > 0 ? true : false;}
@@ -223,6 +226,7 @@ void GlobalPlayerData::setBgmVolume(const float& volume)
 // BGMのマスターボリュームをゲット
 float GlobalPlayerData::getBgmVolume()
 {
+    if (!this->globalData.HasMember(BGM_VOLUME)) return 0.5;
     return this->globalData[BGM_VOLUME].GetDouble();
 }
 
@@ -235,5 +239,6 @@ void GlobalPlayerData::setSeVolume(const float &volume)
 // SEのマスターボリュームをゲット
 float GlobalPlayerData::getSeVolume()
 {
+    if (!this->globalData.HasMember(SE_VOLUME)) return 0.5;
     return this->globalData[SE_VOLUME].GetDouble();
 }
