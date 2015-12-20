@@ -7,8 +7,7 @@ AppDelegate::AppDelegate()
 {
 	FUNCLOG
     CsvDataManager::getInstance();
-    PlayerDataManager::getInstance();
-	SoundManager::getInstance();
+    SoundManager::getInstance();
 	TextureManager::getInstance();
 	this->init();
 }

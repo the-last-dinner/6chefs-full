@@ -54,6 +54,7 @@ PlayerDataManager::PlayerDataManager()
     // ローカルデータの初期化
     if(this->globalData->getStatus() == 0)
     {
+        this->globalData->initGlobalData();
         this->initLocalData();
     }
     CC_SAFE_RETAIN(this->globalData);
@@ -73,11 +74,16 @@ void PlayerDataManager::initLocalData()
     initLocal.AddMember(jval, rapidjson::Value(0), initLocal.GetAllocator());
     
     // 全セーブデータを初期化
-    string path = FileUtils::getInstance()->fullPathForFilename("save/local_template.json");
-    path = LastSupper::StringUtils::strReplace("_template.json", "", path);
+    string path = FileUtils::getInstance()->fullPathForFilename("save/local_template.inos");
+    path = LastSupper::StringUtils::strReplace("_template.inos", "", path);
     for(int i = 1; i <= MAX_SAVE_COUNT; i++){
-        LastSupper::JsonUtils::writeJsonFile(path + to_string(i) + ".json", initLocal);
+        LastSupper::JsonUtils::writeJsonCrypt(path + to_string(i) + ".inos", initLocal);
     }
+}
+
+// セーブデータの暗号化
+void PlayerDataManager::cryptSaveData()
+{
 }
 
 // クリア時の処理

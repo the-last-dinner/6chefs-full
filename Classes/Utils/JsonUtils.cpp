@@ -113,3 +113,9 @@ void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::
     ofs << jsonStr << endl;
     ofs.close();
 }
+
+// 平文ファイルを暗号化
+void LastSupper::JsonUtils::enctyptJsonFile(const string& path)
+{
+    LastSupper::JsonUtils::writeJsonCrypt(path, LastSupper::JsonUtils::readJsonFile(path));
+}

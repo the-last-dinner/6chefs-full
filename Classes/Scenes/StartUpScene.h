@@ -22,6 +22,7 @@ private:
     virtual bool init();
     virtual void onEnter();
     void onPreloadFinished(LoadingLayer* loadingLayer);
+    void encryptSaveFiles();
 
 public:
     StartUpScene() {FUNCLOG};

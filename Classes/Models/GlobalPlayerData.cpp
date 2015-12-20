@@ -12,8 +12,8 @@
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 
-const string GlobalPlayerData::GLOBAL_DATA_PATH {"save/global.json"};
-const string GlobalPlayerData::GLOBAL_TEMPLATE_PATH {"save/global_template.json"};
+const string GlobalPlayerData::GLOBAL_DATA_PATH {"save/global.inos"};
+const string GlobalPlayerData::GLOBAL_TEMPLATE_PATH {"save/global_template.inos"};
 
 const char* GlobalPlayerData::STATUS {"status"};
 const char* GlobalPlayerData::GLOBAL_ID {"global_id"};
@@ -25,8 +25,8 @@ const char* GlobalPlayerData::TOKENS {"tokens"};
 const char* GlobalPlayerData::BGM_VOLUME {"bgm_volume"};
 const char* GlobalPlayerData::SE_VOLUME {"se_volume"};
 
-const int GlobalPlayerData::CHIKEN_SAVE_COUNT {80};
-const int GlobalPlayerData::FAST_CLEAR_TIME {3600};
+const int GlobalPlayerData::CHIKEN_SAVE_COUNT {30};
+const int GlobalPlayerData::FAST_CLEAR_TIME {1265};
 
 #pragma mark GlobalDataFile
 
@@ -43,9 +43,7 @@ bool GlobalPlayerData::loadGlobalData()
 {
     string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_DATA_PATH);
     if (path == "") return false;
-    
-    this->globalData = LastSupper::JsonUtils::readJsonFile(path);
-    
+    this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     return true;
 }
 
@@ -54,15 +52,13 @@ bool GlobalPlayerData::initGlobalData()
 {
     string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_TEMPLATE_PATH);
     if (path == "") return false;
-    
-    this->globalData = LastSupper::JsonUtils::readJsonFile(path);
-    LastSupper::JsonUtils::writeJsonFile(path, this->globalData);
-    
+    this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
+    this->saveGlobalData();
     return true;
 }
 
 // グローバルデータのセーブ
-void GlobalPlayerData::saveGlobalData(){LastSupper::JsonUtils::writeJsonFile(GLOBAL_DATA_PATH, this->globalData);}
+void GlobalPlayerData::saveGlobalData(){LastSupper::JsonUtils::writeJsonCrypt(GLOBAL_DATA_PATH, this->globalData);}
 
 #pragma mark -
 #pragma mark Status

@@ -46,9 +46,9 @@ private:
 private:
     bool init();
     bool loadGlobalData();
-    bool initGlobalData();
     
 public:
+    bool initGlobalData();
     void saveGlobalData();
     
     // status

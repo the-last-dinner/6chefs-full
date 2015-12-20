@@ -42,12 +42,12 @@ bool LocalPlayerData::init(const int local_id)
 // ローカルセーブデータの読み込み
 bool LocalPlayerData::loadLocalData(const int local_id)
 {
-    string file = (local_id == 0) ? "save/local_template.json": "save/local" + to_string(local_id) + ".json";
+    string file = (local_id == 0) ? "save/local_template.inos": "save/local" + to_string(local_id) + ".inos";
     string path = FileUtils::getInstance()->fullPathForFilename(file);
     if (path == "") return false;
     
     this->local_id = local_id;
-    this->localData = LastSupper::JsonUtils::readJsonFile(path);
+    this->localData = LastSupper::JsonUtils::readJsonCrypted(path);
     if (this->localData[STATUS].GetInt() == 0) return false;
     return true;
 }
@@ -58,8 +58,8 @@ void LocalPlayerData::saveLocalData(const int local_id)
     // セーブ回数のインクリメント
     this->incrementSaveCount();
 
-    string path = "save/local" + to_string(local_id) + ".json";
-    LastSupper::JsonUtils::writeJsonFile(path, this->localData);
+    string path = "save/local" + to_string(local_id) + ".inos";
+    LastSupper::JsonUtils::writeJsonCrypt(path, this->localData);
     this->local_id = local_id;
 }
 
