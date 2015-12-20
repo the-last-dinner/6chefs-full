@@ -46,7 +46,8 @@ bool LocalPlayerData::init(const int local_id)
 // ローカルセーブデータの読み込み
 bool LocalPlayerData::loadLocalData(const int local_id)
 {
-    string file = (local_id == 0) ? "save/local_template.inos": "save/local" + to_string(local_id) + ".inos";
+    string file = (local_id == 0) ? "save/local_template": "save/local" + to_string(local_id);
+    file += SAVE_EXTENSION;
     string path = FileUtils::getInstance()->fullPathForFilename(file);
     if (path == "") return false;
     
@@ -62,7 +63,7 @@ void LocalPlayerData::saveLocalData(const int local_id)
     // セーブ回数のインクリメント
     this->incrementSaveCount();
 
-    string path = "save/local" + to_string(local_id) + ".inos";
+    string path = "save/local" + to_string(local_id) + SAVE_EXTENSION;
     LastSupper::JsonUtils::writeJsonCrypt(path, this->localData);
     this->local_id = local_id;
 }

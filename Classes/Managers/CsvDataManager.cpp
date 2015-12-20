@@ -100,6 +100,17 @@ string CsvDataManager::getMapFileName(const int map_id)
     return this->csv_data[DataType::MAP][map_id][etoi(CsvMap::FILE_NAME)];
 }
 
+// マップのファイル名を全取得
+vector<string> CsvDataManager::getMapFileNameAll()
+{
+    vector<string> fileNames {};
+    for (auto itr:this->csv_data[DataType::MAP])
+    {
+        fileNames.push_back(itr.second[etoi(CsvMap::FILE_NAME)]);
+    }
+    return fileNames;
+}
+
 #pragma mark -
 #pragma Item
 

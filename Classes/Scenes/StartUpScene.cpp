@@ -24,6 +24,12 @@ bool StartUpScene::init()
     }
     PlayerDataManager::getInstance();
     
+    // イベントスクリプトの暗号化
+    if (!DebugManager::getInstance()->isCryptedEventScript())
+    {
+        this->enctyptEventScripts();
+    }
+    
     return true;
 }
 
@@ -61,25 +67,38 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
 void StartUpScene::encryptSaveFiles()
 {
     vector<string> files= {
-        "global_template.inos",
-        "global.inos",
-        "local_template.inos",
-        "local1.inos",
-        "local2.inos",
-        "local3.inos",
-        "local4.inos",
-        "local5.inos",
-        "local6.inos",
-        "local7.inos",
-        "local8.inos",
-        "local9.inos",
-        "local10.inos",
+        "global_template",
+        "global",
+        "local_template",
+        "local1",
+        "local2",
+        "local3",
+        "local4",
+        "local5",
+        "local6",
+        "local7",
+        "local8",
+        "local9",
+        "local10",
     };
     string path = "";
     for (string file : files)
     {
-        path = FileUtils::getInstance()->fullPathForFilename("save/" + file);
+        path = FileUtils::getInstance()->fullPathForFilename("save/" + file + SAVE_EXTENSION);
         if (path != "") LastSupper::JsonUtils::enctyptJsonFile(path);
     }
     DebugManager::getInstance()->setCryptedSaveData();
+}
+
+// イベントスクリプトの暗号化
+void StartUpScene::enctyptEventScripts()
+{
+    vector<string> fileNames = CsvDataManager::getInstance()->getMapFileNameAll();
+    string path = "";
+    for(string file : fileNames)
+    {
+        path = FileUtils::getInstance()->fullPathForFilename("event/" + file + ES_EXTENSION);
+        LastSupper::JsonUtils::enctyptJsonFile(path);
+    }
+    DebugManager::getInstance()->setCryptedEventScript();
 }

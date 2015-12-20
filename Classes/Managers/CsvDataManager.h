@@ -84,6 +84,7 @@ public:
     // map
     string getMapName(const int map_id);
     string getMapFileName(const int map_id);
+    vector<string> getMapFileNameAll();
     
     // item
     string getItemName(const int item_id);
