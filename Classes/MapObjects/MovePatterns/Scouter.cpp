@@ -19,9 +19,6 @@
 
 #include "Models/Sight.h"
 
-// 定数
-const float Scouter::SEARCHING_SPEED_RATIO {0.5f};
-
 // コンストラクタ
 Scouter::Scouter() {FUNCLOG};
 
@@ -56,6 +53,8 @@ bool Scouter::init(Character* character)
 // 移動開始
 void Scouter::start()
 {
+    if(!this->isPaused()) return;
+    
     MovePattern::start();
     
     if(!this->chara->isMoving()) this->move(this->startPathId);
@@ -67,7 +66,7 @@ void Scouter::setPaused(bool paused)
 {
     MovePattern::setPaused(paused);
     
-    if(paused) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
+    if(Director::getInstance()->getScheduler()->isScheduled(CC_SCHEDULE_SELECTOR(Scouter::update), this)) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
     
     // サブアルゴリズムに対しても適用
     if(this->subPattern) this->subPattern->setPaused(paused);
@@ -105,11 +104,11 @@ void Scouter::move(const int pathObjId)
             this->chara->walkByQueue(this->getPath(destObj), [this, destObj](bool _)
                                      {
                                          this->move(this->getMapObjectList()->getPathObjectById(destObj->getNextId())->getPathId());
-                                     }, SEARCHING_SPEED_RATIO, false, CC_CALLBACK_0(Scouter::isPaused, this));
+                                     }, destObj->getSpeedRatio(), false, CC_CALLBACK_0(Scouter::isPaused, this));
         }
     };
     
-    if(destObj->needsLookingAround()) this->chara->lookAround(func);
+    if(destObj->needsLookingAround()) this->chara->lookAround(func, destObj->getLookDirection());
     if(!destObj->needsLookingAround()) func();
 }
 

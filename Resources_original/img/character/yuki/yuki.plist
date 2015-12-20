@@ -4,10 +4,178 @@
 	<dict>
 		<key>frames</key>
 		<dict>
+			<key>swim_yuki_0_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1596},{20,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,4},{20,18}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_0_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1596},{20,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,4},{20,18}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_0_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1596},{20,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,4},{20,18}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_1_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1231},{25,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,22}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_1_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1231},{25,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,22}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_1_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1231},{25,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,22}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_2_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1346},{23,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,1},{23,21}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_2_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1346},{23,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,1},{23,21}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_2_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1346},{23,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,1},{23,21}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_3_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1460},{23,20}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{5,2},{23,20}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_3_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1460},{23,20}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{5,2},{23,20}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
+			<key>swim_yuki_3_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1460},{23,20}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{5,2},{23,20}}</string>
+				<key>sourceSize</key>
+				<string>{32,32}</string>
+			</dict>
+
 			<key>yuki_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1415},{21,28}}</string>
+				<string>{{0,1537},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +189,7 @@
 			<key>yuki_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1474},{21,28}}</string>
+				<string>{{0,1481},{21,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +203,7 @@
 			<key>yuki_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1503},{21,26}}</string>
+				<string>{{0,1510},{21,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -49,7 +217,7 @@
 			<key>yuki_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1169},{25,30}}</string>
+				<string>{{0,1200},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -63,7 +231,7 @@
 			<key>yuki_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1444},{21,29}}</string>
+				<string>{{0,1566},{21,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -77,7 +245,7 @@
 			<key>yuki_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1353},{23,30}}</string>
+				<string>{{0,1429},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -91,7 +259,7 @@
 			<key>yuki_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1384},{23,30}}</string>
+				<string>{{0,1315},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -105,7 +273,7 @@
 			<key>yuki_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1291},{23,30}}</string>
+				<string>{{0,1368},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -119,7 +287,7 @@
 			<key>yuki_2_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1261},{23,29}}</string>
+				<string>{{0,1399},{23,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -133,7 +301,7 @@
 			<key>yuki_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1322},{23,30}}</string>
+				<string>{{0,1254},{23,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -147,7 +315,7 @@
 			<key>yuki_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1231},{23,29}}</string>
+				<string>{{0,1285},{23,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -161,7 +329,7 @@
 			<key>yuki_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1200},{25,30}}</string>
+				<string>{{0,1169},{25,30}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>

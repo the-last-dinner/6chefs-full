@@ -51,7 +51,7 @@ public:
     void walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false, function<bool()> isPaused = nullptr);
     void walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio = 1.0f, const bool back = false, function<bool()> isPaused = nullptr);
     
-    void lookAround(function<void()> callback);
+    void lookAround(function<void()> callback, Direction direction = Direction::SIZE);
     
     virtual void moveStart() override;
     virtual void moveStop() override;
@@ -59,6 +59,8 @@ public:
     virtual void onEnterMap() override;
     virtual void onPartyMoved();
     virtual void onSearched(MapObject* mainChara) override;
+    
+    friend class TerrainObject;
 };
 
 #endif // __CHARACTER_H__

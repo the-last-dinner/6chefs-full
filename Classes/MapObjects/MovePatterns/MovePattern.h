@@ -20,7 +20,7 @@ class MovePattern : public Ref
 protected:
     Character* chara { nullptr };
     float speedRatio { 1.0f };
-    bool paused { false };
+    bool paused { true };
     int startPathId { -1 };
 
 // インスタンスメソッド

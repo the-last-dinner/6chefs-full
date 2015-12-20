@@ -53,6 +53,8 @@ bool Chaser::init(Character* character)
 // 追跡開始
 void Chaser::start()
 {
+    if(!this->isPaused()) return;
+    
     MovePattern::start();
     
     if(!this->chara->isMoving()) this->move();

@@ -46,6 +46,18 @@ void PathObject::setThrough(bool through)
     this->through = through;
 }
 
+// 次のオブジェクトまでの速度倍率を設定
+void PathObject::setSpeedRatio(float speedRatio)
+{
+    this->speedRatio = speedRatio;
+}
+
+// 見渡す方向を設定
+void PathObject::setLookDirection(Direction direction)
+{
+    this->direction = direction;
+}
+
 // 経路オブジェクトIDを取得
 int PathObject::getPathId() const
 {
@@ -69,3 +81,16 @@ bool PathObject::needsLookingAround() const
 {
     return !this->through;
 }
+
+// 次のオブジェクトまでの速度倍率を取得
+float PathObject::getSpeedRatio() const
+{
+    return this->speedRatio;
+}
+
+// 見渡す方向を取得
+Direction PathObject::getLookDirection() const
+{
+    return this->direction;
+}
+

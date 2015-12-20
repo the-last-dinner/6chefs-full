@@ -13,6 +13,8 @@
 #include "MapObjects/MovePatterns/MovePattern.h"
 #include "MapObjects/MovePatterns/MovePatternFactory.h"
 
+#include "MapObjects/TerrainObject/TerrainObject.h"
+
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
@@ -73,6 +75,11 @@ bool Character::init(const CharacterData& data)
             
             // キャッシュに保存
             AnimationCache::getInstance()->addAnimation(pAnimation, this->texturePrefix + to_string(i) + to_string(k));
+            
+            // 水泳アニメーションも同様
+            Animation* sAnimation { Animation::create() };
+            sAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("swim_" + this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
+            AnimationCache::getInstance()->addAnimation(sAnimation, "swim_" + this->texturePrefix + to_string(i) + to_string(k));
         }
 	}
 	return true;
@@ -90,7 +97,7 @@ void Character::setDirection(const Direction direction)
     MapObject::setDirection(direction);
     
 	// 画像差し替え
-	this->getSprite()->setSpriteFrame(this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
+	this->getSprite()->setSpriteFrame(this->getTerrain()->getDotPrefix() + this->texturePrefix + "_" + to_string(static_cast<int>(direction)) + "_0.png");
 }
 
 // 足踏み
@@ -98,13 +105,7 @@ void Character::stamp(const Direction direction, float ratio)
 {
     this->getSprite()->stopAllActions();
     
-    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(etoi(direction)) + to_string(this->stampingState < 2 ? 0 : 1));
-    this->stampingState++;
-    if(this->stampingState > 3) this->stampingState = 0;
-    anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
-    
-    this->getSprite()->runAction(Animate::create(anime));
-    this->getSprite()->runAction(Sequence::createWithTwoActions(DelayTime::create(DURATION_MOVE_ONE_GRID / ratio), CallFunc::create([this]{this->setDirection(this->getDirection());})));
+    this->getTerrain()->onWillStamp(this, direction, ratio);
 }
 
 // 方向を指定して歩行させる
@@ -200,8 +201,16 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
 }
 
 // 周りを見渡す
-void Character::lookAround(function<void()> callback)
+void Character::lookAround(function<void()> callback, Direction direction)
 {
+    if(direction != Direction::SIZE)
+    {
+        this->setDirection(direction);
+        this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.5f), CallFunc::create(callback)));
+        
+        return;
+    }
+    
     this->setDirection(this->convertToWorldDir(Direction::RIGHT));
     this->runAction(Sequence::create(DelayTime::create(1.f), CallFunc::create([this]{this->setDirection(this->convertToWorldDir(Direction::BACK));}), DelayTime::create(1.f), CallFunc::create([callback]{callback();}), nullptr));
 }
@@ -221,6 +230,7 @@ void Character::moveStop()
 // マップに配置された時
 void Character::onEnterMap()
 {
+    this->setDirection(this->getDirection());
     this->moveStart();
 }
 
