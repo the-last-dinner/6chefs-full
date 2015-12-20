@@ -7,6 +7,7 @@
 //
 
 #include "Models/LocalPlayerData.h"
+#include "Models/GlobalPlayerData.h"
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 #include "Datas/MapObject/CharacterData.h"
@@ -30,6 +31,9 @@ const char* LocalPlayerData::EVENT {"event"};
 const char* LocalPlayerData::CHARA {"chara"};
 const char* LocalPlayerData::ITEM {"item"};
 const char* LocalPlayerData::BGM {"bgm"};
+
+const int LocalPlayerData::MAX_COUNT {999};
+const int LocalPlayerData::MAX_PLAY_TIME {35999};
 
 #pragma mark LocalDataFile
 
@@ -86,8 +90,17 @@ string LocalPlayerData::getToken(){return this->localData[TOKEN].GetString();}
 // セーブ回数をインクリメント
 void LocalPlayerData::incrementSaveCount()
 {
+    // 現在のセーブ回数取得
     int save_count = this->getSaveCount();
-    if (save_count < 999) this->localData[SAVE_COUNT].SetInt(save_count + 1);
+    
+    // 回数のインクリメント
+    if (save_count < this->MAX_COUNT){
+        save_count++;
+        this->localData[SAVE_COUNT].SetInt(save_count);
+    };
+    
+    // トロフィーチェック
+    if (save_count >= GlobalPlayerData::CHIKEN_SAVE_COUNT) this->setTrophy(9);
 }
 
 // セーブ回数を取得
@@ -100,7 +113,7 @@ int LocalPlayerData::getSaveCount(){return this->localData[SAVE_COUNT].GetInt();
 void LocalPlayerData::setPlayTime(const int secound)
 {
     int playTime = secound;
-    if (playTime >= 360000) playTime = 359999;
+    if (playTime > MAX_PLAY_TIME) playTime = MAX_PLAY_TIME;
     this->localData[PLAY_TIME].SetInt(playTime);
 }
 
