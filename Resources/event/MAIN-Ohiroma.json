@@ -623,10 +623,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMove",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":13.5,
+                  "x":30,
+                  "y":35,
                   "speed":5.0
                 }
               ]
@@ -879,10 +879,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMove",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":13.5,
+                  "x":30,
+                  "y":35,
                   "speed":5.0
                 }
               ]
@@ -1377,10 +1377,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMove",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":13.5,
+                  "x":30,
+                  "y":35,
                   "speed":5.0
                 }
               ]
@@ -1602,10 +1602,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMove",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":13.5,
+                  "x":30,
+                  "y":35,
                   "speed":5.0
                 }
               ]
@@ -1821,10 +1821,10 @@
                   "file":"syuba.mp3"
                 },
                 {
-                  "type":"charaMove",
+                  "type":"charaMoveTo",
                   "objID":"1088",
-                  "direction":"LEFT",
-                  "steps":13.5,
+                  "x":30,
+                  "y":35,
                   "speed":5.0
                 }
               ]

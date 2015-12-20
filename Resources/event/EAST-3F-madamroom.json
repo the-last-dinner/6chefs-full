@@ -239,6 +239,9 @@
 			"condition":[
 				{
 					"event":["39","7"]
+				},
+				{
+					"event":["4","27"]
 				}
 			],
 			"action":[
@@ -517,14 +520,73 @@
 							            },
 							            {
 							            	"type":"stopBGM"
-							            },
-							            {
-							            	"type":"backToTitle"
 							            }
 									]
 								}
 							]
-						}  
+						},
+						{
+					        "type":"createCamera",
+					        "mapID":"1" ,
+					        "x":27,
+					        "y":20,
+					        "action":[
+					       		{
+					                "type":"sequence",
+					                "action":[
+					             		{
+					                	    "type":"createChara",
+					                        "objID":"1095"
+					                    },
+					                    {
+					                    	"type":"fadein",
+					                    	"time":3.0
+					        			},
+					                    {
+					                        "type":"charaWalk",
+					                        "objID":"1095",
+					                        "direction":"LEFT",
+					                        "steps":3.0,
+					                        "speed":0.5
+					                    },
+					                    {
+					                    	"type":"changeDirection",
+					                    	"objID":"1095",
+					                        "direction":"RIGHT"
+					                    },
+					                    {
+					                    	"type":"charaMsg",
+					                        "text":["ホントに・・・人間ってのぁ面白ぇなぁ・・・","カッカッカッカ"],
+					                        "charaID":"6",
+					                        "imgID":"1"
+					                    },
+					                    {
+					                        "type":"spawn",
+					                        "action":[
+					                          {
+					                            "type":"charaWalk",
+					                            "objID":"1095",
+					                            "direction":"LEFT",
+					                            "steps":9.0,
+					                            "speed":0.5
+					                          },
+					                          {
+					                            "type":"fadeout",
+					                            "time":3.0
+					                          }
+					                        ]
+					                    },
+					                    {
+					                    	"type":"wait",
+					                    	"time":2.0
+					                    },
+					                    {
+					                    	"type":"backToTitle"
+					                    }
+					                ]
+					            }
+					        ]
+					    }   
 					]
 				}
 			]

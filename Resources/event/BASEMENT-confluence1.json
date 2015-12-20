@@ -7,14 +7,39 @@
 	],
 	"1":[
 		{
-			"type":"changeMap",
-			"mapID":"3",
-			"x":20,
-			"y":7
-		},
-		{
-			"type":"stopBGM",
-			"file":"bgm_noroi.mp3"
+			"type":"sequence",
+			"action":[
+				{
+					"type":"if",
+					"condition":[
+						{
+							"item":["1514"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["たいまつは置いていこう・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"removeItem",
+							"itemID":"1514"
+						}
+					]
+				},
+				{
+					"type":"stopBGM",
+					"file":"bgm_noroi.mp3"
+				},
+				{
+					"type":"changeMap",
+					"mapID":"3",
+					"x":20,
+					"y":7
+				}
+			]
 		}
 	],
 	"2":[
