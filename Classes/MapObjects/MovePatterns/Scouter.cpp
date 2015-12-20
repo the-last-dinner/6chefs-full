@@ -97,19 +97,12 @@ void Scouter::move(const int pathObjId)
     // 目的地までの経路を取得
     PathObject* destObj { this->getMapObjectList()->getPathObjectById(pathObjId) };
     
-    function<void()> func
-    {
-        [this, destObj]
-        {
-            this->chara->walkByQueue(this->getPath(destObj), [this, destObj](bool _)
-                                     {
-                                         this->move(this->getMapObjectList()->getPathObjectById(destObj->getNextId())->getPathId());
-                                     }, destObj->getSpeedRatio(), false, CC_CALLBACK_0(Scouter::isPaused, this));
-        }
-    };
+    function<void()> walkCallback { [this, destObj]{ this->move(destObj->getNextId()); } };
     
-    if(destObj->needsLookingAround()) this->chara->lookAround(func, destObj->getLookDirection());
-    if(!destObj->needsLookingAround()) func();
+    if(destObj->needsLookingAround()) walkCallback = [this, destObj, walkCallback]{ this->chara->lookAround(walkCallback, destObj->getLookDirection()); };
+    
+    this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, 0.5f, false, CC_CALLBACK_0(Scouter::isPaused, this));
+    
 }
 
 // 指定経路オブジェクトまでの経路を取得

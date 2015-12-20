@@ -220,6 +220,14 @@ bool MapObjectFactory::isThroughObject(const ValueMap& info) const
     return info.at("through").asBool();
 }
 
+// 速度倍率を取得
+float MapObjectFactory::getSpeedRatio(const ValueMap& info) const
+{
+    if(info.count("speed") == 0) return 1.f;
+    
+    return info.at("speed").asFloat();
+}
+
 // 当たり判定レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
@@ -355,6 +363,8 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     obj->setPreviousId(this->getPreviousPathId(info));
     obj->setNextId(this->getNextPathId(info));
     obj->setThrough(this->isThroughObject(info));
+    obj->setSpeedRatio(this->getSpeedRatio(info));
+    obj->setLookDirection(this->getDirection(info));
     
     return obj;
 }

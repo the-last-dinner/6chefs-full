@@ -59,6 +59,7 @@ private:
     int getPreviousPathId(const ValueMap& info) const;
     int getNextPathId(const ValueMap& info) const;
     bool isThroughObject(const ValueMap& info) const;
+    float getSpeedRatio(const ValueMap& info) const;
     
     MapObject* createObjectOnCollision(const ValueMap& info);
     MapObject* createObjectOnEvent(const ValueMap& info);

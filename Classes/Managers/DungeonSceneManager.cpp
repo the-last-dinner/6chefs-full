@@ -351,6 +351,12 @@ int DungeonSceneManager::getPushingEventid() const
     return this->getScene()->eventTask->getPushingEventId();
 }
 
+// イベント実行中か
+bool DungeonSceneManager::isEventRunning() const
+{
+    return this->getScene()->eventTask->isEventRunning();
+}
+
 #pragma mark -
 #pragma mark StopWatch
 

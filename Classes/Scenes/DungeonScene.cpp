@@ -78,14 +78,6 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
     
-    // 主人公一行を生成
-    Party* party { Party::create(PlayerDataManager::getInstance()->getLocalData()->getPartyMemberAll()) };
-    CC_SAFE_RETAIN(party);
-    this->party = party;
-    
-    // 主人公一行をマップに配置
-    mapLayer->setParty(party);
-    
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::ROOM)};
     ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
@@ -111,6 +103,14 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     PlayerControlTask* playerControlTask {PlayerControlTask::create()};
     this->addChild(playerControlTask);
     this->playerControlTask = playerControlTask;
+    
+    // 主人公一行を生成
+    Party* party { Party::create(PlayerDataManager::getInstance()->getLocalData()->getPartyMemberAll()) };
+    CC_SAFE_RETAIN(party);
+    this->party = party;
+    
+    // 主人公一行をマップに配置
+    mapLayer->setParty(party);
     
     // スタミナバー生成
     StaminaBar* staminaBar { StaminaBar::create() };
