@@ -100,7 +100,7 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["ここに！"],
+							"text":["この中に！"],
 							"charaID":"0",
 							"imgID":"3"
 						},

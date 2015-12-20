@@ -2162,5 +2162,35 @@
     {
       "type":"already"
     }
+  ],
+  "29":[
+    {
+      "type":"if",
+      "condition":[
+        {
+          "event":["4","20"],
+          "Nevent":["4","13"]
+        }
+      ],
+      "action":[
+        {
+          "type":"sequence",
+          "action":[
+            {
+              "type":"charaMsg",
+              "text":["確か声は北棟の方から聞こえてきたな・・・"],
+              "charaID":"0",
+              "imgID":"2"
+            },
+            {
+              "type":"charaWalk",
+              "objID":"hero",
+              "direction":"RIGHT",
+              "steps":1.0
+            }
+          ]
+        }
+      ]
+    }
   ]
 }
