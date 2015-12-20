@@ -46,6 +46,11 @@ public:
     bool isInvincibleMode();
     bool isCryptedSaveData();
     void setCryptedSaveData();
+    bool isCryptedEventScript();
+    void setCryptedEventScript();
+    bool isCryptedCsvData();
+    void setCryptedCsvData();
+    
 private:
     void writeConfig();
 };
