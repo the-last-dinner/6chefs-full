@@ -36,10 +36,12 @@ public:
     void stopBGM(const string& filePath);
     void stopBGMAll();
     
+    bool isPlaying(const string& filePath);
+    
     void preloadSound(const string& filePath);
 	void unloadAllSounds();
 	
-	// インスタンス変数
+// インスタンス変数
 private:
     map<int, string> preloadMap {};
     map<int, string> bgmIdMap {};

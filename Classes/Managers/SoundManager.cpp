@@ -79,6 +79,20 @@ void SoundManager::stopBGMAll()
     }
 }
 
+// 指定ファイルが再生中かどうか
+bool SoundManager::isPlaying(const string& filePath)
+{
+    for(pair<int, string> idToFilename : this->bgmIdMap)
+    {
+        if(idToFilename.second != filePath) continue;
+        if(AudioEngine::AudioState::PLAYING != AudioEngine::getState(idToFilename.first)) continue;
+        
+        return true;
+    }
+    
+    return false;
+}
+
 // 音声ファイルをプリロード
 void SoundManager::preloadSound(const string& filePath)
 {

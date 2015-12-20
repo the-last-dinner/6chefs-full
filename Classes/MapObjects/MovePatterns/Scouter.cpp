@@ -66,7 +66,7 @@ void Scouter::setPaused(bool paused)
 {
     MovePattern::setPaused(paused);
     
-    if(Director::getInstance()->getScheduler()->isScheduled(CC_SCHEDULE_SELECTOR(Scouter::update), this)) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
+    if(paused && Director::getInstance()->getScheduler()->isScheduled(CC_SCHEDULE_SELECTOR(Scouter::update), this)) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
     
     // サブアルゴリズムに対しても適用
     if(this->subPattern) this->subPattern->setPaused(paused);
@@ -97,12 +97,13 @@ void Scouter::move(const int pathObjId)
     // 目的地までの経路を取得
     PathObject* destObj { this->getMapObjectList()->getPathObjectById(pathObjId) };
     
+    this->startPathId = destObj->getPathId();
+    
     function<void()> walkCallback { [this, destObj]{ this->move(destObj->getNextId()); } };
     
     if(destObj->needsLookingAround()) walkCallback = [this, destObj, walkCallback]{ this->chara->lookAround(walkCallback, destObj->getLookDirection()); };
     
-    this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, 0.5f, false, CC_CALLBACK_0(Scouter::isPaused, this));
-    
+    if(!this->chara->isMoving()) this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, 0.5f, false, CC_CALLBACK_0(Scouter::isPaused, this));
 }
 
 // 指定経路オブジェクトまでの経路を取得

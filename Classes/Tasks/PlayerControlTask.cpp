@@ -32,6 +32,8 @@ bool PlayerControlTask::init()
 {
     if(!GameTask::init()) return false;
     
+    DungeonSceneManager::getInstance()->getStamina()->onIncreasedMax = CC_CALLBACK_0(PlayerControlTask::onStaminaIncreasedMax, this);
+    
     return true;
 }
 
@@ -85,8 +87,6 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
 {
     if(keys.empty() || !this->isControlEnabled()) return;
     
-    this->exhausted = false;
-    
     vector<Direction> directions { MapUtils::keyToDirection(keys) };
     
     Character* mainCharacter {party->getMainCharacter()};
@@ -115,16 +115,18 @@ void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
     gridRect.origin += MapUtils::directionsToMapVector(moveDirections);
     DungeonSceneManager::getInstance()->runEvent(DungeonSceneManager::getInstance()->getMapObjectList()->getEventIdsByGridRect(gridRect, Trigger::WILL));
     
-    if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party]{this->onPartyMovedOneGrid(party);})) return;
+    Stamina* stamina {DungeonSceneManager::getInstance()->getStamina()};
+    
+    if(!party->move(moveDirections, dash ? DASH_SPEED_RATIO : 1.f, [this, party, stamina]{stamina->setDecreasing(false); this->onPartyMovedOneGrid(party);})) return;
     
     // 地形から、スタミナ減少の倍率を取得しセット
-    DungeonSceneManager::getInstance()->getStamina()->setStepRatio(terrain->getStaminaConsumptionRate());
+    stamina->setStepRatio(terrain->getStaminaConsumptionRate());
     
-    // 敵出現中かつ、ダッシュ中ならスタミナを減少させる
-    if(DungeonSceneManager::getInstance()->existsEnemy() && (dash || terrain->consumeStaminaWalking())) DungeonSceneManager::getInstance()->getStamina()->decrease();
+    // 敵出現中かつ、ダッシュ中ならスタミナを減少モードにする
+    stamina->setDecreasing(DungeonSceneManager::getInstance()->existsEnemy() && (dash || terrain->consumeStaminaWalking()));
     
-    // 減少後にスタミナが空になっていたら疲労状態へ移行
-    if(DungeonSceneManager::getInstance()->getStamina()->isEmpty()) this->exhausted = true;
+    // スタミナが危険値まで下がっていたら、bgmを再生
+    if(stamina->isWarn() && !SoundManager::getInstance()->isPlaying(Resource::BGM::TIRED)) SoundManager::getInstance()->playBGM(Resource::BGM::TIRED, true, 2.0f);
     
     Vector<MapObject*> objs { DungeonSceneManager::getInstance()->getMapObjectList()->getMapObjectsByGridRect(mainCharacter->getGridRect(), Trigger::RIDE) };
     
@@ -165,5 +167,11 @@ bool PlayerControlTask::isControlEnabled()
     if(!this->enableControl) return false;
     
     // 疲労状態でない、またはスタミナが最大であれば操作可能
-    return !this->exhausted || DungeonSceneManager::getInstance()->getStamina()->isMax();
+    return !DungeonSceneManager::getInstance()->getStamina()->isExhausted();
+}
+
+// スタミナが上限まで回復した時
+void PlayerControlTask::onStaminaIncreasedMax()
+{
+    SoundManager::getInstance()->stopBGM(Resource::BGM::TIRED);
 }
