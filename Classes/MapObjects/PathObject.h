@@ -23,6 +23,8 @@ private:
     int previousId { -1 };
     int nextId { -1 };
     bool through { false };
+    float speedRatio { 1.f };
+    Direction direction { Direction::SIZE };
     
 // インスタンスメソッド
 private:
@@ -34,11 +36,15 @@ public:
     void setPreviousId(int previousId);
     void setNextId(int nextId);
     void setThrough(bool through);
+    void setSpeedRatio(float speedRatio);
+    void setLookDirection(Direction direction);
     
     int getPathId() const;
     int getPreviousId() const;
     int getNextId() const;
     bool needsLookingAround() const;
+    float getSpeedRatio() const;
+    Direction getLookDirection() const;
 };
 
 #endif /* PathObject_h */

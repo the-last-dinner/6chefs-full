@@ -130,6 +130,9 @@
     {
       "type": "systemMsg",
       "text": ["今日のバスはもう終わってしまったようだ"]
+    },
+    {
+        "type": "createFog"
     }
   ],
   "3": [

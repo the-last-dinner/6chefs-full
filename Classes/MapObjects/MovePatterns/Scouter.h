@@ -18,10 +18,6 @@ class PathObject;
 
 class Scouter : public MovePattern
 {
-// 定数
-private:
-    static const float SEARCHING_SPEED_RATIO;
-    
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(Scouter, Character*)
@@ -31,7 +27,7 @@ private:
     Sight* sight { nullptr };
     Chaser* subPattern { nullptr };
     PathFinder* finder { nullptr };
-    deque<Direction> directions {};
+    deque<Direction> path {};
     
 // インスタンスメソッド
 private:

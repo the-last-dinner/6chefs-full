@@ -44,6 +44,7 @@ public:
 	
 // インスタンス変数
 public:
+    bool animating { true };
     Node* cursor { nullptr };
 	function<void()> onStartSelected { nullptr };
 	function<void()> onContinueSelected { nullptr };

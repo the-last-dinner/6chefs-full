@@ -31,7 +31,7 @@ bool TitleMainMenuLayer::init()
     
 	if(!MenuLayer::init(1, typeToString.size())) return false;
     
-    this->setCursorEnable(false);
+    this->animating = true;
 	
 	// 背景画像を生成
 	Sprite* titleBg = Sprite::createWithSpriteFrameName("background.png");
@@ -137,13 +137,15 @@ void TitleMainMenuLayer::onEnterAnimationFinished()
     this->onIndexChanged(this->getSelectedIndex(), false);
     
     // リスナを有効化
-    this->setCursorEnable(true);
+    this->listenerKeyboard->setEnabled(true);
+    
+    this->animating = false;
 }
 
 // 表示
 void TitleMainMenuLayer::show()
 {
-	this->listenerKeyboard->setEnabled(true);
+	if(!this->animating) this->listenerKeyboard->setEnabled(true);
 }
 
 // 非表示

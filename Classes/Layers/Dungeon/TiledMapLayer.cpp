@@ -96,9 +96,11 @@ void TiledMapLayer::setParty(Party* party)
 {
     if(!party) return;
     
-    for(Character* member : party->getMembers())
+    Vector<Character*> members { party->getMembers() };
+    
+    for(int i {0}; i < members.size(); i++)
     {
-        this->addMapObject(member);
+        this->addMapObject(members.at(members.size() - i - 1));
     }
     
     this->objectList->setParty(party);

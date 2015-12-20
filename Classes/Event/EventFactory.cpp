@@ -64,7 +64,6 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"fadein", FadeInEvent::create},                // フェードイン
         {"gameover", GameOverEvent::create},            // ゲームオーバー
         {"ending", EndingEvent::create},                // エンディング
-        {"animation", AnimationEvent::create},          // アニメーション
         {"backToTitle", BackToTitleEvent::create},      // タイトルへ戻る
         
         // マップ系
@@ -93,8 +92,10 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"createEnemy", CreateEnemyEvent::create},          // 敵生成
         {"removeEnemy", RemoveEnemyEvent::create},          // 敵削除
         
-        // 光系
+        // エフェクト
         {"setAmbient", SetAmbientLightEvent::create},       // 環境光設定
+        {"animation", AnimationEvent::create},              // アニメーション
+        {"createFog", CreateFogEvent::create},              // 靄を発生させる
         
         // ミニゲーム系
         {"barrage", ButtonMashingEvent::create},        // 連打イベント

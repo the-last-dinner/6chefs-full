@@ -27,6 +27,15 @@ bool RandomMove::init(Character* chara)
 // 動かす
 void RandomMove::start()
 {
+    MovePattern::start();
+    
+    this->move();
+}
+
+void RandomMove::move()
+{
+    if(this->paused) return;
+    
     // 移動可能な方向のベクタを用意
     vector<Direction> enableDirections {};
     for(int i {0}; i < static_cast<int>(Direction::SIZE); i++)
