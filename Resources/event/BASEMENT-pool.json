@@ -221,6 +221,10 @@
 							"type":"fadeout"
 						},
 						{
+							"type":"removeEnemy",
+							"enemyID":"1420"
+						},
+						{
 							"type":"charaWalkTo",
 							"objID":"hero",
 							"x":18,
@@ -239,10 +243,6 @@
 						{
 							"type":"createChara",
 							"objID":"10107"
-						},
-						{
-							"type":"removeEnemy",
-							"enemyID":"1420"
 						},
 						{
 							"type":"fadein"
@@ -327,7 +327,7 @@
 							"charaID":"8",
 							"x":14,
 							"y":5,
-							"speed":1.5,
+							"speed":1.9,
 							"movePattern":"5"
 						},
 						{
@@ -365,6 +365,10 @@
 							"type":"fadeout"
 						},
 						{
+							"type":"removeEnemy",
+							"enemyID":"1420"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
@@ -373,10 +377,6 @@
 									"x":18,
 									"y":25,
 									"speed":10.0
-								},
-								{
-									"type":"removeEnemy",
-									"enemyID":"1420"
 								},
 								{
 									"type":"createChara",
@@ -443,7 +443,7 @@
 							"charaID":"8",
 							"x":14,
 							"y":5,
-							"speed":1.5,
+							"speed":1.9,
 							"movePattern":"5"
 						},
 						{
