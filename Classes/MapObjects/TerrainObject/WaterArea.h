@@ -29,7 +29,7 @@ private:
 public:
     virtual void onWillMove(MapObject* target, const vector<Direction>& directions, function<void()> onMoved, const float ratio);
     virtual void onWillStamp(Character* target, const Direction& direction, const float ratio) override;
-    virtual float getStaminaConsumptionRate() const { return 6.0f; };
+    virtual float getStaminaConsumptionRate() const { return 2.0f; };
     virtual bool canDash() const { return false; };
     virtual bool consumeStaminaWalking() const { return true; };
     virtual string getDotPrefix() const override { return "swim_"; };

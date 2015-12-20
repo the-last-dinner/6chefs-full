@@ -27,6 +27,7 @@ protected:
 public:
     virtual void start();
     virtual void setPaused(bool paused);
+    bool isPaused() const;
     virtual void onPartyMoved() {};
     virtual bool canGoToNextMap() const { return false; };
     virtual float calcSummonDelay() const { return 0.0f; };
@@ -36,7 +37,6 @@ protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
-    bool isPaused() const;
     Character* getMainCharacter() const;
     MapObjectList* getMapObjectList() const;
 };

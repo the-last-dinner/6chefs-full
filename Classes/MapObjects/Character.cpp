@@ -15,6 +15,8 @@
 
 #include "MapObjects/TerrainObject/TerrainObject.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
 
@@ -188,7 +190,12 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     }
     
     // 停止中かチェック
-    if(isPaused && isPaused()) return;
+    if(isPaused && isPaused())
+    {
+        this->clearDirectionsQueue();
+        
+        return;
+    }
     
     // キューの先頭を実行
     vector<Direction> directions { this->directionsQueue.front() };
@@ -218,7 +225,7 @@ void Character::lookAround(function<void()> callback, Direction direction)
 // 動き開始
 void Character::moveStart()
 {
-    if(this->movePattern) this->movePattern->start();
+    if(this->movePattern && this->movePattern->isPaused()) this->movePattern->start();
 }
 
 // 動き停止
@@ -231,7 +238,8 @@ void Character::moveStop()
 void Character::onEnterMap()
 {
     this->setDirection(this->getDirection());
-    this->moveStart();
+    
+    if(!DungeonSceneManager::getInstance()->isEventRunning()) this->moveStart();
 }
 
 // 主人公一行が動いた時

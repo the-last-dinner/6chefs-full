@@ -30,7 +30,8 @@ namespace Resource
     
     namespace BGM
     {
-        static const std::string BASE_PATH = "bgm/";
+        static const std::string BASE_PATH = "BGM/";
+        static const std::string TIRED = "tired.mp3";
     };
     
     namespace SpriteFrame

@@ -29,7 +29,6 @@ public:
 private:
     int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
     bool enableControl { true };
-    bool exhausted {false};
     
 // インスタンスメソッド
 private:
@@ -43,6 +42,7 @@ public:
     void onPartyMovedOneGrid(Party* party);                   // 一マス分移動し終えた時
     void setControlEnable(bool enable, Party* party);         // 操作可能状態かどうか設定
     bool isControlEnabled();                                  // 操作可能状態か確認
+    void onStaminaIncreasedMax();                             // スタミナが上限まで回復した時
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

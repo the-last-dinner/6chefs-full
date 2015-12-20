@@ -17,6 +17,9 @@ class StaminaBar : public SlideNode
 private:
     static const float HORIZONTAL_MARGIN;
     static const float VERTICAL_MARGIN;
+    static const float WARNING_COLOR_CHANGE_THRESHOLD;
+    static const Color3B NORMAL_COLOR;
+    static const Color3B WARNING_COLOR;
     
 // クラスメソッド
 public:
@@ -34,6 +37,7 @@ private:
 
 public:
     void setPercentage(const float percentage);
+    void changeColor(const float percentage);
     virtual void slideIn(AnimationCallback cb = nullptr) override;
     virtual void slideOut(AnimationCallback cb = nullptr) override;
 };

@@ -102,6 +102,7 @@ public:
     bool existsEvent() const;
     int getRunningEventId() const;
     int getPushingEventid() const;
+    bool isEventRunning() const;
     
     // StopWatch
     StopWatch* getStopWatch();
