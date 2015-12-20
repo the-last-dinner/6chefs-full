@@ -31,7 +31,7 @@ private:
     Sight* sight { nullptr };
     Chaser* subPattern { nullptr };
     PathFinder* finder { nullptr };
-    deque<Direction> directions {};
+    deque<Direction> path {};
     
 // インスタンスメソッド
 private:

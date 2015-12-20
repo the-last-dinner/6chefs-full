@@ -55,7 +55,7 @@ void Chaser::start()
 {
     MovePattern::start();
     
-    this->move();
+    if(!this->chara->isMoving()) this->move();
 }
 
 // 停止
@@ -73,6 +73,8 @@ void Chaser::onPartyMoved() {}
 // 動かす
 void Chaser::move()
 {
+    if(this->isPaused()) return;
+    
     // 経路を取得
     deque<Direction> path { this->getPath() };
     
@@ -89,7 +91,7 @@ void Chaser::move()
     
     this->cutPath(path);
     
-    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio);
+    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio, false, CC_CALLBACK_0(Chaser::isPaused, this));
 }
 
 // サブアルゴリズムから自身へ移行
@@ -101,7 +103,7 @@ void Chaser::shiftFromSubPattern()
     // 経路をカット
     this->cutPath(path);
  
-    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio);
+    this->chara->walkByQueue(path, [this](bool reached){if(reached)this->move();}, this->speedRatio, false, CC_CALLBACK_0(Chaser::isPaused, this));
 }
 
 // サブアルゴリズムへ移行

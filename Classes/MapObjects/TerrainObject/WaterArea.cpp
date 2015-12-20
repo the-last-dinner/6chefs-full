@@ -25,7 +25,7 @@ void WaterArea::onWillMove(MapObject* target, const vector<Direction>& direction
 {
     // 速度を1/2にして移動
     target->move(directions, onMoved, ratio / 4);
-    target->getSprite()->setVisible(false);
+    //target->getSprite()->setVisible(false);
     
 //
 //    Sprite* rect {Sprite::create()};

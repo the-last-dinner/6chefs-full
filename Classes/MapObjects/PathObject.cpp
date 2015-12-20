@@ -67,5 +67,5 @@ int PathObject::getNextId() const
 // 周りを見渡す必要があるか
 bool PathObject::needsLookingAround() const
 {
-    return this->through;
+    return !this->through;
 }

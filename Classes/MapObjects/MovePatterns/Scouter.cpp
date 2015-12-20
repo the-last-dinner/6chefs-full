@@ -58,8 +58,8 @@ void Scouter::start()
 {
     MovePattern::start();
     
-    this->move(this->startPathId);
-    Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+    if(!this->chara->isMoving()) this->move(this->startPathId);
+    if(!Director::getInstance()->getScheduler()->isScheduled(CC_SCHEDULE_SELECTOR(Scouter::update), this)) Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 }
 
 // 停止
@@ -67,8 +67,10 @@ void Scouter::setPaused(bool paused)
 {
     MovePattern::setPaused(paused);
     
+    if(paused) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
+    
     // サブアルゴリズムに対しても適用
-    this->subPattern->setPaused(paused);
+    if(this->subPattern) this->subPattern->setPaused(paused);
 }
 
 // 主人公一行が移動した時
@@ -83,7 +85,7 @@ float Scouter::calcSummonDelay() const { return 0.f; };
 // 動かす
 void Scouter::move(const int pathObjId)
 {
-    if(this->paused) return;
+    if(this->isPaused()) return;
     
     // サブパターンが生成されていればそちらに移動を任せる
     if(this->subPattern)
@@ -103,7 +105,7 @@ void Scouter::move(const int pathObjId)
             this->chara->walkByQueue(this->getPath(destObj), [this, destObj](bool _)
                                      {
                                          this->move(this->getMapObjectList()->getPathObjectById(destObj->getNextId())->getPathId());
-                                     }, SEARCHING_SPEED_RATIO);
+                                     }, SEARCHING_SPEED_RATIO, false, CC_CALLBACK_0(Scouter::isPaused, this));
         }
     };
     

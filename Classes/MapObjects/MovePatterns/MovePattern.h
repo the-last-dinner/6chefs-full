@@ -36,6 +36,7 @@ protected:
     MovePattern();
     ~MovePattern();
     virtual bool init(Character* chara);
+    bool isPaused() const;
     Character* getMainCharacter() const;
     MapObjectList* getMapObjectList() const;
 };

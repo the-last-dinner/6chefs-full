@@ -59,3 +59,9 @@ Character* MovePattern::getMainCharacter() const { return this->chara->objectLis
 
 // マップオブジェクト一覧を取得
 MapObjectList* MovePattern::getMapObjectList() const { return this->chara->objectList; }
+
+// 停止中か
+bool MovePattern::isPaused() const
+{
+    return this->paused;
+}

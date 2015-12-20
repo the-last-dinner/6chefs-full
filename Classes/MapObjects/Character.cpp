@@ -49,7 +49,7 @@ bool Character::init(const CharacterData& data)
     }
     
 	// Spriteを生成
-    this->setSprite(Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(static_cast<int>(data.location.direction)) +"_0.png"));
+    this->setSprite(Sprite::createWithSpriteFrameName(this->texturePrefix + "_" + to_string(etoi(data.location.direction)) +"_0.png"));
     
     // それぞれの方向の直立チップをSpriteFrameとして格納しておく
     for(int i { 0 }; i < etoi(Direction::SIZE); i++)
@@ -61,12 +61,12 @@ bool Character::init(const CharacterData& data)
     this->setContentSize(this->getSprite()->getContentSize());
     this->setCollisionRect(Rect(0, 0, this->getContentSize().width, this->getContentSize().height / 2));
 	
-    for(int i {0}; i < static_cast<int>(Direction::SIZE); i++)
+    for(int i {0}; i < etoi(Direction::SIZE); i++)
 	{
         // 右足だけ動くタイプと左足だけ動くタイプでアニメーションを分ける
         for(int k = 0; k < 2; k++)
         {
-            Animation* pAnimation = Animation::create();
+            Animation* pAnimation { Animation::create() };
             
             // それぞれの向きのアニメーション用画像を追加していく
             pAnimation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(this->texturePrefix + "_" + to_string(i) + "_" + to_string(k + 1) + ".png"));
@@ -98,7 +98,7 @@ void Character::stamp(const Direction direction, float ratio)
 {
     this->getSprite()->stopAllActions();
     
-    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(static_cast<int>(direction)) + to_string(this->stampingState < 2 ? 0 : 1));
+    Animation* anime = AnimationCache::getInstance()->getAnimation(this->texturePrefix + to_string(etoi(direction)) + to_string(this->stampingState < 2 ? 0 : 1));
     this->stampingState++;
     if(this->stampingState > 3) this->stampingState = 0;
     anime->setDelayPerUnit(DURATION_MOVE_ONE_GRID / ratio);
@@ -153,7 +153,7 @@ void Character::walkBy(const vector<Direction>& directions, const int gridNum, f
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back)
+void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back, function<bool()> isPaused)
 {
     if(directionQueue.empty())
     {
@@ -169,11 +169,11 @@ void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)
         directionsQueue.push_back(vector<Direction>({direction}));
     }
     
-    this->walkByQueue(directionsQueue, callback, ratio, back);
+    this->walkByQueue(directionsQueue, callback, ratio, back, isPaused);
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio, const bool back)
+void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio, const bool back, function<bool()> isPaused)
 {
     // 初回のみ中身が存在するため、空でない時は格納する
     if(!directionsQueue.empty()) this->directionsQueue = directionsQueue;
@@ -186,12 +186,15 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
         return;
     }
     
+    // 停止中かチェック
+    if(isPaused && isPaused()) return;
+    
     // キューの先頭を実行
     vector<Direction> directions { this->directionsQueue.front() };
     this->directionsQueue.pop_front();
     
     // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) return;
+    if(this->walkBy(directions, [callback, ratio, back, isPaused, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back, isPaused);}, ratio, back)) return;
     
     if(callback) callback(false);
 }
