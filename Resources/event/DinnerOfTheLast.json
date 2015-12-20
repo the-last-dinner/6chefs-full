@@ -476,10 +476,14 @@
 									]
 								},
 								{
-									"type":"fadein"
+									"type":"ending",
+									"id":"1"
 								},
 								{
 									"type":"already"
+								},
+								{
+									"type":"backToTitle"
 								}
 							]
 						}
