@@ -197,7 +197,7 @@ void DungeonScene::onMenuKeyPressed()
     PlayerDataManager::getInstance()->getLocalData()->setLocation(DungeonSceneManager::getInstance()->getParty()->getMembersData());
     
     // スクショをとって、ダンジョンメニューシーンをプッシュ
-    string path = LastSupper::StringUtils::strReplace("global.json", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.json"));
+    string path = LastSupper::StringUtils::strReplace("global.inos", "screen0.png", FileUtils::getInstance()->fullPathForFilename("save/global.inos"));
     utils::captureScreen([=](bool success, string filename){
      if(success)
      {

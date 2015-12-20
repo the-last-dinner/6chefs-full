@@ -56,7 +56,6 @@ private:
     bool init(const int local_id);
     // Local data File
     bool loadLocalData(const int local_id);
-    void initLocalData();
 public:
     void saveLocalData(const int local_id);
     int getLocalId();
