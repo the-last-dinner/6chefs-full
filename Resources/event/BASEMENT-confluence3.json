@@ -343,13 +343,32 @@
 			"condition":[
 				{
 					"flg":1,
-					"Nevent":["54","3"]
+					"Nevent":["57","3"]
 				}
 			],
 			"action":[
 				{
 					"type":"charaMsg",
 					"text":["ケッケケ\n頼んだぜ"],
+					"charaID":"6",
+					"imgID":"1",
+					"name":"？？？"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1,
+					"event":["57","3"],
+					"Nevent":["54","3"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["\nほうら逃げろ逃げろ・・・・","どうしようもなくなったら\n助けてやっから・・・"],
 					"charaID":"6",
 					"imgID":"1",
 					"name":"？？？"
