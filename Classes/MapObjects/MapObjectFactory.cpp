@@ -256,16 +256,17 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
 
-    EventObject* pObj { EventObject::create() };
-    pObj->setObjectId(this->getObjectId(info));
-    pObj->setEventId(this->getEventId(info));
-    pObj->setTrigger(this->getTrigger(info));
-    pObj->setGridPosition(this->getGridPosition(rect));
-    pObj->setContentSize(rect.size);
-    pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
-    pObj->setHit(this->isHit(info));
+    EventObject* obj { EventObject::create() };
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(rect));
+    obj->setContentSize(rect.size);
+    obj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    obj->setHit(this->isHit(info));
+    obj->setSprite(this->getSprite(info));
     
-    return pObj;
+    return obj;
 }
 
 // キャラクターレイヤにあるオブジェクトを生成
