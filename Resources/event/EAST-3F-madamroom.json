@@ -342,7 +342,8 @@
 							            },
 							            {
 							            	"type":"playBGM",
-							            	"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
+							            	"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+							            	"volume":2.0
 							            },
 							            {
 							              "type":"charaMsg",
@@ -517,9 +518,6 @@
 							            {
 							            	"type":"wait",
 							            	"time":2.0
-							            },
-							            {
-							            	"type":"stopBGM"
 							            }
 									]
 								}
@@ -576,6 +574,9 @@
 					                          }
 					                        ]
 					                    },
+					                    {
+							            	"type":"stopBGM"
+							            },
 					                    {
 					                    	"type":"wait",
 					                    	"time":2.0

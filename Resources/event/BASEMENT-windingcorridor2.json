@@ -73,5 +73,28 @@
 				}
 			]
 		}
+	],
+	"4":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"createEnemy",
+					"enemyID":"1427",
+					"charaID":"8",
+					"x":4,
+					"y":21,
+					"movePattern":"4",
+					"pathID":"1",
+					"times":1,
+					"speed":3.0
+				}
+			]
+		}
 	]
 }

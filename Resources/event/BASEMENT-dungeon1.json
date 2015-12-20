@@ -63,7 +63,8 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"jail-door-close1.mp3"
+							"file":"jail-door-close1.mp3",
+							"volume":5.0
 						},
 						{
 							"type":"playSE",
