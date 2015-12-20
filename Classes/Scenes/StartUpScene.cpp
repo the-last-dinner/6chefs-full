@@ -17,6 +17,13 @@ bool StartUpScene::init()
 {
     if (!BaseScene::init(StartUpSceneData::create())) return false;
     
+    // CSVデータの作成
+    if (!DebugManager::getInstance()->isCryptedCsvData())
+    {
+        this->ecnryptCsvFiles();
+    }
+    CsvDataManager::getInstance();
+    
     // セーブデータの生成
     if (!DebugManager::getInstance()->isCryptedSaveData())
     {
@@ -27,7 +34,7 @@ bool StartUpScene::init()
     // イベントスクリプトの暗号化
     if (!DebugManager::getInstance()->isCryptedEventScript())
     {
-        this->enctyptEventScripts();
+        this->encryptEventScripts();
     }
     
     return true;
@@ -54,7 +61,7 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
     this->addChild(logo);
     
     // 効果音
-    SoundManager::getInstance()->playSE("logo_display.mp3", 0.5f);
+    SoundManager::getInstance()->playSE(Resource::SE::LOGO, 0.3f);
     
     // ロゴのアニメーション
     logo->runAction(Sequence::createWithTwoActions(FadeIn::create(0.5f),EaseCubicActionOut::create(TintTo::create(1.0f, Color3B::RED))));
@@ -91,7 +98,7 @@ void StartUpScene::encryptSaveFiles()
 }
 
 // イベントスクリプトの暗号化
-void StartUpScene::enctyptEventScripts()
+void StartUpScene::encryptEventScripts()
 {
     vector<string> fileNames = CsvDataManager::getInstance()->getMapFileNameAll();
     string path = "";
@@ -101,4 +108,48 @@ void StartUpScene::enctyptEventScripts()
         LastSupper::JsonUtils::enctyptJsonFile(path);
     }
     DebugManager::getInstance()->setCryptedEventScript();
+}
+
+// CSVの暗号化
+void StartUpScene::ecnryptCsvFiles()
+{
+    vector<string> files = {
+        "chapter",
+        "item",
+        "map",
+        "trophy",
+        "character1",
+        "character2",
+        "character3"
+    };
+    string path = "";
+    for(string file : files)
+    {
+        path = FileUtils::getInstance()->fullPathForFilename("csv/" + file + CSV_EXTENSION);
+        // ファイル読み込み
+        ifstream ifs(path);
+        if (ifs.fail())
+        {
+            CCLOG("%s is missing.", path.c_str());
+            return;
+        }
+        
+        // 文字列を暗号化
+        string str;
+        getline(ifs, str);
+        ofstream ofs;
+        ofs.open(path);
+        while(getline(ifs, str))
+        {
+            //LastSupper::StringUtils::encryptXor(jsonStr);
+            for(int i = 0; i < strlen(str.c_str()); i++)
+            {
+                str[i] ^= C_KEY;
+            }
+            ofs << str << endl;
+        }
+        ifs.close();
+        ofs.close();
+    }
+    DebugManager::getInstance()->setCryptedCsvData();
 }

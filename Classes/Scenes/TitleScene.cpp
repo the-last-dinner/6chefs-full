@@ -77,7 +77,7 @@ void TitleScene::onStartSelected()
 {
 	FUNCLOG
     SoundManager::getInstance()->stopBGMAll();
-	SoundManager::getInstance()->playSE("gameStart.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::GAME_START);
 	PlayerDataManager::getInstance()->setGameStart(0);
     Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }

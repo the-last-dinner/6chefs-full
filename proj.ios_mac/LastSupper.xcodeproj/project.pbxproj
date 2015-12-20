@@ -961,7 +961,6 @@
 				26D9F5691C117514003BA438 /* GlobalPlayerData.h */,
 				26D9F56C1C117608003BA438 /* LocalPlayerData.cpp */,
 				26D9F56D1C117608003BA438 /* LocalPlayerData.h */,
-				DC40ADFA1C0F47E100864861 /* EndingScene.cpp */,
 				DC7AD6471C183C37008066DA /* Sight.cpp */,
 				DC7AD6481C183C37008066DA /* Sight.h */,
 			);
@@ -1011,6 +1010,7 @@
 				5534BBCB1B2D33D7003CB847 /* DungeonScene.cpp */,
 				5534BBCC1B2D33D7003CB847 /* DungeonScene.h */,
 				266E76521BC1160B005BC878 /* DungeonMenuScene.cpp */,
+				DC40ADFA1C0F47E100864861 /* EndingScene.cpp */,
 				266E76531BC1160B005BC878 /* DungeonMenuScene.h */,
 				553577DB1BE9F7640095E6A9 /* DungeonCameraScene.cpp */,
 				553577DC1BE9F7640095E6A9 /* DungeonCameraScene.h */,

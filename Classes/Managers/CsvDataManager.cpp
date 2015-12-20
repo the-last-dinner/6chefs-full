@@ -7,6 +7,7 @@
 //
 
 #include "Managers/CsvDataManager.h"
+#include "Utils/StringUtils.h"
 
 // 唯一のインスタンスを初期化
 static CsvDataManager* _instance = nullptr;
@@ -43,9 +44,27 @@ CsvDataManager::CsvDataManager()
 {
     FUNCLOG
     //各CSVデータの取得
+    string file_name = "";
     for(auto itr:this->file_type)
     {
-        this->csv_data[itr.first] = this->readCsvFile(itr.second);
+        if (itr.first == DataType::CHARACTER)
+        {
+            for(int i = 1; i <= 3; i++)
+            {
+                file_name = itr.second + to_string(i);
+                map<int, vector<string>> charas;
+                charas = this->readCsvFile(file_name);
+                for(pair<int, vector<string>> chara : charas)
+                {
+                    this->CsvDataManager::csv_data[itr.first][chara.first] = chara.second;
+                }
+                
+            }
+        }
+        else
+        {
+            this->csv_data[itr.first] = this->readCsvFile(itr.second);
+        }
     }
 }
 
@@ -53,7 +72,7 @@ CsvDataManager::CsvDataManager()
 map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
 {
     //ファイル読み込み
-    ifstream file(FileUtils::getInstance()->fullPathForFilename("csv/" + file_name + ".csv"));
+    ifstream file(FileUtils::getInstance()->fullPathForFilename("csv/" + file_name + CSV_EXTENSION));
     map<int, vector<string>> values;
     string str;
     int p, i, data_id;
@@ -64,6 +83,13 @@ map<int, vector<string>> CsvDataManager::readCsvFile(string file_name)
     }
     //csvデータ格納
     while(getline(file, str)){
+        // 複合化
+        //LastSupper::StringUtils::encryptXor(str);
+        for (int j = 0; j < strlen(str.c_str()); j++)
+        {
+            str[j] ^= C_KEY;
+        }
+        
         //コメント箇所は除く
         if( (p = str.find("//")) != str.npos ) continue;
         vector<string> inner;

@@ -23,7 +23,8 @@ private:
     virtual void onEnter();
     void onPreloadFinished(LoadingLayer* loadingLayer);
     void encryptSaveFiles();
-    void enctyptEventScripts();
+    void encryptEventScripts();
+    void ecnryptCsvFiles();
 
 public:
     StartUpScene() {FUNCLOG};

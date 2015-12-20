@@ -4,6 +4,7 @@
 	"invincible_mode":false,
     "crypt":{
         "save":false,
-        "event_script":false
+        "event_script":false,
+        "csv":false
     }
 }

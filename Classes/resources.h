@@ -26,6 +26,9 @@ namespace Resource
         static const std::string GET_ITEM = "mystery5.mp3";
         static const std::string TITLE_ENTER = "title-enter.mp3";
         static const std::string TROPHY_NOTIFICATION = "receipt05.mp3";
+        static const std::string LOAD = "load.mp3";
+        static const std::string GAME_START = "gameStart.mp3";
+        static const std::string LOGO = "logo_display.mp3";
     };
     
     namespace BGM

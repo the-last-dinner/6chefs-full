@@ -211,7 +211,7 @@ void SaveDataSelector::onSpacePressed(int idx)
         if(this->existsSaveData[idx-1])
         {
             // ロード
-            SoundManager::getInstance()->playSE("load.mp3");
+            SoundManager::getInstance()->playSE(Resource::SE::LOAD);
             PlayerDataManager::getInstance()->setGameStart(idx);
             
             // 保存されているBGMの再生
