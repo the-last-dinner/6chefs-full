@@ -52,5 +52,5 @@ void Fog::moveSprites(Sprite* upper, Sprite* bottom)
 void Fog::onMoveAnimationFinished(Sprite* upper, Sprite* bottom)
 {
     // 上下を入れ替えて再び動かす
-    this->moveSprites(bottom, bottom);
+    this->moveSprites(bottom, upper);
 }
