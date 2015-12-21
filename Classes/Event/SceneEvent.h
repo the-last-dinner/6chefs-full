@@ -69,6 +69,7 @@ private:
     ~WaitEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
+    virtual void update(float delta) override;
 };
 
 // FadeOutイベント
