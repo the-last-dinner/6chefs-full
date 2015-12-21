@@ -19,6 +19,8 @@
 
 #include "Models/GlobalPlayerData.h"
 
+#include "UI/NotificationBand.h"
+
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
 
@@ -65,7 +67,6 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // セーブデータ選択レイヤーのイベントをリッスン
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
     saveDataSelector->setVisible(false);
-    saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
     
     // BGM

@@ -79,7 +79,6 @@ void DungeonMenuScene::createSaveMenu()
     this->addChild(saveDataSelector);
     // セーブデータ選択レイヤーのイベントをリッスン
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(DungeonMenuScene::onSaveDataSelectCancelled, this);
-    saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
 }
 
@@ -96,7 +95,6 @@ void DungeonMenuScene::createItemMenu()
     ItemMenuLayer* itemMenu { ItemMenuLayer::create() };
     itemMenu->setName(ITEM_LAYER_NAME);
     this->addChild(itemMenu);
-    itemMenu->hide();
     itemMenu->onItemMenuCanceled = CC_CALLBACK_0(DungeonMenuScene::onItemMenuCanceled, this);
     this->itemMenu = itemMenu;
 }
@@ -115,7 +113,6 @@ void DungeonMenuScene::createCharaMenu()
     charaMenu->setName(CHARA_LAYER_NAME);
     charaMenu->onCharacterMenuCanceled = CC_CALLBACK_0(DungeonMenuScene::onCharaMenuCanceled, this);
     this->addChild(charaMenu);
-    charaMenu->hide();
     this->charaMenu = charaMenu;
 }
 
