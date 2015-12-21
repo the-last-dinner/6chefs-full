@@ -19,8 +19,6 @@
 
 #include "Models/GlobalPlayerData.h"
 
-#include "UI/NotificationBand.h"
-
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
 
@@ -125,13 +123,6 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
-    // クリアしていない場合は見れない
-    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
-    {
-        SoundManager::getInstance()->playSE("failure.mp3");
-        return;
-    }
-    
     // トロフイーリストレイヤーを作成
     SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
     if(!this->trophyList)
