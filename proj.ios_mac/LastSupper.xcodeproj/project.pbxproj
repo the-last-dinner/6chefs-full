@@ -29,6 +29,8 @@
 		260F45CF1BF08230003C9B2F /* CharacterMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 260F45CC1BF08230003C9B2F /* CharacterMenuLayer.cpp */; };
 		26114E761BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */; };
 		26114E771BEDF1720019C1C3 /* SpriteUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */; };
+		26151A551C28786100587F6E /* File.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26151A581C28786100587F6E /* File.strings */; };
+		26151A561C28786100587F6E /* File.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26151A581C28786100587F6E /* File.strings */; };
 		2621C4271B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		2621C4281B3FC30500112CB9 /* PlayerDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */; };
 		26221DFF1BEE86E7000203E6 /* MiniSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */; };
@@ -351,6 +353,7 @@
 		260F45CD1BF08230003C9B2F /* CharacterMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterMenuLayer.h; path = ../Classes/Layers/Menu/CharacterMenuLayer.h; sourceTree = "<group>"; };
 		26114E741BEDF1720019C1C3 /* SpriteUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpriteUtils.cpp; path = ../Classes/Utils/SpriteUtils.cpp; sourceTree = "<group>"; };
 		26114E751BEDF1720019C1C3 /* SpriteUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteUtils.h; path = ../Classes/Utils/SpriteUtils.h; sourceTree = "<group>"; };
+		26151A571C28786100587F6E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/File.strings; sourceTree = "<group>"; };
 		2621C4251B3FC30500112CB9 /* PlayerDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerDataManager.cpp; path = ../Classes/Managers/PlayerDataManager.cpp; sourceTree = "<group>"; };
 		2621C4261B3FC30500112CB9 /* PlayerDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerDataManager.h; path = ../Classes/Managers/PlayerDataManager.h; sourceTree = "<group>"; };
 		26221DFD1BEE86E7000203E6 /* MiniSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MiniSelector.cpp; path = ../Classes/Layers/Menu/MiniSelector.cpp; sourceTree = "<group>"; };
@@ -865,6 +868,7 @@
 				503AE0F517EB97AB00D1A890 /* Icons */,
 				503AE10317EB98FF00D1A890 /* main.cpp */,
 				503AE10417EB98FF00D1A890 /* Prefix.pch */,
+				26151A581C28786100587F6E /* File.strings */,
 			);
 			name = mac;
 			sourceTree = "<group>";
@@ -1445,6 +1449,7 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				26151A551C28786100587F6E /* File.strings in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -1477,6 +1482,7 @@
 				551406A61BA5828A008DFAED /* se in Resources */,
 				551406A71BA5828A008DFAED /* shaders in Resources */,
 				26CB39DA1C28639A00615E0F /* Images.xcassets in Resources */,
+				26151A561C28786100587F6E /* File.strings in Resources */,
 				26C196421C1349B20093830B /* debug_config.json in Resources */,
 				551406A81BA5828A008DFAED /* story in Resources */,
 			);
@@ -1762,6 +1768,18 @@
 			targetProxy = 1AC6FB24180E99E1004C840B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		26151A581C28786100587F6E /* File.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26151A571C28786100587F6E /* ja */,
+			);
+			name = File.strings;
+			path = mac;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
