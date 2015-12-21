@@ -128,9 +128,13 @@ bool WaitEvent::init(rapidjson::Value& json)
     return true;
 }
 
-void WaitEvent::run()
+void WaitEvent::run() {}
+
+void WaitEvent::update(float delta)
 {
-    DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(DelayTime::create(this->duration), CallFunc::create([this](){this->setDone();})));
+    this->duration -= delta;
+    
+    if(this->duration <= 0) this->setDone();
 }
 
 #pragma mark -
