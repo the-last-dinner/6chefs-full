@@ -20,5 +20,11 @@
 			"x":2,
 			"y":15
 		}
+	],
+	"3":[
+		{
+			"type":"displayImg",
+			"file":"number.png"
+		}
 	]
 }
