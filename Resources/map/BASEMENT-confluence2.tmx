@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="22">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="23">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
+ <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+  <image source="ST-MsionR-I01.png" trans="000000" width="256" height="1990"/>
+ </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
-   <property name="cc_vertexz" value="-12"/>
+   <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzNk00KhDAMhdsDqKvRlSdQF4O68gTO3P88Y0rzsAR/0lIYHzza2OYjfaAx1/qRK3LBhlCXfD7aGxCrpXsDrR0bQt0bfx7DC3vf1nul/Sf4LnnFgUvmuV70Sx5WyeuE8Y7F7owra3ka1hkPjBw85PAV+1Setu9fvJrqJiNvonrOyHOK4b2sfxN8pBiem2c64aTkqP3/tTlqeeGccDgvckuVnFeb21O1AasZLjs=
@@ -13,10 +16,18 @@
  </layer>
  <layer name="MonoChu" width="20" height="20">
   <properties>
-   <property name="cc_vertexz" value="-11"/>
+   <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYKA/qCFTDhe4TqbcKBgFo2AUjALyAQC15gKn
+  </data>
+ </layer>
+ <layer name="diary" width="20" height="20">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0Aq4s1DXvHCgeRFUNnMUjAJyAQCxcgED
   </data>
  </layer>
  <objectgroup name="collision">
@@ -78,6 +89,12 @@
     <property name="EventID" value="5"/>
     <property name="objID" value="2"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="22" x="256" y="176" width="32" height="16">
+   <properties>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

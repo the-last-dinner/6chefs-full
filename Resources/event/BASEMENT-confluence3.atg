@@ -15,10 +15,42 @@
 	],
 	"2":[
 		{
-			"type":"changeMap",
-			"mapID":"56",
-			"x":32,
-			"y":3
+			"type":"sequence",
+			"action":[
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["57","3"],
+							"Nevent":["55","12"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["ダメだ！\n逃げ切れない！"],
+									"charaID":"0",
+									"imgID":"3",
+									"option":"reaction"
+								},
+								{
+									"text":["・・・","あの人ならここに慣れていそうだし\n助けてくれるかも・・・"],
+									"charaID":"0",
+									"imgID":"2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"changeMap",
+					"mapID":"56",
+					"x":32,
+					"y":3
+				}
+			]
 		}
 	],
 	"3":[
