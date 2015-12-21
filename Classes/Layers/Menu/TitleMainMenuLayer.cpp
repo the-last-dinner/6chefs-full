@@ -11,6 +11,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "UI/Cloud.h"
+#include "UI/NotificationBand.h"
 
 // コンストラクタ
 TitleMainMenuLayer::TitleMainMenuLayer(){FUNCLOG}
@@ -187,8 +188,40 @@ void TitleMainMenuLayer::onSpacePressed(int idx)
         {MenuType::TROPHY, this->onTrophySelected},
 		{MenuType::EXIT, this->onExitSelected},
 	};
-	
-	if(!typeMap.count(static_cast<MenuType>(idx))) return;
-	
-	if(function<void()> callback {typeMap.at(static_cast<MenuType>(idx))}) callback();
+    MenuType menu {static_cast<MenuType>(idx)};
+	if(!typeMap.count(menu)) return;
+    
+    // クリアしていない場合はトロフィーを見れない
+    if (menu == MenuType::TROPHY && !PlayerDataManager::getInstance()->getGlobalData()->isCleared())
+    {
+        this->trophyNotification();
+        return;
+    }
+    
+    // 選択されたメニューに応じてコールバック関数実行
+	if(function<void()> callback {typeMap.at(menu)}) callback();
+}
+
+// トロフィーを見れない通知
+void TitleMainMenuLayer::trophyNotification()
+{
+    if (notification)
+    {
+        SoundManager::getInstance()->playSE("back.mp3");
+        this->notification->hide([this]{
+            this->removeChild(this->notification);
+            this->notification = nullptr;
+            this->setCursorEnable(true);
+        });
+    }
+    else
+    {
+        this->setCursorEnable(false);
+        SoundManager::getInstance()->playSE("failure.mp3");
+        NotificationBand* notification = NotificationBand::create("トロフィーはクリア後に見ることができます");
+        notification->setBandColor(Color3B(64,0,0));
+        this->addChild(notification);
+        notification->show();
+        this->notification = notification;
+    }
 }
