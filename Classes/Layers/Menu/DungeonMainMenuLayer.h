@@ -50,6 +50,7 @@ private:
     MiniSelector* confirm {nullptr};
     Label* play_time {nullptr};
     Sprite* cover {nullptr};
+    Node* cursor { nullptr };
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();

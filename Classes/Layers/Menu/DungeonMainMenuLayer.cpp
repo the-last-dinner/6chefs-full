@@ -12,6 +12,7 @@
 #include "Datas/MapObject/CharacterData.h"
 #include "Layers/Menu/MiniSelector.h"
 #include "UI/SlideNode.h"
+#include "UI/Cloud.h"
 
 // 定数
 const float DungeonMainMenuLayer::SLIDE_TIME {0.3f};
@@ -74,17 +75,17 @@ bool DungeonMainMenuLayer::init()
     map<Type, string> menuStrings
     {
         {Type::ITEM, "アイテム"},
-        { Type::SAVE, "セーブ" },
-        { Type::CHARA, "キャラ" },
-        { Type::TITLE, "タイトル" },
-        { Type::CLOSE, "閉じる" },
+        {Type::SAVE, "セーブ"},
+        {Type::CHARA, "キャラ"},
+        {Type::TITLE, "タイトル"},
+        {Type::CLOSE, "閉じる"},
     };
     
     for(int i {0}; i < static_cast<int>(Type::SIZE); i++)
     {
         Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
         menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
-        menu->setOpacity(100);
+        //menu->setOpacity(100);
         menu->setTag(i);
         hBg->addChild(menu);
         this->menuObjects.push_back(menu);
@@ -173,6 +174,13 @@ bool DungeonMainMenuLayer::init()
         
     }
     
+    // カーソル生成
+    Cloud* cursor { Cloud::create(Size::ZERO) };
+    cursor->setColor(Color3B(100, 0, 0));
+    cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
+    hBg->addChild(cursor);
+    this->cursor = cursor;
+    
 	return true;
 }
 
@@ -203,21 +211,16 @@ void DungeonMainMenuLayer::onIndexChanged(int newIdx, bool sound)
 {
     this->menuIndex = newIdx;
     // カーソル処理
-    for(Node* obj : this->menuObjects)
+    for(int i = 0; i < this->menuObjects.size(); i++)
     {
-        if(obj->getTag() == newIdx)
-        {
-            obj->runAction(FadeTo::create(0.1f, 255));
-            obj->runAction(ScaleTo::create(0.2f, 1.2f));
-        }
-        else
-        {
-            obj->runAction(FadeTo::create(0.1f, 128));
-            obj->runAction(ScaleTo::create(0.2f, 1.0f));
-        }
-        obj->runAction(TintTo::create(0.5f, 255, 255, 255));
+        if (newIdx != i) continue;
+        
+        Node* obj {this->menuObjects.at(i)};
+        this->cursor->setVisible(true);
+        this->cursor->setScale((obj->getContentSize().width + 50) / this->cursor->getContentSize().width);
+        this->cursor->setPosition(obj->getPosition());
     }
-    if(sound)SoundManager::getInstance()->playSE("cursorMove.mp3");
+    if(sound)SoundManager::getInstance()->playSE(Resource::SE::CURSOR_MOVE);
     return;
 }
 
