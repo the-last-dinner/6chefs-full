@@ -131,7 +131,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Chara(object)">
-  <object id="30" x="144" y="64" width="32" height="32">
+  <object id="30" x="176" y="64" width="32" height="32">
    <properties>
     <property name="CharaID" value="17"/>
     <property name="direction" value="DOWN"/>
@@ -171,7 +171,7 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="34" x="144" y="64" width="32" height="32">
+  <object id="34" x="176" y="64" width="32" height="32">
    <properties>
     <property name="EventID" value="4"/>
     <property name="trigger" value="2"/>
