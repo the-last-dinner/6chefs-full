@@ -27,10 +27,12 @@ bool TiledMapLayer::init(const Location& location)
     if(!Layer::init()) return false;
     
 	// Tiledのマップを生成
-    experimental::TMXTiledMap* tiledMap { experimental::TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapFileName(location.map_id) + ".tmx") };
+    TMXTiledMap* tiledMap { TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapFileName(location.map_id) + ".tmx") };
     tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
+    
+    this->orderLayers();
     
     // オブジェクトリスト生成
     MapObjectList* objectList {MapObjectFactory::createMapObjectList(tiledMap)};
@@ -46,10 +48,27 @@ bool TiledMapLayer::init(const Location& location)
 	return true;
 }
 
-// マップを取得
-experimental::TMXTiledMap* TiledMapLayer::getTiledMap()
+// レイヤの並び替え
+void TiledMapLayer::orderLayers()
 {
-    return this->tiledMap;
+    for (Node* child : this->tiledMap->getChildren())
+    {
+        TMXLayer* layer { dynamic_cast<TMXLayer*>(child) };
+  
+        if(!layer) continue;
+        
+        cocos2d::Value z { layer->getProperty("z") };
+        if(z.isNull()) z = layer->getProperty("cc_vertexz");
+        
+        if(!z.isNull())
+        {
+            layer->setLocalZOrder(z.asInt());
+            
+            continue;
+        }
+        
+        layer->setLocalZOrder(this->tiledMap->getMapSize().height + 1);
+    }
 }
 
 // マップオブジェクトのリストを取得
@@ -67,7 +86,7 @@ Size TiledMapLayer::getMapSize() const
 // マップの指定レイヤを隠す
 void TiledMapLayer::hideLayer(const string& layerName)
 {
-    if(experimental::TMXLayer* layer { this->tiledMap->getLayer(layerName) })
+    if(TMXLayer* layer { this->tiledMap->getLayer(layerName) })
     {
         layer->setVisible(false);
     }
@@ -76,7 +95,7 @@ void TiledMapLayer::hideLayer(const string& layerName)
 // マップの指定レイヤを揺らす
 void TiledMapLayer::swingLayer(const string& layerName)
 {
-    if(experimental::TMXLayer* layer { this->tiledMap->getLayer(layerName) })
+    if(TMXLayer* layer { this->tiledMap->getLayer(layerName) })
     {
         layer->runAction(RepeatForever::create(Sequence::create(MoveTo::create(0.2f, Point(layer->getPosition().x, layer->getPosition().y + GRID * 0.2f)), MoveTo::create(0.2f, Point(layer->getPosition().x, layer->getPosition().y - GRID * 0.2f)), nullptr)));
     }
@@ -144,6 +163,6 @@ void TiledMapLayer::setMapObjectPosition(MapObject *mapObject)
 // マス座標からZOrder値を設定
 void TiledMapLayer::setZOrderByPosition(MapObject* mapObject)
 {
-    int z { static_cast<int>(mapObject->getGridPosition().y - this->tiledMap->getMapSize().height) - 1};
+    int z { static_cast<int>(mapObject->getGridPosition().y)};
     mapObject->setLocalZOrder(z);
 }

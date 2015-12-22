@@ -5,10 +5,9 @@
 // 最低限のインクルード、変数の初期化を行う
 
 #include <cocos2d.h>
-#include "SimpleAudioEngine.h"
-#include "AudioEngine.h"
 #include <iostream>
 #include <fstream>
+#include "AudioEngine.h"
 #include "resources.h"
 
 // rapidjson
@@ -43,9 +42,7 @@ typedef GenericStringBuffer< UTF8<> > StringBuffer;
 #define DEBUG
 
 using namespace cocos2d;
-using namespace CocosDenshion;
 using namespace std;
-using namespace experimental;
 
 // メソッドログ
 #ifdef DEBUG

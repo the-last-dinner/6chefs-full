@@ -59,5 +59,7 @@ void NotificationNode::update(float delta)
 // 表示時間を取得
 float NotificationNode::getShowingDuration() const
 {
+    if(this->showingDuration < 0) return 0.f;
+    
     return this->showingDuration;
 }

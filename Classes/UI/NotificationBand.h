@@ -31,8 +31,6 @@ private:
 public:
     void setBandColor(const Color3B& color);
     void setMessageColor(const Color3B& color);
-    void show(const function<void()>& callback = nullptr);
-    void hide(const function<void()>& callback = nullptr);
 };
 
 #endif /* NotificationBand_h */

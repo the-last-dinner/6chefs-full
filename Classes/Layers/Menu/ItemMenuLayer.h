@@ -12,7 +12,6 @@
 #include "Layers/Menu/MenuLayer.h"
 
 class MiniSelector;
-class NotificationBand;
 
 class ItemMenuLayer : public MenuLayer
 {
@@ -43,7 +42,6 @@ public:
 private:
     vector<int> items {};
     MiniSelector* miniSelector {nullptr};
-    NotificationBand* notification {nullptr};
     int selected_item {0};
     bool isEquip {true};
 public:

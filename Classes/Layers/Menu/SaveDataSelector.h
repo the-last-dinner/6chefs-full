@@ -11,8 +11,6 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
-class NotificationBand;
-
 class SaveDataSelector : public MenuLayer
 {
     //構造体
@@ -37,7 +35,6 @@ public:
     // インスタンス変数
 private:
     vector<SaveIndex> saveDatas {};
-    NotificationBand* notification {nullptr};
     bool existsSaveData[MAX_SAVE_COUNT] {};
     bool write_flag;
     bool comfirm_flag;

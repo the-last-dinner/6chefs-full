@@ -10,6 +10,8 @@
 #include "Managers/PlayerDataManager.h"
 #include "Models/GlobalPlayerData.h"
 
+using namespace cocos2d::experimental;
+
 // 定数
 const map<string, float> SoundManager::VOLUME_CONFIG
 {
@@ -118,14 +120,9 @@ bool SoundManager::isPlaying(const string& filePath)
 }
 
 // 音声ファイルをプリロード
-void SoundManager::preloadSound(const string& filePath)
+void SoundManager::preloadSound(const string& filePath, function<void(bool)> callback)
 {
-    // プリロード関数がないため、音量ゼロで再生する
-    int audioId { AudioEngine::play2d(filePath, false, 0.0f) };
-    this->preloadMap.insert({audioId, filePath});
-    
-    // すぐに再生停止
-    AudioEngine::stop(audioId);
+    AudioEngine::preload(filePath, callback);
 }
 
 // 音声をアンロード

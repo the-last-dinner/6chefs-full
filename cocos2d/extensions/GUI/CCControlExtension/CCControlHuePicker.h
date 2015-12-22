@@ -35,7 +35,7 @@
 
 #include "CCControl.h"
 #include "CCInvocation.h"
-#include "../../ExtensionExport.h"
+#include "extensions/ExtensionExport.h"
 
 NS_CC_EXT_BEGIN
 
@@ -61,7 +61,7 @@ public:
     virtual ~ControlHuePicker();
     virtual bool initWithTargetAndPos(Node* target, Vec2 pos);
 
-    virtual void setEnabled(bool enabled);
+    virtual void setEnabled(bool enabled) override;
 
     // overrides
     virtual bool onTouchBegan(Touch* touch, Event* pEvent) override;

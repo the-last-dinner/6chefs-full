@@ -32,7 +32,7 @@
 
 #include "base/CCRef.h"
 #include "../../ExtensionMacros.h"
-#include "../../ExtensionExport.h"
+#include "extensions/ExtensionExport.h"
 #include "CCControl.h"
 
 NS_CC_EXT_BEGIN

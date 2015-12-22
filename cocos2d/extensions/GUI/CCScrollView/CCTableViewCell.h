@@ -26,11 +26,16 @@
 #ifndef __CCTABLEVIEWCELL_H__
 #define __CCTABLEVIEWCELL_H__
 
-#include "../../ExtensionMacros.h"
+#include "extensions/ExtensionMacros.h"
 #include "2d/CCNode.h"
-#include "../../ExtensionExport.h"
+#include "extensions/ExtensionExport.h"
 
+/**
+ * @addtogroup ui
+ * @{
+ */
 NS_CC_EXT_BEGIN
+
 
 /**
  * Abstract class for SWTableView cell node
@@ -56,5 +61,7 @@ private:
 };
 
 NS_CC_EXT_END
+// end of ui group
+/// @}
 
 #endif /* __CCTABLEVIEWCELL_H__ */

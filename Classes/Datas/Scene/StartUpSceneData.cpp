@@ -11,7 +11,8 @@
 
 bool StartUpSceneData::init()
 {
-    this->textureFilePaths = {
+    this->textureFilePaths =
+    {
         Resource::SpriteFrame::ANIMATION,
         Resource::SpriteFrame::STARTUP,
         Resource::SpriteFrame::TITLE,
@@ -43,6 +44,8 @@ bool StartUpSceneData::init()
         Resource::SpriteFrame::Character::KYOJIN_3,
         Resource::SpriteFrame::Character::KYOJIN_4,
     };
+    
+    this->soundFilePaths = {};
     
     return true;
 }

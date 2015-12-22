@@ -23,22 +23,22 @@
 #ifndef __PHYSICSNODES_DEBUGNODE_H__
 #define __PHYSICSNODES_DEBUGNODE_H__
 
-#include "../ExtensionMacros.h"
+#include "extensions/ExtensionMacros.h"
 #include "2d/CCDrawNode.h"
-#include "../ExtensionExport.h"
+#include "extensions/ExtensionExport.h"
 
 struct cpSpace;
 
 NS_CC_EXT_BEGIN
 
 /**
- A BaseData that draws the components of a physics engine.
+ * A BaseData that draws the components of a physics engine.
  
- Supported physics engines:
- - Chipmunk
- - Objective-Chipmunk
- 
- @since v2.1
+ * Supported physics engines:
+ * - Chipmunk
+ * - Objective-Chipmunk
+ * @since v2.1
+ * @lua NA
  */
 
 class CC_EX_DLL PhysicsDebugNode : public DrawNode
@@ -53,7 +53,6 @@ public:
     PhysicsDebugNode();
     /**
      * @js NA
-     * @lua NA
      */
     virtual ~PhysicsDebugNode();
     
