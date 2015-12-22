@@ -233,7 +233,6 @@ void DungeonMainMenuLayer::onSpacePressed(int idx)
             {
                 this->onItemMenuSelected();
             }
-            this->onItemMenuSelected();
             break;
         case Type::SAVE:
             if (this->onSaveMenuSelected)
