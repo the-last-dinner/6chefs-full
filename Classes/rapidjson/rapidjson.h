@@ -135,8 +135,8 @@
 #ifndef RAPIDJSON_NO_INT64DEFINE
 //!@cond RAPIDJSON_HIDDEN_FROM_DOXYGEN
 #ifdef _MSC_VER
-#include "stdint.h"
-#include "inttypes.h"
+#include "msinttypes/stdint.h"
+#include "msinttypes/inttypes.h"
 #else
 // Other compilers should have this.
 #include <stdint.h>
