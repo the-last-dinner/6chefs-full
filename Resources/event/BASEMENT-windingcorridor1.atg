@@ -3,6 +3,10 @@
     	{
       		"type":"setAmbient",
       		"ambient":"basement"
+    	},
+    	{
+      		"type":"setLight",
+      		"objID":"1"
     	}
 	],
 	"1":[

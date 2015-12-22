@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="26">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="29">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -14,7 +14,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkksKgDAMROsB/IB6Cq2iPYVu1Ptfxi4aKENjEYOIOvBIoAMPSpR6Z9IApaVy1EyHyGDn0gQYLKPDMB2ihf3I08IcvHfDdHDGPJNlhrlYVsfGdHDSziVPlCoEiXk6IWKe/gL6Jo/v+ponD3DGH/PQuwakPVL/+Xv43OUJ3SQh6cGbRKQ8T84OSicxrQ==
+   eJztkvEKQDAQh+cBmMJTMGJPwT94W97O1K7WtbPkkvCrr7u6W1+tE+KdiT1khtxSEDtAgnoqpWVx+tbQWTSxA1SoP/Ls89V50zpzTezgGvL0hgHV0TBZZmIHV+ipyEiIlJGQp2Yi5GkuoG7yuK6veaSHM/6QB+YKwe3h+s/fQ+cuj+8mAU4PvkkMl+fJ2QCdWzPj
   </data>
  </layer>
  <layer name="MonoShita" width="26" height="22">
@@ -89,6 +89,16 @@
    <properties>
     <property name="EventID" value="0"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="26" x="208" y="48" width="16" height="16">
+   <properties>
+    <property name="objID" value="1"/>
+   </properties>
+  </object>
+  <object id="27" x="64" y="48" width="16" height="16">
+   <properties>
+    <property name="objID" value="2"/>
    </properties>
   </object>
  </objectgroup>

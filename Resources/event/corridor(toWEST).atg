@@ -15,6 +15,20 @@
 	],
 	"2":[
 		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","20"]
+				}
+			],
+			"action":[
+				{
+				    "type":"playBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
+				}
+			]
+		},
+		{
 			"type":"changeMap",
 			"mapID":"6",
 			"x":40,
@@ -22,6 +36,20 @@
 		}
 	],
 	"3":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["4","20"]
+				}
+			],
+			"action":[
+				{
+				    "type":"playBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
+				}
+			]
+		},
 		{
 			"type":"changeMap",
 			"mapID":"6",

@@ -80,7 +80,8 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"kodou.mp3"
+									"file":"kodou.mp3",
+									"volume":20.0
 								},
 								{
 									"type":"wait",

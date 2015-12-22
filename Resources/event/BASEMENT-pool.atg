@@ -395,9 +395,9 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["一色さん！！大丈夫で・・・"],
+							"text":["（一色さん一色さん一色さん一色さん一色さん\n一色さん一色さん一色さん一色さん一色さん）","（一色さん一色さん一色さん一色さん一色さん\n一色さん一色さん一色さん一色さん一色さん）","（一色さ・・・）"],
 							"charaID":"0",
-							"imgID":"2",
+							"imgID":"3",
 							"option":"reaction"
 						},
 						{
@@ -418,10 +418,9 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["うわあっ"],
+							"text":["そん・・・な・・・"],
 							"charaID":"0",
-							"imgID":"3",
-							"option":"reaction"
+							"imgID":"3"
 						},
 						{
 							"type":"reaction",
@@ -536,6 +535,24 @@
 				{
 					"type":"systemMsg",
 					"text":["血生臭い・・・"]
+				}
+			]
+		}
+	],
+	"13":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["61","6"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["違う・・・\n一色さんじゃない・・・"],
+					"charaID":"0",
+					"imgID":"3"
 				}
 			]
 		}
