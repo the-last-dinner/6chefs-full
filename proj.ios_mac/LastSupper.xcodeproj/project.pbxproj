@@ -12,6 +12,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2611886F1C29A0B400D56856 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2611886E1C29A0B400D56856 /* Images.xcassets */; };
+		261188731C29A39700D56856 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261188761C29A39700D56856 /* InfoPlist.strings */; };
+		261188741C29A39700D56856 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261188761C29A39700D56856 /* InfoPlist.strings */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -335,6 +337,7 @@
 		1D6058910D05DD3D006BFB54 /* LastSupper-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastSupper-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2611886E1C29A0B400D56856 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 6chefs/Images.xcassets; sourceTree = "<group>"; };
+		261188751C29A39700D56856 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -812,6 +815,7 @@
 				503AE0F517EB97AB00D1A890 /* Icons */,
 				503AE10317EB98FF00D1A890 /* main.cpp */,
 				503AE10417EB98FF00D1A890 /* Prefix.pch */,
+				261188761C29A39700D56856 /* InfoPlist.strings */,
 			);
 			name = mac;
 			sourceTree = "<group>";
@@ -1427,6 +1431,7 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				261188731C29A39700D56856 /* InfoPlist.strings in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
@@ -1443,6 +1448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC458E0B1C295BC900B35FB6 /* BGM in Resources */,
+				261188741C29A39700D56856 /* InfoPlist.strings in Resources */,
 				DC458E0C1C295BC900B35FB6 /* csv in Resources */,
 				DC458E0D1C295BC900B35FB6 /* debug_config.json in Resources */,
 				DC458E0E1C295BC900B35FB6 /* event in Resources */,
@@ -1721,6 +1727,18 @@
 			targetProxy = 1AC6FB24180E99E1004C840B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		261188761C29A39700D56856 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				261188751C29A39700D56856 /* ja */,
+			);
+			name = InfoPlist.strings;
+			path = mac;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
