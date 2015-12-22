@@ -1092,6 +1092,8 @@
 		DCB33A8A1C2946B600D8613E /* MapObjects */ = {
 			isa = PBXGroup;
 			children = (
+				DCB33A9B1C2946B600D8613E /* MovePatterns */,
+				DCB33AAE1C2946B600D8613E /* TerrainObject */,
 				DCB33A8B1C2946B600D8613E /* Character.cpp */,
 				DCB33A8C1C2946B600D8613E /* Character.h */,
 				DCB33A8D1C2946B600D8613E /* Enemy.cpp */,
@@ -1108,12 +1110,10 @@
 				DCB33A981C2946B600D8613E /* MapObjectFactory.h */,
 				DCB33A991C2946B600D8613E /* MapObjectList.cpp */,
 				DCB33A9A1C2946B600D8613E /* MapObjectList.h */,
-				DCB33A9B1C2946B600D8613E /* MovePatterns */,
 				DCB33AAA1C2946B600D8613E /* Party.cpp */,
 				DCB33AAB1C2946B600D8613E /* Party.h */,
 				DCB33AAC1C2946B600D8613E /* PathObject.cpp */,
 				DCB33AAD1C2946B600D8613E /* PathObject.h */,
-				DCB33AAE1C2946B600D8613E /* TerrainObject */,
 			);
 			path = MapObjects;
 			sourceTree = "<group>";
@@ -1250,13 +1250,13 @@
 		DCB33AF51C2946B600D8613E /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				DCB33AFC1C2946B600D8613E /* FollowType */,
 				DCB33AF61C2946B600D8613E /* CameraTask.cpp */,
 				DCB33AF71C2946B600D8613E /* CameraTask.h */,
 				DCB33AF81C2946B600D8613E /* EnemyTask.cpp */,
 				DCB33AF91C2946B600D8613E /* EnemyTask.h */,
 				DCB33AFA1C2946B600D8613E /* EventTask.cpp */,
 				DCB33AFB1C2946B600D8613E /* EventTask.h */,
-				DCB33AFC1C2946B600D8613E /* FollowType */,
 				DCB33B071C2946B600D8613E /* GameTask.cpp */,
 				DCB33B081C2946B600D8613E /* GameTask.h */,
 				DCB33B091C2946B600D8613E /* PlayerControlTask.cpp */,
