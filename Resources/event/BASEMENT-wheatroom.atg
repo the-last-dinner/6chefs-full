@@ -13,8 +13,8 @@
     		],
     		"action":[
     			{
-    				"type":"setFog"
-    			}
+		    		"type":"createFog"
+		    	}
     		]
     	}
 	],

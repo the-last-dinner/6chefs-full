@@ -150,6 +150,15 @@
 													"name":"吹き出物だらけの男"
 												},
 												{
+													"type":"createEnemy",
+													"enemyID":"146",
+													"charaID":"8",
+													"x":4,
+													"y":16,
+													"direction":"RIGHT",
+													"speed":1.2
+												},
+												{
 													"type":"spawn",
 													"action":[
 														{
@@ -170,15 +179,6 @@
 															"file":"bgm_noroi.mp3"
 														}
 													]
-												},
-												{
-													"type":"createEnemy",
-													"enemyID":"146",
-													"charaID":"8",
-													"x":4,
-													"y":16,
-													"direction":"RIGHT",
-													"speed":1.2
 												}
 											]
 										}

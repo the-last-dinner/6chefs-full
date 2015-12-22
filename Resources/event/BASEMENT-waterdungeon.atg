@@ -104,10 +104,36 @@
 	],
 	"6":[
 		{
-			"type":"charaMsg",
-			"text":["分厚いガラスの檻・・・\nこれは・・・？"],
-			"charaID":"0",
-			"imgID":"2"
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["48","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["分厚いガラスの檻・・・\nこれは・・・？"],
+					"charaID":"0",
+					"imgID":"2"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["48","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["檻の中に水が溜まってる・・・","もしかしてさっきの水の音って・・・"],
+					"charaID":"0",
+					"imgID":"2"
+				}
+			]
 		}
 	],
 	"7":[

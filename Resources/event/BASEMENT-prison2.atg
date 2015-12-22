@@ -18,10 +18,6 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"reaction",
-					"objID":"hero"
-				},
-				{
 					"type":"spawn",
 					"action":[
 						{
@@ -62,6 +58,10 @@
 							"type":"already"
 						}
 					]
+				},
+				{
+					"type":"reaction",
+					"objID":"hero"
 				}
 			]
 		}

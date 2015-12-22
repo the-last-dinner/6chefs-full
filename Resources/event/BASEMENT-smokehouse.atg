@@ -274,7 +274,7 @@
 						{
 							"type":"changeMap",
 							"mapID":"52",
-							"x":9,
+							"x":11,
 							"y":7,
 							"eventID":"7"
 						}

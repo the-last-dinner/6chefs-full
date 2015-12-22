@@ -194,6 +194,29 @@
 	],
 	"7":[
 		{
+			"type":"removeEnemy",
+			"enemyID":"1421"
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"status":["3","1"]
+				}
+			],
+			"action":[
+				{
+					"type":"playBGM",
+					"file":"bgm_noroi.mp3",
+					"volume":2.0
+				}
+			]
+		},
+		{
+			"type":"already"
+		},
+		{
 			"type":"if",
 			"condition":[
 				{
@@ -212,10 +235,6 @@
 							"type":"createChara",
 							"objID":"1076"
 						}, 
-						{
-							"type":"removeEnemy",
-							"enemyID":"1421"
-						},
 						{
 							"type":"fadein"
 						},
@@ -297,9 +316,6 @@
 							"volume":2.0
 						},
 						{
-							"type":"already"
-						},
-						{
 							"type":"if",
 							"condition":[
 								{
@@ -355,9 +371,6 @@
 											"type":"playBGM",
 											"file":"bgm_noroi.mp3",
 											"volume":2.0
-										},
-										{
-											"type":"already"
 										}
 									]
 								}

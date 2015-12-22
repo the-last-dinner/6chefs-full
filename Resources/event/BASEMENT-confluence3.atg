@@ -436,6 +436,16 @@
 							"type":"fadein"
 						},
 						{
+							"type":"charaMsg",
+							"text":["カッカカカ\nホントに行きやがったか\n","まあ下がってろって・・・"],
+							"charaID":"6",
+							"imgID":"1",
+							"name":"？？？"
+						},
+						{
+							"type":"fadeout"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
@@ -455,16 +465,6 @@
 									"enemyID":"1418"
 								}
 							]
-						},
-						{
-							"type":"charaMsg",
-							"text":["カッカカカ\nホントに行きやがったか\n","まあ下がってろって・・・"],
-							"charaID":"6",
-							"imgID":"1",
-							"name":"？？？"
-						},
-						{
-							"type":"fadeout"
 						},
 						{
 							"type":"charaWalkTO",
@@ -587,7 +587,8 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter4.mp3"
+									"file":"chapter4.mp3",
+									"volume":5.0
 								},
 								{
 									"type":"displayImg",

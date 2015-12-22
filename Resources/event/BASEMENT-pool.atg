@@ -123,7 +123,7 @@
 						},
 						{
 							"type":"systemMsg",
-							"text":["真夏を見つけた"]
+							"text":["一色を見つけた"]
 						},
 						{
 							"type":"fadein"
@@ -218,8 +218,7 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"stopBGM",
-							"file":"bgm_noroi.mp3"
+							"type":"stopBGM"
 						},
 						{
 							"type":"fadeout"
@@ -362,8 +361,7 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"stopBGM",
-							"file":"bgm_noroi.mp3"
+							"type":"stopBGM"
 						},
 						{
 							"type":"fadeout"
@@ -395,7 +393,7 @@
 						},
 						{
 							"type":"charaMsg",
-							"text":["（一色さん一色さん一色さん一色さん一色さん\n一色さん一色さん一色さん一色さん一色さん）","（一色さん一色さん一色さん一色さん一色さん\n一色さん一色さん一色さん一色さん一色さん）","（一色さ・・・）"],
+							"text":["（一色さん一色さん一色さん一色さん一色さん\n　一色さん一色さん一色さん一色さん一色さん）","（一色さん一色さん一色さん一色さん一色さん\n　一色さん一色さん一色さん一色さん一色さん）","（一色さ・・・）"],
 							"charaID":"0",
 							"imgID":"3",
 							"option":"reaction"
@@ -553,6 +551,24 @@
 					"text":["違う・・・\n一色さんじゃない・・・"],
 					"charaID":"0",
 					"imgID":"3"
+				}
+			]
+		}
+	],
+	"14":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["61","4"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"text":["こっちからじゃ\nよじ登り辛いな・・・"],
+					"charaID":"0",
+					"imgID":"2"
 				}
 			]
 		}
