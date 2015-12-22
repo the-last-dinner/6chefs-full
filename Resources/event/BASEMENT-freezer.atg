@@ -47,7 +47,7 @@
 					"type":"charaMsg",
 					"talk":[
 						{
-							"text":["中山さん・・・\n何があったの？"],
+							"text":["中山さん・・・\n何があったんですか？"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -85,8 +85,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-									"volume":5.0
+									"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
 								},
 								{
 									"type":"fadein"
@@ -137,7 +136,7 @@
 					"type":"charaMsg",
 					"talk":[
 						{
-							"text":["中山さん・・・\n分かった。","とにかくここから出よう。"],
+							"text":["中山さん・・・\n分かりました。","とにかくここから出ましょう。"],
 							"charaID":"0",
 							"imgID":"1"
 						},
@@ -227,7 +226,7 @@
 									"imgID":"1"
 								},
 								{
-									"text":["中山さん・・・ありがとう。\nあとは任せて！"],
+									"text":["中山さん・・・ありがとう。\nあとは任せて下さい！"],
 									"charaID":"0",
 									"imgID":"1"
 								}
