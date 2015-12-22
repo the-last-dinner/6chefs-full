@@ -29,8 +29,8 @@
 #include "2d/CCLayer.h"
 #include "base/CCEventListenerTouch.h"
 #include "2d/CCActionTween.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionMacros.h"
+#include "../../ExtensionExport.h"
 
 /**
  * @addtogroup ui

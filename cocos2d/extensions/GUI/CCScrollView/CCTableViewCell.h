@@ -26,9 +26,9 @@
 #ifndef __CCTABLEVIEWCELL_H__
 #define __CCTABLEVIEWCELL_H__
 
-#include "extensions/ExtensionMacros.h"
+#include "../../ExtensionMacros.h"
 #include "2d/CCNode.h"
-#include "extensions/ExtensionExport.h"
+#include "../../ExtensionExport.h"
 
 /**
  * @addtogroup ui

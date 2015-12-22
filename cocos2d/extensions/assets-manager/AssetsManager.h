@@ -30,8 +30,8 @@
 #include <mutex>
 
 #include "2d/CCNode.h"
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 
 
 namespace cocos2d { namespace network {

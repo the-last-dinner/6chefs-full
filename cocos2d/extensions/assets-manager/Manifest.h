@@ -29,8 +29,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "extensions/ExtensionMacros.h"
-#include "extensions/ExtensionExport.h"
+#include "../ExtensionMacros.h"
+#include "../ExtensionExport.h"
 #include "network/CCDownloader.h"
 #include "platform/CCFileUtils.h"
 
