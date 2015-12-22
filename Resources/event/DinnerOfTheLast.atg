@@ -215,35 +215,35 @@
 							"file":"7umeki.mp3"
 						},
 						{
+							"type":"sequence",
+							"action":[
+								{
 									"type":"sequence",
 									"action":[
 										{
-											"type":"sequence",
-											"action":[
-												{
-													"type":"charaWalk",
-													"objID":"1073",
-													"direction":"LEFT",
-													"steps":2.0,
-													"speed":0.8
-												},
-												{
-													"type":"charaWalk",
-													"objID":"1073",
-													"direction":"DOWN",
-													"steps":3.0,
-													"speed":0.2
-												},
-												{
-													"type":"playSE",
-													"file":"agaa.mp3"
-												},
-												{
-													"type":"charaWalk",
-													"objID":"1073",
-													"direction":"DOWN",
-													"steps":2.5,
-													"speed":1.6	
+											"type":"charaWalk",
+											"objID":"1073",
+											"direction":"LEFT",
+											"steps":2.0,
+											"speed":0.8
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1073",
+											"direction":"DOWN",
+											"steps":3.0,
+											"speed":0.2
+										},
+										{
+											"type":"playSE",
+											"file":"agaa.mp3"
+										},
+										{
+											"type":"charaWalk",
+											"objID":"1073",
+											"direction":"DOWN",
+											"steps":2.5,
+											"speed":1.6	
 										}
 									]
 								}

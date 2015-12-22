@@ -66,7 +66,8 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
+					"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
+					"volume":5.0
 				},
 				{
 					"type":"charaMsg",
@@ -251,6 +252,11 @@
 						{
 							"type":"storyMsg",
 							"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
+						},
+						{
+							"type":"addProfile",
+							"charaID":"8",
+							"infoID":"1"
 						},
 						{
 							"type":"charaMsg",

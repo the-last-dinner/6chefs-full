@@ -67,6 +67,11 @@
 							"text":["ー○月×日ー\n最近娘の食欲がない、\nお父さんの作ったお菓子なら\n食べられるみたい。\n少し心配"]
 						},
 						{
+							"type":"addProfile",
+							"charaID":"8",
+							"infoID":"0"
+						},
+						{
 							"type":"charaMsg",
 							"talk":[
 								{

@@ -217,11 +217,6 @@
 							"file":"agaa.mp3"
 						},
 						{
-							"type":"addProfile",
-							"cgaraID":"8",
-							"infoID":"0"
-						},
-						{
 							"type":"createEnemy",
 							"charaID":"8",
 							"enemyID":"141",

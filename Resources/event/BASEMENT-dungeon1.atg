@@ -89,11 +89,6 @@
 					"type":"charaMsg",
 					"text":["酒・・・酒・・・"],
 					"name":"吹き出物だらけの男"
-				},
-				{
-					"type":"addProfile",
-					"charaID":"10",
-					"infoID":"0"
 				}
 			]
 		},
@@ -144,6 +139,11 @@
 													"type":"playSE",
 													"file":"drink.mp3"
 												},
+												{
+										          "type":"addProfile",
+										          "charaID":"10",
+										          "infoID":"0"
+										        },
 												{
 													"type":"charaMsg",
 													"text":["そうだ。イイコト教えてやる","この先にある死体置き場の南側の壁にスイッチがあるんだが\n押してみるとおもしれえことが起きるぜ"],

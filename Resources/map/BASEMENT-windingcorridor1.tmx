@@ -11,7 +11,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkkEOAiEMRcsBFDbOJQZXxkMoN9RT6gmEzDQ0pR0p49ImPy2E9PGhAG1cHcARFmEc1rXvrHuicOacI9mboe7RWltbOa+sN+lzZjyJE4We3zg+1yHrluu74CtCy7Rw0Edyi7gvfv9RDvrA/pipL6m/9d2wr19rzY+WrZzgKov6SVD/6gHtTOzl8LkrekI7E1ZOyVt+Isjz0MvBOfBEwbV+aG+6N+JHmrdEaunPrH7o3JU1MrV7jPrhvMDekWf0NsqhPC7JVy9H6+9dK8nXHj90vrV8ymemAQ7P2v0xXzoZGJMb0z9+Gx+4zWzg
+   eJztk1EOgkAMRLsH0OVHLgF+GQ+h3BBPqSdwCUxohl3SrnzaZNLuavoYWkS2cQ8iZ5mFOC3naKwtMXG6lHt118l6p2st/buX8076qB7XAqOney8nprpJeqT6ueOllgMfQ5jFvnK9azjwgf7I8MV9WV4/calx5nmX3p2X04SVZeV49s3Cyc3Fu9d6LsyBxh2mlYM9iErTWfd8HcDhPWM/udkM4p8P7zXOYJaeo9YP8xp6j5zxfdVyNI+V82XllPrHsFXO1y9+9H6X8iX9p63gcC49P/LNyEC0oU7/ODa+DrBrZw==
   </data>
  </layer>
  <layer name="hint" width="26" height="22">
@@ -66,7 +66,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="16" x="272" y="112" width="16" height="16">
+  <object id="16" x="240" y="144" width="16" height="16">
    <properties>
     <property name="objID" value="1"/>
    </properties>

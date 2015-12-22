@@ -79,7 +79,8 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["58","7"]
+					"event":["58","7"],
+					"Nevent":["65","1"]
 				}
 			],
 			"action":[

@@ -99,7 +99,7 @@
     <property name="objID" value="1072"/>
    </properties>
   </object>
-  <object id="34" x="320" y="128" width="32" height="32">
+  <object id="34" x="288" y="128" width="32" height="32">
    <properties>
     <property name="CharaID" value="12"/>
     <property name="direction" value="LEFT"/>
@@ -167,7 +167,7 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="40" x="320" y="128" width="32" height="32">
+  <object id="40" x="288" y="128" width="32" height="32">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="2"/>

@@ -93,6 +93,10 @@
 							"type":"getItem",
 							"itemID":"157",
 							"name":"ダンボール"
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
 						}
 					]
 				}
@@ -103,15 +107,18 @@
 			"condition":[
 				{
 					"event":["19","2"],
-					"Nitem":["1534"]
+					"Nitem":["1534"],
+					"flg":0
 				},
 				{
 					"event":["19","2"],
-					"Nitem":["1535"]
+					"Nitem":["1535"],
+					"flg":0
 				},
 				{
 					"event":["19","2"],
-					"Nitem":["1536"]
+					"Nitem":["1536"],
+					"flg":0
 				}
 			],
 			"action":[
@@ -128,6 +135,9 @@
 			"condition":[
 				{
 					"Nevent":["19","2"]
+				},
+				{
+					"flg":1
 				}
 			],
 			"action":[

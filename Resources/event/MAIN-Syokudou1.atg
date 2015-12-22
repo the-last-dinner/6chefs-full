@@ -972,7 +972,8 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter3.mp3"
+									"file":"chapter3.mp3",
+									"volume":5.0
 								},	
 								{
 									"type":"displayImg",
@@ -1316,7 +1317,8 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"chapter3.mp3"
+									"file":"chapter3.mp3",
+									"volume":5.0
 								},
 								{
 									"type":"displayImg",

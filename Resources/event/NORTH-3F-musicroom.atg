@@ -274,7 +274,8 @@
 						},
 						{
 							"type":"playBGM",
-							"file":"chapter2.mp3"
+							"file":"chapter2.mp3",
+							"volume":5.0
 						},
 						{
 							"type":"displayImg",

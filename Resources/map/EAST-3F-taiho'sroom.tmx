@@ -90,7 +90,7 @@
     <property name="objID" value="1058"/>
    </properties>
   </object>
-  <object id="22" x="192" y="96" width="32" height="32">
+  <object id="22" x="192" y="128" width="32" height="32">
    <properties>
     <property name="CharaID" value="6"/>
     <property name="direction" value="DOWN"/>
