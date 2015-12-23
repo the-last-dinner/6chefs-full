@@ -99,34 +99,31 @@ void EndingScene::createTrueEnding()
         //
         {"尾羽の小屋", 48.5},
         //
-        {"茫然の流もの喫茶", 50.0},
+        {"ぼう然の流もの喫茶", 50.0},
         //
         {"白螺子屋", 51.5},
         // ------------------
         {"--- 制作メンバー ---", 55.0},
         //
-        {"イベントグラフィック", 57.0},
-        {"どみず", 58.0},
+        {"ジェダイマスター\n", 57.0},
+        {"エンジニア", 57.5},
+        {"ナニヲ", 58.5},
         //
-        {"ジェダイマスター\n", 62.0},
-        {"エンジニア", 62.5},
-        {"ナニヲ", 63.5},
+        {"真夏大好き", 63.5},
+        {"エンジニア",64.0},
+        {"いのす", 65.0},
         //
-        {"真夏大好き", 67.5},
-        {"エンジニア",68.0},
-        {"いのす", 69.0},
+        {"孫一ペロペロ", 70.0},
+        {"キャラクターデザイナー", 70.5},
+        {"早乙女", 71.5},
         //
-        {"孫一ペロペロ", 73.0},
-        {"キャラクターデザイナー", 73.5},
-        {"早乙女", 74.5},
+        {"ピクセル", 76.5},
+        {"アート", 77.0},
+        {"おぐぐ", 78.0},
         //
-        {"ピクセル", 78.5},
-        {"アート", 79.0},
-        {"おぐぐ", 80.0},
-        //
-        {"マエストロ", 84.0},
-        {"プランナー", 84.5},
-        {"スズラン", 85.5},
+        {"マエストロ", 83.0},
+        {"プランナー", 83.5},
+        {"スズラン", 84.5},
     };
     vector<string> pictures_name = {
         "epilogue.png",
@@ -155,7 +152,7 @@ void EndingScene::createTrueEnding()
     label_acts.pushBack(DelayTime::create(15.f));
     int credits_len = credits_name.size();
     
-    float x = WINDOW_WIDTH * 4 / 5;
+    float x = WINDOW_WIDTH * 4 / 5 - 10;
     float font_size = 28;
     float moving_time = 9.f;
     for (int i = 0; i < credits_len; i++)
@@ -167,12 +164,15 @@ void EndingScene::createTrueEnding()
         label_acts.pushBack(Sequence::createWithTwoActions(TargetedAction::create(label, DelayTime::create(credits_name[i].second)), TargetedAction::create(label, MoveTo::create(credits_name[i].second < 55 ? moving_time : (moving_time + 1.0), Vec2(label->getPosition().x, label->getContentSize().height / 2 + WINDOW_HEIGHT)))));
     }
     
+    // ロゴの位置調整
+    float pos = 22.5;
+    
     // 制作
     Label* last_label {Label::createWithTTF("制作", Resource::Font::MESSAGE, font_size)};
     last_label->setPosition(x, -1 * last_label->getContentSize().height / 2);
     last_label->setColor(Color3B::WHITE);
     this->addChild(last_label);
-    last_label->runAction(Sequence::createWithTwoActions(DelayTime::create(91.0), MoveTo::create(5.5, Vec2(last_label->getPosition().x, last_label->getContentSize().height * 2.5 + WINDOW_HEIGHT / 2))));
+    last_label->runAction(Sequence::createWithTwoActions(DelayTime::create(91.0), MoveTo::create(4.9, Vec2(last_label->getPosition().x, last_label->getContentSize().height * 2.5 + WINDOW_HEIGHT / 2 - pos))));
     
     // ロゴ
     Sprite* logo {Sprite::createWithSpriteFrameName("the_last_dinner_log.png")};
@@ -180,7 +180,7 @@ void EndingScene::createTrueEnding()
     float scale_logo = 0.75;
     logo->setScale(scale_logo);
     this->addChild(logo);
-    logo->runAction(Sequence::createWithTwoActions(DelayTime::create(91.5), MoveTo::create(5.0, Vec2(logo->getPosition().x, WINDOW_HEIGHT/2))));
+    logo->runAction(Sequence::createWithTwoActions(DelayTime::create(91.5), MoveTo::create(4.4, Vec2(logo->getPosition().x, WINDOW_HEIGHT/2 - pos))));
     
     // 画像
     vector<Sprite*> pictures {};
@@ -221,7 +221,7 @@ void EndingScene::createTrueEnding()
     }
     
     // エディング実行
-    SoundManager::getInstance()->playBGM("ending.mp3", false);
+    SoundManager::getInstance()->playBGM("ending.mp3", false, 2.0);
     this->runAction(Sequence::create(picture_acts));
     this->runAction(Spawn::create(label_acts));
     this->runAction(Sequence::create(DelayTime::create(103), CallFunc::create([this](){
@@ -232,12 +232,12 @@ void EndingScene::createTrueEnding()
 // ノーマルエンドを生成
 void EndingScene::createNormalEnding()
 {
-    Label* label {Label::createWithTTF("Normal END", Resource::Font::SYSTEM, 80)};
+    Label* label {Label::createWithTTF("MEDIUM END", Resource::Font::SYSTEM, 80)};
     label->setColor(Color3B::WHITE);
     label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     label->setOpacity(0);
     this->addChild(label);
-    label->runAction(Sequence::create(FadeIn::create(3.f), DelayTime::create(3.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
+    label->runAction(Sequence::create(FadeIn::create(2.f), TintTo::create(2.f, Color3B::RED), DelayTime::create(2.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
 }
 
 // バッドエンドを生成
@@ -248,7 +248,7 @@ void EndingScene::createBadEnding()
     label->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     label->setOpacity(0);
     this->addChild(label);
-    label->runAction(Sequence::create(FadeIn::create(3.f), TintTo::create(2.f, Color3B::RED), DelayTime::create(2.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
+    label->runAction(Sequence::create(FadeIn::create(2.f), TintTo::create(2.f, Color3B::RED), DelayTime::create(2.f), CallFunc::create([this](){this->onEndingFinished();}), nullptr));
     
 }
 
