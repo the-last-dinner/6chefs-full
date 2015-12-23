@@ -94,6 +94,12 @@ float Stamina::getPercentage() const
     return this->percentage;
 }
 
+// 停止状態フラグを設定
+void Stamina::setPaused(bool paused)
+{
+    this->paused = paused;
+}
+
 // スタミナ減少の速度倍率を設定
 void Stamina::setStepRatio(const float ratio)
 {
@@ -127,6 +133,8 @@ bool Stamina::isMax() const
 // update
 void Stamina::update(float delta)
 {
+    if(this->paused) return;
+    
     // 減少状態と、回復状態で場合分け
     if(this->decreasing)
     {

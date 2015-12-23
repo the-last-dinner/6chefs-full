@@ -54,6 +54,9 @@ bool DungeonScene::init(DungeonSceneData* data)
 {
     if(!BaseScene::init(data)) return false;
     
+    // スタミナ減少状態を解除
+    DungeonSceneManager::getInstance()->getStamina()->setDecreasing(false);
+    
     return true;
 }
 
@@ -280,6 +283,9 @@ void DungeonScene::onRunEvent()
     
     // 全てのオブジェクトの動きを止める
     this->mapLayer->getMapObjectList()->moveStopAllObjects();
+    
+    // スタミナの増減を一時停止
+    DungeonSceneManager::getInstance()->getStamina()->setPaused(true);
 }
 
 // イベントキューが空になった時
@@ -290,6 +296,9 @@ void DungeonScene::onAllEventFinished()
     
     // 全てのオブジェクトの自動移動を開始する
     this->mapLayer->getMapObjectList()->moveStartAllObjects();
+    
+    // スタミナの増減を再開
+    DungeonSceneManager::getInstance()->getStamina()->setPaused(false);
 }
 
 // データクラスを取得
