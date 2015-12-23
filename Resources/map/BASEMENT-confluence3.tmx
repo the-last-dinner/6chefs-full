@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="39">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="45">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
   <tile id="306">
@@ -16,7 +16,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1V8KgCAMB+B5gOqpOkT1lB2iHuuaHTJFhB/V6I9hBRuM2RofYoFE2+gUUUIuU6gZzGAP163aAcGtyGUNtYEZ7OH6jIumr7NyiX3cw5HbmzrQtnoX+z2851ytnDvfTM4dTX962A3ZZ2w39Fw5N/RcOTfUi+0W5rn80Xf72/8rrrjiiivue64Ne8/tJd59OTNTMCYX67vP7klfNL4eCzG9TMo=
+   eJxjYMAOeKGYD4nmR5OHiWGTxwW0oVgHidZFk4eJYZPHZ64OFnoNIwQjiyO7gRDwBGIvLDTMXGRxTyR5QgCmn1RMb3PJNW/UXPzmUmoevc0VA4qJ08BcE6CYKQ3MBYFRc0fNHTV31NxRc0fNJcZcQoASvQNh7mAAAHxbQMw=
   </data>
  </layer>
  <layer name="blood" width="22" height="36">
@@ -172,5 +172,43 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
+  <object id="39" x="304" y="336" width="16" height="16">
+   <properties>
+    <property name="objID" value="1"/>
+   </properties>
+  </object>
+  <object id="40" x="64" y="336" width="16" height="16">
+   <properties>
+    <property name="objID" value="2"/>
+   </properties>
+  </object>
+  <object id="41" x="64" y="144" width="16" height="16">
+   <properties>
+    <property name="objID" value="3"/>
+   </properties>
+  </object>
+  <object id="42" x="304" y="144" width="16" height="16">
+   <properties>
+    <property name="objID" value="4"/>
+   </properties>
+  </object>
+  <object id="43" x="64" y="496" width="16" height="16">
+   <properties>
+    <property name="objID" value="5"/>
+   </properties>
+  </object>
+  <object id="44" x="304" y="496" width="16" height="16">
+   <properties>
+    <property name="objID" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
+ <layer name="CharaUe" width="22" height="36">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEpoxYBIkExnj0jprLwGDCSBtzg4DiwVQ2lxJ30ttcSsMVl7mUhisuc6kFRs0dNXfU3FFzR80dNXfUXMrNFWPEjsWR1IviUCNGolvR2ywgN5nQyL8DBQDBswv/
+  </data>
+ </layer>
 </map>

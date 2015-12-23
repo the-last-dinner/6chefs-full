@@ -320,6 +320,12 @@
                         "action":[
                           {
                             "type":"already"
+                          },
+                          {
+                            "type": "changeMap",
+                            "mapID": "9",
+                            "x": 8,
+                            "y": 31
                           }
                         ]
                       },
