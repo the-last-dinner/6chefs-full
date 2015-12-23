@@ -220,7 +220,7 @@
 							"type":"createEnemy",
 							"charaID":"8",
 							"enemyID":"141",
-							"x":7,
+							"x":25,
 							"y":17,
 							"times":1,
 							"speed":1.3,

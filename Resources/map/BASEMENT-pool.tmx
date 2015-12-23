@@ -57,7 +57,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgaoJSJgaEMiMuBuIJp4M1vBappA+J2IO6ggXtINX8qUM00IJ4OxDNo4B5SzV8KVLMMiJcD8QoauIdU87cC1WwD4u1AvIMG7qG1+aNgcAJmYFyzYIlvXOK0BsJAO0Ww2ItLnFZgoPyPC5Djf5gfaF3WEwtgfqB1WT+YwXBIVwMJRkr44WrPDZT/cZUhA5V+RnIZMgpGwSgYGQAA+58kOQ==
+   eJztltkJgDAQRIPagbbq0YBHAx4NeDTgUZ7zkz8XjDDEkDyYn7BMZtmwRCk3yCOlCqiEqsi+f42aBmqhjpDH1L9HzQCN0ETIY+o/o2aBVmgj5DH131FzQCd0EfKw/QP/JMask4d5S+dsUtyZPdwrnbOw1b/El/51D+xd/xbdA3vX/xkX35WLmV1H+s/ZmoW0Q2zNwucdEggE/OAGGTYkOQ==
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="30">
@@ -91,7 +91,7 @@
   <object id="23" x="400" y="192" width="64" height="32"/>
   <object id="25" x="256" y="240" width="32" height="32"/>
   <object id="26" x="256" y="304" width="32" height="32"/>
-  <object id="27" x="384" y="272" width="32" height="32"/>
+  <object id="27" x="400" y="256" width="32" height="32"/>
   <object id="28" x="160" y="336" width="64" height="16"/>
   <object id="29" x="160" y="176" width="32" height="32"/>
   <object id="30" x="288" y="144" width="32" height="32"/>
@@ -108,7 +108,7 @@
   <object id="72" x="256" y="384" width="32" height="32">
    <properties>
     <property name="CharaID" value="12"/>
-    <property name="direction" value="LEFT"/>
+    <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1066"/>
    </properties>
@@ -275,7 +275,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="122" x="384" y="272" width="32" height="32">
+  <object id="122" x="400" y="256" width="32" height="32">
    <properties>
     <property name="EventID" value="13"/>
     <property name="trigger" value="2"/>
@@ -318,7 +318,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="terrain">
+ <objectgroup name="terrain" visible="0">
   <object id="89" type="water" x="128" y="128" width="352" height="256"/>
  </objectgroup>
  <objectgroup name="path">

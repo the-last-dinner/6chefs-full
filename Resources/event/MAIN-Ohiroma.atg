@@ -478,6 +478,9 @@
   ],
   "19": [
     {
+      "type":"stopBGM"
+    },
+    {
       "type":"if",
       "condition":[
         {
@@ -1239,10 +1242,42 @@
             },
             {
               "type":"charaMsg",
-              "text":["帰るか"],
-              "charaID":"2",
-              "imgID":"2"
+              "talk":[
+                {
+                  "text":["帰るか"],
+                  "charaID":"2",
+                  "imgID":"2"
+                },
+                {
+                  "text":["ですね。"],
+                  "charaID":"0",
+                  "imgID":"1"
+                },
+                {
+                  "text":["おう"],
+                  "charaID":"5",
+                  "imgID":"2"
+                },
+                {
+                  "text":["うm！"],
+                  "charaID":"4",
+                  "imgID":"2"
+                },
+                {
+                  "text":["あったりまえじゃない！\nこんなトコ一秒も早く出たいわ！","ね！撫子。"],
+                  "charaID":"3",
+                  "imgID":"1"
+                },
+                {
+                  "text":["・・・","皆さん・・・"],
+                  "charaID":"1",
+                  "imgID":"2"
+                }
+              ]
             },
+            {
+              "type":"already"
+            }, 
             {
               "type":"fadeout",
               "time":3.0
@@ -1253,10 +1288,7 @@
             {
               "type":"ending",
               "id":"3"
-            },
-            {
-              "type":"already"
-            }       
+            }     
           ]
         }
       ]

@@ -137,6 +137,11 @@
           "imgID": "2"
         },
         {
+          "type":"addProfile",
+          "charaID":"9",
+          "infoID":"1"
+        },
+        {
           "type":"spawn",
           "action":[
             {

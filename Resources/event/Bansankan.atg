@@ -37,7 +37,7 @@
         {
           "type":"addProfile",
           "charaID":"9",
-          "infoID":"1"
+          "infoID":"0"
         },
         {
           "type": "reaction",

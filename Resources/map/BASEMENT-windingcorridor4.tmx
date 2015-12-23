@@ -15,6 +15,9 @@
   </data>
  </layer>
  <layer name="diary" width="46" height="30">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztzkEJACAMAMA91s0I2j/JzDAEGdwluAgAAAAAXlr5e9Cz7/sMvcMUBbj5AQM=
   </data>

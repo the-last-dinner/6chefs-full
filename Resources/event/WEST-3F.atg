@@ -418,7 +418,8 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"juice.mp3"
+					"file":"juice.mp3",
+					"volume":5.0
 				},
 				{
 					"type":"wait",
