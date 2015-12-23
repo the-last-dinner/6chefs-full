@@ -102,17 +102,51 @@
 					"objID":"1065"
 				},
 				{
-					"type":"fadeout"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"charaWalk",
+							"objID":"1065",
+							"direction":"UP",
+							"steps":2.5,
+							"speed":5.0
+						},
+						{
+							"type":"playSE",
+							"file":"hit.mp3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"RIGHT",
+							"steps":1.0,
+							"speed":5.0,
+							"option":"back"
+						},
+						{
+							"type":"charaMsg",
+							"text":["うわあっ！！"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
 				},
 				{
-					"type":"playSE",
-					"file":"hit.mp3"
-				},
-				{
-					"type":"charaMsg",
-					"text":["うわあっ！！"],
-					"charaID":"0",
-					"imgID":"2"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"charaWalk",
+							"objID":"1064",
+							"direction":"DOWN",
+							"steps":1.0
+						},
+						{
+							"type":"charaWalk",
+							"objID":"1064",
+							"direction":"DOWN",
+							"steps":1.0
+						}
+					]
 				},
 				{
 					"type":"playSE",
@@ -141,9 +175,6 @@
 				{
 					"type":"removeChara",
 					"objID":"1064"
-				},
-				{
-					"type":"fadein"
 				},
 				{
 					"type":"charaMsg",

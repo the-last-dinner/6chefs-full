@@ -705,6 +705,22 @@
 			]
 		}
 	],
+	"4":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["34","9"]
+				}
+			],
+			"action":[
+				{
+					"type":"storyMsg",
+					"text":["-△月□日-\n何も口にしなくなってから五日\nほとんど口も聞けなくなっている"]
+				}
+			]
+		}
+	],
 	"5":[
 		{
 			"type":"if",
@@ -759,17 +775,60 @@
 							]
 						},
 						{
-							"type":"fadein"
+							"type":"charaWalkTo",
+							"objID":"hero",
+							"x":3,
+							"y":16,
+							"speed":5.0
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"UP"
+						},
+						{
+							"type":"charaWalkTo",
+							"objID":"1021",
+							"x":5,
+							"y":16,
+							"speed":5.0
+						},
+						{
+							"type":"changeDirection",
+							"objID":"1021",
+							"direction":"UP"
 						},
 						{
 							"type":"storyMsg",
 							"text":["-△月□日-\n何も口にしなくなってから五日\nほとんど口も聞けなくなっている"]
 						},
 						{
+							"type":"fadein"
+						},
+						{
 							"type":"charaMsg",
 							"text":["・・・"],
 							"charaID":"0",
-							"imgID":"2"
+							"imgID":"2"	
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":[
+									["39","9"],
+									["33","11"]
+									]
+								}
+							],
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["確か3階にまだ調べてない部屋があったよな？","早く行こうぜ。"],
+									"charaID":"5",
+									"imgID":"2"
+								}
+							]
 						},
 						{
 							"type":"already",
@@ -789,7 +848,7 @@
 			"action":[
 				{
 					"type":"storyMsg",
-					"text":["-△月□日-\n何も口にしなくなってから五日\nほとんど口も聞けなくなっている"]
+					"text":["もう何も入っていない"]
 				}
 			]
 		}
@@ -826,46 +885,16 @@
 	],
 	"7":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":0
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"getItem",
-							"itemID":"1530",
-							"name":"エッグボイラー"
-						},
-						{
-							"type":"removeChara",
-							"objID":"1930"
-						},
-						{
-							"type":"changeFlg",
-							"flg":1
-						}
-					]
-				}
-			]
+			"type":"getItem",
+			"itemID":"1530",
+			"name":"エッグボイラー"
 		},
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":1
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["もう何も入っていない"]
-				}
-			]	
+			"type":"removeChara",
+			"objID":"1930"
+		},
+		{
+			"type":"already"
 		}
 	],
 	"8":"卵のお品書き見たかどうか",
