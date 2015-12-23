@@ -64,9 +64,12 @@ bool Sight::isIn(MapObject* target, MapObjectList* list) const
     // キャラクタの向いている向きのベクトルを取得
     Vec2 v1 { MapUtils::getGridVector(this->chara->getDirection()) };
     
+    // 対象の当たり判定Rect
+    Rect rect {target->getCollisionRect()};
+    
     // キャラクタから対象の間にできるベクトル
     Point p1 {this->chara->getPosition()};
-    Point p2 {target->getPosition()};
+    Point p2 {Point(rect.getMidX(), rect.getMidY())};
     Vec2 v2 { p2 - p1 };
     
     // 視界限界距離より遠くにいれば視界外

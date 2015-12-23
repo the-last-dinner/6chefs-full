@@ -85,8 +85,7 @@
 								},
 								{
 									"type":"playBGM",
-									"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3",
-									"volume":5.0
+									"file":"Rachmaninov-PianoConcerto-No2-1st-2013.mp3"
 								},
 								{
 									"type":"fadein"

@@ -24,7 +24,7 @@ public:
 
 // インスタンス変数
 private:
-    experimental::TMXTiledMap* tiledMap { nullptr };    // マップ背景
+    TMXTiledMap* tiledMap { nullptr };    // マップ背景
     MapObjectList* objectList { nullptr };              // マップオブジェクトのリスト
     
 // インスタンスメソッド
@@ -32,9 +32,9 @@ private:
 	TiledMapLayer();
 	~TiledMapLayer();
 	bool init(const Location&);
+    void orderLayers();
 	
 public:
-    experimental::TMXTiledMap* getTiledMap();
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
     // Layer

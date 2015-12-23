@@ -41,7 +41,7 @@ public:
     
     bool isPlaying(const string& filePath);
     
-    void preloadSound(const string& filePath);
+    void preloadSound(const string& filePath, function<void(bool)> callback);
     
 	void unloadAllSounds();
 	

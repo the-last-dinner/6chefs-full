@@ -259,8 +259,6 @@ void ItemMenuLayer::onMiniIndexSelected(const int idx)
     NotificationBand* notification = NotificationBand::create(CsvDataManager::getInstance()->getItemName(this->selected_item) + "を\n" + equipMsg);
     notification->setBandColor(Color3B(64,0,0));
     this->addChild(notification);
-    notification->show();
-    this->notification = notification;
     this->miniSelector->confirm_flag = true;
 }
 
@@ -292,7 +290,6 @@ void ItemMenuLayer::show()
 void ItemMenuLayer::hide()
 {
     this->listenerKeyboard->setEnabled(false);
-    if(this->notification) this->notification->hide();
     this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
     //this->setVisible(false);
 }

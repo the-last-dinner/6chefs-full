@@ -11,8 +11,6 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
-class NotificationBand;
-
 class TitleMainMenuLayer : public MenuLayer
 {
 // 定数
@@ -40,14 +38,11 @@ private:
 	virtual void onIndexChanged(int newIdx, bool sound = false);
 	virtual void onSpacePressed(int idx);
 	virtual void onMenuKeyPressed(){};
-    void trophyNotification();
 public:
 	virtual void show() override;
 	virtual void hide() override;
 	
 // インスタンス変数
-private:
-    NotificationBand* notification {nullptr};
 public:
     bool animating { true };
     Node* cursor { nullptr };

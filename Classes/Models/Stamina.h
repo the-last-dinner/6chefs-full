@@ -32,6 +32,7 @@ private:
     float ratio { 1.0f };
     bool decreasing {false};
     bool exhausted {false};
+    bool paused {false};
 public:
     function<void(float)> onPercentageChanged { nullptr };
     function<void()> onIncreasedMax { nullptr };
@@ -45,6 +46,7 @@ private:
     void decrease();
     void setPercentage(const float percentage);
 public:
+    void setPaused(bool paused);
     void setStepRatio(const float ratio);
     void setDecreasing(const bool decreasing);
     float getPercentage() const;

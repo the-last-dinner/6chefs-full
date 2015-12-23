@@ -27,7 +27,7 @@ MapObjectFactory::MapObjectFactory() {FUNCLOG};
 MapObjectFactory::~MapObjectFactory() {FUNCLOG};
 
 // MapObjectListを生成して返す
-MapObjectList* MapObjectFactory::createMapObjectList(experimental::TMXTiledMap* tiledMap)
+MapObjectList* MapObjectFactory::createMapObjectList(TMXTiledMap* tiledMap)
 {
     if(!tiledMap) return nullptr;
     

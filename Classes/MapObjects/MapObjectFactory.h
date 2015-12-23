@@ -35,11 +35,11 @@ public:
     
 // クラスメソッド
 public:
-    static MapObjectList* createMapObjectList(experimental::TMXTiledMap* tiledMap);
+    static MapObjectList* createMapObjectList(TMXTiledMap* tiledMap);
     
 // インスタンス変数
 private:
-    experimental::TMXTiledMap* tiledMap { nullptr };
+    TMXTiledMap* tiledMap { nullptr };
     
 // インスタンスメソッド
 private:

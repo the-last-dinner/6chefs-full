@@ -36,7 +36,7 @@ void MobRandom::start()
 {
     MovePattern::start();
     
-    this->move();
+    this->scheduleMove();
 }
 
 void MobRandom::move()

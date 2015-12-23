@@ -11,38 +11,18 @@
 #include "Event/EventScript.h"
 
 // コンストラクタ
-DungeonSceneData::DungeonSceneData(){FUNCLOG}
+DungeonSceneData::DungeonSceneData() {FUNCLOG}
 
 // デストラクタ
-DungeonSceneData::~DungeonSceneData()
-{
-    FUNCLOG
-
-    CC_SAFE_RELEASE_NULL(this->eventScript);
-}
+DungeonSceneData::~DungeonSceneData() {FUNCLOG}
 
 // 初期化
 bool DungeonSceneData::init(const Location& location)
 {
     // ロケーション格納
     this->location = location;
-    
-    // イベントスクリプト生成
-    EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(location.map_id))};
-    CC_SAFE_RETAIN(eventScript);
-    this->eventScript = eventScript;
-
-	// プリロード用リストを取得
-    this->soundFilePaths = eventScript->getPreLoadList("sound");
-    this->textureFilePaths = eventScript->getPreLoadList("texture");
 	
 	return true;
-}
-
-// イベントスクリプトを取得
-EventScript* DungeonSceneData::getEventScript() const
-{
-    return this->eventScript;
 }
 
 // changeMap時に渡されるEventIDを設定
