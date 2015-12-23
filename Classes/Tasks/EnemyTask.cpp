@@ -191,7 +191,7 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             if(data.history.getLatestRelation().from_location.map_id != destLocation.map_id)
             {
                 // 履歴を追加
-                data.addHistory(relation, 5.0f);
+                data.addHistory(relation, 2.5f);
                 
                 datas.push_back(data);
                 
