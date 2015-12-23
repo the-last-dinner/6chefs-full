@@ -107,7 +107,7 @@ int Application::run()
     return EXIT_SUCCESS;
 }
 
-void Application::setAnimationInterval(double interval)
+void Application::setAnimationInterval(float interval)
 {
     //TODO do something else
     _animationInterval = interval*1000.0f;
@@ -252,6 +252,14 @@ LanguageType Application::getCurrentLanguage()
     else if (0 == strcmp("uk", pLanguageName))
     {
         ret = LanguageType::UKRAINIAN;
+    }
+    else if (0 == strcmp("ro", pLanguageName))
+    {
+        ret = LanguageType::ROMANIAN;
+    }
+    else if (0 == strcmp("bg", pLanguageName))
+    {
+        ret = LanguageType::BULGARIAN;
     }
     
     return ret;

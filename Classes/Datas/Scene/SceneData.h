@@ -15,14 +15,14 @@ class SceneData : public Ref
 {
 	// インスタンスメソッド
 public:
-	void preloadResources(const function<void(float)>& callback);
+	void preloadResources(function<void(float)> callback);
 protected:
 	SceneData();
 	~SceneData();
 private:
 	void calcPercentage();
-	void preloadTextureAsync(const function<void()>& callback);
-	void preloadSoundAsync(const function<void()>& callback);
+	void preloadTextureAsync(vector<string> filePaths, function<void()> callback);
+	void preloadSoundAsync(vector<string> filePaths, function<void()> callback);
 	
 	// インスタンス変数
 protected:

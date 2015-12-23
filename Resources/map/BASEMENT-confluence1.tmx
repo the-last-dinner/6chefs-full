@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="50">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480">
   <image source="lower.png" trans="050505" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16" tilecount="480">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16" tilecount="480">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1441" name="object_fire06a" tilewidth="16" tileheight="16">
+ <tileset firstgid="1441" name="object_fire06a" tilewidth="16" tileheight="16" tilecount="288">
   <image source="object_fire06a.png" trans="c1a5c8" width="288" height="256"/>
  </tileset>
  <layer name="Base" width="26" height="22">
@@ -59,6 +59,9 @@
   </properties>
  </objectgroup>
  <layer name="CharaUe2" width="26" height="22">
+  <properties>
+   <property name="z" value="100"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGAa3BX0YGhn+MtLdHmomBQYaJ9vYMNQAAQKsCOQ==
   </data>

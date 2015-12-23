@@ -150,7 +150,6 @@ void SaveDataSelector::show()
 void SaveDataSelector::hide()
 {
 	this->listenerKeyboard->setEnabled(false);
-    if (this->notification) this->notification->hide();
     this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
 	//this->setVisible(false);
 }
@@ -203,9 +202,7 @@ void SaveDataSelector::onSpacePressed(int idx)
         // 完了メッセージ表示
         NotificationBand* notification {NotificationBand::create("セーブが完了しました")};
         notification->setBandColor(Color3B(64,0,0));
-        notification->show();
         this->addChild(notification);
-        this->notification = notification;
         this->comfirm_flag = true;
     }
     else

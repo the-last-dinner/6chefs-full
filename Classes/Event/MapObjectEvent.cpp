@@ -56,7 +56,7 @@ void ReactionEvent::run()
         return;
     }
 
-    SoundManager::getInstance()->playSE("reaction.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::REACTION);
     target->reaction([this]{this->setDone();});
 }
 
@@ -153,7 +153,7 @@ bool WarpMapObjectEvent::init(rapidjson::Value& json)
 void WarpMapObjectEvent::run()
 {
     this->setDone();
-    MapObject* target = DungeonSceneManager::getInstance()->getMapObjectList()->getMapObject(stoi(this->objectId));
+    MapObject* target { this->validator->getMapObjectById(this->objectId) };
     target->setGridPosition(this->point);
     target->setDirection(this->direction);
     DungeonSceneManager::getInstance()->setMapObjectPosition(target);

@@ -29,6 +29,7 @@ class DungeonScene : public BaseScene
 // クラスメソッド
 public:
 	CREATE_FUNC_WITH_PARAM(DungeonScene, DungeonSceneData*);
+    CREATE_FUNC_WITH_TWO_PARAM(DungeonScene, DungeonSceneData*, EventListenerKeyboardLayer*)
 	
 // インスタンス変数
 protected:
@@ -53,6 +54,7 @@ protected:
     
 protected:
 	virtual bool init(DungeonSceneData* data);
+    virtual bool init(DungeonSceneData* data, EventListenerKeyboardLayer* listener);
     virtual void onEnter() override;
 	virtual void onPreloadFinished(LoadingLayer* loadingLayer) override;
     virtual void onInitEventFinished(LoadingLayer* loadingLayer);

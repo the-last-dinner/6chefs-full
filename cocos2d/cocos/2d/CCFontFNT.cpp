@@ -1,6 +1,6 @@
 /****************************************************************************
  Copyright (c) 2013      Zynga Inc.
- Copyright (c) 2013-2014 Chukong Technologies Inc.
+ Copyright (c) 2013-2015 Chukong Technologies Inc.
  
  http://www.cocos2d-x.org
 
@@ -98,7 +98,7 @@ typedef struct _KerningHashElement
     UT_hash_handle	hh;
 } tKerningHashElement;
 
-/** @brief BMFontConfiguration has parsed configuration of the the .fnt file
+/** @brief BMFontConfiguration has parsed configuration of the .fnt file
 @since v0.8
 */
 class CC_DLL BMFontConfiguration : public Ref
@@ -298,7 +298,7 @@ std::set<unsigned int>* BMFontConfiguration::parseConfigFile(const std::string& 
     int parseCount = 0;
     while (next)
     {
-        lineLength = next - base;
+        lineLength = ((int)(next - base));
         memcpy(line, contents + parseCount, lineLength);
         line[lineLength] = 0;
 
@@ -733,8 +733,8 @@ FontAtlas * FontFNT::createFontAtlas()
     if (_configuration->_commonHeight == 0)
         return nullptr;
     
-    // commone height
-    tempAtlas->setCommonLineHeight(_configuration->_commonHeight);
+    // common height
+    tempAtlas->setLineHeight(_configuration->_commonHeight);
     
     
     BMFontDef fontDef;
@@ -752,8 +752,6 @@ FontAtlas * FontFNT::createFontAtlas()
         tempRect = fontDef.rect;
         tempRect = CC_RECT_PIXELS_TO_POINTS(tempRect);
         
-        tempDefinition.letteCharUTF16 = fontDef.charID;
-        
         tempDefinition.offsetX  = fontDef.xOffset;
         tempDefinition.offsetY  = fontDef.yOffset;
         
@@ -769,7 +767,7 @@ FontAtlas * FontFNT::createFontAtlas()
         tempDefinition.validDefinition = true;
         tempDefinition.xAdvance = fontDef.xAdvance;
         // add the new definition
-        tempAtlas->addLetterDefinition(tempDefinition);
+        tempAtlas->addLetterDefinition(fontDef.charID,tempDefinition);
     }
     
     // add the texture (only one texture for now)

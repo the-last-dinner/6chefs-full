@@ -73,7 +73,7 @@ void PlayerControlTask::search(Party* party)
     Point objPosition {Point::ZERO};
     for(MapObject* obj : objs)
     {
-        if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition))
+        if(obj && obj->getTrigger() == Trigger::SEARCH && (objPosition == Point::ZERO || obj->getPosition() == objPosition) && !obj->isMoving())
         {
             objPosition = obj->getPosition();
             obj->onSearched(mainCharacter);

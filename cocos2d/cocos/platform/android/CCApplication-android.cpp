@@ -73,11 +73,11 @@ int Application::run()
     return -1;
 }
 
-void Application::setAnimationInterval(double interval)
+void Application::setAnimationInterval(float interval)
 {
   JniMethodInfo methodInfo;
   if (! JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/lib/Cocos2dxRenderer", "setAnimationInterval",
-                                       "(D)V"))
+                                       "(F)V"))
   {
     CCLOG("%s %d: error to get methodInfo", __FILE__, __LINE__);
   }
@@ -183,6 +183,14 @@ LanguageType Application::getCurrentLanguage()
     else if (0 == strcmp("uk", pLanguageName))
     {
         ret = LanguageType::UKRAINIAN;
+    }
+    else if (0 == strcmp("ro", pLanguageName))
+    {
+        ret = LanguageType::ROMANIAN;
+    }
+    else if (0 == strcmp("bg", pLanguageName))
+    {
+        ret = LanguageType::BULGARIAN;
     }
     return ret;
 }

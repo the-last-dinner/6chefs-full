@@ -33,6 +33,8 @@ private:
     EnemyTask();
     ~EnemyTask();
     bool init();
+    bool needsSummonEnemy(const SummonData& data) const;
+    void summonEnemy(SummonData& data);
 public:
     void start(const int mapId);
     void stop();

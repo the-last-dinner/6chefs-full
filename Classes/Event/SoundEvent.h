@@ -34,7 +34,7 @@ public:
 private:
     string fileName {};
 private:
-    StopBGMEvent() {FUNCLOG};
+    StopBGMEvent():fileName("") {FUNCLOG};
     ~StopBGMEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;

@@ -529,7 +529,7 @@ bool LocalPlayerData::removeBgm(const string &bgm_name)
         else
         {
             rapidjson::Value bgname  (kStringType);
-            bgname.SetString(bgm_name.c_str(), strlen(bgm_name.c_str()), this->localData.GetAllocator());
+            bgname.SetString(bgms[i].c_str(), strlen(bgms[i].c_str()), this->localData.GetAllocator());
             this->localData[BGM].PushBack(bgname, this->localData.GetAllocator());
         }
     }

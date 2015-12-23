@@ -99,8 +99,7 @@ MapObjectList* DungeonSceneManager::getMapObjectList() const { return this->getM
 EventFactory* DungeonSceneManager::getEventFactory() const { return this->eventFactory; }
 
 // イベントスクリプトを取得
-EventScript* DungeonSceneManager::getEventScript() const
-{ return dynamic_cast<DungeonSceneData*>(this->getScene()->data)->getEventScript(); }
+EventScript* DungeonSceneManager::getEventScript() const { return this->getScene()->eventTask->getEventScript(); }
 
 // スクリプトバリデータを取得
 EventScriptValidator* DungeonSceneManager::getScriptValidator() const { return this->scriprtValidator; }
@@ -226,7 +225,10 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     DungeonSceneData* data { DungeonSceneData::create(location) };
     data->setInitialEventId(initEventId);
     
-    DungeonScene* scene {DungeonScene::create(data)};
+    // 現在入力されている方向キーからリスナ生成
+    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create(this->getPressedCursorKeys(), this->isPressed(Key::DASH))};
+    
+    DungeonScene* scene {DungeonScene::create(data, listener)};
     
     Director::getInstance()->replaceScene(scene);
 }

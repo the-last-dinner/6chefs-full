@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="124" height="82" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="149">
- <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="castle7" tilewidth="16" tileheight="16" tilecount="480">
   <image source="castle7.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="empire-3" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="empire-3" tilewidth="16" tileheight="16" tilecount="900">
   <image source="empire-3.png" trans="a6caf0" width="480" height="480"/>
  </tileset>
  <layer name="Base" width="124" height="82" opacity="0.94">
@@ -155,11 +155,17 @@
   </object>
  </objectgroup>
  <layer name="CharaUe1" width="124" height="82">
+  <properties>
+   <property name="z" value="500"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt2UtKw1AYhuE0TrwNXIV3HbsAwYpuw+tK3KwKrsBzSA9EJSlapMmf54GPQkc9fQctOVUFAAAAAKs5qpudpr2kXWys+xPxn/SeFr2nRe9paffOrfWOTe9p0XtaSu9Hv9+D8DqrqvdA+5it+xsdtp26af42gFar7LxuWudXuuXeZWPt3m6td79277zNtK0Rbftba737lf9TZftpByPaYf21td4AAAAAwF8tuwOJqO9uZS/489ZyB7LbsYj67laiP1/PdyCXPfcNES27W4ks9z5OO+lYRE/1z92knU2g91U63zztOu1+sXnrvYi6eufdBj1zcbdo3O5d9hD07OVs7dfS/TnomQEAAAAAAAAAAAAAAAAAAAAAAAAAAH7jE6KbxYY=
   </data>
  </layer>
  <layer name="CharaUe3" width="124" height="82">
+  <properties>
+   <property name="z" value="500"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztzzENAEAIwEDw7wxV7+AXBhK4SyqgEQAAAAAAAAAAAAAAAAAAAAAAAEyr/LfRxWcAAAAAAAAAAAAAAAAAAAAAAAAAAOh6/DMMsQ==
   </data>
