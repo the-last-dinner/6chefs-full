@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="57">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="58">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
  </tileset>
@@ -30,7 +30,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlzkKgDAQRacQ76VGe9c7uBzE2srakzqNTRhcokxQ/4NHyDT5gRD4ROCvRAFRzCascVhTNgt0ciY31ciZ8xkFW7IVWzvsG4WcAAAA3GhDoo7tFdch9H1rAAA4ZhT+Kmnmm1nIJM18MwmZFuR05is57f5urM5rdkwf7O9nct7p7lo5t/5ud/IrPtHf3/I+v8AKVZ44tw==
+   eJztlzsKgDAQRLcI3kuN9n7v4Oc0Vtae1G1sQhDdyIpxHjyWpMkEQmCIwF9JDVHG5qwVzIItjU7OPFCNnBWfUbMN27KdYN0r5AQAACBjSIhGdlKcc/L2rQEAIB5Wz5/q23ubxZNpQ04xseR0+7t1Oq89sXiwv1/JGdLdtXIe/d3t5Hd8or9/5X3GwA75ejeb
   </data>
  </layer>
  <layer name="MonoUe" width="42" height="32">
@@ -60,6 +60,7 @@
   <object id="27" x="368" y="48" width="32" height="32"/>
   <object id="43" x="16" y="224" width="464" height="16"/>
   <object id="50" x="16" y="16" width="640" height="48"/>
+  <object id="57" x="16" y="416" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>
@@ -99,6 +100,11 @@
  <layer name="CharaUe2" width="42" height="32">
   <data encoding="base64" compression="zlib">
    eJztz7kNADAMAzFV3jHP/nMkU9gNCRxUKwEAmLMq2b/TuLemXwMAAF0eX34LUA==
+  </data>
+ </layer>
+ <layer name="CharaUe3" width="42" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztyKERAAAIBKBPzu7YruBZLBBJAAAA4KZrdwDwZQBxFQEd
   </data>
  </layer>
  <objectgroup name="event">
@@ -218,15 +224,6 @@
    <properties>
     <property name="EventID" value="0"/>
     <property name="trigger" value="0"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup name="item">
-  <object id="56" x="624" y="112" width="32" height="32">
-   <properties>
-    <property name="EventID" value="21"/>
-    <property name="objID" value="1921"/>
-    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

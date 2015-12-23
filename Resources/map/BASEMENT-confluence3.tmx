@@ -43,6 +43,14 @@
    eJxjYBgFowA3WMNIGR41d9TcUXNHzR01d9TcUXNHzR3s5o4C6gIAC6cZMA==
   </data>
  </layer>
+ <layer name="fire" width="22" height="36">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2D4AD5G2ujVocBcSvSOglEwCgY/GC13RsEowASj+WJkAwBUfQFp
+  </data>
+ </layer>
  <objectgroup name="collision">
   <object id="1" x="64" y="0" width="32" height="96"/>
   <object id="2" x="32" y="0" width="32" height="160"/>
@@ -182,22 +190,22 @@
     <property name="objID" value="2"/>
    </properties>
   </object>
-  <object id="41" x="64" y="144" width="16" height="16">
+  <object id="41" x="64" y="128" width="16" height="16">
    <properties>
     <property name="objID" value="3"/>
    </properties>
   </object>
-  <object id="42" x="304" y="144" width="16" height="16">
+  <object id="42" x="304" y="128" width="16" height="16">
    <properties>
     <property name="objID" value="4"/>
    </properties>
   </object>
-  <object id="43" x="64" y="496" width="16" height="16">
+  <object id="43" x="64" y="480" width="16" height="16">
    <properties>
     <property name="objID" value="5"/>
    </properties>
   </object>
-  <object id="44" x="304" y="496" width="16" height="16">
+  <object id="44" x="304" y="480" width="16" height="16">
    <properties>
     <property name="objID" value="6"/>
    </properties>

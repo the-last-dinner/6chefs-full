@@ -797,20 +797,6 @@
 			]
 		}
 	],
-	"21":[
-		{
-			"type":"getItem",
-			"itemID":"1526",
-			"name":"子供用弁当箱"
-		},
-		{
-			"type":"removeChara",
-			"objID":"1921"
-		},
-		{
-			"type":"already"
-		}
-	],
 	"22":[
 		{
 			"type":"if",

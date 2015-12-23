@@ -195,8 +195,8 @@
   "9":[
     {
       "type":"getItem",
-      "itemID":"1523",
-      "name":"麻の髪紐"
+      "itemID":"1522",
+      "name":"猪肉"
     },
     {
       "type":"removeChara",
