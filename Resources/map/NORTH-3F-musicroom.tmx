@@ -193,7 +193,7 @@
   </object>
  </objectgroup>
  <objectgroup name="item">
-  <object id="46" x="32" y="96" width="32" height="32">
+  <object id="46" x="64" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="10"/>
     <property name="objID" value="1921"/>
