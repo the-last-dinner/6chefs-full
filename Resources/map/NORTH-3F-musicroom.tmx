@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="39">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="50">
  <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16">
   <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
  </tileset>
@@ -153,6 +153,51 @@
    <properties>
     <property name="EventID" value="8"/>
     <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="48" x="48" y="288" width="32" height="32">
+   <properties>
+    <property name="EventID" value="11"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="path">
+  <object id="39" x="160" y="224" width="32" height="32">
+   <properties>
+    <property name="nextID" value="2"/>
+    <property name="pathID" value="1"/>
+    <property name="previousID" value="0"/>
+   </properties>
+  </object>
+  <object id="43" x="288" y="224" width="32" height="32">
+   <properties>
+    <property name="nextID" value="3"/>
+    <property name="pathID" value="2"/>
+    <property name="previousID" value="1"/>
+   </properties>
+  </object>
+  <object id="44" x="288" y="128" width="32" height="32">
+   <properties>
+    <property name="nextID" value="4"/>
+    <property name="pathID" value="3"/>
+    <property name="previousID" value="2"/>
+   </properties>
+  </object>
+  <object id="45" x="160" y="96" width="32" height="32">
+   <properties>
+    <property name="nextID" value="1"/>
+    <property name="pathID" value="4"/>
+    <property name="previousID" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="46" x="16" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
+    <property name="objID" value="1921"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
  </objectgroup>

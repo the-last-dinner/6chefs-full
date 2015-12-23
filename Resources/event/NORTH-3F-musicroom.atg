@@ -300,5 +300,60 @@
 				}
 			]
 		}
+	],
+	"10":[
+		{
+			"type":"getItem",
+			"itemID":"1521",
+			"name":"小型低速ジューサー"
+		},
+		{
+			"type":"removeChara",
+			"objID":"1921"
+		},
+		{
+			"type":"already"
+		}
+	],
+	"11":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["23","9"]
+				},
+				{
+					"event":["23","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1921"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["23","9"],
+					"Nevent":["43","6"]
+				}
+			],
+			"action":[
+				{
+					"type":"createEnemy",
+					"enemyID":"1428",
+					"charaID":"8",
+					"x":10,
+					"y":15,
+					"movePattern":"4",
+					"pathID":"1",
+					"times":1,
+					"speed":2.1
+				}
+			]
+		}
 	]
 }
