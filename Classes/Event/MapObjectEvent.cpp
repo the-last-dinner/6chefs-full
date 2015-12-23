@@ -56,7 +56,7 @@ void ReactionEvent::run()
         return;
     }
 
-    SoundManager::getInstance()->playSE("reaction.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::REACTION);
     target->reaction([this]{this->setDone();});
 }
 

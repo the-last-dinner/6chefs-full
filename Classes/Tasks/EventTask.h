@@ -12,6 +12,7 @@
 #include "Tasks/GameTask.h"
 
 class GameEvent;
+class EventScript;
 
 class EventTask : public GameTask
 {
@@ -28,6 +29,7 @@ public:
     function<void()> onRunEvent { nullptr };
     function<void()> onAllEventFinished { nullptr };
 private:
+    EventScript* eventScript { nullptr };
     deque<EventWithId> eventQueue {};
     EventWithId runningEvent {EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
     CallbackWithId callbackInfo {CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
@@ -56,6 +58,8 @@ public:
     int getPushingEventId() const;
     void setPushingEventId(const int event_id);
     void resetPushingEventId();
+    
+    EventScript* getEventScript() const;
     
     void update(float delta);
 private:

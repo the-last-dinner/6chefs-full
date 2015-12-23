@@ -20,7 +20,8 @@ private:
     
 // クラスメソッド
 public:
-    CREATE_FUNC(EventListenerKeyboardLayer);
+    CREATE_FUNC(EventListenerKeyboardLayer)
+    CREATE_FUNC_WITH_TWO_PARAM(EventListenerKeyboardLayer, const vector<Key>&, const bool)
     
 // インスタンス変数
 public:
@@ -29,7 +30,6 @@ public:
     function<void()> onMenuKeyPressed { nullptr };
     function<void()> onDashKeyPressed { nullptr };
     function<void(const vector<Key>&)> intervalInputCheck { nullptr };
-    function<void(const vector<Key>&)> delayedInputCheck { nullptr };
 private:
     EventListenerKeyboard* listenerKeyboard { nullptr };
     map<Key, bool> keyStatus {};
@@ -51,14 +51,13 @@ public:
     void setPaused(bool paused);
     vector<Key> getPressedCursorKeys() const;
 private:
-    EventListenerKeyboardLayer();   // コンストラクタ
-    ~EventListenerKeyboardLayer();  // デストラクタ
-    virtual bool init() override;    // 初期化
-    void intervalCheck(float duration);                        // キーを押し続けている時
-    void delayedCheck(float duration);                         // キーを押してから一定時間経った時
+    EventListenerKeyboardLayer();                                  // コンストラクタ
+    ~EventListenerKeyboardLayer();                                 // デストラクタ
+    virtual bool init() override;                                  // 初期化
+    virtual bool init(const vector<Key>& pressingCursorKeys, const bool isDashPressed);   // 初期化
+    void intervalCheck(float duration);                            // キーを押し続けている時
     Key convertKeyCode(const EventKeyboard::KeyCode& keyCode);     // cococs上でのキーコードをゲーム内キーに変換
     void scheduleIntervalCheck();
-    void scheduleDelayedCheck();
 };
 
 #endif /* defined(_EventListenerKeyboardLayer__) */

@@ -31,12 +31,19 @@ EventTask::~EventTask()
             this->eventQueue.pop_front();
         }
     }
+    
+    CC_SAFE_RELEASE_NULL(this->eventScript);
 }
 
 // 初期化
 bool EventTask::init()
 {
     if(!GameTask::init()) return false;
+    
+    // イベントスクリプト生成
+    EventScript* eventScript {EventScript::create(CsvDataManager::getInstance()->getMapFileName(DungeonSceneManager::getInstance()->getLocation().map_id))};
+    CC_SAFE_RETAIN(eventScript);
+    this->eventScript = eventScript;
     
     // update開始
     this->scheduleUpdate();
@@ -156,6 +163,12 @@ bool EventTask::existsEvent()
     return !this->eventQueue.empty();
 }
 
+// EventScriptを取得
+EventScript* EventTask::getEventScript() const
+{
+    return this->eventScript;
+}
+
 // update
 void EventTask::update(float delta)
 {
@@ -245,7 +258,7 @@ GameEvent* EventTask::createEventById(int eventId)
     
     DungeonSceneManager* manager {DungeonSceneManager::getInstance()};
     
-    GameEvent* event { manager->getEventFactory()->createGameEvent(manager->getEventScript()->getScriptJson(eventId))};
+    GameEvent* event { manager->getEventFactory()->createGameEvent(this->eventScript->getScriptJson(eventId))};
     
     CC_SAFE_RETAIN(event);
     
