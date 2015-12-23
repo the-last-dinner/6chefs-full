@@ -208,7 +208,7 @@
 								},
 								{
 									"type":"questionMsg",
-									"text":["焔の裃をあげますか？"],
+									"text":["焔のかみしもをあげますか？"],
 									"choices":[
 										{
 											"choice":"はい",
@@ -575,6 +575,10 @@
 					"itemID":"1528"
 				},
 				{
+				    "type":"stopBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
+				},
+				{
 					"type":"playBGM",
 					"file":"DanDan.mp3"
 				},
@@ -635,6 +639,10 @@
 				{
 					"type":"stopBGM",
 					"file":"DanDan.mp3"
+				},
+				{
+				    "type":"playBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
 				},
 				{
 					"type":"fadein"

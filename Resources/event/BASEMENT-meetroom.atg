@@ -142,39 +142,93 @@
 						},
 						{
 							"type":"charaWalk",
-							"objID":"1064",
+							"objID":"1065",
 							"direction":"DOWN",
 							"steps":1.0
 						}
 					]
 				},
 				{
-					"type":"playSE",
-					"file":"batt.mp3"
+					"type":"charaMsg",
+					"text":["一色さん！！"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
 				},
 				{
-					"type":"charaMsg",
-					"talk":[
+					"type":"spawn",
+					"action":[
 						{
-							"text":["ああ、あはは、アハハ"],
-							"charaID":"3",
-							"imgID":"2"
+							"type":"charaWalk",
+							"objID":"1064",
+							"direction":"DOWN",
+							"steps":1.0
 						},
 						{
-							"text":["一色さん！！"],
-							"charaID":"0",
-							"imgID":"2",
-							"option":"reaction"
+							"type":"charaWalk",
+							"objID":"1065",
+							"direction":"DOWN",
+							"steps":1.0
 						}
 					]
 				},
 				{
-					"type":"removeChara",
-					"objID":"1065"
+					"type":"wait",
+					"time":0.5
 				},
 				{
-					"type":"removeChara",
-					"objID":"1064"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaWalkTo",
+									"objID":"1064",
+									"x":14,
+									"y":19,
+									"speed":6.0
+								},
+								{
+									"type":"removeChara",
+									"objID":"1064"
+								}
+							]
+						},
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaWalkTo",
+									"objID":"1065",
+									"x":14,
+									"y":17,
+									"speed":6.0
+								},
+								{
+									"type":"removeChara",
+									"objID":"1065"
+								}
+							]
+						},
+						{
+							"type":"playSE",
+							"file":"batt.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["ああ、あはは、アハハ"],
+							"charaID":"3",
+							"imgID":"2"
+						}
+					]
+				},
+				{
+					"type":"charaMsg",
+					"text":["一色さん！！"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
 				},
 				{
 					"type":"charaMsg",

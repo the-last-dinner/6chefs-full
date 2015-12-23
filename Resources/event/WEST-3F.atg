@@ -383,6 +383,10 @@
 					"type":"fadeout"
 				},
 				{
+				    "type":"stopBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
+				},
+				{
 					"type":"playBGM",
 					"file":"favo_manaka.mp3"
 				},
@@ -512,6 +516,10 @@
 				{
 					"type":"stopBGM",
 					"file":"favo_manaka.mp3"
+				},
+				{
+				    "type":"stopBGM",
+				    "file":"Mozart-OboeConcerto-1.mp3"
 				},
 				{
 					"type":"fadein"

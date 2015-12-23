@@ -16,7 +16,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAOeKGYD4nmR5OHiWGTxwW0oVgHidZFk4eJYZPHZ64OFnoNIwQjiyO7gRDwBGIvLDTMXGRxTyR5QgCmn1Q8au7wMJdccwbKXDGgmDgNzDUBipnSwFwQGDV31NxRc0fNHTV31FxizCUEKNE7EOYOBgAA47g7ZA==
+   eJxjYMAOeKGYD4nmR5OHiWGTxwW0oVgHidZFk4eJYZPHZ64OFnoNIwQjiyO7gRDwBGIvLDTMXGRxTyR5QgCmn1RMb3PJNW/UXPzmUmoevc0VA4qJ08BcE6CYKQ3MBYFRc0fNHTV31NxRc0fNJcZcQoASvQNh7mAAAHxbQMw=
   </data>
  </layer>
  <layer name="blood" width="22" height="36">
@@ -204,6 +204,9 @@
   </object>
  </objectgroup>
  <layer name="CharaUe" width="22" height="36">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYMAEpoxYBIkExnj0jprLwGDCSBtzg4DiwVQ2lxJ30ttcSsMVl7mUhisuc6kFRs0dNXfU3FFzR80dNXfUXMrNFWPEjsWR1IviUCNGolvR2ywgN5nQyL8DBQDBswv/
   </data>

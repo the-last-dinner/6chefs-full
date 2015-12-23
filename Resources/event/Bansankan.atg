@@ -7,10 +7,36 @@
   ],
   "1": [
     {
-      "type": "charaMsg",
-      "charaID":"9",
-      "text": ["どうぞ、中へ。"],
-      "name": "執事服の老人"
+      "type":"if",
+      "condition":[
+        {
+          "event":["2","2"]
+        }
+      ],
+      "action":[
+        {
+          "type": "charaMsg",
+          "charaID":"9",
+          "text": ["どうぞ、中へ。"],
+          "name": "執事服の老人"
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
+          "Nevent":["2","2"]
+        }
+      ],
+      "action":[
+        {
+          "type": "charaMsg",
+          "charaID":"9",
+          "text": ["お待ちしておりました。"],
+          "name": "執事服の老人"
+        }
+      ]
     }
   ],
   "2": [

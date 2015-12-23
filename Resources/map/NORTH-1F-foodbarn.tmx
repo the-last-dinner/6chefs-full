@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="61">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="68">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -55,7 +55,7 @@
  </layer>
  <layer name="yasaibox" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-14"/>
+   <property name="z" value="9"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFowA/OKjHwHAIiA/rUce8y0BzrgDxVSqZN9jdNwpGwSgYBdgAAN4gC60=
@@ -222,6 +222,18 @@
    <properties>
     <property name="EventID" value="16"/>
     <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="66" x="240" y="64" width="32" height="16">
+   <properties>
+    <property name="EventID" value="21"/>
+    <property name="objID" value="1"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="67" x="272" y="64" width="32" height="16">
+   <properties>
+    <property name="objID" value="2"/>
    </properties>
   </object>
  </objectgroup>
