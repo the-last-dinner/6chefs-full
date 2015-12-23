@@ -193,6 +193,8 @@ void DungeonScene::onPassedEventFinished()
 {
     // マップ名通知
     NotificationManager::getInstance()->notifyMapName(this->getData()->getLocation().map_id);
+    
+    this->playerControlTask->setControlEnable(true, this->party);
 }
 
 // メニューキー押したとき
