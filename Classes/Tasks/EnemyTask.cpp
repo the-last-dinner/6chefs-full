@@ -30,6 +30,20 @@ bool EnemyTask::init()
     return true;
 }
 
+// 敵を召喚する必要があるか
+bool EnemyTask::needsSummonEnemy(const SummonData& data) const
+{
+    return data.enemy_data.chara_data.location.map_id == this->currentMapId && !data.existsHistory();
+}
+
+// 敵を召喚
+void EnemyTask::summonEnemy(SummonData& data)
+{
+    data.isDone = true;
+    
+    DungeonSceneManager::getInstance()->addEnemy(Enemy::create(data.enemy_data));
+}
+
 // 出現を開始
 void EnemyTask::start(const int mapId)
 {
@@ -37,10 +51,12 @@ void EnemyTask::start(const int mapId)
     
     this->currentMapId = mapId;
     
+    this->update(0);
+    
     this->schedule(CC_SCHEDULE_SELECTOR(EnemyTask::update), 0.5f);
 }
 
-// 敵の出現と、動きを止める
+// 敵の出現を止める
 void EnemyTask::stop()
 {
     this->unschedule(CC_SCHEDULE_SELECTOR(EnemyTask::update));
@@ -99,15 +115,9 @@ void EnemyTask::update(float delta)
         data.deleteOldestHistory();
         
         // 敵に格納されているマップIDと、現在のマップIDが一緒なら敵を出現させる
-        if(data.enemy_data.chara_data.location.map_id == this->currentMapId && !data.existsHistory())
-        {
-            data.isDone = true;
-            
-            DungeonSceneManager::getInstance()->addEnemy(Enemy::create(data.enemy_data));
-            
-            // update一回につき一体まで出現とする
-            break;
-        }
+        if(!this->needsSummonEnemy(data)) continue;
+        
+        this->summonEnemy(data);
     }
 }
 

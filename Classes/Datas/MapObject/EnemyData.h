@@ -34,7 +34,7 @@ struct SummonData
     void addHistory(const Relation& relation, const float summon_delay) { history.add(relation); summon_delays.push_back(summon_delay); };
     void deleteLatestHistory() { history.deleteLatest(); summon_delays.pop_back(); };
     void deleteOldestHistory() { history.deleteOldest(); summon_delays.pop_front(); };
-    bool existsHistory() { return !summon_delays.empty(); };
+    bool existsHistory() const { return !summon_delays.empty(); };
 };
 
 #endif
