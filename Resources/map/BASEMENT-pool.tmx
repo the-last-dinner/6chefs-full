@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="132">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="136">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -57,7 +57,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztltkJgDAQRIPagbbq0YBHAx4NeDTgUZ7zkz8XjDDEkDyYn7BMZtmwRCk3yCOlCqiEqsi+f42aBmqhjpDH1L9HzQCN0ETIY+o/o2aBVmgj5DH131FzQCd0EfKw/QP/JMask4d5S+dsUtyZPdwrnbOw1b/El/51D+xd/xbdA3vX/xkX35WLmV1H+s/ZmoW0Q2zNwucdEggE/OAGGTYkOQ==
+   eJztlt0JhDAQhINnB9rqqQ2o18CpDfjTgD/lOS95M+AKg1nYD+YlLJNZkixxTgffxLkCKqEqed+/Rk0DtdCPkEfq/0dNB/XQQMgj9R9RM0EztBDySP1X1GzQDh2EPGx/I04+OOv04rxD62wy7Jlf7BtaZ/FW/yGe9O97YM/6u/ge2LM+ZjTeK42ZtcP+L0qJZYZ4NM4Qe0eGYUg4Abt/JDk=
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="30">
@@ -65,7 +65,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1jEKgDAMBdBPO9e76WKvoIteXmezCUKgJCkd/G9PCH9IAhDFmTOwZHv9KrXVUf+1Sa/d0e+Q2jNwnlbROXiNyoGI4lwJuNPoKV5Fdsr0473CPU9EGu8/rbHeAe8/rWm9A73ysOqVB8V4AHyxDXU=
+   eJzt1zEOgCAMBdAfmOVuuugVZNHL62w3ExMTSqsM/DdT0jD8FoDIzxiBKdbXz1K7GOqfVrkrG+7bpHZ37KeU9ztYtXoHIvJzBOAMrbu4DZIpqeNcYc4T0RvNPq3J9to5oNmnNdleetbyv/hi9ln+F73Pvj9csEsRlQ==
   </data>
  </layer>
  <layer name="MonoUe2" width="36" height="30">
@@ -90,7 +90,6 @@
   <object id="21" x="64" y="224" width="32" height="32"/>
   <object id="23" x="400" y="192" width="64" height="32"/>
   <object id="25" x="256" y="240" width="32" height="32"/>
-  <object id="26" x="256" y="304" width="32" height="32"/>
   <object id="27" x="400" y="256" width="32" height="32"/>
   <object id="28" x="160" y="336" width="64" height="16"/>
   <object id="29" x="160" y="176" width="32" height="32"/>
@@ -102,10 +101,11 @@
   <object id="36" x="32" y="0" width="32" height="256"/>
   <object id="126" x="192" y="144" width="32" height="32"/>
   <object id="127" x="368" y="192" width="32" height="32"/>
+  <object id="132" x="304" y="352" width="32" height="96"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)">
-  <object id="72" x="256" y="384" width="32" height="32">
+  <object id="72" x="224" y="384" width="32" height="32">
    <properties>
     <property name="CharaID" value="12"/>
     <property name="direction" value="DOWN"/>
@@ -113,7 +113,7 @@
     <property name="objID" value="1066"/>
    </properties>
   </object>
-  <object id="74" x="256" y="384" width="32" height="32">
+  <object id="74" x="224" y="384" width="32" height="32">
    <properties>
     <property name="CharaID" value="3"/>
     <property name="direction" value="LEFT"/>
@@ -287,12 +287,6 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="124" x="256" y="304" width="32" height="32">
-   <properties>
-    <property name="EventID" value="13"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
   <object id="125" x="160" y="336" width="64" height="16">
    <properties>
     <property name="EventID" value="13"/>
@@ -317,8 +311,20 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
+  <object id="133" x="304" y="384" width="32" height="64">
+   <properties>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="135" x="304" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="13"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="terrain" visible="0">
+ <objectgroup name="terrain">
   <object id="89" type="water" x="128" y="128" width="352" height="256"/>
  </objectgroup>
  <objectgroup name="path">
@@ -434,6 +440,7 @@
     <property name="pathID" value="14"/>
     <property name="previousID" value="13"/>
     <property name="speed" value="10.0"/>
+    <property name="through" value="true"/>
    </properties>
   </object>
   <object id="112" x="480" y="320" width="32" height="32">
@@ -444,7 +451,7 @@
     <property name="speed" value="1.3"/>
    </properties>
   </object>
-  <object id="113" x="480" y="256" width="32" height="32">
+  <object id="113" x="480" y="224" width="32" height="32">
    <properties>
     <property name="nextID" value="17"/>
     <property name="pathID" value="16"/>
