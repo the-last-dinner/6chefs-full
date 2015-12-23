@@ -12,6 +12,8 @@
 
 #include "Effects/AmbientLightLayer.h"
 
+#include "Event/EventScript.h"
+
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Layers/LoadingLayer.h"

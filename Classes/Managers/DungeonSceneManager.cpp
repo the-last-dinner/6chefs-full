@@ -99,8 +99,7 @@ MapObjectList* DungeonSceneManager::getMapObjectList() const { return this->getM
 EventFactory* DungeonSceneManager::getEventFactory() const { return this->eventFactory; }
 
 // イベントスクリプトを取得
-EventScript* DungeonSceneManager::getEventScript() const
-{ return dynamic_cast<DungeonSceneData*>(this->getScene()->data)->getEventScript(); }
+EventScript* DungeonSceneManager::getEventScript() const { return this->getScene()->eventTask->getEventScript(); }
 
 // スクリプトバリデータを取得
 EventScriptValidator* DungeonSceneManager::getScriptValidator() const { return this->scriprtValidator; }
