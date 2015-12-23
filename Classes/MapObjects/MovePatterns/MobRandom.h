@@ -15,10 +15,11 @@ class MobRandom : public MovePattern
 {
 // 定数
 private:
-    static const float WAIT_DURATION;
-    static const float WAIT_DURATION_RANDOM_RANGE;
+    static const float MIN_WAIT_DURATION;
+    static const float MAX_WAIT_DURATION;
     static const int DISTANCE;
     static const float SPEED_RATIO;
+    static const int SCHEDULE_ACTION_TAG;
     
 // クラスメソッド
 public:
@@ -36,6 +37,7 @@ private:
     virtual void start();
     void move();
     void scheduleMove();
+    virtual void setPaused(bool paused) override;
 };
 
 #endif /* MobRandom_h */
