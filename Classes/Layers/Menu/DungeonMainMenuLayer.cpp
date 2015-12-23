@@ -86,6 +86,7 @@ bool DungeonMainMenuLayer::init()
         Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
         menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
         //menu->setOpacity(100);
+        menu->setLocalZOrder(1);
         menu->setTag(i);
         hBg->addChild(menu);
         this->menuObjects.push_back(menu);
@@ -177,7 +178,7 @@ bool DungeonMainMenuLayer::init()
     // カーソル生成
     Cloud* cursor { Cloud::create(Size::ZERO) };
     cursor->setColor(Color3B(100, 0, 0));
-    cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
+    //cursor->setBlendFunc({GL_SRC_ALPHA, GL_ONE});
     hBg->addChild(cursor);
     this->cursor = cursor;
     
@@ -315,7 +316,16 @@ void DungeonMainMenuLayer::onMenuKeyPressed()
 
 // 選択されているメニュー番号を取得
 int DungeonMainMenuLayer::getMenuIndex(){
-    return this->getMenuIndex();
+    return this->menuIndex;
+}
+
+// メニュー番号をセット
+void DungeonMainMenuLayer::setDefaultMenuIndex(const int idx)
+{
+    int menuSize = this->menuObjects.size();
+    this->menuIndex = menuSize > idx ? idx : menuSize - 1;
+    this->setSelectedIndex(this->menuIndex);
+    this->onIndexChanged(this->menuIndex, false);
 }
 
 // ノードをスライドイン
