@@ -57,7 +57,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlt0JhDAQhINnB9rqqQ2o18CpDfjTgD/lOS95M+AKg1nYD+YlLJNZkixxTgffxLkCKqEqed+/Rk0DtdCPkEfq/0dNB/XQQMgj9R9RM0EztBDySP1X1GzQDh2EPGx/I04+OOv04rxD62wy7Jlf7BtaZ/FW/yGe9O97YM/6u/ge2LM+ZjTeK42ZtcP+L0qJZYZ4NM4Qe0eGYUg4Abt/JDk=
+   eJztlMkJgDAQRUO0A23VpQGXBlwacGnApTz/JTcDRvgkgXnwLmH4mSGLUnFQaKVKWMFa+89vUNPCDvaEflzzB9SMcIIzoR/X/AU1K9zgTujHNf9AzQkveBP6YecLYZLgrNOX87ats8mwZ/6yr22dha/5bfyZ38zA/uu/YmZg//UhE+O9irFnQQgNeUeCILjwACppHdM=
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="30">
@@ -74,6 +74,14 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztz9EJwCAQBNG1iMRCJIUY++8lNuAKRkFkHuznwZwEAHu6gnRPXgzjPenHbctDj0WPR49Hj0ePR493Uk+ut+/klQU/Auj7AJVZDuk=
+  </data>
+ </layer>
+ <layer name="MonoUe3" width="36" height="30">
+  <properties>
+   <property name="z" value="21"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztztEJwCAAxNDDnW1dQO0CVcf1hhBUyIP8RwIAAADuF4P0uNelsPtGyn4orrrvgJ/fD811Nw74AYDVJqH2Bmc=
   </data>
  </layer>
  <objectgroup name="collision">
