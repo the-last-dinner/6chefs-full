@@ -89,7 +89,6 @@ void EventListenerKeyboardLayer::onKeyPressed(const EventKeyboard::KeyCode& keyC
             this->pressingKeys.push_back(key);
             // 方向キーを押した時は、入力チェック用にスケジューリング
             this->scheduleIntervalCheck();
-            if(this->pressingKeys.size() == 1) this->scheduleDelayedCheck();
             break;
             
         case Key::SPACE:
@@ -125,7 +124,6 @@ void EventListenerKeyboardLayer::releaseKey(const Key& key)
     if(this->pressingKeys.empty())
     {
         this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::intervalCheck));
-        this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::delayedCheck));
     }
 }
 
@@ -143,13 +141,6 @@ void EventListenerKeyboardLayer::intervalCheck(float duration)
 {
     if(this->paused) return;
     if(this->intervalInputCheck) this->intervalInputCheck(this->pressingKeys);
-}
-
-// キーを一定時間押した時
-void EventListenerKeyboardLayer::delayedCheck(float duration)
-{
-    if(this->paused) return;
-    if(this->delayedInputCheck) this->delayedInputCheck(this->pressingKeys);
 }
 
 // キーコードを変換。ゲームで使わないキーが与えられた場合はSIZEを返す
@@ -170,14 +161,12 @@ void EventListenerKeyboardLayer::setPaused(bool paused)
     if(paused)
     {
         this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::intervalCheck));
-        this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::delayedCheck));
     }
     else
     {
         if(!this->pressingKeys.empty())
         {
             this->scheduleIntervalCheck();
-            this->scheduleDelayedCheck();
         }
     }
 }
@@ -192,10 +181,4 @@ void EventListenerKeyboardLayer::scheduleIntervalCheck()
 {
     if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::intervalCheck))) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::intervalCheck));
     if(this->intervalInputCheck) this->schedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::intervalCheck), this->interval, CC_REPEAT_FOREVER, this->delay);
-}
-
-void EventListenerKeyboardLayer::scheduleDelayedCheck()
-{
-    if(this->isScheduled(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::delayedCheck))) this->unschedule(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::delayedCheck));
-    if(this->delayedInputCheck) this->scheduleOnce(CC_SCHEDULE_SELECTOR(EventListenerKeyboardLayer::delayedCheck), this->delay);
 }
