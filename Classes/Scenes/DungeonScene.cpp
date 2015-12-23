@@ -54,9 +54,6 @@ bool DungeonScene::init(DungeonSceneData* data)
 {
     if(!BaseScene::init(data)) return false;
     
-    // スタミナ減少状態を解除
-    DungeonSceneManager::getInstance()->getStamina()->setDecreasing(false);
-    
     return true;
 }
 
@@ -77,6 +74,9 @@ void DungeonScene::onEnter()
 // リソースプリロード完了時の処理
 void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
+    // スタミナ減少状態を解除
+    DungeonSceneManager::getInstance()->getStamina()->setDecreasing(false);
+    
 	// マップレイヤーを生成
 	TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
