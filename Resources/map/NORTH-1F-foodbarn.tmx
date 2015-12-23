@@ -63,7 +63,7 @@
  </layer>
  <layer name="yasai" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-13"/>
+   <property name="z" value="9"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4D+4JneQLsAP3g6yN03CkbBKBj6AAAwEgIo
@@ -71,7 +71,7 @@
  </layer>
  <layer name="yasai2" width="20" height="24">
   <properties>
-   <property name="cc_vertexz" value="-12"/>
+   <property name="z" value="9"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4D+4LneQLsAPxjs7hsFo2AUDH0AAD3qAis=

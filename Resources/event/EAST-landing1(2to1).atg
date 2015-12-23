@@ -18,8 +18,8 @@
 	"3":[
 		{
 			"type":"getItem",
-			"itemID":"1526",
-			"name":"子供用弁当箱"
+			"itemID":"1533",
+			"name":"三角巾"
 		},
 		{
 			"type":"removeChara",
