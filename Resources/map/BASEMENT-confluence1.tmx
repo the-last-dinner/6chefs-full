@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="50">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="53">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="050505" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16" tilecount="480">
@@ -8,9 +8,6 @@
  </tileset>
  <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16" tilecount="480">
   <image source="lower.png" trans="007575" width="480" height="256"/>
- </tileset>
- <tileset firstgid="1441" name="object_fire06a" tilewidth="16" tileheight="16" tilecount="288">
-  <image source="object_fire06a.png" trans="c1a5c8" width="288" height="256"/>
  </tileset>
  <layer name="Base" width="26" height="22">
   <properties>
@@ -64,11 +61,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGAa3BX0YGhn+MtLdHmomBQYaJ9vYMNQAAQKsCOQ==
-  </data>
- </layer>
- <layer name="fire" width="26" height="22">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFQw1wsdFG7SgYBaNgFAx1MFrmjQJcAAAPbQAx
   </data>
  </layer>
  <objectgroup name="event">
@@ -130,6 +122,18 @@
   <object id="46" x="256" y="64" width="16" height="16">
    <properties>
     <property name="objID" value="15"/>
+   </properties>
+  </object>
+  <object id="50" x="128" y="288" width="32" height="32">
+   <properties>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="51" x="352" y="224" width="32" height="32">
+   <properties>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="1"/>
    </properties>
   </object>
  </objectgroup>

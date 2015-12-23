@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="25">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="29">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
@@ -8,7 +8,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmF0KwzAIx90Buo+HbYfouj1sPUSb7f7XmYHKRBIMoUt9UPijtKb8tC0hAritZeMOoEO/hzLfFebl8lPS+Hr0NyjzfWFeLj8ljW9gz6A4xZHKy/FotfBY4wvoJ9QMv3hi1+Q9GXOfksyZRazxHVbSEXWqyNf4Bia+rpVK+sdrp/jRSLV8n0Yqeb/3pRbOd0ZdGkjjC6j3Ugvne6Jeyvp/m8a3tTmf8zmf8zmfXb7c/muFz3r/nM/5LPERo0W+wThfMM5n+fuTZ3MrfMQl5wdW+Gj/DWIvtsIn/w+KLfBFi2f4K+sbzQ2sWJwRjKJvW88N3OrtC3teVSA=
+   eJztmF0OgjAMx+sB8ONBPQROH5RDwPSCellLQmPTsHRZcPShTf5pgW75rUCWFcBtKes2AA36LeT5JjMvlT8nja9Ff4E8/87MI98mrrk0vsDmoFjOS88+Ii/Fk5qDPI81voi+Rw3wi3t2Tz6TMfdzkjmDiDW+3ULaow4F+RpfYOLjaimnfnztFN8qqZTvVUk57/c6rYXzHVGnCtL4Iuo5rYXz3VEPZfy/TeNb25zP+ZzP+ZzPLl9q/7XCZ71+zud8lviI0SJfMM4XjfNZ/v7k2dwKH3HJ/oEVPtp/o9iLrfDJ/4NiC3yjjWf4M6sb9Q2s2Ngj6ETd1u4buJXbFycmVf8=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -59,6 +59,21 @@
    <properties>
     <property name="EventID" value="5"/>
     <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="25" x="144" y="336" width="16" height="16">
+   <properties>
+    <property name="objID" value="1"/>
+   </properties>
+  </object>
+  <object id="26" x="64" y="336" width="16" height="16">
+   <properties>
+    <property name="objID" value="2"/>
+   </properties>
+  </object>
+  <object id="28" x="240" y="48" width="16" height="16">
+   <properties>
+    <property name="objID" value="3"/>
    </properties>
   </object>
  </objectgroup>

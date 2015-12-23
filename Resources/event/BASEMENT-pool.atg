@@ -228,11 +228,10 @@
 							"enemyID":"1420"
 						},
 						{
-							"type":"charaWalkTo",
+							"type":"charaWarp",
 							"objID":"hero",
-							"x":16,
-							"y":25,
-							"speed":10.0
+							"x":18,
+							"y":25
 						},
 						{
 							"type":"changeDirection",
@@ -371,20 +370,14 @@
 							"enemyID":"1420"
 						},
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaWalkTo",
-									"objID":"hero",
-									"x":18,
-									"y":25,
-									"speed":10.0
-								},
-								{
-									"type":"createChara",
-									"objID":"10107"
-								}
-							]
+							"type":"charaWarp",
+							"objID":"hero",
+							"x":18,
+							"y":25
+						},
+						{
+							"type":"createChara",
+							"objID":"10107"
 						},
 						{
 							"type":"changeDirection",

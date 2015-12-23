@@ -185,5 +185,67 @@
 				}
 			]
 		}
+	],
+	"8":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["ダメだ！こっちに逃げても逃げ切れない・・・"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"UP",
+							"steps":1.0,
+							"option":"back"
+						}
+					]
+				}
+			]
+		}
+	],
+	"8":[
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["61","6"],
+					"Nevent":["58","7"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["ダメだ！こっちに逃げても逃げ切れない・・・"],
+							"charaID":"0",
+							"imgID":"3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"LEFT",
+							"steps":1.0,
+							"option":"back"
+						}
+					]
+				}
+			]
+		}
 	]
 }

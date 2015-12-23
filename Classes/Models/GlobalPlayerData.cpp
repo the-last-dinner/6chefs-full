@@ -58,7 +58,10 @@ bool GlobalPlayerData::initGlobalData()
 }
 
 // グローバルデータのセーブ
-void GlobalPlayerData::saveGlobalData(){LastSupper::JsonUtils::writeJsonCrypt(GLOBAL_DATA_PATH, this->globalData);}
+void GlobalPlayerData::saveGlobalData()
+{
+    LastSupper::JsonUtils::writeJsonCrypt(GLOBAL_DATA_PATH + SAVE_EXTENSION, this->globalData);
+}
 
 #pragma mark -
 #pragma mark Status
@@ -140,9 +143,12 @@ void GlobalPlayerData::setTrophy(const int trophy_id)
     rapidjson::Value::ConstMemberIterator itr = this->globalData[TROPHY].FindMember(tid_char);
     
     // 指定したトロフィーIDが存在するかチェック
-    if(itr == this->globalData[TROPHY].MemberEnd()){
+    if(!this->hasTrophy(trophy_id)){
         // keyを作成してtrueを登録
-        this->globalData[TROPHY].AddMember(tid, rapidjson::Value(true), this->globalData.GetAllocator());
+        if (itr == this->globalData[TROPHY].MemberEnd())
+        {
+            this->globalData[TROPHY].AddMember(tid, rapidjson::Value(true), this->globalData.GetAllocator());
+        }
         
         // トロフィーゲット通知
         NotificationManager::getInstance()->notifyTrophy(trophy_id);

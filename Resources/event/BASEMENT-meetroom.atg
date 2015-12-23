@@ -102,48 +102,133 @@
 					"objID":"1065"
 				},
 				{
-					"type":"fadeout"
-				},
-				{
-					"type":"playSE",
-					"file":"hit.mp3"
-				},
-				{
-					"type":"charaMsg",
-					"text":["うわあっ！！"],
-					"charaID":"0",
-					"imgID":"2"
-				},
-				{
-					"type":"playSE",
-					"file":"batt.mp3"
-				},
-				{
-					"type":"charaMsg",
-					"talk":[
+					"type":"spawn",
+					"action":[
 						{
-							"text":["ああ、あはは、アハハ"],
-							"charaID":"3",
-							"imgID":"2"
+							"type":"charaWalk",
+							"objID":"1065",
+							"direction":"UP",
+							"steps":2.5,
+							"speed":5.0
 						},
 						{
-							"text":["一色さん！！"],
+							"type":"playSE",
+							"file":"hit.mp3"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"RIGHT",
+							"steps":1.0,
+							"speed":5.0,
+							"option":"back"
+						},
+						{
+							"type":"charaMsg",
+							"text":["うわあっ！！"],
 							"charaID":"0",
-							"imgID":"2",
-							"option":"reaction"
+							"imgID":"2"
 						}
 					]
 				},
 				{
-					"type":"removeChara",
-					"objID":"1065"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"charaWalk",
+							"objID":"1064",
+							"direction":"DOWN",
+							"steps":1.0
+						},
+						{
+							"type":"charaWalk",
+							"objID":"1065",
+							"direction":"DOWN",
+							"steps":1.0
+						}
+					]
 				},
 				{
-					"type":"removeChara",
-					"objID":"1064"
+					"type":"charaMsg",
+					"text":["一色さん！！"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
 				},
 				{
-					"type":"fadein"
+					"type":"spawn",
+					"action":[
+						{
+							"type":"charaWalk",
+							"objID":"1064",
+							"direction":"DOWN",
+							"steps":1.0
+						},
+						{
+							"type":"charaWalk",
+							"objID":"1065",
+							"direction":"DOWN",
+							"steps":1.0
+						}
+					]
+				},
+				{
+					"type":"wait",
+					"time":0.5
+				},
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaWalkTo",
+									"objID":"1064",
+									"x":14,
+									"y":19,
+									"speed":6.0
+								},
+								{
+									"type":"removeChara",
+									"objID":"1064"
+								}
+							]
+						},
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaWalkTo",
+									"objID":"1065",
+									"x":14,
+									"y":17,
+									"speed":6.0
+								},
+								{
+									"type":"removeChara",
+									"objID":"1065"
+								}
+							]
+						},
+						{
+							"type":"playSE",
+							"file":"batt.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["ああ、あはは、アハハ"],
+							"charaID":"3",
+							"imgID":"2"
+						}
+					]
+				},
+				{
+					"type":"charaMsg",
+					"text":["一色さん！！"],
+					"charaID":"0",
+					"imgID":"2",
+					"option":"reaction"
 				},
 				{
 					"type":"charaMsg",

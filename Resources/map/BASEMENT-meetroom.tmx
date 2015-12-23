@@ -35,7 +35,7 @@
  <objectgroup name="Chara(object)">
   <object id="20" x="128" y="64" width="32" height="32">
    <properties>
-    <property name="CharaID" value="3"/>
+    <property name="CharaID" value="12"/>
     <property name="direction" value="DOWN"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1064"/>

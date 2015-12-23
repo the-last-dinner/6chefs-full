@@ -3643,6 +3643,9 @@
 					"steps":1.0
 				},
 				{
+					"type":"fadeout"
+				},
+				{
 					"type":"createCamera",
 					"x":20,
 					"y":21,
@@ -3655,8 +3658,51 @@
 						          "objID":"1096"
 						        },
 						        {
+									"type":"removeChara",
+									"objID":"102"
+								},
+								{
+									"type":"removeChara",
+									"objID":"103"
+								},
+								{
+									"type":"removeChara",
+									"objID":"104"
+								},
+								{
+									"type":"removeChara",
+									"objID":"105"
+								},
+								{
+									"type":"removeChara",
+									"objID":"106"
+								},
+								{
+									"type":"createChara",
+									"objID":"1090"
+								},
+								{
+									"type":"createChara",
+									"objID":"1091"
+								},
+								{
+									"type":"createChara",
+									"objID":"1092"
+								},
+								{
+									"type":"createChara",
+									"objID":"1093"
+								},
+								{
+									"type":"createChara",
+									"objID":"1094"
+								},
+						        {
 						          "type":"playBGM",
 						          "file":"Mozart-OboeConcerto-1.mp3"
+						        },
+						        {
+						        	"type":"fadein"
 						        },
 						        {
 						          "type": "charaMsg",
@@ -3722,27 +3768,27 @@
 						            },
 						            {
 						              "type":"changeDirection",
-						              "objID":"102",
+						              "objID":"1090",
 						              "direction":"DOWN"
 						            },
 						            {
 						              "type":"changeDirection",
-						              "objID":"103",
+						              "objID":"1091",
 						              "direction":"DOWN"
 						            },
 						            {
 						              "type":"changeDirection",
-						              "objID":"104",
+						              "objID":"1092",
 						              "direction":"DOWN"
 						            },
 						            {
 						              "type":"changeDirection",
-						              "objID":"105",
+						              "objID":"1093",
 						              "direction":"DOWN"
 						            },
 						            {
 						              "type":"changeDirection",
-						              "objID":"106",
+						              "objID":"1094",
 						              "direction":"DOWN"
 						            },
 						            {
@@ -3751,23 +3797,23 @@
 						            },
 						            {
 						              "type": "reaction",
-						              "objID": "102"
+						              "objID": "1090"
 						            },
 						            {
 						              "type": "reaction",
-						              "objID": "103"
+						              "objID": "1091"
 						            },
 						            {
 						              "type": "reaction",
-						              "objID": "104"
+						              "objID": "1092"
 						            },
 						            {
 						              "type": "reaction",
-						              "objID": "105"
+						              "objID": "1093"
 						            },
 						            {
 						              "type": "reaction",
-						              "objID": "106"
+						              "objID": "1094"
 						            }
 						          ]
 						        },
@@ -3793,6 +3839,46 @@
 				{
 				    "type": "createChara",
 				    "objID": "1098"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1090"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1091"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1092"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1093"
+				},
+				{
+					"type":"removeChara",
+					"objID":"1094"
+				},
+				{
+					"type":"createChara",
+					"objID":"102"
+				},
+				{
+					"type":"createChara",
+					"objID":"103"
+				},
+				{
+					"type":"createChara",
+					"objID":"104"
+				},
+				{
+					"type":"createChara",
+					"objID":"105"
+				},
+				{
+					"type":"createChara",
+					"objID":"106"
 				},
 				{
 					"type":"fadein"

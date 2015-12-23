@@ -3,6 +3,36 @@
     	{
       		"type":"setAmbient",
       		"ambient":"basement"
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"1",
+    		"range":2
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"2",
+    		"range":2
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"3",
+    		"range":2
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"4",
+    		"range":2
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"5",
+    		"range":2
+    	},
+    	{
+    		"type":"setLight",
+    		"objID":"6",
+    		"range":2
     	}
 	],
 	"1":[

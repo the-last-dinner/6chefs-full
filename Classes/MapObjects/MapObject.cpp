@@ -199,13 +199,16 @@ vector<Direction> MapObject::createEnableDirections(const vector<Direction>& dir
 {
     vector<Direction> enableDirs {};
     
+    // 入力が複数か
+    bool isInputMultiple {directions.size() >= 2};
+    
     // 入力が２以上の時、斜め方向に当たり判定があるか確認
-    bool isHitDiagnally { directions.size() >= 2 ? this->isHit(directions) : false };
+    bool isHitDiagnally { isInputMultiple ? this->isHit(directions) : false };
     
     // 当たり判定
     for(Direction direction : directions)
     {
-        if((!isHitDiagnally && !this->isHit(direction)) || (isHitDiagnally && !this->isHit(direction) && enableDirs.empty()))
+        if((isInputMultiple && !isHitDiagnally) || (!isHitDiagnally && !this->isHit(direction)) || (isHitDiagnally && !this->isHit(direction) && enableDirs.empty()))
         {
             enableDirs.push_back(direction);
         }

@@ -11,10 +11,11 @@
 #include "MapObjects/Character.h"
 
 // 定数
-const float MobRandom::WAIT_DURATION { 2.f };
-const float MobRandom::WAIT_DURATION_RANDOM_RANGE { 0.3f };
+const float MobRandom::MIN_WAIT_DURATION { 2.f };
+const float MobRandom::MAX_WAIT_DURATION { 5.f };
 const int MobRandom::DISTANCE { 2 };
 const float MobRandom::SPEED_RATIO { 0.4f };
+const int MobRandom::SCHEDULE_ACTION_TAG { 200 };
 
 // コンストラクタ
 MobRandom::MobRandom() { FUNCLOG };
@@ -72,6 +73,15 @@ void MobRandom::move()
 void MobRandom::scheduleMove()
 {
     // 毎回同じ周期で動かすと他のキャラクタと同じタイミングで動いてしまうため、ズレを生じさせる
-    float lag { WAIT_DURATION_RANDOM_RANGE * cocos2d::random(-1, 1) };
-    this->chara->runAction(Sequence::createWithTwoActions(DelayTime::create(WAIT_DURATION + lag), CallFunc::create(CC_CALLBACK_0(MobRandom::move, this))));
+    float duration { cocos2d::random(MIN_WAIT_DURATION, MAX_WAIT_DURATION) };
+    Action* action { Sequence::createWithTwoActions(DelayTime::create(duration), CallFunc::create(CC_CALLBACK_0(MobRandom::move, this))) };
+    action->setTag(SCHEDULE_ACTION_TAG);
+    this->chara->runAction(action);
+}
+
+void MobRandom::setPaused(bool paused)
+{
+    MovePattern::setPaused(paused);
+    
+    if(paused) this->chara->stopActionByTag(SCHEDULE_ACTION_TAG);
 }
