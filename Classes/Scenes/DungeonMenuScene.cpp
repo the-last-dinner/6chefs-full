@@ -49,6 +49,7 @@ void DungeonMenuScene::createMainMenu()
     // すでに存在すれば削除
     if(this->getChildByName(MAIN_LAYER_NAME))
     {
+        this->menuIndex = this->mainMenu->getMenuIndex();
         this->removeChildByName(MAIN_LAYER_NAME);
     }
     // 生成
@@ -59,6 +60,7 @@ void DungeonMenuScene::createMainMenu()
     menu->onItemMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onItemMenuSelected, this);
     menu->onCharacterMenuSelected = CC_CALLBACK_0(DungeonMenuScene::onCharaMenuSelected, this);
     menu->onBackToTitleConfirmed = CC_CALLBACK_0(DungeonMenuScene::onBackToTitleConfirmed, this);
+    menu->setDefaultMenuIndex(this->menuIndex);
     this->addChild(menu);
     this->mainMenu = menu;
     this->mainMenu->show();

@@ -51,14 +51,15 @@ bool StopBGMEvent::init(rapidjson::Value& json)
 
 void StopBGMEvent::run()
 {
-    if(this->fileName == "")
+    if(this->fileName != "")
+    {
+        SoundManager::getInstance()->stopBGM(this->fileName);
+        PlayerDataManager::getInstance()->getLocalData()->removeBgm(this->fileName);
+    }
+    else
     {
         SoundManager::getInstance()->stopBGMAll();
         PlayerDataManager::getInstance()->getLocalData()->removeBgmAll();
-    }
-    if(this->fileName != ""){
-        SoundManager::getInstance()->stopBGM(this->fileName);
-        PlayerDataManager::getInstance()->getLocalData()->removeBgm(this->fileName);
     }
     this->setDone();
 }
