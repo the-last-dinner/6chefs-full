@@ -25,8 +25,8 @@ typedef GenericStringBuffer< UTF8<> > StringBuffer;
 
 // セーブデータの拡張子
 #define SAVE_EXTENSION ".inos"
-#define ES_EXTENSION ".atg"
-#define CSV_EXTENSION ".mnk"
+#define ES_EXTENSION ".json"
+#define CSV_EXTENSION ".csv"
 
 // 暗号キー
 #define C_KEY 4545
