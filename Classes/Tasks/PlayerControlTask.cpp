@@ -85,7 +85,7 @@ void PlayerControlTask::search(Party* party)
 // 歩行中、あたり判定を行い次に向かう位置を決定する
 void PlayerControlTask::walking(const vector<Key>& keys, Party* party)
 {
-    if(keys.empty() || !this->isControlEnabled()) return;
+    if(keys.empty() || !this->isControlEnabled() || party->getMainCharacter()->isMoving()) return;
     
     vector<Direction> directions { MapUtils::keyToDirection(keys) };
     
@@ -155,10 +155,12 @@ void PlayerControlTask::onPartyMovedOneGrid(Party* party)
 // 操作可能状態か設定
 void PlayerControlTask::setControlEnable(bool enable, Party* party)
 {
+    bool before {this->enableControl};
+    
     this->enableControl = enable;
     
     // 有効にされた時は、入力しているキーに応じて移動開始
-    if(enable) this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
+    if(!before && enable) this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
 }
 
 // 操作可能状態か確認
