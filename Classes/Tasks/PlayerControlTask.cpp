@@ -155,10 +155,10 @@ void PlayerControlTask::onPartyMovedOneGrid(Party* party)
 // 操作可能状態か設定
 void PlayerControlTask::setControlEnable(bool enable, Party* party)
 {
+    this->enableControl = enable;
+    
     // 有効にされた時は、入力しているキーに応じて移動開始
     if(enable) this->walking(DungeonSceneManager::getInstance()->getPressedCursorKeys(), party);
-    
-    this->enableControl = enable;
 }
 
 // 操作可能状態か確認
