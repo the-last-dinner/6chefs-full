@@ -114,8 +114,8 @@
  </layer>
  <objectgroup name="collision">
   <object id="1" x="0" y="0" width="16" height="352"/>
-  <object id="2" x="16" y="320" width="192" height="32"/>
-  <object id="5" x="240" y="320" width="192" height="32"/>
+  <object id="2" x="16" y="320" width="192" height="64"/>
+  <object id="5" x="240" y="320" width="192" height="64"/>
   <object id="6" x="432" y="0" width="16" height="352"/>
   <object id="7" x="16" y="96" width="416" height="16"/>
   <object id="8" x="144" y="112" width="32" height="32"/>

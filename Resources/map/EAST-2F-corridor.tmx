@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="51">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="52">
  <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
   <image source="ST-MsionR-I01.png" trans="fefefe" width="256" height="1990"/>
  </tileset>
@@ -31,8 +31,8 @@
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="19" x="32" y="224" width="208" height="32"/>
-  <object id="20" x="272" y="224" width="208" height="32"/>
+  <object id="19" x="32" y="224" width="208" height="64"/>
+  <object id="20" x="272" y="224" width="208" height="64"/>
   <object id="21" x="144" y="0" width="32" height="112"/>
   <object id="22" x="336" y="0" width="32" height="112"/>
   <object id="23" x="176" y="96" width="176" height="16"/>

@@ -83,13 +83,16 @@
   </object>
  </objectgroup>
  <layer name="CharaUe1" width="30" height="36" opacity="0.94">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0bkJwDAQRNFtTbar2MhyHz768FGrBhyogwHBfzBs+IONGMuUEXN6myV7dzG2q1pr/nczdne1Du3ULmP3VuvRXu0z/xgAAAAAMLYG5REN1A==
   </data>
  </layer>
  <layer name="apple" width="30" height="36">
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7D3JC+9KIDAYbYES2DX9T0AAACAmwGt9QEh
+   eJztziEBAAAIA7D3JC+9KIDAYbYES7jq+h4AAAAAmwG8BAEh
   </data>
  </layer>
  <layer name="CharaUe2" width="30" height="36">
@@ -169,7 +172,7 @@
   </object>
  </objectgroup>
  <objectgroup name="item">
-  <object id="37" x="224" y="64" width="32" height="32">
+  <object id="37" x="224" y="16" width="32" height="32">
    <properties>
     <property name="objID" value="1920"/>
    </properties>

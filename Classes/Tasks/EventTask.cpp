@@ -22,8 +22,6 @@ EventTask::~EventTask()
 {
     FUNCLOG
     
-    Director::getInstance()->getScheduler()->unscheduleUpdate(this);
-    
     // イベントキューが空でなかったら全て削除
     if(!this->eventQueue.empty())
     {
@@ -39,6 +37,9 @@ EventTask::~EventTask()
 bool EventTask::init()
 {
     if(!GameTask::init()) return false;
+    
+    // update開始
+    this->scheduleUpdate();
 
 	return true;
 }
@@ -49,8 +50,6 @@ void EventTask::runEventQueue()
     if(!this->existsEvent()) return;
     this->resetPushingEventId();
     this->run();
-    // update開始
-    Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 }
 
 // イベントをIDから実行
@@ -160,6 +159,9 @@ bool EventTask::existsEvent()
 // update
 void EventTask::update(float delta)
 {
+    // 実行中イベントがnullptrなら無視
+    if(!this->getGameEvent(this->runningEvent)) return;
+    
     // 実行中イベントを更新
     this->getGameEvent(this->runningEvent)->update(delta);
     
@@ -176,11 +178,9 @@ void EventTask::update(float delta)
         this->runningEvent = EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr});
     }
         
-    // キューが空になったらupdate停止
+    // キューが空になったらコールバック
     if(this->eventQueue.empty() && !this->getGameEvent(this->runningEvent))
     {
-        Director::getInstance()->getScheduler()->unscheduleUpdate(this);
- 
         if(this->onAllEventFinished) this->onAllEventFinished();
     }
     

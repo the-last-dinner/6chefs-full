@@ -74,10 +74,11 @@ void PlayerDataManager::initLocalData()
     initLocal.AddMember(jval, rapidjson::Value(0), initLocal.GetAllocator());
     
     // 全セーブデータを初期化
-    string path = FileUtils::getInstance()->fullPathForFilename("save/local_template.inos");
-    path = LastSupper::StringUtils::strReplace("_template.inos", "", path);
+    string path = "save/local_template";
+    path = FileUtils::getInstance()->fullPathForFilename(path + SAVE_EXTENSION);
+    path = LastSupper::StringUtils::strReplace((string)("_template") + SAVE_EXTENSION, "", path);
     for(int i = 1; i <= MAX_SAVE_COUNT; i++){
-        LastSupper::JsonUtils::writeJsonCrypt(path + to_string(i) + ".inos", initLocal);
+        LastSupper::JsonUtils::writeJsonCrypt(path + to_string(i) + SAVE_EXTENSION, initLocal);
     }
 }
 

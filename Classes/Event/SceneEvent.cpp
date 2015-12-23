@@ -123,19 +123,18 @@ bool WaitEvent::init(rapidjson::Value& json)
 {
     if(!GameEvent::init()) return false;
     
-    float duration {static_cast<float>(json[member::TIME].GetDouble())};
-    
-    // 0秒指定だったらfalseを返す（falseを返すと生成されない）
-    if(duration == 0.f) return false;
-    
-    this->duration = duration;
+    this->duration = {static_cast<float>(json[member::TIME].GetDouble())};;
     
     return true;
 }
 
-void WaitEvent::run()
+void WaitEvent::run() {}
+
+void WaitEvent::update(float delta)
 {
-    DungeonSceneManager::getInstance()->getScene()->runAction(Sequence::createWithTwoActions(DelayTime::create(this->duration), CallFunc::create([this](){this->setDone();})));
+    this->duration -= delta;
+    
+    if(this->duration <= 0) this->setDone();
 }
 
 #pragma mark -

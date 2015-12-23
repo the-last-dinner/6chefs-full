@@ -220,6 +220,22 @@ bool MapObjectFactory::isThroughObject(const ValueMap& info) const
     return info.at("through").asBool();
 }
 
+// 速度倍率を取得
+float MapObjectFactory::getSpeedRatio(const ValueMap& info) const
+{
+    if(info.count("speed") == 0) return 1.f;
+    
+    return info.at("speed").asFloat();
+}
+
+// 当たり判定があるかどうか
+bool MapObjectFactory::isHit(const ValueMap &info) const
+{
+    if(info.count("hit") == 0) return false;
+    
+    return info.at("hit").asBool();
+}
+
 // 当たり判定レイヤにあるオブジェクトを生成
 MapObject* MapObjectFactory::createObjectOnCollision(const ValueMap& info)
 {
@@ -240,15 +256,17 @@ MapObject* MapObjectFactory::createObjectOnEvent(const ValueMap& info)
 {
     Rect rect {this->getRect(info)};
 
-    EventObject* pObj { EventObject::create() };
-    pObj->setObjectId(this->getObjectId(info));
-    pObj->setEventId(this->getEventId(info));
-    pObj->setTrigger(this->getTrigger(info));
-    pObj->setGridPosition(this->getGridPosition(rect));
-    pObj->setContentSize(rect.size);
-    pObj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    EventObject* obj { EventObject::create() };
+    obj->setObjectId(this->getObjectId(info));
+    obj->setEventId(this->getEventId(info));
+    obj->setTrigger(this->getTrigger(info));
+    obj->setGridPosition(this->getGridPosition(rect));
+    obj->setContentSize(rect.size);
+    obj->setCollisionRect(Rect(0, 0, rect.size.width, rect.size.height));
+    obj->setHit(this->isHit(info));
+    obj->setSprite(this->getSprite(info));
     
-    return pObj;
+    return obj;
 }
 
 // キャラクターレイヤにあるオブジェクトを生成
@@ -355,6 +373,8 @@ MapObject* MapObjectFactory::createObjectOnPath(const ValueMap& info)
     obj->setPreviousId(this->getPreviousPathId(info));
     obj->setNextId(this->getNextPathId(info));
     obj->setThrough(this->isThroughObject(info));
+    obj->setSpeedRatio(this->getSpeedRatio(info));
+    obj->setLookDirection(this->getDirection(info));
     
     return obj;
 }

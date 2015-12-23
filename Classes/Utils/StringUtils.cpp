@@ -81,3 +81,12 @@ string LastSupper::StringUtils::getTimeForDisplay(const int sec)
     display += LastSupper::StringUtils::getSprintf("%02s", to_string(sec % 60))+ "s";
     return display;
 }
+
+// XOR暗号・複合化
+void LastSupper::StringUtils::encryptXor(string& str)
+{
+    for(int i = 0; i < strlen(str.c_str()); i++)
+    {
+        str[i] ^= C_KEY;
+    }
+}

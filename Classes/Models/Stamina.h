@@ -19,7 +19,8 @@ public:
     static const float MIN_VALUE;
     static const float DEFAULT_STEP;
     static const float INCREASE_STEP_RATIO;
-    static const float INCREASE_UPDATE_INTERVAL;
+    static const float UPDATE_INTERVAL;
+    static const float WARN_PERCENTAGE_THRESHOLD;
     
 // クラスメソッド
 public:
@@ -30,8 +31,10 @@ private:
     float percentage { MAX_VALUE };
     float ratio { 1.0f };
     bool decreasing {false};
+    bool exhausted {false};
 public:
     function<void(float)> onPercentageChanged { nullptr };
+    function<void()> onIncreasedMax { nullptr };
     
 // インスタンスメソッド
 private:
@@ -39,12 +42,15 @@ private:
     ~Stamina();
     bool init();
     void increase();
+    void decrease();
     void setPercentage(const float percentage);
 public:
     void setStepRatio(const float ratio);
+    void setDecreasing(const bool decreasing);
     float getPercentage() const;
-    void decrease();
+    bool isExhausted() const;
     bool isEmpty() const;
+    bool isWarn() const;
     bool isMax() const;
     void update(float delta);
 };

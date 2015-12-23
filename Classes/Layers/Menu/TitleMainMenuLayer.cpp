@@ -11,6 +11,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 #include "UI/Cloud.h"
+#include "UI/NotificationBand.h"
 
 // コンストラクタ
 TitleMainMenuLayer::TitleMainMenuLayer(){FUNCLOG}
@@ -89,6 +90,21 @@ bool TitleMainMenuLayer::init()
                                     nullptr
                     ));
     
+    // copyright
+    Label* copyright {Label::createWithTTF("Copyright 2015 最後の晩餐 All rights reserved.", Resource::Font::MESSAGE, 15.f)};
+    copyright->setPosition(Point(WINDOW_WIDTH - copyright->getContentSize().width * 0.52f, copyright->getContentSize().height));
+    copyright->setOpacity(0);
+    this->addChild(copyright);
+    copyright->runAction(FadeTo::create(1.f, 200));
+    
+    // 操作方法
+    Label* opr {Label::createWithTTF("SPACE:決定 X:戻る", Resource::Font::MESSAGE, 18)};
+    opr->setPosition(WINDOW_WIDTH / 2, opr->getContentSize().height + copyright->getContentSize().height * 2);
+    opr->setColor(Color3B::WHITE);
+    opr->setOpacity(0);
+    this->addChild(opr);
+    opr->runAction(FadeTo::create(1.2f, 200));
+    
     // クリア時の立ち絵
     float scale = 0.3f;
     if (PlayerDataManager::getInstance()->getGlobalData()->getClearCount() > 0)
@@ -96,7 +112,7 @@ bool TitleMainMenuLayer::init()
         Sprite* left {Sprite::createWithSpriteFrameName("yuki_s_1.png")};
         left->setScale(scale);
         left->setOpacity(0);
-        left->setPosition(left->getContentSize().width * scale / 2, left->getContentSize().height * scale / 2);
+        left->setPosition(left->getContentSize().width * scale / 2, left->getContentSize().height * scale / 2 + copyright->getContentSize().height * 2);
         this->addChild(left);
         left->runAction(Sequence::createWithTwoActions(DelayTime::create(2.f), FadeTo::create(2.f, 128)));
     }
@@ -107,18 +123,10 @@ bool TitleMainMenuLayer::init()
         Sprite* right {Sprite::createWithSpriteFrameName("magoichi_s_1.png")};
         right->setScale(scale);
         right->setOpacity(0);
-        right->setPosition(WINDOW_WIDTH - right->getContentSize().width * scale / 2, right->getContentSize().height * scale / 2);
+        right->setPosition(WINDOW_WIDTH - right->getContentSize().width * scale / 2, right->getContentSize().height * scale / 2 + copyright->getContentSize().height * 2);
         this->addChild(right);
         right->runAction(Sequence::createWithTwoActions(DelayTime::create(4.f), FadeTo::create(2.f, 128)));
     }
-    
-    // 操作方法
-    Label* opr {Label::createWithTTF("SPACE:決定 X:戻る", Resource::Font::MESSAGE, 18)};
-    opr->setPosition(WINDOW_WIDTH/2, opr->getContentSize().height);
-    opr->setColor(Color3B::WHITE);
-    opr->setOpacity(0);
-    this->addChild(opr);
-    opr->runAction(FadeTo::create(1.2f, 200));
     
 	return true;
 }
@@ -180,8 +188,40 @@ void TitleMainMenuLayer::onSpacePressed(int idx)
         {MenuType::TROPHY, this->onTrophySelected},
 		{MenuType::EXIT, this->onExitSelected},
 	};
-	
-	if(!typeMap.count(static_cast<MenuType>(idx))) return;
-	
-	if(function<void()> callback {typeMap.at(static_cast<MenuType>(idx))}) callback();
+    MenuType menu {static_cast<MenuType>(idx)};
+	if(!typeMap.count(menu)) return;
+    
+    // クリアしていない場合はトロフィーを見れない
+    if (menu == MenuType::TROPHY && !PlayerDataManager::getInstance()->getGlobalData()->isCleared())
+    {
+        this->trophyNotification();
+        return;
+    }
+    
+    // 選択されたメニューに応じてコールバック関数実行
+	if(function<void()> callback {typeMap.at(menu)}) callback();
+}
+
+// トロフィーを見れない通知
+void TitleMainMenuLayer::trophyNotification()
+{
+    if (notification)
+    {
+        SoundManager::getInstance()->playSE("back.mp3");
+        this->notification->hide([this]{
+            this->removeChild(this->notification);
+            this->notification = nullptr;
+            this->setCursorEnable(true);
+        });
+    }
+    else
+    {
+        this->setCursorEnable(false);
+        SoundManager::getInstance()->playSE("failure.mp3");
+        NotificationBand* notification = NotificationBand::create("トロフィーはクリア後に見ることができます");
+        notification->setBandColor(Color3B(64,0,0));
+        this->addChild(notification);
+        notification->show();
+        this->notification = notification;
+    }
 }

@@ -63,7 +63,7 @@
   <object id="18" x="80" y="160" width="32" height="32"/>
   <object id="19" x="208" y="32" width="32" height="48"/>
   <object id="20" x="336" y="112" width="96" height="16"/>
-  <object id="23" x="336" y="48" width="96" height="32"/>
+  <object id="23" x="336" y="48" width="96" height="16"/>
   <object id="24" x="432" y="32" width="32" height="48"/>
   <object id="25" x="16" y="48" width="448" height="16"/>
  </objectgroup>

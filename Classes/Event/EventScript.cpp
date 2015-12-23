@@ -18,7 +18,7 @@ EventScript::~EventScript() {FUNCLOG}
 // 初期化
 bool EventScript::init(const string& jsonFileName)
 {
-    this->json = LastSupper::JsonUtils::readJsonFile(FileUtils::getInstance()->fullPathForFilename("event/" + jsonFileName + ".json"));
+    this->json = LastSupper::JsonUtils::readJsonCrypted(FileUtils::getInstance()->fullPathForFilename("event/" + jsonFileName + ES_EXTENSION));
     return true;
 }
 

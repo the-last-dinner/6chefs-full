@@ -33,20 +33,11 @@
    eJxjYBgF1AAXmRgYLjFRT99DoNgjMszDpe8jUOwTGeaRq28UjIJRMApGwSgYimC0Ph8cAACPNhVV
   </data>
  </layer>
- <layer name="MonoUe" width="20" height="34">
-  <properties>
-   <property name="cc_vertexz" value="-11"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztzKERACAMBLCX3RS2gNHB4qu4ZIAkAPAalczq+9a9duMH/O0AaSAB7w==
-  </data>
- </layer>
  <objectgroup name="collision">
   <object id="8" x="32" y="64" width="32" height="32"/>
   <object id="9" x="256" y="64" width="32" height="32"/>
   <object id="10" x="32" y="464" width="32" height="48"/>
   <object id="11" x="256" y="464" width="32" height="48"/>
-  <object id="12" x="176" y="304" width="32" height="32"/>
   <object id="13" x="32" y="512" width="32" height="32"/>
   <object id="14" x="256" y="512" width="32" height="16"/>
   <object id="34" x="288" y="32" width="32" height="480"/>
@@ -123,6 +114,8 @@
   <object id="27" x="176" y="304" width="32" height="32">
    <properties>
     <property name="EventID" value="8"/>
+    <property name="hit" value="true"/>
+    <property name="img" value="dShituji.png"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>

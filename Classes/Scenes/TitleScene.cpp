@@ -65,7 +65,6 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // セーブデータ選択レイヤーのイベントをリッスン
     saveDataSelector->onSaveDataSelectCancelled = CC_CALLBACK_0(TitleScene::onSaveDataSelectCancelled, this);
     saveDataSelector->setVisible(false);
-    saveDataSelector->hide();
     this->saveDataSelector = saveDataSelector;
     
     // BGM
@@ -77,7 +76,7 @@ void TitleScene::onStartSelected()
 {
 	FUNCLOG
     SoundManager::getInstance()->stopBGMAll();
-	SoundManager::getInstance()->playSE("gameStart.mp3");
+    SoundManager::getInstance()->playSE(Resource::SE::GAME_START);
 	PlayerDataManager::getInstance()->setGameStart(0);
     Director::getInstance()->replaceScene(DungeonScene::create(DungeonSceneData::create(PlayerDataManager::getInstance()->getLocalData()->getLocation())));
 }
@@ -124,13 +123,6 @@ void TitleScene::createTrophyListLayer()
 // トロフィーリストを選択した時
 void TitleScene::onTrophyListSelected()
 {
-    // クリアしていない場合は見れない
-    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
-    {
-        SoundManager::getInstance()->playSE("failure.mp3");
-        return;
-    }
-    
     // トロフイーリストレイヤーを作成
     SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
     if(!this->trophyList)

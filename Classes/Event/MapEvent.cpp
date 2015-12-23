@@ -28,8 +28,8 @@ bool HideLayerEvent::init(rapidjson::Value& json)
 
 void HideLayerEvent::run()
 {
-    DungeonSceneManager::getInstance()->getMapLayer()->hideLayer(this->layerName);
     this->setDone();
+    DungeonSceneManager::getInstance()->getMapLayer()->hideLayer(this->layerName);
 }
 
 #pragma mark -

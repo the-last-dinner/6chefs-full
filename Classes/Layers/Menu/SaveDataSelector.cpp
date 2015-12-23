@@ -111,7 +111,7 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
     SaveIndex save;
     // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
-        string file = "save/local" + to_string(i) + ".inos";
+        string file = "save/local" + to_string(i) + SAVE_EXTENSION;
         LocalPlayerData* local {LocalPlayerData::create(i)};
         if(!local)
         {
@@ -150,6 +150,7 @@ void SaveDataSelector::show()
 void SaveDataSelector::hide()
 {
 	this->listenerKeyboard->setEnabled(false);
+    if (this->notification) this->notification->hide();
     this->runAction(EaseCubicActionOut::create(ScaleTo::create(0.3f, 0)));
 	//this->setVisible(false);
 }
@@ -202,7 +203,9 @@ void SaveDataSelector::onSpacePressed(int idx)
         // 完了メッセージ表示
         NotificationBand* notification {NotificationBand::create("セーブが完了しました")};
         notification->setBandColor(Color3B(64,0,0));
+        notification->show();
         this->addChild(notification);
+        this->notification = notification;
         this->comfirm_flag = true;
     }
     else
@@ -211,7 +214,7 @@ void SaveDataSelector::onSpacePressed(int idx)
         if(this->existsSaveData[idx-1])
         {
             // ロード
-            SoundManager::getInstance()->playSE("load.mp3");
+            SoundManager::getInstance()->playSE(Resource::SE::LOAD);
             PlayerDataManager::getInstance()->setGameStart(idx);
             
             // 保存されているBGMの再生

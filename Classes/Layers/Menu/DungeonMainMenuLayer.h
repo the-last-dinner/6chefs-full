@@ -50,6 +50,7 @@ private:
     MiniSelector* confirm {nullptr};
     Label* play_time {nullptr};
     Sprite* cover {nullptr};
+    Node* cursor { nullptr };
 	// インスタンスメソッド
 private:
 	DungeonMainMenuLayer();
@@ -67,6 +68,7 @@ private:
     void updateTime(float delta);
 public:
     int getMenuIndex();
+    void setDefaultMenuIndex(const int idx);
     virtual void show();
     virtual void hide();
 };

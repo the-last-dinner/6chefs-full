@@ -7,7 +7,7 @@
 //
 
 #include "Utils/JsonUtils.h"
-#define C_KEY 4545
+#include "Utils/StringUtils.h"
 
 // JSONファイルの読み込み
 rapidjson::Document LastSupper::JsonUtils::readJsonFile(const string& path)
@@ -68,11 +68,13 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     // 文字列を複合化
     string jsonStr;
     getline(ifs, jsonStr);
-    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-    {
-        jsonStr[i] ^= C_KEY;
-    }
+    LastSupper::StringUtils::encryptXor(jsonStr);
+//    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
+//    {
+//        jsonStr[i] ^= C_KEY;
+//    }
     doc.Parse(jsonStr.c_str());
+    ifs.close();
     
     //構文エラー判定
     bool error = doc.HasParseError();
@@ -101,11 +103,12 @@ void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::
     // 文字列を複合化
     string jsonStr;
     getline(ifs, jsonStr);
-    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-    {
-        jsonStr[i] ^= C_KEY;
-    }
-    
+    LastSupper::StringUtils::encryptXor(jsonStr);
+//    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
+//    {
+//        jsonStr[i] ^= C_KEY;
+//    }
+    ifs.close();
     
     // ファイル書き出し
     ofstream ofs;
