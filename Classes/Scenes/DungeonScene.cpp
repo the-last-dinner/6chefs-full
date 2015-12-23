@@ -54,6 +54,22 @@ bool DungeonScene::init(DungeonSceneData* data)
 {
     if(!BaseScene::init(data)) return false;
     
+    // イベントリスナ生成
+    EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
+    this->addChild(listener);
+    this->listener = listener;
+    
+    return true;
+}
+
+// 初期化
+bool DungeonScene::init(DungeonSceneData* data, EventListenerKeyboardLayer* listener)
+{
+    if(!BaseScene::init(data)) return false;
+    
+    this->addChild(listener);
+    this->listener = listener;
+    
     return true;
 }
 
@@ -142,14 +158,10 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // オブジェクトリストにコールバック設定
     mapLayer->getMapObjectList()->onContactWithEnemy = CC_CALLBACK_0(DungeonScene::onContactWithEnemy, this);
     
-    // イベントリスナ生成
-    EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
-    listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
-    listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
-    listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
-    
-    this->addChild(listener);
-    this->listener = listener;
+    // リスナにコールバック設定
+    this->listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
+    this->listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
+    this->listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
     
     // Trigger::INITを実行
     eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::INIT), [this, loadingLayer](){this->onInitEventFinished(loadingLayer);});

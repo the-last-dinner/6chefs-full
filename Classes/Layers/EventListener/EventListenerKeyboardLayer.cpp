@@ -46,6 +46,16 @@ bool EventListenerKeyboardLayer::init()
     return true;
 }
 
+// 初期化
+bool EventListenerKeyboardLayer::init(const vector<Key>& pressingCursorKeys, const bool isDashPressing)
+{
+    this->pressingKeys = pressingCursorKeys;
+    
+    this->keyStatus[Key::DASH] = isDashPressing;
+    
+    return this->init();
+}
+
 // リスナを有効/無効化
 void EventListenerKeyboardLayer::setEnabled(bool enabled)
 {
@@ -140,6 +150,7 @@ void EventListenerKeyboardLayer::releaseKeyAll()
 void EventListenerKeyboardLayer::intervalCheck(float duration)
 {
     if(this->paused) return;
+    
     if(this->intervalInputCheck) this->intervalInputCheck(this->pressingKeys);
 }
 
@@ -164,10 +175,8 @@ void EventListenerKeyboardLayer::setPaused(bool paused)
     }
     else
     {
-        if(!this->pressingKeys.empty())
-        {
-            this->scheduleIntervalCheck();
-        }
+        if(this->pressingKeys.empty()) return;
+        this->scheduleIntervalCheck();
     }
 }
 

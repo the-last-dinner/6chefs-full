@@ -225,7 +225,10 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     DungeonSceneData* data { DungeonSceneData::create(location) };
     data->setInitialEventId(initEventId);
     
-    DungeonScene* scene {DungeonScene::create(data)};
+    // 現在入力されている方向キーからリスナ生成
+    EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create(this->getPressedCursorKeys(), this->isPressed(Key::DASH))};
+    
+    DungeonScene* scene {DungeonScene::create(data, listener)};
     
     Director::getInstance()->replaceScene(scene);
 }
