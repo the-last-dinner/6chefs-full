@@ -421,6 +421,16 @@
 				}
 			]
 		}
+	],
+	"17":[
+		{
+			"type":"setLight",
+			"objID":"1"
+		},
+		{
+			"type":"setLight",
+			"objID":"2"
+		}
 	]
 }
 

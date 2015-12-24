@@ -30,12 +30,12 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1AAXmRgYLjFRT99DoNgjMszDpe8jUOwTGeaRq28UjIJRMApGwSgYimC0Ph8cAACPNhVV
+   eJxjYBgFIwFcZGJguMREPX0PgWKPyDAPl76PQLFPZJhHrr5RMApGwSgYBaMAGxitLwcHAADkjRVV
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="8" x="32" y="64" width="32" height="32"/>
-  <object id="9" x="256" y="64" width="32" height="32"/>
+  <object id="8" x="32" y="96" width="32" height="32"/>
+  <object id="9" x="256" y="96" width="32" height="32"/>
   <object id="10" x="32" y="464" width="32" height="48"/>
   <object id="11" x="256" y="464" width="32" height="48"/>
   <object id="13" x="32" y="512" width="32" height="32"/>
@@ -65,7 +65,7 @@
  </objectgroup>
  <layer name="CharaUe1" width="20" height="34">
   <data encoding="base64" compression="zlib">
-   eJxjYBgaIJCJgSGIiXr6EoFiSWSYh0tfIVCsiAzzyNU3CkbBKBgFo2AUDEUwWp+PAmIAAEiMCVU=
+   eJxjYBgF1ACBTAwMQUzU05cIFEsiwzxc+gqBYkVkmEeuvlEwCkbBKBgFowAbGK0vRwExAABeHwlV
   </data>
  </layer>
  <objectgroup name="event">
@@ -87,21 +87,9 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="20" x="32" y="0" width="64" height="32">
-   <properties>
-    <property name="EventID" value="4"/>
-    <property name="trigger" value="1"/>
-   </properties>
-  </object>
-  <object id="21" x="96" y="0" width="128" height="32">
+  <object id="21" x="32" y="16" width="256" height="16">
    <properties>
     <property name="EventID" value="5"/>
-    <property name="trigger" value="1"/>
-   </properties>
-  </object>
-  <object id="22" x="224" y="0" width="64" height="32">
-   <properties>
-    <property name="EventID" value="6"/>
     <property name="trigger" value="1"/>
    </properties>
   </object>
@@ -131,13 +119,13 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="30" x="256" y="64" width="32" height="32">
+  <object id="30" x="256" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="31" x="32" y="64" width="32" height="32">
+  <object id="31" x="32" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="2"/>

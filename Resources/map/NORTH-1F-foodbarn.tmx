@@ -226,7 +226,7 @@
   </object>
   <object id="66" x="240" y="64" width="32" height="16">
    <properties>
-    <property name="EventID" value="21"/>
+    <property name="EventID" value="17"/>
     <property name="objID" value="1"/>
     <property name="trigger" value="0"/>
    </properties>

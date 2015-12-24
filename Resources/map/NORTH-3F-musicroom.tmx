@@ -83,7 +83,7 @@
     <property name="direction" value="RIGHT"/>
     <property name="movePattern" value="1"/>
     <property name="objID" value="1017"/>
-    <property name="trigger" value="3"/>
+    <property name="trigger" value="2"/>
    </properties>
   </object>
   <object id="38" x="384" y="288" width="32" height="32">
@@ -193,7 +193,7 @@
   </object>
  </objectgroup>
  <objectgroup name="item">
-  <object id="46" x="32" y="96" width="32" height="32">
+  <object id="46" x="64" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="10"/>
     <property name="objID" value="1921"/>

@@ -23,18 +23,6 @@
       "y": 4
     }
   ],
-  "4": [
-    {
-      "type":"playBGM",
-      "file":"NORTH.mp3"
-    },
-    {
-      "type": "changeMap",
-      "mapID": "10",
-      "x": 61,
-      "y": 23
-    }
-  ],
   "5": [
     {
       "type":"playBGM",
@@ -44,18 +32,6 @@
       "type": "changeMap",
       "mapID": "10",
       "x": 63,
-      "y": 23
-    }
-  ],
-  "6": [
-    {
-      "type":"playBGM",
-      "file":"NORTH.mp3"
-    },
-    {
-      "type": "changeMap",
-      "mapID": "10",
-      "x": 65,
       "y": 23
     }
   ],
