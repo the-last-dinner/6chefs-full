@@ -8,6 +8,7 @@
 
 #include "Layers/Menu/CharacterMenuLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "UI/SlideNode.h"
 
 CharacterMenuLayer::CharacterMenuLayer(){FUNCLOG}
 
@@ -172,6 +173,13 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
             //img->setLocalZOrder(-1);
             leftBottom->addChild(img);
         }
+        else
+        {
+            Label* label = Label::createWithTTF("NO IMAGE", "fonts/cinecaption2.28.ttf", 24);
+            label->setPosition(panel.width/2, panel.height/2);
+            label->setName(labelName);
+            leftBottom->addChild(label);
+        }
         // 友好度をセット
         int level = PlayerDataManager::getInstance()->getLocalData()->getFriendship(this->characters[idx]);
         if (level < 0) return; // 友好度が存在しない時はリターン
@@ -224,21 +232,24 @@ void CharacterMenuLayer::onSpacePressed(int idx)
     if (this->isDiscription)
     {
         // キャラ説明を削除
-        this->removeChildByName("charaBack");
+        SoundManager::getInstance()->playSE(Resource::SE::BACK);
+        this->slideNode->slideOut([this](SlideNode* slideNode){this->removeChildByName("charaBack");});
         this->isDiscription = false;
         this->setCursorEnable(true);
     }
     else
     {
+        SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
         // 背景の作成
-        //SpriteUtils::Square square = SpriteUtils::Square(30,0,100,100);
-        //SpriteUtils::Margin margin = SpriteUtils::Margin(3.0,3.0,3.0,1.5);
-        //Sprite* back = SpriteUtils::getSquareSprite(square, margin);
-        //back->setColor(Color3B::BLACK);
         Sprite* back {Sprite::createWithSpriteFrameName("character_selector.png")};
-        back->cocos2d::Node::setPosition(back->getContentSize().width/2 + (WINDOW_WIDTH/100) * 30, back->getContentSize().height/2);
-        back->setName("charaBack");
-        this->addChild(back);
+        Point inPosition {Point(back->getContentSize().width/2 + (WINDOW_WIDTH/100) * 30, back->getContentSize().height/2)};
+        Point OutPosition {Point(back->getContentSize().width * 3/2 + (WINDOW_WIDTH/100) * 30, back->getContentSize().height/2)};
+        SlideNode* sNode {SlideNode::create(inPosition, OutPosition)};
+        sNode->setName("charaBack");
+        this->addChild(sNode);
+        sNode->addChild(back);
+        this->slideNode = sNode;
+        this->slideNode->slideIn();
         
         // 詳細のラベルを作成
         vector<Label*> discriptions;
