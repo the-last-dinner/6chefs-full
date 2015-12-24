@@ -25,56 +25,66 @@
 	],
 	"3":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["65","5"]
+				}
+			],
 			"action":[
 				{
-					"type":"stopBGM",
-					"file":"NORTH.mp3"
-				},
-				{
-					"type":"playBGM",
-					"file":"7haizuri.mp3"
-				},
-				{
-					"type":"charaMsg",
-					"text":["何か来る・・・？"],
-					"charaID":"0",
-					"imgID":"2"
-				},
-				{
-					"type":"charaMsg",
-					"text":["隠れなきゃ！！"],
-					"charaID":"0",
-					"imgID":"3",
-					"option":"reaction"
-				},
-				{
-					"type":"already"
-				},
-				{
-					"type":"countDown",
-					"second":5.0,
-					"false":[
+					"type":"sequence",
+					"action":[
 						{
-							"type":"spawn",
-							"action":[
+							"type":"stopBGM",
+							"file":"NORTH.mp3"
+						},
+						{
+							"type":"playBGM",
+							"file":"7haizuri.mp3"
+						},
+						{
+							"type":"charaMsg",
+							"text":["何か来る・・・？"],
+							"charaID":"0",
+							"imgID":"2"
+						},
+						{
+							"type":"charaMsg",
+							"text":["隠れなきゃ！！"],
+							"charaID":"0",
+							"imgID":"3",
+							"option":"reaction"
+						},
+						{
+							"type":"already"
+						},
+						{
+							"type":"countDown",
+							"second":5.0,
+							"false":[
 								{
-									"type":"changeDirection",
-									"direction":"DOWN",
-									"objID":"hero"
-								},
-								{
-									"type":"createEnemy",
-									"charaID":"8",
-									"enemyID":"142",
-									"x":14,
-									"y":33,
-									"speed":10.0,
-									"movePattern":"5"
-								},
-								{
-									"type":"already",
-									"event":["15","4"]
+									"type":"spawn",
+									"action":[
+										{
+											"type":"changeDirection",
+											"direction":"DOWN",
+											"objID":"hero"
+										},
+										{
+											"type":"createEnemy",
+											"charaID":"8",
+											"enemyID":"142",
+											"x":14,
+											"y":33,
+											"speed":10.0,
+											"movePattern":"5"
+										},
+										{
+											"type":"already",
+											"event":["15","4"]
+										}
+									]
 								}
 							]
 						}
