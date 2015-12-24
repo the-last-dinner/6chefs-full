@@ -50,16 +50,41 @@
 			],
 			"action":[
 				{
-					"type":"displayImg",
-					"file":"eggList.png"
-				},
-				{
-					"type":"already",
-					"event":["34","8"]
-				},
-				{
-					"type":"changeFlg",
-					"flg":1
+					"type":"sequence",
+					"action":[
+						{
+							"type":"displayImg",
+							"file":"eggList.png"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["あん？これは・・・\nお品書きか・・・？"],
+									"charaID":"5",
+									"imgID":"1"
+								},
+								{
+									"text":["おい佐々木、作ってみろよ。"],
+									"charaID":"5",
+									"imgID":"2"
+								},
+								{
+									"text":["え？"],
+									"charaID":"0",
+									"imgID":"2"
+								}
+							]
+						},
+						{
+							"type":"already",
+							"event":["34","8"]
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
+						}
+					]
 				}
 			]
 		},
