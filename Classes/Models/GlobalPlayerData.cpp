@@ -189,10 +189,10 @@ void GlobalPlayerData::setTrophyComplete()
     int trophy_count {0};
     for(int trophy_id : trophies)
     {
-        if (!this->hasTrophy(trophy_id)) trophy_count++;
+        if (this->hasTrophy(trophy_id)) trophy_count++;
     }
     int tro_size  = trophies.size();
-    if (trophy_count == tro_size - 1)
+    if (trophy_count >= tro_size - 1)
     {
         this->setTrophy(tro_size);
     }
