@@ -110,7 +110,6 @@ void PlayerDataManager::setGameClear(const int end_id)
     // クリアデータの更新
     this->globalData->setBestSaveCount(this->localData->getSaveCount());
     this->globalData->setBestClearTime(this->timer->getTimeInt());
-    this->globalData->setTrophyComplete();
     this->globalData->setClearCount(this->localData->getToken());
     
     // グローバルデータをセーブ

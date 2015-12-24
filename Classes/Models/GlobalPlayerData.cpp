@@ -149,9 +149,16 @@ void GlobalPlayerData::setTrophy(const int trophy_id)
         {
             this->globalData[TROPHY].AddMember(tid, rapidjson::Value(true), this->globalData.GetAllocator());
         }
+        else
+        {
+            this->globalData[TROPHY][tid].SetBool(true);
+        }
         
         // トロフィーゲット通知
         NotificationManager::getInstance()->notifyTrophy(trophy_id);
+        
+        // トロコンチェック
+        this->setTrophyComplete();
         
         // グローバルデータをセーブ　　　
         this->saveGlobalData();
@@ -184,9 +191,10 @@ void GlobalPlayerData::setTrophyComplete()
     {
         if (!this->hasTrophy(trophy_id)) trophy_count++;
     }
-    if (trophy_count == trophies.size())
+    int tro_size  = trophies.size();
+    if (trophy_count == tro_size - 1)
     {
-        this->setTrophy(trophy_count);
+        this->setTrophy(tro_size);
     }
 }
 
