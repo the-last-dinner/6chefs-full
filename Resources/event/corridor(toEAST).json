@@ -7,18 +7,6 @@
 			"y":22
 		}
 	],
-	"2":[
-		{
-			"type":"playBGM",
-			"file":"EAST.mp3"
-		},
-		{
-			"type":"changeMap",
-			"mapID":"25",
-			"x":2,
-			"y":7	
-		}
-	],
 	"3":[
 		{
 			"type":"playBGM",
@@ -29,30 +17,6 @@
 			"mapID":"25",
 			"x":2,
 			"y":9	
-		}
-	],
-	"4":[
-		{
-			"type":"playBGM",
-			"file":"EAST.mp3"
-		},
-		{
-			"type":"changeMap",
-			"mapID":"25",
-			"x":2,
-			"y":11
-		}
-	],
-	"5":[
-		{
-			"type":"playBGM",
-			"file":"EAST.mp3"
-		},
-		{
-			"type":"changeMap",
-			"mapID":"25",
-			"x":2,
-			"y":13	
 		}
 	],
 	"6":[
