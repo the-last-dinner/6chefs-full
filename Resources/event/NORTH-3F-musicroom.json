@@ -68,21 +68,6 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"reaction",
-					"objID":"hero"
-				},
-				{
-					"type":"charaWalkTo",
-					"objID":"hero",
-					"x":14,
-					"y":11
-				},
-				{
-					"type":"changeDirection",
-					"objID":"hero",
-					"direction":"LEFT"
-				},
-				{
 					"type":"charaMsg",
 					"talk":[
 						{
@@ -334,6 +319,9 @@
 		{
 			"type":"if",
 			"condition":[
+				{
+					"Nevent":["23","9"]
+				},
 				{
 					"event":["23","10"]
 				}
