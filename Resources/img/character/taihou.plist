@@ -172,20 +172,6 @@
 				<string>{32,33}</string>
 			</dict>
 
-			<key>taihou_s_0.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,0},{543,1190}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{178,7},{543,1190}}</string>
-				<key>sourceSize</key>
-				<string>{800,1200}</string>
-			</dict>
-
 			<key>taihou_s_1.png</key>
 			<dict>
 				<key>frame</key>

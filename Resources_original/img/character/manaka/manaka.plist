@@ -172,6 +172,20 @@
 				<string>{32,33}</string>
 			</dict>
 
+			<key>manaka_s_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{348,0},{347,1192}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{205,8},{347,1192}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
 			<key>manaka_s_1.png</key>
 			<dict>
 				<key>frame</key>
