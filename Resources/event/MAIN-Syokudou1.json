@@ -1455,7 +1455,7 @@
 					"type":"charaMsg",
 					"text":["部屋の出口・・・"],
 					"charaID":"0",
-					"imgID":"1"
+					"imgID":"2"
 				}
 			]
 		},
@@ -1475,7 +1475,7 @@
 							"type":"charaMsg",
 							"text":["部屋の出口・・・この水を使えば！"],
 							"charaID":"0",
-							"imgID":"1"
+							"imgID":"2"
 						},
 						{
 							"type":"questionMsg",

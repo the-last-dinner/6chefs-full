@@ -34,6 +34,24 @@
       "type":"if",
       "condition":[
         {
+          "event":["40","10"]
+        }
+      ],
+      "action":[
+        {
+          "type":"releaseChase",
+          "objID":"10100"
+        },
+        {
+          "type":"removeChara",
+          "objID":"10100"
+        }
+      ]
+    },
+    {
+      "type":"if",
+      "condition":[
+        {
           "Nevent":["3","30"]
         },
         {
@@ -53,45 +71,11 @@
       "type":"if",
       "condition":[
         {
-          "event":["40","10"]
-        }
-      ],
-      "action":[
-        {
-          "type":"releaseChase",
-          "objID":"10100"
-        },
-        {
-          "type":"releaseChase",
-          "objID":"10100"
-        }
-      ]
-    },
-    {
-      "type":"if",
-      "condition":[
-        {
           "event":["3","30"],
           "Nevent":["3","21"]
         }
       ],
       "action":[
-        {
-          "type":"releaseChase",
-          "objID":"1033"
-        },
-        {
-          "type":"releaseChase",
-          "objID":"1034"
-        },
-        {
-          "type":"removeChara",
-          "objID":"1033"
-        },
-        {
-          "type":"removeChara",
-          "objID":"1034"
-        },
         {
           "type":"sequence",
           "action":[
@@ -101,6 +85,22 @@
             },
             {
              "type":"fadeout"
+            },
+            {
+              "type":"releaseChase",
+              "objID":"1033"
+            },
+            {
+              "type":"releaseChase",
+              "objID":"1034"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1033"
+            },
+            {
+              "type":"removeChara",
+              "objID":"1034"
             },
             {
               "type":"charaMsg",
