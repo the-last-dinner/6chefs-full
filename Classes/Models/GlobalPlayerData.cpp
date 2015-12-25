@@ -26,7 +26,7 @@ const char* GlobalPlayerData::BGM_VOLUME {"bgm_volume"};
 const char* GlobalPlayerData::SE_VOLUME {"se_volume"};
 
 const int GlobalPlayerData::CHIKEN_SAVE_COUNT {50};
-const int GlobalPlayerData::FAST_CLEAR_TIME {1265};
+const int GlobalPlayerData::FAST_CLEAR_TIME {1800};
 
 #pragma mark GlobalDataFile
 
