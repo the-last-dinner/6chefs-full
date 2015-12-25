@@ -109,12 +109,12 @@
   <object id="44" x="80" y="64" width="64" height="32"/>
   <object id="45" x="336" y="48" width="32" height="16"/>
   <object id="46" x="304" y="0" width="32" height="272"/>
-  <object id="50" x="0" y="384" width="288" height="32"/>
+  <object id="50" x="0" y="384" width="272" height="32"/>
   <object id="51" x="272" y="384" width="208" height="32"/>
   <object id="52" x="464" y="368" width="16" height="16"/>
   <object id="56" x="368" y="160" width="64" height="96"/>
   <object id="59" x="144" y="48" width="32" height="32"/>
-  <object id="62" x="400" y="96" width="32" height="32"/>
+  <object id="62" x="400" y="96" width="32" height="48"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
   <properties>

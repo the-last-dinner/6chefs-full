@@ -167,7 +167,7 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["酢が入っている。"]
+					"text":["酢が入っている"]
 				}
 			]
 		},
@@ -185,7 +185,7 @@
 					"action":[
 						{
 							"type":"systemMsg",
-							"text":["酢が入っている。"]
+							"text":["酢が入っている"]
 						},
 						{
 							"type":"questionMsg",

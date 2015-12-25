@@ -68,32 +68,32 @@
 							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["40","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"releaseChase",
-					"objID":"1021"
 				},
 				{
-					"type":"removeChara",
-					"objID":"1021"
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["40","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"releaseChase",
+							"objID":"1021"
+						},
+						{
+							"type":"removeChara",
+							"objID":"1021"
+						}
+					]
+				},
+				{
+					"type":"changeMap",
+					"mapID":"40",
+					"x":12,
+					"y":21
 				}
 			]
-		},
-		{
-			"type":"changeMap",
-			"mapID":"40",
-			"x":12,
-			"y":21
 		}
 	],
 	"5":[
