@@ -7,13 +7,13 @@
 			<key>swim_yuki_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1596},{20,18}}</string>
+				<string>{{0,1244},{25,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,4},{20,18}}</string>
+				<string>{{3,0},{25,26}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -21,13 +21,13 @@
 			<key>swim_yuki_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1596},{20,18}}</string>
+				<string>{{0,1244},{25,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,4},{20,18}}</string>
+				<string>{{3,0},{25,26}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -35,13 +35,13 @@
 			<key>swim_yuki_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1596},{20,18}}</string>
+				<string>{{0,1169},{25,24}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,4},{20,18}}</string>
+				<string>{{3,2},{25,24}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -49,13 +49,13 @@
 			<key>swim_yuki_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1231},{25,22}}</string>
+				<string>{{0,1194},{25,25}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,1},{25,22}}</string>
+				<string>{{3,1},{25,25}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -63,13 +63,13 @@
 			<key>swim_yuki_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1231},{25,22}}</string>
+				<string>{{0,1194},{25,25}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,1},{25,22}}</string>
+				<string>{{3,1},{25,25}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -77,13 +77,13 @@
 			<key>swim_yuki_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1231},{25,22}}</string>
+				<string>{{0,1220},{25,23}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,1},{25,22}}</string>
+				<string>{{3,3},{25,23}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -91,13 +91,13 @@
 			<key>swim_yuki_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1346},{23,21}}</string>
+				<string>{{0,1347},{25,25}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,1},{23,21}}</string>
+				<string>{{3,1},{25,25}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -105,13 +105,13 @@
 			<key>swim_yuki_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1346},{23,21}}</string>
+				<string>{{0,1347},{25,25}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,1},{23,21}}</string>
+				<string>{{3,1},{25,25}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -119,13 +119,13 @@
 			<key>swim_yuki_2_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1346},{23,21}}</string>
+				<string>{{0,1271},{25,23}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,1},{23,21}}</string>
+				<string>{{3,3},{25,23}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -133,13 +133,13 @@
 			<key>swim_yuki_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1460},{23,20}}</string>
+				<string>{{0,1295},{25,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,2},{23,20}}</string>
+				<string>{{3,0},{25,26}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -147,13 +147,13 @@
 			<key>swim_yuki_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1460},{23,20}}</string>
+				<string>{{0,1295},{25,26}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,2},{23,20}}</string>
+				<string>{{3,0},{25,26}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -161,13 +161,13 @@
 			<key>swim_yuki_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1460},{23,20}}</string>
+				<string>{{0,1322},{25,24}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,2},{23,20}}</string>
+				<string>{{3,2},{25,24}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -175,13 +175,13 @@
 			<key>yuki_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1537},{21,28}}</string>
+				<string>{{0,1469},{21,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,4},{21,28}}</string>
+				<string>{{5,1},{21,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -189,13 +189,13 @@
 			<key>yuki_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1481},{21,28}}</string>
+				<string>{{0,1405},{22,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,4},{21,28}}</string>
+				<string>{{6,1},{22,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -203,13 +203,13 @@
 			<key>yuki_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1510},{21,26}}</string>
+				<string>{{0,1373},{22,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,6},{21,26}}</string>
+				<string>{{4,1},{22,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -217,13 +217,13 @@
 			<key>yuki_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1200},{25,30}}</string>
+				<string>{{0,1661},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,1},{25,30}}</string>
+				<string>{{5,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -231,13 +231,13 @@
 			<key>yuki_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1566},{21,29}}</string>
+				<string>{{0,1629},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{6,2},{21,29}}</string>
+				<string>{{5,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -245,13 +245,13 @@
 			<key>yuki_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1429},{23,30}}</string>
+				<string>{{0,1565},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,2},{23,30}}</string>
+				<string>{{5,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -259,13 +259,13 @@
 			<key>yuki_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1315},{23,30}}</string>
+				<string>{{0,1693},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,1},{23,30}}</string>
+				<string>{{6,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -273,13 +273,13 @@
 			<key>yuki_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1368},{23,30}}</string>
+				<string>{{0,1725},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,1},{23,30}}</string>
+				<string>{{6,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -287,13 +287,13 @@
 			<key>yuki_2_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1399},{23,29}}</string>
+				<string>{{0,1597},{20,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{4,3},{23,29}}</string>
+				<string>{{6,1},{20,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -301,13 +301,13 @@
 			<key>yuki_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1254},{23,30}}</string>
+				<string>{{0,1533},{21,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,2},{23,30}}</string>
+				<string>{{5,1},{21,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -315,13 +315,13 @@
 			<key>yuki_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1285},{23,29}}</string>
+				<string>{{0,1501},{21,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{5,3},{23,29}}</string>
+				<string>{{6,1},{21,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -329,13 +329,13 @@
 			<key>yuki_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1169},{25,30}}</string>
+				<string>{{0,1437},{21,31}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,2},{25,30}}</string>
+				<string>{{5,1},{21,31}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
