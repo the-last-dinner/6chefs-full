@@ -103,10 +103,6 @@
 					"type":"fadeout"
 				},
 				{
-					"type":"removeItem",
-					"itemID":"1514"	
-				},
-				{
 					"type":"removeChara",
 					"objID":"1040"
 				},
@@ -135,10 +131,24 @@
 					"file":"bakibaki.mp3"
 				},
 				{
-					"type":"charaMsg",
-					"text":["いてて・・・"],
-					"charaID":"0",
-					"imgID":"2"
+					"type":"if",
+					"condition":[
+						{
+							"item":"1514"
+						}
+					],
+					"action":[
+						{
+							"type":"removeItem",
+							"itemID":"1514"	
+						},
+						{
+							"type":"charaMsg",
+							"text":["くっ明かりが！！"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
 				},
 				{
 					"type":"changeMap",

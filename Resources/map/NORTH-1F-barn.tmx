@@ -69,7 +69,7 @@
   <object id="9" x="240" y="320" width="32" height="32"/>
   <object id="11" x="256" y="144" width="48" height="128"/>
   <object id="13" x="16" y="112" width="32" height="64"/>
-  <object id="14" x="80" y="96" width="96" height="48"/>
+  <object id="14" x="80" y="96" width="96" height="64"/>
   <object id="15" x="272" y="80" width="32" height="32"/>
   <object id="17" x="176" y="80" width="64" height="16"/>
   <object id="18" x="240" y="64" width="32" height="16"/>
@@ -196,7 +196,7 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="53" x="144" y="112" width="32" height="32">
+  <object id="53" x="144" y="112" width="32" height="48">
    <properties>
     <property name="EventID" value="14"/>
     <property name="trigger" value="2"/>
@@ -209,7 +209,7 @@
     <property name="objID" value="1927"/>
    </properties>
   </object>
-  <object id="52" x="144" y="112" width="32" height="32">
+  <object id="52" x="144" y="112" width="32" height="48">
    <properties>
     <property name="objID" value="1931"/>
    </properties>
