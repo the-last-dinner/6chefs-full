@@ -156,6 +156,11 @@
 					"option":"reaction"
 				},
 				{
+					"type":"changeDirection",
+					"objID":"hero",
+					"direction":"DOWN"
+				},
+				{
 					"type":"spawn",
 					"action":[
 						{
