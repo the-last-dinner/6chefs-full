@@ -36,13 +36,13 @@
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="23" x="64" y="0" width="64" height="240"/>
-  <object id="24" x="64" y="272" width="64" height="96"/>
-  <object id="25" x="128" y="304" width="176" height="64"/>
-  <object id="26" x="336" y="304" width="32" height="64"/>
+  <object id="23" x="32" y="0" width="96" height="240"/>
+  <object id="24" x="32" y="272" width="96" height="128"/>
+  <object id="25" x="128" y="304" width="176" height="96"/>
+  <object id="26" x="336" y="304" width="32" height="96"/>
   <object id="27" x="368" y="240" width="32" height="96"/>
-  <object id="28" x="400" y="192" width="64" height="144"/>
-  <object id="29" x="400" y="0" width="64" height="160"/>
+  <object id="28" x="400" y="192" width="96" height="144"/>
+  <object id="29" x="400" y="0" width="96" height="160"/>
   <object id="30" x="128" y="80" width="272" height="16"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>

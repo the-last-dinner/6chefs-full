@@ -518,7 +518,7 @@
 					"file":"favo_manaka.mp3"
 				},
 				{
-				    "type":"stopBGM",
+				    "type":"playBGM",
 				    "file":"Mozart-OboeConcerto-1.mp3"
 				},
 				{

@@ -143,11 +143,11 @@
   <object id="40" x="1872" y="0" width="16" height="128"/>
   <object id="42" x="1952" y="0" width="48" height="112"/>
   <object id="43" x="1696" y="320" width="64" height="64"/>
-  <object id="44" x="1744" y="384" width="240" height="16"/>
+  <object id="44" x="1744" y="384" width="272" height="16"/>
   <object id="45" x="1072" y="352" width="624" height="32"/>
   <object id="46" x="1984" y="384" width="16" height="16"/>
   <object id="47" x="2000" y="0" width="32" height="384"/>
-  <object id="49" x="16" y="384" width="240" height="16"/>
+  <object id="49" x="-16" y="384" width="336" height="16"/>
   <object id="50" x="256" y="320" width="64" height="64"/>
   <object id="51" x="320" y="352" width="656" height="32"/>
   <object id="52" x="0" y="0" width="16" height="384"/>

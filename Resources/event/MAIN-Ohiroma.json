@@ -484,9 +484,6 @@
   ],
   "19": [
     {
-      "type":"stopBGM"
-    },
-    {
       "type":"if",
       "condition":[
         {

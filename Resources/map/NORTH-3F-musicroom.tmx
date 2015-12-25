@@ -55,7 +55,7 @@
  </layer>
  <objectgroup name="collision">
   <object id="1" x="0" y="0" width="16" height="288"/>
-  <object id="2" x="16" y="288" width="368" height="32"/>
+  <object id="2" x="0" y="288" width="384" height="32"/>
   <object id="3" x="416" y="288" width="64" height="32"/>
   <object id="4" x="464" y="0" width="16" height="288"/>
   <object id="5" x="48" y="272" width="128" height="16"/>
@@ -149,13 +149,13 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="36" x="16" y="288" width="32" height="32">
+  <object id="36" x="0" y="288" width="32" height="32">
    <properties>
     <property name="EventID" value="8"/>
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="48" x="48" y="288" width="32" height="32">
+  <object id="48" x="32" y="288" width="32" height="32">
    <properties>
     <property name="EventID" value="11"/>
     <property name="trigger" value="0"/>

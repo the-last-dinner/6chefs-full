@@ -179,7 +179,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="92" x="0" y="1248" width="32" height="32">
+  <object id="92" x="0" y="1248" width="32" height="48">
    <properties>
     <property name="EventID" value="5"/>
     <property name="trigger" value="1"/>

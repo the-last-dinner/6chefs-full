@@ -31,8 +31,8 @@
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="1" x="256" y="0" width="32" height="160"/>
-  <object id="2" x="256" y="192" width="32" height="128"/>
+  <object id="1" x="256" y="0" width="64" height="160"/>
+  <object id="2" x="256" y="192" width="64" height="128"/>
   <object id="3" x="16" y="288" width="240" height="32"/>
   <object id="4" x="0" y="0" width="32" height="288"/>
   <object id="12" x="224" y="64" width="32" height="48"/>

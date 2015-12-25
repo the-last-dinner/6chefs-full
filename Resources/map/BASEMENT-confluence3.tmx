@@ -53,14 +53,12 @@
  </layer>
  <objectgroup name="collision">
   <object id="1" x="64" y="0" width="32" height="96"/>
-  <object id="2" x="32" y="0" width="32" height="160"/>
-  <object id="3" x="32" y="192" width="32" height="96"/>
+  <object id="2" x="0" y="0" width="64" height="160"/>
+  <object id="3" x="0" y="192" width="64" height="384"/>
   <object id="8" x="320" y="0" width="32" height="352"/>
   <object id="9" x="320" y="352" width="32" height="192"/>
   <object id="10" x="208" y="512" width="112" height="64"/>
   <object id="11" x="64" y="512" width="112" height="64"/>
-  <object id="12" x="32" y="288" width="32" height="224"/>
-  <object id="13" x="32" y="512" width="32" height="64"/>
   <object id="14" x="320" y="544" width="32" height="32"/>
   <object id="15" x="96" y="0" width="96" height="64"/>
   <object id="16" x="224" y="0" width="96" height="64"/>

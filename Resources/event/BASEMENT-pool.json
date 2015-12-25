@@ -230,12 +230,8 @@
 						{
 							"type":"charaWarp",
 							"objID":"hero",
-							"x":18,
-							"y":25
-						},
-						{
-							"type":"changeDirection",
-							"objID":"hero",
+							"x":16,
+							"y":25,
 							"direction":"LEFT"
 						},
 						{
@@ -372,17 +368,13 @@
 						{
 							"type":"charaWarp",
 							"objID":"hero",
-							"x":18,
-							"y":25
+							"x":16,
+							"y":25,
+							"direction":"LEFT"
 						},
 						{
 							"type":"createChara",
 							"objID":"10107"
-						},
-						{
-							"type":"changeDirection",
-							"objID":"hero",
-							"direction":"LEFT"
 						},
 						{
 							"type":"charaMsg",
