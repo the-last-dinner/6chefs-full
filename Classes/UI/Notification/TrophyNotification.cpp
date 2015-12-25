@@ -42,7 +42,6 @@ bool TrophyNotification::init(const string& message)
     trophy->setPosition(-bg->getContentSize().width / 2 + trophy->getContentSize().width * trophyScale, 0);
     
     this->setDefaultPosition(Point(WINDOW_WIDTH - bg->getContentSize().width / 2, WINDOW_HEIGHT - bg->getContentSize().height / 2));
-    this->setGlobalZOrder(Priority::TROPHY_NOTIFICATION);
     
     return true;
 }
