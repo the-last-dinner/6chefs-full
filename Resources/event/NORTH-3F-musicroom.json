@@ -74,13 +74,13 @@
 				{
 					"type":"charaWalkTo",
 					"objID":"hero",
-					"x":14,
-					"y":11
+					"x":12,
+					"y":13
 				},
 				{
 					"type":"changeDirection",
 					"objID":"hero",
-					"direction":"LEFT"
+					"direction":"UP"
 				},
 				{
 					"type":"charaMsg",
