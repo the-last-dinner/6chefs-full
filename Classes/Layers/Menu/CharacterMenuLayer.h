@@ -11,18 +11,20 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
+class SlideNode;
+
 class CharacterMenuLayer : public MenuLayer
 {
     // クラスメソッド
 public:
     CREATE_FUNC(CharacterMenuLayer)
-    virtual bool init();
+    virtual bool init() override;
   
     // インスタンスメソッド
 private:
-    virtual void onIndexChanged(int newIdx, bool sound);
-    virtual void onSpacePressed(int idx);
-    virtual void onMenuKeyPressed();
+    virtual void onIndexChanged(int newIdx, bool sound) override;
+    virtual void onSpacePressed(int idx) override;
+    virtual void onMenuKeyPressed() override;
     void changeCharaImage(const int idx);
 protected:
     CharacterMenuLayer();
@@ -36,6 +38,7 @@ private:
     vector<int> characters {};
     int selected_character {0};
     bool isDiscription {false};
+    SlideNode* slideNode {nullptr};
 public:
     function<void()> onCharacterMenuCanceled { nullptr };
 };

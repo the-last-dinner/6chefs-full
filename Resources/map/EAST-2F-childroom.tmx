@@ -84,9 +84,9 @@
  </layer>
  <objectgroup name="collision">
   <object id="1" x="0" y="0" width="16" height="352"/>
-  <object id="2" x="16" y="336" width="64" height="112"/>
+  <object id="2" x="0" y="336" width="80" height="128"/>
   <object id="3" x="80" y="432" width="304" height="32"/>
-  <object id="4" x="368" y="336" width="80" height="96"/>
+  <object id="4" x="368" y="336" width="112" height="96"/>
   <object id="5" x="432" y="0" width="48" height="336"/>
   <object id="6" x="400" y="208" width="32" height="16"/>
   <object id="7" x="400" y="192" width="32" height="16"/>

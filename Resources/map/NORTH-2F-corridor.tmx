@@ -39,7 +39,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0zEKg0AQhlGrgMVaCt7/TkIuELBKJ6RL7RQ7WyhuyHvdD8s2HzMMR1up71fY3C9r1NJM99+j+386o/uz1Lfu/Ynd12S3/OHe+3fGvb/Dm0/Yu+7dyRq1NBun+n6Ezf2yRi3Nlqm+Z927kzXSDAAAAAAAAACu8QVrTiPb
+   eJzt0TEKgCAAQNGmoEHHoPtfL+gCQc05qEOh4Xvbn/80PR0h33vStFd6VPPM9//xfUy+j8n3Mb3x/Qr5Pn3vTulRzbMl5ntOmvZKj2qebTHfq+/dKT3yDAAAAAAAAAC+cQPe4CT9
   </data>
  </layer>
  <layer name="doorC4" width="126" height="24">
@@ -151,13 +151,13 @@
   <object id="41" x="1936" y="0" width="16" height="128"/>
   <object id="42" x="1952" y="0" width="48" height="112"/>
   <object id="43" x="1696" y="320" width="64" height="64"/>
-  <object id="44" x="1744" y="384" width="240" height="16"/>
-  <object id="45" x="1072" y="352" width="624" height="32"/>
+  <object id="44" x="1744" y="384" width="272" height="32"/>
+  <object id="45" x="1072" y="352" width="624" height="64"/>
   <object id="46" x="1984" y="384" width="16" height="16"/>
   <object id="47" x="2000" y="0" width="32" height="384"/>
-  <object id="49" x="16" y="384" width="240" height="16"/>
+  <object id="49" x="0" y="384" width="256" height="16"/>
   <object id="50" x="256" y="320" width="64" height="64"/>
-  <object id="51" x="320" y="352" width="656" height="32"/>
+  <object id="51" x="320" y="352" width="656" height="64"/>
   <object id="52" x="0" y="0" width="16" height="384"/>
   <object id="54" x="16" y="0" width="64" height="112"/>
   <object id="55" x="64" y="112" width="16" height="16"/>

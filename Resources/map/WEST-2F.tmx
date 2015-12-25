@@ -30,7 +30,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl70OgjAUhbs1mjg7OfsIPoJvjBZ3f3f/FuApnEg8gy54NNAWcsH7JV8Id+lJ01COMco/8Bh9zuy4+xx1Ydkk552SbGzPE2vMCq6h83imcGPD89Y9D8lr7RBj5GX7y2ZbrLWDe3iAR4/3U4S8c5KNzaSwINnYTApLko3NFEVRvnHGPXiBV3iDd5jBvMVnQe5eRVGUoVCSbxybSWFC/h3ZTAqs+8x6lpd1UCn49nlX6b7uh2nEPt8kb0iX7zrvu89XO3oTY/T5oZ5fpV2eE/R8oA==
+   eJztlzkOwjAURN1ZIFFTUecIHIEbBxz6sPVsDXAKWqaAJgwosZ1gYJ70ZOU3HlmWnDFG/APX3vPM9rvPUReWLeW8Q5KNnXlujZnCGXQeawHnNjxv3fuQ3/cOMUZedr5sVmKvBVzCFVx7fG8i5M1INjZLhTHJxmapMCHZ2EwIIV6xxTu4g3t4gEd4gucW1wt5e4UQQnyGAfl3ZLNUYN1n9GV5WQdNBd8+7yrd172xiNjnm+QN6fJd5330+WpHb2KMPv+r91e0yw3DPXqU
   </data>
  </layer>
  <layer name="MonoUe" width="44" height="34">
@@ -44,7 +44,7 @@
  <objectgroup name="collision">
   <object id="1" x="0" y="80" width="272" height="48"/>
   <object id="2" x="16" y="208" width="160" height="16"/>
-  <object id="3" x="368" y="96" width="16" height="112"/>
+  <object id="3" x="368" y="96" width="16" height="128"/>
   <object id="4" x="16" y="192" width="160" height="16"/>
   <object id="6" x="272" y="80" width="16" height="48"/>
   <object id="7" x="288" y="80" width="112" height="16"/>
@@ -102,6 +102,11 @@
  <layer name="CharaUe2" width="44" height="34">
   <data encoding="base64" compression="zlib">
    eJztz7kNACAQA0Gn139fPB1xNRBAMiOtHDsBAIB7o5LZrYe76/drAACA5ADR/Rlg
+  </data>
+ </layer>
+ <layer name="CharaUe3" width="44" height="34">
+  <data encoding="base64" compression="zlib">
+   eJzt1qENAAAIwDAs/99LwgsIFLRyFywCgE2VswYAABf4XwA+az4JBBk=
   </data>
  </layer>
  <objectgroup name="event">

@@ -57,7 +57,7 @@
  <objectgroup name="collision">
   <object id="16" x="0" y="128" width="160" height="32"/>
   <object id="17" x="128" y="96" width="32" height="32"/>
-  <object id="18" x="32" y="0" width="32" height="96"/>
+  <object id="18" x="0" y="0" width="64" height="96"/>
   <object id="19" x="64" y="64" width="96" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)">
@@ -70,7 +70,7 @@
    <property name="cc_vertexz" value="0"/>
   </properties>
  </objectgroup>
- <objectgroup name="event">
+ <objectgroup name="event" visible="0">
   <properties>
    <property name="EventID" value="1223"/>
   </properties>

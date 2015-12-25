@@ -27,7 +27,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztxrEJgFAQRMGLXv8INiDYgPAbEGxAsB8DOTNZNjLZiabqMVOvr7sm9NuKvmtBvw30XRv67UDftaPfLvRdJ/oRERF/uAHdohW+
+   eJztzbEJACAQBMGPrv8yBBsQzAQbEOzHQN5Mjk80uYk2W7Mtw45bRyXwZs9X/wreUQW8XQfvqAbeboJ31ABvERGRHxaioxaK
   </data>
  </layer>
  <objectgroup name="collision">

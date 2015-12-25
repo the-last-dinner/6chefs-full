@@ -50,9 +50,9 @@
   <object id="2" x="416" y="128" width="32" height="32"/>
   <object id="3" x="96" y="128" width="32" height="16"/>
   <object id="4" x="16" y="0" width="16" height="448"/>
-  <object id="5" x="32" y="448" width="192" height="96"/>
+  <object id="5" x="16" y="448" width="208" height="128"/>
   <object id="7" x="256" y="448" width="208" height="32"/>
-  <object id="8" x="256" y="512" width="32" height="32"/>
+  <object id="8" x="256" y="512" width="32" height="64"/>
   <object id="9" x="448" y="16" width="16" height="432"/>
   <object id="10" x="320" y="304" width="96" height="64"/>
   <object id="11" x="32" y="240" width="64" height="112"/>
@@ -158,7 +158,7 @@
     <property name="trigger" value="2"/>
    </properties>
   </object>
-  <object id="32" x="0" y="448" width="32" height="32">
+  <object id="32" x="432" y="448" width="32" height="32">
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="0"/>
