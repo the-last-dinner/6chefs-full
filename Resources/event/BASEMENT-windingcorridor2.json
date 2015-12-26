@@ -99,7 +99,7 @@
 				{
 					"type":"createEnemy",
 					"enemyID":"1427",
-					"charaID":"8",
+					"charaID":"13",
 					"x":4,
 					"y":20,
 					"movePattern":"4",
