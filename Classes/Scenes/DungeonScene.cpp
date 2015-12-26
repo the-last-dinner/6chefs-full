@@ -200,7 +200,7 @@ void DungeonScene::onPassedEventFinished()
 // メニューキー押したとき
 void DungeonScene::onMenuKeyPressed()
 {
-    // イベント中なら無視ｒ
+    // イベント中なら無視
     if(this->eventTask->isEventRunning() || this->eventTask->existsEvent()) return;
     
     // 敵が存在すれば無視
@@ -267,6 +267,9 @@ void DungeonScene::onAllEnemyRemoved()
 {
     // スタミナバーを隠す
     this->staminaBar->slideOut();
+    
+    // 主人公疲労のBGMを消す
+    if(SoundManager::getInstance()->isPlaying(Resource::BGM::TIRED)) SoundManager::getInstance()->stopBGM(Resource::BGM::TIRED);
 }
 
 // ダンジョンシーンから他のシーンへ移動する時

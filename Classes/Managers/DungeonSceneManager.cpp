@@ -212,6 +212,9 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     this->summonDatas.clear();
     this->summonDatas = summonDatas;
     
+    // 敵データが空になっていたら
+    if(summonDatas.empty()) this->getScene()->onAllEnemyRemoved();
+    
     // 主人公一行の位置を登録
     vector<CharacterData> members { this->getParty()->getMembersData() };
     int memberCount = members.size();
