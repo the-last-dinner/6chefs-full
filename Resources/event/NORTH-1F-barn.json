@@ -41,7 +41,7 @@
 									"type":"charaMsg",
 									"text":["うーん開かないな・・・"],
 									"charaID":"0",
-									"imgID":"1"
+									"imgID":"2"
 								}
 							],
 							"true":[
@@ -80,10 +80,10 @@
 							"pass":"1013",
 							"false":[
 								{
-									"type":"systemMsg",
+									"type":"charamMsg",
 									"text":["うーん開かないな・・・"],
-									"charaMsg":"0",
-									"imgID":"1"
+									"charaID":"0",
+									"imgID":"2"
 								}
 							],
 							"true":[

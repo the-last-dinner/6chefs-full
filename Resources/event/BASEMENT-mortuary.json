@@ -155,7 +155,7 @@
 			"action":[
 				{
 					"type":"wait",
-					"time":2.0
+					"time":3.0
 				},
 				{
 					"type":"fadein"	
