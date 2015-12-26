@@ -2024,6 +2024,11 @@
           ]
         },
         {
+          "type":"changeDirection",
+          "objID":"hero",
+          "direction":"UP"
+        },
+        {
           "type":"charaWalkTo",
           "x":43,
           "y":13,
