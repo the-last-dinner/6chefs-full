@@ -230,7 +230,7 @@
 									],
 									"false":[
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}

@@ -241,7 +241,7 @@
 											"type":"fadein"
 										},
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}
@@ -441,7 +441,7 @@
 											"type":"fadein"
 										},
 										{
-											"type":"gameOver"
+											"type":"gameover"
 										}
 									]
 								}
