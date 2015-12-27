@@ -204,6 +204,9 @@ void DungeonSceneManager::exitDungeon(Scene* scene)
 // マップ切り替え
 void DungeonSceneManager::changeMap(const Location& location, const int initEventId)
 {
+    // 使っていないテクスチャをアンキャッシュ
+    Director::getInstance()->getTextureCache()->removeUnusedTextures();
+    
     // 敵を止める
     this->getScene()->enemyTask->stop();
     
