@@ -39,7 +39,8 @@ public:
     void onSEFinished(int seId, const string& filename);
     void onBGMFinished(int bgmId, const string& filename);
     
-    bool isPlaying(const string& filePath);
+    bool isPlaying(const string& filePath) const;
+    bool isInitializing(const string& filePath) const;
     
     void preloadSound(const string& filePath, function<void(bool)> callback);
     
@@ -50,6 +51,7 @@ private:
     map<int, string> preloadMap {};
     map<int, string> seIdMap {};
     map<int, string> bgmIdMap {};
+    std::mutex mtx {};
 };
 
 #endif // __SOUND_MANAGER_H__

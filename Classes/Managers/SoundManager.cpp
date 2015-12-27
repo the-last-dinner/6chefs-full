@@ -55,7 +55,11 @@ void SoundManager::playSE(const string& fileName, float volume)
     int seId { AudioEngine::play2d(Resource::SE::BASE_PATH + fileName, false, volume * PlayerDataManager::getInstance()->getGlobalData()->getSeVolume()) };
     AudioEngine::setFinishCallback(seId, CC_CALLBACK_2(SoundManager::onSEFinished, this));
     
+    mtx.lock();
+    
     this->seIdMap.insert({seId, fileName});
+    
+    mtx.unlock();
 }
 
 // BGMを再生
@@ -65,7 +69,11 @@ void SoundManager::playBGM(const string& fileName, bool loop, float volume)
     int BGMId { AudioEngine::play2d(Resource::BGM::BASE_PATH + fileName, loop, volume * PlayerDataManager::getInstance()->getGlobalData()->getBgmVolume()) };
     AudioEngine::setFinishCallback(BGMId, CC_CALLBACK_2(SoundManager::onBGMFinished, this));
     
+    mtx.lock();
+    
     this->bgmIdMap.insert({BGMId, fileName});
+    
+    mtx.unlock();
 }
 
 // SE再生終了時
@@ -99,7 +107,7 @@ void SoundManager::stopBGMAll()
 }
 
 // 指定ファイルが再生中かどうか
-bool SoundManager::isPlaying(const string& filePath)
+bool SoundManager::isPlaying(const string& filePath) const
 {
     for(pair<int, string> idToFilename : this->bgmIdMap)
     {
@@ -120,6 +128,28 @@ bool SoundManager::isPlaying(const string& filePath)
     return false;
 }
 
+// 初期化中か
+bool SoundManager::isInitializing(const string& filePath) const
+{
+    for(pair<int, string> idToFilename : this->bgmIdMap)
+    {
+        if(idToFilename.second != filePath) continue;
+        if(AudioEngine::AudioState::INITIALZING != AudioEngine::getState(idToFilename.first)) continue;
+        
+        return true;
+    }
+    
+    for(pair<int, string> idToFilename : this->seIdMap)
+    {
+        if(idToFilename.second != filePath) continue;
+        if(AudioEngine::AudioState::INITIALZING != AudioEngine::getState(idToFilename.first)) continue;
+        
+        return true;
+    }
+    
+    return false;
+}
+
 // 音声ファイルをプリロード
 void SoundManager::preloadSound(const string& filePath, function<void(bool)> callback)
 {
@@ -129,11 +159,13 @@ void SoundManager::preloadSound(const string& filePath, function<void(bool)> cal
 // 音声をアンロード
 void SoundManager::unloadAllSounds()
 {
+    mtx.lock();
+    
     for(pair<int, string> idToFilename : this->seIdMap)
     {
         if(this->isPlaying(idToFilename.second)) continue;
         
-        this->seIdMap.erase(idToFilename.first);
+        AudioEngine::stop(idToFilename.first);
         AudioEngine::uncache(Resource::SE::BASE_PATH + idToFilename.second);
     }
     
@@ -141,7 +173,9 @@ void SoundManager::unloadAllSounds()
     {
         if(this->isPlaying(idToFilename.second)) continue;
         
-        this->bgmIdMap.erase(idToFilename.first);
+        AudioEngine::stop(idToFilename.first);
         AudioEngine::uncache(Resource::BGM::BASE_PATH + idToFilename.second);
     }
+    
+    mtx.unlock();
 }
