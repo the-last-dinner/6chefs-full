@@ -22,7 +22,7 @@ EventTask::~EventTask()
 {
     FUNCLOG
     
-    // イベントキューが空でなかったら全て削除
+    // イベントキューが空でなかったら全て解放
     if(!this->eventQueue.empty())
     {
         for(int i {0}; i < this->eventQueue.size(); i++)
@@ -32,6 +32,10 @@ EventTask::~EventTask()
         }
     }
     
+    // 実行中のイベントを解放
+    CC_SAFE_RELEASE_NULL(this->runningEvent.second);
+    
+    // スクリプトを解放
     CC_SAFE_RELEASE_NULL(this->eventScript);
 }
 
