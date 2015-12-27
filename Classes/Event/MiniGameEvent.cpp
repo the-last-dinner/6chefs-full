@@ -67,6 +67,7 @@ void ButtonMashingEvent::run()
             {
                 this->event = this->sEvent;
                 this->sEvent = nullptr;
+                CC_SAFE_RELEASE_NULL(this->fEvent);
             }
             else
             {
@@ -80,6 +81,7 @@ void ButtonMashingEvent::run()
             {
                 this->event = this->fEvent;
                 this->fEvent = nullptr;
+                CC_SAFE_RELEASE_NULL(this->sEvent);
             }
             else
             {
@@ -205,6 +207,7 @@ void PasswordEvent::run()
             {
                 this->event = this->sEvent;
                 this->sEvent = nullptr;
+                CC_SAFE_RELEASE_NULL(this->fEvent);
             }
             else
             {
@@ -218,6 +221,7 @@ void PasswordEvent::run()
             {
                 this->event = this->fEvent;
                 this->fEvent = nullptr;
+                CC_SAFE_RELEASE_NULL(this->sEvent);
             }
             else
             {
