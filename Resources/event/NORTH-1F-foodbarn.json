@@ -299,7 +299,7 @@
 			"action":[
 				{
 					"type":"systemMsg",
-					"text":["茹だっている・・・"]
+					"text":["お湯が入っている・・・"]
 				},
 				{
 					"type":"if",
@@ -326,8 +326,7 @@
 					]
 				}
 			]
-		}
-		
+		}	
 	],
 	"15":[
 		{
@@ -363,57 +362,66 @@
 	],
 	"16":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"equip":["154"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"systemMsg",
+					"text":["包丁がある"]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"equip":["154"]
+						}
+					],
 					"action":[
 						{
-							"type":"questionMsg",
-							"text":["大根の葉を切り落としますか？"],
-							"choices":[
+							"type":"sequence",
+							"action":[
 								{
-									"choice":"はい",
-									"action":[
+									"type":"questionMsg",
+									"text":["大根の葉を切り落としますか？"],
+									"choices":[
 										{
-											"type":"sequence",
+											"choice":"はい",
 											"action":[
 												{
-													"type":"fadeout"
-												},
-												{
-													"type":"removeItem",
-													"itemID":"154"
-												},
-												{
-													"type":"playSE",
-													"file":"busu.mp3"
-												},
-												{
-													"type":"systemMsg",
-													"text":["大根の葉を切り落とした"]
-												},
-												{
-													"type":"getItem",
-													"itemID":"1534"
-												},
-												{
-													"type":"fadein"
-												},
-												{
-													"type":"already"
+													"type":"sequence",
+													"action":[
+														{
+															"type":"fadeout"
+														},
+														{
+															"type":"removeItem",
+															"itemID":"154"
+														},
+														{
+															"type":"playSE",
+															"file":"busu.mp3"
+														},
+														{
+															"type":"systemMsg",
+															"text":["大根の葉を切り落とした"]
+														},
+														{
+															"type":"getItem",
+															"itemID":"1534"
+														},
+														{
+															"type":"fadein"
+														},
+														{
+															"type":"already"
+														}
+													]
 												}
 											]
+										},
+										{
+											"choice":"いいえ"
 										}
 									]
-								},
-								{
-									"choice":"いいえ"
 								}
 							]
 						}

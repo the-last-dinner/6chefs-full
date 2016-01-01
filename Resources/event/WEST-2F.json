@@ -7,8 +7,18 @@
 	],
 	"1":[
 		{
-			"type":"stopBGM",
-			"file":"Mozart-OboeConcerto-1.mp3"
+			"type":"if",
+			"condition":[
+				{
+					"event":["7","26"]
+				}
+			],
+			"action":[
+				{
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
+				}
+			]
 		},
 		{
 			"type":"changeMap",
@@ -19,8 +29,18 @@
 	],
 	"2":[
 		{
-			"type":"stopBGM",
-			"file":"Mozart-OboeConcerto-1.mp3"
+			"type":"if",
+			"condition":[
+				{
+					"event":["7","26"]
+				}
+			],
+			"action":[
+				{
+					"type":"stopBGM",
+					"file":"Mozart-OboeConcerto-1.mp3"
+				}
+			]
 		},
 		{
 			"type":"changeMap",
@@ -77,7 +97,7 @@
 		{
 			"type":"charaMsg",
 			"text":["あまりいじると荒間田さんに怒られるかな・・・"],
-			"charaID":"1",
+			"charaID":"0",
 			"imgID":"1"
 		}
 	],
