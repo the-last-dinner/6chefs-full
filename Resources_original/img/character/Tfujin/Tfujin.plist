@@ -91,13 +91,13 @@
 			<key>Tfujin_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{26,96},{25,31}}</string>
+				<string>{{52,33},{25,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{25,31}}</string>
+				<string>{{3,0},{25,32}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -105,13 +105,13 @@
 			<key>Tfujin_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{26,96},{25,31}}</string>
+				<string>{{52,33},{25,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{25,31}}</string>
+				<string>{{3,0},{25,32}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
@@ -119,13 +119,13 @@
 			<key>Tfujin_2_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{26,96},{25,31}}</string>
+				<string>{{52,33},{25,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{3,0},{25,31}}</string>
+				<string>{{3,0},{25,32}}</string>
 				<key>sourceSize</key>
 				<string>{32,32}</string>
 			</dict>
