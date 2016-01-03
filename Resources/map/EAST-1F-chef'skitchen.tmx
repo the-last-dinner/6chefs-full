@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="29">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="32">
  <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
   <image source="youkan.png" trans="050505" width="480" height="256"/>
   <tile id="227">
@@ -33,7 +33,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKANMGJiYDBmop55LkCzXKlo3igYWOBB5bgc7OZFUdm8nNG8MAoGAQAAo9QCnw==
+   eJxjYKANMGJiYDBmop55LkCzXKlo3igYWOBB5bgcbOb9Y2RgUAaaoQLEqkAcRaF5OUyYeBSMgoEGADwMBcg=
   </data>
  </layer>
  <layer name="door4" width="20" height="20">
@@ -102,6 +102,7 @@
   <object id="8" x="176" y="16" width="128" height="48"/>
   <object id="11" x="16" y="96" width="32" height="32"/>
   <object id="19" x="16" y="192" width="96" height="64"/>
+  <object id="30" x="224" y="160" width="80" height="32"/>
  </objectgroup>
  <objectgroup name="Ugokumono(object)"/>
  <objectgroup name="Chara(object)">
@@ -171,6 +172,18 @@
   <object id="28" x="48" y="208" width="32" height="48">
    <properties>
     <property name="EventID" value="4"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="29" x="224" y="160" width="64" height="16">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="31" x="32" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
     <property name="trigger" value="2"/>
    </properties>
   </object>
