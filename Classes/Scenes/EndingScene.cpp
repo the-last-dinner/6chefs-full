@@ -177,7 +177,7 @@ void EndingScene::createTrueEnding()
     // ロゴ
     Sprite* logo {Sprite::createWithSpriteFrameName("the_last_dinner_log.png")};
     logo->setPosition(x, -1 * logo->getContentSize().height / 2);
-    float scale_logo = 0.75;
+    float scale_logo = 0.5;
     logo->setScale(scale_logo);
     this->addChild(logo);
     logo->runAction(Sequence::createWithTwoActions(DelayTime::create(91.5), MoveTo::create(4.4, Vec2(logo->getPosition().x, WINDOW_HEIGHT/2 - pos))));

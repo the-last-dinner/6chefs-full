@@ -55,7 +55,7 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
     // ロゴ生成
     Sprite* logo {Sprite::createWithSpriteFrameName("the_last_dinner_log.png")};
     logo->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
-    logo->setScale(1.2f);
+    logo->setScale(0.8f);
     logo->setOpacity(0);
     logo->setZOrder(1000);
     this->addChild(logo);
