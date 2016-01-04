@@ -734,6 +734,11 @@
 							"file":"fuan_talk.mp3"
 						},
 						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"UP"
+						},
+						{
 							"type":"fadein"
 						},
 						{
@@ -1021,6 +1026,11 @@
 									"objID":"10102"
 								}
 							]
+						},
+						{
+							"type":"changeDirection",
+							"objID":"hero",
+							"direction":"UP"
 						},
 						{
 							"type":"fadein"

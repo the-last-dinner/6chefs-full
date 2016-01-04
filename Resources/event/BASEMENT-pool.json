@@ -90,8 +90,8 @@
 					"type":"createEnemy",
 					"enemyID":"1420",
 					"charaID":"8",
-					"x":10,
-					"y":7,
+					"x":14,
+					"y":5,
 					"movePattern":"4",
 					"pathID":"1",
 					"speed":5.0
