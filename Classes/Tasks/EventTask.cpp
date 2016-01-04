@@ -266,7 +266,7 @@ GameEvent* EventTask::createEventById(int eventId)
     
     CC_SAFE_RETAIN(event);
     
-    if(this->onRunEvent) this->onRunEvent();
+    if(event && this->onRunEvent) this->onRunEvent();
     
     return event;
 }

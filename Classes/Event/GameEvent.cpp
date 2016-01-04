@@ -81,6 +81,8 @@ bool EventSequence::init(rapidjson::Value& json)
     
     this->events = this->factory->createEventQueue(json);
     
+    if(this->events.empty()) return false;
+    
     return true;
 }
 
@@ -130,6 +132,8 @@ bool EventSpawn::init(rapidjson::Value& json)
     if(!GameEvent::init()) return false;
     
     this->events = this->factory->createEventVector(json);
+    
+    if(this->events.empty()) return false;
     
     return true;
 }

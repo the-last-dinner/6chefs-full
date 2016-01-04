@@ -38,7 +38,7 @@ int DungeonSceneData::getInitialEventId() const
 }
 
 // 場所を取得
-Location DungeonSceneData::getLocation() const
+Location DungeonSceneData::getInitialLocation() const
 {
     return this->location;
 }

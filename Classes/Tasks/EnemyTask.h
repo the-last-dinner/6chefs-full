@@ -35,12 +35,13 @@ private:
     bool init();
     bool needsSummonEnemy(const SummonData& data) const;
     void summonEnemy(SummonData& data);
+    float calcSummonDelayForData(const SummonData& data, const Location& enterLocation, const Location& exitLocation) const;
 public:
     void start(const int mapId);
     void stop();
     void removeEnemy(const int enemyId);
     void update(float delta);
-    vector<SummonData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& currentLocation);
+    vector<SummonData> createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& exitLocation, const Location& enterLocation) const;
     bool existsEnemy() const;
 };
 

@@ -75,7 +75,7 @@ public:
     
     // Director
     void exitDungeon(Scene* scene);
-    void changeMap(const Location& location, const int initEventId);
+    void changeMap(const Location& destLocation, const Location& currentLocation, const int initEventId);
     void pushCameraScene(DungeonCameraScene* scene);
     void popCameraScene();
     

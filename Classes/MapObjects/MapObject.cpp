@@ -103,6 +103,9 @@ void MapObject::removeLight(function<void()> callback)
     light->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create(callback), RemoveSelf::create(), nullptr));
 }
 
+// Locationを取得
+Location MapObject::getLocation() const {return this->location;}
+
 // オブジェクトIDを取得
 int MapObject::getObjectId() const {return this->objectId;}
 
