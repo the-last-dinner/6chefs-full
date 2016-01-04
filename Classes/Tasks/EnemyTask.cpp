@@ -44,6 +44,17 @@ void EnemyTask::summonEnemy(SummonData& data)
     DungeonSceneManager::getInstance()->addEnemy(Enemy::create(data.enemy_data));
 }
 
+// データとして存在している敵の出現遅延時間を取得
+float EnemyTask::calcSummonDelayForData(const SummonData& data, const Location& enterLocation, const Location& exitLocation) const
+{
+    Point enterPos { Point(enterLocation.x, enterLocation.y) };
+    Point exitPos { Point(exitLocation.x, exitLocation.y) };
+    
+    float distance { fabs(exitPos.x - enterPos.x) + fabs(exitPos.y - enterPos.y) };
+    
+    return distance / data.enemy_data.speed_ratio;
+}
+
 // 出現を開始
 void EnemyTask::start(const int mapId)
 {
@@ -122,7 +133,7 @@ void EnemyTask::update(float delta)
 }
 
 // 現在配置されている敵と、配置予定の敵から、次マップへの敵情報を生成する
-vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& exitLocation)
+vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const Location& destLocation, const Location& exitLocation, const Location& enterLocation) const
 {
     vector<SummonData> datas {};
     
@@ -201,7 +212,8 @@ vector<SummonData> EnemyTask::createDatas(const Vector<Enemy*>& enemies, const L
             if(data.history.getLatestRelation().from_location.map_id != destLocation.map_id)
             {
                 // 履歴を追加
-                data.addHistory(relation, 2.5f);
+                // 遅延時間を、入り口から出口までの距離から計算する
+                data.addHistory(relation, this->calcSummonDelayForData(data, enterLocation, exitLocation));
                 
                 datas.push_back(data);
                 
