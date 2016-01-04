@@ -97,10 +97,33 @@
 						{
 							"type":"createChara",
 							"objID":"1079"
+						}
+					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["58","7"]
+				},
+				{
+					"event":["58","7"],
+					"Nstatus":["3","0"]
+				}
+			],
+			"action":[
+				{
+					"type":"spawn",
+					"action":[
+						{
+							"type":"removeChara",
+							"objID":"1820"
 						},
 						{
-							"type":"createChara",
-							"objID":"1820"
+							"type":"removeChara",
+							"objID":"1"
 						}
 					]
 				}
