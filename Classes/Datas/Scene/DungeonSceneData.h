@@ -30,7 +30,7 @@ protected:
 public:
     void setInitialEventId(const int eventId);
     int getInitialEventId() const;
-    Location getLocation() const;
+    Location getInitialLocation() const;
 };
 
 #endif // __DUNGEON_SCENE_DATA_H__

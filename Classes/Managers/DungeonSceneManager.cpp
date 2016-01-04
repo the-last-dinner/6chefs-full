@@ -158,7 +158,7 @@ Sprite* DungeonSceneManager::getCover() const
 // ロケーションを取得
 Location DungeonSceneManager::getLocation() const
 {
-    return this->getScene()->getData()->getLocation();
+    return this->getScene()->getData()->getInitialLocation();
 }
 
 #pragma mark -

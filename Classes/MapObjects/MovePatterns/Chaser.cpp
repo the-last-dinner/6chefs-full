@@ -129,7 +129,7 @@ void Chaser::cutPath(deque<Direction>& path)
     if(path.size() < PATH_FINDING_THRESHOLD) return;
     
     // 必要分だけ残す
-    for(int i {0}; i < PATH_FINDING_THRESHOLD; i++)
+    for(int i {0}; i < path.size() - PATH_FINDING_THRESHOLD; i++)
     {
         path.pop_back();
     }
