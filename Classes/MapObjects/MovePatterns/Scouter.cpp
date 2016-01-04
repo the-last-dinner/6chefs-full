@@ -66,7 +66,7 @@ void Scouter::setPaused(bool paused)
 {
     MovePattern::setPaused(paused);
     
-    if(paused && Director::getInstance()->getScheduler()->isScheduled(CC_SCHEDULE_SELECTOR(Scouter::update), this)) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
+    if(paused) Director::getInstance()->getScheduler()->unscheduleUpdate(this);
     
     // サブアルゴリズムに対しても適用
     if(this->subPattern) this->subPattern->setPaused(paused);
@@ -101,7 +101,17 @@ void Scouter::move(const int pathObjId)
     
     function<void()> walkCallback { [this, destObj]{ this->move(destObj->getNextId()); } };
     
-    if(destObj->needsLookingAround()) walkCallback = [this, destObj, walkCallback]{ this->chara->lookAround(walkCallback, destObj->getLookDirection()); };
+    if(destObj->needsLookingAround()) walkCallback = [this, destObj, walkCallback]
+    {
+        if(this->subPattern)
+        {
+            walkCallback();
+            
+            return;
+        }
+        
+        this->chara->lookAround(walkCallback, destObj->getLookDirection());
+    };
     
     if(!this->chara->isMoving()) this->chara->walkByQueue(this->getPath(destObj), [walkCallback](bool _){ walkCallback(); }, destObj->getSpeedRatio(), false, CC_CALLBACK_0(Scouter::isPaused, this));
 }

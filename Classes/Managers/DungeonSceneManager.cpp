@@ -158,7 +158,7 @@ Sprite* DungeonSceneManager::getCover() const
 // ロケーションを取得
 Location DungeonSceneManager::getLocation() const
 {
-    return this->getScene()->getData()->getLocation();
+    return this->getScene()->getData()->getInitialLocation();
 }
 
 #pragma mark -
@@ -202,7 +202,7 @@ void DungeonSceneManager::exitDungeon(Scene* scene)
 }
 
 // マップ切り替え
-void DungeonSceneManager::changeMap(const Location& location, const int initEventId)
+void DungeonSceneManager::changeMap(const Location& destLocation, const Location& currentLocation, const int initEventId)
 {
     // 使っていないテクスチャをアンキャッシュ
     Director::getInstance()->getTextureCache()->removeUnusedTextures();
@@ -211,7 +211,7 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     this->getScene()->enemyTask->stop();
     
     // 敵情報を生成し直して格納
-    vector<SummonData> summonDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), location, PlayerDataManager::getInstance()->getLocalData()->getLocation()) };
+    vector<SummonData> summonDatas { this->getScene()->enemyTask->createDatas(this->getMapObjectList()->getEnemiesAll(), destLocation, currentLocation, this->getLocation()) };
     this->summonDatas.clear();
     this->summonDatas = summonDatas;
     
@@ -223,12 +223,12 @@ void DungeonSceneManager::changeMap(const Location& location, const int initEven
     int memberCount = members.size();
     for(int i=0; i < memberCount; i++)
     {
-        members[i].location = location;
+        members[i].location = destLocation;
     }
     PlayerDataManager::getInstance()->getLocalData()->setLocation(members);
     
     // 必要な情報を設定していく
-    DungeonSceneData* data { DungeonSceneData::create(location) };
+    DungeonSceneData* data { DungeonSceneData::create(destLocation) };
     data->setInitialEventId(initEventId);
     
     // 現在入力されている方向キーからリスナ生成

@@ -66,7 +66,7 @@ void DungeonCameraScene::onEnter()
 void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
 {
     // マップレイヤーを生成
-    TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getLocation())};
+    TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getInitialLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
     this->addChild(mapLayer);
     this->mapLayer = mapLayer;
@@ -95,7 +95,7 @@ void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
     }
     else
     {
-        cameraTask->setCenter(Point(this->getData()->getLocation().x, this->getData()->getLocation().y));
+        cameraTask->setCenter(Point(this->getData()->getInitialLocation().x, this->getData()->getInitialLocation().y));
     }
     
     // Trigger::INITを実行
