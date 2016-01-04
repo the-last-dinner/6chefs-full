@@ -91,7 +91,7 @@ bool TitleMainMenuLayer::init()
                     ));
     
     // copyright
-    Label* copyright {Label::createWithTTF("Copyright 2015 最後の晩餐 All rights reserved.", Resource::Font::MESSAGE, 15.f)};
+    Label* copyright {Label::createWithTTF("Copyright (C) 2014-2016 最後の晩餐 All rights reserved.", Resource::Font::MESSAGE, 15.f)};
     copyright->setPosition(Point(WINDOW_WIDTH - copyright->getContentSize().width * 0.52f, copyright->getContentSize().height));
     copyright->setOpacity(0);
     this->addChild(copyright);
