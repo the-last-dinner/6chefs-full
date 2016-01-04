@@ -2080,7 +2080,7 @@
       "type":"if",
       "condition":[
         {
-          "event":["7","1"],
+          "event":["7","26"],
           "Nevent":["4","20"]
         }
       ],
@@ -2176,7 +2176,7 @@
       "type":"if",
       "condition":[
         {
-          "Nevent":["7","1"]
+          "Nevent":["7","26"]
         }
       ],
       "action":[
