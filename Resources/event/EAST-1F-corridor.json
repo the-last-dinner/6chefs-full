@@ -97,6 +97,10 @@
 						{
 							"type":"createChara",
 							"objID":"1079"
+						},
+						{
+							"type":"createChara",
+							"objID":"1820"
 						}
 					]
 				}
