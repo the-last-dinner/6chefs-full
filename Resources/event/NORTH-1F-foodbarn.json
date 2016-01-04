@@ -285,6 +285,22 @@
 					"itemID":"1535"
 				},
 				{
+					"type":"if",
+					"condition":[
+						{
+							"item":["1534","1536"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["早くこの野菜を冷蔵庫に\nしまわなきゃ！"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
+				},
+				{
 					"type":"fadein"
 				},
 				{
@@ -352,6 +368,22 @@
 					"itemID":"1536"
 				},
 				{
+					"type":"if",
+					"condition":[
+						{
+							"item":["1534","1535"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["早くこの野菜を冷蔵庫に\nしまわなきゃ！"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
+				},
+				{
 					"type":"fadein"
 				},
 				{
@@ -407,6 +439,22 @@
 														{
 															"type":"getItem",
 															"itemID":"1534"
+														},
+														{
+															"type":"if",
+															"condition":[
+																{
+																	"item":["1535","1536"]
+																}
+															],
+															"action":[
+																{
+																	"type":"charaMsg",
+																	"text":["早くこの野菜を冷蔵庫に\nしまわなきゃ！"],
+																	"charaID":"0",
+																	"imgID":"2"
+																}
+															]
 														},
 														{
 															"type":"fadein"

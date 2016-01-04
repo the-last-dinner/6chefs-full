@@ -354,7 +354,7 @@
 			"condition":[
 				{
 					"event":["4","10"],
-					"Nevent":["7","1"]
+					"Nevent":["7","26"]
 				}
 			],
 			"action":[

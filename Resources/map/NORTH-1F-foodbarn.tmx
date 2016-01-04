@@ -21,6 +21,9 @@
  <tileset firstgid="12037" name="kitchen3" tilewidth="16" tileheight="16">
   <image source="kitchen3.png" trans="ffffff" width="512" height="512"/>
  </tileset>
+ <tileset firstgid="13061" name="Yatai-option1" tilewidth="16" tileheight="16">
+  <image source="Yatai-option1.png" trans="000000" width="944" height="255"/>
+ </tileset>
  <layer name="Base" width="20" height="24">
   <properties>
    <property name="cc_vertexz" value="-18"/>
@@ -50,7 +53,15 @@
    <property name="cc_vertexz" value="-15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBj6IF+HgaFAh3rm1QPNaqCief1AsyZQ0bz5QLMWkGDeWqDadVS0fy/QrH1UNO8s0KxzVDTvLtCse1Q0j9LwWw/UuwFJP6Xhtx+o9wCSfkrD7zxQ7wUk/ZSG332g3gdI+kfDjzSAHn6jYPgCAKZJK3k=
+   eJxjYBgFwx2s1WFgWKdDPfP2As3aR0XzzgLNOkdF8+4CzbpHRfMoDb/1QL0bkPRTGn77gXoPIOmnNPzOA/VeQNJPafjdB+p9gKR/NPxIA+jhNwqGLwAAvWwl3Q==
+  </data>
+ </layer>
+ <layer name="freezer" width="20" height="24">
+  <properties>
+   <property name="cc_vertexz" value="-15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBj64LgpA8MJU+qZx2TGwMBsRj3zbIFm2VHRvFEwCkbBKBgFQx8AAKKdA1I=
   </data>
  </layer>
  <layer name="yasaibox" width="20" height="24">
