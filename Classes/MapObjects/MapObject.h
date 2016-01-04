@@ -59,6 +59,7 @@ public:
 	void setLight(Light* light, AmbientLightLayer* ambientLightLayer, function<void()> callback = nullptr);
 	void removeLight(function<void()> callback = nullptr);
 	
+    Location getLocation() const;
     Size  getGridSize() const;
 	Point getGridPosition() const;
     Rect getGridRect(const vector<Direction>& directions = {}) const;

@@ -52,7 +52,7 @@ float EnemyTask::calcSummonDelayForData(const SummonData& data, const Location& 
     
     float distance { fabs(exitPos.x - enterPos.x) + fabs(exitPos.y - enterPos.y) };
     
-    return distance / data.enemy_data.speed_ratio;
+    return Enemy::DURATION_MOVE_ONE_GRID * distance / data.enemy_data.speed_ratio;
 }
 
 // 出現を開始
