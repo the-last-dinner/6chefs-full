@@ -33,6 +33,7 @@ bool SetAmbientLightEvent::init(rapidjson::Value& json)
         {"day", AmbientLightLayer::DAY},
         {"evening", AmbientLightLayer::EVENING},
         {"night", AmbientLightLayer::NIGHT},
+        {"midnight", AmbientLightLayer::MIDNIGHT},
         {"room", AmbientLightLayer::ROOM},
     };
     

@@ -24,6 +24,7 @@ public:
     static const Color3B ROOM;
 	static const Color3B NIGHT;
     static const Color3B BASEMENT;
+    static const Color3B MIDNIGHT;
     
 // クラスメソッド
 public:
