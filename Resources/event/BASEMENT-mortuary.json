@@ -29,6 +29,14 @@
 											"type":"barrage",
 											"times":20,
 											"limit":5.0,
+											"event":[
+												{
+													"type":"quakeMap",
+													"x":12,
+													"y":0,
+													"time":0.12
+												}
+											],
 											"false":[
 												{
 													"type":"charaMsg",
@@ -96,6 +104,11 @@
 						{
 							"type":"systemMsg",
 							"text":["どこかで水が流れる音がした"]
+						},
+						{
+							"type":"playBGM",
+							"file":"bgm_noroi.mp3",
+							"volume":2.0
 						},
 						{
 							"type":"fadein"

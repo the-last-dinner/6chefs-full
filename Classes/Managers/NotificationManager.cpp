@@ -34,15 +34,15 @@ void NotificationManager::destroy()
 // マップ名を通知
 void NotificationManager::notifyMapName(const int mapId)
 {
-    MapNameNotification* n { MapNameNotification::create(CsvDataManager::getInstance()->getMapName(mapId)) };
-    Director::getInstance()->getRunningScene()->addChild(n, Priority::NOTIFICATION);
+    MapNameNotification* n { MapNameNotification::create(CsvDataManager::getInstance()->getMapData()->getName(mapId)) };
+    Director::getInstance()->getRunningScene()->addChild(n, Priority::MAP_NOTIFICATION);
     n->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
 }
 
 // トロフィ獲得を通知
 void NotificationManager::notifyTrophy(const int trophyId)
 {
-    TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyName(trophyId)) };
+    TrophyNotification* n { TrophyNotification::create(CsvDataManager::getInstance()->getTrophyData()->getName(trophyId)) };
     this->notifications.pushBack(n);
     this->notifyInQueue(n);
 }
@@ -62,7 +62,7 @@ void NotificationManager::notifyInQueue(NotificationNode* node, const bool sound
 {
     if(this->notifications.front() != node) return;
     
-    Director::getInstance()->getRunningScene()->addChild(node, Priority::NOTIFICATION);
+    Director::getInstance()->getRunningScene()->addChild(node, Priority::TROPHY_NOTIFICATION);
     node->notify(CC_CALLBACK_1(NotificationManager::onNotifyEnterAnimationFinished, this));
     if(sound) SoundManager::getInstance()->playSE(Resource::SE::TROPHY_NOTIFICATION);
 }

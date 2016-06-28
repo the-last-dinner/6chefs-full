@@ -111,7 +111,6 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
     SaveIndex save;
     // セーブデータを一つずつチェック
     for(int i=1; i<=MAX_SAVE_COUNT; i++){
-        string file = "save/local" + to_string(i) + SAVE_EXTENSION;
         LocalPlayerData* local {LocalPlayerData::create(i)};
         if(!local)
         {
@@ -124,8 +123,8 @@ vector<SaveDataSelector::SaveIndex> SaveDataSelector::getSaveList()
             this->existsSaveData[i-1] = true;
             save = SaveIndex(
                              i,
-                             "--- " + CsvDataManager::getInstance()->getChapterName(local->getChapterId()) + " ---",
-                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapName(local->getLocation().map_id)),
+                             "--- " + CsvDataManager::getInstance()->getChapterData()->getName(local->getChapterId()) + " ---",
+                             LastSupper::StringUtils::getSprintf("%15s", CsvDataManager::getInstance()->getMapData()->getName(local->getLocation().map_id)),
                              local->getPlayTimeForDisplay(),
                              LastSupper
                              ::StringUtils::getSprintf("%3s", to_string(local->getSaveCount())) + "回",
@@ -179,7 +178,7 @@ void SaveDataSelector::onIndexChanged(int newIdx, bool sound)
 }
 
 // 決定キーを押した時
-void SaveDataSelector::onSpacePressed(int idx)
+void SaveDataSelector::onEnterKeyPressed(int idx)
 {
     // インクリメント
     idx++;

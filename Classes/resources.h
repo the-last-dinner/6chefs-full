@@ -11,9 +11,16 @@
 
 namespace Resource
 {
+    namespace ConfigFiles{
+        static const std::string BASE_PATH = "config/";
+        static const std::string DEBUG_CONFIG = BASE_PATH + "DebugConfig.json";
+        static const std::string COMMON_EVENT = BASE_PATH + "CommonEvent.json";
+    };
+    
     namespace Font
     {
         static const std::string BASE_PATH = "fonts/";
+        static const std::string CONFIG = BASE_PATH + "mgenplus-1c-regular.ttf";
         static const std::string SYSTEM = BASE_PATH + "aoyagireisyosimo_ttf_2_01.ttf";
         static const std::string MESSAGE = BASE_PATH + "cinecaption2.28.ttf";
     };
@@ -29,7 +36,6 @@ namespace Resource
         static const std::string LOAD = "load.mp3";
         static const std::string GAME_START = "gameStart.mp3";
         static const std::string LOGO = "logo_display.mp3";
-        static const std::string REACTION = "reaction.mp3";
     };
     
     namespace BGM

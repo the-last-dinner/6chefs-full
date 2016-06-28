@@ -7,8 +7,11 @@
 //
 
 #include "Models/GlobalPlayerData.h"
+
 #include "Managers/CsvDataManager.h"
+//#include "Managers/KeyconfigManager.h"
 #include "Managers/NotificationManager.h"
+
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
 
@@ -24,6 +27,9 @@ const char* GlobalPlayerData::TROPHY {"trophy"};
 const char* GlobalPlayerData::TOKENS {"tokens"};
 const char* GlobalPlayerData::BGM_VOLUME {"bgm_volume"};
 const char* GlobalPlayerData::SE_VOLUME {"se_volume"};
+const char* GlobalPlayerData::CURSOR_KEY {"cursor_key"};
+const char* GlobalPlayerData::ENTER_KEY {"enter_key"};
+const char* GlobalPlayerData::DASH_KEY {"dash_key"};
 
 const int GlobalPlayerData::CHIKEN_SAVE_COUNT {50};
 const int GlobalPlayerData::FAST_CLEAR_TIME {1800};
@@ -185,7 +191,7 @@ bool GlobalPlayerData::hasTrophy(const int trophy_id)
 // トロフィーコンプリート処理
 void GlobalPlayerData::setTrophyComplete()
 {
-    vector<int> trophies = CsvDataManager::getInstance()->getTrophyIdAll();
+    vector<int> trophies = CsvDataManager::getInstance()->getTrophyData()->getIdAll();
     int trophy_count {0};
     for(int trophy_id : trophies)
     {
@@ -250,4 +256,61 @@ float GlobalPlayerData::getSeVolume()
 {
     if (!this->globalData.HasMember(SE_VOLUME)) return 0.5;
     return this->globalData[SE_VOLUME].GetDouble();
+}
+
+#pragma mark -
+#pragma mark KeyConfig
+
+// 移動キーをセット
+void GlobalPlayerData::setCursorKey(const KeyconfigManager::CursorKeyType keyType)
+{
+    int keyNum {etoi(keyType)};
+    if (this->globalData.HasMember(CURSOR_KEY))
+    {
+        this->globalData[CURSOR_KEY].SetInt(keyNum);
+    }
+    else
+    {
+        rapidjson::Value kid (kStringType);
+        kid.SetString(CURSOR_KEY, strlen(CURSOR_KEY), this->globalData.GetAllocator());
+        this->globalData.AddMember(kid, rapidjson::Value(keyNum), this->globalData.GetAllocator());
+    }
+}
+
+// 移動キーを取得 (デフォルト矢印)
+KeyconfigManager::CursorKeyType GlobalPlayerData::getCursorKey()
+{
+    if (!this->globalData.HasMember(CURSOR_KEY)) return KeyconfigManager::CursorKeyType::ARROW;
+    return static_cast<KeyconfigManager::CursorKeyType>(this->globalData[CURSOR_KEY].GetInt());
+}
+
+// ダッシュキーをセット
+void GlobalPlayerData::setDashKey(const KeyconfigManager::DashKeyType keyType)
+{
+    int keyNum {etoi(keyType)};
+    if (this->globalData.HasMember(DASH_KEY))
+    {
+        this->globalData[DASH_KEY].SetInt(keyNum);
+    }
+    else
+    {
+        rapidjson::Value kid (kStringType);
+        kid.SetString(DASH_KEY, strlen(DASH_KEY), this->globalData.GetAllocator());
+        this->globalData.AddMember(kid, rapidjson::Value(keyNum), this->globalData.GetAllocator());
+    }
+}
+
+// ダッシュキーを取得 (デフォルト左SHIFT)
+KeyconfigManager::DashKeyType GlobalPlayerData::getDashKey()
+{
+    if (!this->globalData.HasMember(DASH_KEY)) return KeyconfigManager::DashKeyType::LEFT_SHIFT;
+    return static_cast<KeyconfigManager::DashKeyType>(this->globalData[DASH_KEY].GetInt());
+}
+
+// キーコンフィグのセーブ
+void GlobalPlayerData::saveKeyConfig(const KeyconfigManager::CursorKeyType cursorKey, const KeyconfigManager::DashKeyType dashKey)
+{
+    this->setCursorKey(cursorKey);
+    this->setDashKey(dashKey);
+    this->saveGlobalData();
 }

@@ -35,18 +35,20 @@ private:
     Sprite* ambientLight { nullptr };
     map<Light*, Light*> lightMap {};
     RenderTexture* renderTexture { nullptr };
-    Sprite* renderTexSprite { nullptr };
 
 // インスタンスメソッド
 public:
     void setAmbient(const Color3B& color);
     void addLightSource(Light* lightSource);
     void removeLightSource(Light* lightSource);
-    virtual void visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags);
+    void update(float delta) override;
+    virtual void visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 private:
     AmbientLightLayer();   // コンストラクタ
     ~AmbientLightLayer();  // デストラクタ
     bool init(const Color3B& color);    // 初期化
+    void onEnter() override;
+    void onExit() override;
 };
 
 #endif /* defined(_AmbientLightLayer__) */

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="30">
- <tileset firstgid="1" name="meet" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="meet" tilewidth="16" tileheight="16" tilecount="504" columns="28">
   <image source="meet.png" trans="040204" width="448" height="288"/>
  </tileset>
- <tileset firstgid="505" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="505" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="985" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="26" height="20">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYEAAXWYGBlYmBGbDQ6OLIethB2JtZgacAGSPMhMCq+Ch0cWQ9agSaQ82veji+NxAjD2OQDVOTBAahp2YMMXRxZBpZyLsWUIljMseL6C4Nx3soZb5yPboYLGL2vZ4MkPCCB3wAcX4qWzXEiz2gPxIzXSAyx5qpzdeZkgYDVS6HrVn8NsDAnzMhDFyPuPFoYYaQBfN3djKl+EOABEbpyQ=
+   eJxjYEAAXWYGBlYmBGbDQ6OLIethB2JtZgaswAso7g3EykwIrIKHRhdD1qOKxx5CetHF8bkBZo8OFrtg9jgCsROUdkTjO+ERQ6adgdiTGRJGuOxZwkwdDPMbOoC5g9b2UMt8etsDiyt0wAeU46eyXUuwpANQGtSlgz0gQE17eJkhYURre3CVB6P2DH57QICPmTBGzme8ONRQA+iiuRtb+T/cAQC/xqiB
   </data>
  </layer>
  <layer name="MonoShita" width="26" height="20">
@@ -120,4 +123,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="26" height="20" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFySwMdAGj9pAHUuhkzyggDwy39DZqz6g9gxEMt/ClV7lOqj0ADcYGdA==
+  </data>
+ </layer>
 </map>

@@ -13,6 +13,7 @@
 
 #include "Event/EventFactory.h"
 #include "Event/EventScriptValidator.h"
+#include "Event/EventScript.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
@@ -21,6 +22,7 @@
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
 
+#include "Models/CommonEventScripts.h"
 #include "Models/Stamina.h"
 #include "Models/StopWatch.h"
 
@@ -31,6 +33,7 @@
 #include "Tasks/EnemyTask.h"
 #include "Tasks/EventTask.h"
 #include "Tasks/PlayerControlTask.h"
+
 
 #include "UI/StaminaBar.h"
 
@@ -71,6 +74,12 @@ DungeonSceneManager::DungeonSceneManager()
     Stamina* stamina {Stamina::create()};
     CC_SAFE_RETAIN(stamina);
     this->stamina = stamina;
+    
+    // 共通イベントスクリプト生成
+    CommonEventScripts* commonEventScript {CommonEventScripts::create()};
+    CC_SAFE_RETAIN(commonEventScript);
+    this->commonEventScripts = commonEventScript;
+    this->commonEventScripts->loadEventScripts(PlayerDataManager::getInstance()->getLocalData()->getChapterId());
 };
 
 // デストラクタ
@@ -81,6 +90,7 @@ DungeonSceneManager::~DungeonSceneManager()
     CC_SAFE_RELEASE_NULL(this->eventFactory);
     CC_SAFE_RELEASE_NULL(this->scriprtValidator);
     CC_SAFE_RELEASE_NULL(this->stamina);
+    CC_SAFE_RELEASE_NULL(this->commonEventScripts);
 };
 
 #pragma mark -
@@ -100,6 +110,9 @@ EventFactory* DungeonSceneManager::getEventFactory() const { return this->eventF
 
 // イベントスクリプトを取得
 EventScript* DungeonSceneManager::getEventScript() const { return this->getScene()->eventTask->getEventScript(); }
+
+// 共通イベントスクリプトを取得
+CommonEventScripts* DungeonSceneManager::getCommonEventScriptsObject() { return this->commonEventScripts; }
 
 // スクリプトバリデータを取得
 EventScriptValidator* DungeonSceneManager::getScriptValidator() const { return this->scriprtValidator; }
@@ -309,6 +322,12 @@ void DungeonSceneManager::runEvent(const int eventId)
 void DungeonSceneManager::runEvent(const vector<int>& eventIds)
 {
     this->getScene()->eventTask->runEvent(eventIds);
+}
+
+// 非同期イベント実行
+void DungeonSceneManager::runEventAsync(GameEvent* event)
+{
+    this->getScene()->eventTask->runEventAsync(event);
 }
 
 // キューにイベントを後ろから詰める

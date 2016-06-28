@@ -34,14 +34,9 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"playBGM",
-									"file":"bgm_noroi.mp3",
-									"volume":2.0
-								},
-								{
 									"type":"addProfile",
 									"charaID":"13",
-									"infoID":"0"
+									"infoID":"2"
 								},
 								{
 									"type":"createEnemy",
@@ -82,9 +77,19 @@
 							]
 						},
 						{
-							"type":"reaction",
-							"objID":"hero"
-						},
+				          "type":"spawn",
+				          "action":[
+				            {
+				              "type": "reaction",
+				              "objID": "hero"
+				            },
+				            {
+				              "type":"playSE",
+				              "file":"reaction.mp3",
+				              "volume":0.25
+				            }
+				          ]
+				        },
 						{
 							"type":"charaMsg",
 							"text":["なん・・・だ・・・？\nこの人達・・・？"],

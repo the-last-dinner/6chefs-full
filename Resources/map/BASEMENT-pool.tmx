@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="136">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16" tilecount="224" columns="16">
   <image source="barrel-option.png" trans="201c30" width="256" height="224"/>
  </tileset>
- <tileset firstgid="705" name="object_sack01" tilewidth="16" tileheight="16">
+ <tileset firstgid="705" name="object_sack01" tilewidth="16" tileheight="16" tilecount="384" columns="24">
   <image source="object_sack01.png" trans="201c30" width="384" height="256"/>
  </tileset>
- <tileset firstgid="1089" name="meet" tilewidth="16" tileheight="16">
+ <tileset firstgid="1089" name="meet" tilewidth="16" tileheight="16" tilecount="504" columns="28">
   <image source="meet.png" trans="0000ff" width="448" height="288"/>
+ </tileset>
+ <tileset firstgid="1593" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="poolbottom" width="36" height="30">
   <properties>
@@ -41,7 +44,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1EEOgjAQBdDfA1h3egjKCj0EsoPbcQbv43XohBjxO2lw1SGZSX4+LSW8DQCfuQfglDti7XdiofksJ9K15Ex7su4CfkY8CWuaTZLSM/SznETXkpb22oJHe7/meu10c//r6XM/8N099P2997ctGeiZoeB5Vop73OMe97hH99yCLc+Y15MhTy3HUTyXvL4a8lj7vtzjHve4p6ZHRv7TNWJ1FpxHDWA=
+   eJztlcENAiEQRT8FiDctQvakFrHuTbuzBvuxHfkhxHWcEG6MZib5+cwshBcOf4F3nQOwyR5RvCo2XO6VimJNbcWM/THgq8iTUHRYKSl+h75XKok1NYnZpPCcQuHR7te4np3c0nt56vvM2S/49Bn6vPf72qlFnFkaPI9Bch7n+Weemj9WeK65vxniYVYyJ63wJOdp8tT/iBWeURy/wrPL/d4QD8tSHjqP8ziP84zkYTGnR8hqvQBQ9g5c
   </data>
  </layer>
  <layer name="MonoShita" width="36" height="30">
@@ -476,4 +479,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="36" height="30" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0qENwDAQwMBH2X+nLFYcYvyq7iYw8MzrnllFT9PT9DQ9TU/T0/TwJ9v+0dP0ND1NT9vWw+sDX0ITog==
+  </data>
+ </layer>
 </map>

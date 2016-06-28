@@ -16,6 +16,7 @@
 #include "MapObjects/TerrainObject/TerrainObject.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Managers/CsvDataManager.h"
 
 // キャラのプロパティリストのディレクトリ
 const string Character::basePath = "img/character/";
@@ -40,7 +41,7 @@ bool Character::init(const CharacterData& data)
     this->charaId = data.chara_id;
 	this->location = data.location;
     this->setObjectId(data.obj_id);
-    this->texturePrefix = CsvDataManager::getInstance()->getCharaFileName(charaId);
+    this->texturePrefix = CsvDataManager::getInstance()->getCharacterData()->getFileName(charaId);
     
     if(!this->movePattern)
     {
@@ -123,9 +124,11 @@ bool Character::walkBy(const vector<Direction>& directions, function<void()> onW
 {
     if(!MapObject::moveBy(directions, onWalked, ratio)) return false;
     
-    this->setDirection(back ? MapUtils::oppositeDirection(directions.back()) : directions.back());
+    Direction direction { back ? MapUtils::oppositeDirection(directions.back()) : directions.back() };
     
-    this->stamp(directions.back(), ratio);
+    this->setDirection(direction);
+    
+    this->stamp(direction, ratio);
     
     return true;
 }
@@ -156,7 +159,7 @@ void Character::walkBy(const vector<Direction>& directions, const int gridNum, f
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back, function<bool()> isPaused)
+void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)> callback, const float ratio, const bool back)
 {
     if(directionQueue.empty())
     {
@@ -172,11 +175,11 @@ void Character::walkByQueue(deque<Direction> directionQueue, function<void(bool)
         directionsQueue.push_back(vector<Direction>({direction}));
     }
     
-    this->walkByQueue(directionsQueue, callback, ratio, back, isPaused);
+    this->walkByQueue(directionsQueue, callback, ratio, back);
 }
 
 // キューで歩行させる
-void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio, const bool back, function<bool()> isPaused)
+void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<void(bool)> callback, const float ratio, const bool back)
 {
     // 初回のみ中身が存在するため、空でない時は格納する
     if(!directionsQueue.empty()) this->directionsQueue = directionsQueue;
@@ -189,8 +192,8 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
         return;
     }
     
-    // 停止中かチェック
-    if(isPaused && isPaused())
+    // 一時停止中かチェック
+    if(this->isPaused())
     {
         this->clearDirectionsQueue();
         
@@ -202,7 +205,7 @@ void Character::walkByQueue(deque<vector<Direction>> directionsQueue, function<v
     this->directionsQueue.pop_front();
     
     // 移動開始。失敗時はコールバックを失敗として呼び出し
-    if(this->walkBy(directions, [callback, ratio, back, isPaused, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back, isPaused);}, ratio, back)) return;
+    if(this->walkBy(directions, [callback, ratio, back, this]{this->walkByQueue(deque<vector<Direction>>({}), callback, ratio, back);}, ratio, back)) return;
     
     if(callback) callback(false);
 }
@@ -222,24 +225,13 @@ void Character::lookAround(function<void()> callback, Direction direction)
     this->runAction(Sequence::create(DelayTime::create(1.f), CallFunc::create([this]{this->setDirection(this->convertToWorldDir(Direction::BACK));}), DelayTime::create(1.f), CallFunc::create([callback]{callback();}), nullptr));
 }
 
-// 動き開始
-void Character::moveStart()
-{
-    if(this->movePattern && this->movePattern->isPaused()) this->movePattern->start();
-}
-
-// 動き停止
-void Character::moveStop()
-{
-    if(this->movePattern) this->movePattern->setPaused(true);
-}
-
 // マップに配置された時
 void Character::onEnterMap()
 {
     this->setDirection(this->getDirection());
     
-    if(!DungeonSceneManager::getInstance()->isEventRunning()) this->moveStart();
+    if(this->movePattern) this->movePattern->start();
+    if(DungeonSceneManager::getInstance()->isEventRunning()) this->onEventStart();
 }
 
 // 主人公一行が動いた時
@@ -253,4 +245,18 @@ void Character::onSearched(MapObject* mainChara)
 {
     // 主人公の反対の方向を向かせる（向かいあわせる）
     this->setDirection(MapUtils::oppositeDirection(mainChara->getDirection()));
+}
+
+// イベント開始時
+void Character::onEventStart()
+{
+    this->setPaused(true);
+    this->getActionManager()->pauseTarget(this);
+}
+
+// イベント終了時
+void Character::onEventFinished()
+{
+    this->setPaused(false);
+    this->getActionManager()->resumeTarget(this);
 }

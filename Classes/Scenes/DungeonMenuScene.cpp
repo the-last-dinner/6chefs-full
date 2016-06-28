@@ -27,14 +27,13 @@ DungeonMenuScene::DungeonMenuScene(){FUNCLOG}
 DungeonMenuScene::~DungeonMenuScene(){FUNCLOG}
 
 // 初期化
-bool DungeonMenuScene::init(Texture2D* screen)
+bool DungeonMenuScene::init(Sprite* screen)
 {
     FUNCLOG;
     // スクショを生成
-    Sprite* screenSprite = Sprite::createWithTexture(screen);
-    screenSprite->setScale(Director::getInstance()->getWinSize().width / screenSprite->getContentSize().width);
-    screenSprite->setPosition(WINDOW_CENTER);
-    this->addChild(screenSprite);
+    screen->setScale(Director::getInstance()->getWinSize().width / screen->getContentSize().width);
+    screen->setPosition(WINDOW_CENTER);
+    this->addChild(screen);
     
     // メインメニューレイヤーを生成
     this->createMainMenu();
@@ -123,8 +122,8 @@ void DungeonMenuScene::onPreloadFinished(LoadingLayer* loadingLayer){}
 // 方向キーを押した時
 void DungeonMenuScene::onCursorKeyPressed(const Key& key){}
 
-// スペースキーを押した時
-void DungeonMenuScene::onSpaceKeyPressed(){}
+// 決定キーを押した時
+void DungeonMenuScene::onEnterKeyPressed(){}
 
 
 // キーを押し続けている時

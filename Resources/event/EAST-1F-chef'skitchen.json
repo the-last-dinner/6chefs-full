@@ -882,7 +882,7 @@
 			],
 			"action":[
 				{
-					"type":"storyMsg",
+					"type":"systemMsg",
 					"text":["もう何も入っていない"]
 				}
 			]

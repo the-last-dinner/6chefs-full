@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="12">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYEAAU0YGBl4GCOZDo7GJIdPGjAwYAGSeNpDWAWJdBtxsPigfWYxY82B8bSxmkGIeNhrdTGQ2LvM8gbQXA3YaGXuhsXGZt4ZMTGvzTBipa14QkB9MRfPINYde5okB+eKDOD4Ge/obNY9y82DpkBwMAwDQDpx8
+   eJxjYEAAU0YGBl4GCOZDo7GJIdPGjAwYAGSeNpDWAWJdBtxsPigfWYxY82B8bSxm4DPPhBHVPGw0upnIbHTzgoD8YCD2BLK9GLDTyNgLjY1unjbU3WsYycPo5ulQ2TyvQW4euebQyzwxIF+ciubB0jO1zAOBUfOGt3mwdEgOhgEAznadQw==
   </data>
  </layer>
  <layer name="MonoShita" width="20" height="20">
@@ -49,4 +52,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="20" height="20" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFOUwMVAWj5o2aNwpwg8EeH6PmDW/zKAUAO3kG4Q==
+  </data>
+ </layer>
 </map>

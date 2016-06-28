@@ -18,9 +18,19 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"reaction",
-					"objID":"1070"
-				},
+		          "type":"spawn",
+		          "action":[
+		            {
+		              "type": "reaction",
+		              "objID": "1070"
+		            },
+		            {
+		              "type":"playSE",
+		              "file":"reaction.mp3",
+		              "volume":0.25
+		            }
+		          ]
+		        },
 				{
 					"type":"charaMsg",
 					"text":["佐々木くん・・・"],
@@ -28,9 +38,19 @@
 					"imgID":"2"
 				},
 				{
-					"type":"reaction",
-					"objID":"hero"
-				},
+		          "type":"spawn",
+		          "action":[
+		            {
+		              "type": "reaction",
+		              "objID": "hero"
+		            },
+		            {
+		              "type":"playSE",
+		              "file":"reaction.mp3",
+		              "volume":0.25
+		            }
+		          ]
+		        },
 				{
 					"type":"charaMsg",
 					"text":["中山さん・・・"],
@@ -93,12 +113,23 @@
 								},
 								{
 									"type":"charaMsg",
+									"text":["俺は戸塚 大宝（トツカ　タイホウ）・・・\n前回の晩餐会で選ばれたモンだ"],
+									"charaID":"6",
+									"imgID":"1",
+									"name":"？？？"
+								},
+								{
+									"type":"displayImg",
+									"file":"taihou_stand.png",
+									"time":3.0
+								},
+								{
+									"type":"charaMsg",
 									"talk":[
 										{
-											"text":["俺は戸塚 大宝（トツカ　タイホウ）・・・\n前回の晩餐会で選ばれたモンだ","お前は何で晩餐会に来たんだ？"],
+											"text":["お前は何で晩餐会に来たんだ？"],
 											"charaID":"6",
-											"imgID":"1",
-											"name":"？？？"
+											"imgID":"1"
 										},
 										{
 											"text":["・・・私は・・・家族のために・・・\n家のお店を有名にして・・・"],
@@ -210,9 +241,19 @@
 							"steps":1.0
 						},
 						{
-							"type":"reaction",
-							"objID":"hero"
-						},
+				          "type":"spawn",
+				          "action":[
+				            {
+				              "type": "reaction",
+				              "objID": "hero"
+				            },
+				            {
+				              "type":"playSE",
+				              "file":"reaction.mp3",
+				              "volume":0.25
+				            }
+				          ]
+				        },
 						{
 							"type":"changeDirection",
 							"objID":"hero",
@@ -222,7 +263,7 @@
 							"type":"charaMsg",
 							"talk":[
 								{
-									"text":["・・・東棟一階の・・・おもちゃ部屋・・・\nあそこに林檎の形をした大きなドールハウスがあります。","料理ができたらそこに持っていくように言われました。\nもしかしたらそこに・・・"],
+									"text":["・・・東棟一階の・・・おもちゃ部屋・・・\nあそこに林檎の形をした大きなドールハウスがあります。","料理ができたらそこに持っていくように言われました。\nもしかしたらそこに・・・希崎さんも・・・"],
 									"charaID":"1",
 									"imgID":"1"
 								},

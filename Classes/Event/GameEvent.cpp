@@ -14,6 +14,7 @@
 #include "Event/EventScriptMember.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Models/CommonEventScripts.h"
 
 #pragma mark GameEvent
 
@@ -44,16 +45,28 @@ bool GameEvent::init()
     return true;
 }
 
+// インスタンスが再利用可能か
+bool GameEvent::isReusable() const
+{
+    return this->_isReusable;
+}
+
+// 再利用可能か設定
+void GameEvent::setReusable(bool reusable)
+{
+    this->_isReusable = reusable;
+}
+
 // イベントが終了しているか
 bool GameEvent::isDone() const
 {
-    return _isDone;
+    return this->_isDone;
 }
 
 // イベントを終了状態にする
-void GameEvent::setDone()
+void GameEvent::setDone(bool done)
 {
-    this->_isDone = true;
+    this->_isDone = done;
 }
 
 // EventIDもしくはaction配列からイベントを生成
@@ -221,3 +234,110 @@ void EventIf::update(float delta)
         CC_SAFE_RELEASE_NULL(this->event);
     }
 }
+
+#pragma mark -
+#pragma mark CallEvent
+
+bool CallEvent::init(rapidjson::Value& json)
+{
+    if (!GameEvent::init()) return false;
+    
+    EventScript* eventScript  = this->validator->hasMember(json, member::CLASS_NAME) ? DungeonSceneManager::getInstance()->getCommonEventScriptsObject()->getScript(json[member::CLASS_NAME].GetString()) : DungeonSceneManager::getInstance()->getEventScript();
+    
+    if (!this->validator->hasMember(json, member::EVENT_ID)) return false;
+    
+    this->event = this->factory->createGameEvent(eventScript->getScriptJson(json[member::EVENT_ID].GetString()));
+    CC_SAFE_RETAIN(this->event);
+    
+    return true;
+}
+
+void CallEvent::run(){
+    if(!this->event)
+    {
+        this->setDone();
+        return;
+    }
+    
+    this->event->run();
+}
+
+void CallEvent::update(float delta)
+{
+    if (!this->event)
+    {
+        this->setDone();
+        return;
+    }
+    
+    this->event->update(delta);
+    
+    if (this->event->isDone())
+    {
+        this->setDone();
+        CC_SAFE_RELEASE_NULL(this->event);
+    }
+}
+
+#pragma mark -
+#pragma mark EventRepeat
+
+// Repeat
+bool EventRepeat::init(rapidjson::Value& json)
+{
+    if (!GameEvent::init()) return false;
+    
+    if(!this->validator->hasMember(json, member::TIMES)) return false;
+    
+    this->times = json[member::TIMES].GetInt();
+    
+    if (!this->validator->hasMember(json, member::ACTION)) return false;
+    
+    this->event = this->factory->createGameEvent(json[member::ACTION]);
+    CC_SAFE_RETAIN(this->event);
+    this->json = json;
+    
+    return true;
+}
+
+void EventRepeat::run()
+{
+    
+    if(!this->event || this->times == 0)
+    {
+        this->setDone();
+        return;
+    }
+    
+    this->event->run();
+}
+
+void EventRepeat::update(float delta)
+{
+    
+    if (!this->event || this->times == 0)
+    {
+        this->setDone();
+        return;
+    }
+    
+    this->event->update(delta);
+    
+    if (this->event->isDone())
+    {
+        this->times--;
+        if(this->times == 0)
+        {
+            this->setDone();
+            CC_SAFE_RELEASE_NULL(this->event);
+            return;
+        }
+        // 0でないので再実行
+        CC_SAFE_RELEASE_NULL(this->event);
+        this->event = this->factory->createGameEvent(this->json[member::ACTION]);
+        CC_SAFE_RETAIN(this->event);
+        this->event->run();
+    }
+    
+}
+

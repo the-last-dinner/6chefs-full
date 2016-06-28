@@ -3,15 +3,18 @@
  <properties>
   <property name="cc_vertexz" value="-11"/>
  </properties>
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="40" height="40">
   <properties>
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1MEJgDAMBdBkAD3qEHpTh9CjrtkhDUipFASLtk3gBz4fc3pClKjcLEzUSLcU2k+8n7gg7OYbpEcK7Sfea/E5vqLFt0pvFNr74n0tn3sZ+OCDDz744IMPPvjggw8++Or4Zv7Ht3O+HB99Ke+XO9Z8qfdR2pd6H6V9tT3WfZ089wpcTz7t34f2/4sFn79DDbEyJ0/HrdY=
+   eJzt2F8KgzAMBvDkANujO4Tb0/QQbm/umh5yGSNUwwLTzv4ZXyB8taD8LEWoROmqZ6KD5JFCatn5KyeEzXyt5JlCatn5UnwTv7sU3yB5o5Dqs/O5fNOXDR988MEHH3zwwQcffPD9v2/k/foR6ft0/vtVXqTvtN3X8dKnz26dsZf2fmvc6tP11/OnnkUHZ+ylvX+eMeu39v32buuz/xtyd23rt3Z/pPbl9tTua+T6VIDL8+n3ObfL870Kvjif7sMSupZ6AvsCvZY=
   </data>
  </layer>
  <objectgroup name="collision">
@@ -48,4 +51,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="40" height="40" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jEKACAMwEDpd/X/s7PiIkEtktsKHVJoKXe1GOca671X7GPmvmzsY+xj7GPsY+xj7GPsY+xj7GPsY2jf6fvse8s+Jnuf/pb9/+xjsvdpTwcOmhEu
+  </data>
+ </layer>
 </map>

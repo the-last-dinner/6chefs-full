@@ -14,10 +14,6 @@
 // PC版共通キーボード用イベントリスナ
 class EventListenerKeyboardLayer : public Layer
 {
-// 定数
-private:
-    static const map<EventKeyboard::KeyCode, Key> keyMap;
-    
 // クラスメソッド
 public:
     CREATE_FUNC(EventListenerKeyboardLayer)
@@ -26,9 +22,10 @@ public:
 // インスタンス変数
 public:
     function<void(const Key&)> onCursorKeyPressed { nullptr };
-    function<void()> onSpaceKeyPressed { nullptr };
+    function<void()> onEnterKeyPressed { nullptr };
     function<void()> onMenuKeyPressed { nullptr };
     function<void()> onDashKeyPressed { nullptr };
+    function<void()> onKeyConfKeyPressed { nullptr };
     function<void(const vector<Key>&)> intervalInputCheck { nullptr };
 private:
     EventListenerKeyboard* listenerKeyboard { nullptr };
@@ -47,7 +44,7 @@ public:
     void setInputCheckInterval(float interval);         // キー入力の確認間隔を設定
     void releaseKey(const Key& key);  // キーを離すとき
     void releaseKeyAll();  // 全てのキーをリリース状態にリセット
-    bool isPressed(const Key& key);                                // 指定キーが押し状態か判別
+    bool isPressed(const Key& key) const;                          // 指定キーが押し状態か判別
     void setPaused(bool paused);
     vector<Key> getPressedCursorKeys() const;
 private:

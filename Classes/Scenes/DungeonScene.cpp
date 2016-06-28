@@ -11,11 +11,13 @@
 #include "Datas/Scene/DungeonSceneData.h"
 
 #include "Effects/AmbientLightLayer.h"
+#include "Effects/FocusLightLayer.h"
 
 #include "Event/EventScript.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Layers/EventListener/ConfigEventListenerLayer.h"
 #include "Layers/LoadingLayer.h"
 
 #include "MapObjects/MapObjectList.h"
@@ -52,14 +54,10 @@ DungeonScene::~DungeonScene()
 // 初期化
 bool DungeonScene::init(DungeonSceneData* data)
 {
-    if(!BaseScene::init(data)) return false;
-    
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
-    this->addChild(listener);
-    this->listener = listener;
     
-    return true;
+    return this->init(data, listener);
 }
 
 // 初期化
@@ -69,6 +67,9 @@ bool DungeonScene::init(DungeonSceneData* data, EventListenerKeyboardLayer* list
     
     this->addChild(listener);
     this->listener = listener;
+    
+    this->configListener->onOpenkeyconfigMenu = CC_CALLBACK_0(DungeonScene::onEventStart, this);
+    this->configListener->onKeyconfigMenuClosed = CC_CALLBACK_0(DungeonScene::onEventFinished, this);
     
     return true;
 }
@@ -98,6 +99,12 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     mapLayer->setLocalZOrder(Priority::MAP);
 	this->addChild(mapLayer);
 	this->mapLayer = mapLayer;
+    
+    // フォーカス光レイヤー生成
+    FocusLightLayer* focusLightLayer {FocusLightLayer::create()};
+    focusLightLayer->setLocalZOrder(Priority::FOCUS_LIGHT);
+    this->addChild(focusLightLayer);
+    this->focusLightLayer = focusLightLayer;
     
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::ROOM)};
@@ -133,6 +140,9 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     // 主人公一行をマップに配置
     mapLayer->setParty(party);
     
+    // 主人公にフォーカス光を当てる
+    focusLightLayer->addTarget(party->getMainCharacter());
+    
     // スタミナバー生成
     StaminaBar* staminaBar { StaminaBar::create() };
     staminaBar->setLocalZOrder(Priority::STAMINA_BAR);
@@ -149,8 +159,8 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     if(enemyTask->existsEnemy()) staminaBar->slideIn();
     
     // イベント処理クラスにコールバック設定
-    eventTask->onRunEvent = CC_CALLBACK_0(DungeonScene::onRunEvent, this);
-    eventTask->onAllEventFinished = CC_CALLBACK_0(DungeonScene::onAllEventFinished, this);
+    eventTask->onEventStart = CC_CALLBACK_0(DungeonScene::onEventStart, this);
+    eventTask->onEventFinished = CC_CALLBACK_0(DungeonScene::onEventFinished, this);
     
     // 敵処理クラスにコールバック設定
     enemyTask->onAllEnemyRemoved = CC_CALLBACK_0(DungeonScene::onAllEnemyRemoved, this);
@@ -160,7 +170,7 @@ void DungeonScene::onPreloadFinished(LoadingLayer* loadingLayer)
     
     // リスナにコールバック設定
     this->listener->onCursorKeyPressed = [playerControlTask, party](const Key& key){playerControlTask->turn(key, party);};
-    this->listener->onSpaceKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
+    this->listener->onEnterKeyPressed = [playerControlTask, party]{playerControlTask->search(party);};
     this->listener->onMenuKeyPressed = CC_CALLBACK_0(DungeonScene::onMenuKeyPressed, this);
     
     // Trigger::INITを実行
@@ -215,22 +225,18 @@ void DungeonScene::onMenuKeyPressed()
     // パーティの位置をセット
     PlayerDataManager::getInstance()->getLocalData()->setLocation(DungeonSceneManager::getInstance()->getParty()->getMembersData());
     
-    // スクショをとって、ダンジョンメニューシーンをプッシュ
-    string path = LastSupper::StringUtils::strReplace((string)"global" + SAVE_EXTENSION, "screen0.png", FileUtils::getInstance()->fullPathForFilename((string)"save/global" + SAVE_EXTENSION));
-    utils::captureScreen([=](bool success, string filename){
-     if(success)
-     {
-         Sprite* screen = Sprite::create(filename);
-         DungeonMenuScene* menu = DungeonMenuScene::create(screen->getTexture());
-         menu->onBackToTitleSelected = CC_CALLBACK_0(DungeonScene::onBackToTitleSelected, this);
-         menu->onPopMenuScene = CC_CALLBACK_0(DungeonScene::onPopMenuScene, this);
-         
-         // メニューシーンをプッシュ
-         Director::getInstance()->pushScene(menu);
-         // cache削除
-         Director::getInstance()->getTextureCache()->removeTextureForKey(filename);
-     }
-    }, path);
+    // スクショをとる
+    RenderTexture* renderTexture { RenderTexture::create(WINDOW_WIDTH, WINDOW_HEIGHT) };
+    renderTexture->beginWithClear(0.f, 0.f, 0.f, 0.f);
+    this->visit();
+    renderTexture->end();
+    
+    DungeonMenuScene* menu { DungeonMenuScene::create(renderTexture->getSprite()) };
+    menu->onBackToTitleSelected = CC_CALLBACK_0(DungeonScene::onBackToTitleSelected, this);
+    menu->onPopMenuScene = CC_CALLBACK_0(DungeonScene::onPopMenuScene, this);
+    
+    // メニューシーンをプッシュ
+    Director::getInstance()->pushScene(menu);
 }
 
 // メニューシーンから戻ってきた時
@@ -293,29 +299,41 @@ void DungeonScene::setLight()
 }
 
 // イベントを実行する時
-void DungeonScene::onRunEvent()
+void DungeonScene::onEventStart()
 {
     // プレイヤーの操作を無効に
     this->playerControlTask->setControlEnable(false, party);
     
-    // 全てのオブジェクトの動きを止める
-    this->mapLayer->getMapObjectList()->moveStopAllObjects();
+    // 全てのオブジェクトにイベント開始を通知
+    this->mapLayer->getMapObjectList()->onEventStart();
     
     // スタミナの増減を一時停止
     DungeonSceneManager::getInstance()->getStamina()->setPaused(true);
+    
+    // キーコンフィグを無効
+    this->configListener->setKeyconfigEnabled(false);
+    
+    // カウントダウンしてれば停止
+    DungeonSceneManager::getInstance()->pauseStopWatch();
 }
 
 // イベントキューが空になった時
-void DungeonScene::onAllEventFinished()
+void DungeonScene::onEventFinished()
 {
     // プレイヤーの操作を有効に
     this->playerControlTask->setControlEnable(true, party);
     
-    // 全てのオブジェクトの自動移動を開始する
-    this->mapLayer->getMapObjectList()->moveStartAllObjects();
+    // 全てのオブジェクトにイベント終了を通知
+    this->mapLayer->getMapObjectList()->onEventFinished();
     
     // スタミナの増減を再開
     DungeonSceneManager::getInstance()->getStamina()->setPaused(false);
+    
+    // キーコンフィグを有効
+    this->configListener->setKeyconfigEnabled(true);
+    
+    // カウントダウンをしれてば再開
+    DungeonSceneManager::getInstance()->startStopWatch();
 }
 
 // データクラスを取得

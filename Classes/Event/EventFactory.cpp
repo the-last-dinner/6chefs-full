@@ -43,10 +43,13 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"sequence", EventSequence::create},    // 順番に処理を実行
         {"spawn", EventSpawn::create},          // 同時に処理を実行
         {"if", EventIf::create},                // 場合分け処理
+        {"callEvent", CallEvent::create},       // 別イベントの呼び出し
+        {"repeat", EventRepeat::create},        // 繰り返し処理を実行
         
         // 音系
         {"playBGM", PlayBGMEvent::create},           // BGM再生
         {"stopBGM", StopBGMEvent::create},           // BGM停止
+        {"changeVolume", ChangeVolumeEvent::create}, // BGMの音量変更
         {"playSE", PlaySEEvent::create},             // 効果音再生
         
         // モーダルレイヤ系
@@ -68,8 +71,10 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         
         // マップ系
         {"removeLayer", HideLayerEvent::create},        // マップの指定レイヤを非表示
+        {"createLayer", ShowLayerEvent::create},        // マップの指定レイヤを表示
         {"swingLayer", SwingLayerEvent::create},        // マップの指定レイヤを揺らす
         {"stopSwing", StopLayerActionEvent::create},    // マップレイヤのアクションを止める
+        {"quakeMap", QuakeMapEvent::create},            // マップを振動させる
         
         // マップオブジェクト系
         {"createChara", CreateMapObjectEvent::create},      // マップオブジェクトを無効リストから有効リストへ移動、マップ上に表示
@@ -87,7 +92,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"changeDirection", ChangeDirectionEvent::create},  // 方向転換
         {"charaWalkTo", WalkToEvent::create},               // 指定座標へ歩行
         {"charaWalk", WalkByEvent::create},                 // 方向、歩数をして歩行
-        
+        {"changeHero", ChangeHeroEvent::create},            // 主人公を変更
+    
         // 敵系
         {"createEnemy", CreateEnemyEvent::create},          // 敵生成
         {"removeEnemy", RemoveEnemyEvent::create},          // 敵削除
@@ -96,6 +102,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"setAmbient", SetAmbientLightEvent::create},       // 環境光設定
         {"animation", AnimationEvent::create},              // アニメーション
         {"createFog", CreateFogEvent::create},              // 靄を発生させる
+        {"createRain", CreateRainEvent::create},            // 雨を降らせる
+        {"createUnderwater", CreateUnderwaterEvent::create},// 水中
         
         // ミニゲーム系
         {"barrage", ButtonMashingEvent::create},        // 連打イベント
@@ -112,6 +120,8 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json)
         {"changeChapter", ChangeChapterEvent::create},          // チャプターを切り替える
         {"changeStatus", ChangeLikabilityRatingEvent::create},  // キャラクタの好感度を変更
         {"changeFlg", ChangeEventStatusEvent::create},          // イベントステータス(固有フラグ)を変更
+
+        {"getTrophy", GetTrophyEvent::create},                  // トロフィーを取得
     };
     
     // イベントタイプがなければ同時実行を生成して返す

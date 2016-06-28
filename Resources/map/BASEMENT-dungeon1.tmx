@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="34" height="26" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="37">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="sakekage" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="sakekage" tilewidth="16" tileheight="16" tilecount="48" columns="6">
   <image source="sakekage.png" trans="000000" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="529" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="34" height="26">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlcEJQjEQRPMr+F7UKuJFLUStyRbUuy2ohagt2IcTZGEJGEx2dFEceCz8w88wu5uE8FzzLoQ1gWlXOOQFJR97AgwfEUxADwZZjQU2YAt2ZB+19QCO4PSBPEr1DC7g6pxHVJ488+jf5ONX8pgZvLDyWIClwisPqbfwwCsP+cbwYcljCEaKGqW5Yu5L7ZzqeVoR96VW0sO8ty1V+tEi8ZH/tyUPy72h52ms8m3Beo8m6TltheFDpPMpIdnpPfWQ3nHre2L1ITPO7Me3+viLqzuP1FWg
+   eJztlVEKwjAQRDcH0PqjHkLjj/UQtl/q3dSDqAdRr9B7uKFdugQa081CEBx4TC1ihtmYAAxrZwAm6FPofeiZO8e925rAIhFyOfboFfTuqLvPIeh7lVIOi2yQApl5bgOckQtyNbo5xvoNuSOPxByl+d5HyJ/IC3ln7sOyTAfkyEjJMbaPgj2voGXdkasPzRwpfbi1LfSeqw9+ltSRa/P9dFLqg7yBlhjRHCm7Rh/0TiNHSh9zZMEYk4P2lEYf7hwrI9cn+feZRh+S85Rm6M9W4jQPiSiH/7uSPiTzIPH9tGT9Ski935z4fStFIweJ9xOCuuP/0xzid0DKvtDIQXtccx6/muMvXX0AsehMqA==
   </data>
  </layer>
  <layer name="MonoShita" width="34" height="26">
@@ -90,4 +93,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="34" height="26" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKACAQA8HD//9AH2u9zYkgkmKnTrGQqt4ah8EndpAdZAfZQXaQHWSHOim/pHTcSGm2g1I6ph3PbIf5DjE=
+  </data>
+ </layer>
 </map>

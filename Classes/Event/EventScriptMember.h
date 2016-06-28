@@ -31,6 +31,7 @@ namespace member
     static const char* FAVORITE = "favorite";
     static const char* FLAG = "flg";
     static const char* FILE = "file";
+    static const char* CLASS_NAME = "className";
     static const char* ID = "id";
     static const char* IMGS = "imgs";
     static const char* IMG_ID = "imgID";
@@ -58,11 +59,13 @@ namespace member
     static const char* TIME = "time";
     static const char* TITLE = "title";
     static const char* TIMES = "times";
+    static const char* TROPHY_ID = "trophyID";
     static const char* TRUE_ = "true";
     static const char* TYPE = "type";
     static const char* VOLUME = "volume";
     static const char* X = "x";
     static const char* Y = "y";
+    
 }
 
 #endif /* defined(__LastSupper__EventScriptMember__) */

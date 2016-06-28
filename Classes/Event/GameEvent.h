@@ -23,17 +23,20 @@ protected:
     EventScriptValidator* validator { nullptr };
 private:
     bool _isDone {false};
+    bool _isReusable {false};
     
 // インスタンスメソッド
 public:
+    bool isReusable() const;
+    void setReusable(bool reusable);
     bool isDone() const;
+    void setDone(bool done=true);
     virtual void run() {CCLOG("runメソッドをoverrideしてね");};     // イベント開始
     virtual void update(float delta) {};                         // タスクによって毎フレーム呼び出されるメソッド
 protected:
     GameEvent();
-    ~GameEvent();
+    virtual ~GameEvent();
     virtual bool init();
-    void setDone();
     GameEvent* createSpawnFromIdOrAction(rapidjson::Value& json);   // イベントIDもしくはaction配列からspawnを生成
 };
 
@@ -94,7 +97,44 @@ private:
     ~EventIf() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
-    virtual void update(float delta);
+    virtual void update(float delta) override;
+};
+
+// CallEvent
+class CallEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(CallEvent, rapidjson::Value&)
+private:
+    GameEvent* event {nullptr};
+private:
+    CallEvent() {FUNCLOG};
+    ~CallEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+    virtual void update(float delta) override;
+};
+
+// Repeat
+class EventRepeat : public GameEvent
+{
+// クラスメソッド
+public:
+    CREATE_FUNC_WITH_PARAM(EventRepeat, rapidjson::Value&)
+    
+// インスタンス変数
+private:
+    int times { 0 };
+    GameEvent* event {nullptr};
+    rapidjson::Value json {};
+    
+// インスタンスメソッド
+private:
+    EventRepeat() {FUNCLOG};
+    ~EventRepeat() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+    virtual void update(float delta) override;
 };
 
 #endif /* defined(__LastSupper__GameEvent__) */

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="53">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="050505" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="youkan" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="961" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="007575" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1441" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="26" height="22">
   <properties>
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzllEESgjAMRdMDVN2oh7B1ox4CcaX3v4thyh8jNqUauvLPZMLAL6+kfyB66eKIPKVaKQXBI7vP3M9p4BzovQJXHHsQXjyTnphZU+IEsWbKW7Nn4z7fN12Ha43Tcb+S3iN7jhmf3E8Np+e6/dC//Z7WnLOzcfw4w26Gc2fvY4HvkYxcrpGj1nNDjlpzduzdGzk1ubbmABkYqi9wBlk42hxbc/Cf0GQ9J3TkV5P1nNCR35KW4Gxdmk1rzsml2cwJ54Q5Y3+1VSucE+Zcu79/0RM4qF2T
+   eJzllUESgjAMRZMDoG7UQwBuxEMgbtT738V0yp+iNhKNdeOf+RMGMrzymw5ESQcmqih6oRhCD+qeyazAqenejbgdazPpxTNUK6fjxMG7c7yl9Kz4eQ2B0xlYF+m5inu5PpJeW+nZZfrOHN8Ba0Iug/Sc+P36mIOW4684tZNTjRn2Mxzk7P2eufnDHJXODXNUmrOR+1snZ5qddp5wTj/lYAaCB0rnKScPR8uxNAfzq8m7T6iYX03efULF/L7SNzhrjtmU5lj/E9gn5Iz1WW0V9gk5W9f3L7oBnFZcpQ==
   </data>
  </layer>
  <layer name="MonoShita" width="26" height="22">
@@ -25,7 +28,18 @@
    eJxjYBgFQw1sYKGNWnTwhgS9pKgdBaNgFIwCWgFKyjxSwGiZN/QAANBvBO0=
   </data>
  </layer>
- <objectgroup name="collision">
+ <layer name="shadow" width="26" height="22">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAF2mwMeAEheWLBSLOHWmDUnlFATzDc0sFws4fe9o3aMzTsG7UHOwAA78gENw==
+  </data>
+ </layer>
+ <objectgroup name="collision" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <object id="2" x="0" y="0" width="64" height="128"/>
   <object id="4" x="0" y="160" width="64" height="96"/>
   <object id="5" x="64" y="224" width="32" height="96"/>

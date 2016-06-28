@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="22" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="38">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="kama" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="kama" tilewidth="16" tileheight="16" tilecount="768" columns="24">
   <image source="kama.png" trans="ffffff" width="384" height="512"/>
  </tileset>
- <tileset firstgid="1249" name="Yatai-option1" tilewidth="16" tileheight="16">
+ <tileset firstgid="1249" name="Yatai-option1" tilewidth="16" tileheight="16" tilecount="885" columns="59">
   <image source="Yatai-option1.png" trans="007575" width="944" height="255"/>
  </tileset>
- <tileset firstgid="2134" name="death" tilewidth="16" tileheight="16">
+ <tileset firstgid="2134" name="death" tilewidth="16" tileheight="16" tilecount="384" columns="24">
   <image source="death.png" trans="007575" width="384" height="256"/>
  </tileset>
- <tileset firstgid="2518" name="BlackMagic02" tilewidth="16" tileheight="16">
+ <tileset firstgid="2518" name="BlackMagic02" tilewidth="16" tileheight="16" tilecount="264" columns="12">
   <image source="BlackMagic02.png" trans="000000" width="192" height="352"/>
+ </tileset>
+ <tileset firstgid="2782" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="30" height="22">
   <properties>
    <property name="cc_vertexz" value="-21"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlFEKwjAQRHcPoNUP7SFq9cOWnkHbfqj3v4sTQukSWhLI7l8GHpmEkIEhCdGqnokOGI+gonwv50+mXbncBuMNtJTv5TyW+8L4BiPlezmP5Z5BBU7KPpb7AC24K/tY7gxGMCn70rNXx/Y9DxvZX6z9DHv+sM8IJfdo9yzPDiX3a/cszw51xVpt2POFfcbevbK8z91G7vKOyr9R/ufFp2DRcwoWPaeQ0rOTe9sWhPoDyThgCA==
+   eJzVVUEOgkAMbB+g6EF9hKAH4RGKHtT//8Uh0NA0rGxCG+MkE2aXZocO7EI0omGiFa5rsKDlWo8vTJOoufc9QpdgRcu1jMvBt57wfmHuDV6hb2BLy7UeP7n3sJBn2+JeAW7YV0vmFuXgfUZNBZ7YV0tfqX4fqGnBO/tqee+pfqNynus3KudUv7/KWb75qJxlP1noGu+c9doWut47Z722xR5zB+dstd5x72Eh53PU95w6nzs0jtlanfofiW9UznO+kTl/8/2HnHMYkXMOI3LOYU7OHbq9HUGLD2n7YiQ=
   </data>
  </layer>
  <layer name="Ghint" width="30" height="22">
@@ -241,4 +244,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="30" height="22" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFGdwMAwJG7R21d9TeoWvvKKAPGGnpatTeUXtH7R06AAAGjQgX
+  </data>
+ </layer>
 </map>

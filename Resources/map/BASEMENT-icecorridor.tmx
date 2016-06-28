@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="149">
- <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="barrel-option" tilewidth="16" tileheight="16" tilecount="224" columns="16">
   <image source="barrel-option.png" trans="674c56" width="256" height="224"/>
  </tileset>
- <tileset firstgid="705" name="chip10e_glas" tilewidth="16" tileheight="16">
+ <tileset firstgid="705" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1185" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1185" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="000000" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="1665" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="36" height="24">
   <properties>
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0rENgDAMRFF7YbYLewDZA0bABSkioVOuuO6eZLmKEn0lYtYyYk/dZl11pqdus9wHO2pO4WbdNY9ws9wHcx/Mff5t36j7jHtW36Pus/qewf8Hcx/MfTD3McYLz1XIaA==
-  </data>
- </layer>
- <layer name="wall" width="36" height="24">
-  <properties>
-   <property name="cc_vertexz" value="-12"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt00EKgDAMRNFs5v7XsR7EehB1bUMX7kZFGiLMg+4K+YTW7LLChltezFAPpx5OPZx6uEw9FXE99cGcvd05Ano29FnyTWk7nAP2OKHPupPtPbtM/92ph1MPl63HFYw9f3MCDQw7EQ==
+   eJztlt0JgDAMhJMhrIOog6h7uJ3u4c8eOoIpNfjYKCQi5OBIHgp3fBRagFsNAozkSXFWCGLFPit5U5zSPjXa8akFnTo60xvwaTFl5cT9Z9oX0JuckxP332k/QG9yjvNxPs7nOz7DZW0+nCPto81H2icQw9Lg/hSYsnLi91Sbj/Q9jWoM+Dz9/1jwedLH+Tift3yiAur6bzoBOgvp4A==
   </data>
  </layer>
  <layer name="MonoUe" width="36" height="24">
@@ -86,4 +81,12 @@
  <objectgroup name="terrain">
   <object id="143" type="slip" x="64" y="64" width="384" height="288"/>
  </objectgroup>
+ <layer name="shadow" width="36" height="24" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAF3OwMgwqMugc/GGrusSbRvaSqRwdDzT20shcXGKzuoZX5pILB6p7BAgabe6gNBku8wwC9yh96+XuwumewxPtgdQ+lgFr+GS7uGSn1+yhABQBn/QYN
+  </data>
+ </layer>
 </map>

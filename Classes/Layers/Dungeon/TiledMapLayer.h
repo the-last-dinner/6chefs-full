@@ -37,12 +37,15 @@ private:
 public:
     MapObjectList* getMapObjectList() const;
     Size getMapSize() const;
+    TMXTiledMap* getTiledMap() const;
     // Layer
     void hideLayer(const string& layerName);
+    void showLayer(const string& layerName);
     void swingLayer(const string& layerName);
     void stopLayerActions();
     // MapObject
     void setParty(Party* party);
+    void removeParty();
     void addEnemy(Enemy* enemy);
     void addMapObject(MapObject* mapObject, bool addingToList = true);
     void setZOrderByPosition(MapObject* mapObject);

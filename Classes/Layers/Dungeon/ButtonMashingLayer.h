@@ -27,20 +27,21 @@ public:
     
 // クラスメソッド
 public:
-    static ButtonMashingLayer* create(int time, float limit, ResultCallback callback);
+    static ButtonMashingLayer* create(int time, float limit, function<void()> onClick, ResultCallback callback);
     
 // インスタンス変数
 private:
     int count { 0 };
+    function<void()> onClick { nullptr };
     ResultCallback callback { nullptr };
     
 // インスタンスメソッド
 private:
     ButtonMashingLayer();
     ~ButtonMashingLayer();
-    bool init(int time, float limit, ResultCallback callback);
+    bool init(int time, float limit, function<void()> onClick, ResultCallback callback);
     
-    void onSpaceKeyPressed();
+    void onEnterKeyPressed();
 };
 
 #endif /* defined(__LastSupper__ButtonMashingLayer__) */

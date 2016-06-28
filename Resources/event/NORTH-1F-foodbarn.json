@@ -17,7 +17,7 @@
 			"action":[
 				{
 					"type":"charaMsg",
-					"text":["こんなふうに置いておいたら\n悪くになっちゃうよ・・・","ちゃんとしまっとこ！"],
+					"text":["こんなふうに置いておいたら\n悪くなっちゃうよ・・・","ちゃんとしまっとこ！"],
 					"charaID":"0",
 					"imgID":"1"
 				},
@@ -40,6 +40,10 @@
 					"type":"storyMsg",
 					"title":"アイテムの装備",
 					"text":["鍵以外のアイテムは装備しないと\n使用できません。","アイテムを使用したい時は\n装備を忘れないようにしましょう。"]
+				},
+				{
+					"type":"removeChara",
+					"objID":"1930"
 				},
 				{
 					"type":"already"
@@ -135,9 +139,6 @@
 			"condition":[
 				{
 					"Nevent":["19","2"]
-				},
-				{
-					"flg":1
 				}
 			],
 			"action":[
@@ -146,6 +147,20 @@
 					"text":["冷蔵庫の野菜室はまだスペースが空いているな・・・"],
 					"charaID":"0",
 					"imgID":"1"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["冷蔵庫の野菜室はもういっぱいだ"]
 				}
 			]
 		}
@@ -486,6 +501,20 @@
 		{
 			"type":"setLight",
 			"objID":"2"
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["19","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"removeChara",
+					"objID":"1930"
+				}
+			]
 		}
 	]
 }

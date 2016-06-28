@@ -109,3 +109,47 @@ void CreateFogEvent::run()
     
     DungeonSceneManager::getInstance()->getScene()->addChild(fog);
 }
+
+#pragma mark -
+#pragma mark CreateRainEvent
+
+bool CreateRainEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    return true;
+}
+
+void CreateRainEvent::run()
+{
+    this->setDone();
+    
+    Size size = Director::getInstance()->getVisibleSize();
+    ParticleSystemQuad* rain = ParticleSystemQuad::create("img/rain.plist");
+    rain->setPosition(Vec2(size.width/2,size.height));
+
+    DungeonSceneManager::getInstance()->getScene()->addChild(rain);
+}
+
+#pragma mark -
+#pragma mark CreateUnderwaterEvent
+
+bool CreateUnderwaterEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    return true;
+}
+
+void CreateUnderwaterEvent::run()
+{
+    this->setDone();
+    
+    auto waterLayer = LayerColor::create(Color4B(88,255,255,128 ));
+    ParticleSystemQuad* bubble = ParticleSystemQuad::create("img/bubble.plist");
+    
+    waterLayer->addChild(bubble);
+    DungeonSceneManager::getInstance()->getScene()->addChild(waterLayer);
+}
+
+

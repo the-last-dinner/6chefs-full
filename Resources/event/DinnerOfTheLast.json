@@ -121,9 +121,19 @@
 					"name":"？？？"
 				},
 				{
-					"type":"reaction",
-					"objID":"hero"
-				},
+		          "type":"spawn",
+		          "action":[
+		            {
+		              "type": "reaction",
+		              "objID": "hero"
+		            },
+		            {
+		              "type":"playSE",
+		              "file":"reaction.mp3",
+		              "volume":0.25
+		            }
+		          ]
+		        },
 				{
 					"type":"wait",
 					"time":0.5
@@ -162,8 +172,7 @@
 							"text":["雪・・・雪のため・・・"],
 							"charaID":"7"
 						}
-					]
-					
+					]	
 				},
 				{
 					"type":"spawn",
@@ -187,9 +196,19 @@
 					"time":0.5
 				},
 				{
-					"type":"reaction",
-					"objID":"hero"
-				},
+		          "type":"spawn",
+		          "action":[
+		            {
+		              "type": "reaction",
+		              "objID": "hero"
+		            },
+		            {
+		              "type":"playSE",
+		              "file":"reaction.mp3",
+		              "volume":0.25
+		            }
+		          ]
+		        },
 				{
 					"type":"stopBGM"
 				},
@@ -253,6 +272,14 @@
 							"type":"barrage",
 							"times":15,
 							"limit":5.0,
+							"event":[
+								{
+									"type":"quakeMap",
+									"x":12,
+									"y":0,
+									"time":0.12
+								}
+							],
 							"false":[
 								{
 									"type":"gameover"

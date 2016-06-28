@@ -11,9 +11,11 @@
 
 #include "Scenes/BaseScene.h"
 
+class DungeonSceneData;
+
 class AmbientLightLayer;
 class TiledMapLayer;
-class DungeonSceneData;
+class FocusLightLayer;
 
 class CameraTask;
 class EnemyTask;
@@ -23,6 +25,7 @@ class PlayerControlTask;
 class LoadingLayer;
 class Party;
 class StaminaBar;
+class EventListenerKeyboardLayer;
 
 class DungeonScene : public BaseScene
 {
@@ -35,7 +38,8 @@ public:
 protected:
     EventListenerKeyboardLayer* listener { nullptr };
     TiledMapLayer* mapLayer { nullptr };
-    AmbientLightLayer* ambientLightLayer {nullptr};
+    AmbientLightLayer* ambientLightLayer { nullptr };
+    FocusLightLayer* focusLightLayer { nullptr };
     
     CameraTask* cameraTask { nullptr };
     EnemyTask* enemyTask { nullptr };
@@ -50,7 +54,7 @@ protected:
 // インスタンスメソッド
 protected:
     DungeonScene();
-    ~DungeonScene();
+    virtual ~DungeonScene();
     
 protected:
 	virtual bool init(DungeonSceneData* data);
@@ -67,8 +71,8 @@ protected:
     void onAllEnemyRemoved();
     void onExitDungeon();
     void setLight();
-    void onRunEvent();
-    void onAllEventFinished();
+    void onEventStart();
+    void onEventFinished();
     
     DungeonSceneData* getData() const;
     

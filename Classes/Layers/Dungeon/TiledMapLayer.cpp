@@ -27,7 +27,7 @@ bool TiledMapLayer::init(const Location& location)
     if(!Layer::init()) return false;
     
 	// Tiledのマップを生成
-    TMXTiledMap* tiledMap { TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapFileName(location.map_id) + ".tmx") };
+    TMXTiledMap* tiledMap { TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapData()->getFileName(location.map_id) + ".tmx") };
     tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;
@@ -92,6 +92,16 @@ void TiledMapLayer::hideLayer(const string& layerName)
     }
 }
 
+// マップの指定レイヤを表示する
+void TiledMapLayer::showLayer(const string& layerName)
+{
+    if(TMXLayer* layer { this->tiledMap->getLayer(layerName) })
+    {
+        layer->setVisible(true);
+    }
+}
+
+
 // マップの指定レイヤを揺らす
 void TiledMapLayer::swingLayer(const string& layerName)
 {
@@ -123,8 +133,9 @@ void TiledMapLayer::setParty(Party* party)
     }
     
     this->objectList->setParty(party);
-    
 }
+
+
 
 // 敵をマップに配置
 void TiledMapLayer::addEnemy(Enemy* enemy)
@@ -165,4 +176,10 @@ void TiledMapLayer::setZOrderByPosition(MapObject* mapObject)
 {
     int z { static_cast<int>(mapObject->getGridPosition().y)};
     mapObject->setLocalZOrder(z);
+}
+
+// タイルドマップ背景の取得
+TMXTiledMap* TiledMapLayer::getTiledMap() const
+{
+    return this->tiledMap;
 }

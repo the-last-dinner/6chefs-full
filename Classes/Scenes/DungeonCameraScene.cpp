@@ -13,6 +13,7 @@
 #include "Effects/AmbientLightLayer.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
+#include "Layers/EventListener/ConfigEventListenerlayer.h"
 #include "Layers/LoadingLayer.h"
 
 #include "MapObjects/MapObjectList.h"
@@ -52,6 +53,8 @@ bool DungeonCameraScene::init(DungeonCameraSceneData* data, GameEvent* event, Ev
     
     this->callback = callback;
     this->event = event;
+    
+    this->configListener->setKeyconfigEnabled(false);
     
     return true;
 }
@@ -108,8 +111,8 @@ void DungeonCameraScene::onInitEventFinished(LoadingLayer* loadingLayer)
     // ローディング終了
     loadingLayer->onLoadFinished();
     
-    // オブジェクトの自動移動開始
-    this->mapLayer->getMapObjectList()->moveStartAllObjects();
+    // オブジェクトにイベント終了を通知
+    this->mapLayer->getMapObjectList()->onEventFinished();
     
     // Trigger::AFTER_INITを実行
     this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonCameraScene::onAfterInitEventFinished, this));

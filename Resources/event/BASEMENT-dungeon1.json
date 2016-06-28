@@ -142,7 +142,7 @@
 												{
 										          "type":"addProfile",
 										          "charaID":"10",
-										          "infoID":"0"
+										          "infoID":"2"
 										        },
 												{
 													"type":"charaMsg",
@@ -168,9 +168,19 @@
 															"objID":"hero"
 														},
 														{
-															"type":"reaction",
-															"objID":"hero"
-														},
+												          "type":"spawn",
+												          "action":[
+												            {
+												              "type": "reaction",
+												              "objID": "hero"
+												            },
+												            {
+												              "type":"playSE",
+												              "file":"reaction.mp3",
+												              "volume":0.25
+												            }
+												          ]
+												        },
 														{
 															"type":"already",
 															"event":["43","6"]

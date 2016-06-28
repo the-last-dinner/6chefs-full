@@ -17,6 +17,7 @@
 #include "Datas/Message/SystemMessageData.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Models/CommonEventScripts.h"
 
 #pragma mark NeverAgainEvent
 
@@ -79,7 +80,7 @@ void GetItemEvent::run()
 {
     PlayerDataManager::getInstance()->getLocalData()->setItem(this->itemId);
     SoundManager::getInstance()->playSE(Resource::SE::GET_ITEM, 1.4f);
-    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
+    DungeonSceneManager::getInstance()->getScene()->addChild(SystemMessageLayer::create(SystemMessageData::create(CsvDataManager::getInstance()->getItemData()->getItemName(this->itemId) + "　を手に入れた"), [this]{this->setDone();}), Priority::SYSTEM_MESSAGE);
 }
 
 #pragma mark -
@@ -143,6 +144,7 @@ bool ChangeChapterEvent::init(rapidjson::Value& json)
 void ChangeChapterEvent::run()
 {
     this->setDone();
+    DungeonSceneManager::getInstance()->getCommonEventScriptsObject()->loadEventScripts(this->chapterId);
     PlayerDataManager::getInstance()->getLocalData()->setChapterId(this->chapterId);
 }
 
@@ -181,13 +183,56 @@ bool ChangeEventStatusEvent::init(rapidjson::Value& json)
     if(!this->validator->hasMember(json, member::FLAG)) return false;
     this->status = json[member::FLAG].GetInt();
     
+    // map_id
+    if(this->validator->hasMember(json, member::MAP_ID))
+    {
+        this->map_id = stoi(json[member::MAP_ID].GetString());
+    }
+    
+    // event_id
+    if(this->validator->hasMember(json, member::EVENT_ID))
+    {
+        this->event_id = stoi(json[member::EVENT_ID].GetString());
+    }
+    
     return true;
 }
 
 void ChangeEventStatusEvent::run()
 {
-    int map_id {DungeonSceneManager::getInstance()->getLocation().map_id};
-    int event_id {DungeonSceneManager::getInstance()->getRunningEventId()};
-    PlayerDataManager::getInstance()->getLocalData()->setEventStatus(map_id, event_id, this->status);
+    // map_id
+    if(this->map_id < 0)
+    {
+        this->map_id = DungeonSceneManager::getInstance()->getLocation().map_id;
+    }
+    
+    // event_id
+    if(this->event_id < 0)
+    {
+        this->event_id = DungeonSceneManager::getInstance()->getRunningEventId();
+    }
+    
+    // 変更
+    PlayerDataManager::getInstance()->getLocalData()->setEventStatus(this->map_id, this->event_id, this->status);
+    this->setDone();
+}
+
+#pragma mark -
+#pragma mark GetTrophyEvent
+
+bool GetTrophyEvent::init(rapidjson::Value& json)
+{
+    if(!GameEvent::init()) return false;
+    
+    // trophyId
+    if (!this->validator->hasMember(json, member::TROPHY_ID)) return false;
+    this->trophyId = json[member::TROPHY_ID].GetInt();
+    
+    return true;
+}
+
+void GetTrophyEvent::run()
+{
+    PlayerDataManager::getInstance()->getGlobalData()->setTrophy(this->trophyId);
     this->setDone();
 }

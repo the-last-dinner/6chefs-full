@@ -40,6 +40,11 @@
       "type":"spawn",
       "action":[
            {
+              "type":"playSE",
+              "file":"reaction.mp3",
+              "volume":0.25
+           },
+           {
                "type": "reaction",
                "objID": "hero"
            },
@@ -115,7 +120,7 @@
         {
           "type":"addProfile",
           "charaID":"9",
-          "infoID":"1"
+          "infoID":"2"
         },
         {
           "type":"spawn",

@@ -20,7 +20,6 @@ const map<string, float> SoundManager::VOLUME_CONFIG
     {Resource::SE::TITLE_ENTER, 0.3f},
     {Resource::SE::GAME_START, 0.3f},
     {Resource::SE::LOAD, 0.3f},
-    {Resource::SE::REACTION, 0.5f},
 };
 
 // 唯一のインスタンスを初期化
@@ -74,6 +73,22 @@ void SoundManager::playBGM(const string& fileName, bool loop, float volume)
     this->bgmIdMap.insert({BGMId, fileName});
     
     mtx.unlock();
+}
+
+// BGMの音量を変更
+void SoundManager::changeVolume(const string& fileName, float volume)
+{
+    if(VOLUME_CONFIG.count(fileName) != 0) volume *= VOLUME_CONFIG.at(fileName);
+    int BGMId = -1;
+    for(pair<int, string> idToFilename : this->bgmIdMap)
+    {
+        if(idToFilename.second == fileName)
+        {
+            BGMId = idToFilename.first;
+            break;
+        }
+    }
+    if(BGMId != -1) AudioEngine::setVolume(BGMId, volume * PlayerDataManager::getInstance()->getGlobalData()->getBgmVolume());
 }
 
 // SE再生終了時

@@ -17,6 +17,7 @@
 
 #include "MapObjects/Character.h"
 #include "MapObjects/MapObjectList.h"
+#include "MapObjects/Party.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -93,8 +94,19 @@ bool WalkByEvent::init(rapidjson::Value& json)
 void WalkByEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
+
+    this->target->getActionManager()->resumeTarget(this->target);
+}
+
+void WalkByEvent::update(float delta)
+{
+    if(this->target->isMoving() || this->isCommandSent) return;
+    
+    if(this->target->isPaused()) this->target->setPaused(false);
     
     this->target->walkBy(this->direction, this->gridNum, [this](bool _){this->setDone();}, this->speedRatio, this->back);
+    
+    this->isCommandSent = true;
 }
 
 #pragma mark -
@@ -116,10 +128,53 @@ bool WalkToEvent::init(rapidjson::Value& json)
 void WalkToEvent::run()
 {
     if(!CharacterEvent::onRun()) return;
+
+    this->target->getActionManager()->resumeTarget(this->target);
+}
+
+void WalkToEvent::update(float delta)
+{
+    if(this->target->isMoving() || this->isCommandSent) return;
+    
+    if(this->target->isPaused()) this->target->setPaused(false);
     
     // 経路探索開始
     PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
     deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), this->target->getWorldGridCollisionRects(), this->destPosition) };
     
     this->target->walkByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
+    
+    this->isCommandSent = true;
+}
+
+#pragma mark -
+#pragma mark ChangeHeroEvent
+
+bool ChangeHeroEvent::init(rapidjson::Value& json)
+{
+    if (!GameEvent::init()) return false;
+    if (!this->validator->hasMember(json, member::CHARA_ID)) return false;
+    this->charaId = stoi(json[member::CHARA_ID].GetString());
+    
+    return true;
+}
+
+void ChangeHeroEvent::run()
+{
+    this->setDone();
+    
+    // 現在のパーティを取得
+    Party* party {DungeonSceneManager::getInstance()->getMapObjectList()->getParty()};
+    Location location {party->getMainCharacter()->getCharacterData().location};
+    
+    // パーティを解散
+    party->removeMemberAll();
+    DungeonSceneManager::getInstance()->getMapObjectList()->removeById(etoi(ObjectID::HERO));
+    
+    // 新主人公を設定
+    Character* chara {Character::create(CharacterData(this->charaId, etoi(ObjectID::HERO), location))};
+    chara->setHit(true);
+    party->addMember(chara);
+    DungeonSceneManager::getInstance()->getMapLayer()->setParty(party);
+    
 }

@@ -29,7 +29,7 @@ bool MessageLayer::init(function<void()> onCloseCallback)
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
-    listener->onSpaceKeyPressed = CC_CALLBACK_0(MessageLayer::onSpacekeyPressed, this);
+    listener->onEnterKeyPressed = CC_CALLBACK_0(MessageLayer::onEnterKeyPressed, this);
     this->addChild(listener);
     this->listener = listener;
     
@@ -41,8 +41,8 @@ bool MessageLayer::init(function<void()> onCloseCallback)
     return true;
 }
 
-// スペースキーを押した時
-void MessageLayer::onSpacekeyPressed()
+// 決定キーを押した時
+void MessageLayer::onEnterKeyPressed()
 {
     // ページ内ですべての文字を表示し終えていたら
     if(this->allLetterDisplayed)
@@ -72,17 +72,6 @@ void MessageLayer::displayMessageWithAnimation(Label* message)
     this->message = message;
     
     int stringLength = message->getStringLength();
-    int lastLetterIndex { 0 };
-    
-    // 改行文字をカウントしない最後の文字のインデックスを取得する
-    for(int i = stringLength - 1; i >= 0; i--)
-    {
-        Sprite* letter { this->message->getLetter(i) };
-        if(letter){
-            lastLetterIndex = i;
-            break;
-        }
-    }
     
     // アニメーション設定
     for(int i = 0; i < stringLength; i++)
@@ -106,12 +95,10 @@ void MessageLayer::displayMessage(Label* message)
     
     for(int i = 0; i < message->getStringLength(); i++)
     {
-        Sprite* letter { this->message->getLetter(i) };
-        if(letter)
-        {
-            letter->stopAllActions();
-            letter->setOpacity(255);
-        }
+        Sprite* letter { message->getLetter(i) };
+        if(!letter) continue;
+        letter->stopAllActions();
+        letter->setOpacity(255);
     }
     
     this->onAllLetterDisplayed();

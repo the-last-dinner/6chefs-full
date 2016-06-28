@@ -104,9 +104,25 @@ public:
     CREATE_FUNC_WITH_PARAM(ChangeEventStatusEvent, rapidjson::Value&)
 private:
     int status {0};
+    int map_id {-1};
+    int event_id {-1};
 private:
     ChangeEventStatusEvent() {FUNCLOG};
     ~ChangeEventStatusEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json);
+    virtual void run() override;
+};
+
+// トロフィーの取得
+class GetTrophyEvent : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(GetTrophyEvent, rapidjson::Value&)
+private:
+    int trophyId {0};
+private:
+    GetTrophyEvent() {FUNCLOG};
+    ~GetTrophyEvent() {FUNCLOG};
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };

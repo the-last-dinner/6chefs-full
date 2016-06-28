@@ -10,11 +10,13 @@
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
+#include "Managers/DungeonSceneManager.h"
+
 // create関数
-ButtonMashingLayer* ButtonMashingLayer::create(int time, float limit, ResultCallback callback)
+ButtonMashingLayer* ButtonMashingLayer::create(int time, float limit, function<void()> onClick, ResultCallback callback)
 {
     ButtonMashingLayer* p { new(nothrow) ButtonMashingLayer() };
-    if(p && p->init(time, limit, callback))
+    if(p && p->init(time, limit, onClick, callback))
     {
         CC_SAFE_RETAIN(p);
         return p;
@@ -34,15 +36,16 @@ ButtonMashingLayer::ButtonMashingLayer() {FUNCLOG};
 ButtonMashingLayer::~ButtonMashingLayer() {FUNCLOG};
 
 // 初期化
-bool ButtonMashingLayer::init(int time, float limit, ResultCallback callback)
+bool ButtonMashingLayer::init(int time, float limit, function<void()> onClick, ResultCallback callback)
 {
     if(!Layer::init() || time == 0 || limit == 0.f || !callback) return false;
     
     this->count = time;
     this->callback = callback;
+    this->onClick = onClick;
     
     // 文字表示
-    Label* label { Label::createWithTTF("スペース連打！！", "fonts/cinecaption2.28.ttf", 25) };
+    Label* label { Label::createWithTTF("決定キー連打！！", "fonts/cinecaption2.28.ttf", 25) };
     label->setPosition(Point(this->getContentSize().width / 2, this->getContentSize().height / 4));
     label->setCascadeOpacityEnabled(true);
     this->addChild(label);
@@ -52,7 +55,7 @@ bool ButtonMashingLayer::init(int time, float limit, ResultCallback callback)
     
     // イベントリスナ生成
     EventListenerKeyboardLayer* listener { EventListenerKeyboardLayer::create() };
-    listener->onSpaceKeyPressed = CC_CALLBACK_0(ButtonMashingLayer::onSpaceKeyPressed, this);
+    listener->onEnterKeyPressed = CC_CALLBACK_0(ButtonMashingLayer::onEnterKeyPressed, this);
     this->addChild(listener);
     
     // 指定時間後に失敗通知
@@ -61,12 +64,14 @@ bool ButtonMashingLayer::init(int time, float limit, ResultCallback callback)
     return true;
 }
 
-// スペースキーが押された時
-void ButtonMashingLayer::onSpaceKeyPressed()
+// 決定キーが押された時
+void ButtonMashingLayer::onEnterKeyPressed()
 {
     this->count--;
     
-    if(this->count == 0 && this->callback)
+    if(this->onClick) this->onClick();
+    
+    if (this->count == 0 && this->callback)
     {
         this->stopAllActions();
         this->callback(Result::SUCCESS);

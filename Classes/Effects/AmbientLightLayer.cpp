@@ -32,6 +32,9 @@ AmbientLightLayer::~AmbientLightLayer()
         
         CC_SAFE_RELEASE_NULL(element.first);
     }
+    
+    if(this->renderTexture) this->renderTexture->autorelease();
+    if(this->ambientLight) this->ambientLight->autorelease();
 }
 
 // 初期化
@@ -49,6 +52,7 @@ bool AmbientLightLayer::init(const Color3B& color)
     ambientSprite->setPosition(winSize / 2);
     this->addChild(ambientSprite);
     this->ambientLight = ambientSprite;
+    CC_SAFE_RETAIN(ambientSprite); // crash fix
     
     this->setCascadeColorEnabled(true);
     this->setCascadeOpacityEnabled(true);
@@ -57,19 +61,26 @@ bool AmbientLightLayer::init(const Color3B& color)
     RenderTexture* renderTexture { RenderTexture::create(winSize.width, winSize.height) };
     this->addChild(renderTexture);
     this->renderTexture = renderTexture;
+    CC_SAFE_RETAIN(renderTexture); // crash fix
     
-    // レンダーテクスチャを反映させるためのスプライトを生成
-    Sprite* renderTexSprite {Sprite::create()};
-    renderTexSprite->setTexture(renderTexture->getSprite()->getTexture());
-    renderTexSprite->setTextureRect(renderTexture->getSprite()->getTextureRect());
+    // レンダーテクスチャ用Sprite
+    Sprite* renderTexSprite { renderTexture->getSprite() };
     renderTexSprite->setPosition(WINDOW_CENTER);
-    renderTexSprite->setFlippedY(true);
-    this->addChild(renderTexSprite);
-    this->renderTexSprite = renderTexSprite;
-    
     renderTexSprite->setBlendFunc(BlendFunc{GL_ZERO, GL_SRC_COLOR});
     
     return true;
+}
+
+void AmbientLightLayer::onEnter()
+{
+    Layer::onEnter();
+    this->scheduleUpdate();
+}
+
+void AmbientLightLayer::onExit()
+{
+    Layer::onExit();
+    this->unscheduleUpdate();
 }
 
 // 環境光の色を設定
@@ -92,7 +103,8 @@ void AmbientLightLayer::addLightSource(Light* lightSource)
     Light* light {Light::create(Light::Information(color, radius, info.type))};
     light->setPosition(lightSource->convertToWorldSpace(lightSource->getPosition()));
     light->setOpacity(0);
-    this->addChild(light);
+    light->setBlendFunc(BlendFunc{GL_SRC_COLOR, GL_ONE});
+    this->ambientLight->addChild(light);
     
     float duration {0.5f};
     light->runAction(FadeIn::create(duration));
@@ -110,7 +122,7 @@ void AmbientLightLayer::removeLightSource(Light* lightSource)
     light->runAction(Sequence::create(FadeOut::create(0.5f), RemoveSelf::create(), CallFunc::create([this, lightSource](){this->lightMap.erase(lightSource); CC_SAFE_RELEASE(lightSource);}), nullptr));
 }
 
-void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
+void AmbientLightLayer::update(float delta)
 {
     // 光の状態、位置を更新
     for(pair<Light*, Light*> element : this->lightMap)
@@ -123,17 +135,22 @@ void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, u
             
             continue;
         }
-        
-        light->setPosition(lightSource->convertToWorldSpace(lightSource->getPosition()));
+        light->setPosition(lightSource->convertToWorldSpaceAR(lightSource->getPosition()));
     }
     
-    this->renderTexture->beginWithClear(0, 0, 0, 0);
-    for (auto child : this->getChildren())
+    // レンダーテクスチャに焼き込み
+    this->renderTexture->beginWithClear(0.f, 0.f, 0.f, 0.f);
+    for (Node* child : this->getChildren())
     {
-        if (child != this->renderTexture && child != this->renderTexSprite)
-            child->visit(renderer, parentTransform, parentFlags);
+        if (child == this->renderTexture) continue;
+        child->visit();
     }
     this->renderTexture->end();
+}
+
+void AmbientLightLayer::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
+{
+    if (!this->isVisible()) return;
     
-    this->renderTexSprite->visit(renderer, parentTransform, parentFlags);
+    this->renderTexture->getSprite()->visit(renderer, parentTransform, parentFlags);
 }

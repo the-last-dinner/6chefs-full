@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="51">
- <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
   <tile id="306">
    <properties>
@@ -8,15 +8,18 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="481" name="death" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="death" tilewidth="16" tileheight="16" tilecount="384" columns="24">
   <image source="death.png" trans="007575" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="865" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="22" height="36">
   <properties>
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAOeKGYD4nmR5OHiWGTxwW0oVgHidZFk4eJYZPHZ64OFnoNIwQjiyO7gRDwBGIvLDTMXGRxTyR5QgCmn1RMb3PJNW/UXPzmUmoevc0VA4qJ08BcE6CYKQ3MBYFRc0fNHTV31NxRc0fNJcZcQoASvQNh7mAAAHxbQMw=
+   eJztk00OQDAQhacHwI5DYMchyo5rOqQ2zcQLbZD6i8xLXkZmOp/XRYm2ahVRQs4p1AzOYM8398lyS3KuoNZwBnu++VqNWrjI5DopZ+xjhpAGszMaa/Pd0bYyF/sa5qGcfB/eP+tQTvvP/kJubM4QNzbnX/LG8p7m5qZX3MDld3E110q4whWucIUr3CPcPcXsvsH9gmZa0EYm
   </data>
  </layer>
  <layer name="blood" width="22" height="36">
@@ -24,7 +27,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0McNAjEQRmFrXQGpCHINpGoIXUALBImlBIIEWwKiCk5ADWTeCh98ZnxC80vfcZ9Ha4xOp9PpdDp/3ciYHvoYRGGaYzoTTDHESNj1ezOsMUcs7C75fuV6GxywxU7Y3Xv3LQL903RH777ESZcI37jy/Q13PPAMdHPGGpNFDnkUcKJ9xkXwRpFOCWVUULXfm194C7oNOk200EbHtWuo29+7uv/eB2ENIwo=
+   eJzt0tkJwkAURuEhU4FLinCvwajVWJALKnagD2rsQBC3DgTBpQV3T3AC8TWTJ7k/fI9zCJcoJZPJZDKZLLqmo1QPfQycZJotOm1MMMUMQ4t22OugixXW2GBu0R3xdoylETa32Fl0F+aeB+OIE864WHT3kXv6RjDfohnsyvsb7njgmdB/kNJKpZFBFq7+vUXc5ejkUUARJf395hfeFt0qHQ811NEw7TIqOn5X9t/7AGLcK04=
   </data>
  </layer>
  <layer name="moryually" width="22" height="36">
@@ -51,7 +54,18 @@
    eJxjYBgFo2D4AD5G2ujVocBcSvSOglEwCgY/GC13RsEowASj+WJkAwBUfQFp
   </data>
  </layer>
+ <layer name="shadow" width="22" height="36" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYMAOXjNjF3+DQ5xYQG9zcYlTai6l5tHKXGqDUXNpa+5QA0MtfEfNHTV31NxRc0fNHTV3sNpJK3MpbVNTw1wAabkjWQ==
+  </data>
+ </layer>
  <objectgroup name="collision">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
   <object id="1" x="64" y="0" width="32" height="96"/>
   <object id="2" x="0" y="0" width="64" height="160"/>
   <object id="3" x="0" y="192" width="64" height="384"/>
@@ -220,7 +234,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAEpoxYBIkExnj0jprLwGDCSBtzg4DiwVQ2lxJ30ttcSsMVl7mUhisuc6kFRs0dNXfU3FFzR80dNXfUXMrNFWPEjsWR1IviUCNGolvR2ywgN5nQyL8DBQDBswv/
+   eJxjYKAuMGaksoHDzFwTCu0bLuFAbXMpDVdc5lILjJo7au6ouaPmjpo7au6ouYPXXDFG7FgcSb0oDjViJLoV1GYxRdIDchO12jGDBQAASsYJAQ==
   </data>
  </layer>
 </map>

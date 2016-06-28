@@ -20,6 +20,9 @@
  <tileset firstgid="2809" name="death" tilewidth="16" tileheight="16">
   <image source="death.png" trans="000000" width="384" height="256"/>
  </tileset>
+ <tileset firstgid="3193" name="ST-Sewer-01" tilewidth="16" tileheight="16">
+  <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
+ </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
    <property name="cc_vertexz" value="-14"/>
@@ -114,7 +117,7 @@
     <property name="objID" value="10110"/>
    </properties>
   </object>
-  <object id="26" x="144" y="64" width="32" height="32">
+  <object id="26" x="144" y="32" width="32" height="32">
    <properties>
     <property name="CharaID" value="7"/>
     <property name="direction" value="DOWN"/>
@@ -197,4 +200,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgOMLPQFUwat6oeaPmDbx5xrwjyzxywWA3bzADAKztD5c=
+  </data>
+ </layer>
 </map>

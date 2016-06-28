@@ -59,7 +59,6 @@
   <object id="43" x="816" y="144" width="16" height="32"/>
   <object id="44" x="112" y="256" width="32" height="32"/>
   <object id="45" x="32" y="608" width="800" height="48"/>
-  <object id="46" x="832" y="80" width="32" height="224"/>
   <object id="47" x="832" y="560" width="32" height="112"/>
   <object id="51" x="0" y="0" width="32" height="592"/>
   <object id="52" x="0" y="592" width="32" height="80"/>
@@ -89,7 +88,7 @@
   </data>
  </layer>
  <objectgroup name="event">
-  <object id="56" x="832" y="304" width="32" height="80">
+  <object id="56" x="832" y="0" width="48" height="384">
    <properties>
     <property name="EventID" value="3"/>
     <property name="trigger" value="1"/>

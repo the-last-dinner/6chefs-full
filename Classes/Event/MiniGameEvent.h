@@ -11,6 +11,8 @@
 
 #include "Event/GameEvent.h"
 
+#include "Datas/Message/CharacterMessageData.h"
+
 // 連打イベント
 class ButtonMashingEvent : public GameEvent
 {
@@ -24,9 +26,10 @@ private:
     GameEvent* sEvent { nullptr };
     GameEvent* fEvent { nullptr };
     GameEvent* event { nullptr };
+    GameEvent* clickCallbackEvent { nullptr };
 private:
     ButtonMashingEvent() {FUNCLOG};
-    ~ButtonMashingEvent() {FUNCLOG};
+    ~ButtonMashingEvent();
     virtual bool init(rapidjson::Value& json);
     virtual void run() override;
 };
@@ -42,6 +45,8 @@ private:
     string message {};
     vector<string> choices {};
     vector<SelectCallBack> eventCallBacks {};
+    queue<CharacterMessageData*> datas {};
+    
 private:
     SelectEvent() {FUNCLOG};
     ~SelectEvent() {FUNCLOG};

@@ -15,6 +15,9 @@
 #include "Layers/Dungeon/ButtonMashingLayer.h"
 #include "Layers/Dungeon/SelectEventLayer.h"
 #include "Layers/Dungeon/PasswordEventLayer.h"
+#include "Layers/Message/CharacterMessagelayer.h"
+
+#include "Datas/Message/CharacterMessageData.h"
 
 #include "Managers/DungeonSceneManager.h"
 
@@ -23,6 +26,13 @@
 #include "Scenes/DungeonScene.h"
 
 #pragma mark ButtonMashingEvent
+
+ButtonMashingEvent::~ButtonMashingEvent()
+{
+    FUNCLOG   
+    CC_SAFE_RELEASE_NULL(this->clickCallbackEvent);
+    this->clickCallbackEvent = nullptr;
+}
 
 bool ButtonMashingEvent::init(rapidjson::Value& json)
 {
@@ -52,15 +62,24 @@ bool ButtonMashingEvent::init(rapidjson::Value& json)
         CC_SAFE_RETAIN(this->fEvent);
     }
     
+    // クリック時のコールバックイベント
+    if(this->validator->hasMember(json, member::EVENT))
+    {
+        this->clickCallbackEvent = this->factory->createGameEvent(json[member::EVENT]);
+        this->clickCallbackEvent->setReusable(true);
+        CC_SAFE_RETAIN(this->clickCallbackEvent);
+    }
+    
     return true;
 }
 
 void ButtonMashingEvent::run()
 {
-    ButtonMashingLayer* layer { ButtonMashingLayer::create(this->count, this->limit, [this](ButtonMashingLayer::Result result)
+    ButtonMashingLayer* layer { ButtonMashingLayer::create(this->count, this->limit, [this]
     {
-        this->setDone();
-        
+        DungeonSceneManager::getInstance()->runEventAsync(this->clickCallbackEvent);
+    }, [this](ButtonMashingLayer::Result result)
+    {
         if(result == ButtonMashingLayer::Result::SUCCESS)
         {
             if(this->sEvent)
@@ -92,6 +111,8 @@ void ButtonMashingEvent::run()
         
         // イベント実行
         DungeonSceneManager::getInstance()->pushEventFront(this->event);
+        
+        this->setDone();
     }) };
     
     if(!layer)
@@ -135,12 +156,44 @@ bool SelectEvent::init(rapidjson::Value& json)
         this->eventCallBacks.push_back(SelectCallBack({eventId, event}));
     }
     
+    // キャラメッセージの時
+    if(this->validator->hasMember(json, member::CHARA_ID))
+    {
+        queue<string> pages {};
+        
+        pages.push(this->message);
+        
+        CharacterMessageData* data {CharacterMessageData::create(pages)};
+        CC_SAFE_RETAIN(data);
+        
+        // キャラID
+        if(this->validator->hasMember(json, member::CHARA_ID)) data->setCharaId(stoi(json[member::CHARA_ID].GetString()));
+        
+        // キャラ名
+        string charaName {};
+        
+        if(this->validator->hasMember(json, member::NAME))
+        {
+            charaName = json[member::NAME].GetString();
+        }
+        else
+        {
+            charaName = CsvDataManager::getInstance()->getCharacterData()->getName(data->getCharaId());
+        }
+        data->setCharaName(charaName);
+        
+        // 画像ID
+        if(this->validator->hasMember(json, member::IMG_ID)) data->setImgId(stoi(json[member::IMG_ID].GetString()));
+        
+        this->datas.push(data);
+    }
+    
     return true;
 }
 
 void SelectEvent::run()
 {
-    SelectEventLayer* layer { SelectEventLayer::create(this->message, this->choices) };
+    SelectEventLayer* layer { SelectEventLayer::create(this->message, this->choices, this->datas) };
     
     // コールバック
     layer->onSelected = [this](const int idx)

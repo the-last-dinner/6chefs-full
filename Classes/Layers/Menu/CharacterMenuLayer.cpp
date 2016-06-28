@@ -68,7 +68,7 @@ bool CharacterMenuLayer::init()
     Size list_size {right->getContentSize()};
     float space = 2;
     Point maxSize {Point(1,12)};
-    this->characters = CsvDataManager::getInstance()->getDisplayCharacters();
+    this->characters = CsvDataManager::getInstance()->getCharacterData()->getDisplayCharacters();
     int chara_count = this->characters.size();
     for (int i=0;i<chara_count; i++){
         // パネル生成
@@ -87,7 +87,7 @@ bool CharacterMenuLayer::init()
         }
         else
         {
-            chara_name = CsvDataManager::getInstance()->getCharaNameWithRuby(this->characters[i]);
+            chara_name = CsvDataManager::getInstance()->getCharacterData()->getNameWithRuby(this->characters[i]);
         }
         
         // ラベル生成
@@ -163,7 +163,7 @@ void CharacterMenuLayer::changeCharaImage(const int idx)
     else
     {
         // 見ることができるキャラクター
-        string fileName = CsvDataManager::getInstance()->getCharaFileName(this->characters[idx]) + "_s_0.png";
+        string fileName = CsvDataManager::getInstance()->getCharacterData()->getFileName(this->characters[idx]) + "_s_0.png";
         if(SpriteFrameCache::getInstance()->getSpriteFrameByName(fileName))
         {
             Sprite* img { Sprite::createWithSpriteFrameName(fileName)};
@@ -208,7 +208,7 @@ void CharacterMenuLayer::onMenuKeyPressed()
     // キャラ説明が出ている場合は消すだけ
     if (this->isDiscription)
     {
-        this->onSpacePressed(0);
+        this->onEnterKeyPressed(0);
         return;
     }
     
@@ -219,8 +219,8 @@ void CharacterMenuLayer::onMenuKeyPressed()
     }
 }
 
-// スペースキー
-void CharacterMenuLayer::onSpacePressed(int idx)
+// 決定キー
+void CharacterMenuLayer::onEnterKeyPressed(int idx)
 {
     // 見れないレベルのキャラの時
     if (PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->characters[idx]) < 0)
@@ -261,7 +261,7 @@ void CharacterMenuLayer::onSpacePressed(int idx)
             // 見れるレベルのプロフィールかチェック
             if (canCheckLevel >= i)
             {
-                profile = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getCharaDiscription(this->characters[idx], i));
+                profile = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getCharacterData()->getDiscription(this->characters[idx], i));
             }
             else
             {

@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="31">
- <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="chip10e_glas" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="chip10e_glas.png" trans="070d2a" width="480" height="256"/>
  </tileset>
- <tileset firstgid="961" name="cyber2" tilewidth="16" tileheight="16">
+ <tileset firstgid="961" name="cyber2" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="cyber2.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="1441" name="barrel-option" tilewidth="16" tileheight="16">
+ <tileset firstgid="1441" name="barrel-option" tilewidth="16" tileheight="16" tilecount="224" columns="16">
   <image source="barrel-option.png" trans="007575" width="256" height="224"/>
+ </tileset>
+ <tileset firstgid="1665" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="20" height="20">
   <properties>
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYICA5UC8ggwaFzgKxMfIoOll3mMgfkIGjQsIA7EIiVh01Lxhb95WRgaGbYzUM+8y0KwrVDSP2v4dNQ8CDIHYiERsjMe8wQoApYU/Pw==
+   eJxjYGBgMGVkYFgOpFcwkE4bA/WiA5B5R4H0MQbSaVqYZ8KIad5jIP2EgXQ6EKg3CIt5wkBahEQsihSO1DIP5u9R88gzDxbP1DJvK1DvNiqml8tAvVeoaJ4oUK8YFc3Dld8oMQ8dDAXzDIG0EYnYGId5ICDGSB6mNQAAIEZQaw==
   </data>
  </layer>
  <layer name="MonoShita" width="20" height="20">
@@ -86,7 +89,7 @@
  </layer>
  <layer name="CharaUe2" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYICAZEYIRgduQDF3Rtx8XACXeSlAsVRGhDkwPrmgCai3GckcGJ9SQC1zhjtwZSQOD5R5o4AyMBq/owAfAACKYhOk
+   eJxjYICAZEYIRgduQDF3Rtx8XACXeSlAsVRGhDkwPrmgCai3GckcGJ9SQC1zCAF3IsOTWJBKYXiig2YC4eDKSByGAUL+JdU8evt3pAFS44Pe5o2CgQUAMKMYbA==
   </data>
  </layer>
  <objectgroup name="event">
@@ -157,4 +160,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="shadow" width="20" height="20" opacity="0.5">
+  <properties>
+   <property name="cc_vertexz" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYIAAHnYGqoJR80bNQwbeBNQPN/MIgeFm3mCPj6Eev4MVAADEnwND
+  </data>
+ </layer>
 </map>

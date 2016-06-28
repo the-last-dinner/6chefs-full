@@ -8,6 +8,7 @@
 
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
+#include "Managers/DebugManager.h"
 
 // JSONファイルの読み込み
 rapidjson::Document LastSupper::JsonUtils::readJsonFile(const string& path)
@@ -47,14 +48,21 @@ void LastSupper::JsonUtils::writeJsonFile(const string& path, const rapidjson::D
     FileWriteStream ws(fp, buf, sizeof(buf));
     Writer<FileWriteStream> writerf(ws);
     doc.Accept(writerf);
+    fflush(fp);
     fclose(fp);
     
     return;
 }
 
-// JSONファイルの読み込み
+// 暗号化されたJSONファイルの読み込み
 rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
 {
+    // 暗号化の必要がない場合は通常の読み込み
+    if (DebugManager::getInstance()->isPlainData())
+    {
+        return LastSupper::JsonUtils::readJsonFile(path);
+    }
+    
     rapidjson::Document doc {nullptr};
     
     // ファイル読み込み
@@ -69,10 +77,6 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     string jsonStr;
     getline(ifs, jsonStr);
     LastSupper::StringUtils::encryptXor(jsonStr);
-//    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-//    {
-//        jsonStr[i] ^= C_KEY;
-//    }
     doc.Parse(jsonStr.c_str());
     ifs.close();
     
@@ -89,9 +93,16 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     return doc;
 }
 
+// 暗号化されたJSONファイルの書き出し
 void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::Document &doc)
 {
+    // 平文でJSONファイル書き出し
     LastSupper::JsonUtils::writeJsonFile(path, doc);
+
+    // 暗号化必須かチェック
+    DebugManager* dm = DebugManager::getInstance();
+    if (dm->isPlainData() && !dm->getCryptTrigger()) return;
+    
     // ファイル読み込み
     ifstream ifs(path);
     if (ifs.fail())
@@ -100,20 +111,16 @@ void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::
         return;
     }
     
-    // 文字列を複合化
+    // 文字列を暗号化
     string jsonStr;
     getline(ifs, jsonStr);
     LastSupper::StringUtils::encryptXor(jsonStr);
-//    for(int i = 0; i < strlen(jsonStr.c_str()); i++)
-//    {
-//        jsonStr[i] ^= C_KEY;
-//    }
     ifs.close();
     
     // ファイル書き出し
     ofstream ofs;
     ofs.open(path);
-    ofs << jsonStr << endl;
+    ofs << jsonStr << flush;
     ofs.close();
 }
 

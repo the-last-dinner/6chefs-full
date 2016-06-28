@@ -11,12 +11,14 @@
 #include "resources.h"
 
 // rapidjson
-#include "rapidjson/document.h"
-#include "rapidjson/filereadstream.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/filewritestream.h"
-#include "rapidjson/prettywriter.h"
-#include "rapidjson/error/en.h"
+#include "external/json/document.h"
+#include "external/json/filereadstream.h"
+#include "external/json/writer.h"
+#include "external/json/filewritestream.h"
+#include "external/json/prettywriter.h"
+#include "external/json/error/en.h"
+#include "external/json/rapidjson.h"
+
 using namespace rapidjson;
 typedef GenericDocument< UTF8<> > Document;
 typedef GenericValue< UTF8<> > Value;
@@ -60,9 +62,10 @@ using namespace std;
 // レイヤーのZORDER値
 enum Priority
 {
+    KEY_CONFIG = 2000,
     TOP_COVER = 1000,
     LOADING_LAYER = 999,
-    NOTIFICATION = 1000,
+    TROPHY_NOTIFICATION = 1000,
     STAMINA_BAR = 800,
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,
@@ -71,8 +74,10 @@ enum Priority
     BUTTON_MASHING_LAYER = 91,
     DISP_IMAGE_LAYER = 90,
     SCREEN_COVER = 80,
-    DEBUG_MASK = 40,
+    MAP_NOTIFICATION = 60,
+    FOCUS_LIGHT = 55,
     AMBIENT_LIGHT = 50,
+    DEBUG_MASK = 40,
 	MAP = 0,
 };
 
@@ -85,7 +90,9 @@ enum struct Key
     UP,
     MENU,
     DASH,
-    SPACE,
+    ENTER,
+    KEY_CONF,
+    WIN_SIZE,
     
     SIZE,
 };
@@ -116,6 +123,7 @@ enum struct Trigger
 enum struct ObjectID
 {
     UNDIFINED = -1,
+    HERO = -2,
 };
 
 // イベントID
@@ -209,5 +217,22 @@ static __TYPE_1__* create(__TYPE_2__ param1, __TYPE_3__ param2) \
         pRet = NULL; \
         return NULL; \
     } \
+}
+
+#define CREATE_FUNC_WITH_THREE_PARAM(__TYPE_1__, __TYPE_2__, __TYPE_3__, __TYPE_4__) \
+static __TYPE_1__* create(__TYPE_2__ param1, __TYPE_3__ param2, __TYPE_4__ param3) \
+{ \
+__TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(); \
+if (pRet && pRet->init(param1, param2, param3)) \
+{ \
+pRet->autorelease(); \
+return pRet; \
+} \
+else \
+{ \
+delete pRet; \
+pRet = NULL; \
+return NULL; \
+} \
 }
 #endif // __DEFINE_H__
