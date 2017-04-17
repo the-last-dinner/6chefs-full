@@ -34,11 +34,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 	auto glView = director->getOpenGLView();
 	if (!glView) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-		glView = GLViewImpl::createWithRect("6人の料理人と隻眼の少女2", Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+		glView = GLViewImpl::createWithRect("6人の料理人と隻眼の少女", Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
         glView->setFrameSize(WINDOW_WIDTH * WINDOW_SIZE_RATIO_MIDDLE, WINDOW_HEIGHT * WINDOW_SIZE_RATIO_MIDDLE);
         glView->setDesignResolutionSize(WINDOW_WIDTH, WINDOW_HEIGHT, ResolutionPolicy::NO_BORDER);
 #else	
-		glView = GLViewImpl::create("6人の料理人と隻眼の少女2");
+		glView = GLViewImpl::create("6人の料理人と隻眼の少女");
 #endif
 		director->setOpenGLView(glView);
 	}
