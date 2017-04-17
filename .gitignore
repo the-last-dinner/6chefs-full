@@ -4,11 +4,8 @@ xcuserdata
 Debug.win32/
 Release.win32/
 *.sdf
+*.suo
 
-proj.android
-proj.linux
-proj.win8.1-universal
-proj.wp8-xaml
 
 local.properties
 .classpath
@@ -18,5 +15,3 @@ local.properties
 *.apk
 .metadata
 *.opensdf
-
-msinttypes/

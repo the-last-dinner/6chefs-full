@@ -16,16 +16,12 @@ class RandomMove : public MovePattern
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(RandomMove, Character*);
-
-// インスタンス変数
-private:
-    float second {0.f};
     
 // インスタンスメソッド
 private:
     RandomMove();
     ~RandomMove();
-    bool init(Character* chara);
+    bool init(Character* chara) override;
     virtual void start() override;
     virtual void move();
 };

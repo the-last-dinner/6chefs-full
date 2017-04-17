@@ -27,17 +27,17 @@ public:
     
 // インスタンス変数
 private:
-    Point homePosition { Point::ZERO };
+    Point _homePosition { Point::ZERO };
     
 // インスタンスメソッド
 private:
     MobRandom();
     ~MobRandom();
-    virtual bool init(Character* chara);
-    virtual void start();
+    virtual bool init(Character* chara) override;
+    virtual void start() override;
+    virtual void pause() override;
     void move();
     void scheduleMove();
-    virtual void setPaused(bool paused) override;
 };
 
 #endif /* MobRandom_h */

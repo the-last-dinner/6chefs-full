@@ -9,7 +9,7 @@
 #include "Event/EffectEvent.h"
 
 #include "Event/EventScriptMember.h"
-#include "Event/EventScriptValidator.h"
+#include "Event/GameEventHelper.h"
 
 #include "Effects/AmbientLightLayer.h"
 #include "Effects/Fog.h"
@@ -22,9 +22,9 @@
 
 bool SetAmbientLightEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
-    if(!this->validator->hasMember(json, member::AMBIENT)) return false;
+    if (!_eventHelper->hasMember(_json, member::AMBIENT)) return false;
     
     // 環境光の色
     map<string, Color3B> strToColor
@@ -37,11 +37,15 @@ bool SetAmbientLightEvent::init(rapidjson::Value& json)
         {"room", AmbientLightLayer::ROOM},
     };
     
-    string str {json[member::AMBIENT].GetString()};
+    string str { _json[member::AMBIENT].GetString() };
     
-    if(strToColor.count(str) == 0) return false;
+    if(strToColor.count(str) == 0)
+    {
+        LastSupper::AssertUtils::warningAssert("EventScriptError\ntype: setAmbient\nambient: " + str + "This ambient is missing.");
+        return false;
+    }
     
-    this->color = strToColor[str];
+    _color = strToColor[str];
     
     return true;
 }
@@ -49,7 +53,7 @@ bool SetAmbientLightEvent::init(rapidjson::Value& json)
 void SetAmbientLightEvent::run()
 {
     this->setDone();
-    DungeonSceneManager::getInstance()->getAmbientLayer()->setAmbient(this->color);
+    DungeonSceneManager::getInstance()->getAmbientLayer()->setAmbient(_color);
 }
 
 #pragma mark -
@@ -57,32 +61,31 @@ void SetAmbientLightEvent::run()
 
 bool AnimationEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // img
-    if(!validator->hasMember(json, member::IMGS)) return false;
+    if (!_eventHelper->hasMember(_json, member::IMGS)) return false;
     
     // 配列じゃなければ無視
-    if(!json[member::IMGS].IsArray()) return false;
+    if (!_json[member::IMGS].IsArray()) return false;
     
-    for(int i {0}; i < json[member::IMGS].Size(); i++)
-    {
-        this->spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(json[member::IMGS][i].GetString()));
+    for (int i {0}; i < _json[member::IMGS].Size(); i++) {
+        _spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(_json[member::IMGS][i].GetString()));
     }
     
     // 一枚あたりの表示する時間
-    if(this->validator->hasMember(json, member::TIME)) this->delayPerUnit = json[member::TIME].GetDouble();
+    if (_eventHelper->hasMember(_json, member::TIME)) _delayPerUnit = _json[member::TIME].GetDouble();
     
     return true;
 }
 
 void AnimationEvent::run()
 {
-    Animation* animation { Animation::createWithSpriteFrames(this->spriteFrames) };
+    Animation* animation { Animation::createWithSpriteFrames(_spriteFrames) };
     
-    animation->setDelayPerUnit(this->delayPerUnit);
+    animation->setDelayPerUnit(_delayPerUnit);
     
-    Sprite* animationSprite { Sprite::createWithSpriteFrame(this->spriteFrames.at(0)) };
+    Sprite* animationSprite { Sprite::createWithSpriteFrame(_spriteFrames.at(0)) };
     animationSprite->setPosition(WINDOW_CENTER);
     
     DungeonSceneManager::getInstance()->getScene()->addChild(animationSprite, Priority::TOP_COVER);
@@ -95,7 +98,7 @@ void AnimationEvent::run()
 
 bool CreateFogEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     return true;
 }
@@ -115,7 +118,7 @@ void CreateFogEvent::run()
 
 bool CreateRainEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     return true;
 }
@@ -136,7 +139,11 @@ void CreateRainEvent::run()
 
 bool CreateUnderwaterEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
+    
+    if (_eventHelper->hasMember(_json, member::WAVE_IN)) {
+        _waveIn = _json[member::WAVE_IN].GetBool();
+    }
     
     return true;
 }
@@ -145,11 +152,31 @@ void CreateUnderwaterEvent::run()
 {
     this->setDone();
     
-    auto waterLayer = LayerColor::create(Color4B(88,255,255,128 ));
-    ParticleSystemQuad* bubble = ParticleSystemQuad::create("img/bubble.plist");
+    auto waterLayer = LayerColor::create(Color4B(88,255,255,128));
     
+    ParticleSystemQuad* bubble = ParticleSystemQuad::create("img/bubble.plist");
     waterLayer->addChild(bubble);
-    DungeonSceneManager::getInstance()->getScene()->addChild(waterLayer);
+    
+    auto nodeGrid = NodeGrid::create();
+    nodeGrid->runAction(RepeatForever::create(Waves::create(10.f, Size(60, 60), 10, 5.0f, true, false)));
+    nodeGrid->addChild(waterLayer);
+    
+    if (this->_waveIn) {
+        float layerHeight { waterLayer->getContentSize().height };
+        waterLayer->setPosition(waterLayer->getPosition().x, - layerHeight);
+        waterLayer->runAction(
+            Sequence::createWithTwoActions(
+                EaseSineInOut::create(MoveBy::create(1.0f, Vec2(0.f, 2 * layerHeight / 10))),
+                Repeat::create(
+                    Sequence::createWithTwoActions(
+                        EaseSineInOut::create(MoveBy::create(0.5f, Vec2(0.f, - layerHeight / 10))),
+                        EaseSineInOut::create(MoveBy::create(1.0f, Vec2(0.f, 3 * layerHeight / 10)))
+                ), 4)
+            )
+        );
+    }
+    
+    DungeonSceneManager::getInstance()->getScene()->addChild(nodeGrid);
 }
 
 

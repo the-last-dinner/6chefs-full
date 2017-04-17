@@ -21,7 +21,7 @@ class ModalLayerEvent : public GameEvent
 protected:
     ModalLayerEvent() {};
     virtual ~ModalLayerEvent() {};
-    virtual bool init() override;
+    virtual bool init(rapidjson::Value& json) override;
 };
 
 // キャラクターメッセージイベント
@@ -33,13 +33,13 @@ public:
 
 // インスタンス変数
 private:
-    queue<CharacterMessageData*> datas {};
+    queue<CharacterMessageData*> _datas {};
 
 // インスタンスメソッド
 private:
     CharacterMessage() {FUNCLOG};
     ~CharacterMessage() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
     void run() override;
 };
 
@@ -50,13 +50,13 @@ public:
     CREATE_FUNC_WITH_PARAM(StoryMessage, rapidjson::Value&)
     
 private:
-    string title {};
-    queue<StoryMessageData*> datas {};
+    string _title {};
+    queue<StoryMessageData*> _datas {};
     
 private:
-    StoryMessage():title("") {FUNCLOG};
+    StoryMessage() {FUNCLOG};
     ~StoryMessage() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -67,27 +67,59 @@ public:
     CREATE_FUNC_WITH_PARAM(SystemMessage, rapidjson::Value&)
 
 private:
-    queue<SystemMessageData*> datas {};
+    queue<SystemMessageData*> _datas {};
     
 private:
     SystemMessage() {FUNCLOG};
     ~SystemMessage() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
 // 画像を表示
-class DispImageEvent : public GameEvent
+class DispImageEvent : public ModalLayerEvent
 {
 public:
     CREATE_FUNC_WITH_PARAM(DispImageEvent, rapidjson::Value&)
 private:
-    string fileName {};
-    float duration { 0.f };
+    string _fileName {};
+    float _duration { 0.f };
 private:
     DispImageEvent() {FUNCLOG};
     ~DispImageEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
+    virtual void run() override;
+};
+
+// DisplaySaveイベント
+class SaveDataSelector;
+class DisplaySaveMenu : public GameEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(DisplaySaveMenu, rapidjson::Value&);
+private:
+    SaveDataSelector* _saveMenu { nullptr };
+private:
+    DisplaySaveMenu() { FUNCLOG };
+    ~DisplaySaveMenu() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
+    virtual void run() override;
+    void display();
+    void onExitedSaveMenu();
+};
+
+// 動画再生
+class PlayVideoEvent : public ModalLayerEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(PlayVideoEvent, rapidjson::Value&)
+private:
+    string _fileName {};
+    bool _skip { false };
+private:
+    PlayVideoEvent() {FUNCLOG};
+    ~PlayVideoEvent() {FUNCLOG};
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 

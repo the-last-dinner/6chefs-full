@@ -9,7 +9,7 @@
 #include "Event/EventFactory.h"
 #include "Event/SceneEvent.h"
 
-#include "Event/EventScriptValidator.h"
+#include "Event/GameEventHelper.h"
 #include "Event/EventScriptMember.h"
 
 #include "Datas/Scene/DungeonCameraSceneData.h"
@@ -18,7 +18,6 @@
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Character.h"
 #include "MapObjects/Party.h"
-
 #include "Managers/DungeonSceneManager.h"
 #include "Models/StopWatch.h"
 
@@ -28,93 +27,37 @@
 #include "Scenes/GameOverScene.h"
 #include "Scenes/TitleScene.h"
 
+#include "Utils/AssertUtils.h"
+
 #pragma mark ChangeMapEvent
 
 bool ChangeMapEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
-    
-    Direction direction {Direction::SIZE};
-
-    // directionの指定がされている時
-    if(this->validator->hasMember(json, member::DIRECTION))
-    {
-        direction = MapUtils::toEnumDirection(json[member::DIRECTION].GetString());
-    }
-    // directionが指定されていない時
-    else
-    {
-        direction = DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getDirection();
-    }
-    
-    this->destLocation = Location(stoi(json[member::MAP_ID].GetString()), json[member::X].GetInt(), json[member::Y].GetInt(), direction);
-    this->currentLocation = DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getLocation();
+    if (!GameEvent::init(json)) return false;
     
     // 移動後に実行するイベントID
-    if(this->validator->hasMember(json, member::EVENT_ID)) this->initEventId = stoi(json[member::EVENT_ID].GetString());
+    if (_eventHelper->hasMember(_json, member::EVENT_ID)) _initEventId = stoi(_json[member::EVENT_ID].GetString());
     
     return true;
 }
 
 void ChangeMapEvent::run()
 {
+    Direction direction { Direction::NONE };
+    
+    // directionの指定がされている時
+    if (_eventHelper->hasMember(_json, member::DIRECTION)) {
+        direction = _eventHelper->getDirection(_json);
+    } else {
+        // directionが指定されていない時
+        direction = DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getDirection();
+    }
+    
+    Location destLocation { Location(stoi(_json[member::MAP_ID].GetString()), _json[member::X].GetInt(), _json[member::Y].GetInt(), direction) };
+    Location currentLocation { DungeonSceneManager::getInstance()->getParty()->getMainCharacter()->getLocation() };
+    
     this->setDone();
-    DungeonSceneManager::getInstance()->changeMap(this->destLocation, this->currentLocation, this->initEventId);
-}
-
-#pragma mark -
-#pragma mark CreateCameraEvent
-
-bool CreateCameraEvent::init(rapidjson::Value& json)
-{
-    if(!GameEvent::init()) return false;
-    
-    // 映したい場所
-    this->location.map_id = (this->validator->hasMember(json, member::MAP_ID)) ? stoi(json[member::MAP_ID].GetString()) : DungeonSceneManager::getInstance()->getLocation().map_id;
- 
-    Point position { this->validator->getPoint(json) };
-    this->location.x = position.x;
-    this->location.y = position.y;
-    
-    // ターゲット
-    if(this->validator->hasMember(json, member::OBJECT_ID)) this->objId = stoi(json[member::OBJECT_ID].GetString());
-    
-    // イベント
-    if(!this->validator->hasMember(json, member::ACTION)) return false;
-    this->event = this->factory->createGameEvent(json[member::ACTION]);
-    CC_SAFE_RETAIN(this->event);
-    
-    return true;
-}
-
-void CreateCameraEvent::run()
-{
-    DungeonCameraSceneData* data { DungeonCameraSceneData::create(this->location) };
-    data->setTargetId(this->objId);
-    
-    DungeonCameraScene* scene { DungeonCameraScene::create(data, this->event, [this]{DungeonSceneManager::getInstance()->popCameraScene(); this->setDone();}) };
-    DungeonSceneManager::getInstance()->pushCameraScene(scene);
-}
-
-#pragma mark -
-#pragma mark MoveCameraEvent
-
-bool MoveCameraEvent::init(rapidjson::Value& json)
-{
-    if(!GameEvent::init()) return false;
-    
-    // 目的地
-    this->toPosition = this->validator->getToPoint(json);
-    
-    // 移動時間
-    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
-    
-    return true;
-}
-
-void MoveCameraEvent::run()
-{
-    DungeonSceneManager::getInstance()->moveCamera(this->toPosition, this->duration, [this]{this->setDone();});
+    DungeonSceneManager::getInstance()->changeMap(destLocation, currentLocation, _initEventId);
 }
 
 #pragma mark -
@@ -122,9 +65,9 @@ void MoveCameraEvent::run()
 
 bool WaitEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
-    this->duration = {static_cast<float>(json[member::TIME].GetDouble())};;
+    _duration = { static_cast<float>(_json[member::TIME].GetDouble()) };
     
     return true;
 }
@@ -133,9 +76,9 @@ void WaitEvent::run() {}
 
 void WaitEvent::update(float delta)
 {
-    this->duration -= delta;
+    _duration -= delta;
     
-    if(this->duration <= 0) this->setDone();
+    if (_duration <= 0) this->setDone();
 }
 
 #pragma mark -
@@ -143,18 +86,18 @@ void WaitEvent::update(float delta)
 
 bool FadeOutEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
-    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
+    if (_eventHelper->hasMember(_json, member::TIME)) _duration = _json[member::TIME].GetDouble();
     
-    this->color = this->validator->getColor(json);
+    _color = _eventHelper->getColor(_json);
     
     return true;
 }
 
 void FadeOutEvent::run()
 {
-    DungeonSceneManager::getInstance()->fadeOut(this->color, this->duration, [this]{this->setDone();});
+    DungeonSceneManager::getInstance()->fadeOut(_color, _duration, [this]{this->setDone();});
 }
 
 #pragma mark -
@@ -162,16 +105,16 @@ void FadeOutEvent::run()
 
 bool FadeInEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
-    if(this->validator->hasMember(json, member::TIME)) this->duration = json[member::TIME].GetDouble();
+    if (_eventHelper->hasMember(_json, member::TIME)) _duration = _json[member::TIME].GetDouble();
     
     return true;
 }
 
 void FadeInEvent::run()
 {
-    DungeonSceneManager::getInstance()->fadeIn(this->duration, [this]{this->setDone();});
+    DungeonSceneManager::getInstance()->fadeIn(_duration, [this]{this->setDone();});
 }
 
 #pragma mark -
@@ -179,10 +122,10 @@ void FadeInEvent::run()
 
 bool GameOverEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // ゲームオーバーのID
-    if(this->validator->hasMember(json, member::ID)) this->gameOverId = stoi(json[member::ID].GetString());
+    if (_eventHelper->hasMember(_json, member::ID)) _gameOverId = stoi(_json[member::ID].GetString());
     
     return true;
 }
@@ -190,7 +133,7 @@ bool GameOverEvent::init(rapidjson::Value& json)
 void GameOverEvent::run()
 {
     this->setDone();
-    DungeonSceneManager::getInstance()->exitDungeon(GameOverScene::create(static_cast<GameOverScene::Type>(this->gameOverId)));
+    DungeonSceneManager::getInstance()->exitDungeon(GameOverScene::create(static_cast<GameOverScene::Type>(_gameOverId)));
 }
 
 #pragma mark -
@@ -198,18 +141,43 @@ void GameOverEvent::run()
 
 bool EndingEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // エンディングID
-    if(this->validator->hasMember(json, member::ID)) this->endingId = stoi(json[member::ID].GetString());
+    if (_eventHelper->hasMember(_json, member::ID)) _endingId = stoi(_json[member::ID].GetString());
     
+    // エンディング終了時動作
+    if (!_eventHelper->hasMember(_json, member::CALLBACK_)) return false;
+    
+    _event = _factory->createGameEvent(json[member::CALLBACK_], this);
+    // @TODO: メモリリークしてそうなのでRELEASEすべきタイミングでリリースする。デストラクタだとまずそうなのでコールバック実行後とか？
+    CC_SAFE_RETAIN(_event);
     return true;
 }
 
 void EndingEvent::run()
 {
-    this->setDone();
-    DungeonSceneManager::getInstance()->exitDungeon(EndingScene::create(this->endingId));
+    EndingScene* ending { EndingScene::create(_endingId) };
+    
+    BaseScene* nowScene = (BaseScene*)Director::getInstance()->getRunningScene();
+    ending->onEnterPushedScene = [nowScene](){
+        nowScene->onEnterPushedScene();
+    };
+    ending->onExitPushedScene = [nowScene, this](){
+        nowScene->onExitPushedScene();
+        _isEnd = true;
+    };
+    SoundManager::getInstance()->stopBGMAll();
+    Director::getInstance()->pushScene(ending);
+    
+}
+
+void EndingEvent::update(float delta)
+{
+    if(_isEnd) {
+        _event->run();
+        this->setDone();
+    }
 }
 
 #pragma mark -
@@ -217,7 +185,8 @@ void EndingEvent::run()
 
 bool BackToTitleEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
+    
     return true;
 }
 
@@ -225,4 +194,21 @@ void BackToTitleEvent::run()
 {
     this->setDone();
     DungeonSceneManager::getInstance()->exitDungeon(TitleScene::create());
+}
+
+#pragma mark -
+#pragma mark InfoAssertEvent
+
+bool InfoAssertEvent::init(rapidjson::Value& json)
+{
+    if (!GameEvent::init(json)) return false;
+    _text = (_eventHelper->hasMember(_json, member::TEXT)) ? _json[member::TEXT].GetString() : "";
+    
+    return true;
+}
+
+void InfoAssertEvent::run()
+{
+    this->setDone();
+    LastSupper::AssertUtils::infoAssert(_text);
 }

@@ -20,13 +20,13 @@ class MapObjectEvent : public GameEvent
 {
 // インスタンス変数
 protected:
-    string objectId {};
+    string _objectId {};
     
 // インスタンスメソッド
 protected:
     MapObjectEvent() {};
     virtual ~MapObjectEvent() {};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
 };
 
 // リアクション
@@ -35,10 +35,11 @@ class ReactionEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(ReactionEvent, rapidjson::Value&)
 private:
-    ReactionEvent() {FUNCLOG};
-    ~ReactionEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    ReactionEvent() { FUNCLOG };
+    ~ReactionEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+   
 };
 
 // マップオブジェクトを生成
@@ -47,10 +48,12 @@ class CreateMapObjectEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(CreateMapObjectEvent, rapidjson::Value&)
 private:
-    CreateMapObjectEvent() {FUNCLOG};
-    ~CreateMapObjectEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    CreateMapObjectEvent() { FUNCLOG };
+    ~CreateMapObjectEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+private:
+    MapObject* _target {};
 };
 
 //  マップオブジェクトを削除
@@ -59,9 +62,9 @@ class RemoveMapObjectEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(RemoveMapObjectEvent, rapidjson::Value&)
 private:
-    RemoveMapObjectEvent() {FUNCLOG};
-    ~RemoveMapObjectEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    RemoveMapObjectEvent() { FUNCLOG };
+    ~RemoveMapObjectEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -71,9 +74,9 @@ class FollowCharacterEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(FollowCharacterEvent, rapidjson::Value&)
 private:
-    FollowCharacterEvent() {FUNCLOG};
-    ~FollowCharacterEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    FollowCharacterEvent() { FUNCLOG };
+    ~FollowCharacterEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -83,9 +86,9 @@ class ReleaseFollowingCharacterEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(ReleaseFollowingCharacterEvent, rapidjson::Value&)
 private:
-    ReleaseFollowingCharacterEvent() {FUNCLOG};
-    ~ReleaseFollowingCharacterEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    ReleaseFollowingCharacterEvent() { FUNCLOG };
+    ~ReleaseFollowingCharacterEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -95,12 +98,12 @@ class WarpMapObjectEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(WarpMapObjectEvent, rapidjson::Value&)
 private:
-    Point point {Point(0,0)};
-    Direction direction {Direction::FRONT};
+    Point _point { Point::ZERO };
+    Direction _direction { Direction::DOWN };
 private:
-    WarpMapObjectEvent(){FUNCLOG};
-    ~WarpMapObjectEvent(){FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    WarpMapObjectEvent() { FUNCLOG };
+    ~WarpMapObjectEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -110,12 +113,12 @@ class MoveToEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(MoveToEvent, rapidjson::Value&)
 private:
-    Point dest {Point::ZERO};
-    float speedRatio { 1.0f };
+    Point _dest {Point::ZERO};
+    float _speedRatio { 1.0f };
 private:
-    MoveToEvent() {FUNCLOG};
-    ~MoveToEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    MoveToEvent() { FUNCLOG };
+    ~MoveToEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -125,13 +128,13 @@ class MoveByEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(MoveByEvent, rapidjson::Value&)
 private:
-    Direction direction {Direction::SIZE};
-    int gridNum {0};
-    float speedRatio {1.f};
+    Direction _direction { Direction::DOWN };
+    int _gridNum {0};
+    float _speedRatio {1.f};
 private:
-    MoveByEvent() {FUNCLOG};
-    ~MoveByEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    MoveByEvent() { FUNCLOG };
+    ~MoveByEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -141,11 +144,12 @@ class SetLightEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(SetLightEvent, rapidjson::Value&)
 private:
-    Light* light { nullptr };
+    Light* _innerLight { nullptr };
+    Light* _outerLight { nullptr };
 private:
-    SetLightEvent() {FUNCLOG};
-    ~SetLightEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    SetLightEvent() { FUNCLOG };
+    ~SetLightEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 
@@ -155,9 +159,39 @@ class RemoveLightEvent : public MapObjectEvent
 public:
     CREATE_FUNC_WITH_PARAM(RemoveLightEvent, rapidjson::Value&)
 private:
-    RemoveLightEvent() {FUNCLOG};
-    ~RemoveLightEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    RemoveLightEvent() { FUNCLOG };
+    ~RemoveLightEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
+    virtual void run() override;
+};
+
+// オブジェクトを動かせるようにする
+class SetMovableEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(SetMovableEvent, rapidjson::Value&)
+private:
+    bool _movable { false };
+    string _fileName {};
+private:
+    SetMovableEvent() { FUNCLOG };
+    ~SetMovableEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
+    virtual void run() override;
+};
+
+// アニメーション再生
+class MapObjectAnimateEvent : public MapObjectEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(MapObjectAnimateEvent, rapidjson::Value&);
+private:
+    string _animationName {};
+    float _speed { 1.f };
+private:
+    MapObjectAnimateEvent() { FUNCLOG }
+    ~MapObjectAnimateEvent() { FUNCLOG }
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 

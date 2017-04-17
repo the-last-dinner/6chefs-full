@@ -6,18 +6,17 @@
 //
 //
 
-#include "TrophyListLayer.h"
+#include "Layers/Menu/TrophyListLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 #include "Managers/PlayerDataManager.h"
-#include "Models/GlobalPlayerData.h"
+#include "Models/PlayerData/GlobalPlayerData.h"
+#include "Utils/SpriteUtils.h"
+#include "UI/SlideNode.h"
 
 // 初期化
 bool TrophyListLayer::init()
 {
-    Point size {Point(2,6)};
-    if (!MenuLayer::init(size.x, size.y)) return false;
-    
     SpriteUtils::Square square;
     SpriteUtils::Margin margin;
     Size parcent = Size(WINDOW_WIDTH/100, WINDOW_HEIGHT/100);
@@ -75,7 +74,12 @@ bool TrophyListLayer::init()
     center->setName("itemList");
     this->addChild(center);
     
+    // メニュー設定
     vector<int> trophies = CsvDataManager::getInstance()->getTrophyData()->getIdAll();
+    Point size {Point(2,5)};
+    
+    if (!MenuLayer::init(size, trophies.size(), center)) return false;
+    
     int i = 0;
     int page = 0;
     int upDownMargin = 40;
@@ -83,17 +87,21 @@ bool TrophyListLayer::init()
     
     for(int trophy_id : trophies)
     {
+        // ページパネル生成
+        page = floor(i / (size.x * size.y));
         
-        // パネル生成
+        // トロフィーパネル生成
         Sprite* panel = Sprite::create();
-        Size list_size {center->getContentSize()};
+        Size list_size {this->pagePanels[page]->getContentSize()};
         list_size.height -= upDownMargin;
         panel->setTextureRect(Rect(0, 0, list_size.width / size.x, list_size.height / size.y));
         panel->setOpacity(0);
         
         Size panel_size {panel->getContentSize()};
         panel->setPosition(((i - (int)(page * size.x * size.y))%(int)size.x) * (list_size.width / size.x) + panel_size.width/2, list_size.height - ((floor((i - page * size.x * size.y)/(int)size.x) + 1)  *  (panel_size.height)) + panel_size.height/2 + upDownMargin/2);
-        center->addChild(panel);
+        
+        // ページに登録
+        this->pagePanels[page]->addChild(panel);
         
         // トロフィー画像
         Sprite* trophy_img {Sprite::createWithSpriteFrameName("trophy_gold.png")};
@@ -126,6 +134,7 @@ bool TrophyListLayer::init()
         i++;
     }
     // デフォルトセレクト
+    this->onPageChanged(0);
     this->onIndexChanged(0, false);
     
     return true;
@@ -193,6 +202,62 @@ void TrophyListLayer::onMenuKeyPressed()
 // スペースキーを押した時
 void TrophyListLayer::onEnterKeyPressed(int idx)
 {
+    int trophyId = idx + 1;
+
+    // トロフィー所持していない場合
+    if (!PlayerDataManager::getInstance()->getGlobalData()->hasTrophy(trophyId)) {
+        SoundManager::getInstance()->playSE(Resource::SE::FAILURE);
+        return;
+    }
+    
+    // データ取得
+    TrophyData* trophyData { CsvDataManager::getInstance()->getTrophyData() };
+    string imgName = trophyData->getImagePath(trophyId);
+    string voiceFile = trophyData->getVoicePath(trophyId);
+    
+    // ボイスがない場合
+    if (voiceFile == "") {
+        SoundManager::getInstance()->playSE(Resource::SE::BACK);
+        return;
+    }
+    
+    // 画像がある場合
+    if (SpriteFrameCache::getInstance()->getSpriteFrameByName(imgName)) {
+        // 背景準備
+        SpriteUtils::Square square = SpriteUtils::Square(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+        SpriteUtils::Margin margin = SpriteUtils::Margin(0.0);
+        Sprite* background { SpriteUtils::getSquareSprite(square,margin) };
+        background->setColor(Color3B::BLACK);
+        background->setOpacity(172);
+        
+        // 画像とスライドノードの準備
+        Sprite* img { Sprite::createWithSpriteFrameName(imgName) };
+        Point outPosition { Point(WINDOW_WIDTH + img->getContentSize().width/2, 0) };
+        Point inPosition { Point(WINDOW_WIDTH - img->getContentSize().width/2, 0) };
+        SlideNode* slideBase { SlideNode::create(inPosition, outPosition) };
+        
+        // Spriteをセット
+        slideBase->addChild(img);
+        background->addChild(slideBase);
+        this->addChild(background);
+        
+        // アニメーション
+        this->listenerKeyboard->setEnabled(false);
+        slideBase->slideIn();
+        SoundManager::getInstance()->playVoice(voiceFile, 1.0, [this,slideBase,background](int voiceId, const string& fileName) {
+            slideBase->slideOut([this,background](SlideNode* slideBase) {
+                slideBase->removeAllChildren();
+                slideBase->removeFromParent();
+                background->removeFromParent();
+                this->listenerKeyboard->setEnabled(true);
+            });
+        });
+        
+        return;
+    }
+    
+    // サウンドだけ出す
+    SoundManager::getInstance()->playVoice(voiceFile);
 }
 
 // 選択対象が変わった時

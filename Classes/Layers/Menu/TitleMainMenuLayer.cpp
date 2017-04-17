@@ -27,21 +27,27 @@ bool TitleMainMenuLayer::init()
         {MenuType::START, "はじめから"},
         {MenuType::CONTINUE, "つづきから"},
         {MenuType::TROPHY, "トロフィ"},
-        //{MenuType::EXIT, "終了"},
     };
+    this->specialRoomTitle = PlayerDataManager::getInstance()->getGlobalData()->isCleared() ? "おまけ" : "? ? ?";
+    if (ConfigDataManager::getInstance()->getMasterConfigData()->isDisplay(MasterConfigData::SPECIAL_ROOM))
+    {
+        typeToString.insert({MenuType::SPECIAL_ROOM, this->specialRoomTitle});
+    }
+    else
+    {
+        typeToString.insert({MenuType::EXIT, "終了"});
+    }
     
 	if(!MenuLayer::init(1, typeToString.size())) return false;
+    
+    MasterConfigData* masterConfigData {ConfigDataManager::getInstance()->getMasterConfigData()};
     
     this->animating = true;
 	
 	// 背景画像を生成
 	Sprite* titleBg = Sprite::createWithSpriteFrameName("background.png");
 	titleBg->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	titleBg->setOpacity(0);
 	this->addChild(titleBg);
-    
-    // タイトル背景画像をフェードイン
-    this->runAction(TargetedAction::create(titleBg, FadeIn::create(1.f)));
     
     // タイトル文字を生成
     float font_size = 56.f;
@@ -64,14 +70,31 @@ bool TitleMainMenuLayer::init()
     title3->setOpacity(0);
     this->addChild(title3);
     
+    // 2のアイコン
+    Spawn* titleNumberAction { nullptr };
+    if (masterConfigData->isDisplay(MasterConfigData::TWO_ICON)) {
+        float titleNumberScale { 0.33f };
+        Sprite* titleNumber {Sprite::createWithSpriteFrameName("title_2.png")};
+        titleNumber->setPosition(
+            WINDOW_WIDTH/2 + title3->getContentSize().width/2 + titleNumber->getContentSize().width * titleNumberScale / 5,
+            title2->getPosition().y - title3->getContentSize().height
+        );
+        titleNumber->setOpacity(0);
+        this->addChild(titleNumber);
+        titleNumberAction = Spawn::createWithTwoActions(
+                                TargetedAction::create(titleNumber, FadeIn::create(0.8f)),
+                                TargetedAction::create(titleNumber, EaseCubicActionOut::create(ScaleTo::create(0.6f, titleNumberScale)))
+                            );
+    }
+    
     // タイトルメニューを生成
-	int menuSize = 48.f;
+	float menuSize = 44.f;
     float duration { 1.0f };
     float latency { 0.2f };
 	for(int i = 0; i < etoi(MenuType::SIZE); i++)
 	{
         Label* menuItem { Label::createWithTTF(typeToString[static_cast<MenuType>(i)], Resource::Font::SYSTEM, menuSize) };
-		menuItem->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.5 - (menuSize + 20) * i);
+		menuItem->setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.525 - (menuSize + 12) * i);
 		menuItem->setOpacity(0);
 		this->addChild(menuItem);
 		this->menuObjects.push_back(menuItem);
@@ -84,14 +107,15 @@ bool TitleMainMenuLayer::init()
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(duration + latency * etoi(MenuType::SIZE)), CallFunc::create(CC_CALLBACK_0(TitleMainMenuLayer::onEnterAnimationFinished, this))));
 	
     this->runAction(Sequence::create(
-                                     TargetedAction::create(title1, FadeIn::create(1.f)),
-                                     TargetedAction::create(title2,FadeTo::create(1.f, 200)),
-                                     TargetedAction::create(title3,FadeIn::create(1.f)),
-                                    nullptr
-                    ));
+        TargetedAction::create(title1, FadeIn::create(0.8f)),
+        TargetedAction::create(title2, FadeTo::create(0.8f, 200)),
+        TargetedAction::create(title3, FadeIn::create(0.8f)),
+        titleNumberAction,
+        nullptr
+    ));
     
     // copyright
-    Label* copyright {Label::createWithTTF("Copyright (C) 2014-2016 最後の晩餐 All Rights Reserved.", Resource::Font::MESSAGE, 16)};
+    Label* copyright {Label::createWithTTF(masterConfigData->getString(MasterConfigData::COPYRIGHT), Resource::Font::MESSAGE, 16)};
     copyright->setPosition(Point(WINDOW_WIDTH - copyright->getContentSize().width * 0.52f, copyright->getContentSize().height));
     copyright->setOpacity(0);
     this->addChild(copyright);
@@ -112,28 +136,13 @@ bool TitleMainMenuLayer::init()
     this->addChild(opr);
     opr->runAction(FadeTo::create(1.2f, 200));
     
-    // クリア時の立ち絵
-    float scale = 0.3f;
-    if (PlayerDataManager::getInstance()->getGlobalData()->getClearCount() > 0)
-    {
-        Sprite* left {Sprite::createWithSpriteFrameName("yuki_s_1.png")};
-        left->setScale(scale);
-        left->setOpacity(0);
-        left->setPosition(left->getContentSize().width * scale / 2, left->getContentSize().height * scale / 2 + copyright->getContentSize().height * 2);
-        this->addChild(left);
-        left->runAction(Sequence::createWithTwoActions(DelayTime::create(2.f), FadeTo::create(2.f, 128)));
-    }
-    
-    // トゥルーエンドを見た場合
-    if (PlayerDataManager::getInstance()->getGlobalData()->hasTrophy(8))
-    {
-        Sprite* right {Sprite::createWithSpriteFrameName("magoichi_s_1.png")};
-        right->setScale(scale);
-        right->setOpacity(0);
-        right->setPosition(WINDOW_WIDTH - right->getContentSize().width * scale / 2, right->getContentSize().height * scale / 2 + copyright->getContentSize().height * 2);
-        this->addChild(right);
-        right->runAction(Sequence::createWithTwoActions(DelayTime::create(4.f), FadeTo::create(2.f, 128)));
-    }
+    // バージョン表記
+    Label* version { Label::createWithTTF(masterConfigData->getString(MasterConfigData::VERSION), Resource::Font::MESSAGE, 18) };
+    version->setPosition(Point(version->getContentSize().width/2, version->getContentSize().height));
+    version->setColor(Color3B::WHITE);
+    version->setOpacity(0);
+    this->addChild(version);
+    version->runAction(FadeTo::create(1.2f, 200));
     
 	return true;
 }
@@ -149,7 +158,8 @@ void TitleMainMenuLayer::onEnterAnimationFinished()
     this->cursor = cursor;
     
     // カーソルを初期位置まで移動
-    this->onIndexChanged(this->getSelectedIndex(), false);
+    this->onIndexChanged(1, false);
+    this->setSelectedIndex(1);
     
     // リスナを有効化
     this->listenerKeyboard->setEnabled(true);
@@ -193,28 +203,42 @@ void TitleMainMenuLayer::onEnterKeyPressed(int idx)
 		{MenuType::START, this->onStartSelected},
 		{MenuType::CONTINUE, this->onContinueSelected},
         {MenuType::TROPHY, this->onTrophySelected},
-		{MenuType::EXIT, this->onExitSelected},
+        {MenuType::SPECIAL_ROOM, this->onSpecialRoomSelected},
 	};
+    if (ConfigDataManager::getInstance()->getMasterConfigData()->isDisplay(MasterConfigData::SPECIAL_ROOM))
+    {
+    }
     MenuType menu {static_cast<MenuType>(idx)};
 	if(!typeMap.count(menu)) return;
     
-    // クリアしていない場合はトロフィーを見れない
-    if (menu == MenuType::TROPHY && !PlayerDataManager::getInstance()->getGlobalData()->isCleared())
+    // クリアしていない場合
+    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
     {
-        this->trophyNotification();
-        return;
+        // トロフィー見れない
+        if (menu == MenuType::TROPHY)
+        {
+            this->prohibitNotification("トロフィーはクリア後に見ることができます");
+            return;
+        }
+        
+        // おまけ部屋を見れない
+        if (menu == MenuType::SPECIAL_ROOM) {
+            this->prohibitNotification(this->specialRoomTitle + "はクリア後に見ることができます");
+            return;
+        }
     }
+    
     
     // 選択されたメニューに応じてコールバック関数実行
 	if(function<void()> callback {typeMap.at(menu)}) callback();
 }
 
 // トロフィーを見れない通知
-void TitleMainMenuLayer::trophyNotification()
+void TitleMainMenuLayer::prohibitNotification(const string& msg)
 {
     if (notification)
     {
-        SoundManager::getInstance()->playSE("back.mp3");
+        SoundManager::getInstance()->playSE(Resource::SE::BACK);
         this->notification->hide([this]{
             this->removeChild(this->notification);
             this->notification = nullptr;
@@ -224,8 +248,8 @@ void TitleMainMenuLayer::trophyNotification()
     else
     {
         this->setCursorEnable(false);
-        SoundManager::getInstance()->playSE("failure.mp3");
-        NotificationBand* notification = NotificationBand::create("トロフィーはクリア後に見ることができます");
+        SoundManager::getInstance()->playSE(Resource::SE::FAILURE);
+        NotificationBand* notification = NotificationBand::create(msg);
         notification->setBandColor(Color3B(64,0,0));
         this->addChild(notification);
         notification->show();

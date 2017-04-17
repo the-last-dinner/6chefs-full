@@ -13,6 +13,7 @@
 
 class GameEvent;
 class EventScript;
+class EventQueue;
 
 class EventTask : public GameTask
 {
@@ -23,18 +24,18 @@ private:
 // クラスメソッド
 public:
     CREATE_FUNC(EventTask)
+    CREATE_FUNC_WITH_PARAM(EventTask, EventScript*)
 
 // インスタンス変数
 public:
-    function<void()> onEventStart { nullptr };
-    function<void()> onEventFinished { nullptr };
+    function<void()> _onEventStart { nullptr };
+    function<void()> _onEventFinished { nullptr };
 private:
-    EventScript* eventScript { nullptr };
-    deque<EventWithId> eventQueue {};
-    vector<GameEvent*> asyncEvents {};
-    EventWithId runningEvent {EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
-    CallbackWithId callbackInfo {CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
-    int pushingEventId {etoi(EventID::UNDIFINED)};
+    EventScript* _eventScript { nullptr };
+    deque<EventWithId> _eventQueue {};
+    vector<GameEvent*> _asyncEvents {};
+    EventWithId _runningEvent {EventWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
+    CallbackWithId _callbackInfo {CallbackWithId({static_cast<int>(EventID::UNDIFINED), nullptr})};
     
 // インスタンスメソッド
 public:
@@ -54,12 +55,8 @@ public:
     bool isEventRunning();
     bool existsEvent();
     int getRunningEventId() const;
+    GameEvent* getRunningEvent() const;
     deque<EventWithId> getEvents() const;
-    
-    // キュー中のevent_id操作
-    int getPushingEventId() const;
-    void setPushingEventId(const int event_id);
-    void resetPushingEventId();
     
     EventScript* getEventScript() const;
     
@@ -71,6 +68,7 @@ private:
     EventTask();
     ~EventTask();
     bool init();
+    bool init(EventScript* eventScript);
     
     void run();
     GameEvent* createEventById(int eventId);

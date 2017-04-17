@@ -11,10 +11,27 @@
 
 namespace Resource
 {
-    namespace ConfigFiles{
+    namespace ConfigFiles
+    {
         static const std::string BASE_PATH = "config/";
         static const std::string DEBUG_CONFIG = BASE_PATH + "DebugConfig.json";
         static const std::string COMMON_EVENT = BASE_PATH + "CommonEvent.json";
+        static const std::string PRELOAD_LIST = BASE_PATH + "PreloadList.json";
+        static const std::string MASTER_CONFIG = BASE_PATH + "MasterConfig.json";
+        static const std::string EVENT_SCRIPT_VALIDATOR = BASE_PATH + "EventScriptValidator.json";
+        static const std::string BATTLE_CHARACTER = BASE_PATH + "BattleCharacter.json";
+        static const std::string TROPHY_CONFIG = BASE_PATH + "TrophyConfig.json";
+    };
+    
+    namespace CsvFiles
+    {
+        static const std::string BASE_PATH = "csv/";
+        static const std::string CHAPTER = BASE_PATH + "chapter.csv";
+        static const std::string CHARACTER = BASE_PATH + "character.csv";
+        static const std::string DOCUMENT = BASE_PATH + "document.csv";
+        static const std::string ITEM = BASE_PATH + "item.csv";
+        static const std::string MAP = BASE_PATH + "map.csv";
+        static const std::string TROPHY = BASE_PATH + "trophy.csv";
     };
     
     namespace Font
@@ -36,12 +53,21 @@ namespace Resource
         static const std::string LOAD = "load.mp3";
         static const std::string GAME_START = "gameStart.mp3";
         static const std::string LOGO = "logo_display.mp3";
+        static const std::string FAILURE = "failure.mp3";
     };
     
     namespace BGM
     {
         static const std::string BASE_PATH = "BGM/";
         static const std::string TIRED = "tired.mp3";
+    };
+    
+    namespace VOICE
+    {
+        static const std::string BASE_PATH = "voice/";
+        static const std::string THE_LAST_DINNER_UEHARA = "the-last-dinner-uehara.mp3";
+        static const std::string THE_LAST_DINNER_NANIWO = "the-last-dinner-naniwo.mp3";
+        static const std::string THE_LAST_DINNER_ERI = "the-last-dinner-eri.mp3";
     };
     
     namespace SpriteFrame

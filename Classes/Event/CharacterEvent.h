@@ -18,15 +18,14 @@ class CharacterEvent : public GameEvent
 {
 // インスタンス変数
 protected:
-    string objectId {};
-    Character* target { nullptr };
+    string _objectId {};
     
 // インスタンスメソッド
 protected:
     CharacterEvent() {};
     virtual ~CharacterEvent() {};
-    virtual bool init(rapidjson::Value& json);
-    bool onRun();
+    virtual bool init(rapidjson::Value& json) override;
+    Character* getTargetByObjectId(const string& objectId);
 };
 
 // 方向転換
@@ -35,10 +34,10 @@ class ChangeDirectionEvent : public CharacterEvent
 public:
     CREATE_FUNC_WITH_PARAM(ChangeDirectionEvent, rapidjson::Value&)
 private:
-    Direction direction {Direction::SIZE};
+    Direction _direction { Direction::NONE };
 private:
-    ChangeDirectionEvent() {FUNCLOG};
-    ~ChangeDirectionEvent() {FUNCLOG};
+    ChangeDirectionEvent() { FUNCLOG };
+    ~ChangeDirectionEvent() { FUNCLOG };
     virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
@@ -49,17 +48,15 @@ class WalkByEvent : public CharacterEvent
 public:
     CREATE_FUNC_WITH_PARAM(WalkByEvent, rapidjson::Value&)
 private:
-    Direction direction {Direction::SIZE};
-    int gridNum {0};
-    float speedRatio {1.f};
-    bool back { false };
-    bool isCommandSent { false };
+    Direction _direction { Direction::NONE };
+    int _gridNum { 0 };
+    float _speedRatio { 1.f };
+    bool _back { false };
 private:
-    WalkByEvent() {FUNCLOG};
-    ~WalkByEvent() {FUNCLOG};
+    WalkByEvent() { FUNCLOG };
+    ~WalkByEvent() { FUNCLOG };
     virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
-    virtual void update(float delta) override;
 };
 
 // 移動先座標指定歩行
@@ -68,15 +65,13 @@ class WalkToEvent : public CharacterEvent
 public:
     CREATE_FUNC_WITH_PARAM(WalkToEvent, rapidjson::Value&)
 private:
-    Point destPosition { Point::ZERO };
-    float speedRatio {1.f};
-    bool isCommandSent { false };
+    Point _destPosition { Point::ZERO };
+    float _speedRatio { 1.f };
 private:
-    WalkToEvent() {FUNCLOG};
-    ~WalkToEvent() {FUNCLOG};
+    WalkToEvent() { FUNCLOG };
+    ~WalkToEvent() { FUNCLOG };
     virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
-    virtual void update(float delta) override;
 };
 
 // 主人公を変更
@@ -85,11 +80,25 @@ class ChangeHeroEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(ChangeHeroEvent, rapidjson::Value&)
 private:
-    int charaId {0};
+    int _charaId { 0 };
 private:
-    ChangeHeroEvent() {FUNCLOG};
-    ~ChangeHeroEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    ChangeHeroEvent() { FUNCLOG };
+    ~ChangeHeroEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
+    virtual void run() override;
+};
+
+// キャラクターのスピードを変更
+class ChangeSpeedEvent : public CharacterEvent
+{
+public:
+    CREATE_FUNC_WITH_PARAM(ChangeSpeedEvent, rapidjson::Value&);
+private:
+    float _speed { 1.f };
+private:
+    ChangeSpeedEvent() { FUNCLOG }
+    ~ChangeSpeedEvent() { FUNCLOG }
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 

@@ -75,7 +75,6 @@ void ButtonMashingLayer::onEnterKeyPressed()
     if(this->finished) return;
     
     this->count--;
-    
     if(this->onClick) this->onClick();
     
     if (this->count == 0 && this->callback)

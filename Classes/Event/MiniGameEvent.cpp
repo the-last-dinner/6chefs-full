@@ -10,7 +10,7 @@
 
 #include "Event/EventFactory.h"
 #include "Event/EventScriptMember.h"
-#include "Event/EventScriptValidator.h"
+#include "Event/GameEventHelper.h"
 
 #include "Layers/Dungeon/ButtonMashingLayer.h"
 #include "Layers/Dungeon/SelectEventLayer.h"
@@ -24,105 +24,68 @@
 #include "Models/StopWatch.h"
 
 #include "Scenes/DungeonScene.h"
+#include "Tasks/EventTask.h"
+
+#include "UI/CountDownDisplay.h"
 
 #pragma mark ButtonMashingEvent
 
-ButtonMashingEvent::~ButtonMashingEvent()
-{
-    FUNCLOG
-    
-    CC_SAFE_RELEASE_NULL(this->clickCallbackEvent);
-}
-
 bool ButtonMashingEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // 連打回数
-    if(!this->validator->hasMember(json, member::TIMES)) return false;
-    this->count = json[member::TIMES].GetInt();
+    if (!_eventHelper->hasMember(_json, member::TIMES)) return false;
+    _count = _json[member::TIMES].GetInt();
     
     // 制限時間
-    if(!this->validator->hasMember(json, member::LIMIT)) return false;
-    this->limit = json[member::LIMIT].GetDouble();
-    
-    // 成功時イベント
-    if(this->validator->hasMember(json, member::TRUE_))
-    {
-        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
-        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
-        CC_SAFE_RETAIN(this->sEvent);
-    }
-    
-    // 失敗時イベント
-    if(this->validator->hasMember(json, member::FALSE_))
-    {
-        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
-        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
+    if (!_eventHelper->hasMember(_json, member::LIMIT)) return false;
+    _limit = _json[member::LIMIT].GetDouble();
     
     // クリック時のコールバックイベント
-    if(this->validator->hasMember(json, member::EVENT))
-    {
-        this->clickCallbackEvent = this->factory->createGameEvent(json[member::EVENT]);
-        this->clickCallbackEvent->setReusable(true);
-        CC_SAFE_RETAIN(this->clickCallbackEvent);
-    }
+    _clickCallbackEvent = _factory->createGameEvent(_json[member::EVENT], this);
+    CC_SAFE_RETAIN(_clickCallbackEvent);
     
     return true;
 }
 
 void ButtonMashingEvent::run()
 {
-    ButtonMashingLayer* layer { ButtonMashingLayer::create(this->count, this->limit, [this]
-    {
-        DungeonSceneManager::getInstance()->runEventAsync(this->clickCallbackEvent);
-    }, [this](ButtonMashingLayer::Result result)
-    {
-        if(result == ButtonMashingLayer::Result::SUCCESS)
-        {
-            if(this->sEvent)
-            {
-                this->event = this->sEvent;
-                this->sEvent = nullptr;
-                CC_SAFE_RELEASE_NULL(this->fEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
-            }
+    ButtonMashingLayer* layer { ButtonMashingLayer::create(_count, _limit, [this] {
+        // クリック時のコールバックイベント
+        if (_clickCallbackEvent) {
+            _clickCallbackEvent->run();
         }
-        else
-        {
-            if(this->fEvent)
-            {
-                this->event = this->fEvent;
-                this->fEvent = nullptr;
-                CC_SAFE_RELEASE_NULL(this->sEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
-            }
+    }, [this](ButtonMashingLayer::Result result) {
+        if (result == ButtonMashingLayer::Result::SUCCESS) {
+            _resultCallbackEvent = _eventHelper->createMiniGameSuccessCallbackEvent(_json, _factory, this);
+        } else {
+            _resultCallbackEvent = _eventHelper->createMiniGameFailureCallbackEvent(_json, _factory, this);
         }
         
-        // イベント実行
-        DungeonSceneManager::getInstance()->pushEventFront(this->event);
-        
-        this->setDone();
-    }) };
+        CC_SAFE_RETAIN(_resultCallbackEvent);
+        _resultCallbackEvent->run();
+    })};
     
-    if(!layer)
-    {
+    if (!layer) {
         this->setDone();
-        
+        CC_SAFE_RELEASE_NULL(_clickCallbackEvent);
         return;
     }
     
     DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::BUTTON_MASHING_LAYER);
+}
+
+void ButtonMashingEvent::update(float delta)
+{
+    if (!_resultCallbackEvent) return;
+    
+    _resultCallbackEvent->update(delta);
+    
+    if (!_resultCallbackEvent->isDone()) return;
+    
+    CC_SAFE_RELEASE_NULL(_resultCallbackEvent);
+    this->setDone();
 }
 
 #pragma mark -
@@ -130,62 +93,50 @@ void ButtonMashingEvent::run()
 
 bool SelectEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // 質問文
-    if(!this->validator->hasMember(json, member::TEXT)) return false;
-    this->message = json[member::TEXT][0].GetString();
+    if (!_eventHelper->hasMember(_json, member::TEXT)) return false;
+    _message = _json[member::TEXT][0].GetString();
     
     // 選択肢
-    if(!this->validator->hasMember(json, member::CHOICES) || !json[member::CHOICES].IsArray()) return false;
-    rapidjson::Value& choicesJson { json[member::CHOICES] };
-    for(int i { 0 }; i < choicesJson.Size(); i++)
-    {
-        rapidjson::Value& choiceJson {choicesJson[i]};
+    if (!_eventHelper->hasMember(_json, member::CHOICES) || !_json[member::CHOICES].IsArray()) return false;
+    
+    rapidjson::Value& choicesJson { _json[member::CHOICES] };
+    for (int i { 0 }; i < choicesJson.Size(); i++) {
+        rapidjson::Value& choiceJson { choicesJson[i] };
         
         // 選択肢の表示ラベル
-        if(!this->validator->hasMember(choiceJson, member::CHOICE)) return false;
-        this->choices.push_back(choiceJson[member::CHOICE].GetString());
-        
-        // 選択肢のコールバックイベント
-        int eventId { static_cast<int>(EventID::UNDIFINED) };
-        GameEvent* event { nullptr };
-        if(this->validator->hasMember(choiceJson, member::ACTION)) event = this->factory->createGameEvent(choiceJson[member::ACTION]);
-        if(this->validator->hasMember(choiceJson, member::EVENT_ID)) eventId = stoi(choiceJson[member::EVENT_ID].GetString());
-        CC_SAFE_RETAIN(event);
-        this->eventCallBacks.push_back(SelectCallBack({eventId, event}));
+        if(!_eventHelper->hasMember(choiceJson, member::CHOICE)) return false;
+        _choices.push_back(choiceJson[member::CHOICE].GetString());
     }
     
     // キャラメッセージの時
-    if(this->validator->hasMember(json, member::CHARA_ID))
-    {
+    if (_eventHelper->hasMember(_json, member::CHARA_ID)) {
         queue<string> pages {};
         
-        pages.push(this->message);
+        pages.push(_message);
         
         CharacterMessageData* data {CharacterMessageData::create(pages)};
         CC_SAFE_RETAIN(data);
         
         // キャラID
-        if(this->validator->hasMember(json, member::CHARA_ID)) data->setCharaId(stoi(json[member::CHARA_ID].GetString()));
+        if (_eventHelper->hasMember(_json, member::CHARA_ID)) data->setCharaId(stoi(_json[member::CHARA_ID].GetString()));
         
         // キャラ名
         string charaName {};
         
-        if(this->validator->hasMember(json, member::NAME))
-        {
-            charaName = json[member::NAME].GetString();
-        }
-        else
-        {
+        if (_eventHelper->hasMember(_json, member::NAME)) {
+            charaName = _json[member::NAME].GetString();
+        } else {
             charaName = CsvDataManager::getInstance()->getCharacterData()->getName(data->getCharaId());
         }
         data->setCharaName(charaName);
         
         // 画像ID
-        if(this->validator->hasMember(json, member::IMG_ID)) data->setImgId(stoi(json[member::IMG_ID].GetString()));
+        if (_eventHelper->hasMember(_json, member::IMG_ID)) data->setImgId(stoi(_json[member::IMG_ID].GetString()));
         
-        this->datas.push(data);
+        _datas.push(data);
     }
     
     return true;
@@ -193,30 +144,37 @@ bool SelectEvent::init(rapidjson::Value& json)
 
 void SelectEvent::run()
 {
-    SelectEventLayer* layer { SelectEventLayer::create(this->message, this->choices, this->datas) };
+    SelectEventLayer* layer { SelectEventLayer::create(_message, _choices, _datas) };
     
     // コールバック
-    layer->onSelected = [this](const int idx)
-    {
-        // 選ばれた選択肢のインデックスからコールバックを決定
-        SelectCallBack callback {this->eventCallBacks.at(idx)};
+    layer->onSelected = [this](const int idx) {
+        // 選ばれた選択肢のインデックスからコールバックイベントを生成し実行
+        GameEvent* callbackEvent { this->createSpawnFromIdOrAction(_json[member::CHOICES][idx]) };
+        CC_SAFE_RETAIN(callbackEvent);
+        _event = callbackEvent;
         
-        // コールバック実行
-        DungeonSceneManager::getInstance()->pushEventFront(callback.first);
-        DungeonSceneManager::getInstance()->pushEventFront(callback.second);
+        (_event)? _event->run() : this->setDone();
         
-        // 選択されたコールバックイベント以外をリリース
-        for(int i { 0 }; i < this->eventCallBacks.size(); i++)
-        {
-            if(i == idx) continue;
-            
-            CC_SAFE_RELEASE(this->eventCallBacks.at(i).second);
-        }
-        
-        this->setDone();
     };
     
     DungeonSceneManager::getInstance()->getScene()->addChild(layer, Priority::SELECT_LAYER);
+}
+
+void SelectEvent::update(float delta){
+    
+    if (!_event) return;
+    
+    _event->update(delta);
+    
+    if (!_event->isDone()) return;
+
+    CC_SAFE_RELEASE_NULL(_event);
+    this->setDone();
+}
+
+void SelectEvent::stop(int code)
+{
+    if (_event) _event->stop(code);
 }
 
 #pragma mark -
@@ -224,176 +182,144 @@ void SelectEvent::run()
 
 bool PasswordEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // 正解のパスワード
-    this->password = json[member::PASSWORD].GetString();
-    
-    // 成功時イベント
-    if(this->validator->hasMember(json, member::TRUE_))
-    {
-        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
-        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
-        CC_SAFE_RETAIN(this->sEvent);
-    }
-    
-    // 失敗時イベント
-    if(this->validator->hasMember(json, member::FALSE_))
-    {
-        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
-        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
+    _password = _json[member::PASSWORD].GetString();
     
     return true;
 }
 
 void PasswordEvent::run()
 {
-    PasswordEventLayer* pLayer {PasswordEventLayer::create(this->password, [this](PasswordEventLayer::Result result)
+    PasswordEventLayer* pLayer {PasswordEventLayer::create(_password, [this](PasswordEventLayer::Result result)
     {
-        this->setDone();
+        if (result == PasswordEventLayer::Result::SUCCESS) {
+            _resultCallbackEvent = _eventHelper->createMiniGameSuccessCallbackEvent(_json, _factory, this);
+        } else {
+            _resultCallbackEvent = _eventHelper->createMiniGameFailureCallbackEvent(_json, _factory, this);
+        }
         
-        if(result == PasswordEventLayer::Result::SUCCESS)
-        {
-            if(this->sEvent)
-            {
-                this->event = this->sEvent;
-                this->sEvent = nullptr;
-                CC_SAFE_RELEASE_NULL(this->fEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
-            }
-        }
-        else
-        {
-            if(this->fEvent)
-            {
-                this->event = this->fEvent;
-                this->fEvent = nullptr;
-                CC_SAFE_RELEASE_NULL(this->sEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
-            }
-        }
-        // イベント実行
-        DungeonSceneManager::getInstance()->pushEventFront(this->event);
+        CC_SAFE_RETAIN(_resultCallbackEvent);
+        _resultCallbackEvent->run();
     })};
     
-    if(!pLayer)
-    {
+    if (!pLayer) {
         this->setDone();
-        
         return;
     }
     
     DungeonSceneManager::getInstance()->getScene()->addChild(pLayer, Priority::SELECT_LAYER);
 }
 
+void PasswordEvent::update(float delta)
+{
+    if (!_resultCallbackEvent) return;
+    
+    _resultCallbackEvent->update(delta);
+    
+    if (!_resultCallbackEvent->isDone()) return;
+    
+    CC_SAFE_RELEASE_NULL(_resultCallbackEvent);
+    this->setDone();
+}
+
 #pragma mark -
 #pragma mark CountDown
 
+CountDownEvent::~CountDownEvent()
+{
+    FUNCLOG
+    CC_SAFE_RELEASE(_successCallbackEvent);
+    CC_SAFE_RELEASE(_failureCallbackEvent);
+}
+
 bool CountDownEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if (!GameEvent::init(json)) return false;
     
     // 制限時間
-    if(!this->validator->hasMember(json, member::SECOND)) return false;
-    this->second = json[member::SECOND].GetDouble();
+    if (!_eventHelper->hasMember(_json, member::SECOND)) return false;
+    _second = _json[member::SECOND].GetDouble();
     
     // conditionを保存
-    if (this->validator->hasMember(json, member::CONDITION))
-    {
-        this->equip = stoi(json[member::CONDITION][0][member::EQUIP][0].GetString());
-        this->checkEquip = true;
+    if (_eventHelper->hasMember(_json, member::CONDITION)) {
+        _equip = stoi(_json[member::CONDITION][0][member::EQUIP][0].GetString());
+        _checkEquip = true;
     }
     
-    // 成功時イベント
-    if(this->validator->hasMember(json, member::TRUE_))
-    {
-        if(json[member::TRUE_].IsString()) this->sEventId = stoi(json[member::TRUE_].GetString());
-        if(json[member::TRUE_].IsArray()) this->sEvent = this->factory->createGameEvent(json[member::TRUE_]);
-        CC_SAFE_RETAIN(this->sEvent);
+    if (_eventHelper->hasMember(_json, member::DISPLAY)) {
+        _display = _json[member::DISPLAY].GetBool();
     }
     
-    // 失敗時イベント
-    if (this->validator->hasMember(json, member::FALSE_))
-    {
-        if(json[member::FALSE_].IsString()) this->fEventId = stoi(json[member::FALSE_].GetString());
-        if(json[member::FALSE_].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::FALSE_]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
-    if (this->validator->hasMember(json, member::ACTION))
-    {
-        if(json[member::ACTION].IsString()) this->fEventId = stoi(json[member::ACTION].GetString());
-        if(json[member::ACTION].IsArray()) this->fEvent = this->factory->createGameEvent(json[member::ACTION]);
-        CC_SAFE_RETAIN(this->fEvent);
-    }
+    // コールバック設定
+    _successCallbackEvent = _eventHelper->createMiniGameSuccessCallbackEvent(_json, _factory, this);
+    _failureCallbackEvent = _eventHelper->createMiniGameFailureCallbackEvent(_json, _factory, this);;
+    CC_SAFE_RETAIN(_successCallbackEvent);
+    CC_SAFE_RETAIN(_failureCallbackEvent);
     
     return true;
 }
 
 void CountDownEvent::run()
 {
-    StopWatch* stopWatch = DungeonSceneManager::getInstance()->getStopWatch();
+    StopWatch* stopWatch { DungeonSceneManager::getInstance()->getStopWatch() };
+    stopWatch->setCountDownEvent(this);
+    this->setReusable(true);
     
-    stopWatch->setCountDown(this);
+    if (_display) {
+        DungeonSceneManager::getInstance()->getScene()->getCountDownDisplay()->slideIn();
+    }
     
-    stopWatch->scheduleCallback = [this](double time)
-    {
+    stopWatch->scheduleCallback = [this](double time) {
+        
+        if (_isTimeUp) return false;
+        
         // 条件チェック
         bool condition = false;
-        if(this->checkEquip)
-        {
-            condition = PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(this->equip);
+        if (_checkEquip) {
+            condition = PlayerDataManager::getInstance()->getLocalData()->isEquipedItem(_equip);
         }
         
         // 条件を満たしていた場合
-        if (condition)
-        {
-            CC_SAFE_RELEASE_NULL(this->fEvent);
-            if(this->sEvent)
-            {
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->sEventId);
-            }
-            DungeonSceneManager::getInstance()->runEventQueue();
+        if (condition) {
+            this->runResultCallbackEvent(_successCallbackEvent);
             return false;
         }
-        CCLOG("COUNT DOWN >> %f", this->second - time);
+
+        // ディスプレイ表示
+        if (_display) {
+            CountDownDisplay* countDownDisplay { DungeonSceneManager::getInstance()->getScene()->getCountDownDisplay() };
+            countDownDisplay->setSecondsLeft(_second - time);
+            countDownDisplay->changeColor((_second - time) / _second * 100);
+        }
+        
+        CCLOG("COUNT DOWN >> %f", _second - time);
+        
         // 時間切れチェック
-        if (static_cast<float>(time) >= this->second)
-        {
-            CC_SAFE_RELEASE_NULL(this->sEvent);
-            if(this->fEvent)
-            {
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEvent);
-            }
-            else
-            {
-                // ID指定の場合
-                DungeonSceneManager::getInstance()->pushEventFront(this->fEventId);
-            }
-            DungeonSceneManager::getInstance()->runEventQueue();
+        if (static_cast<float>(time) >= _second) {
+            this->runResultCallbackEvent(_failureCallbackEvent);
             return false;
         }
+        
         return true;
     };
     
     // カウントダウンスタート
-    stopWatch->startCountDown(0.5f);
+    stopWatch->startCountDown(0.03f);
     
     this->setDone();
+}
+
+void CountDownEvent::runResultCallbackEvent(GameEvent *callbackEvent)
+{
+    _isTimeUp = true;
+    
+    if (!callbackEvent) return;
+    
+    EventTask* eventTask { DungeonSceneManager::getInstance()->getEventTask() };
+    eventTask->pushEventBack(callbackEvent);
+    eventTask->runEventQueue();
 }
 
 #pragma mark -
@@ -401,7 +327,7 @@ void CountDownEvent::run()
 
 bool StopCountEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if(!GameEvent::init(json)) return false;
     return true;
 }
 
@@ -409,5 +335,7 @@ void StopCountEvent::run()
 {
     DungeonSceneManager::getInstance()->pauseStopWatch();
     DungeonSceneManager::getInstance()->releaseStopWatch();
+    DungeonSceneManager::getInstance()->getScene()->getCountDownDisplay()->slideOut();
+
     this->setDone();
 }

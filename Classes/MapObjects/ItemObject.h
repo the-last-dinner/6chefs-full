@@ -32,9 +32,9 @@ private:
 public:
     ItemObject();
     ~ItemObject();
-    bool init();
-    virtual void onEnterMap() override;
+    bool init() override;
     string getSpriteFrameName(int state);
+    virtual void onEnterMap() override;
 };
 
 #endif /* ItemObject_h */

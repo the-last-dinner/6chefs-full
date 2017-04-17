@@ -16,6 +16,7 @@
 
 // 定数
 const float DungeonMainMenuLayer::SLIDE_TIME {0.3f};
+const int DungeonMainMenuLayer::PARTY_DISPLAY_LIMIT {4};
 
 // コンストラクタ
 DungeonMainMenuLayer::DungeonMainMenuLayer(){FUNCLOG}
@@ -76,7 +77,7 @@ bool DungeonMainMenuLayer::init()
     {
         {Type::ITEM, "アイテム"},
         {Type::SAVE, "セーブ"},
-        {Type::CHARA, "キャラ"},
+        {Type::CHARA, "資料"},
         {Type::TITLE, "タイトル"},
         {Type::CLOSE, "閉じる"},
     };
@@ -117,20 +118,22 @@ bool DungeonMainMenuLayer::init()
     // 装備品表示
     int right_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::RIGHT);
     int left_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT);
-    string right = (right_id != 0) ? CsvDataManager::getInstance()->getItemData()->getItemName(right_id) : "なし";
-    string left = (left_id != 0) ? CsvDataManager::getInstance()->getItemData()->getItemName(left_id) : "なし";
+    string right = (right_id != etoi(ItemID::UNDIFINED)) ? CsvDataManager::getInstance()->getItemData()->getItemName(right_id) : "なし";
+    string left = (left_id != etoi(ItemID::UNDIFINED)) ? CsvDataManager::getInstance()->getItemData()->getItemName(left_id) : "なし";
     Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, "fonts/cinecaption2.28.ttf", 26);
     equipment->setPosition(equipment->getContentSize().width / 2 + 15, fBg->getContentSize().height - equipment->getContentSize().height / 2 - 15);
     fBg->addChild(equipment);
     
     // キャラ表示
     vector<CharacterData> charas = PlayerDataManager::getInstance()->getLocalData()->getPartyMemberAll();
-    int party_count = charas.size();
+    int partyCount = static_cast<int>(charas.size());
+    int partyDisplayLimit = DungeonMainMenuLayer::PARTY_DISPLAY_LIMIT < partyCount ?
+                                        DungeonMainMenuLayer::PARTY_DISPLAY_LIMIT : partyCount;
     Size  cPanelSize = Size(fBg->getContentSize().width/5, fBg->getContentSize().height);
-    float stand_scale = 0.25;
-    for (int i = 0; i < party_count; i++)
+    float stand_scale = 0.35;
+    for (int i = 0; i < partyDisplayLimit; i++)
     {
-        float colum_position = cPanelSize.width * (5 - party_count + i) + cPanelSize.width / 2;
+        float colum_position = cPanelSize.width * (5 - partyDisplayLimit + i) + cPanelSize.width / 2;
         // キャラ毎にパネルを作成
         Sprite* chara_panel {Sprite::create()};
         chara_panel->setTextureRect(Rect(0,0, cPanelSize.width, cPanelSize.height));
@@ -139,8 +142,8 @@ bool DungeonMainMenuLayer::init()
         fBg->addChild(chara_panel);
         
         // 通り名
-        Label* street= Label::createWithTTF("-" + CsvDataManager::getInstance()->getCharacterData()->getStreetName(charas[i].chara_id) + "-", "fonts/cinecaption2.28.ttf", 24);
-        street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 10);
+        Label* street= Label::createWithTTF(CsvDataManager::getInstance()->getCharacterData()->getStreetName(charas[i].chara_id), "fonts/cinecaption2.28.ttf", 16);
+        street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 12);
         chara_panel->addChild(street);
         
         // キャラ名
@@ -154,7 +157,6 @@ bool DungeonMainMenuLayer::init()
         {
             Sprite* dotimg {Sprite::createWithSpriteFrameName(file_name)};
             dotimg->setPosition(cPanelSize.width / 2, dotimg->getContentSize().height / 2 + 15);
-            dotimg->setZOrder(1);
             chara_panel->addChild(dotimg);
         }
         
@@ -164,7 +166,7 @@ bool DungeonMainMenuLayer::init()
         {
             Sprite* img { Sprite::createWithSpriteFrameName(file_name)};
             img->setScale(stand_scale);
-            float img_y = img->getContentSize().height * stand_scale / 2 + fBg->getContentSize().height + 10;
+            float img_y = fBg->getContentSize().height * 1.2;
             inPosition = Point(colum_position, img_y);
             outPosition = Point(WINDOW_WIDTH + img->getContentSize().width * stand_scale / 2, img_y);
             SlideNode* stand {SlideNode::create(inPosition, outPosition)};

@@ -6,9 +6,11 @@
 //
 //
 
+#include "Utils/AssertUtils.h"
+
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
-#include "Managers/DebugManager.h"
+#include "Managers/ConfigDataManager.h"
 
 // JSONファイルの読み込み
 rapidjson::Document LastSupper::JsonUtils::readJsonFile(const string& path)
@@ -27,10 +29,7 @@ rapidjson::Document LastSupper::JsonUtils::readJsonFile(const string& path)
     //構文エラー判定
     bool error = doc.HasParseError();
     if(error){
-        size_t offset = doc.GetErrorOffset();
-        ParseErrorCode code = doc.GetParseError();
-        const char* msg = GetParseError_En(code);
-        CCLOG("GlobalTemplate JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
+        AssertUtils::fatalAssert("JSON Parse Error!\n" + path);
         return nullptr;
     }
     
@@ -58,7 +57,7 @@ void LastSupper::JsonUtils::writeJsonFile(const string& path, const rapidjson::D
 rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
 {
     // 暗号化の必要がない場合は通常の読み込み
-    if (DebugManager::getInstance()->isPlainData())
+    if (!IS_ENCRYPTED)
     {
         return LastSupper::JsonUtils::readJsonFile(path);
     }
@@ -69,7 +68,7 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     ifstream ifs(path);
     if (ifs.fail())
     {
-        CCLOG("%s is missing.", path.c_str());
+        AssertUtils::fatalAssert("Encrepted JSON is missing!\n" + path);
         return nullptr;
     }
     
@@ -83,10 +82,7 @@ rapidjson::Document LastSupper::JsonUtils::readJsonCrypted(const string &path)
     //構文エラー判定
     bool error = doc.HasParseError();
     if(error){
-        size_t offset = doc.GetErrorOffset();
-        ParseErrorCode code = doc.GetParseError();
-        const char* msg = GetParseError_En(code);
-        CCLOG("GlobalTemplate JSON Parse Error : %d:%d(%s)\n", static_cast<int>(offset), code, msg);
+        AssertUtils::fatalAssert("Encrepted JSON Parse Error!\n" + path);
         return nullptr;
     }
     
@@ -100,8 +96,7 @@ void LastSupper::JsonUtils::writeJsonCrypt(const string &path, const rapidjson::
     LastSupper::JsonUtils::writeJsonFile(path, doc);
 
     // 暗号化必須かチェック
-    DebugManager* dm = DebugManager::getInstance();
-    if (dm->isPlainData() && !dm->getCryptTrigger()) return;
+    if (!IS_ENCRYPTED) return;
     
     // ファイル読み込み
     ifstream ifs(path);

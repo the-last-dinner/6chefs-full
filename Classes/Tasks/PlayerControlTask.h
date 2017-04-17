@@ -11,13 +11,14 @@
 
 #include "Tasks/GameTask.h"
 
+class PlayerControlState;
 class EventListenerKeyboardLayer;
 class Party;
 
 class PlayerControlTask : public GameTask
 {
 // 定数
-private:
+public:
     static const string START_WALKING_SCHEDULE_KEY;
     static const float DASH_SPEED_RATIO;
 
@@ -27,22 +28,27 @@ public:
 
 // インスタンス変数
 private:
-    int riddenEventID { static_cast<int>(EventID::UNDIFINED)};
-    bool enableControl { false };
+    PlayerControlState* _state { nullptr };
+    int _riddenEventID { static_cast<int>(EventID::UNDIFINED) };
+    bool _enableControl { false };
     
 // インスタンスメソッド
 private:
     PlayerControlTask();
     ~PlayerControlTask();
-    bool init();
+    bool init() override;
+    void setCurrentState(PlayerControlState* state);
 public:
-    void turn(const Key& key, Party* party);                  // 向きを変える
-    void search(Party* party);                                // 目の前を調べる
-    void walk(const vector<Key>& keys, Party* party);         // 歩行
-    void onPartyMovedOneGrid(Party* party);                   // 一マス分移動し終えた時
-    void setControlEnable(bool enable, Party* party);         // 操作可能状態かどうか設定
-    bool isControlEnabled();                                  // 操作可能状態か確認
-    void onStaminaIncreasedMax();                             // スタミナが上限まで回復した時
+    void turn(const Key& key, Party* party);
+    void onEnterKeyPressed(Party* party);
+    void move(const vector<Key>& keys, Party* party);
+    void onPartyMovedOneGrid(Party* party, bool dashed);
+    void setControlEnable(bool enable, Party* party);
+    bool isControlEnabled();
+    void onStaminaIncreasedMax();
+    void onBattleStart();
+    void onBattleFinished();
+    void update(float delta) override;
 };
 
 #endif /* defined(__LastSupper__ControlMainCharacterTask__) */

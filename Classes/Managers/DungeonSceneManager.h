@@ -22,12 +22,15 @@ class MapObject;
 class MapObjectList;
 class EventFactory;
 class EventScript;
-class EventScriptValidator;
+class GameEventHelper;
 class Party;
 class GameEvent;
 class Enemy;
 class StopWatch;
 class Stamina;
+class CameraTask;
+class EventTask;
+class EquipItemEvent;
 
 // ダンジョンシーンのマップ間で共有すべき情報を持つシングルトンクラス
 class DungeonSceneManager
@@ -40,12 +43,16 @@ public:
 // インスタンス変数
 private:
     EventFactory* eventFactory { nullptr };
-    EventScriptValidator* scriprtValidator { nullptr };
+    GameEventHelper* gameEventHelper { nullptr };
     Sprite* cover { nullptr };
     vector<SummonData> summonDatas {};
     StopWatch* stopWatch { nullptr };
     Stamina* stamina { nullptr };
-    CommonEventScripts* commonEventScripts;
+    CommonEventScripts* commonEventScripts { nullptr };
+    EquipItemEvent* equipItemEvent { nullptr };
+    
+public:
+    bool onReturnFromDungeonMenuScene { false };
     
 // インスタンスメソッド
 private:
@@ -58,11 +65,14 @@ public:
     TiledMapLayer* getMapLayer() const;
     MapObjectList* getMapObjectList() const;
     EventFactory* getEventFactory() const;
-    EventScriptValidator* getScriptValidator() const;
+    GameEventHelper* getGameEventHelper() const;
     EventScript* getEventScript() const;
     CommonEventScripts* getCommonEventScriptsObject();
     Party* getParty();
     AmbientLightLayer* getAmbientLayer() const;
+    EventTask* getEventTask() const;
+    CameraTask* getCamera() const;
+    EquipItemEvent* getEquipItemEvent() const;
     
     // Scene
     void fadeOut(const Color3B& color, const float duration, function<void()> callback);
@@ -89,10 +99,8 @@ public:
     // EnemyTask
     vector<SummonData> getSummonDatas() const;
     void removeEnemy(const int enemyId);
+    void removeEnemyByObjectId(const int objectId);
     bool existsEnemy() const;
-    
-    // CameraTask
-    void moveCamera(const Point& gridPosition, const float duration, function<void()> callback);
     
     // EventTask
     void runEvent(const int eventId);
@@ -105,7 +113,7 @@ public:
     void runEventQueue();
     bool existsEvent() const;
     int getRunningEventId() const;
-    int getPushingEventid() const;
+    GameEvent* getRunningEvent() const;
     bool isEventRunning() const;
     
     // StopWatch

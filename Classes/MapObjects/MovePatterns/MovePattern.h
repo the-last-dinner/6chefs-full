@@ -18,20 +18,23 @@ class MovePattern : public Ref
 {
 // インスタンス変数
 protected:
-    Character* chara { nullptr };
-    float speedRatio { 1.0f };
-    bool paused { true };
-    int startPathId { -1 };
+    Character* _chara { nullptr };
+    float _speedRatio { 1.0f };
+    bool _started { false };
+    bool _paused { false };
+    int _startPathId { -1 };
 
 // インスタンスメソッド
 public:
     virtual void start();
-    virtual void setPaused(bool paused);
+    virtual void pause();
+    virtual void resume();
     bool isPaused() const;
+    bool hasSterted() const;
     virtual void onPartyMoved() {};
     virtual bool canGoToNextMap() const { return false; };
     virtual float calcSummonDelay() const { return 0.0f; };
-    void setSpeedRatio(float ratio);
+    virtual void setSpeedRatio(float ratio);
     void setStartPathId(const int pathId);
 protected:
     MovePattern();
@@ -39,6 +42,10 @@ protected:
     virtual bool init(Character* chara);
     Character* getMainCharacter() const;
     MapObjectList* getMapObjectList() const;
+
+// インターフェース
+public:
+    virtual void update(float delta);
 };
 
 #endif /* defined(__LastSupper__MovePattern__) */

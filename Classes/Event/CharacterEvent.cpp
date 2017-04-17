@@ -8,45 +8,44 @@
 
 #include "Event/CharacterEvent.h"
 
-#include "Event/EventScriptValidator.h"
+#include "Event/GameEventHelper.h"
 #include "Event/EventScriptMember.h"
-
-#include "Algorithm/PathFinder.h"
 
 #include "Layers/Dungeon/TiledMapLayer.h"
 
 #include "MapObjects/Character.h"
+#include "MapObjects/Command/WalkCommand.h"
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
+#include "MapObjects/PathFinder/PathFinder.h"
+
+#include "Tasks/CameraTask.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Models/EquipItemEvent.h"
 
 #pragma mark CharacterEvent
 
 bool CharacterEvent::init(rapidjson::Value& json)
 {
-    if(!GameEvent::init()) return false;
+    if(!GameEvent::init(json)) return false;
     
-    if(!this->validator->hasMember(json, member::OBJECT_ID)) return false;
+    if (!_eventHelper->hasMember(_json, member::OBJECT_ID)) return false;
     
-    this->objectId = json[member::OBJECT_ID].GetString();
+    _objectId = _json[member::OBJECT_ID].GetString();
     
     return true;
 }
 
-bool CharacterEvent::onRun()
+Character* CharacterEvent::getTargetByObjectId(const string &objectId)
 {
-    Character* target { this->validator->getMapObjectById<Character*>(this->objectId) };
-    if(!target)
-    {
-        this->setDone();
-        
-        return false;
+    Character* target { _eventHelper->getMapObjectById<Character*>(_objectId) };
+    if (!target) {
+        LastSupper::AssertUtils::fatalAssert("指定IDのキャラクターが存在しません" + string(member::OBJECT_ID) + " : " + _objectId);
+        return nullptr;
     }
     
-    this->target = target;
-    
-    return true;
+    return target;
 }
 
 #pragma mark -
@@ -54,20 +53,23 @@ bool CharacterEvent::onRun()
 
 bool ChangeDirectionEvent::init(rapidjson::Value& json)
 {
-    if(!CharacterEvent::init(json)) return false;
+    if (!CharacterEvent::init(json)) return false;
     
-    this->direction = this->validator->getDirection(json);
-    
-    if(this->direction == Direction::SIZE) return false;
+    _direction = _eventHelper->getDirection(_json);
     
     return true;
 }
 
 void ChangeDirectionEvent::run()
 {
-    if(!CharacterEvent::onRun()) return;
+    Character* target { this->getTargetByObjectId(_objectId) };
     
-    this->target->setDirection(this->direction);
+    if (!target) {
+        this->setDone();
+        return;
+    }
+    
+    target->setDirection(_direction);
     this->setDone();
 }
 
@@ -78,35 +80,40 @@ bool WalkByEvent::init(rapidjson::Value& json)
 {
     if(!CharacterEvent::init(json)) return false;
     
-    this->direction = this->validator->getDirection(json);
+    _direction = _eventHelper->getDirection(_json);
     
-    this->gridNum = static_cast<int>(json[member::STEPS].GetDouble() * 2);
+    _gridNum = static_cast<int>(_json[member::STEPS].GetDouble() * 2);
     
-    if(this->direction == Direction::SIZE || this->gridNum == 0) return false;
+    if (_direction.isNull() || _gridNum == 0) return false;
     
-    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
+    if (_eventHelper->hasMember(_json, member::SPEED)) _speedRatio = _json[member::SPEED].GetDouble();
     
-    if(this->validator->hasMember(json, member::OPTION)) this->back = true;
+    if (_eventHelper->hasMember(_json, member::OPTION)) _back = true;
     
     return true;
 }
 
 void WalkByEvent::run()
 {
-    if(!CharacterEvent::onRun()) return;
-
-    this->target->getActionManager()->resumeTarget(this->target);
-}
-
-void WalkByEvent::update(float delta)
-{
-    if(this->target->isMoving() || this->isCommandSent) return;
+    Character* target { this->getTargetByObjectId(_objectId) };
     
-    if(this->target->isPaused()) this->target->setPaused(false);
+    if (!target) {
+        this->setDone();
+        return;
+    }
     
-    this->target->walkBy(this->direction, this->gridNum, [this](bool _){this->setDone();}, this->speedRatio, this->back);
+    target->pauseAi();
+    target->resumeAnimation();
     
-    this->isCommandSent = true;
+    if (target->isPaused()) target->setPaused(false);
+    
+    Vector<WalkCommand*> commands { WalkCommand::create({ _direction }, _gridNum, [this](bool walked) {
+        this->setDone();
+    }, _speedRatio, _back, true) };
+    
+    for (WalkCommand* command : commands) {
+        target->pushCommand(command);
+    }
 }
 
 #pragma mark -
@@ -114,37 +121,43 @@ void WalkByEvent::update(float delta)
 
 bool WalkToEvent::init(rapidjson::Value& json)
 {
-    if(!CharacterEvent::init(json)) return false;
+    if (!CharacterEvent::init(json)) return false;
     
     // 目的地座標をcocos座標系で保持
-    this->destPosition = this->validator->getPoint(json);
+    _destPosition = _eventHelper->getPoint(_json);
     
     // 速さの倍率
-    if(this->validator->hasMember(json, member::SPEED)) this->speedRatio = json[member::SPEED].GetDouble();
+    if (_eventHelper->hasMember(_json, member::SPEED)) _speedRatio = _json[member::SPEED].GetDouble();
     
     return true;
 }
 
 void WalkToEvent::run()
 {
-    if(!CharacterEvent::onRun()) return;
-
-    this->target->getActionManager()->resumeTarget(this->target);
-}
-
-void WalkToEvent::update(float delta)
-{
-    if(this->target->isMoving() || this->isCommandSent) return;
+    Character* target { this->getTargetByObjectId(_objectId) };
     
-    if(this->target->isPaused()) this->target->setPaused(false);
+    if (!target) {
+        this->setDone();
+        return;
+    }
+    
+    // NOTICE: イベントからの命令のみで動かしたいのでAIを一時停止
+    target->pauseAi();
+    target->resumeAnimation();
+    
+    if (target->isPaused()) target->setPaused(false);
     
     // 経路探索開始
-    PathFinder* pathFinder { PathFinder::create(DungeonSceneManager::getInstance()->getMapSize()) };
-    deque<Direction> directions { pathFinder->getPath(this->target->getGridRect(), this->target->getWorldGridCollisionRects(), this->destPosition) };
+    PathFinder* pathFinder { DungeonSceneManager::getInstance()->getMapObjectList()->getPathFinder() };
+    deque<Direction> directions { pathFinder->getPath(target, _destPosition) };
     
-    this->target->walkByQueue(directions, [this](bool reached){this->setDone();}, this->speedRatio);
+    Vector<WalkCommand*> commands { WalkCommand::create( directions, [this](bool walked) {
+        this->setDone();
+    }, _speedRatio, false, true) };
     
-    this->isCommandSent = true;
+    for (WalkCommand* command : commands) {
+        target->pushCommand(command);
+    }
 }
 
 #pragma mark -
@@ -152,9 +165,10 @@ void WalkToEvent::update(float delta)
 
 bool ChangeHeroEvent::init(rapidjson::Value& json)
 {
-    if (!GameEvent::init()) return false;
-    if (!this->validator->hasMember(json, member::CHARA_ID)) return false;
-    this->charaId = stoi(json[member::CHARA_ID].GetString());
+    if (!GameEvent::init(json)) return false;
+    
+    if (!_eventHelper->hasMember(_json, member::CHARA_ID)) return false;
+    _charaId = stoi(_json[member::CHARA_ID].GetString());
     
     return true;
 }
@@ -172,9 +186,43 @@ void ChangeHeroEvent::run()
     DungeonSceneManager::getInstance()->getMapObjectList()->removeById(etoi(ObjectID::HERO));
     
     // 新主人公を設定
-    Character* chara {Character::create(CharacterData(this->charaId, etoi(ObjectID::HERO), location))};
-    chara->setHit(true);
+    Character* chara { Character::create(CharacterData(_charaId, etoi(ObjectID::HERO), location)) };
     party->addMember(chara);
     DungeonSceneManager::getInstance()->getMapLayer()->setParty(party);
+    DungeonSceneManager::getInstance()->getCamera()->setTarget(party->getMainCharacter());
     
+    // 装備データをセット
+    LocalPlayerData* localPlayerData {PlayerDataManager::getInstance()->getLocalData()};
+    DungeonSceneManager::getInstance()->getEquipItemEvent()->setEquipmentCache(
+        localPlayerData->getItemEquipment(DirectionRight()),
+        localPlayerData->getItemEquipment(DirectionLeft())
+    );
+ }
+
+#pragma mark -
+#pragma mark ChangeSpeedEvent
+
+bool ChangeSpeedEvent::init(rapidjson::Value& json)
+{
+    if (!CharacterEvent::init(json)) return false;
+    
+    if (!json.HasMember(member::SPEED)) return false;
+    
+    _speed = _json[member::SPEED].GetDouble();
+    
+    return true;
+}
+
+void ChangeSpeedEvent::run()
+{
+    if (_objectId == "hero") {
+        Vector<Character*> members { DungeonSceneManager::getInstance()->getMapObjectList()->getParty()->getMembers() };
+        for (Character* chara : members) {
+            chara->setSpeed(_speed);
+        }
+    } else {
+        Character* target { _eventHelper->getMapObjectById<Character*>(_objectId) };
+        target->setSpeed(_speed);
+    }
+    this->setDone();
 }

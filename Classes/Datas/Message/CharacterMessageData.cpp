@@ -86,6 +86,28 @@ CharacterMessageData::Option CharacterMessageData::getOption() const
     return this->option;
 }
 
+// ミニキャラかどうか
+bool CharacterMessageData::isMiniChara() const
+{
+    return _miniChara;
+}
+
+// ボイスファイル名の取得
+string CharacterMessageData::getVoiceFileName() const
+{
+    return _voiceFileName;
+}
+// 背景に表示する画像の名前を取得
+string CharacterMessageData::getImageName() const
+{
+    return _imageName;
+}
+
+bool CharacterMessageData::isImageOnly() const
+{
+    return _imageOnly;
+}
+
 void CharacterMessageData::setCharaId(int charaId)
 {
     this->charaId = charaId;
@@ -101,4 +123,20 @@ void CharacterMessageData::setCharaName(const string& charaName)
 void CharacterMessageData::setOption(Option option)
 {
     this->option = option;
+}
+void CharacterMessageData::setMiniChara(bool miniChara)
+{
+    _miniChara = miniChara;
+}
+void CharacterMessageData::setVoice(string fileName)
+{
+    _voiceFileName = fileName;
+}
+void CharacterMessageData::setImageName(const string& imageName)
+{
+    _imageName = imageName;
+}
+void CharacterMessageData::setImageOnly(bool imageOnly)
+{
+    _imageOnly = imageOnly;
 }

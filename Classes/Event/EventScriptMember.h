@@ -14,6 +14,7 @@ namespace member
     static const char* ACTION = "action";
     static const char* ALPHA = "alpha";
     static const char* AMBIENT = "ambient";
+    static const char* CALLBACK_ = "callback";
     static const char* COLOR = "color";
     static const char* CONDITION = "condition";
     static const char* CHARA_ID = "charaID";
@@ -30,9 +31,11 @@ namespace member
     static const char* FALSE_ = "false";
     static const char* FAVORITE = "favorite";
     static const char* FLAG = "flg";
+    static const char* FROM_CHARA_ID = "fromCharaID";
     static const char* FILE = "file";
     static const char* CLASS_NAME = "className";
     static const char* ID = "id";
+    static const char* IMG = "img";
     static const char* IMGS = "imgs";
     static const char* IMG_ID = "imgID";
     static const char* INFO_ID = "infoID";
@@ -40,6 +43,8 @@ namespace member
     static const char* LAYER = "layer";
     static const char* LIMIT = "limit";
     static const char* MAP_ID = "mapID";
+    static const char* MINI_CHARA = "miniChara";
+    static const char* MOVABLE = "movable";
     static const char* MOVE_PATTERN = "movePattern";
     static const char* NAME = "name";
     static const char* NEXT_X = "nextX";
@@ -50,6 +55,7 @@ namespace member
     static const char* PATH_ID = "pathID";
     static const char* RANGE = "range";
     static const char* SECOND = "second";
+    static const char* SKIP = "skip";
     static const char* SPEED = "speed";
     static const char* STATUS = "status";
     static const char* STEPS = "steps";
@@ -59,13 +65,17 @@ namespace member
     static const char* TIME = "time";
     static const char* TITLE = "title";
     static const char* TIMES = "times";
+    static const char* TO_CHARA_ID = "toCharaID";
     static const char* TROPHY_ID = "trophyID";
     static const char* TRUE_ = "true";
+    static const char* TRIGGER = "trigger";
     static const char* TYPE = "type";
     static const char* VOLUME = "volume";
     static const char* X = "x";
     static const char* Y = "y";
-    
+    static const char* VOICE = "voice";
+    static const char* DISPLAY = "display";
+    static const char* WAVE_IN = "waveIn";
 }
 
 #endif /* defined(__LastSupper__EventScriptMember__) */

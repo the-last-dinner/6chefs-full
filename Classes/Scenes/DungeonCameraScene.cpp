@@ -12,6 +12,8 @@
 
 #include "Effects/AmbientLightLayer.h"
 
+#include "Event/EventFactory.h"
+
 #include "Layers/Dungeon/TiledMapLayer.h"
 #include "Layers/EventListener/ConfigEventListenerlayer.h"
 #include "Layers/LoadingLayer.h"
@@ -23,23 +25,6 @@
 
 #include "Managers/DungeonSceneManager.h"
 
-// create関数
-DungeonCameraScene* DungeonCameraScene::create(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback)
-{
-    DungeonCameraScene* p { new(nothrow) DungeonCameraScene() };
-    if(p && p->init(data, event, callback))
-    {
-        p->autorelease();
-        return p;
-    }
-    else
-    {
-        delete p;
-        p = nullptr;
-        return nullptr;
-    }
-}
-
 // コンストラクタ
 DungeonCameraScene::DungeonCameraScene() { FUNCLOG };
 
@@ -47,14 +32,13 @@ DungeonCameraScene::DungeonCameraScene() { FUNCLOG };
 DungeonCameraScene::~DungeonCameraScene() { FUNCLOG };
 
 // 初期化
-bool DungeonCameraScene::init(DungeonCameraSceneData* data, GameEvent* event, EventFinishCallback callback)
+bool DungeonCameraScene::init(DungeonCameraSceneData* data, EventFinishCallback callback)
 {
     if(!BaseScene::init(data)) return false;
     
-    this->callback = callback;
-    this->event = event;
+    _callback = callback;
     
-    this->configListener->setKeyconfigEnabled(false);
+    _configListener->setKeyconfigEnabled(false);
     
     return true;
 }
@@ -72,32 +56,29 @@ void DungeonCameraScene::onPreloadFinished(LoadingLayer* loadingLayer)
     TiledMapLayer* mapLayer {TiledMapLayer::create(this->getData()->getInitialLocation())};
     mapLayer->setLocalZOrder(Priority::MAP);
     this->addChild(mapLayer);
-    this->mapLayer = mapLayer;
+    _mapLayer = mapLayer;
     
     // 環境光レイヤー生成
     AmbientLightLayer* ambientLightLayer {AmbientLightLayer::create(AmbientLightLayer::ROOM)};
     ambientLightLayer->setLocalZOrder(Priority::AMBIENT_LIGHT);
     this->addChild(ambientLightLayer);
-    this->ambientLightLayer = ambientLightLayer;
+    _ambientLightLayer = ambientLightLayer;
     
     // カメラ処理クラス生成
     CameraTask* cameraTask {CameraTask::create()};
     this->addChild(cameraTask);
-    this->cameraTask = cameraTask;
+    _cameraTask = cameraTask;
     
     // イベント処理クラス生成
     EventTask* eventTask { EventTask::create() };
     this->addChild(eventTask);
-    this->eventTask = eventTask;
+    _eventTask = eventTask;
     
     // カメラの設定
     // IDのオブジェクトが存在すれば、そのオブジェクトが常に中心に来るようにする
-    if(this->getData()->getTargetId() != etoi(ObjectID::UNDIFINED))
-    {
+    if (this->getData()->getTargetId() != etoi(ObjectID::UNDIFINED)) {
         cameraTask->setTarget(mapLayer->getMapObjectList()->getMapObject(this->getData()->getTargetId()));
-    }
-    else
-    {
+    } else {
         cameraTask->setCenter(Point(this->getData()->getInitialLocation().x, this->getData()->getInitialLocation().y));
     }
     
@@ -112,27 +93,31 @@ void DungeonCameraScene::onInitEventFinished(LoadingLayer* loadingLayer)
     loadingLayer->onLoadFinished();
     
     // オブジェクトにイベント終了を通知
-    this->mapLayer->getMapObjectList()->onEventFinished();
+    _mapLayer->getMapObjectList()->onEventFinished();
     
     // Trigger::AFTER_INITを実行
-    this->eventTask->runEvent(mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonCameraScene::onAfterInitEventFinished, this));
+    _eventTask->runEvent(_mapLayer->getMapObjectList()->getEventIds(Trigger::AFTER_INIT), CC_CALLBACK_0(DungeonCameraScene::onAfterInitEventFinished, this));
 }
 
 // Trigger::AFTER_INITが終了した時
 void DungeonCameraScene::onAfterInitEventFinished()
 {
-    // 指定したイベントを実行
-    this->eventTask->runEvent(this->event, CC_CALLBACK_0(DungeonCameraScene::onCameraEventFinished, this));
+    // 指定したイベントをjsonから生成して実行
+    EventFactory* factory { DungeonSceneManager::getInstance()->getEventFactory() };
+    GameEvent* event { factory->createGameEvent(this->getData()->getEventJson(), nullptr) };
+    CC_SAFE_RETAIN(event);
+    
+    _eventTask->runEvent(event, CC_CALLBACK_0(DungeonCameraScene::onCameraEventFinished, this));
 }
 
 // 渡されたイベントを終了した時
 void DungeonCameraScene::onCameraEventFinished()
 {
-    if(this->callback) this->callback();
+    if (_callback) _callback();
 }
 
 // データ取得
 DungeonCameraSceneData* DungeonCameraScene::getData() const
 {
-    return dynamic_cast<DungeonCameraSceneData*>(this->data);
+    return dynamic_cast<DungeonCameraSceneData*>(_data);
 }

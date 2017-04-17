@@ -19,39 +19,36 @@ class ButtonMashingEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(ButtonMashingEvent, rapidjson::Value&)
 private:
-    int count { 0 };
-    float limit { 0.f };
-    int sEventId { static_cast<int>(EventID::UNDIFINED) };
-    int fEventId { static_cast<int>(EventID::UNDIFINED) };
-    GameEvent* sEvent { nullptr };
-    GameEvent* fEvent { nullptr };
-    GameEvent* event { nullptr };
-    GameEvent* clickCallbackEvent { nullptr };
+    int _count { 0 };
+    float _limit { 0.f };
+    GameEvent* _resultCallbackEvent { nullptr };
+    GameEvent* _clickCallbackEvent { nullptr };
 private:
-    ButtonMashingEvent() {FUNCLOG};
-    ~ButtonMashingEvent();
-    virtual bool init(rapidjson::Value& json);
+    ButtonMashingEvent() { FUNCLOG };
+    ~ButtonMashingEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+    virtual void update(float delta) override;
 };
 
 // 選択イベント
 class SelectEvent : public GameEvent
 {
-private:
-    using SelectCallBack = pair<int, GameEvent*>;
 public:
     CREATE_FUNC_WITH_PARAM(SelectEvent, rapidjson::Value&)
 private:
-    string message {};
-    vector<string> choices {};
-    vector<SelectCallBack> eventCallBacks {};
-    queue<CharacterMessageData*> datas {};
+    string _message {};
+    vector<string> _choices {};
+    queue<CharacterMessageData*> _datas {};
+    GameEvent* _event { nullptr };
     
 private:
-    SelectEvent() {FUNCLOG};
-    ~SelectEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    SelectEvent() { FUNCLOG };
+    ~SelectEvent() { FUNCLOG };
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+    virtual void update(float delta) override;
+    virtual void stop(int code = -1) override;
 };
 
 // パスワードイベント
@@ -60,17 +57,14 @@ class PasswordEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(PasswordEvent, rapidjson::Value&)
 private:
-    string password {};
-    int sEventId { static_cast<int>(EventID::UNDIFINED) };
-    int fEventId { static_cast<int>(EventID::UNDIFINED) };
-    GameEvent* sEvent { nullptr };
-    GameEvent* fEvent { nullptr };
-    GameEvent* event { nullptr };
+    string _password {};
+    GameEvent* _resultCallbackEvent { nullptr };
 private:
     PasswordEvent() {FUNCLOG};
     ~PasswordEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+    virtual void update(float delta) override;
 };
 
 // CountDownイベント
@@ -79,20 +73,19 @@ class CountDownEvent : public GameEvent
 public:
     CREATE_FUNC_WITH_PARAM(CountDownEvent, rapidjson::Value&)
 private:
-    float second { 5.f };
-    int sEventId { static_cast<int>(EventID::UNDIFINED) };
-    int fEventId { static_cast<int>(EventID::UNDIFINED) };
-    //rapidjson::Document doc { nullptr };
-    int equip {0};
-    bool checkEquip {false};
-    GameEvent* sEvent { nullptr };
-    GameEvent* fEvent { nullptr };
-    GameEvent* event { nullptr };
+    float _second { 5.f };
+    int _equip { 0 };
+    bool _checkEquip { false };
+    bool _display { false };
+    bool _isTimeUp { false };
+    GameEvent* _successCallbackEvent { nullptr };
+    GameEvent* _failureCallbackEvent { nullptr };
 private:
-    CountDownEvent() {FUNCLOG};
-    ~CountDownEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    CountDownEvent() { FUNCLOG };
+    ~CountDownEvent();
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
+    void runResultCallbackEvent(GameEvent* callbackEvent);
 };
 
 // StopCountイベント
@@ -103,7 +96,7 @@ public:
 private:
     StopCountEvent() {FUNCLOG};
     ~StopCountEvent() {FUNCLOG};
-    virtual bool init(rapidjson::Value& json);
+    virtual bool init(rapidjson::Value& json) override;
     virtual void run() override;
 };
 

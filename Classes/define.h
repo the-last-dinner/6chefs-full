@@ -9,6 +9,8 @@
 #include <fstream>
 #include "AudioEngine.h"
 #include "resources.h"
+#include "env.h"
+#include "Models/Direction.h"
 
 // rapidjson
 #include "external/json/document.h"
@@ -30,12 +32,17 @@ typedef GenericStringBuffer< UTF8<> > StringBuffer;
 #define ES_EXTENSION ".json"
 #define CSV_EXTENSION ".csv"
 
-// 暗号キー
-#define C_KEY 4545
+// おまけ部屋のセーブデータID
+#define SPECIAL_ROOM_SAVE_ID 99
 
 // ゲームウインドウ横幅、縦幅
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
+// ゲームウインドウのサイズ比
+#define WINDOW_SIZE_RATIO_MIN 0.75f
+#define WINDOW_SIZE_RATIO_DEFAULT 1.f
+#define WINDOW_SIZE_RATIO_MIDDLE 1.25f
+#define WINDOW_SIZE_RATIO_MAX 1.5f
 
 // 1マスの大きさ(px)
 #define GRID 16
@@ -59,6 +66,9 @@ using namespace std;
 // セーブデータの個数
 #define MAX_SAVE_COUNT 10
 
+// 暗号化状態の判別
+#define IS_ENCRYPTED (FileUtils::getInstance()->fullPathForFilename("config/IsEncrypted.json") != "")
+
 // レイヤーのZORDER値
 enum Priority
 {
@@ -66,10 +76,12 @@ enum Priority
     TOP_COVER = 1000,
     LOADING_LAYER = 999,
     TROPHY_NOTIFICATION = 1000,
+    COUNT_DOWN_DISPLAY = 900,
     STAMINA_BAR = 800,
 	STORY_MESSAGE = 102,
 	SYSTEM_MESSAGE = 101,
     CHARACTER_MESSAGE = 100,
+    VIDEO_LAYER = 93,
     SELECT_LAYER = 92,
     BUTTON_MASHING_LAYER = 91,
     DISP_IMAGE_LAYER = 90,
@@ -79,6 +91,13 @@ enum Priority
     AMBIENT_LIGHT = 50,
     DEBUG_MASK = 40,
 	MAP = 0,
+};
+
+// updateの優先度値
+enum UpdatePriority
+{
+    FIRST = -1,
+    LAST = 9999,
 };
 
 // ゲームで使うキーの種類
@@ -97,17 +116,6 @@ enum struct Key
     SIZE,
 };
 
-// 向き
-enum struct Direction
-{
-	FRONT,
-	RIGHT,
-	LEFT,
-	BACK,
-    
-	SIZE,
-};
-
 // トリガータイプ
 enum struct Trigger
 {
@@ -116,6 +124,8 @@ enum struct Trigger
 	SEARCH,
     AFTER_INIT,
     WILL,
+    RIDE_ON,
+    GET_OFF,
 	SIZE,
 };
 
@@ -148,6 +158,11 @@ enum struct MapID
     UNDIFINED = -1,
 };
 
+enum struct ItemID
+{
+    UNDIFINED = 0,
+};
+
 // 味方キャラクタの動き方
 enum struct CharacterMovePattern
 {
@@ -166,6 +181,8 @@ enum struct EnemyMovePattern
     PERFECT_RANDOM,
     SCOUTER,
     CHASER,
+    BATTLE_MOB,
+    BATTLE_BOSS,
     
     SIZE,
 };
@@ -175,14 +192,15 @@ struct Location
     int map_id{0};
     int x {0};
     int y {0};
-    Direction direction {Direction::SIZE};
-    Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(static_cast<Direction>(direction)){};
+    Direction direction {};
+    Location(int map_id, int x, int y, int direction):map_id(map_id), x(x), y(y), direction(Direction::convertInt(direction)){};
     Location(int map_id, int x, int y, Direction direction):map_id(map_id), x(x), y(y), direction(direction){};
     Location(){};
 };
 
 // enum structをint型にキャスト
 #define etoi(param) static_cast<int>(param)
+#define etos(param) to_string(etoi(param))
 
 // パラメータを一つタイプを指定してcreate
 #define CREATE_FUNC_WITH_PARAM(__TYPE_1__, __TYPE_2__) \
@@ -235,4 +253,22 @@ pRet = NULL; \
 return NULL; \
 } \
 }
+
+#define CREATE_FUNC_WITH_PARAM_CONSRUCT(__TYPE_1__, __TYPE_2__) \
+static __TYPE_1__* create(__TYPE_2__ param) \
+{ \
+    __TYPE_1__ *pRet = new(std::nothrow) __TYPE_1__(param); \
+    if (pRet && pRet->init()) \
+    { \
+        pRet->autorelease(); \
+        return pRet; \
+    } \
+    else \
+    { \
+        delete pRet; \
+        pRet = NULL; \
+        return NULL; \
+    } \
+}
+
 #endif // __DEFINE_H__

@@ -13,6 +13,7 @@
 
 class GameEvent;
 class EventSpawn;
+class EventScriptValidator;
 
 class EventFactory : public Ref
 {
@@ -20,15 +21,17 @@ class EventFactory : public Ref
 public:
     CREATE_FUNC(EventFactory)
 
+// インスタンス変数
+private:
+    static const map<string, function<GameEvent*(rapidjson::Value&)>> _typeToCreateFunc;
+    
 // インスタンスメソッド
 private:
-    EventFactory();
-    ~EventFactory();
+    EventFactory() { FUNCLOG };
+    ~EventFactory() { FUNCLOG };
     bool init();
 public:
-    GameEvent* createGameEvent(rapidjson::Value& json);
-    Vector<GameEvent*> createEventVector(rapidjson::Value& json);
-    queue<GameEvent*> createEventQueue(rapidjson::Value& json);
+    GameEvent* createGameEvent(rapidjson::Value& json, GameEvent* caller);
 };
 
 #endif /* defined(__LastSupper__EventFactory__) */

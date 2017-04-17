@@ -17,9 +17,8 @@ class CheapChaser;
 class Chaser : public MovePattern
 {
 // 定数
-public:
+private:
     static const int PATH_FINDING_THRESHOLD;
-    static const int SHIFT_PATTERN_THRESHOLD;
     
 // クラスメソッド
 public:
@@ -27,25 +26,27 @@ public:
 
 // インスタンス変数
 private:
-    PathFinder* pathFinder { nullptr };
-    CheapChaser* subPattern { nullptr };
-    int partyMoveCount { 0 };
+    CheapChaser* _subPattern { nullptr };
 
 // インスタンスメソッド
 public:
-    virtual void setPaused(bool paused) override;
     virtual void start() override;
+    virtual void pause() override;
+    virtual void resume() override;
     virtual void onPartyMoved() override;
+    virtual void setSpeedRatio(float speed) override;
     virtual void move();
+    void moveProc();
 private:
     Chaser();
     ~Chaser();
     virtual bool init(Character* character) override;
     void shiftFromSubPattern();
     void shiftToSubPattern();
-    bool needsShiftToSubPattern(const deque<Direction>& path);
+    bool needsShiftToSubPattern() const;
     void cutPath(deque<Direction>& path);
     deque<Direction> getPath() const;
+    void onStuck();
     virtual bool canGoToNextMap() const override;
     virtual float calcSummonDelay() const override;
 };

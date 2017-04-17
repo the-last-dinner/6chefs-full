@@ -4,10 +4,584 @@
 	<dict>
 		<key>frames</key>
 		<dict>
+			<key>a1taihou_a_0_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1489},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,0},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_0_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1392},{27,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,1},{27,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_0_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1726},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_0_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1693},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_0_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1792},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,1},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_0_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1489},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,0},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_1_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1922},{24,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,16},{24,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_1_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1890},{24,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{24,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_1_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1329},{29,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{29,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_2_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{25,1824},{24,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,16},{24,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_2_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1988},{24,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,17},{24,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_2_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1265},{30,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{30,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_3_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1592},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,0},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a1taihou_a_3_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1361},{29,30}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{1,18},{29,30}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_3_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1424},{26,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,17},{26,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a1taihou_a_3_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1202},{32,30}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,18},{32,30}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1489},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,16},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1233},{32,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{32,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1329},{29,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{29,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1556},{25,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,13},{25,35}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1297},{30,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{30,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_0_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1726},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,17},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1922},{24,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,16},{24,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1329},{29,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{29,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1556},{25,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,13},{25,35}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1297},{30,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{30,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1792},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,17},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_1_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1890},{24,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{24,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{25,1824},{24,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,16},{24,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1297},{30,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{30,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1792},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,17},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1329},{29,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{29,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1556},{25,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,13},{25,35}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_2_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1988},{24,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{6,17},{24,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_3_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1592},{25,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,0},{25,32}}</string>
+				<key>sourceSize</key>
+				<string>{32,33}</string>
+			</dict>
+
+			<key>a2taihou_a_3_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1202},{32,30}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,18},{32,30}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_3_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1297},{30,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,17},{30,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_3_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1792},{25,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{4,17},{25,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_3_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1329},{29,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,17},{29,31}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>a2taihou_a_3_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1361},{29,30}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{1,18},{29,30}}</string>
+				<key>sourceSize</key>
+				<string>{32,64}</string>
+			</dict>
+
+			<key>effect.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1172},{65,29}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{23,18},{65,29}}</string>
+				<key>sourceSize</key>
+				<string>{96,64}</string>
+			</dict>
+
 			<key>taihou_0_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1360},{25,32}}</string>
+				<string>{{0,1456},{25,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +595,7 @@
 			<key>taihou_0_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1292},{25,33}}</string>
+				<string>{{0,1758},{25,33}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +609,7 @@
 			<key>taihou_0_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1326},{25,33}}</string>
+				<string>{{0,1522},{25,33}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -49,7 +623,7 @@
 			<key>taihou_1_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1459},{24,32}}</string>
+				<string>{{0,1922},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -63,7 +637,7 @@
 			<key>taihou_1_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1426},{24,32}}</string>
+				<string>{{0,1955},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -77,7 +651,7 @@
 			<key>taihou_1_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1492},{24,32}}</string>
+				<string>{{0,1824},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -91,7 +665,7 @@
 			<key>taihou_2_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1558},{24,32}}</string>
+				<string>{{25,1890},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -105,7 +679,7 @@
 			<key>taihou_2_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1525},{24,32}}</string>
+				<string>{{0,1857},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -119,7 +693,7 @@
 			<key>taihou_2_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1393},{24,32}}</string>
+				<string>{{25,1857},{24,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -133,7 +707,7 @@
 			<key>taihou_3_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1259},{25,32}}</string>
+				<string>{{0,1592},{25,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -147,7 +721,7 @@
 			<key>taihou_3_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1225},{25,33}}</string>
+				<string>{{0,1659},{25,33}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -161,7 +735,7 @@
 			<key>taihou_3_2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,1191},{25,33}}</string>
+				<string>{{0,1625},{25,33}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -172,16 +746,128 @@
 				<string>{32,33}</string>
 			</dict>
 
-			<key>taihou_s_1.png</key>
+			<key>taihou_s_0.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{543,1190}}</string>
+				<string>{{1745,0},{505,1171}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{178,7},{543,1190}}</string>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1745,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2757,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2251,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{3263,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1239,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_6.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2251,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_7.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{733,0},{505,1171}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{143,14},{505,1171}}</string>
+				<key>sourceSize</key>
+				<string>{800,1200}</string>
+			</dict>
+
+			<key>taihou_s_99.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{732,1139}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{31,39},{732,1139}}</string>
 				<key>sourceSize</key>
 				<string>{800,1200}</string>
 			</dict>
@@ -193,7 +879,7 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{1024,2048}</string>
+			<string>{4096,2048}</string>
 			<key>textureFileName</key>
 			<string>taihou.png</string>
 			</dict>
