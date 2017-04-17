@@ -2,7 +2,7 @@
 
 # check argument
 if [ -n $1 ];then
-    modelName="nadeshiko"
+    modelName="boy"
 else
     modelName=$1
 fi

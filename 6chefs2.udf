@@ -30,12 +30,7 @@
     </Item>
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="effect/dust.csd" />
-          <FilePathData Path="character/taihou.csd" />
-          <FilePathData Path="character/ranmaru.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="character/taihou.csd" />
+        <ActiveDocument />
       </Value>
     </Item>
   </Properties>
