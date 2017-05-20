@@ -18,59 +18,64 @@
 	],
 	"2":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["53","3"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
-					"action":[
+					"type":"if",
+					"condition":[
 						{
-							"type":"playSE",
-							"file":"horror_notice.mp3"
-						},
-						{
-							"type":"systemMsg",
-							"text":["黒くてヌラヌラ光っている虫が\n何かに群がっている"]
+							"Nevent":["53","3"]
 						}
-					]	
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["53","3"],
-					"Nstatus":["1","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
+					],
 					"action":[
 						{
 							"type":"spawn",
 							"action":[
 								{
-									"type":"systemMsg",
-									"text":["肌はガサガサになり、\n頬には虫に食い破られたような穴が空いている"]
-								},
-								{
 									"type":"playSE",
 									"file":"horror_notice.mp3"
+								},
+								{
+									"type":"systemMsg",
+									"text":["黒くてヌラヌラ光っている虫が\n何かに群がっている"]
 								}
-							]
-						},
+							]	
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
 						{
-							"type":"charaMsg",
-							"text":["うっ！！"],
-							"charaID":"0",
-							"imgID":"3"
-						}		
+							"event":["53","3"],
+							"Nstatus":["1","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"spawn",
+									"action":[
+										{
+											"type":"systemMsg",
+											"text":["肌はガサガサになり、\n頬には虫に食い破られたような穴が空いている"]
+										},
+										{
+											"type":"playSE",
+											"file":"horror_notice.mp3"
+										}
+									]
+								},
+								{
+									"type":"charaMsg",
+									"text":["うっ！！"],
+									"charaID":"0",
+									"imgID":"3"
+								}		
+							]
+						}
 					]
 				}
 			]
@@ -200,8 +205,13 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1062"
+					"type":"createObject",
+					"objID":"1062",
+					"x":9,
+					"y":11,
+					"charaID":"17",
+					"direction":"DOWN",
+					"movePattern":"1"
 
 				}
 			]
@@ -209,170 +219,175 @@
 	],
 	"6":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["53","3"],
-					"status":["1","2"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"event":["53","3"],
+							"status":["1","2"]
+						}
+					],
 					"action":[
 						{
-				          "type":"spawn",
-				          "action":[
-				            {
-				              "type": "reaction",
-				              "objID": "hero"
-				            },
-				            {
-				              "type":"playSE",
-				              "file":"reaction.mp3",
-				              "volume":0.25
-				            }
-				          ]
-				        },
-						{
-							"type":"stopBGM",
-							"file":"bgm_noroi.mp3"
-						},
-						{
-							"type":"spawn",
+							"type":"sequence",
 							"action":[
 								{
-									"type":"displayImg",
-									"file":"dandan_smoked.png"
+						          "type":"spawn",
+						          "action":[
+						            {
+						              "type": "reaction",
+						              "objID": "hero"
+						            },
+						            {
+						              "type":"playSE",
+						              "file":"reaction.mp3",
+						              "volume":0.25
+						            }
+						          ]
+						        },
+								{
+									"type":"stopBGM",
+									"file":"bgm_noroi.mp3"
 								},
 								{
-									"type":"playSE",
-									"file":"despair.mp3"
+									"type":"spawn",
+									"action":[
+										{
+											"type":"displayImg",
+											"file":"dandan_smoked.png"
+										},
+										{
+											"type":"playSE",
+											"file":"despair.mp3"
+										}
+									]
+								},
+								{
+									"type":"charaMsg",
+									"text":["荒間田さん！！"],
+									"charaID":"0",
+									"imgID":"3",
+									"option":"reaction"
+								},
+								{
+									"type":"charaWalk",
+									"objID":"hero",
+									"direction":"UP",
+									"steps":4.0,
+									"speed":2.0
+								},
+								{
+									"type":"wait",
+									"time":1.0
+								},
+								{
+									"type":"charaMsg",
+									"text":["とりあえずこの部屋から出よう！"],
+									"charaID":"0",
+									"imgID":"2"
+								},
+								{
+									"type":"already"
+								},
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"changeMap",
+									"mapID":"52",
+									"x":11,
+									"y":7,
+									"eventID":"7"
 								}
 							]
-						},
-						{
-							"type":"charaMsg",
-							"text":["荒間田さん！！"],
-							"charaID":"0",
-							"imgID":"3",
-							"option":"reaction"
-						},
-						{
-							"type":"charaWalk",
-							"objID":"hero",
-							"direction":"UP",
-							"steps":4.0,
-							"speed":2.0
-						},
-						{
-							"type":"wait",
-							"time":1.0
-						},
-						{
-							"type":"charaMsg",
-							"text":["とりあえずこの部屋から出よう！"],
-							"charaID":"0",
-							"imgID":"2"
-						},
-						{
-							"type":"already"
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"changeMap",
-							"mapID":"52",
-							"x":11,
-							"y":7,
-							"eventID":"7"
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+				},
 				{
-					"event":["53","3"],
-					"Nstatus":["1","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"event":["53","3"],
+							"Nstatus":["1","2"]
+						}
+					],
 					"action":[
 						{
-							"type":"stopBGM",
-							"file":"bgm_noroi.mp3"
-						},
-						{
-				          "type":"spawn",
-				          "action":[
-				            {
-				              "type": "reaction",
-				              "objID": "hero"
-				            },
-				            {
-				              "type":"playSE",
-				              "file":"reaction.mp3",
-				              "volume":0.25
-				            }
-				          ]
-				        },
-						{
-							"type":"spawn",
+							"type":"sequence",
 							"action":[
 								{
-									"type":"displayImg",
-									"file":"dandan_smoked.png"
+									"type":"stopBGM",
+									"file":"bgm_noroi.mp3"
 								},
 								{
-									"type":"playSE",
-									"file":"despair.mp3"
+						          "type":"spawn",
+						          "action":[
+						            {
+						              "type": "reaction",
+						              "objID": "hero"
+						            },
+						            {
+						              "type":"playSE",
+						              "file":"reaction.mp3",
+						              "volume":0.25
+						            }
+						          ]
+						        },
+								{
+									"type":"spawn",
+									"action":[
+										{
+											"type":"displayImg",
+											"file":"dandan_smoked.png"
+										},
+										{
+											"type":"playSE",
+											"file":"despair.mp3"
+										}
+									]
+								},
+								{
+									"type":"charaMsg",
+									"text":["荒間田さん！！"],
+									"charaID":"0",
+									"imgID":"3",
+									"option":"reaction"
+								},
+								{
+									"type":"charaWalk",
+									"objID":"hero",
+									"direction":"UP",
+									"steps":4.0,
+									"speed":2.0
+								},
+								{
+									"type":"charaMsg",
+									"text":["そんな・・・"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"charaMsg",
+									"text":["荒間田さん！！"],
+									"charaID":"0",
+									"imgID":"3",
+									"option":"reaction"
+								},
+								{
+									"type":"playBGM",
+									"file":"bgm_noroi.mp3",
+									"volume":2.0
+								},
+								{
+									"type":"already"
+								},
+								{
+									"type":"already",
+									"event":["55","5"]
 								}
 							]
-						},
-						{
-							"type":"charaMsg",
-							"text":["荒間田さん！！"],
-							"charaID":"0",
-							"imgID":"3",
-							"option":"reaction"
-						},
-						{
-							"type":"charaWalk",
-							"objID":"hero",
-							"direction":"UP",
-							"steps":4.0,
-							"speed":2.0
-						},
-						{
-							"type":"charaMsg",
-							"text":["そんな・・・"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"charaMsg",
-							"text":["荒間田さん！！"],
-							"charaID":"0",
-							"imgID":"3",
-							"option":"reaction"
-						},
-						{
-							"type":"playBGM",
-							"file":"bgm_noroi.mp3",
-							"volume":2.0
-						},
-						{
-							"type":"already"
-						},
-						{
-							"type":"already",
-							"event":["55","5"]
 						}
 					]
 				}

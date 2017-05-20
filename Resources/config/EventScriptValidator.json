@@ -600,7 +600,8 @@
         "changeStatus": {
             "require": ["charaID", "favorite"],
             "member": {
-                "charaID": ["stoi"]
+                "charaID": ["stoi"],
+                "favorite":["stoi"]
             }
         },
         "changeFlg": {

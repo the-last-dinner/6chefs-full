@@ -63,8 +63,13 @@
 					"imgID":"1"
 				},
 				{
-					"type":"createChara",
-					"objID":"1040"
+					"type":"createObject",
+					"objID":"1040",
+					"x":18,
+					"y":17,
+					"charaID":"1",
+					"direction":"RIGHT",
+					"movePattern":"1"
 				},
 				{
 					"type":"charaMsg",
@@ -108,7 +113,7 @@
 					"type":"fadeout"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1040"
 				},
 				{

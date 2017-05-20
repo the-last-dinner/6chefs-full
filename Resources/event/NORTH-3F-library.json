@@ -10,8 +10,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1026"
+					"type":"createObject",
+					"objID":"1026",
+					"x":17,
+					"y":19,
+					"charaID":"4",
+					"eventID":"18",
+					"direction":"UP",
+					"movePattern":"2",
+					"trigger":"2"
 				}
 			]
 		}

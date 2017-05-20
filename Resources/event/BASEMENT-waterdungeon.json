@@ -56,46 +56,51 @@
 	],
 	"5":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["48","2"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
-					"action":[
+					"type":"if",
+					"condition":[
 						{
-							"type":"playSE",
-							"file":"4gatagata.mp3"
-						},
-						{
-							"type":"systemMsg",
-							"text":["少年は震えている・・・"]
+							"Nevent":["48","2"]
 						}
-					]	
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["48","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
+					],
 					"action":[
 						{
-							"type":"playSE",
-							"file":"horror_notice.mp3"
-						},
+							"type":"spawn",
+							"action":[
+								{
+									"type":"playSE",
+									"file":"4gatagata.mp3"
+								},
+								{
+									"type":"systemMsg",
+									"text":["少年は震えている・・・"]
+								}
+							]	
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
 						{
-							"type":"systemMsg",
-							"text":["凄まじい形相で\nコチラを見ている・・・"]
+							"event":["48","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"playSE",
+									"file":"horror_notice.mp3"
+								},
+								{
+									"type":"systemMsg",
+									"text":["凄まじい形相で\nコチラを見ている・・・"]
+								}
+							]
 						}
 					]
 				}
@@ -104,79 +109,89 @@
 	],
 	"6":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["48","2"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"charaMsg",
-					"text":["分厚いガラスの檻・・・\nこれは・・・？"],
-					"charaID":"0",
-					"imgID":"2"
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["48","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["分厚いガラスの檻・・・\nこれは・・・？"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
+				},
 				{
-					"event":["48","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"charaMsg",
-					"text":["檻の中に水が溜まってる・・・","もしかしてさっきの水の音って・・・"],
-					"charaID":"0",
-					"imgID":"2"
+					"type":"if",
+					"condition":[
+						{
+							"event":["48","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["檻の中に水が溜まってる・・・","もしかしてさっきの水の音って・・・"],
+							"charaID":"0",
+							"imgID":"2"
+						}
+					]
 				}
 			]
 		}
 	],
 	"7":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"item":["1519"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"systemMsg",
-					"text":["地下倉庫の鍵を使った"]
+					"type":"if",
+					"condition":[
+						{
+							"item":["1519"]
+						}
+					],
+					"action":[
+						{
+							"type":"systemMsg",
+							"text":["地下倉庫の鍵を使った"]
+						},
+						{
+							"type":"playSE",
+							"file":"door_keyopen.mp3"
+						},
+						{
+							"type":"removeObject",
+							"objID":"1819"
+						},
+						{
+							"type":"already"
+						}
+					]
 				},
 				{
-					"type":"playSE",
-					"file":"door_keyopen.mp3"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1819"
-				},
-				{
-					"type":"already"
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nitem":["1519"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["鍵がかかっている"]
-				},
-				{
-					"type":"playSE",
-					"file":"door_unopen.mp3"
+					"type":"if",
+					"condition":[
+						{
+							"Nitem":["1519"]
+						}
+					],
+					"action":[
+						{
+							"type":"systemMsg",
+							"text":["鍵がかかっている"]
+						},
+						{
+							"type":"playSE",
+							"file":"door_unopen.mp3"
+						}
+					]
 				}
 			]
 		}
@@ -191,7 +206,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1819"
 				}
 			]

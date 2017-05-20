@@ -156,8 +156,15 @@
   ],
   "7":[
     {
-      "type":"createChara",
-      "objID":"101"
+      "type":"createObject",
+      "objID":"101",
+      "x":60,
+      "y":57,
+      "charaID":"9",
+      "eventID":"1",
+      "direction":"RIGHT",
+      "movePattern":"1",
+      "trigger":"2"
     },
     {
       "type":"if",
@@ -168,7 +175,7 @@
       ],
       "action":[
         {
-          "type":"removeChara",
+          "type":"removeObject",
           "objID":"1923"
         }
       ]
@@ -215,11 +222,10 @@
   "9":[
     {
       "type":"getItem",
-      "itemID":"1522",
-      "name":"猪肉"
+      "itemID":"1522"
     },
     {
-      "type":"removeChara",
+      "type":"removeObject",
       "objID":"1923"
     },
     {

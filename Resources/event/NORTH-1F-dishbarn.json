@@ -138,7 +138,7 @@
 									"type":"createEnemy",
 									"x":9,
 									"y":25,
-									"enemyID":"143",
+									"objID":"143",
 									"charaID":"8",
 									"movePattern":"5",
 									"speed":10.0
@@ -156,11 +156,10 @@
 			"action":[
 				{
 					"type":"getItem",
-					"itemID":"1518",
-					"name":"図書室の鍵"
+					"itemID":"1518"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1918"
 				},
 				{
@@ -179,7 +178,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1918"
 				}
 			]
@@ -238,17 +237,21 @@
 			],
 			"action":[
 				{
-					"type":"getItem",
-					"itemID":"1529",
-					"name":"目玉焼きリング"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1929"
-				},
-				{
-					"type":"already",
-					"event":["20","16"]
+					"type":"sequence",
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"1529"
+						},
+						{
+							"type":"removeObject",
+							"objID":"1929"
+						},
+						{
+							"type":"already",
+							"event":["20","16"]
+						}
+					]
 				}
 			]
 		},
@@ -283,7 +286,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1929"
 				}
 			]

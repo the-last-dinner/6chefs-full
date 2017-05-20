@@ -18,11 +18,10 @@
 	"3":[
 		{
 			"type":"getItem",
-			"itemID":"1533",
-			"name":"三角巾"
+			"itemID":"1533"
 		},
 		{
-			"type":"removeChara",
+			"type":"removeObject",
 			"objID":"1924"
 		},
 		{
@@ -39,7 +38,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1924"
 				}
 			]

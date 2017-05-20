@@ -63,50 +63,55 @@
 	],
 	"4":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"item":["1518"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
+					"type":"if",
+					"condition":[
+						{
+							"item":["1518"]
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"systemMsg",
+									"text":["図書室の鍵を使った"]
+								},
+								{
+									"type":"playSE",
+									"file":"door_keyopen.mp3"
+								},
+								{
+									"type":"removeObject",
+									"objID":"185"
+								},
+								{
+									"type":"already"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"Nitem":["1518"]
+						}
+					],
 					"action":[
 						{
 							"type":"systemMsg",
-							"text":["図書室の鍵を使った"]
+							"text":["鍵がかかっている"]
 						},
 						{
 							"type":"playSE",
-							"file":"door_keyopen.mp3"
-						},
-						{
-							"type":"removeChara",
-							"objID":"185"
-						},
-						{
-							"type":"already"
+							"file":"door_unopen.mp3"
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nitem":["1518"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["鍵がかかっている"]
-				},
-				{
-					"type":"playSE",
-					"file":"door_unopen.mp3"
 				}
 			]
 		}
@@ -223,11 +228,11 @@
 					"objID":"1016"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1016"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"186"
 				},
 				{
@@ -270,8 +275,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1016"
+					"type":"createObject",
+					"objID":"1016",
+					"x":88,
+					"y":9,
+					"charaID":"2",
+					"eventID":"6",
+					"direction":"UP",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		}
@@ -286,7 +298,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"186"
 				}
 			]
@@ -302,7 +314,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"185"
 				}
 			]
@@ -317,11 +329,10 @@
 					"action":[
 						{
 							"type":"getItem",
-							"itemID":"152",
-							"name":"食材庫の鍵"
+							"itemID":"152"
 						},
 						{
-							"type":"removeChara",
+							"type":"removeObject",
 							"objID":"192"
 						},
 						{
@@ -347,7 +358,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"192"
 				}
 			]
@@ -482,8 +493,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1025"
+					"type":"createObject",
+					"objID":"1025",
+					"x":65,
+					"y":20,
+					"charaID":"2",
+					"eventID":"13",
+					"direction":"UP",
+					"movePattern":"2",
+					"trigger":"2"
 				}
 			]
 		}

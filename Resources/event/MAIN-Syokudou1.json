@@ -808,12 +808,26 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1020"
+							"type":"createObject",
+							"objID":"1020",
+							"x":26,
+							"y":21,
+							"charaID":"2",
+							"eventID":"28",
+							"direction":"LEFT",
+							"movePattern":"1",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"1023"
+							"type":"createObject",
+							"objID":"1023",
+							"x":14,
+							"y":29,
+							"charaID":"4",
+							"eventID":"29",
+							"direction":"RIGHT",
+							"movePattern":"1",
+							"trigger":"2"
 						}
 					]
 				}
@@ -832,8 +846,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1021"
+					"type":"createObject",
+					"objID":"1021",
+					"x":26,
+					"y":29,
+					"charaID":"5",
+					"eventID":"33",
+					"direction":"LEFT",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		},
@@ -847,12 +868,26 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1019"
+					"type":"createObject",
+					"objID":"1019",
+					"x":26,
+					"y":14,
+					"charaID":"1",
+					"eventID":"37",
+					"direction":"LEFT",
+					"movePattern":"1",
+					"trigger":"2"
 				},
 				{
-					"type":"createChara",
-					"objID":"1022"
+					"type":"createObject",
+					"objID":"1022",
+					"x":14,
+					"y":21,
+					"charaID":"3",
+					"eventID":"36",
+					"direction":"RIGHT",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		}
@@ -891,24 +926,59 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"102"
+							"type":"createObject",
+							"objID":"102",
+							"x":26,
+							"y":14,
+							"charaID":"1",
+							"eventID":"4",
+							"direction":"LEFT",
+							"movePattern":"2",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"103"
+							"type":"createObject",
+							"objID":"103",
+							"x":26,
+							"y":21,
+							"charaID":"2",
+							"eventID":"5",
+							"direction":"LEFT",
+							"movePattern":"2",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"104"
+							"type":"createObject",
+							"objID":"104",
+							"x":26,
+							"y":29,
+							"charaID":"5",
+							"eventID":"6",
+							"direction":"LEFT",
+							"movePattern":"2",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"105"
+							"type":"createObject",
+							"objID":"105",
+							"x":14,
+							"y":21,
+							"charaID":"3",
+							"eventID":"7",
+							"direction":"RIGHT",
+							"movePattern":"2",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"106"
+							"type":"createObject",
+							"objID":"106",
+							"x":14,
+							"y":29,
+							"charaID":"4",
+							"eventID":"8",
+							"direction":"RIGHT",
+							"movePattern":"2",
+							"trigger":"2"
 						}
 					]
 				}
@@ -1099,48 +1169,78 @@
 							"type":"sequence",
 							"action":[
 								{
-						          "type":"createChara",
-						          "objID":"1096"
+						          "type":"createObject",
+						          "objID":"1096",
+								  "x":14,
+								  "y":14,
+						          "charaID":"0",
+						          "direction":"RIGHT",
+						          "movePattern":"1"
 						        },
 						        {
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"102"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"103"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"104"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"105"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"106"
 								},
 								{
-									"type":"createChara",
-									"objID":"1090"
+									"type":"createObject",
+									"objID":"1090",
+									"x":26,
+									"y":14,
+									"charaID":"1",
+									"direction":"LEFT",
+									"movePattern":"1"
 								},
 								{
-									"type":"createChara",
-									"objID":"1091"
+									"type":"createObject",
+									"objID":"1091",
+									"x":26,
+									"y":21,
+									"charaID":"2",
+									"direction":"LEFT",
+									"movePattern":"1"
 								},
 								{
-									"type":"createChara",
-									"objID":"1092"
+									"type":"createObject",
+									"objID":"1092",
+									"x":26,
+									"y":29,
+									"charaID":"5",
+									"direction":"LEFT",
+									"movePattern":"1"
 								},
 								{
-									"type":"createChara",
-									"objID":"1093"
+									"type":"createObject",
+									"objID":"1093",
+									"x":14,
+									"y":21,
+									"charaID":"3",
+									"direction":"RIGHT",
+									"movePattern":"1"
 								},
 								{
-									"type":"createChara",
-									"objID":"1094"
+									"type":"createObject",
+									"objID":"1094",
+									"x":14,
+									"y":29,
+									"charaID":"4",
+									"direction":"RIGHT",
+									"movePattern":"1"
 								},
 						        {
 						          "type":"playBGM",
@@ -1200,8 +1300,15 @@
 						          "file": "door1.mp3"
 						        },
 						        {
-						          "type": "createChara",
-						          "objID": "1013"
+						          "type": "createObject",
+						          "objID": "1013",
+								  "x":20,
+								  "y":39,
+						          "charaID":"9",
+						          "eventID":"35",
+						          "direction":"UP",
+						          "movePattern":"1",
+						          "trigger":"2"
 						        },
 						        {
 						          "type": "spawn",
@@ -1287,48 +1394,90 @@
 					]
 				},
 				{
-				    "type": "createChara",
-				    "objID": "1098"
+				    "type": "createObject",
+				    "objID": "1098",
+					"x":20,
+					"y":33,
+				    "charaID":"9",
+				    "eventID":"51",
+				    "direction":"UP",
+				    "movePattern":"1",
+				    "trigger":"2"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1090"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1091"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1092"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1093"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1094"
 				},
 				{
-					"type":"createChara",
-					"objID":"102"
+					"type":"createObject",
+					"objID":"102",
+					"x":26,
+					"y":14,
+					"charaID":"1",
+					"eventID":"4",
+					"direction":"LEFT",
+					"movePattern":"2",
+					"trigger":"2"
 				},
 				{
-					"type":"createChara",
-					"objID":"103"
+					"type":"createObject",
+					"objID":"103",
+					"x":26,
+					"y":21,
+					"charaID":"2",
+					"eventID":"5",
+					"direction":"LEFT",
+					"movePattern":"2",
+					"trigger":"2"
 				},
 				{
-					"type":"createChara",
-					"objID":"104"
+					"type":"createObject",
+					"objID":"104",
+					"x":26,
+					"y":29,
+					"charaID":"5",
+					"eventID":"6",
+					"direction":"LEFT",
+					"movePattern":"2",
+					"trigger":"2"
 				},
 				{
-					"type":"createChara",
-					"objID":"105"
+					"type":"createObject",
+					"objID":"105",
+					"x":14,
+					"y":21,
+					"charaID":"3",
+					"eventID":"7",
+					"direction":"RIGHT",
+					"movePattern":"2",
+					"trigger":"2"
 				},
 				{
-					"type":"createChara",
-					"objID":"106"
+					"type":"createObject",
+					"objID":"106",
+					"x":14,
+					"y":29,
+					"charaID":"4",
+					"eventID":"8",
+					"direction":"RIGHT",
+					"movePattern":"2",
+					"trigger":"2"
 				},
 				{
 					"type":"fadein"
@@ -1390,28 +1539,58 @@
 							            	"type":"stopBGM"
 							            },
 							            {
-											"type":"createChara",
-											"objID":"1096"
+											"type":"createObject",
+											"objID":"1096",
+											"x":14,
+											"y":14,
+											"charaID":"0",
+											"direction":"RIGHT",
+											"movePattern":"1"
 										},
 										{
-							                "type":"createChara",
-							                "objID":"1090"
+							                "type":"createObject",
+							                "objID":"1090",
+											"x":26,
+											"y":14,
+							                "charaID":"1",
+							                "direction":"LEFT",
+							                "movePattern":"1"
 							            },
 							            {
-							            	"type":"createChara",
-							            	"objID":"1091"
+							            	"type":"createObject",
+							            	"objID":"1091",
+											"x":26,
+											"y":21,
+							            	"charaID":"2",
+							            	"direction":"LEFT",
+							            	"movePattern":"1"
 							            },
 							            {
-							            	"type":"createChara",
-							                "objID":"1092"
+							            	"type":"createObject",
+							                "objID":"1092",
+											"x":26,
+											"y":29,
+							                "charaID":"5",
+							                "direction":"LEFT",
+							                "movePattern":"1"
 							            },
 							            {
-							                "type":"createChara",
-							                "objID":"1093"
+							                "type":"createObject",
+							                "objID":"1093",
+											"x":14,
+											"y":21,
+							                "charaID":"3",
+							                "direction":"RIGHT",
+							                "movePattern":"1"
 							            },
 							            {
-							            	"type":"createChara",
-							                "objID":"1094"
+							            	"type":"createObject",
+							                "objID":"1094",
+											"x":14,
+											"y":29,
+							                "charaID":"4",
+							                "direction":"RIGHT",
+							                "movePattern":"1"
 							            },
 							            {
 							              "type":"fadein",
@@ -1568,8 +1747,13 @@
 					                "type":"sequence",
 					                "action":[
 					             		{
-					                	    "type":"createChara",
-					                        "objID":"1095"
+					                	    "type":"createObject",
+					                        "objID":"1095",
+											"x":49,
+											"y":25,
+					                        "charaID":"6",
+					                        "direction":"LEFT",
+					                        "movePattern":"1"
 					                    },
 					                    {
 					                      	"type":"storyMsg",
@@ -1725,8 +1909,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1098"
+					"type":"createObject",
+					"objID":"1098",
+					"x":20,
+					"y":33,
+					"charaID":"9",
+					"eventID":"51",
+					"direction":"UP",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		}

@@ -93,120 +93,125 @@
 	],
 	"10":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["58","7"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["58","7"]
+						}
+					],
 					"action":[
 						{
-							"type":"charaMsg",
-							"text":["あの化け物はどっから食堂を出たんだ・・・？\nあー分っかんねぇ！","ったく！アイツ等ドコに行きやがった！？\n西棟はどうだった？"],
-							"charaID":"5",
-							"imgID":"1"
-						},
-						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1524","1525"]
-								}
-							],
+							"type":"sequence",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"charaMsg",
+									"text":["あの化け物はどっから食堂を出たんだ・・・？\nあー分っかんねぇ！","ったく！アイツ等ドコに行きやがった！？\n西棟はどうだった？"],
+									"charaID":"5",
+									"imgID":"1"
+								},
+								{
+									"type":"if",
+									"condition":[
+										{
+											"item":["1524","1525"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["ねじりハチマキをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"12"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["ねじりハチマキをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"12"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1524",
-									"Nitem":"1525"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1524",
+											"Nitem":"1525"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["ねじりハチマキをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"12"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["ねじりハチマキをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"12"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1525",
-									"Nitem":"1524",
-									"status":["5","1"]
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1525",
+											"Nitem":"1524",
+											"status":["5","1"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["お祭りはっぴをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"13"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["お祭りはっぴをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"13"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
@@ -215,125 +220,125 @@
 							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+				},
 				{
-					"event":["58","7"],
-					"Nstatus":["3","0"]
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"event":["58","7"],
+							"Nstatus":["3","0"]
+						}
+					],
 					"action":[
 						{
-							"type":"charaMsg",
-							"text":["ったく！どうなってやがる!!"],
-							"charaID":"5",
-							"imgID":"1"
-						},
-						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1524","1525"]
-								}
-							],
+							"type":"sequence",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"charaMsg",
+									"text":["ったく！どうなってやがる!!"],
+									"charaID":"5",
+									"imgID":"1"
+								},
+								{
+									"type":"if",
+									"condition":[
+										{
+											"item":["1524","1525"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["ねじりハチマキをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"12"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["ねじりハチマキをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"12"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1524",
-									"Nitem":"1525"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1524",
+											"Nitem":"1525"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["ねじりハチマキをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"12"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["ねじりハチマキをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"12"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1525",
-									"Nitem":"1524",
-									"status":["5","1"]
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1525",
+											"Nitem":"1524",
+											"status":["5","1"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["お祭りはっぴをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"13"
+													"type":"charaMsg",
+													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["お祭りはっぴをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"13"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
@@ -363,8 +368,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1061"
+					"type":"createObject",
+					"objID":"1061",
+					"x":6,
+					"y":13,
+					"charaID":"5",
+					"eventID":"10",
+					"direction":"RIGHT",
+					"movePattern":"2",
+					"trigger":"2"
 				}
 			]
 		}

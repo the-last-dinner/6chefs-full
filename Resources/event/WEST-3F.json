@@ -342,7 +342,14 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"createChara",
+							"type":"createObject",
+							"charaID":"3",
+							"eventID":"14",
+							"x":17,
+							"y":11,
+							"direction":"RIGHT",
+							"movePattern":"2",
+							"trigger":"2",	
 							"objID":"1010"
 						}
 					]
@@ -359,8 +366,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1011"
+					"type":"createObject",
+					"objID":"1011",
+					"x":3,
+					"y":26,
+					"charaID":"2",
+					"eventID":"15",
+					"direction":"DOWN",
+					"movePattern":"2",
+					"trigger":"2"
 				}
 			]
 		}
@@ -807,7 +821,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1921"
 				}
 			]

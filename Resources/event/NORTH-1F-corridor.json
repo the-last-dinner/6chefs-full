@@ -109,50 +109,55 @@
 	],
 	"5":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"item":["151"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
+					"type":"if",
+					"condition":[
+						{
+							"item":["151"]
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"systemMsg",
+									"text":["倉庫の鍵を使った"]
+								},
+								{
+									"type":"playSE",
+									"file":"door_keyopen.mp3"
+								},
+								{
+									"type":"removeObject",
+									"objID":"182"
+								},
+								{
+									"type":"already"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"Nitem":["151"]
+						}
+					],
 					"action":[
 						{
 							"type":"systemMsg",
-							"text":["倉庫の鍵を使った"]
+							"text":["鍵がかかっている"]
 						},
 						{
 							"type":"playSE",
-							"file":"door_keyopen.mp3"
-						},
-						{
-							"type":"removeChara",
-							"objID":"182"
-						},
-						{
-							"type":"already"
+							"file":"door_unopen.mp3"
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nitem":["151"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["鍵がかかっている"]
-				},
-				{
-					"type":"playSE",
-					"file":"door_unopen.mp3"
 				}
 			]
 		}
@@ -215,7 +220,7 @@
 									"type":"fadein"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"184"
 								},
 								{
@@ -238,7 +243,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"183"
 				}
 			]
@@ -252,7 +257,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"182"
 				}
 			]
@@ -260,50 +265,55 @@
 	],
 	"9":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"item":["152"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
+					"type":"if",
+					"condition":[
+						{
+							"item":["152"]
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"systemMsg",
+									"text":["食材庫の鍵を使った"]
+								},
+								{
+									"type":"playSE",
+									"file":"door_keyopen.mp3"
+								},
+								{
+									"type":"removeObject",
+									"objID":"183"
+								},
+								{
+									"type":"already"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"Nitem":["152"]
+						}
+					],
 					"action":[
 						{
 							"type":"systemMsg",
-							"text":["食材庫の鍵を使った"]
+							"text":["鍵がかかっている"]
 						},
 						{
 							"type":"playSE",
-							"file":"door_keyopen.mp3"
-						},
-						{
-							"type":"removeChara",
-							"objID":"183"
-						},
-						{
-							"type":"already"
+							"file":"door_unopen.mp3"
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nitem":["152"]
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["鍵がかかっている"]
-				},
-				{
-					"type":"playSE",
-					"file":"door_unopen.mp3"
 				}
 			]
 		}
@@ -318,7 +328,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"184"
 				},
 				{
@@ -364,7 +374,7 @@
 			"action":[
 				{
 					"type":"createEnemy",
-					"enemyID":"1424",
+					"objID":"1424",
 					"charaID":"8",
 					"x":4,
 					"y":17,

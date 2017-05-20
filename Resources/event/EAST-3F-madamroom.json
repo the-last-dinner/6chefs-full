@@ -50,58 +50,63 @@
 	],
 	"3":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["39","9"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["39","9"]
+						}
+					],
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"storyMsg",
+									"text":["-◇月▽日-\n最近はいろいろなお肉を混ぜた\nハンバーグなら食べられるみたい・・・","やっぱり雪は何かを食べている時が\n一番可愛いわ","ああ、\n私の可愛い雪・・・"]
+								},
+								{
+									"type":"if",
+									"condition":[
+										{
+											"event":[
+											["34","9"],
+											["33","11"]
+											]
+										}
+									],
+									"action":[
+										{
+											"type":"charaMsg",
+											"text":["確かこの階にまだ調べてない部屋があったよな？","早く行こうぜ。"],
+											"charaID":"5",
+											"imgID":"2"
+										}
+									]
+								},
+								{
+									"type":"already",
+									"event":["39","9"]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["39","9"]
+						}
+					],
 					"action":[
 						{
 							"type":"storyMsg",
 							"text":["-◇月▽日-\n最近はいろいろなお肉を混ぜた\nハンバーグなら食べられるみたい・・・","やっぱり雪は何かを食べている時が\n一番可愛いわ","ああ、\n私の可愛い雪・・・"]
-						},
-						{
-							"type":"if",
-							"condition":[
-								{
-									"event":[
-									["34","9"],
-									["33","11"]
-									]
-								}
-							],
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["確かこの階にまだ調べてない部屋があったよな？","早く行こうぜ。"],
-									"charaID":"5",
-									"imgID":"2"
-								}
-							]
-						},
-						{
-							"type":"already",
-							"event":["39","9"]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["39","9"]
-				}
-			],
-			"action":[
-				{
-					"type":"storyMsg",
-					"text":["-◇月▽日-\n最近はいろいろなお肉を混ぜた\nハンバーグなら食べられるみたい・・・","やっぱり雪は何かを食べている時が\n一番可愛いわ","ああ、\n私の可愛い雪・・・"]
 				}
 			]
 		}
@@ -119,8 +124,13 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1099"
+							"type":"createObject",
+							"objID":"1099",
+							"x":14,
+							"y":23,
+							"charaID":"8",
+							"direction":"UP",
+							"movePattern":"1"
 						},
 						{
 							"type":"spawn",
@@ -220,11 +230,18 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"charaWalk",
-									"objID":"1099",
-									"direction":"UP",
-									"steps":9.0,
-									"speed":0.6
+									"type":"repeat",
+									"times":1,
+									"id":"1",
+									"action":[
+										{
+											"type":"charaWalk",
+											"objID":"1099",
+											"direction":"UP",
+											"steps":9.0,
+											"speed":0.6
+										}
+									]
 								},
 								{
 									"type":"barrage",
@@ -249,6 +266,10 @@
 												{
 													"type":"playSE",
 													"file":"hit.mp3"
+												},
+												{
+													"type":"stopEvent",
+													"id":"1"
 												},
 												{
 													"type":"changeMap",
@@ -288,11 +309,10 @@
 	"7":[
 		{
 			"type":"getItem",
-			"itemID":"1525",
-			"name":"お祭りはっぴ"
+			"itemID":"1525"
 		},
 		{
-			"type":"removeChara",
+			"type":"removeObject",
 			"objID":"1925"
 		},
 		{
@@ -312,7 +332,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1925"
 				}
 			]
@@ -337,8 +357,7 @@
 					"action":[
 						{
 							"type":"getItem",
-							"itemID":"1523",
-							"name":"麻の髪紐"
+							"itemID":"1523"
 						},
 						{
 							"type":"already"
@@ -358,16 +377,31 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"10108"
+					"type":"createObject",
+					"objID":"10108",
+					"x":5,
+					"y":14,
+					"charaID":"6",
+					"direction":"DOWN",
+					"movePattern":"1"
 				},
 				{
-					"type":"createChara",
-					"objID":"10109"
+					"type":"createObject",
+					"objID":"10109",
+					"x":6,
+					"y":18,
+					"charaID":"7",
+					"direction":"UP",
+					"movePattern":"1"
 				},
 				{
-					"type":"createChara",
-					"objID":"10110"
+					"type":"createObject",
+					"objID":"10110",
+					"x":4,
+					"y":19,
+					"charaID":"8",
+					"direction":"UP",
+					"movePattern":"1"
 				}
 			]
 		}
@@ -490,7 +524,7 @@
 											"direction":"UP"
 										},
 							            {
-							            	"type":"removeChara",
+							            	"type":"removeObject",
 							            	"objID":"10109"
 							            },
 							            {
@@ -606,8 +640,13 @@
 					                "type":"sequence",
 					                "action":[
 					             		{
-					                	    "type":"createChara",
-					                        "objID":"1095"
+					                	    "type":"createObject",
+					                        "objID":"1095",
+											"x":49,
+											"y":25,
+					                        "charaID":"6",
+					                        "direction":"LEFT",
+					                        "movePattern":"1"
 					                    },
 					                    {
 					                    	"type":"fadein",

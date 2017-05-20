@@ -39,8 +39,13 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1064"
+					"type":"createObject",
+					"objID":"1064",
+					"x":8,
+					"y":5,
+					"charaID":"12",
+					"direction":"DOWN",
+					"movePattern":"1"
 				}
 			]
 		}
@@ -118,8 +123,13 @@
 					]
 				},
 				{
-					"type":"createChara",
-					"objID":"1065"
+					"type":"createObject",
+					"objID":"1065",
+					"x":8,
+					"y":12,
+					"charaID":"8",
+					"direction":"UP",
+					"movePattern":"1"
 				},
 				{
 					"type":"spawn",
@@ -215,7 +225,7 @@
 									"speed":6.0
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"1064"
 								}
 							]
@@ -231,7 +241,7 @@
 									"speed":6.0
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"1065"
 								}
 							]
@@ -313,16 +323,21 @@
 			],
 			"action":[
 				{
-					"type":"removeEnemy",
-					"enemyID":"1421"
-				},
-				{
-					"type":"playBGM",
-					"file":"bgm_noroi.mp3",
-					"volume":2.0
-				},
-				{
-					"type":"already"
+					"type":"sequence",
+					"action":[
+						{
+							"type":"removeEnemy",
+							"objID":"1421"
+						},
+						{
+							"type":"playBGM",
+							"file":"bgm_noroi.mp3",
+							"volume":2.0
+						},
+						{
+							"type":"already"
+						}
+					]
 				}
 			]
 		},
@@ -343,11 +358,16 @@
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1421"
+							"objID":"1421"
 						},
 						{
-							"type":"createChara",
-							"objID":"1076"
+							"type":"createObject",
+							"objID":"1076",
+							"x":16,
+							"y":15,
+							"charaID":"12",
+							"direction":"UP",
+							"movePattern":"1"
 						}, 
 						{
 							"type":"fadein"
@@ -472,7 +492,7 @@
 											"option":"reaction"
 										},
 										{
-											"type":"removeChara",
+											"type":"removeObject",
 											"objID":"1076"
 										},
 										{
@@ -524,8 +544,13 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1076"
+					"type":"createObject",
+					"objID":"1076",
+					"x":16,
+					"y":15,
+					"charaID":"12",
+					"direction":"UP",
+					"movePattern":"1"
 				}
 			]
 		}

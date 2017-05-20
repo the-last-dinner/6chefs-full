@@ -57,8 +57,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1017"
+					"type":"createObject",
+					"objID":"1017",
+					"x":12,
+					"y":11,
+					"charaID":"2",
+					"eventID":"9",
+					"direction":"RIGHT",
+					"movePattern":"1",
+					"trigger":"3"
 				}
 			]
 		}
@@ -165,8 +172,13 @@
 							"objID":"hero"
 						},
 						{
-							"type":"createChara",
-							"objID":"1018"
+							"type":"createObject",
+							"objID":"1018",
+							"x":24,
+							"y":19,
+							"charaID":"8",
+							"direction":"UP",
+							"movePattern":"1"
 						}
 					]
 				},
@@ -269,7 +281,7 @@
 					"objID":"1018"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1018"
 				},
 				{
@@ -348,7 +360,7 @@
 			"name":"小型低速ジューサー"
 		},
 		{
-			"type":"removeChara",
+			"type":"removeObject",
 			"objID":"1921"
 		},
 		{
@@ -368,7 +380,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1921"
 				}
 			]
@@ -384,7 +396,7 @@
 			"action":[
 				{
 					"type":"createEnemy",
-					"enemyID":"1428",
+					"objID":"1428",
 					"charaID":"8",
 					"x":10,
 					"y":15,

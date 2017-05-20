@@ -50,8 +50,7 @@
 									"action":[
 										{
 											"type":"getItem",
-											"itemID":"153",
-											"name":"棍棒"
+											"itemID":"153"
 										},
 										{
 											"type":"already"
@@ -92,8 +91,7 @@
 									"action":[
 										{
 											"type":"getItem",
-											"itemID":"153",
-											"name":"棍棒"
+											"itemID":"153"
 										},
 										{
 											"type":"already"
@@ -159,17 +157,21 @@
 			],
 			"action":[
 				{
-					"type":"getItem",
-					"itemID":"1527",
-					"name":"焔のかみしも"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1927"
-				},
-				{
-					"type":"already",
-					"event":["18","16"]
+					"type":"sequence",
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"1527"
+						},
+						{
+							"type":"removeObject",
+							"objID":"1927"
+						},
+						{
+							"type":"already",
+							"event":["18","16"]
+						}
+					]
 				}
 			]
 		},
@@ -224,16 +226,20 @@
 			],
 			"action":[
 				{
-					"type":"getItem",
-					"itemID":"1531",
-					"name":"蒸しせいろ"
-				},
-				{
-					"type":"removeChara",
-					"objID":"1931"
-				},
-				{
-					"type":"already"
+					"type":"sequence",
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"1531"
+						},
+						{
+							"type":"removeObject",
+							"objID":"1931"
+						},
+						{
+							"type":"already"
+						}
+					]
 				}
 			]
 		}
@@ -256,7 +262,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1927"
 				}
 			]
@@ -275,7 +281,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1931"
 				}
 			]

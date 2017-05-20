@@ -93,8 +93,13 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"createChara",
-											"objID":"10110"
+											"type":"createObject",
+											"objID":"10110",
+											"x":9,
+											"y":11,
+											"charaID":"8",
+											"direction":"UP",
+											"movePattern":"1"
 										},
 										{
 											"type":"removeLayer",
@@ -148,8 +153,13 @@
 													"time":0.5
 												},
 												{
-													"type":"createChara",
-													"objID":"10111"
+													"type":"createObject",
+													"objID":"10111",
+													"x":9,
+													"y":3,
+													"charaID":"7",
+													"direction":"DOWN",
+													"movePattern":"1"
 												}
 											]
 										},

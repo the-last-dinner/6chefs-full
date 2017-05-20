@@ -67,11 +67,6 @@
   <object id="61" x="0" y="512" width="560" height="32"/>
   <object id="63" x="0" y="32" height="480"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <objectgroup name="Chara(object)">
   <properties>
    <property name="cc_vertexz" value="0"/>

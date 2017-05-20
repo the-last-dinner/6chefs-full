@@ -74,7 +74,7 @@
 										{
 											"type":"createEnemy",
 											"charaID":"8",
-											"enemyID":"142",
+											"objID":"142",
 											"x":14,
 											"y":33,
 											"speed":10.0,
@@ -127,8 +127,13 @@
 									"type":"sequence",
 									"action":[
 										{
-											"type":"createChara",
-											"objID":"1015"	
+											"type":"createObject",
+											"objID":"1015",
+											"x":14,
+											"y":33,
+											"charaID":"8",
+											"direction":"UP",
+											"movePattern":"1"
 										},
 										{
 											"type":"stopBGM",
@@ -266,7 +271,7 @@
 											"objID":"1015"
 										},
 										{
-											"type":"removeChara",
+											"type":"removeObject",
 											"objID":"1015"
 										},
 										{
@@ -335,15 +340,14 @@
 				},
 				{
 					"type":"getItem",
-					"itemID":"1520",
-					"name":"林檎"
+					"itemID":"1520"
 				},
 				{
 					"type":"removeLayer",
 					"layer":"apple"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1920"
 				},
 				{
@@ -369,7 +373,7 @@
 					"layer":"apple"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1920"
 				}
 			]

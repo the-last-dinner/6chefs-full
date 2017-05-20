@@ -7,828 +7,829 @@
 	],
 	"1":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["7","26"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"questionMsg",
-					"text":["調理を始めますか？"],
-					"choices":[
+					"type":"if",
+					"condition":[
 						{
-							"choice":"はい",
+							"Nevent":["7","26"]
+						}
+					],
+					"action":[
+						{
+							"type":"questionMsg",
+							"text":["調理を始めますか？"],
+							"choices":[
+								{
+									"choice":"はい",
+									"action":[
+										{
+											"type":"sequence",
+											"action":[
+												{
+													"type":"fadeout"
+												},
+												{
+													"type":"createCamera",
+													"x":20,
+													"y":18,
+													"action":[
+														{
+															"type":"sequence",
+															"action":[
+																{
+																	"type":"createObject",
+																	"objID":"1087",
+																	"x":4,
+																	"y":12,
+																	"charaID":"0",
+																	"direction":"RIGHT",
+																	"movePattern":"2"
+																},
+																{
+																	"type":"fadein"
+																},
+																{
+																	"type":"wait",
+																	"time":3.0
+																},
+																{
+																	"type":"spawn",
+																	"action":[
+																		{
+																			"type":"camera",
+																			"nextX":20,
+																			"nextY":3,
+																			"time":3.0
+																		},
+																		{
+																			"type":"fadeout",
+																			"time":3.0
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type":"createCamera",
+													"mapID":"6",
+													"x":20,
+													"y":33,
+													"action":[
+														{
+															"type":"fadein",
+															"time":3.0
+														},
+														{
+															"type":"sequence",
+															"action":[
+																{
+																	"type":"camera",
+																	"nextX":20,
+																	"nextY":18,
+																	"time":3.0
+																},
+																{
+																	"type":"wait",
+																	"time":3.0
+																},
+																{
+																	"type":"spawn",
+																	"action":[
+																		{
+																			"type":"camera",
+																			"nextX":20,
+																			"nextY":3,
+																			"time":3.0
+																		},
+																		{
+																			"type":"fadeout",
+																			"time":3.0
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type":"createCamera",
+													"mapID":"8",
+													"x":20,
+													"y":33,
+													"action":[
+														{
+															"type":"fadein",
+															"time":3.0
+														},
+														{
+															"type":"sequence",
+															"action":[
+																{
+																	"type":"camera",
+																	"nextX":20,
+																	"nextY":18,
+																	"time":3.0
+																},		
+																{
+																	"type":"wait",
+																	"time":3.0
+																},	
+																{
+																	"type":"spawn",
+																	"action":[
+																		{
+																			"type":"camera",
+																			"nextX":20,
+																			"nextY":3,
+																			"time":3.0
+																		},
+																		{
+																			"type":"fadeout",
+																			"time":3.0
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type":"charaWalkTo",
+													"x":4,
+													"y":12,
+													"objID":"hero"
+												},
+												{
+													"type":"changeDirection",
+													"objID":"hero",
+													"direction":"RIGHT"
+												},
+												{
+													"type":"removeObject",
+													"objID":"1087"
+												},
+												{
+													"type":"fadein"
+												},
+												{
+													"type":"charaMsg",
+													"talk":[
+														{
+															"text":["スパイスが足りないな・・・\nさがしてこよう","・・・","確かさっきの執事さんが\n大広間にいるんだったよな・・・"],
+															"charaID":"0",
+															"imgID":"2"
+														},
+														{
+															"text":["聞いてみよ！"],
+															"charaID":"0",
+															"imgID":"1"
+														}
+													]
+												},
+												{
+													"type":"stopBGM",
+													"file":"Mozart-OboeConcerto-1.mp3"
+												},
+												{
+													"type":"already",
+													"event":["7","26"]
+												}
+											]
+										}
+									]
+								},
+								{
+									"choice":"いいえ"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["34","3"]
+						}
+					],
+					"action":[
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"Nequip":["158"],
+									"flg":0
+								},
+								{
+									"event":["34","8"],
+									"Nequip":["1529"],
+									"flg":0
+								}
+							],
+							"action":[
+								{
+									"type":"if",
+									"condition":[
+										{
+											"event":["34","8"],
+											"Nequip":["159"]
+										},
+										{
+											"event":["34","8"],
+											"Nequip":["1530"]
+										}
+									],
+									"action":[
+										{
+											"type":"if",
+											"condition":[
+												{
+													"event":["34","8"],
+													"Nequip":["1510"]
+												},
+												{
+													"event":["34","8"],
+													"Nequip":["1531"]
+												}
+											],
+											"action":[
+												{
+													"type":"charaMsg",
+													"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
+													"charaID":"0",
+													"imgID":"1"
+												},
+												{
+													"type":"changeFlg",
+													"flg":1
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"Nequip":["158"],
+									"flg":1
+								},
+								{
+									"event":["34","8"],
+									"Nequip":["1529"],
+									"flg":1
+								}
+							],
+							"action":[
+								{
+									"type":"if",
+									"condition":[
+										{
+											"event":["34","8"],
+											"Nequip":["159"]
+										},
+										{
+											"event":["34","8"],
+											"Nequip":["1530"]
+										}
+									],
+									"action":[
+										{
+											"type":"if",
+											"condition":[
+												{
+													"event":["34","8"],
+													"Nequip":["1510"]
+												},
+												{
+													"event":["34","8"],
+													"Nequip":["1531"]
+												}
+											],
+											"action":[
+												{
+													"type":"charaMsg",
+													"text":["さっきのメニューリスト・・・\n作ってみようか・・・","確か北棟に調理に必要そうな\n道具のある部屋があったな。"],
+													"charaID":"0",
+													"imgID":"1"
+												},
+												{
+													"type":"changeFlg",
+													"flg":2
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"Nequip":["158"],
+									"flg":2
+								},
+								{
+									"event":["34","8"],
+									"Nequip":["1529"],
+									"flg":2
+								}
+							],
+							"action":[
+								{
+									"type":"if",
+									"condition":[
+										{
+											"event":["34","8"],
+											"Nequip":["159"]
+										},
+										{
+											"event":["34","8"],
+											"Nequip":["1530"]
+										}
+									],
+									"action":[
+										{
+											"type":"if",
+											"condition":[
+												{
+													"event":["34","8"],
+													"Nequip":["1510"]
+												},
+												{
+													"event":["34","8"],
+													"Nequip":["1531"]
+												}
+											],
+											"action":[
+												{
+													"type":"charaMsg",
+													"talk":[
+														{
+															"text":["目玉焼きにゆで玉子・・・茶碗蒸し・・・・\nあまりよく分からないな・・・"],
+															"charaID":"0",
+															"imgID":"1"
+														},
+														{
+															"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ！"],
+															"charaID":"0",
+															"imgID":"2"
+														}
+													]
+												},
+												{
+													"type":"changeFlg",
+													"flg":1
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"equip":["158","1529"],
+									"item":["1512","1513"]
+								}
+							],
 							"action":[
 								{
 									"type":"sequence",
 									"action":[
 										{
+											"type":"charaMsg",
+											"text":["コレで目玉焼きを作ろう。"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
 											"type":"fadeout"
 										},
 										{
-											"type":"createCamera",
-											"x":20,
-											"y":18,
-											"action":[
-												{
-													"type":"sequence",
-													"action":[
-														{
-															"type":"createChara",
-															"objID":"1087"
-														},
-														{
-															"type":"fadein"
-														},
-														{
-															"type":"wait",
-															"time":3.0
-														},
-														{
-															"type":"spawn",
-															"action":[
-																{
-																	"type":"camera",
-																	"nextX":20,
-																	"nextY":3,
-																	"time":3.0
-																},
-																{
-																	"type":"fadeout",
-																	"time":3.0
-																}
-															]
-														}
-													]
-												}
-											]
+											"type":"playSE",
+											"file":"egg-konkon1.mp3"
 										},
 										{
-											"type":"createCamera",
-											"mapID":"6",
-											"x":20,
-											"y":33,
-											"action":[
-												{
-													"type":"fadein",
-													"time":3.0
-												},
-												{
-													"type":"sequence",
-													"action":[
-														{
-															"type":"camera",
-															"nextX":20,
-															"nextY":18,
-															"time":3.0
-														},
-														{
-															"type":"wait",
-															"time":3.0
-														},
-														{
-															"type":"spawn",
-															"action":[
-																{
-																	"type":"camera",
-																	"nextX":20,
-																	"nextY":3,
-																	"time":3.0
-																},
-																{
-																	"type":"fadeout",
-																	"time":3.0
-																}
-															]
-														}
-													]
-												}
-											]
+											"type":"wait",
+											"time":1.0
 										},
 										{
-											"type":"createCamera",
-											"mapID":"8",
-											"x":20,
-											"y":33,
-											"action":[
-												{
-													"type":"fadein",
-													"time":3.0
-												},
-												{
-													"type":"sequence",
-													"action":[
-														{
-															"type":"camera",
-															"nextX":20,
-															"nextY":18,
-															"time":3.0
-														},		
-														{
-															"type":"wait",
-															"time":3.0
-														},	
-														{
-															"type":"spawn",
-															"action":[
-																{
-																	"type":"camera",
-																	"nextX":20,
-																	"nextY":3,
-																	"time":3.0
-																},
-																{
-																	"type":"fadeout",
-																	"time":3.0
-																}
-															]
-														}
-													]
-												}
-											]
+											"type":"playSE",
+											"file":"egg-break.mp3"
 										},
 										{
-											"type":"charaWalkTo",
-											"x":4,
-											"y":12,
-											"objID":"hero"
+											"type":"wait",
+											"time":1.0
 										},
 										{
-											"type":"changeDirection",
-											"objID":"hero",
-											"direction":"RIGHT"
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
 										},
 										{
 											"type":"fadein"
 										},
 										{
-											"type":"removeChara",
-											"objID":"1087"
+											"type":"removeItem",
+											"itemID":"158"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1511"
 										},
 										{
 											"type":"charaMsg",
-											"talk":[
-												{
-													"text":["スパイスが足りないな・・・\nさがしてこよう","・・・","確かさっきの執事さんが\n大広間にいるんだったよな・・・"],
-													"charaID":"0",
-													"imgID":"2"
-												},
-												{
-													"text":["聞いてみよ！"],
-													"charaID":"0",
-													"imgID":"1"
-												}
-											]
-										},
-										{
-											"type":"stopBGM",
-											"file":"Mozart-OboeConcerto-1.mp3"
-										},
-										{
-											"type":"already",
-											"event":["7","26"]
-										}
-									]
-								}
-							]
-						},
-						{
-							"choice":"いいえ"
-						}
-					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["34","3"]
-				}
-			],
-			"action":[
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"Nequip":["158"],
-							"flg":0
-						},
-						{
-							"event":["34","8"],
-							"Nequip":["1529"],
-							"flg":0
-						}
-					],
-					"action":[
-						{
-							"type":"if",
-							"condition":[
-								{
-									"event":["34","8"],
-									"Nequip":["159"]
-								},
-								{
-									"event":["34","8"],
-									"Nequip":["1530"]
-								}
-							],
-							"action":[
-								{
-									"type":"if",
-									"condition":[
-										{
-											"event":["34","8"],
-											"Nequip":["1510"]
-										},
-										{
-											"event":["34","8"],
-											"Nequip":["1531"]
-										}
-									],
-									"action":[
-										{
-											"type":"charaMsg",
-											"text":["さっきのメニューリスト・・・\n作ってみようか・・・"],
+											"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
 											"charaID":"0",
 											"imgID":"1"
 										},
 										{
-											"type":"changeFlg",
-											"flg":1
+											"type":"getItem",
+											"itemID":"1532"
+										},
+										{
+											"type":"already"
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"Nequip":["158"],
-							"flg":1
 						},
-						{
-							"event":["34","8"],
-							"Nequip":["1529"],
-							"flg":1
-						}
-					],
-					"action":[
 						{
 							"type":"if",
 							"condition":[
 								{
 									"event":["34","8"],
-									"Nequip":["159"]
+									"equip":["158","1529"],
+									"Nitem":"1512"
 								},
 								{
 									"event":["34","8"],
-									"Nequip":["1530"]
+									"equip":["158","1529"],
+									"Nitem":"1513"
 								}
 							],
 							"action":[
 								{
-									"type":"if",
-									"condition":[
-										{
-											"event":["34","8"],
-											"Nequip":["1510"]
-										},
-										{
-											"event":["34","8"],
-											"Nequip":["1531"]
-										}
-									],
+									"type":"sequence",
 									"action":[
 										{
 											"type":"charaMsg",
-											"text":["さっきのメニューリスト・・・\n作ってみようか・・・","確か北棟に調理に必要そうな\n道具のある部屋があったな。"],
+											"text":["コレで目玉焼きを作ろう。"],
 											"charaID":"0",
 											"imgID":"1"
 										},
 										{
-											"type":"changeFlg",
-											"flg":2
-										}
+											"type":"fadeout"
+										},
+										{
+											"type":"playSE",
+											"file":"egg-konkon1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"egg-break.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"removeItem",
+											"itemID":"158"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1511"
+										}		
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"Nequip":["158"],
-							"flg":2
 						},
-						{
-							"event":["34","8"],
-							"Nequip":["1529"],
-							"flg":2
-						}
-					],
-					"action":[
 						{
 							"type":"if",
 							"condition":[
 								{
 									"event":["34","8"],
-									"Nequip":["159"]
-								},
-								{
-									"event":["34","8"],
-									"Nequip":["1530"]
+									"equip":["159","1530"],
+									"item":["1511","1513"]
 								}
 							],
 							"action":[
 								{
-									"type":"if",
-									"condition":[
-										{
-											"event":["34","8"],
-											"Nequip":["1510"]
-										},
-										{
-											"event":["34","8"],
-											"Nequip":["1531"]
-										}
-									],
+									"type":"sequence",
 									"action":[
 										{
 											"type":"charaMsg",
-											"talk":[
-												{
-													"text":["目玉焼きにゆで玉子・・・茶碗蒸し・・・・\nあまりよく分からないな・・・"],
-													"charaID":"0",
-													"imgID":"1"
-												},
-												{
-													"text":["そうだ！中山さんなら何か教えてくれるかも！\nこういう家庭料理は中山さんの得意分野のハズだ！"],
-													"charaID":"0",
-													"imgID":"2"
-												}
-											]
+											"text":["コレでゆで卵が作れる！"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"type":"changeFlg",
-											"flg":1
+											"type":"fadeout"
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"removeItem",
+											"itemID":"159"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1512"
+										},
+										{
+											"type":"charaMsg",
+											"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
+											"type":"getItem",
+											"itemID":"1532"
+										},
+										{
+											"type":"already"
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["158","1529"],
-							"item":["1512","1513"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["コレで目玉焼きを作ろう。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"158"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1511",
-									"name":"目玉焼き"
-								},
-								{
-									"type":"charaMsg",
-									"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"getItem",
-									"itemID":"1532",
-									"name":"引き出しの鍵"
-								},
-								{
-									"type":"already"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["158","1529"],
-							"Nitem":"1512"
 						},
 						{
-							"event":["34","8"],
-							"equip":["158","1529"],
-							"Nitem":"1513"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"equip":["159","1530"],
+									"Nitem":"1511"
+								},
+								{
+									"event":["34","8"],
+									"equip":["159","1530"],
+									"Nitem":"1513"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["コレで目玉焼きを作ろう。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"158"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1511",
-									"name":"目玉焼き"
-								}		
-							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["159","1530"],
-							"item":["1511","1513"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["コレでゆで卵が作れる！"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"159"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1512",
-									"name":"ゆで玉子"
-								},
-								{
-									"type":"charaMsg",
-									"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"getItem",
-									"itemID":"1532",
-									"name":"引き出しの鍵"
-								},
-								{
-									"type":"already"
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMsg",
+											"text":["コレでゆで卵が作れる！"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
+											"type":"fadeout"
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"removeItem",
+											"itemID":"159"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1512"
+										}
+									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["159","1530"],
-							"Nitem":"1511"
 						},
 						{
-							"event":["34","8"],
-							"equip":["159","1530"],
-							"Nitem":"1513"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"equip":["1510","1531"],
+									"item":["1511","1512"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["コレでゆで卵が作れる！"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"159"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1512",
-									"name":"ゆで玉子"
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMsg",
+											"text":["コレで茶碗蒸しが作れるかな。"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
+											"type":"fadeout"
+										},
+										{
+											"type":"playSE",
+											"file":"egg-konkon1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"egg-break.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"removeItem",
+											"itemID":"1510"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1513"
+										},
+										{
+											"type":"charaMsg",
+											"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
+											"type":"getItem",
+											"itemID":"1532"
+										},
+										{
+											"type":"already"
+										}
+									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["1510","1531"],
-							"item":["1511","1512"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["コレで茶碗蒸しが作れるかな。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"1510"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1513",
-									"name":"茶碗蒸し"
-								},
-								{
-									"type":"charaMsg",
-									"text":["ん？これは・・・？\n卵のカラになにか入ってる・・・"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"getItem",
-									"itemID":"1532",
-									"name":"引き出しの鍵"
-								},
-								{
-									"type":"already"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["34","8"],
-							"equip":["1510","1531"],
-							"Nitem":"1511"
 						},
 						{
-							"event":["34","8"],
-							"equip":["1510","1531"],
-							"Nitem":"1512"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"event":["34","8"],
+									"equip":["1510","1531"],
+									"Nitem":"1511"
+								},
+								{
+									"event":["34","8"],
+									"equip":["1510","1531"],
+									"Nitem":"1512"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["コレで茶碗蒸しが作れるかな。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"fadeout"
-								},
-								{
-									"type":"playSE",
-									"file":"egg-konkon1.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"egg-break.mp3"
-								},
-								{
-									"type":"wait",
-									"time":1.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-start.mp3"
-								},
-								{
-									"type":"wait",
-									"time":5.0
-								},
-								{
-									"type":"playSE",
-									"file":"guskonro-stop.mp3"
-								},
-								{
-									"type":"wait",
-									"time":2.0
-								},
-								{
-									"type":"fadein"
-								},
-								{
-									"type":"removeItem",
-									"itemID":"1510"	
-								},
-								{
-									"type":"getItem",
-									"itemID":"1513",
-									"name":"茶碗蒸し"
+									"type":"sequence",
+									"action":[
+										{
+											"type":"charaMsg",
+											"text":["コレで茶碗蒸しが作れるかな。"],
+											"charaID":"0",
+											"imgID":"1"
+										},
+										{
+											"type":"fadeout"
+										},
+										{
+											"type":"playSE",
+											"file":"egg-konkon1.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"egg-break.mp3"
+										},
+										{
+											"type":"wait",
+											"time":1.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-start.mp3"
+										},
+										{
+											"type":"wait",
+											"time":5.0
+										},
+										{
+											"type":"playSE",
+											"file":"guskonro-stop.mp3"
+										},
+										{
+											"type":"wait",
+											"time":2.0
+										},
+										{
+											"type":"fadein"
+										},
+										{
+											"type":"removeItem",
+											"itemID":"1510"	
+										},
+										{
+											"type":"getItem",
+											"itemID":"1513"
+										}
+									]
 								}
 							]
 						}
@@ -880,11 +881,10 @@
 								},
 								{
 									"type":"getItem",
-									"itemID":"1515",
-									"name":"水"
+									"itemID":"1515"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"1915"
 								},
 								{
@@ -982,19 +982,14 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["あ、あの・・・","いちごは酢水で洗うと長持ちするんですよ。"],
-									"charaID":"1",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":1
-								}
-							]
+							"type":"charaMsg",
+							"text":["あ、あの・・・","いちごは酢水で洗うと長持ちするんですよ。"],
+							"charaID":"1",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
 						},
 						{
 							"type":"if",
@@ -1117,19 +1112,14 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["え、えと・・・他には・・・","大根は葉っぱを切った状態で保存すると\n葉から水分が蒸発するのが防げるんですよ。"],
-									"charaID":"1",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":2
-								}
-							]
+							"type":"charaMsg",
+							"text":["え、えと・・・他には・・・","大根は葉っぱを切った状態で保存すると\n葉から水分が蒸発するのが防げるんですよ。"],
+							"charaID":"1",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":2
 						},
 						{
 							"type":"if",
@@ -1252,19 +1242,14 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["んーと・・・","レタスは50度くらいのお湯で洗うとびっくりする位\n新鮮さが保たれるんですよ。"],
-									"charaID":"1",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":3
-								}
-							]
+							"type":"charaMsg",
+							"text":["んーと・・・","レタスは50度くらいのお湯で洗うとびっくりする位\n新鮮さが保たれるんですよ。"],
+							"charaID":"1",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":3
 						},
 						{
 							"type":"if",
@@ -1387,19 +1372,14 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["種を取った梅干しを揚げ物と一緒に揚げると\n酸化した油が梅干しのアルカリ性と中和されて再生しますよ。"],
-									"charaID":"1",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":4
-								}
-							]
+							"type":"charaMsg",
+							"text":["種を取った梅干しを揚げ物と一緒に揚げると\n酸化した油が梅干しのアルカリ性と中和されて再生しますよ。"],
+							"charaID":"1",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":4
 						},
 						{
 							"type":"if",
@@ -1522,19 +1502,14 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"spawn",
-							"action":[
-								{
-									"type":"charaMsg",
-									"text":["えと・・・","新鮮な卵は目玉焼きとかに向いてて・・・\n採れて5日～9日くらいの卵はゆで玉子","賞味期限切れ間近の卵は\n茶碗蒸しとかのお菓子類に適しているんですよ。"],
-									"charaID":"1",
-									"imgID":"1"
-								},
-								{
-									"type":"changeFlg",
-									"flg":0
-								}
-							]
+							"type":"charaMsg",
+							"text":["えと・・・","新鮮な卵は目玉焼きとかに向いてて・・・\n採れて5日～9日くらいの卵はゆで玉子","賞味期限切れ間近の卵は\n茶碗蒸しとかのお菓子類に適しているんですよ。"],
+							"charaID":"1",
+							"imgID":"1"
+						},
+						{
+							"type":"changeFlg",
+							"flg":0
 						},
 						{
 							"type":"if",
@@ -1657,8 +1632,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"109"
+					"type":"createObject",
+					"objID":"109",
+					"x":14,
+					"y":22,
+					"charaID":"1",
+					"eventID":"17",
+					"direction":"UP",
+					"movePattern":"2",
+					"trigger":"2"
 				}
 			]
 		}
@@ -1875,7 +1857,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1915"
 				}
 			]
@@ -1892,15 +1874,14 @@
 			"action":[
 				{
 					"type":"getItem",
-					"itemID":"1524",
-					"name":"ねじりハチマキ"
+					"itemID":"1524"
 				},
 				{
 					"type":"already",
 					"event":["7","23"]
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1922"
 				}
 			]
@@ -1917,7 +1898,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1922"
 				}
 			]

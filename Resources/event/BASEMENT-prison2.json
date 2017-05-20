@@ -22,7 +22,7 @@
 					"action":[
 						{
 							"type":"createEnemy",
-							"enemyID":"1411",
+							"objID":"1411",
 							"charaID":"16",
 							"x":2,
 							"y":8,
@@ -30,7 +30,7 @@
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1412",
+							"objID":"1412",
 							"charaID":"13",
 							"x":4,
 							"y":14,
@@ -38,7 +38,7 @@
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1413",
+							"objID":"1413",
 							"charaID":"14",
 							"x":12,
 							"y":14,
@@ -46,7 +46,7 @@
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1414",
+							"objID":"1414",
 							"charaID":"15",
 							"x":8,
 							"y":6,
@@ -83,7 +83,7 @@
 					"itemID":"1517"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1917"
 				},
 				{
@@ -102,7 +102,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1917"
 				}
 			]
@@ -150,7 +150,7 @@
 			"action":[
 				{
 					"type":"createEnemy",
-					"enemyID":"1425",
+					"objID":"1425",
 					"charaID":"14",
 					"x":4,
 					"y":7,
@@ -160,7 +160,7 @@
 				},
 				{
 					"type":"createEnemy",
-					"enemyID":"1426",
+					"objID":"1426",
 					"charaID":"14",
 					"x":6,
 					"y":5,
@@ -170,7 +170,7 @@
 				},
 				{
 					"type":"createEnemy",
-					"enemyID":"1425",
+					"objID":"1425",
 					"charaID":"14",
 					"x":4,
 					"y":5,
@@ -180,7 +180,7 @@
 				},
 				{
 					"type":"createEnemy",
-					"enemyID":"1426",
+					"objID":"1426",
 					"charaID":"14",
 					"x":6,
 					"y":7,

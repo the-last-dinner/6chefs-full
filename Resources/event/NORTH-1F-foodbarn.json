@@ -23,18 +23,15 @@
 				},
 				{
 					"type":"getItem",
-					"itemID":"154",
-					"name":"大根"
+					"itemID":"154"
 				},
 				{
 					"type":"getItem",
-					"itemID":"155",
-					"name":"苺"
+					"itemID":"155"
 				},
 				{
 					"type":"getItem",
-					"itemID":"156",
-					"name":"レタス"
+					"itemID":"156"
 				},
 				{
 					"type":"storyMsg",
@@ -42,7 +39,7 @@
 					"text":["鍵以外のアイテムは装備しないと\n使用できません。","アイテムを使用したい時は\n装備を忘れないようにしましょう。"]
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1930"
 				},
 				{
@@ -53,114 +50,118 @@
 	],
 	"3":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"item":["1534","1535","1536"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"item":["1534","1535","1536"]
+						}
+					],
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["さっさとしまっておこう！"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"removeItem",
+									"itemID":"1534"
+								},
+								{
+									"type":"removeItem",
+									"itemID":"1535"
+								},
+								{
+									"type":"removeItem",
+									"itemID":"1536"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・","隠れるのに使えるかもしれない！"],
+									"charaID":"0",
+									"imgID":"1"
+								},
+								{
+									"type":"getItem",
+									"itemID":"157"
+								},
+								{
+									"type":"changeFlg",
+									"flg":1
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["19","2"],
+							"Nitem":["1534"],
+							"flg":0
+						},
+						{
+							"event":["19","2"],
+							"Nitem":["1535"],
+							"flg":0
+						},
+						{
+							"event":["19","2"],
+							"Nitem":["1536"],
+							"flg":0
+						}
+					],
 					"action":[
 						{
 							"type":"charaMsg",
-							"text":["さっさとしまっておこう！"],
+							"text":["冷蔵庫の野菜室はまだスペースが空いているな・・・","早くさっきの野菜しまわなきゃ！"],
 							"charaID":"0",
 							"imgID":"1"
-						},
-						{
-							"type":"fadeout"
-						},
-						{
-							"type":"removeItem",
-							"itemID":"1534"
-						},
-						{
-							"type":"removeItem",
-							"itemID":"1535"
-						},
-						{
-							"type":"removeItem",
-							"itemID":"1536"
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"text":["コレでヨシと・・・\nこのダンボールは貰っておこう・・・","隠れるのに使えるかもしれない！"],
-							"charaID":"0",
-							"imgID":"1"
-						},
-						{
-							"type":"getItem",
-							"itemID":"157",
-							"name":"ダンボール"
-						},
-						{
-							"type":"changeFlg",
-							"flg":1
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["19","2"],
-					"Nitem":["1534"],
-					"flg":0
 				},
 				{
-					"event":["19","2"],
-					"Nitem":["1535"],
-					"flg":0
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["19","2"]
+						}
+					],
+					"action":[
+						{
+							"type":"charaMsg",
+							"text":["冷蔵庫の野菜室はまだスペースが空いているな・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						}
+					]
 				},
 				{
-					"event":["19","2"],
-					"Nitem":["1536"],
-					"flg":0
-				}
-			],
-			"action":[
-				{
-					"type":"charaMsg",
-					"text":["冷蔵庫の野菜室はまだスペースが空いているな・・・","早くさっきの野菜しまわなきゃ！"],
-					"charaID":"0",
-					"imgID":"1"
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["19","2"]
-				}
-			],
-			"action":[
-				{
-					"type":"charaMsg",
-					"text":["冷蔵庫の野菜室はまだスペースが空いているな・・・"],
-					"charaID":"0",
-					"imgID":"1"
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":1
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["冷蔵庫の野菜室はもういっぱいだ"]
+					"type":"if",
+					"condition":[
+						{
+							"flg":1
+						}
+					],
+					"action":[
+						{
+							"type":"systemMsg",
+							"text":["冷蔵庫の野菜室はもういっぱいだ"]
+						}
+					]
 				}
 			]
 		}
@@ -511,7 +512,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1930"
 				}
 			]

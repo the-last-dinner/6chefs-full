@@ -77,7 +77,7 @@
 					"action":[
 						{
 							"type":"createEnemy",
-							"enemyID":"1422",
+							"objID":"1422",
 							"charaID":"18",
 							"x":4,
 							"y":3,

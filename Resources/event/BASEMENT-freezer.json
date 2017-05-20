@@ -92,12 +92,22 @@
 							"type":"sequence",
 							"action":[
 								{
-									"type":"createChara",
-									"objID":"1058"
+									"type":"createObject",
+									"objID":"1058",
+									"x":12,
+									"y":13,
+									"charaID":"1",
+									"direction":"UP",
+									"movePattern":"1"
 								},
 								{
-									"type":"createChara",
-									"objID":"1059"
+									"type":"createObject",
+									"objID":"1059",
+									"x":12,
+									"y":9,
+									"charaID":"6",
+									"direction":"DOWN",
+									"movePattern":"1"
 								},
 								{
 									"type":"stopBGM",
@@ -195,8 +205,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1070"
+					"type":"createObject",
+					"objID":"1070",
+					"x":2,
+					"y":11,
+					"charaID":"1",
+					"eventID":"5",
+					"direction":"RIGHT",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		},
@@ -210,8 +227,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1071"
+					"type":"createObject",
+					"objID":"1071",
+					"x":4,
+					"y":11,
+					"charaID":"1",
+					"eventID":"6",
+					"direction":"RIGHT",
+					"movePattern":"1",
+					"trigger":"2"
 				}
 			]
 		}
@@ -304,12 +328,19 @@
 							"file":"chapter5.mp3"
 						},
 						{
-							"type":"removeChara",
+							"type":"removeObject",
 							"objID":"1070"
 						},
 						{
-							"type":"createChara",
-							"objID":"1071"
+							"type":"createObject",
+							"objID":"1071",
+							"x":4,
+							"y":11,
+							"charaID":"1",
+							"eventID":"6",
+							"direction":"RIGHT",
+							"movePattern":"1",
+							"trigger":"2"
 						},
 						{
 							"type":"fadein"

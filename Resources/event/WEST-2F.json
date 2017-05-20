@@ -449,12 +449,26 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"107"
+							"type":"createObject",
+							"objID":"107",
+							"charaID":"4",
+							"x":9,
+							"y":11,
+							"eventID":"26",
+							"direction":"DOWN",
+							"movePattern":"2",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"108"
+							"type":"createObject",
+							"objID":"108",
+							"x":10,
+							"y":24,
+							"charaID":"5",
+							"eventID":"27",
+							"direction":"DOWN",
+							"movePattern":"2",
+							"trigger":"2"
 						}
 					]
 				}

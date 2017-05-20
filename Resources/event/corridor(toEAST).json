@@ -52,21 +52,18 @@
 						},
 						{
 							"type":"getItem",
-							"itemID":"158",
-							"name":"新鮮な卵"
+							"itemID":"158"
 						},
 						{
 							"type":"getItem",
-							"itemID":"159",
-							"name":"6日前に採れた卵"
+							"itemID":"159"
 						},
 						{
 							"type":"getItem",
-							"itemID":"1510",
-							"name":"賞味期限切れ前の卵"
+							"itemID":"1510"
 						},
 						{
-							"type":"removeChara",
+							"type":"removeObject",
 							"objID":"198"
 						}
 					]
@@ -91,7 +88,7 @@
 					"layer":"MonoUe"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"198"
 				}
 			]

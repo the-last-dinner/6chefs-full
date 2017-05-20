@@ -11,45 +11,50 @@
 	],
 	"1":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["61","6"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"Nevent":["61","6"]
+						}
+					],
 					"action":[
 						{
-							"type":"charaMsg",
-							"text":["早く一色さんを見つけなきゃ！"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"charaWalk",
-							"objID":"hero",
-							"direction":"RIGHT",
-							"steps":1.0
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["早く一色さんを見つけなきゃ！"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"charaWalk",
+									"objID":"hero",
+									"direction":"RIGHT",
+									"steps":1.0
+								}
+							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+				},
 				{
-					"event":["61","6"]
-				}
-			],
-			"action":[
-				{
-					"type":"changeMap",
-					"mapID":"60",
-					"x":42,
-					"y":23
+					"type":"if",
+					"condition":[
+						{
+							"event":["61","6"]
+						}
+					],
+					"action":[
+						{
+							"type":"changeMap",
+							"mapID":"60",
+							"x":42,
+							"y":23
+						}
+					]
 				}
 			]
 		}
@@ -59,8 +64,13 @@
 			"type":"sequence",
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"10105"
+					"type":"createObject",
+					"objID":"10105",
+					"x":14,
+					"y":5,
+					"charaID":"8",
+					"direction":"RIGHT",
+					"movePattern":"2"
 				},
 				{
 		          "type":"spawn",
@@ -93,12 +103,12 @@
 					"imgID":"2"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"10105"
 				},
 				{
 					"type":"createEnemy",
-					"enemyID":"1420",
+					"objID":"1420",
 					"charaID":"8",
 					"x":14,
 					"y":5,
@@ -114,84 +124,89 @@
 	],
 	"4":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"Nstatus":["3","1"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"Nstatus":["3","1"]
+						}
+					],
 					"action":[
 						{
-							"type":"fadeout"
-						},
-						{
-							"type":"removeLayer",
-							"layer":"manaka"
-						},
-						{
-							"type":"systemMsg",
-							"text":["一色を見つけた"]
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"text":["急ごう・・・"],
-							"charaID":"0",
-							"imgID":"2"
-						},
-						{
-							"type":"already"
+							"type":"sequence",
+							"action":[
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"removeLayer",
+									"layer":"manaka"
+								},
+								{
+									"type":"systemMsg",
+									"text":["一色を見つけた"]
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"text":["急ごう・・・"],
+									"charaID":"0",
+									"imgID":"2"
+								},
+								{
+									"type":"already"
+								}
+							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+				},
 				{
-					"status":["3","1"]
-				}
-			],
-			"action":[
-				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"status":["3","1"]
+						}
+					],
 					"action":[
 						{
-							"type":"fadeout"
-						},
-						{
-							"type":"removeLayer",
-							"layer":"manaka"
-						},
-						{
-							"type":"charaMsg",
-							"text":["え・・・？"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"fadein"
-						},
-						{
-							"type":"charaMsg",
-							"text":["そんな・・・"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"charaMsg",
-							"text":["とにかく・・・水から出なきゃ・・・"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"already"
+							"type":"sequence",
+							"action":[
+								{
+									"type":"fadeout"
+								},
+								{
+									"type":"removeLayer",
+									"layer":"manaka"
+								},
+								{
+									"type":"charaMsg",
+									"text":["え・・・？"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"fadein"
+								},
+								{
+									"type":"charaMsg",
+									"text":["そんな・・・"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"charaMsg",
+									"text":["とにかく・・・水から出なきゃ・・・"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"already"
+								}
+							]
 						}
 					]
 				}
@@ -235,7 +250,7 @@
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1420"
+							"objID":"1420"
 						},
 						{
 							"type":"charaWarp",
@@ -245,12 +260,22 @@
 							"direction":"LEFT"
 						},
 						{
-							"type":"createChara",
-							"objID":"1066"
+							"type":"createObject",
+							"objID":"1066",
+							"x":14,
+							"y":25,
+							"charaID":"12",
+							"direction":"DOWN",
+							"movePattern":"1"
 						},
 						{
-							"type":"createChara",
-							"objID":"10107"
+							"type":"createObject",
+							"objID":"10107",
+							"x":16,
+							"y":7,
+							"charaID":"8",
+							"direction":"RIGHT",
+							"movePattern":"2"
 						},
 						{
 							"type":"fadein"
@@ -316,22 +341,27 @@
 							"type":"spawn",
 							"action":[
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"1066"
 								},
 								{
-									"type":"createChara",
-									"objID":"1067"
+									"type":"createObject",
+									"objID":"1067",
+									"x":14,
+									"y":25,
+									"charaID":"3",
+									"direction":"LEFT",
+									"movePattern":"1"
 								},
 								{
-									"type":"removeChara",
+									"type":"removeObject",
 									"objID":"10107"
 								}
 							]
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1421",
+							"objID":"1421",
 							"charaID":"8",
 							"x":14,
 							"y":5,
@@ -373,7 +403,7 @@
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1420"
+							"objID":"1420"
 						},
 						{
 							"type":"charaWarp",
@@ -383,8 +413,13 @@
 							"direction":"LEFT"
 						},
 						{
-							"type":"createChara",
-							"objID":"10107"
+							"type":"createObject",
+							"objID":"10107",
+							"x":16,
+							"y":7,
+							"charaID":"8",
+							"direction":"RIGHT",
+							"movePattern":"2"
 						},
 						{
 							"type":"charaMsg",
@@ -440,12 +475,12 @@
 							"type":"fadeout"
 						},
 						{
-							"type":"removeChara",
+							"type":"removeObject",
 							"objID":"10107"
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1421",
+							"objID":"1421",
 							"charaID":"8",
 							"x":14,
 							"y":5,

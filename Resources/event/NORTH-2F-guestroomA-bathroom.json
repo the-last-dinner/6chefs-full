@@ -13,99 +13,103 @@
 	],
 	"2":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":0
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"playSE",
-					"file":"cloth.mp3"
+					"type":"if",
+					"condition":[
+						{
+							"flg":0
+						}
+					],
+					"action":[
+						{
+							"type":"playSE",
+							"file":"cloth.mp3"
+						},
+						{
+							"type":"removeLayer",
+							"layer":"MonoChu"
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
+						},
+						{
+							"type":"already",
+							"event":["12","6"]
+						}
+					]
 				},
 				{
-					"type":"removeLayer",
-					"layer":"MonoChu"
+					"type":"if",
+					"condition":[
+						{
+							"flg":1
+						}
+					],
+					"action":[
+						{
+							"type":"playSE",
+							"file":"water.mp3"
+						},
+						{
+							"type":"removeLayer",
+							"layer":"bathtub"
+						},
+						{
+							"type":"changeFlg",
+							"flg":2
+						},
+						{
+							"type":"createObject",
+							"objID":"191"
+						},
+						{
+							"type":"already",
+							"event":["12","4"]
+						}
+					]
 				},
 				{
-					"type":"changeFlg",
-					"flg":1
+					"type":"if",
+					"condition":[
+						{
+							"flg":2
+						}
+					],
+					"action":[
+						{
+							"type":"getItem",
+							"itemID":"151"
+						},
+						{
+							"type":"removeObject",
+							"objID":"191"
+						},
+						{
+							"type":"changeFlg",
+							"flg":3
+						},
+						{
+							"type":"already",
+							"event":["12","11"]
+						}
+					]
 				},
 				{
-					"type":"already",
-					"event":["12","6"]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":1
-				}
-			],
-			"action":[
-				{
-					"type":"playSE",
-					"file":"water.mp3"
-				},
-				{
-					"type":"removeLayer",
-					"layer":"bathtub"
-				},
-				{
-					"type":"changeFlg",
-					"flg":2
-				},
-				{
-					"type":"createChara",
-					"objID":"191"
-				},
-				{
-					"type":"already",
-					"event":["12","4"]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":2
-				}
-			],
-			"action":[
-				{
-					"type":"getItem",
-					"itemID":"151",
-					"name":"倉庫の鍵"
-				},
-				{
-					"type":"removeChara",
-					"objID":"191"
-				},
-				{
-					"type":"changeFlg",
-					"flg":3
-				},
-				{
-					"type":"already",
-					"event":["12","11"]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":3
-				}
-			],
-			"action":[
-				{
-					"type":"systemMsg",
-					"text":["血生臭い・・・"]
+					"type":"if",
+					"condition":[
+						{
+							"flg":3
+						}
+					],
+					"action":[
+						{
+							"type":"systemMsg",
+							"text":["血生臭い・・・"]
+						}
+					]
 				}
 			]
 		}
@@ -159,7 +163,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"191"
 				}
 			]

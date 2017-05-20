@@ -178,12 +178,17 @@
 					"type":"spawn",
 					"action":[
 						{
-							"type":"removeChara",
+							"type":"removeObject",
 							"objID":"1074"
 						},
 						{
-							"type":"createChara",
-							"objID":"1086"
+							"type":"createObject",
+							"objID":"1086",
+							"x":3,
+							"y":21,
+							"charaID":"18",
+							"direction":"RIGHT",
+							"movePattern":"1"
 						},
 						{
 							"type":"playSE",
@@ -315,16 +320,28 @@
 															"file":"hit.mp3"
 														},
 														{
-															"type":"createChara",
-															"objID":"1075"
+															"type":"createObject",
+															"objID":"1075",
+															"x":14,
+															"y":19,
+															"charaID":"19",
+															"eventID":"7",
+															"direction":"RIGHT",
+															"movePattern":"1",
+															"trigger":"2"
 														},
 														{
-															"type":"removeChara",
+															"type":"removeObject",
 															"objID":"1086"
 														},
 														{
-															"type":"createChara",
-															"objID":"10106"
+															"type":"createObject",
+															"objID":"10106",
+															"x":15,
+															"y":20,
+															"charaID":"21",
+															"direction":"RIGHT",
+															"movePattern":"1"
 														},
 														{
 															"type":"fadein",
@@ -403,12 +420,17 @@
 															"text":["ゆ・・・き・・・"]
 														},
 														{
-															"type":"removeChara",
+															"type":"removeObject",
 															"objID":"1086"
 														},
 														{
-															"type":"createChara",
-															"objID":"10106"
+															"type":"createObject",
+															"objID":"10106",
+															"x":15,
+															"y":20,
+															"charaID":"21",
+															"direction":"RIGHT",
+															"movePattern":"1"
 														},
 														{
 															"type":"fadein"
@@ -486,8 +508,13 @@
 																	"type":"sequence",
 																	"action":[
 																		{
-																			"type":"createChara",
-																			"objID":"1095"
+																			"type":"createObject",
+																			"objID":"1095",
+																			"x":49,
+																			"y":25,
+																			"charaID":"6",
+																			"direction":"LEFT",
+																			"movePattern":"1"
 																		},
 																		{
 																			"type":"fadein",
@@ -551,12 +578,24 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1074"
+					"type":"createObject",
+					"objID":"1074",
+					"x":3,
+					"y":21,
+					"charaID":"7",
+					"direction":"DOWN",
+					"movePattern":"1"
 				},
 				{
-					"type":"createChara",
-					"objID":"1073"
+					"type":"createObject",
+					"objID":"1073",
+					"x":19,
+					"y":8,
+					"charaID":"8",
+					"eventID":"9",
+					"direction":"DOWN",
+					"movePattern":"1",
+					"trigger":"1"
 				}
 			]
 		}
@@ -597,16 +636,35 @@
 					"type":"sequence",
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1075"
+							"type":"createObject",
+							"objID":"1075",
+							"x":14,
+							"y":19,
+							"charaID":"19",
+							"eventID":"7",
+							"direction":"RIGHT",
+							"movePattern":"1",
+							"trigger":"2"
 						},
 						{
-							"type":"createChara",
-							"objID":"10106"
+							"type":"createObject",
+							"objID":"10106",
+							"x":15,
+							"y":20,
+							"charaID":"21",
+							"direction":"RIGHT",
+							"movePattern":"1"
 						},
 						{
-							"type":"createChara",
-							"objID":"1073"
+							"type":"createObject",
+							"objID":"1073",
+							"x":19,
+							"y":8,
+							"charaID":"8",
+							"eventID":"9",
+							"direction":"DOWN",
+							"movePattern":"1",
+							"trigger":"2"
 						},
 						{
 							"type":"charaWarp",

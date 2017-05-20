@@ -127,11 +127,10 @@
 			"action":[
 				{
 					"type":"getItem",
-					"itemID":"1519",
-					"name":"酒倉庫の鍵"
+					"itemID":"1519"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1919"
 				},
 				{
@@ -150,7 +149,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1919"
 				}
 			]

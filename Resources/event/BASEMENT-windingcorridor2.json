@@ -47,23 +47,23 @@
 					"action":[
 						{
 							"type":"removeEnemy",
-							"enemyID":"1411"
+							"objID":"1411"
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1412"
+							"objID":"1412"
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1413"
+							"objID":"1413"
 						},
 						{
 							"type":"removeEnemy",
-							"enemyID":"1414"
+							"objID":"1414"
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1415",
+							"objID":"1415",
 							"charaID":"13",
 							"x":10,
 							"y":7,
@@ -72,7 +72,7 @@
 						},
 						{
 							"type":"createEnemy",
-							"enemyID":"1416",
+							"objID":"1416",
 							"charaID":"14",
 							"x":10,
 							"y":9,
@@ -99,7 +99,7 @@
 			"action":[
 				{
 					"type":"createEnemy",
-					"enemyID":"1427",
+					"objID":"1427",
 					"charaID":"13",
 					"x":4,
 					"y":20,

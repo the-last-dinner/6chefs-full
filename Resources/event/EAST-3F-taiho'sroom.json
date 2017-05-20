@@ -172,7 +172,7 @@
 					"steps":0.8
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1024"
 				},
 				{
@@ -220,8 +220,13 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1024"
+					"type":"createObject",
+					"objID":"1024",
+					"x":12,
+					"y":9,
+					"charaID":"6",
+					"direction":"DOWN",
+					"movePattern":"1"
 				}
 			]
 		}
@@ -244,63 +249,68 @@
 	],
 	"5":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":0
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"flg":0
+						}
+					],
+					"action":[
+						{
+							"type":"sequence",
+							"action":[
+								{
+									"type":"storyMsg",
+									"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
+								},
+								{
+									"type":"addProfile",
+									"charaID":"8",
+									"infoID":"1"
+								},
+								{
+									"type":"charaMsg",
+									"talk":[
+										{
+											"text":["・・・"],
+											"charaID":"0",
+											"imgID":"2"
+										},
+										{
+											"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
+											"charaID":"5",
+											"imgID":"2"
+										}
+									]
+								},
+								{
+									"type":"already",
+									"event":["40","10"]
+								},
+								{
+									"type":"changeFlg",
+									"flg":1
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"flg":1
+						}
+					],
 					"action":[
 						{
 							"type":"storyMsg",
 							"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
-						},
-						{
-							"type":"addProfile",
-							"charaID":"8",
-							"infoID":"1"
-						},
-						{
-							"type":"charaMsg",
-							"talk":[
-								{
-									"text":["・・・"],
-									"charaID":"0",
-									"imgID":"2"
-								},
-								{
-									"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
-									"charaID":"5",
-									"imgID":"2"
-								}
-							]
-						},
-						{
-							"type":"already",
-							"event":["40","10"]
-						},
-						{
-							"type":"changeFlg",
-							"flg":1
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"flg":1
-				}
-			],
-			"action":[
-				{
-					"type":"storyMsg",
-					"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
 				}
 			]
 		}
@@ -314,11 +324,10 @@
 	"8":[
 		{
 			"type":"getItem",
-			"itemID":"1528",
-			"name":"曇り止めスプレー（レンズ用）"
+			"itemID":"1528"
 		},
 		{
-			"type":"removeChara",
+			"type":"removeObject",
 			"objID":"1928"
 		},
 		{
@@ -335,7 +344,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1928"
 				}
 			]
@@ -344,8 +353,13 @@
 	"10":"大宝の部屋の日記",
 	"11":[
 		{
-			"type":"createChara",
-			"objID":"10100"
+			"type":"createObject",
+			"objID":"10100",
+			"x":12,
+			"y":23,
+			"charaID":"5",
+			"direction":"UP",
+			"movePattern":"1"
 		},
 		{
 			"type":"already"

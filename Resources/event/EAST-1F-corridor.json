@@ -83,74 +83,88 @@
 	],
 	"5":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["58","7"],
-					"status":["3","0"]
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"spawn",
+					"type":"if",
+					"condition":[
+						{
+							"event":["58","7"],
+							"status":["3","0"]
+						}
+					],
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1079"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"createObject",
+									"objID":"1079",
+									"x":27,
+									"y":11,
+									"charaID":"20",
+									"direction":"LEFT",
+									"movePattern":"1"
+								}
+							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"Nevent":["58","7"]
 				},
 				{
-					"event":["58","7"],
-					"Nstatus":["3","0"]
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
+					"type":"if",
+					"condition":[
 						{
-							"type":"removeChara",
-							"objID":"1820"
+							"Nevent":["58","7"]
 						},
 						{
-							"type":"removeChara",
-							"objID":"1"
+							"event":["58","7"],
+							"Nstatus":["3","0"]
 						}
-					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["58","7"],
-					"status":["3","0"],
-					"Nevent":["32","7"]
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
+					],
 					"action":[
 						{
-							"type":"createChara",
-							"objID":"1072"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"removeObject",
+									"objID":"1820"
+								},
+								{
+									"type":"removeObject",
+									"objID":"1"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type":"if",
+					"condition":[
+						{
+							"event":["58","7"],
+							"status":["3","0"],
+							"Nevent":["32","7"]
+						}
+					],
+					"action":[
+						{
+							"type":"spawn",
+							"action":[
+								{
+									"type":"createObject",
+									"objID":"1072",
+									"x":25,
+									"y":11,
+									"charaID":"3",
+									"direction":"RIGHT",
+									"movePattern":"1"
+								}
+							]
 						}
 					]
 				}
 			]
 		}
-
 	],
 	"6":[
 		{
@@ -317,12 +331,17 @@
 											"type":"spawn",
 											"action":[
 												{
-													"type":"removeChara",
+													"type":"removeObject",
 													"objID":"1072"
 												},
 												{
-													"type":"createChara",
-													"objID":"1078"
+													"type":"createObject",
+													"objID":"1078",
+													"x":18,
+													"y":9,
+													"charaID":"12",
+													"direction":"LEFT",
+													"movePattern":"1"
 												}
 											]
 										},
@@ -540,12 +559,17 @@
 											"type":"spawn",
 											"action":[
 												{
-													"type":"removeChara",
+													"type":"removeObject",
 													"objID":"1072"
 												},
 												{
-													"type":"createChara",
-													"objID":"1078"
+													"type":"createObject",
+													"objID":"1078",
+													"x":18,
+													"y":9,
+													"charaID":"12",
+													"direction":"LEFT",
+													"movePattern":"1"
 												}
 											]
 										},
@@ -627,67 +651,77 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1078"
+					"type":"createObject",
+					"objID":"1078",
+					"x":18,
+					"y":9,
+					"charaID":"12",
+					"direction":"LEFT",
+					"movePattern":"1"
 				}
 			]
 		}
 	],
 	"9":[
 		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["32","6"],
-					"flg":0
-				}
-			],
+			"type":"sequence",
 			"action":[
 				{
-					"type":"sequence",
+					"type":"if",
+					"condition":[
+						{
+							"event":["32","6"],
+							"flg":0
+						}
+					],
 					"action":[
 						{
-							"type":"charaMsg",
-							"text":["一色さん・・・\nウソ・・・でしょ・・・？"],
-							"charaID":"0",
-							"imgID":"3"
-						},
-						{
-							"type":"wait",
-							"time":2.0
-						},
-						{
-							"type":"charaMsg",
-							"text":["やっぱり・・・\nムリだったんだ・・・","ハハ、ハハハハハハ・・・"],
-							"charaID":"0",
-							"imgID":"3"
-						}, 
-						{
-							"type":"changeFlg",
-							"flg":1
+							"type":"sequence",
+							"action":[
+								{
+									"type":"charaMsg",
+									"text":["一色さん・・・\nウソ・・・でしょ・・・？"],
+									"charaID":"0",
+									"imgID":"3"
+								},
+								{
+									"type":"wait",
+									"time":2.0
+								},
+								{
+									"type":"charaMsg",
+									"text":["やっぱり・・・\nムリだったんだ・・・","ハハ、ハハハハハハ・・・"],
+									"charaID":"0",
+									"imgID":"3"
+								}, 
+								{
+									"type":"changeFlg",
+									"flg":1
+								}
+							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"type":"if",
-			"condition":[
+				},
 				{
-					"flg":1
-				}
-			],
-			"action":[
-				{
-					"type":"spawn",
+					"type":"if",
+					"condition":[
+						{
+							"flg":1
+						}
+					],
 					"action":[
 						{
-							"type":"systemMsg",
-							"text":["小さいハンドミキサーが胸に刺さってしまっている・・・"]
-						},
-						{
-							"type":"playSE",
-							"file":"horror_notice.mp3"
+							"type":"spawn",
+							"action":[
+								{
+									"type":"systemMsg",
+									"text":["小さいハンドミキサーが胸に刺さってしまっている・・・"]
+								},
+								{
+									"type":"playSE",
+									"file":"horror_notice.mp3"
+								}
+							]
 						}
 					]
 				}

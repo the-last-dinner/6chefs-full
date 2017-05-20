@@ -19,11 +19,10 @@
 			"action":[
 				{
 					"type":"getItem",
-					"itemID":"1516",
-					"name":"茶色く濁ったどぶろく"
+					"itemID":"1516"
 				},
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1916"
 				},
 				{
@@ -132,7 +131,7 @@
 			],
 			"action":[
 				{
-					"type":"removeChara",
+					"type":"removeObject",
 					"objID":"1916"
 				}
 			]

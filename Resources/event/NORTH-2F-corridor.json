@@ -207,7 +207,7 @@
 						{
 							"type":"createEnemy",
 							"charaID":"8",
-							"enemyID":"141",
+							"objID":"141",
 							"x":25,
 							"y":17,
 							"times":1,
@@ -371,8 +371,15 @@
 			],
 			"action":[
 				{
-					"type":"createChara",
-					"objID":"1060"
+					"type":"createObject",
+					"objID":"1060",
+					"x":71,
+					"y":19,
+					"charaID":"4",
+					"eventID":"12",
+					"direction":"UP",
+					"movePattern":"2",
+					"trigger":"2"
 				}			
 			]
 		}

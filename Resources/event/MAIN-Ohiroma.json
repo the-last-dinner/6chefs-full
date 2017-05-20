@@ -43,7 +43,7 @@
           "objID":"10100"
         },
         {
-          "type":"removeChara",
+          "type":"removeObject",
           "objID":"10100"
         }
       ]
@@ -112,11 +112,11 @@
               "objID":"1034"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1033"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1034"
             },
             {
@@ -322,43 +322,48 @@
   ],
   "12": [
     {
-      "type": "if",
-      "condition": [
-        {
-          "Nevent": ["3","33"]
-        }
-      ],
-      "action": [
-        {
-          "type": "sequence",
-          "action": [
-            {
-              "type": "charaMsg",
-              "text": ["こっちには入るなって言われたな・・・"],
-              "charaID": "0",
-              "imgID": "1"
-            },
-            {
-              "type": "charaWalk",
-              "direction": "LEFT",
-              "option":"back",
-              "steps": 1.0,
-              "objID": "hero"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type":"if",
-      "condition":[
-        {
-          "event":["3","33"]
-        }
-      ],
+      "type":"sequence",
       "action":[
         {
-          "type":"already"
+          "type": "if",
+          "condition": [
+            {
+              "Nevent": ["3","33"]
+            }
+          ],
+          "action": [
+            {
+              "type": "sequence",
+              "action": [
+                {
+                  "type": "charaMsg",
+                  "text": ["こっちには入るなって言われたな・・・"],
+                  "charaID": "0",
+                  "imgID": "1"
+                },
+                {
+                  "type": "charaWalk",
+                  "direction": "LEFT",
+                  "option":"back",
+                  "steps": 1.0,
+                  "objID": "hero"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type":"if",
+          "condition":[
+            {
+              "event":["3","33"]
+            }
+          ],
+          "action":[
+            {
+              "type":"already"
+            }
+          ]
         }
       ]
     }
@@ -382,40 +387,68 @@
               "type": "spawn",
               "action": [
                 {
-                  "type": "removeChara",
+                  "type": "removeObject",
                   "objID": "1019"
                 },
                 {
-                  "type": "removeChara",
+                  "type": "removeObject",
                   "objID": "1021"
                 },
                 {
-                  "type": "removeChara",
+                  "type": "removeObject",
                   "objID": "1027"
                 },
                 {
-                  "type": "removeChara",
+                  "type": "removeObject",
                   "objID": "1028"
                 },
                 {
-                  "type": "removeChara",
+                  "type": "removeObject",
                   "objID": "1029"
                 },
                 {
-                  "type": "createChara",
-                  "objID": "1031"
+                  "type": "createObject",
+                  "objID": "1031",
+                  "x":38,
+                  "y":22,
+                  "charaID":"1",
+                  "eventID":"1",
+                  "direction":"LEFT",
+                  "movePattern":"1",
+                  "trigger":"2"
                 },
                 {
-                  "type": "createChara",
-                  "objID": "1032"
+                  "type": "createObject",
+                  "objID": "1032",
+                  "x":36,
+                  "y":22,
+                  "charaID":"3",
+                  "eventID":"2",
+                  "direction":"LEFT",
+                  "movePattern":"1",
+                  "trigger":"2"
                 },
                 {
-                  "type": "createChara",
-                  "objID": "1033"
+                  "type": "createObject",
+                  "objID": "1033",
+                  "x":27,
+                  "y":22,
+                  "charaID":"5",
+                  "eventID":"3",
+                  "direction":"RIGHT",
+                  "movePattern":"1",
+                  "trigger":"2"
                 },
                 {
-                  "type": "createChara",
-                  "objID": "1034"
+                  "type": "createObject",
+                  "objID": "1034",
+                  "x":31,
+                  "y":22,
+                  "charaID":"4",
+                  "eventID":"24",
+                  "direction":"LEFT",
+                  "movePattern":"1",
+                  "trigger":"2"
                 }
               ]
             },
@@ -552,19 +585,34 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1080"
+              "type":"createObject",
+              "objID":"1080",
+              "x":27,
+              "y":41,
+              "charaID":"4",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1084"
+              "type":"createObject",
+              "objID":"1084",
+              "x":29,
+              "y":35,
+              "charaID":"21",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -600,8 +648,13 @@
               ]
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"spawn",
@@ -643,7 +696,7 @@
               "charaID":"7"
             },
             {
-              "type":"createChara",
+              "type":"createObject",
               "objID":"1088"
             },
             {
@@ -667,7 +720,7 @@
               "file":"blood.mp3"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1088"
             },
             {
@@ -786,23 +839,43 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1080"
+              "type":"createObject",
+              "objID":"1080",
+              "x":27,
+              "y":41,
+              "charaID":"4",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1081"
+              "type":"createObject",
+              "objID":"1081",
+              "x":31,
+              "y":41,
+              "charaID":"5",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1084"
+              "type":"createObject",
+              "objID":"1084",
+              "x":29,
+              "y":35,
+              "charaID":"21",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -860,8 +933,13 @@
               ]
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"charaWalkTo",
@@ -905,7 +983,7 @@
               ]
             },
             {
-              "type":"createChara",
+              "type":"createObject",
               "objID":"1088"
             },
             {
@@ -929,7 +1007,7 @@
               "file":"blood.mp3"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1088"
             },
             {
@@ -1066,27 +1144,52 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1080"
+              "type":"createObject",
+              "objID":"1080",
+              "x":27,
+              "y":41,
+              "charaID":"4",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1081"
+              "type":"createObject",
+              "objID":"1081",
+              "x":31,
+              "y":41,
+              "charaID":"5",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1082"
+              "type":"createObject",
+              "objID":"1082",
+              "x":25,
+              "y":43,
+              "charaID":"3",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"10112"
+              "type":"createObject",
+              "objID":"10112",
+              "x":29,
+              "y":35,
+              "charaID":"18",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -1149,8 +1252,13 @@
               ]
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"charaWalkTo",
@@ -1189,8 +1297,13 @@
               ]
             },
             {
-              "type":"createChara",
-              "objID":"10111"
+              "type":"createObject",
+              "objID":"10111",
+              "x":41,
+              "y":23,
+              "charaID":"8",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"playSE",
@@ -1297,7 +1410,7 @@
               "type":"spawn",
               "action":[
                 {
-                  "type":"removeChara",
+                  "type":"removeObject",
                   "objID":"10112"
                 },
                 {
@@ -1305,8 +1418,13 @@
                   "file":"knife.mp3"
                 },
                 {
-                  "type":"createChara",
-                  "objID":"10113"
+                  "type":"createObject",
+                  "objID":"10113",
+                  "x":29,
+                  "y":35,
+                  "charaID":"7",
+                  "direction":"RIGHT",
+                  "movePattern":"1"
                 }
               ]
             },
@@ -1551,7 +1669,7 @@
                       "direction":"UP"
                     },
                     {
-                      "type":"removeChara",
+                      "type":"removeObject",
                       "objID":"1082"
                     }
                   ]
@@ -1623,7 +1741,7 @@
                       "direction":"UP"
                     },
                     {
-                      "type":"removeChara",
+                      "type":"removeObject",
                       "objID":"1083"
                     }
                   ]
@@ -1653,7 +1771,7 @@
                       "direction":"UP"
                     },
                     {
-                      "type":"removeChara",
+                      "type":"removeObject",
                       "objID":"1081"
                     }
                   ]
@@ -1678,7 +1796,7 @@
                       "direction":"UP"
                     },
                     {
-                      "type":"removeChara",
+                      "type":"removeObject",
                       "objID":"1080"
                     }
                   ]
@@ -1774,16 +1892,31 @@
             	"y":37,
             	"action":[
             		{
-		            	"type":"createChara",
-		            	"objID":"10111"
+		            	"type":"createObject",
+		            	"objID":"10111",
+                  "x":41,
+                  "y":23,
+                  "charaID":"8",
+                  "direction":"DOWN",
+                  "movePattern":"1"
 		            },
 		            {
-		            	"type":"createChara",
-		            	"objID":"1085"
+		            	"type":"createObject",
+		            	"objID":"1085",
+                  "x":43,
+                  "y":23,
+                  "charaID":"19",
+                  "direction":"DOWN",
+                  "movePattern":"1"
 		            },
 		            {
-		            	"type":"createChara",
-		            	"objID":"10113"
+		            	"type":"createObject",
+		            	"objID":"10113",
+                  "x":29,
+                  "y":35,
+                  "charaID":"7",
+                  "direction":"RIGHT",
+                  "movePattern":"1"
 		            },
 		            {
 		            	"type":"changeDirection",
@@ -1871,15 +2004,25 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1084"
+              "type":"createObject",
+              "objID":"1084",
+              "x":29,
+              "y":35,
+              "charaID":"21",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -1901,8 +2044,13 @@
               "time":3.0
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"spawn",
@@ -1957,7 +2105,7 @@
               ]
             },
             {
-              "type":"createChara",
+              "type":"createObject",
               "objID":"1088"
             },
             {
@@ -1981,7 +2129,7 @@
               "file":"blood.mp3"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1088"
             },
             {
@@ -2099,19 +2247,34 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1089"
+              "type":"createObject",
+              "objID":"1089",
+              "x":29,
+              "y":37,
+              "charaID":"5",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1084"
+              "type":"createObject",
+              "objID":"1084",
+              "x":29,
+              "y":35,
+              "charaID":"21",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -2152,8 +2315,13 @@
               "charaID":"7"
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"charaWalkTo",
@@ -2197,7 +2365,7 @@
               ]
             },
             {
-              "type":"createChara",
+              "type":"createObject",
               "objID":"1088"
             },
             {
@@ -2221,7 +2389,7 @@
               "file":"blood.mp3"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1088"
             },
             {
@@ -2326,23 +2494,43 @@
             },
             {
               "type":"removeEnemy",
-              "enemyID":"1422"
+              "objID":"1422"
             },
             {
-              "type":"createChara",
-              "objID":"1089"
+              "type":"createObject",
+              "objID":"1089",
+              "x":29,
+              "y":37,
+              "charaID":"5",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1082"
+              "type":"createObject",
+              "objID":"1082",
+              "x":25,
+              "y":43,
+              "charaID":"3",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1083"
+              "type":"createObject",
+              "objID":"1083",
+              "x":27,
+              "y":43,
+              "charaID":"1",
+              "direction":"UP",
+              "movePattern":"1"
             },
             {
-              "type":"createChara",
-              "objID":"1084"
+              "type":"createObject",
+              "objID":"1084",
+              "x":29,
+              "y":35,
+              "charaID":"21",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"changeDirection",
@@ -2388,8 +2576,13 @@
               ]
             },
             {
-              "type":"createChara",
-              "objID":"1085"
+              "type":"createObject",
+              "objID":"1085",
+              "x":43,
+              "y":23,
+              "charaID":"19",
+              "direction":"DOWN",
+              "movePattern":"1"
             },
             {
               "type":"charaWalkTo",
@@ -2421,7 +2614,7 @@
               ]
             },
             {
-              "type":"createChara",
+              "type":"createObject",
               "objID":"1088"
             },
             {
@@ -2445,7 +2638,7 @@
               "file":"blood.mp3"
             },
             {
-              "type":"removeChara",
+              "type":"removeObject",
               "objID":"1088"
             },
             {
@@ -2635,7 +2828,7 @@
           "imgID": "1"
         },
         {
-          "type": "removeChara",
+          "type": "removeObject",
           "objID": "1012"
         },
         {
@@ -2679,8 +2872,15 @@
       ],
       "action":[
         {
-          "type":"createChara",
-          "objID":"1012"
+          "type":"createObject",
+          "objID":"1012",
+          "x":29,
+          "y":45,
+          "charaID":"2",
+          "eventID":"20",
+          "direction":"DOWN",
+          "movePattern":"1",
+          "trigger":"2"
         }
       ]
     }
@@ -2727,12 +2927,25 @@
       ],
       "action":[
         {
-          "type":"createChara",
-          "objID":"1031"
+          "type":"createObject",
+          "objID":"1031",
+          "x":38,
+          "y":22,
+          "charaID":"1",
+          "eventID":"1",
+          "direction":"LEFT",
+          "trigger":"2"
         },
         {
-          "type":"createChara",
-          "objID":"1032"
+          "type":"createObject",
+          "objID":"1032",
+          "x":36,
+          "y":22,
+          "charaID":"3",
+          "eventID":"2",
+          "direction":"LEFT",
+          "movePattern":"1",
+          "trigger":"2"
         }
       ]
     },
@@ -2746,12 +2959,26 @@
       ],
       "action":[
         {
-          "type":"createChara",
-          "objID":"1033"
+          "type":"createObject",
+          "objID":"1033",
+          "x":27,
+          "y":22,
+          "charaID":"5",
+          "eventID":"3",
+          "movePattern":"1",
+          "direction":"RIGHT",
+          "trigger":"2"
         },
         {
-          "type":"createChara",
-          "objID":"1034"
+          "type":"createObject",
+          "objID":"1034",
+          "x":31,
+          "y":22,
+          "charaID":"4",
+          "eventID":"24",
+          "direction":"LEFT",
+          "movePattern":"1",
+          "trigger":"2"
         }
       ]
     }
@@ -2774,8 +3001,15 @@
       ],
       "action":[
         {
-          "type":"createChara",
-          "objID":"1097"
+          "type":"createObject",
+          "objID":"1097",
+          "x":31,
+          "y":24,
+          "charaID":"9",
+          "eventID":"26",
+          "direction":"DOWN",
+          "movePattern":"1",
+          "trigger":"2"
         }
       ]
     }
