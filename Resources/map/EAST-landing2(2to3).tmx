@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="12">
- <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="13">
+ <tileset firstgid="1" name="youkan" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="youkan.png" trans="007575" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="ST-Sewer-01.png" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="ST-Sewer-01.png" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
   <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
  </tileset>
- <tileset firstgid="1985" name="ST-MsionR-I01" tilewidth="16" tileheight="16">
+ <tileset firstgid="1985" name="ST-MsionR-I01" tilewidth="16" tileheight="16" tilecount="1984" columns="16">
   <image source="ST-MsionR-I01.png" trans="007575" width="256" height="1990"/>
   <tile id="1674">
    <properties>
@@ -64,6 +64,12 @@
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="12" x="112" y="0" width="32" height="32">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>

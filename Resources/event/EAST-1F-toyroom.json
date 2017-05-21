@@ -139,5 +139,11 @@
 			"type":"systemMsg",
 			"text":["キャンディーがたくさん入っているが\n溶けてくっついている"]
 		}
+	],
+	"15":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
 }

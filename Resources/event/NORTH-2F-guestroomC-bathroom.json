@@ -22,5 +22,11 @@
 			"type":"systemMsg",
 			"text":["水は茶色く濁っている"]
 		}
+	],
+	"4":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
 }

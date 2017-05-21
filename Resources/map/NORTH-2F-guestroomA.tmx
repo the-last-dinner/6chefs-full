@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="55">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="36" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="56">
  <tileset firstgid="1" name="set-mansion-in" tilewidth="16" tileheight="16" tilecount="9900" columns="90">
   <image source="set-mansion-in.png" trans="ffffff" width="1440" height="1760"/>
  </tileset>
@@ -41,7 +41,7 @@
    eJztzbERABAQALDfgiV+GvZiZGq1o0kWSARwS8mImu/fts/+4R37nB9eAACA0wIK1wME
   </data>
  </layer>
- <objectgroup name="collision" visible="0">
+ <objectgroup name="collision">
   <object id="21" x="256" y="448" width="224" height="32"/>
   <object id="22" x="256" y="512" width="32" height="64"/>
   <object id="23" x="0" y="448" width="224" height="128"/>
@@ -137,6 +137,12 @@
    <properties>
     <property name="EventID" value="9"/>
     <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="55" x="432" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="10"/>
+    <property name="trigger" value="0"/>
    </properties>
   </object>
  </objectgroup>

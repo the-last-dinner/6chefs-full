@@ -891,6 +891,10 @@
 	],
 	"6":[
 		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    },
+		{
 			"type":"sequence",
 			"action":[
 				{

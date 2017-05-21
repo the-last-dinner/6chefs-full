@@ -64,6 +64,11 @@
 			"type":"systemMsg",
 			"text":["ランプはつかない"]
 		}
+	],
+	"10":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
-
 }

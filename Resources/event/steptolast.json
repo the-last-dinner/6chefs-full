@@ -96,5 +96,11 @@
 				}
 			]
 		}
+	],
+	"4":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
 }

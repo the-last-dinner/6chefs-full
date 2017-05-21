@@ -158,15 +158,11 @@
 													]
 												},
 												{
-													"type":"charaWalkTo",
+													"type":"charaWarp",
+													"direction":"RIGHT",
 													"x":4,
 													"y":12,
 													"objID":"hero"
-												},
-												{
-													"type":"changeDirection",
-													"objID":"hero",
-													"direction":"RIGHT"
 												},
 												{
 													"type":"removeObject",

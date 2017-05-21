@@ -14,5 +14,11 @@
 			"x":5,
 			"y":3
 		}
+	],
+	"3":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
 }

@@ -49,6 +49,10 @@
 	],
 	"8":[
 		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    },
+		{
 			"type":"if",
 			"condition":[
 				{
@@ -131,6 +135,7 @@
 						},
 						{
 							"type":"charaMsg",
+							"charaID":"10",
 							"text":["ぐううううううううう"],
 							"name":"？？？"
 						},
@@ -356,8 +361,7 @@
 	"10":[
 		{
 			"type":"getItem",
-			"itemID":"1521",
-			"name":"小型低速ジューサー"
+			"itemID":"1521"
 		},
 		{
 			"type":"removeObject",

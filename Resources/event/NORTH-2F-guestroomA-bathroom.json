@@ -116,6 +116,10 @@
 	],
 	"3":[
 		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    },
+		{
 			"type":"if",
 			"condition":[
 				{

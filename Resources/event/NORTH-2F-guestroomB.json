@@ -62,5 +62,11 @@
 			"type":"systemMsg",
 			"text":["ベッドは少し埃っぽい"]
 		}
+	],
+	"8":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    }
 	]
 }

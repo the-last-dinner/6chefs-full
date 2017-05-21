@@ -216,6 +216,7 @@
 						},
 						{
 							"type":"charaMsg",
+							"charaID":"10",
 							"text":["があああああああああああ"],
 							"name":"？？？",
 							"option":"reaction"
@@ -361,6 +362,10 @@
 		}
 	],
 	"13":[
+		{
+	      "type":"setAmbient",
+	      "ambient":"night"
+	    },
 		{
 			"type":"if",
 			"condition":[
