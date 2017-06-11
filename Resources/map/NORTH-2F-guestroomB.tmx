@@ -25,7 +25,7 @@
    <property name="cc_vertexz" value="-14"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkztOAlEUQG/HJArYAcUMAZSN8On5bEFAO2jxww5Ae4WCvfBzI4A9SuUpKEiYMGTynFFyT3KaNzP3vExyRZS/yiQiMsUZziPBdTOWSBZzeG0F1+3SesBHfDqxm3BEks7v3suNNs1OCN0FzY8QujdpkXw6+O4zzZ7h7sAWecFX2+zcc6Rvn/a/LlIilxjFGMbxKuV/7pKzFa7xc/d8nDx875ZGA5vYwju8P9J1m7tPgd0qYgnLBvfMa+4bZ+84xJHBrtfcDWdf+I1bg12vuRV2uoo1rPvcb7fvTMxVFEVRFOV/8wP2nzUh
+   eJztkzluwlAUAF+HJQjQBRc2CiFcBELPcgUg0EEbINwgkJ6l4C5AwkVYeggVU6RAwsIo+jaL/kjTPFtvLEtPRHOtTAIiU5zhd8C/7pMhksBnTBr+dd9pNbGF7TO7j7ZIzPb2u5yo02xcoPtDc36B7ktcJBX3v/tBs6O427VEevhlqd17j3xa5/2voCkSwgcMYwSj5v/3LpgtcYXrv+fj2PF7JRplrOAbVrF2ouu095A0t5XBV8wqvDO3vX1mAxziSGHXbe+G2RZ/caew67Y3x03nsYBFhfft1V6NRqPRaDS3wx5OZTSu
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="36">
@@ -147,7 +147,7 @@
  </objectgroup>
  <layer name="shadow" width="30" height="36">
   <data encoding="base64" compression="zlib">
-   eJzt0MEBABAMBMEUpH860oYCvPBBZhuY5CJyVguXO9cP7z39d9d/bWcul8vlcrnc293Vsu3D/dttj7oDSR4gTw==
+   eJzt0EERADAIwDAE4X/IwwSfQWogd4242Usul8vlcrlcLpfLnenaH+5utz51GyRjHik=
   </data>
  </layer>
 </map>

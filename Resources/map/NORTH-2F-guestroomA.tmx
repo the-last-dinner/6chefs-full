@@ -22,7 +22,7 @@
    <property name="cc_vertexz" value="-13"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlLlOAlEUho9CB4k2bMUMD6CtS6ugjUui4G6pRn0BfQkFbRWw0w410ffQl1DQxiVRcP0oSAg4zGWZMcb5k685OTlfzs29V+R/Z8clsgsJSLrsm3NDzy3kIN+Ct9E5Q26RYYhA1N28t3qO5hPRfcb9B/QcQgrSTXifNJFnrXbOFs7tOt5WM6GLTOq19Suc1xZ6j3Ge/IK3IyzSGa6t9/hFev3WeZdwLv/gbSQPAZHHQP2eBHcoCXuwrxnXLzwilx4171hQZDxYvyfHzDzcwb1mXO/yinR71bwq+0a4Q1EYgVHduL6Bc1PRq7JviplpyMCRbl5vV/o4w34YgMGKc1b1FtirCG/wDh/wabJrO7yxkEgcZmAW5mA+ZL232bww8xUKUNTN6+3KFH/ENMQgHjavVyfLmz6FMziHr9IbV7z3rSRb4SyxgHPRRm8Zu/ct4+xrnXcFzyqswboNTidOnDj5C/kGnEN5Lg==
+   eJztlMkug1EUxw/tpkPCptPi+/oAbNWwMbRsDAmtIeEFeAG2RGwMpexo2fECvAdbYiExtIbEkJjFbyORVvvdTl8X+k9+m5OT88u59+aK/O8sW0RWIAqrFvPmXNJzBUlIFeHNd06nVaQLghCyFu5Nn6O5RHRX9v5NerYgDokCvI+ayJOWOWca50wOb7Hp10UG9Mz6Ic6jMnp3ce5VwFvjF6n1Z9Yb3CKN7vJ5x3FO/OHNJ/cekQdP7p4ob2gV1iCmZa/vO0QOHGreXq9Inzd3T5KZKbiGGy17vc4pUu9U86rsG+QNhaAbevTs9UmcU4pelX3jzEzANuzoxvVSpYkzDEAztPw6Z1XvK3u9wTt8wCd8GexaCm/YJxKBYRiBURjzld9baJ6Z+QKv8KYb142yaBNZshn3DfJHDEEYIn7jenpmcczBPCzAOVwoeIvNMY4TOIUzaLeLdNjN91ZqX9X7LbXXrH2buMsAtEKb3bz7jeKIwTpsmOD7SRLXDdzCnYneaqqpphrVfAMoGIBu
   </data>
  </layer>
  <layer name="MonoChu" width="30" height="36">
@@ -30,7 +30,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzUENwCAQRcGfgAkOSANb1ElrCxSwmNhtyBsDIwEAANxvVOmp/u+0cwW8RypSLv5vs7MHvK+dX8ALAPiHDVZ2Bk4=
+   eJztzcENQEAYBeGXcNntYA9bC43QEHc6oSHuVOAd1PBHZL5kziMBAAD831KltcZ/Lz/v9zslaU5x76ZIrTv8PAO/g5+j67LU57jv5ude4n4AgG95AIw9Cec=
   </data>
  </layer>
  <layer name="MonoUe" width="30" height="36">
@@ -53,7 +53,7 @@
   <object id="35" x="256" y="176" width="64" height="112"/>
   <object id="36" x="352" y="176" width="64" height="112"/>
   <object id="37" x="416" y="160" width="32" height="48"/>
-  <object id="38" x="48" y="304" width="48" height="112"/>
+  <object id="38" x="32" y="304" width="64" height="112"/>
   <object id="39" x="32" y="240" width="96" height="32"/>
   <object id="40" x="32" y="96" width="32" height="64"/>
   <object id="47" x="416" y="112" width="32" height="16"/>

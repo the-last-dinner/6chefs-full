@@ -13,15 +13,15 @@
 	],
 	"2":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":0
-						}
-					],
+					"type":"sequence",
 					"action":[
 						{
 							"type":"playSE",
@@ -40,14 +40,19 @@
 							"event":["12","6"]
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":1
-						}
-					],
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
 							"type":"playSE",
@@ -70,14 +75,19 @@
 							"event":["12","4"]
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":2
-						}
-					],
+					"flg":2
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
 							"type":"getItem",
@@ -96,20 +106,20 @@
 							"event":["12","11"]
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":3
-						}
-					],
-					"action":[
-						{
-							"type":"systemMsg",
-							"text":["血生臭い・・・"]
-						}
-					]
+					"flg":3
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["血生臭い・・・"]
 				}
 			]
 		}
