@@ -528,12 +528,12 @@
             "require": ["second"],
             "member": {
                 "second": ["double", "int"],
-                "condition": [{
+                "condition": [[{
                     "require": ["equip"],
                     "member": {
                         "equip": [["stoi"]]
                     }
-                }],
+                }]],
                 "true": [["object"]],
                 "false": [["object"]],
                 "display": ["bool"]

@@ -164,8 +164,13 @@ GameEvent* EventFactory::createGameEvent(rapidjson::Value& json, GameEvent* call
             int mapId = DungeonSceneManager::getInstance()->getLocation().map_id;
             string mapFileName = CsvDataManager::getInstance()->getMapData()->getFileName(mapId);
             // @FIXME: callerがない場合eventIDを引数でもらいたい
-            string eventId = to_string((caller) ?
-                    caller->getEventId() : etoi(DungeonSceneManager::getInstance()->getRunningEventId()));
+            /**
+             * 2017/06/27
+             * 本当はcallerからイベントとる仕様だったけど、CountDownEventでなぜか取れないので暫定対応
+             */
+            // string eventId = to_string((caller) ?
+            //        caller->getEventId() : etoi(DungeonSceneManager::getInstance()->getRunningEventId()));
+            string eventId = etos(DungeonSceneManager::getInstance()->getRunningEventId());
             EventScriptValidator::create(mapFileName, eventId)->validate(json);
         }
         
