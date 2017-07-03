@@ -59,6 +59,7 @@ public:
     void stopCountDown();
     void scheduleFunction(float delta);
     void setCountDownEvent(GameEvent* event);
+    void resetTime();
 };
 
 #endif /* StopWatch_h */

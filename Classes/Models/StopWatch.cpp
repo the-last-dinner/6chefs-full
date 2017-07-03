@@ -121,6 +121,15 @@ void StopWatch::scheduleFunction(float delta)
 // カウントダウンイベントの保持
 void StopWatch::setCountDownEvent(GameEvent *event)
 {
+    if (this->countDownEvent) {
+        CC_SAFE_RELEASE_NULL(this->countDownEvent);
+    }
     this->countDownEvent = event;
     CC_SAFE_RETAIN(this->countDownEvent);
+}
+
+// 時間のリセット
+void StopWatch::resetTime()
+{
+    this->time = 0.0;
 }
