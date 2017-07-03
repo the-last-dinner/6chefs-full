@@ -423,7 +423,8 @@ StopWatch* DungeonSceneManager::getStopWatch()
 // ストップウォッチをリリース
 void DungeonSceneManager::releaseStopWatch()
 {
-    CC_SAFE_RELEASE_NULL(this->stopWatch);
+    this->stopWatch->resetTime();
+    // CC_SAFE_RELEASE_NULL(this->stopWatch); // イベントも解放されちゃうのでこれはなし
 }
 
 // ストップォッチを一時停止
