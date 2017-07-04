@@ -79,7 +79,7 @@
 							"pass":"1013",
 							"false":[
 								{
-									"type":"charamMsg",
+									"type":"charaMsg",
 									"text":["うーん開かないな・・・"],
 									"charaID":"0",
 									"imgID":"2"
