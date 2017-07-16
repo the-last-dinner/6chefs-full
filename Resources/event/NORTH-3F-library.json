@@ -41,26 +41,52 @@
 	],
 	"3":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
+					"action":[
+						{
+							"type":"storyMsg",
+							"title":"歴代晩餐会優秀者",
+							"text":["咲賀谷 朱花・・・アメリカ菓子\n田村 剣神・・・ハンバーグステーキ\n戸塚 大宝・・・×肉料理"]
+						},
+						{
+							"type":"charaMsg",
+							"text":["田村さんに咲賀谷さん・・・\nどっちも有名な料理人だ・・・\n戸塚さん？は聞いたことがないな・・・"],
+							"charaID":"0",
+							"imgID":"1"
+						},
+						{
+							"type":"addProfile",
+							"charaID":"6",
+							"infoID":"2"
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
+						}
+					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
 			"action":[
 				{
 					"type":"storyMsg",
 					"title":"歴代晩餐会優秀者",
-					"text":["咲賀谷 朱花・・・アメリカ菓子\n田村 剣神・・・ハンバーグステーキ\n戸塚 大宝・・・×肉料理"]
-				},
-				{
-					"type":"charaMsg",
-					"text":["田村さんに咲賀谷さん・・・\nどっちも有名な料理人だ・・・\n戸塚さん？は聞いたことがないな・・・"],
-					"charaID":"0",
-					"imgID":"1"
-				},
-				{
-					"type":"addProfile",
-					"charaID":"6",
-					"infoID":"2"
-				},
-				{
-					"type":"already"
+					"text":["咲賀谷　朱花・・・アメリカ菓子\n田村　剣神・・・ハンバーグステーキ\n戸塚　大宝・・・×肉料理"]
 				}
 			]
 		}
@@ -71,7 +97,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"Nevent":["22","5"]
+					"flg":0
 				}
 			],
 			"action":[
@@ -90,8 +116,8 @@
 							"imgID":"2"
 						},
 						{
-							"type":"already",
-							"event":["22","5"]
+							"type":"changeFlg",
+							"flg":1
 						}
 					]
 				}
@@ -101,7 +127,7 @@
 			"type":"if",
 			"condition":[
 				{
-					"event":["22","5"]
+					"flg":1
 				}
 			],
 			"action":[
@@ -504,23 +530,6 @@
 				},
 				{
 					"type":"fadein"
-				}
-			]
-		}
-	],
-	"21":[
-		{
-			"type":"if",
-			"condition":[
-				{
-					"event":["22","3"]
-				}
-			],
-			"action":[
-				{
-					"type":"storyMsg",
-					"title":"歴代晩餐会優秀者",
-					"text":["咲賀谷　朱花・・・アメリカ菓子\n田村　剣神・・・ハンバーグステーキ\n戸塚　大宝・・・×肉料理"]
 				}
 			]
 		}
