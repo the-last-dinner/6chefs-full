@@ -261,7 +261,9 @@ void DungeonScene::onMenuKeyPressed()
     _listener->setEnabled(false);
     
     // カウントダウンしてれば停止
-    DungeonSceneManager::getInstance()->pauseStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->pauseStopWatch();
+    }
     
     // パーティの位置をセット
     PlayerDataManager::getInstance()->getLocalData()->setLocation(DungeonSceneManager::getInstance()->getParty()->getMembersData());
@@ -284,7 +286,9 @@ void DungeonScene::onMenuKeyPressed()
 void DungeonScene::onPopMenuScene()
 {
     // カウントダウンをしれてば再開
-    DungeonSceneManager::getInstance()->startStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->startStopWatch();
+    }
     
     // 装備チェンジイベント実行可能状態に
     DungeonSceneManager::getInstance()->onReturnFromDungeonMenuScene = true;
@@ -334,7 +338,9 @@ void DungeonScene::onEventStart()
     _configListener->setKeyconfigEnabled(false);
     
     // カウントダウンしてれば停止
-    DungeonSceneManager::getInstance()->pauseStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->pauseStopWatch();
+    }
 }
 
 // イベントキューが空になった時
@@ -353,7 +359,9 @@ void DungeonScene::onEventFinished()
     _configListener->setKeyconfigEnabled(true);
     
     // カウントダウンをしれてば再開
-    DungeonSceneManager::getInstance()->startStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->startStopWatch();
+    }
 }
 
 // バトル開始時
@@ -375,14 +383,18 @@ void DungeonScene::onEnterPushedScene()
     if (_listener) _listener->setEnabled(false);
     
     // カウントダウンしてれば停止
-    DungeonSceneManager::getInstance()->pauseStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->pauseStopWatch();
+    }
 }
 
 // pushされたシーンから戻ってくる特
 void DungeonScene::onExitPushedScene()
 {
     // カウントダウンをしれてば再開
-    DungeonSceneManager::getInstance()->startStopWatch();
+    if (DungeonSceneManager::getInstance()->existsStopWatch()) {
+        DungeonSceneManager::getInstance()->startStopWatch();
+    }
     
     // 操作可能に戻す
     if (_listener) _listener->setEnabled(true);

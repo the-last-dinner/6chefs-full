@@ -35,6 +35,8 @@ private:
     GameEvent* countDownEvent {nullptr};
     // カウントしている状態か
     bool isCounting {false};
+    // カウントスタート状態かどうか
+    bool isStarted {false};
 
 public:
     // スケジュール用コールバック関数
@@ -60,6 +62,9 @@ public:
     void scheduleFunction(float delta);
     void setCountDownEvent(GameEvent* event);
     void resetTime();
+    
+    // カウントスタート状態か
+    bool isStartedCounting();
 };
 
 #endif /* StopWatch_h */
