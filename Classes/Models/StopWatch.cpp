@@ -84,6 +84,7 @@ int StopWatch::getTimeInt()
 // カウントダウン開始
 void StopWatch::startCountDown(const float& intervalTime)
 {
+    this->isStarted = true;
     this->intervalTime = intervalTime;
     Director::getInstance()->getScheduler()->schedule(schedule_selector(StopWatch::scheduleFunction), this, this->intervalTime, false);
     this->tic();
@@ -132,4 +133,10 @@ void StopWatch::setCountDownEvent(GameEvent *event)
 void StopWatch::resetTime()
 {
     this->time = 0.0;
+    this->isStarted = false;
+}
+
+bool StopWatch::isStartedCounting()
+{
+    return this->isStarted;
 }

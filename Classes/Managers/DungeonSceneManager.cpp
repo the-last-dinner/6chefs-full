@@ -448,7 +448,10 @@ void DungeonSceneManager::startStopWatch()
 // ストップウォッチインスタンスが存在するかどうか
 bool DungeonSceneManager::existsStopWatch()
 {
-    return this->stopWatch;
+    if (this->stopWatch) {
+        return this->stopWatch->isStartedCounting();
+    }
+    return false;
 }
 
 #pragma mark -
