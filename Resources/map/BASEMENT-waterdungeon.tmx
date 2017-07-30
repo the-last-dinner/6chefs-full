@@ -70,16 +70,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <layer name="CharaUe2" width="26" height="22">
   <data encoding="base64" compression="zlib">
    eJxjYEAFF4H4EhVoQuA9EH+gAk0IjPpn1D/09M8oGAWjYBSMgsEJAPK2fkk=

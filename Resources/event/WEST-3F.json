@@ -103,103 +103,108 @@
 					"option":"reaction"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":["1520","1521"]
-						}
-					],
+					"type":"spawn",
 					"action":[
 						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":["1520","1521"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["林檎をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"17"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["林檎をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"17"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1520",
-							"Nitem":"1521"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1520",
+									"Nitem":"1521"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["林檎をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"17"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["林檎をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"17"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1521",
-							"Nitem":"1520",
-							"status":["3","1"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1521",
+									"Nitem":"1520",
+									"status":["3","1"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["小型低速ジューサーをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"18"
+											"type":"charaMsg",
+											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["小型低速ジューサーをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"18"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
@@ -255,69 +260,74 @@
 					]
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":"1522",
-							"Nitem":"1523"
-						}
-					],
+					"type":"spawn",
 					"action":[
 						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1522",
+									"Nitem":"1523"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["加藤さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["猪肉をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"19"
+											"type":"charaMsg",
+											"text":["加藤さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["猪肉をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"19"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1523",
-							"Nitem":"1522",
-							"status":["2","1"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1523",
+									"Nitem":"1522",
+									"status":["2","1"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["加藤さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["麻の髪紐をあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"20"
+											"type":"charaMsg",
+											"text":["加藤さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["麻の髪紐をあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"20"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}

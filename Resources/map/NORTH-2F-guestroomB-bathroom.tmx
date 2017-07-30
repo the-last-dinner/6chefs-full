@@ -50,16 +50,6 @@
   <object id="7" x="128" y="0" width="32" height="128"/>
   <object id="8" x="64" y="64" width="96" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <objectgroup name="event">
   <object id="9" x="0" y="96" width="32" height="32">
    <properties>

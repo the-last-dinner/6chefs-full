@@ -68,17 +68,6 @@
   <object id="8" x="16" y="0" width="288" height="64"/>
   <object id="9" x="144" y="160" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)">
-  <object id="29" x="144" y="160" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="17"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1062"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="smoke" width="20" height="24">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUEAMaOBkY6oC4npNys6qAZlQDcRcQd1PBPBigtnmDHeRTya81nIg4AbELsJibDxUvBOIiqHwJGg0DHUB+GxC3c0LYNVjMg9lVi5SuGpBodPfVopmJDmDinUjpqgeJRndfJ1QMm32jgD4AAOjqG1U=

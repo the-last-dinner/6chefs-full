@@ -135,16 +135,6 @@
   <object id="14" x="224" y="160" width="32" height="32"/>
   <object id="16" x="64" y="32" width="352" height="16"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <layer name="neck" width="30" height="22">
   <properties>
    <property name="z" value="18"/>

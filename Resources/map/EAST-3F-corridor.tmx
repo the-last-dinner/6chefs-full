@@ -91,16 +91,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <objectgroup name="event">
   <object id="25" x="368" y="0" width="32" height="32">
    <properties>

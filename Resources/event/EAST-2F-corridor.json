@@ -113,103 +113,108 @@
 									"imgID":"1"
 								},
 								{
-									"type":"if",
-									"condition":[
-										{
-											"item":["1524","1525"]
-										}
-									],
+									"type":"spawn",
 									"action":[
 										{
-											"type":"sequence",
+											"type":"if",
+											"condition":[
+												{
+													"item":["1524","1525"]
+												}
+											],
 											"action":[
 												{
-													"type":"charaMsg",
-													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-													"charaID":"0",
-													"imgID":"1"
-												},
-												{
-													"type":"questionMsg",
-													"text":["ねじりハチマキをあげますか？"],
-													"choices":[
+													"type":"sequence",
+													"action":[
 														{
-															"choice":"はい",
-															"eventID":"12"
+															"type":"charaMsg",
+															"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+															"charaID":"0",
+															"imgID":"1"
 														},
 														{
-															"choice":"いいえ"
+															"type":"questionMsg",
+															"text":["ねじりハチマキをあげますか？"],
+															"choices":[
+																{
+																	"choice":"はい",
+																	"eventID":"12"
+																},
+																{
+																	"choice":"いいえ"
+																}
+															]
 														}
 													]
 												}
 											]
-										}
-									]
-								},
-								{
-									"type":"if",
-									"condition":[
+										},
 										{
-											"item":"1524",
-											"Nitem":"1525"
-										}
-									],
-									"action":[
-										{
-											"type":"sequence",
+											"type":"if",
+											"condition":[
+												{
+													"item":"1524",
+													"Nitem":"1525"
+												}
+											],
 											"action":[
 												{
-													"type":"charaMsg",
-													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-													"charaID":"0",
-													"imgID":"1"
-												},
-												{
-													"type":"questionMsg",
-													"text":["ねじりハチマキをあげますか？"],
-													"choices":[
+													"type":"sequence",
+													"action":[
 														{
-															"choice":"はい",
-															"eventID":"12"
+															"type":"charaMsg",
+															"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+															"charaID":"0",
+															"imgID":"1"
 														},
 														{
-															"choice":"いいえ"
+															"type":"questionMsg",
+															"text":["ねじりハチマキをあげますか？"],
+															"choices":[
+																{
+																	"choice":"はい",
+																	"eventID":"12"
+																},
+																{
+																	"choice":"いいえ"
+																}
+															]
 														}
 													]
 												}
 											]
-										}
-									]
-								},
-								{
-									"type":"if",
-									"condition":[
+										},
 										{
-											"item":"1525",
-											"Nitem":"1524",
-											"status":["5","1"]
-										}
-									],
-									"action":[
-										{
-											"type":"sequence",
+											"type":"if",
+											"condition":[
+												{
+													"item":"1525",
+													"Nitem":"1524",
+													"status":["5","1"]
+												}
+											],
 											"action":[
 												{
-													"type":"charaMsg",
-													"text":["大善さんが喜びそうなものを持ってたハズだ。"],
-													"charaID":"0",
-													"imgID":"1"
-												},
-												{
-													"type":"questionMsg",
-													"text":["お祭りはっぴをあげますか？"],
-													"choices":[
+													"type":"sequence",
+													"action":[
 														{
-															"choice":"はい",
-															"eventID":"13"
+															"type":"charaMsg",
+															"text":["大善さんが喜びそうなものを持ってたハズだ。"],
+															"charaID":"0",
+															"imgID":"1"
 														},
 														{
-															"choice":"いいえ"
+															"type":"questionMsg",
+															"text":["お祭りはっぴをあげますか？"],
+															"choices":[
+																{
+																	"choice":"はい",
+																	"eventID":"13"
+																},
+																{
+																	"choice":"いいえ"
+																}
+															]
 														}
 													]
 												}

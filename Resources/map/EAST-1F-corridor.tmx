@@ -90,40 +90,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
-  <object id="33" x="400" y="160" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="3"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1072"/>
-   </properties>
-  </object>
-  <object id="34" x="288" y="128" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="12"/>
-    <property name="direction" value="LEFT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1078"/>
-   </properties>
-  </object>
-  <object id="37" x="432" y="160" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="20"/>
-    <property name="direction" value="LEFT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1079"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup name="event">
   <object id="23" x="416" y="0" width="32" height="16">
    <properties>

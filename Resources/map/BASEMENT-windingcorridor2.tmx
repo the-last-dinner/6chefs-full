@@ -35,8 +35,6 @@
   <object id="29" x="64" y="336" width="16" height="32"/>
   <object id="30" x="144" y="336" width="16" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
  <objectgroup name="event">
   <object id="12" x="576" y="96" width="32" height="64">
    <properties>
@@ -91,7 +89,7 @@
   </object>
  </objectgroup>
  <objectgroup name="path">
-  <object id="19" x="64" y="304" width="32" height="32">
+  <object id="19" x="128" y="304" width="32" height="32">
    <properties>
     <property name="nextID" value="2"/>
     <property name="pathID" value="1"/>

@@ -103,19 +103,6 @@
   <object id="49" x="304" y="480" width="16" height="32"/>
   <object id="50" x="64" y="128" width="16" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)">
-  <object id="36" x="288" y="384" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="6"/>
-    <property name="EventID" value="12"/>
-    <property name="direction" value="LEFT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1057"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup name="event">
   <properties>
    <property name="EventID" value="12110"/>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="32">
- <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="chip10e_glas" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="chip10e_glas.png" trans="674c56" width="480" height="256"/>
  </tileset>
- <tileset firstgid="481" name="Skull" tilewidth="16" tileheight="16">
+ <tileset firstgid="481" name="Skull" tilewidth="16" tileheight="16" tilecount="16" columns="4">
   <image source="Skull.png" trans="674c56" width="64" height="64"/>
  </tileset>
- <tileset firstgid="497" name="object_bone01" tilewidth="16" tileheight="16">
+ <tileset firstgid="497" name="object_bone01" tilewidth="16" tileheight="16" tilecount="288" columns="18">
   <image source="object_bone01.png" trans="c1a5c8" width="288" height="256"/>
  </tileset>
- <tileset firstgid="785" name="kitchen3" tilewidth="16" tileheight="16">
+ <tileset firstgid="785" name="kitchen3" tilewidth="16" tileheight="16" tilecount="1024" columns="32">
   <image source="kitchen3.png" trans="ffffff" width="512" height="512"/>
  </tileset>
- <tileset firstgid="1809" name="set-mansion-in" tilewidth="16" tileheight="16">
+ <tileset firstgid="1809" name="set-mansion-in" tilewidth="16" tileheight="16" tilecount="9900" columns="90">
   <image source="set-mansion-in.png" trans="007575" width="1440" height="1760"/>
  </tileset>
- <tileset firstgid="11709" name="ST-Sewer-01" tilewidth="16" tileheight="16">
+ <tileset firstgid="11709" name="ST-Sewer-01" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
   <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="26" height="24">
@@ -82,41 +82,6 @@
   <object id="11" x="32" y="80" width="32" height="128"/>
   <object id="12" x="64" y="64" width="176" height="16"/>
   <object id="13" x="240" y="32" width="144" height="32"/>
- </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)">
-  <object id="21" x="192" y="192" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="1"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1058"/>
-   </properties>
-  </object>
-  <object id="22" x="192" y="128" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="6"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1059"/>
-   </properties>
-  </object>
-  <object id="25" x="192" y="128" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="6"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1024"/>
-   </properties>
-  </object>
-  <object id="30" x="192" y="352" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="5"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="10100"/>
-   </properties>
-  </object>
  </objectgroup>
  <layer name="CharaUe" width="26" height="24">
   <data encoding="base64" compression="zlib">

@@ -405,50 +405,6 @@
                 {
                   "type": "removeObject",
                   "objID": "1029"
-                },
-                {
-                  "type": "createObject",
-                  "objID": "1031",
-                  "x":38,
-                  "y":22,
-                  "charaID":"1",
-                  "eventID":"1",
-                  "direction":"LEFT",
-                  "movePattern":"1",
-                  "trigger":"2"
-                },
-                {
-                  "type": "createObject",
-                  "objID": "1032",
-                  "x":36,
-                  "y":22,
-                  "charaID":"3",
-                  "eventID":"2",
-                  "direction":"LEFT",
-                  "movePattern":"1",
-                  "trigger":"2"
-                },
-                {
-                  "type": "createObject",
-                  "objID": "1033",
-                  "x":27,
-                  "y":22,
-                  "charaID":"5",
-                  "eventID":"3",
-                  "direction":"RIGHT",
-                  "movePattern":"1",
-                  "trigger":"2"
-                },
-                {
-                  "type": "createObject",
-                  "objID": "1034",
-                  "x":31,
-                  "y":22,
-                  "charaID":"4",
-                  "eventID":"24",
-                  "direction":"LEFT",
-                  "movePattern":"1",
-                  "trigger":"2"
                 }
               ]
             },
@@ -2839,9 +2795,9 @@
     }
   ],
   "21":[
-    {
-      "type":"setLight",
-      "objID":"1"
+  	{
+    	"type":"setLight",
+    	"objID":"1"
     },
     {
       "type":"setLight",

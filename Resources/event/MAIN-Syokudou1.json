@@ -722,67 +722,72 @@
 					"imgID":"1"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":["1527","1528"]
-						}
-					],
+					"type":"spawn",
 					"action":[
 						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":["1527","1528"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["焔のかみしもをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"64"
+											"type":"charaMsg",
+											"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["焔のかみしもをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"64"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1527",
-							"Nitem":"1528"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1527",
+									"Nitem":"1528"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["焔のかみしもをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"64"
+											"type":"charaMsg",
+											"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["焔のかみしもをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"64"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
@@ -1011,67 +1016,72 @@
 							"imgID":"2"
 						},
 						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1520","1521"]
-								}
-							],
+							"type":"spawn",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":["1520","1521"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["林檎をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"63"
+													"type":"charaMsg",
+													"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["林檎をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"63"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1520",
-									"Nitem":"1521"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1520",
+											"Nitem":"1521"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["林檎をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"63"
+													"type":"charaMsg",
+													"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["林檎をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"63"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}

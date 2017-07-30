@@ -44,8 +44,6 @@
   <object id="10" x="64" y="224" width="32" height="96"/>
   <object id="11" x="0" y="160" width="64" height="160"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)"/>
  <objectgroup name="event">
   <object id="12" x="160" y="288" width="32" height="32">
    <properties>

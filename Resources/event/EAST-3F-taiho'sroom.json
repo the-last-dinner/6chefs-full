@@ -253,68 +253,63 @@
 	],
 	"5":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":0
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"storyMsg",
-									"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
-								},
-								{
-									"type":"addProfile",
-									"charaID":"8",
-									"infoID":"1"
-								},
-								{
-									"type":"charaMsg",
-									"talk":[
-										{
-											"text":["・・・"],
-											"charaID":"0",
-											"imgID":"2"
-										},
-										{
-											"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
-											"charaID":"5",
-											"imgID":"2"
-										}
-									]
-								},
-								{
-									"type":"already",
-									"event":["40","10"]
-								},
-								{
-									"type":"changeFlg",
-									"flg":1
-								}
-							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":1
-						}
-					],
+					"type":"sequence",
 					"action":[
 						{
 							"type":"storyMsg",
 							"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
+						},
+						{
+							"type":"addProfile",
+							"charaID":"8",
+							"infoID":"1"
+						},
+						{
+							"type":"charaMsg",
+							"talk":[
+								{
+									"text":["・・・"],
+									"charaID":"0",
+									"imgID":"2"
+								},
+								{
+									"text":["そろそろ戻るか。\nアイツ等も気になるしよ"],
+									"charaID":"5",
+									"imgID":"2"
+								}
+							]
+						},
+						{
+							"type":"already",
+							"event":["40","10"]
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
 						}
 					]
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"storyMsg",
+					"text":["-◎月×日-\n今日は二人、\n一人は燻製にした。\nもう一人はそのまま"]
 				}
 			]
 		}

@@ -119,48 +119,6 @@
   <object id="59" x="144" y="48" width="32" height="32"/>
   <object id="62" x="400" y="96" width="32" height="48"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
-  <object id="63" x="224" y="352" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="8"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1099"/>
-   </properties>
-  </object>
-  <object id="66" x="80" y="208" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="6"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="10108"/>
-   </properties>
-  </object>
-  <object id="67" x="64" y="288" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="8"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="10110"/>
-   </properties>
-  </object>
-  <object id="68" x="96" y="272" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="7"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="10109"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="CharaUe1" width="30" height="26">
   <data encoding="base64" compression="zlib">
    eJzt07kNgEAMBVEDNv1wNMSZc9bPdIBEwG7wR3qxHdhmSimVT02YtejQR+pt8qlwsxIVHIHaU2+l1LcGbnfEhBkL1h/ueWPGjgMnLtz6I6VeewCaVwZG

@@ -67,24 +67,6 @@
   <object id="35" x="288" y="512" width="80" height="32"/>
   <object id="36" x="320" y="480" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
-  <object id="33" x="224" y="512" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="8"/>
-    <property name="direction" value="UP"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1015"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="CharaUe1" width="30" height="36" opacity="0.94">
   <properties>
    <property name="cc_vertexz" value="-11"/>

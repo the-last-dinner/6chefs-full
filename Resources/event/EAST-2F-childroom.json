@@ -235,51 +235,46 @@
 	],
 	"5":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"flg":0
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":0
-						}
-					],
+					"type":"sequence",
 					"action":[
 						{
-							"type":"sequence",
-							"action":[
-								{
-									"type":"systemMsg",
-									"text":["絵本と絵本の間に何か挟まっている"]
-								},
-								{
-									"type":"displayImg",
-									"file":"yukiLetter.png"
-								},
-								{
-									"type":"changeFlg",
-									"flg":1
-								}
-							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
-						{
-							"flg":1
-						}
-					],
-					"action":[
+							"type":"systemMsg",
+							"text":["絵本と絵本の間に何か挟まっている"]
+						},
 						{
 							"type":"displayImg",
 							"file":"yukiLetter.png"
+						},
+						{
+							"type":"changeFlg",
+							"flg":1
 						}
 					]
 				}
 			]
-		}
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"flg":1
+				}
+			],
+			"action":[
+				{
+					"type":"displayImg",
+					"file":"yukiLetter.png"
+				}
+			]
+		}	
 	],
 	"6":[
 		{
@@ -289,15 +284,15 @@
 	],
 	"7":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"Nevent":["33","10"]
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"Nevent":["33","10"]
-						}
-					],
+					"type":"sequence",
 					"action":[
 						{
 							"type":"getItem",
@@ -312,20 +307,20 @@
 							"event":["33","10"]
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["33","10"]
-						}
-					],
-					"action":[
-						{
-							"type":"systemMsg",
-							"text":["所々血のついた玩具が入っている"]
-						}
-					]
+					"event":["33","10"]
+				}
+			],
+			"action":[
+				{
+					"type":"systemMsg",
+					"text":["所々血のついた玩具が入っている"]
 				}
 			]
 		}

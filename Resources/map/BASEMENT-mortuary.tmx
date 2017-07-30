@@ -82,16 +82,6 @@
   <object id="10" x="32" y="0" width="32" height="352"/>
   <object id="12" x="32" y="128" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
- <objectgroup name="Chara(object)">
-  <properties>
-   <property name="cc_vertexz" value="0"/>
-  </properties>
- </objectgroup>
  <layer name="CharaUe1" width="26" height="22">
   <data encoding="base64" compression="zlib">
    eJxjYEAAU0YGuoBRe0btGQWDHwy39DZqz6g9o/aMbAAAVVADYQ==

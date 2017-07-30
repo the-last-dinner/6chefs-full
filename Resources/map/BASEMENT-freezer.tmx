@@ -59,29 +59,6 @@
   <object id="13" x="64" y="16" width="64" height="64"/>
   <object id="14" x="128" y="0" width="128" height="64"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)">
-  <object id="27" x="32" y="160" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="1"/>
-    <property name="EventID" value="5"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1070"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="29" x="64" y="160" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="1"/>
-    <property name="EventID" value="6"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1071"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="CharaUe1" width="20" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4B8IM3KwCDDSpgeBUMTjMbvKMAHAJ8dAos=

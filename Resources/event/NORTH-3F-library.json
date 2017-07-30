@@ -218,103 +218,108 @@
 					"imgID":"1"
 				},
 				{
-					"type":"if",
-					"condition":[
-						{
-							"item":["1527","1528"]
-						}
-					],
+					"type":"spawn",
 					"action":[
 						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":["1527","1528"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["焔のかみしもをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"19"
+											"type":"charaMsg",
+											"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["焔のかみしもをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"19"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1527",
-							"Nitem":"1528"
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1527",
+									"Nitem":"1528"
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["焔のかみしもをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"19"
+											"type":"charaMsg",
+											"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["焔のかみしもをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"19"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+						},
 						{
-							"item":"1528",
-							"Nitem":"1527",
-							"status":["4","1"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
+							"type":"if",
+							"condition":[
+								{
+									"item":"1528",
+									"Nitem":"1527",
+									"status":["4","1"]
+								}
+							],
 							"action":[
 								{
-									"type":"charaMsg",
-									"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
-									"charaID":"0",
-									"imgID":"1"
-								},
-								{
-									"type":"questionMsg",
-									"text":["曇り止めスプレーをあげますか？"],
-									"choices":[
+									"type":"sequence",
+									"action":[
 										{
-											"choice":"はい",
-											"eventID":"20"
+											"type":"charaMsg",
+											"text":["荒間田さんが喜びそうなものを持ってたハズだ。"],
+											"charaID":"0",
+											"imgID":"1"
 										},
 										{
-											"choice":"いいえ"
+											"type":"questionMsg",
+											"text":["曇り止めスプレーをあげますか？"],
+											"choices":[
+												{
+													"choice":"はい",
+													"eventID":"20"
+												},
+												{
+													"choice":"いいえ"
+												}
+											]
 										}
 									]
 								}

@@ -57,53 +57,6 @@
   <object id="15" x="80" y="144" width="128" height="48"/>
   <object id="36" x="272" y="448" width="96" height="32"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chara(object)">
-  <object id="21" x="48" y="320" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="7"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1074"/>
-   </properties>
-  </object>
-  <object id="23" x="304" y="112" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="8"/>
-    <property name="EventID" value="9"/>
-    <property name="direction" value="DOWN"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1073"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="26" x="224" y="288" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="19"/>
-    <property name="EventID" value="7"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1075"/>
-    <property name="trigger" value="2"/>
-   </properties>
-  </object>
-  <object id="27" x="48" y="320" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="18"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="1086"/>
-   </properties>
-  </object>
-  <object id="32" x="240" y="304" width="32" height="32">
-   <properties>
-    <property name="CharaID" value="21"/>
-    <property name="direction" value="RIGHT"/>
-    <property name="movePattern" value="1"/>
-    <property name="objID" value="10106"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="CharaUe" width="40" height="30">
   <data encoding="base64" compression="zlib">
    eJztysEJACAMBMH0oKD9V2o+wY9gCpiB+xwbAUAZufn4V243+m736wEAALgOn1sBAw==

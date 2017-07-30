@@ -1575,103 +1575,108 @@
 							"imgID":"2"
 						},
 						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1520","1521"]
-								}
-							],
+							"type":"spawn",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":["1520","1521"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["林檎をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"42"
+													"type":"charaMsg",
+													"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["林檎をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"42"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1520",
-									"Nitem":"1521"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1520",
+											"Nitem":"1521"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["林檎をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"42"
+													"type":"charaMsg",
+													"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["林檎をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"42"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1521",
-									"Nitem":"1520",
-									"status":["3","1"]
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1521",
+											"Nitem":"1520",
+											"status":["3","1"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["一色さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["小型低速ジューサーをあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"43"
+													"type":"charaMsg",
+													"text":["一色さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["小型低速ジューサーをあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"43"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
@@ -1712,103 +1717,108 @@
 							"imgID":"1"
 						},
 						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1526","1533"]
-								}
-							],
+							"type":"spawn",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":["1526","1533"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["子供用弁当箱をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"38"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["子供用弁当箱をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"38"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1526",
-									"Nitem":"1533"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1526",
+											"Nitem":"1533"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["子供用弁当箱をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"38"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["子供用弁当箱をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"38"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1533",
-									"Nitem":"1526",
-									"status":["1","1"]
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1533",
+											"Nitem":"1526",
+											"status":["1","1"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["三角巾をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"39"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["三角巾をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"39"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
@@ -1845,103 +1855,108 @@
 							"imgID":"1"
 						},
 						{
-							"type":"if",
-							"condition":[
-								{
-									"item":["1526","1533"]
-								}
-							],
+							"type":"spawn",
 							"action":[
 								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":["1526","1533"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["子供用弁当箱をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"38"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["子供用弁当箱をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"38"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1526",
-									"Nitem":"1533"
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1526",
+											"Nitem":"1533"
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["子供用弁当箱をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"38"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["子供用弁当箱をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"38"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"if",
-							"condition":[
+								},
 								{
-									"item":"1533",
-									"Nitem":"1526",
-									"status":["1","1"]
-								}
-							],
-							"action":[
-								{
-									"type":"sequence",
+									"type":"if",
+									"condition":[
+										{
+											"item":"1533",
+											"Nitem":"1526",
+											"status":["1","1"]
+										}
+									],
 									"action":[
 										{
-											"type":"charaMsg",
-											"text":["中山さんが喜びそうなものを持ってたハズだ。"],
-											"charaID":"0",
-											"imgID":"1"
-										},
-										{
-											"type":"questionMsg",
-											"text":["三角巾をあげますか？"],
-											"choices":[
+											"type":"sequence",
+											"action":[
 												{
-													"choice":"はい",
-													"eventID":"39"
+													"type":"charaMsg",
+													"text":["中山さんが喜びそうなものを持ってたハズだ。"],
+													"charaID":"0",
+													"imgID":"1"
 												},
 												{
-													"choice":"いいえ"
+													"type":"questionMsg",
+													"text":["三角巾をあげますか？"],
+													"choices":[
+														{
+															"choice":"はい",
+															"eventID":"39"
+														},
+														{
+															"choice":"いいえ"
+														}
+													]
 												}
 											]
 										}

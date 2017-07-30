@@ -42,8 +42,6 @@
   <object id="10" x="16" y="0" width="224" height="64"/>
   <object id="11" x="0" y="256" width="256" height="16"/>
  </objectgroup>
- <objectgroup name="Ugokumono(object)"/>
- <objectgroup name="Chrara(object)"/>
  <layer name="CharaUe" width="16" height="16">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4AykM2BXTyDA7/cKBh4AADpkgHH
