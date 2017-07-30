@@ -459,6 +459,11 @@
 							"direction":"UP"
 						},
 						{
+							"type":"changeDirection",
+							"objID":"1057",
+							"direction":"DOWN"
+						},
+						{
 							"type":"fadein"
 						},
 						{
@@ -509,21 +514,10 @@
 							]
 						},
 						{
-							"type":"charaWalkTO",
-							"objID":"hero",
-							"x":18,
-							"y":25
-						},
-						{
-							"type":"changeDirection",
-							"objID":"hero",
-							"direction":"LEFT"
-						},
-						{
 							"type":"charaWarp",
 							"objID":"1057",
 							"direction":"LEFT",
-							"x":16,
+							"x":18,
 							"y":25
 						},
 						{

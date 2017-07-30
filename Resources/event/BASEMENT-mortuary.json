@@ -90,6 +90,9 @@
 							"type":"fadeout"
 						},
 						{
+							"type":"stopBGM"
+						},
+						{
 							"type":"playSE",
 							"file":"switch1.mp3"
 						},

@@ -77,172 +77,167 @@
 	],
 	"5":[
 		{
-			"type":"sequence",
+			"type":"if",
+			"condition":[
+				{
+					"Nitem":["1516"],
+					"Nevent":["43","6"]
+				}
+			],
 			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"Nitem":["1516"],
-							"Nevent":["43","6"]
-						}
-					],
+					"type":"charaMsg",
+					"charaID":"10",
+					"text":["酒・・・酒・・・"],
+					"name":"吹き出物だらけの男"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"item":["1516"]
+				}
+			],
+			"action":[
+				{
+					"type":"sequence",
 					"action":[
 						{
 							"type":"charaMsg",
 							"charaID":"10",
-							"text":["酒・・・酒・・・"],
-							"name":"吹き出物だらけの男"
-						}
-					]
-				},
-				{
-					"type":"if",
-					"condition":[
+							"text":["おい！ソイツぁ・・・酒か！？"],
+							"name":"吹き出物だらけの男",
+							"option":"reaction"
+						},
 						{
-							"item":["1516"]
-						}
-					],
-					"action":[
-						{
-							"type":"sequence",
-							"action":[
+							"type":"questionMsg",
+							"text":["茶色く濁ったどぶろくをあげますか？"],
+							"choices":[
 								{
-									"type":"charaMsg",
-									"charaID":"10",
-									"text":["おい！ソイツぁ・・・酒か！？"],
-									"name":"吹き出物だらけの男",
-									"option":"reaction"
-								},
-								{
-									"type":"questionMsg",
-									"text":["茶色く濁ったどぶろくをあげますか？"],
-									"choices":[
+									"choice":"はい",
+									"action":[
 										{
-											"choice":"はい",
+											"type":"sequence",
 											"action":[
 												{
-													"type":"sequence",
+													"type":"stopBGM",
+													"file":"jail-door-close1.mp3"
+												},
+												{
+													"type":"stopSwing"
+												},
+												{
+													"type":"removeItem",
+													"itemID":"1516"
+												},
+												{
+													"type":"charaMsg",
+													"charaID":"10",
+													"text":["おお！話が分かるじゃねえか！"],
+													"name":"吹き出物だらけの男"
+												},
+												{
+													"type":"playSE",
+													"file":"drink.mp3"
+												},
+												{
+										          "type":"addProfile",
+										          "charaID":"10",
+										          "infoID":"2"
+										        },
+												{
+													"type":"charaMsg",
+													"charaID":"10",
+													"text":["そうだ\nイイコト教えてやる","この先に死体置き場があっただろう？\nそこの南側の壁にスイッチがあるんだが・・・","押してみるとおもしれえことが起きるぜ"],
+													"name":"吹き出物だらけの男"
+												},
+												{
+													"type":"createEnemy",
+													"objID":"146",
+													"charaID":"8",
+													"x":4,
+													"y":16,
+													"direction":"RIGHT",
+													"speed":1.2,
+													"times":4
+												},
+												{
+													"type":"spawn",
 													"action":[
 														{
-															"type":"stopBGM",
-															"file":"jail-door-close1.mp3"
+															"type":"changeDirection",
+															"direction":"DOWN",
+															"objID":"hero"
 														},
 														{
-															"type":"stopSwing"
-														},
-														{
-															"type":"removeItem",
-															"itemID":"1516"
-														},
-														{
-															"type":"charaMsg",
-															"charaID":"10",
-															"text":["おお！話が分かるじゃねえか！"],
-															"name":"吹き出物だらけの男"
-														},
-														{
-															"type":"playSE",
-															"file":"drink.mp3"
-														},
-														{
-												          "type":"addProfile",
-												          "charaID":"10",
-												          "infoID":"2"
+												          "type":"spawn",
+												          "action":[
+												            {
+												              "type": "reaction",
+												              "objID": "hero"
+												            },
+												            {
+												              "type":"playSE",
+												              "file":"reaction.mp3",
+												              "volume":0.25
+												            }
+												          ]
 												        },
 														{
-															"type":"charaMsg",
-															"charaID":"10",
-															"text":["そうだ\nイイコト教えてやる","この先に死体置き場があっただろう？\nそこの南側の壁にスイッチがあるんだが・・・","押してみるとおもしれえことが起きるぜ"],
-															"name":"吹き出物だらけの男"
+															"type":"already",
+															"event":["43","6"]
 														},
 														{
-															"type":"createEnemy",
-															"objID":"146",
-															"charaID":"8",
-															"x":4,
-															"y":16,
-															"direction":"RIGHT",
-															"speed":1.2,
-															"times":4
-														},
-														{
-															"type":"spawn",
-															"action":[
-																{
-																	"type":"changeDirection",
-																	"direction":"DOWN",
-																	"objID":"hero"
-																},
-																{
-														          "type":"spawn",
-														          "action":[
-														            {
-														              "type": "reaction",
-														              "objID": "hero"
-														            },
-														            {
-														              "type":"playSE",
-														              "file":"reaction.mp3",
-														              "volume":0.25
-														            }
-														          ]
-														        },
-																{
-																	"type":"already",
-																	"event":["43","6"]
-																},
-																{
-																	"type":"stopBGM",
-																	"file":"bgm_noroi.mp3"
-																}
-															]
+															"type":"stopBGM",
+															"file":"bgm_noroi.mp3"
 														}
 													]
 												}
 											]
-										},
-										{
-											"choice":"いいえ"
 										}
 									]
+								},
+								{
+									"choice":"いいえ"
 								}
 							]
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["43","6"],
-							"Nevent":["48","2"]
-						}
-					],
-					"action":[
-						{
-							"type":"charaMsg",
-							"charaID":"10",
-							"text":["この先にある死体置き場の南側の壁にスイッチがあるんだが\n押してみるとおもしれえことが起きるぜ"],
-							"name":"吹き出物だらけの男"
-						}
-					]
-				},
+					"event":["43","6"],
+					"Nevent":["48","2"]
+				}
+			],
+			"action":[
 				{
-					"type":"if",
-					"condition":[
-						{
-							"event":["48","2"]
-						}
-					],
-					"action":[
-						{
-							"type":"charaMsg",
-							"charaID":"10",
-							"text":["アッアッア！\nホントに押しやがった"],
-							"name":"吹き出物だらけの男"
-						}
-					]
+					"type":"charaMsg",
+					"charaID":"10",
+					"text":["この先にある死体置き場の南側の壁にスイッチがあるんだが\n押してみるとおもしれえことが起きるぜ"],
+					"name":"吹き出物だらけの男"
+				}
+			]
+		},
+		{
+			"type":"if",
+			"condition":[
+				{
+					"event":["48","2"]
+				}
+			],
+			"action":[
+				{
+					"type":"charaMsg",
+					"charaID":"10",
+					"text":["アッアッア！\nホントに押しやがった"],
+					"name":"吹き出物だらけの男"
 				}
 			]
 		}

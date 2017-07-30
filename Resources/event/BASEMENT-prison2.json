@@ -13,66 +13,24 @@
 			"y":33
 		}
 	],
-	"3":[
+	"3":[	
 		{
-			"type":"sequence",
-			"action":[
-				{
-					"type":"spawn",
-					"action":[
-						{
-							"type":"createEnemy",
-							"objID":"1411",
-							"charaID":"16",
-							"x":2,
-							"y":8,
-							"speed":1.7
-						},
-						{
-							"type":"createEnemy",
-							"objID":"1412",
-							"charaID":"13",
-							"x":4,
-							"y":14,
-							"speed":1.7
-						},
-						{
-							"type":"createEnemy",
-							"objID":"1413",
-							"charaID":"14",
-							"x":12,
-							"y":14,
-							"speed":2.0
-						},
-						{
-							"type":"createEnemy",
-							"objID":"1414",
-							"charaID":"15",
-							"x":8,
-							"y":6,
-							"speed":2.0
-						},
-						{
-							"type":"already"
-						}
-					]
-				},
-				{
-		          "type":"spawn",
-		          "action":[
-		            {
-		              "type": "reaction",
-		              "objID": "hero"
-		            },
-		            {
-		              "type":"playSE",
-		              "file":"reaction.mp3",
-		              "volume":0.25
-		            }
-		          ]
-		        }
-			]
-		}
+          "type":"spawn",
+          "action":[
+            {
+              "type": "reaction",
+              "objID": "hero"
+            },
+            {
+              "type":"playSE",
+              "file":"reaction.mp3",
+              "volume":0.25
+            },
+            {
+				"type":"already"
+			}
+          ]
+        }
 	],
 	"4":[
 		{
@@ -150,11 +108,47 @@
 			"action":[
 				{
 					"type":"createEnemy",
+					"objID":"1411",
+					"charaID":"16",
+					"x":2,
+					"y":8,
+					"speed":1.5,
+					"movePattern":"0"
+				},
+				{
+					"type":"createEnemy",
+					"objID":"1412",
+					"charaID":"13",
+					"x":4,
+					"y":14,
+					"speed":1.5,
+					"movePattern":"0"
+				},
+				{
+					"type":"createEnemy",
+					"objID":"1413",
+					"charaID":"14",
+					"x":12,
+					"y":14,
+					"speed":1.5,
+					"movePattern":"0"
+				},
+				{
+					"type":"createEnemy",
+					"objID":"1414",
+					"charaID":"15",
+					"x":8,
+					"y":6,
+					"speed":1.5,
+					"movePattern":"0"
+				},
+				{
+					"type":"createEnemy",
 					"objID":"1425",
 					"charaID":"14",
 					"x":4,
 					"y":7,
-					"speed":3.0,
+					"speed":1.5,
 					"movePattern":"5",
 					"times":1
 				},
@@ -164,7 +158,7 @@
 					"charaID":"14",
 					"x":6,
 					"y":5,
-					"speed":3.0,
+					"speed":1.5,
 					"movePattern":"5",
 					"times":1
 				},
@@ -174,7 +168,7 @@
 					"charaID":"14",
 					"x":4,
 					"y":5,
-					"speed":3.0,
+					"speed":1.5,
 					"movePattern":"5",
 					"times":1
 				},
@@ -184,7 +178,7 @@
 					"charaID":"14",
 					"x":6,
 					"y":7,
-					"speed":3.0,
+					"speed":1.5,
 					"movePattern":"5",
 					"times":1
 				}

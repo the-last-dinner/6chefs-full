@@ -120,7 +120,7 @@
 												},
 												{
 													"type":"playSE",
-													"fire":"fire_burn.mp3"
+													"file":"fire_burn.mp3"
 												},
 												{
 													"type":"wait",
