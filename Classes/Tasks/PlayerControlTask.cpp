@@ -161,7 +161,17 @@ void PlayerControlTask::onBattleFinished()
 // update
 void PlayerControlTask::update(float delta)
 {
-    // DASHキーが押されていない場合はスタミナ減少を止める
+    Character* mainCharacter { DungeonSceneManager::getInstance()->getParty()->getMainCharacter()};
+
+    // 地形がスタミナ減少の場合は止まってればスタミナ減少を止める
+    if (mainCharacter->consumeStaminaWalking()) {
+        if (!mainCharacter->isMoving()) {
+            DungeonSceneManager::getInstance()->getStamina()->setDecreasing(false);
+        }
+        return;
+    }
+    
+    // DASHキーが押されていなければスタミナ減少を止める
     if (!DungeonSceneManager::getInstance()->isPressed(Key::DASH)) {
         DungeonSceneManager::getInstance()->getStamina()->setDecreasing(false);
     }

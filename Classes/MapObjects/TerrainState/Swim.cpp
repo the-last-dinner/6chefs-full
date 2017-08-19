@@ -25,7 +25,7 @@ bool Swim::init()
 {
     _isRunnable = false;
     _consumeStaminaWalking = true;
-    _staminaConsumptionRatio = 2.f;
+    _staminaConsumptionRatio = 1.5f;
     
     return true;
 }
@@ -38,4 +38,9 @@ void Swim::move(MapObject* target, const vector<Direction>& directions, function
 void Swim::stamp(Character* target, const Direction& direction, float speed)
 {
     target->playAnimationIfNotPlaying(Character::AnimationName::getSwim(direction), speed / 3.f);
+}
+
+void Swim::turn(Character* target, const Direction& direction)
+{
+    target->playAnimationIfNotPlaying(Character::AnimationName::getWaterTurn(direction));
 }

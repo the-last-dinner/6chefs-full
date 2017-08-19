@@ -142,7 +142,11 @@ void Character::setDirection(const Direction& direction, bool stopAnimation)
     
     if(!stopAnimation) return;
     
-    _csNode->play(AnimationName::getTurn(direction));
+    if (!_terrainState) {
+        _csNode->play(AnimationName::getTurn(direction));
+        return;
+    }
+    _terrainState->turn(this, direction);
 }
 
 // AIを一時停止
@@ -461,6 +465,11 @@ string Character::AnimationName::getTurn(const Direction& direction)
 string Character::AnimationName::getWalk(const Direction& direction)
 {
     return "walk_" + direction.getDowncaseString();
+}
+
+string Character::AnimationName::getWaterTurn(const Direction &direction)
+{
+    return "water_" + direction.getDowncaseString();
 }
 
 string Character::AnimationName::getSwim(const Direction& direction)

@@ -39,3 +39,8 @@ void Normal::stamp(Character* target, const Direction& direction, float speed)
 {
     target->playAnimationIfNotPlaying(Character::AnimationName::getWalk(direction), speed);
 }
+
+void Normal::turn(Character* target, const Direction& direction)
+{
+    target->playAnimationIfNotPlaying(Character::AnimationName::getTurn(direction));
+}

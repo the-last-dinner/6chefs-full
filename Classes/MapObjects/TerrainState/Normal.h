@@ -29,6 +29,7 @@ private:
 public:
     void move(MapObject* target, const vector<Direction>& directions, function<void()> cb, float speed) override;
     void stamp(Character* target, const Direction& direction, float speed) override;
+    void turn(Character* target, const Direction& direction) override;
 };
 
 NS_MO_T_STATE_END
