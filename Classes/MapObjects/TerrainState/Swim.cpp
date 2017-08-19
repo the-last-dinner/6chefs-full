@@ -25,7 +25,7 @@ bool Swim::init()
 {
     _isRunnable = false;
     _consumeStaminaWalking = true;
-    _staminaConsumptionRatio = 2.f;
+    _staminaConsumptionRatio = 1.5f;
     
     return true;
 }
