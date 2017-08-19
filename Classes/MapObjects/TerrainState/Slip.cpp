@@ -42,3 +42,8 @@ void Slip::stamp(Character* target, const Direction& direction, float speed)
 {
     target->playAnimationIfNotPlaying(Character::AnimationName::getTurn(direction), speed);
 }
+
+void Slip::turn(Character* target, const Direction& direction)
+{
+    target->playAnimationIfNotPlaying(Character::AnimationName::getTurn(direction));
+}

@@ -47,3 +47,8 @@ void Ladder::stamp(Character* target, const Direction& direction, float speed)
 {
     target->playAnimationIfNotPlaying(Character::AnimationName::getWalk(Direction::UP), speed);
 }
+
+void Ladder::turn(Character* target, const Direction& direction)
+{
+    target->playAnimationIfNotPlaying(Character::AnimationName::getTurn(Direction::UP));
+}

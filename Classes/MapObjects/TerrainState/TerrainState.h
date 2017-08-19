@@ -43,6 +43,7 @@ public:
 public:
     virtual void move(MapObject* target, const vector<Direction>& directions, function<void()> cb, float speed) = 0;
     virtual void stamp(Character* target, const Direction& direction, float speed) = 0;
+    virtual void turn(Character* target, const Direction& direction) = 0;
 };
 
 #endif /* TerrainState_h */

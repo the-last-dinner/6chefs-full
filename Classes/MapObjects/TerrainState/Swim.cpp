@@ -39,3 +39,8 @@ void Swim::stamp(Character* target, const Direction& direction, float speed)
 {
     target->playAnimationIfNotPlaying(Character::AnimationName::getSwim(direction), speed / 3.f);
 }
+
+void Swim::turn(Character* target, const Direction& direction)
+{
+    target->playAnimationIfNotPlaying(Character::AnimationName::getWaterTurn(direction));
+}
