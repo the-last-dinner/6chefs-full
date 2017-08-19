@@ -27,13 +27,13 @@
                         "equip":[["stoi"], "stoi"],
                         "event": [[["stoi", "stoi"]], ["stoi", "stoi"]],
                         "flg": [[["stoi", "stoi", "int"]], ["stoi", "stoi", "int"], "int"],
-                        "status": [[["stoi", "int"]], ["stoi", "int"]],
+                        "status": [[["stoi", "stoi"]], ["stoi", "stoi"]],
                         "trophy": [["stoi"], "stoi"],
                         "Nitem": [["stoi"], "stoi"],
                         "Nequip":[["stoi"], "stoi"],
                         "Nevent": [[["stoi", "stoi"]], ["stoi", "stoi"]],
                         "Nflg": [[["stoi", "stoi", "int"]], ["stoi", "stoi", "int"], "int"],
-                        "Nstatus": [[["stoi", "int"]], ["stoi", "int"]],
+                        "Nstatus": [[["stoi", "stoi"]], ["stoi", "stoi"]],
                         "Ntrophy": [["stoi"], "stoi"]
                     }
                 }]],
