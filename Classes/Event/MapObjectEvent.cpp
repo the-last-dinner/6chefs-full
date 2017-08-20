@@ -17,7 +17,7 @@
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Command/MoveCommand.h"
 #include "MapObjects/Command/SetPositionCommand.h"
-#include "Mapobjects/Party.h"
+#include "MapObjects/Party.h"
 #include "MapObjects/PathFinder/PathFinder.h"
 
 #include "Managers/DungeonSceneManager.h"
