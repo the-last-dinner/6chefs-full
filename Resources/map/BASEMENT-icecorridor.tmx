@@ -31,7 +31,7 @@
    eJxjYBgFo4D2gJ2JgYGDiXbqSQXiQLMlSDCfVPXUArQOB1IBrcOBVv4l11xa+Xeg0hMuMNLSGSEwUsNjpPobBka6/2kNRsMXFYyGx8gGAC/kAwM=
   </data>
  </layer>
- <objectgroup name="collision">
+ <objectgroup name="collision" visible="0">
   <object id="1" x="448" y="0" width="64" height="192"/>
   <object id="2" x="448" y="224" width="64" height="128"/>
   <object id="3" x="32" y="352" width="432" height="32"/>
@@ -50,7 +50,7 @@
   <object id="16" x="64" y="128" width="32" height="32"/>
   <object id="17" x="416" y="160" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="event">
+ <objectgroup name="event" visible="0">
   <object id="18" x="480" y="192" width="32" height="32">
    <properties>
     <property name="EventID" value="1"/>
@@ -77,7 +77,7 @@
   </object>
  </objectgroup>
  <objectgroup name="terrain">
-  <object id="143" type="slip" x="64" y="64" width="384" height="288"/>
+  <object id="143" type="slip" x="32" y="0" width="448" height="368"/>
  </objectgroup>
  <layer name="shadow" width="36" height="24" opacity="0.5">
   <properties>

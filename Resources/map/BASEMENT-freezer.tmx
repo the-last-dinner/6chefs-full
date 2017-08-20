@@ -56,7 +56,7 @@
   <object id="8" x="64" y="128" width="160" height="32"/>
   <object id="9" x="160" y="64" width="32" height="32"/>
   <object id="12" x="32" y="0" width="32" height="64"/>
-  <object id="13" x="64" y="16" width="64" height="64"/>
+  <object id="13" x="64" y="16" width="64" height="80"/>
   <object id="14" x="128" y="0" width="128" height="64"/>
  </objectgroup>
  <layer name="CharaUe1" width="20" height="20">
