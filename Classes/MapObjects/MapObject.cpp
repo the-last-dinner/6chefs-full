@@ -71,7 +71,7 @@ Rect MapObject::getGridRect(const vector<Direction>& directions) const
     Vec2 gridVec { Direction::getGridVec2(directions) };
     Rect gridRect { Rect::ZERO };
     
-    gridRect.origin = this->getGridPosition();
+    gridRect.origin = this->getGridPosition() + gridVec;
     gridRect.size = this->getGridSize();
     
     return gridRect;
