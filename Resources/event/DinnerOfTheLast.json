@@ -239,7 +239,7 @@
 							"file":"7umeki.mp3"
 						},
 						{
-							"type":"sequence",
+							"type":"spawn",
 							"action":[
 								{
 									"type":"sequence",
@@ -270,290 +270,294 @@
 											"speed":1.6	
 										}
 									]
-								}
-							]
-						},
-						{
-							"type":"barrage",
-							"times":15,
-							"limit":5.0,
-							"event":[
+								},
 								{
-									"type":"quakeMap",
-									"x":12,
-									"y":0,
-									"time":0.12
-								}
-							],
-							"false":[
-								{
-									"type":"gameover"
-								}
-							],
-							"true":[
-								{
-									"type":"sequence",
-									"action":[
+									"type":"barrage",
+									"times":15,
+									"limit":5.0,
+									"event":[
 										{
-											"type":"fadeout"
-										},
+											"type":"quakeMap",
+											"x":12,
+											"y":0,
+											"time":0.12
+										}
+									],
+									"false":[
 										{
-											"type":"charaMsg",
-											"text":["希崎さん！！"],
-											"charaID":"0",
-											"imgID":"2",
-											"option":"reaction"
-										},
+											"type":"gameover"
+										}
+									],
+									"true":[
 										{
-											"type":"if",
-											"condition":[
-												{
-													"status":["2","2"]
-												}
-											],
+											"type":"sequence",
 											"action":[
 												{
-													"type":"sequence",
-													"action":[
+													"type":"fadeout"
+												},
+												{
+													"type":"charaMsg",
+													"text":["希崎さん！！"],
+													"charaID":"0",
+													"imgID":"2",
+													"option":"reaction"
+												},
+												{
+													"type":"wait",
+													"time":2.0
+												},
+												{
+													"type":"if",
+													"condition":[
 														{
-															"type":"playSE",
-															"file":"hit.mp3"
-														},
-														{
-															"type":"createObject",
-															"objID":"1075",
-															"x":14,
-															"y":19,
-															"charaID":"19",
-															"eventID":"7",
-															"direction":"RIGHT",
-															"movePattern":"1",
-															"trigger":"2"
-														},
-														{
-															"type":"removeObject",
-															"objID":"1086"
-														},
-														{
-															"type":"createObject",
-															"objID":"10106",
-															"x":15,
-															"y":20,
-															"charaID":"21",
-															"direction":"RIGHT",
-															"movePattern":"1"
-														},
-														{
-															"type":"fadein",
-															"time":2.0
-														},
-														{
-															"type":"charaMsg",
-															"talk":[
-																{
-																	"text":["ソレはやっちゃぁイケねぇよ・・・"],
-																	"charaID":"2",
-																	"imgID":"2"
-																},
-																{
-																	"text":["雪・・・なんで・・・！？"],
-																	"charaID":"7"
-																}
-															]
-														},
-														{
-															"type":"playSE",
-															"file":"agaa.mp3"
-														},
-														{
-															"type":"charaMsg",
-															"talk":[
-																{
-																	"text":["があああああああああああああ"],
-																	"charaID":"8",
-																	"option":"reaction"
-																},
-																{
-																	"text":["加藤さん！！"],
-																	"charaID":"0",
-																	"imgID":"2",
-																	"option":"reaction"
-																},
-																{
-																	"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた"],
-																	"charaID":"2",
-																	"imgID":"2",
-																	"option":"reaction"
-																},
-																{
-																	"text":["は・・・はい！"],
-																	"charaID":"0",
-																	"imgID":"2"
-																}
-															]
-														},
-														{
-															"type":"already"
+															"status":["2","2"]
 														}
-													]
-												}
-											]
-										},
-										{
-											"type":"if",
-											"condition":[
-												{
-													"Nstatus":["2","2"]
-												}
-											],
-											"action":[
-												{
-													"type":"sequence",
+													],
 													"action":[
 														{
-															"type":"playSE",
-															"file":"blood.mp3"
-														},
-														{
-															"type":"charaMsg",
-															"charaID":"7",
-															"text":["ゆ・・・き・・・"]
-														},
-														{
-															"type":"removeObject",
-															"objID":"1086"
-														},
-														{
-															"type":"createObject",
-															"objID":"10106",
-															"x":15,
-															"y":20,
-															"charaID":"21",
-															"direction":"RIGHT",
-															"movePattern":"1"
-														},
-														{
-															"type":"fadein"
-														},
-														{
-															"type":"charaMsg",
-															"talk":[
-																{
-																	"text":["ア゛・・・ガ・・・ザ・・・"],
-																	"charaID":"8",
-																	"imgID":"1"
-																},
-																{
-																	"text":["ひぃっ！"],
-																	"charaID":"0",
-																	"imgID":"3",
-																	"option":"reaction"
-																}
-															]
-														},
-														{
-															"type":"charaWalk",
-															"objID":"hero",
-															"direction":"RIGHT",
-															"steps":2.0,
-															"option":"back"
-														},
-														{
-															"type":"wait",
-															"time":1.0
-														},
-														{
-															"type":"spawn",
+															"type":"sequence",
 															"action":[
 																{
-																	"type":"fadeout",
-																	"time":4.0
+																	"type":"playSE",
+																	"file":"hit.mp3"
 																},
 																{
-																	"type":"sequence",
-																	"action":[
+																	"type":"createObject",
+																	"objID":"1075",
+																	"x":14,
+																	"y":19,
+																	"charaID":"19",
+																	"eventID":"7",
+																	"direction":"RIGHT",
+																	"movePattern":"1",
+																	"trigger":"2"
+																},
+																{
+																	"type":"removeObject",
+																	"objID":"1086"
+																},
+																{
+																	"type":"createObject",
+																	"objID":"10106",
+																	"x":15,
+																	"y":20,
+																	"charaID":"21",
+																	"direction":"RIGHT",
+																	"movePattern":"1"
+																},
+																{
+																	"type":"fadein",
+																	"time":2.0
+																},
+																{
+																	"type":"charaMsg",
+																	"talk":[
 																		{
-																			"type":"charaWalk",
-																			"objID":"1073",
-																			"direction":"RIGHT",
-																			"steps":3.0
+																			"text":["ソレはやっちゃぁイケねぇよ・・・"],
+																			"charaID":"2",
+																			"imgID":"2"
 																		},
 																		{
-																			"type":"changeDirection",
-																			"objID":"1073",
-																			"direction":"DOWN"
+																			"text":["雪・・・なんで・・・！？"],
+																			"charaID":"7"
 																		}
 																	]
 																},
 																{
+																	"type":"playSE",
+																	"file":"agaa.mp3"
+																},
+																{
 																	"type":"charaMsg",
-																	"text":["うわぁぁぁぁぁああああ！！"],
-																	"charaID":"0",
-																	"imgID":"3",
-																	"option":"reaction"
+																	"talk":[
+																		{
+																			"text":["があああああああああああああ"],
+																			"charaID":"8",
+																			"option":"reaction"
+																		},
+																		{
+																			"text":["加藤さん！！"],
+																			"charaID":"0",
+																			"imgID":"2",
+																			"option":"reaction"
+																		},
+																		{
+																			"text":["佐々木！\nこの娘は俺が縛っとく！","扉の鍵はぶっ壊しといたから外出てろ！\n中山に他の奴らを集めるように言っといた"],
+																			"charaID":"2",
+																			"imgID":"2",
+																			"option":"reaction"
+																		},
+																		{
+																			"text":["は・・・はい！"],
+																			"charaID":"0",
+																			"imgID":"2"
+																		}
+																	]
+																},
+																{
+																	"type":"already"
 																}
 															]
-														},
+														}
+													]
+												},
+												{
+													"type":"if",
+													"condition":[
 														{
-															"type":"playSE",
-															"file":"blood.mp3"
-														},
+															"Nstatus":["2","2"]
+														}
+													],
+													"action":[
 														{
-															"type":"createCamera",
-															"mapID":"1",
-															"x":27,
-															"y":20,
+															"type":"sequence",
 															"action":[
 																{
-																	"type":"sequence",
-																	"action":[
+																	"type":"playSE",
+																	"file":"blood.mp3"
+																},
+																{
+																	"type":"charaMsg",
+																	"charaID":"7",
+																	"text":["ゆ・・・き・・・"]
+																},
+																{
+																	"type":"removeObject",
+																	"objID":"1086"
+																},
+																{
+																	"type":"createObject",
+																	"objID":"10106",
+																	"x":15,
+																	"y":20,
+																	"charaID":"21",
+																	"direction":"RIGHT",
+																	"movePattern":"1"
+																},
+																{
+																	"type":"fadein"
+																},
+																{
+																	"type":"charaMsg",
+																	"talk":[
 																		{
-																			"type":"createObject",
-																			"objID":"1095",
-																			"x":49,
-																			"y":25,
-																			"charaID":"6",
-																			"direction":"LEFT",
-																			"movePattern":"1"
-																		},
-																		{
-																			"type":"fadein",
-																			"time":4.0
-																		},
-																		{
-																			"type":"charaMsg",
-																			"text":["ったく\nどいつもこいつも・・・","人の遊び場を散々荒らして\n死にやがって・・・","・・・","まぁそろそろ実行に移してもいいか・・・","国に帰るかね・・・"],
-																			"charaID":"6",
+																			"text":["ア゛・・・ガ・・・ザ・・・"],
+																			"charaID":"8",
 																			"imgID":"1"
 																		},
 																		{
-																			"type":"spawn",
+																			"text":["ひぃっ！"],
+																			"charaID":"0",
+																			"imgID":"3",
+																			"option":"reaction"
+																		}
+																	]
+																},
+																{
+																	"type":"charaWalk",
+																	"objID":"hero",
+																	"direction":"RIGHT",
+																	"steps":2.0,
+																	"option":"back"
+																},
+																{
+																	"type":"wait",
+																	"time":1.0
+																},
+																{
+																	"type":"spawn",
+																	"action":[
+																		{
+																			"type":"fadeout",
+																			"time":4.0
+																		},
+																		{
+																			"type":"sequence",
 																			"action":[
 																				{
-																					"type":"fadeout",
+																					"type":"charaWalk",
+																					"objID":"1073",
+																					"direction":"RIGHT",
+																					"steps":3.0
+																				},
+																				{
+																					"type":"changeDirection",
+																					"objID":"1073",
+																					"direction":"DOWN"
+																				}
+																			]
+																		},
+																		{
+																			"type":"charaMsg",
+																			"text":["うわぁぁぁぁぁああああ！！"],
+																			"charaID":"0",
+																			"imgID":"3",
+																			"option":"reaction"
+																		}
+																	]
+																},
+																{
+																	"type":"playSE",
+																	"file":"blood.mp3"
+																},
+																{
+																	"type":"createCamera",
+																	"mapID":"1",
+																	"x":27,
+																	"y":20,
+																	"action":[
+																		{
+																			"type":"sequence",
+																			"action":[
+																				{
+																					"type":"createObject",
+																					"objID":"1095",
+																					"x":49,
+																					"y":25,
+																					"charaID":"6",
+																					"direction":"LEFT",
+																					"movePattern":"1"
+																				},
+																				{
+																					"type":"fadein",
 																					"time":4.0
 																				},
 																				{
-																					"type":"charaWalk",
-																					"objID":"1095",
-																					"direction":"LEFT",
-																					"steps":20.0
+																					"type":"charaMsg",
+																					"text":["ったく\nどいつもこいつも・・・","人の遊び場を散々荒らして\n死にやがって・・・","・・・","まぁそろそろ実行に移してもいいか・・・","国に帰るかね・・・"],
+																					"charaID":"6",
+																					"imgID":"1"
+																				},
+																				{
+																					"type":"spawn",
+																					"action":[
+																						{
+																							"type":"fadeout",
+																							"time":4.0
+																						},
+																						{
+																							"type":"charaWalk",
+																							"objID":"1095",
+																							"direction":"LEFT",
+																							"steps":20.0
+																						}
+																					]
 																				}
 																			]
 																		}
 																	]
+																},
+																{
+																	"type":"ending",
+																	"id":"1"
+																},
+																{
+																	"type":"already"
+																},
+																{
+																	"type":"backToTitle"
 																}
 															]
-														},
-														{
-															"type":"ending",
-															"id":"1"
-														},
-														{
-															"type":"already"
-														},
-														{
-															"type":"backToTitle"
 														}
 													]
 												}

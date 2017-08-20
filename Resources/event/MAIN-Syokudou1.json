@@ -1435,61 +1435,6 @@
 					"objID":"1094"
 				},
 				{
-					"type":"createObject",
-					"objID":"102",
-					"x":26,
-					"y":14,
-					"charaID":"1",
-					"eventID":"4",
-					"direction":"LEFT",
-					"movePattern":"2",
-					"trigger":"2"
-				},
-				{
-					"type":"createObject",
-					"objID":"103",
-					"x":26,
-					"y":21,
-					"charaID":"2",
-					"eventID":"5",
-					"direction":"LEFT",
-					"movePattern":"2",
-					"trigger":"2"
-				},
-				{
-					"type":"createObject",
-					"objID":"104",
-					"x":26,
-					"y":29,
-					"charaID":"5",
-					"eventID":"6",
-					"direction":"LEFT",
-					"movePattern":"2",
-					"trigger":"2"
-				},
-				{
-					"type":"createObject",
-					"objID":"105",
-					"x":14,
-					"y":21,
-					"charaID":"3",
-					"eventID":"7",
-					"direction":"RIGHT",
-					"movePattern":"2",
-					"trigger":"2"
-				},
-				{
-					"type":"createObject",
-					"objID":"106",
-					"x":14,
-					"y":29,
-					"charaID":"4",
-					"eventID":"8",
-					"direction":"RIGHT",
-					"movePattern":"2",
-					"trigger":"2"
-				},
-				{
 					"type":"fadein"
 				},
 				{
