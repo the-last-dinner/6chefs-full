@@ -40,7 +40,8 @@
 				},
 				{
 					"type":"playBGM",
-					"file":"7haizuri.mp3"
+					"file":"7haizuri.mp3",
+					"volume":0.5
 				},
 				{
 					"type":"already"
@@ -85,15 +86,55 @@
 								},
 								{
 									"type":"wait",
-									"time":5.0
+									"time":1.0
+								},
+								{
+									"type":"systemMsg",
+									"text":["(？このダンボール・・・穴あいてる・・・)"]
+								},
+								{
+									"type":"displayImg",
+									"file":"danball0.png",
+									"time":1.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball1.png",
+									"time":1.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball2.png",
+									"time":1.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball0.png",
+									"time":2.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball3.png",
+									"time":1.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball0.png",
+									"time":2.0
 								},
 								{
 									"type":"playSE",
-									"file":"agaa.mp3"
+									"file":"agaa.mp3",
+									"volume":5.0
+								},
+								{
+									"type":"displayImg",
+									"file":"danball4.png",
+									"time":0.2
 								},
 								{
 									"type":"wait",
-									"time":5.0
+									"time":2.0
 								},
 								{
 									"type":"stopBGM",
