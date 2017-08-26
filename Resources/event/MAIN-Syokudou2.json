@@ -691,11 +691,6 @@
 									"type":"changeDirection",
 									"direction":"RIGHT",
 									"objID":"hero"
-								},
-								{
-									"type":"changeDirection",
-									"direction":"RIGHT",
-									"objID":"1034"
 								}
 							]
 						},

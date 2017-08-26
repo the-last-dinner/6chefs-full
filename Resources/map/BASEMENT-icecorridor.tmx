@@ -31,7 +31,7 @@
    eJxjYBgFo4D2gJ2JgYGDiXbqSQXiQLMlSDCfVPXUArQOB1IBrcOBVv4l11xa+Xeg0hMuMNLSGSEwUsNjpPobBka6/2kNRsMXFYyGx8gGAC/kAwM=
   </data>
  </layer>
- <objectgroup name="collision" visible="0">
+ <objectgroup name="collision">
   <object id="1" x="448" y="0" width="64" height="192"/>
   <object id="2" x="448" y="224" width="64" height="128"/>
   <object id="3" x="32" y="352" width="432" height="32"/>
@@ -50,7 +50,7 @@
   <object id="16" x="64" y="128" width="32" height="32"/>
   <object id="17" x="416" y="160" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="event" visible="0">
+ <objectgroup name="event">
   <object id="18" x="480" y="192" width="32" height="32">
    <properties>
     <property name="EventID" value="1"/>

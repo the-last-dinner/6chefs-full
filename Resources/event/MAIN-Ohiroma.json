@@ -771,6 +771,10 @@
               "id":"2",
               "callback":[
                 {
+                  "type":"getTrophy",
+                  "trophyID":"7"
+                },
+                {
                   "type":"backToTitle"
                 }
               ]
@@ -1080,6 +1084,10 @@
               "type":"ending",
               "id":"2",
               "callback":[
+                {
+                  "type":"getTrophy",
+                  "trophyID":"7"
+                },
                 {
                   "type":"backToTitle"
                 }
@@ -1944,6 +1952,10 @@
               "time":2.0
             },
             {
+              "type":"getTrophy",
+              "trophyID":"8"
+            },
+            {
               "type":"ending",
               "id":"3",
               "callback":[
@@ -2199,6 +2211,10 @@
               "id":"2",
               "callback":[
                 {
+                  "type":"getTrophy",
+                  "trophyID":"7"
+                },
+                {
                   "type":"backToTitle"
                 }
               ]              
@@ -2450,6 +2466,10 @@
               "type":"ending",
               "id":"2",
               "callback":[
+                {
+                  "type":"getTrophy",
+                  "trophyID":"7"
+                },
                 {
                   "type":"backToTitle"
                 }
@@ -2712,6 +2732,10 @@
               "type":"ending",
               "id":"2",
               "callback":[
+                {
+                  "type":"getTrophy",
+                  "trophyID":"7"
+                },
                 {
                   "type":"backToTitle"
                 }

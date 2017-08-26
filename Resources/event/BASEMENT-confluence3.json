@@ -582,18 +582,16 @@
 							]
 						},
 						{
-							"type":"charaWalk",
+							"type":"charaWalkTo",
 							"objID":"1057",
-							"direction":"UP",
-							"steps":7.0,
+							"x":2,
+							"y":11,
 							"speed":1.5
 						},
 						{
-							"type":"charaWalk",
+							"type":"changeDirection",
 							"objID":"1057",
-							"direction":"LEFT",
-							"steps":7.0,
-							"speed":1.5
+							"direction":"RIGHT"
 						},
 						{
 							"type":"charaMsg",
