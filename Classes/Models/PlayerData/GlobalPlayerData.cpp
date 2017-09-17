@@ -11,6 +11,7 @@
 #include "Managers/CsvDataManager.h"
 #include "Managers/NotificationManager.h"
 #include "Managers/ConfigDataManager.h"
+#include "Managers/ResoucesManager.h"
 
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
@@ -47,7 +48,7 @@ bool GlobalPlayerData::init()
 // グローバルデータのロード
 bool GlobalPlayerData::loadGlobalData()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_DATA_PATH + SAVE_EXTENSION);
+    string path = ResoucesManager::getInstance()->getCommonFilePath(GLOBAL_DATA_PATH + SAVE_EXTENSION);
     if (path == "") return false;
     this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     return true;

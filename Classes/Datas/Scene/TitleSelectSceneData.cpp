@@ -19,7 +19,7 @@ bool TitleSelectSceneData::init()
 {
     this->textureFilePaths =
     {
-        "img/title_select"
+        "common/img/title_select"
     };
     this->soundFilePaths = {};
     return true;
