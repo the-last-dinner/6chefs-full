@@ -4,18 +4,32 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>title_select.jpg</key>
+			<key>title_select_1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{1477,1108}}</string>
+				<string>{{801,0},{800,600}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{1477,1108}}</string>
+				<string>{{0,0},{800,600}}</string>
 				<key>sourceSize</key>
-				<string>{1477,1108}</string>
+				<string>{800,600}</string>
+			</dict>
+
+			<key>title_select_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{800,600}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{800,600}}</string>
+				<key>sourceSize</key>
+				<string>{800,600}</string>
 			</dict>
 
 		</dict>
@@ -25,9 +39,9 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{2048,2048}</string>
+			<string>{2048,1024}</string>
 			<key>textureFileName</key>
-			<string>titile_select.png</string>
+			<string>title_select.png</string>
 			</dict>
 		</dict>
 </plist>

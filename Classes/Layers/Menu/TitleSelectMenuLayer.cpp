@@ -19,7 +19,7 @@ bool TitleSelectMenuLayer::init(function<void(int)> onSelectTitle)
 {
     if (!MenuLayer::init(2, 1)) return false;
     _onSelectTitle = onSelectTitle;
-    Sprite* bg { Sprite::createWithSpriteFrameName("title_select.jpg") };
+    Sprite* bg { Sprite::createWithSpriteFrameName("title_select_1.png") };
     this->addChild(bg);
     return true;
 }
