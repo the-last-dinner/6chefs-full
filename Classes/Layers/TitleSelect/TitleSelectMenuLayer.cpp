@@ -10,6 +10,7 @@
 
 #include "Layers/TitleSelect/TitleSelectPanel.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Managers/ResoucesManager.h"
 
 // コンストラクタ
 TitleSelectMenuLayer::TitleSelectMenuLayer() { FUNCLOG }
@@ -74,12 +75,14 @@ void TitleSelectMenuLayer::onIndexChanged(int newIdx, bool sound)
             panel->onUnFocused();
         }
     }
+    
+    if (sound) SoundManager::getInstance()->playSE(Resource::SE::CURSOR_MOVE);
 }
 
 // 決定キー押した時
 void TitleSelectMenuLayer::onEnterKeyPressed(int idx)
 {
-    
+    if (_onSelectTitle) _onSelectTitle(idx);
 }
 
 // 表示アニメーション終了時

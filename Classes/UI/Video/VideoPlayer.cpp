@@ -11,7 +11,7 @@
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
 
 // 定数
-const string VideoPlayer::DISP_VIDEO_PATH = "video/";
+const string VideoPlayer::DISP_VIDEO_PATH = "common/video/";
 const float VideoPlayer::SHOW_DURATION = 0.1f;
 const float VideoPlayer::HIDE_DURATION = 0.1f;
 
@@ -43,7 +43,7 @@ bool VideoPlayer::init(const string& fileName, const bool skip, function<void()>
     
     // charに以下のように変換しないと動画がデコードされない
     string filePath = DISP_VIDEO_PATH + fileName;
-    int len = filePath.length();
+    int len = static_cast<int>(filePath.length());
     char* fname = new char[len+1];
     memcpy(fname, filePath.c_str(), len+1);
     

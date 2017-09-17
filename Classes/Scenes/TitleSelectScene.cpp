@@ -8,6 +8,7 @@
 
 #include "Scenes/TitleSelectScene.h"
 
+#include "Scenes/OpeningScene.h"
 #include "Datas/Scene/TitleSelectSceneData.h"
 #include "Layers/LoadingLayer.h"
 #include "Layers/TitleSelect/TitleSelectMenuLayer.h"
@@ -38,5 +39,6 @@ void TitleSelectScene::onPreloadFinished(LoadingLayer* loadingLayer)
 // タイトル選択された時
 void TitleSelectScene::onTitleSelected(int titleID)
 {
-    
+    SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
+    Director::getInstance()->replaceScene(OpeningScene::create());
 }

@@ -57,12 +57,12 @@ bool AssertScene::init(const string& message, const AssertType& assertType)
     Size winSize = Director::getInstance()->getWinSize();
     
     // タイトルを追加
-    Label* titleLabel {Label::createWithTTF(title, "fonts/mgenplus-1c-light.ttf", 36.f)};
+    Label* titleLabel {Label::createWithTTF(title, Resource::Font::CONFIG, 36.f)};
     titleLabel->setPosition(WINDOW_WIDTH / 2, winSize.height - titleLabel->getContentSize().height * 2);
     layer->addChild(titleLabel);
     
     // メッセージを追加
-    Label* messageLabel { Label::createWithTTF(message, "fonts/mgenplus-1c-light.ttf", 24.f) };
+    Label* messageLabel { Label::createWithTTF(message, Resource::Font::CONFIG, 24.f) };
     messageLabel->setLineHeight(45.f);
     messageLabel->setHorizontalAlignment(TextHAlignment::LEFT);
     messageLabel->setVerticalAlignment(TextVAlignment::CENTER);
@@ -71,7 +71,7 @@ bool AssertScene::init(const string& message, const AssertType& assertType)
     
     if (hideable) {
         // 戻る用のメッセージ表示
-        Label* hideLabel {Label::createWithTTF("X:戻る", "fonts/mgenplus-1c-light.ttf", 24.f, winSize)};
+        Label* hideLabel {Label::createWithTTF("X:戻る", Resource::Font::CONFIG, 24.f, winSize)};
         hideLabel->setColor(Color3B::WHITE);
         hideLabel->setPosition(Point(winSize.width / 2, winSize.height / 2));
         layer->addChild(hideLabel);

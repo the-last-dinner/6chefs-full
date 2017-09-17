@@ -8,7 +8,7 @@
 
 #include "Scenes/OpeningScene.h"
 
-#include "Scenes/TitleSelectScene.h"
+#include "Scenes/TitleScene.h"
 #include "Datas/Scene/OpeningSceneData.h"
 #include "Layers/EventListener/ConfigEventListenerLayer.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
@@ -50,7 +50,7 @@ void OpeningScene::setVideoLayer()
 {
      VideoPlayer* videoPlayer { VideoPlayer::create(_videoFileName, true, [this]{
             SoundManager::getInstance()->stopBGMAll();
-         Director::getInstance()->replaceScene(TitleSelectScene::create());
+         Director::getInstance()->replaceScene(TitleScene::create());
          }) };
      this->addChild(videoPlayer);
 }
@@ -67,7 +67,7 @@ void OpeningScene::setVideoLayerDummy()
     EventListenerKeyboardLayer* listener {EventListenerKeyboardLayer::create()};
     listener->onEnterKeyPressed = []{
         SoundManager::getInstance()->stopBGMAll();
-        Director::getInstance()->replaceScene(TitleSelectScene::create());
+        Director::getInstance()->replaceScene(TitleScene::create());
     };
     this->addChild(listener);
 }
