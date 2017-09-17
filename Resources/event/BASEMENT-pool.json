@@ -255,9 +255,9 @@
 						{
 							"type":"charaWarp",
 							"objID":"hero",
-							"x":16,
+							"x":18,
 							"y":25,
-							"direction":"LEFT"
+							"direction":"UP"
 						},
 						{
 							"type":"createObject",
@@ -276,6 +276,12 @@
 							"charaID":"8",
 							"direction":"RIGHT",
 							"movePattern":"2"
+						},
+						{
+							"type":"charaWalk",
+							"objID":"hero",
+							"direction":"LEFT",
+							"steps":1.0
 						},
 						{
 							"type":"fadein"
@@ -365,7 +371,7 @@
 							"charaID":"8",
 							"x":14,
 							"y":5,
-							"speed":1.9,
+							"speed":1.7,
 							"movePattern":"5"
 						},
 						{

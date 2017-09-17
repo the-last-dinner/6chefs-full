@@ -3,6 +3,10 @@
       {
           "type":"setAmbient",
           "ambient":"day"
+      },
+      {
+        "type":"removeObject",
+        "objID":"1088"
       }
   ],
   "1": [
@@ -771,8 +775,15 @@
               "id":"2",
               "callback":[
                 {
-                  "type":"backToTitle"
-                }
+	              "type":"getTrophy",
+	              "trophyID":"7"
+	            },
+	            {
+	            	"type":"changeMap",
+	            	"mapID":"39",
+			        "x":14,
+			        "y":1
+	            }
               ]
             }
           ]
@@ -1081,8 +1092,15 @@
               "id":"2",
               "callback":[
                 {
-                  "type":"backToTitle"
-                }
+	              "type":"getTrophy",
+	              "trophyID":"7"
+	            },
+	            {
+	            	"type":"changeMap",
+	            	"mapID":"39",
+			        "x":14,
+			        "y":1
+	            }
               ]
             }
           ]
@@ -1944,6 +1962,10 @@
               "time":2.0
             },
             {
+              "type":"getTrophy",
+              "trophyID":"8"
+            },
+            {
               "type":"ending",
               "id":"3",
               "callback":[
@@ -2198,9 +2220,16 @@
               "type":"ending",
               "id":"2",
               "callback":[
-                {
-                  "type":"backToTitle"
-                }
+	  			{
+	              "type":"getTrophy",
+	              "trophyID":"7"
+	            },
+	            {
+	            	"type":"changeMap",
+	            	"mapID":"39",
+			        "x":14,
+			        "y":1
+	            }
               ]              
             }
           ]
@@ -2450,9 +2479,16 @@
               "type":"ending",
               "id":"2",
               "callback":[
-                {
-                  "type":"backToTitle"
-                }
+               {
+	              "type":"getTrophy",
+	              "trophyID":"7"
+	            },
+	            {
+	            	"type":"changeMap",
+	            	"mapID":"39",
+			        "x":14,
+			        "y":1
+	            }
               ]
             }
           ]
@@ -2713,8 +2749,15 @@
               "id":"2",
               "callback":[
                 {
-                  "type":"backToTitle"
-                }
+	              "type":"getTrophy",
+	              "trophyID":"7"
+	            },
+	            {
+	            	"type":"changeMap",
+	            	"mapID":"39",
+			        "x":14,
+			        "y":1
+	            }
               ]
             }
           ]

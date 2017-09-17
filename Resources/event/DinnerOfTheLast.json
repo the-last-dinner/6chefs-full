@@ -549,7 +549,16 @@
 																},
 																{
 																	"type":"ending",
-																	"id":"1"
+																	"id":"1",
+																	"callback":[
+																		{
+														                  "type":"getTrophy",
+														                  "trophyID":"6"
+														                },
+														                {
+														                  "type":"backToTitle"
+														                }
+														            ]
 																},
 																{
 																	"type":"already"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="21">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="30" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="22">
  <tileset firstgid="1" name="lower" tilewidth="16" tileheight="16" tilecount="480" columns="30">
   <image source="lower.png" trans="201c30" width="480" height="256"/>
  </tileset>
@@ -14,7 +14,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl1EOgyAMhssBpk/bJeae5g7h9rR5zR1yLNiENG0RVAIJJH9KGiyfSOAX4Nj2MAAnGztwEdWBnqdj7uZgUIb7auMALqIG0PN0jMQ9GjfHd9F/3LjDOyI3zk95pchxczwfm5s97rdxuT24J3B6LppWRJrjePx1ptq6r7TaKWrcjbsW7rPVJVIlcG89a4/ipndCTm48N1M171Q7lpv6BOorpIj9HsK1e+D7fo777hq3dPdKdzTN3RRurQ71LCnca/wD9SCx3CGVuN5rfVVJ6x3yt/5607NH4+a8WSjn+76Xwk2flfxhih8sRXi21MaNe6Zx5xHu9dq4UY07j9Cr18Yted7Y/47caq21lPYD7y25JA==
+   eJztl1EOgyAMhusBpk/bJaZPc4fY9rR5TQ85CDYhTQuCQiCB5E9N4+pHZ+gvQNr17AAuKvZgIqoHd57e8+gSgzLcdxVHMBE1gjtP7/mqOj+Gfe7MM9ZNen/zCXtEbnw+5ZUizem+D0x9vZfF4pb2F8P9AqP3pteOSHOaf2Jqr4KOvleu2iGqlRv7Xhs3qnHHc1+VboEqgfvoWZuKm86EnNx4jsdqOal2KDf1CdRXSBGv9Yzz1R6Av7Zz3P/u4pZmrzSjaW5ycLvqUM8Sw73HP1APEsrtU4n93tOX0vrt87d2v+nZ4+LmvJkvZ/u+j4Ob/lbyh1qcPz17FqcQni21ceM707jzKNR/l6bGnUfo1Wvjljxv6HdHbrXVVsz6A7m+tzI=
   </data>
  </layer>
  <layer name="diary" width="46" height="30">
@@ -40,6 +40,7 @@
   <object id="10" x="96" y="0" width="272" height="64"/>
   <object id="11" x="368" y="0" width="32" height="64"/>
   <object id="12" x="0" y="0" width="64" height="64"/>
+  <object id="21" x="672" y="64" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="event">
   <object id="13" x="64" y="0" width="32" height="32">
@@ -48,7 +49,7 @@
     <property name="trigger" value="1"/>
    </properties>
   </object>
-  <object id="14" x="672" y="64" width="32" height="64">
+  <object id="14" x="672" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="2"/>
     <property name="trigger" value="1"/>
@@ -72,7 +73,7 @@
     <property name="trigger" value="0"/>
    </properties>
   </object>
-  <object id="19" x="672" y="64" width="32" height="64">
+  <object id="19" x="672" y="96" width="32" height="32">
    <properties>
     <property name="EventID" value="5"/>
     <property name="trigger" value="2"/>

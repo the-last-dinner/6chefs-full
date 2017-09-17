@@ -356,6 +356,7 @@
   </object>
   <object id="101" x="480" y="224" width="32" height="32">
    <properties>
+    <property name="direction" value="LEFT"/>
     <property name="nextID" value="8"/>
     <property name="pathID" value="7"/>
     <property name="previousID" value="6"/>
@@ -363,6 +364,7 @@
   </object>
   <object id="102" x="480" y="288" width="32" height="32">
    <properties>
+    <property name="direction" value="LEFT"/>
     <property name="nextID" value="9"/>
     <property name="pathID" value="8"/>
     <property name="previousID" value="7"/>
@@ -371,6 +373,7 @@
   </object>
   <object id="103" x="480" y="352" width="32" height="32">
    <properties>
+    <property name="direction" value="LEFT"/>
     <property name="nextID" value="10"/>
     <property name="pathID" value="9"/>
     <property name="previousID" value="8"/>
@@ -388,6 +391,7 @@
   </object>
   <object id="105" x="416" y="384" width="32" height="32">
    <properties>
+    <property name="direction" value="UP"/>
     <property name="nextID" value="12"/>
     <property name="pathID" value="11"/>
     <property name="previousID" value="10"/>
@@ -396,6 +400,7 @@
   </object>
   <object id="107" x="336" y="384" width="32" height="32">
    <properties>
+    <property name="direction" value="UP"/>
     <property name="nextID" value="13"/>
     <property name="pathID" value="12"/>
     <property name="previousID" value="11"/>
@@ -404,6 +409,7 @@
   </object>
   <object id="110" x="416" y="384" width="32" height="32">
    <properties>
+    <property name="direction" value="UP"/>
     <property name="nextID" value="14"/>
     <property name="pathID" value="13"/>
     <property name="previousID" value="12"/>
@@ -421,6 +427,7 @@
   </object>
   <object id="112" x="480" y="320" width="32" height="32">
    <properties>
+    <property name="direction" value="LEFT"/>
     <property name="nextID" value="16"/>
     <property name="pathID" value="15"/>
     <property name="previousID" value="14"/>
@@ -429,6 +436,7 @@
   </object>
   <object id="113" x="480" y="224" width="32" height="32">
    <properties>
+    <property name="direction" value="LEFT"/>
     <property name="nextID" value="17"/>
     <property name="pathID" value="16"/>
     <property name="previousID" value="15"/>
