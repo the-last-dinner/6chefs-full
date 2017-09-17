@@ -367,6 +367,10 @@
 		DC23C8711D8BD9D0008E57F3 /* PathNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */; };
 		DC25948B1E0E4EF80098FCDA /* SetPositionCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2594891E0E4EF80098FCDA /* SetPositionCommand.cpp */; };
 		DC25948C1E0E4EF80098FCDA /* SetPositionCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2594891E0E4EF80098FCDA /* SetPositionCommand.cpp */; };
+		DC265DA81F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */; };
+		DC265DA91F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */; };
+		DC265DAC1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */; };
+		DC265DAD1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */; };
 		DC37D80F1CDEFD3D0014418A /* FocusLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC37D80D1CDEFD3D0014418A /* FocusLightLayer.cpp */; };
 		DC37D8101CDEFD3D0014418A /* FocusLightLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC37D80D1CDEFD3D0014418A /* FocusLightLayer.cpp */; };
 		DC5D1D531D7F0E100034DD8F /* DetectionBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC5D1D511D7F0E100034DD8F /* DetectionBox.cpp */; };
