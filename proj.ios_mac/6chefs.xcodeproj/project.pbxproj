@@ -361,14 +361,16 @@
 		DC075EDF1F5C4C1D004BFBE3 /* TitleSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EDC1F5C4C1D004BFBE3 /* TitleSelectScene.cpp */; };
 		DC075EE21F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */; };
 		DC075EE31F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */; };
-		DC075EE61F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */; };
-		DC075EE71F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */; };
 		DC23C86C1D8BD9A7008E57F3 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */; };
 		DC23C86D1D8BD9A7008E57F3 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */; };
 		DC23C8701D8BD9D0008E57F3 /* PathNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */; };
 		DC23C8711D8BD9D0008E57F3 /* PathNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */; };
 		DC25948B1E0E4EF80098FCDA /* SetPositionCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2594891E0E4EF80098FCDA /* SetPositionCommand.cpp */; };
 		DC25948C1E0E4EF80098FCDA /* SetPositionCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC2594891E0E4EF80098FCDA /* SetPositionCommand.cpp */; };
+		DC265DA81F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */; };
+		DC265DA91F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */; };
+		DC265DAC1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */; };
+		DC265DAD1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */; };
 		DC328A691C87194E00675131 /* BGM in Resources */ = {isa = PBXBuildFile; fileRef = DC328A5D1C87194E00675131 /* BGM */; };
 		DC328A6A1C87194E00675131 /* BGM in Resources */ = {isa = PBXBuildFile; fileRef = DC328A5D1C87194E00675131 /* BGM */; };
 		DC328A6B1C87194E00675131 /* csv in Resources */ = {isa = PBXBuildFile; fileRef = DC328A5E1C87194E00675131 /* csv */; };
@@ -832,14 +834,16 @@
 		DC075EDD1F5C4C1D004BFBE3 /* TitleSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectScene.h; sourceTree = "<group>"; };
 		DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSelectSceneData.cpp; sourceTree = "<group>"; };
 		DC075EE11F5C5227004BFBE3 /* TitleSelectSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectSceneData.h; sourceTree = "<group>"; };
-		DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSelectMenuLayer.cpp; sourceTree = "<group>"; };
-		DC075EE51F6E207C004BFBE3 /* TitleSelectMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectMenuLayer.h; sourceTree = "<group>"; };
 		DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathFinder.cpp; path = PathFinder/PathFinder.cpp; sourceTree = "<group>"; };
 		DC23C86B1D8BD9A7008E57F3 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = PathFinder/PathFinder.h; sourceTree = "<group>"; };
 		DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathNode.cpp; path = PathFinder/PathNode.cpp; sourceTree = "<group>"; };
 		DC23C86F1D8BD9D0008E57F3 /* PathNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathNode.h; path = PathFinder/PathNode.h; sourceTree = "<group>"; };
 		DC2594891E0E4EF80098FCDA /* SetPositionCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetPositionCommand.cpp; path = Command/SetPositionCommand.cpp; sourceTree = "<group>"; };
 		DC25948A1E0E4EF80098FCDA /* SetPositionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPositionCommand.h; path = Command/SetPositionCommand.h; sourceTree = "<group>"; };
+		DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSelectPanel.cpp; path = TitleSelect/TitleSelectPanel.cpp; sourceTree = "<group>"; };
+		DC265DA71F6E8D230029F82D /* TitleSelectPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSelectPanel.h; path = TitleSelect/TitleSelectPanel.h; sourceTree = "<group>"; };
+		DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSelectMenuLayer.cpp; path = TitleSelect/TitleSelectMenuLayer.cpp; sourceTree = "<group>"; };
+		DC265DAB1F6E8D8F0029F82D /* TitleSelectMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSelectMenuLayer.h; path = TitleSelect/TitleSelectMenuLayer.h; sourceTree = "<group>"; };
 		DC328A5D1C87194E00675131 /* BGM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BGM; sourceTree = "<group>"; };
 		DC328A5E1C87194E00675131 /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
 		DC328A601C87194E00675131 /* event */ = {isa = PBXFileReference; lastKnownFileType = folder; path = event; sourceTree = "<group>"; };
@@ -1362,6 +1366,7 @@
 		DC0390961C871E1000C50E8E /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				DC265DA51F6E8CF20029F82D /* TitleSelect */,
 				DC0390971C871E1000C50E8E /* Dungeon */,
 				DC0390A21C871E1000C50E8E /* EventListener */,
 				DC0390A51C871E1000C50E8E /* LoadingLayer.cpp */,
@@ -1424,8 +1429,6 @@
 				DC0390B71C871E1000C50E8E /* TitleMainMenuLayer.h */,
 				DC0390B81C871E1000C50E8E /* TrophyListLayer.cpp */,
 				DC0390B91C871E1000C50E8E /* TrophyListLayer.h */,
-				DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */,
-				DC075EE51F6E207C004BFBE3 /* TitleSelectMenuLayer.h */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1703,6 +1706,17 @@
 				DC23C86F1D8BD9D0008E57F3 /* PathNode.h */,
 			);
 			name = PathFinder;
+			sourceTree = "<group>";
+		};
+		DC265DA51F6E8CF20029F82D /* TitleSelect */ = {
+			isa = PBXGroup;
+			children = (
+				DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */,
+				DC265DAB1F6E8D8F0029F82D /* TitleSelectMenuLayer.h */,
+				DC265DA61F6E8D230029F82D /* TitleSelectPanel.cpp */,
+				DC265DA71F6E8D230029F82D /* TitleSelectPanel.h */,
+			);
+			name = TitleSelect;
 			sourceTree = "<group>";
 		};
 		DC5D1D501D7F0C4F0034DD8F /* DetectionBox */ = {
@@ -1998,6 +2012,7 @@
 				DC0392231C871E1000C50E8E /* EndingScene.cpp in Sources */,
 				DC03924D1C871E1000C50E8E /* JsonUtils.cpp in Sources */,
 				DC0391711C871E1000C50E8E /* AppDelegate.cpp in Sources */,
+				DC265DAC1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */,
 				DCDB71CB1DFE7F0C0015A434 /* HurtCommand.cpp in Sources */,
 				DC03917B1C871E1000C50E8E /* DungeonCameraSceneData.cpp in Sources */,
 				DC0391FB1C871E1000C50E8E /* MovePatternFactory.cpp in Sources */,
@@ -2022,9 +2037,9 @@
 				DC0392271C871E1000C50E8E /* StartUpScene.cpp in Sources */,
 				DCDB71C71DFD8E4C0015A434 /* BattleBoss.cpp in Sources */,
 				DC0391D91C871E1000C50E8E /* DungeonSceneManager.cpp in Sources */,
-				DC075EE61F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */,
 				DC0391A51C871E1000C50E8E /* ModalLayerEvent.cpp in Sources */,
 				DC0391771C871E1000C50E8E /* StoryMessageData.cpp in Sources */,
+				DC265DA81F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */,
 				DC5D1D571D84FA7D0034DD8F /* CollisionBox.cpp in Sources */,
 				DC0391FF1C871E1000C50E8E /* Scouter.cpp in Sources */,
 				DC0391A71C871E1000C50E8E /* SceneEvent.cpp in Sources */,
@@ -2169,7 +2184,6 @@
 				26460BA51D72EF1500F0336C /* DebugConfigData.cpp in Sources */,
 				DC03918A1C871E1000C50E8E /* AmbientLightLayer.cpp in Sources */,
 				2613244E1DE2081200E39526 /* BattleCharacterData.cpp in Sources */,
-				DC075EE71F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */,
 				DCCA52571C945625004769E1 /* KeyconfigMenuLayer.cpp in Sources */,
 				9FB79E721D363073004E81CF /* AssertScene.cpp in Sources */,
 				DC0391A21C871E1000C50E8E /* MapObjectEvent.cpp in Sources */,
@@ -2222,6 +2236,7 @@
 				DC668C2C1D966C8900ED569C /* MapObjectCommandQueue.cpp in Sources */,
 				DC0392301C871E1000C50E8E /* EventTask.cpp in Sources */,
 				DC668C301D9671CE00ED569C /* MoveCommand.cpp in Sources */,
+				DC265DA91F6E8D230029F82D /* TitleSelectPanel.cpp in Sources */,
 				DC0391861C871E1000C50E8E /* StartUpSceneData.cpp in Sources */,
 				26FBED391C98514A002FAFF7 /* CsvUtils.cpp in Sources */,
 				DC03922A1C871E1000C50E8E /* TitleScene.cpp in Sources */,
@@ -2230,6 +2245,7 @@
 				DC25948C1E0E4EF80098FCDA /* SetPositionCommand.cpp in Sources */,
 				DC03920E1C871E1000C50E8E /* ChangeMapHistory.cpp in Sources */,
 				DC0392201C871E1000C50E8E /* DungeonMenuScene.cpp in Sources */,
+				DC265DAD1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */,
 				DC0182921D7A97D700E556D1 /* Slip.cpp in Sources */,
 				DC0392321C871E1000C50E8E /* BothFollow.cpp in Sources */,
 				DC03919C1C871E1000C50E8E /* FlagEvent.cpp in Sources */,

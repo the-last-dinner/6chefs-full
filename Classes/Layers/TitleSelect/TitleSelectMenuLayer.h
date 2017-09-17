@@ -11,13 +11,10 @@
 
 #include "Layers/Menu/MenuLayer.h"
 
+class TitleSelectPanel;
+
 class TitleSelectMenuLayer : public MenuLayer
 {
-// 定数
-private:
-    static const string TITLE_NODE_NAME;
-    static const string CURSOR_NODE_NAME;
-    static const string CHARA_NODE_NAME;
 // クラスメソッド
 public:
     CREATE_FUNC_WITH_PARAM(TitleSelectMenuLayer, function<void(int)>)
@@ -36,8 +33,7 @@ private:
 private:
     function<void(int)> _onSelectTitle { nullptr };
     Sprite* _bg { nullptr };
-    Layer* _layer1 { nullptr };
-    Layer* _layer2 { nullptr };
+    vector<TitleSelectPanel*> _panels {};
 };
 
 #endif /* TitleSelectMenuLayer_h */
