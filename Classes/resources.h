@@ -13,7 +13,7 @@ namespace Resource
 {
     namespace ConfigFiles
     {
-        static const std::string BASE_PATH = "config/";
+        static const std::string BASE_PATH = "common/config/";
         static const std::string DEBUG_CONFIG = BASE_PATH + "DebugConfig.json";
         static const std::string COMMON_EVENT = BASE_PATH + "CommonEvent.json";
         static const std::string PRELOAD_LIST = BASE_PATH + "PreloadList.json";
@@ -25,7 +25,7 @@ namespace Resource
     
     namespace CsvFiles
     {
-        static const std::string BASE_PATH = "csv/";
+        static const std::string BASE_PATH = "common/csv/";
         static const std::string CHAPTER = BASE_PATH + "chapter.csv";
         static const std::string CHARACTER = BASE_PATH + "character.csv";
         static const std::string DOCUMENT = BASE_PATH + "document.csv";
@@ -36,7 +36,7 @@ namespace Resource
     
     namespace Font
     {
-        static const std::string BASE_PATH = "fonts/";
+        static const std::string BASE_PATH = "common/fonts/";
         static const std::string CONFIG = BASE_PATH + "mgenplus-1c-regular.ttf";
         static const std::string SYSTEM = BASE_PATH + "aoyagireisyosimo_ttf_2_01.ttf";
         static const std::string MESSAGE = BASE_PATH + "cinecaption2.28.ttf";
@@ -44,7 +44,7 @@ namespace Resource
     
     namespace SE
     {
-        static const std::string BASE_PATH = "se/";
+        static const std::string BASE_PATH = "common/se/";
         static const std::string BACK = "back.mp3";
         static const std::string CURSOR_MOVE = "cursorMove.mp3";
         static const std::string GET_ITEM = "mystery5.mp3";
@@ -58,13 +58,13 @@ namespace Resource
     
     namespace BGM
     {
-        static const std::string BASE_PATH = "BGM/";
+        static const std::string BASE_PATH = "common/BGM/";
         static const std::string TIRED = "tired.mp3";
     };
     
     namespace VOICE
     {
-        static const std::string BASE_PATH = "voice/";
+        static const std::string BASE_PATH = "common/voice/";
         static const std::string THE_LAST_DINNER_UEHARA = "the-last-dinner-uehara.mp3";
         static const std::string THE_LAST_DINNER_NANIWO = "the-last-dinner-naniwo.mp3";
         static const std::string THE_LAST_DINNER_ERI = "the-last-dinner-eri.mp3";
@@ -72,7 +72,7 @@ namespace Resource
     
     namespace SpriteFrame
     {
-        static const std::string BASE_PATH = "img/";
+        static const std::string BASE_PATH = "common/img/";
         static const std::string ANIMATION = BASE_PATH + "animation";
         static const std::string BLOOD = BASE_PATH + "blood";
         static const std::string EFFECT = BASE_PATH + "effect";
