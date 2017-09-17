@@ -7,7 +7,7 @@
 //
 
 #include "Scenes/StartUpScene.h"
-#include "Scenes/TitleScene.h"
+#include "Scenes/TitleSelectScene.h"
 #include "Scenes/OpeningScene.h"
 #include "Datas/Scene/StartUpSceneData.h"
 #include "Layers/EventListener/ConfigEventListenerLayer.h"
@@ -81,7 +81,7 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
                 if (ConfigDataManager::getInstance()->getMasterConfigData()->isDisplay(MasterConfigData::OPENING_SCENE)) {
                     Director::getInstance()->replaceScene(OpeningScene::create());
                 } else {
-                    Director::getInstance()->replaceScene(TitleScene::create());
+                    Director::getInstance()->replaceScene(TitleSelectScene::create());
                 }
             }),
             nullptr
