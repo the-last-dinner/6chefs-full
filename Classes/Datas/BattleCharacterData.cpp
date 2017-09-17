@@ -12,6 +12,7 @@
 #include "Helpers/AssertHelper.h"
 #include "Utils/StringUtils.h"
 #include "Utils/JsonUtils.h"
+#include "Managers/ResourcesManager.h"
 
 const char* BattleCharacterData::HIT_POINT {"hit_point"};
 const char* BattleCharacterData::SPEED_RATIO {"speed_ratio"};
@@ -43,7 +44,7 @@ bool BattleCharacterData::init(const string &charaId)
     
     // configFileがセットされていなければセット
     if (BattleCharacterData::BATTLE_CHARACTER_DATA == rapidjson::Document()) {
-        string path = FileUtils::getInstance()->fullPathForFilename(Resource::ConfigFiles::BATTLE_CHARACTER);
+        string path = ResourcesManager::getInstance()->getCurrentFilePath(Resource::ConfigFiles::BATTLE_CHARACTER);
         if (path == "") {
             _assertHelper->fatalAssert(Resource::ConfigFiles::BATTLE_CHARACTER + "is missing");
             return false;

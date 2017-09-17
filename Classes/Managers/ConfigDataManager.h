@@ -38,6 +38,7 @@ public:
     DebugConfigData* getDebugConfigData();
     MasterConfigData* getMasterConfigData();
     TrophyConfigData* getTrophyConfigData();
+    void setConfigData();
 };
 
 #endif /* ConfigDataManager_hpp */

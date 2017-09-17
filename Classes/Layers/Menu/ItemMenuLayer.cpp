@@ -44,7 +44,7 @@ bool ItemMenuLayer::init()
     leftTop->setPosition(leftTop->getContentSize().width/2, WINDOW_HEIGHT - leftTop->getContentSize().height/2);
     this->addChild(leftTop);
     
-    Label* title = Label::createWithTTF("アイテム", "fonts/cinecaption2.28.ttf", 48);
+    Label* title = Label::createWithTTF("アイテム", Resource::Font::MESSAGE, 48);
     title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
@@ -72,11 +72,11 @@ bool ItemMenuLayer::init()
     int left_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT);
     string right_equip = (right_id != 0) ? CsvDataManager::getInstance()->getItemData()->getItemName(right_id) : "なし";
     string left_equip = (left_id != 0) ? CsvDataManager::getInstance()->getItemData()->getItemName(left_id) : "なし";
-    Label* equip_title = Label::createWithTTF("装備", "fonts/cinecaption2.28.ttf", 26);
+    Label* equip_title = Label::createWithTTF("装備", Resource::Font::MESSAGE, 26);
     equip_title->setPosition(equip_title->getContentSize().width/2 + 30, rightTop->getContentSize().height - equip_title->getContentSize().height/2 - 15);
     equip_title->setColor(Color3B::WHITE);
     rightTop->addChild(equip_title);
-    Label* equipment = Label::createWithTTF("右手 : " + right_equip + "\n左手 : " + left_equip, "fonts/cinecaption2.28.ttf", 26);
+    Label* equipment = Label::createWithTTF("右手 : " + right_equip + "\n左手 : " + left_equip, Resource::Font::MESSAGE, 26);
     equipment->setPosition(equipment->getContentSize().width/2 + 20, equipment->getContentSize().height/2 + 20);
     equipment->setColor(Color3B::WHITE);
     rightTop->addChild(equipment);
@@ -123,7 +123,7 @@ bool ItemMenuLayer::init()
         
         // アイテム
         this->items.push_back(itr);
-        Label* item = Label::createWithTTF(CsvDataManager::getInstance()->getItemData()->getItemName(itr), "fonts/cinecaption2.28.ttf", 22);
+        Label* item = Label::createWithTTF(CsvDataManager::getInstance()->getItemData()->getItemName(itr), Resource::Font::MESSAGE, 22);
         item->setPosition(panelSize.width/2 , panelSize.height/2);
         item->setColor(Color3B::WHITE);
         item->setTag(i);
@@ -156,7 +156,7 @@ void ItemMenuLayer::changeItemDiscription(const int idx)
         bottom->removeChildByName(labelName);
     }
     string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getItemData()->getItemDiscription(this->items[idx]));
-    Label* discription = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 24);
+    Label* discription = Label::createWithTTF(str, Resource::Font::MESSAGE, 24);
     //discription->setPosition(bottom->getContentSize().width / 2, leftBottom->getContentSize().height / 2);
     int margin = 15;
     discription->setPosition(discription->getContentSize().width / 2 + margin, bottom->getContentSize().height - discription->getContentSize().height / 2 - margin);

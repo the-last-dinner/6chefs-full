@@ -9,6 +9,7 @@
 #include "Layers/Message/CharacterMessageLayer.h"
 
 #include "Datas/Message/CharacterMessageData.h"
+#include "Managers/ResourcesManager.h"
 
 // 定数
 const float CharacterMessageLayer::TOP_MARGIN { 50 };
@@ -111,7 +112,7 @@ Label* CharacterMessageLayer::createMessage()
             this->charaImg = img;
         }
     } else {
-        Sprite* img {Sprite::create(Resource::SpriteFrame::BASE_PATH + "disp/" + data->getImageName())};
+        Sprite* img {Sprite::create(ResourcesManager::getInstance()->getCurrentPath() + "/" + Resource::SpriteFrame::BASE_PATH + "disp/" + data->getImageName())};
         img->setPosition(WINDOW_CENTER);
         img->setLocalZOrder((data->isImageOnly()) ? 1 : -1);
         img->setOpacity(0);
@@ -122,7 +123,7 @@ Label* CharacterMessageLayer::createMessage()
     
 	// キャラクター名
 	this->nameFrame->removeAllChildren();
-	Label* name { Label::createWithTTF(data->getCharaName(), "fonts/cinecaption2.28.ttf", 26.f)};
+	Label* name { Label::createWithTTF(data->getCharaName(), Resource::Font::MESSAGE, 26.f)};
 	this->nameFrame->addChild(name);
 	
 	// キャラクター名の長さによってキャラクター名用枠の大きさ、位置を変える
@@ -132,7 +133,7 @@ Label* CharacterMessageLayer::createMessage()
 	name->setPosition(this->nameFrame->getContentSize() / 2);
 	
 	// メッセージ本文
-	Label* message = Label::createWithTTF(data->getMessage(), "fonts/cinecaption2.28.ttf", 24.f);
+	Label* message = Label::createWithTTF(data->getMessage(), Resource::Font::MESSAGE, 24.f);
     message->setLineHeight(36.f);
     message->setHorizontalAlignment(TextHAlignment::LEFT);
     message->setVerticalAlignment(TextVAlignment::TOP);

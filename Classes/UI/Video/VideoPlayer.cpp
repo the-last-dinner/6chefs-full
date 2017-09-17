@@ -9,9 +9,10 @@
 #include "UI/Video/VideoPlayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Managers/ResourcesManager.h"
 
 // 定数
-const string VideoPlayer::DISP_VIDEO_PATH = "common/video/";
+const string VideoPlayer::DISP_VIDEO_PATH = "video/";
 const float VideoPlayer::SHOW_DURATION = 0.1f;
 const float VideoPlayer::HIDE_DURATION = 0.1f;
 
@@ -43,6 +44,7 @@ bool VideoPlayer::init(const string& fileName, const bool skip, function<void()>
     
     // charに以下のように変換しないと動画がデコードされない
     string filePath = DISP_VIDEO_PATH + fileName;
+    filePath = ResourcesManager::getInstance()->getCurrentFilePath(filePath);
     int len = static_cast<int>(filePath.length());
     char* fname = new char[len+1];
     memcpy(fname, filePath.c_str(), len+1);

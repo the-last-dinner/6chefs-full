@@ -8,6 +8,7 @@
 
 #include "Models/ConfigData/MasterConfigData.h"
 
+#include "Managers/ResourcesManager.h"
 #include "Utils/JsonUtils.h"
 #include "Utils/AssertUtils.h"
 
@@ -26,7 +27,7 @@ const char* MasterConfigData::OPENING_BGM_FILE {"opening_bgm_file"};
 bool MasterConfigData::init()
 {
     FUNCLOG
-    this->filePath = FileUtils::getInstance()->fullPathForFilename(Resource::ConfigFiles::MASTER_CONFIG);
+    this->filePath = ResourcesManager::getInstance()->getCurrentFilePath(Resource::ConfigFiles::MASTER_CONFIG);
     if (this->filePath == "")
     {
         LastSupper::AssertUtils::fatalAssert(Resource::ConfigFiles::MASTER_CONFIG + "is missing.");

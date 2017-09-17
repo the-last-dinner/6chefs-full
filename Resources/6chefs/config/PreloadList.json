@@ -1,0 +1,37 @@
+{
+    "common/img": [
+        "animation",
+        "blood",
+        "effect",
+        "frame",
+        "icon",
+        "map_object",
+        "menu_panels",
+        "startup",
+        "title",
+        "ui"
+    ],
+    "common/character": [
+        "magoichi",
+        "daigoro",
+        "dandan",
+        "nadeshiko",
+        "manaka",
+        "ranmaru",
+        "shituji",
+        "yuki",
+        "fujin",
+        "knife",
+        "taihou",
+        "Tfujin",
+        "wManaka",
+        "wDandan",
+        "oRanmaru",
+        "sRanmaru",
+        "dDaigoro",
+        "kyoujin1",
+        "kyoujin2",
+        "kyoujin3",
+        "kyoujin4"
+    ]
+}

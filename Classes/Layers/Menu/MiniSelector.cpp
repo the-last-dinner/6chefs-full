@@ -56,7 +56,7 @@ bool MiniSelector::init(Selector& selector)
         background->addChild(panel);
         
         // 選択ラベル
-        Label* label = Label::createWithTTF(menu[i], "fonts/cinecaption2.28.ttf", 24);
+        Label* label = Label::createWithTTF(menu[i], Resource::Font::MESSAGE, 24);
         label->setPosition(panelSize.width/2 , panelSize.height / 2);
         label->setColor(selector.getColor());
         label->setTag(i);
@@ -102,7 +102,7 @@ bool MiniSelector::init(SelectorWithSprite& selector)
         window->addChild(panel);
         
         // 選択ラベル
-        Label* label = Label::createWithTTF(menu[i], "fonts/cinecaption2.28.ttf", 24);
+        Label* label = Label::createWithTTF(menu[i], Resource::Font::MESSAGE, 24);
         label->setPosition(panel_size.width/2 , panel_size.height / 2);
         label->setColor(selector.getColor());
         label->setTag(i);

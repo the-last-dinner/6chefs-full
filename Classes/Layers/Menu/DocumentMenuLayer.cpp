@@ -38,7 +38,7 @@ bool DocumentMenuLayer::init()
     leftTop->setPosition(leftTop->getContentSize().width/2, WINDOW_HEIGHT - leftTop->getContentSize().height/2);
     this->addChild(leftTop);
     
-    Label* title = Label::createWithTTF("資料", "fonts/cinecaption2.28.ttf", 48);
+    Label* title = Label::createWithTTF("資料", Resource::Font::MESSAGE, 48);
     title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
@@ -103,7 +103,7 @@ bool DocumentMenuLayer::init()
         }
         
         // ラベル生成
-        Label* doc = Label::createWithTTF(docName, "fonts/cinecaption2.28.ttf", 24);
+        Label* doc = Label::createWithTTF(docName, Resource::Font::MESSAGE, 24);
         doc->setPosition(panelSize.width/2 , panelSize.height / 2);
         doc->setColor(Color3B::WHITE);
         doc->setTag(i);
@@ -169,7 +169,7 @@ void DocumentMenuLayer::changeCharaImage(const int idx)
     if (PlayerDataManager::getInstance()->getLocalData()->getCharacterProfileLevel(this->documentIds[idx]) < 0)
     {
         // 見ることができないキャラクター
-        Label* label = Label::createWithTTF("? ? ? ? ?", "fonts/cinecaption2.28.ttf", 24);
+        Label* label = Label::createWithTTF("? ? ? ? ?", Resource::Font::MESSAGE, 24);
         label->setPosition(panel.width/2, panel.height/2);
         label->setName(labelName);
         leftBottom->addChild(label);
@@ -189,7 +189,7 @@ void DocumentMenuLayer::changeCharaImage(const int idx)
         }
         else
         {
-            Label* label = Label::createWithTTF("NO IMAGE", "fonts/cinecaption2.28.ttf", 24);
+            Label* label = Label::createWithTTF("NO IMAGE", Resource::Font::MESSAGE, 24);
             label->setPosition(panel.width/2, panel.height/2);
             label->setName(labelName);
             leftBottom->addChild(label);
@@ -282,7 +282,7 @@ void DocumentMenuLayer::onEnterKeyPressed(int idx)
             {
                 profile = "? ? ? ? ?";
             }
-            Label* label = Label::createWithTTF(profile, "fonts/cinecaption2.28.ttf", 24);
+            Label* label = Label::createWithTTF(profile, Resource::Font::MESSAGE, 24);
             label->setColor(Color3B::WHITE);
             label->setPosition(canCheckLevel >= i ? label->getContentSize().width/2 + 20 : panelSize.width/2, (2-i) * panelSize.height + panelSize.height/2);
             discriptions.push_back(label);

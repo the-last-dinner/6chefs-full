@@ -12,17 +12,21 @@
 #include "Datas/Scene/StartUpSceneData.h"
 #include "Layers/EventListener/ConfigEventListenerLayer.h"
 #include "Layers/LoadingLayer.h"
+#include "Managers/ResourcesManager.h"
 
 // 初期化
 bool StartUpScene::init()
 {
     if (!BaseScene::init(StartUpSceneData::create())) return false;
     
-    _configListener->setKeyconfigEnabled(false);
+    // デバッグ表示
+    Director::getInstance()->setDisplayStats(ConfigDataManager::getInstance()->getDebugConfigData()->getBoolValue(DebugConfigData::STATS));
     
     // キーコンフィグの取得
     KeyconfigManager::getInstance()->setCursorKey(PlayerDataManager::getInstance()->getGlobalData()->getCursorKey());
     KeyconfigManager::getInstance()->setDashKey(PlayerDataManager::getInstance()->getGlobalData()->getDashKey());
+    
+    _configListener->setKeyconfigEnabled(false);
     
     return true;
 }
@@ -31,11 +35,6 @@ bool StartUpScene::init()
 void StartUpScene::onEnter()
 {
     BaseScene::onEnter();
-    
-    // データ準備
-    ConfigDataManager::getInstance();
-    CsvDataManager::getInstance();
-    PlayerDataManager::getInstance();
 }
 
 // データ読み込み後
@@ -78,11 +77,7 @@ void StartUpScene::onPreloadFinished(LoadingLayer *loadingLayer)
             DelayTime::create(1.5f),
             TargetedAction::create(logo,FadeOut::create(1.0f)),
             CallFunc::create([](){
-                if (ConfigDataManager::getInstance()->getMasterConfigData()->isDisplay(MasterConfigData::OPENING_SCENE)) {
-                    Director::getInstance()->replaceScene(OpeningScene::create());
-                } else {
-                    Director::getInstance()->replaceScene(TitleSelectScene::create());
-                }
+                Director::getInstance()->replaceScene(TitleSelectScene::create());
             }),
             nullptr
         )

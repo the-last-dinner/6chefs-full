@@ -8,10 +8,12 @@
 
 #include "Models/CsvData/DocumentData.h"
 
+#include "Managers/ResourcesManager.h"
+
 // 初期化
 bool DocumentData::init()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(Resource::CsvFiles::DOCUMENT);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(Resource::CsvFiles::DOCUMENT);
     if (path == "") return false;
     this->data = CsvUtils::readCsvFile(path);
     return true;

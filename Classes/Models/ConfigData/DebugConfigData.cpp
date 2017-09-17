@@ -8,6 +8,7 @@
 
 #include "Models/ConfigData/DebugConfigData.h"
 
+#include "Managers/ResourcesManager.h"
 #include "Utils/AssertUtils.h"
 #include "Utils/JsonUtils.h"
 
@@ -19,7 +20,7 @@ const char* DebugConfigData::INVINCIBLE_MODE {"invincible_mode"};
 bool DebugConfigData::init()
 {
     FUNCLOG
-    this->filePath = FileUtils::getInstance()->fullPathForFilename(Resource::ConfigFiles::DEBUG_CONFIG);
+    this->filePath = ResourcesManager::getInstance()->getCommonFilePath(Resource::ConfigFiles::DEBUG_CONFIG);
     if (this->filePath == "") return true;
     this->debugConfig = LastSupper::JsonUtils::readJsonCrypted(this->filePath);
     this->hasDebugConfig = true;

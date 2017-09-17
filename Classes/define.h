@@ -67,7 +67,7 @@ using namespace std;
 #define MAX_SAVE_COUNT 10
 
 // 暗号化状態の判別
-#define IS_ENCRYPTED (FileUtils::getInstance()->fullPathForFilename("config/IsEncrypted.json") != "")
+#define IS_ENCRYPTED (FileUtils::getInstance()->fullPathForFilename(Resource::ConfigFiles::IS_ENCRYPTED_FILE) != "")
 
 // レイヤーのZORDER値
 enum Priority

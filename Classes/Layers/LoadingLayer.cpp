@@ -8,6 +8,8 @@
 
 #include "Layers/LoadingLayer.h"
 
+#include "Managers/ResourcesManager.h"
+
 // コンストラクタ
 LoadingLayer::LoadingLayer(){FUNCLOG}
 
@@ -25,7 +27,8 @@ bool LoadingLayer::init(const Color4B& bgColor)
 	if(!Layer::init()) return false;
     
 	// plistを読み込み
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile(Resource::SpriteFrame::BASE_PATH + "load.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile(
+        ResourcesManager::getInstance()->getCommonFilePath(Resource::SpriteFrame::BASE_PATH + "load.plist"));
     
     // カバー生成
     Sprite* cover { Sprite::create() };

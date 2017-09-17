@@ -54,7 +54,7 @@ bool DungeonMainMenuLayer::init()
     
     // チャプター表示
     int chapter_id = PlayerDataManager::getInstance()->getLocalData()->getChapterId();
-    Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterData()->getName(chapter_id), "fonts/cinecaption2.28.ttf", 30);
+    Label* chapter_name = Label::createWithTTF(CsvDataManager::getInstance()->getChapterData()->getName(chapter_id), Resource::Font::MESSAGE, 30);
     float chapter_name_y = WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height / 2 - 15;
     inPosition = Point(chapter_name->getContentSize().width/2 + 15, chapter_name_y);
     outPosition = Point(-1 * chapter_name->getContentSize().width / 2, chapter_name_y);
@@ -63,7 +63,7 @@ bool DungeonMainMenuLayer::init()
     cover->addChild(chap1);
     this->slideNodes.push_back(chap1);
     
-    Label* chapter_title = Label::createWithTTF(CsvDataManager::getInstance()->getChapterData()->getTitle(chapter_id), "fonts/cinecaption2.28.ttf", 30);
+    Label* chapter_title = Label::createWithTTF(CsvDataManager::getInstance()->getChapterData()->getTitle(chapter_id), Resource::Font::MESSAGE, 30);
     float chapter_title_y = WINDOW_HEIGHT - hBg->getContentSize().height - chapter_name->getContentSize().height - chapter_title->getContentSize().height / 2 - 30;
     inPosition = Point(chapter_title->getContentSize().width / 2 + 45, chapter_title_y);
     outPosition = Point(-1 * chapter_title->getContentSize().width / 2, chapter_title_y);
@@ -84,7 +84,7 @@ bool DungeonMainMenuLayer::init()
     
     for(int i {0}; i < static_cast<int>(Type::SIZE); i++)
     {
-        Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), "fonts/cinecaption2.28.ttf", 26);
+        Label* menu = Label::createWithTTF(menuStrings.at(static_cast<Type>(i)), Resource::Font::MESSAGE, 26);
         menu->setPosition((WINDOW_WIDTH / static_cast<int>(Type::SIZE)) * (i + 0.5), 40);
         //menu->setOpacity(100);
         menu->setLocalZOrder(1);
@@ -94,12 +94,12 @@ bool DungeonMainMenuLayer::init()
     }
     
     // マップ名表示
-    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapData()->getName(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id), "fonts/cinecaption2.28.ttf", 26);
+    Label* mapName = Label::createWithTTF(CsvDataManager::getInstance()->getMapData()->getName(PlayerDataManager::getInstance()->getLocalData()->getLocation().map_id), Resource::Font::MESSAGE, 26);
     mapName->setPosition(mapName->getContentSize().width / 2 + 15, hBg->getContentSize().height - mapName->getContentSize().height / 2 - 15);
     hBg->addChild(mapName);
     
     // プレイ時間表示
-    Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getCurrentTimeForDisplay(), "fonts/cinecaption2.28.ttf", 26);
+    Label* play_time = Label::createWithTTF(PlayerDataManager::getInstance()->getCurrentTimeForDisplay(), Resource::Font::MESSAGE, 26);
     play_time->setPosition(hBg->getContentSize().width - play_time->getContentSize().width/2 - 15, hBg->getContentSize().height - play_time->getContentSize().height / 2 - 15);
     hBg->addChild(play_time);
     this->play_time = play_time;
@@ -120,7 +120,7 @@ bool DungeonMainMenuLayer::init()
     int left_id = PlayerDataManager::getInstance()->getLocalData()->getItemEquipment(Direction::LEFT);
     string right = (right_id != etoi(ItemID::UNDIFINED)) ? CsvDataManager::getInstance()->getItemData()->getItemName(right_id) : "なし";
     string left = (left_id != etoi(ItemID::UNDIFINED)) ? CsvDataManager::getInstance()->getItemData()->getItemName(left_id) : "なし";
-    Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, "fonts/cinecaption2.28.ttf", 26);
+    Label* equipment = Label::createWithTTF("装備\n右手 : " + right + "\n左手 : " + left, Resource::Font::MESSAGE, 26);
     equipment->setPosition(equipment->getContentSize().width / 2 + 15, fBg->getContentSize().height - equipment->getContentSize().height / 2 - 15);
     fBg->addChild(equipment);
     
@@ -142,12 +142,12 @@ bool DungeonMainMenuLayer::init()
         fBg->addChild(chara_panel);
         
         // 通り名
-        Label* street= Label::createWithTTF(CsvDataManager::getInstance()->getCharacterData()->getStreetName(charas[i].chara_id), "fonts/cinecaption2.28.ttf", 16);
+        Label* street= Label::createWithTTF(CsvDataManager::getInstance()->getCharacterData()->getStreetName(charas[i].chara_id), Resource::Font::MESSAGE, 16);
         street->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height / 2 - 12);
         chara_panel->addChild(street);
         
         // キャラ名
-        Label* name = Label::createWithTTF(CsvDataManager::getInstance()->getCharacterData()->getName(charas[i].chara_id), "fonts/cinecaption2.28.ttf", 24);
+        Label* name = Label::createWithTTF(CsvDataManager::getInstance()->getCharacterData()->getName(charas[i].chara_id), Resource::Font::MESSAGE, 24);
         name->setPosition(cPanelSize.width / 2, cPanelSize.height - street->getContentSize().height - name->getContentSize().height /2 - 20);
         chara_panel->addChild(name);
         

@@ -66,7 +66,7 @@ bool PasswordEventLayer::init(const string& password, ResultCallback callback)
     float eachSize = numPanelSize.width / this->pass_length;
     for (int i = 0; i < this->pass_length; i++)
     {
-        Label* label { Label::createWithTTF("-", "fonts/cinecaption2.28.ttf", 48) };
+        Label* label { Label::createWithTTF("-", Resource::Font::MESSAGE, 48) };
         label->setPosition(Point(i * eachSize + eachSize/2, numPanelSize.height / 2));
         label->setCascadeOpacityEnabled(true);
         numPanel->addChild(label);

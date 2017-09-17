@@ -45,7 +45,7 @@ bool ButtonMashingLayer::init(int time, float limit, function<void()> onClick, R
     this->onClick = onClick;
     
     // 文字表示
-    Label* label { Label::createWithTTF("決定キー連打！！", "fonts/cinecaption2.28.ttf", 25) };
+    Label* label { Label::createWithTTF("決定キー連打！！", Resource::Font::MESSAGE, 25) };
     label->setPosition(Point(this->getContentSize().width / 2, this->getContentSize().height / 4));
     label->setCascadeOpacityEnabled(true);
     this->addChild(label);
