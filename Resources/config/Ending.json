@@ -170,21 +170,65 @@
         ],
         "pictures":[
             {
-                "name":"1_last.png",
-                "time":"10.0"
+                "name":"epilogue.png",
+                "time":"13.0"
             },
             {
-                "name":"daigoro_stand.png",
-                "time":"12.0"
+                "name":"chapter1.png",
+                "time":"4.5"
             },
             {
-                "name":"dandan_stand.png",
-                "time":"14.5"
+                "name":"daigoro_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"dandan_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"chapter2.png",
+                "time":"4.5"
+            },
+            {
+                "name":"nadeshiko_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"ranmaru_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"chapter3.png",
+                "time":"4.5"
+            },
+            {
+                "name":"yuki_stan.png",
+                "time":"5.5"
+            },
+            {
+                "name":"manaka_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"chapter4.png",
+                "time":"4.5"
+            },
+            {
+                "name":"taihou_usually.png",
+                "time":"5.5"
+            },
+            {
+                "name":"chapter5.png",
+                "time":"4.5"
+            },
+            {
+                "name":"magoichi_usually.png",
+                "time":"5.5"
             }
         ],
-        "background":"title.png",
-        "lastText":"title.png",
-        "lastPicture":"title.png",
-        "bgm":"tower.mp3"
+        "background":"background.png",
+        "lastText":"制作",
+        "lastPicture":"the_last_dinner_log.png",
+        "bgm":"ending.mp3"
     }
 }
