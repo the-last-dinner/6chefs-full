@@ -32,6 +32,7 @@ void TitleSelectScene::onPreloadFinished(LoadingLayer* loadingLayer)
     TitleSelectMenuLayer* menuLayer { TitleSelectMenuLayer::create(CC_CALLBACK_1(TitleSelectScene::onTitleSelected, this)) };
     this->addChild(menuLayer);
     loadingLayer->onLoadFinished();
+    menuLayer->show();
 }
 
 // タイトル選択された時
