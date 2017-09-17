@@ -357,6 +357,12 @@
 		DC0392521C871E1000C50E8E /* SpriteUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC03916B1C871E1000C50E8E /* SpriteUtils.cpp */; };
 		DC0392531C871E1000C50E8E /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC03916D1C871E1000C50E8E /* StringUtils.cpp */; };
 		DC0392541C871E1000C50E8E /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC03916D1C871E1000C50E8E /* StringUtils.cpp */; };
+		DC075EDE1F5C4C1D004BFBE3 /* TitleSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EDC1F5C4C1D004BFBE3 /* TitleSelectScene.cpp */; };
+		DC075EDF1F5C4C1D004BFBE3 /* TitleSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EDC1F5C4C1D004BFBE3 /* TitleSelectScene.cpp */; };
+		DC075EE21F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */; };
+		DC075EE31F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */; };
+		DC075EE61F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */; };
+		DC075EE71F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */; };
 		DC23C86C1D8BD9A7008E57F3 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */; };
 		DC23C86D1D8BD9A7008E57F3 /* PathFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */; };
 		DC23C8701D8BD9D0008E57F3 /* PathNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */; };
@@ -822,6 +828,12 @@
 		DC03916C1C871E1000C50E8E /* SpriteUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteUtils.h; sourceTree = "<group>"; };
 		DC03916D1C871E1000C50E8E /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtils.cpp; sourceTree = "<group>"; };
 		DC03916E1C871E1000C50E8E /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtils.h; sourceTree = "<group>"; };
+		DC075EDC1F5C4C1D004BFBE3 /* TitleSelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSelectScene.cpp; sourceTree = "<group>"; };
+		DC075EDD1F5C4C1D004BFBE3 /* TitleSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectScene.h; sourceTree = "<group>"; };
+		DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSelectSceneData.cpp; sourceTree = "<group>"; };
+		DC075EE11F5C5227004BFBE3 /* TitleSelectSceneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectSceneData.h; sourceTree = "<group>"; };
+		DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleSelectMenuLayer.cpp; sourceTree = "<group>"; };
+		DC075EE51F6E207C004BFBE3 /* TitleSelectMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectMenuLayer.h; sourceTree = "<group>"; };
 		DC23C86A1D8BD9A7008E57F3 /* PathFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathFinder.cpp; path = PathFinder/PathFinder.cpp; sourceTree = "<group>"; };
 		DC23C86B1D8BD9A7008E57F3 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = PathFinder/PathFinder.h; sourceTree = "<group>"; };
 		DC23C86E1D8BD9D0008E57F3 /* PathNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathNode.cpp; path = PathFinder/PathNode.cpp; sourceTree = "<group>"; };
@@ -1280,6 +1292,8 @@
 				DC03906F1C871E1000C50E8E /* TitleSceneData.h */,
 				26E22CF31E50B9E50018A55C /* OpeningSceneData.cpp */,
 				26E22CF41E50B9E50018A55C /* OpeningSceneData.h */,
+				DC075EE01F5C5227004BFBE3 /* TitleSelectSceneData.cpp */,
+				DC075EE11F5C5227004BFBE3 /* TitleSelectSceneData.h */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1410,6 +1424,8 @@
 				DC0390B71C871E1000C50E8E /* TitleMainMenuLayer.h */,
 				DC0390B81C871E1000C50E8E /* TrophyListLayer.cpp */,
 				DC0390B91C871E1000C50E8E /* TrophyListLayer.h */,
+				DC075EE41F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp */,
+				DC075EE51F6E207C004BFBE3 /* TitleSelectMenuLayer.h */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1585,6 +1601,8 @@
 				9FB79E701D363073004E81CF /* AssertScene.h */,
 				26E22CEF1E50B8A40018A55C /* OpeningScene.cpp */,
 				26E22CF01E50B8A40018A55C /* OpeningScene.h */,
+				DC075EDC1F5C4C1D004BFBE3 /* TitleSelectScene.cpp */,
+				DC075EDD1F5C4C1D004BFBE3 /* TitleSelectScene.h */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -2004,6 +2022,7 @@
 				DC0392271C871E1000C50E8E /* StartUpScene.cpp in Sources */,
 				DCDB71C71DFD8E4C0015A434 /* BattleBoss.cpp in Sources */,
 				DC0391D91C871E1000C50E8E /* DungeonSceneManager.cpp in Sources */,
+				DC075EE61F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */,
 				DC0391A51C871E1000C50E8E /* ModalLayerEvent.cpp in Sources */,
 				DC0391771C871E1000C50E8E /* StoryMessageData.cpp in Sources */,
 				DC5D1D571D84FA7D0034DD8F /* CollisionBox.cpp in Sources */,
@@ -2031,6 +2050,7 @@
 				DC0392391C871E1000C50E8E /* VerticalFollow.cpp in Sources */,
 				DC03918F1C871E1000C50E8E /* CharacterEvent.cpp in Sources */,
 				9FD0206C1E03ACEA00803F3B /* LadderArea.cpp in Sources */,
+				DC075EE21F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */,
 				26460B981D72EBC800F0336C /* LocalPlayerData.cpp in Sources */,
 				DC0391971C871E1000C50E8E /* EventScript.cpp in Sources */,
 				9FB79E6D1D362EBE004E81CF /* AssertUtils.cpp in Sources */,
@@ -2092,6 +2112,7 @@
 				9F462BE91E4EC9D1007A1DEB /* VideoSprite.cpp in Sources */,
 				DCCDBC211DE1882E0026AF5C /* BattleState.cpp in Sources */,
 				DC0391991C871E1000C50E8E /* GameEventHelper.cpp in Sources */,
+				DC075EDE1F5C4C1D004BFBE3 /* TitleSelectScene.cpp in Sources */,
 				DC0391DF1C871E1000C50E8E /* SoundManager.cpp in Sources */,
 				DC0391C31C871E1000C50E8E /* NumberSelector.cpp in Sources */,
 				DC0392411C871E1000C50E8E /* MapNameNotification.cpp in Sources */,
@@ -2136,6 +2157,7 @@
 				DC0391B61C871E1000C50E8E /* EventListenerKeyboardLayer.cpp in Sources */,
 				DC0391921C871E1000C50E8E /* EffectEvent.cpp in Sources */,
 				DC03924A1C871E1000C50E8E /* SlideNode.cpp in Sources */,
+				DC075EDF1F5C4C1D004BFBE3 /* TitleSelectScene.cpp in Sources */,
 				DC0391E41C871E1000C50E8E /* Character.cpp in Sources */,
 				26460B9C1D72ED9E00F0336C /* ItemData.cpp in Sources */,
 				DCD9E5421D684C4B002CA51D /* CSNode.cpp in Sources */,
@@ -2147,6 +2169,7 @@
 				26460BA51D72EF1500F0336C /* DebugConfigData.cpp in Sources */,
 				DC03918A1C871E1000C50E8E /* AmbientLightLayer.cpp in Sources */,
 				2613244E1DE2081200E39526 /* BattleCharacterData.cpp in Sources */,
+				DC075EE71F6E207C004BFBE3 /* TitleSelectMenuLayer.cpp in Sources */,
 				DCCA52571C945625004769E1 /* KeyconfigMenuLayer.cpp in Sources */,
 				9FB79E721D363073004E81CF /* AssertScene.cpp in Sources */,
 				DC0391A21C871E1000C50E8E /* MapObjectEvent.cpp in Sources */,
@@ -2310,6 +2333,7 @@
 				DC0391E61C871E1000C50E8E /* Enemy.cpp in Sources */,
 				DC03918E1C871E1000C50E8E /* Light.cpp in Sources */,
 				DC0391721C871E1000C50E8E /* AppDelegate.cpp in Sources */,
+				DC075EE31F5C5227004BFBE3 /* TitleSelectSceneData.cpp in Sources */,
 				DC0392461C871E1000C50E8E /* TrophyNotification.cpp in Sources */,
 				DCCDBC221DE1882E0026AF5C /* BattleState.cpp in Sources */,
 				DC03921C1C871E1000C50E8E /* BaseScene.cpp in Sources */,
