@@ -40,7 +40,7 @@ private:
     void onEnterAnimationFinished();
 	virtual void onIndexChanged(int newIdx, bool sound = false) override;
 	virtual void onEnterKeyPressed(int idx) override;
-	virtual void onMenuKeyPressed() override {};
+	virtual void onMenuKeyPressed() override;
     void prohibitNotification(const string& msg);
 public:
 	virtual void show() override;

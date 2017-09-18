@@ -8,10 +8,12 @@
 
 #include "Models/CsvData/CharacterMasterData.h"
 
+#include "Managers/ResourcesManager.h"
+
 // 初期化
 bool CharacterMasterData::init()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(Resource::CsvFiles::CHARACTER);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(Resource::CsvFiles::CHARACTER);
     if (path == "") return false;
     this->data = CsvUtils::readCsvFile(path);
     return true;

@@ -36,8 +36,8 @@
 		266FBF271F6E74F000A2B2A8 /* 6chefs in Resources */ = {isa = PBXBuildFile; fileRef = 266FBF241F6E74EF00A2B2A8 /* 6chefs */; };
 		266FBF281F6E74F000A2B2A8 /* 6chefs2 in Resources */ = {isa = PBXBuildFile; fileRef = 266FBF251F6E74EF00A2B2A8 /* 6chefs2 */; };
 		266FBF291F6E74F000A2B2A8 /* common in Resources */ = {isa = PBXBuildFile; fileRef = 266FBF261F6E74F000A2B2A8 /* common */; };
-		266FBF2C1F6E7BDB00A2B2A8 /* ResoucesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266FBF2A1F6E7BDB00A2B2A8 /* ResoucesManager.cpp */; };
-		266FBF2D1F6E7BDB00A2B2A8 /* ResoucesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266FBF2A1F6E7BDB00A2B2A8 /* ResoucesManager.cpp */; };
+		266FBF2C1F6E7BDB00A2B2A8 /* ResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266FBF2A1F6E7BDB00A2B2A8 /* ResourcesManager.cpp */; };
+		266FBF2D1F6E7BDB00A2B2A8 /* ResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266FBF2A1F6E7BDB00A2B2A8 /* ResourcesManager.cpp */; };
 		2672D5041D72F79700AC0E96 /* MasterConfigData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672D5021D72F79700AC0E96 /* MasterConfigData.cpp */; };
 		2672D5051D72F79700AC0E96 /* MasterConfigData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672D5021D72F79700AC0E96 /* MasterConfigData.cpp */; };
 		2672D5081D734C7F00AC0E96 /* EventScriptValidator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2672D5061D734C7F00AC0E96 /* EventScriptValidator.cpp */; };
@@ -476,8 +476,8 @@
 		266FBF241F6E74EF00A2B2A8 /* 6chefs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6chefs; sourceTree = "<group>"; };
 		266FBF251F6E74EF00A2B2A8 /* 6chefs2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6chefs2; sourceTree = "<group>"; };
 		266FBF261F6E74F000A2B2A8 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
-		266FBF2A1F6E7BDB00A2B2A8 /* ResoucesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResoucesManager.cpp; sourceTree = "<group>"; };
-		266FBF2B1F6E7BDB00A2B2A8 /* ResoucesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResoucesManager.h; sourceTree = "<group>"; };
+		266FBF2A1F6E7BDB00A2B2A8 /* ResourcesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourcesManager.cpp; sourceTree = "<group>"; };
+		266FBF2B1F6E7BDB00A2B2A8 /* ResourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesManager.h; sourceTree = "<group>"; };
 		2672D5021D72F79700AC0E96 /* MasterConfigData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MasterConfigData.cpp; path = ConfigData/MasterConfigData.cpp; sourceTree = "<group>"; };
 		2672D5031D72F79700AC0E96 /* MasterConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterConfigData.h; path = ConfigData/MasterConfigData.h; sourceTree = "<group>"; };
 		2672D5061D734C7F00AC0E96 /* EventScriptValidator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventScriptValidator.cpp; sourceTree = "<group>"; };
@@ -824,16 +824,6 @@
 		DC265DA71F6E8D230029F82D /* TitleSelectPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSelectPanel.h; path = TitleSelect/TitleSelectPanel.h; sourceTree = "<group>"; };
 		DC265DAA1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSelectMenuLayer.cpp; path = TitleSelect/TitleSelectMenuLayer.cpp; sourceTree = "<group>"; };
 		DC265DAB1F6E8D8F0029F82D /* TitleSelectMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSelectMenuLayer.h; path = TitleSelect/TitleSelectMenuLayer.h; sourceTree = "<group>"; };
-		DC328A5D1C87194E00675131 /* BGM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BGM; sourceTree = "<group>"; };
-		DC328A5E1C87194E00675131 /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
-		DC328A601C87194E00675131 /* event */ = {isa = PBXFileReference; lastKnownFileType = folder; path = event; sourceTree = "<group>"; };
-		DC328A611C87194E00675131 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
-		DC328A621C87194E00675131 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
-		DC328A631C87194E00675131 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
-		DC328A651C87194E00675131 /* save */ = {isa = PBXFileReference; lastKnownFileType = folder; path = save; sourceTree = "<group>"; };
-		DC328A661C87194E00675131 /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; path = se; sourceTree = "<group>"; };
-		DC328A671C87194E00675131 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
-		DC328A681C87194E00675131 /* story */ = {isa = PBXFileReference; lastKnownFileType = folder; path = story; sourceTree = "<group>"; };
 		DC37D80D1CDEFD3D0014418A /* FocusLightLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FocusLightLayer.cpp; sourceTree = "<group>"; };
 		DC37D80E1CDEFD3D0014418A /* FocusLightLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusLightLayer.h; sourceTree = "<group>"; };
 		DC5D1D511D7F0E100034DD8F /* DetectionBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DetectionBox.cpp; path = DetectionBox/DetectionBox.cpp; sourceTree = "<group>"; };
@@ -1446,8 +1436,8 @@
 				268E3FA81D64BFD90098B235 /* ConfigDataManager.h */,
 				DCDB71B91DFD34930015A434 /* BattleManager.cpp */,
 				DCDB71BA1DFD34930015A434 /* BattleManager.h */,
-				266FBF2A1F6E7BDB00A2B2A8 /* ResoucesManager.cpp */,
-				266FBF2B1F6E7BDB00A2B2A8 /* ResoucesManager.h */,
+				266FBF2A1F6E7BDB00A2B2A8 /* ResourcesManager.cpp */,
+				266FBF2B1F6E7BDB00A2B2A8 /* ResourcesManager.h */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1958,7 +1948,7 @@
 				DC0391711C871E1000C50E8E /* AppDelegate.cpp in Sources */,
 				DC265DAC1F6E8D8F0029F82D /* TitleSelectMenuLayer.cpp in Sources */,
 				DCDB71CB1DFE7F0C0015A434 /* HurtCommand.cpp in Sources */,
-				266FBF2C1F6E7BDB00A2B2A8 /* ResoucesManager.cpp in Sources */,
+				266FBF2C1F6E7BDB00A2B2A8 /* ResourcesManager.cpp in Sources */,
 				DC03917B1C871E1000C50E8E /* DungeonCameraSceneData.cpp in Sources */,
 				DC0391FB1C871E1000C50E8E /* MovePatternFactory.cpp in Sources */,
 				26460B8F1D72EBB600F0336C /* DocumentData.cpp in Sources */,
@@ -2231,7 +2221,7 @@
 				DC0391EC1C871E1000C50E8E /* ItemObject.cpp in Sources */,
 				DC0391741C871E1000C50E8E /* CharacterMessageData.cpp in Sources */,
 				DC23C86D1D8BD9A7008E57F3 /* PathFinder.cpp in Sources */,
-				266FBF2D1F6E7BDB00A2B2A8 /* ResoucesManager.cpp in Sources */,
+				266FBF2D1F6E7BDB00A2B2A8 /* ResourcesManager.cpp in Sources */,
 				DCA4495E1DA0EAA0005C5F9A /* DungeonSceneEventHandler.cpp in Sources */,
 				26E22CF61E50B9E50018A55C /* OpeningSceneData.cpp in Sources */,
 				DC03919E1C871E1000C50E8E /* GameEvent.cpp in Sources */,

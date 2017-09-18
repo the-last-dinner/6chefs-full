@@ -7,16 +7,21 @@
 //
 
 #include "Datas/Scene/StartUpSceneData.h"
+#include "Managers/ResourcesManager.h"
 #include "Utils/JsonUtils.h"
 
 bool StartUpSceneData::init()
 {
+    FUNCLOG
     string basePath;
+    string jsonPath = ResourcesManager::getInstance()
+                          ->getCommonFilePath(Resource::ConfigFiles::PRELOAD_LIST);
     int length;
-    const rapidjson::Document json = LastSupper::JsonUtils::readJsonCrypted(Resource::ConfigFiles::PRELOAD_LIST);
+    const rapidjson::Document json = LastSupper::JsonUtils::readJsonCrypted(jsonPath);
     for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); itr++)
     {
-        basePath = itr->name.GetString();
+        basePath = "common/";
+        basePath += itr->name.GetString();
         basePath += "/";
         length = itr->value.Size();
         for (int i = 0; i < length; i++)

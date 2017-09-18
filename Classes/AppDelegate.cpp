@@ -45,10 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// Tiledのチラつきを防止
 	director->setProjection(Director::Projection::_2D);
 	director->setDepthTest(false);
-	
-	// デバッグ表示
-    director->setDisplayStats(ConfigDataManager::getInstance()->getDebugConfigData()->getBoolValue(DebugConfigData::STATS));
-	
+
 	// フレームレート
 	director->setAnimationInterval(1.0 / 60);
 	

@@ -11,9 +11,11 @@
 
 #include "define.h"
 #include "Managers/CsvDataManager.h"
+#include "Managers/ResourcesManager.h"
 
 struct CharacterData
 {
+    
     // プロパティ
     int chara_id {static_cast<int>(CharacterID::UNDIFINED)};
     int obj_id {static_cast<int>(ObjectID::UNDIFINED)};
@@ -31,7 +33,7 @@ struct CharacterData
     string getStandFileName() const { return CsvDataManager::getInstance()->getCharacterData()->getFileName(this->chara_id) + "_s_1.png"; }
     
     // csbファイルパス
-    string getCsbFilePath() const { return "character/" + CsvDataManager::getInstance()->getCharacterData()->getFileName(this->chara_id) + ".csb"; }
+    string getCsbFilePath() const { return ResourcesManager::getInstance()->getCurrentPath() + "/" + "character/" + CsvDataManager::getInstance()->getCharacterData()->getFileName(this->chara_id) + ".csb"; }
 };
 
 #endif /* CharacterData_h */

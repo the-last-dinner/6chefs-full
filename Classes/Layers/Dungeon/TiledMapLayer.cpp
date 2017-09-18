@@ -14,6 +14,7 @@
 #include "MapObjects/MapObjectFactory.h"
 #include "MapObjects/MapObjectList.h"
 #include "MapObjects/Party.h"
+#include "Managers/ResourcesManager.h"
 
 // コンストラクタ
 TiledMapLayer::TiledMapLayer() { FUNCLOG }
@@ -27,7 +28,7 @@ bool TiledMapLayer::init(const Location& location)
     if(!Layer::init()) return false;
     
 	// Tiledのマップを生成
-    TMXTiledMap* tiledMap { TMXTiledMap::create("map/" + CsvDataManager::getInstance()->getMapData()->getFileName(location.map_id) + ".tmx") };
+    TMXTiledMap* tiledMap { TMXTiledMap::create(ResourcesManager::getInstance()->getCurrentPath() + "/map/" + CsvDataManager::getInstance()->getMapData()->getFileName(location.map_id) + ".tmx") };
     tiledMap->setPosition(Point::ZERO);
 	this->addChild(tiledMap);
 	this->tiledMap = tiledMap;

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="80" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="97">
+ <tileset firstgid="1" name="cyber" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="cyber.png" trans="aa55ff" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="ST-MsionR-I01" tilewidth="16" tileheight="16" tilecount="1984" columns="16">
+  <image source="ST-MsionR-I01.png" trans="aa55ff" width="256" height="1990"/>
+ </tileset>
+ <tileset firstgid="2465" name="ST-Convi-I01" tilewidth="16" tileheight="16" tilecount="1280" columns="16">
+  <image source="ST-Convi-I01.png" trans="aa55ff" width="256" height="1280"/>
+ </tileset>
+ <tileset firstgid="3745" name="ST-Sewer-01" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
+ </tileset>
+ <layer name="Base" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2j0KAjEURtGAFmYZKtr7u4GZ/Xe6D3fggIIiiFg4g9+cBxcCKZJTJ6WU0kxKmdb/6ttpJ4/1P3rf+d/tp3k/NXbvsmbHmx1vdrzZNbzR8WbHmx1vdrzZ8WbHmx1vdrzZ8WbHm92rd1/77TR73OXcrXf1Nx3uPXvbAd5DL0/edQ/n8WZ7W15eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5e3hDvvGvRtRqJd9O1rbe/jccBvH33OkOcOYa5AgCiHyI=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bsNwkAQBNCFxJeCaABEA3xMzrf/VqACNrDkwLqcM+9JE+xko40AAODfvbuITze9a33rFiViWaZ3rW/dKjeshx2bMt5z/e82t+2Gvfsy3nP97yE3HDOnzDnTZy6l3rfumhtumXvmkXlmXqXeAwAAAAAAAAAAAAAAAAAAv+kLqaoTwQ==
+  </data>
+ </layer>
+ <layer name="MonoChu" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0N2JwkAUBtBJDWohaiFqLRawjz5vC6v4agsqWo49OLIJO8gE/yLrwDnwQbg3hPslhF+LKoR1QenFm/t1BuFPOs/tG/99/6MZxptHdcZJj3Se2+tbRvTVV199S8mrfQ9VOTnGTOLN0zqzpEc6z+0bP1Vm+GFWHd6o7+fJ9f26c3at1L7Llrvb5o139D21PD+rre888+6tvtu433WcfdXt99Pvpb2+H/pr5bp0vWSTmQMAAAAAAAAAAAAAAAAAQInO5NNmDw==
+  </data>
+ </layer>
+ <layer name="MonoUe" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENACAQAkCqX1X3n8AFLMxrrO5aEgpIAACAV0Yls/r5r07O3G7vbwAAAAAAAAAAAAAAAAAAgL0FePwHtA==
+  </data>
+ </layer>
+ <layer name="MonoUe2" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmEdyE0EYRpuwYUZylU2oImwkm7iTbOKOnHOwwSbs4A5gw4boABuiTdiTuYGBC0j2BWy4AOAD8DYqu2ZkyaMJmpG+V/Vqqsuqrv76l9X/tDFCCCGEEEIIIYQIin7LmAFr9tnoDJNxxJp9CiGEEEIIIYQQovFptY1pw+UhuMKudzo3GdaUxfYQ7Ihh3hxrymNnCHbFMO9C6GbdPbb7OZeNjDfhZtwS45yFtDFFnMDJdPnPXGf9N2z3cy7bGe/AnbgrxnmnyDiNv/D3PHkbiT9k/Iv/cKYJ8i5qMWYxLsGlLfVejZtl1MBCG1Np99grQdX3q2XMNyv483c1a1qDa3Fd2j32SlD1HSfrd6v6+dtml7e0PytxVYi/d0HVt5S32vmbtctb2p/1uCHEvEHXtxp5u7yl/dmK2xJUX78ENc98RF3fahSYoxhi3kar720y3KmQI2719TvPY7I+qZA3Q8YstmNHDPL6/T6/Jeu7CnlzZMxjJ3b5yBvU/53feT6T9UsEffEUa5yOQd6oaHX0SbX2k0nJm3H0SbXe5yQlb87RJ9V6n5OUvAul3u8LUVPv94Woqff7QtzZzVm6B/fiPtyPB/AgHsLDeASP4jE8jifwJJ5K4P3UadZ8Bs/iOTyPF7Abe/AiXsJe7MPLeAWv4jUPeZ375Lw3Gk/RP+IP/Jlyj5OGc5+c90YFMhVxAidT7nEl7vL3e3gfH+BDfISDOJTAvarGUzI9w+f4Al/iKxzFsQbMK4QQfrjJGXML+3EggX2JVwbJOITDOBJBXq99YtCMMucYvsY3EeT12icGzXvm/IAf8VMTfJ+FEEI0J/8BEBep8A==
+  </data>
+ </layer>
+ <layer name="MonoUe3" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1scRgDAMRUGd7aoJDRAagspwCx4YkncL0OjdfgQAAAAAAAAAAADAvww5YsxPf3GfpbSuF/RuKWJP5+98RWu9APAGXdksfUM7bSqtc0O9AAAAAABQ4wAtRAfb
+  </data>
+ </layer>
+ <layer name="map" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAIA6AddtT+SWyhDyQgAQAAAAAAAAC415VMfS8AAAAAAAAAAAAA+LCHngC4
+  </data>
+ </layer>
+ <layer name="hide" width="60" height="80">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7B7JPTPSgswW4IlAAAAAAAAAAD3upKp7wUAAAAAAAAAAAAAHxZfIAA+
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="928" y="80" width="32" height="1200"/>
+  <object id="2" x="544" y="1248" width="384" height="32"/>
+  <object id="3" x="0" y="1248" width="480" height="32"/>
+  <object id="5" x="64" y="1136" width="192" height="32"/>
+  <object id="7" x="48" y="1008" width="128" height="32"/>
+  <object id="8" x="224" y="960" width="256" height="32"/>
+  <object id="9" x="416" y="784" width="32" height="64"/>
+  <object id="10" x="32" y="912" width="160" height="48"/>
+  <object id="11" x="160" y="704" width="32" height="208"/>
+  <object id="12" x="32" y="704" width="128" height="48"/>
+  <object id="14" x="224" y="672" width="128" height="32"/>
+  <object id="16" x="416" y="256" width="64" height="32"/>
+  <object id="17" x="0" y="0" width="32" height="1248"/>
+  <object id="18" x="32" y="0" width="768" height="160"/>
+  <object id="19" x="832" y="0" width="96" height="160"/>
+  <object id="21" x="832" y="160" width="64" height="96"/>
+  <object id="22" x="736" y="160" width="64" height="96"/>
+  <object id="23" x="784" y="256" width="16" height="16"/>
+  <object id="24" x="688" y="160" width="16" height="96"/>
+  <object id="25" x="416" y="240" width="272" height="16"/>
+  <object id="26" x="528" y="224" width="32" height="16"/>
+  <object id="27" x="592" y="192" width="32" height="16"/>
+  <object id="28" x="656" y="224" width="32" height="16"/>
+  <object id="29" x="464" y="192" width="32" height="16"/>
+  <object id="30" x="416" y="224" width="16" height="16"/>
+  <object id="31" x="368" y="224" width="16" height="16"/>
+  <object id="32" x="32" y="160" width="16" height="96"/>
+  <object id="33" x="48" y="240" width="336" height="16"/>
+  <object id="34" x="192" y="224" width="32" height="16"/>
+  <object id="35" x="64" y="224" width="32" height="16"/>
+  <object id="36" x="128" y="192" width="32" height="16"/>
+  <object id="38" x="256" y="192" width="32" height="16"/>
+  <object id="39" x="320" y="224" width="32" height="16"/>
+  <object id="40" x="832" y="672" width="32" height="224"/>
+  <object id="41" x="864" y="848" width="64" height="48"/>
+  <object id="42" x="864" y="672" width="64" height="48"/>
+  <object id="43" x="832" y="592" width="32" height="32"/>
+  <object id="44" x="864" y="592" width="32" height="32"/>
+  <object id="45" x="688" y="592" width="96" height="32"/>
+  <object id="48" x="544" y="608" width="64" height="208"/>
+  <object id="49" x="640" y="976" width="256" height="32"/>
+  <object id="51" x="576" y="1104" width="64" height="64"/>
+  <object id="68" x="800" y="0" width="32" height="32"/>
+  <object id="96" x="544" y="544" width="384" height="32"/>
+ </objectgroup>
+ <objectgroup name="event">
+  <object id="65" x="928" y="48" width="32" height="32">
+   <properties>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="67" x="480" y="1248" width="64" height="32">
+   <properties>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="69" x="800" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="70" x="544" y="608" width="64" height="208">
+   <properties>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="71" x="688" y="592" width="96" height="32">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="72" x="832" y="592" width="64" height="32">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="73" x="768" y="976" width="128" height="32">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="74" x="48" y="1008" width="128" height="32">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="75" x="224" y="672" width="128" height="32">
+   <properties>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="76" x="704" y="976" width="64" height="32">
+   <properties>
+    <property name="EventID" value="8"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="77" x="416" y="784" width="32" height="64">
+   <properties>
+    <property name="EventID" value="7"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="78" x="64" y="1136" width="192" height="32">
+   <properties>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="79" x="224" y="960" width="256" height="32">
+   <properties>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="80" x="640" y="976" width="64" height="32">
+   <properties>
+    <property name="EventID" value="9"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="81" x="576" y="1104" width="64" height="64">
+   <properties>
+    <property name="EventID" value="10"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="82" x="416" y="256" width="64" height="32">
+   <properties>
+    <property name="EventID" value="11"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="83" x="160" y="832" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="85" x="832" y="720" width="32" height="32">
+   <properties>
+    <property name="EventID" value="12"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="90" x="32" y="128" width="704" height="32">
+   <properties>
+    <property name="EventID" value="13"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="95" x="848" y="544" width="32" height="32">
+   <properties>
+    <property name="EventID" value="15"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="CharaUe" width="60" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJACEMBMC8bO3sQPuv5KxAQSUgzHwXsrCJAAAg01ciatnPs27e0kZvn3Sv8qybu063f+3fp9u//m8AAAAAAAAAAAAAAAAAAADu+AGLygwH
+  </data>
+ </layer>
+ <layer name="CharaUe2" width="60" height="80">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7DpxL8Qngkg4W2TJgAAXEwDAAAAAAAAAAAAAAAAAAAA8LOM6gC1
+  </data>
+ </layer>
+ <layer name="CharaUe3" width="60" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2LdRA1EUQNGfATIxJsN77z0ZNIIVEiR4msE0AFIDmGYwDWACbgbIAAoACe6ZubPzRwr2bbJvNgRJkiRJkr5PMhJCKvJ6lSRJkiRJkv6jimgIlVRFkehv301hZ/EQzilNmXj+/8xz/wvR3Otb1ZxrqJbqSnjeC2a8pCu6LjCv9F1uYiHc0h3dx3LPf80DMz3SEz3Hcs+SJJWiDXbETfdESZKkgurZlRqokZqomVqoldqonTqok7qom3qol/rKcM/q554HaJCGaJhGaJTGaJwmaJKmaJpmaJbmipg3+zllfzc6omM6odM853KT/Zyyvxud0TmlKZPn/JFFfl+iZVqhVVqjBK2X4bP6zBYzbdMO7dIe7dMBHf7BeSVJX5fgHbtOSUr9wB5W7J5Y7ordEyVJkvTeC6GGSDE=
+  </data>
+ </layer>
+ <layer name="CharaUe4" width="60" height="80">
+  <data encoding="base64" compression="zlib">
+   eJztxjENAAAIAzD8u0EJllCwn5D2ahUAAHBBh3814QAAAAAAAAAAAAAAAAAAAPy36+QDAQ==
+  </data>
+ </layer>
+ <layer name="shadow" width="60" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2N0Jg0AQAGE7SCHaSUpI/32I+BQw5tD7cWfnexV1hz0QnCZJkiS18nmNnqAve9ns5ZoTtW4We9HsZbOXzV42e9nsZbOXzV62bL3ZZNuvvWyRe98ns/+6Frn3iqf1nu2sBnvHitZ7d95ovXc9pbf1HL3eQ+v9d7+9beYoZW/d++1tM0cv9n6z99pzorD3mL0x2XssWy9F797R54S6X/8/70p6R5/Bmtwvm71s9rLZWybqN9n9stnLZq8UzwqdOB7G
+  </data>
+ </layer>
+</map>

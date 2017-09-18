@@ -8,10 +8,12 @@
 
 #include "Models/CsvData/MapData.h"
 
+#include "Managers/ResourcesManager.h"
+
 // 初期化
 bool MapData::init()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(Resource::CsvFiles::MAP);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(Resource::CsvFiles::MAP);
     if (path == "") return false;
     this->data = CsvUtils::readCsvFile(path);
     return true;

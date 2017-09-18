@@ -20,9 +20,19 @@ bool OpeningScene::init()
 {
     if (!BaseScene::init(OpeningSceneData::create())) return false;
     
+    ConfigDataManager::getInstance()->setConfigData();
+    PlayerDataManager::getInstance()->destroy();
+    PlayerDataManager::getInstance();
+    CsvDataManager::getInstance()->destroy();
+    CsvDataManager::getInstance();
+    
     MasterConfigData* masterConfigData { ConfigDataManager::getInstance()->getMasterConfigData() };
     _videoFileName = masterConfigData->getString(MasterConfigData::OPENING_VIDEO_FILE);
     _bgmFileName = masterConfigData->getString(MasterConfigData::OPENING_BGM_FILE);
+    
+    // キーコンフィグの取得
+    KeyconfigManager::getInstance()->setCursorKey(PlayerDataManager::getInstance()->getGlobalData()->getCursorKey());
+    KeyconfigManager::getInstance()->setDashKey(PlayerDataManager::getInstance()->getGlobalData()->getDashKey());
     
     return true;
 }

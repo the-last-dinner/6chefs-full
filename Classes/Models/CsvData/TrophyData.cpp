@@ -8,10 +8,12 @@
 
 #include "Models/CsvData/TrophyData.h"
 
+#include "Managers/ResourcesManager.h"
+
 // 初期化
 bool TrophyData::init()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(Resource::CsvFiles::TROPHY);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(Resource::CsvFiles::TROPHY);
     if (path == "") return false;
     this->data = CsvUtils::readCsvFile(path);
     return true;

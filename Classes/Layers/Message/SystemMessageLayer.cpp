@@ -52,7 +52,7 @@ bool SystemMessageLayer::init(const queue<SystemMessageData*>& datas, function<v
 // メッセージを生成
 Label* SystemMessageLayer::createMessage()
 {
-    Label* message { Label::createWithTTF(this->datas.front()->getMessage(), "fonts/cinecaption2.28.ttf", 24.f) };
+    Label* message { Label::createWithTTF(this->datas.front()->getMessage(), Resource::Font::MESSAGE, 24.f) };
     message->setHorizontalAlignment(TextHAlignment::CENTER);
     message->setVerticalAlignment(TextVAlignment::CENTER);
     message->setPosition(this->frame->getContentSize() / 2);

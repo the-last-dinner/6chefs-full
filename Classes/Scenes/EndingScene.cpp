@@ -15,6 +15,7 @@
 #include "Scenes/TitleScene.h"
 #include "Layers/LoadingLayer.h"
 #include "Layers/EventListener/ConfigEventListenerLayer.h"
+#include "Managers/ResourcesManager.h"
 
 const string EndingScene::ENDING_FILE = "config/Ending";
 const char* EndingScene::JSON_MEMBER_TYPE = "type";
@@ -65,7 +66,7 @@ void EndingScene::onPreloadFinished(LoadingLayer* loadingLayer)
     loadingLayer->onLoadFinished();
     
     // idからjsonを取得する
-    rapidjson::Value& json = LastSupper::JsonUtils::readJsonCrypted(FileUtils::getInstance()->fullPathForFilename(ENDING_FILE + ES_EXTENSION)).FindMember(to_string(_end_id).c_str())->value;
+    rapidjson::Value& json = LastSupper::JsonUtils::readJsonCrypted(ResourcesManager::getInstance()->getCurrentFilePath(ENDING_FILE + ES_EXTENSION)).FindMember(to_string(_end_id).c_str())->value;
     
     // エンディング振り分け
      map<string, function<void(rapidjson::Value&)>> createEndings = {

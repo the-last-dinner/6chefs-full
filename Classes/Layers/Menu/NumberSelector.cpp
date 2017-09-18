@@ -38,7 +38,7 @@ bool NumberSelector::init(SpriteUtils::Square& square)
         window->addChild(circle);
         
         // ボタンラベルを作成
-        Label* label = Label::createWithTTF(i < 10 ? to_string(this->indexToLabel(i)) : "C", "fonts/cinecaption2.28.ttf", 24);
+        Label* label = Label::createWithTTF(i < 10 ? to_string(this->indexToLabel(i)) : "C", Resource::Font::MESSAGE, 24);
         label->setPosition(circle->getContentSize().width/2, circle->getContentSize().height/2);
         label->setColor(Color3B::WHITE);
         circle->addChild(label);

@@ -9,6 +9,7 @@
 #include "Layers/Dungeon/DisplayImageLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
+#include "Managers/ResourcesManager.h"
 
 // 定数
 const string DisplayImageLayer::DISP_IMG_PATH = "disp/";
@@ -55,10 +56,10 @@ bool DisplayImageLayer::init(const string& imageFileName, const float duration, 
     this->addChild(bg);
     
     // 画像を生成
-    string fullPath { FileUtils::getInstance()->fullPathForFilename(Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
+    string fullPath { ResourcesManager::getInstance()->getCurrentFilePath(Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
     if(fullPath.size() == 0) return false;
     
-    Sprite* img { Sprite::create(Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
+    Sprite* img { Sprite::create(ResourcesManager::getInstance()->getCurrentPath() + "/" + Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
     img->setPosition(WINDOW_CENTER);
     this->addChild(img);
     

@@ -43,8 +43,6 @@ ConfigDataManager::ConfigDataManager()
 {
     FUNCLOG
     this->debugConfigData = DebugConfigData::create();
-    this->masterConfigData = MasterConfigData::create();
-    this->trophyConfigData = TrophyConfigData::create();
     
     CC_SAFE_RETAIN(this->debugConfigData);
     CC_SAFE_RETAIN(this->masterConfigData);
@@ -67,4 +65,17 @@ MasterConfigData* ConfigDataManager::getMasterConfigData()
 TrophyConfigData* ConfigDataManager::getTrophyConfigData()
 {
     return this->trophyConfigData;
+}
+
+// タイトル依存のConfigDataをセット
+void ConfigDataManager::setConfigData()
+{
+    CC_SAFE_RELEASE_NULL(this->masterConfigData);
+    CC_SAFE_RELEASE_NULL(this->trophyConfigData);
+    
+    this->masterConfigData = MasterConfigData::create();
+    this->trophyConfigData = TrophyConfigData::create();
+    
+    CC_SAFE_RETAIN(this->masterConfigData);
+    CC_SAFE_RETAIN(this->trophyConfigData);
 }

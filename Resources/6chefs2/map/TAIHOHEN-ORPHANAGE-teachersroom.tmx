@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="26" tilewidth="16" tileheight="16" nextobjectid="16">
+ <tileset firstgid="1" name="ST-MsionR-I01" tilewidth="16" tileheight="16" tilecount="1984" columns="16">
+  <image source="ST-MsionR-I01.png" trans="aa55ff" width="256" height="1990"/>
+ </tileset>
+ <tileset firstgid="1985" name="ed4" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="ed4.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="2465" name="school1_2" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="school1_2.png" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="20" height="26">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1D0KwkAQhuGA3kCvoeYCavCnVIOaUg1oqwa0VXN03ykWBty4BKZIkYWHGRYy+zWZKPo9AwwxwxwL1eu7JUaIPTP0GWOCLXbYq17fZZgiCcxbYe35NvPcbZAG5h1wVN/5qutPyAPzrrjhjEtFdf0dRWDeC2888Kyorv+gDMzrolOz/jt99GrWNl+br2n5ZO/Fhvlk7yWG+WTvpYb5ZO/lhvlk7xWG+WTvlYb53FtW+dxb1v9Hk84XLOspmw==
+  </data>
+ </layer>
+ <layer name="Base2" width="20" height="26">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFuZwMZIFsHPpGzRs1b9S8UfNAIIeTuuZ1AcW6qexfcsGoeaPmUWqeHyf5uJ6Duu6DAQALuBkH
+  </data>
+ </layer>
+ <layer name="MonoUe" width="20" height="26">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBiaYCUXA8MqLuqZdxxo1gkqmkcIeALt8gJibyD2oYK96UAzMoA4E4izSDAvH6i2AIv6VqBYGxC3A3EHCeb1AtX2UTEcD9EwTu4Dzf4HxDs5GRh2AfFuIP4P5D8i005pbgYGGSC+DjTnBhDfBGJZIF+OmzzzLIH6rID4K9Ccb0D8HYitgXwbMs0bBaNgFIwCUgAA+jAY2g==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="1" x="288" y="0" width="32" height="416"/>
+  <object id="2" x="0" y="384" width="288" height="32"/>
+  <object id="4" x="0" y="0" width="80" height="352"/>
+  <object id="6" x="80" y="0" width="208" height="96"/>
+  <object id="7" x="224" y="96" width="64" height="16"/>
+  <object id="8" x="128" y="96" width="32" height="32"/>
+  <object id="9" x="176" y="144" width="112" height="48"/>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="10" x="96" y="32" width="32" height="32">
+   <properties>
+    <property name="objID" value="1516"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="event">
+  <object id="11" x="288" y="0" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="12" x="96" y="64" width="32" height="32">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+  <object id="13" x="288" y="32" width="32" height="32">
+   <properties>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="3"/>
+   </properties>
+  </object>
+  <object id="14" x="16" y="352" width="32" height="32">
+   <properties>
+    <property name="EventID" value="5"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="15" x="224" y="96" width="64" height="16">
+   <properties>
+    <property name="EventID" value="6"/>
+    <property name="trigger" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

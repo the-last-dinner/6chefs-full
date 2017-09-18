@@ -9,7 +9,7 @@
 #include "Layers/Menu/TitleMainMenuLayer.h"
 
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
-
+#include "Scenes/TitleSelectScene.h"
 #include "UI/Cloud.h"
 #include "UI/NotificationBand.h"
 
@@ -227,6 +227,14 @@ void TitleMainMenuLayer::onEnterKeyPressed(int idx)
     
     // 選択されたメニューに応じてコールバック関数実行
 	if(function<void()> callback {typeMap.at(menu)}) callback();
+}
+
+// メニューキーが押された時
+void TitleMainMenuLayer::onMenuKeyPressed()
+{
+    SoundManager::getInstance()->stopBGMAll();
+    SoundManager::getInstance()->playSE(Resource::SE::BACK);
+    Director::getInstance()->replaceScene(TitleSelectScene::create());
 }
 
 // トロフィーを見れない通知

@@ -11,7 +11,7 @@
 #include "Managers/CsvDataManager.h"
 #include "Managers/NotificationManager.h"
 #include "Managers/ConfigDataManager.h"
-#include "Managers/ResoucesManager.h"
+#include "Managers/ResourcesManager.h"
 
 #include "Utils/JsonUtils.h"
 #include "Utils/StringUtils.h"
@@ -48,7 +48,7 @@ bool GlobalPlayerData::init()
 // グローバルデータのロード
 bool GlobalPlayerData::loadGlobalData()
 {
-    string path = ResoucesManager::getInstance()->getCommonFilePath(GLOBAL_DATA_PATH + SAVE_EXTENSION);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(GLOBAL_DATA_PATH + SAVE_EXTENSION);
     if (path == "") return false;
     this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     return true;
@@ -57,7 +57,7 @@ bool GlobalPlayerData::loadGlobalData()
 // グローバルデータの初期化
 bool GlobalPlayerData::initGlobalData()
 {
-    string path = FileUtils::getInstance()->fullPathForFilename(GLOBAL_TEMPLATE_PATH + SAVE_EXTENSION);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(GLOBAL_TEMPLATE_PATH + SAVE_EXTENSION);
     if (path == "") return false;
     this->globalData = LastSupper::JsonUtils::readJsonCrypted(path);
     this->saveGlobalData();
@@ -67,7 +67,7 @@ bool GlobalPlayerData::initGlobalData()
 // グローバルデータのセーブ
 void GlobalPlayerData::saveGlobalData()
 {
-    LastSupper::JsonUtils::writeJsonCrypt(GLOBAL_DATA_PATH + SAVE_EXTENSION, this->globalData);
+    LastSupper::JsonUtils::writeJsonCrypt(ResourcesManager::getInstance()->getCurrentPath() + "/" + GLOBAL_DATA_PATH + SAVE_EXTENSION, this->globalData);
 }
 
 #pragma mark -

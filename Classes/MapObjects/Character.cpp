@@ -13,6 +13,7 @@
 #include "Datas/MapObject/CharacterData.h"
 #include "Datas/BattleCharacterData.h"
 
+#include "Managers/ResourcesManager.h"
 #include "MapObjects/Command/HurtCommand.h"
 #include "MapObjects/DetectionBox/AttackDetector.h"
 #include "MapObjects/DetectionBox/CollisionDetector.h"
@@ -57,7 +58,7 @@ bool Character::init(const CharacterData& data)
     
     CSNode* csNode { CSNode::create(data.getCsbFilePath()) };
     if (!csNode) {
-        csNode = CSNode::create("character/nadeshiko.csb"); // これ、サービスね
+        csNode = CSNode::create(ResourcesManager::getInstance()->getCurrentPath() + "/character/nadeshiko.csb"); // これ、サービスね
         //LastSupper::AssertUtils::fatalAssert("キャラクターのcsbファイルが存在しません\nFilePath : " + data.getCsbFilePath());
         //return false;
     }

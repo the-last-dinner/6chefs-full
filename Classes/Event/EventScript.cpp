@@ -9,6 +9,7 @@
 #include "Event/EventScript.h"
 #include "Utils/JsonUtils.h"
 #include "Helpers/AssertHelper.h"
+#include "Managers/ResourcesManager.h"
 
 // コンストラクタ
 EventScript::EventScript() {FUNCLOG}
@@ -20,7 +21,7 @@ EventScript::~EventScript() {FUNCLOG}
 bool EventScript::init(const string& jsonFileName)
 {
     _fileName = jsonFileName;
-    _json = LastSupper::JsonUtils::readJsonCrypted(FileUtils::getInstance()->fullPathForFilename("event/" + jsonFileName + ES_EXTENSION));
+    _json = LastSupper::JsonUtils::readJsonCrypted(ResourcesManager::getInstance()->getCurrentFilePath("event/" + jsonFileName + ES_EXTENSION));
     
     return true;
 }

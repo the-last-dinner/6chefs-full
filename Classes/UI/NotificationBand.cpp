@@ -23,7 +23,7 @@ bool NotificationBand::init(const string& message)
     this->band = band;
     
     // 完了メッセージラベル
-    Label* messageLabel = Label::createWithTTF(message, "fonts/cinecaption2.28.ttf", band->getContentSize().height / 5);
+    Label* messageLabel = Label::createWithTTF(message, Resource::Font::MESSAGE, band->getContentSize().height / 5);
     messageLabel->setPosition(Point(messageLabel->getContentSize().width / 2 + (WINDOW_WIDTH - messageLabel->getContentSize().width)/2, band->getContentSize().height / 2));
     messageLabel->setOpacity(0);
     band->addChild(messageLabel);

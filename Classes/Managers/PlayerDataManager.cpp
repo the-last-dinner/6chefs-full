@@ -9,6 +9,7 @@
 
 #include "Scenes/EndingScene.h"
 
+#include "Managers/ResourcesManager.h"
 #include "Models/PlayerData/GlobalPlayerData.h"
 #include "Models/PlayerData/LocalPlayerData.h"
 #include "Models/StopWatch.h"
@@ -32,6 +33,7 @@ PlayerDataManager* PlayerDataManager::getInstance()
 void PlayerDataManager::destroy()
 {
     delete _instance;
+    _instance = nullptr;
     return;
 }
 
@@ -75,7 +77,7 @@ void PlayerDataManager::initLocalData()
     
     // 全セーブデータを初期化
     string path = "save/local_template";
-    path = FileUtils::getInstance()->fullPathForFilename(path + SAVE_EXTENSION);
+    path = ResourcesManager::getInstance()->getCurrentFilePath(path + SAVE_EXTENSION);
     path = LastSupper::StringUtils::strReplace((string)("_template") + SAVE_EXTENSION, "", path);
     for(int i = 1; i <= MAX_SAVE_COUNT; i++){
         LastSupper::JsonUtils::writeJsonCrypt(path + to_string(i) + SAVE_EXTENSION, initLocal);

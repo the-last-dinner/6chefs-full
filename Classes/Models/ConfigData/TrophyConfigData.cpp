@@ -8,6 +8,7 @@
 
 #include "Models/ConfigData/TrophyConfigData.h"
 
+#include "Managers/ResourcesManager.h"
 #include "Utils/JsonUtils.h"
 #include "Utils/AssertUtils.h"
 
@@ -24,7 +25,7 @@ const char* TrophyConfigData::TIME {"time"};
 bool TrophyConfigData::init()
 {
     FUNCLOG
-    this->filePath = FileUtils::getInstance()->fullPathForFilename(Resource::ConfigFiles::TROPHY_CONFIG);
+    this->filePath = ResourcesManager::getInstance()->getCurrentFilePath(Resource::ConfigFiles::TROPHY_CONFIG);
     if (this->filePath == "")
     {
         LastSupper::AssertUtils::fatalAssert(Resource::ConfigFiles::TROPHY_CONFIG + "is missing.");

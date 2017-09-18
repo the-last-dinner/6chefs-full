@@ -1,0 +1,31 @@
+{
+	"1":[
+		{
+			"type":"sequence",
+			"action":[
+				{
+					"type":"createObject",
+					"charaID":"17",
+					"objID":"10216",
+					"x":4,
+					"y":4,
+					"direction":"DOWN",
+					"movePattern":"1"
+				},
+				{
+					"type":"fadein"
+				},
+				{
+					"type":"charaMsg",
+					"text":["クソっ！クソっ！あんコック・・・","ぬあああ！\nケツが・・・っ！"],
+					"charaID":"10",
+					"name":"ナニヲ"
+				},
+				{
+					"type":"fadeout",
+					"time":3.0
+				}
+			]
+		}
+	]
+}

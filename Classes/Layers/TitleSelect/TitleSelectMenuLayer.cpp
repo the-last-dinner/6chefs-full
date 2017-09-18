@@ -10,7 +10,7 @@
 
 #include "Layers/TitleSelect/TitleSelectPanel.h"
 #include "Layers/EventListener/EventListenerKeyboardLayer.h"
-#include "Managers/ResoucesManager.h"
+#include "Managers/ResourcesManager.h"
 
 // コンストラクタ
 TitleSelectMenuLayer::TitleSelectMenuLayer() { FUNCLOG }

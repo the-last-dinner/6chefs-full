@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="66" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="112">
+ <tileset firstgid="1" name="ST-Sewer-01" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
+  <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
+ </tileset>
+ <tileset firstgid="1505" name="SC-Door-Dg01" tilewidth="16" tileheight="16" tilecount="384" columns="24">
+  <image source="SC-Door-Dg01.png" trans="aa55ff" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="1889" name="water" tilewidth="16" tileheight="16" tilecount="64" columns="8">
+  <image source="water.png" trans="aa55ff" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="1953" name="ed4" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="ed4.png" trans="aa55ff" width="480" height="256"/>
+ </tileset>
+ <layer name="Base" width="40" height="66">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmdtu00AQhrPya8IFlCIB4qKknFJuSNOSBG7oATUpSBxaWiohcSgkCO7bN4A3IG/QXjKWd5TJyLM7drxeLrrSJ1uNa//+d3Y9s9toXLQQ7XcSjz+JX98oyRg7GAVirNB3kmScOjgJxKlC30GSccg4YOcupGv+EibsXKtP6t9Routf1KLtU4w9rT4aqxKuGOXxNE7k8VCmf6+YRuMqsABcYywC140/Rvkz+T0XBNLffG0JrrkDNIFlxl3gnvF7zOcMfs+mwLJC32O4pg2sAh3GGrBuZuM6Dz4O+D1XBToKfc/hmg1gE9hibAMvgLMk41zgLJm9hvrXtPfOY6tA/9J35f7dBx4ADz2sAI/MrH+Sb1r/UB/tV4wNjL8nQFfQ1CLnT4FnZrZP0MN3lj3CWkl9+G6Sfy127FttqO8N8JZoktgrqW+T+Uf19awefqT6PgNfgK8ejkvq6zj0afzDedB11M7PRfVp/MNvBc6HeUdtfhXCP54PSEwi+YfzID3m/e08gn+fgBtKbgYYHz7/hiZ/npTmzrr9G1rNGvqR/BsIdMn1A3ttDP+6AjtM41Ek/46UuPzjuWSV8x/Nn1248uey+jTzH8//yuTPIf3D/M+VO/vyv5D+UX0SPn34/Qvtn4Qvv8fvn3SvUP6hLp8+HD+3hfuE8g/zZl/+3LQxgO9Rh3+vzTRv9uXPdAz54g/ro94c/mEto23Uu6ribxd4aab12zz6aI2c5x+9Zwz/qL62ma4Z0HUEXD+oIv6K6qPjaMNMa2ZaQ+8D700147eoPjqO8PyYnX8DvrP+rSv+tOvO6TGGf5p1U/w9Rvz51vQm5PcY/vnW9GiNGiP+0tpTAmvTW/b8YwT/WkYGn71in92PEH898mwOfSbXV5d/Ln39HH2u+Bva2Ksy/nx1/TCyf1KNj3X9QNBXZ/y5kPSV8Y/mGlX4h+xGjD+6N5YeF01+fZ/uv837/SjjH90bw1w5r76vqv4ok99jPdW2/59X31dVv82rT5vf1xV/mMen+upYP5gnv69j/YXruwR50WXH+j3m8a/+U/+wudYiYsYftrrWr8rqw3el4NjZJvp2POB3m+//8lq6aMO9WgqOnX2i79DDB5OtefP9X15LF224V0vBsUPr37GHH8BP4JeZ3f/ltfRFC9P+AXFeWic=
+  </data>
+ </layer>
+ <layer name="MonoShita" width="40" height="66">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKgCAUANG2HqY6SHWRuv++3AlBGQP5i3ngys2IC/l23Tetqe26stzst2YfYx9jH2MfYx9jH2MfYx9jH2MfE7lvTrH78uy5Be6TJL2rP96EoVjRTAGbSvYx9jH2MfYx9jH2MfYx9jH2MfYx9jG1fXk2Hhucpbav1f/zk/u17+xPfaq3AxHcI9I=
+  </data>
+ </layer>
+ <layer name="MonoChu" width="40" height="66">
+  <properties>
+   <property name="z" value="-11"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2DsKwlAUhOGTWCn4aBV8lIJoLYjWgsZakLgiF+3gApLrnVxzMPPD6cT5EMSgmUrRq21ATfJxycf1j751ZrbF7XCbrPq1/dxskEfRPsX49jAdcSfcocY3hW32Y98ZpgJ3w11qfGwxvjtMJe6JezjwXXtpDVV594Vsy8dty8dty8dty8dty8dty8dty8dtp/CN8cw/CXjub8u3hG3l2Bead19I8nHJxyUfl3xc8nF5933bEM8lI+I/09TNYVs49imlVGjefz/k4+qqr2jofbv6+TW1LR+3LR+37f37q8zeMa8gmQ==
+  </data>
+ </layer>
+ <objectgroup name="event">
+  <object id="107" x="0" y="16" width="32" height="32">
+   <properties>
+    <property name="EventID" value="1"/>
+    <property name="trigger" value="0"/>
+   </properties>
+  </object>
+  <object id="108" x="0" y="704" width="64" height="128">
+   <properties>
+    <property name="EventID" value="2"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="109" x="240" y="416" width="192" height="64">
+   <properties>
+    <property name="EventID" value="3"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+  <object id="111" x="608" y="320" width="32" height="96">
+   <properties>
+    <property name="EventID" value="4"/>
+    <property name="trigger" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="collision">
+  <object id="99" x="0" y="16" width="240" height="688"/>
+  <object id="100" x="0" y="832" width="240" height="224"/>
+  <object id="101" x="240" y="1024" width="400" height="32"/>
+  <object id="103" x="432" y="416" width="256" height="608"/>
+  <object id="105" x="240" y="16" width="384" height="176"/>
+  <object id="106" x="432" y="192" width="224" height="128"/>
+ </objectgroup>
+</map>

@@ -9,6 +9,7 @@
 #include "Models/PlayerData/LocalPlayerData.h"
 
 #include "Managers/ConfigDataManager.h"
+#include "Managers/ResourcesManager.h"
 #include "Models/PlayerData/GlobalPlayerData.h"
 #include "Utils/AssertUtils.h"
 #include "Utils/JsonUtils.h"
@@ -53,7 +54,7 @@ bool LocalPlayerData::loadLocalData(const int local_id)
 {
     string file = (local_id == 0) ? "save/local_template": "save/local" + to_string(local_id);
     file += SAVE_EXTENSION;
-    string path = FileUtils::getInstance()->fullPathForFilename(file);
+    string path = ResourcesManager::getInstance()->getCurrentFilePath(file);
     if (path == "") return false;
     
     this->local_id = local_id;
@@ -68,7 +69,7 @@ void LocalPlayerData::saveLocalData(const int local_id)
     // セーブ回数のインクリメント
     this->incrementSaveCount();
 
-    string path = "save/local" + to_string(local_id) + SAVE_EXTENSION;
+    string path = ResourcesManager::getInstance()->getCurrentPath() + "/save/local" + to_string(local_id) + SAVE_EXTENSION;
     LastSupper::JsonUtils::writeJsonCrypt(path, this->localData);
     this->local_id = local_id;
 }

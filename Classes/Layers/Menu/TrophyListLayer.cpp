@@ -34,7 +34,7 @@ bool TrophyListLayer::init()
     leftTop->setPosition(leftTop->getContentSize().width/2, WINDOW_HEIGHT - leftTop->getContentSize().height/2);
     this->addChild(leftTop);
     
-    Label* title = Label::createWithTTF("トロフィ", "fonts/cinecaption2.28.ttf", 48);
+    Label* title = Label::createWithTTF("トロフィ", Resource::Font::MESSAGE, 48);
     title->setPosition(leftTop->getContentSize().width / 2, leftTop->getContentSize().height / 2);
     title->setColor(Color3B::WHITE);
     leftTop->addChild(title);
@@ -50,7 +50,7 @@ bool TrophyListLayer::init()
     rightTop->setPosition(rightTop->getContentSize().width/2 + parcent.width * 30, rightTop->getContentSize().height/2 + parcent.height * 80);
     this->addChild(rightTop);
     
-    Label* rightup_title = Label::createWithTTF("最高クリア記録", "fonts/cinecaption2.28.ttf", 26);
+    Label* rightup_title = Label::createWithTTF("最高クリア記録", Resource::Font::MESSAGE, 26);
     rightup_title->setPosition(rightup_title->getContentSize().width/2 + 30, rightTop->getContentSize().height - rightup_title->getContentSize().height/2 - 15);
     rightup_title->setColor(Color3B::WHITE);
     rightTop->addChild(rightup_title);
@@ -59,7 +59,7 @@ bool TrophyListLayer::init()
     PlayerDataManager* pdm = PlayerDataManager::getInstance();
     string fast_time = LastSupper::StringUtils::getTimeForDisplay(pdm->getGlobalData()->getBestClearTimeSecound());
     string min_save = to_string(pdm->getGlobalData()->getBestSaveCount()) + "回";
-    Label* equipment = Label::createWithTTF("最速クリア時間 : " + fast_time + "\n最小セーブ回数 : " + min_save, "fonts/cinecaption2.28.ttf", 26);
+    Label* equipment = Label::createWithTTF("最速クリア時間 : " + fast_time + "\n最小セーブ回数 : " + min_save, Resource::Font::MESSAGE, 26);
     equipment->setPosition(equipment->getContentSize().width/2 + 20, equipment->getContentSize().height/2 + 20);
     equipment->setColor(Color3B::WHITE);
     rightTop->addChild(equipment);
@@ -118,7 +118,7 @@ bool TrophyListLayer::init()
             // トロフィー画像
             panel->addChild(trophy_img);
         }
-        Label* trophy = Label::createWithTTF(trophy_name, "fonts/cinecaption2.28.ttf", 22);
+        Label* trophy = Label::createWithTTF(trophy_name, Resource::Font::MESSAGE, 22);
         trophy->setPosition(trophy->getContentSize().width/2 + trophy_img->getContentSize().width * 2, panel_size.height/2);
         trophy->setColor(Color3B::WHITE);
         trophy->setTag(i);
@@ -159,14 +159,14 @@ void TrophyListLayer::changeTrophyDiscription(const int idx)
     // 条件
     int margin = 15;
     string str = LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyData()->getCondition(this->trophies[idx]));
-    Label* condition = Label::createWithTTF(str, "fonts/cinecaption2.28.ttf", 28);
+    Label* condition = Label::createWithTTF(str, Resource::Font::MESSAGE, 28);
     condition->setPosition(bottom->getContentSize().width / 2, bottom->getContentSize().height - condition->getContentSize().height / 2 - margin);
     condition->setColor(Color3B::WHITE);
     label_panel->addChild(condition);
     
     // コメント
     string comment_str = PlayerDataManager::getInstance()->getGlobalData()->hasTrophy(idx + 1) ? "\n  「" + LastSupper::StringUtils::strReplace("\\n", "\n", CsvDataManager::getInstance()->getTrophyData()->getComment(this->trophies[idx])) + "」" : "";
-    Label* comment = Label::createWithTTF(comment_str, "fonts/cinecaption2.28.ttf", 28);
+    Label* comment = Label::createWithTTF(comment_str, Resource::Font::MESSAGE, 28);
     comment->setPosition(bottom->getContentSize().width / 2, bottom->getContentSize().height - condition->getContentSize().height - comment->getContentSize().height / 2 - margin / 2);
     comment->setColor(Color3B::WHITE);
     label_panel->addChild(comment);

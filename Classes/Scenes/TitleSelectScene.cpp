@@ -12,6 +12,7 @@
 #include "Datas/Scene/TitleSelectSceneData.h"
 #include "Layers/LoadingLayer.h"
 #include "Layers/TitleSelect/TitleSelectMenuLayer.h"
+#include "Managers/ResourcesManager.h"
 
 // コンストラクタ
 TitleSelectScene::TitleSelectScene() { FUNCLOG }
@@ -40,5 +41,15 @@ void TitleSelectScene::onPreloadFinished(LoadingLayer* loadingLayer)
 void TitleSelectScene::onTitleSelected(int titleID)
 {
     SoundManager::getInstance()->playSE(Resource::SE::TITLE_ENTER);
+    switch (titleID) {
+        case 0:
+            ResourcesManager::getInstance()->setCurrentPath("6chefs");
+            break;
+        case 1:
+            ResourcesManager::getInstance()->setCurrentPath("6chefs2");
+            break;
+        default:
+            ResourcesManager::getInstance()->setCurrentPath("common");
+    }
     Director::getInstance()->replaceScene(OpeningScene::create());
 }
