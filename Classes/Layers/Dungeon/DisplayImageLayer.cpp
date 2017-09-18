@@ -59,7 +59,7 @@ bool DisplayImageLayer::init(const string& imageFileName, const float duration, 
     string fullPath { ResourcesManager::getInstance()->getCurrentFilePath(Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
     if(fullPath.size() == 0) return false;
     
-    Sprite* img { Sprite::create(Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
+    Sprite* img { Sprite::create(ResourcesManager::getInstance()->getCurrentPath() + "/" + Resource::SpriteFrame::BASE_PATH + DISP_IMG_PATH + imageFileName) };
     img->setPosition(WINDOW_CENTER);
     this->addChild(img);
     
