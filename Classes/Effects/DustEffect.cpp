@@ -10,6 +10,8 @@
 
 #include "CocosStudio/CSNode.h"
 
+#include "Managers/ResourcesManager.h"
+
 // 定数
 const string DustEffect::CSB_FILE_PATH { "effect/dust.csb" };
 const string DustEffect::ANIMATION_NAME { "animation" };
@@ -25,7 +27,7 @@ bool DustEffect::init()
 {
     if (!Node::init()) return false;
     
-    CSNode* csNode { CSNode::create(CSB_FILE_PATH) };
+    CSNode* csNode { CSNode::create(ResourcesManager::getInstance()->getCurrentPath() + "/" + CSB_FILE_PATH) };
     if (!csNode) return false;
     this->addChild(csNode);
     _csNode = csNode;

@@ -13,8 +13,7 @@ bool OpeningSceneData::init()
 {
     FUNCLOG
     string basePath;
-    string jsonPath = ResourcesManager::getInstance()
-    ->getCurrentFilePath(Resource::ConfigFiles::PRELOAD_LIST);
+    string jsonPath = ResourcesManager::getInstance()->getCurrentFilePath(Resource::ConfigFiles::PRELOAD_LIST);
     int length;
     const rapidjson::Document json = LastSupper::JsonUtils::readJsonCrypted(jsonPath);
     for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); itr++)

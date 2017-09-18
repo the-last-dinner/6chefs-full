@@ -1,5 +1,5 @@
 {
-    "common/img": [
+    "img": [
         "animation",
         "blood",
         "effect",
@@ -11,7 +11,7 @@
         "title",
         "ui"
     ],
-    "common/character": [
+    "character": [
         "magoichi",
         "daigoro",
         "dandan",
