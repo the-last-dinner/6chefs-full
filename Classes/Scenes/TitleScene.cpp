@@ -18,6 +18,7 @@
 #include "Layers/Menu/TrophyListLayer.h"
 
 #include "Models/PlayerData/GlobalPlayerData.h"
+#include "Models/ConfigData/MasterConfigData.h"
 
 // コンストラクタ
 TitleScene::TitleScene(){FUNCLOG}
@@ -69,7 +70,7 @@ void TitleScene::onPreloadFinished(LoadingLayer* loadingLayer)
     this->saveDataSelector = saveDataSelector;
     
     // BGM
-    SoundManager::getInstance()->playBGM("title_bgm.mp3", true, 0.7f);
+    SoundManager::getInstance()->playBGM(ConfigDataManager::getInstance()->getMasterConfigData()->getString(MasterConfigData::TITLE_BGM_FILE), true, 0.7f);
 }
 
 // 最初からが選ばれた時

@@ -43,10 +43,10 @@ ConfigDataManager::ConfigDataManager()
 {
     FUNCLOG
     this->debugConfigData = DebugConfigData::create();
+    this->masterConfigData = MasterConfigData::create();
     
     CC_SAFE_RETAIN(this->debugConfigData);
     CC_SAFE_RETAIN(this->masterConfigData);
-    CC_SAFE_RETAIN(this->trophyConfigData);
 }
 
 // DebugConfigの取得

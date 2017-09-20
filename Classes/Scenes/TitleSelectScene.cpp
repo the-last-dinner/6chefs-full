@@ -35,6 +35,10 @@ void TitleSelectScene::onPreloadFinished(LoadingLayer* loadingLayer)
     TitleSelectMenuLayer* menuLayer { TitleSelectMenuLayer::create(CC_CALLBACK_1(TitleSelectScene::onTitleSelected, this)) };
     this->addChild(menuLayer);
     loadingLayer->onLoadFinished();
+    
+    // BGM
+    SoundManager::getInstance()->playBGM(ConfigDataManager::getInstance()->getMasterConfigData()->getString(MasterConfigData::TITLE_BGM_FILE), true, 0.7f);
+    
     menuLayer->show();
 }
 
@@ -59,5 +63,6 @@ void TitleSelectScene::onTitleSelected(int titleID)
             // 通常はありえない
             ResourcesManager::getInstance()->setCurrentPath("common");
     }
+    SoundManager::getInstance()->stopBGMAll();
     Director::getInstance()->replaceScene(OpeningScene::create());
 }
