@@ -31,6 +31,7 @@ public:
     static const char* OPENING_SCENE;
     static const char* OPENING_VIDEO_FILE;
     static const char* OPENING_BGM_FILE;
+    static const char* TITLE_BGM_FILE;
     
     // instance valiables
 private:

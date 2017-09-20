@@ -22,6 +22,7 @@ const char* MasterConfigData::SPECIAL_ROOM {"special_room"};
 const char* MasterConfigData::OPENING_SCENE {"opening_scene"};
 const char* MasterConfigData::OPENING_VIDEO_FILE {"opening_video_file"};
 const char* MasterConfigData::OPENING_BGM_FILE {"opening_bgm_file"};
+const char* MasterConfigData::TITLE_BGM_FILE {"title_bgm_file"};
 
 // コンストラクタ
 bool MasterConfigData::init()
@@ -41,7 +42,7 @@ bool MasterConfigData::init()
 // 文字列を取得
 string MasterConfigData::getString(const char *targetProperty)
 {
-    if (!this->masterConfig.HasMember(VERSION)) {
+    if (!this->masterConfig.HasMember(targetProperty)) {
         string msg = "MasterConfig property is missing.";
         LastSupper::AssertUtils::fatalAssert(msg);
         return msg;

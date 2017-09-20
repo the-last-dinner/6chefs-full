@@ -53,6 +53,7 @@ bool TitleSelectPanel::init(TYPE type)
     Size charaSize { chara->getContentSize() };
     Point charaPos { TYPE_TO_CHARA_POSITION.at(type) };
     chara->setPosition(charaSize.width / 2 + charaPos.x, charaSize.height / 2 + charaPos.y);
+    chara->setColor(Color3B(70, 70, 70));
     this->addChild(chara);
     _chara = chara;
     
