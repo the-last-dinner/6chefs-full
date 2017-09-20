@@ -201,18 +201,14 @@ void TitleMainMenuLayer::onEnterKeyPressed(int idx)
         {MenuType::TROPHY, this->onTrophySelected},
         {MenuType::SPECIAL_ROOM, this->onSpecialRoomSelected},
 	};
-    if (ConfigDataManager::getInstance()->getMasterConfigData()->isDisplay(MasterConfigData::SPECIAL_ROOM))
-    {
-    }
+    
     MenuType menu {static_cast<MenuType>(idx)};
 	if(!typeMap.count(menu)) return;
     
     // クリアしていない場合
-    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared())
-    {
+    if (!PlayerDataManager::getInstance()->getGlobalData()->isCleared()) {
         // トロフィー見れない
-        if (menu == MenuType::TROPHY)
-        {
+        if (menu == MenuType::TROPHY) {
             this->prohibitNotification("トロフィーはクリア後に見ることができます");
             return;
         }
