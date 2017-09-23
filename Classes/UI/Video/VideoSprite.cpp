@@ -36,7 +36,6 @@ VideoSprite::~VideoSprite()
     FUNCLOG;
     VideoTextureCache* video = VideoTextureCache::sharedTextureCache();
     video->removeVideo(m_strFileName.c_str());
-    unregisterPlayScriptHandler();
     CC_SAFE_RELEASE_NULL(video);
 }
 
@@ -106,22 +105,6 @@ void VideoSprite::update(float dt)
         CCLOG("表示失敗 VideoSprite::update filename = %s , now_frame = %d, total_frame = %d", m_strFileName.c_str(), m_frame_count, m_frames);
     }
 
-}
-
-void VideoSprite::registerPlayScriptHandler(int nHandler)
-{
-    unregisterPlayScriptHandler();
-    m_playEndScriptHandler = nHandler;
-    LUALOG("[LUA] Add VideoSprite event handler: %d", m_playEndScriptHandler);
-}
-
-void VideoSprite::unregisterPlayScriptHandler(void)
-{
-    if (m_playEndScriptHandler) {
-        ScriptEngineManager::getInstance()->getScriptEngine()->removeScriptHandler(m_playEndScriptHandler);
-        LUALOG("[LUA] Remove VideoSprite event handler: %d", m_playEndScriptHandler);
-        m_playEndScriptHandler = 0;
-    }
 }
 
 void VideoSprite::setVideoEndCallback(function<void()> func)

@@ -16,11 +16,9 @@ public:
     void stopVideo(void); 
     void update(float dt);  
       
-    void registerPlayScriptHandler(int nHandler);
     void setVideoEndCallback(function<void()> func);
     
 private:
-    void unregisterPlayScriptHandler(void);
     unsigned int m_width;  
     unsigned int m_height;
     unsigned int m_frames;
