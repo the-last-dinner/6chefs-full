@@ -19,7 +19,7 @@ public:
 
     // インスタンス変数
 private:
-    string _videoFileName;
+    string _videoFileDir;
     string _bgmFileName;
     
     // インスタンスメソッド

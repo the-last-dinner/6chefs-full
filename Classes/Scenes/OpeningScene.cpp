@@ -27,7 +27,7 @@ bool OpeningScene::init()
     CsvDataManager::getInstance();
     
     MasterConfigData* masterConfigData { ConfigDataManager::getInstance()->getMasterConfigData() };
-    _videoFileName = masterConfigData->getString(MasterConfigData::OPENING_VIDEO_FILE);
+    _videoFileDir = masterConfigData->getString(MasterConfigData::OPENING_VIDEO_DIR);
     _bgmFileName = masterConfigData->getString(MasterConfigData::OPENING_BGM_FILE);
     
     // キーコンフィグの取得
@@ -58,11 +58,7 @@ void OpeningScene::onPreloadFinished(LoadingLayer *loadingLayer)
 // 動画レイヤーをセット
 void OpeningScene::setVideoLayer()
 {
-    // VideoPlayer* videoPlayer { VideoPlayer::create(_videoFileName, true, [this]{
-     //       SoundManager::getInstance()->stopBGMAll();
-     //    Director::getInstance()->replaceScene(TitleScene::create());
-     //    }) };
-    VideoPlayer* videoPlayer { VideoPlayer::create("OPmovie", true, [this]{
+    VideoPlayer* videoPlayer { VideoPlayer::create(_videoFileDir, true, [this]{
                SoundManager::getInstance()->stopBGMAll();
             Director::getInstance()->replaceScene(TitleScene::create());
     }) };
