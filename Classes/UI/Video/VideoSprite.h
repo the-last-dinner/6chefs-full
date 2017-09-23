@@ -24,7 +24,6 @@ private:
     unsigned int m_frames;
     double m_frameRate;
 
-    int m_playEndScriptHandler;
     unsigned int m_frame_count;
     string m_strFileName;
     function<void()> m_videoEndCallback;

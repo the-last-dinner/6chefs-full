@@ -28,7 +28,6 @@ VideoSprite::VideoSprite()
     m_frame_count = 1;
     m_width = 100;
     m_height = 100;
-    m_playEndScriptHandler = 0;
 }  
 
 VideoSprite::~VideoSprite()
@@ -97,9 +96,6 @@ void VideoSprite::update(float dt)
             m_frame_count = 1;
             if (m_videoEndCallback)
                 m_videoEndCallback();
-            
-            if(m_playEndScriptHandler)
-                ScriptEngineManager::getInstance()->getScriptEngine()->reallocateScriptHandler(m_playEndScriptHandler);
         }  
     } else {
         CCLOG("表示失敗 VideoSprite::update filename = %s , now_frame = %d, total_frame = %d", m_strFileName.c_str(), m_frame_count, m_frames);
