@@ -30,7 +30,6 @@ private:
     int m_playEndScriptHandler;
     unsigned int m_frame_count;
     string m_strFileName;
-    bool m_enableTouchEnd;
     function<void()> m_videoEndCallback;
 };  
 

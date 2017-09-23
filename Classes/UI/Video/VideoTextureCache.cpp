@@ -101,12 +101,7 @@ void VideoTextureCache::picToTexture(float fd)
             s_pAsyncVideoPicQueue->pop();
             mtx.unlock();
             if(pVideoPic) {
-                addImageWidthData(pVideoPic->m_path, pVideoPic->m_frame,
-                                  pVideoPic->m_pPicture,pVideoPic->m_length,
-                                  Texture2D::PixelFormat::RGBA8888,
-                                  pVideoPic->m_width, pVideoPic->m_height,
-                                  Size(pVideoPic->m_width, pVideoPic->m_height)
-                                  );
+                addImageWidthData(pVideoPic);
                 pVideoPic->release();
             }
         } else {
@@ -125,7 +120,7 @@ void VideoTextureCache::removeVideo(const char *path)
         if(rcount == 1) {
             unsigned int frames = pVideoDecode->getFrames();
             for(; frames > 0; frames--) {
-                removeTexture(path, frames);
+                removeTexture(frames);
             }
             m_pVideoDecodes->erase(path);
         } else {
@@ -134,30 +129,25 @@ void VideoTextureCache::removeVideo(const char *path)
     }
 }
 
-Texture2D* VideoTextureCache::getTexture(const char *filename, int frame)
+Texture2D* VideoTextureCache::getTexture(int frame)
 {
-    ostringstream keystream;
-    keystream << filename << "_" << frame;
     Texture2D * texture = NULL;
-    texture = (Texture2D*)m_pTextures->at(keystream.str());
-    ostringstream delKeystream;
-    delKeystream << filename << "_" << (frame - 5);
-    _delKey = delKeystream.str();
+    texture = (Texture2D*)m_pTextures->at(to_string(frame));
+    _delKey = to_string(frame - 5);
 	return texture;
 }
 
-Texture2D* VideoTextureCache::addImageWidthData(const char *filename, int frame, const void *data, ssize_t dataLen, Texture2D::PixelFormat pixelFormat, unsigned int pixelsWide, unsigned int pixelsHigh, const Size& contentSize)
+Texture2D* VideoTextureCache::addImageWidthData(VideoPic *pic)
 {
-    ostringstream keystream;
-    keystream << filename << "_" << frame;
-    string key = keystream.str();
+
+    string key = to_string(pic->m_frame);
     
     Texture2D * texture = NULL;
     texture = (Texture2D*)m_pTextures->at(key);
 	if(!texture) {
         texture = new Texture2D();
         if( texture && 
-        	texture->initWithData(data, dataLen, pixelFormat, pixelsWide, pixelsHigh, contentSize) ) {
+        	texture->initWithImage(pic->m_image) ) {
             
             m_pTextures->insert(key, texture);
             texture->release();
@@ -178,9 +168,7 @@ void VideoTextureCache::removeAllTextures()
     m_pTextures->clear();
 }
 
-void VideoTextureCache::removeTexture(const char *filename, int frame)
+void VideoTextureCache::removeTexture(int frame)
 {
-    ostringstream keystream;
-    keystream << filename << "_" << frame;
-    m_pTextures->erase(keystream.str());
+    m_pTextures->erase(to_string(frame));
 }

@@ -20,13 +20,13 @@ class VideoTextureCache : public Ref
         static VideoTextureCache * sharedTextureCache();
 		static void purgeSharedTextureCache();
 		
-        Texture2D* addImageWidthData(const char *filename, int frame, const void *data, ssize_t dataLen, Texture2D::PixelFormat pixelFormat, unsigned int pixelsWide, unsigned int pixelsHigh, const Size& contentSize);
+        Texture2D* addImageWidthData(VideoPic *pic);
     
-        Texture2D* getTexture(const char *filename, int frame);
+        Texture2D* getTexture(int frame);
 
 	    void removeAllTextures();
 
-	    void removeTexture(const char *filename, int frame);
+	    void removeTexture(int frame);
 
         VideoDecode* addVideo(const char *path);
 	    void removeVideo(const char *path);

@@ -24,9 +24,8 @@ VideoSprite* VideoSprite::create(const char* path)
 VideoSprite::VideoSprite()
 {
     FUNCLOG;
-    m_frameRate = 1.0 / 31;
-    m_frame_count = 1;  
-    m_enableTouchEnd = false;  
+    m_frameRate = 1.0 / 30;
+    m_frame_count = 1;
     m_width = 100;
     m_height = 100;
     m_playEndScriptHandler = 0;
@@ -56,7 +55,6 @@ bool VideoSprite::init(const char* path)
     m_height = pVideoDecode->getHeight();
     m_frames = pVideoDecode->getFrames();
     m_frameRate = pVideoDecode->getFrameRate();
-
     Texture2D *texture = new Texture2D();
 
     unsigned int length = m_width * m_height * 4;
@@ -98,7 +96,7 @@ void VideoSprite::update(float dt)
 {
 
     Texture2D *texture = NULL;
-    texture = VideoTextureCache::sharedTextureCache()->getTexture(m_strFileName.c_str(), m_frame_count);
+    texture = VideoTextureCache::sharedTextureCache()->getTexture(m_frame_count);
     if(texture) {
         m_frame_count++;
         setTexture(texture);

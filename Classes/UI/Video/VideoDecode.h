@@ -21,33 +21,26 @@ class VideoPic : public Ref
 {
 	public:
         VideoPic();
-		bool init(const char *path, int frame,unsigned int width,  unsigned int height, unsigned char* data);
+		bool init(const string& path, int frame);
         virtual ~VideoPic();
-		const char *m_path;
 		int m_frame;
 		int m_width;
 		int m_height;
-		unsigned char* m_pPicture;
-        unsigned int m_length;
+        Image *m_image;
 };
 
 // 動画を画像に変換
 class VideoDecode : public Ref
 {
 	private:
-		AVFormatContext *m_pFormatCtx;  
-	    AVCodecContext *m_pCodecCtx;  
-	    AVFrame *m_pFrame;  
-	    
-	    int m_videoStream;
-	    SwsContext *m_pSwsCtx;
 
 	    int m_frameCount;
 	    const char *m_filepath;
 	    double m_frameRate;
 	    unsigned int m_frames;
 	    unsigned int m_width;  
-    	unsigned int m_height;   
+    	unsigned int m_height;
+        string getFullFilePath(int frame);
 	public:
         VideoDecode();
         virtual ~VideoDecode();
