@@ -23,7 +23,7 @@ private:
     
 // クラスメソッド
 public:
-    static VideoPlayer* create(const string& fileName, const bool skip, function<void()> onEnd);
+    static VideoPlayer* create(const string& dirName, const bool skip, function<void()> onEnd);
     
 private:
     VideoPlayer();

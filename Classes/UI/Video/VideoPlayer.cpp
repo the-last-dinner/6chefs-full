@@ -23,11 +23,11 @@ VideoPlayer::VideoPlayer() {FUNCLOG};
 VideoPlayer::~VideoPlayer() {FUNCLOG};
 
 // create関数
-VideoPlayer* VideoPlayer::create(const string& fileName, const bool skip, function<void()> onEnd)
+VideoPlayer* VideoPlayer::create(const string& dirName, const bool skip, function<void()> onEnd)
 {
     VideoPlayer* p {new(nothrow) VideoPlayer()};
     
-    if(p && p->init(fileName, skip, onEnd)) {
+    if(p && p->init(dirName, skip, onEnd)) {
         CC_SAFE_RETAIN(p);
         return p;
     } else {
@@ -38,12 +38,11 @@ VideoPlayer* VideoPlayer::create(const string& fileName, const bool skip, functi
 }
 
 // 初期化
-bool VideoPlayer::init(const string& fileName, const bool skip, function<void()> onEnd)
+bool VideoPlayer::init(const string& dirName, const bool skip, function<void()> onEnd)
 {
     if(!Layer::init()) return false;
     
-    // charに以下のように変換しないと動画がデコードされない
-    string filePath = DISP_VIDEO_PATH + fileName;
+    string filePath = DISP_VIDEO_PATH + dirName;
     filePath = ResourcesManager::getInstance()->getCurrentFilePath(filePath);
     int len = static_cast<int>(filePath.length());
     char* fname = new char[len+1];

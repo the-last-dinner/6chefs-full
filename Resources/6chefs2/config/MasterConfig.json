@@ -7,7 +7,7 @@
         "special_room": true,
         "opening_scene": true
     },
-    "opening_video_file": "OPmovie.mp4",
+    "opening_video_dir": "OPmovie",
     "opening_bgm_file": "OPBGM2.mp3",
     "title_bgm_file": "title_bgm.mp3"
 }

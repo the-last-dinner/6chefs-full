@@ -3,38 +3,27 @@
 #define VideoTextureCache_h
 
 #include "define.h"
-
 #include "VideoDecode.h"
 
 class VideoTextureCache : public Ref
 {
-	protected:
-        Map<string, Ref *>* m_pTextures;
-        Map<string, Ref *>* m_pVideoDecodes;
-        bool _threadEnd = false;
-        string _delKey = "";
-	public:
-        VideoTextureCache();
-        virtual ~VideoTextureCache();
+public:
+    VideoTextureCache();
+    virtual ~VideoTextureCache();
+    static VideoTextureCache * sharedTextureCache();
+    Texture2D* addImageWidthData(VideoPic *pic);
+    Texture2D* getTexture(int frame);
+    void removeAllTextures();
+    VideoDecode* addVideo(const char *dir);
+    void removeVideo(const char *dir);
+    void addPicData(VideoPic *videoPic);
+    void picToTexture(float fd);
 
-        static VideoTextureCache * sharedTextureCache();
-		static void purgeSharedTextureCache();
-		
-        Texture2D* addImageWidthData(const char *filename, int frame, const void *data, ssize_t dataLen, Texture2D::PixelFormat pixelFormat, unsigned int pixelsWide, unsigned int pixelsHigh, const Size& contentSize);
-    
-        Texture2D* getTexture(const char *filename, int frame);
-
-	    void removeAllTextures();
-
-	    void removeTexture(const char *filename, int frame);
-
-        VideoDecode* addVideo(const char *path);
-	    void removeVideo(const char *path);
-
-        void addPicData(VideoPic *pVideoPic);
-
-        void picToTexture(float fd);
-
+private:
+    Map<string, Ref *>* _textures;
+    Map<string, Ref *>* _videoDecodes;
+    bool _threadEnd = false;
+    string _delKey = "";
 };
 
 #endif /* VideoTextureCache_h */
