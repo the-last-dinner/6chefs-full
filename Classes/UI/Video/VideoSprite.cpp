@@ -3,17 +3,11 @@
 #include "VideoTextureCache.h"
 #include "VideoDecode.h"
 
-extern "C" { 
-    #include "libavcodec/avcodec.h"
-    #include "libavformat/avformat.h"
-    #include "libswscale/swscale.h"  
-}  
-
-VideoSprite* VideoSprite::create(const char* path)
+VideoSprite* VideoSprite::create(const char* dir)
 {
     VideoSprite* video = new VideoSprite();
 
-    if (video && video->init(path)) {  
+    if (video && video->init(dir)) {
          video->autorelease();
          return video;
     }
@@ -24,58 +18,55 @@ VideoSprite* VideoSprite::create(const char* path)
 VideoSprite::VideoSprite()
 {
     FUNCLOG;
-    m_frameRate = 1.0 / 30;
-    m_frame_count = 1;
-    m_width = 100;
-    m_height = 100;
+    _frameRate = 1.0 / 30;
+    _frameCount = 1;
+    _width = 100;
+    _height = 100;
 }  
 
 VideoSprite::~VideoSprite()
 {  
     FUNCLOG;
     VideoTextureCache* video = VideoTextureCache::sharedTextureCache();
-    video->removeVideo(m_strFileName.c_str());
+    video->removeVideo(_fileDir.c_str());
     CC_SAFE_RELEASE_NULL(video);
 }
 
-bool VideoSprite::init(const char* path)
+bool VideoSprite::init(const char* dir)
 {  
-    m_strFileName = path;
+    _fileDir = dir;
 
-    VideoDecode *pVideoDecode = VideoTextureCache::sharedTextureCache()->addVideo(path);
-    if(!pVideoDecode)
-    {
+    VideoDecode *videoDecode = VideoTextureCache::sharedTextureCache()->addVideo(dir);
+    if(!videoDecode) {
         CCLOGERROR("videoDecode get error in %s", "VideoSprite");
         return false;
     }
 
-    m_width = pVideoDecode->getWidth();
-    m_height = pVideoDecode->getHeight();
-    m_frames = pVideoDecode->getFrames();
-    m_frameRate = pVideoDecode->getFrameRate();
-    Texture2D *texture = new Texture2D();
+    _width = videoDecode->getWidth();
+    _height = videoDecode->getHeight();
+    _frames = videoDecode->getFrames();
+    _frameRate = videoDecode->getFrameRate();
 
-    unsigned int length = m_width * m_height * 4;
+    Texture2D *texture = new Texture2D();
+    unsigned int length = _width * _height * 4;
     unsigned char* tempData = new unsigned char[length];
     for(unsigned int i = 0; i < length; ++i) {
         tempData[i] = 0;
     }
 
-    texture->initWithData(tempData, length, Texture2D::PixelFormat::RGBA8888, m_width, m_height, Size(m_width, m_height));
-    
+    texture->initWithData(tempData, length, Texture2D::PixelFormat::RGBA8888, _width, _height, Size(_width, _height));
     initWithTexture(texture);
-
-    this->setContentSize(Size(m_width, m_height));
+    this->setContentSize(Size(_width, _height));
 
     delete [] tempData;
-
-    return true;  
+    CC_SAFE_RELEASE(texture);
+    return true;
 }
 
 void VideoSprite::playVideo()
 {  
     update(0);
-    this->schedule(schedule_selector(VideoSprite::update), m_frameRate);
+    this->schedule(schedule_selector(VideoSprite::update), _frameRate);
 }  
 
 void VideoSprite::stopVideo(void)
@@ -86,24 +77,22 @@ void VideoSprite::stopVideo(void)
 
 void VideoSprite::update(float dt)
 {
-
     Texture2D *texture = NULL;
-    texture = VideoTextureCache::sharedTextureCache()->getTexture(m_frame_count);
+    texture = VideoTextureCache::sharedTextureCache()->getTexture(_frameCount);
     if(texture) {
-        m_frame_count++;
+        _frameCount++;
         setTexture(texture);
-        if(m_frame_count >= m_frames) {
-            m_frame_count = 1;
-            if (m_videoEndCallback)
-                m_videoEndCallback();
+        if(_frameCount >= _frames) {
+            _frameCount = 1;
+            if (_videoEndCallback)
+                _videoEndCallback();
         }  
     } else {
-        CCLOG("表示失敗 VideoSprite::update filename = %s , now_frame = %d, total_frame = %d", m_strFileName.c_str(), m_frame_count, m_frames);
+        CCLOG("表示失敗 VideoSprite::update filename = %s , now_frame = %d, total_frame = %d", _fileDir.c_str(), _frameCount, _frames);
     }
-
 }
 
 void VideoSprite::setVideoEndCallback(function<void()> func)
 {  
-    m_videoEndCallback = func;  
+    _videoEndCallback = func;
 }

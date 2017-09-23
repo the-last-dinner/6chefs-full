@@ -42,7 +42,6 @@ bool VideoPlayer::init(const string& dirName, const bool skip, function<void()> 
 {
     if(!Layer::init()) return false;
     
-    // charに以下のように変換しないと動画がデコードされない
     string filePath = DISP_VIDEO_PATH + dirName;
     filePath = ResourcesManager::getInstance()->getCurrentFilePath(filePath);
     int len = static_cast<int>(filePath.length());

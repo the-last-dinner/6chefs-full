@@ -7,26 +7,23 @@
 class VideoSprite : public Sprite
 {  
 public:
-    static VideoSprite* create(const char* path);
+    static VideoSprite* create(const char* dir);
     VideoSprite();
     virtual ~VideoSprite();
-      
     bool init(const char* path);  
     void playVideo(void);  
     void stopVideo(void); 
-    void update(float dt);  
-      
+    void update(float dt);
     void setVideoEndCallback(function<void()> func);
     
 private:
-    unsigned int m_width;  
-    unsigned int m_height;
-    unsigned int m_frames;
-    double m_frameRate;
-
-    unsigned int m_frame_count;
-    string m_strFileName;
-    function<void()> m_videoEndCallback;
+    unsigned int _width;
+    unsigned int _height;
+    unsigned int _frames;
+    double _frameRate;
+    unsigned int _frameCount;
+    string _fileDir;
+    function<void()> _videoEndCallback;
 };  
 
 #endif /* VideoSprite_h */
