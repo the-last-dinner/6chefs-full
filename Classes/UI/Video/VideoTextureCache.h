@@ -18,7 +18,6 @@ class VideoTextureCache : public Ref
         virtual ~VideoTextureCache();
 
         static VideoTextureCache * sharedTextureCache();
-		static void purgeSharedTextureCache();
 		
         Texture2D* addImageWidthData(VideoPic *pic);
     

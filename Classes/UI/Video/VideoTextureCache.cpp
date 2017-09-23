@@ -16,11 +16,6 @@ VideoTextureCache * VideoTextureCache::sharedTextureCache()
     return g_sharedTextureCache;
 }
 
-void VideoTextureCache::purgeSharedTextureCache()
-{
-    CC_SAFE_RELEASE_NULL(g_sharedTextureCache);
-}
-
 VideoTextureCache::VideoTextureCache()
 {
     FUNCLOG;
