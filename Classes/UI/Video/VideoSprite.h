@@ -14,7 +14,6 @@ public:
     bool init(const char* path);  
     void playVideo(void);  
     void stopVideo(void); 
-    void seek(int frame);
     void update(float dt);  
       
     void registerPlayScriptHandler(int nHandler);
