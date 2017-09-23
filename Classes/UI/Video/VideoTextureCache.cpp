@@ -120,7 +120,7 @@ void VideoTextureCache::removeVideo(const char *path)
         if(rcount == 1) {
             unsigned int frames = pVideoDecode->getFrames();
             for(; frames > 0; frames--) {
-                removeTexture(frames);
+                m_pTextures->erase(to_string(frames));
             }
             m_pVideoDecodes->erase(path);
         } else {
@@ -166,9 +166,4 @@ void VideoTextureCache::removeAllTextures()
     _threadEnd = true;
     Director::getInstance()->getScheduler()->unschedule(schedule_selector(VideoTextureCache::picToTexture), this);
     m_pTextures->clear();
-}
-
-void VideoTextureCache::removeTexture(int frame)
-{
-    m_pTextures->erase(to_string(frame));
 }

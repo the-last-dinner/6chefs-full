@@ -26,8 +26,6 @@ class VideoTextureCache : public Ref
 
 	    void removeAllTextures();
 
-	    void removeTexture(int frame);
-
         VideoDecode* addVideo(const char *path);
 	    void removeVideo(const char *path);
 
