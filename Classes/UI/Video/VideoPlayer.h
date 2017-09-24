@@ -18,6 +18,7 @@ class VideoPlayer : public Layer
 // 定数
 private:
     static const string DISP_VIDEO_PATH;
+    static const string FIRST_VIDEO_PIC_NAME;
     static const float SHOW_DURATION;
     static const float HIDE_DURATION;
     

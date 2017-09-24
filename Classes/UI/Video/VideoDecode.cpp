@@ -1,9 +1,6 @@
 #include "VideoDecode.h"
 #include "VideoTextureCache.h"
 
-#include <sys/types.h>
-#include <dirent.h>
-
 VideoPic::VideoPic()
 {
     FUNCLOG;
@@ -45,24 +42,13 @@ bool VideoDecode::init(const char *dir)
     _fileDir = dir;
     _frameRate = 1.0/30;
     
-    std::vector<std::string> list;
-    DIR* dp;
-    struct dirent* ent;
-    
-    if ((dp = opendir(_fileDir), "r") == NULL) {
-        CCLOG("ディレクトリが開けません。：%s", _fileDir);
-        perror(_fileDir);
+    _frames = 1;
+    FileUtils *fileutils = FileUtils::getInstance();
+    while (fileutils->isFileExist(getFilePath(_frames))) {
+        _frames++;
     }
-    
-    while ((ent = readdir(dp)) != NULL) {
-        if(ent->d_namlen != 9) continue;
-        CCLOG("ファイル：%s", ent->d_name);
-        list.push_back(ent->d_name);
-    };
-    closedir(dp);
-    
-    _frames = list.size();
-    
+    _frames--;
+
     string filePath = getFilePath(_frames);
     
     Image* image = new Image();
@@ -109,7 +95,7 @@ string VideoDecode::getFilePath(int frame)
         fileName = "0" + fileName;
     }
     
-    return fileDir + "/" + fileName + ".png";
+    return fileDir + fileName + ".png";
 }
 
 // 1ファイルづつ読み込んでキャッシュにセットする
