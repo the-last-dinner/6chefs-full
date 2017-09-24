@@ -1,0 +1,236 @@
+{
+  "ID": "578e5475-726f-4474-ac3c-eb8ebc94be63",
+  "Version": "3.10.0.0",
+  "Name": "dust",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 20,
+        "Speed": 1.0,
+        "ActivedAnimationName": "animation",
+        "Timelines": [
+          {
+            "ActionTag": 1762870166,
+            "Property": "FileData",
+            "Frames": [
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_0.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 0,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_1.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 2,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_2.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 4,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_3.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 6,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_4.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 8,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_5.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 10,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_6.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 12,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_7.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 14,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_8.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 16,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_9.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 18,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "effect_1_9.png",
+                  "Plist": "effect/battle_effect.plist"
+                },
+                "FrameIndex": 20,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              }
+            ],
+            "ctype": "TimelineData"
+          },
+          {
+            "ActionTag": 1762870166,
+            "Property": "Alpha",
+            "Frames": [
+              {
+                "Value": 0,
+                "FrameIndex": 0,
+                "EasingData": {
+                  "Type": 0
+                },
+                "ctype": "IntFrameData"
+              },
+              {
+                "Value": 255,
+                "FrameIndex": 10,
+                "EasingData": {
+                  "Type": 7
+                },
+                "ctype": "IntFrameData"
+              },
+              {
+                "Value": 0,
+                "FrameIndex": 20,
+                "EasingData": {
+                  "Type": 0
+                },
+                "ctype": "IntFrameData"
+              }
+            ],
+            "ctype": "TimelineData"
+          }
+        ],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [
+        {
+          "StartIndex": 0,
+          "EndIndex": 20,
+          "Name": "animation",
+          "ctype": "AnimationInfoData"
+        }
+      ],
+      "ObjectData": {
+        "Tag": 9,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "effect_1_7.png",
+              "Plist": "effect/battle_effect.plist"
+            },
+            "BlendFunc": {
+              "Src": 770,
+              "Dst": 1
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -60.0,
+            "RightMargin": -60.0,
+            "TopMargin": -60.0,
+            "BottomMargin": -60.0,
+            "Tag": 10,
+            "ActionTag": 1762870166,
+            "Size": {
+              "X": 120.0,
+              "Y": 120.0
+            },
+            "Alpha": 238,
+            "Name": "sprite",
+            "ctype": "SpriteObjectData"
+          }
+        ],
+        "Size": {
+          "X": 0.0,
+          "Y": 0.0
+        },
+        "Name": "Node",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "battle_effect.plist",
+        "battle_effect.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Node"
+}
