@@ -104,13 +104,6 @@
 		9F790A181E5EFC73001538EE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A171E5EFC73001538EE /* libz.tbd */; };
 		9F790A1A1E5EFCE8001538EE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A191E5EFCE8001538EE /* CoreMedia.framework */; };
 		9F790A1C1E5F07D9001538EE /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A1B1E5F07D9001538EE /* libiconv.tbd */; };
-		9F790A241E615588001538EE /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A1D1E615588001538EE /* libavcodec.a */; };
-		9F790A251E615588001538EE /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A1E1E615588001538EE /* libavdevice.a */; };
-		9F790A261E615588001538EE /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A1F1E615588001538EE /* libavfilter.a */; };
-		9F790A271E615588001538EE /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A201E615588001538EE /* libavformat.a */; };
-		9F790A281E615588001538EE /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A211E615588001538EE /* libavutil.a */; };
-		9F790A291E615588001538EE /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A221E615588001538EE /* libswresample.a */; };
-		9F790A2A1E615588001538EE /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F790A231E615588001538EE /* libswscale.a */; };
 		9F79DB371E59D6D0001538EE /* VideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79DB351E59D6D0001538EE /* VideoPlayer.cpp */; };
 		9F79DB381E59DA0E001538EE /* VideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79DB351E59D6D0001538EE /* VideoPlayer.cpp */; };
 		9FB79E6D1D362EBE004E81CF /* AssertUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FB79E6B1D362EBE004E81CF /* AssertUtils.cpp */; };
@@ -931,13 +924,6 @@
 				5087E76817EB910900C73F5D /* QuartzCore.framework in Frameworks */,
 				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
 				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
-				9F790A241E615588001538EE /* libavcodec.a in Frameworks */,
-				9F790A251E615588001538EE /* libavdevice.a in Frameworks */,
-				9F790A261E615588001538EE /* libavfilter.a in Frameworks */,
-				9F790A271E615588001538EE /* libavformat.a in Frameworks */,
-				9F790A281E615588001538EE /* libavutil.a in Frameworks */,
-				9F790A291E615588001538EE /* libswresample.a in Frameworks */,
-				9F790A2A1E615588001538EE /* libswscale.a in Frameworks */,
 				2D8E4310A2E154128CD9AB6F /* libcocos2d Mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
