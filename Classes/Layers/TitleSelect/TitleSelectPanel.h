@@ -11,6 +11,8 @@
 
 #include "define.h"
 
+class Light;
+
 class TitleSelectPanel : public Node
 {
 // 定数
@@ -25,6 +27,7 @@ private:
     static const map<TYPE, string> TYPE_TO_CHARA_SPRITE_FRAME_NAME;
     static const map<TYPE, Point> TYPE_TO_TITLE_POSITION;
     static const map<TYPE, Point> TYPE_TO_CHARA_POSITION;
+    static const map<TYPE, Point> TYPE_TO_CURSOR_POSITION;
     static const int FOCUSED_CHARA_Z_ORDER;
     static const int UNFOCUSED_CHARA_Z_ORDER;
 // クラスメソッド
@@ -41,7 +44,7 @@ private:
     virtual bool init(TYPE type);
 // インスタンス変数
 private:
-    Sprite* _cursor { nullptr };
+    Light* _cursor { nullptr };
     Sprite* _chara { nullptr };
 };
 
