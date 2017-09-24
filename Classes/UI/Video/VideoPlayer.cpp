@@ -13,6 +13,7 @@
 
 // 定数
 const string VideoPlayer::DISP_VIDEO_PATH = "video/";
+const string VideoPlayer::FIRST_VIDEO_PIC_NAME = "00001.png";
 const float VideoPlayer::SHOW_DURATION = 0.1f;
 const float VideoPlayer::HIDE_DURATION = 0.1f;
 
@@ -42,8 +43,8 @@ bool VideoPlayer::init(const string& dirName, const bool skip, function<void()> 
 {
     if(!Layer::init()) return false;
     
-    string filePath = DISP_VIDEO_PATH + dirName;
-    filePath = ResourcesManager::getInstance()->getCurrentFilePath(filePath);
+    string filePath = DISP_VIDEO_PATH + dirName + "/" + FIRST_VIDEO_PIC_NAME;
+    filePath = LastSupper::StringUtils::strReplace(FIRST_VIDEO_PIC_NAME, "", ResourcesManager::getInstance()->getCurrentFilePath(filePath));
     int len = static_cast<int>(filePath.length());
     char* fname = new char[len+1];
     memcpy(fname, filePath.c_str(), len+1);
