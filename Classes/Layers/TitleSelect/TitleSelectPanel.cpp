@@ -7,6 +7,7 @@
 //
 
 #include "Layers/TitleSelect/TitleSelectPanel.h"
+#include "Effects/Light.h"
 
 // 定数
 const map<TitleSelectPanel::TYPE, string> TitleSelectPanel::TYPE_TO_TITLE_SPRITE_FRAME_NAME {
@@ -27,6 +28,11 @@ const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_TITLE_POSITIO
 const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_CHARA_POSITION {
     {TYPE::ONE, Point(80, 0)},
     {TYPE::TWO, Point(380, 0)},
+};
+
+const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_CURSOR_POSITION {
+    {TYPE::ONE, Point(30, 90)},
+    {TYPE::TWO, Point(30, 80)},
 };
 
 const int TitleSelectPanel::FOCUSED_CHARA_Z_ORDER { 100 };
@@ -58,9 +64,11 @@ bool TitleSelectPanel::init(TYPE type)
     _chara = chara;
     
     // カーソル
-    Sprite* cursor { Sprite::createWithSpriteFrameName("light.png") };
+    Light::Information lightInfo { Light::Information(Color3B::WHITE, 200, "light.png") };
+    lightInfo.type = Light::Type::TORCH;
+    Light* cursor { Light::create(lightInfo) };
     cursor->setBlendFunc(BlendFunc{GL_SRC_COLOR, GL_ONE});
-    cursor->setPosition(title->getContentSize() / 2);
+    cursor->setPosition(TYPE_TO_CURSOR_POSITION.at(type));
     title->addChild(cursor);
     _cursor = cursor;
     

@@ -39,7 +39,7 @@ bool Light::init(const Information& info)
 	this->setCascadeOpacityEnabled(true);
     this->setCascadeColorEnabled(true);
     
-    if(info.type == Light::Type::TORCH) this->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(0.5f, 230), FadeTo::create(0.5f, 255), nullptr), -1), nullptr));
+    if(info.type == Light::Type::TORCH) light->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(0.5f, 230), FadeTo::create(0.5f, 255), nullptr), -1), nullptr));
 	
 	return true;
 }
