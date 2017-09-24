@@ -1,0 +1,472 @@
+{
+  "ID": "282c99bc-c69a-4edb-88d7-6f36092d6dc7",
+  "Version": "3.10.0.0",
+  "Name": "ranmaru",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 140,
+        "Speed": 1.0,
+        "ActivedAnimationName": "right",
+        "Timelines": [
+          {
+            "ActionTag": 2064821685,
+            "Property": "FileData",
+            "Frames": [
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_0_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 0,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_3_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 2,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_2_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 4,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_1_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 6,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_0_1.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 10,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_0_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 20,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_0_2.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 25,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_0_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 35,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_3_1.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 45,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_3_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 55,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_3_2.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 60,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_3_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 70,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_2_1.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 80,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_2_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 90,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_2_2.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 95,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_2_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 105,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_1_1.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 115,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_1_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 125,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_1_2.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 130,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              },
+              {
+                "TextureFile": {
+                  "Type": "PlistSubImage",
+                  "Path": "ranmaru_1_0.png",
+                  "Plist": "character/ranmaru.plist"
+                },
+                "FrameIndex": 140,
+                "Tween": false,
+                "ctype": "TextureFrameData"
+              }
+            ],
+            "ctype": "TimelineData"
+          }
+        ],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [
+        {
+          "StartIndex": 0,
+          "EndIndex": 1,
+          "Name": "down",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 2,
+          "EndIndex": 3,
+          "Name": "up",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 4,
+          "EndIndex": 5,
+          "Name": "left",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 6,
+          "EndIndex": 7,
+          "Name": "right",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 10,
+          "EndIndex": 40,
+          "Name": "walk_down",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 45,
+          "EndIndex": 75,
+          "Name": "walk_up",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 80,
+          "EndIndex": 110,
+          "Name": "walk_left",
+          "ctype": "AnimationInfoData"
+        },
+        {
+          "StartIndex": 115,
+          "EndIndex": 145,
+          "Name": "walk_right",
+          "ctype": "AnimationInfoData"
+        }
+      ],
+      "ObjectData": {
+        "Tag": 3,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "ranmaru_0_0.png",
+              "Plist": "character/ranmaru.plist"
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 16.0,
+              "Y": 17.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "RightMargin": -32.0,
+            "TopMargin": -33.5,
+            "BottomMargin": 0.5,
+            "Tag": 4,
+            "ActionTag": 2064821685,
+            "Size": {
+              "X": 32.0,
+              "Y": 33.0
+            },
+            "Name": "sprite",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "collision.png",
+              "Plist": "detection/detection_box.plist"
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 16.0,
+              "Y": 8.0
+            },
+            "Scale": {
+              "ScaleX": 0.32,
+              "ScaleY": 0.16
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -34.0,
+            "RightMargin": -66.0,
+            "TopMargin": -58.0,
+            "BottomMargin": -42.0,
+            "Tag": 6,
+            "ActionTag": -2121198832,
+            "Size": {
+              "X": 100.0,
+              "Y": 100.0
+            },
+            "Name": "collision",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "hit.png",
+              "Plist": "detection/detection_box.plist"
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 16.0,
+              "Y": 8.0
+            },
+            "Scale": {
+              "ScaleX": 0.32,
+              "ScaleY": 0.16
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -34.0,
+            "RightMargin": -66.0,
+            "TopMargin": -58.0,
+            "BottomMargin": -42.0,
+            "Tag": 7,
+            "ActionTag": 805141725,
+            "Size": {
+              "X": 100.0,
+              "Y": 100.0
+            },
+            "Name": "hit",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "attack.png",
+              "Plist": "detection/detection_box.plist"
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 16.0,
+              "Y": 8.0
+            },
+            "Scale": {
+              "ScaleX": 0.32,
+              "ScaleY": 0.16
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -7.0,
+            "RightMargin": -39.0,
+            "TopMargin": -31.0,
+            "BottomMargin": -15.0,
+            "Tag": 25,
+            "ActionTag": 2119433232,
+            "Size": {
+              "X": 100.0,
+              "Y": 100.0
+            },
+            "Name": "attack",
+            "ctype": "SpriteObjectData"
+          }
+        ],
+        "Size": {
+          "X": 0.0,
+          "Y": 0.0
+        },
+        "Name": "Node",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "../detection/detection_box.plist",
+        "../detection/detection_box.png",
+        "ranmaru.plist",
+        "ranmaru.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Node"
+}
