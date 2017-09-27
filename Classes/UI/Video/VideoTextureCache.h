@@ -20,8 +20,8 @@ public:
     void picToTexture(float fd);
 
 private:
-    Map<string, Ref *>* _textures;
-    Map<string, Ref *>* _videoDecodes;
+    Map<string, Texture2D *>* _textures;
+    Map<string, VideoDecode *>* _videoDecodes;
     bool _threadEnd = false;
     string _delKey = "";
 };
