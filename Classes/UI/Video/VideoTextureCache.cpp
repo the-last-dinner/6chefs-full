@@ -20,8 +20,8 @@ VideoTextureCache::VideoTextureCache()
 {
     FUNCLOG;
     CCAssert(_sharedTextureCache == NULL, "Attempted to allocate a second instance of a singleton.");
-    _textures = new Map<std::string, Ref *>();
-    _videoDecodes = new Map<std::string, Ref *>();
+    _textures = new Map<std::string, Texture2D *>();
+    _videoDecodes = new Map<std::string, VideoDecode *>();
 }
 
 VideoTextureCache::~VideoTextureCache() { FUNCLOG; }
@@ -106,7 +106,7 @@ void VideoTextureCache::picToTexture(float fd)
 void VideoTextureCache::removeVideo(const char *dir)
 {
     _threadEnd = true;
-    VideoDecode* videoDecode = (VideoDecode*)_videoDecodes->at(dir);
+    VideoDecode* videoDecode = _videoDecodes->at(dir);
     if(videoDecode) {
         unsigned int rcount =  videoDecode->getReferenceCount();
         if(rcount == 1) {
@@ -123,8 +123,7 @@ void VideoTextureCache::removeVideo(const char *dir)
 
 Texture2D* VideoTextureCache::getTexture(int frame)
 {
-    Texture2D * texture = NULL;
-    texture = (Texture2D*)_textures->at(to_string(frame));
+    Texture2D* texture = _textures->at(to_string(frame));
     _delKey = to_string(frame - 5);
 	return texture;
 }
@@ -133,12 +132,11 @@ Texture2D* VideoTextureCache::addImageWidthData(VideoPic *pic)
 {
     string key = to_string(pic->_frame);
     
-    Texture2D * texture = NULL;
-    texture = (Texture2D*)_textures->at(key);
+    Texture2D* texture = _textures->at(key);
 	if(!texture) {
         texture = new Texture2D();
         if( texture && 
-        	texture->initWithImage(pic->_image) ) {
+           texture->initWithImage(pic->_image, Texture2D::Texture2D::PixelFormat::RGB565) ) {
             
             _textures->insert(key, texture);
             texture->release();
