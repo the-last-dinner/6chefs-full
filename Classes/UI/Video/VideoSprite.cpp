@@ -79,16 +79,16 @@ void VideoSprite::update(float dt)
 {
     Texture2D *texture = NULL;
     texture = VideoTextureCache::sharedTextureCache()->getTexture(_frameCount);
+    _frameCount++;
     if(texture) {
-        _frameCount++;
         setTexture(texture);
-        if(_frameCount >= _frames) {
-            _frameCount = 1;
-            if (_videoEndCallback)
-                _videoEndCallback();
-        }  
     } else {
         CCLOG("表示失敗 VideoSprite::update filename = %s , now_frame = %d, total_frame = %d", _fileDir.c_str(), _frameCount, _frames);
+    }
+    if(_frameCount >= _frames) {
+        _frameCount = 1;
+        if (_videoEndCallback)
+            _videoEndCallback();
     }
 }
 
