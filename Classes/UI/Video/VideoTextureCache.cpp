@@ -138,7 +138,7 @@ Texture2D* VideoTextureCache::addImageWidthData(VideoPic *pic)
 	if(!texture) {
         texture = new Texture2D();
         if( texture && 
-        	texture->initWithImage(pic->_image) ) {
+           texture->initWithImage(pic->_image, Texture2D::Texture2D::PixelFormat::RGB565) ) {
             
             _textures->insert(key, texture);
             texture->release();
