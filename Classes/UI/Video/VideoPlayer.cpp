@@ -13,7 +13,7 @@
 
 // 定数
 const string VideoPlayer::DISP_VIDEO_PATH = "video/";
-const string VideoPlayer::FIRST_VIDEO_PIC_NAME = "00001.png";
+const string VideoPlayer::FIRST_VIDEO_PIC_NAME = "00001.jpg";
 const float VideoPlayer::SHOW_DURATION = 0.1f;
 const float VideoPlayer::HIDE_DURATION = 0.1f;
 
