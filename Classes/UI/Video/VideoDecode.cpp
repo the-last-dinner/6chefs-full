@@ -95,7 +95,7 @@ string VideoDecode::getFilePath(int frame)
         fileName = "0" + fileName;
     }
     
-    return fileDir + fileName + ".jpg";
+    return fileDir + fileName + ".png";
 }
 
 // 1ファイルづつ読み込んでキャッシュにセットする
