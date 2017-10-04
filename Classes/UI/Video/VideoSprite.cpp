@@ -54,7 +54,7 @@ bool VideoSprite::init(const char* dir)
         tempData[i] = 0;
     }
 
-    texture->initWithData(tempData, length, Texture2D::PixelFormat::RGBA8888, _width, _height, Size(_width, _height));
+    texture->initWithData(tempData, length, Texture2D::PixelFormat::RGB565, _width, _height, Size(_width, _height));
     initWithTexture(texture);
     this->setContentSize(Size(_width, _height));
 
