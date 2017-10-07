@@ -114,7 +114,7 @@ class PlayVideoEvent : public ModalLayerEvent
 public:
     CREATE_FUNC_WITH_PARAM(PlayVideoEvent, rapidjson::Value&)
 private:
-    string _fileName {};
+    string _dirName {};
     bool _skip { false };
 private:
     PlayVideoEvent() {FUNCLOG};
