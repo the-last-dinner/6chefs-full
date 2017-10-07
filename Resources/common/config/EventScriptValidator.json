@@ -151,9 +151,9 @@
             }
         },
         "playVideo": {
-            "require": ["file"],
+            "require": ["dir"],
             "member": {
-                "file": ["string"],
+                "dir": ["string"],
                 "skip": ["bool"]
             }
         },

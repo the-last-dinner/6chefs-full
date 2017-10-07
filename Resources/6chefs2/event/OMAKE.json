@@ -1102,7 +1102,7 @@
 												},
 												{
 													"type":"playVideo",
-													"file":"OPmovie.mp4",
+													"dir":"OPmovie",
 													"skip":true
 												}
 											]

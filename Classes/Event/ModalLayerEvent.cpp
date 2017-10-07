@@ -346,9 +346,9 @@ bool PlayVideoEvent::init(rapidjson::Value& json)
     if (!ModalLayerEvent::init(json)) return false;
     
     // ファイル名
-    if (!_eventHelper->hasMember(_json, member::FILE)) return false;
+    if (!_eventHelper->hasMember(_json, member::DIR)) return false;
     
-    _fileName = _json[member::FILE].GetString();
+    _dirName = _json[member::DIR].GetString();
     
     // スキップ可能か
     if (_eventHelper->hasMember(_json, member::SKIP))
@@ -359,7 +359,7 @@ bool PlayVideoEvent::init(rapidjson::Value& json)
 
 void PlayVideoEvent::run()
 {
-    VideoPlayer* layer { VideoPlayer::create(_fileName, _skip, [this]{this->setDone();}) };
+    VideoPlayer* layer { VideoPlayer::create(_dirName, _skip, [this]{this->setDone();}) };
     
     if (!layer) {
         this->setDone();

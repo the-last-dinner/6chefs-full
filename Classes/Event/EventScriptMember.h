@@ -22,6 +22,7 @@ namespace member
     static const char* CHASER = "chaser";
     static const char* CHOICE = "choice";
     static const char* CHOICES = "choices";
+    static const char* DIR = "dir";
     static const char* DIRECTION = "direction";
     static const char* EASING = "easing";
     static const char* ENEMY_ID = "enemyID";
