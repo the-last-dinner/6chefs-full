@@ -2220,7 +2220,7 @@
               "type":"ending",
               "id":"2",
               "callback":[
-	  			{
+	  		     	{
 	              "type":"getTrophy",
 	              "trophyID":"7"
 	            },
