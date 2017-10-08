@@ -155,7 +155,7 @@ void EndingScene::createSpecialEnding(rapidjson::Value& json)
     vector<Sprite*> pictures {};
     int pic_len = pictures_name.size();
     
-    Sprite* sprite {Sprite::create(Resource::SpriteFrame::BASE_PATH + "disp/" + pictures_name[0].first)};
+    Sprite* sprite {Sprite::create(ResourcesManager::getInstance()->getCurrentFilePath(Resource::SpriteFrame::BASE_PATH + "disp/" + pictures_name[0].first))};
     sprite->setOpacity(0);
     sprite->setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     this->addChild(sprite);
@@ -165,7 +165,7 @@ void EndingScene::createSpecialEnding(rapidjson::Value& json)
     float y = WINDOW_HEIGHT / 2;
     float scale = 0.5;
     for (int i = 1; i < pic_len; i++) {
-        Sprite* sprite {Sprite::create(Resource::SpriteFrame::BASE_PATH + "disp/" + pictures_name[i].first)};
+        Sprite* sprite {Sprite::create(ResourcesManager::getInstance()->getCurrentFilePath(Resource::SpriteFrame::BASE_PATH + "disp/" + pictures_name[i].first))};
         sprite->setOpacity(0);
         sprite->setScale(scale);
         sprite->setPosition(x, y);
