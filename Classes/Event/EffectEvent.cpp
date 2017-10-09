@@ -15,6 +15,7 @@
 #include "Effects/Fog.h"
 
 #include "Managers/DungeonSceneManager.h"
+#include "Managers/ResourcesManager.h"
 
 #include "Scenes/DungeonScene.h"
 
@@ -128,7 +129,8 @@ void CreateRainEvent::run()
     this->setDone();
     
     Size size = Director::getInstance()->getVisibleSize();
-    ParticleSystemQuad* rain = ParticleSystemQuad::create("img/rain.plist");
+    string path = ResourcesManager::getInstance()->getCommonFilePath("img/rain.plist");
+    ParticleSystemQuad* rain = ParticleSystemQuad::create(path);
     rain->setPosition(Vec2(size.width/2,size.height));
 
     DungeonSceneManager::getInstance()->getScene()->addChild(rain);
@@ -154,7 +156,8 @@ void CreateUnderwaterEvent::run()
     
     auto waterLayer = LayerColor::create(Color4B(88,255,255,128));
     
-    ParticleSystemQuad* bubble = ParticleSystemQuad::create("img/bubble.plist");
+    string path = ResourcesManager::getInstance()->getCommonFilePath("img/bubble.plist");
+    ParticleSystemQuad* bubble = ParticleSystemQuad::create(path);
     waterLayer->addChild(bubble);
     
     auto nodeGrid = NodeGrid::create();
