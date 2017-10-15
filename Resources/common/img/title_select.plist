@@ -1,83 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>frames</key>
 	<dict>
-		<key>title_select_1.png</key>
+		<key>frames</key>
 		<dict>
-			<key>frame</key>
-			<string>{{0,792},{76,190}}</string>
-			<key>offset</key>
-			<string>{0,0}</string>
-			<key>rotated</key>
-			<false/>
-			<key>sourceColorRect</key>
-			<string>{{0,0},{76,190}}</string>
-			<key>sourceSize</key>
-			<string>{76,190}</string>
+			<key>title_select_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,807},{102,210}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{13,0},{102,210}}</string>
+				<key>sourceSize</key>
+				<string>{115,210}</string>
+			</dict>
+
+			<key>title_select_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,601},{105,205}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{105,205}}</string>
+				<key>sourceSize</key>
+				<string>{105,205}</string>
+			</dict>
+
+			<key>title_select_bg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{800,600}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{800,600}}</string>
+				<key>sourceSize</key>
+				<string>{800,600}</string>
+			</dict>
+
+			<key>title_select_magoichi.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{801,0},{461,600}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{15,0},{461,600}}</string>
+				<key>sourceSize</key>
+				<string>{479,600}</string>
+			</dict>
+
+			<key>title_select_yuki.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1263,0},{325,484}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{325,484}}</string>
+				<key>sourceSize</key>
+				<string>{325,484}</string>
+			</dict>
+
 		</dict>
-		<key>title_select_2.png</key>
+
+		<key>metadata</key>
 		<dict>
-			<key>frame</key>
-			<string>{{0,601},{80,190}}</string>
-			<key>offset</key>
-			<string>{0,0}</string>
-			<key>rotated</key>
-			<false/>
-			<key>sourceColorRect</key>
-			<string>{{0,0},{80,190}}</string>
-			<key>sourceSize</key>
-			<string>{80,190}</string>
+			<key>format</key>
+			<integer>2</integer>
+			<key>size</key>
+			<string>{2048,1024}</string>
+			<key>textureFileName</key>
+			<string>title_select.png</string>
+			</dict>
 		</dict>
-		<key>title_select_bg.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{0,0},{800,600}}</string>
-			<key>offset</key>
-			<string>{0,0}</string>
-			<key>rotated</key>
-			<false/>
-			<key>sourceColorRect</key>
-			<string>{{0,0},{800,600}}</string>
-			<key>sourceSize</key>
-			<string>{800,600}</string>
-		</dict>
-		<key>title_select_magoichi.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{801,0},{461,600}}</string>
-			<key>offset</key>
-			<string>{0,0}</string>
-			<key>rotated</key>
-			<false/>
-			<key>sourceColorRect</key>
-			<string>{{15,0},{461,600}}</string>
-			<key>sourceSize</key>
-			<string>{479,600}</string>
-		</dict>
-		<key>title_select_yuki.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{1263,0},{325,484}}</string>
-			<key>offset</key>
-			<string>{0,0}</string>
-			<key>rotated</key>
-			<false/>
-			<key>sourceColorRect</key>
-			<string>{{0,0},{325,484}}</string>
-			<key>sourceSize</key>
-			<string>{325,484}</string>
-		</dict>
-	</dict>
-	<key>metadata</key>
-	<dict>
-		<key>format</key>
-		<integer>2</integer>
-		<key>size</key>
-		<string>{2048,1024}</string>
-		<key>textureFileName</key>
-		<string>title_select.png</string>
-	</dict>
-</dict>
 </plist>
