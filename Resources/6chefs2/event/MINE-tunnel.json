@@ -73,10 +73,8 @@
 													"time":0.12
 												},
 												{
-													"type":"quakeMap",
-													"x":12,
-													"y":0,
-													"time":0.12
+													"type":"wait",
+													"time":0.1
 												},
 												{
 													"type":"quakeMap",
@@ -85,16 +83,18 @@
 													"time":0.12
 												},
 												{
-													"type":"quakeMap",
-													"x":12,
-													"y":0,
-													"time":0.12
+													"type":"wait",
+													"time":0.1
 												},
 												{
 													"type":"quakeMap",
 													"x":12,
 													"y":0,
 													"time":0.12
+												},
+												{
+													"type":"wait",
+													"time":0.1
 												},
 												{
 													"type":"quakeMap",
