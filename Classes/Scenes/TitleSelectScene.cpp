@@ -12,6 +12,7 @@
 #include "Datas/Scene/TitleSelectSceneData.h"
 #include "Layers/LoadingLayer.h"
 #include "Layers/TitleSelect/TitleSelectMenuLayer.h"
+#include "Layers/EventListener/ConfigEventListenerLayer.h"
 #include "Managers/TextureManager.h"
 #include "Managers/ResourcesManager.h"
 
@@ -25,6 +26,9 @@ TitleSelectScene::~TitleSelectScene() { FUNCLOG }
 bool TitleSelectScene::init()
 {
     if (!BaseScene::init(TitleSelectSceneData::create())) return false;
+    
+    // キーコンフィグを設定できないよう変更
+    _configListener->setKeyconfigEnabled(false);
     
     return true;
 }
