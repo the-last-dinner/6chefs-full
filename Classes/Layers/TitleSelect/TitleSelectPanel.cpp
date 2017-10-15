@@ -21,7 +21,7 @@ const map<TitleSelectPanel::TYPE, string> TitleSelectPanel::TYPE_TO_CHARA_SPRITE
 };
 
 const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_TITLE_POSITION {
-    {TYPE::ONE, Point(60, 470)},
+    {TYPE::ONE, Point(70, 470)},
     {TYPE::TWO, Point(730, 130)},
 };
 
@@ -31,8 +31,8 @@ const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_CHARA_POSITIO
 };
 
 const map<TitleSelectPanel::TYPE, Point> TitleSelectPanel::TYPE_TO_CURSOR_POSITION {
-    {TYPE::ONE, Point(30, 90)},
-    {TYPE::TWO, Point(30, 80)},
+    {TYPE::ONE, Point(40, 90)},
+    {TYPE::TWO, Point(40, 80)},
 };
 
 const int TitleSelectPanel::FOCUSED_CHARA_Z_ORDER { 100 };
