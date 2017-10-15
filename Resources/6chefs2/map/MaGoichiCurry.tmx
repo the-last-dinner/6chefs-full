@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="44" height="28" tilewidth="16" tileheight="16" backgroundcolor="#000000" nextobjectid="13">
- <tileset firstgid="1" name="ST-Fdshop-I01" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="ST-Fdshop-I01" tilewidth="16" tileheight="16" tilecount="1440" columns="16">
   <image source="ST-Fdshop-I01.png" trans="aa55ff" width="256" height="1440"/>
  </tileset>
- <tileset firstgid="1441" name="ST-Room-I01" tilewidth="16" tileheight="16">
+ <tileset firstgid="1441" name="ST-Room-I01" tilewidth="16" tileheight="16" tilecount="1120" columns="16">
   <image source="ST-Room-I01.png" trans="aa55ff" width="256" height="1120"/>
  </tileset>
- <tileset firstgid="2561" name="Yatai-option1" tilewidth="16" tileheight="16">
+ <tileset firstgid="2561" name="Yatai-option1" tilewidth="16" tileheight="16" tilecount="885" columns="59">
   <image source="Yatai-option1.png" trans="aa55ff" width="944" height="255"/>
  </tileset>
- <tileset firstgid="3446" name="ST-Sewer-01" tilewidth="16" tileheight="16">
+ <tileset firstgid="3446" name="ST-Sewer-01" tilewidth="16" tileheight="16" tilecount="1504" columns="16">
   <image source="ST-Sewer-01.png" trans="aa55ff" width="256" height="1504"/>
  </tileset>
  <layer name="Base" width="44" height="28">
@@ -41,7 +41,7 @@
    <property name="cc_vertexz" value="-12"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1TEVACAMA9G++DcGDsABOICJOmBpYbm/3ZI1ZgAAvDNkNpXX0ZZvb+U1AAA/FP+iqryO1ny7K68B4OYAOzsqqQ==
+   eJzt1KERACAMBMHM998YdAAdQAegiMcmCOZW5czLmAEA8NaQ2dR9R3SG5ftb9x3RAIA/FP/tVXkdrfl2V14DwG8OzoYqqQ==
   </data>
  </layer>
  <layer name="curry" width="44" height="28">
@@ -49,7 +49,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1qENAAAIwDA0l/H/RVgUCZKkdftgEQBMlbcGAICNn4T/GgYOAZs=
+   eJzt1jENAAAIA0FmlOFfETsh7CR309dBIwCYKvfeNgAAXPxJ+K8BBMYBmw==
   </data>
  </layer>
  <layer name="curryEat" width="44" height="28">
@@ -57,7 +57,7 @@
    <property name="cc_vertexz" value="-11"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1qENAAAIwDA0d3M4FkWCJGndPlgEAFPlrQEAYOMn4b8GsZMCxw==
+   eJzt1rEJAAAIA0Fr53ZwexF74a76bJAIAKbKvbcNAAAXfxL+a69bAsc=
   </data>
  </layer>
  <objectgroup name="collision">
