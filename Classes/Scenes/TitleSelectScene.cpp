@@ -27,6 +27,9 @@ bool TitleSelectScene::init()
 {
     if (!BaseScene::init(TitleSelectSceneData::create())) return false;
     
+    ResourcesManager::getInstance()->setCurrentPath("common");
+    ConfigDataManager::getInstance()->setConfigData();
+    
     // キーコンフィグを設定できないよう変更
     _configListener->setKeyconfigEnabled(false);
     
