@@ -29,13 +29,11 @@ private:
     virtual void onIndexChanged(int newIdx, bool sound = true) override;
     virtual void onEnterKeyPressed(int idx) override;
     void onShowAnimationFinished();
-    void setSelectTitleLabel();
 // インスタンス変数
 private:
     function<void(int)> _onSelectTitle { nullptr };
     Sprite* _bg { nullptr };
     vector<TitleSelectPanel*> _panels {};
-    Label* _selectTitleLabel { nullptr };
 };
 
 #endif /* TitleSelectMenuLayer_h */

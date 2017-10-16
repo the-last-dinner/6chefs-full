@@ -55,7 +55,6 @@ void TitleSelectMenuLayer::show()
     _panels[0]->runAction(Sequence::createWithTwoActions(DelayTime::create(0.2f), CallFunc::create([this](){ _panels[0]->show(); })));
     _panels[1]->runAction(Sequence::createWithTwoActions(DelayTime::create(0.4f), CallFunc::create([this](){ _panels[1]->show(); })));
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(0.8f), CallFunc::create(CC_CALLBACK_0(TitleSelectMenuLayer::onShowAnimationFinished, this))));
-    this->setSelectTitleLabel();
 }
 
 // 非表示
@@ -78,13 +77,6 @@ void TitleSelectMenuLayer::onIndexChanged(int newIdx, bool sound)
         }
     }
     
-    // Labelの色変更
-    if (newIdx == 0) {
-        _selectTitleLabel->setColor(Color3B::BLACK);
-    } else {
-        _selectTitleLabel->setColor(Color3B::WHITE);
-    }
-    
     // 移動音
     if (sound) SoundManager::getInstance()->playSE(Resource::SE::CURSOR_MOVE);
 }
@@ -100,24 +92,4 @@ void TitleSelectMenuLayer::onShowAnimationFinished()
 {
     this->listenerKeyboard->setEnabled(true);
     this->onIndexChanged(0, false);
-}
-
-// SELECT_TITLE_LABELをセット
-void TitleSelectMenuLayer::setSelectTitleLabel()
-{
-    Label* selectTitleLabel {Label::createWithTTF("←→ SELECT TITLE", Resource::Font::MESSAGE, 20)};
-    selectTitleLabel->setPosition(Point(WINDOW_WIDTH/2, selectTitleLabel->getContentSize().height * 2));
-    selectTitleLabel->setColor(Color3B::BLACK);
-    selectTitleLabel->setOpacity(200);
-    selectTitleLabel->setGlobalZOrder(1000);
-    this->addChild(selectTitleLabel);
-    
-    _selectTitleLabel = selectTitleLabel;
-    
-    // 点滅を設定
-//    ActionInterval* flashing = Sequence::createWithTwoActions(
-//          TargetedAction::create(selectTitleLabel, FadeTo::create(0.6f, 200)),
-//          TargetedAction::create(selectTitleLabel, FadeTo::create(0.6f, 30))
-//    );
-//    this->runAction(RepeatForever::create(flashing));
 }
