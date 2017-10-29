@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleCharacterData.cpp
 //  6chefs2
 //

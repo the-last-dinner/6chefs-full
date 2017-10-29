@@ -1,4 +1,4 @@
-//
+﻿//
 //  KeyconfigManager.h
 //  6chefs2
 //

@@ -1,4 +1,4 @@
-
+﻿
 #ifndef VideoSprite_h
 #define VideoSprite_h
 

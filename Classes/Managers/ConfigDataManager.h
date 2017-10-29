@@ -1,4 +1,4 @@
-//
+﻿//
 //  ConfigDataManager.hpp
 //  6chefs2
 //

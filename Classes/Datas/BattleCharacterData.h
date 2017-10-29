@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleCharacterData.h
 //  6chefs2
 //

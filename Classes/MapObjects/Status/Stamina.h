@@ -1,4 +1,4 @@
-//
+﻿//
 //  Stamina.h
 //  LastSupper
 //

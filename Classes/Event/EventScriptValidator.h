@@ -1,4 +1,4 @@
-//
+﻿//
 //  EventScriptValidator.hpp
 //  6chefs2
 //

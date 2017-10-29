@@ -1,4 +1,4 @@
-#include "VideoDecode.h"
+﻿#include "VideoDecode.h"
 #include "VideoTextureCache.h"
 
 VideoPic::VideoPic()

@@ -1,4 +1,4 @@
-//
+﻿//
 //  ModalLayerEvent.cpp
 //  LastSupper
 //

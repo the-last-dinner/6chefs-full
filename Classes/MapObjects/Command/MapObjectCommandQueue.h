@@ -1,4 +1,4 @@
-//
+﻿//
 //  MapObjectCommandQueue.h
 //  6chefs2
 //

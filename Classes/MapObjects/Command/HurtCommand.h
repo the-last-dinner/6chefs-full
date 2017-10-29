@@ -1,4 +1,4 @@
-//
+﻿//
 //  HurtCommand.h
 //  6chefs2
 //

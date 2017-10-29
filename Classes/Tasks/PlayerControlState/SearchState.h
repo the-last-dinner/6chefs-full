@@ -1,4 +1,4 @@
-//
+﻿//
 //  SearchState.h
 //  6chefs2
 //

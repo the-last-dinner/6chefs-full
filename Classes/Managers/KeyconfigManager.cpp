@@ -1,4 +1,4 @@
-//
+﻿//
 //  KeyconfigManager.cpp
 //  6chefs2
 //

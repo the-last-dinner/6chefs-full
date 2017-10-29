@@ -1,4 +1,4 @@
-//
+﻿//
 //  CommonEventScripts.h
 //  6chefs2
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 //  CameraEvent.h
 //  6chefs2
 //

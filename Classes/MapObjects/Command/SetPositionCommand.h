@@ -1,4 +1,4 @@
-//
+﻿//
 //  SetPositionCommand.h
 //  6chefs2
 //

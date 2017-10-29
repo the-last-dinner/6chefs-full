@@ -1,4 +1,4 @@
-//
+﻿//
 //  MapObjectList.h
 //  LastSupper
 //

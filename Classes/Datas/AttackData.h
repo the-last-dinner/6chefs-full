@@ -1,4 +1,4 @@
-//
+﻿//
 //  AttackData.hpp
 //  6chefs2
 //

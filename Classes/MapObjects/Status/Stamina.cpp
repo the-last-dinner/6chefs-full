@@ -1,4 +1,4 @@
-//
+﻿//
 //  Stamina.cpp
 //  LastSupper
 //

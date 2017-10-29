@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleData.cpp
 //  6chefs2
 //

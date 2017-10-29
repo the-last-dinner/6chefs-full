@@ -1,4 +1,4 @@
-//
+﻿//
 //  MasterConfigData.cpp
 //  6chefs2
 //

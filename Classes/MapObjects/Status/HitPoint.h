@@ -1,4 +1,4 @@
-//
+﻿//
 //  HitPoint.h
 //  6chefs2
 //

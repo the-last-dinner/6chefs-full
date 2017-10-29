@@ -1,4 +1,4 @@
-//
+﻿//
 //  CharacterMessageLayer.cpp
 //  LastSupper
 //

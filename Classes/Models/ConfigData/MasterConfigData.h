@@ -1,4 +1,4 @@
-//
+﻿//
 //  MasterConfigData.hpp
 //  6chefs2
 //

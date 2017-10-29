@@ -1,4 +1,4 @@
-//
+﻿//
 //  EffectEvent.h
 //  LastSupper
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 //  EquipItemEvent.hpp
 //  6chefs2
 //

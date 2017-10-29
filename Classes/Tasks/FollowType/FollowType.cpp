@@ -1,4 +1,4 @@
-//
+﻿//
 //  FollowType.cpp
 //  LastSupper
 //

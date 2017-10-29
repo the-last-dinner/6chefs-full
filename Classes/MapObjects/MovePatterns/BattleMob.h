@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleMob.h
 //  6chefs2
 //

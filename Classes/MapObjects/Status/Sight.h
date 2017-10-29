@@ -1,4 +1,4 @@
-//
+﻿//
 //  Sight.h
 //  LastSupper
 //

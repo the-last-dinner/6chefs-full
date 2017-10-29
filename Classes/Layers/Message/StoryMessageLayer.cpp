@@ -1,4 +1,4 @@
-//
+﻿//
 //  StoryMessageLayer.cpp
 //  LastSupper
 //

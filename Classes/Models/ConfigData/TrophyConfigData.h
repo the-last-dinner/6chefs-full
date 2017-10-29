@@ -1,4 +1,4 @@
-//
+﻿//
 //  TrophyConfigData.hpp
 //  6chefs2
 //

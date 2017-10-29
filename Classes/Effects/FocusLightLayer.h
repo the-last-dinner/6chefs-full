@@ -1,4 +1,4 @@
-//
+﻿//
 //  FocusLightLayer.h
 //  6chefs2
 //

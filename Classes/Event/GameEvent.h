@@ -1,4 +1,4 @@
-//
+﻿//
 //  GameEvent.h
 //  LastSupper
 //

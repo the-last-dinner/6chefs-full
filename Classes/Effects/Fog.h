@@ -1,4 +1,4 @@
-//
+﻿//
 //  Fog.h
 //  LastSupper
 //

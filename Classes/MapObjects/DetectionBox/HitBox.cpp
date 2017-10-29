@@ -1,4 +1,4 @@
-//
+﻿//
 //  HitBox.cpp
 //  6chefs2
 //

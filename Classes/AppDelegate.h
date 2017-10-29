@@ -1,4 +1,4 @@
-#ifndef  __APP_DELEGATE_H__
+﻿#ifndef  __APP_DELEGATE_H__
 #define  __APP_DELEGATE_H__
 
 #include "Common.h"

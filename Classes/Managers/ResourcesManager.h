@@ -1,4 +1,4 @@
-//
+﻿//
 //  ResouceManager.hpp
 //  6chefs
 //

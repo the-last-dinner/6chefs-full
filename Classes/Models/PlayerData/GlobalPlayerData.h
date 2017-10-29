@@ -1,4 +1,4 @@
-//
+﻿//
 //  GlobalPlayerData.h
 //  LastSupper
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 //  StringUtils.h
 //  LastSupper
 //

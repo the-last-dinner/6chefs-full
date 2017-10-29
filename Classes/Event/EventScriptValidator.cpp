@@ -1,4 +1,4 @@
-//
+﻿//
 //  EventScriptValidator.cpp
 //  6chefs2
 //

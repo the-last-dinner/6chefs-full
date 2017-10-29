@@ -1,4 +1,4 @@
-//
+﻿//
 //  CharacterMasterData.hpp
 //  6chefs2
 //

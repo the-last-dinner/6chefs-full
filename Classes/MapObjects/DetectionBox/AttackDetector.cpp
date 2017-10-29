@@ -1,4 +1,4 @@
-//
+﻿//
 //  AttackDetector.cpp
 //  6chefs2
 //

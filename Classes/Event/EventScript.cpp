@@ -1,4 +1,4 @@
-//
+﻿//
 //  EventScript.cpp
 //  LastSupper
 //

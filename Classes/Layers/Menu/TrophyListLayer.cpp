@@ -1,4 +1,4 @@
-//
+﻿//
 //  TrophyListLayer.cpp
 //  LastSupper
 //

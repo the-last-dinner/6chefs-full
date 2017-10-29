@@ -1,4 +1,4 @@
-//
+﻿//
 //  JsonUtils.hpp
 //  LastSupper
 //

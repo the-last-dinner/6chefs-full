@@ -1,4 +1,4 @@
-//
+﻿//
 //  ResourcesManager.cpp
 //  6chefs
 //

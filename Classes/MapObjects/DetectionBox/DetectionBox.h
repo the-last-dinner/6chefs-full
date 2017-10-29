@@ -1,4 +1,4 @@
-//
+﻿//
 //  DetectionBox.h
 //  6chefs2
 //

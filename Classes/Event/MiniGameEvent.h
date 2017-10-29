@@ -1,4 +1,4 @@
-//
+﻿//
 //  MiniGameEvent.h
 //  LastSupper
 //

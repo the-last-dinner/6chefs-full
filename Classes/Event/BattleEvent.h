@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleEvent.h
 //  6chefs2
 //

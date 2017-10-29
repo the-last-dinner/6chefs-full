@@ -1,4 +1,4 @@
-#include "AppDelegate.h"
+﻿#include "AppDelegate.h"
 
 #include "Managers/KeyconfigManager.h"
 #include "Managers/EventListenerKeyboardManager.h"

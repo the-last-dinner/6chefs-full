@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleState.h
 //  6chefs2
 //

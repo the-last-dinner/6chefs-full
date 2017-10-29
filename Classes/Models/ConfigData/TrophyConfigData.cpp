@@ -1,4 +1,4 @@
-//
+﻿//
 //  TrophyConfigData.cpp
 //  6chefs2
 //

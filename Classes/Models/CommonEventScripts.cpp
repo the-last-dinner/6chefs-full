@@ -1,4 +1,4 @@
-//
+﻿//
 //  CommonEventScripts.cpp
 //  6chefs2
 //

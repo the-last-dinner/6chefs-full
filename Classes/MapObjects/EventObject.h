@@ -1,4 +1,4 @@
-//
+﻿//
 //  EventObject.h
 //  LastSupper
 //

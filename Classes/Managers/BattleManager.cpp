@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleManager.cpp
 //  6chefs2
 //

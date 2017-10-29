@@ -1,4 +1,4 @@
-//
+﻿//
 //  MovePatternFactory.h
 //  LastSupper
 //

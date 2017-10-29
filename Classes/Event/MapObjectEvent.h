@@ -1,4 +1,4 @@
-//
+﻿//
 //  MapObjectEvent.h
 //  LastSupper
 //

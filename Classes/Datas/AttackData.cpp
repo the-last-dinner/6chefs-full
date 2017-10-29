@@ -1,4 +1,4 @@
-//
+﻿//
 //  AttackData.cpp
 //  6chefs2
 //

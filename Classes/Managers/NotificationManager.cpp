@@ -1,4 +1,4 @@
-//
+﻿//
 //  NotificationManager.cpp
 //  LastSupper
 //

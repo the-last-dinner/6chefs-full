@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleState.cpp
 //  6chefs2
 //

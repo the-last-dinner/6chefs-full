@@ -1,4 +1,4 @@
-//
+﻿//
 //  NotificationBand.hpp
 //  LastSupper
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 //  Character.h
 //  LastSupper
 //

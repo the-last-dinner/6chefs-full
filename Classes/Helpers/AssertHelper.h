@@ -1,4 +1,4 @@
-//
+﻿//
 //  AssertHelper.hpp
 //  6chefs2
 //

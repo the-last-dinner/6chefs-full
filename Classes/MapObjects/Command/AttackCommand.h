@@ -1,4 +1,4 @@
-//
+﻿//
 //  AttackCommand.h
 //  6chefs2
 //

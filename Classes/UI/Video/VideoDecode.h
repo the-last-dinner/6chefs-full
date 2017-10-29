@@ -1,4 +1,4 @@
-#ifndef VideoDecode_h
+﻿#ifndef VideoDecode_h
 #define VideoDecode_h
 
 #include "define.h"

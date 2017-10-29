@@ -1,4 +1,4 @@
-//
+﻿//
 //  GlobalPlayerData.cpp
 //  LastSupper
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 //  BattleEvent.cpp
 //  6chefs2
 //

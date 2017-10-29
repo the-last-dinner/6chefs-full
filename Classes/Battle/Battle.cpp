@@ -1,4 +1,4 @@
-//
+﻿//
 //  Battle.cpp
 //  6chefs2
 //

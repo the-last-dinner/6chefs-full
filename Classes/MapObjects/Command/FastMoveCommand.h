@@ -1,4 +1,4 @@
-//
+﻿//
 //  FastMoveCommand.h
 //  6chefs2
 //
