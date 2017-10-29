@@ -39,30 +39,6 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Japanese (Japan) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
-
-1 TEXTINCLUDE 
-BEGIN
-    "resource.h\0"
-END
-
-#endif    // APSTUDIO_INVOKED
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -95,13 +71,13 @@ BEGIN
     BEGIN
         BLOCK "041104b0"
         BEGIN
-            VALUE "CompanyName", "?????"
-            VALUE "FileDescription", "6???????????2"
+            VALUE "CompanyName", "ç≈å„ÇÃî”é`"
+            VALUE "FileDescription", "6chefs_full"
             VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "6???????????2"
-            VALUE "LegalCopyright", "Copyright 2017 ????? All Right Reserved."
-            VALUE "OriginalFilename", "6chefs2_1.0.exe"
-            VALUE "ProductName", "6???????????2"
+            VALUE "InternalName", "6chefs_full"
+            VALUE "LegalCopyright", "Copyright 2014-2017 ç≈å„ÇÃî”é` All Right Reserved."
+            VALUE "OriginalFilename", "6chefs_full.exe"
+            VALUE "ProductName", "6êlÇÃóøóùêlÇ∆ê«ä·ÇÃè≠èóÅ`FullCourseÅ`"
             VALUE "ProductVersion", "1.0.0.0"
         END
     END
@@ -110,6 +86,30 @@ BEGIN
         VALUE "Translation", 0x411, 1200
     END
 END
+
+#endif    // Japanese (Japan) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+#endif    // APSTUDIO_INVOKED
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
