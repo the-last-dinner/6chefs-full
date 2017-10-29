@@ -20,7 +20,7 @@ namespace Resource
         static const std::string MASTER_CONFIG = BASE_PATH + "MasterConfig.json";
         static const std::string BATTLE_CHARACTER = BASE_PATH + "BattleCharacter.json";
         static const std::string TROPHY_CONFIG = BASE_PATH + "TrophyConfig.json";
-        static const std::string IS_ENCRYPTED_FILE = BASE_PATH + "IsEncrypted.json";
+        static const std::string IS_ENCRYPTED_FILE = "common/" + BASE_PATH + "IsEncrypted.json";
         static const std::string EVENT_SCRIPT_VALIDATOR = "common/" + BASE_PATH + "EventScriptValidator.json";
     };
     
