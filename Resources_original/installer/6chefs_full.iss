@@ -68,8 +68,8 @@ Name: {app};Permissions: everyone-modify
 Name: desktopicon; Description: "デスクトップにショートカットを作成する"
 
 [Icons]
-Name: "{group}\6人の料理人と隻眼の少女2"; Filename: "{app}\6chefs_full.exe"
-Name: "{commondesktop}\6人の料理人と隻眼の少女2"; Filename: "{app}\6chefs_full.exe"; WorkingDir: "{app}"; Tasks: desktopicon
+Name: "{group}\6人の料理人と隻眼の少女～FullCourse～"; Filename: "{app}\6chefs_full.exe"
+Name: "{commondesktop}\6人の料理人と隻眼の少女～FullCourse～"; Filename: "{app}\6chefs_full.exe"; WorkingDir: "{app}"; Tasks: desktopicon
 
 [Languages]
 Name:"jp";MessagesFile:"C:\Program Files (x86)\Inno Setup 5\Languages\Japanese.isl";
