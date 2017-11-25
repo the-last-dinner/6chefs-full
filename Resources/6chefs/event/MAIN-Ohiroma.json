@@ -2773,10 +2773,11 @@
           "type":"fadeout"
         },
         {
-          "type":"charaWalkTo",
+          "type":"charaWarp",
           "objID":"hero",
           "x":27,
-          "y":45
+          "y":45,
+          "direction":"RIGHT"
         },
         {
           "type":"changeDirection",

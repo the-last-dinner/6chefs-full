@@ -129,23 +129,29 @@
 							"movePattern":"1"
 						},
 						{
+							"type":"fadeout"
+						},
+						{
 							"type":"spawn",
 							"action":[
 								{
-									"type":"charaWalkTo",
+									"type":"charaWarp",
 									"objID":"hero",
 									"x":14,
 									"y":4,
-									"speed":2.0
+									"direction":"DOWN"
 								},
 								{
-									"type":"charaWalkTo",
+									"type":"charaWarp",
 									"objID":"1021",
 									"x":16,
 									"y":5,
-									"speed":2.0
+									"direction":"DOWN"
 								}
 							]
+						},
+						{
+							"type":"fadein"
 						},
 						{
 							"type":"spawn",
