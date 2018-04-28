@@ -193,7 +193,7 @@
 						},
 						{
 							"text":["ちょっと加藤！\nそんな事伝えるべきじゃないでしょ！"],
-							"charaID":"27",
+							"charaID":"3",
 							"imgID":"1",
 							"option":"reaction"
 						},
@@ -204,7 +204,7 @@
 						},
 						{
 							"text":["でも・・・"],
-							"charaID":"27",
+							"charaID":"3",
 							"imgID":"2"
 						},
 						{

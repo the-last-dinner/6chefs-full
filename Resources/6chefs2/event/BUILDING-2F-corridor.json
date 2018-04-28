@@ -129,7 +129,7 @@
 							"movePattern":"0",
 							"direction":"DOWN",
 							"times":1,
-							"speed":1.8
+							"speed":2.0
 						},
 						{
 							"type":"playSE",
